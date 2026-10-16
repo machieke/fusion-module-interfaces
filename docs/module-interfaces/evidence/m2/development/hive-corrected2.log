@@ -1,0 +1,44 @@
+......F
+=================================== FAILURES ===================================
+_ test_native_responses_views_and_traces_have_no_private_payloads_or_identifiers _
+
+setup = (<tests.m2_support.MemoryHarness object at 0x7fcbbd042f30>, <test_m2_integration.MemoryCaller object at 0x7fcbbd043020...ler.json'), {'swarm_id': 's_f15cb9f2', 'action': 'record-generated', 'items': [], 'params': {'seed': 1800352122}, ...})
+
+    def test_native_responses_views_and_traces_have_no_private_payloads_or_identifiers(setup):
+        h, caller, config, path, body = setup
+        response = act(caller, body); assert response['status'] == 'done', response
+        private = local_result(h, body)
+        view = caller.call('GET', '/api/programs/fusion-episode')
+        public = canonical([response, view]) + (caller.root / 'native.log').read_bytes()
+        # Actual Hive state/logs may contain action seed and counters, never episode contents.
+        for file in (caller.root / 'hive').rglob('*'):
+            if file.is_file(): public += file.read_bytes()
+        markers = [f"Generated private source report {body['params']['seed']}".encode()]
+        for ref in (private['story'], private['independent']):
+            for record in h.episodes.readEpisode(ref, 1, 16)['events']:
+                markers += [record['evidence']['event_ref']['digest'].encode(), record['event']['payload']['digest'].encode()]
+                markers += [root.encode() for root in record['lineage_roots']]
+        for marker in markers: assert marker not in public
+        assert not (h.root / 'shared').exists()
+        # Body-supplied actor/truth/provenance cannot impersonate the trusted native context.
+        injected = {**body, 'params': {**body['params'], 'actor': 'owner', 'truth': [1, .99]}}
+>       refused = act(caller, injected)
+                  ^^^^^^^^^^^^^^^^^^^^^
+
+integration/hive/test_m2_integration.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <test_m2_integration.MemoryCaller object at 0x7fcbbd043020>
+body = {'swarm_id': 's_f15cb9f2', 'action': 'record-generated', 'items': [], 'params': {'seed': 1800352122, 'actor': 'owner', 'truth': [1, 0.99]}, ...}
+
+    def act(caller, body):
+        response = caller.call('POST', '/api/programs/fusion-episode/act', body)
+>       assert response['code'] == 200, response
+E       AssertionError: {'code': 400, 'body': {'error': {'code': 'identity_in_request', 'message': 'the hive sets who acts; remove actor'}}}
+E       assert 400 == 200
+
+integration/hive/test_m2_integration.py:55: AssertionError
+=========================== short test summary info ============================
+FAILED integration/hive/test_m2_integration.py::test_native_responses_views_and_traces_have_no_private_payloads_or_identifiers
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 6 passed in 59.92s

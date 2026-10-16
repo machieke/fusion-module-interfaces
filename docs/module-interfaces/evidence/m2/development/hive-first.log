@@ -1,0 +1,53 @@
+FF
+=================================== FAILURES ===================================
+___________ test_actual_dispatch_duplicate_and_native_caller_restart ___________
+
+setup = (<tests.m2_support.MemoryHarness object at 0x7f74ec6398e0>, <test_m2_integration.MemoryCaller object at 0x7f74ec6399d0...ller.json'), {'swarm_id': 's_bff044d2', 'action': 'record-generated', 'items': [], 'params': {'seed': 435585865}, ...})
+
+    def test_actual_dispatch_duplicate_and_native_caller_restart(setup):
+        h, caller, config, path, body = setup
+>       result = act(caller, body)
+                 ^^^^^^^^^^^^^^^^^
+
+integration/hive/test_m2_integration.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <test_m2_integration.MemoryCaller object at 0x7f74ec6399d0>
+body = {'swarm_id': 's_bff044d2', 'action': 'record-generated', 'items': [], 'params': {'seed': 435585865}, ...}
+
+    def act(caller, body):
+        response = caller.call('POST', '/api/programs/fusion-episode/act', body)
+>       assert response['code'] == 200, response
+E       AssertionError: {'code': 500, 'body': {'error': {'code': 'program_error', 'message': 'fusion-episode failed to load: ValueError: describe() must list kinds'}}}
+E       assert 500 == 200
+
+integration/hive/test_m2_integration.py:55: AssertionError
+__________ test_actual_caller_kill_boundaries[after_payload_persist] ___________
+
+setup = (<tests.m2_support.MemoryHarness object at 0x7f74ec499fa0>, <test_m2_integration.MemoryCaller object at 0x7f74ec49ab40...ler.json'), {'swarm_id': 's_a7f5b36d', 'action': 'record-generated', 'items': [], 'params': {'seed': 1209173560}, ...})
+stage = 'after_payload_persist'
+
+    @pytest.mark.parametrize('stage', ['after_payload_persist', 'after_episode_commit', 'after_formula', 'after_belief_commit'])
+    def test_actual_caller_kill_boundaries(setup, stage):
+        h, caller, config, path, body = setup
+        marker = caller.root / 'pause'
+        config.update(test_pause_at=stage, test_marker=str(marker)); path.write_bytes(canonical(config))
+        caller.send('POST', '/api/programs/fusion-episode/act', body)
+        deadline = time.monotonic() + 40
+        while not marker.exists() and caller.process.poll() is None and time.monotonic() < deadline: time.sleep(.01)
+>       assert marker.exists(), (stage, (caller.root / 'native.log').read_text())
+E       AssertionError: ('after_payload_persist', '/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh/artifacts/native/...ions upgrade: ended 0 unlinked sign-in session(s)
+E         [hive] startup recovery committed: reservations=0, ask_intents=0
+E         ')
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/tmp/pytest-of-purplezky/pytest-426/test_actual_caller_kill_bounda0/pause').exists
+
+integration/hive/test_m2_integration.py:91: AssertionError
+=========================== short test summary info ============================
+FAILED integration/hive/test_m2_integration.py::test_actual_dispatch_duplicate_and_native_caller_restart
+FAILED integration/hive/test_m2_integration.py::test_actual_caller_kill_boundaries[after_payload_persist]
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/home/purplezky/work/takopi/fusion-module-interfaces/integration/hive/test_m2_integration.py:90: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+2 failed in 83.10s (0:01:23)

@@ -1,0 +1,26 @@
+test_kill_after_belief_commit_before_ack (integration.pln.test_recovery.Recovery.test_kill_after_belief_commit_before_ack) ... ok
+test_kill_after_episode_and_intent_before_belief (integration.pln.test_recovery.Recovery.test_kill_after_episode_and_intent_before_belief) ... ok
+test_kill_after_native_formula_before_belief_commit (integration.pln.test_recovery.Recovery.test_kill_after_native_formula_before_belief_commit) ... ok
+test_kill_after_payload_before_episode_commit (integration.pln.test_recovery.Recovery.test_kill_after_payload_before_episode_commit) ... ok
+test_private_canary_never_enters_shared_binding_or_diagnostics (integration.pln.test_recovery.Recovery.test_private_canary_never_enters_shared_binding_or_diagnostics) ... ok
+test_two_process_cas_race_has_one_winner (integration.pln.test_recovery.Recovery.test_two_process_cas_race_has_one_winner) ... FAIL
+
+======================================================================
+FAIL: test_two_process_cas_race_has_one_winner (integration.pln.test_recovery.Recovery.test_two_process_cas_race_has_one_winner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/verified/integration/pln/test_recovery.py", line 112, in test_two_process_cas_race_has_one_winner
+    self.assertEqual(sorted([queue.get(timeout=2), queue.get(timeout=2)], key=str), [1, 'CONFLICT'])
+AssertionError: Lists differ: [1, 'NOT_AVAILABLE'] != [1, 'CONFLICT']
+
+First differing element 1:
+'NOT_AVAILABLE'
+'CONFLICT'
+
+- [1, 'NOT_AVAILABLE']
++ [1, 'CONFLICT']
+
+----------------------------------------------------------------------
+Ran 6 tests in 7.589s
+
+FAILED (failures=1)

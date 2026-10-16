@@ -11,8 +11,18 @@ revision, reusing the pinned guarded PLN implementation through actual native
 PeTTa. See [M2 evidence](docs/module-interfaces/m2-evidence.md), including the
 separate fixture, real DeTTa, real PLN, real Hive and unrun gates.
 
+For the complete M2 source/build/test path (Linux prerequisites and access are
+listed in the runbook):
+
 ```bash
-uv run --python 3.11 python scripts/verify_m11.py
+uv run --python 3.11 --locked python scripts/build_m2.py artifacts/m2-providers
+uv run --python 3.11 --locked python scripts/verify_m2.py artifacts/m2-providers/environment.json
+```
+
+For the original M1 conformance slice:
+
+```bash
+uv run --python 3.11 --locked python scripts/verify_m11.py
 ```
 
 This builds the Rust adapter offline, runs the contract and integration suites,

@@ -251,6 +251,9 @@ its leaf coverage, exact immutable premise IDs, unioned evidence IDs and roots,
 formula ID and assumptions. Belief revision increments only when its ledger or
 aggregate changes. Exact successful request replay returns its original snapshot,
 even after later revisions. A new-key duplicate returns the current snapshot.
+For an overlapping proposed pair, `retained-alternative` reports the guard
+outcome. If the candidate is an already covered ancestor, the ledger and its
+alternative list can remain unchanged; the explicit coverage fields govern.
 
 The experimental model is `trueagi-pln-stv-finite-k1/v1`: decimal-string finite
 strength in [0,1], confidence in [0,1), `evidence_count=null`. Validate both Decimal

@@ -1,0 +1,114 @@
+{
+  "milestone": "M2 C1 EpisodicMemory + C2 BeliefRevision only",
+  "requested_ancestor": "4ee5cbe8b84689a5d2432530083738b263142f90",
+  "starting_commit": "6452fa725be5a688f9d5ad8f77955579df2f95ab",
+  "tested_commit": "d9e75773c34987d5791a9207190fcbf0a8c1fd7b",
+  "tested_checkout_status": [],
+  "verification": "final/verification.json",
+  "m1_2_details": "final/m1_2/verification.json",
+  "build": "fresh-build.json",
+  "brief": {
+    "url": "https://ctxt.io/3/n3bumFNzG",
+    "retrieved_markdown_url": "https://ctxt.io/3/n3bumFNzG.md",
+    "sha256": "e40f4293c60926c6b8c1c090a83f432fe3d39794e90793bfff5ef69472373d1b"
+  },
+  "gates": {
+    "BASELINE": "PASS",
+    "CONTRACTS": "PASS",
+    "C1": "PASS",
+    "C1_INDEPENDENT": "PASS",
+    "C2_GUARDS": "PASS",
+    "C2_NATIVE": "PASS",
+    "PRIVACY": "PASS",
+    "RECOVERY": "PASS",
+    "HIVE_M2": "PASS",
+    "REPRO": "PASS: fresh provider build and all supported tests; download caches warm",
+    "SCOPE": "PASS: C1+C2 only; unchanged M1 wire, original Hive plugin and guarded upstream sources",
+    "CHAIN": "NOT_RUN"
+  },
+  "blocked_prerequisites": [],
+  "unrun": [
+    "global empty-cache build",
+    "historical SWI 10.0.1",
+    "power-loss/distributed failover",
+    "ECAN",
+    "inference control",
+    "chain",
+    "live migration"
+  ],
+  "provider_classification": {
+    "fixtures": "Generated observations/operator assumptions, independent FileAtomFixture, guard-only math, 8 upstream RecordingRuntime guard tests, malformed response injections, test transport/failpoints.",
+    "real_detta": "Clean pinned DA/FileStorage linked into newly compiled Rust adapter; local files only.",
+    "real_pln": "Unchanged pinned PLNAdapter.revise + actual Truth_Revision via PeTTa/SWI 10.1.14; three native golden/order cases.",
+    "real_hive": "Pinned actual ASGI app, native authenticated Programs dispatch, Supervisor/PeTTa and plugin loader; test driver is transport only.",
+    "chain": "NOT_RUN; no M2 chain action."
+  },
+  "changed_files": [
+    "README.md",
+    "codex_fusion_m2_episodic_memory_and_pln_revision.md",
+    "docs/module-interfaces/architecture.md",
+    "docs/module-interfaces/contracts.md",
+    "docs/module-interfaces/decisions.md",
+    "docs/module-interfaces/discovery.md",
+    "docs/module-interfaces/evidence/m2/baseline/detta.log",
+    "docs/module-interfaces/evidence/m2/baseline/fixture.log",
+    "docs/module-interfaces/evidence/m2/baseline/hive-integration.log",
+    "docs/module-interfaces/evidence/m2/baseline/hive-integration.xml",
+    "docs/module-interfaces/evidence/m2/baseline/native-baseline.log",
+    "docs/module-interfaces/evidence/m2/baseline/native-baseline.xml",
+    "docs/module-interfaces/evidence/m2/baseline/upstream-detta.log",
+    "docs/module-interfaces/evidence/m2/baseline/verification.json",
+    "docs/module-interfaces/evidence/m2/initial-source-state.json",
+    "docs/module-interfaces/evidence/m2/native-readiness.json",
+    "docs/module-interfaces/runbook.md",
+    "fusion/adapters/pln_revision.py",
+    "fusion/beliefs.py",
+    "fusion/episodes.py",
+    "fusion/evidence_relay.py",
+    "fusion/memory_contracts.py",
+    "fusion/memory_types.py",
+    "fusion/ports.py",
+    "fusion/private.py",
+    "integration/hive/episode_program/plugin.json",
+    "integration/hive/episode_program/program.py",
+    "integration/hive/test_m2_integration.py",
+    "integration/m2_scenario.py",
+    "integration/pln/sources.json",
+    "integration/pln/test_recovery.py",
+    "integration/pln/test_revision.py",
+    "scripts/build_m2.py",
+    "scripts/m2_demo.py",
+    "scripts/verify_m2.py",
+    "tests/m2_support.py",
+    "tests/test_m2.py"
+  ],
+  "source_preservation": "source-preservation.json",
+  "compiled_detta_adapter_source_matches": true,
+  "current_implementation_matches_tested_file_hashes": true,
+  "development_runs": [
+    {
+      "record": "development/recovery-first.log",
+      "result": "FAIL: nonexistent binding patch target; corrected invoke interception"
+    },
+    {
+      "record": "development/hive-first.log",
+      "result": "FAIL then interrupted after native kind-validation error; remaining cases unrun"
+    },
+    {
+      "record": "development/hive-corrected.log",
+      "result": "FAIL: native receipt missing id"
+    },
+    {
+      "record": "development/hive-corrected2.log",
+      "result": "6 PASS, 1 FAIL: native identity HTTP400 correctly rejected; test expected plugin response"
+    },
+    {
+      "record": "development/bbad55c-comprehensive/verification.json",
+      "result": "FAIL at CAS race: retryable owner contention; later gates NOT_RUN"
+    },
+    {
+      "record": "development/11eccc1-comprehensive/verification.json",
+      "result": "FAIL at same pre-refinement race test; later gates NOT_RUN"
+    }
+  ]
+}
