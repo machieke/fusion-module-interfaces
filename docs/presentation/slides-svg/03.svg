@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Fifteen modules; four responsibility groups</title>
+<desc id="desc">This is the placement map, not a process topology. All fifteen modules from the brief appear here. The five cognitive modules plus Relations and Search are specifications only. Blue modules are implemented by the local harness; Authorization is explicitly a test policy. Teal shows actual provider integration: local DeTTa DA/storage libraries and a real isolated single-validator F1R3node. Consensus/finality includes the bounded commitment adapter. Private episodic history belongs on the client in future work. A module may be co-located with another module without surrendering its state boundary. The actual Hive runtime was unavailable, so no box here implies a running Hive agent.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / SYSTEM MAP</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Fifteen modules; four responsibility groups</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Logical boundaries are independent of process and repository boundaries.</text>
+<rect x="72" y="230" width="320" height="495" rx="14" fill="#EBE5F3"/>
+<text x="90" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">CLIENT / COGNITION</text>
+<rect x="420" y="230" width="400" height="495" rx="14" fill="#E4EBF5"/>
+<text x="438" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">SHARED APPLICATION PORTS</text>
+<rect x="848" y="230" width="322" height="495" rx="14" fill="#E7ECEB"/>
+<text x="866" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">CONTROL &amp; POLICY</text>
+<rect x="1198" y="230" width="330" height="495" rx="14" fill="#DCEFE8"/>
+<text x="1216" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">PROVIDER ADAPTERS</text>
+<rect x="90" y="300" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="343.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">Episodic memory</text>
+<rect x="90" y="378" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="421.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">Belief revision</text>
+<rect x="90" y="456" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="499.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">PLN kernel</text>
+<rect x="90" y="534" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="577.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">ECAN / attention</text>
+<rect x="90" y="612" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="655.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">Inference control</text>
+<rect x="438" y="300" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="460" y="343.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">AtomStorage</text>
+<rect x="438" y="378" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="460" y="421.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">Relations · spec</text>
+<rect x="438" y="456" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="460" y="499.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">Search projection · spec</text>
+<rect x="438" y="534" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="460" y="577.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">Agent messaging</text>
+<rect x="438" y="612" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="460" y="655.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">Delegated execution</text>
+<rect x="866" y="300" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="888" y="342.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Registry</text>
+<rect x="866" y="408" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="888" y="450.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Compatibility</text>
+<text x="888" y="479.06" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">resolver</text>
+<rect x="866" y="516" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="888" y="558.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Authorization</text>
+<rect x="1216" y="300" width="294" height="144" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1238" y="347.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">DA storage</text>
+<text x="1238" y="387.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Real DeTTa libraries</text>
+<rect x="1216" y="485" width="294" height="168" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1238" y="531.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#007C78">Consensus /</text>
+<text x="1238" y="564.98" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#007C78">finality</text>
+<text x="1238" y="604.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Real isolated F1R3</text>
+<text x="1238" y="632.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">node</text>
+<text x="866" y="668.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Local harness policy</text>
+<text x="866" y="693.6" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">and static descriptors</text>
+<rect x="72" y="760" width="242.97167968750003" height="36" rx="7" fill="#EBE5F3"/>
+<text x="86" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#7458A2">SPECIFICATION ONLY</text>
+<rect x="374" y="760" width="276.765625" height="36" rx="7" fill="#E4EBF5"/>
+<text x="388" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#315E9C">IMPLEMENTED HARNESS</text>
+<rect x="713" y="760" width="334.41308593750006" height="36" rx="7" fill="#DCEFE8"/>
+<text x="727" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#007C78">REAL PROVIDER INTEGRATION</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 29</text>
+</svg>

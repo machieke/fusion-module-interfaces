@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">State ownership survives co-location</title>
+<desc id="desc">M1 uses one SQLite journal to keep the example small. That journal stores several logically owned categories: atom metadata, messaging inbox state, execution jobs and outbox, plus replay records. Public dispatch only exposes declared operations, never raw SQL, worker controls or setters for another owner. Shared storage therefore does not erase responsibility boundaries. DA payloads and erasure shares live in actual DeTTa FileStorage outside SQLite. In future work, private episode history remains client-side, and truth or attention can change only through the relevant owner. This is logical ownership, not a claim of multi-tenant process isolation against the same OS user.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / DESIGN DETAILS · AUTHORITY</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">State ownership survives co-location</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A shared database is a deployment choice. Its tables still have different writers.</text>
+<text x="75" y="264.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#315E9C">M1: TRUSTED LOCAL SERVICE</text>
+<rect x="72" y="290" width="884" height="354" rx="15" fill="#E4EBF5"/>
+<rect x="94" y="315" width="264" height="140" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="116" y="360.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Atom owner</text>
+<text x="116" y="399.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">refs · mutations</text>
+<line x1="226" y1="455" x2="226" y2="509" stroke="#315E9C" stroke-width="2"/>
+<polygon points="226,509 231.0,496.0 221.0,496.0" fill="#315E9C"/>
+<rect x="380" y="315" width="264" height="140" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="402" y="360.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Message owner</text>
+<text x="402" y="399.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">inbox ·</text>
+<text x="402" y="428.06" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">acknowledgements</text>
+<line x1="512" y1="455" x2="512" y2="509" stroke="#315E9C" stroke-width="2"/>
+<polygon points="512,509 517.0,496.0 507.0,496.0" fill="#315E9C"/>
+<rect x="666" y="315" width="264" height="140" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="688" y="358.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">Execution owner</text>
+<text x="688" y="396.39" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">jobs · completion</text>
+<text x="688" y="423.27" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">outbox</text>
+<line x1="798" y1="455" x2="798" y2="509" stroke="#315E9C" stroke-width="2"/>
+<polygon points="798,509 803.0,496.0 793.0,496.0" fill="#315E9C"/>
+<rect x="94" y="510" width="834" height="104" rx="10" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="124" y="560.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">SQLite FULL / WAL</text>
+<text x="124" y="595.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Owned transitions serialize through one writer</text>
+<rect x="1010" y="290" width="518" height="160" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1032" y="340.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Payload authority</text>
+<text x="1032" y="384.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">DeTTa FileStorage owns the bytes</text>
+<text x="1032" y="416.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">and erasure shares.</text>
+<rect x="1010" y="481" width="518" height="163" rx="13" fill="#EBE5F3" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="1032" y="529.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#7458A2">Future private client state</text>
+<text x="1032" y="571.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Episodes, beliefs and attention stay</text>
+<text x="1032" y="602.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">behind their respective owner ports.</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">External callers receive methods and receipts; they receive no table or owner setters.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / architecture.md · ADR 002–004</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">09 / 29</text>
+</svg>

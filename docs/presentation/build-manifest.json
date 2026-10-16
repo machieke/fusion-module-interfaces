@@ -1,0 +1,277 @@
+{
+  "slides": 29,
+  "pptx_reopened": true,
+  "pdf_pages_rendered": 29,
+  "layout_bounds_checked": true,
+  "text_overlaps": 0,
+  "fonts": "DejaVu Sans / DejaVu Sans Mono (PDF embedded; TTFs bundled)",
+  "independent_renderer_check": "Recorded separately in qa.json",
+  "source_commit": "3f75db993d354d18dff2a3e36498eabe4a33afb3",
+  "evidence_sha256": {
+    "demo.json": "949d3b20304365b2a3619cdb0868c8df3cf01590ef18f84e57a579ff1b35516c",
+    "chain-demo.json": "a39b2642bf8a6e9a805c87f787055c0d74f79ee05aa118bf19679c0775f4cade"
+  },
+  "slides_manifest": [
+    {
+      "slide": 1,
+      "title": "One responsibility. One state owner. Many possible backends.",
+      "section": "Module-interface architecture",
+      "appendix": false,
+      "source": "brief + implementation commit 3f75db9",
+      "text_elements": 12,
+      "editable_shapes": 15
+    },
+    {
+      "slide": 2,
+      "title": "The architecture separates three commitments",
+      "section": "01 / Helicopter view",
+      "appendix": false,
+      "source": "architecture.md",
+      "text_elements": 32,
+      "editable_shapes": 52
+    },
+    {
+      "slide": 3,
+      "title": "Fifteen modules; four responsibility groups",
+      "section": "01 / System map",
+      "appendix": false,
+      "source": "architecture.md",
+      "text_elements": 34,
+      "editable_shapes": 57
+    },
+    {
+      "slide": 4,
+      "title": "Data responsibilities: bytes \u2192 references \u2192 history",
+      "section": "01 / Responsibility atlas \u00b7 1 of 3",
+      "appendix": false,
+      "source": "architecture.md",
+      "text_elements": 34,
+      "editable_shapes": 41
+    },
+    {
+      "slide": 5,
+      "title": "Cognitive responsibilities: history \u2260 truth \u2260 attention",
+      "section": "01 / Responsibility atlas \u00b7 2 of 3",
+      "appendix": false,
+      "source": "architecture.md",
+      "text_elements": 29,
+      "editable_shapes": 35
+    },
+    {
+      "slide": 6,
+      "title": "Control responsibilities: move work without moving authority",
+      "section": "01 / Responsibility atlas \u00b7 3 of 3",
+      "appendix": false,
+      "source": "architecture.md",
+      "text_elements": 32,
+      "editable_shapes": 39
+    },
+    {
+      "slide": 7,
+      "title": "Function dependencies: the proposed cognitive path",
+      "section": "01 / Dependency map \u00b7 data and cognition",
+      "appendix": false,
+      "source": "ports.py + contracts.md",
+      "text_elements": 25,
+      "editable_shapes": 59
+    },
+    {
+      "slide": 8,
+      "title": "Function dependencies: admission, work and delivery",
+      "section": "01 / Dependency map \u00b7 runtime control",
+      "appendix": false,
+      "source": "client.py \u00b7 service.py \u00b7 registry.py",
+      "text_elements": 31,
+      "editable_shapes": 59
+    },
+    {
+      "slide": 9,
+      "title": "State ownership survives co-location",
+      "section": "02 / Design details \u00b7 authority",
+      "appendix": false,
+      "source": "architecture.md \u00b7 ADR 002\u2013004",
+      "text_elements": 23,
+      "editable_shapes": 38
+    },
+    {
+      "slide": 10,
+      "title": "Keep four architecture choices independent",
+      "section": "02 / Design details \u00b7 substitution",
+      "appendix": false,
+      "source": "ADR 004\u2013005 \u00b7 bindings.py",
+      "text_elements": 21,
+      "editable_shapes": 31
+    },
+    {
+      "slide": 11,
+      "title": "Compatibility is a semantic filter",
+      "section": "02 / Design details \u00b7 resolution",
+      "appendix": false,
+      "source": "registry.py \u00b7 test_adapters.py",
+      "text_elements": 23,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 12,
+      "title": "Identity, replay and authority travel separately",
+      "section": "02 / Design details \u00b7 invocation",
+      "appendix": false,
+      "source": "contracts.py \u00b7 wire.schema.json",
+      "text_elements": 20,
+      "editable_shapes": 25
+    },
+    {
+      "slide": 13,
+      "title": "One slice crosses real process and storage boundaries",
+      "section": "03 / Running integration \u00b7 end-to-end",
+      "appendix": false,
+      "source": "scripts/demo.py \u00b7 evidence/demo.json",
+      "text_elements": 18,
+      "editable_shapes": 45
+    },
+    {
+      "slide": 14,
+      "title": "A receipt proves one fact at one boundary",
+      "section": "03 / Running integration \u00b7 evidence model",
+      "appendix": false,
+      "source": "contracts.md \u00b7 evidence.md",
+      "text_elements": 25,
+      "editable_shapes": 33
+    },
+    {
+      "slide": 15,
+      "title": "Crash recovery is a replay protocol",
+      "section": "03 / Running integration \u00b7 durability",
+      "appendix": false,
+      "source": "ADR 003 \u00b7 test_contract.py",
+      "text_elements": 27,
+      "editable_shapes": 42
+    },
+    {
+      "slide": 16,
+      "title": "The DA boundary carries bytes, not cognition",
+      "section": "03 / Running integration \u00b7 storage",
+      "appendix": false,
+      "source": "adapters/detta/src/main.rs \u00b7 test_adapters.py",
+      "text_elements": 31,
+      "editable_shapes": 47
+    },
+    {
+      "slide": 17,
+      "title": "Authorization is checked where state is owned",
+      "section": "03 / Running integration \u00b7 isolation",
+      "appendix": false,
+      "source": "service.py \u00b7 ADR 002",
+      "text_elements": 24,
+      "editable_shapes": 31
+    },
+    {
+      "slide": 18,
+      "title": "What ran, what was a fixture, what is unavailable",
+      "section": "03 / Evidence \u00b7 provider honesty",
+      "appendix": false,
+      "source": "discovery.md \u00b7 evidence.md",
+      "text_elements": 29,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 19,
+      "title": "A real result digest reached a real local chain",
+      "section": "03 / Evidence \u00b7 optional chain gate",
+      "appendix": false,
+      "source": "evidence/chain-demo.json \u00b7 f1r3.py",
+      "text_elements": 26,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 20,
+      "title": "Evidence concentrates on boundaries that can fail",
+      "section": "03 / Evidence \u00b7 executed verification",
+      "appendix": false,
+      "source": "evidence/tests.log \u00b7 evidence/detta-tests.log",
+      "text_elements": 23,
+      "editable_shapes": 27
+    },
+    {
+      "slide": 21,
+      "title": "A small baseline, with the failure path included",
+      "section": "03 / Evidence \u00b7 measured limits",
+      "appendix": false,
+      "source": "evidence/demo.json",
+      "text_elements": 31,
+      "editable_shapes": 44
+    },
+    {
+      "slide": 22,
+      "title": "The design trades breadth for inspectable guarantees",
+      "section": "04 / Decisions and gates",
+      "appendix": false,
+      "source": "decisions.md",
+      "text_elements": 27,
+      "editable_shapes": 33
+    },
+    {
+      "slide": 23,
+      "title": "M0 and M1 are complete. The next gate stays closed.",
+      "section": "04 / Scope and stopping point",
+      "appendix": false,
+      "source": "brief \u00b7 evidence.md",
+      "text_elements": 37,
+      "editable_shapes": 42
+    },
+    {
+      "slide": 24,
+      "title": "Modularity is a promise about behavior and authority.",
+      "section": "04 / Takeaway",
+      "appendix": false,
+      "source": "implementation 3f75db9 \u00b7 evidence.md",
+      "text_elements": 14,
+      "editable_shapes": 15
+    },
+    {
+      "slide": 25,
+      "title": "Implementation dependency map",
+      "section": "Appendix A / Code navigation",
+      "appendix": true,
+      "source": "fusion/ \u00b7 adapters/detta/",
+      "text_elements": 24,
+      "editable_shapes": 46
+    },
+    {
+      "slide": 26,
+      "title": "Specified cognitive contracts carry test obligations",
+      "section": "Appendix B / Review checklist",
+      "appendix": true,
+      "source": "ports.py \u00b7 contracts.md",
+      "text_elements": 26,
+      "editable_shapes": 33
+    },
+    {
+      "slide": 27,
+      "title": "Typed failures preserve the caller\u2019s recovery choices",
+      "section": "Appendix C / Error and retry semantics",
+      "appendix": true,
+      "source": "contracts.md \u00b7 service.py",
+      "text_elements": 31,
+      "editable_shapes": 38
+    },
+    {
+      "slide": 28,
+      "title": "Provenance includes working-tree state",
+      "section": "Appendix D / Source ledger",
+      "appendix": true,
+      "source": "discovery.md \u00b7 evidence/sources.json",
+      "text_elements": 29,
+      "editable_shapes": 37
+    },
+    {
+      "slide": 29,
+      "title": "Reproduce the gates; inspect the evidence",
+      "section": "Appendix E / Reproduction",
+      "appendix": true,
+      "source": "runbook.md \u00b7 evidence.md",
+      "text_elements": 18,
+      "editable_shapes": 22
+    }
+  ]
+}

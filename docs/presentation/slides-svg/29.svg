@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Reproduce the gates; inspect the evidence</title>
+<desc id="desc">The main command is executable as shown. It builds the actual DA adapter offline, runs the tests and executes both bindings. The optional chain build requires staged grpcio-tools; chain_demo requires pinned cryptography, pycryptodome and grpcio-tools extras, documented exactly in runbook.md. Initial native CLI/protoc/stack bring-up failures and the resolved local configuration are recorded in evidence.md rather than omitted. The demonstration uses generated non-sensitive data and fresh local keys under ignored artifacts; do not copy private data into it. For the presentation itself, build.py and requirements.txt in this directory generate the editable PowerPoint, vector PDF/SVG and speaker notes from one layout. No M2 implementation is required or created by these reproduction commands.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX E / REPRODUCTION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproduce the gates; inspect the evidence</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Run from the fusion-module-interfaces checkout; see runbook.md for prerequisites and exact commands.</text>
+<rect x="72" y="248" width="1456" height="162" rx="12" fill="#0B2233"/>
+<text x="101" y="289.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#77DDC4">LOCAL M0 / M1 GATE</text>
+<text x="101" y="346.45" font-family="DejaVu Sans Mono" font-size="31" font-weight="400" fill="#FFFFFF">uv run --python 3.11 python scripts/verify.py</text>
+<text x="101" y="391.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#AAC0CC">Builds DeTTa adapter offline, runs 27 tests, executes both demo bindings.</text>
+<rect x="72" y="450" width="704" height="220" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="500.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Optional real chain gate</text>
+<text x="94" y="544.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">scripts/build_chain.py</text>
+<text x="94" y="576.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">scripts/chain_demo.py</text>
+<text x="94" y="608.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Pinned extra tools + isolated local genesis; exact</text>
+<text x="94" y="640.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">invocation in runbook.</text>
+<rect x="800" y="450" width="728" height="220" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
+<text x="822" y="500.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">Review artifacts</text>
+<text x="822" y="543.1999999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">evidence/demo.json + chain-demo.json</text>
+<text x="822" y="573.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">tests.log + detta-tests.log</text>
+<text x="822" y="604.6399999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">sources.json + workspace-files.json</text>
+<text x="74" y="741.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Requires inspected sibling checkouts and cached Cargo dependencies. No production keys or private episodes.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / runbook.md · evidence.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">29 / 29</text>
+</svg>

@@ -19,3 +19,7 @@ Read [architecture](docs/module-interfaces/architecture.md),
 [contracts](docs/module-interfaces/contracts.md),
 [decisions](docs/module-interfaces/decisions.md), and
 [evidence](docs/module-interfaces/evidence.md). M2 is not implemented.
+
+The [conference presentation](docs/presentation/README.md) provides the system
+overview, all module responsibilities, dependency diagrams and integration
+evidence as an editable PowerPoint and a PDF, with speaker notes.

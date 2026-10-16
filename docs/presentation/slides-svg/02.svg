@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">The architecture separates three commitments</title>
+<desc id="desc">The three commitments are the architecture&#x27;s thesis. Behavior means operation semantics and guarantees, not merely a matching method name. Ownership means only an owner&#x27;s methods may mutate its state, even when modules share a database. Evidence means a stored payload, an accepted job, an acknowledged message and a finalized chain deploy remain different facts. The M1 path below is a conformance experiment using two protocol peers, actual DeTTa libraries, a separate worker and an optional real local chain runtime.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / HELICOPTER VIEW</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The architecture separates three commitments</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A function boundary, an authority boundary, and an evidence boundary.</text>
+<rect x="72" y="255" width="464" height="330" rx="15" fill="#FFFFFF"/>
+<text x="98" y="326.55" font-family="DejaVu Sans Mono" font-size="49" font-weight="400" fill="#007C78">01</text>
+<text x="98" y="388.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#102B3F">Replace behavior</text>
+<text x="98" y="428.13" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#102B3F">safely</text>
+<text x="98" y="477.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Select a versioned contract</text>
+<text x="98" y="510.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">and semantic profile. Keep the</text>
+<text x="98" y="544.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">consumer independent of the</text>
+<text x="98" y="577.5400000000001" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">provider.</text>
+<rect x="568" y="255" width="464" height="330" rx="15" fill="#FFFFFF"/>
+<text x="594" y="326.55" font-family="DejaVu Sans Mono" font-size="49" font-weight="400" fill="#007C78">02</text>
+<text x="594" y="388.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#102B3F">Write through the</text>
+<text x="594" y="428.13" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#102B3F">owner</text>
+<text x="594" y="477.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Episodes, beliefs, attention</text>
+<text x="594" y="510.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">and jobs each have a single</text>
+<text x="594" y="544.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">logical authority for their</text>
+<text x="594" y="577.5400000000001" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">state.</text>
+<rect x="1064" y="255" width="464" height="330" rx="15" fill="#FFFFFF"/>
+<text x="1090" y="326.55" font-family="DejaVu Sans Mono" font-size="49" font-weight="400" fill="#007C78">03</text>
+<text x="1090" y="388.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#102B3F">Name what was</text>
+<text x="1090" y="428.13" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#102B3F">observed</text>
+<text x="1090" y="477.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Storage, delivery, execution</text>
+<text x="1090" y="510.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">and finality carry separate</text>
+<text x="1090" y="544.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">receipts and explicit limits.</text>
+<text x="75" y="658.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">M1 demonstrates one narrow path through that architecture</text>
+<rect x="72" y="696" width="216" height="66" rx="8" fill="#DCEFE8"/>
+<text x="88" y="737.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#007C78">STORE</text>
+<line x1="290" y1="729" x2="315" y2="729" stroke="#536775" stroke-width="2"/>
+<polygon points="315,729 302.0,724.0 302.0,734.0" fill="#536775"/>
+<rect x="320" y="696" width="216" height="66" rx="8" fill="#DCEFE8"/>
+<text x="336" y="737.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#007C78">SHARE REF</text>
+<line x1="538" y1="729" x2="563" y2="729" stroke="#536775" stroke-width="2"/>
+<polygon points="563,729 550.0,724.0 550.0,734.0" fill="#536775"/>
+<rect x="568" y="696" width="216" height="66" rx="8" fill="#DCEFE8"/>
+<text x="584" y="737.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#007C78">FETCH</text>
+<line x1="786" y1="729" x2="811" y2="729" stroke="#536775" stroke-width="2"/>
+<polygon points="811,729 798.0,724.0 798.0,734.0" fill="#536775"/>
+<rect x="816" y="696" width="216" height="66" rx="8" fill="#DCEFE8"/>
+<text x="832" y="737.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#007C78">DELEGATE</text>
+<line x1="1034" y1="729" x2="1059" y2="729" stroke="#536775" stroke-width="2"/>
+<polygon points="1059,729 1046.0,724.0 1046.0,734.0" fill="#536775"/>
+<rect x="1064" y="696" width="216" height="66" rx="8" fill="#DCEFE8"/>
+<text x="1080" y="737.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#007C78">RECOVER</text>
+<line x1="1282" y1="729" x2="1307" y2="729" stroke="#536775" stroke-width="2"/>
+<polygon points="1307,729 1294.0,724.0 1294.0,734.0" fill="#536775"/>
+<rect x="1312" y="696" width="216" height="66" rx="8" fill="#F3E7CE"/>
+<text x="1328" y="737.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#A86A15">COMMIT DIGEST</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">02 / 29</text>
+</svg>

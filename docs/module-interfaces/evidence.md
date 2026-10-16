@@ -84,9 +84,10 @@ The full payload stayed in local DA files; no private episode was involved.
 - Inclusion block: `75539081861319778cf62c682520acc92829453501f5696f8b6935f0ea95ba42`, height **3**.
 - Deploy-effect endpoint: `Finalized`, rejection count **0**. Inclusion query:
   `errored=false`, empty system error, cost **351** phlo.
-- Observed submission `pending` separately from later inclusion/finality. Polling
-  first saw the finalized state; it did not sample an intermediate included-only
-  state. Fixtures test that separate mapping; no missing observation is invented.
+- The recorded observation sequence was submission `pending`, then `included`
+  with deploy effects still `Pending`, then `finalized`. The same block hash
+  appears in the inclusion and finality observations. Fixtures separately test
+  the response mapping and ambiguous-timeout recovery.
 - Startup/readiness: **25.735 s**. Submission/propose/finality observation window:
   **4.013 s**. These are one local sample, not a latency SLA or multi-validator benchmark.
 - Executed node binary SHA-256:
@@ -162,12 +163,15 @@ New files in this workspace:
 | Reproduction | `scripts/build_detta.py`, `build_chain.py`, `chain_demo.py`, `demo.py`, `discovery.py`, `schema.py`, `verify.py` |
 | Tests | `tests/__init__.py`, `support.py`, `test_contract.py`, `test_adapters.py` |
 | Design / evidence | `docs/module-interfaces/architecture.md`, `contracts.md`, `decisions.md`, `discovery.md`, `runbook.md`, this report, and JSON/log snapshots under `evidence/` |
+| Presentation follow-up | `docs/presentation/`: 29-slide editable PowerPoint, vector PDF/SVG, speaker notes, reproducible source, licensed fonts and visual QA records; linked from `README.md` |
 
-[workspace-files.json](evidence/workspace-files.json) fingerprints implementation,
-configuration and the unchanged brief. Build/runtime artifacts, generated fixture
+[workspace-files.json](evidence/workspace-files.json) fingerprints the M0/M1
+implementation baseline preserved in `3f75db9`, including the original README;
+the README subsequently gained a presentation link. Build/runtime artifacts, generated fixture
 credentials and chain keys remain ignored under `artifacts/`; none are included
-in the evidence snapshots. No upstream source files were edited, no Git commit
-was created, and no M2 services were implemented.
+in the evidence snapshots. No upstream source files were edited and no M2
+services were implemented. The completed M0/M1 work was subsequently committed
+as `3f75db9` at the user's request; the presentation adds documentation only.
 
 ## Blocked or deferred gates and stopping point
 

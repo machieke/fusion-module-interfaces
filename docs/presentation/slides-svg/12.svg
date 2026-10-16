@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Identity, replay and authority travel separately</title>
+<desc id="desc">This is an illustrative field view, not a copy-paste wire JSON request. The actual schema is contracts/wire.schema.json. Immutable AtomRef identifies a scoped record with revision and integrity digest; the digest does not grant permission or establish truth. A mutation key is scoped by principal, scope, interface and operation, and bound to semantic input. Changing the body, routing or deadline with the same key is a conflict. Message ID and causation are delivery metadata. Async send/submit include correlation and an authorized reply route. Trusted transport supplies the opaque credential, which current service policy maps to a principal. The body cannot nominate its own authority.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / DESIGN DETAILS · INVOCATION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Identity, replay and authority travel separately</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The invocation names an operation; trusted context identifies the caller.</text>
+<rect x="72" y="245" width="750" height="476" rx="15" fill="#0B2233"/>
+<text x="102" y="298.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#FFFFFF">interface_ref: atom.storage@1.0.0</text>
+<text x="102" y="351.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#FFFFFF">profile: immutable-bytes/1</text>
+<text x="102" y="404.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#FFFFFF">operation: create</text>
+<text x="102" y="457.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#FFFFFF">scope_ref: shared-test</text>
+<text x="102" y="510.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#FFFFFF">message_id: delivery-042</text>
+<text x="102" y="563.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#77DDC4">idempotency_key: capture-007</text>
+<text x="102" y="616.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#FFFFFF">body: {content_type, bytes, sharing}</text>
+<text x="102" y="683.05" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#AAC0CC">Illustrative field view · not a literal wire request</text>
+<rect x="870" y="245" width="658" height="132" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
+<text x="892" y="295.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">Occurrence ≠ content</text>
+<text x="892" y="340.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Identical bytes can be distinct observations.</text>
+<rect x="870" y="405" width="658" height="132" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
+<text x="892" y="455.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">Retry ≠ new mutation</text>
+<text x="892" y="496.29999999999995" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Same key + semantic input recovers the same effect.</text>
+<rect x="870" y="565" width="658" height="156" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
+<text x="892" y="614.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">Scope identifier ≠ permission</text>
+<text x="892" y="655.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Live policy uses the authenticated principal.</text>
+<text x="892" y="683.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Correlation + reply route make async work traceable.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / contracts.py · wire.schema.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">12 / 29</text>
+</svg>

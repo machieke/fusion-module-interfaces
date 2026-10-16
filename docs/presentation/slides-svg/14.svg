@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">A receipt proves one fact at one boundary</title>
+<desc id="desc">Avoid turning this grid into a linear distributed transaction. A result can be durable before a chain commitment exists; messaging can be delayed while result retrieval already works. Payload persistence is qualified by its local durability scope. Mailbox acceptance is different from recipient acknowledgement. Execution completion is different from whether its outbox was delivered. Chain submission yields a deploy ID, inclusion yields a block observation and effect finality comes from the specific inspected endpoint. A finalized digest does not prove a payload will remain available, nor does any of these receipts establish belief confidence. This separation is central to both interfaces and reporting.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RUNNING INTEGRATION · EVIDENCE MODEL</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A receipt proves one fact at one boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">These observations are independent. They are not one universal success state.</text>
+<rect x="72" y="252" width="464" height="210" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="289.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">STORAGE</text>
+<text x="94" y="332.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Payload persisted</text>
+<text x="94" y="375.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Local shares; declared durability</text>
+<rect x="568" y="252" width="464" height="210" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="590" y="289.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">MESSAGING</text>
+<text x="590" y="332.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Message accepted</text>
+<text x="590" y="375.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Delivery repeats until recipient</text>
+<text x="590" y="407.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">ack</text>
+<rect x="1064" y="252" width="464" height="210" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1086" y="289.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">EXECUTION</text>
+<text x="1086" y="332.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Result committed</text>
+<text x="1086" y="375.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Job result + completion outbox</text>
+<rect x="72" y="502" width="464" height="210" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
+<text x="94" y="539.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#A86A15">CHAIN SUBMISSION</text>
+<text x="94" y="582.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#A86A15">Signed intent accepted</text>
+<text x="94" y="625.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Deploy ID; outcome still pending</text>
+<rect x="568" y="502" width="464" height="210" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
+<text x="590" y="539.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#A86A15">CHAIN INCLUSION</text>
+<text x="590" y="582.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#A86A15">Deploy observed in block</text>
+<text x="590" y="625.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Block ID; effects may be pending</text>
+<rect x="1064" y="502" width="464" height="210" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1086" y="539.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">CHAIN FINALITY</text>
+<text x="1086" y="582.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Effects reported finalized</text>
+<text x="1086" y="625.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Node observation + evidence</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#F3E7CE"/>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#A86A15">Finality does not establish indefinite availability of off-chain bytes.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / contracts.md · evidence.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">14 / 29</text>
+</svg>

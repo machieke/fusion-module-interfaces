@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Omega × ASI</title>
+<desc id="desc">This talk explains how independently implemented modules can cooperate without taking ownership of each other&#x27;s state. Start with the helicopter view, then module responsibilities and function dependencies. Only after those boundaries are clear do we examine the running M1 slice. M0 and the bounded local M1 integration are complete. M2 and the cognitive stack are explicitly outside the completed work. These contracts are proposed engineering choices, not a finalized community AtomSpace specification. Suggested delivery: 25–30 minutes for slides 1–24; remaining slides are discussion material.</desc>
+<rect width="1600" height="900" fill="#0B2233"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#AAC0CC">MODULE-INTERFACE ARCHITECTURE</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#FFFFFF"></text>
+<text x="72" y="243.1" font-family="DejaVu Sans" font-size="78" font-weight="700" fill="#FFFFFF">One responsibility.</text>
+<text x="72" y="330.46000000000004" font-family="DejaVu Sans" font-size="78" font-weight="700" fill="#FFFFFF">One state owner.</text>
+<text x="72" y="417.82000000000005" font-family="DejaVu Sans" font-size="78" font-weight="700" fill="#FFFFFF">Many possible backends.</text>
+<text x="76" y="521.9" font-family="DejaVu Sans" font-size="42" font-weight="400" fill="#AAC0CC">Omega Hive × ASI:chain</text>
+<text x="76" y="579.45" font-family="DejaVu Sans" font-size="31" font-weight="400" fill="#FFFFFF">From a module map to a working storage, messaging and execution slice</text>
+<rect x="76" y="676" width="253.234375" height="38" rx="7" fill="#DCEFE8"/>
+<text x="90" y="702.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#007C78">M0 + M1 COMPLETE</text>
+<rect x="366" y="676" width="225.958984375" height="38" rx="7" fill="#EBE5F3"/>
+<text x="380" y="702.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#7458A2">M2 NOT STARTED</text>
+<text x="76" y="774.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#AAC0CC">Architecture review • 16 October 2026 • proposed v0 contracts</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#536775" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#AAC0CC">OMEGA × ASI / M0–M1 / brief + implementation commit 3f75db9</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#AAC0CC">01 / 29</text>
+</svg>

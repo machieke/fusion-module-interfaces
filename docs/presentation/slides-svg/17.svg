@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Authorization is checked where state is owned</title>
+<desc id="desc">The local policy fixture maps opaque credentials to principals and stores current scope, method and route requirements on the service side. It is reloaded for each checked invocation, including retries and worker operations. A sender field or scope name in a request is never sufficient. The tests exercise foreign scopes, foreign routes, live revocation, ownership-safe dispatch, conflicting retries and overload. A full inbox retains execution completion in the outbox until delivery can occur. The same OS user can directly access trusted service files, so this harness does not claim production multi-tenancy, encrypted private storage or an SCS enforcement integration. Before private data use, real enforcement and service isolation are separate gates.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RUNNING INTEGRATION · ISOLATION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Authorization is checked where state is owned</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Authenticated context → current policy → explicit method → owner transition.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">ATTEMPT</text>
+<text x="558" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED BEHAVIOR</text>
+<text x="1028" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">BOUNDARY</text>
+<rect x="72" y="277" width="1456" height="79" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Read another scope</text>
+<text x="558" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">UNAUTHORIZED</text>
+<text x="1028" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Scope IDs confer no authority</text>
+<rect x="72" y="361" width="1456" height="79" rx="6" fill="#FFFFFF"/>
+<text x="88" y="400.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Poll or ack another route</text>
+<text x="558" y="400.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">UNAUTHORIZED</text>
+<text x="1028" y="400.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Recipient owns delivery state</text>
+<rect x="72" y="445" width="1456" height="79" rx="6" fill="#FFFFFF"/>
+<text x="88" y="484.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Reuse key with different input</text>
+<text x="558" y="484.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">CONFLICT</text>
+<text x="1028" y="484.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Semantic idempotency</text>
+<rect x="72" y="529" width="1456" height="79" rx="6" fill="#FFFFFF"/>
+<text x="88" y="568.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Call after policy revocation</text>
+<text x="558" y="568.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Rejected on next checked call</text>
+<text x="1028" y="568.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Policy is live, including retries</text>
+<rect x="72" y="613" width="1456" height="79" rx="6" fill="#FFFFFF"/>
+<text x="88" y="652.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Overfill job queue / inbox</text>
+<text x="558" y="652.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">OVERLOADED / retained outbox</text>
+<text x="1028" y="652.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No silent acknowledged-work drops</text>
+<rect x="72" y="735" width="1456" height="78" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="780.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#A86A15">Local fixture policy; trusted OS user and files. Production SCS enforcement remains open.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / service.py · ADR 002</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">17 / 29</text>
+</svg>

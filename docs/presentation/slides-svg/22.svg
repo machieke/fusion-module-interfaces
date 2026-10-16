@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">The design trades breadth for inspectable guarantees</title>
+<desc id="desc">These are proposed v0 engineering decisions that operationalize the brief, not claims of community consensus. Immutable scoped reference metadata and replay keys provide a small auditable starting point; deletion, retention and cross-scope merging are deferred. SQLite serialization and an outbox make process-death behavior testable at the cost of throughput and distributed scheduling. Exact profiles avoid pretending numerical semantics or query dialects are interchangeable. The DeTTa adapter remains external to the application-neutral DA core. A chain adapter registers a single approved non-sensitive result commitment; it is not an arbitrary deployment service. All unassigned specialists remain unassigned. No invented arithmetic, ontology or STI policy was silently chosen.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / DECISIONS AND GATES</text>
+<text x="70" y="139.65" font-family="DejaVu Sans" font-size="47" font-weight="700" fill="#102B3F">The design trades breadth for inspectable guarantees</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Accepted prototype choices; community models and production guarantees remain unresolved.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">DECISION</text>
+<text x="539" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT IT MAKES EXPLICIT</text>
+<text x="1014" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">COST / OPEN BOUNDARY</text>
+<rect x="72" y="277" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Immutable scoped references</text>
+<text x="539" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Identity and replay are separate</text>
+<text x="1014" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No GC, merge or mutable atom revisions</text>
+<rect x="72" y="367" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">One writer + durable outbox</text>
+<text x="539" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Recovery has a clear authority</text>
+<text x="1014" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Small local harness; no distributed</text>
+<text x="1014" y="437.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">scheduler</text>
+<rect x="72" y="457" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Exact semantic profiles</text>
+<text x="539" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Provider swaps preserve behavior</text>
+<text x="1014" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Numerical models require specialist</text>
+<text x="1014" y="527.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">review</text>
+<rect x="72" y="547" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Generic DA + external adapter</text>
+<text x="539" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Cognition stays above storage</text>
+<text x="1014" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No distributed custody or lifetime</text>
+<text x="1014" y="617.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">guarantee</text>
+<rect x="72" y="637" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Approved digest on chain</text>
+<text x="539" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Finality evidence stays separate</text>
+<text x="1014" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No arbitrary deploy or private episode</text>
+<text x="1014" y="707.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">upload</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / decisions.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">22 / 29</text>
+</svg>

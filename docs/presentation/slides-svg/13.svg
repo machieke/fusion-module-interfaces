@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">One slice crosses real process and storage boundaries</title>
+<desc id="desc">The arrows summarize the logical sequence; reads and writes from the worker pass through the atom/storage adapter, even when omitted for clarity. Peer A creates a generated 62-byte fixture through AtomStorage into real DeTTa. It sends the reference through the durable mailbox. Peer B receives it and fetches exactly the same bytes. A submits inspect_atom; the separate worker reads the referenced bytes and returns their digest and length. The demo kills the worker twice at persisted boundaries, restarts, then recovers a correlated completion and result. Every acknowledgement refers to its stated durability scope. Both service bindings use the same Peer code and validation. The peers and operation are fixtures, not Omega agents or reasoning.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RUNNING INTEGRATION · END-TO-END</text>
+<text x="70" y="139.65" font-family="DejaVu Sans" font-size="47" font-weight="700" fill="#102B3F">One slice crosses real process and storage boundaries</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Two independent protocol peers. One allowlisted operation. Two interchangeable service bindings.</text>
+<rect x="45" y="236" width="150" height="52" rx="8" fill="#E4EBF5"/>
+<text x="58" y="271.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Peer A</text>
+<line x1="120" y1="300" x2="120" y2="763" stroke="#C9D2D4" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="363" y="236" width="150" height="52" rx="8" fill="#E4EBF5"/>
+<text x="376" y="271.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Owners</text>
+<line x1="438" y1="300" x2="438" y2="763" stroke="#C9D2D4" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="681" y="236" width="150" height="52" rx="8" fill="#E4EBF5"/>
+<text x="694" y="271.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Peer B</text>
+<line x1="756" y1="300" x2="756" y2="763" stroke="#C9D2D4" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="999" y="236" width="150" height="52" rx="8" fill="#E4EBF5"/>
+<text x="1012" y="271.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Worker</text>
+<line x1="1074" y1="300" x2="1074" y2="763" stroke="#C9D2D4" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="1317" y="236" width="150" height="52" rx="8" fill="#DCEFE8"/>
+<text x="1330" y="271.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">DeTTa</text>
+<line x1="1392" y1="300" x2="1392" y2="763" stroke="#C9D2D4" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="132" y="323.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">1 create fixture</text>
+<line x1="120" y1="332" x2="438" y2="332" stroke="#315E9C" stroke-width="2"/>
+<polygon points="438,332 425.0,327.0 425.0,337.0" fill="#315E9C"/>
+<text x="450" y="376.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">2 persist bytes → scoped ref</text>
+<line x1="438" y1="385" x2="1392" y2="385" stroke="#007C78" stroke-width="2"/>
+<polygon points="1392,385 1379.0,380.0 1379.0,390.0" fill="#007C78"/>
+<text x="132" y="429.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">3 share ref through durable mailbox</text>
+<line x1="120" y1="438" x2="756" y2="438" stroke="#315E9C" stroke-width="2"/>
+<polygon points="756,438 743.0,433.0 743.0,443.0" fill="#315E9C"/>
+<text x="450" y="482.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">4 get(ref) → identical bytes</text>
+<line x1="756" y1="491" x2="438" y2="491" stroke="#315E9C" stroke-width="2"/>
+<polygon points="438,491 451.0,496.0 451.0,486.0" fill="#315E9C"/>
+<text x="132" y="535.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">5 submit inspect_atom → durable acceptance</text>
+<line x1="120" y1="544" x2="438" y2="544" stroke="#315E9C" stroke-width="2"/>
+<polygon points="438,544 425.0,539.0 425.0,549.0" fill="#315E9C"/>
+<text x="1086" y="588.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">6 read + compute + persist</text>
+<line x1="1074" y1="597" x2="1392" y2="597" stroke="#007C78" stroke-width="2"/>
+<polygon points="1392,597 1379.0,592.0 1379.0,602.0" fill="#007C78"/>
+<text x="450" y="641.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">7 commit result + completion outbox</text>
+<line x1="1074" y1="650" x2="438" y2="650" stroke="#315E9C" stroke-width="2"/>
+<polygon points="438,650 451.0,655.0 451.0,645.0" fill="#315E9C"/>
+<text x="132" y="710.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#102B3F">8 restart → status / result / poll / ack</text>
+<line x1="120" y1="719" x2="438" y2="719" stroke="#315E9C" stroke-width="2"/>
+<polygon points="438,719 425.0,714.0 425.0,724.0" fill="#315E9C"/>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / scripts/demo.py · evidence/demo.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">13 / 29</text>
+</svg>
