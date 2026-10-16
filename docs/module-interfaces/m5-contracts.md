@@ -51,12 +51,17 @@ empty answer. Results order by source commit sequence. Pages freeze W and reject
 changed query/principal/scope/source/generation/limit. No globally atomic snapshot.
 
 catchUp consumes <=8 new records/32768 payload bytes plus at most one checkpoint
-metadata anchor. Index entries and contiguous checkpoint commit in one Search
+metadata anchor. Every envelope is retrieved to verify content type, size and
+digest before an out-of-corpus type is ignored; unavailable ignored bytes also
+block that batch. Index entries and contiguous checkpoint commit in one Search
 transaction. At most 256 enrolled records. Malformed/unavailable enrolled bytes stop
 progress with a private sequence/reason diagnostic. Read-only query does not repair.
 beginRebuild captures a source head, clears only derived state, assigns a fresh
 generation and blocks queries until that prefix is complete. Batches resume after
 restart. Rebuild keys are bounded and replayable; old-generation cursors fail.
+The source has no pruning API. Missing/corrupt replay ranges or required bytes stop
+maintenance without advancing its checkpoint; a partial rebuild remains unavailable.
+No automatic backfill, repair or fabricated prefix is permitted.
 Atomic-file Search fixture implements its own state transitions, using only shared
 DTO validation/extraction; it does not call or inherit the SQLite owner.
 

@@ -1,0 +1,17 @@
+warning: `VIRTUAL_ENV=<WORKSPACE>/artifacts/m5/reproduction-01/providers/native/venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+test_concurrent_duplicates_sign_one_durable_deploy (tests.test_m4_chain.ChainFixtures.test_concurrent_duplicates_sign_one_durable_deploy) ... ok
+test_durable_logical_intent_precedes_signing_and_exact_replay (tests.test_m4_chain.ChainFixtures.test_durable_logical_intent_precedes_signing_and_exact_replay) ... ok
+test_malformed_finality_inclusion_and_effect_never_pass (tests.test_m4_chain.ChainFixtures.test_malformed_finality_inclusion_and_effect_never_pass) ... ok
+test_matching_actual_effect_required (tests.test_m4_chain.ChainFixtures.test_matching_actual_effect_required) ... ok
+test_mutating_input_aliases_cannot_change_registered_approval_or_binding (tests.test_m4_chain.ChainFixtures.test_mutating_input_aliases_cannot_change_registered_approval_or_binding) ... ok
+test_old_journal_rejected_without_migration (tests.test_m4_chain.ChainFixtures.test_old_journal_rejected_without_migration) ... ok
+test_response_loss_keeps_every_signed_byte_and_timestamp (tests.test_m4_chain.ChainFixtures.test_response_loss_keeps_every_signed_byte_and_timestamp) ... ok
+test_revocation_before_cached_reply_and_before_send (tests.test_m4_chain.ChainFixtures.test_revocation_before_cached_reply_and_before_send) ... ok
+test_typed_rejection_and_pending_are_separate (tests.test_m4_chain.ChainFixtures.test_typed_rejection_and_pending_are_separate) ... ok
+test_wrong_approval_scope_ref_digest_key_and_intent (tests.test_m4_chain.ChainFixtures.test_wrong_approval_scope_ref_digest_key_and_intent) ... ok
+test_wrong_chain_binding_signer_and_profile (tests.test_m4_chain.ChainFixtures.test_wrong_chain_binding_signer_and_profile) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.593s
+
+OK

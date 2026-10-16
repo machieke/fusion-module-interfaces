@@ -1,0 +1,25 @@
+{
+  "command": [
+    "uv",
+    "pip",
+    "install",
+    "--python",
+    "<NATIVE_PYTHON>",
+    "-r",
+    "integration/chain/requirements.lock"
+  ],
+  "lock_sha256": "27852c9efbfe6e43fcc9130f872660c387cacc14752026e430cd79ca9250e1de",
+  "returncode": 0,
+  "seconds": 0.139,
+  "added": [
+    "cffi==2.1.1",
+    "cryptography==50.0.2",
+    "grpcio-tools==1.84.0",
+    "grpcio==1.84.0",
+    "protobuf==7.36.2",
+    "pycparser==3.11",
+    "pycryptodome==4.0.0"
+  ],
+  "removed": [],
+  "timing": "Applied after the intermediate 9b0ed35 chain collection failure and before the final bfb0ec8 chain suite. Earlier final native/PLN packages remain unchanged if removed is empty."
+}

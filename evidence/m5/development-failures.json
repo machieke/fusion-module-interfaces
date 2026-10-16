@@ -1,0 +1,41 @@
+{
+  "failures": [
+    {
+      "stage": "development-real-tests",
+      "source_state": "uncommitted M5 development before 0cb61d5",
+      "classification": "test assertion failure",
+      "exception": "KeyError: provider",
+      "reason": "Test expected provider field on availability DTO; corrected to declared content_hash binding.",
+      "log_sha256": "3312c453adad78977912e27d53ae60278fa6233e014a138844dbb5cd3cadf929",
+      "corrected_run": {
+        "tests": 4,
+        "status": "PASS",
+        "log_sha256": "9f02afcf8f4c01667bcbaff4a0ea12a38cbc5b55b33ec929ea69b4bdcb4e6a1b"
+      }
+    },
+    {
+      "stage": "first-final-runner",
+      "source": "0cb61d586318034b76f0bb8db853698fcb6de587",
+      "classification": "verifier execution failure",
+      "exception": "TypeError: dict() got multiple values for keyword argument PYTHONPATH",
+      "completed_suites": {
+        "fixtures": "PASS"
+      },
+      "real_suites": "NOT_RUN",
+      "corrected_source": "9b0ed3520837e06f7c07824f3e79c60e1aff24a2",
+      "log_sha256": "6bb3d6511e3a6dcd6a57b2ccc5f98ed9a83d186a84418d1d1d9ff38a6ba9dbfa"
+    },
+    {
+      "stage": "intermediate-legacy-chain-collection",
+      "source": "9b0ed3520837e06f7c07824f3e79c60e1aff24a2",
+      "classification": "executed prerequisite failure before node startup",
+      "exception": "ModuleNotFoundError: No module named 'cryptography'",
+      "returncode": 2,
+      "chain_effect_tests": "NOT_RUN in this intermediate attempt",
+      "observation_timeout": false,
+      "resolution": "Install unchanged integration/chain/requirements.lock in fresh native environment; seven packages added, zero existing packages removed/replaced. Final bfb0ec8 chain suite runs after this step.",
+      "log_sha256": "1c9ba72d3b5eabd83c3d60858c3d7a297d9e2e866095340c3f8f228a38db63b7"
+    }
+  ],
+  "note": "These executed development failures are separate from final gates, missing prerequisites and observation timeouts."
+}

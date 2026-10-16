@@ -32,6 +32,16 @@ M1–M3.1 regression. Private cognitive owners remain separate. See the
 [gate manifest](evidence/m4/manifest.json) and
 [fresh-checkout build/run recipe](docs/module-interfaces/runbook.md#m4-required-isolated-chain-reproduction).
 
+M5 adds private Relations and an exact-attribute Search projection. The native
+Hive lookup discovers matching references, traverses accepted relations and reads
+connected payloads through real DeTTa; it receives no answer-reference list.
+Independent feed, relation, projection and caller commits support bounded replay,
+rebuild and process recovery. See the [M5 report](docs/module-interfaces/m5-evidence.md),
+[profile decisions](docs/module-interfaces/m5-contracts.md) and
+[operation-level ledger](docs/module-interfaces/m5-capability-ledger.json).
+This is exact structured retrieval with one-hop traversal, without embeddings,
+new cognition, state migration or new chain operations.
+
 For the complete M3.1 source/build/test path (Linux prerequisites and access are
 listed in the runbook):
 

@@ -533,3 +533,19 @@ observation completes the action and its detail distinguishes finalized from
 rejected. DA acceptance, submission, inclusion, effect and finality remain separate
 fields. Public projection contains only this explicitly shareable workflow, never
 private caller context, credentials, local paths or cognitive identifying hashes.
+
+
+## M5 explicit paged profiles
+
+The historical `Relations` and `Query` DTOs are not reinterpreted. `PagedRelations`
+provides the four logical relation operations at contract 2.0.0; `ExactSearch`
+uses `AttributeQuery` at 2.0.0. AtomStorage 1.1.0 adds optional `AtomCommitSource`
+`head`/`readCommits`. `ProjectionMaintenance` adds bounded `catchUp`/`beginRebuild`
+to Search, not a new module family. The original four AtomStorage signatures and
+all historical owners stay unchanged.
+
+The executable DTO validators are in `fusion/lookup_contracts.py`; composition
+requires explicit profiles, versions, operations, placement, guarantees and the
+configured role-schema feature. New feed stores are not populated legacy atom
+journals. [M5 profile decisions](m5-contracts.md) define corpus, exact matching,
+source/paging identities, snapshot completeness, independent commits and limits.

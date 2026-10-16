@@ -1,0 +1,54 @@
+{
+  "tested_runtime": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd",
+  "status": "PASS",
+  "classification": {
+    "real": [
+      "DeTTa lookup bytes",
+      "SQLite owned journals"
+    ],
+    "fixture": [
+      "generated corpus",
+      "guard-only revision/refusing deduction for pre-existing cognitive state",
+      "atomic-file attention/Search alternatives"
+    ],
+    "new_cognition_during_lookup": false
+  },
+  "cases": [
+    {
+      "attention": "sqlite",
+      "search": "sqlite",
+      "reserved_before": 1,
+      "reserved_after": 1,
+      "episodes_beliefs_attention_and_inference_files_unchanged": true,
+      "budget_and_result_replay_unchanged": true,
+      "lookup_and_rebuild": "PASS"
+    },
+    {
+      "attention": "sqlite",
+      "search": "atomic-file-fixture",
+      "reserved_before": 1,
+      "reserved_after": 1,
+      "episodes_beliefs_attention_and_inference_files_unchanged": true,
+      "budget_and_result_replay_unchanged": true,
+      "lookup_and_rebuild": "PASS"
+    },
+    {
+      "attention": "atomic-file-fixture",
+      "search": "sqlite",
+      "reserved_before": 1,
+      "reserved_after": 1,
+      "episodes_beliefs_attention_and_inference_files_unchanged": true,
+      "budget_and_result_replay_unchanged": true,
+      "lookup_and_rebuild": "PASS"
+    },
+    {
+      "attention": "atomic-file-fixture",
+      "search": "atomic-file-fixture",
+      "reserved_before": 1,
+      "reserved_after": 1,
+      "episodes_beliefs_attention_and_inference_files_unchanged": true,
+      "budget_and_result_replay_unchanged": true,
+      "lookup_and_rebuild": "PASS"
+    }
+  ]
+}

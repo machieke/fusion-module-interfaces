@@ -458,15 +458,24 @@ legacy PLN regression inputs). It does not need PLN for lookup. Linux prerequisi
 private Hive Git access and native build tools are the same as above. Use an empty
 provider destination; Cargo/uv/download caches may be warm. The M4 real regression
 reuses the already pinned node build in a new route-free network namespace and
-fresh generated state. It introduces no new chain operation.
+fresh generated state. The existing M4 Python signer/protobuf lock must also be
+installed for the legacy chain suite; the M3 provider build alone does not install
+it. No lock or version is changed. It introduces no new chain operation.
 
 ```bash
 uv run --python 3.11 --locked python scripts/build_m3.py artifacts/m5/providers
+uv pip install --python artifacts/m5/providers/native/venv/bin/python \
+  -r integration/chain/requirements.lock
 uv run --python 3.11 --locked python scripts/verify_m5.py \
   --environment artifacts/m5/providers/environment.json \
   --chain-build artifacts/m4/reproduction-01/chain \
   --output artifacts/m5/final
 ```
+
+If no pinned node build is available, the unchanged
+`scripts/build_m4.py <empty-destination>` recipe builds all providers, installs
+those chain Python requirements and builds the node; use its `providers/environment.json`
+and `chain` paths with the M5 verifier.
 
 Final verification requires a clean committed disposable Fusion checkout. The
 runner checks that historical runtime files are unchanged and the ports change is
@@ -493,8 +502,10 @@ counts and observed outcomes; private stores/configurations stay under ignored
 artifacts. Do not publish those private test directories.
 
 Select `--gates fixtures`, `--gates storage`, `--gates hive`, or `--gates legacy`
-independently, or comma-join selections. Omitted gates stay NOT_RUN. Missing native
-or isolated-chain prerequisites stay BLOCKED; a fixture never fills a real gate.
+independently, or comma-join selections. Omitted gates stay NOT_RUN. Preflight
+failures for native binaries, pinned sources or network isolation stay BLOCKED. A
+missing dependency first exposed by test collection is recorded as an executed
+prerequisite failure, with the effect tests unrun. A fixture never fills a real gate.
 The capability ledger counts nine newly advertised operations (four Relations,
 query, two source and two maintenance operations), plus four inherited AtomStorage
 dependencies separately. Module representation does not mean complete Omega scope.

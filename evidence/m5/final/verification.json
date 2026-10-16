@@ -1,0 +1,600 @@
+{
+  "schema": "fusion-m5-gates/1",
+  "source": {
+    "commit": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd",
+    "status": [],
+    "files": {
+      "adapters/detta/Cargo.lock": "20f0dcecdec068b5bce8eeb9a84d0c4f980f5d8d81b57d6afafc2fd0285fe6b8",
+      "adapters/detta/src/main.rs": "0effb78769432658295a31137133b8e2d052328f6313f52316a08e88225415e4",
+      "contracts/responses.schema.json": "31d5d903d1e3523b2fad62cec9ece0ce66885abdc1e4ad37eaeeeef0f6749ab5",
+      "contracts/wire.schema.json": "7d48be45b97aab25a67c751fe0e12f3c1195d215e021329bd72fa48c378193ba",
+      "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+      "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+      "fusion/adapters/detta.py": "c7f9577ce22636d6f75745007dbb095a693c49f4ea5f5e34312a4ba9711148b0",
+      "fusion/adapters/f1r3.py": "751c099db04771ca883654d7ec20bdca5db6ea0f4e4279b774105a7e1b4af5ad",
+      "fusion/adapters/f1r3_m4.py": "be34fe343be8a5b876e5fb0a7fa5668e922654701600c428b95d497e7b31f78e",
+      "fusion/adapters/f1r3_signing.py": "972bd465877889754ad96a71de05bc3daf04b2cc43f794ac8f95848392c8e309",
+      "fusion/adapters/fixture_atoms.py": "478e24037d05297f7a3498572417743462eab4bef617ab5070dc6e28b907dbbd",
+      "fusion/adapters/fixture_attention.py": "39f6fd66558a15e5b90f71bc977982ee7cb61a1b69254be3af62a1b4e31cf01d",
+      "fusion/adapters/fixture_feed.py": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+      "fusion/adapters/fixture_search.py": "ec9940b9eb66435581a3eca6257034e877af73674a57eec99c4729937a6e27e5",
+      "fusion/adapters/pln_deduction.py": "ece1c1191d56680df56b71357daad9345ead1879dc2b3b804dcb42c76d0f2394",
+      "fusion/adapters/pln_revision.py": "acb4f0552e1e95ba9e8e9e198b06a3a3f78d603b537f9b977e5d3d4fbc1ecb2d",
+      "fusion/atom_feed.py": "c90a0d9696d99a63f620607bd23ef39fc976da3e514a30b2362963b6c9d8bc16",
+      "fusion/atoms.py": "dd0659ecb446029de4a1066f76b525146969fab8f0d9a47ee38cc31cef1322ea",
+      "fusion/attention.py": "c9de178698f1ec5972160720e6de4e0a4f2366a4b7d95c33641102384b3f30d0",
+      "fusion/attention_contracts.py": "343bcd5d50163ec408cf9ce0400908357d7f80939ecd324a24cecbef6e124baa",
+      "fusion/beliefs.py": "7f60de5b5f8baa28449159c32077a771f313f1eee102da02206c618154cf1fe8",
+      "fusion/bindings.py": "d2570b22b85127b88fd6ccd99da72b2757d73348b2edd0ccf42e5bd5614c05c0",
+      "fusion/client.py": "c84934d3792b162c118dd9cd62268ba19377efc0addd6bc117e50e6515f49139",
+      "fusion/cognition.py": "cb8ee3b4676d61418fb2c25f3d2f443f52d0ea0301f0c01174a7d73c51bae80e",
+      "fusion/cognition_contracts.py": "81eb525f92145df455486836aa433c72dd16f19a51bf4efa2603972f12c46133",
+      "fusion/composition.py": "6f9dd9bad3548879741132bca438fabc6618da9ed65984b452ef443f5bb533a4",
+      "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+      "fusion/deadlines.py": "b883296e91db5300927c1ae25e913a23e8b13bbfb7369599d10de9d01e4a4d13",
+      "fusion/delivery_contracts.py": "a3ed5bfb98fb98d0c911d5182792e2376da77f547e5027dfc6bb501f3625eed5",
+      "fusion/derived_beliefs.py": "c66e316eff40bc374585c2520394bcfc9ad4ebd36d0140d48c7fa1d1ddcb5f67",
+      "fusion/episodes.py": "494bd83b5c25630544cf7d0d091f7652cbfa694ba30440e060bd71139b50f7e6",
+      "fusion/evidence_relay.py": "6f2170d73fc974b5ebb054fc2ace6f5a50cb976b86f3483b8efe40648e4a8b41",
+      "fusion/execution.py": "1eceeb2f3dc16d24f1b5a1cbb8df1f4c7e3162e867fc877b1f1d3e425dfa374f",
+      "fusion/host.py": "b901f78d1c7ceb04aa3181af7e91210d2195bf8b4ef2370f9fc53624c2e5a0ab",
+      "fusion/inference.py": "8cd8ac1cad51999c756c562d9f2996b871b538ba04fe95bfa299bcdeb7592582",
+      "fusion/lookup.py": "1e1990448292ae725b922283fd12e934676e2e9d19464152e745fc3f8573481d",
+      "fusion/lookup_composition.py": "0f262b5073966259cf4b6b060f66e3c4e08adda70b7c4858dd7b92089ae0796d",
+      "fusion/lookup_contracts.py": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+      "fusion/memory_contracts.py": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+      "fusion/memory_types.py": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+      "fusion/messaging.py": "8afdac506f05308e7a8cc61e642353c9217525d4d5e703e45c2d583a518d7406",
+      "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+      "fusion/ports.py": "bcc27ccea66f084d833db2a0ba97d318c582e0e2097b08c3b7af81a500a8da99",
+      "fusion/private.py": "4698c8e38eb4f297e1d6a05e41690070a359d9ef5ecaa25055911ac249450933",
+      "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+      "fusion/relations.py": "1dccbc105c761c69064ff2dc152b2b2af10fbeff6314da9d31cd1d820865383d",
+      "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+      "fusion/search.py": "8f1243bc446f0fad2cad38b3623c4ba9fd548621bcc36aa978ada57a423487e5",
+      "fusion/service.py": "d3051dc88c8ec119ad98808efd5a7c5d5817b2b9bc64dce8f91b3c0be6e0b7a2",
+      "integration/chain/requirements.lock": "27852c9efbfe6e43fcc9130f872660c387cacc14752026e430cd79ca9250e1de",
+      "integration/chain/runtime.py": "099e581402a3560788ba9ff95acfc92c84a006837ab815d76850fa56f4f0a9ab",
+      "integration/chain/sources.json": "9636a60dbceafcdb377951d726633f22665c0208a59266fdc11c0403b372349a",
+      "integration/chain/test_m4.py": "8f7513cd02b326dec9154400609c9b8d75278ec8a7acd10e94f4cd9513b52ee0",
+      "integration/hive/build-constraints.txt": "5b96a1b3ab68ccbd56cda1f7d56e804b7ac05194b86762b3763c84c13a92cfeb",
+      "integration/hive/commitment/plugin.json": "73798037f48ab12291a8f3462af1cddf274ec8763317192fc59fc29b1b2f9231",
+      "integration/hive/commitment/program.py": "ce6a9cbc52faf8e780bc23c29b0cce358aaaa64f5fca091676fe5b50493e584a",
+      "integration/hive/episode_program/plugin.json": "dea484548bf97016e7b86a11de8652fe3e0e5eef68499e541672360f20c98aa4",
+      "integration/hive/episode_program/program.py": "6d7400f7e57ebc4dbf88507f9895242961ba87e83c33195e21b071ecfa56b57b",
+      "integration/hive/inference_program/plugin.json": "dd691205996d081be6cb8e26a9846c89bb6ee0385ce5a983d14bd012328676c6",
+      "integration/hive/inference_program/program.py": "08894906bd0d222fa096a563d419f5174b823b8e28e412d5fbe0935c0bcdc316",
+      "integration/hive/lookup_program/plugin.json": "c84d7f59b68d13d0448f562ba4683dc0c0052e3283f3e8ff1068db11462769a4",
+      "integration/hive/lookup_program/program.py": "62af7dd3ef3a7fd77b7614a47d5fe6faca8c376f11a187a48056336bd2eaa114",
+      "integration/hive/native_caller.py": "76fdeac6936827957760b7525f2a16308c783cd99746335541f30043392e3bbb",
+      "integration/hive/program/completed.py": "da12796f0cde4968fb5d2a76739f211b5cadc0b4e5eeca875a709037ef293a63",
+      "integration/hive/program/plugin.json": "fc807dd0d204c2f02e0bce840ff583e0d4168f0a7327dafedd3dcfee3757ee11",
+      "integration/hive/program/program.py": "60b76d4f0015953b90776f0fb4862a2b66eb40244657245680d8a86b75a5fd08",
+      "integration/hive/requirements.in": "4f27a8ac13d64dbcc144a9106f62d8b6ea9b3e4c80cd8056659af27660f24c15",
+      "integration/hive/requirements.lock": "c40f127fba4705d4a7d32600455aa2cd86a9030e4c44066aa3ad23efeb882a83",
+      "integration/hive/sources.json": "d28f2e24ca5273ea4530b693da1474964d4aff013db09fc09488ed08c164501c",
+      "integration/hive/test_integration.py": "d8ebb819adeaa303537b5d3ae69ea49a0aa99b689199cd1a4e96c9dc34adfdc2",
+      "integration/hive/test_m2_integration.py": "871b46b3cd5f36eb301cb2acbebd93942ead420fdfd7d8c5b5d6d989b02f4c99",
+      "integration/hive/test_m3_1_integration.py": "120316917fc01a86e2649dc88c02b8ab071e7500edbdbe4e293267249d7dd482",
+      "integration/hive/test_m3_integration.py": "a9ad52a499162f866204f1a10306e11a76c2393bc9346befa18512b6b8f9a1c4",
+      "integration/hive/test_m5_integration.py": "1011e8e6fe2f6a7e706dca84ff0f0efd3ba3db88a4723ec4f013a4ac93041bfc",
+      "integration/m2_scenario.py": "baef7b1ba85369e5487d419d78f9e5f3ac0d04a1bbd0b1497d25c5cdd0b912f8",
+      "integration/m3_scenario.py": "d653e94b37dab45162f6547f7f417454129585938f2eadb2d2eaecb218d250fa",
+      "integration/m5_driver.py": "3a46ccaebb78b95b97a335a8b89ef2026980006bf4c5c4f55a5613ed9b258f08",
+      "integration/pln/deduction-sources.json": "775c8ff0f81aef1c10fb765e200da9364acd83cce45bfc1d622463ccbe9396c4",
+      "integration/pln/m3_1_worker.py": "3af4514549d1844eaf1ba22afaeea02d3b14794de0d51db4880ae9c4e3466f04",
+      "integration/pln/m3_worker.py": "69e1743683a615483a78259e8116009c58799b399b93ae8b6878b6d73879a9ec",
+      "integration/pln/sources.json": "e0b020459cc090ab4af7973ffecbcd9e94bee04f35879344806994e1f530206d",
+      "integration/pln/test_deduction.py": "6eced7f3a9baeed4de9267da2c8de0c986daa1353090657f20dcd1858bdcacf9",
+      "integration/pln/test_m3_1.py": "2a9e7f216d830714a26e7913b4049af09550a11641c63e18d429e5d4151cda5d",
+      "integration/pln/test_m3_1_recovery.py": "e94ce00d4a2d22ce63b21c3782bf6b9ec3a109775d90de59c83a6b369dc10932",
+      "integration/pln/test_m3_recovery.py": "922e107f17d4f6cfd93fecf4d38af53b5687ad5d2ab4dd94703bf2008a69febb",
+      "integration/pln/test_recovery.py": "57c5dc3bb8aa3e0cd1547301a84871eae591027dc91ad52da47c6c76a12ea76d",
+      "integration/pln/test_revision.py": "8605351320ce2e1d1a88edd1b92d94cfb3fe157782030c94338ddbe977f203dd",
+      "integration/test_m5_real.py": "5d88c40dde50897809643f330c0f9919c4ca0e78ab855c2d9179923401572b03",
+      "pyproject.toml": "238580e7922bd07a3d72239d04e8bfe629e1087ca3c5175254dbf5c33ce0cc7b",
+      "scripts/build_chain.py": "7e2054b7a3502e8bd08d03cebfea71dc352e74927acb0fa77f3e140e0282c9e2",
+      "scripts/build_detta.py": "1af1798eb33b5557c0a31410a686609005a400c6068bce3490f98ad608d80b02",
+      "scripts/build_hive.py": "674aed3bcb85d0b29f48c697f956d35affb5dd8c7c3997968468d57a057ebd7f",
+      "scripts/build_m2.py": "40182c88a63f27fdeeb79c59dcf0234529aefb3a208e4f8b5d360fe553d7e3b9",
+      "scripts/build_m3.py": "5a71059ff28ccbb3208641c419334a3b6ac913f2c1ba6d71d2411b90be2806b2",
+      "scripts/build_m4.py": "5188c841d2162ef84c5629d21605d54872c4a8b8138feed41170f7d756ccba80",
+      "scripts/chain_demo.py": "aa0b44591fe9681c00666a806abfc1d43ed7ef488a0e5cdeec4becc6ab38a01d",
+      "scripts/demo.py": "d1317daa472d8b8aa4da65cd54576ed08983e1d485b93c3a2a9f5ba37eadf034",
+      "scripts/discovery.py": "89641bc5e17a6f48b9b0a594106a80c0418c7593f3389842eef1c20b07c8dc64",
+      "scripts/m2_demo.py": "8d70c428a642e9804525b136dbb7ae42fe5d3eb302d907ef7f5c973942a8efe6",
+      "scripts/m3_compare.py": "c57fe9aee57351166d30abada207776d23f7e54c9bab9b25be5f0b6401adc66a",
+      "scripts/preflight.py": "5cd2e246a0e5a8a7fcc63c7c86b6aa4d99843df1103ff966fc3bc4d0818979c7",
+      "scripts/readback_m4.py": "c92fd3bf9ee8a941e7fbd43be4748fa4ec7fc93295b6095ccac11136be62ac7c",
+      "scripts/schema.py": "209c1e0d53fb9e8ba9479d27e48e183fdaacae79301c8f0ab90473a81e5f0585",
+      "scripts/swap_demo.py": "c177b61adecb348a45a0138955578ec7af47a96a58d8143fec103c3d71d0a6ed",
+      "scripts/verify.py": "a58378fde38e628aff17fdfccc43db0309a0591599255046cc8ca1433849083e",
+      "scripts/verify_m11.py": "8a0aa150e48b8fa69f2ed59e1f79ccc42462260449d0dd760064c7d2135a454a",
+      "scripts/verify_m12.py": "9b0c31d4dca642edf103b2e2491eb2f300432f3c8888e30c61fb3e24da728184",
+      "scripts/verify_m2.py": "095845c3ad158aea1a822a22bcb2ec875812410136f8b667b919a4a0cd130f95",
+      "scripts/verify_m3.py": "631dd8e8a652591362007a3de4a3b575697baabff761003a7d79cb8d56b54e9f",
+      "scripts/verify_m3_1.py": "93cb24648cb621318521e2acad6f526e2958a16a38b0af3f73ea07c5283cb3cf",
+      "scripts/verify_m4.py": "5441ca32ed550b68109aeec57a719c4f7ac660324cce22961cdfc5f15ebd1a5c",
+      "scripts/verify_m5.py": "7fbf0b2c963d41e32f05c8f7337615ed22bd508b9dc2091caecf58cb8312b292",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/m2_support.py": "6a61ca12b5b725ba3e7e83e3ff407a39bb3f7b8f963daac5f2740704fd3d0e38",
+      "tests/m3_1_support.py": "f929630209d9fbf3b93b5cca57a1ca2565a577384d82b3c84f850d0fa83494c0",
+      "tests/m3_support.py": "5a978508e7d285fd6580fa55dbd387d9045e380da9b85c6cae2e6cf852df2755",
+      "tests/m5_support.py": "d34416dac5848a883671132fe2f8fc53de80fc1ef7b0f94e3fa04a33f1745c8a",
+      "tests/support.py": "66b7a48e4c7e6ba164c8b04968e234e533c09b19807fc597087801c3982acbd3",
+      "tests/test_adapters.py": "e67bcb84d5c12eb05c6f87d9f7da6424bbf911a880afdce3586a2863439068b2",
+      "tests/test_contract.py": "a4d34e358b6f6ec1ee59fa56bb565219be56249c601df54939718f0b5f11d928",
+      "tests/test_m11.py": "5522e87ba1c8b7a4286ce3c57475808195bb45b7d34f267f27005ddaa1e87aba",
+      "tests/test_m2.py": "4a9106bd45bd0dd11d1ca5ee25f88f894a2659eaa6f239a36ebfda1507372ff7",
+      "tests/test_m3.py": "e956ba0b8ca08bd50164d6c184612da59585b746c360655c7f758a2416730ff2",
+      "tests/test_m3_1_attention.py": "216beb43fcf91fc26d7a6bd6319edacfbdf678b1b9ee70b622c61dd6e41d269b",
+      "tests/test_m3_1_compat.py": "e80d05fec1867e7abdd8b84ecb54fa292dd895107fed5a12ecc4a4a34ee4d81f",
+      "tests/test_m3_1_delivery.py": "ecbc4a30cab2f1d782dfff17b59c8f396f3cc7319623f55adc88c758be2d2e77",
+      "tests/test_m3_attention.py": "199cab9b68367e1b529d18c3da5a24d361583bf2f9d7fc11eab6913b0390223b",
+      "tests/test_m4_chain.py": "963b410f991bfa8b1144244876305a23147c16857fc90b3d1f3f6e357266e9ea",
+      "tests/test_m5.py": "de896083be4a439179f6fd99e6fc1b39beb20e12dda02b4709cafdab63be5ecd",
+      "tests/test_m5_boundaries.py": "65f1db4a5f4e0d5cf62e32834ee6a9e43b7822ffbd1995c55241f0c31e5f7d20",
+      "tests/test_responses.py": "88b9db199eac4d91d11806bf7dc90552216e31d8503500b857a703f51663563c",
+      "uv.lock": "86401cf2588abae1d3b4753ee8ce3e7a009311bafd4cce2e7a1675cd24e5cf25"
+    },
+    "end_commit": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd",
+    "end_runtime_matches_start": true
+  },
+  "requested_ancestor": "05b1c52cfa6ced6e263700753e82ad6038a3b0dd",
+  "gates": {
+    "BASELINE_AND_SCOPE": "PASS",
+    "RELATIONS_CONTRACT": "PASS",
+    "RELATIONS_REAL": "PASS",
+    "COMMITTED_SOURCE": "PASS",
+    "SEARCH_CONTRACT": "PASS",
+    "SEARCH_REAL_REBUILD": "PASS",
+    "SUBSTITUTION": "PASS",
+    "RECOVERY": "PASS",
+    "AUTH_PRIVACY": "PASS",
+    "HIVE_LOOKUP": "PASS",
+    "REPRO_AND_LEDGER": "PASS",
+    "LEGACY_REGRESSION": "PASS"
+  },
+  "suites": {
+    "fixtures": "PASS",
+    "storage": "PASS",
+    "hive": "PASS",
+    "legacy-m1-m3_1": "PASS",
+    "legacy-m4-fixtures": "PASS",
+    "legacy-m4-real": "PASS"
+  },
+  "commands": [
+    {
+      "name": "fixtures",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_m5",
+        "tests.test_m5_boundaries"
+      ],
+      "returncode": 0,
+      "status": "PASS",
+      "seconds": 27.434,
+      "log_sha256": "b5a77533f079ee2652f5f61755cb0862be1ac3a690d4b26082802aac7eb5233e",
+      "summaries": [
+        "Ran 18 tests in 27.212s"
+      ]
+    },
+    {
+      "name": "storage",
+      "argv": [
+        "<WORKSPACE>/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.test_m5_real"
+      ],
+      "returncode": 0,
+      "status": "PASS",
+      "seconds": 22.088,
+      "log_sha256": "3ecce105c3b89bdceeee28eac20c16dde6c12c8fde1c65a4f7492ad775f72046",
+      "summaries": [
+        "Ran 4 tests in 21.937s"
+      ]
+    },
+    {
+      "name": "hive",
+      "argv": [
+        "<WORKSPACE>/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--tb=short",
+        "integration/hive/test_m5_integration.py",
+        "--basetemp=<WORKSPACE>/artifacts/m5/final-bfb0ec8/private-hive",
+        "--junitxml=<WORKSPACE>/artifacts/m5/final-bfb0ec8/hive.xml"
+      ],
+      "returncode": 0,
+      "status": "PASS",
+      "seconds": 111.519,
+      "log_sha256": "225f38b98f530fc662d2e0dfe831d34151d438db6774989c5bab779db7f57d9a",
+      "summaries": [
+        "7 passed in 111.27s (0:01:51)"
+      ],
+      "cases": [
+        {
+          "name": "test_native_discovery_no_answers_restart_lag_rebuild_and_swap[1]",
+          "status": "PASS",
+          "seconds": 21.207
+        },
+        {
+          "name": "test_native_discovery_no_answers_restart_lag_rebuild_and_swap[2]",
+          "status": "PASS",
+          "seconds": 23.347
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_page-sqlite]",
+          "status": "PASS",
+          "seconds": 13.155
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_page-atomic-file-fixture]",
+          "status": "PASS",
+          "seconds": 13.758
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_result-sqlite]",
+          "status": "PASS",
+          "seconds": 13.694
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_result-atomic-file-fixture]",
+          "status": "PASS",
+          "seconds": 13.774
+        },
+        {
+          "name": "test_native_authority_privacy_and_request_binding",
+          "status": "PASS",
+          "seconds": 12.24
+        }
+      ]
+    },
+    {
+      "name": "legacy-m1-m3_1",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "scripts/verify_m3_1.py",
+        "<WORKSPACE>/artifacts/m5/reproduction-01/providers/environment.json",
+        "--output",
+        "<WORKSPACE>/artifacts/m5/final-bfb0ec8/legacy"
+      ],
+      "returncode": 0,
+      "status": "PASS",
+      "seconds": 1325.251,
+      "log_sha256": "919691615e97a5de69d423a4b00997162576b0a11fc462c4da9394984a28bc51",
+      "summaries": [
+        "Ran 51 tests in 24.123s\\\\\\']\", \"Ran 156 tests in 106.669s\\\\\\']\", \"62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s\\\\\\', \\\\\\'test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.37s\\\\\\']\"]\\', \"Ran 16 tests in 7.196s\\']\", \"Ran 8 tests in 0.001s\\']\", \"Ran 12 tests in 32.334s\\']\", \"Ran 6 tests in 12.364s\\']\"]', \"Ran 5 tests in 1.556s']\", \"Ran 7 tests in 16.110s']\", \"Ran 15 tests in 0.004s']\", \"Ran 13 tests in 171.631s']\", \"Ran 3 tests in 74.549s']\"]",
+        "Ran 9 tests in 12.168s']",
+        "Ran 5 tests in 116.038s']",
+        "Ran 3 tests in 63.420s']"
+      ]
+    },
+    {
+      "name": "legacy-m4-fixtures",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_m4_chain"
+      ],
+      "returncode": 0,
+      "status": "PASS",
+      "seconds": 0.767,
+      "log_sha256": "baab1695b9d89b8189a6266ab6f0a6660db547ec446a830956220f472e6ba129",
+      "summaries": [
+        "Ran 11 tests in 0.593s"
+      ]
+    },
+    {
+      "name": "legacy-m4-real",
+      "argv": [
+        "unshare",
+        "--user",
+        "--map-root-user",
+        "--net",
+        "<WORKSPACE>/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--tb=short",
+        "integration/chain/test_m4.py",
+        "--basetemp=<WORKSPACE>/artifacts/m5/final-bfb0ec8/chain/private-tests",
+        "--junitxml=<WORKSPACE>/artifacts/m5/final-bfb0ec8/legacy-m4-real.xml"
+      ],
+      "returncode": 0,
+      "status": "PASS",
+      "seconds": 99.299,
+      "log_sha256": "9a9c286f1bf7309a775f1d17394599903eed557da0c66b287ee9a47b7913b78f",
+      "summaries": [
+        "6 passed in 99.03s (0:01:39)"
+      ],
+      "cases": [
+        {
+          "name": "test_same_artifact_node_restart_outage_readonly_and_privacy",
+          "status": "PASS",
+          "seconds": 35.607
+        },
+        {
+          "name": "test_native_caller_dies_after_acceptance_before_chain",
+          "status": "PASS",
+          "seconds": 11.96
+        },
+        {
+          "name": "test_real_adapter_kill_and_lost_submission_response[after_signed_intent]",
+          "status": "PASS",
+          "seconds": 13.235
+        },
+        {
+          "name": "test_real_adapter_kill_and_lost_submission_response[after_node_submission]",
+          "status": "PASS",
+          "seconds": 15.266
+        },
+        {
+          "name": "test_native_observation_kill_before_caller_progress",
+          "status": "PASS",
+          "seconds": 14.188
+        },
+        {
+          "name": "test_native_live_authority_binding_and_refused_exports",
+          "status": "PASS",
+          "seconds": 8.672
+        }
+      ]
+    }
+  ],
+  "missing_prerequisites": [],
+  "executed_failures": [],
+  "observation_timeouts": [],
+  "classification": {
+    "real": [
+      "SQLite AtomStorage/Relations/Search owner journals",
+      "local pinned DeTTa",
+      "authenticated native Hive ASGI + PeTTa"
+    ],
+    "fixtures": [
+      "generated corpus and test oracle",
+      "independent atomic-file AtomStorage and Search",
+      "malformed-source/response/corruption injections",
+      "deterministic SIGSTOP failpoints followed by real SIGKILL"
+    ],
+    "unrun": [
+      "power loss",
+      "distributed failover",
+      "public network",
+      "empty global caches",
+      "live populated-state migration",
+      "new chain workloads",
+      "diagnostic code coverage"
+    ]
+  },
+  "scope": {
+    "historical_changes": [],
+    "historical_m4_guard_unchanged": true
+  },
+  "baseline": {
+    "source": "4093301ea6b34bb8de487a4e4d9aae8a9ee6e61d",
+    "requested_ancestor": "05b1c52cfa6ced6e263700753e82ad6038a3b0dd",
+    "relevant_descendant_changes": "Presentation and documentation only; no runtime code changes.",
+    "aggregate": {
+      "tests": 138,
+      "status": "PASS"
+    },
+    "gates": {
+      "BASELINE": "PASS",
+      "CHAIN_SOURCE_BUILD": "PASS",
+      "NATIVE_HIVE_DA": "PASS",
+      "APPROVAL_BINDING": "PASS",
+      "REAL_CHAIN_EFFECT": "PASS",
+      "RECOVERY": "PASS",
+      "PRIVACY_ISOLATION": "PASS",
+      "REPRO_READBACK": "PASS",
+      "DEMO_HANDOFF": "PASS",
+      "SCOPE": "PASS"
+    },
+    "result": "PASS",
+    "runtime_reused": "Pinned M4 reproduction-01 build; fresh baseline Fusion worktree and test state.",
+    "source_check": true
+  },
+  "dependencies": {
+    "hive": {
+      "commit": "34b0fb32ab3806e5609fc89bb7535518a35e1aea",
+      "status": ""
+    },
+    "detta": {
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "status": ""
+    },
+    "petta": {
+      "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+      "status": ""
+    }
+  },
+  "provider_build": {
+    "base_build": {
+      "fresh_destination": true,
+      "seconds": 356.374,
+      "source_pins": {
+        "model": "trueagi-pln-stv-finite-k1/v1",
+        "runtime_profile": "fusion-petta-swi-10.1.14-revision/1",
+        "swipl_version": "10.1.14",
+        "historical_swipl_version": "10.0.1",
+        "sources": {
+          "reachability": {
+            "url": "https://github.com/machieke/reachability-atomspace-prototype.git",
+            "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+            "files": {
+              "reachability/__init__.py": "4c10860356f4121048f53b527575b1dc362f2fe9fec45fc2324776107f76d984",
+              "reachability/pln_adapter.py": "c37b6d64853451845be8a4d0d1a9392edcee40b6059a108574952ac2e69a7c3d",
+              "reachability/adapter_runtime.py": "37c2ee59053446197fe83a8fbdaf0d2d336ee5d48a953d1b198d802eda771da0",
+              "reachability/model.py": "1d03cedb0ea08700136d2ab36d904530ac29390c246cf3c6a50fb438f90896fa",
+              "adapters.lock.json": "373850b8382999d4e8c600f43608d1a404ff57ee20966c93c2b8988bba1bb0d3"
+            }
+          },
+          "pln": {
+            "url": "https://github.com/trueagi-io/PLN.git",
+            "commit": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+            "files": {
+              "lib_pln.metta": "cdfb3f18bd7b336440fc7b4409209afddf0e64c41f17dee7eefc8f02718de433"
+            }
+          },
+          "petta": {
+            "url": "https://github.com/trueagi-io/PeTTa.git",
+            "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d"
+          }
+        }
+      },
+      "revision_profile": {
+        "model": "trueagi-pln-stv-finite-k1/v1",
+        "runtime_profile": "fusion-petta-swi-10.1.14-revision/1",
+        "provider": "real-petta-pln",
+        "reachability": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+        "pln": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+        "formula_sha256": "cdfb3f18bd7b336440fc7b4409209afddf0e64c41f17dee7eefc8f02718de433",
+        "petta": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+        "swipl": "10.1.14",
+        "binary_sha256": "0a1a9c4484e9d8212b683fcd72ae351178d76f52d1771350f2ecddac22a0561d"
+      },
+      "native_build": {
+        "fresh_destination": true,
+        "fusion_commit": "4093301ea6b34bb8de487a4e4d9aae8a9ee6e61d",
+        "source_pins": {
+          "fusion_baseline": "ecfef54f0f0ab5b9bdce186af2e83184d10cc246",
+          "python": "3.12.12",
+          "repositories": {
+            "omegahive": {
+              "url": "git@github.com:PhysixSNET/omegahive.git",
+              "commit": "34b0fb32ab3806e5609fc89bb7535518a35e1aea"
+            },
+            "PeTTa": {
+              "url": "https://github.com/trueagi-io/PeTTa.git",
+              "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d"
+            },
+            "swipl": {
+              "url": "https://github.com/SWI-Prolog/swipl-devel.git",
+              "commit": "69775434c8226897626b226aefcc8266499f1e2e"
+            },
+            "secured-contract-spaces": {
+              "url": "ssh://git@github.com/machieke/secured-contract-spaces",
+              "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec"
+            }
+          },
+          "schematics": {
+            "url": "https://github.com/PhysixSNET/omegahive-schematics",
+            "commit": "4af00db4e395375484dd48d0b9068a59afcf01f8"
+          },
+          "swipl_modules": [
+            "clib",
+            "swipy",
+            "plunit",
+            "json",
+            "sgml",
+            "http",
+            "zlib",
+            "libedit",
+            "pcre",
+            "yaml",
+            "chr",
+            "clpqr",
+            "cpp",
+            "utf8proc",
+            "archive",
+            "ssl"
+          ]
+        },
+        "seconds": 138.787,
+        "checks": {
+          "swipl": "10.1.14",
+          "prolog_to_python": 42,
+          "python_to_prolog": 2,
+          "petta": 42
+        },
+        "tools": {
+          "cmake": "cmake version 3.16.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+          "ninja": "1.10.0",
+          "cc": "cc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0\nCopyright (C) 2019 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+          "uv": "uv 0.10.7",
+          "python": "Python 3.12.12"
+        },
+        "requirements_sha256": "c40f127fba4705d4a7d32600455aa2cd86a9030e4c44066aa3ad23efeb882a83",
+        "cache": "Python interpreter download cache permitted. uv pip sync --no-cache rebuilds Janus against this prefix. All native objects/venv fresh; global empty-cache build not tested."
+      },
+      "recipe_sha256": "40182c88a63f27fdeeb79c59dcf0234529aefb3a208e4f8b5d360fe553d7e3b9",
+      "cache": "Warm Git/Python/Cargo download caches allowed. Fresh native objects, venv and DeTTa target. Empty-cache NOT_RUN."
+    },
+    "deduction_profile": {
+      "binary_sha256": "0a1a9c4484e9d8212b683fcd72ae351178d76f52d1771350f2ecddac22a0561d",
+      "model": "trueagi-pln-stv-finite-k1/v1",
+      "profile": "grounded-five-premise-deduction/1",
+      "provider": "real-petta-pln",
+      "runtime_profile": "fusion-petta-swi-10.1.14-deduction/1",
+      "sources": {
+        "petta": {
+          "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+          "url": "https://github.com/trueagi-io/PeTTa.git"
+        },
+        "pln": {
+          "commit": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+          "files": {
+            "lib_pln.metta": "cdfb3f18bd7b336440fc7b4409209afddf0e64c41f17dee7eefc8f02718de433"
+          },
+          "url": "https://github.com/trueagi-io/PLN.git"
+        },
+        "reachability": {
+          "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+          "files": {
+            "adapters.lock.json": "373850b8382999d4e8c600f43608d1a404ff57ee20966c93c2b8988bba1bb0d3",
+            "reachability/__init__.py": "4c10860356f4121048f53b527575b1dc362f2fe9fec45fc2324776107f76d984",
+            "reachability/adapter_runtime.py": "37c2ee59053446197fe83a8fbdaf0d2d336ee5d48a953d1b198d802eda771da0",
+            "reachability/model.py": "1d03cedb0ea08700136d2ab36d904530ac29390c246cf3c6a50fb438f90896fa",
+            "reachability/pln_adapter.py": "c37b6d64853451845be8a4d0d1a9392edcee40b6059a108574952ac2e69a7c3d"
+          },
+          "url": "https://github.com/machieke/reachability-atomspace-prototype.git"
+        }
+      },
+      "swipl": "10.1.14"
+    },
+    "recipe_sha256": "5a71059ff28ccbb3208641c419334a3b6ac913f2c1ba6d71d2411b90be2806b2"
+  },
+  "detta_binary_sha256": "0d30f836a927b3f684b68daf515ec07b5214c1f457def6f3b7fd44e709bb2917",
+  "chain_reuse": {
+    "commit": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+    "binary_sha256": "2021389d8e1a1db0470d55ba6744124e33f2bc44f5155e6cfa662798b4ffd085",
+    "build_reused": true,
+    "new_chain_operations": false
+  },
+  "host_isolation": {
+    "connection_errors": [
+      111,
+      111,
+      111,
+      111,
+      111,
+      111
+    ],
+    "status": "PASS"
+  },
+  "result": "PASS"
+}

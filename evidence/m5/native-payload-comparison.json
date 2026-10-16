@@ -1,0 +1,43 @@
+{
+  "tested_runtime": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd",
+  "status": "PASS",
+  "real": [
+    "authenticated native Hive dispatch",
+    "local DeTTa",
+    "SQLite Relations and primary Search"
+  ],
+  "fixture": [
+    "generated corpus",
+    "independent atomic-file Search substitution"
+  ],
+  "observations": [
+    {
+      "stage": "initial",
+      "roots": 5,
+      "payloads": 8,
+      "exact_reference_set": true,
+      "all_payload_fields_and_canonical_bytes_match": true
+    },
+    {
+      "stage": "after-catchup",
+      "roots": 6,
+      "payloads": 9,
+      "exact_reference_set": true,
+      "all_payload_fields_and_canonical_bytes_match": true
+    },
+    {
+      "stage": "after-rebuild",
+      "roots": 6,
+      "payloads": 9,
+      "exact_reference_set": true,
+      "all_payload_fields_and_canonical_bytes_match": true
+    },
+    {
+      "stage": "after-substitution",
+      "roots": 6,
+      "payloads": 9,
+      "exact_reference_set": true,
+      "all_payload_fields_and_canonical_bytes_match": true
+    }
+  ]
+}

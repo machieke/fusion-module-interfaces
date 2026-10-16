@@ -63,9 +63,9 @@ routes in M1. The worker has a separate trusted entry point, never a client comm
 | Module | Responsibility / owned mutable state | Dependencies | Exclusions / profile / obligation |
 |---|---|---|---|
 | DA storage | Opaque persistence, retrieval, availability; payload/share files | Filesystem in selected adapter | No Omega IDs, cognition, job state; `opaque-local-rs/1`; reconstruction/integrity/restart |
-| AtomStorage (C0) | Stable scoped immutable typed envelopes; reference/idempotency metadata | Storage, authorization | No parser/ontology/search/truth; `immutable-bytes/1`; bytes, revision, scope |
-| Relations | Explicit ordered roles/hyperedges; immutable relation records | AtomStorage | No authoritative beliefs/attention; `ordered-roles/1`; arity/order/scope validation, specified only |
-| Search projection | Query refs + index watermark; rebuildable index | Record/event reads, auth | Not authoritative memory; distinct symbolic/embedding profiles; staleness checks, specified only |
+| AtomStorage (C0) | Stable scoped immutable typed envelopes; reference/idempotency metadata; optional scoped commit feed | Storage, authorization | Historical `immutable-bytes/1` unchanged; M5 fresh `immutable-commit-feed/1`; opaque bytes and atomic acceptance/sequence, no query interpretation |
+| Relations | Accepted ordered role records, semantic replay and paged incidence | AtomStorage, authorization | M5 `schema-ordered-relations/2`; four logical operations; no truth, graph engine or migration |
+| Search projection | Exact-attribute derived records, contiguous checkpoint, generation and rebuild progress | AtomStorage get + scoped head/readCommits, authorization | M5 `exact-attributes/1`; typed private corpus, explicit prefix/page/freshness metadata; no embeddings or source ownership |
 | Episodic memory C1 | Episode identity/head, immutable event ledger, mutation replay and delivery intents | AtomStorage, PrivateAuthority | Private local, no PLN/Hive requirement; `episode-local-sequence/2`; sequence/CAS/occurrence/recovery tested |
 | Belief revision C2 | Observation/support ledger, historical snapshots and admission decisions | AtomStorage, EpisodicMemory.readEvidence, PrivateAuthority, RevisionMath; v3 also PLNKernel | M2 `pln-revision-private/1` unchanged; fresh M3 `pln-derived-private/1` adds tagged deduction admission without new observations |
 | PLN kernel | Pure guarded five-premise grounded deduction; no mutable domain state | Pinned Reachability guards and native PLN | No agenda or owner writes; `grounded-five-premise-deduction/1`; explicit historical vectors and native goldens |
@@ -81,8 +81,11 @@ routes in M1. The worker has a separate trusted entry point, never a client comm
 Future ports are typed specifications and named test obligations, not empty services.
 The M1 consumer only stores, shares a reference, fetches bytes, delegates inspection
 and reads a durable result. M2 adds private C1/C2; M3 adds independent C3 and
-bounded C4 plus the required explicit C2 admission extension. Relations/search
-remain specifications. Motivation is absent.
+bounded C4 plus the required explicit C2 admission extension. M5 adds bounded
+Relations and exact Search providers under explicit new profiles. The old tuple
+Relations and integer-watermark Query declarations remain historical specifications.
+Motivation is absent. Module-family representation does not imply complete Omega
+functionality; see the [M5 operation ledger](m5-capability-ledger.json).
 
 ## M1.1 runtime composition
 
@@ -349,3 +352,36 @@ The native commitment adapter owns progress only; it does not own DA, jobs,
 mailboxes or signing replay state. Local result acceptance and acknowledgment
 remain durable independently of chain availability. The chain persists one fixed
 tuple and provides node-observed evidence; it does not execute off-chain reasoning.
+
+
+## M5 private relation lookup
+
+```mermaid
+flowchart LR
+  H[Authenticated native Hive] -->|opaque request label| C[Lookup consumer
+private query and progress journal]
+  C -->|query attributes + minimum| S[Search
+derived index + prefix + generation]
+  C -->|outgoing / getRelation / incoming| R[Relations
+accepted structure + incidence]
+  C -->|get / getMany discovered refs| A[AtomStorage
+immutable envelopes + scoped feed]
+  O[Explicit bounded maintenance] -->|catchUp / beginRebuild| S
+  S -->|head / readCommits / get| A
+  R -->|create relation bytes / get endpoints| A
+  A -->|opaque bytes only| D[Real local DeTTa]
+  S -. same profile, fresh derived store .-> SF[Independent atomic-file Search fixture]
+  A -. explicit contract fixture .-> AF[Independent atomic-file feed/storage]
+```
+
+No query or relation operation writes C1/C2, attention, inference budgets or chain
+state. Atom acceptance/feed, Relations acceptance, Search checkpoint and caller
+progress are independent commits. Search indexes typed knowledge fields through
+ports; Relations indexes only its accepted structures. Query returns references at
+a fixed source prefix. Traversal has a different fixed Relations head. The caller
+records both, with no global snapshot claim.
+
+All new stores, query text, cursors and detailed results remain private. Native
+receipts carry counts/status; M4's explicitly shareable approval workflow remains
+unchanged. See [M5 contracts](m5-contracts.md) for schemas, error behavior, capacities,
+source trust and compatibility, and [M5 evidence](m5-evidence.md) for executed gates.

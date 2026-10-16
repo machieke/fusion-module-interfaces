@@ -208,3 +208,20 @@ namespace. It contains only loopback, no IPv4 route and no external IPv6 route;
 an external-address connection returns ENETUNREACH. The host attempts every node
 port while the node is ready and receives ECONNREFUSED. No host firewall changes,
 external peers, public networks or persistent user node data are involved.
+
+
+## M5 selected private providers
+
+`lookup_composition.descriptors()` publishes AtomStorage 1.1.0 with
+`immutable-commit-feed/1`, Relations 2.0.0 with `schema-ordered-relations/2`, and
+Search 2.0.0 with `exact-attributes/1`. Resolution requires the whole operation set,
+private local placement and process-restart/scoped/idempotent guarantees. Relations
+also binds the operator's versioned role schemas. This uses the existing resolver;
+provider names alone do not satisfy a requirement.
+
+The real lookup path selects `feed-detta`, `relations-sqlite`, and `search-sqlite`.
+`feed-fixture-files` and `search-atomic-file-fixture` are independent persistent
+contract fixtures. A swapped Search starts with a fresh projection and consumes
+the same authoritative feed; caller code does not branch on the provider. Existing
+caller intents bind their prior selection and are not migrated. No new registry,
+network service or scheduler is implied. See [M5 evidence](m5-evidence.md).

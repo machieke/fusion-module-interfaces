@@ -11,7 +11,14 @@
     "inherited_dependency_operations": 4,
     "total_m5_slice_operations": 13,
     "native_dispatch_is_not_an_extra_module": true,
-    "code_coverage": "NOT_MEASURED"
+    "code_coverage": "NOT_MEASURED",
+    "behavioral_scenario_groups": 12,
+    "crash_boundary_groups": 6,
+    "behavioral_group_denominator": 18,
+    "module_families_represented": 15,
+    "new_operations_exercised": 9,
+    "total_slice_operations_exercised": 13,
+    "behavioral_groups_passed": 18
   },
   "rows": [
     {
@@ -55,7 +62,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -100,7 +109,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -145,7 +156,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -190,7 +203,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -235,7 +250,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -280,7 +297,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -325,7 +344,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -370,7 +391,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -415,7 +438,9 @@
           "fixtures",
           "storage",
           "hive"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
     },
@@ -455,7 +480,9 @@
         "requires": [
           "fixtures",
           "storage"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
     },
@@ -495,7 +522,9 @@
         "requires": [
           "fixtures",
           "storage"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
     },
@@ -535,7 +564,9 @@
         "requires": [
           "fixtures",
           "storage"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
     },
@@ -575,10 +606,298 @@
         "requires": [
           "fixtures",
           "storage"
-        ]
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
       },
       "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
     }
   ],
-  "classification_note": "SQLite providers are local reference implementations. Atomic-file substitutes, corpus, policy and injected errors are fixtures. Native dispatch and DeTTa are real pinned runtimes. Final execution states resolve from the manifest, not declarations."
+  "classification_note": "SQLite providers are local reference implementations. Atomic-file substitutes, corpus, policy and injected errors are fixtures. Native dispatch and DeTTa are real pinned runtimes. Final execution states resolve from the manifest, not declarations.",
+  "behavioral_groups": [
+    {
+      "id": "relation-semantics",
+      "tests": [
+        "test_all_relation_roles_directions_identity_and_replay",
+        "test_real_all_operations_rebuild_and_unavailable_payload"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "relation-identity",
+      "tests": [
+        "test_all_relation_roles_directions_identity_and_replay",
+        "test_relation_separate_owner_kills"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "boundaries",
+      "tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation",
+        "test_bad_shape_bounds_profile_and_private_placement",
+        "test_real_all_operations_rebuild_and_unavailable_payload"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "traversal-completeness",
+      "tests": [
+        "test_relation_pagination_fixed_head_cursor_binding",
+        "test_native_discovery_no_answers_restart_lag_rebuild_and_swap"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "query-semantics",
+      "tests": [
+        "test_query_exact_unicode_missing_field_and_bounded_parser",
+        "test_native_discovery_no_answers_restart_lag_rebuild_and_swap"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "freshness",
+      "tests": [
+        "test_feed_snapshot_replay_and_source_binding",
+        "test_native_discovery_no_answers_restart_lag_rebuild_and_swap"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "projection-integrity",
+      "tests": [
+        "test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor",
+        "test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint",
+        "test_capacity_refusal_retains_complete_prefix",
+        "test_projection_kills_both_providers"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "rebuild",
+      "tests": [
+        "test_real_all_operations_rebuild_and_unavailable_payload",
+        "test_native_discovery_no_answers_restart_lag_rebuild_and_swap"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "substitution",
+      "tests": [
+        "test_exact_query_lag_rebuild_and_independent_search_substitution",
+        "test_native_discovery_no_answers_restart_lag_rebuild_and_swap"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "native-integration",
+      "tests": [
+        "test_native_discovery_no_answers_restart_lag_rebuild_and_swap"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "privacy-authority",
+      "tests": [
+        "test_each_advertised_operation_checks_live_authority",
+        "test_authority_revocation_between_reads_and_commit",
+        "test_native_authority_privacy_and_request_binding"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "no-cognitive-effects",
+      "tests": [
+        "test_lookup_has_no_cognitive_runtime_dependency_or_mutation",
+        "test_native_authority_privacy_and_request_binding",
+        "evidence/m5/no_cognitive_effects_probe.py"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "kill-atom-feed-before-ack",
+      "tests": [
+        "test_feed_commit_lost_ack"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "kill-relation-payload-before-accept",
+      "tests": [
+        "test_relation_separate_owner_kills:after_relation_payload"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "kill-relation-accept-before-ack",
+      "tests": [
+        "test_relation_separate_owner_kills:after_relation_commit"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "kill-index-before-checkpoint",
+      "tests": [
+        "test_projection_kills_both_providers:before_checkpoint_commit"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "kill-index-checkpoint-before-ack",
+      "tests": [
+        "test_projection_kills_both_providers:after_checkpoint_commit"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "storage"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    },
+    {
+      "id": "kill-rebuild-and-native-paging",
+      "tests": [
+        "test_projection_kills_both_providers:after_rebuild_begin",
+        "test_native_paged_caller_sigkill"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "storage",
+          "hive"
+        ],
+        "status": "PASS",
+        "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd"
+      }
+    }
+  ],
+  "fixture_detail": "Role-schema examples include three-role and symmetric tests. The native discovery corpus traverses requires/1 edges; unrelated associations and wrong-kind/topic/missing-field records are distractors.",
+  "maintainers": "UNASSIGNED"
 }

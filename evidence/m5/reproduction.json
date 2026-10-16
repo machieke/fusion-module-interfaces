@@ -1,0 +1,32 @@
+{
+  "tested_source": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd",
+  "source_checkout": "fresh detached git worktree",
+  "build_command": "uv run --python 3.11 --locked python scripts/build_m3.py artifacts/m5/reproduction-01/providers",
+  "verify_command": "uv run --python 3.11 --locked python scripts/verify_m5.py --environment <WORKSPACE>/artifacts/m5/reproduction-01/providers/environment.json --chain-build <WORKSPACE>/artifacts/m4/reproduction-01/chain --output <WORKSPACE>/artifacts/m5/final-bfb0ec8",
+  "lookup_only": "same verifier command with --gates hive and a new output directory",
+  "reused": [
+    "warm Git/Python/Cargo download caches",
+    "unchanged pinned M4 node binary and source; fresh chain test state/namespace"
+  ],
+  "fresh": [
+    "Fusion test worktree and .venv",
+    "provider source directories at pinned revisions",
+    "native SWI objects/install",
+    "native Python virtual environment",
+    "DeTTa adapter target",
+    "all M5 corpus/index/caller test state"
+  ],
+  "unrun": [
+    "empty-cache build",
+    "power loss",
+    "distributed failover",
+    "live state migration",
+    "public network",
+    "new chain operations"
+  ],
+  "chain_python_command": "uv pip install --python <NATIVE_PYTHON> -r integration/chain/requirements.lock",
+  "supplemental_commands": [
+    "uv run --python 3.11 --locked python evidence/m5/no_cognitive_effects_probe.py <TESTED_SOURCE_CHECKOUT> <ENVIRONMENT_JSON>",
+    "<NATIVE_PYTHON> evidence/m5/native_payload_probe.py <TESTED_SOURCE_CHECKOUT> <ENVIRONMENT_JSON>"
+  ]
+}
