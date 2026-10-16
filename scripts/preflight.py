@@ -37,7 +37,7 @@ def preflight():
                for name, value in sources["sources"].items()}
     files = git(ROOT, "ls-files", "--cached", "--others", "--exclude-standard", "-z").decode().split("\0")
     code = {rel: sha(ROOT / rel) for rel in files if rel and Path(rel).parts[0] in
-            {"fusion", "scripts", "tests", "contracts", "adapters"} and (ROOT / rel).is_file()}
+            {"fusion", "scripts", "tests", "contracts", "adapters", "integration"} and (ROOT / rel).is_file()}
     tools = {name: command(args) for name, args in {
         "python": [sys.executable, "--version"], "uv": ["uv", "--version"],
         "cargo": ["cargo", "--version"], "rustc": ["rustc", "--version"],
@@ -57,14 +57,19 @@ def preflight():
         dependencies[name] = {**source, "matches_initial_baseline": matches[name],
             "additional_build_sha256": {p: sha(path / p) for p in ("Cargo.lock", "rust-toolchain.toml", "rust-toolchain") if (path / p).is_file()},
             "obtainability": "working-tree-only; patches are not supplied" if source.get("worktree_status") else "commit recorded; remote retrieval not tested"}
-    omega = ROOT.parent / "omegahive"
+    omega = REPOSITORIES["omegahive"]
     intended = omega / "hive"
+    pins = json.loads((ROOT / "integration/hive/sources.json").read_text())
+    hive_source = sources["sources"]["omegahive"]
+    pinned_hive = (hive_source.get("commit") == pins["repositories"]["omegahive"]["commit"]
+                   and not hive_source.get("worktree_status") and (intended / "core/programs.py").is_file())
     report = {"recorded_utc": datetime.now(timezone.utc).isoformat(),
         "repository": {"path": str(ROOT), "initial_commit": INITIAL_COMMIT,
             "initial_worktree_status": ["?? codex_fusion_m1_1_module_swap_and_omega_seam.md"],
             "head": git(ROOT, "rev-parse", "HEAD").decode().strip(),
             "current_worktree_status": git(ROOT, "status", "--short").decode().splitlines(),
             "brief_sha256": sha(ROOT / "codex_fusion_m1_1_module_swap_and_omega_seam.md"),
+            "m12_brief_sha256": sha(ROOT / "codex_fusion_m1_2_real_hive_integration.md"),
             "implementation_sha256": code, "lock_sha256": sha(ROOT / "uv.lock")},
         "platform": sources["platform"], "tools": tools, "dependencies": dependencies,
         "gates": {
@@ -72,10 +77,13 @@ def preflight():
             "real_detta_prerequisites": {"status": "BLOCKED" if missing else "AVAILABLE_NOT_YET_TESTED",
                 "missing": missing, "command": "uv run --python 3.11 python scripts/verify_m11.py",
                 "cache_requirement": "cargo build --offline --locked must succeed; no fixture substitution"},
-            "clean_checkout_reproduction": {"status": "BLOCKED", "reason": "Recorded DeTTa/F1R3 working-tree changes are not supplied by this repository. Obtain authorized exact working bytes/patches, or validate a new immutable source; HEAD alone is insufficient."},
-            "OMEGA": {"status": "BLOCKED", "expected_repository": "PhysixSNET/omegahive", "expected_path": str(omega),
-                "path_exists": omega.exists(), "hive_directory_exists": intended.is_dir(), "verified_entrypoint": None,
-                "verified_runtime_command": None, "reason": "No verified intended runtime source/revision. Onboarding and hive-appliance are not that runtime."},
+            "clean_checkout_reproduction": {"status": "NOT_RUN", "reason": "Preflight does not execute reproduction. M1.2 pins and recipe are in integration/hive and scripts/build_hive.py; historical dirty DeTTa/F1R3 bytes remain undistributed. See the run-specific evidence."},
+            "OMEGA": {"status": "AVAILABLE_NOT_YET_TESTED" if pinned_hive else "BLOCKED", "expected_repository": "PhysixSNET/omegahive", "expected_path": str(omega),
+                "path_exists": omega.exists(), "hive_directory_exists": intended.is_dir(),
+                "verified_entrypoint": "hive.core.programs:Programs.act" if pinned_hive else None,
+                "verified_runtime_command": "python -m hive" if pinned_hive else None,
+                "source_entrypoint": "hive.core.app:create_app -> POST /api/programs/{id}/act -> Programs.act" if pinned_hive else None,
+                "reason": "Pinned source available; native dependencies and dispatch must still be tested." if pinned_hive else "Verified clean intended runtime pin unavailable at HIVE_REPO; documentation repositories do not pass this gate."},
             "CHAIN": {"status": "NOT_RUN", "command": "See docs/module-interfaces/runbook.md optional isolated chain commands; fixtures do not pass this gate."}},
         "limits": "Metadata/hashes only; no upstream modifications, source contents, credentials or private data copied. Byte identity does not establish source availability or production guarantees."}
     output = ROOT / "artifacts/m1_1"

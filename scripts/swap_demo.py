@@ -16,7 +16,7 @@ def run(fixture_only=False):
         "classification": {"detta": "real DeTTa DA/FileStorage library integration; local 4+2 shares",
                            "fixture-files": "independent atomic-file AtomStorage test provider; no DA network",
                            "peers": "protocol fixtures", "worker": "real separate OS process, deterministic inspect_atom only",
-                           "OMEGA": "BLOCKED: intended runtime source unavailable", "CHAIN": "NOT RUN"},
+                           "OMEGA": "NOT_RUN: protocol peer workflow only", "CHAIN": "NOT_RUN"},
         "measurement_limits": "One slice per combination; no SLA/scalability claim. Binding counters exclude discovery, worker control and DA child framing; in-process bytes are serialized equivalents."}
     output = ROOT / "artifacts/m1_1"
     output.mkdir(parents=True, exist_ok=True)

@@ -9,6 +9,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORIES = {
+    "omegahive": Path(os.environ.get("HIVE_REPO", ROOT.parent / "omegahive")).resolve(),
+    "omegahive-schematics": Path(os.environ.get("HIVE_SCHEMATICS_REPO", ROOT.parent / "omegahive-schematics")).resolve(),
     "omegahive-start-here": ROOT.parent / "omegahive-start-here",
     "metta-attention": ROOT.parent / "metta-attention",
     "das": Path.home() / "work/asi/das",

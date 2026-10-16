@@ -25,7 +25,7 @@ def main():
     if fixture_only:
         (output / "fixture-preflight.json").write_text(json.dumps(manifest, indent=2)+"\n")
     report = {"classification": "fixture/pure only" if fixture_only else "real DeTTa + independent fixture + transport tests",
-              "OMEGA": "BLOCKED", "CHAIN": "NOT RUN", "commands": []}
+              "OMEGA": "NOT_RUN: this command exercises protocol peers only", "CHAIN": "NOT_RUN", "commands": []}
     target = output / ("fixture-verification.json" if fixture_only else "verification.json")
     def execute(args, name):
         started = time.monotonic()
