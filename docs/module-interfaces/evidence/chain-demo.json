@@ -1,0 +1,136 @@
+{
+  "approved_scope": "generated non-sensitive M1 result only, authorized by task brief",
+  "binary_sha256": "82aaccd8ee32b53e99b072488fb61a8823f55a3b1382194a83901f63c7be9c13",
+  "command": [
+    "/home/purplezky/work/asi/f1r3node-rust/target/debug/node",
+    "--log-level",
+    "warn",
+    "run",
+    "--standalone",
+    "--config-file",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/chain-80fer8h_/node.conf",
+    "--data-dir",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/chain-80fer8h_/data",
+    "--host",
+    "127.0.0.1",
+    "--api-host",
+    "127.0.0.1",
+    "--no-upnp",
+    "--allow-private-addresses",
+    "--bonds-file",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/chain-80fer8h_/bonds.txt",
+    "--wallets-file",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/chain-80fer8h_/wallets.txt",
+    "--shard-name",
+    "fusion-m1",
+    "--network-id",
+    "fusion-m1-isolated",
+    "--heartbeat-enabled",
+    "--heartbeat-check-interval",
+    "2 seconds",
+    "--heartbeat-max-lfb-age",
+    "4 seconds",
+    "--protocol-port",
+    "51525",
+    "--api-port-grpc-external",
+    "33699",
+    "--api-port-grpc-internal",
+    "33651",
+    "--api-port-http",
+    "55407",
+    "--discovery-port",
+    "60585",
+    "--api-port-admin-http",
+    "38427"
+  ],
+  "commit": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+  "commitment": "f9236451ff785dc58315251cf864a3d10938412551cf45f448055061bc953ea1",
+  "gate": "passed",
+  "inclusion": {
+    "blockHash": "75539081861319778cf62c682520acc92829453501f5696f8b6935f0ea95ba42",
+    "blockNumber": 3,
+    "cost": 351,
+    "deployId": "304402207cf57cc9b2c7f25c6fcc49da0aa7c44652361c38d0a3f0a60280a983caa6aec50220548d6d5a1687328f984a42bae8c00d4bba88405b06aea961e32d2aeba68b70ba",
+    "deployer": "04abd17c143b60c71a208c3b1492a5c78768c04720a380e35fdbb329ece60a8e9780b9755553fcb48901a87026551a7902ee7d0dcb26de0c72150095cd2ebb6bb7",
+    "errored": false,
+    "finalizationState": "Finalized",
+    "isFinalized": true,
+    "phloLimit": 10000000,
+    "phloPrice": 1,
+    "rejectionCount": 0,
+    "sigAlgorithm": "secp256k1",
+    "systemDeployError": "",
+    "term": "@\"fusion:m1:commitment\"!(\"f9236451ff785dc58315251cf864a3d10938412551cf45f448055061bc953ea1\")",
+    "timestamp": 1792138899236,
+    "transfers": [],
+    "validAfterBlockNumber": 0
+  },
+  "node_exit": 0,
+  "observation_seconds": 4.013186840340495,
+  "observations": [
+    {
+      "deploy_id": "304402207cf57cc9b2c7f25c6fcc49da0aa7c44652361c38d0a3f0a60280a983caa6aec50220548d6d5a1687328f984a42bae8c00d4bba88405b06aea961e32d2aeba68b70ba",
+      "effect_finality": "pending",
+      "evidence": {
+        "submission_response": "Success!\nDeployId is: 304402207cf57cc9b2c7f25c6fcc49da0aa7c44652361c38d0a3f0a60280a983caa6aec50220548d6d5a1687328f984a42bae8c00d4bba88405b06aea961e32d2aeba68b70ba"
+      },
+      "inclusion_block": null
+    },
+    {
+      "deploy_id": "304402207cf57cc9b2c7f25c6fcc49da0aa7c44652361c38d0a3f0a60280a983caa6aec50220548d6d5a1687328f984a42bae8c00d4bba88405b06aea961e32d2aeba68b70ba",
+      "effect_finality": "included",
+      "evidence": {
+        "latest_block_hash": "75539081861319778cf62c682520acc92829453501f5696f8b6935f0ea95ba42",
+        "rejection_count": 0,
+        "state": "Pending"
+      },
+      "inclusion_block": "75539081861319778cf62c682520acc92829453501f5696f8b6935f0ea95ba42"
+    },
+    {
+      "deploy_id": "304402207cf57cc9b2c7f25c6fcc49da0aa7c44652361c38d0a3f0a60280a983caa6aec50220548d6d5a1687328f984a42bae8c00d4bba88405b06aea961e32d2aeba68b70ba",
+      "effect_finality": "finalized",
+      "evidence": {
+        "latest_block_hash": "75539081861319778cf62c682520acc92829453501f5696f8b6935f0ea95ba42",
+        "rejection_count": 0,
+        "state": "Finalized"
+      },
+      "inclusion_block": "75539081861319778cf62c682520acc92829453501f5696f8b6935f0ea95ba42"
+    }
+  ],
+  "propose_response": "Success! Block 75539081861319778cf62c682520acc92829453501f5696f8b6935f0ea95ba42 created and added.",
+  "provider": "real-local-single-validator-f1r3node",
+  "result_ref": {
+    "digest": "f9236451ff785dc58315251cf864a3d10938412551cf45f448055061bc953ea1",
+    "id": "85cc3165-ba90-5d29-be89-0684a9f9a178",
+    "revision": 1,
+    "scope_ref": "shared-test"
+  },
+  "runtime_directory": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/chain-80fer8h_",
+  "runtime_environment": {
+    "RUST_MIN_STACK": "8388608"
+  },
+  "source": "/home/purplezky/work/asi/f1r3node-rust",
+  "startup_seconds": 25.73467405512929,
+  "status": {
+    "address": "rnode://94ec3400f8f6bdd193c0a53899bf3f77ab7e7543@127.0.0.1?protocol=51525&discovery=60585",
+    "currentEpoch": 0,
+    "epochLength": 10000,
+    "isReadOnly": false,
+    "isReady": true,
+    "isValidator": false,
+    "lastFinalizedBlockNumber": 0,
+    "minPhloPrice": 1,
+    "nativeTokenDecimals": 8,
+    "nativeTokenName": "F1R3CAP",
+    "nativeTokenSymbol": "F1R3",
+    "networkId": "fusion-m1-isolated",
+    "nodes": 0,
+    "peerList": [],
+    "peers": 0,
+    "shardId": "fusion-m1",
+    "version": {
+      "api": "1",
+      "node": "F1r3node Rust 0.4.15 (9ec1096)"
+    }
+  }
+}

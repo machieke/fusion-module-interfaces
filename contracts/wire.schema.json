@@ -1,0 +1,1220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fusion:invocation:1.0.0",
+  "title": "M1 invocation",
+  "description": "Scope equality, base64 canonicality, live authorization and deadlines require semantic validation.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "atom.storage"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "immutable-bytes/1"
+        },
+        "operation": {
+          "const": "create"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "content_type": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "sharing": {
+              "const": "non-sensitive-fixture"
+            },
+            "bytes": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 87384,
+              "contentEncoding": "base64"
+            }
+          },
+          "required": [
+            "content_type",
+            "sharing",
+            "bytes"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body",
+        "idempotency_key"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "atom.storage"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "immutable-bytes/1"
+        },
+        "operation": {
+          "const": "get"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "ref": {
+              "type": "object",
+              "properties": {
+                "scope_ref": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "revision": {
+                  "const": 1,
+                  "type": "integer"
+                },
+                "digest": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "scope_ref",
+                "id",
+                "revision",
+                "digest"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "ref"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "atom.storage"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "immutable-bytes/1"
+        },
+        "operation": {
+          "const": "getMany"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "refs": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 32,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "scope_ref": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                  },
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                  },
+                  "revision": {
+                    "const": 1,
+                    "type": "integer"
+                  },
+                  "digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "scope_ref",
+                  "id",
+                  "revision",
+                  "digest"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "refs"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "atom.storage"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "immutable-bytes/1"
+        },
+        "operation": {
+          "const": "availability"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "ref": {
+              "type": "object",
+              "properties": {
+                "scope_ref": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "revision": {
+                  "const": 1,
+                  "type": "integer"
+                },
+                "digest": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "scope_ref",
+                "id",
+                "revision",
+                "digest"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "ref"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "agent.messaging"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "durable-mailbox/1"
+        },
+        "operation": {
+          "const": "send"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "route": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "ref": {
+              "type": "object",
+              "properties": {
+                "scope_ref": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "revision": {
+                  "const": 1,
+                  "type": "integer"
+                },
+                "digest": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "scope_ref",
+                "id",
+                "revision",
+                "digest"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "route",
+            "ref"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body",
+        "idempotency_key",
+        "correlation_id",
+        "reply_route"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "agent.messaging"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "durable-mailbox/1"
+        },
+        "operation": {
+          "const": "poll"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "route": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            }
+          },
+          "required": [
+            "route"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "agent.messaging"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "durable-mailbox/1"
+        },
+        "operation": {
+          "const": "ack"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "route": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "delivery_id": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            }
+          },
+          "required": [
+            "route",
+            "delivery_id"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body",
+        "idempotency_key"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "execution"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "inspect-atom/1"
+        },
+        "operation": {
+          "const": "submit"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "const": "inspect_atom"
+            },
+            "ref": {
+              "type": "object",
+              "properties": {
+                "scope_ref": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "revision": {
+                  "const": 1,
+                  "type": "integer"
+                },
+                "digest": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "scope_ref",
+                "id",
+                "revision",
+                "digest"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "operation",
+            "ref"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body",
+        "idempotency_key",
+        "correlation_id",
+        "reply_route"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "execution"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "inspect-atom/1"
+        },
+        "operation": {
+          "const": "status"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            }
+          },
+          "required": [
+            "job_id"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "correlation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "reply_route": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "causation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "deadline_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "required_features": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "interface_ref": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "const": "execution"
+            },
+            "version": {
+              "const": "1.0.0"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "profile": {
+          "const": "inspect-atom/1"
+        },
+        "operation": {
+          "const": "result"
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            }
+          },
+          "required": [
+            "job_id"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message_id",
+        "scope_ref",
+        "interface_ref",
+        "profile",
+        "operation",
+        "body"
+      ],
+      "additionalProperties": false
+    }
+  ],
+  "$defs": {
+    "AtomRef": {
+      "type": "object",
+      "properties": {
+        "scope_ref": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "revision": {
+          "const": 1,
+          "type": "integer"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "scope_ref",
+        "id",
+        "revision",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "UNSUPPORTED_VERSION",
+            "UNSUPPORTED_PROFILE",
+            "UNSUPPORTED_OPERATION",
+            "INVALID_ARGUMENT",
+            "UNAUTHORIZED",
+            "NOT_FOUND",
+            "CONFLICT",
+            "NOT_AVAILABLE",
+            "OVERLOADED",
+            "DEADLINE_EXCEEDED",
+            "INTERNAL"
+          ]
+        },
+        "retryable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "retryable"
+      ],
+      "additionalProperties": false
+    },
+    "StorageReceipt": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "durability": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "evidence": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "provider",
+        "durability",
+        "evidence"
+      ],
+      "additionalProperties": false
+    },
+    "AtomWrite": {
+      "type": "object",
+      "properties": {
+        "ref": {
+          "type": "object",
+          "properties": {
+            "scope_ref": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "revision": {
+              "const": 1,
+              "type": "integer"
+            },
+            "digest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "scope_ref",
+            "id",
+            "revision",
+            "digest"
+          ],
+          "additionalProperties": false
+        },
+        "receipt": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "durability": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "evidence": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "provider",
+            "durability",
+            "evidence"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ref",
+        "receipt"
+      ],
+      "additionalProperties": false
+    },
+    "AtomEnvelope": {
+      "type": "object",
+      "properties": {
+        "ref": {
+          "type": "object",
+          "properties": {
+            "scope_ref": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+            },
+            "revision": {
+              "const": 1,
+              "type": "integer"
+            },
+            "digest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "scope_ref",
+            "id",
+            "revision",
+            "digest"
+          ],
+          "additionalProperties": false
+        },
+        "content_type": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+        },
+        "bytes": {
+          "type": "string",
+          "contentEncoding": "base64"
+        }
+      },
+      "required": [
+        "ref",
+        "content_type",
+        "bytes"
+      ],
+      "additionalProperties": false
+    },
+    "InspectResult": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "const": "inspect_atom"
+        },
+        "provider_version": {
+          "const": "0.1.0"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65536
+        }
+      },
+      "required": [
+        "operation",
+        "provider_version",
+        "digest",
+        "length"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
