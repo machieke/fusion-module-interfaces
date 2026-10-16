@@ -152,3 +152,59 @@ To unblock: supply authorized PhysixSNET/omegahive source/access and intended
 revision, verify the real startup command and entrypoint from that source, then
 execute the bounded store/share/delegate/recover/ack workflow with synthetic input.
 OMEGA remains BLOCKED; the independent provider swap does not count as this gate.
+
+## M4 bounded chain discovery and new clean baseline
+
+Started at `8491c4900a5ccab872073e62b1024e3b731aeaf9`, the single
+presentation/documentation descendant of requested `985d2f3`. Runtime, contracts,
+tests and integration files were identical to the requested evidence tree.
+The supplied M4 brief was the only initial untracked file. The unchanged checkout's
+M1–M3.1 suite was rerun successfully before the M4 final-source regression.
+
+The authorized `f1r3node-rust` workspace remained at
+`9ec1096e10774926ea8e72f0823482f0bf9213e1` with eight tracked edits and an
+untracked `casper/src/rust/rholang/deploy_resource_limits.rs`. Those changes were
+not copied, staged, reverted or used. Bounded queries found the named fork's HEAD
+at `30b0c1c3d87ae17146dd5e18b1730e3abf7e2462` and the upstream HEAD at
+`7618e44ed82156676fa38f7da74593dd9c6d1d5b`; neither moving HEAD was substituted.
+A shallow fetch of the exact clean `9ec1096` succeeded from
+`git@github.com:machieke/f1r3node-rust.git`. No submodules or patches were needed.
+
+The first clean build used fresh Cargo objects, locked dependencies, nightly
+`2026-02-09`, `-j 2`, `CARGO_PROFILE_DEV_DEBUG=0`, `CARGO_INCREMENTAL=0`, and a
+staged `grpcio-tools==1.84.0` protoc. The system protoc 3.6.1 is insufficient for
+these proto3 optional fields. Upstream `.cargo/config.toml` supplies target CPU
+features and `RUST_MIN_STACK=8388608`; OpenSSL is a native build dependency.
+The final build manifest records actual lockfile, toolchain, compiler, flags,
+native-library and binary identities. No historical dirty build is relabelled.
+
+A real prerequisite probe built and started this source before native adapter
+work, wrote a deliberately generated test tuple, read its inclusion-block
+post-state, matched deploy-effect finality and restarted the same genesis/data.
+This probe is real node evidence but is **not** the native same-artifact gate.
+The supported native run is recorded separately in `m4-evidence.md`.
+
+| Verified route | Actual use and limitation |
+|---|---|
+| `GET /api/status` | Exact API/node version, network/shard/readiness and zero peer/node counts. |
+| `GET /api/blocks/0/0?view=summary` | Single genesis `blockInfo`; genesis hash binds instance independently of URL. |
+| `POST /api/prepare-deploy` | Public deployer, durable timestamp, nameQty 1 → deterministic unforgeable read name. |
+| `POST /api/deploy` | Exact signed DeployDataProto request; response includes deploy signature. |
+| `GET /api/deploy/{signature}` | Target signature, inclusion block, non-error execution, phlo/cost and finalization fields. |
+| `GET /api/deploy-finalization-status/{signature}` | Pending/Finalized/Failed/Expired, rejection count and matching latest inclusion block. |
+| `POST /api/data-at-name-by-block-hash` | Non-consuming exact-name read in inclusion post-state. Source ignores pre-state flag; profile fixes false. |
+
+Source evidence is `node/src/rust/api/web_api.rs`,
+`node/src/rust/web/web_api_routes.rs`,
+`node/src/rust/api/serde_types/light_block_info.rs`,
+`casper/src/rust/api/block_api.rs` and
+`casper/src/rust/api/deploy_finalization_status.rs` at the selected revision.
+The observed data API is not a general current-head lookup: the name must occur
+in the selected block's reductions. The effect read therefore uses the matching
+inclusion block, not a later heartbeat block.
+
+Wildcard-bound node sockets were observed inside a separate unprivileged network
+namespace. It contains only loopback, no IPv4 route and no external IPv6 route;
+an external-address connection returns ENETUNREACH. The host attempts every node
+port while the node is ready and receives ECONNREFUSED. No host firewall changes,
+external peers, public networks or persistent user node data are involved.

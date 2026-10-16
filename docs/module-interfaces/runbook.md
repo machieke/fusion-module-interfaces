@@ -383,3 +383,59 @@ not newly delivered by reconciliation; expiry or staleness permits no-credit
 retirement. An unavailable owner remains pending. Full causal/command journals
 are not evicted. Old-format pending work requires the old profile; this task does
 not migrate or repair it. See `m3_1-evidence.md` for exact tested source and gates.
+
+## M4 required isolated-chain reproduction
+
+Prerequisites: authorized Git access to the pinned Hive/DeTTa/PLN sources and the
+named F1R3 fork, `uv`, Rust nightly `2026-02-09`, C/C++/SWI native build libraries,
+OpenSSL development files, `ip`, `ss`, and permission for unprivileged user/network
+namespaces. The existing native provider pins are unchanged. Optional signing and
+protobuf Python dependencies are pinned in `integration/chain/requirements.lock`.
+Download caches may be warm; source, build, venv, journals and genesis directories
+must be fresh. No existing user node or private cognitive journal is an input.
+
+```sh
+uv run --python 3.11 --locked python scripts/build_m4.py /absolute/fresh/m4-build
+uv run --python 3.11 --locked python scripts/verify_m4.py /absolute/fresh/m4-build --output /absolute/fresh/m4-evidence
+```
+
+The verifier starts the real native run in a route-free network namespace, checks
+host inaccessibility while the node is ready, and stops its generated node on
+completion. It also runs the full M1–M3.1 baseline on the exact committed checkout.
+A missing input is BLOCKED; an executed assertion is FAIL; an elapsed bounded
+chain observation is OBSERVATION_TIMEOUT. Development mode cannot pass BASELINE
+or REPRO_READBACK and never yields overall M4 PASS. Historical evidence stays intact.
+
+`same-artifact.json` contains only deliberately shareable generated identifiers,
+result refs/digests, approval, chain instance/profile, signed deploy, observed value
+and matching finality. `readback.json` is produced by another process using only
+`atom.storage.get` authority and read RPC. Test keys and all raw runtime configs,
+logs and journals remain in ignored private directories; do not publish them.
+The verifier also preserves independent owner counts, native SIGKILL cases and
+same-genesis node restart, including an outage between observations.
+
+For a local operator session, register both `integration/hive/program` and
+`integration/hive/commitment` with native `HIVE_PLUGIN_DIRS`. Follow the concrete
+operator-only composition in `integration/chain/test_m4.py`; its `commitment`
+allowlist is not an action parameter. Complete and acknowledge the original
+`fusion-inspect` command first. Then dispatch `commit` with
+`{original_command: <allowlisted generated command>}`. Re-dispatch `commit` after
+an uncertain submission to recover the same signed intent. Dispatch `observe`
+to read progress without re-running the worker or submitting another deploy.
+Unavailability does not retract off-chain completion or change the genesis.
+
+A second process can run:
+
+```sh
+<NATIVE_PYTHON> scripts/readback_m4.py <PRIVATE_READ_ACCESS_JSON> <SAME_ARTIFACT_JSON>
+```
+
+Run it inside the same isolated namespace while the node and permitted DA files
+are available. The access file supplies only a service configuration path,
+a credential restricted to `atom.storage.get`, and the isolated RPC endpoint;
+it contains no signer or original caller journal. Historical block/post-state
+availability and local DA file retention are prerequisites, not indefinite-storage
+promises. The completed test stops its node; the readback test is executed before
+shutdown and after restarting the same generated data/genesis. Do not reconnect
+this profile to a public network. No automatic scheduler, production deployment,
+state migration or further cognition is included.

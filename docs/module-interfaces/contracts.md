@@ -479,3 +479,57 @@ closure counts and observation version. `reconcile-generated` accepts only
 The adapter's private prepared-request mapping is written before dispatch; it does
 not own episode, belief, attention or controller state. Private identifiers,
 supports, source roots, local paths and credentials are excluded from projections.
+
+## M4 generated commitment profile
+
+`ConsensusFinality.submit(Mutation, ApprovedCommitment)` and `observe(deploy_id)`
+retain their backend-independent signatures. The legacy adapter/profile remains
+available with its original semantics. The new descriptor is
+`consensus.finality` 1.0.0, provider `f1r3-local`, implementation 0.4.0,
+profile `f1r3-generated-post-state/2`. Selection uses the existing resolver and
+exact descriptor token. New behavior requires a fresh, single-operation journal;
+old journal tables are rejected without migration.
+
+Only trusted operator composition constructs the registered approval after the
+original native caller has accepted and acknowledged its generated inspect result.
+It re-retrieves input/result through authorized AtomStorage, checks execution
+success/correlation and exact bytes, and verifies the original native owner/swarm.
+The accepted result's ref/digest, shared scope and generated policy are bound to
+one operation, exact chain identity, signer, protobuf identity and fixed limits:
+phlo price 1, phlo limit 10,000,000, valid-after block 0, no expiration extension.
+The authority expiry is an off-chain grant; it is not a deploy expiry mechanism.
+
+The independent chain owner stores one durable logical plan before signing and
+one complete signed deploy before submission. Concurrent duplicates can resend
+identical bytes while an HTTP response is uncertain, but cannot allocate another
+logical intent or signature after the signed commit. Changed approval, artifact,
+scope, operation, native binding, chain, signer or profile fails before a new effect.
+The registered callback reloads current authority for every invocation and again
+before submission. Cached results confer no authority. This is same-host process
+restart with intact journals, not global exactly-once execution or power-loss proof.
+
+One `observe` call makes a finite sequence of node queries and creates at most one
+owner observation; it does not submit or sign. The RPC transport retains its
+15-second socket timeout and 4 MiB response cap. The demonstration starts at most
+120 observation calls and stops starting calls after 180 seconds; an in-flight
+call may finish after that deadline. No scheduler or inference budget is involved.
+At most 256 observations are retained per fresh journal; exhaustion is explicit
+`OVERLOADED`, with no eviction or automatic capacity refund.
+
+| Evidence | Meaning |
+|---|---|
+| accepted result + acknowledged delivery | Off-chain work committed; chain outage does not undo it |
+| durable logical/signed intent | Exact replay input exists locally; not evidence of submission |
+| submission response | Node accepted the signed request; not execution or finality |
+| inclusion | Target deploy found in the referenced block; execution/error/cost retained separately |
+| verified effect | Exact namespace, generated operation and result digest read from that block's post-state |
+| finalized | Matching deploy-effect finality plus matching successful inclusion and exact effect |
+| rejected | Raw `Failed`/`Expired` node state retained, including available rejection evidence |
+| not-observed | Unavailable or incompatible evidence; never silently converted to rejection/absence/finality |
+
+The native sibling `fusion-commitment` accepts `commit` or `observe` with only
+`original_command`. The native `started` receipt is pending/unknown; a terminal
+observation completes the action and its detail distinguishes finalized from
+rejected. DA acceptance, submission, inclusion, effect and finality remain separate
+fields. Public projection contains only this explicitly shareable workflow, never
+private caller context, credentials, local paths or cognitive identifying hashes.

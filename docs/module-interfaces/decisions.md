@@ -396,3 +396,49 @@ supply all authority; public parameters cannot attest completion.
 journals still replay under their original profile and cannot be reconciled through
 this extension. Trusted-local-host and cooperative wall-clock assumptions remain.
 No scheduler, cancellation framework, migration, new cognition or chain work.
+
+## ADR-013 — M4 exact generated result and isolated chain observations
+
+**Decision:** add one trusted, local `ConsensusFinality` composition under
+`f1r3-generated-post-state/2`. Preserve the existing M1 port and legacy
+`F1R3Commitments` implementation. New journals are required; no migration or
+cognitive owner is involved. The original `fusion-inspect` plugin remains intact.
+Its sibling caller-owned `completed.py` validates the accepted/acknowledged result
+through current storage and execution ports, using only its own receipt SQL.
+
+An operator allowlist binds one generated inspect command, native principal/swarm,
+seed, expiry, shared scope, immutable result, descriptor, fixed operation, signer,
+limits and chain identity. The chain identity is the verified source/profile plus
+network, shard and genesis hash; an RPC URL is not identity. Caller parameters
+cannot supply artifacts, approvals, code, credentials or network targets. Authority
+is reloaded before cached replies and before sends. Revocation cannot retract a
+previously transmitted deploy. No private cognitive reference is eligible.
+
+Each owner commits separately: existing DA/execution/messaging, inspect acceptance
+and acknowledgment, chain logical intent, signed deploy, submission receipt,
+chain observation, and native progress. A logical intent freezes the timestamp
+before signing. The complete protobuf-signed request is committed before HTTP.
+Retries reuse the signed bytes; they never extend validity or reset inference
+budgets. The native adapter owns only progress, and accepts neither arbitrary
+transactions nor cross-owner SQL access.
+
+The selected clean F1R3 source is `9ec1096e10774926ea8e72f0823482f0bf9213e1`
+from the named fork. This is a new clean baseline, not reproduction of the old
+uncommitted resource-limit changes. The build/start/API probe preceded native
+implementation. No upstream consensus code was modified. An unprivileged network
+namespace with loopback only and no external route contains even wildcard-bound
+P2P/gRPC sockets. Host connections are tested while the node is ready.
+
+The fixed Rholang template creates one name and sends a tuple containing the
+public namespace, deliberately shareable generated operation ID and approved
+digest. `/api/prepare-deploy` supplies the deterministic read name. The non-consuming
+`/api/data-at-name-by-block-hash` read is bound to the matching inclusion block.
+Source inspection and live probes confirm this API always reads **post-state**;
+its `usePreStateHash` argument is ignored upstream, so this profile permits only
+`false`. It does not claim a pre-state or current-head proof.
+
+A finalized receipt requires the exact tuple, matching deploy/inclusion/block,
+non-error execution, cost and matching `Finalized` deploy-effect state. Raw
+incompatible evidence remains distinct from success. These are node observations,
+not trustless proofs or a multi-validator safety demonstration. Historical profiles
+and M1–M3.1 cognition, logical clocks, closure and budgets remain unchanged.

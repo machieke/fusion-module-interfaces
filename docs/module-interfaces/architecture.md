@@ -317,3 +317,35 @@ causal application and retirement; C4 owns only its observations and work budget
 Hive owns public-command translation and privacy-safe projection. Reconciliation
 has no edge to PLNKernel or BeliefRevision and cannot select another task. Existing
 DA and immutable AtomStorage boundaries are unchanged.
+
+## M4: generated result commitment, with separate owner commits
+
+```mermaid
+flowchart LR
+  H[Authenticated native Hive Programs] --> I[Existing fusion-inspect caller]
+  I --> A[AtomStorage / real DeTTa]
+  I --> M[Messaging / labelled fixture counterparty]
+  I --> E[DelegatedExecution / inspect_atom]
+  E --> A
+  E --> M
+  I --> V[Caller-owned accepted-result accessor]
+  H --> C[Native commitment progress adapter]
+  C --> V
+  V --> A
+  V --> E
+  C --> P[Operator exact-result approval]
+  P --> F[ConsensusFinality / independent signed-intent owner]
+  F --> N[Isolated real F1R3node]
+  N --> R[Inclusion post-state + deploy-effect finality]
+  R --> C
+  Q[Separate read-only verifier] --> A
+  Q --> R
+```
+
+The approval allowlist admits only the original explicitly shareable generated
+workflow. Private Episodes, BeliefRevision, Attention, PLNKernel and
+InferenceControl are unchanged regression modules and have no chain export edge.
+The native commitment adapter owns progress only; it does not own DA, jobs,
+mailboxes or signing replay state. Local result acceptance and acknowledgment
+remain durable independently of chain availability. The chain persists one fixed
+tuple and provides node-observed evidence; it does not execute off-chain reasoning.

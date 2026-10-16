@@ -1,0 +1,9 @@
+{
+  "url": "git@github.com:machieke/f1r3node-rust.git",
+  "commit": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+  "baseline": "new clean baseline; historical dirty workspace is not reproduced",
+  "toolchain": "nightly-2026-02-09",
+  "cargo": ["build", "--offline", "--locked", "-j", "2", "-p", "node", "--bin", "node"],
+  "environment": {"CARGO_PROFILE_DEV_DEBUG": "0", "CARGO_INCREMENTAL": "0", "RUST_MIN_STACK": "8388608"},
+  "profile": "f1r3-generated-post-state/2"
+}
