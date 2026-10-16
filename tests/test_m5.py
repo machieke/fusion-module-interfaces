@@ -106,13 +106,15 @@ class LookupContracts(unittest.TestCase):
             self.error('UNAUTHORIZED',lambda:h.search.query(h.query(old,kind='task')))
     def test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor(self):
         for provider in ['sqlite','atomic-file-fixture']:
-            for mode in ['gap','duplicate','reorder','metadata','replay']:
+            for mode in ['gap','duplicate','reorder','metadata','replay','rebuild-rollback']:
                 h=self.harness(provider);[h.create('r'+str(i),kind='task') for i in range(3)]
                 h.search.catchUp(SCOPE,1);base=h.atoms.head(SCOPE)
                 # Construct the selected projection with a malicious public source port.
                 underlying=h.atoms
                 class Bad:
-                    def head(self,scope):return underlying.head(scope)
+                    def head(self,scope):
+                        value=underlying.head(scope)
+                        return {**value,'sequence':0} if mode=='rebuild-rollback' else value
                     def readCommits(self,scope,after,through,limit):
                         result=underlying.readCommits(scope,after,through,limit)
                         if mode=='replay' and after==0:result['records'][0]['size']+=1
@@ -128,5 +130,7 @@ class LookupContracts(unittest.TestCase):
                 else:
                     from fusion.adapters.fixture_search import FileSearchFixture
                     p=h.modules.root/('search-'+digest(SCOPE.encode())+'.json');search=FileSearchFixture(p,h.atoms,PortOnly(Bad(),('head','readCommits')),h.modules.access['search'],SCOPE)
-                with self.assertRaises(ContractError):search.catchUp(SCOPE,2)
+                with self.assertRaises(ContractError):
+                    if mode=='rebuild-rollback':search.beginRebuild(Mutation(SCOPE,'rollback'))
+                    else:search.catchUp(SCOPE,2)
                 self.assertEqual(search.query(h.query({**base,'sequence':1},kind='task'))['at']['sequence'],1)

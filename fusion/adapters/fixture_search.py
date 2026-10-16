@@ -79,7 +79,7 @@ class FileSearchFixture:
         if key in before['rebuild_commands']:
             self.access.authorize(command.scope_ref,'beginRebuild');return before['rebuild_commands'][key]
         require(not before['building'],'CONFLICT');target=c.head(self.source.head(self.scope),self.scope)
-        require(target['source']==before['watermark']['source'],'CONFLICT');require(len(before['rebuild_commands'])<64,'OVERLOADED')
+        require(target['source']==before['watermark']['source'] and target['sequence']>=before['watermark']['sequence'],'CONFLICT');require(len(before['rebuild_commands'])<64,'OVERLOADED')
         proposed=c.copy(before);proposed.update(generation=str(uuid.uuid4()),documents=[],checkpoint_entry=None,seen=[],
             watermark={**target,'sequence':0},target=target,building=target['sequence']>0,
             observation={'head':target,'via':'maintenance.head','observed_ms':time.time_ns()//1_000_000})

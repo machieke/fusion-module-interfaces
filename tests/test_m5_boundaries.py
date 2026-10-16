@@ -140,3 +140,14 @@ class Boundaries(unittest.TestCase):
             self.assertEqual(h.search.beginRebuild(Mutation(SCOPE,'replay-rebuild')),receipt)
             self.error('CONFLICT',lambda:h.search.beginRebuild(Mutation(SCOPE,'concurrent-rebuild')))
             h.reopen();h.drain();self.assertEqual(h.search.beginRebuild(Mutation(SCOPE,'replay-rebuild')),receipt)
+    def test_atom_response_budget_is_checked_at_session_boundary(self):
+        from fusion.lookup_composition import AtomSession
+        from fusion.ports import AtomEnvelope
+        h=self.harness();data=b'x'*(c.MAX_BYTES+1)
+        ref={'scope_ref':SCOPE,'id':'forged','revision':1,'digest':digest(data)}
+        class Oversized:
+            def get(self,r):return AtomEnvelope(r,'text/plain',data)
+            def getMany(self,rs):return tuple(self.get(r) for r in rs)
+        session=AtomSession(PortOnly(Oversized(),('get','getMany')),h.modules.access['atom.storage'])
+        self.error('NOT_AVAILABLE',lambda:session.get(ref))
+        self.error('NOT_AVAILABLE',lambda:session.getMany((ref,)))

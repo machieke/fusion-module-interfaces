@@ -50,13 +50,13 @@ class AtomSession:
         require(value['ref']['digest']==digest(data),'NOT_AVAILABLE');self.access.authorize(command.scope_ref,'create');return c.copy(value)
     def get(self,ref):
         ref=c.ref(ref,c.scope_of(ref));self.access.authorize(ref['scope_ref'],'get')
-        result=self.provider.get(ref);envelope(result,ref);self.access.authorize(ref['scope_ref'],'get');return result
+        result=self.provider.get(ref);envelope(result,ref);require(len(result.bytes)<=c.MAX_BYTES,'NOT_AVAILABLE');self.access.authorize(ref['scope_ref'],'get');return result
     def getMany(self,refs):
         require(type(refs) is tuple and 1<=len(refs)<=8)
         refs=tuple(c.ref(r,c.scope_of(r)) for r in refs)
         for r in refs:self.access.authorize(r['scope_ref'],'getMany');self.access.authorize(r['scope_ref'],'get')
         result=self.provider.getMany(refs);require(type(result) is tuple and len(result)==len(refs),'NOT_AVAILABLE')
-        for item,r in zip(result,refs):envelope(item,r);self.access.authorize(r['scope_ref'],'getMany');self.access.authorize(r['scope_ref'],'get')
+        for item,r in zip(result,refs):envelope(item,r);require(len(item.bytes)<=c.MAX_BYTES,'NOT_AVAILABLE');self.access.authorize(r['scope_ref'],'getMany');self.access.authorize(r['scope_ref'],'get')
         return result
     def availability(self,ref):
         ref=c.ref(ref,c.scope_of(ref));self.access.authorize(ref['scope_ref'],'availability');self.access.authorize(ref['scope_ref'],'get')

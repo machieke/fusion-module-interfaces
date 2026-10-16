@@ -75,7 +75,7 @@ class SearchOwner:
             before=self.state(db);old=db.execute('SELECT value FROM rebuilds WHERE id=?',(key,)).fetchone()
         if old:self.access.authorize(command.scope_ref,'beginRebuild');return json.loads(old[0])
         require(not before['rebuilding'],'CONFLICT')
-        target=c.head(self.source.head(self.scope),self.scope);require(target['source']==before['at']['source'],'CONFLICT')
+        target=c.head(self.source.head(self.scope),self.scope);require(target['source']==before['at']['source'] and target['sequence']>=before['at']['sequence'],'CONFLICT')
         after={**before,'at':{**target,'sequence':0},'generation':str(uuid.uuid4()),'tail':None,'seen':[],'target':target,'rebuilding':target['sequence']>0,
                'observed':{'head':target,'via':'maintenance.head','observed_ms':time.time_ns()//1_000_000}}
         receipt={'generation':after['generation'],'target':target}

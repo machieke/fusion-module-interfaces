@@ -78,7 +78,8 @@ def verify(args):
             build=json.loads((args.environment.parent/'m3-build.json').read_text())
             assert build['recipe_sha256']==sha(ROOT/'scripts/build_m3.py') and build['base_build']['fresh_destination']
             report['provider_build']=build;report['detta_binary_sha256']=sha(config['M2_DETTA_BINARY'])
-            env=dict(os.environ,**config,PYTHONPATH=str(ROOT)+os.pathsep+config['HIVE_REPO'],FUSION_M5_EVIDENCE=str(output/'traces'))
+            env=dict(os.environ,**config)
+            env.update(PYTHONPATH=str(ROOT)+os.pathsep+config['HIVE_REPO'],FUSION_M5_EVIDENCE=str(output/'traces'))
         except (OSError,KeyError,AssertionError,ValueError,AttributeError,subprocess.CalledProcessError) as error:
             blocked(sorted(selected&{'storage','hive','legacy'}),str(error).replace(str(ROOT),'<FUSION>'))
     if config and env:
