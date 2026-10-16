@@ -1,0 +1,105 @@
+[
+  {
+    "command": [
+      "pkg-config",
+      "--modversion",
+      "gmp"
+    ],
+    "returncode": 0,
+    "output": "6.2.0"
+  },
+  {
+    "command": [
+      "pkg-config",
+      "--modversion",
+      "openssl"
+    ],
+    "returncode": 0,
+    "output": "1.1.1f"
+  },
+  {
+    "command": [
+      "pkg-config",
+      "--modversion",
+      "libpcre2-8"
+    ],
+    "returncode": 0,
+    "output": "10.34"
+  },
+  {
+    "command": [
+      "pkg-config",
+      "--modversion",
+      "zlib"
+    ],
+    "returncode": 0,
+    "output": "1.2.11"
+  },
+  {
+    "command": [
+      "pkg-config",
+      "--modversion",
+      "libarchive"
+    ],
+    "returncode": 1,
+    "output": "Package libarchive was not found in the pkg-config search path.\nPerhaps you should add the directory containing `libarchive.pc'\nto the PKG_CONFIG_PATH environment variable\nNo package 'libarchive' found"
+  },
+  {
+    "command": [
+      "pkg-config",
+      "--modversion",
+      "yaml-0.1"
+    ],
+    "returncode": 1,
+    "output": "Package yaml-0.1 was not found in the pkg-config search path.\nPerhaps you should add the directory containing `yaml-0.1.pc'\nto the PKG_CONFIG_PATH environment variable\nNo package 'yaml-0.1' found"
+  },
+  {
+    "command": [
+      "pkg-config",
+      "--modversion",
+      "libedit"
+    ],
+    "returncode": 1,
+    "output": "Package libedit was not found in the pkg-config search path.\nPerhaps you should add the directory containing `libedit.pc'\nto the PKG_CONFIG_PATH environment variable\nNo package 'libedit' found"
+  },
+  {
+    "command": [
+      "uname",
+      "-a"
+    ],
+    "returncode": 0,
+    "output": "Linux joynode 5.4.0-216-generic #236-Ubuntu SMP Fri Apr 11 19:53:21 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux"
+  },
+  {
+    "command": [
+      "cmake",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "cmake version 3.16.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake)."
+  },
+  {
+    "command": [
+      "ninja",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "1.10.0"
+  },
+  {
+    "command": [
+      "cc",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "cc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0\nCopyright (C) 2019 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+  },
+  {
+    "command": [
+      "uv",
+      "--version"
+    ],
+    "returncode": 0,
+    "output": "uv 0.10.7"
+  }
+]

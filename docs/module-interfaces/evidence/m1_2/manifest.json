@@ -1,0 +1,47 @@
+{
+  "starting_source": {
+    "fusion_commit": "ecfef54f0f0ab5b9bdce186af2e83184d10cc246",
+    "initial_status": [
+      "?? codex_fusion_m1_2_real_hive_integration.md"
+    ],
+    "schematics_commit": "4af00db4e395375484dd48d0b9068a59afcf01f8",
+    "hive_commit": "34b0fb32ab3806e5609fc89bb7535518a35e1aea",
+    "hive_remote_HEAD_observed": "d0cee09e5c9943df14f9e08a2a40364f633e4d9f",
+    "hive_selection": "Use the exact revision referenced by the user-supplied schematics for this engineering gate; no product-release selection.",
+    "hive_access": {
+      "https_git": "failed: interactive credential unavailable",
+      "gh": "unavailable",
+      "ssh_git": "verified; clone succeeded"
+    },
+    "detta_clean_rebaseline_commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+    "detta_source": "fresh SSH fetch of immutable commit; excludes sibling working changes; must rerun applicable gates",
+    "detta_remote_HEAD_observed": "3bf489640b7f8a049b09215ca3af8344e45eaaee"
+  },
+  "tested_fusion_commit": "bb22ef5e28b089b80132b40bcf5a1bbfc38b065b",
+  "tested_checkout_status": [],
+  "source_bundle": {
+    "path": "artifacts/m1_2/fusion-m12-source.bundle",
+    "sha256": "2aeb7cb4bb037fd58978a77b9f17705ea17fa3ca9a1a7d7473e0b82a76d7ab6f",
+    "contents": "Fusion Git history at the tested revision only; no upstream runtime/provider source or credentials"
+  },
+  "fresh_run": "artifacts/m1_2/fresh",
+  "native_build_source": "1a627b0a214d0120886a06fc9e6af415088d20f1",
+  "gates": {
+    "BASELINE": "PASS",
+    "FIXTURE_REPRO": "PASS",
+    "DETTA_REPRO": "PASS",
+    "HIVE_SOURCE": "PASS: verified native pin, not a dispatch pass",
+    "HIVE_ENTRYPOINT": "PASS",
+    "HIVE_DETTA": "PASS",
+    "HIVE_RECOVERY": "PASS",
+    "HIVE_REPRO": "PASS",
+    "CHAIN": "NOT_RUN",
+    "SCOPE": "PASS: M1.2 only; contracts/owners unchanged; no M2, ECAN, inference control or migration"
+  },
+  "limits": {
+    "CHAIN_REPRO": "BLOCKED for historical dirty source bytes: exact authorized F1R3 patch/untracked source or separate clean rebaseline required; optional execution NOT_RUN",
+    "EMPTY_CACHE": "NOT_RUN; warm Python/uv/Cargo downloads; fresh native pip installation uses --no-cache",
+    "HIVE_FULL_SUITE": "NOT_RUN; selected native seam only",
+    "LIVE_MIGRATION": "NOT_RUN and out of scope"
+  }
+}

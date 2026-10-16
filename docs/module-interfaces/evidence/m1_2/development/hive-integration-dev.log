@@ -1,0 +1,33 @@
+F
+=================================== FAILURES ===================================
+_______________ test_native_dispatch_real_detta_trace_and_replay _______________
+
+setup = (<tests.support.Harness object at 0x7fdc229fa1b0>, <test_integration.Caller object at 0x7fdc22a4d730>, {'service_confi...ch_real_dett0/caller.json'), {'swarm_id': 's_deda3555', 'action': 'inspect', 'items': [], 'params': {'seed': 12}, ...})
+
+    def test_native_dispatch_real_detta_trace_and_replay(setup):
+        h, caller, config, path, body = setup
+        queued = act(caller, body)
+        assert queued["status"] == "started", queued
+        shared = h.b.poll()  # Explicit fixture counterparty, real mailbox/AtomStorage.
+        assert shared["body"]["ref"] == queued["detail"]["input"]["ref"]
+        assert b"explicitly shareable generated sample 12" in h.b.retrieve(shared["body"]["ref"])
+>       result = complete(h, caller, body)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+integration/hive/test_integration.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+h = <tests.support.Harness object at 0x7fdc229fa1b0>
+caller = <test_integration.Caller object at 0x7fdc22a4d730>
+body = {'swarm_id': 's_deda3555', 'action': 'inspect', 'items': [], 'params': {'seed': 12}, ...}
+
+    def complete(h, caller, body):
+>       assert h.command("work")["worked"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'worked'
+
+integration/hive/test_integration.py:103: KeyError
+=========================== short test summary info ============================
+FAILED integration/hive/test_integration.py::test_native_dispatch_real_detta_trace_and_replay
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 3.17s

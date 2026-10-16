@@ -1,0 +1,38 @@
+{
+  "classification": "real DeTTa + independent fixture + transport tests",
+  "OMEGA": "BLOCKED",
+  "CHAIN": "NOT RUN",
+  "commands": [
+    {
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/.venv/bin/python3",
+        "scripts/build_detta.py"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 1.8059179997071624,
+      "tests": null,
+      "log": "build-detta.log"
+    },
+    {
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/.venv/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 58.12067453376949,
+      "tests": 90,
+      "log": "tests.log"
+    }
+  ],
+  "demo": {
+    "runs": 4,
+    "elapsed_seconds": 5.649938522838056,
+    "status": "PASS"
+  },
+  "status": "PASS (local selected gates only)"
+}

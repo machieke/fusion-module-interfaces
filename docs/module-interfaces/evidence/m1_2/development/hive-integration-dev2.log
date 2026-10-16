@@ -1,0 +1,56 @@
+........F
+=================================== FAILURES ===================================
+____________________ test_native_path_fails_closed[profile] ____________________
+
+setup = (<tests.support.Harness object at 0x7f718e75f830>, <test_integration.Caller object at 0x7f718e75cd40>, {'service_confi...ails_closed_2/caller.json'), {'swarm_id': 's_d5364285', 'action': 'inspect', 'items': [], 'params': {'seed': 12}, ...})
+failure = 'profile'
+
+    @pytest.mark.parametrize("failure", ["wrong-scope", "revoked", "profile", "provider", "identity", "changed-input"])
+    def test_native_path_fails_closed(setup, failure):
+        h, caller, config, path, body = setup
+        expected = "UNAUTHORIZED"
+        if failure in {"revoked", "changed-input"}:
+            assert act(caller, body)["status"] == "started"
+            if failure == "revoked":
+                complete(h, caller, body)
+                h.config["principals"]["A"]["scopes"] = {}
+                h.save()
+            else:
+                body["params"]["seed"] = 13
+                expected = "CONFLICT"
+        elif failure == "wrong-scope":
+            config["grants"][0]["scope"] = "elsewhere"
+        elif failure == "profile":
+            config["descriptors"][0]["profiles"] = ["unavailable/1"]
+            expected = "UNSUPPORTED_PROFILE"
+        elif failure == "provider":
+            config["descriptors"][0]["implementation_version"] = "9.0.0"
+            expected = "UNSUPPORTED_PROFILE"
+        elif failure == "identity":
+            body["params"]["principal"] = "user:operator"
+            response = caller.call("POST", "/api/programs/fusion-inspect/act", body)
+            assert response["code"] == 400 and response["body"]["error"]["code"] == "bad_request", response
+            assert h.counts()["jobs"] == 0
+            return
+        path.write_bytes(canonical(config))
+        response = act(caller, body)
+        assert response["status"] == "refused" and response["detail"]["error"]["code"] == expected, response
+>       assert h.counts()["jobs"] == (1 if failure in {"revoked", "changed-input"} else 0)
+               ^^^^^^^^^^
+
+integration/hive/test_integration.py:236: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <tests.support.Harness object at 0x7f718e75f830>
+
+    def counts(self):
+        with sqlite3.connect(self.config["database"]) as db:
+>           counts = {table: db.execute(f"SELECT count(*) FROM {table}").fetchone()[0] for table in ("jobs", "outbox")}
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           sqlite3.OperationalError: no such table: jobs
+
+tests/support.py:87: OperationalError
+=========================== short test summary info ============================
+FAILED integration/hive/test_integration.py::test_native_path_fails_closed[profile]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 8 passed in 36.95s

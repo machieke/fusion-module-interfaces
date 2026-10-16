@@ -1,0 +1,33 @@
+{
+  "classification": "fixture/pure only",
+  "OMEGA": "BLOCKED",
+  "CHAIN": "NOT RUN",
+  "commands": [
+    {
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/.venv/bin/python3",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_contract.FixtureInProcessContract",
+        "tests.test_contract.FixtureSubprocessContract",
+        "tests.test_contract.Compatibility",
+        "tests.test_m11.FixtureInProcessRecovery",
+        "tests.test_m11.FixtureSubprocessRecovery",
+        "tests.test_m11.PortStructure",
+        "tests.test_responses",
+        "tests.test_adapters.ChainObservationTests"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 24.60842514038086,
+      "tests": 51,
+      "log": "fixture-tests.log"
+    }
+  ],
+  "demo": {
+    "runs": 2,
+    "elapsed_seconds": 2.6103300573304296,
+    "status": "PASS"
+  },
+  "status": "PASS (local selected gates only)"
+}

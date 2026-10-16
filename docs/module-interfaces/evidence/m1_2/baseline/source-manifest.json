@@ -1,0 +1,280 @@
+{
+  "repository": {
+    "path": "/home/purplezky/work/takopi/fusion-module-interfaces",
+    "initial_commit": "6d879650f56046925f85f034d5fb9eda54cd16e1",
+    "initial_worktree_status": [
+      "?? codex_fusion_m1_1_module_swap_and_omega_seam.md"
+    ],
+    "head": "ecfef54f0f0ab5b9bdce186af2e83184d10cc246",
+    "current_worktree_status": [
+      "?? codex_fusion_m1_2_real_hive_integration.md"
+    ],
+    "brief_sha256": "a7c47165d19ab526479c58931acc4aaf260e8e1c7d529a76cb9654a2cfbced17",
+    "implementation_sha256": {
+      "adapters/detta/Cargo.lock": "20f0dcecdec068b5bce8eeb9a84d0c4f980f5d8d81b57d6afafc2fd0285fe6b8",
+      "adapters/detta/src/main.rs": "0effb78769432658295a31137133b8e2d052328f6313f52316a08e88225415e4",
+      "contracts/responses.schema.json": "31d5d903d1e3523b2fad62cec9ece0ce66885abdc1e4ad37eaeeeef0f6749ab5",
+      "contracts/wire.schema.json": "7d48be45b97aab25a67c751fe0e12f3c1195d215e021329bd72fa48c378193ba",
+      "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+      "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+      "fusion/adapters/detta.py": "c7f9577ce22636d6f75745007dbb095a693c49f4ea5f5e34312a4ba9711148b0",
+      "fusion/adapters/f1r3.py": "751c099db04771ca883654d7ec20bdca5db6ea0f4e4279b774105a7e1b4af5ad",
+      "fusion/adapters/fixture_atoms.py": "478e24037d05297f7a3498572417743462eab4bef617ab5070dc6e28b907dbbd",
+      "fusion/atoms.py": "dd0659ecb446029de4a1066f76b525146969fab8f0d9a47ee38cc31cef1322ea",
+      "fusion/bindings.py": "d2570b22b85127b88fd6ccd99da72b2757d73348b2edd0ccf42e5bd5614c05c0",
+      "fusion/client.py": "c84934d3792b162c118dd9cd62268ba19377efc0addd6bc117e50e6515f49139",
+      "fusion/composition.py": "6f9dd9bad3548879741132bca438fabc6618da9ed65984b452ef443f5bb533a4",
+      "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+      "fusion/execution.py": "1eceeb2f3dc16d24f1b5a1cbb8df1f4c7e3162e867fc877b1f1d3e425dfa374f",
+      "fusion/host.py": "b901f78d1c7ceb04aa3181af7e91210d2195bf8b4ef2370f9fc53624c2e5a0ab",
+      "fusion/messaging.py": "8afdac506f05308e7a8cc61e642353c9217525d4d5e703e45c2d583a518d7406",
+      "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+      "fusion/ports.py": "60e2c28027ed6c612d788a06379fcd429e48658b9ee9e92126f9b1abd71cce04",
+      "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+      "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+      "fusion/service.py": "d3051dc88c8ec119ad98808efd5a7c5d5817b2b9bc64dce8f91b3c0be6e0b7a2",
+      "scripts/build_chain.py": "8bb5bff8b1fd323ac489eba30131783811533f63ba4ab944a86a3a8346df5873",
+      "scripts/build_detta.py": "1af1798eb33b5557c0a31410a686609005a400c6068bce3490f98ad608d80b02",
+      "scripts/chain_demo.py": "aa0b44591fe9681c00666a806abfc1d43ed7ef488a0e5cdeec4becc6ab38a01d",
+      "scripts/demo.py": "d1317daa472d8b8aa4da65cd54576ed08983e1d485b93c3a2a9f5ba37eadf034",
+      "scripts/discovery.py": "fbed1dd404e10c43a2db32914ba1e85bfd68fc4c7f3951d819ce8b9eb3cb5c13",
+      "scripts/preflight.py": "3681fa7649976a699aa71a6baecea95f25b1059fb566d5c83c5edd6c88baf8e5",
+      "scripts/schema.py": "209c1e0d53fb9e8ba9479d27e48e183fdaacae79301c8f0ab90473a81e5f0585",
+      "scripts/swap_demo.py": "435cc6fe7bda3efbd9a1237628c093493e2b645e4a45f5c0cef3197cf2e84ba0",
+      "scripts/verify.py": "a58378fde38e628aff17fdfccc43db0309a0591599255046cc8ca1433849083e",
+      "scripts/verify_m11.py": "f19b0b079ebf5dca4e88b3fb3b7d6221040eb0d6842d23ed4a8329c3aca8d325",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/support.py": "66b7a48e4c7e6ba164c8b04968e234e533c09b19807fc597087801c3982acbd3",
+      "tests/test_adapters.py": "e67bcb84d5c12eb05c6f87d9f7da6424bbf911a880afdce3586a2863439068b2",
+      "tests/test_contract.py": "a4d34e358b6f6ec1ee59fa56bb565219be56249c601df54939718f0b5f11d928",
+      "tests/test_m11.py": "5522e87ba1c8b7a4286ce3c57475808195bb45b7d34f267f27005ddaa1e87aba",
+      "tests/test_responses.py": "88b9db199eac4d91d11806bf7dc90552216e31d8503500b857a703f51663563c"
+    },
+    "lock_sha256": "86401cf2588abae1d3b4753ee8ce3e7a009311bafd4cce2e7a1675cd24e5cf25"
+  },
+  "platform": "Linux-5.4.0-216-generic-x86_64-with-glibc2.31",
+  "tools": {
+    "python": {
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/.venv/bin/python3",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "Python 3.11.14"
+    },
+    "uv": {
+      "command": [
+        "uv",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "uv 0.10.7"
+    },
+    "cargo": {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "cargo 1.88.0 (873a06493 2025-05-10)"
+    },
+    "rustc": {
+      "command": [
+        "rustc",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "rustc 1.88.0 (6b00bc388 2025-06-23)"
+    },
+    "installed_rust": {
+      "command": [
+        "rustup",
+        "toolchain",
+        "list"
+      ],
+      "returncode": 0,
+      "output": "stable-x86_64-unknown-linux-gnu (active, default)\nnightly-2025-06-15-x86_64-unknown-linux-gnu\nnightly-2025-09-14-x86_64-unknown-linux-gnu\nnightly-2026-02-09-x86_64-unknown-linux-gnu\n1.91.0-x86_64-unknown-linux-gnu"
+    },
+    "chain_rustc": {
+      "command": [
+        "rustc",
+        "+nightly-2026-02-09",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "rustc 1.95.0-nightly (6efa357bf 2026-02-08)"
+    }
+  },
+  "dependencies": {
+    "omegahive-start-here": {
+      "path": "/home/purplezky/work/takopi/omegahive-start-here",
+      "commit": "0b15d2bed730950feedc6a525d340215c0a4da1a",
+      "accessible": true,
+      "remotes": [
+        "origin\tssh://git@github.com/PhysixSNET/omegahive-start-here (fetch)",
+        "origin\tssh://git@github.com/PhysixSNET/omegahive-start-here (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "metta-attention": {
+      "path": "/home/purplezky/work/takopi/metta-attention",
+      "commit": "3e1c8147dc17299d17ab34720334fc19277cb6a9",
+      "accessible": true,
+      "remotes": [
+        "origin\tssh://git@github.com/iCog-Labs-Dev/metta-attention (fetch)",
+        "origin\tssh://git@github.com/iCog-Labs-Dev/metta-attention (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "das": {
+      "path": "/home/purplezky/work/asi/das",
+      "commit": "8afab5daa635af253ebf6776d1e3de0b54c355e7",
+      "accessible": true,
+      "remotes": [
+        "origin\thttps://github.com/singnet/das (fetch)",
+        "origin\thttps://github.com/singnet/das (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "mettaclaw": {
+      "path": "/home/purplezky/work/takopi/mettaclaw",
+      "commit": "d2da47207fecbcd9d08d3bf50b480b7f1b09bd43",
+      "accessible": true,
+      "remotes": [
+        "asi\tssh://git@github.com/asi-alliance/asi-chain-omega-claw (fetch)",
+        "asi\tssh://git@github.com/asi-alliance/asi-chain-omega-claw (push)",
+        "core\tssh://git@github.com/asi-alliance/OmegaClaw-Core (fetch)",
+        "core\tssh://git@github.com/asi-alliance/OmegaClaw-Core (push)",
+        "fork\tssh://git@github.com/machieke/mettaclaw.git (fetch)",
+        "fork\tssh://git@github.com/machieke/mettaclaw.git (push)",
+        "fork-mike\tssh://git@github.com/machieke/omegaclaw.git (fetch)",
+        "fork-mike\tssh://git@github.com/machieke/omegaclaw.git (push)",
+        "jon\tssh://git@github.com/physixCN/OmegaClaw-Core (fetch)",
+        "jon\tssh://git@github.com/physixCN/OmegaClaw-Core (push)",
+        "mike\tssh://git@github.com/jazzbox35/mettaclaw (fetch)",
+        "mike\tssh://git@github.com/jazzbox35/mettaclaw (push)",
+        "origin\tgit@github.com:patham9/mettaclaw.git (fetch)",
+        "origin\tgit@github.com:patham9/mettaclaw.git (push)",
+        "tg\tssh://git@github.com/iCog-Labs-Dev/mettaclaw.git (fetch)",
+        "tg\tssh://git@github.com/iCog-Labs-Dev/mettaclaw.git (push)"
+      ],
+      "worktree_status": [
+        "?? .venv-arc/",
+        "?? Autotests/",
+        "?? __pycache__/",
+        "?? channels/__pycache__/",
+        "?? control-ui/",
+        "?? memory/chroma_db/",
+        "?? profile/",
+        "?? proofshot-artifacts/",
+        "?? python/",
+        "?? repos/",
+        "?? scripts/",
+        "?? src/__pycache__/",
+        "?? src/lifecycle/",
+        "?? tests/"
+      ],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "reachability-atomspace-prototype": {
+      "path": "/home/purplezky/work/takopi/reachability-atomspace-prototype",
+      "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+      "accessible": true,
+      "remotes": [
+        "origin\tssh://git@github.com/machieke/reachability-atomspace-prototype (fetch)",
+        "origin\tssh://git@github.com/machieke/reachability-atomspace-prototype (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "secured-contract-spaces": {
+      "path": "/home/purplezky/work/takopi/secured-contract-spaces",
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "accessible": true,
+      "remotes": [
+        "origin\tssh://git@github.com/machieke/secured-contract-spaces (fetch)",
+        "origin\tssh://git@github.com/machieke/secured-contract-spaces (push)"
+      ],
+      "worktree_status": [
+        " M charts/detta/README.md",
+        " M charts/detta/templates/rpc-statefulset.yaml",
+        " M charts/detta/templates/validation.yaml",
+        " M charts/detta/templates/validator-statefulsets.yaml",
+        " M charts/detta/values.yaml",
+        " M crates/detta-node/src/bin/detta-node.rs",
+        " M crates/detta-node/src/lib.rs",
+        " M crates/detta-storage/src/lib.rs",
+        " M detta-da-operator-runbook.md",
+        " M detta-data-availability-layer.md",
+        " M docs/k3s-backup-restore.md",
+        " M scripts/detta-helm-chart-test.sh",
+        " M scripts/detta-k3s-backup.sh"
+      ],
+      "tracked_diff_sha256": "8c1c5fb65bf35111e8d4b348ebcef1831065b71c30ae1bac84a951f2247b195f",
+      "additional_build_sha256": {
+        "Cargo.lock": "d579374a87e589a16293793e35d09444d8cb84bc5a15533037969a684178e3e5"
+      }
+    },
+    "f1r3node-rust": {
+      "path": "/home/purplezky/work/asi/f1r3node-rust",
+      "commit": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+      "accessible": true,
+      "remotes": [
+        "machieke\tgit@github.com:machieke/f1r3node-rust.git (fetch)",
+        "machieke\tgit@github.com:machieke/f1r3node-rust.git (push)",
+        "origin\tssh://git@github.com/F1R3FLY-io/f1r3node-rust.git (fetch)",
+        "origin\tssh://git@github.com/F1R3FLY-io/f1r3node-rust.git (push)"
+      ],
+      "worktree_status": [
+        " M casper/src/rust/blocks/block_processor.rs",
+        " M casper/src/rust/blocks/proposer/block_creator.rs",
+        " M casper/src/rust/errors.rs",
+        " M casper/src/rust/rholang/mod.rs",
+        " M casper/src/rust/rholang/replay_runtime.rs",
+        " M casper/src/rust/rholang/runtime.rs",
+        " M casper/src/rust/util/rholang/interpreter_util.rs",
+        " M casper/src/rust/util/rholang/replay_failure.rs",
+        "?? casper/src/rust/rholang/deploy_resource_limits.rs"
+      ],
+      "tracked_diff_sha256": "44cdd424b690eb2fe218f611b73168b2b1b1c056b420174f1a9d15e09fe25ab6",
+      "additional_build_sha256": {
+        "Cargo.lock": "43e737467149cb12a21ec934b12f3d3f5ddc5d182e858203e4bdf292af34d5e5",
+        "rust-toolchain.toml": "cef5cc010fbd237ab34a4d07129372406e11ff8595c2efc1126d9c93e039aed4"
+      }
+    },
+    "freeciv-omegaclaw": {
+      "path": "/home/purplezky/work/takopi/freeciv-omegaclaw",
+      "commit": "19c6a79b7350a7c77c8652bdc1fa994c670fcb17",
+      "accessible": true,
+      "remotes": [
+        "fork\tssh://git@github.com/machieke/freeciv-omegaclaw (fetch)",
+        "fork\tssh://git@github.com/machieke/freeciv-omegaclaw (push)",
+        "origin\tssh://git@github.com/rojokaboti/OmegaClaw-Core (fetch)",
+        "origin\tssh://git@github.com/rojokaboti/OmegaClaw-Core (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "omega-shared-memory-pilot-archive": {
+      "path": "/home/purplezky/work/takopi/omega-shared-memory-pilot-archive",
+      "commit": "f036798c155da5afe7d18120356bbdd1d585704c",
+      "accessible": true,
+      "remotes": [
+        "origin\tssh://git@github.com/physixCN/omega-shared-memory-pilot-archive (fetch)",
+        "origin\tssh://git@github.com/physixCN/omega-shared-memory-pilot-archive (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    }
+  }
+}

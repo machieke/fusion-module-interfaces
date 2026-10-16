@@ -1,0 +1,38 @@
+{
+  "classification": "real DeTTa + independent fixture + transport tests",
+  "OMEGA": "NOT_RUN: this command exercises protocol peers only",
+  "CHAIN": "NOT_RUN",
+  "commands": [
+    {
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh/.venv/bin/python3",
+        "scripts/build_detta.py"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 19.21383854560554,
+      "tests": null,
+      "log": "build-detta.log"
+    },
+    {
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh/.venv/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 58.888568341732025,
+      "tests": 90,
+      "log": "tests.log"
+    }
+  ],
+  "demo": {
+    "runs": 4,
+    "elapsed_seconds": 5.892025399953127,
+    "status": "PASS"
+  },
+  "status": "PASS (local selected gates only)"
+}

@@ -6,6 +6,10 @@ implementation, transport and placement are separate. Maintainers/specialists ar
 
 ```mermaid
 flowchart TD
+  H[Real Hive native Programs dispatch] --> HA[Fusion inspect plugin: caller receipt only]
+  HA --> T
+  HA --> R
+  HA --> HR[Caller pending context + accepted outcome]
   A[Protocol peer A] --> R[Compatibility resolver / static descriptors]
   B[Protocol peer B] --> P[Declared module ports]
   A --> P
@@ -91,4 +95,54 @@ State ownership is explicit:
 Only one bounded worker writer runs at a time. Independent commit/replay is proven;
 remote placement, distributed transactions, journal migration and replacement of
 an already populated atom namespace are not. The swap chooses a provider for a
-fresh store. The C0–C4 catalogue above is unchanged; no cognitive service starts.
+fresh store. The C0–C4 catalogue above is unchanged; no cognitive service is
+implemented or exercised by the Fusion slice.
+
+## M1.2 native caller boundary
+
+The real Hive plugin is loaded by `HIVE_PLUGIN_DIRS` and invoked by native
+`ProgramActions.person_act → Programs.act`. Hive authenticates the operator,
+checks swarm visibility, refuses identity fields in params, and supplies trusted
+`ctx.actor` and `ctx.command`. An operator-owned exact principal/swarm mapping
+selects the existing private stdio binding, credential, scope and dedicated
+reply route. The plugin does not construct owners, read foreign tables, or add
+provider branches. Shared ports, wire version and profiles remain unchanged.
+
+The plugin owns a small SQLite receipt record: request fingerprint, pinned
+selection/context, persisted input receipt, shared-reference receipt, job
+acceptance, verified outcome and acknowledgement flag. This record is distinct
+from every provider's commit. It serializes one local caller journal and admits
+one unfinished intent per route; it is not a general runtime or memory store.
+Status `/2` plus the persisted job/correlation establishes known-job recovery.
+Unknown deliveries are never consumed as this intent's result.
+
+```mermaid
+sequenceDiagram
+  participant H as Native Hive action
+  participant C as Caller receipt
+  participant A as AtomStorage
+  participant E as Execution + worker
+  participant M as Messaging
+  H->>C: Commit original intent
+  H->>A: create with stable key
+  A-->>H: Scoped reference + actual persistence receipt
+  H->>M: Send reference to fixture counterparty
+  H->>E: Submit inspect_atom with stable key/correlation
+  E-->>H: Durable job acceptance
+  H->>C: Commit pending context
+  E->>A: Read input, persist deterministic result
+  E->>E: Commit terminal state + outbox
+  E->>M: Durably accept completion
+  H->>E: Recover known job using status /2
+  H->>M: Poll correlated completion
+  H->>A: Retrieve and verify result
+  H->>C: Commit one logical accepted outcome
+  H->>M: Acknowledge with stable key
+  H->>C: Record acknowledgement
+```
+
+Caller death after any caller commit leaves a recoverable receipt. A lost native
+admission response replays the same input and keys. A crash after outcome commit
+rechecks current authority and acknowledges redelivery without a second outcome
+row. Exactly-once physical execution, power-loss survival and distributed failover
+are not inferred. No chain operation or cognitive controller is added.

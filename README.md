@@ -1,7 +1,10 @@
-# Omega ↔ ASI module interfaces: M0 / M1 / M1.1
+# Omega ↔ ASI module interfaces: through M1.2
 
 A backend-neutral contract package and bounded storage, mailbox and delegated
-execution conformance slice. Peers are **protocol fixtures**, not Omega agents.
+execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
+pinned native Hive Programs caller through the existing validated interfaces;
+its counterparty remains a fixture. See the [M1.2 report](docs/module-interfaces/m1_2-evidence.md)
+and [source/build recipe](docs/module-interfaces/runbook.md).
 The storage integration calls the real DeTTa DA and FileStorage libraries from
 the inspected `secured-contract-spaces` checkout. It does not run consensus.
 
@@ -21,8 +24,9 @@ Read [architecture](docs/module-interfaces/architecture.md),
 [decisions](docs/module-interfaces/decisions.md), and
 [M1.1 evidence](docs/module-interfaces/m1_1-evidence.md).
 The [original M1 evidence](docs/module-interfaces/evidence.md) is historical.
-OMEGA is blocked by absent intended runtime source; M1.1 does not rerun the
-optional real chain gate. M2 is not implemented.
+The M1.1 blocked runtime observation remains historical; M1.2 uses the revision
+identified by the supplied `omegahive-schematics`. The optional chain gate is
+separate and is not rerun in M1.2. M2 is not implemented.
 
 The [conference presentation](docs/presentation/README.md) provides the system
 original M0/M1 overview, module responsibilities, dependency diagrams and

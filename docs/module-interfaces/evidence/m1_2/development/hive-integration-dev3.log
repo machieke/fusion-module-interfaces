@@ -1,0 +1,42 @@
+...........F.                                                            [100%]
+=================================== FAILURES ===================================
+___________________ test_native_path_fails_closed[identity] ____________________
+
+setup = (<tests.support.Harness object at 0x7f116b00a480>, <test_integration.Caller object at 0x7f116b009e50>, {'service_confi...'swarm_id': 's_4bbf2030', 'action': 'inspect', 'items': [], 'params': {'seed': 12, 'principal': 'user:operator'}, ...})
+failure = 'identity'
+
+    @pytest.mark.parametrize("failure", ["wrong-scope", "revoked", "profile", "provider", "identity", "changed-input"])
+    def test_native_path_fails_closed(setup, failure):
+        h, caller, config, path, body = setup
+        expected = "UNAUTHORIZED"
+        if failure in {"revoked", "changed-input"}:
+            assert act(caller, body)["status"] == "started"
+            if failure == "revoked":
+                complete(h, caller, body)
+                h.config["principals"]["A"]["scopes"] = {}
+                h.save()
+            else:
+                body["params"]["seed"] = 13
+                expected = "CONFLICT"
+        elif failure == "wrong-scope":
+            config["grants"][0]["scope"] = "elsewhere"
+        elif failure == "profile":
+            config["descriptors"][0]["profiles"] = ["unavailable/1"]
+            expected = "UNSUPPORTED_PROFILE"
+        elif failure == "provider":
+            config["descriptors"][0]["implementation_version"] = "9.0.0"
+            expected = "UNSUPPORTED_PROFILE"
+        elif failure == "identity":
+            body["params"]["principal"] = "user:operator"
+            response = caller.call("POST", "/api/programs/fusion-inspect/act", body)
+>           assert response["code"] == 400 and response["body"]["error"]["code"] == "bad_request", response
+E           AssertionError: {'code': 400, 'body': {'error': {'code': 'identity_in_request', 'message': 'the hive sets who acts; remove principal'}}}
+E           assert (400 == 400 and 'identity_in_request' == 'bad_request'
+E             
+E             - bad_request
+E             + identity_in_request)
+
+integration/hive/test_integration.py:252: AssertionError
+=========================== short test summary info ============================
+FAILED integration/hive/test_integration.py::test_native_path_fails_closed[identity]
+1 failed, 12 passed in 47.29s

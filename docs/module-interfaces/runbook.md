@@ -9,7 +9,8 @@ developer for `PhysixSNET/omegahive` and `machieke/secured-contract-spaces`;
 the recipe uses batch mode and strict host-key checking. It never obtains or
 bundles credentials. Public PeTTa and SWI sources use HTTPS.
 
-Required Linux tools: uv, Git, C/C++ compiler, CMake, Ninja, pkg-config, Rust/Cargo,
+Required Linux tools: uv, Git, C/C++ compiler, CMake, Ninja, pkg-config, Rust/Cargo
+1.88.0 (the tested toolchain),
 and native headers for GMP, OpenSSL, PCRE2 and zlib. The inspected upstream recipe
 also recommends libarchive, libyaml and libedit headers; this host lacks those
 optional packages. Record CMake's actual package selection. The supported slice
@@ -30,6 +31,14 @@ independently of cache type. Hash-locked native requirements are installed with
 `--no-cache --no-binary janus-swi`, so Janus is compiled against this prefix.
 The build backend is pinned separately. Source submodule commits come from the
 pinned SWI tree. The recipe does not claim coverage of other platforms.
+
+Cargo is deliberately invoked offline with checked-in locks. Its crates.io
+downloads must be populated already. On a host without them, an online
+`cargo fetch --locked --manifest-path artifacts/detta-build/Cargo.toml` can populate
+the adapter cache after `scripts/build_detta.py` has written that manifest and
+reported the cache miss. Populate the selected upstream checkout's locked Cargo
+dependencies too. That empty-cache preparation was not exercised in this run;
+no private or unlisted compiled artifacts are required by the warm-cache recipe.
 
 Verification first runs fixture-only checks with deliberately absent DeTTa/Hive
 paths, then the four-way M1.1 matrix against clean real DeTTa, upstream DA/storage,

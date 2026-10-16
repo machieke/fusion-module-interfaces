@@ -166,6 +166,22 @@ digest carries the full semantic wire fingerprint across independent commits;
 it is not a capability or caller identity. All wire operations below use version
 1.0.0. A/B are protocol fixtures; no row is an Omega integration claim.
 
+## M1.2 native consumer, unchanged module contracts
+
+The pinned Hive Programs plugin is an additional real consumer of the same
+validated stdio boundary. Its native `inspect` action translates only generated
+sample input into existing `create`, `send`, `submit`, `status`, `result`, `get`,
+`poll` and `ack` operations. It adds no wire operation, profile, descriptor field,
+backend branch or mathematical implementation.
+
+The caller persists its own intent/context and accepted outcome. Reconciliation
+requires the same native key and semantic input, current authorization, the
+original configured selection, and status `/2` for the known job. Its pending
+receipt does not imply execution or mailbox acceptance; a native `done` result
+requires verified completion and successful acknowledgement. One outcome identity
+may be returned repeatedly on request replay. This is logical deduplication, not
+exactly-once display, physical execution or arbitrary external side effects.
+
 | Declared method → wire operation | Owning implementation | Actual caller/context | Persistence/effect | Executed conformance |
 |---|---|---|---|---|
 | AtomStorage.create(Mutation, type, bytes) → create | AtomOwner or FileAtomFixture via AuthorizedAtoms | Service: authenticated requester; ExecutionOwner.work_one: bound worker | Atom owner's durable scoped replay; stable `result/job_id` worker key | Shared ContractCases + RecoveryCases, both providers/bindings |

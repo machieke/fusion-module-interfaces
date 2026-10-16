@@ -1,0 +1,279 @@
+{
+  "recorded_utc": "2026-10-16T12:39:18.696613+00:00",
+  "repository": {
+    "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh",
+    "initial_commit": "6d879650f56046925f85f034d5fb9eda54cd16e1",
+    "initial_worktree_status": [
+      "?? codex_fusion_m1_1_module_swap_and_omega_seam.md"
+    ],
+    "head": "bb22ef5e28b089b80132b40bcf5a1bbfc38b065b",
+    "current_worktree_status": [],
+    "brief_sha256": "a7c47165d19ab526479c58931acc4aaf260e8e1c7d529a76cb9654a2cfbced17",
+    "m12_brief_sha256": "55c2e16a6cf31aadd31fdcc1a38ed0b8c98a5a9272c01d82307f5a63dbddca03",
+    "implementation_sha256": {
+      "adapters/detta/Cargo.lock": "20f0dcecdec068b5bce8eeb9a84d0c4f980f5d8d81b57d6afafc2fd0285fe6b8",
+      "adapters/detta/src/main.rs": "0effb78769432658295a31137133b8e2d052328f6313f52316a08e88225415e4",
+      "contracts/responses.schema.json": "31d5d903d1e3523b2fad62cec9ece0ce66885abdc1e4ad37eaeeeef0f6749ab5",
+      "contracts/wire.schema.json": "7d48be45b97aab25a67c751fe0e12f3c1195d215e021329bd72fa48c378193ba",
+      "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+      "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+      "fusion/adapters/detta.py": "c7f9577ce22636d6f75745007dbb095a693c49f4ea5f5e34312a4ba9711148b0",
+      "fusion/adapters/f1r3.py": "751c099db04771ca883654d7ec20bdca5db6ea0f4e4279b774105a7e1b4af5ad",
+      "fusion/adapters/fixture_atoms.py": "478e24037d05297f7a3498572417743462eab4bef617ab5070dc6e28b907dbbd",
+      "fusion/atoms.py": "dd0659ecb446029de4a1066f76b525146969fab8f0d9a47ee38cc31cef1322ea",
+      "fusion/bindings.py": "d2570b22b85127b88fd6ccd99da72b2757d73348b2edd0ccf42e5bd5614c05c0",
+      "fusion/client.py": "c84934d3792b162c118dd9cd62268ba19377efc0addd6bc117e50e6515f49139",
+      "fusion/composition.py": "6f9dd9bad3548879741132bca438fabc6618da9ed65984b452ef443f5bb533a4",
+      "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+      "fusion/execution.py": "1eceeb2f3dc16d24f1b5a1cbb8df1f4c7e3162e867fc877b1f1d3e425dfa374f",
+      "fusion/host.py": "b901f78d1c7ceb04aa3181af7e91210d2195bf8b4ef2370f9fc53624c2e5a0ab",
+      "fusion/messaging.py": "8afdac506f05308e7a8cc61e642353c9217525d4d5e703e45c2d583a518d7406",
+      "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+      "fusion/ports.py": "60e2c28027ed6c612d788a06379fcd429e48658b9ee9e92126f9b1abd71cce04",
+      "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+      "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+      "fusion/service.py": "d3051dc88c8ec119ad98808efd5a7c5d5817b2b9bc64dce8f91b3c0be6e0b7a2",
+      "integration/hive/build-constraints.txt": "5b96a1b3ab68ccbd56cda1f7d56e804b7ac05194b86762b3763c84c13a92cfeb",
+      "integration/hive/native_caller.py": "76fdeac6936827957760b7525f2a16308c783cd99746335541f30043392e3bbb",
+      "integration/hive/program/plugin.json": "fc807dd0d204c2f02e0bce840ff583e0d4168f0a7327dafedd3dcfee3757ee11",
+      "integration/hive/program/program.py": "60b76d4f0015953b90776f0fb4862a2b66eb40244657245680d8a86b75a5fd08",
+      "integration/hive/requirements.in": "4f27a8ac13d64dbcc144a9106f62d8b6ea9b3e4c80cd8056659af27660f24c15",
+      "integration/hive/requirements.lock": "c40f127fba4705d4a7d32600455aa2cd86a9030e4c44066aa3ad23efeb882a83",
+      "integration/hive/sources.json": "d28f2e24ca5273ea4530b693da1474964d4aff013db09fc09488ed08c164501c",
+      "integration/hive/test_integration.py": "d8ebb819adeaa303537b5d3ae69ea49a0aa99b689199cd1a4e96c9dc34adfdc2",
+      "scripts/build_chain.py": "8bb5bff8b1fd323ac489eba30131783811533f63ba4ab944a86a3a8346df5873",
+      "scripts/build_detta.py": "1af1798eb33b5557c0a31410a686609005a400c6068bce3490f98ad608d80b02",
+      "scripts/build_hive.py": "674aed3bcb85d0b29f48c697f956d35affb5dd8c7c3997968468d57a057ebd7f",
+      "scripts/chain_demo.py": "aa0b44591fe9681c00666a806abfc1d43ed7ef488a0e5cdeec4becc6ab38a01d",
+      "scripts/demo.py": "d1317daa472d8b8aa4da65cd54576ed08983e1d485b93c3a2a9f5ba37eadf034",
+      "scripts/discovery.py": "89641bc5e17a6f48b9b0a594106a80c0418c7593f3389842eef1c20b07c8dc64",
+      "scripts/preflight.py": "5cd2e246a0e5a8a7fcc63c7c86b6aa4d99843df1103ff966fc3bc4d0818979c7",
+      "scripts/schema.py": "209c1e0d53fb9e8ba9479d27e48e183fdaacae79301c8f0ab90473a81e5f0585",
+      "scripts/swap_demo.py": "c177b61adecb348a45a0138955578ec7af47a96a58d8143fec103c3d71d0a6ed",
+      "scripts/verify.py": "a58378fde38e628aff17fdfccc43db0309a0591599255046cc8ca1433849083e",
+      "scripts/verify_m11.py": "8a0aa150e48b8fa69f2ed59e1f79ccc42462260449d0dd760064c7d2135a454a",
+      "scripts/verify_m12.py": "9b0c31d4dca642edf103b2e2491eb2f300432f3c8888e30c61fb3e24da728184",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/support.py": "66b7a48e4c7e6ba164c8b04968e234e533c09b19807fc597087801c3982acbd3",
+      "tests/test_adapters.py": "e67bcb84d5c12eb05c6f87d9f7da6424bbf911a880afdce3586a2863439068b2",
+      "tests/test_contract.py": "a4d34e358b6f6ec1ee59fa56bb565219be56249c601df54939718f0b5f11d928",
+      "tests/test_m11.py": "5522e87ba1c8b7a4286ce3c57475808195bb45b7d34f267f27005ddaa1e87aba",
+      "tests/test_responses.py": "88b9db199eac4d91d11806bf7dc90552216e31d8503500b857a703f51663563c"
+    },
+    "lock_sha256": "86401cf2588abae1d3b4753ee8ce3e7a009311bafd4cce2e7a1675cd24e5cf25"
+  },
+  "platform": "Linux-5.4.0-216-generic-x86_64-with-glibc2.31",
+  "tools": {
+    "python": {
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh/.venv/bin/python3",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "Python 3.11.14"
+    },
+    "uv": {
+      "command": [
+        "uv",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "uv 0.10.7"
+    },
+    "cargo": {
+      "command": [
+        "cargo",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "cargo 1.88.0 (873a06493 2025-05-10)"
+    },
+    "rustc": {
+      "command": [
+        "rustc",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "rustc 1.88.0 (6b00bc388 2025-06-23)"
+    },
+    "installed_rust": {
+      "command": [
+        "rustup",
+        "toolchain",
+        "list"
+      ],
+      "returncode": 0,
+      "output": "stable-x86_64-unknown-linux-gnu (active, default)\nnightly-2025-06-15-x86_64-unknown-linux-gnu\nnightly-2025-09-14-x86_64-unknown-linux-gnu\nnightly-2026-02-09-x86_64-unknown-linux-gnu\n1.91.0-x86_64-unknown-linux-gnu"
+    },
+    "chain_rustc": {
+      "command": [
+        "rustc",
+        "+nightly-2026-02-09",
+        "--version"
+      ],
+      "returncode": 0,
+      "output": "rustc 1.95.0-nightly (6efa357bf 2026-02-08)"
+    }
+  },
+  "gates": {
+    "fixture_prerequisites": {
+      "status": "AVAILABLE",
+      "command": "uv run --python 3.11 python scripts/verify_m11.py --fixture-only"
+    },
+    "real_detta_prerequisites": {
+      "status": "AVAILABLE_NOT_YET_TESTED",
+      "missing": [],
+      "command": "uv run --python 3.11 python scripts/verify_m11.py",
+      "cache_requirement": "cargo build --offline --locked must succeed; no fixture substitution"
+    },
+    "clean_checkout_reproduction": {
+      "status": "NOT_RUN",
+      "reason": "Preflight does not execute reproduction. M1.2 pins and recipe are in integration/hive and scripts/build_hive.py; historical dirty DeTTa/F1R3 bytes remain undistributed. See the run-specific evidence."
+    },
+    "OMEGA": {
+      "status": "AVAILABLE_NOT_YET_TESTED",
+      "expected_repository": "PhysixSNET/omegahive",
+      "expected_path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh/artifacts/native/sources/omegahive",
+      "path_exists": true,
+      "hive_directory_exists": true,
+      "verified_entrypoint": "hive.core.programs:Programs.act",
+      "verified_runtime_command": "python -m hive",
+      "source_entrypoint": "hive.core.app:create_app -> POST /api/programs/{id}/act -> Programs.act",
+      "reason": "Pinned source available; native dependencies and dispatch must still be tested."
+    },
+    "CHAIN": {
+      "status": "NOT_RUN",
+      "command": "See docs/module-interfaces/runbook.md optional isolated chain commands; fixtures do not pass this gate."
+    }
+  },
+  "dependencies": {
+    "omegahive": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh/artifacts/native/sources/omegahive",
+      "accessible": true,
+      "commit": "34b0fb32ab3806e5609fc89bb7535518a35e1aea",
+      "remotes": [
+        "origin\tgit@github.com:PhysixSNET/omegahive.git (fetch)",
+        "origin\tgit@github.com:PhysixSNET/omegahive.git (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "omegahive-schematics": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/omegahive-schematics",
+      "accessible": false,
+      "commit": null,
+      "remotes": null,
+      "worktree_status": null,
+      "tracked_diff_sha256": null,
+      "additional_build_sha256": {}
+    },
+    "omegahive-start-here": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/omegahive-start-here",
+      "accessible": false,
+      "commit": null,
+      "remotes": null,
+      "worktree_status": null,
+      "tracked_diff_sha256": null,
+      "additional_build_sha256": {}
+    },
+    "metta-attention": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/metta-attention",
+      "accessible": false,
+      "commit": null,
+      "remotes": null,
+      "worktree_status": null,
+      "tracked_diff_sha256": null,
+      "additional_build_sha256": {}
+    },
+    "das": {
+      "path": "/home/purplezky/work/asi/das",
+      "accessible": true,
+      "commit": "8afab5daa635af253ebf6776d1e3de0b54c355e7",
+      "remotes": [
+        "origin\thttps://github.com/singnet/das (fetch)",
+        "origin\thttps://github.com/singnet/das (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {}
+    },
+    "mettaclaw": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/mettaclaw",
+      "accessible": false,
+      "commit": null,
+      "remotes": null,
+      "worktree_status": null,
+      "tracked_diff_sha256": null,
+      "additional_build_sha256": {}
+    },
+    "reachability-atomspace-prototype": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/reachability-atomspace-prototype",
+      "accessible": false,
+      "commit": null,
+      "remotes": null,
+      "worktree_status": null,
+      "tracked_diff_sha256": null,
+      "additional_build_sha256": {}
+    },
+    "secured-contract-spaces": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/fresh/artifacts/native/sources/secured-contract-spaces",
+      "accessible": true,
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "remotes": [
+        "origin\tssh://git@github.com/machieke/secured-contract-spaces (fetch)",
+        "origin\tssh://git@github.com/machieke/secured-contract-spaces (push)"
+      ],
+      "worktree_status": [],
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "additional_build_sha256": {
+        "Cargo.lock": "d579374a87e589a16293793e35d09444d8cb84bc5a15533037969a684178e3e5"
+      }
+    },
+    "f1r3node-rust": {
+      "path": "/home/purplezky/work/asi/f1r3node-rust",
+      "accessible": true,
+      "commit": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+      "remotes": [
+        "machieke\tgit@github.com:machieke/f1r3node-rust.git (fetch)",
+        "machieke\tgit@github.com:machieke/f1r3node-rust.git (push)",
+        "origin\tssh://git@github.com/F1R3FLY-io/f1r3node-rust.git (fetch)",
+        "origin\tssh://git@github.com/F1R3FLY-io/f1r3node-rust.git (push)"
+      ],
+      "worktree_status": [
+        " M casper/src/rust/blocks/block_processor.rs",
+        " M casper/src/rust/blocks/proposer/block_creator.rs",
+        " M casper/src/rust/errors.rs",
+        " M casper/src/rust/rholang/mod.rs",
+        " M casper/src/rust/rholang/replay_runtime.rs",
+        " M casper/src/rust/rholang/runtime.rs",
+        " M casper/src/rust/util/rholang/interpreter_util.rs",
+        " M casper/src/rust/util/rholang/replay_failure.rs",
+        "?? casper/src/rust/rholang/deploy_resource_limits.rs"
+      ],
+      "tracked_diff_sha256": "44cdd424b690eb2fe218f611b73168b2b1b1c056b420174f1a9d15e09fe25ab6",
+      "additional_build_sha256": {
+        "Cargo.lock": "43e737467149cb12a21ec934b12f3d3f5ddc5d182e858203e4bdf292af34d5e5",
+        "rust-toolchain.toml": "cef5cc010fbd237ab34a4d07129372406e11ff8595c2efc1126d9c93e039aed4"
+      }
+    },
+    "freeciv-omegaclaw": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/freeciv-omegaclaw",
+      "accessible": false,
+      "commit": null,
+      "remotes": null,
+      "worktree_status": null,
+      "tracked_diff_sha256": null,
+      "additional_build_sha256": {}
+    },
+    "omega-shared-memory-pilot-archive": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/omega-shared-memory-pilot-archive",
+      "accessible": false,
+      "commit": null,
+      "remotes": null,
+      "worktree_status": null,
+      "tracked_diff_sha256": null,
+      "additional_build_sha256": {}
+    }
+  }
+}

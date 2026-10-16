@@ -1,0 +1,61 @@
+Building SWI-Prolog V10.1.14 (https://github.com/SWI-Prolog/swipl-devel.git) against /home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/bin/python3.12 into /home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/swipl ...
+Note: switching to '69775434c8226897626b226aefcc8266499f1e2e'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+From https://github.com/SWI-Prolog/packages-clib
+ * branch            a69cf00dcf0dd2e3ac1aa9565fbebf4aa4ceb5da -> FETCH_HEAD
+From https://github.com/SWI-Prolog/packages-clpqr
+ * branch            150ab4d51ee28949b2c7c1e4e97044b81b177d1c -> FETCH_HEAD
+From https://github.com/SWI-Prolog/packages-cpp
+ * branch            2fb77731288c56c41d5c887b715eba281683e138 -> FETCH_HEAD
+From https://github.com/SWI-Prolog/packages-json
+ * branch            bec09e0c73f32cf120603119343346becf10553b -> FETCH_HEAD
+From https://github.com/SWI-Prolog/packages-libedit
+ * branch            0a4052966a372fec2a12fd34a30a2e8f8c2dd7fb -> FETCH_HEAD
+From https://github.com/SWI-Prolog/packages-plunit
+ * branch            d95c36aa97484cf43ad0e5b696548e29d6dce4cf -> FETCH_HEAD
+From https://github.com/SWI-Prolog/packages-sgml
+ * branch            58fd0c588ca5ec810606b7037121d48b4d883f20 -> FETCH_HEAD
+From https://github.com/SWI-Prolog/packages-ssl
+ * branch            07e4afd5087a5decdff1de63ab25dc4f28af24dc -> FETCH_HEAD
+-- Configuring SWI-Prolog-10.1.14
+-- The following SWI-Prolog packages are disabled because the required sources are not installed:
+inclpr mqi ltx2htm nlp paxos redis stomp PDT pengines pldoc protobufs RDF semweb sweep table bdb tipc xpce
+Use one of the commands below to add all packages or specific packages
+
+   git -C .. submodule update --init  
+   git -C .. submodule update --init packages/<pkg>
+
+-- Checking for recursive mutex support
+-- Checking for recursive mutex support -- found
+-- qsort_r() has GNU signature
+-- llround(nextoward(0.5),-10) == 0 (ok)
+-- copysign(1.0, modf(-0.0, _)) == -1.0 (ok)
+-- Searching for jQuery
+-- No system jquery.js; using our own
+-- Finding default package generator
+-- Setup for packaging with DEB
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    Python3_EXECUTABLE
+    Python3_ROOT_DIR
+    SWIPL_PACKAGES_QT
+    SWIPL_PACKAGES_X
+
+
+janus would not build against /home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu (logs kept in /tmp/swipl-build.VUcksHe4/src)

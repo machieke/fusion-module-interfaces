@@ -145,8 +145,43 @@ reinterpreting metadata or dropping state. Independent replacement is demonstrat
 on fresh stores, not as live data migration or instant substitution of populated
 namespaces. Existing M1 evidence and presentation remain historical snapshots.
 
-The intended PhysixSNET/omegahive runtime remains unavailable. The onboarding
+At M1.1 the intended PhysixSNET/omegahive runtime remained unavailable. The onboarding
 index and separately inspected hive-appliance do not identify an executable Hive
 consumer. No Omega-named wrapper around Peer is introduced. The real Omega seam
 is blocked until authorized runtime source, revision and startup entrypoint exist;
 see discovery and the M1.1 evidence report. M2 remains a subsequent task.
+
+## ADR 007 — pinned native Programs seam and caller recovery (M1.2)
+
+The user supplied `omegahive-schematics` at `4af00db4e395375484dd48d0b9068a59afcf01f8`.
+Its component map names Hive revision `34b0fb3`; authorized SSH retrieval resolves
+that to `34b0fb32ab3806e5609fc89bb7535518a35e1aea`. Use this revision for the bounded
+engineering gate. This is not selection of the community's final product release;
+the remote HEAD observed during discovery is recorded separately.
+
+Reuse the native Programs operator action and plugin loader. The native caller
+must authenticate and traverse dispatch; importing `Peer` in a test is insufficient.
+Keep model and mind execution out of this deterministic gate. TestClient supplies
+only an ASGI test transport around the actual app, startup lock/recovery, default
+Supervisor and PeTTa. It does not substitute runtime behavior or expose a server.
+
+The optional native `person_activity` mechanism requires named-person sessions;
+its running action record can remain `in_progress` after SIGKILL. The supported
+local operator action path does not own a durable receipt for this external job.
+Use that existing path and a minimal plugin-owned receipt, without an upstream
+patch or writes to `program_actions`. Stable request identity is supplied by the
+host's command. Every retry rechecks current module authority; historical success
+never grants access. One pending intent per dedicated reply route bounds recovery.
+
+Rebaseline DeTTa from the obtainable clean historical HEAD, not the undistributed
+working changes. Those changes include binary-share persistence/migration and
+custody pruning beyond this opaque fresh-store slice. The clean source has 38
+storage tests versus the historical dirty source's 40. Rerun conformance and
+upstream tests; retain historical evidence. No live namespace or journal migration
+is implied by a clean-provider pass. F1R3 source/build remains a separate gate.
+
+Native build pins follow the inspected Hive recipe: Python 3.12, SWI 10.1.14,
+PeTTa `ae66fa8`, Janus 1.5.3. Pin Python patch version and package hashes for this
+tested Linux environment. Correct the CMake cache-type assumption in Fusion's
+build recipe, check both live bridges, and leave upstream source unmodified.
+The build recipe intentionally excludes the unrelated chromadb/mind smoke setup.
