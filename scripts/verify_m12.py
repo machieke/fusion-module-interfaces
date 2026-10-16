@@ -11,7 +11,6 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from scripts.preflight import preflight, sha
 
 
 def main(environment):
@@ -21,6 +20,8 @@ def main(environment):
     # Do not let a copied environment file silently import another Fusion tree.
     env["PYTHONPATH"] = os.pathsep.join([str(ROOT), env["HIVE_REPO"]])
     os.environ.update({k: env[k] for k in ("HIVE_REPO", "DETTA_REPO")})
+    # Discovery resolves configured paths at import time, after these overrides.
+    from scripts.preflight import preflight, sha
     output = ROOT / "artifacts/m1_2"
     output.mkdir(parents=True, exist_ok=True)
     env["FUSION_HIVE_EVIDENCE"] = str(output)
