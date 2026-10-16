@@ -6,7 +6,10 @@ There are no blocked prerequisites. **CHAIN is NOT_RUN.**
 The [machine manifest](evidence/m3/manifest.json), [complete final verification](evidence/m3/final/verification.json),
 [comparison](evidence/m3/final/comparison.json), executable [contracts](contracts.md),
 [ownership diagrams](architecture.md) and [runbook](runbook.md) retain the evidence.
-This increment stops at M3. The presentation still describes M2.
+This increment stops at M3. The [conference presentation](../presentation/README.md)
+now covers M3, including the ELI16 summary, ownership/dependency diagrams, native
+inference, attention replacement, recovery and limitations. The presentation
+update changes no runtime or machine evidence and does not rerun integration gates.
 
 ## Exact source state
 

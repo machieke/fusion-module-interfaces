@@ -1,43 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Contract gaps are resolved before adding behavior</title>
-<desc id="desc">C1 profile is episode-local-sequence/2; C2 is pln-revision-private/1. Local interface version is 2.0.0, implementation 0.2.0. No new remote cognitive wire schema or M1 mutation route was added. EpisodeRef is stable while head tracks committed sequence; observed time is metadata. Evidence distinguishes report and explicit numerical assessment. Grounded claims use exact predicate, ordered string arguments and positive polarity plus exact context. A contrary low-strength assessment of the same claim differs from a negated claim. Admission admitted/duplicate is independent of initialized/revised/no-change/retained-alternative/model-inapplicable. Every attempt binds semantic input and selection. The separate belief.revision.assume permission authorizes pair assumptions; it is not an invented public method.</desc>
+<title id="title">Executable contracts make the inference step finite</title>
+<desc id="desc">The contracts use closed bounded DTOs and detach nested request inputs before authorization or foreign calls. A task binds P,Q,R,P⇒Q,Q⇒R to exact private references. Premise vectors record each belief&#x27;s historical revision and support ID; the upstream knowledge revision of zero is only a local evaluation ID, not a global ledger. Derived support tags distinguish observation, two-local-premise revision and five-foreign-premise deduction. C2 local v3 is explicit and does not widen M2 v2. WorkBudget contains an absolute Unix-ms deadline, max_candidates, max_rule_applications and max_feedback_generation. Historical reads and recovered owner responses are validated against the exact request.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / C1 + C2 LOCAL CONTRACTS</text>
-<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Contract gaps are resolved before adding behavior</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Local v2 contracts state identity, ordering, numerical meaning and replay explicitly.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">QUESTION</text>
-<text x="478" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EXPLICIT CHOICE</text>
-<text x="1038" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONSEQUENCE</text>
-<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">What identifies an</text>
-<text x="88" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">episode?</text>
-<text x="478" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Stable scope + ID; separate mutable head</text>
-<text x="1038" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">History grows without changing identity</text>
-<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">What is a new occurrence?</text>
-<text x="478" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Occurrence ID distinct from bytes and key</text>
-<text x="1038" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Same bytes can describe distinct events</text>
-<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">What counts as evidence?</text>
-<text x="478" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Explicit assessment + admitted provenance</text>
-<text x="1038" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">A report alone has no truth value</text>
-<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">What claim is revised?</text>
-<text x="478" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Exact predicate, ordered arguments, polarity,</text>
-<text x="478" y="588.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">context</text>
-<text x="1038" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No hidden semantic or negation</text>
-<text x="1038" y="588.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">conversion</text>
-<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">What did submit do?</text>
-<text x="478" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Admission outcome + numerical outcome</text>
-<text x="1038" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Accepted evidence may stay an</text>
-<text x="1038" y="669.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">alternative</text>
-<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">What is retried?</text>
-<text x="478" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Full semantic input + pinned runtime</text>
-<text x="478" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">selection</text>
-<text x="1038" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Same key cannot acquire new meaning</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / CONTRACT DECISIONS BEFORE BEHAVIOR</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Executable contracts make the inference step finite</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The supported task is explicit, immutable and grounded before the controller starts.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONTRACT</text>
+<text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT IS FIXED</text>
+<text x="1043" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHY IT MATTERS</text>
+<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Context + task</text>
+<text x="418" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Private context; exact role references</text>
+<text x="1043" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Labels cannot merge distinct identities</text>
+<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Workset</text>
+<text x="418" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">1–16 unique immutable tasks</text>
+<text x="1043" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No search or automatic task</text>
+<text x="1043" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">expansion</text>
+<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Premise snapshot</text>
+<text x="418" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Claim / context / revision / support ID</text>
+<text x="1043" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No silent substitution with latest state</text>
+<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Derived support</text>
+<text x="418" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Closed tag + inherited roots / ancestry</text>
+<text x="1043" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No fresh observation or evidence</text>
+<text x="1043" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">count</text>
+<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Work budget</text>
+<text x="418" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Candidates, attempts, generation, deadline</text>
+<text x="1043" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Restart cannot silently refill the</text>
+<text x="1043" y="711.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">allowance</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Profile mismatch, malformed response or changed semantic intent fails explicitly.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / memory_types.py · memory_contracts.py · ADR 008/009</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">13 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / attention_contracts.py · cognition_contracts.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">13 / 40</text>
 </svg>

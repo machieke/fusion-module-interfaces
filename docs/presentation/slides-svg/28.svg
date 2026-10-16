@@ -1,39 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Reproducibility binds source, build and execution</title>
-<desc id="desc">The fresh build took 337.325 seconds, including 139.055 seconds for native SWI/Janus/Hive. Its native-build record names 6452fa7 because provider construction began before the M2 commits; the native recipe/locks and compiled DeTTa adapter source were unchanged, and the recipe hash matches the committed M2 build script. Final Fusion verification separately used clean detached d9e75773c34987d5791a9207190fcbf0a8c1fd7b. Exact source hashes, built binary digest, commands, logs and provider-cleanliness checks remain recorded. All six provider trees remained clean. No native target, venv or compiled object was copied from the original workspace. Globally empty-cache builds are NOT_RUN. The binary digest identifies the selected built runtime, not cross-host bit reproducibility. This deck updates presentation artifacts only and does not rerun native gates.</desc>
+<title id="title">M3 gates: contracts and independent cognition</title>
+<desc id="desc">Statuses are read from the committed M3 manifest and match the final verifier. A pass applies to the gate&#x27;s stated evidence, not to every possible provider or deployment. REPRO explicitly uses warm download caches but fresh build outputs. CHAIN is NOT_RUN and no required M3 prerequisite is blocked. Exact historical chain-source reproduction remains blocked by unavailable dirty inputs, a separate historical question. SCOPE excludes LTI, general search, new attention research, live migration and chain. All source, log and implementation hashes are retained for audit.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / REPRODUCTION EVIDENCE</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproducibility binds source, build and execution</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The final code is tested from a clean detached checkout; native inputs are independently pinned.</text>
-<rect x="72" y="252" width="464" height="304" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="94" y="303.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">1 · Fetch exact sources</text>
-<text x="94" y="349.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Hive + DeTTa via authorized</text>
-<text x="94" y="383.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">SSH; Reachability, PLN, PeTTa</text>
-<text x="94" y="418.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and SWI at full commits.</text>
-<rect x="568" y="252" width="464" height="304" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="590" y="303.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">2 · Build fresh</text>
-<text x="590" y="343.13" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">providers</text>
-<text x="590" y="389.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">New native objects, venv,</text>
-<text x="590" y="423.57" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Janus and DeTTa target.</text>
-<text x="590" y="458.13" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Download caches may be</text>
-<text x="590" y="492.69" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">warm.</text>
-<rect x="1064" y="252" width="464" height="304" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1086" y="303.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">3 · Verify exact Fusion</text>
-<text x="1086" y="349.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Clean d9e7577 checkout. All</text>
-<text x="1086" y="383.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">supported gates; exact</text>
-<text x="1086" y="418.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">commands, hashes and logs</text>
-<text x="1086" y="453.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">retained.</text>
-<rect x="72" y="602" width="704" height="137" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="651.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Observed build: 337.325 seconds</text>
-<text x="94" y="692.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">A build observation on this host; no throughput or</text>
-<text x="94" y="722.4100000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">latency claim.</text>
-<rect x="800" y="602" width="728" height="137" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="822" y="651.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Evidence snapshot: f0cee24</text>
-<text x="822" y="692.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Documentation/evidence descendant with the same tested</text>
-<text x="822" y="722.4100000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">implementation.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GATE-BY-GATE RESULTS · 1 OF 2</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">M3 gates: contracts and independent cognition</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All 13 required gates passed for the supported local scope; no blocked M3 prerequisites.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
+<text x="468" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
+<text x="653" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECORDED EVIDENCE</text>
+<rect x="72" y="277" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">BASELINE</text>
+<text x="468" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">M1/M2 behavior, sources and selected native tests</text>
+<rect x="72" y="346" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="384.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CONTRACTS</text>
+<text x="468" y="384.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="384.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Exact immutable tasks, vectors and owner responses</text>
+<rect x="72" y="415" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="453.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C3</text>
+<text x="468" y="453.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="453.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Persistent bounded STI and causal replay</text>
+<rect x="72" y="484" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="522.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C3_INDEPENDENT</text>
+<text x="468" y="522.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="522.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No PLN, Hive, C1/C2 or DA runtime dependency</text>
+<rect x="72" y="553" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="591.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">ATTENTION_SWAP</text>
+<text x="468" y="591.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="591.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Independent same-profile replacement; four cases</text>
+<rect x="72" y="622" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="660.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">KERNEL_NATIVE</text>
+<text x="468" y="660.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="660.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Actual guarded deduction; independent golden</text>
+<rect x="72" y="691" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="729.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">DERIVED_ADMISSION</text>
+<text x="468" y="729.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="729.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Historical premises; lineage; no fresh evidence</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="799.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">A reproducible source/build recipe does not promise bit-identical binaries across hosts.</text>
+<text x="94" y="801.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Fixture, real-provider, blocked and unrun results retain separate meanings.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / m2/fresh-build.json · final/verification.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">28 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / m3/manifest.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">28 / 40</text>
 </svg>

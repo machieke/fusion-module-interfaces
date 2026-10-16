@@ -1,38 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">M2 gates: contracts, memory and native revision</title>
-<desc id="desc">Gate statuses are read from the committed M2 manifest, not inferred from slide content. BASELINE includes source preservation and regression. CONTRACTS includes local v2 protocol fidelity and response validation. C1 combines sequence/CAS/replay with real DeTTa persistence. C1_INDEPENDENT is a fixture conformance gate, deliberately independent of the real math provider. C2_GUARDS includes eight unchanged upstream RecordingRuntime tests, local guards and native-suite refusal cases. C2_NATIVE includes actual native formula computations plus source/runtime compatibility checks. Fixture gate success is not relabelled as native numerical execution.</desc>
+<title id="title">Real providers and fixtures remain visibly separate</title>
+<desc id="desc">Native kernel/admission includes actual formula executions plus labelled malformed-response, timeout, source-drift and authorization/CAS fault cases. The fifteen upstream guard tests use RecordingRuntime. Both attention providers persist state, but the independent file provider retains fixture classification. Real Hive uses fixture identities, generated inputs and TestClient transport; its default Supervisor and Programs runtime are actual. Optional historical chain observations remain separate and are not a new M3 chain pass. Historical SWI 10.0.1, the full Hive suite and hard real-time behavior are unrun. The fresh build uses warm download caches, not reused native objects.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GATE-BY-GATE RESULTS · 1 OF 2</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">M2 gates: contracts, memory and native revision</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All required M2 gates passed for the supported local profile.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
-<text x="433" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
-<text x="623" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EVIDENCE OBLIGATION MET</text>
-<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">BASELINE</text>
-<text x="433" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Original behavior and native integration preserved</text>
-<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="398.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">CONTRACTS</text>
-<text x="433" y="398.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="398.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Closed local inputs / outputs, profiles, bounds and fingerprints</text>
-<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="479.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C1</text>
-<text x="433" y="479.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="479.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Real-backed ordered history, replay, provenance and intents</text>
-<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="560.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C1_INDEPENDENT</text>
-<text x="433" y="560.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="560.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Independent AtomStorage; cognition absent; declared ports only</text>
-<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="641.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C2_GUARDS</text>
-<text x="433" y="641.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="641.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Unchanged upstream guards + hostile-input refusals</text>
-<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="722.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C2_NATIVE</text>
-<text x="433" y="722.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="722.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Actual native equal / unequal / reversed-pair goldens</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / EVIDENCE CLASSIFICATION</text>
+<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Real providers and fixtures remain visibly separate</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A real runtime can execute generated inputs. Each claim carries its own evidence label.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CLASSIFICATION</text>
+<text x="398" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EXERCISED COMPONENTS</text>
+<text x="1048" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT THE RESULT SUPPORTS</text>
+<rect x="72" y="277" width="1456" height="111" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">REAL PROVIDERS</text>
+<text x="398" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SQLite STI · local DeTTa · pinned native PLN</text>
+<text x="398" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Actual Hive Programs / Supervisor / PeTTa</text>
+<text x="1048" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Native calls, owner persistence and</text>
+<text x="1048" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">tested runtime integration</text>
+<rect x="72" y="393" width="1456" height="111" rx="6" fill="#FFFFFF"/>
+<text x="88" y="432.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">FIXTURES</text>
+<text x="398" y="432.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Generated tasks, observations, authority policy</text>
+<text x="398" y="463.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Independent atomic-file attention; guard/fault</text>
+<text x="398" y="494.24" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">inputs</text>
+<text x="1048" y="432.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Conformance, controlled replacement</text>
+<text x="1048" y="463.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">and deliberate refusal behavior</text>
+<rect x="72" y="509" width="1456" height="111" rx="6" fill="#FFFFFF"/>
+<text x="88" y="548.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">BLOCKED</text>
+<text x="398" y="548.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">None for supported M3 prerequisites</text>
+<text x="398" y="579.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Historical exact chain source unavailable</text>
+<text x="1048" y="548.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No missing M3 prerequisite is hidden</text>
+<text x="1048" y="579.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">by a fixture fallback</text>
+<rect x="72" y="625" width="1456" height="111" rx="6" fill="#FFFFFF"/>
+<text x="88" y="664.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">NOT_RUN</text>
+<text x="398" y="664.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Chain, power loss, distributed failover,</text>
+<text x="398" y="695.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">empty-cache build, production quality/throughput</text>
+<text x="1048" y="664.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No claim for these extensions</text>
+<text x="1048" y="695.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">or excluded work</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / m2/manifest.json · m2-evidence.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">26 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / m3/manifest.json · m3-evidence.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">26 / 40</text>
 </svg>

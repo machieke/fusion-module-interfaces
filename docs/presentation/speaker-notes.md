@@ -1,31 +1,31 @@
 # Omega × ASI — speaker notes
 
-Implementation baseline: `d9e75773c34987d5791a9207190fcbf0a8c1fd7b`.
-Evidence snapshot: `f0cee248294a1fce42913782390e6c084025c67e`.
-Suggested delivery: 35–40 minutes for slides 1–30, with appendices for discussion.
-Current claims use the recorded 16 October 2026 M2 evidence. The M1 chain observation is historical and separately labelled.
+Implementation baseline: `1af39794649d0ca95cd729c64868202368da1ec4`.
+Evidence snapshot: `c4498ce3047f1283d3a4a3ae3d09b713e7dcf312`.
+Suggested delivery: 40–45 minutes for slides 1–32, with appendices for discussion.
+Current claims use the recorded 16 October 2026 M3 evidence. The M1 chain observation is historical and separately labelled.
 
-## 01 — Memory that remembers. Beliefs that can change. Boundaries that hold.
+## 01 — Remember the evidence. Choose where to focus. Bound the work.
 
-Open with the ELI16 executive summary, then the helicopter view and all fifteen module responsibilities before implementation details. M1.1 proved independent storage substitution and separate owner commits. M1.2 connected the real native Hive caller. M2 adds only C1 EpisodicMemory and C2 BeliefRevision, including actual guarded native PLN revision and one real Hive episode scenario. This is a bounded engineering integration, not a general reasoning agent or production system. Suggested delivery: 35–40 minutes through slide 30; eight appendices support questions. Current evidence is the final clean d9e7577 run, recorded in unchanged-code descendant f0cee24. Rebuilding this presentation does not rerun integrations.
+Start with the ELI16 executive summary, then all fifteen module responsibilities and the exercised dependency maps. M1 established replaceable ports and independent commits; M1.2 connected real Hive; M2 added private memory and guarded revision; M3 adds independent short-term attention and bounded inference over an explicit workset. Suggested delivery: 40–45 minutes through slide 32; eight appendices support discussion. Evidence is the clean tested implementation 1af39794649d0ca95cd729c64868202368da1ec4 recorded by c4498ce3047f1283d3a4a3ae3d09b713e7dcf312. This deck update does not rerun integration gates or add runtime behavior.
 
-Source: `M2 evidence f0cee24 · tested d9e7577`.
+Source: `M3 evidence c4498ce · tested 1af3979`.
 
-## 02 — ELI16: a notebook, an evidence ledger, a calculator
+## 02 — ELI16: remember, weigh evidence, do the calculation
 
-ELI16 means explain the idea to a technically curious sixteen-year-old without assuming distributed-systems or PLN vocabulary. The notebook is C1: what happened, in what order and with what provenance. The evidence ledger is C2: what was admitted, what contributes to the current aggregate and what remains an alternative. The calculator is the narrow RevisionMath dependency; it does not decide what to think about. The runtime is real, while the observations and independence declarations in the demonstration are generated fixtures. We killed actual processes and recovered from local files. That supports a local restart claim, not power-loss or distributed failover. Benefits are auditable history, duplicate-safe contributions and explicit provider choices.
+ELI16 assumes a technically curious sixteen-year-old. The analogy explains responsibilities, not an additional experiment. C1 records occurrences and provenance. C2 distinguishes admission from numerical aggregation and retains disagreement. The pure providers reuse guarded Truth_Revision and one grounded Truth_Deduction rule. Their outputs remain model-specific heuristics, not proof of external truth or source independence. Derived conclusions inherit evidence roots and ancestry and add no observation or evidence count. Generated observations and operator assumptions remain fixtures, even when they travel through real runtimes.
 
-Source: `m2-evidence.md · architecture.md`.
+Source: `M2 preserved · M3 derived admission`.
 
-## 03 — ELI16: a copied report is not a new source
+## 03 — ELI16: a priority list and a limited attempt budget
 
-This sensor example is an explanatory analogy, not an additional experiment. The actual generated scenario uses the same distinctions: a report without a truth value, an explicit assessment, a copy with the original roots, and a contrary assessment. Admission preserves observations even when numerical aggregation is refused. Known common origins or overlapping evidence block additional weight despite an independence declaration. The operator's assertion of independence is an assumption, not proof; undisclosed copying is not detected. A separate generated independent pair exercises actual native revision.
+Short-term importance, or STI, is a simple deterministic priority score. It is separate from PLN truth values. C4 handles a fixed explicit workset; it does not invent new tasks or search the knowledge base. The measured two-task experiment changes initial attention to select the other task while keeping the one-attempt budget fixed. Attempts are durable physical evaluation opportunities. A crash after reservation spends the slot even if no result commits. Successful replay recovers recorded admission and feedback without extra native calls. These are local process-restart observations, not hard real-time or production-quality claims.
 
-Source: `C1 provenance · C2 support coverage`.
+Source: `C3 attention · C4 bounded inference`.
 
 ## 04 — Fifteen modules; four responsibility groups
 
-The fifteen responsibility groups remain the same. C1 and C2 are now implemented private local modules; Relations, Search, the general PLN kernel, ECAN and inference control remain specifications. RevisionMath is a narrow dependency inside the C2 integration, not a claim to have implemented the general PLN kernel. Hive is a consumer. Provider, process and repository boundaries are independent. Blue means implemented local contracts, not production readiness. Authorization uses real native Hive authentication followed by a development Fusion policy. Finality has historical M1 evidence only; no M2 chain action occurred. Maintainer assignments remain unassigned.
+All fifteen responsibility groups remain visible. C1/C2 implement private memory and beliefs; M3 adds independent STI and bounded C4 plus a pure kernel for one grounded rule. Relations and Search remain specifications. Attention implements a bounded reference policy, not ECAN, LTI or the coupled metta-attention algorithm. RevisionMath is separate from PLNKernel.applyRule. Hive consumes these modules; a module need not be a separate process or repository. Blue means implemented local contracts, not production readiness. Authorization uses real Hive authentication followed by local test policy. Finality retains historical M1 evidence only; CHAIN is NOT_RUN in M3. Maintainer assignments remain unassigned.
 
 Source: `architecture.md`.
 
@@ -35,23 +35,23 @@ AtomStorage owns immutable scoped references and replay metadata, while DA only 
 
 Source: `architecture.md`.
 
-## 06 — Cognitive responsibilities: history ≠ truth ≠ attention
+## 06 — Cognitive responsibilities: four separate roles
 
-C2 exclusively owns admitted observations/supports, immutable belief snapshots and exact semantic attempts. Its narrow RevisionMath port reuses the unchanged Reachability PLNAdapter.revise guards and the actual Truth_Revision formula. The general PLNKernel.applyRule contract remains unimplemented. Attention owns its own balances and logical time, with no hidden PLN or LLM dependency. Inference control would orchestrate bounded retrieval, selection and rules; it cannot own or mutate truth or attention behind their owners. No ECAN, inference-control or chain work is included in M2.
+C3 implements the bounded sti-additive-linear-decay/1 reference policy, not ECAN or the inspected metta-attention implementation. C4 owns selection and physical attempt reservations; it depends on AtomStorage, Attention, DerivedBeliefRevision and PrivateAuthority. It does not call PLNKernel directly. C2 depends on AtomStorage, C1 readEvidence, RevisionMath, PLNKernel and PrivateAuthority. The pure kernel owns no belief, agenda or attention state. M2 revision-only local v2 remains selectable; derived private C2 is a fresh local v3 profile.
 
 Source: `architecture.md`.
 
 ## 07 — Control responsibilities: move work, preserve authority
 
-Messaging acceptance differs from delivery and acknowledgement. Execution accepts only inspect_atom and owns jobs plus its completion outbox; result atoms commit independently. The registry advertises descriptors, and the resolver matches consumer requirements. Neither grants permission. Finality records independent chain observations from historical M1; it is not a C1/C2 dependency. Native authentication supplies trusted actor context, while local Fusion policy determines current access. The M2 relay is a narrow delivery cursor between two owners, not a sixteenth general service, event bus or inference controller.
+Messaging acceptance differs from delivery and acknowledgement. Execution accepts only inspect_atom and owns jobs plus its completion outbox; result atoms commit independently. The registry advertises descriptors, and the resolver matches consumer requirements. Neither grants permission. Finality records independent chain observations from historical M1; it is not a C1/C2 dependency. Native authentication supplies trusted actor context, while local Fusion policy determines current access. The preserved M2 relay is a narrow delivery cursor between C1 and C2. M3 C4 separately owns its bounded step journal; neither grants authority.
 
 Source: `architecture.md`.
 
-## 08 — Function dependencies: the exercised M2 path
+## 08 — Function dependencies: the exercised M3 path
 
-Composition alone selects concrete providers and binds authenticated private authority. The generated scenario appends to C1, drains the relay and can submit an explicit pair assumption to C2. The relay invokes C1 pendingEvidence/acknowledgeEvidence and C2 readBelief/submitEvidence, storing exact attempts in its own journal. C2 resolves C1 EvidenceRefs through readEvidence and validates immutable records/claims through AtomStorage. C1 and C2 never read each other's SQL. C2 alone calls RevisionMath. C1's dependencies exclude C2, Hive, PLN, mailbox and execution. Registry/authority checks surround each invocation and the final C2 commit; omitted side arrows keep the function diagram readable. All illustrated arrows are exercised local calls, not promises of remote placement.
+This is the exercised port graph, not a proposed future cognitive loop. C4 reads immutable task/workset atoms and C2 snapshots, asks Attention to select, reserves work, then submits or recovers a C2 derivation. C2 reads evidence from C1, invokes pure PLNKernel or RevisionMath and alone commits admitted support. The Hive scenario also records a private episode and seeds exact inputs; those setup edges are omitted for readability. C3 depends only on PrivateAuthority and opaque-reference syntax, not AtomStorage, C1/C2, PLN or Hive. Every owner checks live authority and descriptors; omitted authority arrows apply to all calls. The M2 relay remains supported under its original profile; M3 v3 responses do not masquerade as M2 C1 acknowledgments.
 
-Source: `ports.py · private.py · evidence_relay.py`.
+Source: `cognition.py · ports.py · architecture.md`.
 
 ## 09 — Function dependencies: the preserved M1.2 path
 
@@ -65,23 +65,23 @@ This unchanged DA boundary is exercised against a freshly fetched clean secured-
 
 Source: `adapters/detta/src/main.rs · test_contract.py`.
 
-## 11 — Replace the provider; keep the consumer’s contract
+## 11 — Two independent substitutions, one design principle
 
-The four recorded M1.2 substitution workflows use protocol fixture callers, two AtomStorage implementations and two bindings. The independent file fixture neither inherits AtomOwner nor uses its atom table. The final M2 regression reruns the preserved matrix. M2 separately proves C1 against the independent file provider with cognition absent and hostile declared-port wrappers. Do not label the file fixture as another real DA provider. Wire remains 1.0.0 and immutable-bytes/1 remains unchanged. C1/C2 use local interface 2.0.0, implementation 0.2.0 and explicit private profiles. Descriptor hashes bind selection consistency, not provider honesty. These are fresh-store tests, not live namespace replacement or migration.
+The storage matrix has two implementations times two bindings. C1 is independently exercised without cognition using hostile declared-port wrappers. M3 attention replacement uses a separately implemented atomic-file provider; only DTO validation is shared with the SQLite implementation. Four controlled native cases hold exact task/evidence identities, policy, budgets and deadline fixed while selecting the provider in composition. Separate initial-preference cases show the selection effect. Both replacements persist actual state, but the file implementations remain classified fixtures rather than real DeTTa or a production attention service. This demonstrates same-profile replacement on fresh stores, not live migration.
 
-Source: `m11-swap-demo.json · memory_contracts.py`.
+Source: `m11-swap-demo.json · m3/final/comparison.json`.
 
-## 12 — Private history stays in a separate local composition
+## 12 — Private state has explicit owners and placement
 
-open_private resolves private descriptors and constructs separate local owners over actual DeTTa. It rejects overlap with configured shared roots. C1, C2, atoms and relay have distinct owner journals; the local composition grants one authenticated principal per private scope. Native Hive supplies actor and command context, and operator configuration maps actor/swarm to the private credential and scope. Canary tests inspect real shared stores/messages, intercepted outbound bindings, diagnostics, native responses and Hive traces. This is routing and placement isolation under a trusted host/operator, not encryption, administrator secrecy or remote privacy. Native authentication is real; the downstream Fusion policy remains the labelled local test policy.
+The native plugin receives authenticated actor context and derives authority from operator configuration. Request parameters cannot select credentials, arbitrary scopes or private premise identities. Public parameters are generated seed, preference a/b and an absolute deadline. Privacy tests intercept shared bindings, populate shared stores and inspect native receipts/logs/state for canaries and private hashes. This is tested local placement under a trusted operator/host, not secrecy from administrators. Each journal has one owner and commits independently; there is no cross-owner SQL transaction.
 
-Source: `private.py · episode_program/program.py`.
+Source: `cognition.py · inference_program/program.py`.
 
-## 13 — Contract gaps are resolved before adding behavior
+## 13 — Executable contracts make the inference step finite
 
-C1 profile is episode-local-sequence/2; C2 is pln-revision-private/1. Local interface version is 2.0.0, implementation 0.2.0. No new remote cognitive wire schema or M1 mutation route was added. EpisodeRef is stable while head tracks committed sequence; observed time is metadata. Evidence distinguishes report and explicit numerical assessment. Grounded claims use exact predicate, ordered string arguments and positive polarity plus exact context. A contrary low-strength assessment of the same claim differs from a negated claim. Admission admitted/duplicate is independent of initialized/revised/no-change/retained-alternative/model-inapplicable. Every attempt binds semantic input and selection. The separate belief.revision.assume permission authorizes pair assumptions; it is not an invented public method.
+The contracts use closed bounded DTOs and detach nested request inputs before authorization or foreign calls. A task binds P,Q,R,P⇒Q,Q⇒R to exact private references. Premise vectors record each belief's historical revision and support ID; the upstream knowledge revision of zero is only a local evaluation ID, not a global ledger. Derived support tags distinguish observation, two-local-premise revision and five-foreign-premise deduction. C2 local v3 is explicit and does not widen M2 v2. WorkBudget contains an absolute Unix-ms deadline, max_candidates, max_rule_applications and max_feedback_generation. Historical reads and recovered owner responses are validated against the exact request.
 
-Source: `memory_types.py · memory_contracts.py · ADR 008/009`.
+Source: `attention_contracts.py · cognition_contracts.py`.
 
 ## 14 — C1: one occurrence, one position in the story
 
@@ -91,144 +91,156 @@ Source: `episodes.py · tests/test_m2.py`.
 
 ## 15 — C2: admitting evidence and changing belief are separate
 
-The first eligible explicit assessment initializes the aggregate. Later evidence is retained without automatic aggregation unless an exact pair assumption and guards permit revision. Unknown origins cannot initialize a justified numerical aggregate. A report without numerical assessment is model-inapplicable. The ledger retains observations, support records, immutable snapshots and exact decisions. A later authorized independence declaration may combine already admitted supports, without creating another observation. Exact successful replay returns the original historical decision even after later revisions; a new-key duplicate returns current state without adding weight. Retained-alternative is a pair outcome, so an already covered ancestor need not produce a new alternative list entry or revision. Coverage fields state the actual result.
+This slide describes preserved observation admission. M3 adds a separate derivation command with inherited evidence, described next. The first eligible explicit assessment initializes the aggregate. Later evidence is retained without automatic aggregation unless an exact pair assumption and guards permit revision. Unknown origins cannot initialize a justified numerical aggregate. A report without numerical assessment is model-inapplicable. The ledger retains observations, support records, immutable snapshots and exact decisions. A later authorized independence declaration may combine already admitted supports, without creating another observation. Exact successful replay returns the original historical decision even after later revisions; a new-key duplicate returns current state without adding weight. Retained-alternative is a pair outcome, so an already covered ancestor need not produce a new alternative list entry or revision. Coverage fields state the actual result.
 
 Source: `beliefs.py · memory_types.py`.
 
-## 16 — Lineage blocks double counting, even after aggregation
+## 16 — A derived conclusion inherits its evidence trail
 
-This is a support-lineage diagram, not a general inference graph. Registered source origins are operator assumptions. Copies inherit the union of admitted provenance roots. The unchanged upstream guards require an exact independence declaration binding both supports, with matching model, claim, context and disjoint relevant lineage. Known shared origin or evidence overlap takes precedence over that declaration. Aggregation unions lineage; reintroducing an ancestor cannot increase weight. In the generated demo ancestor_outcome is retained-alternative, while the aggregate and contribution coverage remain unchanged. The model does not detect undisclosed copying or establish the truth of source registration.
+The five foreign premises are not five independent observations of the output claim. local-admitted-supports/1 treats the deduction as one local support unit with its inherited evidence/root union. Logical derivation identity is independent of request/step IDs, deadlines and output CAS. A duplicate cannot gain another admission or causal feedback credit. A separately authorized independence assumption can request the unchanged guarded native revision of eligible supports. Derive → revise retains grounded ancestry; a cyclic subsequent deduction is refused. Claims remain heuristic and lineage-aware, not calibrated uncertainty or proven entailment.
 
-Source: `PLNAdapter.revise · beliefs.py`.
+Source: `derived_beliefs.py · pln_deduction.py`.
 
-## 17 — Native revision reuses the guarded implementation
+## 17 — One grounded rule reuses the actual native PLN
 
-Reachability is pinned at dd56f3f053ed90239de5377021a7d3b3fbf424ac; PLN at 4405956947c4b53c7ff01bd565aa3b114bc970a1; PeTTa at ae66fa8e41dcd5539d614706bd4e5cfb34f9608d. C2 loads the unchanged PLNAdapter.revise and its truth/support guards, injecting only a revision-specific native runner. The runtime profile is fusion-petta-swi-10.1.14-revision/1, with model trueagi-pln-stv-finite-k1/v1. The upstream historical 10.0.1 checks/locks were not weakened. Source and binary drift, missing binaries, invalid outputs and timeouts are refused. This is not a general PLN rule kernel or an AdmissionService/AtomSpace projection. C2 rechecks live authority and expected revision after computation before committing.
+The unchanged Reachability dd56f3f implementation invokes PLN 4405956 Truth_Deduction on PeTTa ae66fa8 and SWI source 6977543, version 10.1.14. The exact runtime profile is fusion-petta-swi-10.1.14-deduction/1. No PLN.Derive, PLN.Query or task search is used. The Q>0.9999 branch and its assumptions remain upstream semantics and are tested. Kernel source checks and native subprocesses use the remaining absolute deadline. This pure component owns no belief, agenda or attention state. Source drift, malformed output and timeout are explicit refusals, with fault injections labelled in the native suite.
 
-Source: `pln_revision.py · integration/pln/sources.json`.
+Source: `deduction-sources.json · integration/pln/test_deduction.py`.
 
-## 18 — Independent goldens check the actual native result
+## 18 — Native goldens check deduction and preserved revision
 
-These are independent expected-value oracles for actual Truth_Revision through native PeTTa/SWI, not replacement production arithmetic. The valid-result absolute tolerance is 1e-12. Decimal-string inputs must pass both decimal and float64 domain checks; a value that rounds confidence to one is refused, not clamped. Nonfinite values, wrong model/context/claim, zero total weight and malformed native output fail explicitly. evidence_count remains null. The golden tests include equal, unequal and swapped input order. Malformed/empty/multiple output tests are labelled injected fixtures inside the broader native-provider suite. These computations do not validate the external truth or statistical independence of observations.
+The M3 golden has five ordered premises and uses the actual native Truth_Deduction. Expected values are independent test oracles, not production mathematics. M2 revision goldens still pass in the M3 regression, including reversed unequal pairs. Native suites include actual computation plus explicitly injected malformed responses, timeouts, source-drift clones and authorization/CAS interleavings. Fifteen upstream guard-only tests use RecordingRuntime and are not counted as native numerical evaluation. Evidence_count remains null, and a derived conclusion never turns into a fresh independent observation.
 
-Source: `integration/pln/test_revision.py · final/demo.json`.
+Source: `test_deduction.py · preserved test_revision.py`.
 
-## 19 — Four crash gaps across independent commits
+## 19 — C3: a small, independent attention policy
 
-These are actual OS-process SIGKILL tests with intact persistent local files. Atom persistence, C1 append+intent, C2 snapshot+decision and C1 acknowledgement are independent commits. The relay owns a separate exact request/cursor record, never foreign SQL. C2 saves its full semantic attempt before calculation, then rechecks authority and expected revision before final commit. Formula work may repeat after a crash, but logical evidence weight is duplicate-safe. Tests also exercise a two-process CAS race, retrying the unchanged key/occurrence/head through transient contention until a genuine final conflict. None of this proves power-loss durability, distributed failover or exactly-once physical evaluation.
+The reference policy is frozen in its identity. Bounds are 16 targets, 16 advance steps per call, eight contexts, 512 causes per context, 1024 commands per owner and feedback generation three. Capacities refuse without silent eviction of acknowledged commands. Stimulus saturation is min(amount, Smax-current); total context budget is enforced atomically. Successful replay is checked before logical clock CAS under live authorization. Causal deduplication is independent of request identity; changing a causal body conflicts. Fresh feedback follows the target's current causal parent and next generation. metta-attention 3e1c8147 was inspected but not integrated because it couples STI/LTI/VLTI, wages and shared funds. C3 has no hidden dependency on AtomStorage, C1, C2, PLN or Hive.
 
-Source: `test_recovery.py · test_m2_integration.py`.
+Source: `attention.py · fixture_attention.py`.
 
-## 20 — Authority, replay and compatibility stay live
+## 20 — Attention replacement preserves the measured outcome
 
-Private authority validates complete descriptor selection and current principal, scope and method on every operation, including cached replay. The separate belief.revision.assume permission governs explicit pair assumptions. C2 also checks authority and expected revision after native calculation. Full acknowledgement-body fingerprints prevent substituting a different decision behind the same acknowledgement identity. Inputs are detached from caller mutation. Same-key semantic changes conflict, including expected revision and runtime selection. Genuine CAS conflicts require a new attempt identity; retryable NOT_AVAILABLE preserves the exact attempt. The relay is bounded to three CAS retries per drain and at most 32 attempts per delivery. It is not a general retry scheduler or inference controller.
+All four fresh cases use two tasks, five premises per task, ten generated observations, two episodes and twelve claim atoms. Held fixed: exact task/evidence refs, policy parameters, one-attempt/two-candidate budgets, absolute deadline and logical schedule. Separate preference cases exchange initial scores 20/10 and 10/20. Only composition chooses SQLite or the independently implemented file fixture; no consumer code changes. Every result records examined=2, reserved=1, completed=1, refused=0, unique admission=1 and feedback_applied=1, ending at rule-budget. The second candidate is counted before discovering the exhausted rule budget. Preparation takes about 11.5–11.8 seconds and is separate from the reported step time. Store sizes are 1,040,671 and 1,020,409 bytes respectively. These are one-run local measurements, not throughput or cognitive-quality evidence.
 
-Source: `private.py · beliefs.py · evidence_relay.py`.
+Source: `m3/final/comparison.json`.
 
-## 21 — One actual Hive episode reaches private C1 and C2
+## 21 — C4: reserve work durably before invoking the rule
 
-The verified schematics pin actual Hive 34b0fb32ab3806e5609fc89bb7535518a35e1aea. Native startup is python -m hive; the integration driver uses the actual create_app, default Supervisor, PeTTa and native authenticated Programs dispatch in real processes. ASGI TestClient is only the transport. The sibling fusion-episode plugin derives authority from trusted actor context and operator principal/swarm mapping; it does not expose arbitrary observations over the shared wire. The original fusion-inspect plugin and thirteen tests remain unchanged. The seven M2 cases cover completion, exact replay/restart, all four SIGKILL boundaries, live revocation and private result isolation. Generated observations and assumptions remain fixtures even when the caller and providers are real.
+C4 counts a candidate before resolving it, including unresolved or refused candidates. It commits reservation before dispatch and queries a prior C2 decision first during recovery. C2 persists semantic intent before evaluation, evaluates outside its commit transaction, then rechecks authority and output CAS. A killed pending attempt needs a new reserved slot/key; a committed decision is read back without evaluation. Logical derivation identity is distinct from transport request, controller step, attempt key, deadline and output CAS. Feedback is a fixed one-unit workflow signal tied to logical derivation identity, never a truth update. Absolute Unix-ms deadline survives restart; scheduling/file I/O remain cooperative, not hard real-time.
 
-Source: `episode_program/program.py · test_m2_integration.py`.
+Source: `inference.py · deadlines.py`.
 
-## 22 — The recorded story keeps copies and disagreement
+## 22 — Five crash boundaries, independent owner commits
 
-This slide reads the committed CLI demo record, whose own classification is: generated fixture, real DeTTa and native PLN; this CLI is not the Hive gate. It is not relabelled as a native Hive trace. The real Hive test suite independently exercises the same integration/m2_scenario.py through native authentication and Programs dispatch. The story contains 4 events and 2 retained alternatives. A separate pair of 2 generated independent observations produces strength 0.5, confidence 0.6666666666666666, evidence_count null. Exact restart result equality is True. The ancestor outcome is retained-alternative; no extra observation or numerical contribution is created. No real-world source reliability is inferred from generated assessments.
+Three native recovery methods cover ten actual SIGKILL cases: stimulus commit for both attention providers; reservation and kernel-return loss under budgets one and two; belief/feedback recovery for both providers. The real Hive suite adds five actual caller kills across the same boundaries. A one-slot loss conservatively exhausts the budget; a two-slot case may recover one logical admission after another physical calculation. Thus there is no claim of exactly one physical calculation per logical derivation. Committed admission and feedback are duplicate-safe. This is intact-local-file, same-host process restart, not reboot, power loss or distributed failover.
 
-Source: `m2/final/demo.json · test_m2_integration.py`.
+Source: `test_m3_recovery.py · test_m3_integration.py`.
 
-## 23 — M1.2 remains a working, separate integration
+## 23 — Authorization, replay and profiles remain live
 
-The M2 verifier explicitly compares the preserved source files against requested M1.2 evidence ancestor 4ee5cbe8b84689a5d2432530083738b263142f90. It reruns the original thirteen real native Hive tests, the selected native baseline, upstream DeTTa and the full conformance suite. ports.py grows new local protocols, while the preserved original wire schemas and bindings remain unchanged. All six built provider source trees are clean after testing, and supplied sibling sources remain unchanged. No ECAN, inference control, general PLN kernel, live migration or chain action is added.
+Input records are copied before foreign calls and authorization so a malicious boundary cannot mutate the retained command. Recovered C2 and attention responses are checked against exact owner/request identities and semantics. Current principal, scope, method and descriptor permissions apply on every invocation. The assumption permission for revision remains separate. Native proposal calculation runs outside the owner commit transaction; final authorization and expected output revision are rechecked afterward. A concurrent attention clock change can leave pending feedback with CONFLICT. The controller records this state rather than silently rewriting the logical schedule. These are local trusted-authority guarantees, not a production identity system.
 
-Source: `source-preservation.json · final/m1_2/verification.json`.
+Source: `cognition.py · derived_beliefs.py · tests/test_m3.py`.
 
-## 24 — Real providers and fixtures answer different questions
+## 24 — One real Hive action reaches the entire private path
 
-Do not flatten the system into one real/fixture label. The runtime/provider gates execute actual pinned source. The scenario data, source-origin registrations and independence declarations are generated assumptions. The independent file provider proves the AtomStorage contract but is not real DeTTa. Eight upstream guard tests use RecordingRuntime fixtures; malformed output tests inject fixtures into an otherwise native suite. The upstream Hive baseline uses its fixture process driver, while the actual integration tests use the real default Supervisor. ASGI TestClient is transport, not a fake native application. The historical chain observation remains separate, and the M2 chain gate is NOT_RUN.
+The real pinned Hive create_app, authenticated Programs dispatch, default Supervisor and native PeTTa run in the integration. The narrow sibling plugin uses native assessment role, action infer-generated, and trusted actor mapping. ASGI TestClient, identities, observations and operator assumptions are fixtures; the runtime, DeTTa and formula execution are actual providers. The plugin owns caller intent/receipt and invokes the private scenario; it owns no belief, STI or controller state. Eight native tests cover completion, duplicate-safe admission/feedback, restart, independent attention replacement, five real caller kills, authority and privacy. The diagram summarizes the call sequence; each owner commits independently. M1 fusion-inspect and M2 fusion-episode remain supported and rerun in regression.
 
-Source: `m2/manifest.json · final/verification.json`.
+Source: `inference_program/program.py · test_m3_integration.py`.
 
-## 25 — Executed suites cover distinct layers of the claim
+## 25 — The same one-attempt budget makes attention visible
 
-The final comprehensive run is recorded from clean detached d9e75773c34987d5791a9207190fcbf0a8c1fd7b with PYTHONPATH forced to that checkout. The 106-case matrix includes the original 90 tests plus sixteen M2 fixtures; the fifty-one original fixtures and sixteen M2 fixtures are also run separately for isolation. Do not sum those repeated runs as unique tests. DeTTa has 62 DA and 38 storage tests. The 34 selected Hive baseline tests retain their upstream process-driver fixture; thirteen unchanged M1.2 tests and seven M2 tests exercise the real caller. Twelve native revision tests include real computations and deliberately injected malformed responses. Six recovery/privacy tests use actual local providers and SIGKILL. The CLI demo also passed with exact reopen results. Failed development runs remain in the evidence archive and are not counted as passing gates.
+This chart depicts the explicitly configured STI scores in the controlled scenarios, not a learned score or performance estimate. The comparison exercises both preferences with both providers; the real Hive tests separately exercise actual native action and replacement. A step freezes the ranked selection. Subsequent feedback affects a later step, not the order already accepted. C4 examines two candidates but reserves and executes only one attempt, so terminal reason is rule-budget. All four comparison cases recover identical receipts after reopening owners and invoke the native formula zero additional times on successful replay. Cognitive usefulness of the chosen conclusion is not measured.
 
-Source: `m2/final/verification.json · final/m1_2/verification.json`.
+Source: `m3/final/comparison.json · native Hive scenario`.
 
-## 26 — M2 gates: contracts, memory and native revision
+## 26 — Real providers and fixtures remain visibly separate
 
-Gate statuses are read from the committed M2 manifest, not inferred from slide content. BASELINE includes source preservation and regression. CONTRACTS includes local v2 protocol fidelity and response validation. C1 combines sequence/CAS/replay with real DeTTa persistence. C1_INDEPENDENT is a fixture conformance gate, deliberately independent of the real math provider. C2_GUARDS includes eight unchanged upstream RecordingRuntime tests, local guards and native-suite refusal cases. C2_NATIVE includes actual native formula computations plus source/runtime compatibility checks. Fixture gate success is not relabelled as native numerical execution.
+Native kernel/admission includes actual formula executions plus labelled malformed-response, timeout, source-drift and authorization/CAS fault cases. The fifteen upstream guard tests use RecordingRuntime. Both attention providers persist state, but the independent file provider retains fixture classification. Real Hive uses fixture identities, generated inputs and TestClient transport; its default Supervisor and Programs runtime are actual. Optional historical chain observations remain separate and are not a new M3 chain pass. Historical SWI 10.0.1, the full Hive suite and hard real-time behavior are unrun. The fresh build uses warm download caches, not reused native objects.
 
-Source: `m2/manifest.json · m2-evidence.md`.
+Source: `m3/manifest.json · m3-evidence.md`.
 
-## 27 — M2 gates: privacy, recovery, Hive and reproducibility
+## 27 — Executed tests cover contracts, native calls and crashes
 
-PRIVACY proves canary isolation over the tested local routes under the trusted-host threat model. RECOVERY proves process restart, not power loss or distributed failover. HIVE_M2 uses actual native dispatch and the real private provider path. REPRO uses fresh native objects, venv and DeTTa Cargo target, while Git/Python/Cargo downloads may use warm caches. SCOPE limits the change to C1/C2 and preserves named original source files. CHAIN is explicitly NOT_RUN. No required M2 prerequisite remains blocked. A different historical question—exact reproduction of the dirty M1 F1R3 source state—remains blocked by unavailable source inputs and is documented separately in the appendix.
+The complete baseline includes original 51 fixtures; aggregate 118; upstream DeTTa 62+38; Hive baseline 34 and unchanged M1.2 integration 13; M2 fixtures 16, guard fixtures 8, native revision 12, recovery/privacy 6, native Hive 7 and demo. M3 adds isolated attention five, contracts seven, upstream guard fixtures fifteen, mixed native kernel/admission thirteen, direct recovery three methods/ten cases, native Hive eight and comparison four cases. Do not sum repeated subsets as unique tests. Command durations and exact source/file hashes are machine-recorded. Supplemental empty-selection and zero-native-budget checks are fixtures at the same clean SHA. No integration test was rerun merely to rebuild this presentation.
 
-Source: `m2/manifest.json · source-preservation.json`.
+Source: `m3/final/verification.json`.
 
-## 28 — Reproducibility binds source, build and execution
+## 28 — M3 gates: contracts and independent cognition
 
-The fresh build took 337.325 seconds, including 139.055 seconds for native SWI/Janus/Hive. Its native-build record names 6452fa7 because provider construction began before the M2 commits; the native recipe/locks and compiled DeTTa adapter source were unchanged, and the recipe hash matches the committed M2 build script. Final Fusion verification separately used clean detached d9e75773c34987d5791a9207190fcbf0a8c1fd7b. Exact source hashes, built binary digest, commands, logs and provider-cleanliness checks remain recorded. All six provider trees remained clean. No native target, venv or compiled object was copied from the original workspace. Globally empty-cache builds are NOT_RUN. The binary digest identifies the selected built runtime, not cross-host bit reproducibility. This deck updates presentation artifacts only and does not rerun native gates.
+Statuses are read from the committed M3 manifest and match the final verifier. A pass applies to the gate's stated evidence, not to every possible provider or deployment. REPRO explicitly uses warm download caches but fresh build outputs. CHAIN is NOT_RUN and no required M3 prerequisite is blocked. Exact historical chain-source reproduction remains blocked by unavailable dirty inputs, a separate historical question. SCOPE excludes LTI, general search, new attention research, live migration and chain. All source, log and implementation hashes are retained for audit.
 
-Source: `m2/fresh-build.json · final/verification.json`.
+Source: `m3/manifest.json`.
 
-## 29 — The guarantees stop at the tested boundary
+## 29 — M3 gates: bounded operation and real integration
 
-The local profiles are deliberately bounded: 256 events per episode, pages/pending batches of sixteen, 32 observations per belief, at most 64 support records, and three CAS retries per drain. Owner history is retained without garbage collection or a total disk quota. Authority is a development local policy, not production identity management. Explicit model semantics and exact runtime selection are required. Native caller evidence is for the chosen Programs route and selected tests, not the full Hive suite, LLM operation or arbitrary application behavior. Future Relations/Search, ECAN, inference control and general PLN rules remain outside implemented scope. Chain and live migration are unrun. No new runtime guarantee is created by rebuilding this presentation.
+Statuses are read from the committed M3 manifest and match the final verifier. A pass applies to the gate's stated evidence, not to every possible provider or deployment. REPRO explicitly uses warm download caches but fresh build outputs. CHAIN is NOT_RUN and no required M3 prerequisite is blocked. Exact historical chain-source reproduction remains blocked by unavailable dirty inputs, a separate historical question. SCOPE excludes LTI, general search, new attention research, live migration and chain. All source, log and implementation hashes are retained for audit.
 
-Source: `m2-evidence.md · manifest.json`.
+Source: `m3/manifest.json`.
 
-## 30 — Remember the event. Keep the disagreement. Justify the update.
+## 30 — Reproducibility connects source, build and observed result
 
-Return to the executive summary: the notebook preserves occurrences, the evidence ledger preserves disagreement and lineage, and the pinned calculator runs only when the explicit pair qualifies. The practical result is a private local memory/revision slice exercised by a real Hive caller, with duplicate-safe evidence and recovery across independent commits. It is not yet an autonomous reasoning loop or production deployment. All required M2 gates passed; fixtures, real providers, historical blocked source reproduction and unrun extensions retain their labels. The work stops at M2.
+Requested ancestor f0cee248294a1fce42913782390e6c084025c67e; actual starting descendant 926882afb9ab9c7288bf663f96f9e1ca63dd8520; tested source 1af39794649d0ca95cd729c64868202368da1ec4; evidence-only descendant c4498ce3047f1283d3a4a3ae3d09b713e7dcf312. Build_m3.py wraps the byte-identical M2 recipe and adds the separately selected deduction configuration. All exercised upstream sources were clean at their pins. Historical M2 SWI binary identity differs from the fresh M3 build and is not silently equated. Exact hashes, versions, command arguments, durations and JUnit results are committed. Provider environment files can contain local configuration and are deliberately excluded from published evidence. This deck hashes its evidence inputs and audits the archive without modifying it.
 
-Source: `M2 tested d9e7577 · evidence f0cee24`.
+Source: `m3/build.json · manifest.json · final/verification.json`.
 
-## 31 — Implementation map: each owner has a small surface
+## 31 — The limitations are part of the contract
 
-Paths without prefixes are under fusion/. The adapter is fusion/adapters/pln_revision.py; the plugin is integration/hive/episode_program/. Source/build scripts are scripts/build_m2.py, verify_m2.py and m2_demo.py. Fixture tests live in tests/test_m2.py and tests/m2_support.py. Native and recovery tests live in integration/pln/; real Hive tests in integration/hive/test_m2_integration.py. C1 tables own episodes/events/mutations/deliveries, C2 owns snapshots/attempts, and the relay owns only exact handoff progress. Immutable payload and event bytes remain in private AtomStorage over separate local DeTTa. No upstream source is patched.
+The M3 admission path is durable and duplicate-safe, but generated C1 delivery intents remain available and pending because M3 v3 snapshots cannot be passed as M2 v2 acknowledgment DTOs. The original M2 relay/ack tests still pass under the original profile; no fabricated acknowledgment or silent widening was introduced. An absolute deadline can finish a bounded step with pending work, and a concurrent attention clock change is not implicitly retimed. No exactly-one physical calculation, hard real-time, reboot, administrator secrecy, distributed failover, live migration, production throughput or cognitive-quality claim is made. Origin/independence assertions remain operator assumptions. Specialist maintainer ownership is unassigned.
 
-Source: `m2-evidence.md · architecture.md`.
+Source: `m3-evidence.md · compatibility and recovery limits`.
 
-## 32 — Exact sources include the explicit runtime rebaseline
+## 32 — Keep the evidence. Separate the decisions. Make the budget real.
 
-Requested ancestor: 4ee5cbe8b84689a5d2432530083738b263142f90. Starting checkout: 6452fa725be5a688f9d5ad8f77955579df2f95ab, presentation/docs-only descendant. Final clean tested Fusion: d9e75773c34987d5791a9207190fcbf0a8c1fd7b; evidence snapshot: f0cee248294a1fce42913782390e6c084025c67e. Schematics: 4af00db4e395375484dd48d0b9068a59afcf01f8; Hive: 34b0fb32ab3806e5609fc89bb7535518a35e1aea; DeTTa: 272888f264dd2dde18b574cabb53c266b0dac2ec; Reachability: dd56f3f053ed90239de5377021a7d3b3fbf424ac; PLN: 4405956947c4b53c7ff01bd565aa3b114bc970a1; PeTTa: ae66fa8e41dcd5539d614706bd4e5cfb34f9608d; SWI source: 69775434c8226897626b226aefcc8266499f1e2e. Formula SHA-256: cdfb3f18bd7b336440fc7b4409209afddf0e64c41f17dee7eefc8f02718de433. Built SWI SHA-256: f1e29950cb5ccfe3904833db5c08409bc2a1c7c999f1e1933719a7c3e03ab20f. Runtime profile: fusion-petta-swi-10.1.14-revision/1; model: trueagi-pln-stv-finite-k1/v1. Python 3.12.12, Janus 1.5.3; fixture orchestration Python 3.11.14. Native source trees remained clean after the recorded final run. The supplied brief's content hash and fetch URL remain in the manifest.
+Return to the executive summary. C1 remembers occurrences; C2 owns admitted beliefs and inherited evidence; the pure PLN kernel calculates; C3 ranks; C4 reserves and reconciles bounded work. The practical result is one actual native Hive inference action and a controlled independent attention replacement, preserving the M1/M2 application-neutral DA and authorization boundaries. The result is bounded local integration, not general reasoning or production deployment. All thirteen required gates pass, no supported prerequisite is blocked, and chain remains NOT_RUN. The deck and this work stop at M3.
 
-Source: `final/verification.json · integration/pln/sources.json`.
+Source: `M3 tested 1af3979 · evidence c4498ce`.
 
-## 33 — Profiles and bounds are part of compatibility
+## 33 — Implementation map: responsibilities stay local
 
-AtomStorage remains immutable-bytes/1 with original interface 1.0; M2 selects a separate private-local-only descriptor. C1/C2 local interface 2.0.0 is not a silent change to the existing M1 wire 1.0.0. Ingestion is explicit-generated-assessment/1, keeping generated assessment policy outside the owners. Numerical input uses finite decimal strings validated again at the float64 boundary; strength is in [0,1], confidence in [0,1), and evidence_count is null. The bounds listed are semantic contract limits. History is retained without garbage collection or a total storage quota. Live migration and generic query/search are not implemented.
+Paths are relative to fusion/ unless marked hive/, which is under integration/. ports.py declares the protocols; attention_contracts.py and cognition_contracts.py enforce the executable bounded schemas. Shared DTO validators are permitted in the independent fixture, shared owner transitions are not. C2 default M2 behavior remains via its original validators and profile; the derived owner selects fresh v3 behavior. The native plugin uses integration/m3_scenario.py and holds only caller intent and public receipt. No owner reaches into another owner's private SQL. Tests and exact source hashes are indexed in the M3 machine manifest.
 
-Source: `memory_contracts.py · contracts.md`.
+Source: `architecture.md · ports.py`.
 
-## 34 — Future cognition remains a set of review obligations
+## 34 — Exact sources identify the verified native stack
 
-This is a proposed future dependency map, not evidence of an executed cognitive loop. Inference control would use Search, Attention, C2 and a general pure PLN kernel through explicit ports. Attention owns its own budgets/balances and logical time, without a required PLN or LLM dependency. The general kernel returns proposals over immutable premises. Inference control owns only step receipts/checkpoints, not truth or attention state. Relations/Search, ECAN, general rules and inference control remain future contracts with model/policy and conformance obligations. M2's narrow RevisionMath provider is distinct from applyRule. No new work in these modules was undertaken.
+Evidence commit c4498ce3047f1283d3a4a3ae3d09b713e7dcf312. Full inspected metta-attention revision: 3e1c8147dc17299d17ab34720334fc19277cb6a9, clean. Its coupled STI/LTI/VLTI, wages and funds are not silently adopted. Runtime profile: fusion-petta-swi-10.1.14-deduction/1; rule profile: grounded-five-premise-deduction/1; truth model: trueagi-pln-stv-finite-k1/v1. PLN library SHA-256 cdfb3f18bd7b336440fc7b4409209afddf0e64c41f17dee7eefc8f02718de433. Fresh SWI binary SHA-256 2a9b28b46f54f5eb0a8e1c79bb201c50b8acbbd5c180875ea8a5bca4e8617dfc. Native Python 3.12.12, Janus 1.5.3; fixture runner Python 3.11.14. All exercised source checkouts were clean. No upstream formula or runtime implementation was patched. Historical SWI 10.0.1 remains unrun.
 
-Source: `ports.py · architecture.md`.
+Source: `m3/final/verification.json · build.json`.
 
-## 35 — One native operation crosses the existing interfaces
+## 35 — Profiles and bounds make compatibility explicit
 
-All effects originate in the real native operation, not a renamed protocol demo. The caller first commits its original intent. AtomStorage persists generated bytes in actual DeTTa, then Messaging accepts a reference for the explicitly labelled fixture counterparty. DelegatedExecution accepts only inspect_atom under the original key and correlation. The caller records the accepted job. A separate real worker reads/persists through AtomStorage, then commits execution terminal state/outbox. Messaging accepts the completion in a separate transaction. The final arrow summarizes the reconciliation expanded on the next slides: status /2 restores known correlation, poll and get verify the completion, caller acceptance commits, and a stable-key acknowledgement follows. This is not one distributed transaction.
+Exact attention profile sti-additive-linear-decay/1: decay one, max targets sixteen, max advance sixteen, contexts eight, causes/context 512, commands/owner 1024 and feedback generation three. Kernel and C4 local interfaces are 2.0.0. Kernel runtime profile fusion-petta-swi-10.1.14-deduction/1 is separate from revision-only; M2 pln-revision-private/1 remains unchanged/default. The derived profile has three closed support forms and explicit local-admitted-supports/1 coverage. WorkBudget names candidates, physical rule opportunities, feedback generation and absolute Unix-ms deadline. Capacity exhaustion is explicit refusal, not eviction or automatic scope expansion. Interface version, algorithm profile, runtime identity, permissions and selected descriptor all matter.
+
+Source: `contracts.md · cognition.py`.
+
+## 36 — C1 acknowledgment compatibility remains an open seam
+
+M3 does not solve this seam with a generic event bus, migration or a false success receipt. Generated C1 intents remain available and pending; direct M3 evidence/derivation admission and replay are nevertheless durable. The dashed bracket marks an incompatible response seam, not an executed call. The original M2 path retains its own supported DTO and acknowledgment behavior. A bounded step can also finish with unacknowledged work because an attempt was lost, a deadline elapsed or the attention clock advanced before feedback. Read the precise receipt counters and pending state instead of treating completion as global convergence.
+
+Source: `m3-evidence.md · C1/C2 version boundary`.
+
+## 37 — One native operation crosses the existing interfaces
+
+All effects originate in the real native operation, not a renamed protocol demo. The caller first commits its original intent. AtomStorage persists generated bytes in actual DeTTa, then Messaging accepts a reference for the explicitly labelled fixture counterparty. DelegatedExecution accepts only inspect_atom under the original key and correlation. The caller records the accepted job. A separate real worker reads/persists through AtomStorage, then commits execution terminal state/outbox. Messaging accepts the completion in a separate transaction. The final arrow summarizes reconciliation: status /2 restores known correlation, poll and get verify the completion, caller acceptance commits, and a stable-key acknowledgement follows. This is not one distributed transaction.
 
 Source: `program.py · execution.py · messaging.py`.
 
-## 36 — Historical M1: one result reached an isolated chain
+## 38 — Historical M1: one result reached an isolated chain
 
-Preserve this historical result without promoting it into the new real-caller gate. The M1 chain JSON records pending, included with effect finality Pending, then finalized, at height 3 with no execution error, no rejection and cost 351 phlo. The committed digest belongs to the original protocol-peer result, not the generated native Hive result in M1.2. The M1 adapter used a registered approved digest, injected signer and durable signed intent against one isolated local node. That source had local changes and an untracked input. Exact historical reproduction remains blocked until those authorized bytes are supplied or a different clean revision is separately validated. No chain process or transaction was run during M1.2, M2 or this presentation update. Finality does not establish indefinite off-chain availability.
+Preserve this historical result without promoting it into the new real-caller gate. The M1 chain JSON records pending, included with effect finality Pending, then finalized, at height 3 with no execution error, no rejection and cost 351 phlo. The committed digest belongs to the original protocol-peer result, not the generated native Hive result in M1.2. The M1 adapter used a registered approved digest, injected signer and durable signed intent against one isolated local node. That source had local changes and an untracked input. Exact historical reproduction remains blocked until those authorized bytes are supplied or a different clean revision is separately validated. No chain process or transaction was run during M1.2, M2, M3 or this presentation update. Finality does not establish indefinite off-chain availability.
 
 Source: `evidence/chain-demo.json · M1 historical`.
 
-## 37 — Reproduce the supported M2 gates
+## 39 — Reproduce the supported M3 gates
 
-Use a fresh destination; the build refuses to overwrite existing work. Authorized SSH access to the exact Hive and DeTTa sources is required. Public HTTPS retrieves the pinned Reachability/PLN inputs. The native build uses pinned PeTTa/SWI, hashed Python dependencies and new Janus objects; DeTTa is compiled into a fresh target. Git/Python/Cargo download caches may be warm. scripts/verify_m2.py runs the preserved M1.2 verifier and then isolated M2 fixtures, eight upstream revision guard tests, native revision, recovery/privacy, native Hive and a deterministic CLI demo. The exact final evidence run used a clean detached d9e7577 checkout and recorded commands/output paths. Failed development runs remain preserved. Building the presentation is a separate operation and never reruns or overwrites these integration records.
+Linux build prerequisites and authorized SSH access to exact Hive/DeTTa sources are documented in the runbook; public HTTPS retrieves the pinned Reachability/PLN sources. New native objects, Python/Janus venv and DeTTa Cargo target are built in a fresh directory. Download caches may be warm. build_m3.py preserves the M2 build recipe and adds the explicit deduction profile. verify_m3.py runs M2 regression, isolated M3 fixtures, upstream guards, native deduction/admission, actual process kills, real native Hive and controlled substitution. The final record was executed from clean detached /tmp/fusion-m3-verify-1af3979. Do not publish broad local environment files. Deck generation is a separate documentation operation and does not rerun these gates.
 
-Source: `runbook.md · build_m2.py · verify_m2.py`.
+Source: `runbook.md · build_m3.py · verify_m3.py`.
 
-## 38 — Retry decisions preserve meaning across owners
+## 40 — Retry identities answer different questions
 
-Exact successful C2 replay returns the original decision and historical snapshot even after later revisions. New-key duplicate evidence reads current state without adding weight. The relay saves exact requests and runtime selection in its own journal; a transient provider failure never acknowledges the intent. After a genuine CAS conflict it reconciles and allocates a new semantic attempt under bounded retry limits. C1 acknowledgement is a separate commit and validates the complete decision body. The receipt is trusted local evidence, not a remote proof. The physical formula may execute more than once; only the logical admission and contribution are duplicate-safe. Retained-alternative describes the pair decision, with actual coverage and unaggregated lists controlling interpretation.
+A derivation's logical ID excludes request/step identity, output CAS and deadline so a retry cannot manufacture new independent support. An attempt key freezes its exact semantic body and is evaluated at most once; a killed pending attempt consumes a physical reservation. Multiple physical calculations for one logical derivation remain possible under distinct reserved attempts. C2 commits its decision before C4 progress; C3 commits feedback before C4 acknowledgment. Recovery queries those owners rather than inferring success from a missing local reply. Feedback_applied counts acknowledged unique logical credits; feedback_duplicate records suppression on duplicate admission. Fixed feedback adds no truth evidence. The semantics distinguish bounded termination, successful admission and fully acknowledged work.
 
-Source: `episodes.py · beliefs.py · evidence_relay.py`.
+Source: `inference.py · derived_beliefs.py · attention.py`.

@@ -1,36 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Independent goldens check the actual native result</title>
-<desc id="desc">These are independent expected-value oracles for actual Truth_Revision through native PeTTa/SWI, not replacement production arithmetic. The valid-result absolute tolerance is 1e-12. Decimal-string inputs must pass both decimal and float64 domain checks; a value that rounds confidence to one is refused, not clamped. Nonfinite values, wrong model/context/claim, zero total weight and malformed native output fail explicitly. evidence_count remains null. The golden tests include equal, unequal and swapped input order. Malformed/empty/multiple output tests are labelled injected fixtures inside the broader native-provider suite. These computations do not validate the external truth or statistical independence of observations.</desc>
+<title id="title">Native goldens check deduction and preserved revision</title>
+<desc id="desc">The M3 golden has five ordered premises and uses the actual native Truth_Deduction. Expected values are independent test oracles, not production mathematics. M2 revision goldens still pass in the M3 regression, including reversed unequal pairs. Native suites include actual computation plus explicitly injected malformed responses, timeouts, source-drift clones and authorization/CAS interleavings. Fifteen upstream guard-only tests use RecordingRuntime and are not counted as native numerical evaluation. Evidence_count remains null, and a derived conclusion never turns into a fresh independent observation.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
 <text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / NUMERICAL EVIDENCE</text>
-<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Independent goldens check the actual native result</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Pairs are explicit assessments of the same claim, with permitted independence and disjoint lineage.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">INPUT PAIR · (STRENGTH, CONFIDENCE)</text>
-<text x="708" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EXPECTED NATIVE RESULT</text>
-<text x="1048" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEANING</text>
-<rect x="72" y="277" width="1456" height="102" rx="6" fill="#FFFFFF"/>
-<text x="88" y="318.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">(0.75, 0.50) + (0.25, 0.50)</text>
-<text x="708" y="318.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">(0.50, 2/3)</text>
-<text x="1048" y="318.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Equal weight balances the</text>
-<text x="1048" y="351.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">assessments</text>
-<rect x="72" y="384" width="1456" height="102" rx="6" fill="#FFFFFF"/>
-<text x="88" y="425.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">(0.75, 0.50) + (0.25, 0.75)</text>
-<text x="708" y="425.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">(0.375, 0.80)</text>
-<text x="1048" y="425.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Higher confidence shifts the result</text>
-<rect x="72" y="491" width="1456" height="102" rx="6" fill="#FFFFFF"/>
-<text x="88" y="532.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Same unequal pair, reversed</text>
-<text x="708" y="532.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">(0.375, 0.80)</text>
-<text x="1048" y="532.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Order does not change this</text>
-<text x="1048" y="565.98" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">revision</text>
-<rect x="72" y="622" width="704" height="127" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="667.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#007C78">Domain: finite values only</text>
-<text x="94" y="707.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">0 ≤ strength ≤ 1; 0 ≤ confidence &lt; 1</text>
-<rect x="800" y="622" width="728" height="127" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="822" y="667.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#A86A15">No silent clamping</text>
-<text x="822" y="707.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Invalid inputs and zero total weight are refused.</text>
+<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">Native goldens check deduction and preserved revision</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Independent expected values check pinned native formulas; no replacement math runs in the owners.</text>
+<rect x="72" y="248" width="704" height="347" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">M3 · Grounded deduction</text>
+<text x="94" y="348.51" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">P, Q, R = (0.5, 0.8)</text>
+<text x="94" y="385.63" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">P⇒Q, Q⇒R = (0.8, 0.7)</text>
+<text x="94" y="422.75" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775"></text>
+<text x="94" y="459.87" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Expected P⇒R: (0.68, 0.3136)</text>
+<rect x="800" y="248" width="728" height="347" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="822" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">M2 · Guarded revision</text>
+<text x="822" y="347.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">(0.75, 0.50) + (0.25, 0.50)</text>
+<text x="822" y="383.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">→ (0.50, 2/3)</text>
+<text x="822" y="419.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775"></text>
+<text x="822" y="455.08" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Unequal confidence 0.50 / 0.75</text>
+<text x="822" y="490.92" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">→ (0.375, 0.80)</text>
+<text x="78" y="667.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#102B3F">Observed deduction: 0.6800000000000002 / 0.31360000000000005</text>
+<text x="78" y="724.6" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#102B3F">Absolute tolerance 1e−12; finite-domain and lineage guards remain active.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Confidence belongs to the selected model; it is not a guarantee that the real-world claim is true.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">These are model-specific heuristics, not calibrated real-world confidence or proven entailment.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / integration/pln/test_revision.py · final/demo.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">18 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / test_deduction.py · preserved test_revision.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">18 / 40</text>
 </svg>

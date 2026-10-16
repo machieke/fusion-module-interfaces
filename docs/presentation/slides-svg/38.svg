@@ -1,50 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Retry decisions preserve meaning across owners</title>
-<desc id="desc">Exact successful C2 replay returns the original decision and historical snapshot even after later revisions. New-key duplicate evidence reads current state without adding weight. The relay saves exact requests and runtime selection in its own journal; a transient provider failure never acknowledges the intent. After a genuine CAS conflict it reconciles and allocates a new semantic attempt under bounded retry limits. C1 acknowledgement is a separate commit and validates the complete decision body. The receipt is trusted local evidence, not a remote proof. The physical formula may execute more than once; only the logical admission and contribution are duplicate-safe. Retained-alternative describes the pair decision, with actual coverage and unaggregated lists controlling interpretation.</desc>
+<title id="title">Historical M1: one result reached an isolated chain</title>
+<desc id="desc">Preserve this historical result without promoting it into the new real-caller gate. The M1 chain JSON records pending, included with effect finality Pending, then finalized, at height 3 with no execution error, no rejection and cost 351 phlo. The committed digest belongs to the original protocol-peer result, not the generated native Hive result in M1.2. The M1 adapter used a registered approved digest, injected signer and durable signed intent against one isolated local node. That source had local changes and an untracked input. Exact historical reproduction remains blocked until those authorized bytes are supplied or a different clean revision is separately validated. No chain process or transaction was run during M1.2, M2, M3 or this presentation update. Finality does not establish indefinite off-chain availability.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX H / OPERATIONAL SEMANTICS</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Retry decisions preserve meaning across owners</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Separate acceptance, numerical effect and acknowledgement before choosing a recovery action.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVATION</text>
-<text x="563" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEANING</text>
-<text x="1053" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">NEXT ACTION</text>
-<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Lost response / process death</text>
-<text x="563" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">The owner may already have</text>
-<text x="563" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">committed</text>
-<text x="1053" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Replay exact input, key and pinned</text>
-<text x="1053" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">selection</text>
-<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">NOT_AVAILABLE / transient</text>
-<text x="88" y="426.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">contention</text>
-<text x="563" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No final decision yet</text>
-<text x="1053" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Keep intent pending; retry unchanged</text>
-<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CONFLICT: stale expected</text>
-<text x="88" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">revision</text>
-<text x="563" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Another owner-local update won</text>
-<text x="1053" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Read current snapshot; new key for</text>
-<text x="1053" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">revised intent</text>
-<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CONFLICT: same key, changed</text>
-<text x="88" y="588.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">input</text>
-<text x="563" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Replay identity no longer matches</text>
-<text x="1053" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Do not overwrite the original meaning</text>
-<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">UNAUTHORIZED / profile</text>
-<text x="88" y="669.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">mismatch</text>
-<text x="563" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Access or selected semantics fail</text>
-<text x="1053" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Correct authority / compatibility; no</text>
-<text x="1053" y="669.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">fallback</text>
-<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Decision durable; ack missing</text>
-<text x="563" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">C2 effect complete, C1 handoff</text>
-<text x="563" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">pending</text>
-<text x="1053" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Recover same decision; acknowledge</text>
-<text x="1053" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">full receipt</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Trusted local acknowledgement binds the complete decision; it is not a portable cryptographic proof.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX F / HISTORICAL CHAIN EVIDENCE</text>
+<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Historical M1: one result reached an isolated chain</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">This is the earlier protocol-peer artifact. No M1.2, M2 or M3 Hive result was submitted.</text>
+<rect x="72" y="258" width="464" height="150" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#A86A15">PENDING</text>
+<text x="94" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Signed deploy accepted</text>
+<line x1="536" y1="333" x2="564" y2="333" stroke="#536775" stroke-width="2"/>
+<polygon points="564,333 551.0,328.0 551.0,338.0" fill="#536775"/>
+<rect x="568" y="258" width="464" height="150" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="590" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#A86A15">INCLUDED</text>
+<text x="590" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Block observed; effects pending</text>
+<line x1="1032" y1="333" x2="1060" y2="333" stroke="#536775" stroke-width="2"/>
+<polygon points="1060,333 1047.0,328.0 1047.0,338.0" fill="#536775"/>
+<rect x="1064" y="258" width="464" height="150" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1086" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">FINALIZED</text>
+<text x="1086" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Deploy effects reported finalized</text>
+<text x="75" y="493.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">M1 recorded observation</text>
+<text x="75" y="542.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Block height</text>
+<text x="406" y="543.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">3</text>
+<text x="75" y="588.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Execution error</text>
+<text x="406" y="589.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">false</text>
+<text x="75" y="634.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Rejection count</text>
+<text x="406" y="635.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">0</text>
+<text x="75" y="680.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Execution cost</text>
+<text x="406" y="681.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">351 phlo</text>
+<rect x="785" y="452" width="743" height="255" rx="13" fill="#FFFFFF"/>
+<text x="811" y="502.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Historical commitment digest</text>
+<text x="811" y="553.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#007C78">f9236451ff785dc58315251cf864a3d1</text>
+<text x="811" y="584.52" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#007C78">0938412551cf45f448055061bc953ea1</text>
+<text x="811" y="647.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">One local validator; direct node observations.</text>
+<text x="811" y="678.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Not a consensus proof or production test.</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#F3E7CE"/>
+<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#A86A15">M3 CHAIN = NOT_RUN. Historical source reproduction requires exact F1R3 changes or a separate rebaseline.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / episodes.py · beliefs.py · evidence_relay.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">38 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / evidence/chain-demo.json · M1 historical</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">38 / 40</text>
 </svg>

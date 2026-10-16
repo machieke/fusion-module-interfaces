@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
 <title id="title">Fifteen modules; four responsibility groups</title>
-<desc id="desc">The fifteen responsibility groups remain the same. C1 and C2 are now implemented private local modules; Relations, Search, the general PLN kernel, ECAN and inference control remain specifications. RevisionMath is a narrow dependency inside the C2 integration, not a claim to have implemented the general PLN kernel. Hive is a consumer. Provider, process and repository boundaries are independent. Blue means implemented local contracts, not production readiness. Authorization uses real native Hive authentication followed by a development Fusion policy. Finality has historical M1 evidence only; no M2 chain action occurred. Maintainer assignments remain unassigned.</desc>
+<desc id="desc">All fifteen responsibility groups remain visible. C1/C2 implement private memory and beliefs; M3 adds independent STI and bounded C4 plus a pure kernel for one grounded rule. Relations and Search remain specifications. Attention implements a bounded reference policy, not ECAN, LTI or the coupled metta-attention algorithm. RevisionMath is separate from PLNKernel.applyRule. Hive consumes these modules; a module need not be a separate process or repository. Blue means implemented local contracts, not production readiness. Authorization uses real Hive authentication followed by local test policy. Finality retains historical M1 evidence only; CHAIN is NOT_RUN in M3. Maintainer assignments remain unassigned.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
 <text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / HELICOPTER VIEW</text>
 <text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Fifteen modules; four responsibility groups</text>
@@ -17,12 +17,12 @@
 <text x="112" y="342.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Episodic memory</text>
 <rect x="90" y="378" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
 <text x="112" y="420.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Belief revision</text>
-<rect x="90" y="456" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
-<text x="112" y="498.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">PLN kernel</text>
-<rect x="90" y="534" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
-<text x="112" y="576.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">ECAN / attention</text>
-<rect x="90" y="612" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
-<text x="112" y="654.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">Inference control</text>
+<rect x="90" y="456" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="112" y="498.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">PLN · one rule</text>
+<rect x="90" y="534" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="112" y="576.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">STI attention</text>
+<rect x="90" y="612" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="112" y="654.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Inference control</text>
 <rect x="438" y="300" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
 <text x="460" y="343.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">AtomStorage</text>
 <rect x="438" y="378" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
@@ -46,7 +46,7 @@
 <rect x="1216" y="485" width="294" height="168" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
 <text x="1238" y="531.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">Consensus /</text>
 <text x="1238" y="564.98" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">finality</text>
-<text x="1238" y="604.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">M1 historical; M2</text>
+<text x="1238" y="604.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">M1 historical; M3</text>
 <text x="1238" y="632.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">NOT_RUN</text>
 <text x="866" y="668.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Local test policy</text>
 <text x="866" y="693.6" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">and static descriptors</text>
@@ -56,8 +56,8 @@
 <text x="379" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#315E9C">IMPLEMENTED LOCAL</text>
 <rect x="687" y="760" width="189.90332031250003" height="36" rx="7" fill="#DCEFE8"/>
 <text x="701" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#007C78">REAL PROVIDER</text>
-<text x="987" y="785.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Narrow RevisionMath ≠ general PLN kernel</text>
+<text x="987" y="785.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">M3: one grounded rule; no ECAN or LTI</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 40</text>
 </svg>

@@ -1,41 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Cognitive responsibilities: history ≠ truth ≠ attention</title>
-<desc id="desc">C2 exclusively owns admitted observations/supports, immutable belief snapshots and exact semantic attempts. Its narrow RevisionMath port reuses the unchanged Reachability PLNAdapter.revise guards and the actual Truth_Revision formula. The general PLNKernel.applyRule contract remains unimplemented. Attention owns its own balances and logical time, with no hidden PLN or LLM dependency. Inference control would orchestrate bounded retrieval, selection and rules; it cannot own or mutate truth or attention behind their owners. No ECAN, inference-control or chain work is included in M2.</desc>
+<title id="title">Cognitive responsibilities: four separate roles</title>
+<desc id="desc">C3 implements the bounded sti-additive-linear-decay/1 reference policy, not ECAN or the inspected metta-attention implementation. C4 owns selection and physical attempt reservations; it depends on AtomStorage, Attention, DerivedBeliefRevision and PrivateAuthority. It does not call PLNKernel directly. C2 depends on AtomStorage, C1 readEvidence, RevisionMath, PLNKernel and PrivateAuthority. The pure kernel owns no belief, agenda or attention state. M2 revision-only local v2 remains selectable; derived private C2 is a fresh local v3 profile.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
 <text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / RESPONSIBILITY ATLAS · 2 OF 3</text>
-<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">Cognitive responsibilities: history ≠ truth ≠ attention</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">M2 implements belief revision. General rule execution and attention remain future work.</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Cognitive responsibilities: four separate roles</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">M3 adds a pure grounded kernel, independent STI and a bounded coordinator.</text>
 <text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MODULE</text>
 <text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FUNCTION / PRIMARY OPERATIONS</text>
 <text x="1048" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNED STATE / BOUNDARY</text>
 <rect x="72" y="277" width="1456" height="104" rx="6" fill="#FFFFFF"/>
 <text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Belief revision C2</text>
-<text x="418" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Admit evidence; read immutable snapshots</text>
-<text x="418" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">submitEvidence · readBelief</text>
-<text x="1048" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Evidence, supports, snapshots,</text>
-<text x="1048" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">attempts</text>
-<text x="1048" y="378.24" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">IMPLEMENTED · no agenda</text>
+<text x="418" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">submitEvidence · readBelief</text>
+<text x="418" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">submitDerivation · readDerivation</text>
+<text x="1048" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Supports, snapshots, attempts</text>
+<text x="1048" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Only C2 commits belief changes</text>
 <rect x="72" y="386" width="1456" height="104" rx="6" fill="#FFFFFF"/>
 <text x="88" y="425.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">PLN kernel</text>
-<text x="418" y="425.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Apply a rule to explicit premises</text>
+<text x="418" y="425.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Apply one grounded rule to exact premises</text>
 <text x="418" y="456.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">profiles · applyRule</text>
 <text x="1048" y="425.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No mutable domain state</text>
-<text x="1048" y="456.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SPECIFIED · not RevisionMath</text>
+<text x="1048" y="456.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Pure native proposal</text>
 <rect x="72" y="495" width="1456" height="104" rx="6" fill="#FFFFFF"/>
-<text x="88" y="534.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">ECAN / attention</text>
-<text x="418" y="534.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Allocate, select and decay attention</text>
-<text x="418" y="565.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">submitStimulus · select · advance</text>
-<text x="1048" y="534.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Balances + logical time</text>
-<text x="1048" y="565.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SPECIFIED · no PLN dependency</text>
+<text x="88" y="534.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Attention C3</text>
+<text x="418" y="534.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">submitStimulus · select · advance</text>
+<text x="1048" y="534.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">STI, clock, causal receipts</text>
+<text x="1048" y="565.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No cognition dependency</text>
 <rect x="72" y="604" width="1456" height="104" rx="6" fill="#FFFFFF"/>
-<text x="88" y="643.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Inference control</text>
-<text x="418" y="643.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Schedule bounded reasoning work</text>
+<text x="88" y="643.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Inference control C4</text>
+<text x="418" y="643.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Run one immutable workset</text>
 <text x="418" y="674.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">step</text>
-<text x="1048" y="643.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Receipts + checkpoint</text>
-<text x="1048" y="674.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SPECIFIED · no truth ownership</text>
+<text x="1048" y="643.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Selection, budgets, progress</text>
+<text x="1048" y="674.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No truth or attention ownership</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C2 asks a pure revision provider for a proposal, then authorizes and commits its own decision.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C4 calls C2 for admission. C2 invokes the kernel, then checks authority and commits its decision.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">06 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">06 / 40</text>
 </svg>

@@ -1,48 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Four crash gaps across independent commits</title>
-<desc id="desc">These are actual OS-process SIGKILL tests with intact persistent local files. Atom persistence, C1 append+intent, C2 snapshot+decision and C1 acknowledgement are independent commits. The relay owns a separate exact request/cursor record, never foreign SQL. C2 saves its full semantic attempt before calculation, then rechecks authority and expected revision before final commit. Formula work may repeat after a crash, but logical evidence weight is duplicate-safe. Tests also exercise a two-process CAS race, retrying the unchanged key/occurrence/head through transient contention until a genuine final conflict. None of this proves power-loss durability, distributed failover or exactly-once physical evaluation.</desc>
+<title id="title">C3: a small, independent attention policy</title>
+<desc id="desc">The reference policy is frozen in its identity. Bounds are 16 targets, 16 advance steps per call, eight contexts, 512 causes per context, 1024 commands per owner and feedback generation three. Capacities refuse without silent eviction of acknowledged commands. Stimulus saturation is min(amount, Smax-current); total context budget is enforced atomically. Successful replay is checked before logical clock CAS under live authorization. Causal deduplication is independent of request identity; changing a causal body conflicts. Fresh feedback follows the target&#x27;s current causal parent and next generation. metta-attention 3e1c8147 was inspected but not integrated because it couples STI/LTI/VLTI, wages and shared funds. C3 has no hidden dependency on AtomStorage, C1, C2, PLN or Hive.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RECOVERY · ACTUAL SIGKILL</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Four crash gaps across independent commits</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Restart recovers intent and decisions. Repeated calculation does not add another logical contribution.</text>
-<rect x="72" y="254" width="346" height="158" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="301.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">AtomStorage</text>
-<text x="94" y="344.31" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Persist immutable</text>
-<text x="94" y="376.31" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">bytes</text>
-<line x1="418" y1="332" x2="437" y2="332" stroke="#315E9C" stroke-width="2"/>
-<polygon points="437,332 424.0,327.0 424.0,337.0" fill="#315E9C"/>
-<rect x="442" y="254" width="346" height="158" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="464" y="301.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">C1 episodes</text>
-<text x="464" y="344.31" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Commit event + intent</text>
-<line x1="788" y1="332" x2="807" y2="332" stroke="#315E9C" stroke-width="2"/>
-<polygon points="807,332 794.0,327.0 794.0,337.0" fill="#315E9C"/>
-<rect x="812" y="254" width="346" height="158" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="834" y="301.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">C2 beliefs</text>
-<text x="834" y="344.31" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Commit snapshot +</text>
-<text x="834" y="376.31" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">decision</text>
-<line x1="1158" y1="332" x2="1177" y2="332" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1177,332 1164.0,327.0 1164.0,337.0" fill="#315E9C"/>
-<rect x="1182" y="254" width="346" height="158" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1204" y="301.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">C1</text>
-<text x="1204" y="336.21" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">acknowledgement</text>
-<text x="1204" y="378.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Commit handoff receipt</text>
-<text x="88" y="469.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">KILLED AT THIS BOUNDARY</text>
-<text x="788" y="469.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">AFTER A NEW PROCESS STARTS</text>
-<rect x="72" y="495" width="1456" height="57" rx="6" fill="#FFFFFF"/>
-<text x="88" y="533.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">1 · Payload persisted; no C1 commit</text>
-<text x="788" y="533.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Replay recovers the atom; an orphan is not an event.</text>
-<rect x="72" y="557" width="1456" height="57" rx="6" fill="#FFFFFF"/>
-<text x="88" y="595.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">2 · C1 intent committed; no C2 decision</text>
-<text x="788" y="595.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">The relay resubmits its exact durable request.</text>
-<rect x="72" y="619" width="1456" height="57" rx="6" fill="#FFFFFF"/>
-<text x="88" y="657.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">3 · Formula returned; no C2 commit</text>
-<text x="788" y="657.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Calculation may repeat; CAS and replay guard the effect.</text>
-<rect x="72" y="681" width="1456" height="57" rx="6" fill="#FFFFFF"/>
-<text x="88" y="719.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">4 · C2 committed; no C1 acknowledgement</text>
-<text x="788" y="719.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Recover the same decision, then acknowledge separately.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / SHORT-TERM IMPORTANCE</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">C3: a small, independent attention policy</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">sti-additive-linear-decay/1 · integer STI · explicit logical time · persistent causal identity</text>
+<rect x="72" y="250" width="464" height="331" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Stimulate</text>
+<text x="94" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Add within per-target</text>
+<text x="94" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">saturation. Refuse the whole</text>
+<text x="94" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">change if the context</text>
+<text x="94" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">budget would be exceeded.</text>
+<rect x="568" y="250" width="464" height="331" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="590" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">Select</text>
+<text x="590" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Rank positive eligible</text>
+<text x="590" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">targets by descending STI,</text>
+<text x="590" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">then the full canonical</text>
+<text x="590" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">reference. Reads do not</text>
+<text x="590" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">decay state.</text>
+<rect x="1064" y="250" width="464" height="331" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="1086" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Advance</text>
+<text x="1086" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Explicitly decay by logical</text>
+<text x="1086" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">steps. Stored causal</text>
+<text x="1086" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">generation survives decay,</text>
+<text x="1086" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">new ingress and new step</text>
+<text x="1086" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">IDs.</text>
+<text x="77" y="655.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">Default limits: 100 STI per target · 300 per context · decay 1 per logical step</text>
+<text x="77" y="716.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Only authority and opaque-reference syntax are required; no Hive, storage or PLN runtime.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">All four boundaries also run through the actual native Hive caller’s restart path.</text>
+<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">This reference policy is implemented. ECAN, LTI, diffusion and new attention research are out of scope.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / test_recovery.py · test_m2_integration.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">19 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / attention.py · fixture_attention.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">19 / 40</text>
 </svg>

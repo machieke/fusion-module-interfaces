@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Reproduce the supported M3 gates</title>
+<desc id="desc">Linux build prerequisites and authorized SSH access to exact Hive/DeTTa sources are documented in the runbook; public HTTPS retrieves the pinned Reachability/PLN sources. New native objects, Python/Janus venv and DeTTa Cargo target are built in a fresh directory. Download caches may be warm. build_m3.py preserves the M2 build recipe and adds the explicit deduction profile. verify_m3.py runs M2 regression, isolated M3 fixtures, upstream guards, native deduction/admission, actual process kills, real native Hive and controlled substitution. The final record was executed from clean detached /tmp/fusion-m3-verify-1af3979. Do not publish broad local environment files. Deck generation is a separate documentation operation and does not rerun these gates.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX G / COMMANDS AND PREREQUISITES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproduce the supported M3 gates</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Use the tested revision or a reviewed descendant, with source access and a fresh destination.</text>
+<rect x="72" y="245" width="1456" height="187" rx="12" fill="#0B2233"/>
+<text x="100" y="285.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">BUILD FRESH PINNED PROVIDERS</text>
+<text x="100" y="339.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
+<text x="100" y="387.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/build_m3.py artifacts/m3-providers</text>
+<rect x="72" y="465" width="1456" height="187" rx="12" fill="#0B2233"/>
+<text x="100" y="505.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">VERIFY M1/M2 + C3/C4 + NATIVE HIVE + CONTROLLED SWAP</text>
+<text x="100" y="559.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
+<text x="100" y="607.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/verify_m3.py artifacts/m3-providers/environment.json</text>
+<text x="78" y="720.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Read: manifest.json → final/verification.json → suite logs → final/comparison.json</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">Source access, fixture tests, native execution and archived evidence are separate reproducibility requirements.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / runbook.md · build_m3.py · verify_m3.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">39 / 40</text>
+</svg>

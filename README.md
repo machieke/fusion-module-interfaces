@@ -50,9 +50,10 @@ reference STI policy and bounded grounded inference. No LTI, general search,
 research attention policy, live state migration or further inference expansion is included.
 
 The [conference presentation](docs/presentation/README.md) covers the architecture
-through M2, opening with an ELI16 executive summary before all 15 module
+through M3, opening with an ELI16 executive summary before all 15 module
 responsibilities and function dependencies. It includes private C1/C2 ownership,
-duplicate-safe evidence, guarded native PLN revision, real Hive episodes and
-cross-owner recovery, with an editable PowerPoint, PDF and speaker notes.
+inherited evidence, guarded native deduction, independently replaceable STI,
+durable inference budgets and actual Hive recovery, with an editable PowerPoint,
+PDF and speaker notes. The C1 acknowledgment compatibility limit remains explicit.
 Real providers, fixtures, historical chain evidence, blocked inputs and unrun
 gates remain separately labelled.

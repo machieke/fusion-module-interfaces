@@ -1,40 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">M2 gates: privacy, recovery, Hive and reproducibility</title>
-<desc id="desc">PRIVACY proves canary isolation over the tested local routes under the trusted-host threat model. RECOVERY proves process restart, not power loss or distributed failover. HIVE_M2 uses actual native dispatch and the real private provider path. REPRO uses fresh native objects, venv and DeTTa Cargo target, while Git/Python/Cargo downloads may use warm caches. SCOPE limits the change to C1/C2 and preserves named original source files. CHAIN is explicitly NOT_RUN. No required M2 prerequisite remains blocked. A different historical question—exact reproduction of the dirty M1 F1R3 source state—remains blocked by unavailable source inputs and is documented separately in the appendix.</desc>
+<title id="title">Executed tests cover contracts, native calls and crashes</title>
+<desc id="desc">The complete baseline includes original 51 fixtures; aggregate 118; upstream DeTTa 62+38; Hive baseline 34 and unchanged M1.2 integration 13; M2 fixtures 16, guard fixtures 8, native revision 12, recovery/privacy 6, native Hive 7 and demo. M3 adds isolated attention five, contracts seven, upstream guard fixtures fifteen, mixed native kernel/admission thirteen, direct recovery three methods/ten cases, native Hive eight and comparison four cases. Do not sum repeated subsets as unique tests. Command durations and exact source/file hashes are machine-recorded. Supplemental empty-selection and zero-native-budget checks are fixtures at the same clean SHA. No integration test was rerun merely to rebuild this presentation.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GATE-BY-GATE RESULTS · 2 OF 2</text>
-<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">M2 gates: privacy, recovery, Hive and reproducibility</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No M2 prerequisite remains blocked. Optional or excluded work retains its own status.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
-<text x="433" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
-<text x="623" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED BOUNDARY</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / RECORDED FINAL VERIFICATION</text>
+<text x="70" y="137.75" font-family="DejaVu Sans" font-size="45" font-weight="700" fill="#102B3F">Executed tests cover contracts, native calls and crashes</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Counts overlap. The 51 original and 16 M2 fixture subsets are not added again to the 118-case matrix.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">COMMAND / LAYER</text>
+<text x="678" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CASES</text>
+<text x="938" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EVIDENCE TYPE</text>
 <rect x="72" y="277" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">PRIVACY</text>
-<text x="433" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Tested private routing; cross-principal / scope and revocation</text>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Preserved M1/M2 regression</text>
+<text x="678" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">118 matrix</text>
+<text x="938" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">90 original + 16 M2 + 12 M3; native suites also</text>
+<text x="938" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">rerun</text>
 <rect x="72" y="356" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="395.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">RECOVERY</text>
-<text x="433" y="395.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="395.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Four real kill boundaries, stable decisions, two-process CAS</text>
+<text x="88" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Attention / contract / upstream guards</text>
+<text x="678" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">5 / 7 / 15</text>
+<text x="938" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Fixtures; C3 standalone; RecordingRuntime</text>
+<text x="938" y="424.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">guards</text>
 <rect x="72" y="435" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="474.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">HIVE_M2</text>
-<text x="433" y="474.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="474.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Seven actual authenticated native caller tests</text>
+<text x="88" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Native kernel + derived admission</text>
+<text x="678" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">13</text>
+<text x="938" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Real goldens plus explicitly injected faults</text>
 <rect x="72" y="514" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="553.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">REPRO</text>
-<text x="433" y="553.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="553.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Fresh providers + clean Fusion run; download caches warm</text>
+<text x="88" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Direct real process kills</text>
+<text x="678" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">3 methods / 10</text>
+<text x="678" y="582.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">cases</text>
+<text x="938" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">SIGKILL across independent commit boundaries</text>
 <rect x="72" y="593" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="632.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">SCOPE</text>
-<text x="433" y="632.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="623" y="632.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">C1 + C2 only; M1.2 and upstream guarded sources preserved</text>
+<text x="88" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Actual native Hive</text>
+<text x="678" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">8</text>
+<text x="938" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Zero failures, errors or skips; five more caller kills</text>
 <rect x="72" y="672" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="711.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">CHAIN</text>
-<text x="433" y="711.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">NOT_RUN</text>
-<text x="623" y="711.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Outside M2; no chain action or fallback</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#F3E7CE"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#A86A15">Historical exact chain-source reproduction remains BLOCKED; it is not a missing M2 prerequisite.</text>
+<text x="88" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Controlled attention replacement</text>
+<text x="678" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">4</text>
+<text x="938" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Fresh cases, native PLN + DeTTa, exact replay</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">Final execution used clean detached 1af3979. Earlier failures and an interrupted run remain separately labelled.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / m2/manifest.json · source-preservation.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">27 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / m3/final/verification.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">27 / 40</text>
 </svg>

@@ -1,49 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Implementation map: each owner has a small surface</title>
-<desc id="desc">Paths without prefixes are under fusion/. The adapter is fusion/adapters/pln_revision.py; the plugin is integration/hive/episode_program/. Source/build scripts are scripts/build_m2.py, verify_m2.py and m2_demo.py. Fixture tests live in tests/test_m2.py and tests/m2_support.py. Native and recovery tests live in integration/pln/; real Hive tests in integration/hive/test_m2_integration.py. C1 tables own episodes/events/mutations/deliveries, C2 owns snapshots/attempts, and the relay owns only exact handoff progress. Immutable payload and event bytes remain in private AtomStorage over separate local DeTTa. No upstream source is patched.</desc>
+<title id="title">The limitations are part of the contract</title>
+<desc id="desc">The M3 admission path is durable and duplicate-safe, but generated C1 delivery intents remain available and pending because M3 v3 snapshots cannot be passed as M2 v2 acknowledgment DTOs. The original M2 relay/ack tests still pass under the original profile; no fabricated acknowledgment or silent widening was introduced. An absolute deadline can finish a bounded step with pending work, and a concurrent attention clock change is not implicitly retimed. No exactly-one physical calculation, hard real-time, reboot, administrator secrecy, distributed failover, live migration, production throughput or cognitive-quality claim is made. Origin/independence assertions remain operator assumptions. Specialist maintainer ownership is unassigned.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX A / CODE NAVIGATION</text>
-<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">Implementation map: each owner has a small surface</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Composition selects providers. Domain owners consume declared ports.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FILES / AREA</text>
-<text x="748" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESPONSIBILITY</text>
-<text x="1188" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">STATE OR EXCLUSION</text>
-<rect x="72" y="277" width="1456" height="66" rx="6" fill="#FFFFFF"/>
-<text x="88" y="313.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">memory_types.py · memory_contracts.py · ports.py</text>
-<text x="748" y="313.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Local C1/C2 DTOs, protocols and</text>
-<text x="748" y="340.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">validation</text>
-<text x="1188" y="313.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">No provider construction</text>
-<rect x="72" y="348" width="1456" height="66" rx="6" fill="#FFFFFF"/>
-<text x="88" y="384.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">private.py</text>
-<text x="748" y="384.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Private placement, descriptors, live</text>
-<text x="748" y="411.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">authority</text>
-<text x="1188" y="384.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Only composition chooses</text>
-<text x="1188" y="411.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">concrete owners</text>
-<rect x="72" y="419" width="1456" height="66" rx="6" fill="#FFFFFF"/>
-<text x="88" y="455.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">episodes.py</text>
-<text x="748" y="455.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">C1 occurrences, head, replay and</text>
-<text x="748" y="482.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">intents</text>
-<text x="1188" y="455.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">episodes.sqlite</text>
-<rect x="72" y="490" width="1456" height="66" rx="6" fill="#FFFFFF"/>
-<text x="88" y="526.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">beliefs.py</text>
-<text x="748" y="526.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">C2 snapshots and semantic attempts</text>
-<text x="1188" y="526.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">beliefs.sqlite</text>
-<rect x="72" y="561" width="1456" height="66" rx="6" fill="#FFFFFF"/>
-<text x="88" y="597.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">evidence_relay.py</text>
-<text x="748" y="597.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Bounded exact evidence handoff</text>
-<text x="1188" y="597.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">relay.sqlite; no foreign SQL</text>
-<rect x="72" y="632" width="1456" height="66" rx="6" fill="#FFFFFF"/>
-<text x="88" y="668.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">adapters/pln_revision.py</text>
-<text x="748" y="668.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Pinned guards + revision-only native</text>
-<text x="748" y="695.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">runtime</text>
-<text x="1188" y="668.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Pure proposal; no truth setter</text>
-<rect x="72" y="703" width="1456" height="66" rx="6" fill="#FFFFFF"/>
-<text x="88" y="739.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">integration/m2_scenario.py · episode_program/</text>
-<text x="748" y="739.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Generated policy + sibling native Hive</text>
-<text x="748" y="766.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">plugin</text>
-<text x="1188" y="739.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Private owners; minimal</text>
-<text x="1188" y="766.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">public receipt</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GUARANTEES AND STOPPING POINT</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The limitations are part of the contract</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Durable local progress is useful even when the receipt correctly reports unfinished work.</text>
+<rect x="72" y="250" width="704" height="219" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Conservative crash budget</text>
+<text x="94" y="348.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">A lost pending attempt consumes its slot. A</text>
+<text x="94" y="384.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">completed bounded step need not have a</text>
+<text x="94" y="419.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">conclusion.</text>
+<rect x="824" y="250" width="704" height="219" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="846" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Pending feedback</text>
+<text x="846" y="348.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Concurrent clock advance can leave</text>
+<text x="846" y="384.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">CONFLICT. Deadline expiry can leave work</text>
+<text x="846" y="419.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">unacknowledged.</text>
+<rect x="72" y="505" width="704" height="219" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="556.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Explicit C1/C2 compatibility</text>
+<text x="94" y="603.28" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">M3 v3 belief snapshots do not fit M2 v2 C1</text>
+<text x="94" y="639.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">acknowledgments. C1 delivery intents remain</text>
+<text x="94" y="674.9599999999999" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">pending.</text>
+<rect x="824" y="505" width="704" height="219" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="846" y="556.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Local assumptions</text>
+<text x="846" y="603.28" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Same-host clock, intact files and trusted</text>
+<text x="846" y="639.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">operator. No hard real-time, power-loss or</text>
+<text x="846" y="674.9599999999999" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">distributed failover claim.</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#EBE5F3"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#7458A2">Stopped at M3: no LTI, general search, new attention research, live migration or chain work.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / m2-evidence.md · architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">31 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / m3-evidence.md · compatibility and recovery limits</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">31 / 40</text>
 </svg>

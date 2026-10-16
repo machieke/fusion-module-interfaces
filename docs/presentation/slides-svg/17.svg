@@ -1,43 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Native revision reuses the guarded implementation</title>
-<desc id="desc">Reachability is pinned at dd56f3f053ed90239de5377021a7d3b3fbf424ac; PLN at 4405956947c4b53c7ff01bd565aa3b114bc970a1; PeTTa at ae66fa8e41dcd5539d614706bd4e5cfb34f9608d. C2 loads the unchanged PLNAdapter.revise and its truth/support guards, injecting only a revision-specific native runner. The runtime profile is fusion-petta-swi-10.1.14-revision/1, with model trueagi-pln-stv-finite-k1/v1. The upstream historical 10.0.1 checks/locks were not weakened. Source and binary drift, missing binaries, invalid outputs and timeouts are refused. This is not a general PLN rule kernel or an AdmissionService/AtomSpace projection. C2 rechecks live authority and expected revision after computation before committing.</desc>
+<title id="title">One grounded rule reuses the actual native PLN</title>
+<desc id="desc">The unchanged Reachability dd56f3f implementation invokes PLN 4405956 Truth_Deduction on PeTTa ae66fa8 and SWI source 6977543, version 10.1.14. The exact runtime profile is fusion-petta-swi-10.1.14-deduction/1. No PLN.Derive, PLN.Query or task search is used. The Q&gt;0.9999 branch and its assumptions remain upstream semantics and are tested. Kernel source checks and native subprocesses use the remaining absolute deadline. This pure component owns no belief, agenda or attention state. Source drift, malformed output and timeout are explicit refusals, with fault injections labelled in the native suite.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RUNTIME COMPATIBILITY</text>
-<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Native revision reuses the guarded implementation</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A narrow revision provider binds the upstream guards, formula and native runtime explicitly.</text>
-<rect x="72" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">C2 owner</text>
-<text x="94" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Exact support</text>
-<text x="94" y="384.54" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">snapshots</text>
-<line x1="418" y1="357" x2="437" y2="357" stroke="#315E9C" stroke-width="2"/>
-<polygon points="437,357 424.0,352.0 424.0,362.0" fill="#315E9C"/>
-<rect x="442" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="464" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">PLNAdapter.revise</text>
-<text x="464" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Unchanged</text>
-<text x="464" y="384.54" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Reachability guards</text>
-<line x1="788" y1="357" x2="807" y2="357" stroke="#007C78" stroke-width="2"/>
-<polygon points="807,357 794.0,352.0 794.0,362.0" fill="#007C78"/>
-<rect x="812" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="834" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Truth_Revision</text>
-<text x="834" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Pinned PLN source</text>
-<line x1="1158" y1="357" x2="1177" y2="357" stroke="#007C78" stroke-width="2"/>
-<polygon points="1177,357 1164.0,352.0 1164.0,362.0" fill="#007C78"/>
-<rect x="1182" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1204" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">PeTTa / SWI</text>
-<text x="1204" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Actual native</text>
-<text x="1204" y="384.54" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">evaluation</text>
-<rect x="72" y="526" width="704" height="195" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="576.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Explicit runtime rebaseline</text>
-<text x="94" y="621.1" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Historical SWI 10.0.1 remains unchanged. This</text>
-<text x="94" y="654.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">gate selects SWI 10.1.14 under a new</text>
-<text x="94" y="687.6600000000001" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">revision-only profile.</text>
-<rect x="800" y="526" width="728" height="195" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="822" y="576.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Fail closed on drift</text>
-<text x="822" y="621.1" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Source hashes, model, runtime profile and built</text>
-<text x="822" y="654.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">binary digest are bound to durable attempts.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / KERNEL AND RUNTIME COMPATIBILITY</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">One grounded rule reuses the actual native PLN</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No replacement arithmetic and no general search loop: five explicit premises produce one proposal.</text>
+<rect x="72" y="260" width="420" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Fusion PLNKernel</text>
+<text x="94" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Exact bindings,</text>
+<text x="94" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">source/profile checks and</text>
+<text x="94" y="429.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">remaining deadline</text>
+<rect x="560" y="260" width="480" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="582" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Pinned Reachability</text>
+<text x="582" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">PLNAdapter.apply_rule</text>
+<text x="582" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">DeductionRule + guards</text>
+<rect x="1108" y="260" width="420" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1130" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Native PLN / PeTTa</text>
+<text x="1130" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Truth_Deduction</text>
+<text x="1130" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">SWI 10.1.14 + Janus</text>
+<line x1="492" y1="372" x2="560" y2="372" stroke="#007C78" stroke-width="2"/>
+<polygon points="560,372 547.0,367.0 547.0,377.0" fill="#007C78"/>
+<line x1="1040" y1="372" x2="1108" y2="372" stroke="#007C78" stroke-width="2"/>
+<polygon points="1108,372 1095.0,367.0 1095.0,377.0" fill="#007C78"/>
+<rect x="72" y="548" width="704" height="183" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="598.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Two probability checks</text>
+<text x="94" y="644.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Upstream exact Python precheck and the native</text>
+<text x="94" y="678.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">consistency guard both apply.</text>
+<rect x="800" y="548" width="728" height="183" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="822" y="598.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Separate compatibility profile</text>
+<text x="822" y="644.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Deduction has its own source/runtime allowlist;</text>
+<text x="822" y="678.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">the revision-only profile stays intact.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">No replacement production mathematics, applyRule, PLN.Derive or PLN.Query was introduced.</text>
+<text x="94" y="801.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Kernel output is a proposal. C2 performs final authorization, CAS and admission.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / pln_revision.py · integration/pln/sources.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">17 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / deduction-sources.json · integration/pln/test_deduction.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">17 / 40</text>
 </svg>

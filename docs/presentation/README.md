@@ -1,14 +1,14 @@
-# Omega × ASI — private memory and guarded belief revision
+# Omega × ASI — independent attention and bounded native inference
 
 [Present the PDF](omega-asi-module-interfaces.pdf) ·
 [Edit the PowerPoint](omega-asi-module-interfaces.pptx) ·
 [Speaker notes](speaker-notes.md)
 
-38 slides, 16:9. Slides 1–30 form a 35–40 minute talk; slides 31–38 are
-discussion appendices. Two early **ELI16 executive-summary slides** explain the
-notebook, evidence ledger and calculator, then show why copied reports do not
-count as independent evidence. The complete module map, responsibilities and
-function dependencies precede the detailed implementation.
+40 slides, 16:9. Slides 1–32 form a 40–45 minute talk; slides 33–40 are
+discussion appendices. Two early **ELI16 executive-summary slides** explain
+memory, evidence and the calculator, then introduce a priority list and a limited
+attempt budget. The complete map of 15 modules, their responsibilities, state
+ownership and function dependencies precedes implementation details.
 
 All diagrams are vector graphics. The PowerPoint contains editable text, shapes
 and connectors, with speaker notes on every slide. The PDF embeds its fonts.
@@ -17,52 +17,66 @@ distributed with their [license](fonts/LICENSE.txt).
 
 | Slides | Story |
 |---|---|
-| 1–3 | Thesis and ELI16 executive summary: memory, disagreement and justified updates |
+| 1–3 | Thesis and ELI16 summary: remember evidence, choose priorities, preserve budgets |
 | 4–7 | All 15 modules, responsibilities, state ownership and implementation status |
-| 8–9 | Exercised M2 private dependencies and preserved M1.2 shared application path |
-| 10–13 | Application-neutral DA, independent substitution, private placement and contract decisions |
-| 14–18 | Duplicate-safe episodes, admission versus revision, lineage guards, pinned native PLN and goldens |
-| 19–23 | Four crash boundaries, live authorization, real Hive episode, recorded story and M1.2 preservation |
-| 24–27 | Provider/fixture classification, executed suites and every M2 gate |
-| 28–30 | Reproduction evidence, bounded guarantees and explicit stop at M2 |
-| 31–38 | Code, exact sources, profiles/bounds, future contracts, M1.2 sequence, historical chain, commands and retries |
+| 8–9 | Exercised M3 private dependencies and preserved M1.2 shared application path |
+| 10–13 | Application-neutral DA, independent replacement, private placement and executable contracts |
+| 14–18 | Preserved C1/C2 behavior, inherited evidence, actual native deduction and revision goldens |
+| 19–23 | Independent STI, controlled provider swap, durable budgets, five crash boundaries and authorization |
+| 24–27 | Actual native Hive action, selection effect, evidence classifications and executed tests |
+| 28–32 | Every M3 gate, exact source/build evidence, limits and explicit stop at M3 |
+| 33–40 | Code, full source pins, profiles, C1 acknowledgment seam, M1.2 sequence, historical chain, commands and retry identities |
 
-Current claims use the recorded **16 October 2026 M2 final run**, tested at clean
-`d9e75773c34987d5791a9207190fcbf0a8c1fd7b` and documented by the unchanged-code
-descendant `f0cee248294a1fce42913782390e6c084025c67e`. The presentation starts from
-that clean evidence checkout. Counts, gates, demo decisions and source pins are
-read from committed JSON. The build manifest hashes nine evidence inputs; QA
-also checks the 54 archived M2 evidence files and 70 tested implementation hashes.
+Current claims use the recorded **16 October 2026 M3 final run**, tested from
+clean detached `1af39794649d0ca95cd729c64868202368da1ec4` and documented by the
+unchanged-code descendant `c4498ce3047f1283d3a4a3ae3d09b713e7dcf312`. This
+presentation update starts from that clean evidence checkout. Gates, comparison
+measurements and native source pins come from committed JSON. The build manifest
+hashes 14 evidence inputs; the QA script also audits the archived M2/M3 evidence
+and tested implementation hashes. This update changes documentation and
+presentation artifacts only; it does not rerun integrations or expand guarantees.
 
-C1 EpisodicMemory and C2 BeliefRevision are now implemented private local modules.
-The deck distinguishes the narrow guarded RevisionMath provider from the future
-general PLN kernel. Relations/Search, ECAN and inference control remain specified
-future work. The original M1.2 native path and independent owner commits remain
-visible alongside the new private integration.
+C3 implements **`sti-additive-linear-decay/1`**, a bounded independent reference
+policy. C4 coordinates an immutable workset with durable candidate, attempt,
+generation and deadline limits. C2 alone admits derived support, using the pure
+PLN kernel's unchanged guarded five-premise native deduction. Derived conclusions
+inherit evidence roots and ancestry; they do not become fresh observations.
+Relations/Search, ECAN, LTI, general search and live state migration remain outside
+the implemented scope. M1/M2 profiles, independent commits and native paths remain
+supported.
 
-Real Hive/PeTTa, real local DeTTa and actual native PLN revision are distinguished
-from generated observations/assumptions, the independent file provider,
-RecordingRuntime guard fixtures, injected failures and the local test policy.
-The CLI demo record is separately labelled; it is not presented as a Hive trace.
-The 51 original fixtures and 16 M2 fixtures are subsets of the 106-case matrix,
-so their separate isolation runs are not added to a unique-test total.
+The four controlled cases compare SQLite attention with an independently
+implemented atomic-file **fixture**. All record one native formula call, one
+unique admission and one feedback credit; reopening owners adds no native call.
+Changing initial preference selects the other task. Step timings are individual
+local observations, not a production throughput or cognitive-quality ranking.
+Real Hive, native PLN/PeTTa and local DeTTa remain distinct from generated inputs,
+operator assumptions, guard-only RecordingRuntime tests and injected faults.
 
-All 11 required M2 gates passed; no M2 prerequisite remains blocked. CHAIN is
-**NOT_RUN**. Slide 36 retains the historical M1 isolated-chain observation,
-`pending → included → finalized`, without attributing it to a new Hive result.
+All **13 required M3 gates passed**; no supported M3 prerequisite remains blocked.
+The deck covers **15 actual SIGKILL boundary cases** (10 direct + 5 native Hive),
+including conservative budget exhaustion without a conclusion. Concurrent clock
+changes can leave feedback pending. M3 v3 belief snapshots do not fit the M2 v2 C1
+acknowledgment DTO: generated C1 intents remain available and pending, while direct
+M3 admission/replay is durable and original M2 acknowledgment tests still pass.
+The 51 original and 16 M2 fixture isolation runs overlap the 118-case matrix;
+repeated subsets are not counted as additional unique tests.
+
+CHAIN is **NOT_RUN**. Slide 38 retains the historical M1 isolated-chain observation
+`pending → included → finalized`, without attributing it to a Hive result.
 Exact historical chain-source reproduction remains **BLOCKED** by unavailable
-dirty source inputs. Empty-cache builds, historical SWI 10.0.1, power-loss and
-distributed failover, and the full Hive suite remain **NOT_RUN**.
+dirty source inputs. Empty-global-cache builds, historical SWI 10.0.1, power-loss,
+distributed failover, the full Hive suite and production-quality studies remain
+**NOT_RUN**. None is substituted with a fixture pass.
 
-Read the [M2 report](../module-interfaces/m2-evidence.md),
+Read the [M3 report](../module-interfaces/m3-evidence.md),
+[M2 report](../module-interfaces/m2-evidence.md),
 [M1.2 report](../module-interfaces/m1_2-evidence.md),
 [M1.1 report](../module-interfaces/m1_1-evidence.md),
 [historical M0/M1 report](../module-interfaces/evidence.md) and
-[runbook](../module-interfaces/runbook.md) for the detailed evidence.
-This presentation update changes documentation and presentation artifacts only.
-It does not rerun integrations or expand the observed guarantees.
+[runbook](../module-interfaces/runbook.md) for the underlying evidence.
 
-## Rebuild
+## Rebuild and verify
 
 From the repository root:
 
@@ -71,15 +85,27 @@ uv run --python 3.11 --with-requirements docs/presentation/requirements.txt \
   python docs/presentation/build.py
 ```
 
-Presentation dependencies are isolated from the application's runtime and test
-dependency groups. [build.py](build.py) is the complete editable source: content,
-diagrams, notes and layout. It generates the PDF, PowerPoint,
-[individual SVG slides](slides-svg/), notes and [build manifest](build-manifest.json).
-Bundled fonts avoid dependence on Linux system font paths.
+Presentation dependencies are isolated from runtime/test dependency groups.
+[build.py](build.py) is the editable source for content, diagrams, notes and layout.
+It generates the PDF, PowerPoint, [SVG slides](slides-svg/), notes and
+[build manifest](build-manifest.json). Bundled fonts avoid system-path dependencies.
+The builder checks bounds/text overlap, reopens the PowerPoint and renders every
+PDF page to contact sheets under ignored `artifacts/presentation-qa/`.
 
-The builder checks bounds and text overlap, reopens the PowerPoint, renders every
-PDF page and creates contact sheets under ignored `artifacts/presentation-qa/`.
-PDF and PowerPoint share measured layout. The [QA record](qa.json) records the
-independent LibreOffice render, text/notes checks, evidence audit, visual review
-and ProofShot browser verification. Microsoft PowerPoint itself is unavailable.
-Rebuilds do not rerun or overwrite integration evidence.
+Export the PowerPoint independently with LibreOffice, then compare both renderers
+and audit the source evidence:
+
+```bash
+libreoffice --headless --convert-to pdf \
+  --outdir artifacts/presentation-qa/office-m3 \
+  docs/presentation/omega-asi-module-interfaces.pptx
+uv run --python 3.11 --with-requirements docs/presentation/requirements.txt \
+  python docs/presentation/check.py \
+  artifacts/presentation-qa/office-m3/omega-asi-module-interfaces.pdf
+```
+
+The [QA record](qa.json) records independent LibreOffice rendering, slide text,
+notes, fonts, evidence audit, visual review and ProofShot browser verification.
+Microsoft PowerPoint itself is unavailable. Local visual proof artifacts are
+ignored; generated presentation files and the QA record are committed. Rebuilding
+or checking the presentation does not rerun or overwrite integration evidence.

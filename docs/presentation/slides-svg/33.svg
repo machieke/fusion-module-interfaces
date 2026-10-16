@@ -1,44 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Profiles and bounds are part of compatibility</title>
-<desc id="desc">AtomStorage remains immutable-bytes/1 with original interface 1.0; M2 selects a separate private-local-only descriptor. C1/C2 local interface 2.0.0 is not a silent change to the existing M1 wire 1.0.0. Ingestion is explicit-generated-assessment/1, keeping generated assessment policy outside the owners. Numerical input uses finite decimal strings validated again at the float64 boundary; strength is in [0,1], confidence in [0,1), and evidence_count is null. The bounds listed are semantic contract limits. History is retained without garbage collection or a total storage quota. Live migration and generic query/search are not implemented.</desc>
+<title id="title">Implementation map: responsibilities stay local</title>
+<desc id="desc">Paths are relative to fusion/ unless marked hive/, which is under integration/. ports.py declares the protocols; attention_contracts.py and cognition_contracts.py enforce the executable bounded schemas. Shared DTO validators are permitted in the independent fixture, shared owner transitions are not. C2 default M2 behavior remains via its original validators and profile; the derived owner selects fresh v3 behavior. The native plugin uses integration/m3_scenario.py and holds only caller intent and public receipt. No owner reaches into another owner&#x27;s private SQL. Tests and exact source hashes are indexed in the M3 machine manifest.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX C / CONTRACT LEDGER</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Profiles and bounds are part of compatibility</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A matching method name alone does not establish substitutability.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">SELECTION</text>
-<text x="438" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EXACT PROFILE OR LIMIT</text>
-<text x="1108" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">IMPLICATION</text>
-<rect x="72" y="277" width="1456" height="78" rx="6" fill="#FFFFFF"/>
-<text x="88" y="313.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">C1 / C2 local interface</text>
-<text x="438" y="313.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">2.0.0; implementation 0.2.0</text>
-<text x="1108" y="313.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">No new remote cognitive wire routes</text>
-<rect x="72" y="360" width="1456" height="78" rx="6" fill="#FFFFFF"/>
-<text x="88" y="396.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">C1 / C2 semantics</text>
-<text x="438" y="396.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">episode-local-sequence/2 · pln-revision-private/1</text>
-<text x="1108" y="396.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Bound identity, ordering and</text>
-<text x="1108" y="423.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">numerical decisions</text>
-<rect x="72" y="443" width="1456" height="78" rx="6" fill="#FFFFFF"/>
-<text x="88" y="479.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Numerical / runtime</text>
-<text x="88" y="506.83" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">profiles</text>
-<text x="438" y="479.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">trueagi-pln-stv-finite-k1/v1</text>
-<text x="438" y="506.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">fusion-petta-swi-10.1.14-revision/1</text>
-<text x="1108" y="479.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Explicit model + native selection</text>
-<rect x="72" y="526" width="1456" height="78" rx="6" fill="#FFFFFF"/>
-<text x="88" y="562.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Private atom / event bytes</text>
-<text x="438" y="562.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">65,536 / 16,384 bytes</text>
-<text x="1108" y="562.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Immutable bounded records</text>
-<rect x="72" y="609" width="1456" height="78" rx="6" fill="#FFFFFF"/>
-<text x="88" y="645.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Episode / provenance /</text>
-<text x="88" y="672.83" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">batch</text>
-<text x="438" y="645.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">256 events; 8 provenance + 8 causation; page 16</text>
-<text x="1108" y="645.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">No unbounded query surface</text>
-<rect x="72" y="692" width="1456" height="78" rx="6" fill="#FFFFFF"/>
-<text x="88" y="728.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Belief / snapshot / relay</text>
-<text x="438" y="728.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">32 observations; 64 supports; 262,144 bytes</text>
-<text x="438" y="755.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">3 CAS retries/drain; 32 attempts/delivery</text>
-<text x="1108" y="728.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Retained history; no GC or total disk</text>
-<text x="1108" y="755.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">quota</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX A / CODE NAVIGATION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Implementation map: responsibilities stay local</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Follow interfaces and owner journals before following concrete provider classes.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESPONSIBILITY</text>
+<text x="408" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FILES / SURFACE</text>
+<text x="1078" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNED STATE</text>
+<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C1 / original C2</text>
+<text x="408" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">episodes.py · beliefs.py · evidence_relay.py</text>
+<text x="1078" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Episode history; revision-only</text>
+<text x="1078" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">journals</text>
+<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C2 derived admission</text>
+<text x="408" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">derived_beliefs.py · cognition_contracts.py</text>
+<text x="1078" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Fresh derived-beliefs.sqlite · local v3</text>
+<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C3 attention</text>
+<text x="408" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">attention.py · adapters/fixture_attention.py</text>
+<text x="1078" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">SQLite or independent atomic-file</text>
+<text x="1078" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">state</text>
+<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Pure PLN providers</text>
+<text x="408" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">adapters/pln_deduction.py · pln_revision.py</text>
+<text x="1078" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No mutable domain state</text>
+<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C4 controller</text>
+<text x="408" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">inference.py · deadlines.py</text>
+<text x="1078" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">inference.sqlite · budgets / progress</text>
+<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Composition / native</text>
+<text x="88" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">caller</text>
+<text x="408" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">cognition.py · hive/inference_program/</text>
+<text x="1078" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Explicit provider bindings; caller</text>
+<text x="1078" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">receipt</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / memory_contracts.py · contracts.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">33 / 38</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / architecture.md · ports.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">33 / 40</text>
 </svg>
