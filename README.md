@@ -1,4 +1,4 @@
-# Omega ↔ ASI module interfaces: through M2
+# Omega ↔ ASI module interfaces: through M3
 
 A backend-neutral contract package and bounded storage, mailbox and delegated
 execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
@@ -11,12 +11,18 @@ revision, reusing the pinned guarded PLN implementation through actual native
 PeTTa. See [M2 evidence](docs/module-interfaces/m2-evidence.md), including the
 separate fixture, real DeTTa, real PLN, real Hive and unrun gates.
 
-For the complete M2 source/build/test path (Linux prerequisites and access are
+M3 adds independently persistent STI attention, an independent same-profile
+atomic-file fixture, a pure guarded native deduction kernel, explicit derived
+support admission and a bounded inference controller. The new native Hive action
+exercises restart, replay, causal feedback and durable attempt budgets. See
+[M3 evidence](docs/module-interfaces/m3-evidence.md) and the executable contracts.
+
+For the complete M3 source/build/test path (Linux prerequisites and access are
 listed in the runbook):
 
 ```bash
-uv run --python 3.11 --locked python scripts/build_m2.py artifacts/m2-providers
-uv run --python 3.11 --locked python scripts/verify_m2.py artifacts/m2-providers/environment.json
+uv run --python 3.11 --locked python scripts/build_m3.py artifacts/m3-providers
+uv run --python 3.11 --locked python scripts/verify_m3.py artifacts/m3-providers/environment.json
 ```
 
 For the original M1 conformance slice:
@@ -39,8 +45,9 @@ Read [architecture](docs/module-interfaces/architecture.md),
 The [original M1 evidence](docs/module-interfaces/evidence.md) is historical.
 The M1.1 blocked runtime observation remains historical; M1.2 uses the revision
 identified by the supplied `omegahive-schematics`. The optional chain gate is
-separate and is not rerun in M1.2 or M2. No ECAN, inference control or live state
-migration is implemented.
+separate and is not rerun in M1.2, M2 or M3. M3 implements only the specified
+reference STI policy and bounded grounded inference. No LTI, general search,
+research attention policy, live state migration or further inference expansion is included.
 
 The [conference presentation](docs/presentation/README.md) covers the architecture
 through M2, opening with an ELI16 executive summary before all 15 module

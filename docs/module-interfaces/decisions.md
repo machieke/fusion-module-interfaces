@@ -273,3 +273,86 @@ multiple, nonfinite or rounded-to-certainty outputs fail closed. Native source,
 runtime version and selected model identities are checked, and no source download
 occurs in a runtime request. Missing or failed math leaves C1 available and C2
 delivery pending. Source obtainability and fresh-build checks are separate gates.
+
+## ADR 010 — bounded context-local STI and independent replacement (M3)
+
+Starting state is clean `926882afb9ab9c7288bf663f96f9e1ca63dd8520`, descendant of
+`f0cee248294a1fce42913782390e6c084025c67e` with presentation/docs and the M3 brief
+only. The applicable complete M2 baseline passed before editing. Inspected
+metta-attention `3e1c8147dc17299d17ab34720334fc19277cb6a9` has coupled STI/LTI/VLTI,
+wages, funds and in-memory MeTTa state; it is not this bounded persistent profile.
+Use `sti-additive-linear-decay/1`, explicitly a reference policy, not ECAN.
+
+C3 local interface 2.0.0 owns scope/context state, logical step, state revision,
+causal stimuli and command replay. Policy identity freezes S_max, B, d, maximum
+contexts/targets/advances/causes/commands and feedback generation. Units are exact
+nonnegative integer decimal strings. Saturating credit rejects atomically if it
+would exceed B. Decay removes units; reads and selection do not change state.
+Selection returns the full bounded eligible value vector, deterministic ranking,
+logical step and state watermark. There is no atomic snapshot across owners.
+
+Ingress and feedback use separately bound trusted-local authority roles. Ingress
+has generation zero. Feedback must name a previously admitted parent stimulus;
+its generation is parent+1, checked by Attention, and cannot exceed the frozen
+policy cap. A target retains its highest causal generation even after decay or
+new ingress; a new step ID cannot reset it. Duplicate causal identity returns its
+original receipt under current authority; a changed body conflicts. Controller
+feedback is a fixed success signal, never truth or empirical evidence. Explicit
+operator ingress is trusted, not Sybil-resistant.
+
+The SQLite owner and atomic-file fixture independently implement transitions;
+only DTOs/validators are shared. Capacity refusal never evicts acknowledged state.
+Compare unchanged consumers through hostile declared-port wrappers on fresh
+stores. Provider replacement is not migration. No DA/PLN/Hive requirement exists
+for C3. Private placement and current authorization apply to every operation.
+
+## ADR 011 — historical premise vectors, owner admission and durable attempts (M3)
+
+Use a new local C2 3.0.0 profile `pln-derived-private/1` on fresh private journals.
+The M2 `pln-revision-private/1`, replay, support schema and revision-only runtime
+remain supported unchanged. C3/C4 specifications become executable local 2.0.0
+contracts; M1 wire stays unchanged. No existing journal selection is bypassed.
+
+Immutable task atoms bind context and exact P/Q/R/P=>Q/Q=>R/P=>R claim roles.
+Immutable worksets bind at most 16 task refs to five ordered historical
+claim/revision/support references. Propositions map to exact claim-reference
+digests; implication claim arguments explicitly contain those digests. Equal text
+never merges two references. Output claim existence creates no truth. Selection
+is frozen per step; examined invalid/unresolved tasks consume candidate budget.
+
+The same BeliefRevision owner gains submitDerivation/readDerivation. It reads
+its authoritative immutable premise snapshots, invokes a pure injected PLNKernel,
+validates the proposal, and rechecks output CAS and current authority at commit.
+Snapshot policy is explicitly historical-as-of-vector; no global Fusion revision
+is invented. The upstream integer evaluation revision is zero, a local evaluation
+identifier, with the actual premise vector retained separately.
+
+Observation, same-claim revision and five-premise deduction are closed tagged
+support variants. Coverage means local admitted support units under this new
+profile; a deduction is one unit with an explicit foreign premise vector.
+Evidence/roots are unioned without creating observations. Grounded ancestors
+survive admission, revision and later deduction. Existing target support keeps a
+new derivation as an alternative unless separately authorized revision qualifies.
+Logical derivation identity is independent of step/request keys.
+
+The kernel reuses unchanged pinned PLNAdapter.apply_rule / DeductionRule and
+Truth_Deduction, including exact Python and native consistency guards. A distinct
+`fusion-petta-swi-10.1.14-deduction/1` runtime permits only that rule. The revision
+allowlist is not widened. Heuristic and near-one assumptions remain explicit.
+
+C4 owns a local step journal, selection checkpoint, native-attempt reservations,
+results and feedback intents. Each reservation commits before dispatch. Each C2
+derivation attempt key evaluates at most once; recovery first queries it. A lost
+pending attempt spends its slot; another evaluation requires another durable
+slot and another attempt key. Successful decision replay needs no new slot.
+max_rule_applications counts physical evaluation opportunities, not successes.
+Absolute Unix-ms deadline and all counters survive restart. Provider verification
+and native subprocess timeouts consume the remaining deadline; trusted same-host
+wall-clock and intact files are assumed, without hard real-time/reboot promises.
+
+Atoms, C1, C2, attention and controller commits are independent. Controller code
+uses only declared ports, never foreign SQL or provider internals. A fixed causal
+feedback identity comes from logical admission, not a step ID. A concurrent clock
+advance may leave an explicit pending/conflicting feedback intent; no implicit
+retiming or empty-belief fallback is allowed. No general scheduler/search,
+migration, chain operation, LTI or research attention policy is implemented.

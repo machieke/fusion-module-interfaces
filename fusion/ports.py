@@ -1,4 +1,4 @@
-"""Method-level contracts: M1, private C1/C2 v2, and specified C3/C4 ports.
+"""Method-level contracts: M1, private C1/C2 v2, and bounded C3/C4 local ports.
 
 No cognitive implementation is instantiated in M0/M1. A model/policy profile is
 mandatory wherever numeric or query semantics differ.
@@ -143,44 +143,50 @@ class RevisionMath(Protocol):
 
 
 @dataclass(frozen=True)
-class Derivation:
-    proposed_claim: AtomRef
-    proposed_truth: Truth
-    rule: ProfileRef
-    premises: tuple[BeliefSnapshot, ...]
-    evidence: tuple[EvidenceRef, ...]
-    assumptions: tuple[AtomRef, ...]
+class DerivationSubmission:
+    command: Mutation
+    task: AtomRef
+    context: str
+    premises: tuple[JSON, ...]
+    expected_revision: int
+    profile: str
+    kernel_selection: str
+    deadline_ms: int
+
+
+class DerivedBeliefRevision(Protocol):
+    """Version 3 tagged-support responses; not the M2 snapshot schema."""
+    def submitEvidence(self, submission: EvidenceSubmission) -> JSON: ...
+    def readBelief(self, claim: AtomRef, context: str, revision: int | None) -> JSON: ...
+    def submitDerivation(self, request: DerivationSubmission) -> JSON: ...
+    def readDerivation(self, scope: str, idempotency_key: str) -> JSON | None: ...
 
 
 class PLNKernel(Protocol):
-    def profiles(self) -> tuple[ProfileRef, ...]: ...
-    def applyRule(self, rule: ProfileRef, premises: tuple[BeliefSnapshot, ...]) -> Derivation: ...
+    def profile(self) -> JSON: ...
+    def applyRule(self, task: JSON, premises: tuple[JSON, ...], deadline_ms: int) -> JSON: ...
 
 
 @dataclass(frozen=True)
 class Stimulus:
     command: Mutation
+    context: str
     target: AtomRef
     amount: str
     cause: str
     generation: int
-    policy: ProfileRef
-
-
-@dataclass(frozen=True)
-class AttentionSnapshot:
-    target: AtomRef
-    sti: str
-    logical_step: int
-    policy: ProfileRef
-    revision: int
+    policy: str
+    expected_step: int
+    kind: Literal['ingress', 'feedback']
+    parent: str | None = None
 
 
 class Attention(Protocol):
-    def submitStimulus(self, stimulus: Stimulus) -> AttentionSnapshot: ...
-    def readAttention(self, target: AtomRef) -> AttentionSnapshot: ...
-    def select(self, scope_ref: str, policy: ProfileRef, limit: int) -> tuple[AttentionSnapshot, ...]: ...
-    def advance(self, command: Mutation, policy: ProfileRef, expected_step: int, steps: int) -> int: ...
+    def profile(self) -> JSON: ...
+    def submitStimulus(self, stimulus: Stimulus) -> JSON: ...
+    def readAttention(self, target: AtomRef, context: str) -> JSON: ...
+    def select(self, scope: str, context: str, eligible: tuple[AtomRef, ...], limit: int) -> JSON: ...
+    def advance(self, command: Mutation, context: str, expected_step: int, steps: int) -> JSON: ...
 
 
 @dataclass(frozen=True)
@@ -188,20 +194,20 @@ class WorkBudget:
     max_candidates: int
     max_rule_applications: int
     max_feedback_generation: int
-    deadline_ms: int
+    deadline_ms: int  # absolute Unix milliseconds, never renewed by replay
 
 
 @dataclass(frozen=True)
-class StepReceipt:
-    candidates: int
-    rule_applications: int
-    feedback_generation: int
-    proposals: tuple[AtomRef, ...]
-    stopped_because: Literal["budget", "deadline", "exhausted", "unavailable"]
+class InferenceRequest:
+    command: Mutation
+    context: str
+    workset: AtomRef
+    selections: JSON
+    budget: WorkBudget
 
 
 class InferenceControl(Protocol):
-    def step(self, command: Mutation, budget: WorkBudget) -> StepReceipt: ...
+    def step(self, request: InferenceRequest) -> JSON: ...
 
 
 @runtime_checkable

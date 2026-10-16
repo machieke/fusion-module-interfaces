@@ -101,15 +101,16 @@ SQLite journal; it is not a mandatory dependency of the M1 peers.
 | `search` / provider-specific symbolic or embedding profile | Query returns refs, projection version, source watermark and completeness. Query grammar is selected by exact profile; no silent conversion. Rebuildable index owns no canonical records. A minimum watermark not reached is NOT_AVAILABLE; bounded pagination/snapshot rules must be declared by provider. Tests SEARCH-watermark, SEARCH-dialect, SEARCH-failure-not-empty. |
 | `episodic.memory` / `episode-local-sequence/2` (C1, local 2.0.0) | Implemented private episode owner; stable identity, immutable event refs, ordered CAS append and durable evidence intent. Exact methods and bounds below. Earlier `/1` specification is unsupported. |
 | `belief.revision` / `pln-revision-private/1` (C2, local 2.0.0) | Implemented explicit evidence admission and guarded native revision. Exact support/context/lineage, independent assumption registration, historical snapshots and durable semantic attempts. See below. |
-| `pln.kernel` / rule model pending (C4) | profiles/applyRule. Pure ordered immutable premise snapshots → proposed derivation; no mutation/idempotency ledger needed. Reject unsupported model/rule/preconditions explicitly. Retain source evidence and assumptions. No agenda, revision or attention writes. Tests PLN-order, PLN-golden, PLN-purity, PLN-lineage. |
-| `attention` / STI-only policy pending (C3) | submitStimulus/readAttention/select/advance. ECAN owns allocation and logical time; deduplicate stimulus key. Policy must specify stipend, finite legal values, conservation/nonconservation, saturation, decay, budget and tie-break. advance CAS expected_step, monotonic bounded steps. Atomic step plus attention-changed events; no foreign setters. Tests ECAN-no-PLN, ECAN-owner, ECAN-duplicate, ECAN-budget, ECAN-decay, ECAN-tie. |
-| `inference.control` / `bounded-step/1` (C4) | step obeys candidate, rule-application, feedback-generation and deadline budgets. Reads explicit snapshots, requests revision and stimuli through their owners. Reports actual work and stop cause; durable checkpoint and replay policy required before crash-safe advertisement. No cross-owner atomic transaction implied. Tests IC-bounds, IC-feedback, IC-replay, IC-provider-swap. |
+| `pln.kernel` / `grounded-five-premise-deduction/1` (local 2.0.0) | Pure `profile/applyRule`: exact grounded task and ordered historical premise bindings. Guarded native Truth_Deduction only; proposals, no owner writes. |
+| `attention` / `sti-additive-linear-decay/1` (C3, local 2.0.0) | Persistent bounded integer STI, scoped context clock, deterministic eligible selection, causal and transport replay. Independently runnable SQLite owner and atomic-file fixture. |
+| `inference.control` / `bounded-grounded-inference/1` (C4, local 2.0.0) | Immutable workset, recorded attention selection, durable native-attempt reservations, absolute deadline and independent feedback acknowledgment. |
+| `belief.revision` / `pln-derived-private/1` (C2 extension, local 3.0.0) | Fresh tagged-support journal; `submitDerivation/readDerivation` supplement evidence admission and historical reads. M2 2.0.0 remains separate and unchanged. |
 | `consensus.finality` / `asi-deploy-effects/1` | submit eligible approved commitment; observe actual deploy inclusion/effect-finality. Preserve provider evidence and tx/block IDs; distinguish not-observed/pending/included/finalized/rejected, including merge rejection. Submission idempotency must bind deploy signature/intent; no new transaction after ambiguous timeout. Finality alone does not certify off-chain bytes. CHAIN-inclusion, CHAIN-effects, CHAIN-no-synthetic. |
 
 C2 uses the pinned guarded PLN revision model described below. C3 does not
 silently wrap a multi-currency implementation as STI-only. Specialist review
-remains unassigned. Relations, search, C3 and C4 test names above remain future
-specifications. Executed C1/C2 cases are listed in the M2 evidence report.
+remains unassigned. Relations and search remain future specifications. Executed
+C1/C2 cases are in the M2 report; C3/C4 and the explicit C2 extension are in the M3 report.
 
 ## Conformance mapping
 
@@ -287,3 +288,109 @@ checked again before C2 commit. Formula execution may repeat after SIGKILL; the
 logical contribution does not. No transaction spans AtomStorage, C1, C2 or relay
 acknowledgment. Malformed foreign replies fail as NOT_AVAILABLE and never become
 an empty history or an accepted numeric result.
+
+
+## M3 executable private contracts
+
+The executable DTOs are in `fusion/ports.py`; closed validators live in
+`attention_contracts.py` and `cognition_contracts.py`. These are local interfaces,
+not additions to the M1 shared wire. `cognition.py` selects concrete providers;
+consumers receive only declared ports. Hostile proxies exercise those limits.
+
+| Consumer | Declared foreign dependencies | Owned durable state |
+|---|---|---|
+| C3 Attention | PrivateAuthority only | STI, clock, watermark, causal receipts and command replay |
+| PLNKernel | Verified source/runtime adapter only | None; private temporary numerical program is deleted |
+| C2 derived BeliefRevision | AtomStorage, EpisodicMemory, RevisionMath, PLNKernel, PrivateAuthority | Historical tagged supports, admission attempts and decisions |
+| C4 InferenceControl | AtomStorage, DerivedBeliefRevision, Attention, PrivateAuthority | Immutable step intent, selection/order, counters, reservations, results and feedback intents |
+| Native Hive action | Trusted composition and these ports | Hive's existing request lifecycle; generated action uses private owner records |
+
+C3 `Stimulus` binds command, context, target, amount, causal identity, generation,
+policy hash, expected logical step, kind and parent. `select` names a bounded,
+unique eligible tuple and limit; it returns the exact eligible values, sorted
+positive ranking, clock, revision and eligible digest. `readAttention` returns
+value/clock/revision/policy/context. Neither read mutates state. `advance` returns
+scope/context/policy/clock/revision and commits clock plus decay atomically.
+All units are canonical nonnegative integer decimal strings, at most 16 digits.
+Defaults: Smax=100, B=300, decay=1, targets=16, advances/call=16, contexts=8,
+causes/context=512, commands/owner=1024, feedback generation=3. These parameters
+are part of the policy hash and journal identity. Saturation precedes total-budget
+validation; over-budget writes conflict without partial changes. Capacity refusal
+is NOT_AVAILABLE; acknowledged entries are never evicted. Canonical *full reference*
+JSON breaks ties. Exact successful replay is checked before clock CAS, under live
+authorization. A causal replay under a new transport key consumes a command slot.
+
+Ingress and feedback use distinct trusted authority bindings, additionally checked
+against live principal permissions. Fresh feedback must name the target's current
+causal parent and its next generation. Decay and later generation-zero ingress do
+not reduce the stored maximum generation. This prevents resetting feedback by
+changing step IDs; it is not a policy for untrusted identities or arbitrary reward
+sources. Different policies require different selections and fresh stores.
+
+`InferenceRequest` includes context, immutable workset AtomRef, all four selected
+provider tokens and WorkBudget. A workset has profile/context and 1–16 unique task
+entries. Each entry contains an immutable task ref and five exact ordered bindings:
+claim ref, context, historical belief revision and support ID. Task roles are
+P,Q,R,PQ,QR,PR. Proposition entities are hashes of exact immutable refs; implication
+claims explicitly name those entity IDs. Equal-looking labels never merge claims.
+Kernel input contains the verified task/claim records and authoritative support
+records. A historical version is never replaced by latest state. Upstream's integer
+knowledge_revision=0 is a local evaluation identity, not a global ledger revision.
+
+C2 3.0.0 support is one of three closed tags: observation (one occurrence), revision
+(two local supports), deduction (five ordered foreign bindings). Every tag retains
+literal, bounded ancestors, actual evidence IDs and lineage roots. Observation has
+no ancestors; revision and deduction preserve the upstream union of premises and
+ancestors. Deduction coverage is one *local admitted support unit*, not five target
+observations. Coverage's `local-admitted-supports/1` tag makes that distinction
+explicit. Deduction never appends an observation, adds a root, supplies an evidence
+count, or asserts source independence. Unknown target truth may initialize from
+inferential support. Existing truth retains the deduction as an alternative; only
+separate authorized `submitEvidence` with an explicit independence assumption can
+request guarded revision of already admitted local supports.
+
+`submitDerivation` accepts the task, exact vector, output revision CAS, selected
+kernel identity and absolute deadline. The owner persists exact semantic intent
+before reads/evaluation. Logical derivation identity hashes rule profile, task ref,
+vector and kernel identity, excluding request/step ID, deadline and output CAS.
+Duplicate logical admission returns existing support even under another key.
+Evaluation occurs outside the belief transaction; commit rechecks authorization,
+logical deduplication and output CAS. Per-attempt keys evaluate at most once:
+`readDerivation` returns absent, pending, complete, refused or controlled error.
+A killed pending evaluation can only be tried again with a new reserved attempt
+and key. Successful replay returns its original decision. An error result is
+explicit; it is never an empty belief.
+
+C4 persists its absolute Unix-ms deadline and counters before foreign work. A
+candidate is counted before resolution, including rejection. A `reserved` slot is
+a conservative physical evaluation opportunity: reserve before dispatch, never
+refund it, and query the prior C2 decision before allocating another. Native
+formula invocations can be fewer than reservations because of crashes, guard
+refusals or deduplication, never more. `completed` counts validated C2 completions;
+`unique_admissions` and `duplicate_admissions` distinguish logical work.
+`feedback_applied` counts acknowledged unique logical credits; `feedback_duplicate`
+counts duplicate admissions whose feedback was suppressed. External kill-test and
+comparison instrumentation measures actual native formula attempts independently.
+All feedback uses a fixed one-unit workflow reward and the logical derivation ID;
+it changes neither truth nor evidence. Selection stays frozen for the step.
+
+C4 receipts retain selection, bounded results, feedback state, remaining candidate
+and rule budgets, status and reason. Reasons include workset-exhausted,
+candidate-budget, rule-budget, deadline, provider-unavailable and resumable
+feedback-unavailable. A clock change can leave feedback pending with CONFLICT;
+no retiming is implicit. Generation-limit entries explain suppressed reward.
+A completed step may have no conclusion or pending unacknowledged work. It is a
+completed bounded attempt, not an assertion that reasoning succeeded.
+
+Kernel source checks, SWI version checks and formula subprocesses consume remaining
+absolute deadline; native timeout is capped by it. Controller checks time before
+new work and admission rechecks after computation. Same-host wall clock, bounded
+local providers and intact owner files are assumed. File I/O and process scheduling
+are cooperative, not hard real-time cancellation. No reboot, power-loss, distributed
+failover, all-owner transaction or live migration guarantee is advertised.
+
+M2 profiles/DTOs and `fusion-inspect`/`fusion-episode` stay supported. M3 opens new
+`derived-beliefs.sqlite`, `attention.*` and `inference.sqlite` journals. M3 does not
+feed its version-3 decisions into the version-2 C1 acknowledgment DTO: generated
+observation delivery intents remain available in C1. Direct M3 admission and its
+own durable decisions prove replay; no incompatible acknowledgment is fabricated.

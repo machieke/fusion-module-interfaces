@@ -15,9 +15,9 @@ from .responses import envelope
 
 class BeliefOwner:
     def __init__(self, database, atoms: AtomStorage, episodes: EpisodicMemory,
-                 access: PrivateAuthority, math: RevisionMath, *, hook=lambda stage: None):
+                 access: PrivateAuthority, math: RevisionMath, *, hook=lambda stage: None, contracts=c):
         self.database, self.atoms, self.episodes, self.access, self.math = str(database), atoms, episodes, access, math
-        self.hook = hook
+        self.hook, self.c = hook, contracts
         self.runtime_selection = digest(canonical(math.profile()))
         self.selection = digest(canonical([access.selection(), self.runtime_selection]))
         with closing(self._connect()) as db, db:
@@ -49,7 +49,7 @@ class BeliefOwner:
         validate_ref(claim, claim['scope_ref'])
         value = self.atoms.get(claim); envelope(value, claim)
         require(value.content_type == 'application/fusion-claim', 'INVALID_ARGUMENT')
-        c.grounded_claim(json.loads(value.bytes))
+        self.c.grounded_claim(json.loads(value.bytes))
 
     def _key(self, claim, context):
         return digest(canonical([claim, context]))
@@ -62,13 +62,13 @@ class BeliefOwner:
         require(revision in (None, 0), 'NOT_FOUND')
         return {'claim': claim, 'context': context, 'revision': 0, 'truth': None, 'aggregate': None,
                 'covered_supports': [], 'alternatives': [], 'supports': [], 'observations': [],
-                'model': c.MODEL, 'runtime_selection': self.runtime_selection}
+                'model': self.c.MODEL, 'runtime_selection': self.runtime_selection}
 
     @c.boundary
     def readBelief(self, claim, context, revision=None):
-        claim = c.detached(claim)
-        validate_ref(claim, claim['scope_ref']); c.identifier(context)
-        if revision is not None: c.integer(revision)
+        claim = self.c.detached(claim)
+        validate_ref(claim, claim['scope_ref']); self.c.identifier(context)
+        if revision is not None: self.c.integer(revision)
         self._authorize(claim['scope_ref'], 'readBelief'); self._claim(claim)
         with closing(self._connect()) as db:
             return self._snapshot(db, claim, context, revision)
@@ -82,8 +82,8 @@ class BeliefOwner:
 
     def _evidence(self, request):
         if request.evidence is None: return None
-        record = c.response_copy(self.episodes.readEvidence(request.evidence))
-        c.response(c.evidence_record, record, request.evidence)
+        record = self.c.response_copy(self.episodes.readEvidence(request.evidence))
+        self.c.response(self.c.evidence_record, record, request.evidence)
         immutable = self.atoms.get(request.evidence['event_ref']); envelope(immutable, request.evidence['event_ref'])
         require(immutable.content_type == 'application/fusion-event' and json.loads(immutable.bytes) ==
                 {'event': record['event'], 'lineage_roots': record['lineage_roots']}, 'NOT_AVAILABLE')
@@ -100,7 +100,7 @@ class BeliefOwner:
         old = next((o for o in snapshot['observations'] if o['evidence'] == request.evidence), None)
         if old:
             return next((s for s in snapshot['supports'] if s['id'] == old['support_id']), None), False
-        require(len(snapshot['observations']) < c.MAX_SUPPORTS, 'OVERLOADED')
+        require(len(snapshot['observations']) < self.c.MAX_SUPPORTS, 'OVERLOADED')
         numeric = record['event']['numerical']
         support = None
         if numeric['truth'] is not None and record['lineage_roots']:
@@ -109,12 +109,17 @@ class BeliefOwner:
                        'truth': numeric['truth'], 'evidence_ids': [digest(canonical(request.evidence))],
                        'lineage_roots': record['lineage_roots'], 'coverage': [identity],
                        'premises': [], 'formula': None, 'assumptions': []}
-            c.support(support, request.command.scope_ref)
+            support = self._observation(support)
+            self.c.support(support, request.command.scope_ref)
             snapshot['supports'].append(support)
         snapshot['observations'].append({'evidence': request.evidence, 'relationship': numeric['relationship'],
             'truth': numeric['truth'], 'support_id': support['id'] if support else None,
             'lineage_roots': record['lineage_roots']})
         return support, True
+
+    def _observation(self, support): return support
+
+    def _base_support(self, support): return not support['premises']
 
     def _calculate(self, snapshot, request, record):
         candidate, added = self._admit(snapshot, request, record)
@@ -137,12 +142,12 @@ class BeliefOwner:
             if candidate['id'] == aggregate['id'] or (not added and request.independence is None):
                 numerical, detail = 'no-change', 'already admitted; no new numerical evidence'
             else:
-                result = c.response_copy(self.math.revise(aggregate, candidate, snapshot['revision'], request.independence))
-                c.response(c.math_result, result, aggregate, candidate, request.independence)
+                result = self.c.response_copy(self.math.revise(aggregate, candidate, snapshot['revision'], request.independence))
+                self.c.response(self.c.math_result, result, aggregate, candidate, request.independence)
                 proposal = result['proposal']
                 if proposal is not None:
                     self.hook('after_formula')
-                    require(len(snapshot['supports']) < c.MAX_SUPPORTS * 2, 'OVERLOADED')
+                    require(len(snapshot['supports']) < self.c.MAX_SUPPORTS * 2, 'OVERLOADED')
                     snapshot['supports'].append(proposal)
                     snapshot.update(aggregate=proposal['id'], truth=proposal['truth'], covered_supports=proposal['coverage'])
                     numerical, detail, changed = 'revised', 'native guarded Truth_Revision', True
@@ -151,13 +156,13 @@ class BeliefOwner:
                     # Upstream diagnostics include only controlled guard descriptions.
                     detail = result['detail']
         snapshot['alternatives'] = sorted(s['id'] for s in snapshot['supports']
-            if not s['premises'] and s['id'] not in snapshot['covered_supports'])
+            if self._base_support(s) and s['id'] not in snapshot['covered_supports'])
         if changed: snapshot['revision'] += 1
         return candidate, added, numerical, detail, changed
 
     @c.boundary
     def submitEvidence(self, request: EvidenceSubmission):
-        semantic = c.submission(request)
+        semantic = self.c.submission(request)
         request = EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
         principal = self._authorize(request.command.scope_ref, 'submitEvidence', request.independence is not None)
         require(request.runtime_selection == self.runtime_selection, 'UNSUPPORTED_PROFILE')
@@ -178,13 +183,13 @@ class BeliefOwner:
         require(not conflict, 'CONFLICT')
         self._claim(request.claim)
         record = self._evidence(request)
-        working = c.detached(base)
+        working = self.c.detached(base)
         candidate, added, numerical, detail, changed = self._calculate(working, request, record)
         decision = {'decision_id': identity, 'evidence': request.evidence,
                     'support_id': candidate['id'] if candidate else None,
                     'admission': 'admitted' if added else 'duplicate', 'numerical': numerical,
                     'detail': detail, 'snapshot': working}
-        c.response(c.decision, decision, request.claim, request.context, self.runtime_selection)
+        self.c.response(self.c.decision, decision, request.claim, request.context, self.runtime_selection)
         with closing(self._connect()) as db, db:
             db.execute('BEGIN IMMEDIATE')
             self._authorize(request.command.scope_ref, 'submitEvidence', request.independence is not None)

@@ -20,22 +20,28 @@ from .. import memory_contracts as c
 PINS = json.loads((Path(__file__).resolve().parents[2] / 'integration/pln/sources.json').read_text())
 
 
-def run(args, *, timeout=10, env=None):
+from ..deadlines import remaining
+
+
+def run(args, *, timeout=10, env=None, deadline_ms=None):
     try:
-        value = subprocess.run(list(map(str, args)), capture_output=True, text=True, timeout=timeout,
+        value = subprocess.run(list(map(str, args)), capture_output=True, text=True, timeout=remaining(deadline_ms, timeout),
                                env=env, check=True)
+        remaining(deadline_ms)
         require(not value.stderr.strip(), 'NOT_AVAILABLE')
         return value.stdout
     except (OSError, subprocess.SubprocessError):
         raise ContractError('NOT_AVAILABLE') from None
 
 
-def verify_source(name, path):
+def verify_source(name, path, deadline_ms=None):
     pin = PINS['sources'][name]
-    require(run(['git', '-C', path, 'rev-parse', 'HEAD']).strip() == pin['commit'], 'UNSUPPORTED_PROFILE')
-    require(not run(['git', '-C', path, 'status', '--porcelain']).strip(), 'UNSUPPORTED_PROFILE')
+    require(run(['git', '-C', path, 'rev-parse', 'HEAD'], deadline_ms=deadline_ms).strip() == pin['commit'], 'UNSUPPORTED_PROFILE')
+    require(not run(['git', '-C', path, 'status', '--porcelain'], deadline_ms=deadline_ms).strip(), 'UNSUPPORTED_PROFILE')
     for file, expected in pin.get('files', {}).items():
+        remaining(deadline_ms)
         require(hashlib.sha256((Path(path) / file).read_bytes()).hexdigest() == expected, 'UNSUPPORTED_PROFILE')
+        remaining(deadline_ms)
 
 
 def reuse(path):

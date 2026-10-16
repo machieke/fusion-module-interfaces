@@ -271,3 +271,79 @@ revision, selected provider or assumption under its existing key. A changed
 profile/binary requires a new compatible deployment/history; live migration is
 outside M2. Continue only after resolving an authorization/profile failure,
 never downgrade to a fixture automatically.
+
+## M3: independent STI and bounded grounded inference
+
+Start with the exact implementation SHA in [M3 evidence](m3-evidence.md). The
+requested ancestor is `f0cee248294a1fce42913782390e6c084025c67e`; execution began at
+`926882afb9ab9c7288bf663f96f9e1ca63dd8520` (presentation and brief-only descendants).
+
+```bash
+uv run --python 3.11 --locked python scripts/build_m3.py artifacts/m3/providers
+uv run --python 3.11 --locked python scripts/verify_m3.py \
+  artifacts/m3/providers/environment.json --output artifacts/m3/final
+```
+
+The build destination must be empty. This extends the unchanged M2 source/build
+recipe: exact Hive, DeTTa, Reachability, PLN, PeTTa and SWI sources, a new native
+build/Janus environment and new DeTTa target. It adds a separate deduction runtime
+configuration; it never widens the revision-only allowlist or rewrites Reachability's
+historical 10.0.1 lock. Network/authorized Git source access and the compiler/tool
+prerequisites of M1.2/M2 are required. Download caches may be warm. Provider paths
+must remain unchanged after building. `environment.json` contains local environment
+configuration and must not be published wholesale.
+
+`verify_m3.py` initializes each gate to NOT_RUN, records source SHA/status/file
+hashes, runs the unchanged M2 verifier (which runs M1.2), then standalone attention,
+contract fixtures, pinned upstream guard fixtures, native deduction/admission,
+actual SIGKILL recovery, actual Hive action and the controlled provider comparison.
+Absent native inputs are BLOCKED prerequisites, never fixture passes. Failures stop
+the verifier with retained logs. Detailed runtime and comparison data are saved in
+`verification.json` and `comparison.json`. Fresh cloned checkouts need `artifacts/`
+for the inherited M1 verifier; it creates its own regression artifacts.
+
+For a focused fixture-only gate, no native environment is required:
+
+```bash
+uv run --python 3.11 --locked python -m unittest -v \
+  tests.test_m3_attention tests.test_m3
+```
+
+For native subsets, use the built environment's `VIRTUAL_ENV/bin/python` and export
+its declared `M2_REVISION_ENV`, `M2_DETTA_BINARY`, `M3_DEDUCTION_ENV`, `PETTA_PATH`,
+`HIVE_REPO`, `LD_LIBRARY_PATH` and other native variables. Execute
+`integration.pln.test_deduction`, `integration.pln.test_m3_recovery`, or pytest on
+`integration/hive/test_m3_integration.py`. Do not accidentally run these with an
+unconfigured system Python; missing Janus library paths are not a valid native pass.
+
+Composition uses the original private C0/C1 descriptors plus `cognition_descriptors`
+from `fusion.cognition.descriptors()`, `attention_policy` parameters, and explicit
+`attention_provider` (`sqlite` or `atomic-file-fixture`). Fresh M3 owner filenames
+keep old M2 journals under their original profiles. Changes to policy, provider,
+runtime or descriptor identity reject incompatible populated stores. The swap test
+always starts fresh stores; no state migration is provided.
+
+The verified sibling plugin directory is `integration/hive/inference_program`.
+The native action `fusion-inference / infer-generated` accepts only a generated
+seed, preference `a`/`b`, and absolute `deadline_ms`. Operator-owned
+`FUSION_M3_HIVE_CONFIG` maps authenticated Hive principal/swarm to private local
+credentials and scope. The trusted Programs actor supplies identity; request bodies
+cannot supply it. One action creates a private 12-event episode (10 generated
+observations, action and result), two grounded tasks and a one-attempt step.
+Only generated counts/status are returned publicly. Existing inspect/episode
+plugins are unchanged. Test pause hooks are operator-only fixtures.
+
+Recovery must use identical input and deadline. A spent reservation is not refunded.
+A pending C2 attempt without a committed decision requires a new reserved slot/key;
+with no remaining slot the step terminates without a conclusion. A committed C2
+decision is recovered before allocating further work. Feedback has its own durable
+intent and causal deduplication. A concurrent attention clock advance may leave
+explicit pending CONFLICT feedback; the implementation never silently reschedules
+it. Deadline expiry is terminal for that bounded request, even if feedback remains
+unacknowledged. Check the receipt's counters/results/pending state; `complete` means
+the bounded attempt ended, not that all possible conclusions were found.
+
+Generated C1 observation delivery intents are intentionally retained: M3 does not
+forge a version-2 acknowledgment out of its version-3 belief snapshot. No shared DA,
+mailbox, chain or public Hive route carries the private trace. No LTI, general search,
+attention research, live migration, inference expansion or M4 work is included.

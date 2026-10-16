@@ -1,0 +1,36 @@
+{
+  "model": "trueagi-pln-stv-finite-k1/v1",
+  "runtime_profile": "fusion-petta-swi-10.1.14-deduction/1",
+  "swipl_version": "10.1.14",
+  "historical_swipl_version": "10.0.1",
+  "sources": {
+    "reachability": {
+      "url": "https://github.com/machieke/reachability-atomspace-prototype.git",
+      "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+      "files": {
+        "reachability/__init__.py": "4c10860356f4121048f53b527575b1dc362f2fe9fec45fc2324776107f76d984",
+        "reachability/pln_adapter.py": "c37b6d64853451845be8a4d0d1a9392edcee40b6059a108574952ac2e69a7c3d",
+        "reachability/adapter_runtime.py": "37c2ee59053446197fe83a8fbdaf0d2d336ee5d48a953d1b198d802eda771da0",
+        "reachability/model.py": "1d03cedb0ea08700136d2ab36d904530ac29390c246cf3c6a50fb438f90896fa",
+        "adapters.lock.json": "373850b8382999d4e8c600f43608d1a404ff57ee20966c93c2b8988bba1bb0d3"
+      }
+    },
+    "pln": {
+      "url": "https://github.com/trueagi-io/PLN.git",
+      "commit": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+      "files": {
+        "lib_pln.metta": "cdfb3f18bd7b336440fc7b4409209afddf0e64c41f17dee7eefc8f02718de433"
+      }
+    },
+    "petta": {
+      "url": "https://github.com/trueagi-io/PeTTa.git",
+      "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d"
+    }
+  },
+  "rule_profile": "grounded-five-premise-deduction/1",
+  "allowlist": [
+    "Truth_Deduction"
+  ],
+  "guard_entrypoint": "reachability.pln_adapter.PLNAdapter.apply_rule",
+  "knowledge_revision": "local evaluation ID 0; exact per-belief historical vector stored separately"
+}
