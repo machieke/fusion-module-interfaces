@@ -1,34 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Native Hive exposes execution and closure separately</title>
-<desc id="desc">The top row summarizes the tested stale-feedback case: original execution has one admission and zero acknowledged feedback; after controlled clock advance STI is nine, and reconciliation retires the stale effect without changing that execution. The bottom row covers separate applied-before-lost-reply and expired-before-execution tests, not one combined run. The actual authenticated native Programs 0.1 dispatcher selects the existing plugin. Prepared original-command mapping is private and persisted before step. Public parameter original_command respects the unchanged Hive credential guard. The response exposes execution status/reason, admissions, original counts/remaining, evidence pending/state, feedback closure counts and version. Private episode/task/support IDs, roots, snapshots, credentials and paths are excluded. Seven native cases include four process kills; both attention providers are exercised. Same public reconciliation identifier replays the same observation; use a new one for newer progress.</desc>
+<title id="title">Authorization, replay and profiles remain live</title>
+<desc id="desc">Input records are copied before foreign calls and authorization so a malicious boundary cannot mutate the retained command. Recovered C2 and attention responses are checked against exact owner/request identities and semantics. Current principal, scope, method and descriptor permissions apply on every invocation. The assumption permission for revision remains separate. Native proposal calculation runs outside the owner commit transaction; final authorization and expected output revision are rechecked afterward. Old-profile feedback can remain CONFLICT after a clock change. The new profile lets Attention resolve recorded stale feedback by no-credit retirement; eligible or unavailable feedback stays pending. The controller never rewrites the logical schedule. These are local trusted-authority guarantees, not a production identity system.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / M3.1 ACTUAL CALLER PROGRESS</text>
-<text x="70" y="139.65" font-family="DejaVu Sans" font-size="47" font-weight="700" fill="#102B3F">Native Hive exposes execution and closure separately</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">infer-generated → restart → reconcile-generated(original_command, limit)</text>
-<rect x="72" y="250" width="704" height="241" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Original execution · immutable</text>
-<text x="94" y="347.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">One examined candidate</text>
-<text x="94" y="381.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">One reserved / completed attempt</text>
-<text x="94" y="416.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">One unique admission · zero feedback applied</text>
-<rect x="824" y="250" width="704" height="241" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="846" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Later closure · versioned</text>
-<text x="846" y="347.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Same original result and counters</text>
-<text x="846" y="381.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Evidence backlog and feedback outcomes</text>
-<text x="846" y="416.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Stale feedback retired without credit</text>
-<line x1="776" y1="370" x2="824" y2="370" stroke="#007C78" stroke-width="2"/>
-<polygon points="824,370 811.0,365.0 811.0,375.0" fill="#007C78"/>
-<rect x="72" y="535" width="704" height="198" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="94" y="584.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Lost reply after feedback applied</text>
-<text x="94" y="629.77" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Recover the original receipt after expiry or</text>
-<text x="94" y="664.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">decay, even when current STI has reached zero.</text>
-<rect x="824" y="535" width="704" height="198" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="846" y="584.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#A86A15">Expired before execution</text>
-<text x="846" y="629.77" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Hive can finish the action with zero admissions</text>
-<text x="846" y="664.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and zero reservations. Those counts stay</text>
-<text x="846" y="698.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">explicit.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / BOUNDARY GUARANTEES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Authorization, replay and profiles remain live</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Cached success does not bypass current authority, and compatibility is never silently widened.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">TRIGGER</text>
+<text x="598" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED DECISION</text>
+<text x="1068" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PRESERVED BOUNDARY</text>
+<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Same key, altered nested request</text>
+<text x="598" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">CONFLICT / validation refusal</text>
+<text x="1068" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Exact immutable semantic intent</text>
+<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Permission revoked before replay</text>
+<text x="598" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">DENIED</text>
+<text x="1068" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Live authority even for cached</text>
+<text x="1068" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">receipts</text>
+<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Authority / CAS changes during</text>
+<text x="88" y="529.52" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">math</text>
+<text x="598" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Refuse final admission</text>
+<text x="1068" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">C2 rechecks before its own commit</text>
+<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Runtime or response binding</text>
+<text x="88" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">changes</text>
+<text x="598" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Explicit compatibility failure</text>
+<text x="1068" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No weaker fallback or invented</text>
+<text x="1068" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">result</text>
+<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Clock advances before feedback</text>
+<text x="598" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Retire without credit via owner</text>
+<text x="1068" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Original clock, parent and</text>
+<text x="1068" y="711.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">generation retained</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">Public done / committed means the action returned. Detail reports execution, evidence and feedback closure.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Attention ingress and feedback have distinct trusted bindings; selection never grants authority.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / inference_program/program.py · test_m3_1_integration.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">28 / 44</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / cognition.py · derived_beliefs.py · tests/test_m3.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">28 / 52</text>
 </svg>

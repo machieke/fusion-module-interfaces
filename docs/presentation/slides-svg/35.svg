@@ -1,33 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">The limitations are part of the contract</title>
-<desc id="desc">M3.1 solves the delivery/feedback seams only for explicitly selected new profiles and fresh journals. Disposable copies of populated old stores reject the selection with UNSUPPORTED_PROFILE and remain replayable under old profiles. Existing user stores are not migrated or repaired. Pending feedback need not converge: eligible effects are not newly applied by reconciliation, unavailable/malformed replies stay pending, and bounded tombstone/command capacity can exhaust. Unresolved derivation attempts use original step recovery, not reconciliation; lost reservations are not reclaimed. No exactly-one physical computation, hard real-time, power-loss, administrator secrecy, distributed failover, production throughput or cognitive-quality claim. Origin/independence remain operator assumptions. Specialist maintainer assignments remain open.</desc>
+<title id="title">A lost reply reuses the same signed request</title>
+<desc id="desc">Four real native caller/adapter SIGKILL cases cover acceptance, durable signed intent, submission-response loss, and observation before caller progress. The last case uses the first native observation with no owner reset. The lost-response test waits for actual finality before retry, demonstrating recovery even when the chain has already completed. Signed bytes, timestamp, signature, gas limits and deploy identity are reused: no re-signing or validity extension. commit replay returns the original submission receipt; observe obtains fresh evidence without signing/submitting. A separate node SIGKILL/outage/restart preserves accepted and acknowledged off-chain state. Original counts remain one job, one outbox, two messages and two atoms. These are same-host process-restart guarantees with intact files, not a distributed transaction, global exactly-once effect or power-loss durability.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GUARANTEES AND STOPPING POINT</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The limitations are part of the contract</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Accurate closure can still report pending work. No state migration is implied.</text>
-<rect x="72" y="250" width="704" height="219" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="94" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Conservative crash budget</text>
-<text x="94" y="348.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">A lost pending attempt consumes its slot.</text>
-<text x="94" y="384.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Reconciliation never refunds or starts new</text>
-<text x="94" y="419.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">inference.</text>
-<rect x="824" y="250" width="704" height="219" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="846" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Finite closure capacity</text>
-<text x="846" y="348.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Eligible or unavailable feedback stays</text>
-<text x="846" y="384.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">pending. Full command / cause journals are</text>
-<text x="846" y="419.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">not evicted.</text>
-<rect x="72" y="505" width="704" height="219" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="556.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Fresh profiles, fresh journals</text>
-<text x="94" y="603.28" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Old M3 pending work cannot be repaired here.</text>
-<text x="94" y="639.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Old stores reject the new profile and retain old</text>
-<text x="94" y="674.9599999999999" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">replay.</text>
-<rect x="824" y="505" width="704" height="219" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="846" y="556.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Local recovery evidence</text>
-<text x="846" y="603.28" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Same host, cooperative clock, intact files and</text>
-<text x="846" y="639.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">trusted operator. Power loss and distributed</text>
-<text x="846" y="674.9599999999999" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">failover unrun.</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#EBE5F3"/>
-<text x="94" y="799.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#7458A2">Stopped at M3.1: no new cognition, scheduler, ECAN, LTI, search, migration or chain work.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / M4 · FOUR NATIVE SIGKILL BOUNDARIES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A lost reply reuses the same signed request</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Persist the logical plan before signing, then persist the complete signed deploy before HTTP submission.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">KILL BOUNDARY</text>
+<text x="568" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">AUTHORITATIVE DURABLE FACT</text>
+<text x="1018" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED RECOVERY</text>
+<rect x="72" y="277" width="1456" height="103" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">After result acceptance</text>
+<text x="568" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Caller acceptance; completion</text>
+<text x="568" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">may need ack</text>
+<text x="1018" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Acknowledge same result, then approve</text>
+<rect x="72" y="385" width="1456" height="103" rx="6" fill="#FFFFFF"/>
+<text x="88" y="424.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">After signed-intent commit</text>
+<text x="568" y="424.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Exact signed bytes and timestamp</text>
+<text x="1018" y="424.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Replay with signing key unavailable</text>
+<rect x="72" y="493" width="1456" height="103" rx="6" fill="#FFFFFF"/>
+<text x="88" y="532.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">After node send, before receipt</text>
+<text x="568" y="532.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Original signed deploy identity</text>
+<text x="1018" y="532.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Retry after real finality; same request</text>
+<rect x="72" y="601" width="1456" height="103" rx="6" fill="#FFFFFF"/>
+<text x="88" y="640.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">After effect, before progress</text>
+<text x="568" y="640.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Chain observation committed</text>
+<text x="568" y="671.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">separately</text>
+<text x="1018" y="640.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Native caller recovers that observation</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">Node outage preserves the off-chain result. Restart the same genesis/data and read the same finalized effect.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / m3_1-evidence.md · compatibility and recovery limits</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">35 / 44</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / evidence/m4/final/recovery-*.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">35 / 52</text>
 </svg>

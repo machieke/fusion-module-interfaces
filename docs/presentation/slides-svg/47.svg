@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">New profiles close the seam; old stores stay explicit</title>
+<desc id="desc">Baseline reproduction against clean 3b34e00 confirms the old acknowledgment/relay NOT_AVAILABLE, 16 pending then append 17 OVERLOADED, and persistent stale-feedback CONFLICT after reopen. Those expected gaps are separate from the passing baseline regression. New-profile delivery drains, including after deduction and for model-inapplicable reports. Neither this extension nor the presentation migrates existing state. Compatibility tests populate old stores, operate on disposable copies, reject new selection without modifying bytes and replay with original descriptors. Fresh profiles preserve strict time and causal semantics. This distinction must survive any claim that the seam is now closed.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX D / EXISTING-STATE COMPATIBILITY</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">New profiles close the seam; old stores stay explicit</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The M3 findings were reproduced before edits. M3.1 is an opt-in contract extension.</text>
+<rect x="72" y="260" width="704" height="310" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="313.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#A86A15">Historical M3 profile</text>
+<text x="94" y="361.79" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">C1 expects a closed v2 acknowledgment.</text>
+<text x="94" y="398.91" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">C2 emits a v3 decision.</text>
+<text x="94" y="436.03000000000003" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Delivery remains pending; stale feedback</text>
+<text x="94" y="473.15000000000003" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">can remain CONFLICT.</text>
+<rect x="824" y="260" width="704" height="310" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="846" y="313.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#007C78">Fresh M3.1 profile</text>
+<text x="846" y="361.79" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Relay validates C2; C1 gets narrow</text>
+<text x="846" y="398.91" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">completion.</text>
+<text x="846" y="436.03000000000003" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Attention resolves original feedback.</text>
+<text x="846" y="473.15000000000003" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">C4 tracks closure separately from execution.</text>
+<rect x="72" y="616" width="1456" height="117" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="665.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Populated old stores → new selection: UNSUPPORTED_PROFILE</text>
+<text x="94" y="707.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Disposable copies reject without modification and still replay under the original profile. User stores are untouched.</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="794.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">No automatic conversion, repair of pre-existing pending work, invented acknowledgment or weakened validation.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / m3_1/baseline/gaps.json · test_m3_1_compat.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">47 / 52</text>
+</svg>

@@ -40,8 +40,8 @@ def main() -> None:
     rendered = fitz.open(args.independent_pdf)
     prs = Presentation(deck / "omega-asi-module-interfaces.pptx")
     build.build_content()
-    assert len(source) == len(rendered) == len(prs.slides) == len(build.SLIDES) == 44
-    assert sum(not s.appendix for s in build.SLIDES) == build.MAIN_SLIDES == 36
+    assert len(source) == len(rendered) == len(prs.slides) == len(build.SLIDES) == build.TOTAL_SLIDES == 52
+    assert sum(not s.appendix for s in build.SLIDES) == build.MAIN_SLIDES == 43
     mismatches, bounds, previews, used_fonts = [], [], [], set()
     for i, (a, b, slide, model) in enumerate(zip(source, rendered, prs.slides, build.SLIDES), 1):
         if tokens(a.get_text()) != tokens(b.get_text()):
@@ -81,10 +81,14 @@ def main() -> None:
     for path, expected in manifest["evidence_sha256"].items():
         assert digest(root / path) == expected, path
         assert subprocess.check_output(["git", "show", f"{build.EVIDENCE_COMMIT}:{path}"], cwd=root) == (root / path).read_bytes(), path
-    for path, expected in build.M31VERIFY["source"]["files"].items():
+    for path, expected in build.M4VERIFY["source"]["files"].items():
         assert digest(root / path) == expected, path
         assert hashlib.sha256(subprocess.check_output(
             ["git", "show", f"{build.BASE_COMMIT}:{path}"], cwd=root)).hexdigest() == expected, path
+    # Earlier closure observations retain their own source state; M4 extends builds.
+    for path, expected in build.M31VERIFY["source"]["files"].items():
+        assert hashlib.sha256(subprocess.check_output(
+            ["git", "show", f"{build.M31RECORD['tested_commit']}:{path}"], cwd=root)).hexdigest() == expected, path
     # M3 measurements remain historical: audit against their own tested source.
     for path, expected in build.M3VERIFY["source"]["files"].items():
         assert hashlib.sha256(subprocess.check_output(
@@ -98,12 +102,13 @@ def main() -> None:
     assert build.M3RECORD["blocked_prerequisites"] == []
     m2checksums = json.loads((build.M2 / "checksums.json").read_text())
     for directory, checksums in [(build.M2, m2checksums), (build.M3, build.M3RECORD["evidence_files"]),
-                                 (build.M31, build.M31RECORD["archive_sha256"])]:
+                                 (build.M31, build.M31RECORD["archive_sha256"]),
+                                 (build.M4, build.M4RECORD["files"])]:
         for path, expected in checksums.items():
             assert digest(directory / path) == expected, path
     report = build.M31RECORD["report"]
     assert digest(build.M31 / report["path"]) == report["sha256"]
-    assert build.M31VERIFY["source"]["commit"] == build.M31RECORD["tested_commit"] == build.BASE_COMMIT
+    assert build.M31VERIFY["source"]["commit"] == build.M31RECORD["tested_commit"]
     assert build.M31VERIFY["source"]["status"] == build.M31RECORD["tested_status"] == []
     assert all(c["returncode"] == 0 for c in build.M31VERIFY["commands"])
     assert build.M31VERIFY["gates"] == build.M31RECORD["gates"]
@@ -120,7 +125,7 @@ def main() -> None:
     for path, expected in source_audit["unchanged"].items():
         assert digest(root / path) == expected, path
     probe = json.loads((build.M31 / "non-numeric-processing.json").read_text())
-    assert probe["source"] == build.BASE_COMMIT and len(probe["cases"]) == 2
+    assert probe["source"] == build.M31RECORD["tested_commit"] and len(probe["cases"]) == 2
     for case in probe["cases"]:
         assert case["processing"] == "committed-and-acknowledged"
         assert case["numerical"] == "model-inapplicable" and case["truth"] is None
@@ -143,6 +148,59 @@ def main() -> None:
                                       reserved=1, unique_admissions=1)
     hive = next(c for c in build.M3VERIFY["commands"] if c["name"] == "m3-native-hive")
     assert hive["tests"] == dict(tests=8, failures=0, errors=0, skipped=0)
+    m4, trace, readback = build.M4VERIFY, build.M4TRACE, build.M4READBACK
+    assert m4["source"]["commit"] == m4["source"]["end_commit"] == build.BASE_COMMIT
+    assert m4["source"]["status"] == [] and m4["source"]["end_runtime_matches_start"] is True
+    assert m4["protected_changes"] == [] and m4["development"] is False
+    assert m4["gates"] == build.M4RECORD["gates"] and set(m4["gates"].values()) == {"PASS"}
+    assert len(m4["gates"]) == 10 and m4["result"] == build.M4RECORD["result"] == "PASS"
+    assert all(c["returncode"] == 0 for c in m4["commands"])
+    for key in ("missing_prerequisites", "executed_failures", "observation_timeouts"):
+        assert m4[key] == []
+    assert build.M4RECORD["missing_prerequisites"] == []
+    assert build.M4RECORD["final_executed_failures"] == build.M4RECORD["final_observation_timeouts"] == []
+    assert len(m4["native_cases"]) == 6 and all(c["status"] == "PASS" for c in m4["native_cases"])
+    assert m4["baseline"]["source"]["commit"] == build.BASE_COMMIT
+    assert all(c["returncode"] == 0 for c in m4["baseline"]["commands"])
+    # Preserve the distinction between required M4 chain and nested legacy scope.
+    assert m4["gates"]["REAL_CHAIN_EFFECT"] == "PASS"
+    assert m4["baseline"]["gates"]["CHAIN"] == "NOT_RUN"
+    assert trace["profile"] == m4["profile"] == "f1r3-generated-post-state/2"
+    assert trace["chain_instance"]["source"] == m4["source_pins"]["chain"]["commit"]
+    assert trace["counts"] == dict(atoms=2, jobs=1, messages=2, outbox=1)
+    assert trace["bytes"] == dict(input=53, result=143, signed_request=673)
+    assert trace["result"]["acceptance"] == "committed" and trace["result"]["acknowledged"] is True
+    assert trace["approved"]["result_ref"] == trace["result"]["result"]["ref"]
+    assert readback["status"] == "PASS" and readback["result_bytes"] == 143
+    assert trace["approved"]["commitment_digest"] == readback["result_digest"]
+    for observation in (trace["final_observation"], trace["restart_observation"]):
+        assert observation["effect_finality"] == readback["effect_finality"] == "finalized"
+        assert observation["deploy_id"] == readback["deploy_id"] == trace["signed"]["signature"]
+        assert observation["inclusion_block"] == readback["inclusion_block"]
+        evidence = observation["evidence"]
+        assert evidence["validation"] == "verified"
+        assert evidence["value"] == readback["effect"] == dict(namespace="fusion:m4:commitment/1",
+            operation=trace["operation"], digest=readback["result_digest"])
+        assert evidence["effect"]["block"]["postStateHash"] == readback["post_state"]
+        assert evidence["effect_query"]["usePreStateHash"] is False
+        assert evidence["inclusion"]["errored"] is False and evidence["inclusion"]["cost"] == 675
+        assert evidence["deploy_effect_finality"]["state"] == "Finalized"
+    assert trace["outage"]["effect_finality"] == "not-observed"
+    recovery = {}
+    for path in sorted((build.M4 / "final").glob("recovery-*.json")):
+        case = json.loads(path.read_text())
+        assert case["exit"] == -9 and case["counts"] == trace["counts"]
+        assert case["signed_bytes_before"] == case["signed_bytes_after"]
+        assert case["timestamp_before"] == case["timestamp_after"]
+        recovery[case["stage"]] = case
+    assert len(recovery) == 4
+    assert recovery["after_acceptance"]["accepted_before_kill"] is True
+    assert recovery["after_acceptance"]["acknowledgment_recovered"] is True
+    for stage in ("after_signed_intent", "after_node_submission"):
+        assert recovery[stage]["signer_unavailable_during_replay"] is True
+        assert recovery[stage]["effect_finality"] == "finalized"
+    assert recovery["after_observation_before_progress"]["progress_was_uncommitted"] is True
+    assert recovery["after_observation_before_progress"]["effect_finality"] == "finalized"
     result = dict(pages=len(source), speaker_notes_checked=len(prs.slides),
                   normalized_word_mismatches=mismatches, text_bounds_findings=bounds,
                   fonts=sorted(used_fonts), pdf_embedded_fonts=embedded,
@@ -150,10 +208,14 @@ def main() -> None:
                   archived_m2_files_checked=len(m2checksums),
                   archived_m3_files_checked=len(build.M3RECORD["evidence_files"]),
                   archived_m3_1_files_checked=len(build.M31RECORD["archive_sha256"]),
-                  recorded_implementation_hashes_match=len(build.M31VERIFY["source"]["files"]),
+                  archived_m4_files_checked=len(build.M4RECORD["files"]),
+                  recorded_implementation_hashes_match=len(build.M4VERIFY["source"]["files"]),
+                  historical_m3_1_implementation_hashes_checked=len(build.M31VERIFY["source"]["files"]),
                   historical_m3_implementation_hashes_checked=len(build.M3VERIFY["source"]["files"]),
                   preserved_boundary_files_checked=len(source_audit["unchanged"]),
-                  gate_results=build.M31RECORD["gates"], independent_render_sha256=digest(args.independent_pdf))
+                  gate_results=build.M4RECORD["gates"], same_artifact_readback_matches=True,
+                  m4_recovery_cases_checked=len(recovery),
+                  independent_render_sha256=digest(args.independent_pdf))
     (office / "comparison.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
     assert not mismatches and not bounds

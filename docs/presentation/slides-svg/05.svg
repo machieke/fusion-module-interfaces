@@ -1,63 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Fifteen modules; four responsibility groups</title>
-<desc id="desc">All fifteen responsibility groups remain visible. C1/C2 implement private memory and beliefs; M3 adds independent STI and bounded C4 plus a pure kernel for one grounded rule. Relations and Search remain specifications. Attention implements a bounded reference policy, not ECAN, LTI or the coupled metta-attention algorithm. RevisionMath is separate from PLNKernel.applyRule. Hive consumes these modules; a module need not be a separate process or repository. Blue means implemented local contracts, not production readiness. Authorization uses real Hive authentication followed by local test policy. Finality retains historical M1 evidence only; CHAIN is NOT_RUN through M3.1. Maintainer assignments remain unassigned.</desc>
+<title id="title">ELI16: approve a fingerprint, then check the receipt</title>
+<desc id="desc">The sealed-envelope analogy describes durable signed-intent replay. M4 uses the real native fusion-inspect operation and a separate fusion-commitment action, with generated shareable input and a labelled fixture counterparty. Operator approval binds exact result reference/digest, actor, expiry, chain/genesis/profile, signer and operation. The same stored signed request survives caller/adapter kills, including a lost response after real finality. A separate reader verifies DA bytes and the chain tuple without opening a caller journal or signing key. The chain records a commitment; it neither executes PLN nor certifies off-chain reasoning. This is one real local validator, not decentralized security or a production network.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / HELICOPTER VIEW</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Fifteen modules; four responsibility groups</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A module owns a responsibility. It need not be a separate process or repository.</text>
-<rect x="72" y="230" width="320" height="495" rx="14" fill="#EBE5F3"/>
-<text x="90" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">CLIENT / COGNITION</text>
-<rect x="420" y="230" width="400" height="495" rx="14" fill="#E4EBF5"/>
-<text x="438" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">APPLICATION PORTS</text>
-<rect x="848" y="230" width="322" height="495" rx="14" fill="#E7ECEB"/>
-<text x="866" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">CONTROL &amp; POLICY</text>
-<rect x="1198" y="230" width="330" height="495" rx="14" fill="#DCEFE8"/>
-<text x="1216" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">PROVIDER ADAPTERS</text>
-<rect x="90" y="300" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="112" y="342.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Episodic memory</text>
-<rect x="90" y="378" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="112" y="420.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Belief revision</text>
-<rect x="90" y="456" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="112" y="498.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">PLN · one rule</text>
-<rect x="90" y="534" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="112" y="576.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">STI attention</text>
-<rect x="90" y="612" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="112" y="654.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Inference control</text>
-<rect x="438" y="300" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="460" y="343.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">AtomStorage</text>
-<rect x="438" y="378" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
-<text x="460" y="421.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">Relations · future</text>
-<rect x="438" y="456" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
-<text x="460" y="498.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">Search projection · future</text>
-<rect x="438" y="534" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="460" y="577.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">Agent messaging</text>
-<rect x="438" y="612" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="460" y="655.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">Delegated execution</text>
-<rect x="866" y="300" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="888" y="342.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Registry</text>
-<rect x="866" y="408" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="888" y="450.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Compatibility</text>
-<text x="888" y="479.06" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">resolver</text>
-<rect x="866" y="516" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="888" y="558.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Authorization</text>
-<rect x="1216" y="300" width="294" height="144" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1238" y="347.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">DA storage</text>
-<text x="1238" y="388.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Real local DeTTa</text>
-<rect x="1216" y="485" width="294" height="168" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
-<text x="1238" y="531.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">Consensus /</text>
-<text x="1238" y="564.98" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">finality</text>
-<text x="1238" y="604.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">M1 historical; chain</text>
-<text x="1238" y="632.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">NOT_RUN</text>
-<text x="866" y="668.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Local test policy</text>
-<text x="866" y="693.6" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">and static descriptors</text>
-<rect x="72" y="760" width="231.66015625000003" height="36" rx="7" fill="#EBE5F3"/>
-<text x="86" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#7458A2">SPECIFIED / FUTURE</text>
-<rect x="365" y="760" width="246.00390625000003" height="36" rx="7" fill="#E4EBF5"/>
-<text x="379" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#315E9C">IMPLEMENTED LOCAL</text>
-<rect x="687" y="760" width="189.90332031250003" height="36" rx="7" fill="#DCEFE8"/>
-<text x="701" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#007C78">REAL PROVIDER</text>
-<text x="987" y="785.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">One grounded rule; no ECAN or LTI</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">EXECUTIVE SUMMARY · 4 OF 4</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">ELI16: approve a fingerprint, then check the receipt</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Imagine signing a sealed envelope containing the fingerprint of one shareable result.</text>
+<rect x="72" y="252" width="464" height="390" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="289.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">1 · APPROVE</text>
+<text x="94" y="334.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Name the exact result</text>
+<text x="94" y="380.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Hive finishes a generated task.</text>
+<text x="94" y="414.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">The operator approves that</text>
+<text x="94" y="449.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">result, its destination and who</text>
+<text x="94" y="484.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">may sign it.</text>
+<rect x="568" y="252" width="464" height="390" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
+<text x="590" y="289.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#A86A15">2 · SAVE, THEN SEND</text>
+<text x="590" y="334.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Keep the same</text>
+<text x="590" y="374.13" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">envelope</text>
+<text x="590" y="420.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Save the signed request</text>
+<text x="590" y="454.57" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">before sending. After a crash,</text>
+<text x="590" y="489.13" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">retry those same bytes; a lost</text>
+<text x="590" y="523.69" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">reply does not mean a new</text>
+<text x="590" y="558.25" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">request.</text>
+<rect x="1064" y="252" width="464" height="390" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1086" y="289.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">3 · VERIFY</text>
+<text x="1086" y="334.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Read what was stored</text>
+<text x="1086" y="380.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Check the fingerprint in the</text>
+<text x="1086" y="414.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">block’s resulting state and the</text>
+<text x="1086" y="449.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">matching deployment’s</text>
+<text x="1086" y="484.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">finalized effect. Repeat after</text>
+<text x="1086" y="518.57" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">restart.</text>
+<rect x="72" y="650" width="1456" height="99" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="695.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#007C78">Private notebooks stay private</text>
+<text x="94" y="733.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Only the approved generated workflow is eligible. Episodes, beliefs and their identifying hashes stay off-chain.</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">A stored fingerprint identifies the approved result. It does not establish that the reasoning is true.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">05 / 44</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / M4 · native Hive → isolated F1R3node</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">05 / 52</text>
 </svg>

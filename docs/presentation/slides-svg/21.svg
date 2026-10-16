@@ -1,35 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">C3: a small, independent attention policy</title>
-<desc id="desc">The reference policy is frozen in its identity. Bounds are 16 targets, 16 advance steps per call, eight contexts, 512 causes per context, 1024 commands per owner and feedback generation three. Capacities refuse without silent eviction of acknowledged commands. Stimulus saturation is min(amount, Smax-current); total context budget is enforced atomically. Successful replay is checked before logical clock CAS under live authorization. Causal deduplication is independent of request identity; changing a causal body conflicts. Fresh feedback follows the target&#x27;s current causal parent and next generation. metta-attention 3e1c8147 was inspected but not integrated because it couples STI/LTI/VLTI, wages and shared funds. C3 has no hidden dependency on AtomStorage, C1, C2, PLN or Hive.</desc>
+<title id="title">One grounded rule reuses the actual native PLN</title>
+<desc id="desc">The unchanged Reachability dd56f3f implementation invokes PLN 4405956 Truth_Deduction on PeTTa ae66fa8 and SWI source 6977543, version 10.1.14. The exact runtime profile is fusion-petta-swi-10.1.14-deduction/1. No PLN.Derive, PLN.Query or task search is used. The Q&gt;0.9999 branch and its assumptions remain upstream semantics and are tested. Kernel source checks and native subprocesses use the remaining absolute deadline. This pure component owns no belief, agenda or attention state. Source drift, malformed output and timeout are explicit refusals, with fault injections labelled in the native suite.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / SHORT-TERM IMPORTANCE</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">C3: a small, independent attention policy</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">sti-additive-linear-decay/1 · integer STI · explicit logical time · persistent causal identity</text>
-<rect x="72" y="250" width="464" height="331" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Stimulate</text>
-<text x="94" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Add within per-target</text>
-<text x="94" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">saturation. Refuse the whole</text>
-<text x="94" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">change if the context</text>
-<text x="94" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">budget would be exceeded.</text>
-<rect x="568" y="250" width="464" height="331" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="590" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">Select</text>
-<text x="590" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Rank positive eligible</text>
-<text x="590" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">targets by descending STI,</text>
-<text x="590" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">then the full canonical</text>
-<text x="590" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">reference. Reads do not</text>
-<text x="590" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">decay state.</text>
-<rect x="1064" y="250" width="464" height="331" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="1086" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Advance</text>
-<text x="1086" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Explicitly decay by logical</text>
-<text x="1086" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">steps. Stored causal</text>
-<text x="1086" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">generation survives decay,</text>
-<text x="1086" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">new ingress and new step</text>
-<text x="1086" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">IDs.</text>
-<text x="77" y="655.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">Default limits: 100 STI per target · 300 per context · decay 1 per logical step</text>
-<text x="77" y="716.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Only authority and opaque-reference syntax are required; no Hive, storage or PLN runtime.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / KERNEL AND RUNTIME COMPATIBILITY</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">One grounded rule reuses the actual native PLN</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No replacement arithmetic and no general search loop: five explicit premises produce one proposal.</text>
+<rect x="72" y="260" width="420" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Fusion PLNKernel</text>
+<text x="94" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Exact bindings,</text>
+<text x="94" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">source/profile checks and</text>
+<text x="94" y="429.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">remaining deadline</text>
+<rect x="560" y="260" width="480" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="582" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Pinned Reachability</text>
+<text x="582" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">PLNAdapter.apply_rule</text>
+<text x="582" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">DeductionRule + guards</text>
+<rect x="1108" y="260" width="420" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1130" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Native PLN / PeTTa</text>
+<text x="1130" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Truth_Deduction</text>
+<text x="1130" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">SWI 10.1.14 + Janus</text>
+<line x1="492" y1="372" x2="560" y2="372" stroke="#007C78" stroke-width="2"/>
+<polygon points="560,372 547.0,367.0 547.0,377.0" fill="#007C78"/>
+<line x1="1040" y1="372" x2="1108" y2="372" stroke="#007C78" stroke-width="2"/>
+<polygon points="1108,372 1095.0,367.0 1095.0,377.0" fill="#007C78"/>
+<rect x="72" y="548" width="704" height="183" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="598.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Two probability checks</text>
+<text x="94" y="644.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Upstream exact Python precheck and the native</text>
+<text x="94" y="678.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">consistency guard both apply.</text>
+<rect x="800" y="548" width="728" height="183" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="822" y="598.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Separate compatibility profile</text>
+<text x="822" y="644.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Deduction has its own source/runtime allowlist;</text>
+<text x="822" y="678.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">the revision-only profile stays intact.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">This reference policy is implemented. ECAN, LTI, diffusion and new attention research are out of scope.</text>
+<text x="94" y="801.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Kernel output is a proposal. C2 performs final authorization, CAS and admission.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / attention.py · fixture_attention.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">21 / 44</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / deduction-sources.json · integration/pln/test_deduction.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">21 / 52</text>
 </svg>

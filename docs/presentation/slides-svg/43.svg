@@ -1,22 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Reproduce the supported M3.1 gates</title>
-<desc id="desc">Linux build prerequisites and authorized SSH access to exact Hive/DeTTa sources are documented in the runbook; public HTTPS retrieves the pinned Reachability/PLN sources. New native objects, Python/Janus venv and DeTTa Cargo target are built in a fresh directory. Download caches may be warm. build_m3.py preserves the M2 build recipe and adds the explicit deduction profile. verify_m3_1.py runs the complete M1–M3 verifier plus closure fixtures, real-provider methods, direct process kills and native Hive closure. The final record was executed from clean detached /tmp/fusion-m31-final-corrected. Use --output with a fresh evidence directory to avoid confusing prior runs. Fresh new-profile journals are required. Do not publish broad local environment files. Deck generation is a separate documentation operation and does not rerun these gates.</desc>
-<rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX G / COMMANDS AND PREREQUISITES</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproduce the supported M3.1 gates</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Use the tested revision or a reviewed descendant, with source access and a fresh destination.</text>
-<rect x="72" y="245" width="1456" height="187" rx="12" fill="#0B2233"/>
-<text x="100" y="285.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">BUILD FRESH PINNED PROVIDERS</text>
-<text x="100" y="339.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
-<text x="100" y="387.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/build_m3.py artifacts/m3_1/providers</text>
-<rect x="72" y="465" width="1456" height="187" rx="12" fill="#0B2233"/>
-<text x="100" y="505.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">VERIFY M1–M3 REGRESSION + CLOSURE + REAL PROVIDERS + NATIVE HIVE</text>
-<text x="100" y="559.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
-<text x="100" y="607.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/verify_m3_1.py artifacts/m3_1/providers/environment.json</text>
-<text x="78" y="720.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Read: manifest.json → final/verification.json → suite logs → source-audit.json</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">Source access, fixture tests, native execution and archived evidence are separate reproducibility requirements.</text>
-<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / runbook.md · build_m3.py · verify_m3_1.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">43 / 44</text>
+<title id="title">Takeaway</title>
+<desc id="desc">Return to the four ELI16 stories. C1 preserves history; C2 owns beliefs with inherited evidence; pure PLN supplies the existing guarded mathematics; C3 owns priority and causal feedback; C4 bounds work and reports closure separately. M4 adds a narrow shared generated-result commitment through existing ports. Exact approval precedes signing; saved signed bytes survive retry; actual post-state readback and matching deploy-effect finality close the chain claim. Four native kill boundaries, node outage/restart and an independent read-only process exercise recovery. All ten required M4 gates and full M1–M3.1 regression pass. Private cognition remains off-chain. Single-validator local success is a precise integration result, not production readiness or evidence that the reasoning is true.</desc>
+<rect width="1600" height="900" fill="#0B2233"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#AAC0CC">06 / TAKEAWAY</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#FFFFFF"></text>
+<text x="72" y="245.39999999999998" font-family="DejaVu Sans" font-size="72" font-weight="700" fill="#FFFFFF">Keep the evidence.</text>
+<text x="72" y="328.2" font-family="DejaVu Sans" font-size="72" font-weight="700" fill="#FFFFFF">Preserve the budget.</text>
+<text x="72" y="411.0" font-family="DejaVu Sans" font-size="72" font-weight="700" fill="#FFFFFF">Verify the commitment.</text>
+<text x="77" y="540.3" font-family="DejaVu Sans" font-size="34" font-weight="400" fill="#AAC0CC">Real Hive → real DeTTa → approved result → real local chain</text>
+<text x="77" y="586.1999999999999" font-family="DejaVu Sans" font-size="34" font-weight="400" fill="#AAC0CC">with independent commits, restart and matching readback.</text>
+<rect x="76" y="711" width="607.5517578125" height="40" rx="7" fill="#DCEFE8"/>
+<text x="90" y="738.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">M4 COMPLETE · ALL 10 REQUIRED GATES PASS</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#536775" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#AAC0CC">OMEGA × ASI / THROUGH M4 / M4 tested 55ed540 · evidence 05b1c52</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#AAC0CC">43 / 52</text>
 </svg>

@@ -1,42 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">C1: one occurrence, one position in the story</title>
-<desc id="desc">The four illustrated event roles match the generated story. Each immutable event is referenced by an AtomRef; the episode head begins at zero and advances by one for accepted occurrences. A duplicate occurrence with the same semantic content returns its original receipt before a stale expected-head check, even under a new request key. Changed content or provenance for that occurrence conflicts. Distinct occurrences can have identical bytes. Payload persistence can precede episode commit and leave an orphan after death; replay recovers the same atom without inventing an acknowledged event. C1 exposes bounded reads, pending evidence and trusted acknowledgements, with no cognition dependency. No dynamic episode search or garbage collector is implemented.</desc>
+<title id="title">Private state has explicit owners and placement</title>
+<desc id="desc">The native plugin receives authenticated actor context and derives authority from operator configuration. Request parameters cannot select credentials, arbitrary scopes or private premise identities. Public parameters are generated seed, preference a/b and an absolute deadline. Privacy tests intercept shared bindings, populate shared stores and inspect native receipts/logs/state for canaries and private hashes. This is tested local placement under a trusted operator/host, not secrecy from administrators. Each journal has one owner and commits independently; there is no cross-owner SQL transaction.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / EPISODIC MEMORY</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">C1: one occurrence, one position in the story</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Immutable event atoms sit behind a stable episode identity and a committed sequence.</text>
-<rect x="72" y="236" width="332.498046875" height="40" rx="7" fill="#E4EBF5"/>
-<text x="86" y="263.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">EpisodeRef = scope + ID</text>
-<rect x="72" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">1 · Report</text>
-<text x="94" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">No numerical claim</text>
-<line x1="418" y1="413" x2="437" y2="413" stroke="#315E9C" stroke-width="2"/>
-<polygon points="437,413 424.0,408.0 424.0,418.0" fill="#315E9C"/>
-<rect x="442" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="464" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">2 · Assessment</text>
-<text x="464" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Explicit strength /</text>
-<text x="464" y="449.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">confidence</text>
-<line x1="788" y1="413" x2="807" y2="413" stroke="#315E9C" stroke-width="2"/>
-<polygon points="807,413 794.0,408.0 794.0,418.0" fill="#315E9C"/>
-<rect x="812" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="834" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">3 · Copy</text>
-<text x="834" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Inherits original roots</text>
-<line x1="1158" y1="413" x2="1177" y2="413" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1177,413 1164.0,408.0 1164.0,418.0" fill="#315E9C"/>
-<rect x="1182" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1204" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">4 · Contrary</text>
-<text x="1204" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Kept in the history</text>
-<rect x="72" y="556" width="704" height="169" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="605.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Same occurrence + same body</text>
-<text x="94" y="649.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Return the original receipt, even under a new</text>
-<text x="94" y="683.1" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">request key. The head does not advance.</text>
-<rect x="800" y="556" width="728" height="169" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="822" y="604.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#A86A15">Same occurrence + changed meaning</text>
-<text x="822" y="648.5400000000001" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Conflict on body or provenance changes. Distinct</text>
-<text x="822" y="681.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">real occurrences may share identical bytes.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / PRIVACY AND AUTHORIZATION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Private state has explicit owners and placement</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A trusted Hive actor maps to an operator-configured private scope and credential.</text>
+<rect x="72" y="243" width="940" height="487" rx="14" fill="#E4EBF5"/>
+<text x="98" y="289.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">PRIVATE LOCAL COMPOSITION</text>
+<rect x="98" y="329" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="120" y="378.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C1 · Episodes</text>
+<text x="120" y="421.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">History + delivery intents</text>
+<rect x="555" y="329" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="577" y="378.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C2 · Beliefs</text>
+<text x="577" y="421.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Supports + exact attempts</text>
+<rect x="98" y="516" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="120" y="565.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C3 · Attention</text>
+<text x="120" y="608.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">STI + clock + causal replay</text>
+<rect x="555" y="516" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="577" y="565.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C4 · Controller</text>
+<text x="577" y="608.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Budgets + progress +</text>
+<text x="577" y="640.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">feedback</text>
+<rect x="1082" y="243" width="446" height="212" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1104" y="295.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">Public Hive receipt</text>
+<text x="1104" y="342.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Generated counters, status</text>
+<text x="1104" y="378.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and public command receipt</text>
+<text x="1104" y="414.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">ID.</text>
+<rect x="1082" y="493" width="446" height="237" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="1104" y="545.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#A86A15">Private trace</text>
+<text x="1104" y="592.5600000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Task/support hashes,</text>
+<text x="1104" y="628.4000000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">premises, lineage, attention</text>
+<text x="1104" y="664.2400000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and payloads stay private.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C1 commits event + evidence intent together; AtomStorage has already committed independently.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Shared M1 wire and DA contracts stay unchanged; every owner rechecks current authorization.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / episodes.py · tests/test_m2.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">15 / 44</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / cognition.py · inference_program/program.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">15 / 52</text>
 </svg>

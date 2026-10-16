@@ -1,49 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">C4: reserve work durably before invoking the rule</title>
-<desc id="desc">C4 counts a candidate before resolving it, including unresolved or refused candidates. It commits reservation before dispatch and queries a prior C2 decision first during recovery. C2 persists semantic intent before evaluation, evaluates outside its commit transaction, then rechecks authority and output CAS. A killed pending attempt needs a new reserved slot/key; a committed decision is read back without evaluation. Logical derivation identity is distinct from transport request, controller step, attempt key, deadline and output CAS. Feedback is a fixed one-unit workflow signal tied to logical derivation identity, never a truth update. Absolute Unix-ms deadline survives restart; scheduling/file I/O remain cooperative, not hard real-time.</desc>
+<title id="title">C3: a small, independent attention policy</title>
+<desc id="desc">The reference policy is frozen in its identity. Bounds are 16 targets, 16 advance steps per call, eight contexts, 512 causes per context, 1024 commands per owner and feedback generation three. Capacities refuse without silent eviction of acknowledged commands. Stimulus saturation is min(amount, Smax-current); total context budget is enforced atomically. Successful replay is checked before logical clock CAS under live authorization. Causal deduplication is independent of request identity; changing a causal body conflicts. Fresh feedback follows the target&#x27;s current causal parent and next generation. metta-attention 3e1c8147 was inspected but not integrated because it couples STI/LTI/VLTI, wages and shared funds. C3 has no hidden dependency on AtomStorage, C1, C2, PLN or Hive.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / BOUNDED INFERENCE CONTROL</text>
-<text x="70" y="143.45" font-family="DejaVu Sans" font-size="51" font-weight="700" fill="#102B3F">C4: reserve work durably before invoking the rule</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A work budget limits physical evaluation opportunities, even when the process dies.</text>
-<rect x="72" y="265" width="346" height="240" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="314.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">1 · Freeze</text>
-<text x="94" y="351.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">selection</text>
-<text x="94" y="396.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Read the immutable</text>
-<text x="94" y="431.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">workset and exact</text>
-<text x="94" y="466.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">attention order.</text>
-<line x1="418" y1="385" x2="439" y2="385" stroke="#536775" stroke-width="2"/>
-<polygon points="439,385 426.0,380.0 426.0,390.0" fill="#536775"/>
-<rect x="442" y="265" width="346" height="240" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
-<text x="464" y="314.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#A86A15">2 · Reserve</text>
-<text x="464" y="351.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#A86A15">attempt</text>
-<text x="464" y="396.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Commit candidate</text>
-<text x="464" y="431.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">progress and a</text>
-<text x="464" y="466.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">physical attempt slot.</text>
-<line x1="788" y1="385" x2="809" y2="385" stroke="#536775" stroke-width="2"/>
-<polygon points="809,385 796.0,380.0 796.0,390.0" fill="#536775"/>
-<rect x="812" y="265" width="346" height="240" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="834" y="314.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">3 · Ask C2</text>
-<text x="834" y="359.77" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Recover a decision or</text>
-<text x="834" y="394.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">dispatch the exact</text>
-<text x="834" y="428.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">derivation attempt.</text>
-<line x1="1158" y1="385" x2="1179" y2="385" stroke="#536775" stroke-width="2"/>
-<polygon points="1179,385 1166.0,380.0 1166.0,390.0" fill="#536775"/>
-<rect x="1182" y="265" width="346" height="240" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1204" y="314.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">4 · Reconcile</text>
-<text x="1204" y="359.77" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Save decision and</text>
-<text x="1204" y="394.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">causal feedback</text>
-<text x="1204" y="428.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">acknowledgment.</text>
-<rect x="72" y="565" width="704" height="166" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="94" y="615.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Budget survives restart</text>
-<text x="94" y="661.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Candidate count, reserved attempts, generation</text>
-<text x="94" y="695.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">limit and absolute deadline are persisted.</text>
-<rect x="800" y="565" width="728" height="166" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="822" y="615.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Selection changes next step</text>
-<text x="822" y="661.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Current selection is frozen. A unique admission</text>
-<text x="822" y="695.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">records one causal feedback intent.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / SHORT-TERM IMPORTANCE</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">C3: a small, independent attention policy</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">sti-additive-linear-decay/1 · integer STI · explicit logical time · persistent causal identity</text>
+<rect x="72" y="250" width="464" height="331" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Stimulate</text>
+<text x="94" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Add within per-target</text>
+<text x="94" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">saturation. Refuse the whole</text>
+<text x="94" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">change if the context</text>
+<text x="94" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">budget would be exceeded.</text>
+<rect x="568" y="250" width="464" height="331" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="590" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">Select</text>
+<text x="590" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Rank positive eligible</text>
+<text x="590" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">targets by descending STI,</text>
+<text x="590" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">then the full canonical</text>
+<text x="590" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">reference. Reads do not</text>
+<text x="590" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">decay state.</text>
+<rect x="1064" y="250" width="464" height="331" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="1086" y="304.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Advance</text>
+<text x="1086" y="353.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Explicitly decay by logical</text>
+<text x="1086" y="390.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">steps. Stored causal</text>
+<text x="1086" y="427.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">generation survives decay,</text>
+<text x="1086" y="464.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">new ingress and new step</text>
+<text x="1086" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">IDs.</text>
+<text x="77" y="655.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">Default limits: 100 STI per target · 300 per context · decay 1 per logical step</text>
+<text x="77" y="716.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Only authority and opaque-reference syntax are required; no Hive, storage or PLN runtime.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">No refund for a lost pending attempt. A new evaluation needs another slot and attempt identity.</text>
+<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">This reference policy is implemented. ECAN, LTI, diffusion and new attention research are out of scope.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / inference.py · deadlines.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">23 / 44</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / attention.py · fixture_attention.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">23 / 52</text>
 </svg>

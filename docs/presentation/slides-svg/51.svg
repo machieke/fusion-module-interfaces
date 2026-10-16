@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Retry identities answer different questions</title>
+<desc id="desc">A derivation&#x27;s logical ID excludes request/step identity, output CAS and deadline so a retry cannot manufacture new independent support. An attempt key freezes its exact semantic body and is evaluated at most once; a killed pending attempt consumes a physical reservation. Multiple physical calculations for one logical derivation remain possible under distinct reserved attempts. C2 commits its decision before C4 progress; C3 commits feedback before C4 acknowledgment. Recovery queries those owners rather than inferring success from a missing local reply. Feedback_applied counts acknowledged unique logical credits; feedback_duplicate records suppression on duplicate admission. Fixed feedback adds no truth evidence. The semantics distinguish bounded termination, successful admission and fully acknowledged work.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX H / OPERATIONAL SEMANTICS</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Retry identities answer different questions</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Preserve the logical cause while distinguishing transport replay from physical evaluation attempts.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">IDENTITY / STATE</text>
+<text x="463" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEANING</text>
+<text x="988" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECOVERY ACTION</text>
+<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Request / step ID</text>
+<text x="463" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Exact immutable command intent</text>
+<text x="988" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Same body replays; changed body conflicts</text>
+<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Logical derivation ID</text>
+<text x="463" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">The same exact grounded conclusion</text>
+<text x="988" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Deduplicate admission and causal feedback</text>
+<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Attempt key + reserved</text>
+<text x="88" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">slot</text>
+<text x="463" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">One physical evaluation opportunity</text>
+<text x="988" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Pending death spends slot; new key needs</text>
+<text x="988" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">budget</text>
+<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Committed C2 decision</text>
+<text x="463" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Saved authoritative admission outcome</text>
+<text x="988" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Read first; do not recalculate</text>
+<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C3 causal feedback</text>
+<text x="88" y="669.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">receipt</text>
+<text x="463" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">One workflow credit for logical admission</text>
+<text x="988" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Recover acknowledgment; do not credit</text>
+<text x="988" y="669.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">twice</text>
+<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Deadline / generation</text>
+<text x="88" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">watermark</text>
+<text x="463" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Durable limits across process restarts</text>
+<text x="988" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Do not reset, refund or implicitly retime</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / inference.py · derived_beliefs.py · attention.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">51 / 52</text>
+</svg>
