@@ -208,3 +208,66 @@ available. Do not replace the missing checkout with Peer, the onboarding repo or
 hive-appliance. A future integration must first pin the authorized actual runtime,
 then call the existing contracts from a verified memory/tool/transformation entry
 point using generated shareable bytes and retain its original interface.
+
+## M2: private C1/C2, real native revision and Hive episode
+
+Use the tested implementation commit in [M2 evidence](m2-evidence.md).
+The M1.2 Linux toolchain and authorized Git SSH access above remain required.
+The M2 recipe also retrieves public Reachability and PLN at immutable pins;
+`integration/pln/sources.json` records their identities and formula/source hashes.
+It never edits a sibling checkout or the historical SWI 10.0.1 guard.
+
+```bash
+# Run from the selected Fusion checkout, with an empty provider destination.
+uv run --python 3.11 --locked python scripts/build_m2.py artifacts/m2-providers > /tmp/fusion-m2-build.log 2>&1
+uv run --python 3.11 --locked python scripts/verify_m2.py artifacts/m2-providers/environment.json
+```
+
+The first command runs the unchanged native Hive build recipe into a fresh
+SWI/Janus/Python prefix and venv, verifies pinned Reachability/PLN, and compiles
+the Rust DeTTa adapter into a fresh Cargo target. It writes explicit non-secret
+runtime paths, binary hash, source pins, build record and cache scope. Git,
+Python and Cargo download caches may be warm. No native objects, venv or Cargo
+target are copied. A global empty-cache build is a separate NOT_RUN condition.
+The M2 DeTTa build permits fetching locked crates; M1 regression still uses the
+existing offline locked recipe and therefore needs its recorded Cargo cache.
+
+The verifier reruns M1.2, then C1/C2 fixtures with real provider paths deliberately
+absent, actual DeTTa/native PLN, cross-owner SIGKILL/privacy, real authenticated
+Hive dispatch and a deterministic generated demo. Missing real prerequisites
+produce BLOCKED records or executed failures; none become skips or fixture passes.
+Logs and the machine manifest go to `artifacts/m2/final/` by default. Original
+M1.2 artifacts remain under their existing path; the verifier embeds that result
+and does not rewrite committed historical evidence.
+
+For an already built, verified environment, these narrower commands help locate
+a failed gate (real tests still require their explicit environment variables):
+
+```bash
+uv run --python 3.11 --locked python -m unittest -v tests.test_m2
+# Use the environment's VIRTUAL_ENV/bin/python with M2_REVISION_ENV,
+# M2_DETTA_BINARY, PETTA_PATH, HIVE_REPO and native library paths set:
+python -m unittest -v integration.pln.test_revision integration.pln.test_recovery
+python -m pytest -q integration/hive/test_m2_integration.py
+python scripts/m2_demo.py artifacts/m2-providers/environment.json artifacts/m2/demo.json
+```
+
+Do not use this host's unqualified legacy `python` outside the selected environment.
+Use `uv run --python 3.11 --locked python` for fixture scripts and the recorded
+Python 3.12 venv for Hive. Generated demo observations and origin/independence
+assumptions are fixtures; their DeTTa, PeTTa and Hive providers are real.
+The CLI prints only generated test summaries. Private owner databases are not
+export artifacts and must not be placed in shared or chain roots.
+
+Private configuration supplies `private_root`, non-overlapping `shared_roots`,
+`private_scopes`, `private_descriptors`, local `principals`/method permissions,
+registered `origins`, `detta_binary` and `revision_environment`. See
+`tests/m2_support.py` for a generated local policy example. Real production
+identity and key management are not established by this test policy. To use
+only C1, call `open_private(..., with_revision=False)`; no PLN or Hive dependency
+is loaded. To retry a pending intent, reopen the same owners and relay and drain
+the same episode with the same declaration. Do not change an attempt's expected
+revision, selected provider or assumption under its existing key. A changed
+profile/binary requires a new compatible deployment/history; live migration is
+outside M2. Continue only after resolving an authorization/profile failure,
+never downgrade to a fixture automatically.

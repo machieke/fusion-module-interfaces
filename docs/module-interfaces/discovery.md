@@ -3,6 +3,11 @@
 M1.2 resolves the earlier runtime blocker using the user-supplied schematics.
 Historical M0/M1/M1.1 observations below remain scoped to their recorded runs.
 
+M2 preserves that exact Hive target. It reuses Reachability `dd56f3f` and PLN
+`4405956` without upstream edits, with the explicit SWI 10.1.14 revision-only
+profile documented in ADR 009. Source hashes and executed gates are in
+[M2 evidence](m2-evidence.md).
+
 ## M1.2 verified intended source
 
 `~/work/takopi/omegahive-schematics` is clean at
@@ -84,14 +89,20 @@ descriptors to the shared resolver; leave richer model/search/tool APIs intact.
 | Brief S2 00:11–00:12 | One writer per state category; ECAN requested through commands. |
 | Retained project constraints in brief | Private full episodes client-side, no encrypted copies on chain; live server-side caller enforcement. Local M1 policy is explicitly a test policy. |
 | Repository evidence | DeTTa local opaque DA chosen; no generic DA changes. Richer DAS/MeTTaClaw/Reachability APIs remain independent. |
-| Not settled | Atomization, ontology, numerical model, ECAN algorithm, final Omega release, production authorization/transport. Maintainer and mathematical specialist assignments unassigned. |
+| Not settled | General atomization/ontology, broader numerical models, ECAN algorithm, production authorization/transport. M2 selects only a grounded claim fragment and one experimental revision model. Maintainer and mathematical specialist assignments unassigned. |
 
 ## Glossary and anti-glossary
 
 | Term | Meaning here / must not be confused with |
 |---|---|
 | AtomSpace / AtomStorage C0 | Scoped immutable typed envelope storage in this profile; not a universal ontology or replacement for OpenCog/DAS. |
-| Episodic memory | Private ordered observation/action/result provenance; an assertion occurrence is not its truth. |
+| Episodic memory | Private ordered observation/action/result provenance; an assertion occurrence is not its truth. Stable EpisodeRef has no immutable revision; its owner returns a separate head. |
+| Occurrence / event ref / request key | Semantic observation identity / immutable stored event bytes / retry intent. New keys or bytes do not establish independent evidence. |
+| Support / lineage root | Exact claim/context/assessment bound to admitted evidence / operator-registered origin or inherited provenance. Neither is proof of source accuracy. |
+| Admission / numerical outcome | Recording an observation / initializing, revising, retaining alternatives or declining an inapplicable model. Admission can succeed without changing truth. |
+| Coverage / alternative | Leaf supports represented by the named aggregate / admitted supports outside that aggregate. An aggregate is not a summary of every observation. |
+| Independence assumption | Separate authorized declaration naming exactly two immutable supports. It cannot override overlapping evidence or lineage. |
+| Runtime selection | Hash of the explicit model, provider, source pins, formula digest and built SWI binary identity; persisted with attempts and snapshots. Drift refuses reuse, without migration. |
 | PLN | Identified upstream probabilistic rule/revision semantics; not any weighted average. |
 | ECAN / STI / LTI | Attention owner / short-term importance / long-term importance; C3 proposes STI only; LTI promotion deferred. |
 | DA | Availability/persistence of opaque bytes under a stated provider guarantee; not cognitive interpretation or indefinite storage. |

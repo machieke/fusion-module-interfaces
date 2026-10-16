@@ -185,3 +185,91 @@ PeTTa `ae66fa8`, Janus 1.5.3. Pin Python patch version and package hashes for th
 tested Linux environment. Correct the CMake cache-type assumption in Fusion's
 build recipe, check both live bridges, and leave upstream source unmodified.
 The build recipe intentionally excludes the unrelated chromadb/mind smoke setup.
+
+## ADR 008 — private episodic provenance and explicit admission (M2)
+
+Accepted engineering design before implementation; execution evidence is recorded
+separately. The starting checkout is `6452fa725be5a688f9d5ad8f77955579df2f95ab`,
+whose only changes after `4ee5cbe` update the presentation. M1.2 regression passes
+on its pinned clean sources. The five reviewed gaps are real: episode identity
+and head were conflated; numerical evidence was unspecified; admission and numeric
+revision had one result; context/coverage needed exact binding; the shared M1 wire
+was not a private-memory profile.
+
+C1/C2 were unimplemented 1.0.0 specifications. Their clarified local contracts use
+2.0.0, `episode-local-sequence/2` and `pln-revision-private/1`. No implicit conversion
+from the earlier specifications or persisted M1 journals is offered. AtomStorage
+keeps its immutable bytes methods and profile, selected with a separate
+`private-local-only` descriptor and one-principal private scope. M1 wire 1.0.0 and
+its non-sensitive sharing requirement are unchanged; no cognitive wire route is
+added. The existing resolver selects exact private descriptors. Every local call
+reauthenticates the credential and checks current scope/method and selection.
+
+An episode has a stable non-AtomRef identity and owner-controlled head (empty=0).
+Events have immutable AtomRefs and sequences starting at 1. Event occurrence IDs
+are unique within the owner's scope. Append binds the whole semantic request;
+successful replay precedes CAS. Changed occurrence content conflicts even with a
+new mutation key. Bounded pages expose captured head, next sequence and completeness.
+`findEpisodes` is not advertised. A numerical observation is explicit, typed model
+input attached to an event; ordinary reports create no truth. Event append and
+evidence-delivery intent commit together in the episode journal.
+
+Lineage comes from already admitted event provenance or operator-registered source
+origins, never a caller's root list. Origin registration is an explicit ingestion
+assumption, not proof of source accuracy or statistical independence. Aliases and
+copied/reworded reports retain the same registered origin; unknown origins cannot
+produce a justified numerical aggregate. C1 records history even without any
+mathematical provider. C2 verifies evidence through the C1 read port and immutable
+AtomStorage records, retains exact support records, and alone commits decisions.
+
+The minimal claim fragment is an exact grounded predicate, ordered string
+arguments and explicit polarity, stored immutably in the private scope. Context
+and exact claim reference must match. A contrary assessment of the same claim is
+an alternative, not a conversion of a negated claim. Strength/confidence are
+explicit decimal strings; `evidence_count` remains unset. Aggregate coverage names
+the exact leaf supports; unaggregated alternatives remain inspectable. Unknown
+beliefs have no truth value. Assumption submission is distinct from occurrence
+admission and binds exactly two immutable admitted supports, including an exact
+derived support when used. It cannot override overlap or create fresh roots.
+
+Atoms, episode append, belief commit and delivery acknowledgement remain independent.
+A small bounded relay persists the exact attempted submission and selection before
+calling C2. A CAS conflict requires a new persisted attempt/key; a timeout retains
+the old attempt and pending evidence. C2 records request identity before calculation,
+performs a final base-revision and live-authority check before commit, and returns
+one stable decision on replay. Formula work may repeat; logical weight must not.
+There is no event bus, search controller, cross-owner SQL or migration service.
+
+Private placement is a separate local DeTTa/AtomStorage composition with local
+owner journals and no messaging, execution or publication port. Generated canaries
+test routing and diagnostics, not secrecy from the trusted host administrator.
+There is no encrypted-storage, remote-privacy or power-loss guarantee. Existing
+M1.2 generated sharing remains a separate regression.
+
+## ADR 009 — guarded PLN reuse and explicit SWI rebaseline (M2)
+
+Select experimental `trueagi-pln-stv-finite-k1/v1`, without claiming a universal
+numerical model. Reuse `PLNAdapter.revise` unchanged from Reachability
+`dd56f3f053ed90239de5377021a7d3b3fbf424ac`, obtained at an immutable source pin.
+Do not import its admission/journal/projection services or invoke deduction/search.
+Reuse the upstream `Truth_Revision` from PLN
+`4405956947c4b53c7ff01bd565aa3b114bc970a1`, SHA-256
+`cdfb3f18bd7b336440fc7b4409209afddf0e64c41f17dee7eefc8f02718de433`.
+
+Reachability's runtime enforces SWI 10.0.1. Keep that guard and lock unchanged.
+Inject a revision-only runtime with the explicit implementation profile
+`fusion-petta-swi-10.1.14-revision/1`, using Hive's verified PeTTa/SWI source/build.
+This is a rebaseline, not historical 10.0.1 reproduction. Before C2 implementation,
+a direct native probe returned `(0.5, 0.6666666666666666)` and `(0.375, 0.8)` for
+the brief's two reference pairs. Required golden, refusal, drift and timeout
+checks must still pass before this profile is reported as a completed native gate.
+
+Decimal input must be finite, in-domain before and after binary64 conversion;
+strength 1 is allowed, confidence 1 is rejected. Numbers round-trip with `repr`;
+no clamping, inferred values or Python substitute for revision is allowed.
+Native golden comparisons use absolute tolerance 1e-12 only for valid outputs;
+domain and exact support/independence checks have no tolerance. Malformed, empty,
+multiple, nonfinite or rounded-to-certainty outputs fail closed. Native source,
+runtime version and selected model identities are checked, and no source download
+occurs in a runtime request. Missing or failed math leaves C1 available and C2
+delivery pending. Source obtainability and fresh-build checks are separate gates.

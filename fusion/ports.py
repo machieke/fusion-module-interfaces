@@ -1,4 +1,4 @@
-"""Method-level contracts, including specification-only C1–C4 ports.
+"""Method-level contracts: M1, private C1/C2 v2, and specified C3/C4 ports.
 
 No cognitive implementation is instantiated in M0/M1. A model/policy profile is
 mandatory wherever numeric or query semantics differ.
@@ -8,6 +8,9 @@ from typing import Literal, Protocol, runtime_checkable
 
 from .contracts import (AtomRef, AtomWrite, InterfaceRef, JSON, JobAcceptance, JobStatus,
                         MessageAcceptance, MessageAck, MessageDelivery)
+from .memory_types import (EpisodeRef, EvidenceRef, EpisodeEvent, Episode, AppendReceipt,
+                           EvidenceRecord, EvidenceDelivery,
+                           BeliefSnapshot, RevisionDecision, Support, Independence)
 
 
 @dataclass(frozen=True)
@@ -16,6 +19,19 @@ class Mutation:
     idempotency_key: str
     # Trusted binding preserves the full wire intent across independent commits.
     intent_digest: str | None = None
+
+
+@dataclass(frozen=True)
+class EvidenceSubmission:
+    command: Mutation
+    claim: AtomRef
+    context: str
+    evidence: EvidenceRef | None
+    support_id: str | None
+    expected_revision: int
+    profile: str
+    runtime_selection: str
+    independence: Independence | None = None
 
 
 @dataclass(frozen=True)
@@ -82,41 +98,16 @@ class Search(Protocol):
     def query(self, query: Query) -> SearchResult: ...
 
 
-@dataclass(frozen=True)
-class EvidenceRef:
-    occurrence_id: str
-    source_ref: AtomRef
-    episode_ref: AtomRef
-    sequence: int
-    target_claim: AtomRef
-    relationship: Literal["supports", "contradicts", "reports"]
-    provenance: tuple[AtomRef, ...]
-    lineage_roots: tuple[str, ...]
-
-
-@dataclass(frozen=True)
-class EpisodeEvent:
-    occurrence_id: str
-    kind: Literal["observation", "action", "result"]
-    source: str
-    observed_time: str
-    payload: AtomRef
-    causation: tuple[AtomRef, ...]
-
-
-@dataclass(frozen=True)
-class Episode:
-    ref: AtomRef
-    revision: int
-    events: tuple[EpisodeEvent, ...]
-
-
+@runtime_checkable
 class EpisodicMemory(Protocol):
     def recordEpisode(self, command: Mutation, source: str) -> Episode: ...
-    def appendEvent(self, command: Mutation, episode: AtomRef, expected_sequence: int,
-                    event: EpisodeEvent) -> Episode: ...
-    def readEpisode(self, ref: AtomRef, start: int, limit: int) -> Episode: ...
-    def findEpisodes(self, query: Query) -> SearchResult: ...
+    def appendEvent(self, command: Mutation, episode: EpisodeRef, expected_sequence: int,
+                    event: EpisodeEvent) -> AppendReceipt: ...
+    def readEpisode(self, ref: EpisodeRef, start: int, limit: int) -> Episode: ...
+    def readEvidence(self, ref: EvidenceRef) -> EvidenceRecord: ...
+    def pendingEvidence(self, ref: EpisodeRef, limit: int) -> tuple[EvidenceDelivery, ...]: ...
+    def acknowledgeEvidence(self, command: Mutation, delivery_id: str,
+                            decision: RevisionDecision) -> JSON: ...
 
 
 @dataclass(frozen=True)
@@ -133,27 +124,22 @@ class Truth:
     evidence_count: str | None
 
 
-@dataclass(frozen=True)
-class BeliefSnapshot:
-    claim: AtomRef
-    revision: int
-    truth: Truth | None
-    evidence: tuple[EvidenceRef, ...]
-    alternatives: tuple[AtomRef, ...]
-
-
-@dataclass(frozen=True)
-class EvidenceSubmission:
-    command: Mutation
-    evidence: EvidenceRef
-    expected_revision: int
-    profile: ProfileRef
-    independence_assumption: AtomRef | None
-
-
+@runtime_checkable
 class BeliefRevision(Protocol):
-    def submitEvidence(self, submission: EvidenceSubmission) -> BeliefSnapshot: ...
-    def readBelief(self, claim: AtomRef, revision: int | None) -> BeliefSnapshot: ...
+    def submitEvidence(self, submission: EvidenceSubmission) -> RevisionDecision: ...
+    def readBelief(self, claim: AtomRef, context: str, revision: int | None) -> BeliefSnapshot: ...
+
+
+class PrivateAuthority(Protocol):
+    def authorize(self, scope: str, operation: str) -> str: ...
+    def origin(self, scope: str, source: str) -> str | None: ...
+    def selection(self) -> str: ...
+
+
+class RevisionMath(Protocol):
+    def profile(self) -> JSON: ...
+    def revise(self, existing: Support, incoming: Support, revision: int,
+               independence: Independence | None) -> JSON: ...
 
 
 @dataclass(frozen=True)

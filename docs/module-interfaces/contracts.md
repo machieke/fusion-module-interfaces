@@ -1,6 +1,6 @@
 # Contracts, transport and conformance
 
-All proposed contracts use interface version **1.0.0**, separate from provider
+The M1 wire and remaining specifications use interface version **1.0.0**, separate from provider
 descriptor implementation version **0.1.1** (the unchanged deterministic
 `inspect_atom` payload algorithm remains version **0.1.0**). The `1` stabilizes this experiment's semantics,
 not a community standard. `fusion/ports.py` provides readable typed signatures;
@@ -8,6 +8,11 @@ not a community standard. `fusion/ports.py` provides readable typed signatures;
 `contracts/wire.schema.json` describes requests; `contracts/responses.schema.json`
 describes every operation/profile response. `fusion/responses.py` enforces
 response shapes and request/descriptor-dependent invariants on both bindings.
+
+M2 adds local C1/C2 contracts **2.0.0**, implementation **0.2.0**, with a separate
+private placement. Their typed DTOs are in `fusion/memory_types.py`, signatures in
+`fusion/ports.py`, and closed validators in `fusion/memory_contracts.py`. There is
+no new remote schema or M1 wire route. See [private M2 contracts](#private-m2-contracts).
 
 ## Shared rules
 
@@ -94,18 +99,17 @@ SQLite journal; it is not a mandatory dependency of the M1 peers.
 |---|---|
 | `relations` / `ordered-roles/1` | assertRelation/getRelation/outgoing/incoming. Ordered role list, arity 1–32, every ref same scope and resolvable at assertion. Directed edge role 0 is source; later roles are targets, duplicates retained. For undirected relations the roles are still ordered in this profile; a future unordered profile must specify its own identity. Atomic immutable relation creation; incoming may explicitly be unsupported. Tests REL-order, REL-dangling, REL-scope, REL-no-truth. |
 | `search` / provider-specific symbolic or embedding profile | Query returns refs, projection version, source watermark and completeness. Query grammar is selected by exact profile; no silent conversion. Rebuildable index owns no canonical records. A minimum watermark not reached is NOT_AVAILABLE; bounded pagination/snapshot rules must be declared by provider. Tests SEARCH-watermark, SEARCH-dialect, SEARCH-failure-not-empty. |
-| `episodic.memory` / `episode-local-sequence/1` (C1) | recordEpisode/appendEvent/readEpisode/findEpisodes. Private client-side history; append requires expected_sequence and atom refs, increments sequence atomically or CONFLICT. Event occurrence ID is distinct from payload hash; identical payloads may be distinct observations. No timestamp-based global order. Emits immutable evidence-available event after commit; replay doesn't duplicate it. Tests EP-order, EP-duplicate, EP-contrary, EP-privacy, EP-source-not-truth. |
-| `belief.revision` / numerical profile pending (C2) | submitEvidence/readBelief. CAS expected_revision; owner alone updates truth/evidence aggregates. Exact model reference, evidence relationships, roots, assumptions, contradictory alternatives and provenance in each snapshot. Duplicate evidence adds no weight; overlap/derived cycles cannot invent independence. Strength/confidence/evidence-count are decimal strings interpreted by a profile, not universal arithmetic. Emits belief-revised after commit. Tests BR-duplicate, BR-overlap, BR-cycle, BR-contradiction, BR-golden, BR-unknown. |
+| `episodic.memory` / `episode-local-sequence/2` (C1, local 2.0.0) | Implemented private episode owner; stable identity, immutable event refs, ordered CAS append and durable evidence intent. Exact methods and bounds below. Earlier `/1` specification is unsupported. |
+| `belief.revision` / `pln-revision-private/1` (C2, local 2.0.0) | Implemented explicit evidence admission and guarded native revision. Exact support/context/lineage, independent assumption registration, historical snapshots and durable semantic attempts. See below. |
 | `pln.kernel` / rule model pending (C4) | profiles/applyRule. Pure ordered immutable premise snapshots → proposed derivation; no mutation/idempotency ledger needed. Reject unsupported model/rule/preconditions explicitly. Retain source evidence and assumptions. No agenda, revision or attention writes. Tests PLN-order, PLN-golden, PLN-purity, PLN-lineage. |
 | `attention` / STI-only policy pending (C3) | submitStimulus/readAttention/select/advance. ECAN owns allocation and logical time; deduplicate stimulus key. Policy must specify stipend, finite legal values, conservation/nonconservation, saturation, decay, budget and tie-break. advance CAS expected_step, monotonic bounded steps. Atomic step plus attention-changed events; no foreign setters. Tests ECAN-no-PLN, ECAN-owner, ECAN-duplicate, ECAN-budget, ECAN-decay, ECAN-tie. |
 | `inference.control` / `bounded-step/1` (C4) | step obeys candidate, rule-application, feedback-generation and deadline budgets. Reads explicit snapshots, requests revision and stimuli through their owners. Reports actual work and stop cause; durable checkpoint and replay policy required before crash-safe advertisement. No cross-owner atomic transaction implied. Tests IC-bounds, IC-feedback, IC-replay, IC-provider-swap. |
 | `consensus.finality` / `asi-deploy-effects/1` | submit eligible approved commitment; observe actual deploy inclusion/effect-finality. Preserve provider evidence and tx/block IDs; distinguish not-observed/pending/included/finalized/rejected, including merge rejection. Submission idempotency must bind deploy signature/intent; no new transaction after ambiguous timeout. Finality alone does not certify off-chain bytes. CHAIN-inclusion, CHAIN-effects, CHAIN-no-synthetic. |
 
-C2's candidate numerical model comes from reachability's existing guarded PLN
-adapter; confidence is not universally clamped and truth value 1 remains a model
-question. C3 does not silently wrap a multi-currency implementation as STI-only.
-Specialist review remains unassigned. All cognitive test names above are future
-specifications, **not executed tests**.
+C2 uses the pinned guarded PLN revision model described below. C3 does not
+silently wrap a multi-currency implementation as STI-only. Specialist review
+remains unassigned. Relations, search, C3 and C4 test names above remain future
+specifications. Executed C1/C2 cases are listed in the M2 evidence report.
 
 ## Conformance mapping
 
@@ -199,3 +203,84 @@ exactly-once display, physical execution or arbitrary external side effects.
 PortStructure checks signatures/types, execution's allowed calls/own SQL, and a
 hostile runtime proxy that rejects all undeclared attributes. These structural
 checks complement behavioral tests; they are not substituted for them.
+
+## Private M2 contracts
+
+This is a trusted-host local composition, with `privacy=private-local-only`,
+`local-only`, `scoped`, `idempotent` and `process-restart` descriptors. Each scope
+belongs to one authenticated principal. Credentials, scope membership, method
+permission and complete descriptor selection are reread on every operation,
+including cached replay. `belief.revision.assume` is an additional policy
+permission on assumption-bearing `submitEvidence`, not a fictitious third method.
+C1 acknowledgment is a trusted relay permission: its receipt is not a portable
+cryptographic certificate. Local refs are identifiers, not bearer capabilities.
+
+| Owner / operation | Input and result / ordering |
+|---|---|
+| C1 `recordEpisode` | Mutation + source → empty Episode, stable `{scope_ref,id}`, head 0. Same key/source returns that original creation receipt. |
+| C1 `appendEvent` | Mutation + EpisodeRef + expected head + closed EpisodeEvent → immutable EvidenceRef, new head, optional delivery ID. Sequence starts at 1. A committed occurrence is recognized before stale CAS. Changed body, episode or semantic key binding conflicts. |
+| C1 `readEpisode` | EpisodeRef + start (1-based) + limit → captured head, ordered immutable records, next sequence and completeness. No timestamp sorting or search. |
+| C1 `readEvidence` | Exact episode/occurrence/sequence/event AtomRef → checked immutable record and admitted lineage roots. |
+| C1 `pendingEvidence` / `acknowledgeEvidence` | Bounded oldest unacknowledged intents / authenticated decision receipt matching the exact evidence. Append and intent share the C1 transaction; C2 and acknowledgment do not. |
+| C2 `submitEvidence` | Mutation, exact immutable claim and context, **either** evidence ref **or** already admitted support ID, expected belief revision, selected profile/runtime and optional exact pair assumption → stable RevisionDecision. |
+| C2 `readBelief` | Exact claim/context and optional historical revision → immutable snapshot. Latest absent belief is explicit revision 0 with no truth; missing requested nonzero revision is NOT_FOUND. |
+
+The executable closed shapes are `memory_types.py` / `memory_contracts.py`.
+An event has occurrence ID, observation/action/result kind, source, observed time,
+payload AtomRef, causation refs, provenance evidence refs and optional numerical
+observation. Observed time is lexical metadata, never a distributed ordering claim.
+Numerical observation names an exact claim, context, relationship
+(`supports`, `contradicts`, `reports`), ingestion profile and optional typed truth.
+`reports` has no truth. Source text, signatures, authorization and confidence are
+never automatically converted into each other.
+
+Claims are immutable `application/fusion-claim` envelopes containing a predicate,
+1–8 ordered grounded string arguments and a Boolean positive polarity. No parser,
+variable binding, unification, quantified ontology or NLP interpretation is added.
+A contrary assessment supplies a low strength for the **same** claim/context;
+a negated claim is a distinct immutable target, without automatic complementation.
+
+C2 records each distinct admitted occurrence and preserves numerical alternatives.
+`admission` is `admitted` or `duplicate`; `numerical` is `initialized`, `revised`,
+`no-change`, `retained-alternative` or `model-inapplicable`. A new request key is
+not new evidence. Registering an independence assumption references existing
+supports and creates no episode observation. An initialized aggregate covers the
+first eligible assessment only. Further supports remain alternatives until an
+exact declared pair passes the unchanged upstream guard. Every aggregate names
+its leaf coverage, exact immutable premise IDs, unioned evidence IDs and roots,
+formula ID and assumptions. Belief revision increments only when its ledger or
+aggregate changes. Exact successful request replay returns its original snapshot,
+even after later revisions. A new-key duplicate returns the current snapshot.
+
+The experimental model is `trueagi-pln-stv-finite-k1/v1`: decimal-string finite
+strength in [0,1], confidence in [0,1), `evidence_count=null`. Validate both Decimal
+and converted binary64 domains. Strength 1 is legal; confidence 1 and values
+rounding to 1 are refused. Native outputs use binary64 `repr` round trips; there
+is no clamping. Tests compare valid golden values with absolute tolerance 1e-12,
+never use tolerance to relax domains or support identity. The native guard and
+formula pins are in `integration/pln/sources.json`; the SWI 10.1.14 runtime profile
+is an explicit rebaseline of the historical 10.0.1 runner, not a claim to reproduce it.
+
+Origins are operator-registered ingestion assumptions. Provenance references
+already admitted immutable C1 records; copied evidence inherits their unioned
+roots. Unknown provenance/origins cannot be repaired by a fresh request key or
+speaker label. The profile conservatively treats all observations of one registered
+origin as overlapping. It cannot discover undisclosed copying or prove that an
+operator's asserted source identity or statistical independence is true.
+
+Bounds: atom bytes 65,536; event JSON 16,384; provenance/causation 8 each; episode
+256 events; page and pending-delivery batch 16; belief 32 observations and at most
+64 support records; snapshot JSON 262,144. Relay permits three CAS retries per
+drain and at most 32 persisted attempts per delivery. Exceeding capacity is
+OVERLOADED, never silent truncation or loss. Mutation/decision journals retain
+history without garbage collection; these per-operation bounds are not a total
+disk quota. `findEpisodes`, export, attention, inference and migration are absent.
+
+A request attempt, its expected revision and its runtime selection are durably
+recorded before calculation. A CAS conflict requires a new key; changing the
+expected revision under an existing key conflicts. Transient provider failure
+leaves the exact attempt and C1 intent pending. Authority and base revision are
+checked again before C2 commit. Formula execution may repeat after SIGKILL; the
+logical contribution does not. No transaction spans AtomStorage, C1, C2 or relay
+acknowledgment. Malformed foreign replies fail as NOT_AVAILABLE and never become
+an empty history or an accepted numeric result.

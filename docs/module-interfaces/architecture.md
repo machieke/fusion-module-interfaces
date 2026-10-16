@@ -28,7 +28,18 @@ flowchart TD
   MSG --> MS[Mailbox + acknowledgement journal]
   EX --> ES[Execution jobs + outbox journal]
   AT -. composition swap .-> AF[Independent atomic-file AtomStorage fixture]
-  EP[Future episodes: history] -. evidence .-> BR[Future revision: beliefs]
+  HP[Native Hive private episode plugin] --> PC[Private local composition + live authority]
+  PC --> EP[C1: episode journal and delivery intents]
+  PC --> BR[C2: belief revisions and semantic attempts]
+  EP --> PA[Private AtomStorage port]
+  BR --> PA
+  BR -->|readEvidence| EP
+  ER[Bounded durable evidence relay] -->|pending / acknowledge| EP
+  ER -->|read / submit| BR
+  BR --> RM[RevisionMath port]
+  RM --> GR[Unchanged pinned PLNAdapter.revise guards]
+  GR --> NR[Revision-only PeTTa / SWI 10.1.14 runtime]
+  PA --> PD[Separate local DeTTa payloads]
   IC[Future bounded inference control] -. snapshots .-> BR
   IC -. rules .-> PLN[Future pure PLN kernel]
   IC -. commands .-> EC[Future ECAN: attention]
@@ -47,8 +58,8 @@ routes in M1. The worker has a separate trusted entry point, never a client comm
 | AtomStorage (C0) | Stable scoped immutable typed envelopes; reference/idempotency metadata | Storage, authorization | No parser/ontology/search/truth; `immutable-bytes/1`; bytes, revision, scope |
 | Relations | Explicit ordered roles/hyperedges; immutable relation records | AtomStorage | No authoritative beliefs/attention; `ordered-roles/1`; arity/order/scope validation, specified only |
 | Search projection | Query refs + index watermark; rebuildable index | Record/event reads, auth | Not authoritative memory; distinct symbolic/embedding profiles; staleness checks, specified only |
-| Episodic memory C1 | Ordered episode events and provenance; episode history | Atoms, optional relations/search | Private client-side, no truth/attention updates; `episode-local-sequence/1`; sequence/CAS/occurrence tests later |
-| Belief revision C2 | Evidence aggregation under a declared model; belief/evidence ledger | Evidence/atom snapshots | No search or ECAN mutation; model pending, candidate from reachability; duplicate/contrary/lineage golden tests later |
+| Episodic memory C1 | Episode identity/head, immutable event ledger, mutation replay and delivery intents | AtomStorage, PrivateAuthority | Private local, no PLN/Hive requirement; `episode-local-sequence/2`; sequence/CAS/occurrence/recovery tested |
+| Belief revision C2 | Observation/support ledger, immutable belief snapshots, exact semantic attempts/decisions | AtomStorage, EpisodicMemory.readEvidence, PrivateAuthority, RevisionMath | `pln-revision-private/1`; guarded upstream revision only, no search/ECAN; alternatives retain uncovered evidence |
 | PLN kernel C4 | Pure rule on explicit premise snapshots; no mutable domain state | Declared rule implementation | No agenda/episode/attention writes; model pending; golden/ordered-premise tests later |
 | Attention C3 | Stimuli, STI allocation/selection/decay; attention balances/logical time | Opaque refs, policy | No PLN/LLM dependency; STI policy pending; independent budget/tie/decay tests later |
 | Inference control C4 | Bounded selection and scheduling; step receipts/checkpoint | Search, revision, attention, PLN | No reimplementation of mathematics or owned state; `bounded-step/1`; limits/feedback tests later |
@@ -61,8 +72,8 @@ routes in M1. The worker has a separate trusted entry point, never a client comm
 
 Future ports are typed specifications and named test obligations, not empty services.
 The M1 consumer only stores, shares a reference, fetches bytes, delegates inspection
-and reads a durable result. Motivation is absent. The next bounded increment is
-M2 (C1+C2); this run stops before implementing it.
+and reads a durable result. M2 now adds private C1/C2 only. Relations/search,
+attention and inference control remain specifications. Motivation is absent.
 
 ## M1.1 runtime composition
 
@@ -146,3 +157,64 @@ admission response replays the same input and keys. A crash after outcome commit
 rechecks current authority and acknowledges redelivery without a second outcome
 row. Exactly-once physical execution, power-loss survival and distributed failover
 are not inferred. No chain operation or cognitive controller is added.
+
+## M2 private owners and native revision
+
+`open_private` resolves separate private descriptors and constructs local owners.
+It uses the existing AtomStorage facade over real DeTTa, with separate payloads
+and journals; overlapping configured shared/private roots are rejected. It never
+constructs a shared mailbox, execution service or chain adapter. The DA API stays
+application-neutral: it receives opaque bytes, not episode IDs or beliefs.
+
+C1 owns `episodes`, `events`, `mutations` and `deliveries` in `episodes.sqlite`.
+C2 owns `snapshots` and `attempts` in `beliefs.sqlite`. The relay owns only exact
+submission attempts and handoff progress in `relay.sqlite`. C1 cannot mutate
+beliefs; C2 cannot write episode state; neither reads foreign SQL. A payload
+commit before C1 append can leave an orphan after a crash. Retrying the same
+immutable atom request recovers it; no garbage collector is implemented.
+
+```mermaid
+sequenceDiagram
+  participant H as Native Hive / generated caller
+  participant A as Private AtomStorage
+  participant E as C1 episode owner
+  participant R as Durable local relay
+  participant B as C2 belief owner
+  participant P as Pinned guarded PLN + native formula
+  H->>A: create payload (independent commit)
+  H->>E: appendEvent(expected head, occurrence)
+  E->>A: create immutable event (independent commit)
+  E->>E: commit event + evidence intent atomically
+  R->>E: pendingEvidence / readEvidence
+  R->>R: persist exact submission attempt + selection
+  R->>B: submitEvidence(expected revision)
+  B->>B: persist semantic attempt
+  B->>E: readEvidence through declared port
+  B->>A: verify exact immutable event / grounded claim
+  opt eligible exact pair with independence assumption
+    B->>P: revise exact immutable supports
+    P-->>B: proposal with unioned lineage
+  end
+  B->>B: live authority + CAS, commit snapshot/decision
+  B-->>R: stable decision receipt
+  R->>E: acknowledgeEvidence (separate commit)
+```
+
+The application policy is the bounded generated scenario in
+`integration/m2_scenario.py`, invoked by the sibling `fusion-episode` native Hive
+plugin. It reads authenticated actor context from the verified native seam;
+operator configuration chooses the private scope/credential. It returns only
+scenario counts and the public command's receipt ID. Full observations,
+lineage and private content hashes remain in the private local composition.
+The original M1.2 `fusion-inspect` plugin and its 13 native tests are unchanged.
+
+RevisionMath is a narrow pure proposal dependency, not C4's general PLNKernel.
+It loads the unchanged Reachability `PLNAdapter.revise`, injects a revision-only
+PeTTa runner and validates the response. No AdmissionService, AtomSpace
+projection, `apply_rule`, PLN.Derive or PLN.Query is used. C1 can run with that
+entire provider absent. Hostile port-only fixtures enforce these dependencies.
+
+The threat model trusts the host/operator and intact local files. Directory
+permissions and routing isolation do not claim encrypted storage, protection
+from an administrator, power-loss survival, distributed failover, exactly-once
+physical calculation, or the truth of registered origins/independence assertions.
