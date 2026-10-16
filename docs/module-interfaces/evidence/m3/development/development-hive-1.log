@@ -1,0 +1,94 @@
+FFFF....                                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_native_inference_replay_restart_and_attention_swap[sqlite] ________
+
+setup = (<tests.m3_support.CognitionHarness object at 0x7fe980daf860>, <test_m3_integration.InferenceCaller object at 0x7fe980...on': 'infer-generated', 'items': [], 'params': {'seed': 3648228084, 'prefer': 'b', 'deadline_ms': 1792164292756}, ...})
+
+    @pytest.mark.parametrize('setup',['sqlite','atomic-file-fixture'],indirect=True)
+    def test_native_inference_replay_restart_and_attention_swap(setup):
+>       h,caller,config,path,body=setup;response=act(caller,body)
+                                                 ^^^^^^^^^^^^^^^^
+
+integration/hive/test_m3_integration.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <test_m3_integration.InferenceCaller object at 0x7fe980daf8c0>
+body = {'swarm_id': 's_709b4c48', 'action': 'infer-generated', 'items': [], 'params': {'seed': 3648228084, 'prefer': 'b', 'deadline_ms': 1792164292756}, ...}
+
+    def act(caller,body):
+>       response=caller.call('POST','/api/programs/fusion-inference/act',body);assert response['code']==200,response;return response['body']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'code': 500, 'body': {'error': {'code': 'program_error', 'message': "fusion-inference failed to load: ValueError: kin...; use one of ['assessment', 'claim', 'evidence', 'explanation', 'gap', 'hypothesis', 'other', 'question', 'source']"}}}
+E       assert 500 == 200
+
+integration/hive/test_m3_integration.py:39: AssertionError
+_ test_native_inference_replay_restart_and_attention_swap[atomic-file-fixture] _
+
+setup = (<tests.m3_support.CognitionHarness object at 0x7fe980e2c920>, <test_m3_integration.InferenceCaller object at 0x7fe980...ion': 'infer-generated', 'items': [], 'params': {'seed': 583975995, 'prefer': 'b', 'deadline_ms': 1792164294594}, ...})
+
+    @pytest.mark.parametrize('setup',['sqlite','atomic-file-fixture'],indirect=True)
+    def test_native_inference_replay_restart_and_attention_swap(setup):
+>       h,caller,config,path,body=setup;response=act(caller,body)
+                                                 ^^^^^^^^^^^^^^^^
+
+integration/hive/test_m3_integration.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <test_m3_integration.InferenceCaller object at 0x7fe980e2d370>
+body = {'swarm_id': 's_808c7f40', 'action': 'infer-generated', 'items': [], 'params': {'seed': 583975995, 'prefer': 'b', 'deadline_ms': 1792164294594}, ...}
+
+    def act(caller,body):
+>       response=caller.call('POST','/api/programs/fusion-inference/act',body);assert response['code']==200,response;return response['body']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'code': 500, 'body': {'error': {'code': 'program_error', 'message': "fusion-inference failed to load: ValueError: kin...; use one of ['assessment', 'claim', 'evidence', 'explanation', 'gap', 'hypothesis', 'other', 'question', 'source']"}}}
+E       assert 500 == 200
+
+integration/hive/test_m3_integration.py:39: AssertionError
+_ test_native_caller_actual_kills_keep_one_attempt_budget[after_attention_commit] _
+
+setup = (<tests.m3_support.CognitionHarness object at 0x7fe980e4caa0>, <test_m3_integration.InferenceCaller object at 0x7fe980...ion': 'infer-generated', 'items': [], 'params': {'seed': 950254798, 'prefer': 'b', 'deadline_ms': 1792164296320}, ...})
+stage = 'after_attention_commit'
+
+    @pytest.mark.parametrize('stage',['after_attention_commit','after_attempt_reservation','after_kernel_return','after_derived_commit','after_feedback_commit'])
+    def test_native_caller_actual_kills_keep_one_attempt_budget(setup,stage):
+        h,caller,config,path,body=setup;marker=caller.root/'pause'
+        config.update(test_pause_at=stage,test_marker=str(marker));path.write_bytes(canonical(config))
+        caller.send('POST','/api/programs/fusion-inference/act',body)
+        deadline=time.monotonic()+60
+        while not marker.exists() and caller.process.poll() is None and time.monotonic()<deadline:time.sleep(.02)
+>       assert marker.exists(),(stage,(caller.root/'native.log').read_text())
+E       AssertionError: ('after_attention_commit', '/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/venv/lib/...ions upgrade: ended 0 unlinked sign-in session(s)
+E         [hive] startup recovery committed: reservations=0, ask_intents=0
+E         ')
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/tmp/pytest-of-purplezky/pytest-435/test_native_caller_actual_kill0/pause').exists
+
+integration/hive/test_m3_integration.py:68: AssertionError
+_ test_native_caller_actual_kills_keep_one_attempt_budget[after_attempt_reservation] _
+
+setup = (<tests.m3_support.CognitionHarness object at 0x7fe980be00e0>, <test_m3_integration.InferenceCaller object at 0x7fe980...on': 'infer-generated', 'items': [], 'params': {'seed': 1200048012, 'prefer': 'b', 'deadline_ms': 1792164358161}, ...})
+stage = 'after_attempt_reservation'
+
+    @pytest.mark.parametrize('stage',['after_attention_commit','after_attempt_reservation','after_kernel_return','after_derived_commit','after_feedback_commit'])
+    def test_native_caller_actual_kills_keep_one_attempt_budget(setup,stage):
+        h,caller,config,path,body=setup;marker=caller.root/'pause'
+        config.update(test_pause_at=stage,test_marker=str(marker));path.write_bytes(canonical(config))
+        caller.send('POST','/api/programs/fusion-inference/act',body)
+        deadline=time.monotonic()+60
+        while not marker.exists() and caller.process.poll() is None and time.monotonic()<deadline:time.sleep(.02)
+>       assert marker.exists(),(stage,(caller.root/'native.log').read_text())
+E       AssertionError: ('after_attempt_reservation', '/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/venv/l...ions upgrade: ended 0 unlinked sign-in session(s)
+E         [hive] startup recovery committed: reservations=0, ask_intents=0
+E         ')
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/tmp/pytest-of-purplezky/pytest-435/test_native_caller_actual_kill1/pause').exists
+
+integration/hive/test_m3_integration.py:68: AssertionError
+=========================== short test summary info ============================
+FAILED integration/hive/test_m3_integration.py::test_native_inference_replay_restart_and_attention_swap[sqlite]
+FAILED integration/hive/test_m3_integration.py::test_native_inference_replay_restart_and_attention_swap[atomic-file-fixture]
+FAILED integration/hive/test_m3_integration.py::test_native_caller_actual_kills_keep_one_attempt_budget[after_attention_commit]
+FAILED integration/hive/test_m3_integration.py::test_native_caller_actual_kills_keep_one_attempt_budget[after_attempt_reservation]
+4 failed, 4 passed in 196.46s (0:03:16)

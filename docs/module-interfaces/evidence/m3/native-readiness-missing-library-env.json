@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/swipl/bin/swipl",
+    "-q",
+    "-s",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/sources/PeTTa/src/main.pl",
+    "--",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m3/deduction-readiness.metta",
+    "--silent"
+  ],
+  "returncode": 0,
+  "stdout": "true\n(stv 0.6800000000000002 0.31360000000000005)\n",
+  "stderr": "ERROR: /home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/swipl/lib/swipl/library/ext/swipy/janus.pl:116:\nERROR:    /home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/swipl/lib/swipl/library/ext/swipy/janus.pl:116: Initialization goal raised exception:\nERROR:    open_shared_object/3: libpython3.12.so.1.0: cannot open shared object file: No such file or directory\n",
+  "classification": "direct real-native formula probe only; guarded kernel and admission gates not yet implemented"
+}

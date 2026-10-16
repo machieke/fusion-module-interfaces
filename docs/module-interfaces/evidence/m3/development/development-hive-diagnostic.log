@@ -1,0 +1,28 @@
+F
+=================================== FAILURES ===================================
+_______ test_native_inference_replay_restart_and_attention_swap[sqlite] ________
+
+setup = (<tests.m3_support.CognitionHarness object at 0x7fa60cdc8080>, <test_m3_integration.InferenceCaller object at 0x7fa60d...on': 'infer-generated', 'items': [], 'params': {'seed': 1043255238, 'prefer': 'b', 'deadline_ms': 1792164369711}, ...})
+
+    @pytest.mark.parametrize('setup',['sqlite','atomic-file-fixture'],indirect=True)
+    def test_native_inference_replay_restart_and_attention_swap(setup):
+>       h,caller,config,path,body=setup;response=act(caller,body)
+                                                 ^^^^^^^^^^^^^^^^
+
+integration/hive/test_m3_integration.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <test_m3_integration.InferenceCaller object at 0x7fa60d1c7aa0>
+body = {'swarm_id': 's_e60302ac', 'action': 'infer-generated', 'items': [], 'params': {'seed': 1043255238, 'prefer': 'b', 'deadline_ms': 1792164369711}, ...}
+
+    def act(caller,body):
+>       response=caller.call('POST','/api/programs/fusion-inference/act',body);assert response['code']==200,response;return response['body']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'code': 500, 'body': {'error': {'code': 'program_error', 'message': "fusion-inference failed to load: ValueError: kin...; use one of ['assessment', 'claim', 'evidence', 'explanation', 'gap', 'hypothesis', 'other', 'question', 'source']"}}}
+E       assert 500 == 200
+
+integration/hive/test_m3_integration.py:39: AssertionError
+=========================== short test summary info ============================
+FAILED integration/hive/test_m3_integration.py::test_native_inference_replay_restart_and_attention_swap[sqlite]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 6 deselected in 1.96s

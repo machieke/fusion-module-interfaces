@@ -1,0 +1,331 @@
+{
+  "source": {
+    "path": "/home/purplezky/work/takopi/fusion-module-interfaces",
+    "initial_commit": "6d879650f56046925f85f034d5fb9eda54cd16e1",
+    "initial_worktree_status": [
+      "?? codex_fusion_m1_1_module_swap_and_omega_seam.md"
+    ],
+    "head": "926882afb9ab9c7288bf663f96f9e1ca63dd8520",
+    "current_worktree_status": [],
+    "brief_sha256": "a7c47165d19ab526479c58931acc4aaf260e8e1c7d529a76cb9654a2cfbced17",
+    "m12_brief_sha256": "55c2e16a6cf31aadd31fdcc1a38ed0b8c98a5a9272c01d82307f5a63dbddca03",
+    "implementation_sha256": {
+      "adapters/detta/Cargo.lock": "20f0dcecdec068b5bce8eeb9a84d0c4f980f5d8d81b57d6afafc2fd0285fe6b8",
+      "adapters/detta/src/main.rs": "0effb78769432658295a31137133b8e2d052328f6313f52316a08e88225415e4",
+      "contracts/responses.schema.json": "31d5d903d1e3523b2fad62cec9ece0ce66885abdc1e4ad37eaeeeef0f6749ab5",
+      "contracts/wire.schema.json": "7d48be45b97aab25a67c751fe0e12f3c1195d215e021329bd72fa48c378193ba",
+      "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+      "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+      "fusion/adapters/detta.py": "c7f9577ce22636d6f75745007dbb095a693c49f4ea5f5e34312a4ba9711148b0",
+      "fusion/adapters/f1r3.py": "751c099db04771ca883654d7ec20bdca5db6ea0f4e4279b774105a7e1b4af5ad",
+      "fusion/adapters/fixture_atoms.py": "478e24037d05297f7a3498572417743462eab4bef617ab5070dc6e28b907dbbd",
+      "fusion/adapters/pln_revision.py": "c3dd84dfd995856fb27ee6fe857cf9fb8664a44e9200b7b30ede3b4be02b1dfc",
+      "fusion/atoms.py": "dd0659ecb446029de4a1066f76b525146969fab8f0d9a47ee38cc31cef1322ea",
+      "fusion/beliefs.py": "d0a9ac6b4c83cbfdbc6d280c654e78efb619c5421ae93fb7f0060a082de75bce",
+      "fusion/bindings.py": "d2570b22b85127b88fd6ccd99da72b2757d73348b2edd0ccf42e5bd5614c05c0",
+      "fusion/client.py": "c84934d3792b162c118dd9cd62268ba19377efc0addd6bc117e50e6515f49139",
+      "fusion/composition.py": "6f9dd9bad3548879741132bca438fabc6618da9ed65984b452ef443f5bb533a4",
+      "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+      "fusion/episodes.py": "1e25fbccbfe4c5be09633c037e624e67ee2a341336c51287ce567ecfcd0a4b03",
+      "fusion/evidence_relay.py": "92c561fedef297fbf53933fdae5a06cfa71d19e366c20beb0a785e648f8f27f8",
+      "fusion/execution.py": "1eceeb2f3dc16d24f1b5a1cbb8df1f4c7e3162e867fc877b1f1d3e425dfa374f",
+      "fusion/host.py": "b901f78d1c7ceb04aa3181af7e91210d2195bf8b4ef2370f9fc53624c2e5a0ab",
+      "fusion/memory_contracts.py": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+      "fusion/memory_types.py": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+      "fusion/messaging.py": "8afdac506f05308e7a8cc61e642353c9217525d4d5e703e45c2d583a518d7406",
+      "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+      "fusion/ports.py": "cde411794dce97b9294cb60f8a539d61ea8f0a1bdbbd97a438659aac6c72505a",
+      "fusion/private.py": "1302823cb667bd0486327a3ed0b4522d3dfdc05a2baa57c42e43635c9be02182",
+      "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+      "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+      "fusion/service.py": "d3051dc88c8ec119ad98808efd5a7c5d5817b2b9bc64dce8f91b3c0be6e0b7a2",
+      "integration/hive/build-constraints.txt": "5b96a1b3ab68ccbd56cda1f7d56e804b7ac05194b86762b3763c84c13a92cfeb",
+      "integration/hive/episode_program/plugin.json": "dea484548bf97016e7b86a11de8652fe3e0e5eef68499e541672360f20c98aa4",
+      "integration/hive/episode_program/program.py": "6d7400f7e57ebc4dbf88507f9895242961ba87e83c33195e21b071ecfa56b57b",
+      "integration/hive/native_caller.py": "76fdeac6936827957760b7525f2a16308c783cd99746335541f30043392e3bbb",
+      "integration/hive/program/plugin.json": "fc807dd0d204c2f02e0bce840ff583e0d4168f0a7327dafedd3dcfee3757ee11",
+      "integration/hive/program/program.py": "60b76d4f0015953b90776f0fb4862a2b66eb40244657245680d8a86b75a5fd08",
+      "integration/hive/requirements.in": "4f27a8ac13d64dbcc144a9106f62d8b6ea9b3e4c80cd8056659af27660f24c15",
+      "integration/hive/requirements.lock": "c40f127fba4705d4a7d32600455aa2cd86a9030e4c44066aa3ad23efeb882a83",
+      "integration/hive/sources.json": "d28f2e24ca5273ea4530b693da1474964d4aff013db09fc09488ed08c164501c",
+      "integration/hive/test_integration.py": "d8ebb819adeaa303537b5d3ae69ea49a0aa99b689199cd1a4e96c9dc34adfdc2",
+      "integration/hive/test_m2_integration.py": "871b46b3cd5f36eb301cb2acbebd93942ead420fdfd7d8c5b5d6d989b02f4c99",
+      "integration/m2_scenario.py": "baef7b1ba85369e5487d419d78f9e5f3ac0d04a1bbd0b1497d25c5cdd0b912f8",
+      "integration/pln/sources.json": "e0b020459cc090ab4af7973ffecbcd9e94bee04f35879344806994e1f530206d",
+      "integration/pln/test_recovery.py": "57c5dc3bb8aa3e0cd1547301a84871eae591027dc91ad52da47c6c76a12ea76d",
+      "integration/pln/test_revision.py": "8605351320ce2e1d1a88edd1b92d94cfb3fe157782030c94338ddbe977f203dd",
+      "scripts/build_chain.py": "8bb5bff8b1fd323ac489eba30131783811533f63ba4ab944a86a3a8346df5873",
+      "scripts/build_detta.py": "1af1798eb33b5557c0a31410a686609005a400c6068bce3490f98ad608d80b02",
+      "scripts/build_hive.py": "674aed3bcb85d0b29f48c697f956d35affb5dd8c7c3997968468d57a057ebd7f",
+      "scripts/build_m2.py": "40182c88a63f27fdeeb79c59dcf0234529aefb3a208e4f8b5d360fe553d7e3b9",
+      "scripts/chain_demo.py": "aa0b44591fe9681c00666a806abfc1d43ed7ef488a0e5cdeec4becc6ab38a01d",
+      "scripts/demo.py": "d1317daa472d8b8aa4da65cd54576ed08983e1d485b93c3a2a9f5ba37eadf034",
+      "scripts/discovery.py": "89641bc5e17a6f48b9b0a594106a80c0418c7593f3389842eef1c20b07c8dc64",
+      "scripts/m2_demo.py": "8d70c428a642e9804525b136dbb7ae42fe5d3eb302d907ef7f5c973942a8efe6",
+      "scripts/preflight.py": "5cd2e246a0e5a8a7fcc63c7c86b6aa4d99843df1103ff966fc3bc4d0818979c7",
+      "scripts/schema.py": "209c1e0d53fb9e8ba9479d27e48e183fdaacae79301c8f0ab90473a81e5f0585",
+      "scripts/swap_demo.py": "c177b61adecb348a45a0138955578ec7af47a96a58d8143fec103c3d71d0a6ed",
+      "scripts/verify.py": "a58378fde38e628aff17fdfccc43db0309a0591599255046cc8ca1433849083e",
+      "scripts/verify_m11.py": "8a0aa150e48b8fa69f2ed59e1f79ccc42462260449d0dd760064c7d2135a454a",
+      "scripts/verify_m12.py": "9b0c31d4dca642edf103b2e2491eb2f300432f3c8888e30c61fb3e24da728184",
+      "scripts/verify_m2.py": "095845c3ad158aea1a822a22bcb2ec875812410136f8b667b919a4a0cd130f95",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/m2_support.py": "6a61ca12b5b725ba3e7e83e3ff407a39bb3f7b8f963daac5f2740704fd3d0e38",
+      "tests/support.py": "66b7a48e4c7e6ba164c8b04968e234e533c09b19807fc597087801c3982acbd3",
+      "tests/test_adapters.py": "e67bcb84d5c12eb05c6f87d9f7da6424bbf911a880afdce3586a2863439068b2",
+      "tests/test_contract.py": "a4d34e358b6f6ec1ee59fa56bb565219be56249c601df54939718f0b5f11d928",
+      "tests/test_m11.py": "5522e87ba1c8b7a4286ce3c57475808195bb45b7d34f267f27005ddaa1e87aba",
+      "tests/test_m2.py": "4a9106bd45bd0dd11d1ca5ee25f88f894a2659eaa6f239a36ebfda1507372ff7",
+      "tests/test_responses.py": "88b9db199eac4d91d11806bf7dc90552216e31d8503500b857a703f51663563c"
+    },
+    "lock_sha256": "86401cf2588abae1d3b4753ee8ce3e7a009311bafd4cce2e7a1675cd24e5cf25"
+  },
+  "commands": [
+    {
+      "name": "fixture",
+      "command": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "scripts/verify_m11.py",
+        "--fixture-only"
+      ],
+      "cwd": "/home/purplezky/work/takopi/fusion-module-interfaces",
+      "environment_overrides": {
+        "DETTA_REPO": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/absent-detta",
+        "HIVE_REPO": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/absent-hive",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces"
+      },
+      "returncode": 0,
+      "seconds": 27.553,
+      "log": "fixture.log",
+      "sha256": "bb8052c54b558dc35e394ec8117f0b101b9f160a3b6db11f144332164c5c0cfe",
+      "test_summaries": [
+        "Ran 51 tests in 24.044s"
+      ]
+    },
+    {
+      "name": "detta",
+      "command": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "scripts/verify_m11.py"
+      ],
+      "cwd": "/home/purplezky/work/takopi/fusion-module-interfaces",
+      "environment_overrides": {},
+      "returncode": 0,
+      "seconds": 82.607,
+      "log": "detta.log",
+      "sha256": "86791bfa382b986d75d16fe8e8d55d107219566587b4d3853ecbb9ad18aba326",
+      "test_summaries": [
+        "Ran 106 tests in 61.394s"
+      ]
+    },
+    {
+      "name": "upstream-detta",
+      "command": [
+        "cargo",
+        "test",
+        "--offline",
+        "--locked",
+        "-p",
+        "detta-da",
+        "-p",
+        "detta-storage",
+        "--lib"
+      ],
+      "cwd": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/sources/secured-contract-spaces",
+      "environment_overrides": {},
+      "returncode": 0,
+      "seconds": 0.591,
+      "log": "upstream-detta.log",
+      "sha256": "70a35830d5a13737bd116597fd9823b6d135bcbfd05cae2efeaa87db45eb4076",
+      "test_summaries": [
+        "test result: ok. 62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s",
+        "test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s"
+      ]
+    },
+    {
+      "name": "native-baseline",
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/sources/omegahive/hive/tests/test_programs_api.py",
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/sources/omegahive/hive/tests/test_program_actions.py",
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/sources/omegahive/hive/tests/test_program_confirm.py",
+        "--junitxml=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/native-baseline.xml"
+      ],
+      "cwd": "/home/purplezky/work/takopi/fusion-module-interfaces",
+      "environment_overrides": {},
+      "returncode": 0,
+      "seconds": 33.775,
+      "log": "native-baseline.log",
+      "sha256": "4fe374b9633cca03414b8e9ec3e24edc5604420b434613a459c3c2b73d9fc78b",
+      "tests": {
+        "tests": 34,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "name": "hive-integration",
+      "command": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m2/build-1/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "integration/hive/test_integration.py",
+        "--junitxml=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m1_2/hive-integration.xml"
+      ],
+      "cwd": "/home/purplezky/work/takopi/fusion-module-interfaces",
+      "environment_overrides": {},
+      "returncode": 0,
+      "seconds": 46.808,
+      "log": "hive-integration.log",
+      "sha256": "c2e5163a4e09b2972e5a23297ac2d73d8d5745fca04962ac8e378fd7b8528ad9",
+      "tests": {
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "native_build": {
+    "fresh_destination": true,
+    "fusion_commit": "6452fa725be5a688f9d5ad8f77955579df2f95ab",
+    "source_pins": {
+      "fusion_baseline": "ecfef54f0f0ab5b9bdce186af2e83184d10cc246",
+      "python": "3.12.12",
+      "repositories": {
+        "omegahive": {
+          "url": "git@github.com:PhysixSNET/omegahive.git",
+          "commit": "34b0fb32ab3806e5609fc89bb7535518a35e1aea"
+        },
+        "PeTTa": {
+          "url": "https://github.com/trueagi-io/PeTTa.git",
+          "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d"
+        },
+        "swipl": {
+          "url": "https://github.com/SWI-Prolog/swipl-devel.git",
+          "commit": "69775434c8226897626b226aefcc8266499f1e2e"
+        },
+        "secured-contract-spaces": {
+          "url": "ssh://git@github.com/machieke/secured-contract-spaces",
+          "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec"
+        }
+      },
+      "schematics": {
+        "url": "https://github.com/PhysixSNET/omegahive-schematics",
+        "commit": "4af00db4e395375484dd48d0b9068a59afcf01f8"
+      },
+      "swipl_modules": [
+        "clib",
+        "swipy",
+        "plunit",
+        "json",
+        "sgml",
+        "http",
+        "zlib",
+        "libedit",
+        "pcre",
+        "yaml",
+        "chr",
+        "clpqr",
+        "cpp",
+        "utf8proc",
+        "archive",
+        "ssl"
+      ]
+    },
+    "seconds": 139.055,
+    "checks": {
+      "swipl": "10.1.14",
+      "prolog_to_python": 42,
+      "python_to_prolog": 2,
+      "petta": 42
+    },
+    "tools": {
+      "cmake": "cmake version 3.16.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+      "ninja": "1.10.0",
+      "cc": "cc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0\nCopyright (C) 2019 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+      "uv": "uv 0.10.7",
+      "python": "Python 3.12.12"
+    },
+    "requirements_sha256": "c40f127fba4705d4a7d32600455aa2cd86a9030e4c44066aa3ad23efeb882a83",
+    "cache": "Python interpreter download cache permitted. uv pip sync --no-cache rebuilds Janus against this prefix. All native objects/venv fresh; global empty-cache build not tested."
+  },
+  "source_pins": {
+    "fusion_baseline": "ecfef54f0f0ab5b9bdce186af2e83184d10cc246",
+    "python": "3.12.12",
+    "repositories": {
+      "omegahive": {
+        "url": "git@github.com:PhysixSNET/omegahive.git",
+        "commit": "34b0fb32ab3806e5609fc89bb7535518a35e1aea"
+      },
+      "PeTTa": {
+        "url": "https://github.com/trueagi-io/PeTTa.git",
+        "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d"
+      },
+      "swipl": {
+        "url": "https://github.com/SWI-Prolog/swipl-devel.git",
+        "commit": "69775434c8226897626b226aefcc8266499f1e2e"
+      },
+      "secured-contract-spaces": {
+        "url": "ssh://git@github.com/machieke/secured-contract-spaces",
+        "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec"
+      }
+    },
+    "schematics": {
+      "url": "https://github.com/PhysixSNET/omegahive-schematics",
+      "commit": "4af00db4e395375484dd48d0b9068a59afcf01f8"
+    },
+    "swipl_modules": [
+      "clib",
+      "swipy",
+      "plunit",
+      "json",
+      "sgml",
+      "http",
+      "zlib",
+      "libedit",
+      "pcre",
+      "yaml",
+      "chr",
+      "clpqr",
+      "cpp",
+      "utf8proc",
+      "archive",
+      "ssl"
+    ]
+  },
+  "locks": {
+    "uv.lock": "86401cf2588abae1d3b4753ee8ce3e7a009311bafd4cce2e7a1675cd24e5cf25",
+    "adapters/detta/Cargo.lock": "20f0dcecdec068b5bce8eeb9a84d0c4f980f5d8d81b57d6afafc2fd0285fe6b8",
+    "integration/hive/requirements.lock": "c40f127fba4705d4a7d32600455aa2cd86a9030e4c44066aa3ad23efeb882a83",
+    "integration/hive/build-constraints.txt": "5b96a1b3ab68ccbd56cda1f7d56e804b7ac05194b86762b3763c84c13a92cfeb",
+    "integration/hive/sources.json": "d28f2e24ca5273ea4530b693da1474964d4aff013db09fc09488ed08c164501c"
+  },
+  "cache": "Warm uv/Python/Cargo download caches allowed. No copied target, venv or native build. Empty-cache build NOT_RUN.",
+  "gates": {
+    "FIXTURE_REPRO": "PASS",
+    "DETTA_REPRO": "PASS",
+    "HIVE_SOURCE": "PASS: verified native pin, not a dispatch pass",
+    "HIVE_ENTRYPOINT": "PASS",
+    "HIVE_DETTA": "PASS",
+    "HIVE_RECOVERY": "PASS",
+    "HIVE_REPRO": "PASS",
+    "CHAIN": "NOT_RUN",
+    "SCOPE": "M1.2 only; real native dispatch; generated input; fixture counterparty; no LLM invocation or chain"
+  }
+}
