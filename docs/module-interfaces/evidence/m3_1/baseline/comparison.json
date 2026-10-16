@@ -1,0 +1,141 @@
+{
+  "classification": {
+    "inputs": "generated fixture",
+    "sqlite_attention": "persistent reference policy implementation",
+    "atomic_file_attention": "independent same-profile fixture",
+    "payloads": "real DeTTa",
+    "kernel": "guarded native PLN"
+  },
+  "fixture_size": {
+    "tasks": 2,
+    "premises_per_task": 5,
+    "observations": 10,
+    "episodes": 2,
+    "claim_atoms": 12
+  },
+  "held_fixed": [
+    "exact task and evidence bindings",
+    "policy parameters",
+    "one-attempt and two-candidate budgets",
+    "absolute deadline",
+    "logical schedule"
+  ],
+  "varied": [
+    "attention provider in composition",
+    "declared initial STI preference in separate controlled cases"
+  ],
+  "cases": [
+    {
+      "attention_provider": "sqlite",
+      "prefer": "b",
+      "selection_order": [
+        "b",
+        "a"
+      ],
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 2,
+        "feedback_applied": 1,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "measured_native_formula_invocations": 1,
+      "valid_proposals": 1,
+      "refused_proposals": 0,
+      "successful_replay_new_native_invocations": 0,
+      "recovery": "same receipt after reopening all owners",
+      "prepare_seconds": 11.571743,
+      "step_seconds": 0.694289,
+      "private_store_bytes": 1040671,
+      "terminal_reason": "rule-budget"
+    },
+    {
+      "attention_provider": "sqlite",
+      "prefer": "a",
+      "selection_order": [
+        "a",
+        "b"
+      ],
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 2,
+        "feedback_applied": 1,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "measured_native_formula_invocations": 1,
+      "valid_proposals": 1,
+      "refused_proposals": 0,
+      "successful_replay_new_native_invocations": 0,
+      "recovery": "same receipt after reopening all owners",
+      "prepare_seconds": 11.848143,
+      "step_seconds": 0.635852,
+      "private_store_bytes": 1040671,
+      "terminal_reason": "rule-budget"
+    },
+    {
+      "attention_provider": "atomic-file-fixture",
+      "prefer": "b",
+      "selection_order": [
+        "b",
+        "a"
+      ],
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 2,
+        "feedback_applied": 1,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "measured_native_formula_invocations": 1,
+      "valid_proposals": 1,
+      "refused_proposals": 0,
+      "successful_replay_new_native_invocations": 0,
+      "recovery": "same receipt after reopening all owners",
+      "prepare_seconds": 11.720188,
+      "step_seconds": 0.748882,
+      "private_store_bytes": 1020409,
+      "terminal_reason": "rule-budget"
+    },
+    {
+      "attention_provider": "atomic-file-fixture",
+      "prefer": "a",
+      "selection_order": [
+        "a",
+        "b"
+      ],
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 2,
+        "feedback_applied": 1,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "measured_native_formula_invocations": 1,
+      "valid_proposals": 1,
+      "refused_proposals": 0,
+      "successful_replay_new_native_invocations": 0,
+      "recovery": "same receipt after reopening all owners",
+      "prepare_seconds": 11.915438,
+      "step_seconds": 0.659131,
+      "private_store_bytes": 1020409,
+      "terminal_reason": "rule-budget"
+    }
+  ],
+  "limitations": [
+    "one local run per case; no throughput or cognitive-quality claim",
+    "process restart, not live migration"
+  ]
+}

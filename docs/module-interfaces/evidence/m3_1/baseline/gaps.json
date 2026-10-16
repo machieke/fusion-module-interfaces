@@ -1,0 +1,394 @@
+{
+  "source": "3b34e00df75055d54a57ba7e38eb8b2d9e82ed7e",
+  "classification": "expected baseline limitations; generated inputs, actual local DeTTa and native PLN; clock fixture labelled",
+  "acknowledgment_mismatch": "NOT_AVAILABLE",
+  "old_relay_mismatch": "NOT_AVAILABLE",
+  "pending_capacity": 16,
+  "append_17": "OVERLOADED",
+  "sqlite": {
+    "before": {
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 1,
+        "feedback_applied": 0,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "feedback": [
+        {
+          "last_error": "CONFLICT",
+          "request": {
+            "amount": "1",
+            "cause": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+            "command": {
+              "idempotency_key": "feedback/905602a09cafb4ab9a94dcbbfceef39c4f3b093176005fec1536bf6e26273ef0",
+              "intent_digest": null,
+              "scope_ref": "private-memory"
+            },
+            "context": "generated",
+            "expected_step": 0,
+            "generation": 1,
+            "kind": "feedback",
+            "parent": "ingress",
+            "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          },
+          "state": "pending"
+        }
+      ],
+      "reason": "feedback-unavailable",
+      "remaining": {
+        "candidates": 0,
+        "rule_applications": 0
+      },
+      "results": [
+        {
+          "admission": "admitted",
+          "logical_id": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+          "state": "complete",
+          "task": {
+            "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+            "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+            "revision": 1,
+            "scope_ref": "private-memory"
+          }
+        }
+      ],
+      "selection": {
+        "context": "generated",
+        "eligible_digest": "36f1259462e4304f5a17eec56587b175fcbdceb2e728d2325285737b8a2d1aef",
+        "limit": 1,
+        "logical_step": 0,
+        "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+        "ranked": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ],
+        "revision": 1,
+        "scope_ref": "private-memory",
+        "values": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ]
+      },
+      "status": "pending",
+      "step_id": "e10793ca9069a4a05fe61a78c5907e877176b50ac4d39c03da8c441d19337600"
+    },
+    "same_stale_retry": true,
+    "post_deadline": {
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 1,
+        "feedback_applied": 0,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "feedback": [
+        {
+          "last_error": "CONFLICT",
+          "request": {
+            "amount": "1",
+            "cause": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+            "command": {
+              "idempotency_key": "feedback/905602a09cafb4ab9a94dcbbfceef39c4f3b093176005fec1536bf6e26273ef0",
+              "intent_digest": null,
+              "scope_ref": "private-memory"
+            },
+            "context": "generated",
+            "expected_step": 0,
+            "generation": 1,
+            "kind": "feedback",
+            "parent": "ingress",
+            "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          },
+          "state": "pending"
+        }
+      ],
+      "reason": "deadline",
+      "remaining": {
+        "candidates": 0,
+        "rule_applications": 0
+      },
+      "results": [
+        {
+          "admission": "admitted",
+          "logical_id": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+          "state": "complete",
+          "task": {
+            "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+            "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+            "revision": 1,
+            "scope_ref": "private-memory"
+          }
+        }
+      ],
+      "selection": {
+        "context": "generated",
+        "eligible_digest": "36f1259462e4304f5a17eec56587b175fcbdceb2e728d2325285737b8a2d1aef",
+        "limit": 1,
+        "logical_step": 0,
+        "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+        "ranked": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ],
+        "revision": 1,
+        "scope_ref": "private-memory",
+        "values": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ]
+      },
+      "status": "complete",
+      "step_id": "e10793ca9069a4a05fe61a78c5907e877176b50ac4d39c03da8c441d19337600"
+    },
+    "terminal_replay_unchanged": true,
+    "sti": "9"
+  },
+  "atomic-file-fixture": {
+    "before": {
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 1,
+        "feedback_applied": 0,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "feedback": [
+        {
+          "last_error": "CONFLICT",
+          "request": {
+            "amount": "1",
+            "cause": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+            "command": {
+              "idempotency_key": "feedback/905602a09cafb4ab9a94dcbbfceef39c4f3b093176005fec1536bf6e26273ef0",
+              "intent_digest": null,
+              "scope_ref": "private-memory"
+            },
+            "context": "generated",
+            "expected_step": 0,
+            "generation": 1,
+            "kind": "feedback",
+            "parent": "ingress",
+            "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          },
+          "state": "pending"
+        }
+      ],
+      "reason": "feedback-unavailable",
+      "remaining": {
+        "candidates": 0,
+        "rule_applications": 0
+      },
+      "results": [
+        {
+          "admission": "admitted",
+          "logical_id": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+          "state": "complete",
+          "task": {
+            "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+            "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+            "revision": 1,
+            "scope_ref": "private-memory"
+          }
+        }
+      ],
+      "selection": {
+        "context": "generated",
+        "eligible_digest": "36f1259462e4304f5a17eec56587b175fcbdceb2e728d2325285737b8a2d1aef",
+        "limit": 1,
+        "logical_step": 0,
+        "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+        "ranked": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ],
+        "revision": 1,
+        "scope_ref": "private-memory",
+        "values": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ]
+      },
+      "status": "pending",
+      "step_id": "e10793ca9069a4a05fe61a78c5907e877176b50ac4d39c03da8c441d19337600"
+    },
+    "same_stale_retry": true,
+    "post_deadline": {
+      "counts": {
+        "completed": 1,
+        "duplicate_admissions": 0,
+        "examined": 1,
+        "feedback_applied": 0,
+        "feedback_duplicate": 0,
+        "refused": 0,
+        "reserved": 1,
+        "unique_admissions": 1
+      },
+      "feedback": [
+        {
+          "last_error": "CONFLICT",
+          "request": {
+            "amount": "1",
+            "cause": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+            "command": {
+              "idempotency_key": "feedback/905602a09cafb4ab9a94dcbbfceef39c4f3b093176005fec1536bf6e26273ef0",
+              "intent_digest": null,
+              "scope_ref": "private-memory"
+            },
+            "context": "generated",
+            "expected_step": 0,
+            "generation": 1,
+            "kind": "feedback",
+            "parent": "ingress",
+            "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          },
+          "state": "pending"
+        }
+      ],
+      "reason": "deadline",
+      "remaining": {
+        "candidates": 0,
+        "rule_applications": 0
+      },
+      "results": [
+        {
+          "admission": "admitted",
+          "logical_id": "derivation/b67b0078ea34bef477ba94bde490d82d9c38992d1bf7a6de86e16c4bc0ca9382",
+          "state": "complete",
+          "task": {
+            "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+            "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+            "revision": 1,
+            "scope_ref": "private-memory"
+          }
+        }
+      ],
+      "selection": {
+        "context": "generated",
+        "eligible_digest": "36f1259462e4304f5a17eec56587b175fcbdceb2e728d2325285737b8a2d1aef",
+        "limit": 1,
+        "logical_step": 0,
+        "policy": "c8c1b69fe5d62363bad648029a8cc6348f8c4b4aa275e01db897275c66f07a42",
+        "ranked": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ],
+        "revision": 1,
+        "scope_ref": "private-memory",
+        "values": [
+          {
+            "cause": "ingress",
+            "generation": 0,
+            "sti": "10",
+            "target": {
+              "digest": "d6e335965a7533d9535dab4150b37ad3b5e48f47bb1f025eb11e906112554075",
+              "id": "30d0458b-d86c-5a17-a642-1ae94aec7e74",
+              "revision": 1,
+              "scope_ref": "private-memory"
+            }
+          }
+        ]
+      },
+      "status": "complete",
+      "step_id": "e10793ca9069a4a05fe61a78c5907e877176b50ac4d39c03da8c441d19337600"
+    },
+    "terminal_replay_unchanged": true,
+    "sti": "9"
+  }
+}

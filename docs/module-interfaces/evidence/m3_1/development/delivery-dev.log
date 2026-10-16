@@ -1,0 +1,54 @@
+test_33_events_one_persistent_episode_and_capacity_recovery (tests.test_m3_1_delivery.DeliveryTests.test_33_events_one_persistent_episode_and_capacity_recovery) ... ok
+test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) ... 
+  test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='decision') ... FAIL
+  test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='evidence') ... FAIL
+  test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='snapshot') ... FAIL
+  test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='pending') ... FAIL
+  test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='unavailable') ... FAIL
+test_c1_can_run_without_c2_pln_or_hive_imports (tests.test_m3_1_delivery.DeliveryTests.test_c1_can_run_without_c2_pln_or_hive_imports) ... ok
+test_standalone_c1_trust_closed_dto_and_semantic_replay (tests.test_m3_1_delivery.DeliveryTests.test_standalone_c1_trust_closed_dto_and_semantic_replay) ... ok
+
+======================================================================
+FAIL: test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='decision')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_m3_1_delivery.py", line 124, in test_bad_c2_receipts_never_ack_and_exact_replay_recovers
+    with self.assertRaises(ContractError):relay.decisions(episode)
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='evidence')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_m3_1_delivery.py", line 124, in test_bad_c2_receipts_never_ack_and_exact_replay_recovers
+    with self.assertRaises(ContractError):relay.decisions(episode)
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='snapshot')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_m3_1_delivery.py", line 124, in test_bad_c2_receipts_never_ack_and_exact_replay_recovers
+    with self.assertRaises(ContractError):relay.decisions(episode)
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='pending')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_m3_1_delivery.py", line 124, in test_bad_c2_receipts_never_ack_and_exact_replay_recovers
+    with self.assertRaises(ContractError):relay.decisions(episode)
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_bad_c2_receipts_never_ack_and_exact_replay_recovers (tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers) (variant='unavailable')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_m3_1_delivery.py", line 124, in test_bad_c2_receipts_never_ack_and_exact_replay_recovers
+    with self.assertRaises(ContractError):relay.decisions(episode)
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 6.203s
+
+FAILED (failures=5)

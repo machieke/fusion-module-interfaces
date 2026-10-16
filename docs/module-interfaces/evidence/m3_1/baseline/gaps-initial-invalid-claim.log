@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m3_1/baseline/gaps.py", line 17, in <module>
+    ep=h.episode('queue');claim=h.claim('queue-0');r=h.append(ep,h.event(claim,'queue-0'));d=h.submit(claim,r['evidence'])
+                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/tests/m3_support.py", line 44, in submit
+    return self.beliefs.submitEvidence(EvidenceSubmission(Mutation(SCOPE,key),claim,context,evidence,support_id,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/memory_contracts.py", line 26, in checked
+    return method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/beliefs.py", line 187, in submitEvidence
+    candidate, added, numerical, detail, changed = self._calculate(working, request, record)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/beliefs.py", line 125, in _calculate
+    candidate, added = self._admit(snapshot, request, record)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/beliefs.py", line 112, in _admit
+    support = self._observation(support)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/derived_beliefs.py", line 31, in _observation
+    literal,_=self._read_claim(support['claim'])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/derived_beliefs.py", line 28, in _read_claim
+    return c.claim_literal(claim,record),record
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/cognition_contracts.py", line 38, in claim_literal
+    require(record['positive'] and record['predicate'] in ('pln:proposition','pln:implication'))
+  File "/tmp/fusion-m31-baseline-3b34e00/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: INVALID_ARGUMENT

@@ -1,0 +1,138 @@
+FFFF..                                                                   [100%]
+=================================== FAILURES ===================================
+___________ test_native_progress_replay_restart_and_privacy[sqlite] ____________
+
+setup = (<tests.m3_1_support.ClosureHarness object at 0x7f17f5cd9af0>, <integration.hive.test_m3_integration.InferenceCaller o...ion': 'infer-generated', 'items': [], 'params': {'seed': 408750656, 'prefer': 'b', 'deadline_ms': 1792169122918}, ...})
+
+    @pytest.mark.parametrize('setup',['sqlite','atomic-file-fixture'],indirect=True)
+    def test_native_progress_replay_restart_and_privacy(setup):
+        h,caller,config,path,body=setup;response=act(caller,body)
+        assert response['status']=='done',response
+        detail=response['detail'];assert detail['execution']['status']=='complete'
+        assert detail['result_admissions']==1 and detail['evidence']=={'pending':0,'state':'settled'}
+        assert detail['feedback']['counts']['applied']==1 and detail['feedback']['state']=='settled'
+        result=local(h,body);assert h.episodes.pendingEvidence(result['episode'],16)==()
+        assert act(caller,body)==response
+>       closure=act(caller,reconciliation(body));assert closure['detail']==detail
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+integration/hive/test_m3_1_integration.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <integration.hive.test_m3_integration.InferenceCaller object at 0x7f17f5c8e870>
+body = {'swarm_id': 's_0a884659', 'action': 'reconcile-generated', 'items': [], 'params': {'original_key': 'closure-intent', 'limit': 1}, ...}
+
+    def act(caller,body):
+>       response=caller.call('POST','/api/programs/fusion-inference/act',body);assert response['code']==200,response;return response['body']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'code': 400, 'body': {'error': {'code': 'credential_in_request', 'message': 'apps hold their own credentials; never send one (original_key)'}}}
+E       assert 400 == 200
+
+integration/hive/test_m3_integration.py:39: AssertionError
+_____ test_native_progress_replay_restart_and_privacy[atomic-file-fixture] _____
+
+setup = (<tests.m3_1_support.ClosureHarness object at 0x7f17f5abb500>, <integration.hive.test_m3_integration.InferenceCaller o...on': 'infer-generated', 'items': [], 'params': {'seed': 2709373592, 'prefer': 'b', 'deadline_ms': 1792169141191}, ...})
+
+    @pytest.mark.parametrize('setup',['sqlite','atomic-file-fixture'],indirect=True)
+    def test_native_progress_replay_restart_and_privacy(setup):
+        h,caller,config,path,body=setup;response=act(caller,body)
+        assert response['status']=='done',response
+        detail=response['detail'];assert detail['execution']['status']=='complete'
+        assert detail['result_admissions']==1 and detail['evidence']=={'pending':0,'state':'settled'}
+        assert detail['feedback']['counts']['applied']==1 and detail['feedback']['state']=='settled'
+        result=local(h,body);assert h.episodes.pendingEvidence(result['episode'],16)==()
+        assert act(caller,body)==response
+>       closure=act(caller,reconciliation(body));assert closure['detail']==detail
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+integration/hive/test_m3_1_integration.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <integration.hive.test_m3_integration.InferenceCaller object at 0x7f17f5ab6030>
+body = {'swarm_id': 's_66488291', 'action': 'reconcile-generated', 'items': [], 'params': {'original_key': 'closure-intent', 'limit': 1}, ...}
+
+    def act(caller,body):
+>       response=caller.call('POST','/api/programs/fusion-inference/act',body);assert response['code']==200,response;return response['body']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'code': 400, 'body': {'error': {'code': 'credential_in_request', 'message': 'apps hold their own credentials; never send one (original_key)'}}}
+E       assert 400 == 200
+
+integration/hive/test_m3_integration.py:39: AssertionError
+________ test_native_caller_kill_then_stale_feedback_retirement[sqlite] ________
+
+setup = (<tests.m3_1_support.ClosureHarness object at 0x7f17f5ac7fb0>, <integration.hive.test_m3_integration.InferenceCaller o...on': 'infer-generated', 'items': [], 'params': {'seed': 3190483331, 'prefer': 'b', 'deadline_ms': 1792169160237}, ...})
+
+    @pytest.mark.parametrize('setup',['sqlite','atomic-file-fixture'],indirect=True)
+    def test_native_caller_kill_then_stale_feedback_retirement(setup):
+        h,caller,config,path,body=setup;marker=caller.root/'pause'
+        config.update(test_pause_at='after_derived_commit',test_marker=str(marker));path.write_bytes(canonical(config))
+        caller.send('POST','/api/programs/fusion-inference/act',body)
+        deadline=time.monotonic()+90
+        while not marker.exists() and caller.process.poll() is None and time.monotonic()<deadline:time.sleep(.02)
+        assert marker.exists(),(caller.root/'native.log').read_text()
+        process=caller.process;caller.kill();assert process.returncode==-signal.SIGKILL
+        identity=digest(canonical(['user:operator',body['swarm_id'],body['idempotency_key']]))
+        h.attention.advance(Mutation(SCOPE,'controlled-clock'),'inference/'+identity,0,1)
+        del config['test_pause_at'];path.write_bytes(canonical(config));caller.start()
+        response=act(caller,body);detail=response['detail']
+        assert detail['execution']=={'status':'complete','reason':'feedback-unavailable'},response
+        assert detail['result_admissions']==1 and detail['evidence']['pending']==0
+        assert detail['feedback']['counts']['pending']==1
+>       settled=act(caller,reconciliation(body));assert settled['detail']['feedback']['counts']['retired']==1,settled
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+integration/hive/test_m3_1_integration.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <integration.hive.test_m3_integration.InferenceCaller object at 0x7f17f5ac5bb0>
+body = {'swarm_id': 's_b813f6fe', 'action': 'reconcile-generated', 'items': [], 'params': {'original_key': 'closure-intent', 'limit': 1}, ...}
+
+    def act(caller,body):
+>       response=caller.call('POST','/api/programs/fusion-inference/act',body);assert response['code']==200,response;return response['body']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'code': 400, 'body': {'error': {'code': 'credential_in_request', 'message': 'apps hold their own credentials; never send one (original_key)'}}}
+E       assert 400 == 200
+
+integration/hive/test_m3_integration.py:39: AssertionError
+_ test_native_caller_kill_then_stale_feedback_retirement[atomic-file-fixture] __
+
+setup = (<tests.m3_1_support.ClosureHarness object at 0x7f17f5e3e6f0>, <integration.hive.test_m3_integration.InferenceCaller o...on': 'infer-generated', 'items': [], 'params': {'seed': 1181646748, 'prefer': 'b', 'deadline_ms': 1792169180066}, ...})
+
+    @pytest.mark.parametrize('setup',['sqlite','atomic-file-fixture'],indirect=True)
+    def test_native_caller_kill_then_stale_feedback_retirement(setup):
+        h,caller,config,path,body=setup;marker=caller.root/'pause'
+        config.update(test_pause_at='after_derived_commit',test_marker=str(marker));path.write_bytes(canonical(config))
+        caller.send('POST','/api/programs/fusion-inference/act',body)
+        deadline=time.monotonic()+90
+        while not marker.exists() and caller.process.poll() is None and time.monotonic()<deadline:time.sleep(.02)
+        assert marker.exists(),(caller.root/'native.log').read_text()
+        process=caller.process;caller.kill();assert process.returncode==-signal.SIGKILL
+        identity=digest(canonical(['user:operator',body['swarm_id'],body['idempotency_key']]))
+        h.attention.advance(Mutation(SCOPE,'controlled-clock'),'inference/'+identity,0,1)
+        del config['test_pause_at'];path.write_bytes(canonical(config));caller.start()
+        response=act(caller,body);detail=response['detail']
+        assert detail['execution']=={'status':'complete','reason':'feedback-unavailable'},response
+        assert detail['result_admissions']==1 and detail['evidence']['pending']==0
+        assert detail['feedback']['counts']['pending']==1
+>       settled=act(caller,reconciliation(body));assert settled['detail']['feedback']['counts']['retired']==1,settled
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+integration/hive/test_m3_1_integration.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+caller = <integration.hive.test_m3_integration.InferenceCaller object at 0x7f17f5e3ef60>
+body = {'swarm_id': 's_e4be2d59', 'action': 'reconcile-generated', 'items': [], 'params': {'original_key': 'closure-intent', 'limit': 1}, ...}
+
+    def act(caller,body):
+>       response=caller.call('POST','/api/programs/fusion-inference/act',body);assert response['code']==200,response;return response['body']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'code': 400, 'body': {'error': {'code': 'credential_in_request', 'message': 'apps hold their own credentials; never send one (original_key)'}}}
+E       assert 400 == 200
+
+integration/hive/test_m3_integration.py:39: AssertionError
+=========================== short test summary info ============================
+FAILED integration/hive/test_m3_1_integration.py::test_native_progress_replay_restart_and_privacy[sqlite]
+FAILED integration/hive/test_m3_1_integration.py::test_native_progress_replay_restart_and_privacy[atomic-file-fixture]
+FAILED integration/hive/test_m3_1_integration.py::test_native_caller_kill_then_stale_feedback_retirement[sqlite]
+FAILED integration/hive/test_m3_1_integration.py::test_native_caller_kill_then_stale_feedback_retirement[atomic-file-fixture]
+4 failed, 2 passed in 115.14s (0:01:55)
