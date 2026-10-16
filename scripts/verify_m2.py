@@ -69,12 +69,12 @@ def verify(environment, output):
         for gate in ('BASELINE', 'C1', 'C2_NATIVE', 'HIVE_M2', 'REPRO'): report['gates'][gate] = 'BLOCKED'
         save(); return 2
 
-    def execute(name, args, gates, *, junit=False, overrides=None):
+    def execute(name, args, gates, *, junit=False, overrides=None, cwd=ROOT):
         began = time.monotonic()
-        result = subprocess.run(list(map(str, args)), cwd=ROOT, env=dict(env, **(overrides or {})),
+        result = subprocess.run(list(map(str, args)), cwd=cwd, env=dict(env, **(overrides or {})),
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         log = output / (name + '.log'); log.write_text(result.stdout)
-        item = {'name': name, 'command': list(map(str, args)), 'returncode': result.returncode,
+        item = {'name': name, 'command': list(map(str, args)), 'cwd': str(cwd), 'returncode': result.returncode,
                 'seconds': round(time.monotonic()-began, 3), 'log': log.name, 'sha256': sha(log),
                 'summaries': re.findall(r'(?:Ran \d+ tests? in [^\n]+|\d+ passed[^\n]*)', result.stdout)}
         if junit:
@@ -92,6 +92,14 @@ def verify(environment, output):
     execute('m2-fixtures', ['uv', 'run', '--python', '3.11', '--locked', 'python', '-m', 'unittest', '-v', 'tests.test_m2'],
             ['CONTRACTS', 'C1_INDEPENDENT'], overrides={'M2_REVISION_ENV': str(output / 'absent-pln'),
                                                      'M2_DETTA_BINARY': str(output / 'absent-detta')})
+    reachability = json.loads(Path(config['M2_REVISION_ENV']).read_text())['reachability']
+    guard_cases = ['nonfinite_out_of_range_and_wrong_interpretation_rejected', 'scope_identity_and_immutability',
+        'duplicate_revision_never_calls_formula', 'disjoint_ids_alone_do_not_justify_revision',
+        'common_origin_overrides_independence_assertion', 'declaration_must_bind_exact_support',
+        'revision_commutes_and_duplicate_roots_do_not_accumulate', 'zero_weight_is_unknown_and_wrong_claim_fails']
+    execute('upstream-revision-guards', [native, '-m', 'unittest', '-v',
+        *['tests.test_pln_contracts.PLNContractTests.test_' + case for case in guard_cases]], [],
+        cwd=reachability, overrides={'PYTHONPATH': reachability})
     execute('m2-native-revision', [native, '-m', 'unittest', '-v', 'integration.pln.test_revision'], ['C2_GUARDS', 'C2_NATIVE'])
     execute('m2-recovery-privacy', [native, '-m', 'unittest', '-v', 'integration.pln.test_recovery'], ['C1', 'RECOVERY'])
     execute('m2-native-hive', [native, '-m', 'pytest', '-q', 'integration/hive/test_m2_integration.py',
