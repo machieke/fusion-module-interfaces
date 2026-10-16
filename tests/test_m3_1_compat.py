@@ -49,6 +49,9 @@ class Compatibility(unittest.TestCase):
         try:
             entry,_,_=h.generated();h.stimulate(entry);request=h.request(h.workset([entry]),candidates=1)
             execution=h.controller.step(request)
+            for malformed in (None,{},False):
+                with self.assertRaises(ContractError):h.controller.readProgress(malformed)
+                with self.assertRaises(ContractError):h.controller.reconcile(Mutation(SCOPE,'malformed'),malformed,1)
             for index in range(128):result=h.controller.reconcile(Mutation(SCOPE,'r/'+str(index)),request,1)
             self.assertEqual(result['execution'],execution)
             with self.assertRaises(ContractError) as error:h.controller.reconcile(Mutation(SCOPE,'overflow'),request,1)

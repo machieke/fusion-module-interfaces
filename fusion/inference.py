@@ -233,7 +233,7 @@ class InferenceOwner:
 
     @c.boundary
     def reconcile(self, command, request, limit):
-        c.mutation(command); c.integer(limit,1,16)
+        c.mutation(command); c.integer(limit,1,16); c.inference(request)
         require(command.scope_ref==request.command.scope_ref,'UNAUTHORIZED')
         identity,state=self._closure_binding(request,'reconcile')
         scope=command.scope_ref;actor=self.access.authorize(scope,'reconcile')

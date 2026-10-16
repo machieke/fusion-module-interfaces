@@ -20,6 +20,9 @@ class AttentionClosure(unittest.TestCase):
             access=Authority();path=Path(root)/'owner';owner=provider(path,access,closure=True)
             ingress=Stimulus(Mutation('private','ingress'),'ctx',ref('a'),'10','parent',0,owner.policy,0,'ingress')
             owner.submitStimulus(ingress)
+            for malformed in (None,{},False):
+                with self.assertRaises(ContractError):owner.submitStimulus(malformed)
+                with self.assertRaises(ContractError):owner.resolveFeedback(malformed)
             request=replace(ingress,command=Mutation('private','feedback'),amount='1',cause='child',kind='feedback',generation=1,parent='parent')
             intent=FeedbackIntent(request,int(time.time()*1000)+60000)
             self.assertEqual(owner.resolveFeedback(intent)['outcome'],'pending')

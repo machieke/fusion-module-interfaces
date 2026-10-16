@@ -45,7 +45,9 @@ class FileAttentionFixture:
 
     @c.boundary
     def submitStimulus(self, request):
-        require(not self.closure or request.kind == 'ingress', 'UNSUPPORTED_OPERATION')
+        if self.closure:
+            c.stimulus(request, self.policy)
+            require(request.kind == 'ingress', 'UNSUPPORTED_OPERATION')
         return self._submit(request)
 
     @c.boundary
