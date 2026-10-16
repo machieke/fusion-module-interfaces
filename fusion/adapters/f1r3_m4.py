@@ -121,6 +121,10 @@ class GeneratedCommitments:
     """
     def __init__(self, api, signer, journal, approved: ApprovedCommitment, binding,
                  authorize, hook=lambda _: None):
+        # Frozen dataclasses do not freeze their nested dictionaries. Capture the
+        # registered values before a caller can mutate an alias retained at entry.
+        approved = ApprovedCommitment(**json.loads(canonical(asdict(approved))))
+        binding = json.loads(canonical(binding))
         self.api, self.signer, self.journal = api, signer, str(journal)
         self.approved, self.binding, self.authorize, self.hook = approved, binding, authorize, hook
         require(hex64(approved.commitment_digest) and approved.result_ref["digest"] == approved.commitment_digest and

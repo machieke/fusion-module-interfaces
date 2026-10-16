@@ -92,6 +92,20 @@ class ChainFixtures(unittest.TestCase):
         self.assertEqual(self.owner().submit(self.command, self.approved), first)
         self.assertEqual((len(self.signs), len(self.api.sent)), (1, 1))
 
+    def test_mutating_input_aliases_cannot_change_registered_approval_or_binding(self):
+        original = deepcopy(self.approved)
+        owner = self.owner()
+        self.approved.result_ref['digest'] = 'e' * 64
+        self.rejected('UNAUTHORIZED', lambda: owner.submit(self.command, self.approved))
+        self.binding['chain']['genesis'] = 'b' * 64
+        self.binding['limits']['phloLimit'] = 1
+        self.binding['operation'] = 'another'
+        result = owner.submit(self.command, original)
+        self.assertEqual(result.effect_finality, 'pending')
+        self.assertEqual(self.signs[0]['phloLimit'], 10000000)
+        self.assertIn('generated-m4-12', self.signs[0]['term'])
+        self.assertEqual(len(self.signs), 1)
+
     def test_response_loss_keeps_every_signed_byte_and_timestamp(self):
         self.api.drop = True
         self.rejected("NOT_AVAILABLE", lambda: self.owner().submit(self.command, self.approved))
