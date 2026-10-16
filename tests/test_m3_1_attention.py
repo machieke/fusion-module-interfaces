@@ -72,12 +72,24 @@ class AttentionClosure(unittest.TestCase):
                         with patch('time.time',return_value=1):self.assertEqual(apply(),'CONFLICT')
                         self.assertEqual(outcome['outcome'],'retired')
                     else:
-                        # At expiry both calls contend for the owner's serialization boundary.
-                        with patch('time.time',return_value=3),ThreadPoolExecutor(2) as pool:
-                            futures=[pool.submit(apply),pool.submit(retire)];values=[f.result() for f in futures]
-                        outcome=values[1];self.assertEqual(outcome['outcome'],'retired')
+                        # Race eligible application against a clock advance followed by retirement.
+                        # Both contenders use independent facade instances and the same owner lock.
+                        def advance_and_retire():
+                            other=provider(path,Authority(),closure=True)
+                            other.advance(Mutation('private','race-clock'),'ctx',0,1)
+                            return other.resolveFeedback(intent)
+                        with patch('time.time',return_value=1),ThreadPoolExecutor(2) as pool:
+                            futures=[pool.submit(apply),pool.submit(advance_and_retire)];values=[f.result() for f in futures]
+                        outcome=values[1];self.assertIn(outcome['outcome'],('applied','retired'))
+                        if outcome['outcome']=='applied':self.assertEqual(values[0],outcome['receipt'])
+                        else:self.assertEqual(values[0],'CONFLICT')
+                        delayed=replace(intent,stimulus=replace(request,command=Mutation('private','race-delayed')))
+                        if outcome['outcome']=='retired':
+                            with self.assertRaises(ContractError):owner.submitFeedback(delayed)
+                        else:self.assertEqual(owner.submitFeedback(delayed),outcome['receipt'])
                     with patch('time.time',return_value=3):self.assertEqual(retire(),outcome)
-                    self.assertEqual(owner.readAttention(ref('a'),'ctx')['value']['sti'],'11' if first=='apply' else '10')
+                    expected=('10' if outcome['outcome']=='applied' else '9') if first=='concurrent' else ('11' if first=='apply' else '10')
+                    self.assertEqual(owner.readAttention(ref('a'),'ctx')['value']['sti'],expected)
 
     def test_capacity_is_pending_then_obsolete_without_credit_or_eviction(self):
         for provider in PROVIDERS:
