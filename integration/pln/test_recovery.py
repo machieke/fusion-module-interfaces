@@ -103,8 +103,16 @@ class Recovery(unittest.TestCase):
         barrier, queue = FORK.Barrier(2), FORK.Queue()
         def append(event):
             barrier.wait(10)
-            try: queue.put(self.h.append(episode, event)['head'])
-            except ContractError as error: queue.put(error.code)
+            for attempt in range(5):
+                try:
+                    queue.put(self.h.append(episode, event)['head']); return
+                except ContractError as error:
+                    # Busy owner storage is retryable. Keep the SAME occurrence,
+                    # key and expected head; the loser must eventually conflict.
+                    if error.code in {'NOT_AVAILABLE', 'OVERLOADED'} and attempt < 4:
+                        time.sleep(.05)
+                    else:
+                        queue.put(error.code); return
         processes = [FORK.Process(target=append, args=(event,)) for event in events]
         for p in processes: p.start()
         for p in processes: p.join(20)
