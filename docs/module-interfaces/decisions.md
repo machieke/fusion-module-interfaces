@@ -442,3 +442,36 @@ non-error execution, cost and matching `Finalized` deploy-effect state. Raw
 incompatible evidence remains distinct from success. These are node observations,
 not trustless proofs or a multi-validator safety demonstration. Historical profiles
 and M1–M3.1 cognition, logical clocks, closure and budgets remain unchanged.
+
+## ADR-014: M5 accepted structure and a replayable exact projection
+
+Relations owns its accepted structural ledger and incidence, separate from the
+immutable relation bytes in AtomStorage. The new schema-ordered-relations/2
+profile fixes role direction and ordering; structural identity deduplicates fresh
+transport keys. A payload-only interrupted assertion cannot appear in traversal.
+
+A fresh AtomStorage 1.1.0 profile adds scoped head/readCommits. Acceptance and feed
+metadata share one atom-owner transaction. The application-neutral DeTTa boundary
+still handles only opaque bytes. No existing atom journal is backfilled or opened
+under this profile. Legacy declarations and implementations remain unchanged.
+
+Search 2.0.0 owns a derived exact-attributes/1 projection over typed, canonical
+knowledge records. Maintenance reads only the declared feed and AtomStorage
+ports. Bounded catchUp commits rows and a contiguous prefix together; beginRebuild
+captures a head and changes generation. Query is read-only and distinguishes
+prefix completeness, page completeness, minimum freshness and observed head.
+Independent atomic-file fixtures implement their own persistence and transitions.
+
+The lookup consumer accepts only attributes and a source barrier, discovers
+relation references through paginated traversal, checks reverse incidence and
+retrieves payloads. Its own private journal records progress. Native Hive accepts
+an opaque label for an operator-registered private query, keeping query text out
+of its existing command log. This mapping contains no expected answers. Native
+receipts contain counts/status only. Search and Relations snapshots are separate;
+there is no globally atomic knowledge snapshot or cognitive effect.
+
+All stores are bounded and private. No deletion, automatic repair, scheduler,
+embeddings, numerical rule changes, migration or new chain workload is included.
+See [executable profile decisions](m5-contracts.md) and the
+[operation ledger](m5-capability-ledger.json); final results resolve through the
+M5 gate manifest rather than historical M4 passes.

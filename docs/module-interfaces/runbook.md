@@ -450,3 +450,58 @@ promises. The completed test stops its node; the readback test is executed befor
 shutdown and after restarting the same generated data/genesis. Do not reconnect
 this profile to a public network. No automatic scheduler, production deployment,
 state migration or further cognition is included.
+
+## M5 private lookup reproduction
+
+M5 uses the unchanged locked M3 provider build (Hive, PeTTa, SWI, local DeTTa and
+legacy PLN regression inputs). It does not need PLN for lookup. Linux prerequisites,
+private Hive Git access and native build tools are the same as above. Use an empty
+provider destination; Cargo/uv/download caches may be warm. The M4 real regression
+reuses the already pinned node build in a new route-free network namespace and
+fresh generated state. It introduces no new chain operation.
+
+```bash
+uv run --python 3.11 --locked python scripts/build_m3.py artifacts/m5/providers
+uv run --python 3.11 --locked python scripts/verify_m5.py \
+  --environment artifacts/m5/providers/environment.json \
+  --chain-build artifacts/m4/reproduction-01/chain \
+  --output artifacts/m5/final
+```
+
+Final verification requires a clean committed disposable Fusion checkout. The
+runner checks that historical runtime files are unchanged and the ports change is
+additive. It preserves `verify_m4.py` and directly runs the existing M4 behavioral
+suites, including real-node isolation/readback. `--development` allows a dirty
+checkout but cannot pass final scope/reproduction gates.
+
+For one reproducible authenticated lookup demonstration, select the native gate:
+
+```bash
+uv run --python 3.11 --locked python scripts/verify_m5.py \
+  --environment artifacts/m5/providers/environment.json \
+  --gates hive --output artifacts/m5/lookup-demo
+```
+
+This creates fresh generated records via real DeTTa in a writer subprocess which
+exits, then starts actual authenticated native Hive dispatch. Its private request
+contains query attributes and a source barrier only. It discovers five matches,
+15 accepted relations and eight payloads, then checks no-match, lag, a sixth match,
+rebuild, restart and independent Search substitution. Generated IDs and insertion
+order differ on repetition. Detailed answers are checked through the authorized
+private consumer boundary. `traces/lookup-trace-*.json` contains only sanitized
+counts and observed outcomes; private stores/configurations stay under ignored
+artifacts. Do not publish those private test directories.
+
+Select `--gates fixtures`, `--gates storage`, `--gates hive`, or `--gates legacy`
+independently, or comma-join selections. Omitted gates stay NOT_RUN. Missing native
+or isolated-chain prerequisites stay BLOCKED; a fixture never fills a real gate.
+The capability ledger counts nine newly advertised operations (four Relations,
+query, two source and two maintenance operations), plus four inherited AtomStorage
+dependencies separately. Module representation does not mean complete Omega scope.
+
+Only new journals support these profiles. To rebuild, call
+`Search.beginRebuild(Mutation(scope, stable_key))`, then bounded `catchUp(scope,
+limit)` until the captured target is processed. Queries are unavailable during a
+partial rebuild. Old cursors and pending old-generation caller progress are not
+migrated; use a new command after rebuilding. Replaying a completed caller command
+returns its recorded historical result after current authorization checks.

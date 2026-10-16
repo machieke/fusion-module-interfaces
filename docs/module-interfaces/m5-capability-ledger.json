@@ -1,0 +1,584 @@
+{
+  "schema": "fusion-m5-capability-ledger/1",
+  "coverage": {
+    "module_family_baseline": 13,
+    "module_family_denominator": 15,
+    "new_bounded_families": [
+      "Relations",
+      "Search"
+    ],
+    "new_operation_denominator": 9,
+    "inherited_dependency_operations": 4,
+    "total_m5_slice_operations": 13,
+    "native_dispatch_is_not_an_extra_module": true,
+    "code_coverage": "NOT_MEASURED"
+  },
+  "rows": [
+    {
+      "module": "Relations",
+      "operation": "assertRelation",
+      "new_in_m5": true,
+      "contract": "2.0.0",
+      "profile": "schema-ordered-relations/2",
+      "implementation": "RelationOwner",
+      "consumer": "LookupHarness / generated writer",
+      "positive_tests": [
+        "test_all_relation_roles_directions_identity_and_replay"
+      ],
+      "negative_tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_relation_separate_owner_kills"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "Relations",
+      "operation": "getRelation",
+      "new_in_m5": true,
+      "contract": "2.0.0",
+      "profile": "schema-ordered-relations/2",
+      "implementation": "RelationOwner",
+      "consumer": "LookupConsumer",
+      "positive_tests": [
+        "test_all_relation_roles_directions_identity_and_replay"
+      ],
+      "negative_tests": [
+        "test_consumer_rejects_forged_search_relation_and_payload"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_relation_separate_owner_kills"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "Relations",
+      "operation": "outgoing",
+      "new_in_m5": true,
+      "contract": "2.0.0",
+      "profile": "schema-ordered-relations/2",
+      "implementation": "RelationOwner",
+      "consumer": "LookupConsumer",
+      "positive_tests": [
+        "test_relation_pagination_fixed_head_cursor_binding"
+      ],
+      "negative_tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_native_paged_caller_sigkill"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "Relations",
+      "operation": "incoming",
+      "new_in_m5": true,
+      "contract": "2.0.0",
+      "profile": "schema-ordered-relations/2",
+      "implementation": "RelationOwner",
+      "consumer": "LookupConsumer",
+      "positive_tests": [
+        "test_all_relation_roles_directions_identity_and_replay"
+      ],
+      "negative_tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_native_paged_caller_sigkill"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "Search",
+      "operation": "query",
+      "new_in_m5": true,
+      "contract": "2.0.0",
+      "profile": "exact-attributes/1",
+      "implementation": "SearchOwner / FileSearchFixture",
+      "consumer": "LookupConsumer",
+      "positive_tests": [
+        "test_exact_query_lag_rebuild_and_independent_search_substitution"
+      ],
+      "negative_tests": [
+        "test_query_cursor_rebinding_auth_and_generation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_native_paged_caller_sigkill"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "AtomStorage",
+      "operation": "head",
+      "new_in_m5": true,
+      "contract": "1.1.0",
+      "profile": "immutable-commit-feed/1",
+      "implementation": "FeedAtomOwner / FileFeedFixture",
+      "consumer": "Search maintenance / writer",
+      "positive_tests": [
+        "test_feed_snapshot_replay_and_source_binding"
+      ],
+      "negative_tests": [
+        "test_feed_rejects_legacy_store_and_missing_incarnation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_feed_commit_lost_ack"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "AtomStorage",
+      "operation": "readCommits",
+      "new_in_m5": true,
+      "contract": "1.1.0",
+      "profile": "immutable-commit-feed/1",
+      "implementation": "FeedAtomOwner / FileFeedFixture",
+      "consumer": "Search maintenance",
+      "positive_tests": [
+        "test_feed_snapshot_replay_and_source_binding"
+      ],
+      "negative_tests": [
+        "test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_feed_commit_lost_ack"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "Search",
+      "operation": "catchUp",
+      "new_in_m5": true,
+      "contract": "2.0.0",
+      "profile": "exact-attributes/1",
+      "implementation": "SearchOwner / FileSearchFixture",
+      "consumer": "Explicit bounded operator call",
+      "positive_tests": [
+        "test_exact_query_lag_rebuild_and_independent_search_substitution"
+      ],
+      "negative_tests": [
+        "test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_projection_kills_both_providers"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "Search",
+      "operation": "beginRebuild",
+      "new_in_m5": true,
+      "contract": "2.0.0",
+      "profile": "exact-attributes/1",
+      "implementation": "SearchOwner / FileSearchFixture",
+      "consumer": "Explicit bounded operator call",
+      "positive_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "negative_tests": [
+        "test_query_cursor_rebinding_auth_and_generation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_projection_kills_both_providers"
+      ],
+      "real_dependencies": [
+        "local DeTTa",
+        "SQLite owned journals",
+        "native Hive integration"
+      ],
+      "fixture_dependencies": [
+        "generated corpus and policy",
+        "atomic-file storage/Search where selected",
+        "malformed-response injection"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage",
+        "hive"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage",
+          "hive"
+        ]
+      },
+      "unsupported": "No migration, distributed consistency or general ontology/search; bounded private local profile only."
+    },
+    {
+      "module": "AtomStorage",
+      "operation": "create",
+      "new_in_m5": false,
+      "contract": "1.1.0",
+      "profile": "immutable-commit-feed/1",
+      "implementation": "FeedAtomOwner / FileFeedFixture",
+      "consumer": "Relations, Search maintenance and LookupConsumer",
+      "positive_tests": [
+        "test_real_all_operations_rebuild_and_unavailable_payload"
+      ],
+      "negative_tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_feed_commit_lost_ack",
+        "test_relation_separate_owner_kills"
+      ],
+      "real_dependencies": [
+        "local DeTTa"
+      ],
+      "fixture_dependencies": [
+        "atomic-file storage"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ]
+      },
+      "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
+    },
+    {
+      "module": "AtomStorage",
+      "operation": "get",
+      "new_in_m5": false,
+      "contract": "1.1.0",
+      "profile": "immutable-commit-feed/1",
+      "implementation": "FeedAtomOwner / FileFeedFixture",
+      "consumer": "Relations, Search maintenance and LookupConsumer",
+      "positive_tests": [
+        "test_real_all_operations_rebuild_and_unavailable_payload"
+      ],
+      "negative_tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_feed_commit_lost_ack",
+        "test_relation_separate_owner_kills"
+      ],
+      "real_dependencies": [
+        "local DeTTa"
+      ],
+      "fixture_dependencies": [
+        "atomic-file storage"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ]
+      },
+      "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
+    },
+    {
+      "module": "AtomStorage",
+      "operation": "getMany",
+      "new_in_m5": false,
+      "contract": "1.1.0",
+      "profile": "immutable-commit-feed/1",
+      "implementation": "FeedAtomOwner / FileFeedFixture",
+      "consumer": "Relations, Search maintenance and LookupConsumer",
+      "positive_tests": [
+        "test_real_all_operations_rebuild_and_unavailable_payload"
+      ],
+      "negative_tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_feed_commit_lost_ack",
+        "test_relation_separate_owner_kills"
+      ],
+      "real_dependencies": [
+        "local DeTTa"
+      ],
+      "fixture_dependencies": [
+        "atomic-file storage"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ]
+      },
+      "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
+    },
+    {
+      "module": "AtomStorage",
+      "operation": "availability",
+      "new_in_m5": false,
+      "contract": "1.1.0",
+      "profile": "immutable-commit-feed/1",
+      "implementation": "FeedAtomOwner / FileFeedFixture",
+      "consumer": "Relations, Search maintenance and LookupConsumer",
+      "positive_tests": [
+        "test_real_all_operations_rebuild_and_unavailable_payload"
+      ],
+      "negative_tests": [
+        "test_relation_boundary_validation_unaccepted_payload_and_revocation"
+      ],
+      "authorization_tests": [
+        "test_each_advertised_operation_checks_live_authority"
+      ],
+      "recovery_tests": [
+        "test_feed_commit_lost_ack",
+        "test_relation_separate_owner_kills"
+      ],
+      "real_dependencies": [
+        "local DeTTa"
+      ],
+      "fixture_dependencies": [
+        "atomic-file storage"
+      ],
+      "command_evidence": [
+        "fixtures",
+        "storage"
+      ],
+      "result": {
+        "resolve_from": "evidence/m5/manifest.json",
+        "requires": [
+          "fixtures",
+          "storage"
+        ]
+      },
+      "unsupported": "Immutable fresh local scope only; no backfill of legacy AtomOwner journals."
+    }
+  ],
+  "classification_note": "SQLite providers are local reference implementations. Atomic-file substitutes, corpus, policy and injected errors are fixtures. Native dispatch and DeTTa are real pinned runtimes. Final execution states resolve from the manifest, not declarations."
+}
