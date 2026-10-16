@@ -220,3 +220,7 @@ def inference(value):
     integer(value.budget.max_candidates,1,MAX_TASKS);integer(value.budget.max_rule_applications,0,16)
     integer(value.budget.max_feedback_generation,0,8);integer(value.budget.deadline_ms,1)
     return detached(asdict(value))
+
+# Opt-in delivery closure; old controller identity remains supported.
+CLOSURE_CONTROL = 'bounded-grounded-closure/1'
+MAX_RECONCILIATIONS = 128

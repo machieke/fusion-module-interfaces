@@ -282,3 +282,38 @@ trace stay private. M2 recording and revision remain usable without C3/C4.
 The M3 generated episode retains C1 delivery intents because its v3 decision is
 not passed to the existing v2 C1 acknowledgment interface. That compatibility
 limit is explicit in the contracts and evidence report.
+
+## M3.1 closure ownership
+
+```mermaid
+sequenceDiagram
+    participant H as Authenticated native Hive action
+    participant E as C1 EpisodicMemory
+    participant R as Trusted local relay
+    participant B as C2 BeliefRevision
+    participant I as C4 InferenceControl
+    participant A as C3 Attention
+    H->>E: append event + delivery (C1 commit)
+    H->>R: bounded drain
+    R->>B: exact selected evidence request
+    B-->>R: durable full decision (C2 commit)
+    Note over R: validate profile; commit decision
+    R->>E: bound completion via trusted context
+    Note over E: validate own delivery; commit acknowledgment
+    Note over R: commit acknowledgment observation
+    H->>I: bounded step (unchanged native deduction)
+    I->>A: original deadline-bound feedback
+    Note over I,A: Independent commits; reply can be lost
+    H->>I: reconcile original request, bounded limit
+    I->>A: resolve original feedback intent
+    A-->>I: applied receipt / atomic retirement / pending
+    Note over I: commit separate versioned closure observation
+    I-->>H: original execution + current closure
+```
+
+C1 owns delivery eligibility; C2 owns admission. The relay alone translates a
+validated durable C2 decision into the narrow trusted acknowledgment. C3 owns
+causal application and retirement; C4 owns only its observations and work budget.
+Hive owns public-command translation and privacy-safe projection. Reconciliation
+has no edge to PLNKernel or BeliefRevision and cannot select another task. Existing
+DA and immutable AtomStorage boundaries are unchanged.

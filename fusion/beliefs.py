@@ -9,12 +9,12 @@ import sqlite3
 
 from . import memory_contracts as c
 from .contracts import ContractError, canonical, digest, require, validate_ref
-from .ports import AtomStorage, EpisodicMemory, PrivateAuthority, RevisionMath, EvidenceSubmission, Mutation
+from .ports import AtomStorage, EpisodeJournal, PrivateAuthority, RevisionMath, EvidenceSubmission, Mutation
 from .responses import envelope
 
 
 class BeliefOwner:
-    def __init__(self, database, atoms: AtomStorage, episodes: EpisodicMemory,
+    def __init__(self, database, atoms: AtomStorage, episodes: EpisodeJournal,
                  access: PrivateAuthority, math: RevisionMath, *, hook=lambda stage: None, contracts=c):
         self.database, self.atoms, self.episodes, self.access, self.math = str(database), atoms, episodes, access, math
         self.hook, self.c = hook, contracts

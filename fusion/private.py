@@ -10,6 +10,8 @@ from .memory_contracts import EPISODE_PROFILE, BELIEF_PROFILE, MODEL, RUNTIME, m
 from .policy import Policy
 from .ports import AtomStorage, Mutation, EpisodicMemory, BeliefRevision
 from .registry import Descriptor, Requirement, descriptor_read, descriptor_wire, resolve, selection_token
+from . import delivery_contracts as delivery
+from .memory_contracts import detached
 
 OPERATIONS = {
     'atom.storage': ('create', 'get', 'getMany', 'availability'),
@@ -21,12 +23,14 @@ PROFILES = {'atom.storage': 'immutable-bytes/1', 'episodic.memory': EPISODE_PROF
             'belief.revision': BELIEF_PROFILE}
 
 
-def descriptors():
+def descriptors(*, closure=False):
     result = []
     for name, operations in OPERATIONS.items():
+        extended = closure and name == 'episodic.memory'
+        if extended: operations = (*operations[:-1], 'acknowledgeDelivery')
         result.append(Descriptor('private-local-' + name, name,
-            '1.0.0' if name == 'atom.storage' else '2.0.0', '0.2.0',
-            frozenset({PROFILES[name]}), frozenset(operations),
+            '3.0.0' if extended else ('1.0.0' if name == 'atom.storage' else '2.0.0'), '0.3.1' if extended else '0.2.0',
+            frozenset({delivery.EPISODE_PROFILE if extended else PROFILES[name]}), frozenset(operations),
             frozenset({'process-restart', 'scoped', 'idempotent', 'local-only'}),
             65536, privacy='private-local-only',
             features=frozenset({MODEL, RUNTIME}) if name == 'belief.revision' else frozenset(),
@@ -34,18 +38,21 @@ def descriptors():
     return result
 
 
-def select(catalogue, name):
-    version = '1.0.0' if name == 'atom.storage' else '2.0.0'
-    return resolve(catalogue, Requirement(name, version, version[:-1] + '1', PROFILES[name],
-        frozenset(OPERATIONS[name]), frozenset({'process-restart', 'scoped', 'idempotent', 'local-only'}),
+def select(catalogue, name, *, closure=False):
+    extended = closure and name == 'episodic.memory'
+    version = '3.0.0' if extended else ('1.0.0' if name == 'atom.storage' else '2.0.0')
+    operations = (*OPERATIONS[name][:-1], 'acknowledgeDelivery') if extended else OPERATIONS[name]
+    return resolve(catalogue, Requirement(name, version, version[:-1] + '1', delivery.EPISODE_PROFILE if extended else PROFILES[name],
+        frozenset(operations), frozenset({'process-restart', 'scoped', 'idempotent', 'local-only'}),
         privacy='private-local-only',
         features=frozenset({MODEL, RUNTIME}) if name == 'belief.revision' else frozenset()))
 
 
 class PrivateAccess:
-    def __init__(self, policy, credential, descriptor):
+    def __init__(self, policy, credential, descriptor, *, completion_consumer=None):
         self.policy, self.credential, self.descriptor = policy, credential, descriptor
         self.principal = policy.authenticate(credential)
+        self.completion_consumer = detached(completion_consumer)
 
     def selection(self):
         return selection_token(self.descriptor)
@@ -55,14 +62,24 @@ class PrivateAccess:
                 (self.descriptor.interface == 'belief.revision' and operation == 'assume')), 'UNSUPPORTED_OPERATION')
         require(self.policy.authenticate(self.credential) == self.principal, 'UNAUTHORIZED')
         current = self.policy.current()
+        if operation == 'acknowledgeDelivery':
+            require(self.completion_consumer is not None, 'UNAUTHORIZED')
         require(current.get('private_scopes', {}).get(scope) == self.principal, 'UNAUTHORIZED')
         try:
-            chosen = select([descriptor_read(d) for d in current['private_descriptors']], self.descriptor.interface)
+            chosen = select([descriptor_read(d) for d in current['private_descriptors']], self.descriptor.interface,
+                            closure=current.get('delivery_closure') == delivery.CONFIG)
         except (KeyError, TypeError, ValueError):
             raise ContractError('UNSUPPORTED_PROFILE') from None
         require(selection_token(chosen) == self.selection(), 'UNSUPPORTED_PROFILE')
         self.policy.check(self.principal, scope, self.descriptor.interface + '.' + operation)
         return self.principal
+
+    def completionConsumer(self, scope):
+        self.authorize(scope, 'acknowledgeDelivery')
+        configured = self.policy.current().get('evidence_consumer')
+        delivery.consumer(configured)
+        require(configured == self.completion_consumer and configured['principal'] == self.principal, 'UNSUPPORTED_PROFILE')
+        return detached(configured)
 
     def origin(self, scope, source):
         value = self.policy.current().get('origins', {}).get(scope, {}).get(source)
@@ -106,15 +123,18 @@ class PrivateModules:
     episodes: EpisodicMemory
     beliefs: BeliefRevision | None
     root: Path
+    completion_episodes: object = None
 
 
 def open_private(config_path, credential, scope, *, with_revision=True, hook=lambda stage: None,
-                 atom_fixture=None, math_fixture=None):
+                 atom_fixture=None, math_fixture=None, completion_consumer=None):
     """Concrete choices occur here only. Fixture arguments are explicit test seams."""
     policy = Policy(config_path)
     config = policy.current()
+    require(config.get('delivery_closure') in (None, delivery.CONFIG), 'UNSUPPORTED_PROFILE')
+    closure = config.get('delivery_closure') == delivery.CONFIG
     catalogue = [descriptor_read(d) for d in config['private_descriptors']]
-    accesses = {name: PrivateAccess(policy, credential, select(catalogue, name)) for name in OPERATIONS}
+    accesses = {name: PrivateAccess(policy, credential, select(catalogue, name, closure=closure)) for name in OPERATIONS}
     accesses['episodic.memory'].authorize(scope, 'readEpisode')
     root = Path(config['private_root']).resolve()
     for path in config.get('shared_roots', []):
@@ -131,6 +151,13 @@ def open_private(config_path, credential, scope, *, with_revision=True, hook=lam
     atoms = PrivateAtoms(provider, accesses['atom.storage'])
     from .episodes import EpisodeOwner
     episodes = EpisodeOwner(root / 'episodes.sqlite', atoms, accesses['episodic.memory'], hook=hook)
+    completion_episodes = None
+    if completion_consumer is not None:
+        require(closure, 'UNSUPPORTED_PROFILE')
+        ack_access = PrivateAccess(policy, credential, select(catalogue, 'episodic.memory', closure=True),
+                                   completion_consumer=completion_consumer)
+        ack_access.completionConsumer(scope)
+        completion_episodes = EpisodeOwner(root / 'episodes.sqlite', atoms, ack_access, hook=hook)
     beliefs = None
     if with_revision:
         from .beliefs import BeliefOwner
@@ -141,4 +168,4 @@ def open_private(config_path, credential, scope, *, with_revision=True, hook=lam
             math_provider = math_fixture
         beliefs = BeliefOwner(root / 'beliefs.sqlite', atoms, episodes, accesses['belief.revision'],
                               math_provider, hook=hook)
-    return PrivateModules(atoms, episodes, beliefs, root)
+    return PrivateModules(atoms, episodes, beliefs, root, completion_episodes)

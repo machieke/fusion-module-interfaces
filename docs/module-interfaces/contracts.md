@@ -401,3 +401,81 @@ provider replies and binds their decision ID, task/output claim, logical derivat
 profile and closed outcome fields before changing progress. Boundary tests mutate
 caller-owned dictionaries during authorization and inject a mismatched admission
 reply, then recover the original owner decision without another reservation.
+
+## M3.1 opt-in delivery closure
+
+Select `delivery_closure: fusion-delivery-closure/1` in trusted local configuration.
+This selects C1 interface 3.0.0 (`episode-delivery-completion/1`), Attention 2.1.0
+(`sti-additive-linear-decay-closure/1`) and InferenceControl 2.1.0
+(`bounded-grounded-closure/1`). C2 remains `pln-derived-private/1`; the guarded
+PLN rules, arithmetic and runtime pins remain unchanged. These are closed,
+explicit selections. Old profiles retain their old operations and validators.
+Fresh owner journals are required; this is not a repair path for M3 stores.
+
+C1 adds `acknowledgeDelivery(Mutation, Completion)` in place of the historical
+snapshot-bearing acknowledgment. `Completion` is a closed record containing
+`profile`, `state=committed`, `scope_ref`, `delivery_id`, exact `evidence`, `claim`,
+`context`, `consumer={principal,provider,profile,selection}`, `request_key`,
+`request_digest`, `decision_id`, and `decision_digest`. Digests are SHA-256 over
+canonical values. Delivery identity hashes the EvidenceRef; decision identity
+hashes `[principal,scope,request_key]`. C1 checks its own event target, the live
+allowed consumer and exact replay body. It never validates a support or snapshot.
+The acknowledgment receipt binds the completion digest as well as delivery and
+decision identities.
+
+Only the separately bound trusted completion context may attest. An ordinary
+C1 client, including Hive, cannot clear a queue by constructing this DTO. The
+existing relay observes/replays the exact authorized selected C2 request,
+validates its full v2 or v3 decision using one explicit profile adapter, then
+attests completion. This is local composition trust, not a signature or proof
+against a hostile host. A retained alternative or report is completed processing;
+processing completion does not assert truth. Pending/malformed/unavailable C2
+responses do not acknowledge. Each drain handles at most 16 deliveries, at most
+three CAS attempts per delivery per call, and at most 32 semantic attempts per
+delivery. Existing 16-pending and 256-event episode bounds are unchanged.
+
+`FeedbackIntent = {stimulus: Stimulus, effect_deadline_ms: integer}` binds the
+original absolute deadline as part of causal semantics. Under the closure profile,
+`submitStimulus` accepts ingress; `submitFeedback` accepts this deadline-bound
+intent with the existing exact step/parent/generation rules. No caller can evade
+the effect deadline through the old feedback operation under this profile.
+`resolveFeedback(intent)` is owner-authoritative and never allocates STI:
+
+| Outcome | Meaning |
+|---|---|
+| applied | Exact original durable receipt, even after deadline or decay |
+| retired | Atomic no-credit tombstone: expired, obsolete-step, or obsolete-parent |
+| pending / eligible | No application observed; exact intent can still be submitted before expiry |
+| typed error | Unknown/unavailable/unauthorized is not evidence of absence |
+
+A resolution contains `profile=causal-feedback-resolution/1`, exact `intent_digest`,
+`outcome`, `reason`, `receipt`, and `retirement`. Retirement contains the owner's
+logical step and revision. First retirement consumes one existing causal slot and
+one command slot; neither bound grows. Resolving existing application/retirement
+needs no new slot. Submission and retirement use the same owner transaction or
+file lock. A tombstone rejects delayed same-cause submissions under any transport
+key. Retirement increments the owner's revision, without moving time, STI or
+causal generation. Permanent capacity exhaustion remains an explicit limitation.
+
+C4 adds `readProgress(original_request)` and
+`reconcile(Mutation, original_request, limit)` with `limit` in 1..16. Reconciliation
+binds the authenticated owner, exact stored request and original selections.
+It calls only `Attention.resolveFeedback` for already-recorded pending intents.
+It does not invoke C2, PLN, task selection or admission. Results preserve the exact
+original execution result and add a versioned feedback observation and closure
+counts. A fresh reconciliation key can observe newer progress; replay of the same
+key returns its original observation after current authority checks. An unfinished
+call resumes its reserved bounded indices. There are at most 128 reconciliation
+commands per step, with no eviction or deadline reset. Read-only progress remains
+available at that limit. New-profile feedback failure terminates execution with
+`feedback-unavailable`; reconciliation remains separate. Historical-profile
+resumable feedback behavior remains unchanged.
+
+The native Programs 0.1 envelope still describes completion of the **action**.
+The closure-profile detail separately exposes execution status/reason, result
+admission count, original counters/remaining budget, evidence backlog, feedback
+closure counts and observation version. `reconcile-generated` accepts only
+`original_command` (the public original action idempotency identifier) and `limit`.
+The adapter's private prepared-request mapping is written before dispatch; it does
+not own episode, belief, attention or controller state. Private identifiers,
+supports, source roots, local paths and credentials are excluded from projections.

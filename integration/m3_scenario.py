@@ -6,7 +6,7 @@ from fusion.ports import Mutation, EvidenceSubmission, Stimulus, WorkBudget, Inf
 from fusion.responses import envelope
 
 
-def run_generated(modules,scope,identity,seed,prefer,deadline_ms):
+def run_generated(modules,scope,identity,seed,prefer,deadline_ms,*,prepared=lambda value:None):
     atoms,episodes,beliefs=modules.atoms,modules.episodes,modules.beliefs
     intent=canonical({'scenario':'generated-private-m3','seed':seed,'prefer':prefer,'deadline_ms':deadline_ms})
     atoms.create(Mutation(scope,'intent/'+identity),'application/fusion-intent',intent)
@@ -32,10 +32,15 @@ def run_generated(modules,scope,identity,seed,prefer,deadline_ms):
                 'payload':payload,'causation':[],'provenance':[],'numerical':{'claim':roles[role],'context':context,
                 'relationship':'supports','truth':truth,'ingestion_profile':m.INGESTION}}
             receipt=episodes.appendEvent(Mutation(scope,'append/'+occurrence),episode,index*5+n,event)
-            initial=beliefs.readBelief(roles[role],context,0)
-            decision=beliefs.submitEvidence(EvidenceSubmission(Mutation(scope,'observe/'+occurrence),roles[role],context,
-                receipt['evidence'],None,0,c.BELIEF_PROFILE,initial['runtime_selection']))
-            c.response(c.decision,decision,roles[role],context,initial['runtime_selection'])
+            if modules.relay is None:
+                initial=beliefs.readBelief(roles[role],context,0)
+                decision=beliefs.submitEvidence(EvidenceSubmission(Mutation(scope,'observe/'+occurrence),roles[role],context,
+                    receipt['evidence'],None,0,c.BELIEF_PROFILE,initial['runtime_selection']))
+                c.response(c.decision,decision,roles[role],context,initial['runtime_selection'])
+            else:
+                decisions=modules.relay.drain(episode)
+                if not decisions: decisions=modules.relay.decisions(episode)
+                decision=next(d for d in decisions if d['evidence']==receipt['evidence'])
             vector.append({'claim':roles[role],'context':context,'revision':1,'support_id':decision['support_id']})
         entries.append({'task':task,'premises':vector});all_roles.append(roles)
         cause=digest(canonical([identity,name,'ingress']))
@@ -51,6 +56,7 @@ def run_generated(modules,scope,identity,seed,prefer,deadline_ms):
             'provenance':[],'numerical':None})
     event('action',10,{'workset':workset,'rule':c.RULE,'budget':1})
     request=InferenceRequest(Mutation(scope,'inference/'+identity),context,workset,modules.selections,WorkBudget(2,1,3,deadline_ms))
+    prepared({'request':request,'episode':episode})
     result=modules.controller.step(request)
     if result['status']=='complete':event('result',11,result)
     return {'episode':episode,'entries':entries,'roles':all_roles,'context':context,'workset':workset,'request':request,'result':result}

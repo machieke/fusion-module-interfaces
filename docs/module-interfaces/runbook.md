@@ -347,3 +347,39 @@ Generated C1 observation delivery intents are intentionally retained: M3 does no
 forge a version-2 acknowledgment out of its version-3 belief snapshot. No shared DA,
 mailbox, chain or public Hive route carries the private trace. No LTI, general search,
 attention research, live migration, inference expansion or M4 work is included.
+
+## M3.1 delivery closure verification
+
+Use fresh disposable directories. Do not point the new profile at populated M3
+owner stores. `tests/m3_1_support.py` is an explicit generated-policy example;
+operator configuration must select the new C1/C3/C4 descriptors, grant their new
+operations and bind `evidence_consumer` to the exact selected C2 principal,
+provider, profile and descriptor token. Ordinary episode clients receive no
+completion-attestation context. Select either `sqlite` or `atomic-file-fixture`
+before creating fresh journals; provider replacement is not state migration.
+
+```sh
+uv run --python 3.11 --locked python scripts/build_m3.py /absolute/fresh/providers
+uv run --python 3.11 --locked python scripts/verify_m3_1.py /absolute/fresh/providers/environment.json --output /absolute/fresh/evidence
+```
+
+The build recipe and source pins are unchanged. Download caches may be warm;
+provider checkouts, SWI build, native venv and DeTTa target are fresh. The verifier
+runs M1–M3 regressions, explicit closure fixtures, real-provider tests, actual
+SIGKILL recovery and authenticated native Hive dispatch separately. Missing native
+inputs are BLOCKED, never replaced with fixture passes. Real tests must not skip.
+
+For the native closure action, send the existing generated `infer-generated`
+request with its original absolute `deadline_ms`. To observe closure later, use
+`reconcile-generated` with `{original_command: <original public command>, limit: 1}`
+and a distinct public idempotency identifier. Reuse a reconciliation identifier to
+recover its exact response; use a new one for a newer observation. Inspect the
+explicit detail fields, not only the Hive envelope. A deadline can end execution
+without admitting any conclusion, and feedback closure can remain pending.
+
+Limits remain finite: 16 pending deliveries/episode, 256 episode events, existing
+Attention capacities and 128 reconciliation commands/step. Eligible feedback is
+not newly delivered by reconciliation; expiry or staleness permits no-credit
+retirement. An unavailable owner remains pending. Full causal/command journals
+are not evicted. Old-format pending work requires the old profile; this task does
+not migrate or repair it. See `m3_1-evidence.md` for exact tested source and gates.

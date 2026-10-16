@@ -356,3 +356,43 @@ feedback identity comes from logical admission, not a step ID. A concurrent cloc
 advance may leave an explicit pending/conflicting feedback intent; no implicit
 retiming or empty-belief fallback is allowed. No general scheduler/search,
 migration, chain operation, LTI or research attention policy is implemented.
+
+## ADR-012 — M3.1 delivery completion and owner-authoritative reconciliation
+
+**Decision:** use an explicit fresh-state closure profile, a trusted local C2
+completion relay, and no-credit Attention retirement. Preserve all historical
+profiles and exact journal selection guards. Do not teach C1 PLN snapshot schemas.
+
+The relay selects one closed validator adapter from the configured C2 profile.
+Its durable sequence is C1 event, C2 final decision, relay decision, C1
+acknowledgment, relay acknowledgment. It also recovers its committed rows when a
+lost C1 acknowledgment response means those deliveries no longer appear in C1's
+pending page. Authority is checked on replay; no owner writes another's journal.
+
+Attention serializes applied receipts and bounded tombstones. Existing application
+wins over deadline or staleness. If retirement wins, later delivery cannot award.
+The file fixture implements its own transition logic; it shares DTO validation
+only. Deadline is part of the exact feedback intent, preventing an expired effect
+from being delivered with a replacement deadline. Eligible unresolved feedback
+stays pending during reconciliation; reconciliation has no allocation power.
+
+C4 keeps execution and closure observations in separate tables. It reserves each
+bounded reconciliation call before I/O and commits each observation separately.
+A process death can cause the same Attention resolution to be read again, but
+cannot spend another inference slot or manufacture a receipt. Original execution
+counts, terminal reason and deadlines are immutable. First retirement uses an
+existing causal slot and command slot; existing outcomes remain readable when full.
+No capacity is reclaimed and no journal migration is provided.
+
+**Native compatibility finding:** the verified Hive request guard rejects arbitrary
+parameter names ending in `_key`. The public reference is therefore
+`original_command`; Hive's credential guard is unchanged. The Programs 0.1
+`done/committed` envelope is retained for completed calls, while the explicitly
+labelled detail distinguishes a terminated execution with zero conclusions or
+pending feedback from settled delivery. Operator grants and private mappings
+supply all authority; public parameters cannot attest completion.
+
+**Consequences:** opt-in callers need fresh C1/C3/C4 journals; populated old M3
+journals still replay under their original profile and cannot be reconciled through
+this extension. Trusted-local-host and cooperative wall-clock assumptions remain.
+No scheduler, cancellation framework, migration, new cognition or chain work.

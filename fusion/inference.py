@@ -8,13 +8,14 @@ import time
 from . import cognition_contracts as c
 from . import attention_contracts as a
 from .contracts import ERRORS, ContractError, canonical, digest, require
-from .ports import DerivationSubmission, Mutation, Stimulus, InferenceRequest, WorkBudget
+from .ports import DerivationSubmission, Mutation, Stimulus, InferenceRequest, WorkBudget, FeedbackIntent
 from .responses import envelope
 
 
 class InferenceOwner:
-    def __init__(self, database, atoms, beliefs, attention, access, selections, *, hook=lambda stage: None):
+    def __init__(self, database, atoms, beliefs, attention, access, selections, *, hook=lambda stage: None, closure=False):
         self.database,self.atoms,self.beliefs,self.attention,self.access=str(database),atoms,beliefs,attention,access
+        self.closure=closure
         self.selections=c.detached(selections);self.hook=hook
         self.parameters=c.response_copy(attention.profile())['parameters'];a.policy(self.parameters)
         self.identity=digest(canonical([self.profile(),selections,access.selection(),attention.profile()]))
@@ -24,7 +25,7 @@ class InferenceOwner:
             if row: require(row[0]==self.identity,'UNSUPPORTED_PROFILE')
             else: db.execute('INSERT INTO meta VALUES(?)',(self.identity,))
 
-    def profile(self): return {'profile':c.CONTROL,'rule':c.RULE,'feedback_amount':'1','max_steps':c.MAX_STEPS,'max_tasks':c.MAX_TASKS}
+    def profile(self): return {'profile':c.CLOSURE_CONTROL if self.closure else c.CONTROL,'rule':c.RULE,'feedback_amount':'1','max_steps':c.MAX_STEPS,'max_tasks':c.MAX_TASKS}
 
     def _connect(self):
         db=sqlite3.connect(self.database,timeout=.5);db.execute('PRAGMA journal_mode=WAL');db.execute('PRAGMA synchronous=FULL');return db
@@ -46,7 +47,7 @@ class InferenceOwner:
         request=InferenceRequest(**{**semantic,'command':Mutation(**semantic['command']),'budget':WorkBudget(**semantic['budget'])})
         scope=request.command.scope_ref
         actor=self.access.authorize(scope,'step');require(request.selections==self.selections,'UNSUPPORTED_PROFILE')
-        require(self.attention.profile()=={'profile':a.PROFILE,'parameters':self.parameters,'policy':a.policy(self.parameters)},'UNSUPPORTED_PROFILE')
+        require(self.attention.profile()=={'profile':a.CLOSURE_PROFILE if self.closure else a.PROFILE,'parameters':self.parameters,'policy':a.policy(self.parameters)},'UNSUPPORTED_PROFILE')
         identity=digest(canonical([actor,scope,request.command.idempotency_key]));fingerprint=digest(canonical([semantic,self.identity]))
         # One local worker per owner. Lock is released by the OS on process death.
         with open(self.database+'.lock','a+b') as lock:
@@ -107,12 +108,13 @@ class InferenceOwner:
                     if expired():return stop('deadline')
                     try:
                         stimulus=Stimulus(**{**pending['request'],'command':Mutation(**pending['request']['command'])})
-                        receipt=c.response_copy(self.attention.submitStimulus(stimulus));c.response(a.receipt,receipt,stimulus,self.parameters)
+                        receipt=c.response_copy(self.attention.submitFeedback(FeedbackIntent(stimulus,request.budget.deadline_ms)) if self.closure else self.attention.submitStimulus(stimulus))
+                        c.response(a.receipt,receipt,stimulus,self.parameters)
                         self.hook('after_feedback_commit')
                         pending.update(state='complete',receipt=receipt);state['counts']['feedback_applied']+=1;save()
                     except ContractError as error:
                         if error.code in ('UNAUTHORIZED','UNSUPPORTED_PROFILE'):raise
-                        pending['last_error']=error.code;save();return stop('feedback-unavailable',False)
+                        pending['last_error']=error.code;save();return stop('feedback-unavailable',self.closure)
                     continue
                 if state['cursor']>=len(state['entries']):return stop('workset-exhausted')
                 if expired():return stop('deadline')
@@ -186,3 +188,97 @@ class InferenceOwner:
             state['counts']['refused']+=1;state['results'].append({'task':attempt['task'],'state':'error','code':decision['code']})
         else:raise ContractError('NOT_AVAILABLE')
         state['cursor']+=1
+
+    def _closure_binding(self, request, operation):
+        require(self.closure, 'UNSUPPORTED_PROFILE')
+        semantic=c.inference(request); scope=request.command.scope_ref
+        actor=self.access.authorize(scope,operation)
+        self.access.authorizeClosure(scope,self.selections)
+        require(request.selections==self.selections,'UNSUPPORTED_PROFILE')
+        identity=digest(canonical([actor,scope,request.command.idempotency_key]))
+        with closing(self._connect()) as db:
+            row=db.execute('SELECT fingerprint,value FROM steps WHERE id=?',(identity,)).fetchone()
+        require(row is not None,'NOT_FOUND')
+        require(row[0]==digest(canonical([semantic,self.identity])),'CONFLICT')
+        return identity,json.loads(row[1])
+
+    def _closure_tables(self, db):
+        db.executescript('CREATE TABLE IF NOT EXISTS closure(step TEXT PRIMARY KEY,value TEXT); CREATE TABLE IF NOT EXISTS reconciliations(id TEXT PRIMARY KEY,step TEXT,fingerprint TEXT,value TEXT);')
+
+    def _closure_state(self, db, identity):
+        row=db.execute('SELECT value FROM closure WHERE step=?',(identity,)).fetchone()
+        return json.loads(row[0]) if row else {'version':0,'cursor':0,'observations':{}}
+
+    def _progress(self, state, closure):
+        feedback=[]
+        for item in state['feedback']:
+            if item['state']=='generation-limit': feedback.append({'outcome':'generation-limit'}); continue
+            cause=item['request']['cause']; observation=closure['observations'].get(cause)
+            if observation is None:
+                observation=({'outcome':'applied','receipt':item['receipt']} if item['state']=='complete' else
+                             {'outcome':'pending','reason':item.get('last_error','unobserved')})
+            feedback.append(c.detached(observation))
+        counts={kind:sum(f['outcome']==kind for f in feedback) for kind in ('applied','retired','pending','generation-limit')}
+        return {'profile':c.CLOSURE_CONTROL,'version':closure['version'],'execution':self._result(state),
+                'feedback':feedback,'closure':{'state':'pending' if counts['pending'] else 'settled','counts':counts}}
+
+    @c.boundary
+    def readProgress(self, request):
+        identity,state=self._closure_binding(request,'readProgress')
+        with closing(self._connect()) as db:
+            # Read-only progress does not create a journal or acknowledge work.
+            exists=db.execute("SELECT 1 FROM sqlite_master WHERE name='closure'").fetchone()
+            closure=self._closure_state(db,identity) if exists else {'version':0,'cursor':0,'observations':{}}
+        return self._progress(state,closure)
+
+    @c.boundary
+    def reconcile(self, command, request, limit):
+        c.mutation(command); c.integer(limit,1,16)
+        require(command.scope_ref==request.command.scope_ref,'UNAUTHORIZED')
+        identity,state=self._closure_binding(request,'reconcile')
+        scope=command.scope_ref;actor=self.access.authorize(scope,'reconcile')
+        key=digest(canonical([actor,scope,command.idempotency_key]))
+        fingerprint=digest(canonical([identity,c.inference(request),limit,self.identity]))
+        with open(self.database+'.lock','a+b') as lock:
+            try: fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            except BlockingIOError: raise ContractError('NOT_AVAILABLE') from None
+            identity,state=self._closure_binding(request,'reconcile')
+            with closing(self._connect()) as db,db:
+                self._closure_tables(db)
+                row=db.execute('SELECT fingerprint,value FROM reconciliations WHERE id=?',(key,)).fetchone()
+                closure=self._closure_state(db,identity)
+                if row:
+                    require(row[0]==fingerprint,'CONFLICT');work=json.loads(row[1])
+                    if work['result'] is not None:return work['result']
+                else:
+                    require(db.execute('SELECT count(*) FROM reconciliations WHERE step=?',(identity,)).fetchone()[0]<c.MAX_RECONCILIATIONS,'OVERLOADED')
+                    candidates=[i for i,f in enumerate(state['feedback']) if f['state']=='pending' and
+                        closure['observations'].get(f['request']['cause'],{}).get('outcome') not in ('applied','retired')]
+                    candidates.sort(key=lambda i:(i<closure['cursor'],i))
+                    work={'indices':candidates[:limit],'cursor':0,'result':None}
+                    db.execute('INSERT INTO reconciliations VALUES(?,?,?,?)',(key,identity,fingerprint,canonical(work).decode()))
+            while work['cursor']<len(work['indices']):
+                index=work['indices'][work['cursor']];saved=state['feedback'][index]['request']
+                stimulus=Stimulus(**{**saved,'command':Mutation(**saved['command'])})
+                intent=FeedbackIntent(stimulus,state['semantic']['budget']['deadline_ms'])
+                self._closure_binding(request,'reconcile')
+                try:
+                    observation=c.response_copy(self.attention.resolveFeedback(intent))
+                    c.response(a.resolution,observation,intent,self.parameters)
+                    self.hook('after_closure_provider_response')
+                except ContractError as error:
+                    if error.code in ('UNAUTHORIZED','UNSUPPORTED_PROFILE'):raise
+                    observation={'outcome':'pending','reason':error.code}
+                self._closure_binding(request,'reconcile')
+                if closure['observations'].get(stimulus.cause)!=observation:
+                    closure['observations'][stimulus.cause]=observation;closure['version']+=1
+                closure['cursor']=index+1;work['cursor']+=1
+                with closing(self._connect()) as db,db:
+                    db.execute('INSERT OR REPLACE INTO closure VALUES(?,?)',(identity,canonical(closure).decode()))
+                    db.execute('UPDATE reconciliations SET value=? WHERE id=?',(canonical(work).decode(),key))
+                self.hook('after_closure_progress_commit')
+            self._closure_binding(request,'reconcile')
+            work['result']=self._progress(state,closure)
+            with closing(self._connect()) as db,db:
+                db.execute('UPDATE reconciliations SET value=? WHERE id=?',(canonical(work).decode(),key))
+            return work['result']

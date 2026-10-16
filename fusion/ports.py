@@ -99,15 +99,34 @@ class Search(Protocol):
 
 
 @runtime_checkable
-class EpisodicMemory(Protocol):
+class EpisodeJournal(Protocol):
     def recordEpisode(self, command: Mutation, source: str) -> Episode: ...
     def appendEvent(self, command: Mutation, episode: EpisodeRef, expected_sequence: int,
                     event: EpisodeEvent) -> AppendReceipt: ...
     def readEpisode(self, ref: EpisodeRef, start: int, limit: int) -> Episode: ...
     def readEvidence(self, ref: EvidenceRef) -> EvidenceRecord: ...
     def pendingEvidence(self, ref: EpisodeRef, limit: int) -> tuple[EvidenceDelivery, ...]: ...
+
+
+@runtime_checkable
+class EpisodicMemory(EpisodeJournal, Protocol):
     def acknowledgeEvidence(self, command: Mutation, delivery_id: str,
                             decision: RevisionDecision) -> JSON: ...
+
+
+class EvidenceAcknowledgment(Protocol):
+    """Trusted-local C1 completion port; available only under its explicit profile."""
+    def acknowledgeDelivery(self, command: Mutation, completed: JSON) -> JSON: ...
+
+
+class ClosingEpisodicMemory(EpisodeJournal, EvidenceAcknowledgment, Protocol):
+    pass
+
+
+class CompletionAuthority(Protocol):
+    def authorize(self, scope: str, operation: str) -> str: ...
+    def selection(self) -> str: ...
+    def completionConsumer(self, scope: str) -> JSON: ...
 
 
 @dataclass(frozen=True)
@@ -181,12 +200,24 @@ class Stimulus:
     parent: str | None = None
 
 
+@dataclass(frozen=True)
+class FeedbackIntent:
+    stimulus: Stimulus
+    effect_deadline_ms: int
+
+
 class Attention(Protocol):
     def profile(self) -> JSON: ...
     def submitStimulus(self, stimulus: Stimulus) -> JSON: ...
     def readAttention(self, target: AtomRef, context: str) -> JSON: ...
     def select(self, scope: str, context: str, eligible: tuple[AtomRef, ...], limit: int) -> JSON: ...
     def advance(self, command: Mutation, context: str, expected_step: int, steps: int) -> JSON: ...
+
+
+class ClosingAttention(Attention, Protocol):
+    """Explicit closure profile: submitStimulus is ingress-only."""
+    def submitFeedback(self, intent: FeedbackIntent) -> JSON: ...
+    def resolveFeedback(self, intent: FeedbackIntent) -> JSON: ...
 
 
 @dataclass(frozen=True)
@@ -208,6 +239,15 @@ class InferenceRequest:
 
 class InferenceControl(Protocol):
     def step(self, request: InferenceRequest) -> JSON: ...
+
+
+class ClosureAuthority(PrivateAuthority, Protocol):
+    def authorizeClosure(self, scope: str, selections: JSON) -> None: ...
+
+
+class ClosingInferenceControl(InferenceControl, Protocol):
+    def readProgress(self, request: InferenceRequest) -> JSON: ...
+    def reconcile(self, command: Mutation, request: InferenceRequest, limit: int) -> JSON: ...
 
 
 @runtime_checkable

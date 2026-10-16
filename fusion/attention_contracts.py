@@ -3,9 +3,11 @@ from dataclasses import asdict
 import re
 from .contracts import canonical, digest, require, validate_ref
 from .memory_contracts import boundary, detached, fields, integer, identifier, mutation, response
-from .ports import Stimulus
+from .ports import Stimulus, FeedbackIntent, Mutation
 
 PROFILE = 'sti-additive-linear-decay/1'
+CLOSURE_PROFILE = 'sti-additive-linear-decay-closure/1'
+RESOLUTION = 'causal-feedback-resolution/1'
 DEFAULT_POLICY = {'profile': PROFILE, 's_max': '100', 'budget': '300', 'decay': '1',
                   'max_targets': 16, 'max_advances': 16, 'max_contexts': 8,
                   'max_causes': 512, 'max_commands': 1024, 'max_feedback_generation': 3}
@@ -84,3 +86,35 @@ def eligible_refs(scope, context, eligible, limit, parameters):
 
 
 def zero(target): return {'target':target,'sti':'0','generation':0,'cause':None}
+
+
+def feedback(intent, selected):
+    require(type(intent) is FeedbackIntent)
+    body = stimulus(intent.stimulus, selected)
+    require(body['kind'] == 'feedback')
+    integer(intent.effect_deadline_ms, 1)
+    return {'stimulus': body, 'effect_deadline_ms': intent.effect_deadline_ms}
+
+
+def feedback_copy(intent, selected):
+    body = feedback(intent, selected)
+    stimulus_body = body['stimulus']
+    return FeedbackIntent(Stimulus(**{**stimulus_body, 'command': Mutation(**stimulus_body['command'])}), body['effect_deadline_ms'])
+
+
+def resolution(value, intent, parameters):
+    fields(value, 'profile intent_digest outcome reason receipt retirement')
+    body = feedback(intent, policy(parameters))
+    require(value['profile'] == RESOLUTION and value['intent_digest'] == digest(canonical(body)))
+    if value['outcome'] == 'applied':
+        require(value['reason'] is None and value['retirement'] is None)
+        receipt(value['receipt'], intent.stimulus, parameters)
+    elif value['outcome'] == 'retired':
+        require(value['reason'] in ('expired', 'obsolete-step', 'obsolete-parent') and value['receipt'] is None)
+        fields(value['retirement'], 'logical_step revision')
+        integer(value['retirement']['logical_step']); integer(value['retirement']['revision'], 1)
+        require(value['retirement']['logical_step'] >= intent.stimulus.expected_step)
+        if value['reason'] == 'obsolete-step': require(value['retirement']['logical_step'] > intent.stimulus.expected_step)
+    else:
+        require(value['outcome'] == 'pending' and value['reason'] == 'eligible' and
+                value['receipt'] is None and value['retirement'] is None)

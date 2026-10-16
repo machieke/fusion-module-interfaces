@@ -6,16 +6,19 @@ import json
 import os
 from pathlib import Path
 import tempfile
+import time
 from .. import attention_contracts as c
 from ..contracts import canonical, digest, require, validate_ref
 
 
 class FileAttentionFixture:
-    def __init__(self, filename, access, parameters=None, *, hook=lambda stage: None):
+    def __init__(self, filename, access, parameters=None, *, hook=lambda stage: None, closure=False):
         self.path, self.access, self.hook = Path(filename), access, hook
+        self.closure = closure
         self.parameters = c.detached(parameters or c.DEFAULT_POLICY)
         self.policy = c.policy(self.parameters)
         self.identity = digest(canonical([self.policy, access.selection()]))
+        if closure: self.identity = digest(canonical([self.identity, c.CLOSURE_PROFILE]))
         with self._locked() as data:
             require(data['identity'] == self.identity, 'UNSUPPORTED_PROFILE')
             if not self.path.exists(): self._write(data)
@@ -38,15 +41,27 @@ class FileAttentionFixture:
         finally:
             if os.path.exists(name): os.unlink(name)
 
-    def profile(self): return {'profile': c.PROFILE, 'parameters': c.detached(self.parameters), 'policy': self.policy}
+    def profile(self): return {'profile': c.CLOSURE_PROFILE if self.closure else c.PROFILE, 'parameters': c.detached(self.parameters), 'policy': self.policy}
 
     @c.boundary
     def submitStimulus(self, request):
+        require(not self.closure or request.kind == 'ingress', 'UNSUPPORTED_OPERATION')
+        return self._submit(request)
+
+    @c.boundary
+    def submitFeedback(self, intent):
+        require(self.closure, 'UNSUPPORTED_PROFILE')
+        intent = c.feedback_copy(intent, self.policy)
+        return self._submit(intent.stimulus, intent.effect_deadline_ms)
+
+    def _submit(self, request, deadline=None):
         body = c.stimulus(request, self.policy)
         request = Stimulus(**{**body, 'command': Mutation(**body['command'])})
         scope = request.command.scope_ref
-        actor = self.access.authorize(scope, 'submitStimulus'); self.access.authorize(scope, request.kind)
+        operation = 'submitStimulus' if deadline is None else 'submitFeedback'
+        actor = self.access.authorize(scope, operation); self.access.authorize(scope, request.kind)
         body['principal'] = actor
+        if deadline is not None: body['effect_deadline_ms'] = deadline
         command_id = digest(canonical([actor, scope, request.command.idempotency_key]))
         intent = digest(canonical(body))
         causal_body = dict(body); causal_body.pop('command')
@@ -55,7 +70,8 @@ class FileAttentionFixture:
         with self._locked() as data:
             require(data['identity'] == self.identity, 'UNSUPPORTED_PROFILE')
             if command_id in data['commands']:
-                saved = data['commands'][command_id]; require(saved['intent'] == intent, 'CONFLICT'); return saved['result']
+                saved = data['commands'][command_id]; require(saved['intent'] == intent, 'CONFLICT')
+                require('retired' not in saved['result'], 'CONFLICT'); return saved['result']
             require(len(data['commands']) < self.parameters['max_commands'], 'NOT_AVAILABLE')
             if context_id not in data['contexts']:
                 require(len(data['contexts']) < self.parameters['max_contexts'], 'NOT_AVAILABLE')
@@ -63,14 +79,16 @@ class FileAttentionFixture:
             context = data['contexts'][context_id]
             saved = context['events'].get(request.cause)
             if saved:
-                require(saved['intent'] == causal_intent, 'CONFLICT'); result = saved['result']
+                require(saved['intent'] == causal_intent, 'CONFLICT')
+                require('retirement' not in saved, 'CONFLICT'); result = saved['result']
             else:
+                require(deadline is None or time.time()*1000 < deadline, 'DEADLINE_EXCEEDED')
                 require(context['clock'] == request.expected_step, 'CONFLICT')
                 require(len(context['events']) < self.parameters['max_causes'], 'NOT_AVAILABLE')
                 require(request.generation <= self.parameters['max_feedback_generation'], 'INVALID_ARGUMENT')
                 if request.kind == 'feedback':
                     prior = context['events'].get(request.parent)
-                    require(prior is not None and prior['result']['target'] == request.target, 'INVALID_ARGUMENT')
+                    require(prior is not None and 'result' in prior and prior['result']['target'] == request.target, 'INVALID_ARGUMENT')
                     require(request.generation == prior['result']['generation'] + 1, 'INVALID_ARGUMENT')
                 current = next((x for x in context['targets'] if x['target'] == request.target), None)
                 if current is None:
@@ -91,9 +109,62 @@ class FileAttentionFixture:
                               logical_step=context['clock'], revision=context['watermark'])
                 context['events'][request.cause] = {'intent': causal_intent, 'result': result}
             data['commands'][command_id] = {'intent': intent, 'result': result}
-            self.access.authorize(scope, 'submitStimulus'); self.access.authorize(scope, request.kind)
+            self.access.authorize(scope, operation); self.access.authorize(scope, request.kind)
+            if saved is None: require(deadline is None or time.time()*1000 < deadline, 'DEADLINE_EXCEEDED')
             self._write(data)
         self.hook('after_attention_commit'); return result
+
+    @c.boundary
+    def resolveFeedback(self, intent):
+        require(self.closure, 'UNSUPPORTED_PROFILE')
+        intent = c.feedback_copy(intent, self.policy); request = intent.stimulus
+        scope = request.command.scope_ref
+        actor = self.access.authorize(scope, 'resolveFeedback'); self.access.authorize(scope, 'feedback')
+        body = c.stimulus(request, self.policy)
+        body.update(principal=actor, effect_deadline_ms=intent.effect_deadline_ms)
+        command_id = digest(canonical([actor, scope, request.command.idempotency_key]))
+        fingerprint = digest(canonical(body))
+        causal = dict(body); causal.pop('command')
+        causal_intent = digest(canonical([scope, causal]))
+        result = dict(profile=c.RESOLUTION, intent_digest=digest(canonical(c.feedback(intent, self.policy))),
+                      outcome='pending', reason='eligible', receipt=None, retirement=None)
+        committed = False
+        with self._locked() as data:
+            require(data['identity'] == self.identity, 'UNSUPPORTED_PROFILE')
+            known = data['commands'].get(command_id)
+            if known: require(known['intent'] == fingerprint, 'CONFLICT')
+            context = data['contexts'].get(c.context_key(scope, request.context))
+            require(context is not None, 'INVALID_ARGUMENT')
+            old = context['events'].get(request.cause)
+            if old:
+                require(old['intent'] == causal_intent, 'CONFLICT')
+                if 'result' in old: result.update(outcome='applied', reason=None, receipt=old['result'])
+                else: result.update(outcome='retired', reason=old['reason'], retirement=old['retirement'])
+            else:
+                parent = context['events'].get(request.parent)
+                require(parent is not None and 'result' in parent, 'INVALID_ARGUMENT')
+                require(parent['result']['target'] == request.target and
+                        request.generation == parent['result']['generation'] + 1 and
+                        request.generation <= self.parameters['max_feedback_generation'], 'INVALID_ARGUMENT')
+                require(request.expected_step <= context['clock'], 'CONFLICT')
+                target = next((v for v in context['targets'] if v['target'] == request.target), c.zero(request.target))
+                reason = ('expired' if time.time()*1000 >= intent.effect_deadline_ms else
+                          'obsolete-step' if context['clock'] != request.expected_step else
+                          'obsolete-parent' if target['cause'] != request.parent or target['generation'] + 1 != request.generation else None)
+                if reason:
+                    require(len(context['events']) < self.parameters['max_causes'], 'NOT_AVAILABLE')
+                    require(known is not None or len(data['commands']) < self.parameters['max_commands'], 'NOT_AVAILABLE')
+                    context['watermark'] += 1
+                    retirement = dict(logical_step=context['clock'], revision=context['watermark'])
+                    context['events'][request.cause] = dict(intent=causal_intent, reason=reason, retirement=retirement)
+                    data['commands'][command_id] = dict(intent=fingerprint, result=dict(retired=True, cause=request.cause))
+                    result.update(outcome='retired', reason=reason, retirement=retirement)
+                    committed = True
+            self.access.authorize(scope, 'resolveFeedback'); self.access.authorize(scope, 'feedback')
+            if committed: self._write(data)
+        if committed: self.hook('after_feedback_retirement_commit')
+        self.hook('after_feedback_resolution')
+        return result
 
     @c.boundary
     def select(self, scope, context, eligible, limit):

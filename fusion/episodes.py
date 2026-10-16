@@ -213,3 +213,43 @@ class EpisodeOwner:
             db.execute('UPDATE deliveries SET decision=? WHERE id=?', (decision['decision_id'], delivery_id))
             return self._save(db, identity, fingerprint,
                 {'delivery_id': delivery_id, 'decision_id': decision['decision_id'], 'acknowledged': True})
+
+    @c.boundary
+    def acknowledgeDelivery(self, command: Mutation, completed):
+        """Selected closure profile only; the ordinary C1 binding cannot attest."""
+        from . import delivery_contracts as d
+        completed = c.detached(completed)
+        c.mutation(command); d.completion(completed)
+        require(completed['scope_ref'] == command.scope_ref, 'UNAUTHORIZED')
+        principal = self.access.authorize(command.scope_ref, 'acknowledgeDelivery')
+        require(completed['consumer'] == self.access.completionConsumer(command.scope_ref), 'UNSUPPORTED_PROFILE')
+        identity, fingerprint = self._identity(principal, command, 'acknowledgeDelivery', completed)
+        with closing(self._connect()) as db, db:
+            db.execute('BEGIN IMMEDIATE')
+            db.execute('CREATE TABLE IF NOT EXISTS completions(id TEXT PRIMARY KEY, value TEXT NOT NULL)')
+            prior = self._replay(db, identity, fingerprint)
+            if prior is not None: return prior
+            row = db.execute('SELECT * FROM deliveries WHERE id=?', (completed['delivery_id'],)).fetchone()
+            require(row is not None, 'NOT_FOUND')
+            evidence = json.loads(row['evidence'])
+            require(evidence['episode']['scope_ref'] == command.scope_ref, 'UNAUTHORIZED')
+            self._episode(db, evidence['episode'], principal)
+            require(completed['evidence'] == evidence, 'CONFLICT')
+            # C1 checks its event's target, never the consumer's numerical model.
+            event = json.loads(db.execute('SELECT record FROM events WHERE episode=? AND sequence=?',
+                                         (evidence['episode']['id'], evidence['sequence'])).fetchone()[0])['event']
+            require(event['numerical']['claim'] == completed['claim'] and
+                    event['numerical']['context'] == completed['context'], 'CONFLICT')
+            old = db.execute('SELECT value FROM completions WHERE id=?', (completed['delivery_id'],)).fetchone()
+            serialized = canonical(completed).decode()
+            require((old is None and row['decision'] is None) or
+                    (old is not None and old[0] == serialized and row['decision'] == completed['decision_id']), 'CONFLICT')
+            self.access.authorize(command.scope_ref, 'acknowledgeDelivery')
+            require(completed['consumer'] == self.access.completionConsumer(command.scope_ref), 'UNSUPPORTED_PROFILE')
+            db.execute('INSERT OR IGNORE INTO completions VALUES(?,?)', (completed['delivery_id'], serialized))
+            db.execute('UPDATE deliveries SET decision=? WHERE id=?', (completed['decision_id'], completed['delivery_id']))
+            result = {'delivery_id': completed['delivery_id'], 'decision_id': completed['decision_id'],
+                      'completion_digest': digest(canonical(completed)), 'acknowledged': True}
+            self._save(db, identity, fingerprint, result)
+        self.hook('after_evidence_ack_commit')
+        return result
