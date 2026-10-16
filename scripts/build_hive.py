@@ -71,6 +71,7 @@ def build(destination):
         raise RuntimeError("native Janus was not built")
     run(["ninja", "-C", builddir, "install"], env=env)
     env.update(PATH=f"{prefix}/bin:{env['PATH']}", LD_LIBRARY_PATH=f"{base}/lib",
+               VIRTUAL_ENV=str(venv),
                PETTA_PATH=str(sources / "PeTTa"), HIVE_REPO=str(sources / "omegahive"),
                DETTA_REPO=str(sources / "secured-contract-spaces"),
                PYTHONPATH=os.pathsep.join([str(ROOT), str(sources / "omegahive")]))
@@ -95,7 +96,7 @@ def build(destination):
         raise RuntimeError("PeTTa did not evaluate the generated expression to 42")
     print("SWI 10.1.14, both Janus bridges, PeTTa generated expression: PASS", flush=True)
     # Only explicit non-secret runtime variables, never the inherited environment.
-    keys = ("PATH", "LD_LIBRARY_PATH", "PETTA_PATH", "HIVE_REPO", "DETTA_REPO", "PYTHONPATH")
+    keys = ("PATH", "LD_LIBRARY_PATH", "VIRTUAL_ENV", "PETTA_PATH", "HIVE_REPO", "DETTA_REPO", "PYTHONPATH")
     (destination / "environment.json").write_text(json.dumps({k: env[k] for k in keys}, indent=2) + "\n")
     (destination / "build.json").write_text(json.dumps({"fresh_destination": True,
         "fusion_commit": subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(),
