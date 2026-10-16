@@ -1,0 +1,470 @@
+{
+  "runs": [
+    {
+      "binding": "inprocess",
+      "peers": "independently instantiated protocol fixtures A/B",
+      "worker": "separate OS process; SIGKILL at two persisted boundaries",
+      "selected_providers": [
+        "atom-detta",
+        "local-mailbox",
+        "local-inspect"
+      ],
+      "storage_provider": "real DeTTa DA + FileStorage libraries",
+      "fixture_sha256": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+      "fixture_bytes": 62,
+      "stored": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "45bdb0a322580a24b4a97cb298bfd79e8d95ca2adb95a0666adb34ddbfaa2ea3",
+            "payload_bytes": 1027,
+            "payload_hash": "c5bd60fe2420e342d2471f209a6dcb7cbb9724cbef7d1aa9ae2fed882d820ef3",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+          "id": "7bd3ff32-1637-5529-bc21-4dba1eab87e7",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "shared": {
+        "acceptance": "process-restart",
+        "correlation_id": "share",
+        "delivery": "not-observed",
+        "delivery_id": "fd24bf79-9fc3-5144-badb-e7d8eaea928e",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "route": "reply-B",
+        "scope_ref": "shared-test"
+      },
+      "job": {
+        "acceptance": "process-restart",
+        "chain": null,
+        "completion_delivery": "not-observed",
+        "correlation_id": "inspect",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "execution": "queued",
+        "job_id": "c2f52419-8bc8-5536-8c79-b5755efb6f75",
+        "reply_route": "reply-A",
+        "scope_ref": "shared-test"
+      },
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "cc8da936b8aee3b51fad495493f652edfd231ad888b3bdbef5a921a132da0a99",
+            "payload_bytes": 1284,
+            "payload_hash": "8b8f6b5f85db5e2673c84813585c60866f13153d3027567f5649ce65fa0564c4",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "f9236451ff785dc58315251cf864a3d10938412551cf45f448055061bc953ea1",
+          "id": "c23c1214-a8bc-5f58-9636-3f0237ed3192",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "output": {
+        "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+        "length": 62,
+        "operation": "inspect_atom",
+        "provider_version": "0.1.0"
+      },
+      "timings": {
+        "store_ms": 117.75797046720982,
+        "share_accept_ms": 55.16389384865761,
+        "job_accept_ms": 39.599454030394554,
+        "crash_before_completion_ms": 289.73434399813414,
+        "recovery_commit_ms": 116.68292060494423
+      },
+      "elapsed_seconds": 0.8893841542303562,
+      "slice_throughput_per_second": 1.1243735288553314,
+      "binding_json_bytes_sent": 7893,
+      "binding_json_bytes_received": 7996,
+      "binding_calls": 17,
+      "binding_bytes_are_physical": false,
+      "da_fixture_payload_bytes": 1027,
+      "da_result_payload_bytes": 1284,
+      "idempotent_retries": 2,
+      "worker_attempts": 2,
+      "max_observed_pending_jobs": 1,
+      "max_observed_pending_outbox": 1,
+      "pending_outbox_at_end": 0,
+      "acknowledged_data_loss": 0,
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "messages": 2,
+        "atoms": 2
+      },
+      "runtime_directory": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/demo-inprocess-wkzbwqx8",
+      "chain": "NOT RUN by this demo; historical chain-demo.json is separate evidence"
+    },
+    {
+      "binding": "subprocess",
+      "peers": "independently instantiated protocol fixtures A/B",
+      "worker": "separate OS process; SIGKILL at two persisted boundaries",
+      "selected_providers": [
+        "atom-detta",
+        "local-mailbox",
+        "local-inspect"
+      ],
+      "storage_provider": "real DeTTa DA + FileStorage libraries",
+      "fixture_sha256": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+      "fixture_bytes": 62,
+      "stored": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "45bdb0a322580a24b4a97cb298bfd79e8d95ca2adb95a0666adb34ddbfaa2ea3",
+            "payload_bytes": 1027,
+            "payload_hash": "c5bd60fe2420e342d2471f209a6dcb7cbb9724cbef7d1aa9ae2fed882d820ef3",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+          "id": "7bd3ff32-1637-5529-bc21-4dba1eab87e7",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "shared": {
+        "acceptance": "process-restart",
+        "correlation_id": "share",
+        "delivery": "not-observed",
+        "delivery_id": "fd24bf79-9fc3-5144-badb-e7d8eaea928e",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "route": "reply-B",
+        "scope_ref": "shared-test"
+      },
+      "job": {
+        "acceptance": "process-restart",
+        "chain": null,
+        "completion_delivery": "not-observed",
+        "correlation_id": "inspect",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "execution": "queued",
+        "job_id": "c2f52419-8bc8-5536-8c79-b5755efb6f75",
+        "reply_route": "reply-A",
+        "scope_ref": "shared-test"
+      },
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "cc8da936b8aee3b51fad495493f652edfd231ad888b3bdbef5a921a132da0a99",
+            "payload_bytes": 1284,
+            "payload_hash": "8b8f6b5f85db5e2673c84813585c60866f13153d3027567f5649ce65fa0564c4",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "f9236451ff785dc58315251cf864a3d10938412551cf45f448055061bc953ea1",
+          "id": "c23c1214-a8bc-5f58-9636-3f0237ed3192",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "output": {
+        "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+        "length": 62,
+        "operation": "inspect_atom",
+        "provider_version": "0.1.0"
+      },
+      "timings": {
+        "store_ms": 245.00070232897997,
+        "share_accept_ms": 107.75392409414053,
+        "job_accept_ms": 128.52366920560598,
+        "crash_before_completion_ms": 237.90450487285852,
+        "recovery_commit_ms": 116.508973762393
+      },
+      "elapsed_seconds": 2.2485177889466286,
+      "slice_throughput_per_second": 0.4447374198753721,
+      "binding_json_bytes_sent": 7893,
+      "binding_json_bytes_received": 7996,
+      "binding_calls": 17,
+      "binding_bytes_are_physical": true,
+      "da_fixture_payload_bytes": 1027,
+      "da_result_payload_bytes": 1284,
+      "idempotent_retries": 2,
+      "worker_attempts": 2,
+      "max_observed_pending_jobs": 1,
+      "max_observed_pending_outbox": 1,
+      "pending_outbox_at_end": 0,
+      "acknowledged_data_loss": 0,
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "messages": 2,
+        "atoms": 2
+      },
+      "runtime_directory": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/demo-subprocess-_kh0ng90",
+      "chain": "NOT RUN by this demo; historical chain-demo.json is separate evidence"
+    },
+    {
+      "binding": "inprocess",
+      "peers": "independently instantiated protocol fixtures A/B",
+      "worker": "separate OS process; SIGKILL at two persisted boundaries",
+      "selected_providers": [
+        "atom-fixture-files",
+        "local-mailbox",
+        "local-inspect"
+      ],
+      "storage_provider": "independent atomic-file contract test provider",
+      "fixture_sha256": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+      "fixture_bytes": 62,
+      "stored": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "classification": "contract-test-provider",
+            "persistence": "fsync-atomic-files"
+          },
+          "provider": "contract-fixture-files/1"
+        },
+        "ref": {
+          "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+          "id": "d176c4ba-6be7-59d3-bcc8-aea2347b445c",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "shared": {
+        "acceptance": "process-restart",
+        "correlation_id": "share",
+        "delivery": "not-observed",
+        "delivery_id": "fd24bf79-9fc3-5144-badb-e7d8eaea928e",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "route": "reply-B",
+        "scope_ref": "shared-test"
+      },
+      "job": {
+        "acceptance": "process-restart",
+        "chain": null,
+        "completion_delivery": "not-observed",
+        "correlation_id": "inspect",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "execution": "queued",
+        "job_id": "c2f52419-8bc8-5536-8c79-b5755efb6f75",
+        "reply_route": "reply-A",
+        "scope_ref": "shared-test"
+      },
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "classification": "contract-test-provider",
+            "persistence": "fsync-atomic-files"
+          },
+          "provider": "contract-fixture-files/1"
+        },
+        "ref": {
+          "digest": "f9236451ff785dc58315251cf864a3d10938412551cf45f448055061bc953ea1",
+          "id": "bea122bd-3383-55f3-85ae-3230f0c991f7",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "output": {
+        "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+        "length": 62,
+        "operation": "inspect_atom",
+        "provider_version": "0.1.0"
+      },
+      "timings": {
+        "store_ms": 20.949081517755985,
+        "share_accept_ms": 18.155706115067005,
+        "job_accept_ms": 8.620260283350945,
+        "crash_before_completion_ms": 83.56681745499372,
+        "recovery_commit_ms": 85.29419545084238
+      },
+      "elapsed_seconds": 0.40677248407155275,
+      "slice_throughput_per_second": 2.458376707270338,
+      "binding_json_bytes_sent": 7893,
+      "binding_json_bytes_received": 6806,
+      "binding_calls": 17,
+      "binding_bytes_are_physical": false,
+      "da_fixture_payload_bytes": null,
+      "da_result_payload_bytes": null,
+      "idempotent_retries": 2,
+      "worker_attempts": 2,
+      "max_observed_pending_jobs": 1,
+      "max_observed_pending_outbox": 1,
+      "pending_outbox_at_end": 0,
+      "acknowledged_data_loss": 0,
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "messages": 2,
+        "atoms": 2
+      },
+      "runtime_directory": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/demo-inprocess-k_6f4zkq",
+      "chain": "NOT RUN by this demo; historical chain-demo.json is separate evidence"
+    },
+    {
+      "binding": "subprocess",
+      "peers": "independently instantiated protocol fixtures A/B",
+      "worker": "separate OS process; SIGKILL at two persisted boundaries",
+      "selected_providers": [
+        "atom-fixture-files",
+        "local-mailbox",
+        "local-inspect"
+      ],
+      "storage_provider": "independent atomic-file contract test provider",
+      "fixture_sha256": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+      "fixture_bytes": 62,
+      "stored": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "classification": "contract-test-provider",
+            "persistence": "fsync-atomic-files"
+          },
+          "provider": "contract-fixture-files/1"
+        },
+        "ref": {
+          "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+          "id": "d176c4ba-6be7-59d3-bcc8-aea2347b445c",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "shared": {
+        "acceptance": "process-restart",
+        "correlation_id": "share",
+        "delivery": "not-observed",
+        "delivery_id": "fd24bf79-9fc3-5144-badb-e7d8eaea928e",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "route": "reply-B",
+        "scope_ref": "shared-test"
+      },
+      "job": {
+        "acceptance": "process-restart",
+        "chain": null,
+        "completion_delivery": "not-observed",
+        "correlation_id": "inspect",
+        "evidence": {
+          "backend": "sqlite",
+          "journal_mode": "WAL",
+          "synchronous": "FULL"
+        },
+        "execution": "queued",
+        "job_id": "c2f52419-8bc8-5536-8c79-b5755efb6f75",
+        "reply_route": "reply-A",
+        "scope_ref": "shared-test"
+      },
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "classification": "contract-test-provider",
+            "persistence": "fsync-atomic-files"
+          },
+          "provider": "contract-fixture-files/1"
+        },
+        "ref": {
+          "digest": "f9236451ff785dc58315251cf864a3d10938412551cf45f448055061bc953ea1",
+          "id": "bea122bd-3383-55f3-85ae-3230f0c991f7",
+          "revision": 1,
+          "scope_ref": "shared-test"
+        }
+      },
+      "output": {
+        "digest": "aba73b6f15b188d6b8a720965fe24774ab2a39c32fa3ae2cf9e6c1039cb4eb83",
+        "length": 62,
+        "operation": "inspect_atom",
+        "provider_version": "0.1.0"
+      },
+      "timings": {
+        "store_ms": 141.08610060065985,
+        "share_accept_ms": 101.0603429749608,
+        "job_accept_ms": 88.55659887194633,
+        "crash_before_completion_ms": 85.99722012877464,
+        "recovery_commit_ms": 85.99179331213236
+      },
+      "elapsed_seconds": 1.785121594555676,
+      "slice_throughput_per_second": 0.5601859296587043,
+      "binding_json_bytes_sent": 7893,
+      "binding_json_bytes_received": 6806,
+      "binding_calls": 17,
+      "binding_bytes_are_physical": true,
+      "da_fixture_payload_bytes": null,
+      "da_result_payload_bytes": null,
+      "idempotent_retries": 2,
+      "worker_attempts": 2,
+      "max_observed_pending_jobs": 1,
+      "max_observed_pending_outbox": 1,
+      "pending_outbox_at_end": 0,
+      "acknowledged_data_loss": 0,
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "messages": 2,
+        "atoms": 2
+      },
+      "runtime_directory": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/demo-subprocess-y6q1prcu",
+      "chain": "NOT RUN by this demo; historical chain-demo.json is separate evidence"
+    }
+  ],
+  "failure_model": "same-host SIGKILL; separate atom/mailbox/execution commits; no disk/power/Byzantine fault experiment",
+  "classification": {
+    "detta": "real DeTTa DA/FileStorage library integration; local 4+2 shares",
+    "fixture-files": "independent atomic-file AtomStorage test provider; no DA network",
+    "peers": "protocol fixtures",
+    "worker": "real separate OS process, deterministic inspect_atom only",
+    "OMEGA": "BLOCKED: intended runtime source unavailable",
+    "CHAIN": "NOT RUN"
+  },
+  "measurement_limits": "One slice per combination; no SLA/scalability claim. Binding counters exclude discovery, worker control and DA child framing; in-process bytes are serialized equivalents."
+}

@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 import secrets
+import sqlite3
 import subprocess
 import sys
 import tempfile
@@ -17,7 +18,7 @@ BINARY = ROOT / "artifacts/detta-build/target/debug/fusion-detta-adapter"
 
 
 class Harness:
-    def __init__(self, binding="subprocess", root=None, capacity=8):
+    def __init__(self, binding="subprocess", root=None, capacity=8, atom_provider="detta"):
         self.temp = tempfile.TemporaryDirectory(prefix="fusion-m1-") if root is None else None
         self.root = Path(self.temp.name if self.temp else root)
         self.root.mkdir(parents=True, exist_ok=True)
@@ -25,6 +26,8 @@ class Harness:
         self.path = self.root / "config.json"
         all_methods = [f"{name}.{op}" for name, ops in OPERATIONS.items() for op in sorted(ops)]
         self.config = {"database": str(self.root / "journal.db"), "da_root": str(self.root / "da"),
+                       "atoms_database": str(self.root / "atoms.db"), "messages_database": str(self.root / "mailbox.db"),
+                       "atom_records": str(self.root / "records"), "atom_provider": atom_provider,
                        "detta_binary": str(BINARY), "capacity": capacity, "test_failpoints": True,
                        "failpoint_marker": str(self.root / "failpoint"), "principals": {},
                        "routes": {f"reply-{p}": {"scope": "shared-test", "owner": p} for p in ("A", "B")}}
@@ -78,3 +81,16 @@ class Harness:
     def close(self):
         if self.temp:
             self.temp.cleanup()
+
+    def counts(self):
+        with sqlite3.connect(self.config["database"]) as db:
+            counts = {table: db.execute(f"SELECT count(*) FROM {table}").fetchone()[0] for table in ("jobs", "outbox")}
+            assert db.execute("SELECT name FROM sqlite_master WHERE name IN ('atoms','messages')").fetchall() == []
+        with sqlite3.connect(self.config["messages_database"]) as db:
+            counts["messages"] = db.execute("SELECT count(*) FROM messages").fetchone()[0]
+        if self.config["atom_provider"] == "detta":
+            with sqlite3.connect(self.config["atoms_database"]) as db:
+                counts["atoms"] = db.execute("SELECT count(*) FROM atoms").fetchone()[0]
+        else:
+            counts["atoms"] = len(list(Path(self.config["atom_records"]).glob("*.json")))
+        return counts

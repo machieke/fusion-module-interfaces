@@ -13,9 +13,10 @@ from tests.support import Harness
 
 class ContractCases:
     binding = "inprocess"
+    atom_provider = "detta"
 
     def setUp(self):
-        self.h = Harness(self.binding)
+        self.h = Harness(self.binding, atom_provider=self.atom_provider)
         self.addCleanup(self.h.close)
         self.a, self.b = self.h.a, self.h.b
 
@@ -66,10 +67,8 @@ class ContractCases:
         self.assertFalse(self.h.command("work")["ok"]["worked"])
         self.h.command("flush")
         self.h.command("flush")
-        with sqlite3.connect(self.h.config["database"]) as db:
-            self.assertEqual(db.execute("SELECT count(*) FROM jobs").fetchone()[0], 1)
-            self.assertEqual(db.execute("SELECT count(*) FROM outbox").fetchone()[0], 1)
-            self.assertEqual(db.execute("SELECT count(*) FROM messages").fetchone()[0], 1)
+        counts = self.h.counts()
+        self.assertEqual((counts["jobs"], counts["outbox"], counts["messages"]), (1, 1, 1))
 
     def test_scope_routes_authentication_revocation_and_state_ownership(self):
         ref = self.atom()
@@ -166,9 +165,9 @@ class ContractCases:
         self.h.command("work")
         self.h.command("flush")
         self.assertEqual(self.a.poll()["body"]["job_id"], job["job_id"])
-        with sqlite3.connect(self.h.config["database"]) as db:
-            self.assertEqual(db.execute("SELECT count(*) FROM atoms").fetchone()[0], 2)
-            self.assertEqual(db.execute("SELECT count(*) FROM outbox").fetchone()[0], 1)
+        counts = self.h.counts()
+        self.assertEqual(counts["atoms"], 2)
+        self.assertEqual(counts["outbox"], 1)
 
 
 class InProcessContract(ContractCases, unittest.TestCase):
@@ -177,6 +176,16 @@ class InProcessContract(ContractCases, unittest.TestCase):
 
 class SubprocessContract(ContractCases, unittest.TestCase):
     binding = "subprocess"
+
+
+class FixtureInProcessContract(ContractCases, unittest.TestCase):
+    binding = "inprocess"
+    atom_provider = "fixture-files"
+
+
+class FixtureSubprocessContract(ContractCases, unittest.TestCase):
+    binding = "subprocess"
+    atom_provider = "fixture-files"
 
 
 class Compatibility(unittest.TestCase):

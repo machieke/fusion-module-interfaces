@@ -1,6 +1,7 @@
 """Record source identity without copying source changes or private data."""
 import hashlib
 import json
+import os
 import platform
 from pathlib import Path
 import subprocess
@@ -13,8 +14,8 @@ REPOSITORIES = {
     "das": Path.home() / "work/asi/das",
     "mettaclaw": ROOT.parent / "mettaclaw",
     "reachability-atomspace-prototype": ROOT.parent / "reachability-atomspace-prototype",
-    "secured-contract-spaces": ROOT.parent / "secured-contract-spaces",
-    "f1r3node-rust": Path.home() / "work/asi/f1r3node-rust",
+    "secured-contract-spaces": Path(os.environ.get("DETTA_REPO", ROOT.parent / "secured-contract-spaces")).resolve(),
+    "f1r3node-rust": Path(os.environ.get("F1R3_REPO", Path.home() / "work/asi/f1r3node-rust")).resolve(),
     "freeciv-omegaclaw": ROOT.parent / "freeciv-omegaclaw",
     "omega-shared-memory-pilot-archive": ROOT.parent / "omega-shared-memory-pilot-archive",
 }

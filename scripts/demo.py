@@ -9,18 +9,15 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from fusion.contracts import canonical, digest
-from fusion.registry import Requirement, descriptors, resolve
 from tests.support import Harness
 
 FIXTURE = b"M1 deliberately shared fixture; opaque bytes, no cognition.\x00\xff\n"
 
 
-def run_one(binding):
-    providers = descriptors(binding)
-    selected = [resolve(providers, Requirement(p.interface, "1.0.0", "2.0.0", next(iter(p.profiles)),
-                                               p.operations, p.guarantees, len(FIXTURE))).provider for p in providers]
+def run_one(binding, atom_provider="detta"):
     directory = tempfile.mkdtemp(prefix="demo-" + binding + "-", dir=ROOT / "artifacts")
-    h = Harness(binding, directory)
+    h = Harness(binding, directory, atom_provider=atom_provider)
+    selected = [p.provider for p in h.a.binding.selected.values()]
     timings = {}
 
     def measured(name, action):
@@ -56,14 +53,13 @@ def run_one(binding):
     restarted.ack(completion["delivery_id"], "completion-ack")
     assert restarted.poll() is None
     elapsed = time.perf_counter() - start
+    counts = h.counts()
     with sqlite3.connect(h.config["database"]) as db:
-        counts = {table: db.execute(f"SELECT count(*) FROM {table}").fetchone()[0]
-                  for table in ("atoms", "jobs", "outbox", "messages")}
         pending = db.execute("SELECT count(*) FROM outbox WHERE sent=0").fetchone()[0]
     bindings = [h.a.binding, h.b.binding, restarted.binding]
     return {"binding": binding, "peers": "independently instantiated protocol fixtures A/B",
             "worker": "separate OS process; SIGKILL at two persisted boundaries",
-            "selected_providers": selected, "storage_provider": "real DeTTa DA + FileStorage libraries",
+            "selected_providers": selected, "storage_provider": ("real DeTTa DA + FileStorage libraries" if atom_provider == "detta" else "independent atomic-file contract test provider"),
             "fixture_sha256": digest(FIXTURE), "fixture_bytes": len(FIXTURE), "stored": stored,
             "shared": shared, "job": job, "result": result, "output": output,
             "timings": timings, "elapsed_seconds": elapsed,
@@ -72,13 +68,13 @@ def run_one(binding):
             "binding_json_bytes_received": sum(b.bytes_received for b in bindings),
             "binding_calls": sum(b.calls for b in bindings),
             "binding_bytes_are_physical": binding == "subprocess",
-            "da_fixture_payload_bytes": stored["receipt"]["evidence"]["payload_bytes"],
-            "da_result_payload_bytes": result["receipt"]["evidence"]["payload_bytes"],
+            "da_fixture_payload_bytes": stored["receipt"]["evidence"].get("payload_bytes"),
+            "da_result_payload_bytes": result["receipt"]["evidence"].get("payload_bytes"),
             "idempotent_retries": 2, "worker_attempts": 2,
             "max_observed_pending_jobs": 1, "max_observed_pending_outbox": 1,
             "pending_outbox_at_end": pending, "acknowledged_data_loss": 0,
             "counts": counts, "runtime_directory": directory,
-            "chain": "separate gate; see chain-demo.json"}
+            "chain": "NOT RUN by this demo; historical chain-demo.json is separate evidence"}
 
 
 def run():

@@ -1,0 +1,114 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/detta_da-fdd0291ae2853c2e)
+
+running 62 tests
+test tests::application_id_validation_rejects_invalid_values ... ok
+test tests::application_manifest_rejects_bad_roots_and_wrong_profile ... ok
+test tests::application_manifest_commits_payload_and_namespace_proofs ... ok
+test tests::application_payload_canonicalizes_reordered_namespaces ... ok
+test tests::application_manifest_hash_binds_application_metadata ... ok
+test tests::application_da_certificate_rejects_empty_wrong_and_non_quorum_custody_votes ... ok
+test tests::application_da_certificate_aggregates_matching_custody_votes ... ok
+test tests::application_payload_enforces_required_and_forbidden_namespaces ... ok
+test tests::application_light_client_sampling_schedule_and_proofs_verify ... ok
+test tests::application_profile_rejects_duplicate_policy_keys ... ok
+test tests::application_profile_registry_keeps_pending_profiles_inactive_until_activation ... ok
+test tests::application_payload_rejects_bad_content_hash_unknown_schema_and_size ... ok
+test tests::application_profile_registry_keeps_deprecated_versions_for_history ... ok
+test tests::application_profiles_validate_and_hash_stably ... ok
+test tests::application_coding_fraud_proof_detects_parity_and_payload_inconsistency ... ok
+test tests::application_profile_rejects_unknown_schema_and_forbidden_namespace ... ok
+test tests::application_profile_registry_registers_builtins_and_rejects_unknown_payloads ... ok
+test tests::application_da_certificate_rejects_votes_for_different_manifest_bindings ... ok
+test tests::availability_certificate_rejects_duplicate_or_unsorted_signers ... ok
+test tests::availability_vote_and_certificate_bind_manifest_commitments ... ok
+test tests::checkpoint_demo_profile_accepts_checkpoint_payload_and_rejects_batch_payload ... ok
+test tests::application_reed_solomon_share_set_reconstructs_threshold_payload ... ok
+test tests::da_share_challenge_requires_signed_custody_or_sample_index ... ok
+test tests::custody_vote_requires_assigned_shares_to_verify ... ok
+test tests::detta_application_profile_preserves_da_v1_payload_hashes ... ok
+test tests::coding_fraud_proof_detects_parity_and_payload_inconsistency ... ok
+test tests::custody_assignment_is_deterministic_and_bounded ... ok
+test tests::external_blob_replication_policy_tracks_multi_backend_requirements ... ok
+test tests::detta_defi_validator_accepts_v1_payload_and_rejects_tampered_evidence ... ok
+test tests::external_blob_adapters_commit_reference_records_and_verify_retrieval ... ok
+test tests::invalid_namespace_is_rejected ... ok
+test tests::external_blob_lifecycle_health_and_repair_records_are_hash_bound ... ok
+test tests::application_validators_produce_reports_and_schema_validator_rejects_bad_json ... ok
+test tests::da_share_challenge_evidence_distinguishes_valid_invalid_and_missing_responses ... ok
+test tests::golden_da_fixture_hashes_are_stable ... ok
+test tests::external_blob_adapters_reject_wrong_schemes_limits_and_noncanonical_records ... ok
+test tests::namespace_proof_verifies_committed_ranges ... ok
+test tests::external_blob_retrieval_verification_feeds_unavailable_challenge_evidence ... ok
+test tests::namespace_order_is_canonical ... ok
+test tests::production_block_payload_policy_rejects_unsupported_namespace_records ... ok
+test tests::production_profile_v1_answers_open_da_policy_questions ... ok
+test tests::production_block_payload_policy_accepts_transactions_receipts_and_optional_events ... ok
+test tests::production_block_payload_policy_rejects_receipt_count_mismatch ... ok
+test tests::record_envelope_binds_content_hash_and_policy ... ok
+test tests::missing_share_is_rejected ... ok
+test tests::reed_solomon_rejects_insufficient_shares ... ok
+test tests::reed_solomon_rejects_duplicate_wrong_index_and_tampered_shares ... ok
+test tests::light_client_sampling_rejects_missing_wrong_and_tampered_samples ... ok
+test tests::reed_solomon_target_share_size_rejects_unbounded_share_count ... ok
+test tests::light_client_sampling_schedule_and_proofs_verify ... ok
+test tests::reed_solomon_share_set_reconstructs_from_threshold_subset ... ok
+test tests::social_demo_application_payload_fixture_hash_is_stable ... ok
+test tests::share_set_reconstructs_canonical_payload ... ok
+test tests::tampered_share_is_rejected ... ok
+test tests::payload_decode_fuzz_smoke_rejects_malformed_reconstructed_bytes ... ok
+test tests::social_media_payload_can_commit_ipfs_avatar_reference ... ok
+test tests::wrong_manifest_hash_is_rejected ... ok
+test tests::reed_solomon_target_share_size_builds_profile_share_set ... ok
+test tests::social_demo_validator_rejects_bad_signature_sequence_gap_and_wrong_root ... ok
+test tests::reed_solomon_reconstructs_over_payload_sizes_and_missing_patterns ... ok
+test tests::verify_manifest_commits_payload_accepts_honest_and_rejects_forged_commitments ... ok
+test tests::share_reconstruction_fuzz_smoke_rejects_mutated_shares_and_manifests ... ok
+
+test result: ok. 62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running unittests src/lib.rs (target/debug/deps/detta_storage-88d63945abb270a2)
+
+running 40 tests
+test tests::bounded_entry_count_stops_large_diagnostic_scans ... ok
+test tests::consensus_signing_record_preserves_first_height_domain_claim ... ok
+test tests::appends_validator_set_metadata_audit_records ... ok
+test tests::appends_snapshot_import_audit_records ... ok
+test tests::da_retention_policy_rejects_zero_windows_and_zero_payload_limits ... ok
+test tests::backup_and_restore_copy_durable_storage_files ... ok
+test tests::indexes_transactions_and_receipts_from_durable_blocks ... ok
+test tests::application_da_profile_index_upsert_replaces_status_changes ... ok
+test tests::persists_and_loads_block ... ok
+test tests::migrates_legacy_json_da_shares_to_binary ... ok
+test tests::persists_and_loads_da_challenge_record ... ok
+test tests::application_da_retention_audit_reports_custom_classes_as_missing_policy ... ok
+test tests::persists_and_loads_finality_certificate ... ok
+test tests::checkpoint_application_da_manifest_indexes_checkpoint_retention ... ok
+test tests::persists_and_loads_mempool ... ok
+test tests::custody_pruning_keeps_only_assigned_application_shares ... ok
+test tests::persists_and_loads_slashing_record ... ok
+test tests::persists_and_verifies_snapshot ... ok
+test tests::persists_and_optionally_loads_validator_set_metadata ... ok
+test tests::da_retention_audit_reports_active_expired_and_unsatisfied_manifests ... ok
+test tests::persists_application_da_id_owner_records ... ok
+test tests::persists_pending_validator_set_metadata_authorizations ... ok
+test tests::persists_application_da_external_blob_operational_records ... ok
+test tests::persists_snapshot_sync_client_metrics ... ok
+test tests::production_da_retention_policy_defaults_are_stable_and_valid ... ok
+test tests::persists_snapshot_metadata_roots ... ok
+test tests::persists_and_loads_da_share_set ... ok
+test tests::persists_and_loads_da_certificate ... ok
+test tests::persists_application_da_profile_lifecycle_records ... ok
+test tests::rejects_snapshot_with_bad_root ... ok
+test tests::reports_corrupt_block_json ... ok
+test tests::persists_da_repair_records_retention_policy_and_store_roots ... ok
+test tests::storage_byte_count_tracks_durable_files ... ok
+test tests::rejects_corrupt_da_index_entries ... ok
+test tests::reports_da_storage_stats_and_missing_shares ... ok
+test tests::rejects_corrupt_da_share_on_load ... ok
+test tests::persists_and_loads_application_da_share_set_certificate_and_indexes ... ok
+test tests::rejects_corrupt_application_da_payload_and_share_on_load ... ok
+test tests::application_da_retention_audit_and_prune_plan_respect_profile_classes ... ok
+test tests::rebuilds_application_da_indexes_and_rejects_corrupt_entries ... ok
+
+test result: ok. 40 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.40s

@@ -98,14 +98,20 @@ class AtomWrite(TypedDict):
 
 
 class JobAcceptance(TypedDict):
+    scope_ref: str
+    correlation_id: str
+    reply_route: str
     job_id: str
     execution: Literal["queued"]
-    acceptance: Literal["sqlite-full"]
+    acceptance: Literal["process-restart"]
+    evidence: JSON
     completion_delivery: Literal["not-observed"]
     chain: None
 
 
 class JobStatus(TypedDict):
+    scope_ref: str
+    correlation_id: str
     job_id: str
     execution: Literal["queued", "succeeded", "failed"]
     error: str | None
@@ -115,15 +121,22 @@ class JobStatus(TypedDict):
 
 
 class MessageAcceptance(TypedDict):
+    scope_ref: str
+    correlation_id: str
+    route: str
     delivery_id: str
-    acceptance: Literal["sqlite-full"]
+    acceptance: Literal["process-restart"]
+    evidence: JSON
     delivery: Literal["not-observed"]
 
 
 class MessageAck(TypedDict):
+    scope_ref: str
+    route: str
     delivery_id: str
     delivery: Literal["acknowledged"]
-    persistence: Literal["sqlite-full"]
+    persistence: Literal["process-restart"]
+    evidence: JSON
 
 
 class ReferenceMessage(TypedDict):
@@ -142,6 +155,8 @@ class CompletionMessage(TypedDict):
 
 
 class MessageDelivery(TypedDict):
+    scope_ref: str
+    route: str
     delivery_id: str
     body: ReferenceMessage | CompletionMessage
     order: int
@@ -180,8 +195,9 @@ OPERATIONS = {
     "agent.messaging": {"send", "poll", "ack"},
     "execution": {"submit", "status", "result"},
 }
-PROFILES = {"atom.storage": "immutable-bytes/1", "agent.messaging": "durable-mailbox/1",
-            "execution": "inspect-atom/1"}
+PROFILES = {"atom.storage": "immutable-bytes/1", "agent.messaging": "durable-mailbox/2",
+            "execution": "inspect-atom/2"}
+LEGACY_PROFILES = {"agent.messaging": "durable-mailbox/1", "execution": "inspect-atom/1"}
 MUTATIONS = {"create", "send", "ack", "submit"}
 
 
@@ -206,7 +222,9 @@ def validate(request: Any, *, check_deadline: bool = True) -> tuple[str, str]:
     require(isinstance(name, str) and name in OPERATIONS, "UNSUPPORTED_OPERATION")
     # An invocation uses an explicitly selected supported wire version.
     require(version(iface["version"]) == (1, 0, 0), "UNSUPPORTED_VERSION")
-    require(request["profile"] == PROFILES[name], "UNSUPPORTED_PROFILE")
+    require(isinstance(request["profile"], str) and
+            request["profile"] in ({PROFILES[name]} | ({LEGACY_PROFILES[name]} if name in LEGACY_PROFILES else set())),
+            "UNSUPPORTED_PROFILE")
     require(op in OPERATIONS[name], "UNSUPPORTED_OPERATION")
     require(request.get("required_features", []) == [], "UNSUPPORTED_PROFILE")
     require(isinstance(request.get("extensions", {}), dict))

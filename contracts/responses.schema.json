@@ -1,0 +1,2532 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fusion:responses:1.0.0:m1.1",
+  "title": "M1.1 per-operation responses",
+  "description": "Select $defs by requested profile and operation. Runtime validation additionally matches the selected descriptor, request, bytes digest, scope, reference order and known job correlation. Provider tokens check local binding consistency, not remote truth.",
+  "anyOf": [
+    {
+      "$ref": "#/$defs/immutable-bytes_1.create"
+    },
+    {
+      "$ref": "#/$defs/immutable-bytes_1.get"
+    },
+    {
+      "$ref": "#/$defs/immutable-bytes_1.getMany"
+    },
+    {
+      "$ref": "#/$defs/immutable-bytes_1.availability"
+    },
+    {
+      "$ref": "#/$defs/durable-mailbox_1.send"
+    },
+    {
+      "$ref": "#/$defs/durable-mailbox_1.poll"
+    },
+    {
+      "$ref": "#/$defs/durable-mailbox_1.ack"
+    },
+    {
+      "$ref": "#/$defs/durable-mailbox_2.send"
+    },
+    {
+      "$ref": "#/$defs/durable-mailbox_2.poll"
+    },
+    {
+      "$ref": "#/$defs/durable-mailbox_2.ack"
+    },
+    {
+      "$ref": "#/$defs/inspect-atom_1.submit"
+    },
+    {
+      "$ref": "#/$defs/inspect-atom_1.status"
+    },
+    {
+      "$ref": "#/$defs/inspect-atom_1.result"
+    },
+    {
+      "$ref": "#/$defs/inspect-atom_2.submit"
+    },
+    {
+      "$ref": "#/$defs/inspect-atom_2.status"
+    },
+    {
+      "$ref": "#/$defs/inspect-atom_2.result"
+    }
+  ],
+  "$defs": {
+    "immutable-bytes_1.create": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "ref": {
+                  "type": "object",
+                  "properties": {
+                    "scope_ref": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "revision": {
+                      "const": 1,
+                      "type": "integer"
+                    },
+                    "digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "scope_ref",
+                    "id",
+                    "revision",
+                    "digest"
+                  ],
+                  "additionalProperties": false
+                },
+                "receipt": {
+                  "type": "object",
+                  "properties": {
+                    "provider": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "durability": {
+                      "const": "local-files-process-restart"
+                    },
+                    "evidence": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "provider",
+                    "durability",
+                    "evidence"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "ref",
+                "receipt"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "immutable-bytes_1.get": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "ref": {
+                  "type": "object",
+                  "properties": {
+                    "scope_ref": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "revision": {
+                      "const": 1,
+                      "type": "integer"
+                    },
+                    "digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "scope_ref",
+                    "id",
+                    "revision",
+                    "digest"
+                  ],
+                  "additionalProperties": false
+                },
+                "content_type": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "bytes": {
+                  "type": "string",
+                  "minLength": 4,
+                  "maxLength": 87384,
+                  "contentEncoding": "base64"
+                }
+              },
+              "required": [
+                "ref",
+                "content_type",
+                "bytes"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "immutable-bytes_1.getMany": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "atoms": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 32,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ref": {
+                        "type": "object",
+                        "properties": {
+                          "scope_ref": {
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                          },
+                          "id": {
+                            "type": "string",
+                            "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                          },
+                          "revision": {
+                            "const": 1,
+                            "type": "integer"
+                          },
+                          "digest": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          }
+                        },
+                        "required": [
+                          "scope_ref",
+                          "id",
+                          "revision",
+                          "digest"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "content_type": {
+                        "type": "string",
+                        "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                      },
+                      "bytes": {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 87384,
+                        "contentEncoding": "base64"
+                      }
+                    },
+                    "required": [
+                      "ref",
+                      "content_type",
+                      "bytes"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "atoms"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "immutable-bytes_1.availability": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "bytes": {
+                  "type": "null"
+                },
+                "available": {
+                  "type": "boolean"
+                },
+                "present_shares": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "threshold": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "content_hash": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "required": [
+                "bytes",
+                "available",
+                "present_shares",
+                "threshold",
+                "content_hash"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "durable-mailbox_1.send": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "delivery_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "acceptance": {
+                  "const": "sqlite-full"
+                },
+                "delivery": {
+                  "const": "not-observed"
+                }
+              },
+              "required": [
+                "delivery_id",
+                "acceptance",
+                "delivery"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "durable-mailbox_1.poll": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "delivery": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "delivery_id": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                        },
+                        "body": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "ref": {
+                                  "type": "object",
+                                  "properties": {
+                                    "scope_ref": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "revision": {
+                                      "const": 1,
+                                      "type": "integer"
+                                    },
+                                    "digest": {
+                                      "type": "string",
+                                      "pattern": "^[0-9a-f]{64}$"
+                                    }
+                                  },
+                                  "required": [
+                                    "scope_ref",
+                                    "id",
+                                    "revision",
+                                    "digest"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "correlation_id": {
+                                  "type": "string",
+                                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                },
+                                "reply_route": {
+                                  "type": "string",
+                                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                },
+                                "causation_id": {
+                                  "type": "string",
+                                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                }
+                              },
+                              "required": [
+                                "ref",
+                                "correlation_id",
+                                "reply_route",
+                                "causation_id"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "job_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "correlation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "causation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "result": {
+                                      "type": "object",
+                                      "properties": {
+                                        "ref": {
+                                          "type": "object",
+                                          "properties": {
+                                            "scope_ref": {
+                                              "type": "string",
+                                              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                            },
+                                            "revision": {
+                                              "const": 1,
+                                              "type": "integer"
+                                            },
+                                            "digest": {
+                                              "type": "string",
+                                              "pattern": "^[0-9a-f]{64}$"
+                                            }
+                                          },
+                                          "required": [
+                                            "scope_ref",
+                                            "id",
+                                            "revision",
+                                            "digest"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        "receipt": {
+                                          "type": "object",
+                                          "properties": {
+                                            "provider": {
+                                              "type": "string",
+                                              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                            },
+                                            "durability": {
+                                              "const": "local-files-process-restart"
+                                            },
+                                            "evidence": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "provider",
+                                            "durability",
+                                            "evidence"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "required": [
+                                        "ref",
+                                        "receipt"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "error": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "job_id",
+                                    "correlation_id",
+                                    "causation_id",
+                                    "result",
+                                    "error"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "job_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "correlation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "causation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "result": {
+                                      "type": "null"
+                                    },
+                                    "error": {
+                                      "enum": [
+                                        "UNSUPPORTED_VERSION",
+                                        "UNSUPPORTED_PROFILE",
+                                        "UNSUPPORTED_OPERATION",
+                                        "INVALID_ARGUMENT",
+                                        "UNAUTHORIZED",
+                                        "NOT_FOUND",
+                                        "CONFLICT",
+                                        "NOT_AVAILABLE",
+                                        "OVERLOADED",
+                                        "DEADLINE_EXCEEDED",
+                                        "INTERNAL"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "job_id",
+                                    "correlation_id",
+                                    "causation_id",
+                                    "result",
+                                    "error"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "order": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "delivery": {
+                          "const": "observed-unacknowledged"
+                        }
+                      },
+                      "required": [
+                        "delivery_id",
+                        "body",
+                        "order",
+                        "delivery"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "delivery"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "durable-mailbox_1.ack": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "delivery_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "delivery": {
+                  "const": "acknowledged"
+                },
+                "persistence": {
+                  "const": "sqlite-full"
+                }
+              },
+              "required": [
+                "delivery_id",
+                "delivery",
+                "persistence"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "durable-mailbox_2.send": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "delivery_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "acceptance": {
+                  "const": "process-restart"
+                },
+                "delivery": {
+                  "const": "not-observed"
+                },
+                "evidence": {
+                  "type": "object"
+                },
+                "scope_ref": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "correlation_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "route": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                }
+              },
+              "required": [
+                "delivery_id",
+                "acceptance",
+                "delivery",
+                "evidence",
+                "scope_ref",
+                "correlation_id",
+                "route"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "durable-mailbox_2.poll": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "delivery": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "delivery_id": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                        },
+                        "body": {
+                          "oneOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "ref": {
+                                  "type": "object",
+                                  "properties": {
+                                    "scope_ref": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "revision": {
+                                      "const": 1,
+                                      "type": "integer"
+                                    },
+                                    "digest": {
+                                      "type": "string",
+                                      "pattern": "^[0-9a-f]{64}$"
+                                    }
+                                  },
+                                  "required": [
+                                    "scope_ref",
+                                    "id",
+                                    "revision",
+                                    "digest"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "correlation_id": {
+                                  "type": "string",
+                                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                },
+                                "reply_route": {
+                                  "type": "string",
+                                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                },
+                                "causation_id": {
+                                  "type": "string",
+                                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                }
+                              },
+                              "required": [
+                                "ref",
+                                "correlation_id",
+                                "reply_route",
+                                "causation_id"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "job_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "correlation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "causation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "result": {
+                                      "type": "object",
+                                      "properties": {
+                                        "ref": {
+                                          "type": "object",
+                                          "properties": {
+                                            "scope_ref": {
+                                              "type": "string",
+                                              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                            },
+                                            "revision": {
+                                              "const": 1,
+                                              "type": "integer"
+                                            },
+                                            "digest": {
+                                              "type": "string",
+                                              "pattern": "^[0-9a-f]{64}$"
+                                            }
+                                          },
+                                          "required": [
+                                            "scope_ref",
+                                            "id",
+                                            "revision",
+                                            "digest"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        "receipt": {
+                                          "type": "object",
+                                          "properties": {
+                                            "provider": {
+                                              "type": "string",
+                                              "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                            },
+                                            "durability": {
+                                              "const": "local-files-process-restart"
+                                            },
+                                            "evidence": {
+                                              "type": "object"
+                                            }
+                                          },
+                                          "required": [
+                                            "provider",
+                                            "durability",
+                                            "evidence"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      },
+                                      "required": [
+                                        "ref",
+                                        "receipt"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "error": {
+                                      "type": "null"
+                                    }
+                                  },
+                                  "required": [
+                                    "job_id",
+                                    "correlation_id",
+                                    "causation_id",
+                                    "result",
+                                    "error"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "job_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "correlation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "causation_id": {
+                                      "type": "string",
+                                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                                    },
+                                    "result": {
+                                      "type": "null"
+                                    },
+                                    "error": {
+                                      "enum": [
+                                        "UNSUPPORTED_VERSION",
+                                        "UNSUPPORTED_PROFILE",
+                                        "UNSUPPORTED_OPERATION",
+                                        "INVALID_ARGUMENT",
+                                        "UNAUTHORIZED",
+                                        "NOT_FOUND",
+                                        "CONFLICT",
+                                        "NOT_AVAILABLE",
+                                        "OVERLOADED",
+                                        "DEADLINE_EXCEEDED",
+                                        "INTERNAL"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "job_id",
+                                    "correlation_id",
+                                    "causation_id",
+                                    "result",
+                                    "error"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "order": {
+                          "type": "integer",
+                          "minimum": 1
+                        },
+                        "delivery": {
+                          "const": "observed-unacknowledged"
+                        },
+                        "scope_ref": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                        },
+                        "route": {
+                          "type": "string",
+                          "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                        }
+                      },
+                      "required": [
+                        "delivery_id",
+                        "body",
+                        "order",
+                        "delivery",
+                        "scope_ref",
+                        "route"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "delivery"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "durable-mailbox_2.ack": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "delivery_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "delivery": {
+                  "const": "acknowledged"
+                },
+                "persistence": {
+                  "const": "process-restart"
+                },
+                "evidence": {
+                  "type": "object"
+                },
+                "scope_ref": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "route": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                }
+              },
+              "required": [
+                "delivery_id",
+                "delivery",
+                "persistence",
+                "evidence",
+                "scope_ref",
+                "route"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "inspect-atom_1.submit": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "job_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "execution": {
+                  "const": "queued"
+                },
+                "acceptance": {
+                  "const": "sqlite-full"
+                },
+                "completion_delivery": {
+                  "const": "not-observed"
+                },
+                "chain": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "job_id",
+                "execution",
+                "acceptance",
+                "completion_delivery",
+                "chain"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "inspect-atom_1.status": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "job_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "chain": {
+                      "type": "null"
+                    },
+                    "execution": {
+                      "const": "queued"
+                    },
+                    "error": {
+                      "type": "null"
+                    },
+                    "result_persistence": {
+                      "type": "null"
+                    },
+                    "completion_delivery": {
+                      "enum": [
+                        "not-observed"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "job_id",
+                    "chain",
+                    "execution",
+                    "error",
+                    "result_persistence",
+                    "completion_delivery"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "job_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "chain": {
+                      "type": "null"
+                    },
+                    "execution": {
+                      "const": "succeeded"
+                    },
+                    "error": {
+                      "type": "null"
+                    },
+                    "result_persistence": {
+                      "const": "local-files-process-restart"
+                    },
+                    "completion_delivery": {
+                      "enum": [
+                        "not-observed",
+                        "mailbox-accepted"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "job_id",
+                    "chain",
+                    "execution",
+                    "error",
+                    "result_persistence",
+                    "completion_delivery"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "job_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "chain": {
+                      "type": "null"
+                    },
+                    "execution": {
+                      "const": "failed"
+                    },
+                    "error": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "NOT_AVAILABLE",
+                        "OVERLOADED",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "result_persistence": {
+                      "type": "null"
+                    },
+                    "completion_delivery": {
+                      "enum": [
+                        "not-observed",
+                        "mailbox-accepted"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "job_id",
+                    "chain",
+                    "execution",
+                    "error",
+                    "result_persistence",
+                    "completion_delivery"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "inspect-atom_1.result": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "ref": {
+                  "type": "object",
+                  "properties": {
+                    "scope_ref": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "revision": {
+                      "const": 1,
+                      "type": "integer"
+                    },
+                    "digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "scope_ref",
+                    "id",
+                    "revision",
+                    "digest"
+                  ],
+                  "additionalProperties": false
+                },
+                "receipt": {
+                  "type": "object",
+                  "properties": {
+                    "provider": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "durability": {
+                      "const": "local-files-process-restart"
+                    },
+                    "evidence": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "provider",
+                    "durability",
+                    "evidence"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "ref",
+                "receipt"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "inspect-atom_2.submit": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "job_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "execution": {
+                  "const": "queued"
+                },
+                "acceptance": {
+                  "const": "process-restart"
+                },
+                "completion_delivery": {
+                  "const": "not-observed"
+                },
+                "chain": {
+                  "type": "null"
+                },
+                "evidence": {
+                  "type": "object"
+                },
+                "scope_ref": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "correlation_id": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                },
+                "reply_route": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                }
+              },
+              "required": [
+                "job_id",
+                "execution",
+                "acceptance",
+                "completion_delivery",
+                "chain",
+                "evidence",
+                "scope_ref",
+                "correlation_id",
+                "reply_route"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "inspect-atom_2.status": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "job_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "chain": {
+                      "type": "null"
+                    },
+                    "scope_ref": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "correlation_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "execution": {
+                      "const": "queued"
+                    },
+                    "error": {
+                      "type": "null"
+                    },
+                    "result_persistence": {
+                      "type": "null"
+                    },
+                    "completion_delivery": {
+                      "enum": [
+                        "not-observed"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "job_id",
+                    "chain",
+                    "scope_ref",
+                    "correlation_id",
+                    "execution",
+                    "error",
+                    "result_persistence",
+                    "completion_delivery"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "job_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "chain": {
+                      "type": "null"
+                    },
+                    "scope_ref": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "correlation_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "execution": {
+                      "const": "succeeded"
+                    },
+                    "error": {
+                      "type": "null"
+                    },
+                    "result_persistence": {
+                      "const": "local-files-process-restart"
+                    },
+                    "completion_delivery": {
+                      "enum": [
+                        "not-observed",
+                        "mailbox-accepted"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "job_id",
+                    "chain",
+                    "scope_ref",
+                    "correlation_id",
+                    "execution",
+                    "error",
+                    "result_persistence",
+                    "completion_delivery"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "job_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "chain": {
+                      "type": "null"
+                    },
+                    "scope_ref": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "correlation_id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "execution": {
+                      "const": "failed"
+                    },
+                    "error": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "NOT_AVAILABLE",
+                        "OVERLOADED",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "result_persistence": {
+                      "type": "null"
+                    },
+                    "completion_delivery": {
+                      "enum": [
+                        "not-observed",
+                        "mailbox-accepted"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "job_id",
+                    "chain",
+                    "scope_ref",
+                    "correlation_id",
+                    "execution",
+                    "error",
+                    "result_persistence",
+                    "completion_delivery"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "inspect-atom_2.result": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "object",
+              "properties": {
+                "ref": {
+                  "type": "object",
+                  "properties": {
+                    "scope_ref": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "revision": {
+                      "const": 1,
+                      "type": "integer"
+                    },
+                    "digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "scope_ref",
+                    "id",
+                    "revision",
+                    "digest"
+                  ],
+                  "additionalProperties": false
+                },
+                "receipt": {
+                  "type": "object",
+                  "properties": {
+                    "provider": {
+                      "type": "string",
+                      "pattern": "^[a-zA-Z0-9_.:/-]{1,128}$"
+                    },
+                    "durability": {
+                      "const": "local-files-process-restart"
+                    },
+                    "evidence": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "provider",
+                    "durability",
+                    "evidence"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "ref",
+                "receipt"
+              ],
+              "additionalProperties": false
+            },
+            "provider": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "ok",
+            "provider"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "error": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "NOT_AVAILABLE",
+                        "OVERLOADED"
+                      ]
+                    },
+                    "retryable": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "UNSUPPORTED_VERSION",
+                        "UNSUPPORTED_PROFILE",
+                        "UNSUPPORTED_OPERATION",
+                        "INVALID_ARGUMENT",
+                        "UNAUTHORIZED",
+                        "NOT_FOUND",
+                        "CONFLICT",
+                        "DEADLINE_EXCEEDED",
+                        "INTERNAL"
+                      ]
+                    },
+                    "retryable": {
+                      "const": false
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "retryable"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

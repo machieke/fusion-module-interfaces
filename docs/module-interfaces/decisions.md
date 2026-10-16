@@ -39,37 +39,57 @@ an authenticated transport and a real enforcement adapter before private use.
 
 ## ADR 003 — Durability and recovery: accepted, bounded failure model
 
-SQLite FULL/WAL is the authority for accepted jobs, message acknowledgements,
-idempotency and the execution outbox. DeTTa FileStorage is the payload authority.
-DeTTa builds and verifies real 4+2 Reed–Solomon shares. Reads reconstruct from
-persisted shares; the adapter never substitutes SQLite payload bytes.
+Each owner commits independently: AtomStorage metadata/replay, mailbox and
+acknowledgement replay, and execution jobs/outbox. Wire admission replay shares
+execution's journal, never the atom or mailbox store. The real atom provider uses
+SQLite FULL/WAL over DeTTa FileStorage; the independent test provider uses fsync,
+atomic rename and an OS lock over JSON records/payload files. Both advertise only
+same-host process restart. Real DeTTa retains its actual 4+2 share reconstruction;
+the fixture is one local copy and makes no DA claim.
 
-There is no atomic commit across SQLite and FileStorage. Deterministic DA writes
-are replayable, so a crash after DA write and before journal commit may leave an
-unreferenced DA artifact. Retry uses the same DA coordinate and bytes. Accepted
-jobs survive caller/worker death; result metadata, job completion and outbox
-intent commit together. Inbox delivery and outbox completion also commit together.
-Poll is at least once until explicit acknowledgement; job effects are one logical
-result, not exactly-once physical computation. The only operation is deterministic
-`inspect_atom`. No arbitrary external side effects can be registered.
+The failure model is process SIGKILL, lost acknowledgement and temporary provider
+or route unavailability on a trusted host with persistent files intact. Power
+loss, disk/controller failure, multi-host failover and Byzantine operators are
+outside the observed guarantee. No cross-owner atomic commit is claimed.
 
-The single SQLite writer serializes worker transitions, including bounded DA I/O.
-The generic DA adapter also holds a nonblocking per-root OS file lock, inherited
-by its child process, so a killed parent cannot release ownership while a DA
-write is still running. Direct concurrent access returns OVERLOADED.
-Busy writers return OVERLOADED. This is intentionally a small single-host harness,
-not a lease-based distributed scheduler. Pending jobs/outbox and inboxes have
-explicit limits; an unavailable consumer retains completion in the outbox.
-Rows are retained for replay; retention/GC and multi-host recovery are deferred.
-Tests cover process death, not disk failure, power loss or Byzantine operators.
+There are three replay stages:
+
+1. Atom create commits bytes and its owner-local mutation fingerprint/receipt
+   before returning. A wire intent digest preserves conflict detection if the
+   caller's admission journal has not committed. A crash between real DA bytes
+   and atom metadata can leave unreferenced bytes; deterministic DA replay recovers.
+2. Execution persists a result using the worker-scoped key `result/job_id`, then
+   commits terminal job state and outbox intent together in its own journal.
+   Death after the atom commit leaves a queued job; retry obtains the same result
+   ref/receipt, without querying or sharing the atom store's transaction.
+3. Execution calls CompletionDelivery.accept. Messaging commits its own deduplicated
+   delivery first; execution then records sent. Death between those commits may
+   cause another acceptance attempt, not another logical completion. Deduplication
+   persists even if the recipient has already acknowledged the first delivery.
+
+The former M1 single-journal metadata/inbox atomicity is intentionally replaced
+by these explicit replay stages. Poll remains at least once until acknowledgement;
+physical execution may repeat. Only deterministic inspect_atom is allowed.
+Temporary input loss retains the queued job; full/unavailable/revoked routes retain
+the outbox. Authorization is rechecked, including current worker permissions.
+No external side-effect executor, distributed transaction coordinator or scheduler
+is introduced. Owner-local deduplication records persist for the store lifetime;
+retention/GC and migration are deferred.
+
+Execution's SQLite writer serializes bounded attempts; each atom/mailbox owner
+has its own writer. The DeTTa adapter retains its inherited child-process file
+lock, so a killed parent cannot release ownership while a DA child is writing.
+Lock contention maps to OVERLOADED. The independent file fixture also uses an
+exclusive nonblocking file lock. The conformance matrix exercises actual process
+kills before acknowledgement and at both independent commit gaps.
 
 ## ADR 004 — Placement/privacy: accepted
 
 Keep the DA core unchanged and application-neutral. A Rust adapter outside that
 repository maps opaque byte records to an opaque DA application profile. It
 imports `detta-da` and `detta-storage`, not cognitive modules. Backend-neutral
-Python contracts do not import it. Composition chooses a storage port and a
-binding. In-process and subprocess service bindings share the same consumer.
+Python contracts do not import it. Composition chooses AtomStorage (real DeTTa-backed or independent file fixture),
+its opaque storage backend, and a binding. In-process and subprocess service bindings share the same consumer.
 
 Private raw episodes remain client-side in later work; encrypted private episodes
 are also excluded from chain. M1 shares only generated test bytes and their result.
@@ -88,7 +108,7 @@ metadata is ignored; required extensions fail closed. Advertisements and verifie
 evidence are separate. Proof requirements cannot be satisfied by a proof-shaped
 string. No verification provider is installed.
 
-The current workspace had only the brief. Use stdlib Python types/JSON/unittest,
+At M0 the workspace had only the brief; M1.1 continues that implementation. Use stdlib Python types/JSON/unittest,
 as in reachability, and serde JSON in the DeTTa adapter. A static descriptor list
 is a harness registry, not chain registration. The searched sibling Omega/legacy
 registries do not expose the required version/profile/guarantee contract; the
@@ -102,3 +122,31 @@ lineage, independence and golden tests. It is not selected as a universal truth
 model. C3 must select and name an STI-only policy; metta-attention's direct `setAv`
 and STI/LTI/VLTI bank require an ownership wrapper and cannot silently claim that
 profile. No mathematical provider or cognitive process is implemented in M1.
+
+## ADR 006 — M1.1 seams and compatibility: accepted for this experiment
+
+The verified review found execution depended on AtomOwner.row and concrete
+get/create conventions despite published typed ports. It now depends solely on
+AtomStorage.get/create and a narrow trusted CompletionDelivery.accept. Availability
+is added to the published AtomStorage protocol because it was already a wire
+operation; no speculative new retrieval API is introduced. Facades bind caller
+context in composition, never in untrusted payload fields.
+
+Neutral acceptance semantics use new exact `/2` messaging/execution profiles.
+The `/1` local encoder preserves old response shapes and SQLite evidence labels;
+wire version stays 1.0.0. Provider descriptor version is 0.1.1; the deterministic
+inspect payload algorithm stays 0.1.0 so this refactor does not change result bytes.
+The selected full descriptor is bound to every current binding invocation and
+success reply. Live 1.x rolling interoperability is still unproven.
+
+Separate stores require a fresh M1.1 configuration. Opening an old combined
+journal is explicitly rejected as UNSUPPORTED_PROFILE rather than silently
+reinterpreting metadata or dropping state. Independent replacement is demonstrated
+on fresh stores, not as live data migration or instant substitution of populated
+namespaces. Existing M1 evidence and presentation remain historical snapshots.
+
+The intended PhysixSNET/omegahive runtime remains unavailable. The onboarding
+index and separately inspected hive-appliance do not identify an executable Hive
+consumer. No Omega-named wrapper around Peer is introduced. The real Omega seam
+is blocked until authorized runtime source, revision and startup entrypoint exist;
+see discovery and the M1.1 evidence report. M2 remains a subsequent task.

@@ -4,7 +4,7 @@ No cognitive implementation is instantiated in M0/M1. A model/policy profile is
 mandatory wherever numeric or query semantics differ.
 """
 from dataclasses import dataclass
-from typing import Literal, Protocol
+from typing import Literal, Protocol, runtime_checkable
 
 from .contracts import (AtomRef, AtomWrite, InterfaceRef, JSON, JobAcceptance, JobStatus,
                         MessageAcceptance, MessageAck, MessageDelivery)
@@ -14,6 +14,8 @@ from .contracts import (AtomRef, AtomWrite, InterfaceRef, JSON, JobAcceptance, J
 class Mutation:
     scope_ref: str
     idempotency_key: str
+    # Trusted binding preserves the full wire intent across independent commits.
+    intent_digest: str | None = None
 
 
 @dataclass(frozen=True)
@@ -23,10 +25,23 @@ class AtomEnvelope:
     bytes: bytes
 
 
+@runtime_checkable
 class AtomStorage(Protocol):
     def create(self, command: Mutation, content_type: str, data: bytes) -> AtomWrite: ...
     def get(self, ref: AtomRef) -> AtomEnvelope: ...
     def getMany(self, refs: tuple[AtomRef, ...]) -> tuple[AtomEnvelope, ...]: ...
+    def availability(self, ref: AtomRef) -> JSON: ...
+
+
+@runtime_checkable
+class CompletionDelivery(Protocol):
+    """Trusted execution-to-mailbox port, never public dispatch.
+
+    Return only after durable acceptance. Same scope/route/ID/body is replayable;
+    changed content conflicts. No shared transaction with the caller is promised.
+    """
+    def accept(self, scope_ref: str, route: str, delivery_id: str,
+               completion: JSON) -> JSON: ...
 
 
 @dataclass(frozen=True)
@@ -203,6 +218,7 @@ class InferenceControl(Protocol):
     def step(self, command: Mutation, budget: WorkBudget) -> StepReceipt: ...
 
 
+@runtime_checkable
 class DelegatedExecution(Protocol):
     def submit(self, command: Mutation, operation: Literal["inspect_atom"], ref: AtomRef,
                correlation_id: str, reply_route: str, deadline_ms: int | None) -> JobAcceptance: ...
@@ -210,6 +226,7 @@ class DelegatedExecution(Protocol):
     def result(self, scope_ref: str, job_id: str) -> AtomWrite: ...
 
 
+@runtime_checkable
 class Messaging(Protocol):
     def send(self, command: Mutation, ref: AtomRef, route: str,
              correlation_id: str, reply_route: str) -> MessageAcceptance: ...
