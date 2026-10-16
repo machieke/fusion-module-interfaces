@@ -28,9 +28,9 @@ The M1.1 blocked runtime observation remains historical; M1.2 uses the revision
 identified by the supplied `omegahive-schematics`. The optional chain gate is
 separate and is not rerun in M1.2. M2 is not implemented.
 
-The [conference presentation](docs/presentation/README.md) provides the system
-original M0/M1 overview, module responsibilities, dependency diagrams and
-historical integration evidence as an editable PowerPoint and a PDF, with speaker notes.
-
-The presentation predates M1.1’s separate owner stores and neutral `/2` receipts;
-use the current architecture/contracts and M1.1 report for those changes.
+The [conference presentation](docs/presentation/README.md) covers the architecture
+through M1.2: all 15 module responsibilities, function dependencies, separate
+owner commits, independent AtomStorage replacement, and real Hive caller recovery.
+It includes an editable PowerPoint, a PDF and speaker notes. Current real-provider
+and fixture results are distinguished from the historical M1 chain appendix and
+unrun gates; M2 remains outside the completed scope.

@@ -1,41 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">A real result digest reached a real local chain</title>
-<desc id="desc">Read the recorded chain JSON as the primary evidence. Its actual sequence is pending, included with effects Pending, then finalized. All three observations are present; the earlier report prose was corrected to match this trace. The block is height 3, execution errored=false, rejection count zero, cost 351 phlo. The approved commitment digest matches the persisted result ref in both demo bindings. Signing intent is stored before network submission, so an ambiguous timeout can reuse the same transaction signature. The local node was built from the inspected dirty working source and shut down with exit 0. Node startup took 25.735 seconds and the observed submission/propose/finality window took 4.013 seconds. These node responses are not independently verified consensus proofs or a public-network test.</desc>
+<title id="title">Native-path refusals preserve authorization and replay</title>
+<desc id="desc">Every row here is tested through the actual native route, except the trusted operator&#x27;s setup/failure injection. The first row is rejected by Hive before plugin effects. The plugin uses the authenticated actor/swarm mapping and current module credentials; it cannot nominate a principal in the request body. Changed descriptor identity fails binding consistency at the server even if its advertised method set looks compatible. Cached success still requires live status/get/poll/ack authority. The worker rechecks its own and requester permissions after admission. Fusion&#x27;s credential/scope policy is explicitly a local test policy, not production SCS or isolation against the same OS user.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / EVIDENCE · OPTIONAL CHAIN GATE</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A real result digest reached a real local chain</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">One registered approved commitment. Durable signed intent. Direct node observations.</text>
-<rect x="72" y="258" width="464" height="150" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="94" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#A86A15">PENDING</text>
-<text x="94" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Signed deploy accepted</text>
-<line x1="536" y1="333" x2="564" y2="333" stroke="#536775" stroke-width="2"/>
-<polygon points="564,333 551.0,328.0 551.0,338.0" fill="#536775"/>
-<rect x="568" y="258" width="464" height="150" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="590" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#A86A15">INCLUDED</text>
-<text x="590" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Block observed; effects pending</text>
-<line x1="1032" y1="333" x2="1060" y2="333" stroke="#536775" stroke-width="2"/>
-<polygon points="1060,333 1047.0,328.0 1047.0,338.0" fill="#536775"/>
-<rect x="1064" y="258" width="464" height="150" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1086" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">FINALIZED</text>
-<text x="1086" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Deploy effects reported finalized</text>
-<text x="75" y="484.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">Recorded inclusion</text>
-<text x="75" y="535.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Block height</text>
-<text x="406" y="536.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">3</text>
-<text x="75" y="583.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Execution error</text>
-<text x="406" y="584.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">false</text>
-<text x="75" y="631.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Rejection count</text>
-<text x="406" y="632.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">0</text>
-<text x="75" y="679.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Execution cost</text>
-<text x="406" y="680.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">351 phlo</text>
-<rect x="785" y="452" width="743" height="255" rx="13" fill="#FFFFFF"/>
-<text x="811" y="502.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Commitment = persisted result digest</text>
-<text x="811" y="553.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#007C78">f9236451ff785dc58315251cf864a3d1</text>
-<text x="811" y="584.52" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#007C78">0938412551cf45f448055061bc953ea1</text>
-<text x="811" y="644.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Observation window: 4.013 s</text>
-<text x="811" y="676.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">One local sample; no latency SLA</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="799.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Only the generated result digest entered Rholang. Full payload stayed in local DA.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / AUTHORIZATION · FAIL CLOSED</text>
+<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">Native-path refusals preserve authorization and replay</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The host and module boundaries each keep their own checks.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">ATTEMPT</text>
+<text x="618" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED RESULT</text>
+<text x="1038" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT STAYS PROTECTED</text>
+<rect x="72" y="277" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Supply principal in action params</text>
+<text x="618" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Native identity_in_request</text>
+<text x="1038" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Hive derives the actor</text>
+<rect x="72" y="356" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Map caller to the wrong scope</text>
+<text x="618" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">UNAUTHORIZED</text>
+<text x="1038" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Scope alone confers no access</text>
+<rect x="72" y="435" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Revoke caller after completion</text>
+<text x="618" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">UNAUTHORIZED on replay</text>
+<text x="1038" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Saved outcome grants no authority</text>
+<rect x="72" y="514" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Change profile / descriptor</text>
+<text x="618" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">UNSUPPORTED_PROFILE</text>
+<text x="1038" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No weaker provider fallback</text>
+<rect x="72" y="593" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Change input under original key</text>
+<text x="618" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">CONFLICT</text>
+<text x="1038" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No second job with new meaning</text>
+<rect x="72" y="672" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Revoke worker after admission</text>
+<text x="618" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Explicit failed completion</text>
+<text x="1038" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No unauthorized result write</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#F3E7CE"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#A86A15">Real Hive authentication + development Fusion policy. Production isolation remains unproven.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / evidence/chain-demo.json · f1r3.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">19 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / program_actions.py · policy.py · test_integration.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">19 / 33</text>
 </svg>

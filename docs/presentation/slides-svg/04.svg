@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
 <title id="title">Data responsibilities: bytes → references → history</title>
-<desc id="desc">DA persists opaque payloads and erasure shares. AtomStorage owns the application reference metadata, immutable revision and semantic replay keys. Relations describe explicit ordered roles; a link is not automatically a belief. Search is a rebuildable projection that exposes its watermark, not the authoritative store. Episodic memory adds occurrence identities and episode-local ordering, so equal payload bytes may describe different observations. Its full private history remains client-side. This design deliberately does not require a parser, ontology, embedding model or LLM just to store data. Additional relation operations are outgoing/incoming; episode reads are readEpisode/findEpisodes. Those contracts are specified but have no M1 runtime.</desc>
+<desc id="desc">DA persists opaque payloads and erasure shares. AtomStorage owns the application reference metadata, immutable revision and semantic replay keys. Relations describe explicit ordered roles; a link is not automatically a belief. Search is a rebuildable projection that exposes its watermark, not the authoritative store. Episodic memory adds occurrence identities and episode-local ordering, so equal payload bytes may describe different observations. Its full private history remains client-side. This design deliberately does not require a parser, ontology, embedding model or LLM just to store data. Additional relation operations are outgoing/incoming; episode reads are readEpisode/findEpisodes. Those future contracts remain unimplemented through M1.2.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
 <text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / RESPONSIBILITY ATLAS · 1 OF 3</text>
 <text x="70" y="143.45" font-family="DejaVu Sans" font-size="51" font-weight="700" fill="#102B3F">Data responsibilities: bytes → references → history</text>
@@ -17,7 +17,7 @@
 <rect x="72" y="369" width="1456" height="87" rx="6" fill="#FFFFFF"/>
 <text x="88" y="409.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">AtomStorage</text>
 <text x="418" y="409.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Assign scoped immutable references</text>
-<text x="418" y="441.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">create · get · getMany</text>
+<text x="418" y="441.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">create · get · getMany · availability</text>
 <text x="1018" y="409.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Reference + replay metadata</text>
 <text x="1018" y="441.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">IMPLEMENTED</text>
 <rect x="72" y="461" width="1456" height="87" rx="6" fill="#FFFFFF"/>
@@ -41,6 +41,6 @@
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
 <text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Capture and retrieve data before choosing its meaning.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 33</text>
 </svg>

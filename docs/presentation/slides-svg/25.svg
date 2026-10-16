@@ -1,51 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Implementation dependency map</title>
-<desc id="desc">Navigate implementation from Peer methods to binding.invoke, then to Service.invoke validation and policy. In-process invokes the service in the current Python process; subprocess invokes the host through private EOF-framed stdin and one JSON stdout response. Trusted composition chooses the concrete storage adapter. Atom, message and execution owner logic is in service.py. The operator-only work and flush entry points are separate from public dispatch. detta.py calls the Rust helper linked to the original DA/storage libraries. chain_demo.py separately registers an approved commitment with F1R3Commitments, injected signer, signed-intent journal and F1R3HTTP. The drawing abstracts call paths; it does not imply contracts import implementation files.</desc>
+<title id="title">The real caller is proven; the cognitive increment is next</title>
+<desc id="desc">The stopping point moved from a missing Hive runtime to an evidenced native seam, without implementing M2. The next separately authorized increment can now be chosen from actual integration findings: private episodic provenance and explicitly profiled belief revision remain the cognitive roadmap, followed by attention and bounded inference. Existing upstream mathematics is not redefined here. Production transport/auth/isolation, distributed custody, independently verified proofs, performance characterization and live state migration remain outside this experiment. The minimal caller receipt is not a substitute for episodic memory. Do not describe the future entire Hive workflow or cognition as complete because one deterministic operation is integrated.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX A / CODE NAVIGATION</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Implementation dependency map</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Solid lines identify actual calls/import composition; file names locate the corresponding seam.</text>
-<rect x="72" y="246" width="330" height="128" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="296.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Peer</text>
-<text x="94" y="336.34999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">client.py → Binding.invoke</text>
-<rect x="520" y="246" width="450" height="128" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="542" y="296.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Bindings</text>
-<text x="542" y="336.34999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">bindings.py → Service.invoke / host</text>
-<rect x="1088" y="246" width="440" height="128" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1110" y="296.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Composition</text>
-<text x="1110" y="336.34999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">composition.py injects DettaStorage</text>
-<line x1="402" y1="310" x2="520" y2="310" stroke="#315E9C" stroke-width="2"/>
-<polygon points="520,310 507.0,305.0 507.0,315.0" fill="#315E9C"/>
-<line x1="970" y1="310" x2="1088" y2="310" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1088,310 1075.0,305.0 1075.0,315.0" fill="#315E9C"/>
-<rect x="520" y="460" width="450" height="139" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="542" y="510.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Service + owners</text>
-<text x="542" y="550.35" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">service.py → validate / policy /</text>
-<text x="542" y="577.23" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">dispatch</text>
-<line x1="745" y1="374" x2="745" y2="460" stroke="#315E9C" stroke-width="2"/>
-<polygon points="745,460 750.0,447.0 740.0,447.0" fill="#315E9C"/>
-<rect x="72" y="460" width="330" height="139" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
-<text x="94" y="510.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">Contracts</text>
-<text x="94" y="551.3" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">contracts.py · ports.py</text>
-<text x="94" y="579.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">No backend imports</text>
-<line x1="520" y1="529" x2="402" y2="529" stroke="#536775" stroke-width="2"/>
-<polygon points="402,529 415.0,534.0 415.0,524.0" fill="#536775"/>
-<rect x="1088" y="460" width="440" height="139" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1110" y="506.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#007C78">Opaque storage adapter</text>
-<text x="1110" y="546.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">adapters/detta.py → Rust helper</text>
-<text x="1110" y="574.3399999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">→ detta-da + detta-storage</text>
-<line x1="970" y1="529" x2="1088" y2="529" stroke="#007C78" stroke-width="2"/>
-<polygon points="1088,529 1075.0,524.0 1075.0,534.0" fill="#007C78"/>
-<rect x="72" y="687" width="650" height="110" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="734.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">Operator worker entry</text>
-<text x="94" y="775.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">host.py work / flush → ExecutionOwner</text>
-<line x1="722" y1="741" x2="775" y2="741" stroke="#315E9C" stroke-width="2"/>
-<line x1="775" y1="741" x2="775" y2="599" stroke="#315E9C" stroke-width="2"/>
-<polygon points="775,599 770.0,612.0 780.0,612.0" fill="#315E9C"/>
-<rect x="866" y="687" width="662" height="110" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="888" y="734.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Optional separate chain composition</text>
-<text x="888" y="774.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">chain_demo.py → F1R3Commitments → F1R3HTTP</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / SCOPE AND STOPPING POINT</text>
+<text x="70" y="137.75" font-family="DejaVu Sans" font-size="45" font-weight="700" fill="#102B3F">The real caller is proven; the cognitive increment is next</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">M1.2 establishes an integration seam. It does not select a numerical model or implement cognition.</text>
+<rect x="72" y="253" width="346" height="289" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">M0 / M1</text>
+<text x="94" y="333.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Contract slice</text>
+<text x="94" y="377.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Module map, opaque</text>
+<text x="94" y="411.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">storage, messaging</text>
+<text x="94" y="444.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">and deterministic</text>
+<text x="94" y="477.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">delegation.</text>
+<rect x="442" y="253" width="346" height="289" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="464" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">M1.1</text>
+<text x="464" y="333.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Owner boundaries</text>
+<text x="464" y="377.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Independent</text>
+<text x="464" y="411.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">AtomStorage</text>
+<text x="464" y="444.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">replacement and</text>
+<text x="464" y="477.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">separate durable</text>
+<text x="464" y="510.94" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">commits.</text>
+<rect x="812" y="253" width="346" height="289" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="834" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">M1.2</text>
+<text x="834" y="333.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Real native caller</text>
+<text x="834" y="377.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Verified Hive</text>
+<text x="834" y="411.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">operation, durable</text>
+<text x="834" y="444.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">caller recovery and</text>
+<text x="834" y="477.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">fresh-source recipe.</text>
+<rect x="1182" y="253" width="346" height="289" rx="13" fill="#EBE5F3" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="1204" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#7458A2">M2+ · NOT STARTED</text>
+<text x="1204" y="333.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#7458A2">Cognitive work</text>
+<text x="1204" y="377.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Private episodes and</text>
+<text x="1204" y="411.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">reviewed revision;</text>
+<text x="1204" y="444.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">later attention and</text>
+<text x="1204" y="477.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">bounded inference.</text>
+<text x="72" y="627.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Production boundaries</text>
+<text x="72" y="676.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Isolation, authorization and</text>
+<text x="72" y="708.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">distributed custody remain</text>
+<text x="72" y="740.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">separate work.</text>
+<text x="568" y="627.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Mathematical decisions</text>
+<text x="568" y="676.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Revision model, lineage semantics,</text>
+<text x="568" y="708.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">STI policy and specialists remain</text>
+<text x="568" y="740.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">open.</text>
+<text x="1064" y="627.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">State evolution</text>
+<text x="1064" y="676.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No live migration,</text>
+<text x="1064" y="708.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">populated-namespace switching or</text>
+<text x="1064" y="740.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">rolling upgrades.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / fusion/ · adapters/detta/</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">25 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / ADR 006–007 · m1_2-evidence.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">25 / 33</text>
 </svg>

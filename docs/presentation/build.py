@@ -9,6 +9,7 @@ import hashlib
 import html
 import json
 import math
+import re
 from pathlib import Path
 
 import fitz
@@ -29,9 +30,24 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 QA = ROOT / "artifacts/presentation-qa"
 EVIDENCE = ROOT / "docs/module-interfaces/evidence"
-DEMO = json.loads((EVIDENCE / "demo.json").read_text())
-CHAIN = json.loads((EVIDENCE / "chain-demo.json").read_text())
-BASE_COMMIT = "3f75db993d354d18dff2a3e36498eabe4a33afb3"
+M12 = EVIDENCE / "m1_2"
+RECORD = json.loads((M12 / "manifest.json").read_text())
+VERIFY = json.loads((M12 / "verification.json").read_text())
+SWAP = json.loads((M12 / "m11-swap-demo.json").read_text())
+TRACE = json.loads((M12 / "hive-trace.json").read_text())["detail"]
+NATIVE = json.loads((M12 / "native-build.json").read_text())
+HISTORICAL_CHAIN = json.loads((EVIDENCE / "chain-demo.json").read_text())
+BASE_COMMIT = RECORD["tested_fusion_commit"]
+EVIDENCE_COMMIT = "4ee5cbe8b84689a5d2432530083738b263142f90"
+MAIN_SLIDES = 26
+COMMANDS = {item["name"]: item for item in VERIFY["commands"]}
+COUNTS = {name: int(re.search(r"Ran (\d+) tests", COMMANDS[name]["test_summaries"][0])[1])
+          for name in ("fixture", "detta")}
+COUNTS.update({name: COMMANDS[name]["tests"]["tests"] for name in ("native-baseline", "hive-integration")})
+UPSTREAM_COUNTS = [int(re.search(r"(\d+) passed", summary)[1])
+                   for summary in COMMANDS["upstream-detta"]["test_summaries"]]
+EVIDENCE_FILES = [M12 / name for name in ("manifest.json", "verification.json", "m11-swap-demo.json",
+                  "hive-trace.json", "native-build.json")] + [EVIDENCE / "chain-demo.json"]
 W, H, SCALE = 1600, 900, 0.6
 C = dict(bg="F4F2EB", ink="102B3F", muted="536775", line="C9D2D4",
          white="FFFFFF", pale="E7ECEB", teal="007C78", mint="DCEFE8",
@@ -144,7 +160,7 @@ class Slide:
     def footer(self, n, total):
         color = C["dim"] if self.dark else C["muted"]
         self.line(72, 839, 1528, 839, C["muted"] if self.dark else C["line"], 1)
-        self.text(72, 853, 1120, f"OMEGA × ASI   /   M0–M1   /   {self.source}", 15, color)
+        self.text(72, 853, 1300, f"OMEGA × ASI   /   THROUGH M1.2   /   {self.source}", 15, color)
         self.text(1410, 849, 120, f"{n:02d} / {total:02d}", 21, color, "mono")
 
 
@@ -177,14 +193,14 @@ def table(s, headers, rows, widths, y=235, row_h=88, size=25):
 
 
 def build_content():
-    s = Slide("", "Module-interface architecture", source="brief + implementation commit 3f75db9", dark=True)
+    s = Slide("", "Module-interface architecture", source="M1.2 evidence snapshot 4ee5cbe", dark=True)
     s.text(72, 169, 1330, "One responsibility.\nOne state owner.\nMany possible backends.", 78, C["white"], "bold", 1.12)
     s.text(76, 482, 1250, "Omega Hive × ASI:chain", 42, C["dim"])
-    s.text(76, 550, 1290, "From a module map to a working storage, messaging and execution slice", 31, C["white"])
-    s.tag(76, 676, "M0 + M1 COMPLETE", "teal", C["mint"], 20)
+    s.text(76, 550, 1290, "From independent module contracts to a real Hive caller that recovers", 31, C["white"])
+    s.tag(76, 676, "M1.2 COMPLETE", "teal", C["mint"], 20)
     s.tag(366, 676, "M2 NOT STARTED", "violet", C["lavender"], 20)
-    s.text(76, 754, 1300, "Architecture review • 16 October 2026 • proposed v0 contracts", 22, C["dim"])
-    note(s, "This talk explains how independently implemented modules can cooperate without taking ownership of each other's state. Start with the helicopter view, then module responsibilities and function dependencies. Only after those boundaries are clear do we examine the running M1 slice. M0 and the bounded local M1 integration are complete. M2 and the cognitive stack are explicitly outside the completed work. These contracts are proposed engineering choices, not a finalized community AtomSpace specification. Suggested delivery: 25–30 minutes for slides 1–24; remaining slides are discussion material.")
+    s.text(76, 754, 1300, "Architecture review • 16 October 2026 • verified native integration", 22, C["dim"])
+    note(s, 'Start with the helicopter view, all fifteen module responsibilities and function dependencies before the implementation details. M1.1 separated owner commits and proved an independent AtomStorage replacement. M1.2 now connects a pinned real Hive runtime through its native Programs action route, with real DeTTa and a fixture counterparty. The cognitive modules remain specifications. These are engineering contracts, not a final community AtomSpace or numerical model. Suggested delivery: 30–35 minutes through slide 26; seven appendices support discussion. Current evidence is the recorded 16 October 2026 M1.2 run, implementation bb22ef5, evidence snapshot 4ee5cbe.')
 
     s = Slide("The architecture separates three commitments", "01 / Helicopter view",
               "A function boundary, an authority boundary, and an evidence boundary.")
@@ -196,18 +212,18 @@ def build_content():
         s.text(x+26, 280, 410, num, 49, C["teal"], "mono")
         s.text(x+26, 359, 412, title, 31, C["ink"], "bold")
         s.text(x+26, 453, 405, body, 26, C["muted"])
-    s.text(75, 630, 1400, "M1 demonstrates one narrow path through that architecture", 30, C["ink"], "bold")
-    labels = ["STORE", "SHARE REF", "FETCH", "DELEGATE", "RECOVER", "COMMIT DIGEST"]
+    s.text(75, 630, 1400, "One real Hive operation exercises these boundaries", 30, C["ink"], "bold")
+    labels = ["STORE", "SHARE REF", "DELEGATE", "RECOVER", "ACCEPT", "ACK"]
     for i, label in enumerate(labels):
         x = 72+i*248
-        s.rect(x, 696, 216, 66, C["mint"] if i < 5 else C["sand"], radius=8)
-        s.text(x+16, 718, 190, label, 20, C["teal"] if i < 5 else C["amber"], "bold")
+        s.rect(x, 696, 216, 66, C["mint"], radius=8)
+        s.text(x+16, 718, 190, label, 20, C["teal"], "bold")
         if i < 5:
             s.line(x+218, 729, x+243, 729, arrow=True)
-    note(s, "The three commitments are the architecture's thesis. Behavior means operation semantics and guarantees, not merely a matching method name. Ownership means only an owner's methods may mutate its state, even when modules share a database. Evidence means a stored payload, an accepted job, an acknowledged message and a finalized chain deploy remain different facts. The M1 path below is a conformance experiment using two protocol peers, actual DeTTa libraries, a separate worker and an optional real local chain runtime.")
+    note(s, 'The thesis remains behavior, authority and evidence. A matching method name is insufficient: profiles define semantics and guarantees. Only the state owner may write its state. Receipts describe specific facts rather than one universal success. The real Hive operator action generates a non-sensitive sample, stores it through AtomStorage, sends its reference to a labelled fixture counterparty, submits inspect_atom, recovers completion, records its accepted outcome and acknowledges delivery. Chain submission is not part of this M1.2 path.')
 
     s = Slide("Fifteen modules; four responsibility groups", "01 / System map",
-              "Logical boundaries are independent of process and repository boundaries.")
+              "Real Hive consumes these ports; module, process and repository boundaries remain independent.")
     lanes = [(72, 320, "CLIENT / COGNITION", C["lavender"]),
              (420, 400, "SHARED APPLICATION PORTS", C["ice"]),
              (848, 322, "CONTROL & POLICY", C["pale"]),
@@ -224,26 +240,26 @@ def build_content():
     for i, label in enumerate(["Registry", "Compatibility resolver", "Authorization"]):
         s.box(866, 300+i*108, 286, 95, label, color="blue", title_size=22)
     s.box(1216, 300, 294, 144, "DA storage", "Real DeTTa libraries", "teal", title_size=27, body_size=22)
-    s.box(1216, 485, 294, 168, "Consensus / finality", "Real isolated F1R3 node", "teal", title_size=26, body_size=22)
+    s.box(1216, 485, 294, 168, "Consensus / finality", "M1 historical; M1.2 NOT_RUN", "amber", title_size=26, body_size=22)
     s.text(866, 649, 282, "Local harness policy\nand static descriptors", 20, C["muted"])
     s.tag(72, 760, "SPECIFICATION ONLY", "violet", C["lavender"])
     s.tag(374, 760, "IMPLEMENTED HARNESS", "blue", C["ice"])
     s.tag(713, 760, "REAL PROVIDER INTEGRATION", "teal", C["mint"])
-    note(s, "This is the placement map, not a process topology. All fifteen modules from the brief appear here. The five cognitive modules plus Relations and Search are specifications only. Blue modules are implemented by the local harness; Authorization is explicitly a test policy. Teal shows actual provider integration: local DeTTa DA/storage libraries and a real isolated single-validator F1R3node. Consensus/finality includes the bounded commitment adapter. Private episodic history belongs on the client in future work. A module may be co-located with another module without surrendering its state boundary. The actual Hive runtime was unavailable, so no box here implies a running Hive agent.")
+    note(s, 'All fifteen modules remain visible: five cognition modules, five shared application ports, three control/policy functions and two provider-facing responsibilities. Hive is a consumer of these modules, not a newly invented sixteenth module. Dashed violet boxes remain specifications. Blue is the implemented local contract harness. DeTTa is real local DA/FileStorage; an independent file provider is a contract fixture. Finality has a historical real isolated-chain observation from M1, but the M1.2 chain gate was not run. Native Hive authentication is real; the downstream Fusion credential/scope policy remains a development fixture. No cognitive module is implemented by this increment.')
 
     s = Slide("Data responsibilities: bytes → references → history", "01 / Responsibility atlas · 1 of 3",
               "The first five modules separate persistence, identity, structure, discovery and provenance.")
     table(s, ["Module", "Function / primary operations", "Owned state / status"], [
         ("DA storage", "Persist opaque bytes\nput · get · availability", "Payloads and shares\nREAL LOCAL PROVIDER"),
-        ("AtomStorage", "Assign scoped immutable references\ncreate · get · getMany", "Reference + replay metadata\nIMPLEMENTED"),
+        ("AtomStorage", "Assign scoped immutable references\ncreate · get · getMany · availability", "Reference + replay metadata\nIMPLEMENTED"),
         ("Relations", "Represent ordered structural roles\nassertRelation · getRelation", "Immutable relation records\nSPECIFIED"),
         ("Search projection", "Find references at a known watermark\nquery", "Rebuildable index\nSPECIFIED"),
         ("Episodic memory", "Preserve ordered events + provenance\nrecordEpisode · appendEvent", "Private episode history\nSPECIFIED · M2")], [330, 600, 526], row_h=92, size=25)
     band(s, "Capture and retrieve data before choosing its meaning.")
-    note(s, "DA persists opaque payloads and erasure shares. AtomStorage owns the application reference metadata, immutable revision and semantic replay keys. Relations describe explicit ordered roles; a link is not automatically a belief. Search is a rebuildable projection that exposes its watermark, not the authoritative store. Episodic memory adds occurrence identities and episode-local ordering, so equal payload bytes may describe different observations. Its full private history remains client-side. This design deliberately does not require a parser, ontology, embedding model or LLM just to store data. Additional relation operations are outgoing/incoming; episode reads are readEpisode/findEpisodes. Those contracts are specified but have no M1 runtime.")
+    note(s, "DA persists opaque payloads and erasure shares. AtomStorage owns the application reference metadata, immutable revision and semantic replay keys. Relations describe explicit ordered roles; a link is not automatically a belief. Search is a rebuildable projection that exposes its watermark, not the authoritative store. Episodic memory adds occurrence identities and episode-local ordering, so equal payload bytes may describe different observations. Its full private history remains client-side. This design deliberately does not require a parser, ontology, embedding model or LLM just to store data. Additional relation operations are outgoing/incoming; episode reads are readEpisode/findEpisodes. Those future contracts remain unimplemented through M1.2.")
 
     s = Slide("Cognitive responsibilities: history ≠ truth ≠ attention", "01 / Responsibility atlas · 2 of 3",
-              "All four modules below are typed specifications. No cognitive provider runs in M1.")
+              "All four modules below are typed specifications. Fusion adds no cognitive provider.")
     table(s, ["Module", "Function / primary operations", "Owned state / exclusion"], [
         ("Belief revision", "Revise under an explicit numerical model\nsubmitEvidence · readBelief", "Belief + evidence ledger\nNo agenda or attention writes"),
         ("PLN kernel", "Apply a rule to explicit premises\nprofiles · applyRule", "No mutable domain state\nReturns a proposed derivation"),
@@ -259,9 +275,9 @@ def build_content():
         ("Execution", "Run one named operation\nsubmit · status · result", "Jobs + completion outbox · IMPLEMENTED"),
         ("Registry", "Describe configured providers\ndescriptors", "Static configuration · IMPLEMENTED"),
         ("Resolver", "Match required semantics\nresolve", "No mutable state · IMPLEMENTED"),
-        ("Consensus / finality", "Submit approved commitment; observe\nsubmit · observe", "Signed intent journal · REAL LOCAL CHAIN"),
+        ("Consensus / finality", "Submit approved commitment; observe\nsubmit · observe", "Signed intents · HISTORICAL M1"),
         ("Authorization", "Check current caller + scope + method\nauthorize / live policy checks", "Server-owned policy · LOCAL FIXTURE")], [330, 590, 536], row_h=82, size=23)
-    note(s, "Messaging owns accepted inbox entries and acknowledgements. Execution owns jobs and its outbox, and only accepts inspect_atom in M1. Registry is a static provider catalogue, not capability authority or chain registration; the resolver is a pure selection function over those descriptors. Finality is a separate bounded adapter with a registered approved commitment, durable signed intent and direct node observations. It does not establish belief confidence, execution success or indefinite availability. Authorization reads current server-owned policy from authenticated transport context; the implemented policy is a fixture for the trusted local harness. No caller-supplied sender field grants authority.")
+    note(s, 'Messaging owns accepted inbox entries, acknowledgements and replay. Execution owns jobs and the completion outbox, and accepts only inspect_atom. Its result atoms belong to AtomStorage, a separate owner. Registry and resolver select a configured descriptor, not permission. Finality is a separate adapter with a historical real M1 observation; it is not invoked by the real Hive M1.2 workflow. Native Hive authenticates the operator and supplies trusted actor context. Fusion then enforces current scope, method and route policy through a labelled local test-policy implementation. Caller-supplied identity does not confer authority.')
 
     s = Slide("Function dependencies: the proposed cognitive path", "01 / Dependency map · data and cognition",
               "Dashed arrows = specified calls. Solid arrow = implemented call. Direction = caller → provider.", source="ports.py + contracts.md")
@@ -287,286 +303,289 @@ def build_content():
     s.text(727, 639, 695, "Search reads records/events; revision reads evidence snapshots.", 20, C["muted"])
     note(s, "This is a declared runtime dependency view, not a claim that the cognitive loop was executed. Arrows point from a caller to the port it invokes. Inference control calls Search.query, attention.select and submitStimulus, belief.readBelief and submitEvidence, and PLN.applyRule. Episode history produces EvidenceRef values for the orchestrator; episode writes do not invoke hidden truth setters. Relations can persist ordinary atom records and episodic memory stores referenced payloads. AtomStorage then calls the opaque DA storage port: this is the solid implemented path. Search reads immutable records/events and belief revision consumes evidence/atom snapshots; those data dependencies are named below the diagram to avoid a misleading tangle of arrows. Interface imports remain acyclic; runtime feedback is expressed through explicit commands and values.")
 
-    s = Slide("Function dependencies: admission, work and delivery", "01 / Dependency map · runtime control",
-              "Resolve once per configured capability; authorize every invocation.", source="client.py · service.py · registry.py")
-    s.box(72, 254, 270, 120, "Client + setup", "store · share · delegate", "blue", title_size=28, body_size=22)
-    s.box(463, 254, 320, 120, "Resolver", "resolve(requirement)", "blue", title_size=28, body_size=23)
-    s.box(905, 254, 320, 120, "Registry", "descriptors(binding)", "blue", title_size=28, body_size=23)
-    s.line(342, 312, 463, 312, arrow=True)
-    s.line(905, 312, 783, 312, dash=True, arrow=True)
-    s.text(795, 276, 110, "offers", 20, C["muted"])
-    s.box(72, 478, 270, 125, "Authorization", "caller · scope · operation", "blue", "ice", title_size=26, body_size=22)
-    s.line(207, 374, 207, 478, C["blue"], arrow=True)
-    s.text(225, 409, 520, "binding → validated dispatch", 22, C["muted"])
-    s.box(463, 478, 320, 125, "Execution", "submit · status · result", "blue", title_size=28, body_size=23)
-    s.box(905, 478, 320, 125, "AtomStorage", "get(input) · create(result)", "blue", title_size=28, body_size=21)
-    s.line(342, 541, 463, 541, C["blue"], arrow=True)
-    s.line(783, 541, 905, 541, C["blue"], arrow=True)
-    s.box(463, 689, 320, 94, "Messaging", "send → poll → ack", "blue", title_size=25, body_size=21)
-    s.line(623, 603, 623, 689, C["blue"], arrow=True)
-    s.text(647, 631, 270, "durable outbox → inbox", 20, C["muted"])
-    s.box(1271, 478, 257, 125, "DA storage", "put · get", "teal", "mint", title_size=25, body_size=22)
-    s.line(1225, 541, 1271, 541, C["teal"], arrow=True)
-    s.box(997, 689, 531, 94, "Consensus / finality", "submit(approved digest) · observe", "teal", title_size=25, body_size=21)
-    s.text(1255, 270, 277, "Optional separate caller\n+ registered approval\n+ injected signer", 23, C["muted"])
-    s.path([(1390, 384), (1550, 384), (1550, 736), (1528, 736)], C["teal"])
-    note(s, "Demo setup resolves suitable descriptors, then Peer invokes the configured binding. The dashed offers arrow supplies descriptor data to the resolver. Each service invocation validates the wire envelope and checks the current local policy before the explicit dispatch allowlist. This diagram focuses on delegated execution; direct store and messaging calls pass through the same authorization boundary. Worker execution calls the atom owner to read inputs and create a persisted result. Completion goes through a durable outbox into the message owner's inbox; poll/ack are recipient-owned operations. The chain adapter is a separate optional consumer of one approved result digest. It is not on the mandatory storage or execution path. Scope/method checks also apply to worker reads and completion delivery. The static resolver does not grant permissions.")
 
-    s = Slide("State ownership survives co-location", "02 / Design details · authority",
-              "A shared database is a deployment choice. Its tables still have different writers.", source="architecture.md · ADR 002–004")
-    s.text(75, 245, 660, "M1: TRUSTED LOCAL SERVICE", 20, C["blue"], "bold")
-    s.rect(72, 290, 884, 354, C["ice"], radius=15)
-    for i, (title, state) in enumerate([("Atom owner", "refs · mutations"), ("Message owner", "inbox · acknowledgements"), ("Execution owner", "jobs · completion outbox")]):
-        x = 94+i*286
-        s.box(x, 315, 264, 140, title, state, "blue", title_size=25, body_size=22)
-        s.line(x+132, 455, x+132, 509, C["blue"], arrow=True)
-    s.rect(94, 510, 834, 104, C["white"], C["blue"], 10)
-    s.text(124, 532, 750, "SQLite FULL / WAL", 30, C["ink"], "bold")
-    s.text(124, 574, 750, "Owned transitions serialize through one writer", 23, C["muted"])
-    s.box(1010, 290, 518, 160, "Payload authority", "DeTTa FileStorage owns the bytes and erasure shares.", "teal", "mint", title_size=30, body_size=25)
-    s.box(1010, 481, 518, 163, "Future private client state", "Episodes, beliefs and attention stay behind their respective owner ports.", "violet", "lavender", title_size=28, body_size=24, dashed=True)
-    band(s, "External callers receive methods and receipts; they receive no table or owner setters.")
-    note(s, "M1 uses one SQLite journal to keep the example small. That journal stores several logically owned categories: atom metadata, messaging inbox state, execution jobs and outbox, plus replay records. Public dispatch only exposes declared operations, never raw SQL, worker controls or setters for another owner. Shared storage therefore does not erase responsibility boundaries. DA payloads and erasure shares live in actual DeTTa FileStorage outside SQLite. In future work, private episode history remains client-side, and truth or attention can change only through the relevant owner. This is logical ownership, not a claim of multi-tenant process isolation against the same OS user.")
+    s = Slide("Function dependencies: the real native path", "01 / Dependency map · runtime control",
+              "Solid arrows = exercised calls. Every provider effect crosses an existing validated interface.",
+              source="program.py · ports.py · execution.py")
+    s.box(72,246,330,130,"Native Hive", "POST /programs/…/act\nTrusted actor + command", "teal","mint",title_size=29,body_size=22)
+    s.box(535,246,430,130,"Fusion inspect plugin", "Owns caller receipts\nUses selected stdio binding", "blue","ice",title_size=29,body_size=23)
+    s.box(1080,246,448,130,"Registry + resolver", "describe → select\nPin full descriptor tokens", "blue",title_size=28,body_size=23)
+    s.line(402,312,535,312,C["teal"],arrow=True)
+    s.line(965,312,1080,312,C["blue"],arrow=True)
+    s.box(535,455,430,120,"Validated binding + policy", "Wire/profile checks · live authority", "blue","ice",title_size=27,body_size=22)
+    s.line(750,376,750,455,C["blue"],arrow=True)
+    s.box(72,455,330,120,"Execution", "submit · status · result", "blue",title_size=29,body_size=22)
+    s.box(1080,455,448,120,"AtomStorage", "create · get · getMany · availability", "blue",title_size=29,body_size=21)
+    s.line(535,514,402,514,C["blue"],arrow=True)
+    s.line(965,514,1080,514,C["blue"],arrow=True)
+    s.path([(237,455),(237,414),(1304,414),(1304,455)],C["blue"])
+    s.text(800,386,700,"Submit → get(input) · worker → get / create",21,C["blue"])
+    s.box(535,677,430,105,"Messaging", "send · poll · ack", "blue",title_size=28,body_size=22)
+    s.line(750,575,750,677,C["blue"],arrow=True)
+    s.path([(237,575),(237,729),(535,729)],C["blue"])
+    s.text(282,626,430,"Outbox → CompletionDelivery.accept",19,C["blue"])
+    s.path([(965,729),(1020,729),(1020,550),(1080,550)],C["blue"])
+    s.text(802,626,210,"send → get(ref)",20,C["blue"])
+    s.box(1080,677,448,105,"DeTTa DA / FileStorage", "Opaque put · get · availability", "teal","mint",title_size=27,body_size=21)
+    s.line(1304,575,1304,677,C["teal"],arrow=True)
+    s.text(87,796,1360,"Optional finality uses a separate caller + approved digest + signer; M1.2 does not invoke it.",21,C["muted"])
+    note(s,"Follow the real native dispatch into the thin plugin, which holds a caller-owned receipt and uses Subprocess/Peer through descriptor-bound validation. Direct storage, messaging and execution calls all cross the same authenticated boundary. Trusted composition supplies concrete owners; the plugin never constructs them or accesses their tables. Messaging.send validates the referenced bytes through caller-authorized AtomStorage.get; Execution.submit reads the input before accepting a new job. The worker calls declared AtomStorage get/create, then execution commits terminal state/outbox. CompletionDelivery.accept belongs to the mailbox owner and commits separately. Chain remains a separate, uninvoked adapter. This is a logical call map; it does not force one process per module.")
 
-    s = Slide("Keep four architecture choices independent", "02 / Design details · substitution",
-              "Changing placement must not silently change the meaning of an operation.", source="ADR 004–005 · bindings.py")
-    rows = [("INTERFACE", "What behavior is promised?", "atom.storage / immutable-bytes/1", "blue"),
-            ("IMPLEMENTATION", "Who provides that behavior?", "AtomOwner + injected DeTTa adapter", "teal"),
-            ("TRANSPORT", "How does a caller cross the boundary?", "In-process call or private JSON stdio", "blue"),
-            ("PLACEMENT", "Where does the implementation run?", "Trusted local service; optional chain adapter", "amber")]
-    for i, (label, question, example, color) in enumerate(rows):
-        y = 254+i*116
-        s.rect(72, y, 1456, 100, C["white"], radius=10)
-        s.rect(72, y, 8, 100, C[color])
-        s.text(101, y+33, 290, label, 24, C[color], "bold")
-        s.text(405, y+20, 520, question, 27, C["ink"], "bold")
-        s.text(971, y+23, 520, example, 26, C["muted"])
-    band(s, "Only composition imports concrete adapters. Domain contracts stay backend-neutral.")
-    note(s, "A service contract is an interface, not necessarily a blockchain smart contract. One module can run in process, behind a message boundary or through an inspected chain API, provided the profile and required behavior are preserved. The current proof runs identical Peer consumer code under in-process and subprocess service bindings. Both still use real DA helper processes and separate workers. This demonstrates a transport substitution within the local composition; it does not demonstrate an alternate DA provider or a distributed deployment. Constructor/composition code imports concrete adapters. The typed domain ports do not depend on DeTTa, F1R3, PLN or ECAN implementations.")
+    s = Slide("Separate owners now have separate durable commits", "02 / Ownership · M1.1 preserved",
+              "Result atoms, execution state, mailbox acceptance and caller acceptance do not share a transaction.",
+              source="architecture.md · atoms.py · messaging.py · program.py")
+    cards=[(72,250,"AtomStorage","Immutable refs + replay","Own metadata journal over opaque DA; independent file fixture also supported.","teal"),
+           (568,250,"Execution","Jobs + completion outbox","One terminal-state transaction; result persistence already committed.","blue"),
+           (1064,250,"Messaging","Inbox + acknowledgements","Own acceptance and ack journal; delivery may repeat until acknowledged.","blue"),
+           (72,506,"Native caller","Intent + accepted outcome","Minimal plugin receipt; stable job context survives loss of caller RAM.","teal"),
+           (568,506,"Wire admission","Mutation response + fingerprint","Colocated with execution; each effect owner also keeps replay identity.","blue"),
+           (1064,506,"Authorization","Current grants + routes","Operator-owned configuration; access is rechecked on retries and work.","amber")]
+    for x,y,title,tag,body,color in cards:
+        s.box(x,y,464,220,title,body,color,"white",tag=tag,title_size=29,body_size=24)
+    band(s,"Co-location is allowed. Foreign SQL and shared transaction assumptions are not part of the contracts.",size=24)
+    note(s,"This replaces the old M1 shared-journal drawing. M1.1 split atom metadata, messages and execution into separately committed owner stores and declared the dependencies actually exercised by the worker. Execution's own terminal state and outbox are atomic with each other, not with atom persistence or mailbox acceptance. Wire replay metadata is colocated with execution, while cross-owner operations have owner-local replay. M1.2 adds only a minimal caller boundary receipt, not episodes or a new journal framework. It serializes one caller journal and permits one unfinished intent per dedicated route. All observations concern persistent local files and process restart.")
 
-    s = Slide("Compatibility is a semantic filter", "02 / Design details · resolution",
-              "A matching name is only the start of provider selection.", source="registry.py · test_adapters.py")
-    labels = [("Version", "Explicit same-major range"), ("Profile", "Exact semantics + features"),
-              ("Operations", "Required calls available"), ("Guarantees", "Durability, privacy, limits")]
-    for i, (title, body) in enumerate(labels):
-        x = 72+i*370
-        s.box(x, 280, 346, 189, title, body, "blue", "white", title_size=33, body_size=27)
-        if i < 3:
-            s.line(x+346, 376, x+365, 376, C["blue"], arrow=True)
-    s.box(72, 524, 704, 180, "Required proof? Fail closed.", "No verifier is installed. A proof-shaped field cannot satisfy a verification requirement.", "amber", "sand", title_size=30, body_size=27)
-    s.box(800, 524, 728, 180, "Actual wire version: 1.0.0", "Additive 1.2.3 compatibility is a resolver fixture, not an available wire provider.", "blue", "ice", title_size=30, body_size=27)
-    note(s, "The resolver filters interface identity and a consumer's explicit same-major interval, exact profile and required features, supported operations, advertised guarantees, payload limits and privacy. Any required measured latency must be present in descriptor measurements. Required verification always fails because no verifier is available. Advertisements and evidence remain distinct. The actual M1 dispatch only accepts wire 1.0.0. A separate descriptor fixture at 1.2.3 exercises additive resolution; it is not evidence of a deployed 1.2.3 service. Unsupported requirements produce typed errors instead of weaker fallback selection. Interface 1.0.0 stabilizes this prototype, not an agreed community standard.")
+    s = Slide("AtomStorage replacement is independently exercised", "02 / Substitution · four-way matrix",
+              "Protocol fixture callers exercise two providers and two transports; the worker logic is unchanged.",
+              source="evidence/m1_2/m11-swap-demo.json · test_m11.py")
+    table(s,["Selected AtomStorage", "In-process binding", "Private stdio binding"],[
+        ("Real DeTTa libraries", "PASS · independent workflow", "PASS · independent workflow"),
+        ("Atomic-file fixture", "PASS · independent workflow", "PASS · independent workflow")],[510,473,473],row_h=130,size=28)
+    s.box(72,592,704,140,"Independent implementation", "The file fixture does not inherit AtomOwner or use its SQLite atom table.","blue","ice",title_size=30,body_size=25)
+    s.box(800,592,728,140,"Fresh stores only", "No accepted jobs or existing references are moved between providers.","amber","sand",title_size=30,body_size=25)
+    band(s,"Interface, implementation, transport and placement remain independent choices.",size=27)
+    note(s,f"The committed M1.2 matrix contains {len(SWAP['runs'])} workflows: DeTTa and fixture-files under both in-process and private subprocess bindings. These peers remain fixtures; this matrix is not relabelled as the new native Hive test. Execution depends on declared AtomStorage and CompletionDelivery ports and does not inspect concrete atom owners. The file fixture owns atomic payload/record files and is independently implemented. This proves substitutability in the documented fresh-store profile. It is not another DA network, live namespace switching, a journal migration or distributed placement. M1.2 preserves these boundaries without changing fusion/.")
 
-    s = Slide("Identity, replay and authority travel separately", "02 / Design details · invocation",
-              "The invocation names an operation; trusted context identifies the caller.", source="contracts.py · wire.schema.json")
-    s.rect(72, 245, 750, 476, C["dark"], radius=15)
-    example = ["interface_ref: atom.storage@1.0.0", "profile: immutable-bytes/1", "operation: create", "scope_ref: shared-test", "message_id: delivery-042", "idempotency_key: capture-007", "body: {content_type, bytes, sharing}"]
-    for i, line in enumerate(example):
-        s.text(102, 276+i*53, 696, line, 24, C["white"] if i != 5 else "77DDC4", "mono")
-    s.text(102, 665, 680, "Illustrative field view · not a literal wire request", 19, C["dim"])
-    s.box(870, 245, 658, 132, "Occurrence ≠ content", "Identical bytes can be distinct observations.", "ink", title_size=30, body_size=26)
-    s.box(870, 405, 658, 132, "Retry ≠ new mutation", "Same key + semantic input recovers the same effect.", "ink", title_size=30, body_size=26)
-    s.box(870, 565, 658, 156, "Scope identifier ≠ permission", "Live policy uses the authenticated principal. Correlation + reply route make async work traceable.", "ink", title_size=29, body_size=25)
-    note(s, "This is an illustrative field view, not a copy-paste wire JSON request. The actual schema is contracts/wire.schema.json. Immutable AtomRef identifies a scoped record with revision and integrity digest; the digest does not grant permission or establish truth. A mutation key is scoped by principal, scope, interface and operation, and bound to semantic input. Changing the body, routing or deadline with the same key is a conflict. Message ID and causation are delivery metadata. Async send/submit include correlation and an authorized reply route. Trusted transport supplies the opaque credential, which current service policy maps to a principal. The body cannot nominate its own authority.")
+    s = Slide("Compatibility binds semantics and selected replies", "02 / Compatibility · exact profiles",
+              "Consumer requirements are independent of provider advertisements.",source="registry.py · bindings.py · responses.py")
+    for i,(title,body) in enumerate([("Version","Wire remains 1.0.0"),("Profile","Exact behavioral semantics"),("Operations","Required methods and limits"),("Descriptor","Token checked on invocation and reply")]):
+        x=72+i*370
+        s.box(x,263,346,173,title,body,"blue",title_size=31,body_size=25)
+        if i<3:s.line(x+346,347,x+364,347,C["blue"],arrow=True)
+    for x,title,body in [(72,"AtomStorage","immutable-bytes/1"),(568,"Messaging","durable-mailbox/2"),(1064,"Execution","inspect-atom/2")]:
+        s.box(x,486,464,130,title,body,"teal","mint",title_size=29,body_size=26)
+    s.text(77,660,1430,"Descriptor implementation 0.1.1   •   Deterministic inspect output algorithm 0.1.0",28,C["ink"],"bold")
+    band(s,"Descriptor hashes establish binding consistency; remote identity and provider truth remain separate.",size=24)
+    note(s,"The resolver uses fixed consumer requirements, exact profiles, supported operations, privacy and claimed guarantees. Binding invocation and success replies carry the selected descriptor token; response validation checks shape, scope, references, integrity, receipts and known correlation. The native adapter loads operator-selected descriptors and uses that same boundary. Native-path tests reject an incompatible profile and a changed descriptor. Wire remains 1.0.0; the /2 messaging and execution profiles describe neutral process-restart receipts and recoverable status. They do not imply live 1.x rolling interoperability. No proof verifier is installed, so required verification fails closed.")
 
-    s = Slide("One slice crosses real process and storage boundaries", "03 / Running integration · end-to-end",
-              "Two independent protocol peers. One allowlisted operation. Two interchangeable service bindings.", source="scripts/demo.py · evidence/demo.json")
-    xs = [120, 438, 756, 1074, 1392]
-    for x, label in zip(xs, ["Peer A", "Owners", "Peer B", "Worker", "DeTTa"]):
-        s.rect(x-75, 236, 150, 52, C["mint"] if label=="DeTTa" else C["ice"], radius=8)
-        s.text(x-62, 251, 140, label, 22, C["teal"] if label=="DeTTa" else C["blue"], "bold")
-        s.line(x, 300, x, 763, C["line"], dash=True)
-    steps = [(120,438,"1  create fixture",332),(438,1392,"2  persist bytes → scoped ref",385),
-             (120,756,"3  share ref through durable mailbox",438),
-             (756,438,"4  get(ref) → identical bytes",491),
-             (120,438,"5  submit inspect_atom → durable acceptance",544),
-             (1074,1392,"6  read + compute + persist",597),
-             (1074,438,"7  commit result + completion outbox",650),
-             (120,438,"8  restart → status / result / poll / ack",719)]
+    s = Slide("Native identity and stable intent stay separate", "02 / Invocation · trusted context",
+              "Hive supplies the actor; the operator supplies the mapping; Fusion checks current authority.",
+              source="ProgramActions.person_act · integration/hive/program/program.py")
+    s.rect(72,250,744,463,C["dark"],radius=14)
+    for i,line in enumerate(["action: inspect", "params: {seed: 12}", "idempotency_key: generated-intent-12", "", "ctx.actor ← native authentication", "ctx.command ← native request digest", "credential ← private operator config"]):
+        s.text(99,284+i*51,689,line,23,C["white"] if i<4 else "77DDC4","mono")
+    s.box(865,250,663,134,"Only generated shareable input", "The seed produces bytes; no private history or arbitrary remote operation is accepted.","blue","ice",title_size=28,body_size=25)
+    s.box(865,412,663,134,"Original input + original key", "An ambiguous response replays the intent; it does not allocate a second job.","blue","ice",title_size=28,body_size=25)
+    s.box(865,574,663,139,"Authorization remains live", "Even a recorded successful outcome must pass current module checks before return.","amber","sand",title_size=28,body_size=25)
+    band(s,"Scope labels, saved receipts and caller-supplied identity do not grant permission.",size=27)
+    note(s,"The diagram shows native action fields, not a complete copy-paste HTTP request; the actual body also includes the swarm and an empty items list. Hive authenticates the operator, checks swarm visibility, rejects identity fields in params, and delivers trusted actor/command context. An exact principal/swarm configuration selects credential, scope, reply route and a fixture counterparty. The plugin accepts only an integer seed and no arbitrary input bytes. Stable keys cover input creation, sharing, job submission and acknowledgement. On retry, status/get/poll/ack continue to enforce the current Fusion policy. Test credentials and private configuration are never embedded in the deck.")
+
+    s = Slide("The intended Hive source now has a verified entrypoint", "03 / Native integration · source first",
+              "The supplied schematics identify the runtime and revision used for this engineering gate.",
+              source="sources.json · discovery.md · native-baseline.xml")
+    s.box(72,250,445,162,"Schematics", "4af00db4e395\nDocumentation points to Hive 34b0fb3.","ink",title_size=31,body_size=26)
+    s.box(566,250,445,162,"Actual Hive source", "34b0fb32ab38\nAuthorized SSH fetch; clean checkout.","teal","mint",title_size=30,body_size=26)
+    s.box(1060,250,468,162,"Native baseline", f"{COUNTS['native-baseline']} selected tests passed\nUpstream process driver is a fixture.","teal","mint",title_size=30,body_size=26)
+    s.line(517,331,566,331,C["teal"],arrow=True);s.line(1011,331,1060,331,C["teal"],arrow=True)
+    s.rect(72,466,1456,244,C["dark"],radius=14)
+    for i,line in enumerate(["python -m hive → exclusive startup recovery → create_app", "POST /api/programs/fusion-inspect/act", "ProgramActions.person_act → Programs.act → plugin.act"]):
+        s.text(101,495+i*66,1384,line,27,C["white"],"mono")
+    band(s,"Real native dispatch; ASGI TestClient is the transport. No fake Hive, live LLM or new server.",size=25)
+    note(s,"The old runtime-unavailable statement is historical. The user supplied clean omegahive-schematics 4af00db4e395375484dd48d0b9068a59afcf01f8; its component map names 34b0fb3. Authorized SSH retrieved PhysixSNET/omegahive at 34b0fb32ab3806e5609fc89bb7535518a35e1aea. The different observed remote HEAD was not silently selected. Native startup is python -m hive. The test driver uses its lock, startup recovery and create_app in a separate OS process, with real PeTTa and the default Supervisor. It signs in and traverses the actual Programs route. Native baseline tests have their declared fake process driver; the new real-caller tests do not. No LLM or mind is started. This pin selects an engineering experiment, not a final community product release.")
+
+    s = Slide("One native operation crosses the existing interfaces", "03 / Native integration · sequence",
+              "The caller stores intent; each provider commits only its own state.",source="program.py · execution.py · messaging.py")
+    xs=[155,480,805,1130,1455]
+    for x,label in zip(xs,["Real Hive", "Caller receipt", "AtomStorage", "Execution", "Messaging"]):
+        s.rect(x-90,235,180,54,C["mint"] if label in {"Real Hive","AtomStorage"} else C["ice"],radius=8)
+        s.text(x-79,251,161,label,21,C["ink"],"bold")
+        s.line(x,302,x,760,C["line"],dash=True)
+    steps=[(155,480, "1  Save original intent",330),(155,805,"2  create → real DeTTa persistence receipt",382),
+           (155,1455,"3  send reference to fixture counterparty",434),(155,1130,"4  submit inspect_atom → durable job acceptance",486),
+           (155,480,"5  Save pending job context",538),(1130,805,"6  Worker reads input; result atom commits",590),
+           (1130,1455,"7  Terminal + outbox commit; mailbox accepts separately",642),
+           (155,1455,"8  Recover status → poll → get result → accept → ack",723)]
     for x1,x2,label,y in steps:
-        left = min(x1,x2)
-        s.text(left+12, y-28, min(max(abs(x2-x1), 630), 1515-left), label, 20, C["ink"])
-        s.line(x1, y, x2, y, C["teal"] if y in (385,597) else C["blue"], 2, arrow=True)
-    note(s, "The arrows summarize the logical sequence; reads and writes from the worker pass through the atom/storage adapter, even when omitted for clarity. Peer A creates a generated 62-byte fixture through AtomStorage into real DeTTa. It sends the reference through the durable mailbox. Peer B receives it and fetches exactly the same bytes. A submits inspect_atom; the separate worker reads the referenced bytes and returns their digest and length. The demo kills the worker twice at persisted boundaries, restarts, then recovers a correlated completion and result. Every acknowledgement refers to its stated durability scope. Both service bindings use the same Peer code and validation. The peers and operation are fixtures, not Omega agents or reasoning.")
+        left=min(x1,x2)
+        if y in {590,642}:left=510
+        s.rect(left+4,y-28,width(label,20)+12,26,C['bg'])
+        s.text(left+8,y-28,1510-left,label,20,C["ink"])
+        s.line(x1,y,x2,y,C["teal"] if y in {382,590} else C["blue"],arrow=True)
+    note(s,"All effects originate in the real native operation, not a renamed protocol demo. The caller first commits its original intent. AtomStorage persists generated bytes in actual DeTTa, then Messaging accepts a reference for the explicitly labelled fixture counterparty. DelegatedExecution accepts only inspect_atom under the original key and correlation. The caller records the accepted job. A separate real worker reads/persists through AtomStorage, then commits execution terminal state/outbox. Messaging accepts the completion in a separate transaction. The final arrow summarizes the reconciliation expanded on the next slides: status /2 restores known correlation, poll and get verify the completion, caller acceptance commits, and a stable-key acknowledgement follows. This is not one distributed transaction.")
 
-    s = Slide("A receipt proves one fact at one boundary", "03 / Running integration · evidence model",
-              "These observations are independent. They are not one universal success state.", source="contracts.md · evidence.md")
-    cards = [(72,252,"STORAGE","Payload persisted","Local shares; declared durability", "teal"),
-             (568,252,"MESSAGING","Message accepted","Delivery repeats until recipient ack", "blue"),
-             (1064,252,"EXECUTION","Result committed","Job result + completion outbox", "blue"),
-             (72,502,"CHAIN SUBMISSION","Signed intent accepted","Deploy ID; outcome still pending", "amber"),
-             (568,502,"CHAIN INCLUSION","Deploy observed in block","Block ID; effects may be pending", "amber"),
-             (1064,502,"CHAIN FINALITY","Effects reported finalized","Node observation + evidence", "teal")]
-    for x,y,tag,title,body,color in cards:
-        s.box(x,y,464,210,title,body,color,"white",tag=tag,title_size=29,body_size=25)
-    band(s, "Finality does not establish indefinite availability of off-chain bytes.", color="amber", fill="sand")
-    note(s, "Avoid turning this grid into a linear distributed transaction. A result can be durable before a chain commitment exists; messaging can be delayed while result retrieval already works. Payload persistence is qualified by its local durability scope. Mailbox acceptance is different from recipient acknowledgement. Execution completion is different from whether its outbox was delivered. Chain submission yields a deploy ID, inclusion yields a block observation and effect finality comes from the specific inspected endpoint. A finalized digest does not prove a payload will remain available, nor does any of these receipts establish belief confidence. This separation is central to both interfaces and reporting.")
+    s = Slide("Six receipts describe six different facts", "03 / Native integration · completion semantics",
+              "A pending native receipt can be reconciled; it is not a Hive goal or a claim of completed work.",
+              source="contracts.md · m1_2-evidence.md")
+    entries=[(72,250,"1 · INPUT PERSISTENCE","Bytes have a scoped ref","Real DeTTa receipt; local files/process restart.","teal"),
+             (568,250,"2 · JOB ACCEPTANCE","Work is durably queued","No claim yet about execution or reply delivery.","blue"),
+             (1064,250,"3 · RESULT + TERMINAL","Execution has an outcome","Atom result first; job terminal/outbox commit second.","blue"),
+             (72,501,"4 · MAILBOX ACCEPTANCE","Completion is retained","Poll can repeat until the recipient acknowledges.","blue"),
+             (568,501,"5 · CALLER ACCEPTANCE","One outcome is recorded","Known job, correlation and result bytes verified.","teal"),
+             (1064,501,"6 · ACKNOWLEDGEMENT","Delivery is acknowledged","Retry reuses the same key if the ack response is lost.","teal")]
+    for x,y,tag,title,body,color in entries:s.box(x,y,464,221,title,body,color,"white",tag=tag,title_size=28,body_size=24)
+    band(s,"Native done = verified outcome + successful acknowledgement. Terminal failure stays an explicit error.",size=24)
+    note(s,"These facts are independent. A result atom can persist while the job is still queued after worker death. A succeeded job may have an unsent outbox when a reply route is full. A caller may have recorded its accepted outcome while acknowledgement is still pending. The plugin commits its outcome before acknowledgement to deduplicate that gap, and rechecks live authorization before returning it on replay. A failed worker completion is verified, recorded and acknowledged as an error, never transformed into empty memory or successful inspection. There is no exactly-once display or physical-execution guarantee. The original acceptance receipt in the trace remains queued/not-observed because it describes admission, not the later outcome.")
 
-    s = Slide("Crash recovery is a replay protocol", "03 / Running integration · durability",
-              "SQLite and DA do not share an atomic commit. The gap is handled explicitly.", source="ADR 003 · test_contract.py")
-    stages = [(72, "Accept job", "SQLite commit"), (442, "Persist result", "Real DA write"),
-              (812, "Complete job", "Result + outbox commit"), (1182, "Deliver reply", "Inbox + outbox commit")]
-    for i,(x,title,body) in enumerate(stages):
-        s.box(x,275,346,139,title,body,"blue" if i!=1 else "teal",title_size=29,body_size=24)
-        if i<3:
-            s.line(x+346,344,x+365,344,C["blue"],arrow=True)
-    for x,num,title,body in [(90,"A","Before acceptance reply","Retry recovers the accepted job."),
-                             (556,"B","After DA write","Replay reuses the same coordinate; an unreferenced artifact may remain."),
-                             (1030,"C","Before dispatch","The persisted outbox survives and later reaches the inbox.")]:
-        s.tag(x,462,f"SIGKILL {num}","red",C["blush"],20)
-        s.text(x,521,420,title,29,C["ink"],"bold")
-        s.text(x,610,420,body,27,C["muted"])
-    band(s,"One logical result; physical computation may repeat. Tested failure model: same-host process death.",size=25)
-    note(s,"The three tested fault boundaries are acceptance committed before a response, DA result persisted before the completion transaction, and completion committed before dispatch. The demo itself performs the latter two worker kills; the contract suite also tests the acceptance-reply boundary. Deterministic storage coordinates and semantic deduplication let an attempt replay without a second logical result. A DA write before journal commit can leave an unreferenced artifact: there is no cross-store atomicity claim. Result metadata, job completion and outbox intent commit together in SQLite; inbox delivery and outbox completion also commit together. A full or revoked reply route keeps completion pending. These tests cover SIGKILL on the same host, not power loss, disk loss, Byzantine behavior or exactly-once physical computation.")
+    s = Slide("A restarted Hive caller recovers without its old RAM", "03 / Recovery · actual caller SIGKILL",
+              "Three kill points traverse the same authenticated native action route.",source="test_integration.py · hive-integration.xml")
+    for x,tag,title,body in [
+        (72,"AFTER ADMISSION","Response lost", "Fusion accepted the job; the caller has only its original intent. Same input + key recovers the same job."),
+        (568,"AFTER SUBMISSION","Caller stops", "The local receipt retains the job. Status /2 restores known correlation after a new process signs in."),
+        (1064,"AFTER ACCEPTANCE","Ack not yet sent", "The outcome is durable. Redelivery is checked against it, then acknowledged without a second outcome row.")]:
+        s.box(x,258,464,345,title,body,"blue","white",tag=tag,title_size=34,body_size=27)
+        s.tag(x+22,627,"SIGKILL → RESTART → REPLAY","red",C["blush"],17)
+    s.text(77,705,1430,"Observed: one job · one result atom · one completion · one accepted outcome identity",29,C["teal"],"bold")
+    band(s,"Known-job recovery uses durable context and status; unsolicited completions do not establish causality.",size=24)
+    note(s,"These are actual OS-process kills, not exceptions standing in for restart. The test caller is a native Hive app process with real authentication and dispatch. Trusted configuration enables a SIGSTOP checkpoint; the test waits for its marker and sends SIGKILL. Admission-loss occurs after durable Fusion acceptance but before saving the job in the caller record. Submission-loss occurs after that local record commits. Acceptance-loss occurs after outcome commit and before ack. A new app process signs in against the same native data directory and reconciles the original request. Tests assert stable job identity, two total atoms (input and one result), one outbox, one completion, one caller outcome and no delivery after ack. The receipt is a minimal boundary record, not an episodic-memory implementation.")
 
-    s = Slide("The DA boundary carries bytes, not cognition", "03 / Running integration · storage",
-              "The application adapter is outside the unchanged DeTTa core.", source="adapters/detta/src/main.rs · test_adapters.py")
-    s.box(72,253,450,164,"Application contracts","AtomRef · scope · semantic replay", "blue", "ice",title_size=31,body_size=27)
-    s.box(619,253,405,164,"External adapter","Opaque payload + generic coordinate", "teal","mint",title_size=31,body_size=25)
-    s.box(1121,253,407,164,"DeTTa core","DA encoding + FileStorage", "teal","mint",title_size=31,body_size=26)
-    s.line(522,335,619,335,C["teal"],arrow=True)
-    s.line(1024,335,1121,335,C["teal"],arrow=True)
+    s = Slide("Worker failure and backpressure preserve pending work", "03 / Recovery · independent commits",
+              "A result can survive worker death; a full route can delay completion without losing it.",
+              source="execution.py · test_m11.py · test_integration.py")
+    stages=[(72,"Result atom","Committed by AtomStorage","teal"),(442,"Job + outbox","Committed by execution","blue"),
+            (812,"Completion","Accepted by Messaging","blue"),(1182,"Caller outcome","Accepted, then acknowledged","teal")]
+    for i,(x,title,body,color) in enumerate(stages):
+        s.box(x,252,346,156,title,body,color,"white",title_size=29,body_size=25)
+        if i<3:s.line(x+346,331,x+365,331,C["blue"],arrow=True)
+    s.box(72,472,704,238,"Kill after result persistence", "The job remains queued while its atom is durable. Restart reuses the logical result and later publishes completion.","blue","ice",tag="REAL WORKER SIGKILL",title_size=29,body_size=27)
+    s.box(800,472,728,238,"Full reply route", "The outbox remains pending. The caller refuses an unrelated delivery; once capacity returns, the known completion is accepted.","amber","sand",tag="NATIVE CALLER BACKPRESSURE",title_size=29,body_size=27)
+    band(s,"Worker revocation yields an explicit failed completion with no result atom; no silent success.",size=25)
+    note(s,"The native worker-recovery test kills the existing worker after AtomStorage has committed the result and before execution terminal state/outbox commit. The test observes two atoms, one queued job and no outbox, then restarts and verifies one result. In the full-route test, a labelled fixture fills the dedicated reply route. Flush reports zero sent and one pending. The native operation refuses the unrelated delivery and does not record an accepted outcome. After fixture cleanup, flush and native completion succeed. A separate test revokes worker create authority after admission and observes an explicit UNAUTHORIZED failed completion without a result atom. Temporary input unavailability is exercised in the preserved M1.1 matrix; the new native representative provider-failure case is route backpressure. No cross-owner atomicity is claimed.")
+
+    s = Slide("The DA boundary remains application-neutral", "03 / Storage · opaque persistence",
+              "The external adapter translates application references into generic coordinates and opaque bytes.",source="adapters/detta/src/main.rs · test_contract.py")
+    for x,w,title,body,color,fill in [(72,450,"Application contracts","Scope · references · replay identity","blue","ice"),
+        (619,405,"External adapter","Opaque payload + generic coordinate","teal","mint"),
+        (1121,407,"DeTTa core","DA encoding + FileStorage","teal","mint")]:
+        s.box(x,253,w,164,title,body,color,fill,title_size=30,body_size=26)
+    s.line(522,335,619,335,C["teal"],arrow=True);s.line(1024,335,1121,335,C["teal"],arrow=True)
     s.text(75,477,1000,"4 data shares + 2 parity shares",38,C["ink"],"bold")
     for i in range(6):
-        x=74+i*153
-        missing=i>=4
+        x=74+i*153;missing=i>=4
         s.rect(x,555,125,115,C["pale"] if missing else C["mint"],C["line"] if missing else C["teal"],10,missing)
         s.text(x+31,580,90,f"S{i+1}",35,C["muted"] if missing else C["teal"],"mono")
         s.text(x+16,631,110,"removed" if missing else "present",17,C["muted"])
-    s.box(1060,506,468,195,"Observed reconstruction","Cached payload + 2 shares removed: exact bytes recovered. Third missing share: unavailable.","teal",title_size=28,body_size=25)
-    band(s,"No Omega IDs, truth values, ECAN balances or job state inside the generic DA schema.",size=25)
-    note(s,"The Rust helper links actual detta-da and detta-storage from the inspected working tree. It maps bytes into an opaque application profile and binds the scope through generic coordinate metadata. The generic DA schema remains application-neutral; Omega-specific reference metadata lives above it. Reads reconstruct and verify persisted Reed–Solomon shares rather than retrieving a cached copy from SQLite. Tests remove the cached full payload and two of six shares and still recover exact bytes. A third missing share and corrupted-share cases fail explicitly; the tests do not establish an exhaustive adversarial-correction guarantee. This is real local library integration, not a running distributed validator/custody network. No certificate or remote replication guarantee is fabricated.")
+    s.box(1060,506,468,195,"Observed reconstruction","Cached payload + two shares removed: exact bytes recovered. A third missing share is unavailable.","teal",title_size=28,body_size=25)
+    band(s,"The DA core does not interpret Hive identities, truth values, attention balances or job state.",size=25)
+    note(s,"This unchanged DA boundary is exercised against a freshly fetched clean secured-contract-spaces revision 272888f264dd2dde18b574cabb53c266b0dac2ec. No Hive-specific schema is added to DeTTa. Application references and replay semantics belong above opaque DA. Conformance removes the cached payload and two erasure shares and verifies reconstruction; three missing shares and corruption fail explicitly. This is actual local library execution, not a validator/custody network or an indefinite-retention claim. The independent atomic-file provider is an AtomStorage contract fixture, not a second DA network. The clean-source rebaseline excludes historical dirty storage-format and custody-pruning additions and reruns applicable tests.")
 
-    s = Slide("Authorization is checked where state is owned", "03 / Running integration · isolation",
-              "Authenticated context → current policy → explicit method → owner transition.", source="service.py · ADR 002")
-    table(s,["Attempt", "Observed behavior", "Boundary"],[
-        ("Read another scope", "UNAUTHORIZED", "Scope IDs confer no authority"),
-        ("Poll or ack another route", "UNAUTHORIZED", "Recipient owns delivery state"),
-        ("Reuse key with different input", "CONFLICT", "Semantic idempotency"),
-        ("Call after policy revocation", "Rejected on next checked call", "Policy is live, including retries"),
-        ("Overfill job queue / inbox", "OVERLOADED / retained outbox", "No silent acknowledged-work drops")],[470,470,516],row_h=84,size=24)
-    s.box(72,735,1456,78,"Local fixture policy; trusted OS user and files. Production SCS enforcement remains open.",color="amber",fill="sand",title_size=25)
-    note(s,"The local policy fixture maps opaque credentials to principals and stores current scope, method and route requirements on the service side. It is reloaded for each checked invocation, including retries and worker operations. A sender field or scope name in a request is never sufficient. The tests exercise foreign scopes, foreign routes, live revocation, ownership-safe dispatch, conflicting retries and overload. A full inbox retains execution completion in the outbox until delivery can occur. The same OS user can directly access trusted service files, so this harness does not claim production multi-tenancy, encrypted private storage or an SCS enforcement integration. Before private data use, real enforcement and service isolation are separate gates.")
+    s = Slide("Native-path refusals preserve authorization and replay", "03 / Authorization · fail closed",
+              "The host and module boundaries each keep their own checks.",source="program_actions.py · policy.py · test_integration.py")
+    table(s,["Attempt", "Observed result", "What stays protected"],[
+        ("Supply principal in action params", "Native identity_in_request", "Hive derives the actor"),
+        ("Map caller to the wrong scope", "UNAUTHORIZED", "Scope alone confers no access"),
+        ("Revoke caller after completion", "UNAUTHORIZED on replay", "Saved outcome grants no authority"),
+        ("Change profile / descriptor", "UNSUPPORTED_PROFILE", "No weaker provider fallback"),
+        ("Change input under original key", "CONFLICT", "No second job with new meaning"),
+        ("Revoke worker after admission", "Explicit failed completion", "No unauthorized result write")],[530,420,506],row_h=79,size=23)
+    band(s,"Real Hive authentication + development Fusion policy. Production isolation remains unproven.",color="amber",fill="sand",size=25)
+    note(s,"Every row here is tested through the actual native route, except the trusted operator's setup/failure injection. The first row is rejected by Hive before plugin effects. The plugin uses the authenticated actor/swarm mapping and current module credentials; it cannot nominate a principal in the request body. Changed descriptor identity fails binding consistency at the server even if its advertised method set looks compatible. Cached success still requires live status/get/poll/ack authority. The worker rechecks its own and requester permissions after admission. Fusion's credential/scope policy is explicitly a local test policy, not production SCS or isolation against the same OS user.")
 
-    s = Slide("What ran, what was a fixture, what is unavailable", "03 / Evidence · provider honesty",
-              "Seven requested repositories inspected; only demonstrated integrations are marked real.", source="discovery.md · evidence.md")
-    table(s,["Component", "Classification", "Evidence / limit"],[
-        ("DeTTa DA + FileStorage", "REAL PROVIDER LIBRARIES", "Persisted shares + actual reconstruction"),
-        ("F1R3node / ASI seam", "REAL ISOLATED CHAIN", "Signed deploy; inclusion + effect finality"),
-        ("Peer A / Peer B / inspect_atom", "PROTOCOL + OPERATION FIXTURES", "Real separate worker; no reasoning"),
-        ("Policy + chain unit responses", "EXPLICIT FIXTURES", "Revocation / failure mapping / timeout tests"),
-        ("Omega Hive", "RUNTIME UNAVAILABLE", "Onboarding index present; Hive checkout absent"),
-        ("DAS / MeTTaClaw / ECAN / PLN", "INSPECTED; NOT INTEGRATED", "Candidate seams and future adapters recorded")],[445,475,536],row_h=82,size=23)
-    note(s,"DeTTa means actual DA and FileStorage code executed against local persisted shares, not a mock and not a custody network. F1R3node means a real local node with a fresh isolated genesis and one validator, not public mainnet/testnet or multi-validator safety. Peers are independently instantiated protocol fixtures; inspect_atom is a deterministic fixture operation running in a real OS process. Authorization is an explicit local policy fixture. Fake chain responses exist only in unit tests and are distinct from the real chain evidence. The supplied omegahive-start-here repository is an onboarding index; the intended Hive runtime checkout is absent. DAS, MeTTaClaw, metta-attention and reachability were inspected, but their cognitive/channel providers were not integrated. No upstream source files were changed.")
+    s = Slide("Real runtime, real provider, fixtures and unrun scope", "03 / Evidence · component classification",
+              "Each claim stays attached to the component and gate actually exercised.",source="m1_2-evidence.md · manifest.json")
+    table(s,["Component", "Classification", "Observed boundary"],[
+        ("Hive + PeTTa", "REAL NATIVE RUNTIME", "Authenticated Programs dispatch / restart"),
+        ("DeTTa DA + FileStorage", "REAL LOCAL PROVIDER", "Persisted shares and reconstruction"),
+        ("Messaging / execution / worker", "IMPLEMENTED LOCAL HARNESS", "Separate owner commits; inspect_atom only"),
+        ("Counterparty / data / file provider", "EXPLICIT FIXTURES", "Generated sample and contract experiments"),
+        ("Fusion credential policy", "DEVELOPMENT FIXTURE", "Native auth is real; downstream policy local"),
+        ("Chain / cognitive implementations", "NOT RUN IN M1.2", "M1 chain historical; M2+ still specified")],[467,459,530],row_h=80,size=22)
+    note(s,"The native dispatch is not a wrapper named Omega around Peer. It is the verified Hive app and plugin mechanism with real PeTTa. TestClient is an ASGI test transport and the caller driver is a test harness, not a substituted runtime. The new caller tests use the real default Supervisor without starting minds; the 34 upstream baseline tests use their labelled fake process driver. DeTTa is real local library storage. Mailbox and execution are actual Fusion implementations, while the payload, counterparty and policy are fixtures. The deterministic inspect operation is plumbing, not a cognitive capability. No live LLM is used. The historical chain observation is neither erased nor represented as a new same-artifact Hive-to-chain run.")
 
-    s = Slide("A real result digest reached a real local chain", "03 / Evidence · optional chain gate",
-              "One registered approved commitment. Durable signed intent. Direct node observations.", source="evidence/chain-demo.json · f1r3.py")
-    for x,label,body,color in [(72,"PENDING","Signed deploy accepted","amber"),(568,"INCLUDED","Block observed; effects pending","amber"),(1064,"FINALIZED","Deploy effects reported finalized","teal")]:
-        s.box(x,258,464,150,label,body,color,"sand" if color=="amber" else "mint",title_size=34,body_size=24)
-        if x<1064:s.line(x+464,333,x+492,333,C["muted"],arrow=True)
-    s.text(75,457,700,"Recorded inclusion",29,C["ink"],"bold")
-    for i,(k,v) in enumerate([("Block height",str(CHAIN["inclusion"]["blockNumber"])),("Execution error","false"),("Rejection count","0"),("Execution cost","351 phlo")]):
-        s.text(75,511+i*48,325,k,26,C["muted"])
-        s.text(406,511+i*48,290,v,27,C["ink"],"bold")
-    s.rect(785,452,743,255,C["white"],radius=13)
-    s.text(811,477,680,"Commitment = persisted result digest",27,C["ink"],"bold")
-    s.text(811,531,680,CHAIN["commitment"][:32]+"\n"+CHAIN["commitment"][32:],24,C["teal"],"mono")
-    s.text(811,621,680,f"Observation window: {CHAIN['observation_seconds']:.3f} s\nOne local sample; no latency SLA",25,C["muted"])
-    band(s,"Only the generated result digest entered Rholang. Full payload stayed in local DA.",size=26)
-    note(s,"Read the recorded chain JSON as the primary evidence. Its actual sequence is pending, included with effects Pending, then finalized. All three observations are present; the earlier report prose was corrected to match this trace. The block is height 3, execution errored=false, rejection count zero, cost 351 phlo. The approved commitment digest matches the persisted result ref in both demo bindings. Signing intent is stored before network submission, so an ambiguous timeout can reuse the same transaction signature. The local node was built from the inspected dirty working source and shut down with exit 0. Node startup took 25.735 seconds and the observed submission/propose/finality window took 4.013 seconds. These node responses are not independently verified consensus proofs or a public-network test.")
+    s = Slide("Fresh verification exercises distinct layers", "03 / Evidence · executed tests",
+              "Zero failures or skips in the final run. Fixture isolation is a subset, not extra unique coverage.",source="evidence/m1_2/verification.json")
+    table(s,["Gate / suite", "Passed", "Scope of the observation"],[
+        ("Fixture-only isolation", str(COUNTS['fixture']), "Real DeTTa and Hive paths deliberately absent"),
+        ("Provider / transport matrix", str(COUNTS['detta']), "Includes the 51 fixture tests; four workflows"),
+        ("Clean upstream DeTTa", ' + '.join(map(str,UPSTREAM_COUNTS)), "DA + storage; historical dirty source had 40 storage tests"),
+        ("Native Hive baseline", str(COUNTS['native-baseline']), "Selected native tests; fixture process driver"),
+        ("Real-caller integration", str(COUNTS['hive-integration']), "Native dispatch, process recovery and refusals")],[520,196,740],row_h=91,size=25)
+    band(s,"Historical 27-test M1 results and earlier dirty sources are retained, not silently reused as current passes.",size=23)
+    note(s,"Counts come from the committed M1.2 verification JSON, not a new test run for this deck. The 51 fixture tests are included in the full 90-test matrix. Clean upstream DeTTa passes 62 DA and 38 storage tests; the historical dirty checkout passed 40 storage tests because it included two local additions. The native baseline is 34 selected tests, not the full Hive suite. The new real-caller suite has 13 cases covering success/replay, three caller kill points, worker death, route backpressure, worker revocation and six negative conditions. All final run commands returned zero; native JUnit records no failures, errors or skips. Development failures and their corrections remain in the evidence directory. No new benchmark or integration run is implied by rebuilding the presentation.")
 
-    s = Slide("Evidence concentrates on boundaries that can fail", "03 / Evidence · executed verification",
-              "Recorded passing tests and experiments; future cognitive test names are not included.", source="evidence/tests.log · evidence/detta-tests.log")
-    for x,num,label in [(72,"27","contract + adapter tests"),(568,"102","upstream DA / storage tests"),(1064,"2","bindings; same consumer")]:
-        s.rect(x,252,464,190,C["white"],radius=14)
-        s.text(x+26,270,410,num,78,C["teal"],"bold")
-        s.text(x+27,380,410,label,24,C["ink"])
-    cases=[("Identity + isolation","Exact bytes, immutable revision, scoped routes, live revocation."),
-           ("Replay + recovery","Conflicting keys, concurrent retries, three SIGKILL boundaries."),
-           ("Admission + compatibility","Bounded overload, deadlines, versions, profiles and required features."),
-           ("Provider behavior","Real erasure recovery, corrupt shares, chain mapping and signed-intent retry.")]
-    for i,(title,body) in enumerate(cases):
-        x=72+(i%2)*744;y=495+(i//2)*144
-        s.text(x,y,704,title,28,C["ink"],"bold")
-        s.text(x,y+45,692,body,25,C["muted"])
-    note(s,"The final local verification run passed 27 unittest tests with zero failures or skips. Applicable service conformance cases run under both in-process and subprocess bindings. Separately, the upstream detta-da library passed 62 tests and detta-storage passed 40, totalling 102. These are distinct counts and do not imply 27 tests for each binding or a full upstream regression for every repository. The chain build and real local chain demo also passed as separately recorded gates. Other checks included Rust formatting, Python compilation and git diff validation. Do not count unimplemented episode, belief, attention or inference test specifications as executed functionality. No full F1R3node, DAS, MeTTaClaw or cognitive regression suite is claimed.")
+    s = Slide("One trace ties native intent to acknowledged outcome", "03 / Evidence · actual M1.2 artifact",
+              "Identifiers below come directly from the recorded real Hive workflow.",source="evidence/m1_2/hive-trace.json")
+    for x,title,body,color in [(72,"Native caller",f"{TRACE['caller']['principal']}\nSwarm {TRACE['caller']['swarm']}","teal"),
+        (568,"Generated input",f"{TRACE['output']['length']} bytes · scope shared-test\n{TRACE['input']['ref']['id'][:18]}…","blue"),
+        (1064,"Delegated job",f"inspect_atom / output 0.1.0\n{TRACE['job']['job_id'][:18]}…","blue")]:
+        s.box(x,252,464,170,title,body,color,"white",title_size=30,body_size=25)
+        if x<1064:s.line(x+464,337,x+490,337,C["blue"],arrow=True)
+    s.rect(72,472,958,243,C["dark"],radius=13)
+    s.text(100,496,895,"PERSISTED RESULT DIGEST",19,"77DDC4","bold")
+    d=TRACE['result']['ref']['digest']
+    s.text(100,545,895,d[:32]+"\n"+d[32:],30,C["white"],"mono")
+    s.text(100,648,890,"Job ID = completion delivery ID; caller receipt = correlation ID.",22,C["dim"])
+    s.box(1074,472,454,243,"Accepted and acknowledged", "One durable outcome identity.\nBoth atom receipts: real DeTTa, six shares / threshold four.","teal","mint",title_size=29,body_size=26)
+    band(s,"CHAIN = NOT_RUN for this result. The earlier M1 digest is a different, explicitly historical artifact.",color="amber",fill="sand",size=24)
+    note(s,f"Full source values: actor {TRACE['caller']['principal']}; swarm {TRACE['caller']['swarm']}; input ref {TRACE['input']['ref']['id']}, digest {TRACE['input']['ref']['digest']}, {TRACE['output']['length']} bytes. Job and completion delivery ID {TRACE['job']['job_id']}. Correlation and caller receipt {TRACE['correlation_id']}. Result ref {TRACE['result']['ref']['id']}, digest {TRACE['result']['ref']['digest']}. Both atom receipts identify detta-local-rs/1, local-files-process-restart, six shares and threshold four, with no chain or custody certificate. Native outcome is done after result verification and acknowledgement. The initial job receipt still says queued/not-observed because it describes acceptance. This artifact was not submitted to a chain in M1.2.")
 
-    s = Slide("A small baseline, with the failure path included", "03 / Evidence · measured limits",
-              "One 62-byte fixture, one slice per binding. Bars share a zero baseline; this is not a benchmark.", source="evidence/demo.json")
-    runs=DEMO["runs"]
-    s.tag(75,233,"IN-PROCESS SERVICE","blue",C["ice"])
-    s.tag(458,233,"SUBPROCESS SERVICE","teal",C["mint"])
-    labels=[("Store", "store_ms"),("Message acceptance","share_accept_ms"),("Job acceptance","job_accept_ms")]
-    for i,(label,key) in enumerate(labels):
-        y=321+i*137
-        s.text(73,y,360,label,27,C["ink"],"bold")
-        for j,run in enumerate(runs):
-            value=run["timings"][key]
-            s.rect(440,y+j*43, value*3.0,27,C["blue"] if j==0 else C["teal"],radius=3)
-            s.text(452+value*3.0,y+j*43-1,165,f"{value:.1f} ms",23,C["muted"])
-    s.line(440,688,1040,688,C["line"])
-    for v in [0,50,100,150,200]:s.text(432+v*3,699,95,str(v),18,C["muted"],"mono")
-    s.text(1084,699,95,"ms",18,C["muted"])
-    s.box(1180,310,348,199,"Entire slice",f"{runs[0]['elapsed_seconds']:.3f} s / {runs[1]['elapsed_seconds']:.3f} s\nIncludes two worker kills and recovery.","ink",title_size=30,body_size=25)
-    s.box(1180,538,348,180,"0 observed loss","Acknowledged data; tested same-host SIGKILL model only.","teal","mint",title_size=28,body_size=24)
-    band(s,"Both bindings still use real DA subprocesses and separate workers. No scalability conclusion.",size=24)
-    note(s,"Values are read directly from the committed demo.json, not retyped as marketing claims. The in-process binding is about the service call only; both configurations launch real DA helpers and separate workers. End-to-end slices include failure injection and recovery: approximately 0.756 and 1.761 seconds. Each used 17 client calls with 6,550 request bytes and 5,731 response bytes. In-process counts are logical serialization sizes; subprocess counts are actual pipe bytes. Canonical DA fixture/result payloads were 1,027 and 1,284 bytes, but DA framing and worker-control traffic were not measured. Both runs ended with two atoms, one job, two acknowledged messages and no pending outbox. Zero observed acknowledged-data loss is bounded by this failure model and sample, not a general durability theorem or performance guarantee.")
+    s = Slide("Reproduction separates source, build and execution", "04 / Handoff · obtainable inputs",
+              "Fresh disposable checkout; immutable authorized sources; locked new builds; actual runtime tests.",source="build_hive.py · native-build.json · verification.json")
+    for x,tag,title,body in [(72,"1 · SOURCE","Obtain exact bytes", "Fusion commit/bundle; Hive and DeTTa via authorized SSH; public PeTTa and SWI commits."),
+        (568,"2 · BUILD","Create new artifacts", "Python 3.12.12, SWI 10.1.14 and Janus 1.5.3; locked packages; fresh native objects and venv."),
+        (1064,"3 · RUN","Exercise the seam", "Both bridges and PeTTa evaluate; native baseline precedes the 13 actual caller cases.")]:
+        s.box(x,257,464,294,title,body,"teal","white",tag=tag,title_size=31,body_size=27)
+        if x<1064:s.line(x+464,405,x+490,405,C["teal"],arrow=True)
+    s.box(72,600,704,137,"Warm-cache assumptions are explicit", "Python/uv and Cargo downloads reused; native pip install used --no-cache.","amber","sand",title_size=28,body_size=25)
+    s.box(800,600,728,137,"Clean DeTTa was rebaselined", "Historical dirty bytes remain historical; fresh stores and all applicable tests were rerun.","blue","ice",title_size=28,body_size=25)
+    note(s,"Source obtainability, buildability and a passing integration are separate questions. Authorized SSH fetches retrieved the exact Hive and DeTTa commits. Public pinned PeTTa/SWI sources and SWI submodule commits identify native inputs. The native build took 139.595 seconds on the recorded host; it observed Prolog-to-Python 42, Python-to-Prolog 2, and a generated PeTTa expression 42. It compiled a private SWI prefix and installed hash-locked dependencies, rebuilding Janus with --no-cache against that prefix. No prior venv, target or binary was copied. Python and Cargo download caches were warm; an entirely empty-cache build is unrun. The CMake cache-type guard and inherited virtual-environment issue were corrected and recorded. The verifier-only import-order correction was obtained by Git fast-forward before the final tests. None of these engineering choices changes upstream source or implies production deployment portability.")
 
-    s = Slide("The design trades breadth for inspectable guarantees", "04 / Decisions and gates",
-              "Accepted prototype choices; community models and production guarantees remain unresolved.", source="decisions.md")
-    table(s,["Decision", "What it makes explicit", "Cost / open boundary"],[
-        ("Immutable scoped references", "Identity and replay are separate", "No GC, merge or mutable atom revisions"),
-        ("One writer + durable outbox", "Recovery has a clear authority", "Small local harness; no distributed scheduler"),
-        ("Exact semantic profiles", "Provider swaps preserve behavior", "Numerical models require specialist review"),
-        ("Generic DA + external adapter", "Cognition stays above storage", "No distributed custody or lifetime guarantee"),
-        ("Approved digest on chain", "Finality evidence stays separate", "No arbitrary deploy or private episode upload")],[451,475,530],row_h=90,size=24)
-    note(s,"These are proposed v0 engineering decisions that operationalize the brief, not claims of community consensus. Immutable scoped reference metadata and replay keys provide a small auditable starting point; deletion, retention and cross-scope merging are deferred. SQLite serialization and an outbox make process-death behavior testable at the cost of throughput and distributed scheduling. Exact profiles avoid pretending numerical semantics or query dialects are interchangeable. The DeTTa adapter remains external to the application-neutral DA core. A chain adapter registers a single approved non-sensitive result commitment; it is not an arbitrary deployment service. All unassigned specialists remain unassigned. No invented arithmetic, ontology or STI policy was silently chosen.")
+    s = Slide("Nine required gates passed; chain remains unrun", "04 / Gate-by-gate outcome",
+              "A fixture pass never substitutes for a real-provider or native-runtime pass.",source="evidence/m1_2/manifest.json")
+    gates=[("BASELINE","Initial applicable suites executed"),("HIVE_SOURCE","Intended source and native entrypoint verified"),
+           ("FIXTURE_REPRO","Fresh fixture-only run without real sources"),("DETTA_REPRO","Fresh clean provider build and conformance"),
+           ("HIVE_ENTRYPOINT","Real authentication and Programs dispatch"),("HIVE_DETTA","Same workflow uses real DeTTa receipts"),
+           ("HIVE_RECOVERY","Restart, replay, completion and refusals"),("HIVE_REPRO","Declared fresh source/build recipe exercised"),
+           ("SCOPE","No M2, ECAN, inference control or migration"),("CHAIN","No same-artifact M1.2 chain submission")]
+    for i,(name,desc) in enumerate(gates):
+        x=72+(i%2)*744;y=247+(i//2)*105
+        status=RECORD['gates'][name].split(':')[0]
+        color='amber' if status=='NOT_RUN' else 'teal'
+        s.rect(x,y,712,91,C['sand'] if color=='amber' else C['white'],radius=10)
+        s.text(x+20,y+14,480,name,23,C['ink'],'bold')
+        s.text(x+550,y+14,146,status,22,C[color],'bold')
+        s.text(x+20,y+52,675,desc,21,C['muted'])
+    band(s,"Historical chain reproduction is BLOCKED by missing exact F1R3 changes; empty-cache and full-Hive runs are NOT_RUN.",size=21)
+    note(s,"This board is generated from the M1.2 manifest. All nine required gates pass within the documented local profile. CHAIN is NOT_RUN, not failed and not a fixture substitute. Historical F1R3 reproduction remains blocked for its undistributed dirty source and untracked input; it would need authorized exact changes or a separately validated clean rebaseline. That optional source distribution issue does not block Hive-to-DeTTa. Empty-cache builds and the full Hive suite are intentionally unrun. Source availability alone does not pass the entrypoint or real-provider gate. Executed failed attempts remain recorded separately from the final successful run.")
 
-    s = Slide("M0 and M1 are complete. The next gate stays closed.", "04 / Scope and stopping point",
-              "The architecture describes the next steps; this implementation stops before M2.", source="brief · evidence.md")
-    for x,label,title,body,color,fill in [(72,"M0","Contracts","Discovery, ownership, typed ports, conformance obligations.","teal","mint"),
-        (442,"M1","Real local slice","Store, share, inspect, recover; optional chain commitment.","teal","mint"),
-        (812,"M2","Episodes + revision","Private ordering, evidence lineage, reviewed numerical model.","violet","lavender"),
-        (1182,"M3 / M4","Cognition + Hive","Bounded attention / inference; selected workflow integration.","violet","lavender")]:
-        s.box(x,253,346,250,title,body,color,fill,tag=label,title_size=28,body_size=25,dashed=color=="violet")
-    s.text(75,552,1400,"Open gates",34,C["ink"],"bold")
-    for x,title,body in [(72,"Integration","Intended Hive runtime / version; production authorization."),
-                         (568,"Guarantees","Distributed custody; multi-validator operation; verified proofs."),
-                         (1064,"Cognition","Reviewed revision model; STI policy; specialist ownership.")]:
-        s.text(x,610,450,title,28,C["ink"],"bold")
-        s.text(x,659,450,body,25,C["muted"])
-    note(s,"M0 and the bounded local M1 gate are complete. The next increment is M2, with private ordered episodes and duplicate-safe, lineage-aware belief revision, including contradictory evidence and numerical golden tests for a reviewed existing model. That work has not started. M3 attention/inference and M4 Hive workflow integration remain later milestones. Actual Hive integration is blocked by the missing intended runtime and unsettled version/registry target. Production authorization, multi-host DA custody, public or multi-validator chain operation, independently verified proofs and meaningful load characterization remain open. Their absence does not erase the local evidence; local evidence does not pass those gates. Ending here respects the original stopping condition.")
+    s = Slide("The real caller is proven; the cognitive increment is next", "04 / Scope and stopping point",
+              "M1.2 establishes an integration seam. It does not select a numerical model or implement cognition.",source="ADR 006–007 · m1_2-evidence.md")
+    for x,tag,title,body,color,fill in [(72,"M0 / M1","Contract slice","Module map, opaque storage, messaging and deterministic delegation.","teal","mint"),
+        (442,"M1.1","Owner boundaries","Independent AtomStorage replacement and separate durable commits.","teal","mint"),
+        (812,"M1.2","Real native caller","Verified Hive operation, durable caller recovery and fresh-source recipe.","teal","mint"),
+        (1182,"M2+ · NOT STARTED","Cognitive work","Private episodes and reviewed revision; later attention and bounded inference.","violet","lavender")]:
+        s.box(x,253,346,289,title,body,color,fill,tag=tag,title_size=29,body_size=26,dashed=color=='violet')
+    for x,title,body in [(72,"Production boundaries","Isolation, authorization and distributed custody remain separate work."),
+                         (568,"Mathematical decisions","Revision model, lineage semantics, STI policy and specialists remain open."),
+                         (1064,"State evolution","No live migration, populated-namespace switching or rolling upgrades.")]:
+        s.text(x,602,455,title,27,C['ink'],'bold');s.text(x,653,455,body,25,C['muted'])
+    note(s,"The stopping point moved from a missing Hive runtime to an evidenced native seam, without implementing M2. The next separately authorized increment can now be chosen from actual integration findings: private episodic provenance and explicitly profiled belief revision remain the cognitive roadmap, followed by attention and bounded inference. Existing upstream mathematics is not redefined here. Production transport/auth/isolation, distributed custody, independently verified proofs, performance characterization and live state migration remain outside this experiment. The minimal caller receipt is not a substitute for episodic memory. Do not describe the future entire Hive workflow or cognition as complete because one deterministic operation is integrated.")
 
-    s = Slide("", "04 / Takeaway",source="implementation 3f75db9 · evidence.md",dark=True)
-    s.text(72,179,1390,"Modularity is a promise\nabout behavior and authority.",67,C["white"],"bold",1.16)
-    s.text(78,399,1350,"The working slice makes that promise reviewable.",36,C["dim"])
-    for i,(n,txt) in enumerate([("01","State changes through its owner."),("02","Providers are selected by declared semantics."),("03","Receipts say precisely what was observed.")]):
-        y=506+i*89
-        s.text(79,y,100,n,35,"77DDC4","mono")
-        s.text(191,y,1300,txt,34,C["white"])
-    s.text(79,790,1350,"M0 + M1 delivered   •   No M2 implementation   •   Evidence and reproduction in the repository",22,C["dim"])
-    note(s,"Close on the central idea: functional decomposition alone is insufficient. A module boundary needs an owner, behavioral semantics and evidence for its guarantees. This work turns that idea into an inspectable contract package and one bounded running slice. The storage integration is real, the local chain integration is real, peers and test policy are fixtures, and the cognitive stack is specified only. The architecture can evolve without embedding cognition in DA or requiring every operation to run on chain. Pause here for discussion; the remaining slides provide method mappings, exact provenance, failure semantics and reproduction commands.")
+    s = Slide("", "04 / Takeaway",source="M1.2 implementation bb22ef5 · evidence 4ee5cbe",dark=True)
+    s.text(72,179,1390,"Modularity now survives\na real caller restart.",70,C['white'],'bold',1.16)
+    s.text(78,399,1350,"The native integration preserves the original boundaries.",35,C['dim'])
+    for i,(n,txt) in enumerate([("01","State changes through its owner."),("02","Providers remain replaceable by exact contract."),("03","Each receipt names an observed, bounded guarantee.")]):
+        y=506+i*89;s.text(79,y,100,n,35,"77DDC4",'mono');s.text(191,y,1300,txt,32,C['white'])
+    s.text(79,790,1350,"Real Hive + real local DeTTa   •   Fixture counterparty   •   Chain NOT_RUN   •   Stop before M2",21,C['dim'])
+    note(s,"Close on the demonstrated change: a pinned real Hive runtime now invokes the same contracts and recovers across actual caller and worker process death. The consumer remains backend-independent, DA remains application-neutral, owner commits remain separate, and current authority still applies on replay. A fixture is labelled as a fixture; a historical chain observation does not become a new real-caller chain pass. The complete evidence, exact sources, build recipe and failure history are available in the repository. This presentation updates the explanation of completed M1.1/M1.2 work; it adds no runtime or cognitive implementation. Pause for discussion before the appendices.")
 
-    s = Slide("Implementation dependency map", "Appendix A / Code navigation",
-              "Solid lines identify actual calls/import composition; file names locate the corresponding seam.",source="fusion/ · adapters/detta/",appendix=True)
-    s.box(72,246,330,128,"Peer","client.py → Binding.invoke", "blue", title_size=30,body_size=23)
-    s.box(520,246,450,128,"Bindings","bindings.py → Service.invoke / host", "blue",title_size=30,body_size=21)
-    s.box(1088,246,440,128,"Composition","composition.py injects DettaStorage", "teal",title_size=30,body_size=21)
-    s.line(402,310,520,310,C["blue"],arrow=True)
-    s.line(970,310,1088,310,C["blue"],arrow=True)
-    s.box(520,460,450,139,"Service + owners","service.py → validate / policy / dispatch", "blue",title_size=30,body_size=21)
-    s.line(745,374,745,460,C["blue"],arrow=True)
-    s.box(72,460,330,139,"Contracts","contracts.py · ports.py\nNo backend imports", "ink",title_size=30,body_size=22)
-    s.line(520,529,402,529,C["muted"],arrow=True)
-    s.box(1088,460,440,139,"Opaque storage adapter","adapters/detta.py → Rust helper\n→ detta-da + detta-storage", "teal",title_size=26,body_size=22)
-    s.line(970,529,1088,529,C["teal"],arrow=True)
-    s.box(72,687,650,110,"Operator worker entry","host.py work / flush → ExecutionOwner", "blue",title_size=27,body_size=23)
-    s.path([(722,741),(775,741),(775,599)],C["blue"])
-    s.box(866,687,662,110,"Optional separate chain composition","chain_demo.py → F1R3Commitments → F1R3HTTP", "teal",title_size=27,body_size=22)
-    note(s,"Navigate implementation from Peer methods to binding.invoke, then to Service.invoke validation and policy. In-process invokes the service in the current Python process; subprocess invokes the host through private EOF-framed stdin and one JSON stdout response. Trusted composition chooses the concrete storage adapter. Atom, message and execution owner logic is in service.py. The operator-only work and flush entry points are separate from public dispatch. detta.py calls the Rust helper linked to the original DA/storage libraries. chain_demo.py separately registers an approved commitment with F1R3Commitments, injected signer, signed-intent journal and F1R3HTTP. The drawing abstracts call paths; it does not imply contracts import implementation files.")
-
+    s = Slide("Implementation map: adapt at the native boundary", "Appendix A / Code navigation",
+              "Native-specific translation stays outside the backend-independent modules.",source="integration/hive/ · fusion/",appendix=True)
+    s.box(72,245,430,134,"Native entrypoint", "Hive Programs.act\n→ integration/hive/program/program.py",'teal','mint',title_size=29,body_size=22)
+    s.box(584,245,430,134,"Validated consumer", "Peer → Subprocess.invoke\n→ fusion.host rpc",'blue','ice',title_size=29,body_size=23)
+    s.box(1096,245,432,134,"Trusted composition", "composition.py injects\nAtomStorage + CompletionDelivery",'blue',title_size=27,body_size=22)
+    s.line(502,312,584,312,C['blue'],arrow=True);s.line(1014,312,1096,312,C['blue'],arrow=True)
+    s.box(584,464,430,127,"Service facade", "service.py · policy.py\nregistry.py · responses.py",'blue',title_size=29,body_size=23)
+    s.line(799,379,799,464,C['blue'],arrow=True)
+    s.box(72,464,430,127,"Shared declarations", "ports.py · contracts.py\nSchemas and exact profiles",'ink',title_size=29,body_size=23)
+    s.line(584,526,502,526,C['muted'],arrow=True)
+    s.box(1096,464,432,127,"Separate owners", "atoms.py · messaging.py\nexecution.py",'blue',title_size=29,body_size=23)
+    s.line(1014,526,1096,526,C['blue'],arrow=True)
+    s.box(72,677,704,120,"Operator-only worker", "host.py work / flush; deterministic inspect_atom",'blue',title_size=28,body_size=23)
+    s.box(824,677,704,120,"Selected provider", "detta.py + Rust helper OR independent fixture_atoms.py",'teal','mint',title_size=28,body_size=22)
+    s.line(1312,591,1312,677,C['teal'],arrow=True)
+    note(s,"The actual adapter is integration/hive/program/program.py, registered by plugin.json. It owns only the caller receipt. native_caller.py is a test transport around the unmodified app, not a runtime replacement. The plugin invokes the same public validated binding as protocol consumers. Service is an authenticated facade; owner logic is now in atoms.py, messaging.py and execution.py, not all in service.py as the original deck suggested. composition.py alone selects concrete owner implementations. Execution depends on AtomStorage and trusted CompletionDelivery. The file fixture is independent of AtomOwner. The original Rust opaque adapter remains unchanged. Chain composition remains separate and unrun by this native flow.")
     s = Slide("Specified cognitive contracts carry test obligations", "Appendix B / Review checklist",
-              "These are future acceptance cases, not executed M1 tests.",source="ports.py · contracts.md",appendix=True)
+              "These are future acceptance cases, not executed M1.2 tests.",source="ports.py · contracts.md",appendix=True)
     table(s,["Contract", "Semantic decision", "Named conformance obligations"],[
         ("Relations / Search", "Ordered roles; dialect + watermark", "REL-order / scope; SEARCH-watermark"),
         ("Episodes · M2", "Occurrence identity; sequence CAS", "EP-order / duplicate / contrary / privacy"),
@@ -587,28 +606,58 @@ def build_content():
         ("Transport loss", "Acceptance may already be durable", "Recover by key / job; do not assume failure")],[420,516,520],row_h=82,size=23)
     note(s,"Permanent-for-unchanged-request failures also include INVALID_ARGUMENT and DEADLINE_EXCEEDED. INTERNAL is reserved and not automatically retryable. NOT_AVAILABLE covers missing persisted DA for a known ref and queued results; NOT_FOUND is absent metadata. Overload never silently drops acknowledged work. When transport fails after acceptance, the caller can retry the same semantic mutation or query the job owner. Already accepted mutations recover their original receipt even after the deadline expires, while new admissions and worker starts still honor the deadline. Empty poll means an authorized, known-empty inbox; failures do not become empty recall results. Live policy still applies to retries.")
 
-    s = Slide("Provenance includes working-tree state", "Appendix D / Source ledger",
-              "Exact paths, remotes and source fingerprints are recorded in evidence/sources.json.",source="discovery.md · evidence/sources.json",appendix=True)
-    table(s,["Repository", "Inspected commit", "Use / source state"],[
-        ("omegahive-start-here", "0b15d2bed730", "Clean · onboarding only; runtime absent"),
-        ("metta-attention", "3e1c8147dc17", "Clean · ECAN interfaces inspected"),
-        ("das", "8afab5daa635", "Clean · atom/query proxies inspected"),
-        ("mettaclaw", "d2da47207fec", "Existing untracked artifacts · interfaces read"),
-        ("reachability-atomspace-prototype", "dd56f3f053ed", "Clean · ownership / PLN seams inspected"),
-        ("secured-contract-spaces", "272888f264dd", "Existing modifications · linked + tested"),
-        ("f1r3node-rust", "9ec1096e1077", "Existing modifications · built + executed")],[552,300,604],row_h=69,size=22)
-    note(s,"The commit prefixes are navigation aids; the committed sources.json contains full identifiers, absolute roots, remotes, dirty-file lists and relevant working-source fingerprints. The real DeTTa and F1R3 builds used pre-existing modified source, so clean HEAD alone is insufficient to reproduce identical behavior. MeTTaClaw had untracked runtime/project artifacts. This task did not alter upstream sources or commit those upstream changes. Only the fusion-module-interfaces workspace is committed. The supplied Hive repository is an index; no actual Hive runtime checkout was available. Meeting transcripts were referenced in the brief but not independently supplied or inspected. The intended earlier Omega type/interface registry was not found; the static registry remains a bounded harness implementation.")
 
-    s = Slide("Reproduce the gates; inspect the evidence", "Appendix E / Reproduction",
-              "Run from the fusion-module-interfaces checkout; see runbook.md for prerequisites and exact commands.",source="runbook.md · evidence.md",appendix=True)
-    s.rect(72,248,1456,162,C["dark"],radius=12)
-    s.text(101,270,1370,"LOCAL M0 / M1 GATE",20,"77DDC4","bold")
-    s.text(101,317,1370,"uv run --python 3.11 python scripts/verify.py",31,C["white"],"mono")
-    s.text(101,370,1370,"Builds DeTTa adapter offline, runs 27 tests, executes both demo bindings.",23,C["dim"])
-    s.box(72,450,704,220,"Optional real chain gate","scripts/build_chain.py\nscripts/chain_demo.py\nPinned extra tools + isolated local genesis; exact invocation in runbook.","teal","mint",title_size=30,body_size=25)
-    s.box(800,450,728,220,"Review artifacts","evidence/demo.json + chain-demo.json\ntests.log + detta-tests.log\nsources.json + workspace-files.json", "ink",title_size=30,body_size=24)
-    s.text(74,718,1420,"Requires inspected sibling checkouts and cached Cargo dependencies. No production keys or private episodes.",25,C["muted"])
-    note(s,"The main command is executable as shown. It builds the actual DA adapter offline, runs the tests and executes both bindings. The optional chain build requires staged grpcio-tools; chain_demo requires pinned cryptography, pycryptodome and grpcio-tools extras, documented exactly in runbook.md. Initial native CLI/protoc/stack bring-up failures and the resolved local configuration are recorded in evidence.md rather than omitted. The demonstration uses generated non-sensitive data and fresh local keys under ignored artifacts; do not copy private data into it. For the presentation itself, build.py and requirements.txt in this directory generate the editable PowerPoint, vector PDF/SVG and speaker notes from one layout. No M2 implementation is required or created by these reproduction commands.")
+    s = Slide("Exact source identity includes the rebaseline", "Appendix D / Source ledger",
+              "Commit prefixes are navigation aids; full SHAs, locks and clean-state checks are in the evidence.",source="m1_2/manifest.json · final-source-state.json",appendix=True)
+    pins=NATIVE['source_pins']
+    table(s,["Input", "Commit / version", "Use and source state"],[
+        ("Fusion verification", BASE_COMMIT[:12], "Tested implementation; clean checkout"),
+        ("Fusion evidence", EVIDENCE_COMMIT[:12], "Documentation/evidence descendant; same code"),
+        ("omegahive-schematics",pins['schematics']['commit'][:12],"User-supplied runtime pointer"),
+        ("PhysixSNET/omegahive",pins['repositories']['omegahive']['commit'][:12],"Clean native source; actual dispatch"),
+        ("secured-contract-spaces",pins['repositories']['secured-contract-spaces']['commit'][:12],"Clean rebaseline; historical dirty bytes excluded"),
+        ("PeTTa",pins['repositories']['PeTTa']['commit'][:12],"Clean native language runtime"),
+        ("SWI / Python / Janus","10.1.14 / 3.12.12 / 1.5.3","Pinned native build; hashed Python lock")],[460,375,621],row_h=70,size=22)
+    note(s,f"Full tested Fusion commit: {BASE_COMMIT}. Evidence snapshot: {EVIDENCE_COMMIT}. Hive {pins['repositories']['omegahive']['commit']}; clean DeTTa {pins['repositories']['secured-contract-spaces']['commit']}; PeTTa {pins['repositories']['PeTTa']['commit']}; SWI {pins['repositories']['swipl']['commit']}; schematics {pins['schematics']['commit']}. The native build used Fusion 1a627b0; only verifier import ordering changed before bb22ef5 verification. The final evidence descendant changes no implementation. Rust/Cargo 1.88.0, CMake 3.16.3, GCC 9.4.0 and uv 0.10.7 are recorded. Original supplied siblings remain unchanged. Historical F1R3 used a dirty tree at 9ec1096e1077 plus an untracked input; that historical source state is not distributed by the new recipe. The selected Hive revision is the one named by the supplied schematics, not a silent choice of remote HEAD.")
+
+    s = Slide("Reproduce the selected gates from a fresh checkout", "Appendix E / Reproduction",
+              "Authorized source access and warm Cargo/Python downloads are prerequisites; see the runbook.",source="runbook.md · build_hive.py · verify_m12.py",appendix=True)
+    for y,label,line1,line2 in [(245,"BUILD PINNED NATIVE DEPENDENCIES", "uv run --python 3.11 --locked python", "  scripts/build_hive.py artifacts/native"),
+                               (465,"VERIFY FIXTURES, REAL DETTA AND NATIVE HIVE", "uv run --python 3.11 --locked python", "  scripts/verify_m12.py artifacts/native/environment.json")]:
+        s.rect(72,y,1456,187,C['dark'],radius=12)
+        s.text(100,y+22,1380,label,19,"77DDC4",'bold')
+        s.text(100,y+69,1380,line1+' \\',27,C['white'],'mono')
+        s.text(100,y+117,1380,line2,27,C['white'],'mono')
+    s.text(78,697,1430,"Fixture-only: uv run --python 3.11 --locked python scripts/verify_m11.py --fixture-only",23,C['ink'],'mono')
+    band(s,"Read manifest.json, verification.json, hive-trace.json and the preserved failure logs before extending scope.",size=23)
+    note(s,"Run both two-line commands from a fresh Fusion checkout at the evidence revision or a reviewed descendant. artifacts/native must be absent or empty: the build refuses to overwrite existing work. SSH must already authorize access to the exact Hive and DeTTa repositories and host keys must be established. Public PeTTa and SWI sources are fetched at full commits. Cargo uses offline locked downloads; the native pip step uses hashes and --no-cache and builds Janus for the private SWI prefix. No dependency target directory, venv or binary is copied from the original workspace. The verifier deliberately hides real source paths for fixture-only testing, then runs the four-way matrix, upstream DeTTa, native baseline and actual caller tests. Chain is separate and not run. The runbook explains Linux prerequisites, missing optional native headers, the CMake guard correction and cache population limits. Building this deck does not rerun those integration tests.")
+
+    s = Slide("Historical M1: one result reached an isolated chain", "Appendix F / Historical evidence only",
+              "This is the earlier protocol-peer artifact. The M1.2 Hive result was not submitted.",source="evidence/chain-demo.json · M1 historical",appendix=True)
+    for x,label,body,color in [(72,"PENDING","Signed deploy accepted","amber"),(568,"INCLUDED","Block observed; effects pending","amber"),(1064,"FINALIZED","Deploy effects reported finalized","teal")]:
+        s.box(x,258,464,150,label,body,color,'sand' if color=='amber' else 'mint',title_size=34,body_size=24)
+        if x<1064:s.line(x+464,333,x+492,333,C['muted'],arrow=True)
+    chain=HISTORICAL_CHAIN
+    s.text(75,466,700,"M1 recorded observation",29,C['ink'],'bold')
+    for i,(k,v) in enumerate([("Block height",str(chain['inclusion']['blockNumber'])),("Execution error","false"),("Rejection count","0"),("Execution cost","351 phlo")]):
+        s.text(75,519+i*46,325,k,25,C['muted']);s.text(406,519+i*46,290,v,26,C['ink'],'bold')
+    s.rect(785,452,743,255,C['white'],radius=13)
+    s.text(811,477,680,"Historical commitment digest",27,C['ink'],'bold')
+    s.text(811,531,680,chain['commitment'][:32]+'\n'+chain['commitment'][32:],24,C['teal'],'mono')
+    s.text(811,625,680,"One local validator; direct node observations.\nNot a consensus proof or production test.",24,C['muted'])
+    band(s,"M1.2 CHAIN = NOT_RUN. Historical source reproduction requires exact F1R3 changes or a separate rebaseline.",color='amber',fill='sand',size=22)
+    note(s,"Preserve this historical result without promoting it into the new real-caller gate. The M1 chain JSON records pending, included with effect finality Pending, then finalized, at height 3 with no execution error, no rejection and cost 351 phlo. The committed digest belongs to the original protocol-peer result, not the generated native Hive result on slide 22. The M1 adapter used a registered approved digest, injected signer and durable signed intent against one isolated local node. That source had local changes and an untracked input. Exact historical reproduction remains blocked until those authorized bytes are supplied or a different clean revision is separately validated. No chain process or transaction was run during M1.2 or this presentation update. Finality does not establish indefinite off-chain availability.")
+
+    s = Slide("Keep the guarantees inside their observed boundary", "Appendix G / Limits and unrun scope",
+              "Local evidence is useful because the untested extensions remain explicit.",source="m1_2-evidence.md · manifest.json",appendix=True)
+    table(s,["Observed", "Unrun / unsupported extension", "Why it matters"],[
+        ("Same-host process restart", "Power loss / distributed failover", "Persistent files remained intact"),
+        ("One logical accepted outcome", "Exactly-once physical execution", "Deterministic work may repeat"),
+        ("Fresh-store provider swap", "Live state / journal migration", "Accepted refs and jobs are not moved"),
+        ("Exact descriptor/profile binding", "Remote identity / verified proofs", "A hash checks consistency, not truth"),
+        ("Fresh builds with declared caches", "Entirely empty-cache build", "Source access and downloads are prerequisites"),
+        ("One deterministic native operation", "Full Hive suite / LLM / M2 cognition", "Dispatch evidence is not cognitive capability")],[474,490,492],row_h=80,size=23)
+    note(s,"No new performance benchmark is presented. The original M1 single-sample timing chart has been removed from the current evidence story; those measurements remain in historical JSON. The native build and suite durations are reproducibility observations, not runtime latency or throughput claims. One local worker and one pending caller intent per dedicated route bound the tested profile. Production authorization, multi-host DA custody, generic external effects, live rolling upgrades, named-person/mind action paths, full Hive regression and all cognitive work remain unrun or unsupported. The deck makes no claim that rebuilding slides extends any integration guarantee.")
 
 
 def rgb(hex_color):
@@ -631,16 +680,17 @@ def export():
     prs.slide_width = Inches(13.333333)
     prs.slide_height = Inches(7.5)
     prs.core_properties.title = "Omega × ASI — One responsibility. One state owner."
-    prs.core_properties.subject = "M0/M1 module interfaces, dependency maps and observed integration evidence"
+    prs.core_properties.subject = "Through M1.2: module boundaries, native Hive, real DeTTa and restart evidence"
     prs.core_properties.author = "Omega × ASI module-interface project"
-    prs.core_properties.keywords = "Omega, ASI, M0, M1, DeTTa, module interfaces, state ownership"
+    prs.core_properties.keywords = "Omega, ASI, M1.1, M1.2, Hive, DeTTa, module interfaces, state ownership, recovery"
     pdf_path = HERE / "omega-asi-module-interfaces.pdf"
     pdf = canvas.Canvas(str(pdf_path), pagesize=(W*SCALE,H*SCALE), invariant=1)
     pdf.setTitle(prs.core_properties.title)
     pdf.setAuthor(prs.core_properties.author)
     notes = ["# Omega × ASI — speaker notes", "", f"Implementation baseline: `{BASE_COMMIT}`.",
-             "Suggested delivery: 25–30 minutes for slides 1–24, with appendices for discussion.",
-             "All claims refer to the recorded 16 October 2026 local M0/M1 run.", ""]
+             f"Evidence snapshot: `{EVIDENCE_COMMIT}`.",
+             f"Suggested delivery: 30–35 minutes for slides 1–{MAIN_SLIDES}, with appendices for discussion.",
+             "Current claims use the recorded 16 October 2026 M1.2 evidence. The M1 chain observation is historical and separately labelled.", ""]
     manifest=[]
     for index,s in enumerate(SLIDES,1):
         s.footer(index,len(SLIDES))
@@ -726,7 +776,7 @@ def export():
         svg.append("</svg>")
         (svg_dir/f"{index:02d}.svg").write_text("\n".join(svg)+"\n")
         pdf.showPage()
-        title=s.title or ("One responsibility. One state owner. Many possible backends." if index==1 else "Modularity is a promise about behavior and authority.")
+        title=s.title or ("One responsibility. One state owner. Many possible backends." if index==1 else "Modularity now survives a real caller restart.")
         notes += [f"## {index:02d} — {title}","",s.notes,"",f"Source: `{s.source}`.",""]
         manifest.append(dict(slide=index,title=title,section=s.section,appendix=s.appendix,source=s.source,
                              text_elements=sum(e["kind"]=="text" for e in s.elements),
@@ -754,8 +804,9 @@ def export():
     checks=dict(slides=len(SLIDES),pptx_reopened=True,pdf_pages_rendered=len(doc),
                 layout_bounds_checked=True,text_overlaps=0,fonts="DejaVu Sans / DejaVu Sans Mono (PDF embedded; TTFs bundled)",
                 independent_renderer_check="Recorded separately in qa.json",source_commit=BASE_COMMIT,
-                evidence_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in
-                                 [EVIDENCE/"demo.json",EVIDENCE/"chain-demo.json"]},slides_manifest=manifest)
+                evidence_commit=EVIDENCE_COMMIT,main_talk_slides=MAIN_SLIDES,
+                evidence_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
+                                 for p in EVIDENCE_FILES},slides_manifest=manifest)
     (HERE/"build-manifest.json").write_text(json.dumps(checks,indent=2)+"\n")
     print(json.dumps({"slides":len(SLIDES),"pdf":str(pdf_path),"pptx":str(pptx_path),"qa":str(QA)},indent=2))
 

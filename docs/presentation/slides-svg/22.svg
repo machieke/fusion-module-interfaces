@@ -1,38 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">The design trades breadth for inspectable guarantees</title>
-<desc id="desc">These are proposed v0 engineering decisions that operationalize the brief, not claims of community consensus. Immutable scoped reference metadata and replay keys provide a small auditable starting point; deletion, retention and cross-scope merging are deferred. SQLite serialization and an outbox make process-death behavior testable at the cost of throughput and distributed scheduling. Exact profiles avoid pretending numerical semantics or query dialects are interchangeable. The DeTTa adapter remains external to the application-neutral DA core. A chain adapter registers a single approved non-sensitive result commitment; it is not an arbitrary deployment service. All unassigned specialists remain unassigned. No invented arithmetic, ontology or STI policy was silently chosen.</desc>
+<title id="title">One trace ties native intent to acknowledged outcome</title>
+<desc id="desc">Full source values: actor user:operator; swarm s_2ccf3f15; input ref a1b8c6b7-5dce-58c2-8880-c8492bbc3b36, digest 2e1748d637a3c6173c6021f3597fa403a43293c21f5ac861ce7921a90d7276b9, 53 bytes. Job and completion delivery ID 37fb2f12-9a0b-5eb7-9927-31208c06c687. Correlation and caller receipt 0573fa6e03b2edbc73855e849eab46b8c93d223c96cc67d4d5b8828cf96e7306. Result ref aa57a16c-94e2-5d5d-9ee7-121ae3dbfc82, digest cd2f727689b41e243ee78207d058d00b8be64932abbfd86a02851dfcbac400bb. Both atom receipts identify detta-local-rs/1, local-files-process-restart, six shares and threshold four, with no chain or custody certificate. Native outcome is done after result verification and acknowledgement. The initial job receipt still says queued/not-observed because it describes acceptance. This artifact was not submitted to a chain in M1.2.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / DECISIONS AND GATES</text>
-<text x="70" y="139.65" font-family="DejaVu Sans" font-size="47" font-weight="700" fill="#102B3F">The design trades breadth for inspectable guarantees</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Accepted prototype choices; community models and production guarantees remain unresolved.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">DECISION</text>
-<text x="539" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT IT MAKES EXPLICIT</text>
-<text x="1014" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">COST / OPEN BOUNDARY</text>
-<rect x="72" y="277" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Immutable scoped references</text>
-<text x="539" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Identity and replay are separate</text>
-<text x="1014" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No GC, merge or mutable atom revisions</text>
-<rect x="72" y="367" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">One writer + durable outbox</text>
-<text x="539" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Recovery has a clear authority</text>
-<text x="1014" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Small local harness; no distributed</text>
-<text x="1014" y="437.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">scheduler</text>
-<rect x="72" y="457" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Exact semantic profiles</text>
-<text x="539" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Provider swaps preserve behavior</text>
-<text x="1014" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Numerical models require specialist</text>
-<text x="1014" y="527.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">review</text>
-<rect x="72" y="547" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Generic DA + external adapter</text>
-<text x="539" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Cognition stays above storage</text>
-<text x="1014" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No distributed custody or lifetime</text>
-<text x="1014" y="617.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">guarantee</text>
-<rect x="72" y="637" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Approved digest on chain</text>
-<text x="539" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Finality evidence stays separate</text>
-<text x="1014" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No arbitrary deploy or private episode</text>
-<text x="1014" y="707.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">upload</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / EVIDENCE · ACTUAL M1.2 ARTIFACT</text>
+<text x="70" y="139.65" font-family="DejaVu Sans" font-size="47" font-weight="700" fill="#102B3F">One trace ties native intent to acknowledged outcome</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Identifiers below come directly from the recorded real Hive workflow.</text>
+<rect x="72" y="252" width="464" height="170" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="302.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Native caller</text>
+<text x="94" y="346.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">user:operator</text>
+<text x="94" y="378.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Swarm s_2ccf3f15</text>
+<line x1="536" y1="337" x2="562" y2="337" stroke="#315E9C" stroke-width="2"/>
+<polygon points="562,337 549.0,332.0 549.0,342.0" fill="#315E9C"/>
+<rect x="568" y="252" width="464" height="170" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="590" y="302.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Generated input</text>
+<text x="590" y="346.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">53 bytes · scope shared-test</text>
+<text x="590" y="378.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">a1b8c6b7-5dce-58c2…</text>
+<line x1="1032" y1="337" x2="1058" y2="337" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1058,337 1045.0,332.0 1045.0,342.0" fill="#315E9C"/>
+<rect x="1064" y="252" width="464" height="170" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1086" y="302.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Delegated job</text>
+<text x="1086" y="346.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">inspect_atom / output 0.1.0</text>
+<text x="1086" y="378.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">37fb2f12-9a0b-5eb7…</text>
+<rect x="72" y="472" width="958" height="243" rx="13" fill="#0B2233"/>
+<text x="100" y="514.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">PERSISTED RESULT DIGEST</text>
+<text x="100" y="573.5" font-family="DejaVu Sans Mono" font-size="30" font-weight="400" fill="#FFFFFF">cd2f727689b41e243ee78207d058d00b</text>
+<text x="100" y="611.9" font-family="DejaVu Sans Mono" font-size="30" font-weight="400" fill="#FFFFFF">8be64932abbfd86a02851dfcbac400bb</text>
+<text x="100" y="668.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#AAC0CC">Job ID = completion delivery ID; caller receipt = correlation ID.</text>
+<rect x="1074" y="472" width="454" height="243" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1096" y="521.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Accepted and</text>
+<text x="1096" y="558.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">acknowledged</text>
+<text x="1096" y="601.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">One durable outcome identity.</text>
+<text x="1096" y="633.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Both atom receipts: real DeTTa,</text>
+<text x="1096" y="665.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">six shares / threshold four.</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#F3E7CE"/>
+<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#A86A15">CHAIN = NOT_RUN for this result. The earlier M1 digest is a different, explicitly historical artifact.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / decisions.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">22 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / evidence/m1_2/hive-trace.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">22 / 33</text>
 </svg>

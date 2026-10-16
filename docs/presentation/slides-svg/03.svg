@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
 <title id="title">Fifteen modules; four responsibility groups</title>
-<desc id="desc">This is the placement map, not a process topology. All fifteen modules from the brief appear here. The five cognitive modules plus Relations and Search are specifications only. Blue modules are implemented by the local harness; Authorization is explicitly a test policy. Teal shows actual provider integration: local DeTTa DA/storage libraries and a real isolated single-validator F1R3node. Consensus/finality includes the bounded commitment adapter. Private episodic history belongs on the client in future work. A module may be co-located with another module without surrendering its state boundary. The actual Hive runtime was unavailable, so no box here implies a running Hive agent.</desc>
+<desc id="desc">All fifteen modules remain visible: five cognition modules, five shared application ports, three control/policy functions and two provider-facing responsibilities. Hive is a consumer of these modules, not a newly invented sixteenth module. Dashed violet boxes remain specifications. Blue is the implemented local contract harness. DeTTa is real local DA/FileStorage; an independent file provider is a contract fixture. Finality has a historical real isolated-chain observation from M1, but the M1.2 chain gate was not run. Native Hive authentication is real; the downstream Fusion credential/scope policy remains a development fixture. No cognitive module is implemented by this increment.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
 <text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / SYSTEM MAP</text>
 <text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Fifteen modules; four responsibility groups</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Logical boundaries are independent of process and repository boundaries.</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Real Hive consumes these ports; module, process and repository boundaries remain independent.</text>
 <rect x="72" y="230" width="320" height="495" rx="14" fill="#EBE5F3"/>
 <text x="90" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">CLIENT / COGNITION</text>
 <rect x="420" y="230" width="400" height="495" rx="14" fill="#E4EBF5"/>
@@ -43,11 +43,11 @@
 <rect x="1216" y="300" width="294" height="144" rx="13" fill="#FFFFFF" stroke="#007C78"/>
 <text x="1238" y="347.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">DA storage</text>
 <text x="1238" y="387.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Real DeTTa libraries</text>
-<rect x="1216" y="485" width="294" height="168" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1238" y="531.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#007C78">Consensus /</text>
-<text x="1238" y="564.98" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#007C78">finality</text>
-<text x="1238" y="604.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Real isolated F1R3</text>
-<text x="1238" y="632.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">node</text>
+<rect x="1216" y="485" width="294" height="168" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
+<text x="1238" y="531.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">Consensus /</text>
+<text x="1238" y="564.98" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">finality</text>
+<text x="1238" y="604.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">M1 historical; M1.2</text>
+<text x="1238" y="632.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">NOT_RUN</text>
 <text x="866" y="668.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Local harness policy</text>
 <text x="866" y="693.6" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">and static descriptors</text>
 <rect x="72" y="760" width="242.97167968750003" height="36" rx="7" fill="#EBE5F3"/>
@@ -57,6 +57,6 @@
 <rect x="713" y="760" width="334.41308593750006" height="36" rx="7" fill="#DCEFE8"/>
 <text x="727" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#007C78">REAL PROVIDER INTEGRATION</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 33</text>
 </svg>

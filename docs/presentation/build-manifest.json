@@ -1,15 +1,21 @@
 {
-  "slides": 29,
+  "slides": 33,
   "pptx_reopened": true,
-  "pdf_pages_rendered": 29,
+  "pdf_pages_rendered": 33,
   "layout_bounds_checked": true,
   "text_overlaps": 0,
   "fonts": "DejaVu Sans / DejaVu Sans Mono (PDF embedded; TTFs bundled)",
   "independent_renderer_check": "Recorded separately in qa.json",
-  "source_commit": "3f75db993d354d18dff2a3e36498eabe4a33afb3",
+  "source_commit": "bb22ef5e28b089b80132b40bcf5a1bbfc38b065b",
+  "evidence_commit": "4ee5cbe8b84689a5d2432530083738b263142f90",
+  "main_talk_slides": 26,
   "evidence_sha256": {
-    "demo.json": "949d3b20304365b2a3619cdb0868c8df3cf01590ef18f84e57a579ff1b35516c",
-    "chain-demo.json": "a39b2642bf8a6e9a805c87f787055c0d74f79ee05aa118bf19679c0775f4cade"
+    "docs/module-interfaces/evidence/m1_2/manifest.json": "fcb822075d8f8122517ad41d1d8c77b784383be0901a36e0a53d90e4db2389e8",
+    "docs/module-interfaces/evidence/m1_2/verification.json": "8c9f91b98c62279e487ce83074c25f819a868d670b8d5d5ec4bddb6c071e22df",
+    "docs/module-interfaces/evidence/m1_2/m11-swap-demo.json": "69b40c4f2c62bd93b8c96f781c7ee9c10366b5038f1fac5aa4e3f247d6930d45",
+    "docs/module-interfaces/evidence/m1_2/hive-trace.json": "fe6aba610dae3d9a59611e83881314288d69fb1efad44b4c5bf767e13101ef9d",
+    "docs/module-interfaces/evidence/m1_2/native-build.json": "1f32066202d99cb3e5a3298752c072db3aef3b1c1e89f7c7b58096ca24edc769",
+    "docs/module-interfaces/evidence/chain-demo.json": "a39b2642bf8a6e9a805c87f787055c0d74f79ee05aa118bf19679c0775f4cade"
   },
   "slides_manifest": [
     {
@@ -17,7 +23,7 @@
       "title": "One responsibility. One state owner. Many possible backends.",
       "section": "Module-interface architecture",
       "appendix": false,
-      "source": "brief + implementation commit 3f75db9",
+      "source": "M1.2 evidence snapshot 4ee5cbe",
       "text_elements": 12,
       "editable_shapes": 15
     },
@@ -77,168 +83,186 @@
     },
     {
       "slide": 8,
-      "title": "Function dependencies: admission, work and delivery",
+      "title": "Function dependencies: the real native path",
       "section": "01 / Dependency map \u00b7 runtime control",
       "appendix": false,
-      "source": "client.py \u00b7 service.py \u00b7 registry.py",
-      "text_elements": 31,
-      "editable_shapes": 59
+      "source": "program.py \u00b7 ports.py \u00b7 execution.py",
+      "text_elements": 28,
+      "editable_shapes": 62
     },
     {
       "slide": 9,
-      "title": "State ownership survives co-location",
-      "section": "02 / Design details \u00b7 authority",
+      "title": "Separate owners now have separate durable commits",
+      "section": "02 / Ownership \u00b7 M1.1 preserved",
       "appendix": false,
-      "source": "architecture.md \u00b7 ADR 002\u2013004",
-      "text_elements": 23,
-      "editable_shapes": 38
+      "source": "architecture.md \u00b7 atoms.py \u00b7 messaging.py \u00b7 program.py",
+      "text_elements": 36,
+      "editable_shapes": 44
     },
     {
       "slide": 10,
-      "title": "Keep four architecture choices independent",
-      "section": "02 / Design details \u00b7 substitution",
+      "title": "AtomStorage replacement is independently exercised",
+      "section": "02 / Substitution \u00b7 four-way matrix",
       "appendix": false,
-      "source": "ADR 004\u2013005 \u00b7 bindings.py",
+      "source": "evidence/m1_2/m11-swap-demo.json \u00b7 test_m11.py",
       "text_elements": 21,
-      "editable_shapes": 31
+      "editable_shapes": 27
     },
     {
       "slide": 11,
-      "title": "Compatibility is a semantic filter",
-      "section": "02 / Design details \u00b7 resolution",
+      "title": "Compatibility binds semantics and selected replies",
+      "section": "02 / Compatibility \u00b7 exact profiles",
       "appendix": false,
-      "source": "registry.py \u00b7 test_adapters.py",
-      "text_elements": 23,
-      "editable_shapes": 36
+      "source": "registry.py \u00b7 bindings.py \u00b7 responses.py",
+      "text_elements": 24,
+      "editable_shapes": 39
     },
     {
       "slide": 12,
-      "title": "Identity, replay and authority travel separately",
-      "section": "02 / Design details \u00b7 invocation",
+      "title": "Native identity and stable intent stay separate",
+      "section": "02 / Invocation \u00b7 trusted context",
       "appendix": false,
-      "source": "contracts.py \u00b7 wire.schema.json",
-      "text_elements": 20,
-      "editable_shapes": 25
+      "source": "ProgramActions.person_act \u00b7 integration/hive/program/program.py",
+      "text_elements": 22,
+      "editable_shapes": 28
     },
     {
       "slide": 13,
-      "title": "One slice crosses real process and storage boundaries",
-      "section": "03 / Running integration \u00b7 end-to-end",
+      "title": "The intended Hive source now has a verified entrypoint",
+      "section": "03 / Native integration \u00b7 source first",
       "appendix": false,
-      "source": "scripts/demo.py \u00b7 evidence/demo.json",
-      "text_elements": 18,
-      "editable_shapes": 45
+      "source": "sources.json \u00b7 discovery.md \u00b7 native-baseline.xml",
+      "text_elements": 20,
+      "editable_shapes": 30
     },
     {
       "slide": 14,
-      "title": "A receipt proves one fact at one boundary",
-      "section": "03 / Running integration \u00b7 evidence model",
+      "title": "One native operation crosses the existing interfaces",
+      "section": "03 / Native integration \u00b7 sequence",
       "appendix": false,
-      "source": "contracts.md \u00b7 evidence.md",
-      "text_elements": 25,
-      "editable_shapes": 33
+      "source": "program.py \u00b7 execution.py \u00b7 messaging.py",
+      "text_elements": 18,
+      "editable_shapes": 53
     },
     {
       "slide": 15,
-      "title": "Crash recovery is a replay protocol",
-      "section": "03 / Running integration \u00b7 durability",
+      "title": "Six receipts describe six different facts",
+      "section": "03 / Native integration \u00b7 completion semantics",
       "appendix": false,
-      "source": "ADR 003 \u00b7 test_contract.py",
-      "text_elements": 27,
-      "editable_shapes": 42
+      "source": "contracts.md \u00b7 m1_2-evidence.md",
+      "text_elements": 30,
+      "editable_shapes": 38
     },
     {
       "slide": 16,
-      "title": "The DA boundary carries bytes, not cognition",
-      "section": "03 / Running integration \u00b7 storage",
+      "title": "A restarted Hive caller recovers without its old RAM",
+      "section": "03 / Recovery \u00b7 actual caller SIGKILL",
       "appendix": false,
-      "source": "adapters/detta/src/main.rs \u00b7 test_adapters.py",
+      "source": "test_integration.py \u00b7 hive-integration.xml",
+      "text_elements": 28,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 17,
+      "title": "Worker failure and backpressure preserve pending work",
+      "section": "03 / Recovery \u00b7 independent commits",
+      "appendix": false,
+      "source": "execution.py \u00b7 test_m11.py \u00b7 test_integration.py",
+      "text_elements": 27,
+      "editable_shapes": 41
+    },
+    {
+      "slide": 18,
+      "title": "The DA boundary remains application-neutral",
+      "section": "03 / Storage \u00b7 opaque persistence",
+      "appendix": false,
+      "source": "adapters/detta/src/main.rs \u00b7 test_contract.py",
       "text_elements": 31,
       "editable_shapes": 47
     },
     {
-      "slide": 17,
-      "title": "Authorization is checked where state is owned",
-      "section": "03 / Running integration \u00b7 isolation",
-      "appendix": false,
-      "source": "service.py \u00b7 ADR 002",
-      "text_elements": 24,
-      "editable_shapes": 31
-    },
-    {
-      "slide": 18,
-      "title": "What ran, what was a fixture, what is unavailable",
-      "section": "03 / Evidence \u00b7 provider honesty",
-      "appendix": false,
-      "source": "discovery.md \u00b7 evidence.md",
-      "text_elements": 29,
-      "editable_shapes": 36
-    },
-    {
       "slide": 19,
-      "title": "A real result digest reached a real local chain",
-      "section": "03 / Evidence \u00b7 optional chain gate",
+      "title": "Native-path refusals preserve authorization and replay",
+      "section": "03 / Authorization \u00b7 fail closed",
       "appendix": false,
-      "source": "evidence/chain-demo.json \u00b7 f1r3.py",
-      "text_elements": 26,
-      "editable_shapes": 36
+      "source": "program_actions.py \u00b7 policy.py \u00b7 test_integration.py",
+      "text_elements": 27,
+      "editable_shapes": 35
     },
     {
       "slide": 20,
-      "title": "Evidence concentrates on boundaries that can fail",
-      "section": "03 / Evidence \u00b7 executed verification",
+      "title": "Real runtime, real provider, fixtures and unrun scope",
+      "section": "03 / Evidence \u00b7 component classification",
       "appendix": false,
-      "source": "evidence/tests.log \u00b7 evidence/detta-tests.log",
-      "text_elements": 23,
-      "editable_shapes": 27
-    },
-    {
-      "slide": 21,
-      "title": "A small baseline, with the failure path included",
-      "section": "03 / Evidence \u00b7 measured limits",
-      "appendix": false,
-      "source": "evidence/demo.json",
-      "text_elements": 31,
-      "editable_shapes": 44
-    },
-    {
-      "slide": 22,
-      "title": "The design trades breadth for inspectable guarantees",
-      "section": "04 / Decisions and gates",
-      "appendix": false,
-      "source": "decisions.md",
-      "text_elements": 27,
+      "source": "m1_2-evidence.md \u00b7 manifest.json",
+      "text_elements": 26,
       "editable_shapes": 33
     },
     {
-      "slide": 23,
-      "title": "M0 and M1 are complete. The next gate stays closed.",
-      "section": "04 / Scope and stopping point",
+      "slide": 21,
+      "title": "Fresh verification exercises distinct layers",
+      "section": "03 / Evidence \u00b7 executed tests",
       "appendix": false,
-      "source": "brief \u00b7 evidence.md",
-      "text_elements": 37,
-      "editable_shapes": 42
+      "source": "evidence/m1_2/verification.json",
+      "text_elements": 25,
+      "editable_shapes": 32
+    },
+    {
+      "slide": 22,
+      "title": "One trace ties native intent to acknowledged outcome",
+      "section": "03 / Evidence \u00b7 actual M1.2 artifact",
+      "appendix": false,
+      "source": "evidence/m1_2/hive-trace.json",
+      "text_elements": 24,
+      "editable_shapes": 35
+    },
+    {
+      "slide": 23,
+      "title": "Reproduction separates source, build and execution",
+      "section": "04 / Handoff \u00b7 obtainable inputs",
+      "appendix": false,
+      "source": "build_hive.py \u00b7 native-build.json \u00b7 verification.json",
+      "text_elements": 29,
+      "editable_shapes": 39
     },
     {
       "slide": 24,
-      "title": "Modularity is a promise about behavior and authority.",
+      "title": "Nine required gates passed; chain remains unrun",
+      "section": "04 / Gate-by-gate outcome",
+      "appendix": false,
+      "source": "evidence/m1_2/manifest.json",
+      "text_elements": 36,
+      "editable_shapes": 48
+    },
+    {
+      "slide": 25,
+      "title": "The real caller is proven; the cognitive increment is next",
+      "section": "04 / Scope and stopping point",
+      "appendix": false,
+      "source": "ADR 006\u2013007 \u00b7 m1_2-evidence.md",
+      "text_elements": 42,
+      "editable_shapes": 47
+    },
+    {
+      "slide": 26,
+      "title": "Modularity now survives a real caller restart.",
       "section": "04 / Takeaway",
       "appendix": false,
-      "source": "implementation 3f75db9 \u00b7 evidence.md",
+      "source": "M1.2 implementation bb22ef5 \u00b7 evidence 4ee5cbe",
       "text_elements": 14,
       "editable_shapes": 15
     },
     {
-      "slide": 25,
-      "title": "Implementation dependency map",
+      "slide": 27,
+      "title": "Implementation map: adapt at the native boundary",
       "section": "Appendix A / Code navigation",
       "appendix": true,
-      "source": "fusion/ \u00b7 adapters/detta/",
-      "text_elements": 24,
-      "editable_shapes": 46
+      "source": "integration/hive/ \u00b7 fusion/",
+      "text_elements": 27,
+      "editable_shapes": 48
     },
     {
-      "slide": 26,
+      "slide": 28,
       "title": "Specified cognitive contracts carry test obligations",
       "section": "Appendix B / Review checklist",
       "appendix": true,
@@ -247,7 +271,7 @@
       "editable_shapes": 33
     },
     {
-      "slide": 27,
+      "slide": 29,
       "title": "Typed failures preserve the caller\u2019s recovery choices",
       "section": "Appendix C / Error and retry semantics",
       "appendix": true,
@@ -256,22 +280,40 @@
       "editable_shapes": 38
     },
     {
-      "slide": 28,
-      "title": "Provenance includes working-tree state",
+      "slide": 30,
+      "title": "Exact source identity includes the rebaseline",
       "section": "Appendix D / Source ledger",
       "appendix": true,
-      "source": "discovery.md \u00b7 evidence/sources.json",
+      "source": "m1_2/manifest.json \u00b7 final-source-state.json",
       "text_elements": 29,
       "editable_shapes": 37
     },
     {
-      "slide": 29,
-      "title": "Reproduce the gates; inspect the evidence",
+      "slide": 31,
+      "title": "Reproduce the selected gates from a fresh checkout",
       "section": "Appendix E / Reproduction",
       "appendix": true,
-      "source": "runbook.md \u00b7 evidence.md",
-      "text_elements": 18,
-      "editable_shapes": 22
+      "source": "runbook.md \u00b7 build_hive.py \u00b7 verify_m12.py",
+      "text_elements": 13,
+      "editable_shapes": 17
+    },
+    {
+      "slide": 32,
+      "title": "Historical M1: one result reached an isolated chain",
+      "section": "Appendix F / Historical evidence only",
+      "appendix": true,
+      "source": "evidence/chain-demo.json \u00b7 M1 historical",
+      "text_elements": 26,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 33,
+      "title": "Keep the guarantees inside their observed boundary",
+      "section": "Appendix G / Limits and unrun scope",
+      "appendix": true,
+      "source": "m1_2-evidence.md \u00b7 manifest.json",
+      "text_elements": 29,
+      "editable_shapes": 36
     }
   ]
 }

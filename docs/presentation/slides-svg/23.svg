@@ -1,47 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">M0 and M1 are complete. The next gate stays closed.</title>
-<desc id="desc">M0 and the bounded local M1 gate are complete. The next increment is M2, with private ordered episodes and duplicate-safe, lineage-aware belief revision, including contradictory evidence and numerical golden tests for a reviewed existing model. That work has not started. M3 attention/inference and M4 Hive workflow integration remain later milestones. Actual Hive integration is blocked by the missing intended runtime and unsettled version/registry target. Production authorization, multi-host DA custody, public or multi-validator chain operation, independently verified proofs and meaningful load characterization remain open. Their absence does not erase the local evidence; local evidence does not pass those gates. Ending here respects the original stopping condition.</desc>
+<title id="title">Reproduction separates source, build and execution</title>
+<desc id="desc">Source obtainability, buildability and a passing integration are separate questions. Authorized SSH fetches retrieved the exact Hive and DeTTa commits. Public pinned PeTTa/SWI sources and SWI submodule commits identify native inputs. The native build took 139.595 seconds on the recorded host; it observed Prolog-to-Python 42, Python-to-Prolog 2, and a generated PeTTa expression 42. It compiled a private SWI prefix and installed hash-locked dependencies, rebuilding Janus with --no-cache against that prefix. No prior venv, target or binary was copied. Python and Cargo download caches were warm; an entirely empty-cache build is unrun. The CMake cache-type guard and inherited virtual-environment issue were corrected and recorded. The verifier-only import-order correction was obtained by Git fast-forward before the final tests. None of these engineering choices changes upstream source or implies production deployment portability.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / SCOPE AND STOPPING POINT</text>
-<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">M0 and M1 are complete. The next gate stays closed.</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The architecture describes the next steps; this implementation stops before M2.</text>
-<rect x="72" y="253" width="346" height="250" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">M0</text>
-<text x="94" y="332.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Contracts</text>
-<text x="94" y="375.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Discovery, ownership,</text>
-<text x="94" y="407.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">typed ports,</text>
-<text x="94" y="439.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">conformance</text>
-<text x="94" y="471.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">obligations.</text>
-<rect x="442" y="253" width="346" height="250" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="464" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">M1</text>
-<text x="464" y="332.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Real local slice</text>
-<text x="464" y="375.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Store, share, inspect,</text>
-<text x="464" y="407.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">recover; optional chain</text>
-<text x="464" y="439.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">commitment.</text>
-<rect x="812" y="253" width="346" height="250" rx="13" fill="#EBE5F3" stroke="#7458A2" stroke-dasharray="5 4"/>
-<text x="834" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#7458A2">M2</text>
-<text x="834" y="332.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#7458A2">Episodes +</text>
-<text x="834" y="368.44000000000005" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#7458A2">revision</text>
-<text x="834" y="408.58" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Private ordering, evidence</text>
-<text x="834" y="436.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">lineage, reviewed</text>
-<text x="834" y="464.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">numerical model.</text>
-<rect x="1182" y="253" width="346" height="250" rx="13" fill="#EBE5F3" stroke="#7458A2" stroke-dasharray="5 4"/>
-<text x="1204" y="290.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#7458A2">M3 / M4</text>
-<text x="1204" y="332.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#7458A2">Cognition + Hive</text>
-<text x="1204" y="375.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Bounded attention /</text>
-<text x="1204" y="407.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">inference; selected</text>
-<text x="1204" y="439.59000000000003" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">workflow integration.</text>
-<text x="75" y="584.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#102B3F">Open gates</text>
-<text x="72" y="636.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Integration</text>
-<text x="72" y="682.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Intended Hive runtime / version;</text>
-<text x="72" y="714.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">production authorization.</text>
-<text x="568" y="636.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Guarantees</text>
-<text x="568" y="682.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Distributed custody; multi-validator</text>
-<text x="568" y="714.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">operation; verified proofs.</text>
-<text x="1064" y="636.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Cognition</text>
-<text x="1064" y="682.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Reviewed revision model; STI</text>
-<text x="1064" y="714.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">policy; specialist ownership.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / HANDOFF · OBTAINABLE INPUTS</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Reproduction separates source, build and execution</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Fresh disposable checkout; immutable authorized sources; locked new builds; actual runtime tests.</text>
+<rect x="72" y="257" width="464" height="294" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="294.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">1 · SOURCE</text>
+<text x="94" y="339.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Obtain exact bytes</text>
+<text x="94" y="385.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Fusion commit/bundle; Hive</text>
+<text x="94" y="419.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and DeTTa via authorized</text>
+<text x="94" y="454.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">SSH; public PeTTa and SWI</text>
+<text x="94" y="489.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">commits.</text>
+<line x1="536" y1="405" x2="562" y2="405" stroke="#007C78" stroke-width="2"/>
+<polygon points="562,405 549.0,400.0 549.0,410.0" fill="#007C78"/>
+<rect x="568" y="257" width="464" height="294" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="590" y="294.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">2 · BUILD</text>
+<text x="590" y="339.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Create new artifacts</text>
+<text x="590" y="385.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Python 3.12.12, SWI 10.1.14</text>
+<text x="590" y="419.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and Janus 1.5.3; locked</text>
+<text x="590" y="454.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">packages; fresh native objects</text>
+<text x="590" y="489.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and venv.</text>
+<line x1="1032" y1="405" x2="1058" y2="405" stroke="#007C78" stroke-width="2"/>
+<polygon points="1058,405 1045.0,400.0 1045.0,410.0" fill="#007C78"/>
+<rect x="1064" y="257" width="464" height="294" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1086" y="294.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">3 · RUN</text>
+<text x="1086" y="339.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Exercise the seam</text>
+<text x="1086" y="385.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Both bridges and PeTTa</text>
+<text x="1086" y="419.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">evaluate; native baseline</text>
+<text x="1086" y="454.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">precedes the 13 actual caller</text>
+<text x="1086" y="489.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">cases.</text>
+<rect x="72" y="600" width="704" height="137" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="648.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#A86A15">Warm-cache assumptions are explicit</text>
+<text x="94" y="689.69" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Python/uv and Cargo downloads reused; native pip</text>
+<text x="94" y="719.1300000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">install used --no-cache.</text>
+<rect x="800" y="600" width="728" height="137" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="822" y="648.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Clean DeTTa was rebaselined</text>
+<text x="822" y="689.69" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Historical dirty bytes remain historical; fresh stores and all</text>
+<text x="822" y="719.1300000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">applicable tests were rerun.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / brief · evidence.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">23 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / build_hive.py · native-build.json · verification.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">23 / 33</text>
 </svg>

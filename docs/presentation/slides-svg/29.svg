@@ -1,27 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Reproduce the gates; inspect the evidence</title>
-<desc id="desc">The main command is executable as shown. It builds the actual DA adapter offline, runs the tests and executes both bindings. The optional chain build requires staged grpcio-tools; chain_demo requires pinned cryptography, pycryptodome and grpcio-tools extras, documented exactly in runbook.md. Initial native CLI/protoc/stack bring-up failures and the resolved local configuration are recorded in evidence.md rather than omitted. The demonstration uses generated non-sensitive data and fresh local keys under ignored artifacts; do not copy private data into it. For the presentation itself, build.py and requirements.txt in this directory generate the editable PowerPoint, vector PDF/SVG and speaker notes from one layout. No M2 implementation is required or created by these reproduction commands.</desc>
+<title id="title">Typed failures preserve the caller’s recovery choices</title>
+<desc id="desc">Permanent-for-unchanged-request failures also include INVALID_ARGUMENT and DEADLINE_EXCEEDED. INTERNAL is reserved and not automatically retryable. NOT_AVAILABLE covers missing persisted DA for a known ref and queued results; NOT_FOUND is absent metadata. Overload never silently drops acknowledged work. When transport fails after acceptance, the caller can retry the same semantic mutation or query the job owner. Already accepted mutations recover their original receipt even after the deadline expires, while new admissions and worker starts still honor the deadline. Empty poll means an authorized, known-empty inbox; failures do not become empty recall results. Live policy still applies to retries.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX E / REPRODUCTION</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproduce the gates; inspect the evidence</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Run from the fusion-module-interfaces checkout; see runbook.md for prerequisites and exact commands.</text>
-<rect x="72" y="248" width="1456" height="162" rx="12" fill="#0B2233"/>
-<text x="101" y="289.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#77DDC4">LOCAL M0 / M1 GATE</text>
-<text x="101" y="346.45" font-family="DejaVu Sans Mono" font-size="31" font-weight="400" fill="#FFFFFF">uv run --python 3.11 python scripts/verify.py</text>
-<text x="101" y="391.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#AAC0CC">Builds DeTTa adapter offline, runs 27 tests, executes both demo bindings.</text>
-<rect x="72" y="450" width="704" height="220" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="500.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Optional real chain gate</text>
-<text x="94" y="544.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">scripts/build_chain.py</text>
-<text x="94" y="576.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">scripts/chain_demo.py</text>
-<text x="94" y="608.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Pinned extra tools + isolated local genesis; exact</text>
-<text x="94" y="640.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">invocation in runbook.</text>
-<rect x="800" y="450" width="728" height="220" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
-<text x="822" y="500.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">Review artifacts</text>
-<text x="822" y="543.1999999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">evidence/demo.json + chain-demo.json</text>
-<text x="822" y="573.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">tests.log + detta-tests.log</text>
-<text x="822" y="604.6399999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">sources.json + workspace-files.json</text>
-<text x="74" y="741.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Requires inspected sibling checkouts and cached Cargo dependencies. No production keys or private episodes.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX C / ERROR AND RETRY SEMANTICS</text>
+<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">Typed failures preserve the caller’s recovery choices</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Unknown outcome is different from known rejection; an empty inbox is different from failure.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVATION / ERROR</text>
+<text x="508" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEANING</text>
+<text x="1024" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CALLER ACTION</text>
+<rect x="72" y="277" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">NOT_FOUND</text>
+<text x="508" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No such scoped atom metadata</text>
+<text x="1024" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Correct the reference</text>
+<rect x="72" y="359" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">NOT_AVAILABLE</text>
+<text x="508" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Known data / result temporarily</text>
+<text x="508" y="427.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">unavailable</text>
+<text x="1024" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Retry or query the owner</text>
+<rect x="72" y="441" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">OVERLOADED</text>
+<text x="508" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Capacity or current writer lock</text>
+<text x="508" y="509.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">unavailable</text>
+<text x="1024" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Back off; reuse key + semantic input</text>
+<rect x="72" y="523" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CONFLICT</text>
+<text x="508" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Same key changed meaning / revision</text>
+<text x="508" y="591.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">mismatch</text>
+<text x="1024" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Reconcile; do not blindly replay</text>
+<rect x="72" y="605" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">UNAUTHORIZED /</text>
+<text x="88" y="673.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">UNSUPPORTED_*</text>
+<text x="508" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Access or contract requirements fail</text>
+<text x="1024" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Change authorization or requirements</text>
+<rect x="72" y="687" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Transport loss</text>
+<text x="508" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Acceptance may already be durable</text>
+<text x="1024" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Recover by key / job; do not assume</text>
+<text x="1024" y="755.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">failure</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / runbook.md · evidence.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">29 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / contracts.md · service.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">29 / 33</text>
 </svg>

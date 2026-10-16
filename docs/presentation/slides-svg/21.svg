@@ -1,49 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">A small baseline, with the failure path included</title>
-<desc id="desc">Values are read directly from the committed demo.json, not retyped as marketing claims. The in-process binding is about the service call only; both configurations launch real DA helpers and separate workers. End-to-end slices include failure injection and recovery: approximately 0.756 and 1.761 seconds. Each used 17 client calls with 6,550 request bytes and 5,731 response bytes. In-process counts are logical serialization sizes; subprocess counts are actual pipe bytes. Canonical DA fixture/result payloads were 1,027 and 1,284 bytes, but DA framing and worker-control traffic were not measured. Both runs ended with two atoms, one job, two acknowledged messages and no pending outbox. Zero observed acknowledged-data loss is bounded by this failure model and sample, not a general durability theorem or performance guarantee.</desc>
+<title id="title">Fresh verification exercises distinct layers</title>
+<desc id="desc">Counts come from the committed M1.2 verification JSON, not a new test run for this deck. The 51 fixture tests are included in the full 90-test matrix. Clean upstream DeTTa passes 62 DA and 38 storage tests; the historical dirty checkout passed 40 storage tests because it included two local additions. The native baseline is 34 selected tests, not the full Hive suite. The new real-caller suite has 13 cases covering success/replay, three caller kill points, worker death, route backpressure, worker revocation and six negative conditions. All final run commands returned zero; native JUnit records no failures, errors or skips. Development failures and their corrections remain in the evidence directory. No new benchmark or integration run is implied by rebuilding the presentation.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / EVIDENCE · MEASURED LIMITS</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A small baseline, with the failure path included</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">One 62-byte fixture, one slice per binding. Bars share a zero baseline; this is not a benchmark.</text>
-<rect x="75" y="233" width="242.54101562500003" height="36" rx="7" fill="#E4EBF5"/>
-<text x="89" y="257.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#315E9C">IN-PROCESS SERVICE</text>
-<rect x="458" y="233" width="254.60839843750003" height="36" rx="7" fill="#DCEFE8"/>
-<text x="472" y="257.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#007C78">SUBPROCESS SERVICE</text>
-<text x="73" y="346.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Store</text>
-<rect x="440" y="321" width="411.0407056286931" height="27" rx="3" fill="#315E9C"/>
-<text x="863.0407056286931" y="341.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">137.0 ms</text>
-<rect x="440" y="364" width="569.7950944304466" height="27" rx="3" fill="#007C78"/>
-<text x="1021.7950944304466" y="384.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">189.9 ms</text>
-<text x="73" y="483.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Message acceptance</text>
-<rect x="440" y="458" width="27.958069927990437" height="27" rx="3" fill="#315E9C"/>
-<text x="479.95806992799044" y="478.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">9.3 ms</text>
-<rect x="440" y="501" width="212.5607980415225" height="27" rx="3" fill="#007C78"/>
-<text x="664.5607980415225" y="521.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">70.9 ms</text>
-<text x="73" y="620.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Job acceptance</text>
-<rect x="440" y="595" width="27.692047879099846" height="27" rx="3" fill="#315E9C"/>
-<text x="479.69204787909985" y="615.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">9.2 ms</text>
-<rect x="440" y="638" width="204.20504361391068" height="27" rx="3" fill="#007C78"/>
-<text x="656.2050436139107" y="658.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">68.1 ms</text>
-<line x1="440" y1="688" x2="1040" y2="688" stroke="#C9D2D4" stroke-width="2"/>
-<text x="432" y="716.1" font-family="DejaVu Sans Mono" font-size="18" font-weight="400" fill="#536775">0</text>
-<text x="582" y="716.1" font-family="DejaVu Sans Mono" font-size="18" font-weight="400" fill="#536775">50</text>
-<text x="732" y="716.1" font-family="DejaVu Sans Mono" font-size="18" font-weight="400" fill="#536775">100</text>
-<text x="882" y="716.1" font-family="DejaVu Sans Mono" font-size="18" font-weight="400" fill="#536775">150</text>
-<text x="1032" y="716.1" font-family="DejaVu Sans Mono" font-size="18" font-weight="400" fill="#536775">200</text>
-<text x="1084" y="716.1" font-family="DejaVu Sans" font-size="18" font-weight="400" fill="#536775">ms</text>
-<rect x="1180" y="310" width="348" height="199" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
-<text x="1202" y="360.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#102B3F">Entire slice</text>
-<text x="1202" y="404.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">0.756 s / 1.761 s</text>
-<text x="1202" y="436.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Includes two worker</text>
-<text x="1202" y="468.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">kills and recovery.</text>
-<rect x="1180" y="538" width="348" height="180" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1202" y="586.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">0 observed loss</text>
-<text x="1202" y="628.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Acknowledged data;</text>
-<text x="1202" y="659.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">tested same-host</text>
-<text x="1202" y="690.0799999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SIGKILL model only.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / EVIDENCE · EXECUTED TESTS</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Fresh verification exercises distinct layers</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Zero failures or skips in the final run. Fixture isolation is a subset, not extra unique coverage.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE / SUITE</text>
+<text x="608" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PASSED</text>
+<text x="804" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">SCOPE OF THE OBSERVATION</text>
+<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Fixture-only isolation</text>
+<text x="608" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">51</text>
+<text x="804" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Real DeTTa and Hive paths deliberately absent</text>
+<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="408.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Provider / transport matrix</text>
+<text x="608" y="408.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">90</text>
+<text x="804" y="408.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Includes the 51 fixture tests; four workflows</text>
+<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="499.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Clean upstream DeTTa</text>
+<text x="608" y="499.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">62 + 38</text>
+<text x="804" y="499.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">DA + storage; historical dirty source had 40 storage</text>
+<text x="804" y="531.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">tests</text>
+<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="590.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Native Hive baseline</text>
+<text x="608" y="590.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">34</text>
+<text x="804" y="590.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Selected native tests; fixture process driver</text>
+<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="681.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Real-caller integration</text>
+<text x="608" y="681.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">13</text>
+<text x="804" y="681.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Native dispatch, process recovery and refusals</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Both bindings still use real DA subprocesses and separate workers. No scalability conclusion.</text>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Historical 27-test M1 results and earlier dirty sources are retained, not silently reused as current passes.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / evidence/demo.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">21 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / evidence/m1_2/verification.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">21 / 33</text>
 </svg>

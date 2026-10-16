@@ -1,41 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Compatibility is a semantic filter</title>
-<desc id="desc">The resolver filters interface identity and a consumer&#x27;s explicit same-major interval, exact profile and required features, supported operations, advertised guarantees, payload limits and privacy. Any required measured latency must be present in descriptor measurements. Required verification always fails because no verifier is available. Advertisements and evidence remain distinct. The actual M1 dispatch only accepts wire 1.0.0. A separate descriptor fixture at 1.2.3 exercises additive resolution; it is not evidence of a deployed 1.2.3 service. Unsupported requirements produce typed errors instead of weaker fallback selection. Interface 1.0.0 stabilizes this prototype, not an agreed community standard.</desc>
+<title id="title">Compatibility binds semantics and selected replies</title>
+<desc id="desc">The resolver uses fixed consumer requirements, exact profiles, supported operations, privacy and claimed guarantees. Binding invocation and success replies carry the selected descriptor token; response validation checks shape, scope, references, integrity, receipts and known correlation. The native adapter loads operator-selected descriptors and uses that same boundary. Native-path tests reject an incompatible profile and a changed descriptor. Wire remains 1.0.0; the /2 messaging and execution profiles describe neutral process-restart receipts and recoverable status. They do not imply live 1.x rolling interoperability. No proof verifier is installed, so required verification fails closed.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / DESIGN DETAILS · RESOLUTION</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Compatibility is a semantic filter</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A matching name is only the start of provider selection.</text>
-<rect x="72" y="280" width="346" height="189" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="333.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#315E9C">Version</text>
-<text x="94" y="379.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Explicit same-major</text>
-<text x="94" y="414.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">range</text>
-<line x1="418" y1="376" x2="437" y2="376" stroke="#315E9C" stroke-width="2"/>
-<polygon points="437,376 424.0,371.0 424.0,381.0" fill="#315E9C"/>
-<rect x="442" y="280" width="346" height="189" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="464" y="333.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#315E9C">Profile</text>
-<text x="464" y="379.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Exact semantics +</text>
-<text x="464" y="414.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">features</text>
-<line x1="788" y1="376" x2="807" y2="376" stroke="#315E9C" stroke-width="2"/>
-<polygon points="807,376 794.0,371.0 794.0,381.0" fill="#315E9C"/>
-<rect x="812" y="280" width="346" height="189" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="834" y="333.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#315E9C">Operations</text>
-<text x="834" y="379.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Required calls</text>
-<text x="834" y="414.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">available</text>
-<line x1="1158" y1="376" x2="1177" y2="376" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1177,376 1164.0,371.0 1164.0,381.0" fill="#315E9C"/>
-<rect x="1182" y="280" width="346" height="189" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1204" y="333.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#315E9C">Guarantees</text>
-<text x="1204" y="379.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Durability, privacy,</text>
-<text x="1204" y="414.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">limits</text>
-<rect x="72" y="524" width="704" height="180" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="94" y="574.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Required proof? Fail closed.</text>
-<text x="94" y="620.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">No verifier is installed. A proof-shaped field</text>
-<text x="94" y="654.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">cannot satisfy a verification requirement.</text>
-<rect x="800" y="524" width="728" height="180" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="822" y="574.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Actual wire version: 1.0.0</text>
-<text x="822" y="620.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Additive 1.2.3 compatibility is a resolver fixture,</text>
-<text x="822" y="654.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">not an available wire provider.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / COMPATIBILITY · EXACT PROFILES</text>
+<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Compatibility binds semantics and selected replies</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Consumer requirements are independent of provider advertisements.</text>
+<rect x="72" y="263" width="346" height="173" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="314.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Version</text>
+<text x="94" y="358.43" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Wire remains 1.0.0</text>
+<line x1="418" y1="347" x2="436" y2="347" stroke="#315E9C" stroke-width="2"/>
+<polygon points="436,347 423.0,342.0 423.0,352.0" fill="#315E9C"/>
+<rect x="442" y="263" width="346" height="173" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="464" y="314.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Profile</text>
+<text x="464" y="358.43" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Exact behavioral</text>
+<text x="464" y="390.43" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">semantics</text>
+<line x1="788" y1="347" x2="806" y2="347" stroke="#315E9C" stroke-width="2"/>
+<polygon points="806,347 793.0,342.0 793.0,352.0" fill="#315E9C"/>
+<rect x="812" y="263" width="346" height="173" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="834" y="314.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Operations</text>
+<text x="834" y="358.43" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Required methods and</text>
+<text x="834" y="390.43" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">limits</text>
+<line x1="1158" y1="347" x2="1176" y2="347" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1176,347 1163.0,342.0 1163.0,352.0" fill="#315E9C"/>
+<rect x="1182" y="263" width="346" height="173" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1204" y="314.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Descriptor</text>
+<text x="1204" y="358.43" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Token checked on</text>
+<text x="1204" y="390.43" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">invocation and reply</text>
+<rect x="72" y="486" width="464" height="130" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="535.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">AtomStorage</text>
+<text x="94" y="579.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">immutable-bytes/1</text>
+<rect x="568" y="486" width="464" height="130" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="590" y="535.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Messaging</text>
+<text x="590" y="579.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">durable-mailbox/2</text>
+<rect x="1064" y="486" width="464" height="130" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1086" y="535.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Execution</text>
+<text x="1086" y="579.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">inspect-atom/2</text>
+<text x="77" y="686.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Descriptor implementation 0.1.1 • Deterministic inspect output algorithm 0.1.0</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Descriptor hashes establish binding consistency; remote identity and provider truth remain separate.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / registry.py · test_adapters.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">11 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / registry.py · bindings.py · responses.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">11 / 33</text>
 </svg>

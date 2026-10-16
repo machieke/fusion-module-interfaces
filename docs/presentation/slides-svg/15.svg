@@ -1,47 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Crash recovery is a replay protocol</title>
-<desc id="desc">The three tested fault boundaries are acceptance committed before a response, DA result persisted before the completion transaction, and completion committed before dispatch. The demo itself performs the latter two worker kills; the contract suite also tests the acceptance-reply boundary. Deterministic storage coordinates and semantic deduplication let an attempt replay without a second logical result. A DA write before journal commit can leave an unreferenced artifact: there is no cross-store atomicity claim. Result metadata, job completion and outbox intent commit together in SQLite; inbox delivery and outbox completion also commit together. A full or revoked reply route keeps completion pending. These tests cover SIGKILL on the same host, not power loss, disk loss, Byzantine behavior or exactly-once physical computation.</desc>
+<title id="title">Six receipts describe six different facts</title>
+<desc id="desc">These facts are independent. A result atom can persist while the job is still queued after worker death. A succeeded job may have an unsent outbox when a reply route is full. A caller may have recorded its accepted outcome while acknowledgement is still pending. The plugin commits its outcome before acknowledgement to deduplicate that gap, and rechecks live authorization before returning it on replay. A failed worker completion is verified, recorded and acknowledged as an error, never transformed into empty memory or successful inspection. There is no exactly-once display or physical-execution guarantee. The original acceptance receipt in the trace remains queued/not-observed because it describes admission, not the later outcome.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RUNNING INTEGRATION · DURABILITY</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Crash recovery is a replay protocol</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">SQLite and DA do not share an atomic commit. The gap is handled explicitly.</text>
-<rect x="72" y="275" width="346" height="139" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="324.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Accept job</text>
-<text x="94" y="366.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SQLite commit</text>
-<line x1="418" y1="344" x2="437" y2="344" stroke="#315E9C" stroke-width="2"/>
-<polygon points="437,344 424.0,339.0 424.0,349.0" fill="#315E9C"/>
-<rect x="442" y="275" width="346" height="139" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="464" y="324.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Persist result</text>
-<text x="464" y="366.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Real DA write</text>
-<line x1="788" y1="344" x2="807" y2="344" stroke="#315E9C" stroke-width="2"/>
-<polygon points="807,344 794.0,339.0 794.0,349.0" fill="#315E9C"/>
-<rect x="812" y="275" width="346" height="139" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="834" y="324.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Complete job</text>
-<text x="834" y="366.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Result + outbox commit</text>
-<line x1="1158" y1="344" x2="1177" y2="344" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1177,344 1164.0,339.0 1164.0,349.0" fill="#315E9C"/>
-<rect x="1182" y="275" width="346" height="139" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1204" y="324.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Deliver reply</text>
-<text x="1204" y="366.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Inbox + outbox commit</text>
-<rect x="90" y="462" width="137.130859375" height="38" rx="7" fill="#F4E3DC"/>
-<text x="104" y="488.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#A84E39">SIGKILL A</text>
-<text x="90" y="548.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">Before acceptance reply</text>
-<text x="90" y="635.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Retry recovers the accepted</text>
-<text x="90" y="670.2099999999999" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">job.</text>
-<rect x="556" y="462" width="136.896484375" height="38" rx="7" fill="#F4E3DC"/>
-<text x="570" y="488.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#A84E39">SIGKILL B</text>
-<text x="556" y="548.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">After DA write</text>
-<text x="556" y="635.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Replay reuses the same</text>
-<text x="556" y="670.2099999999999" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">coordinate; an unreferenced</text>
-<text x="556" y="704.77" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">artifact may remain.</text>
-<rect x="1030" y="462" width="136.330078125" height="38" rx="7" fill="#F4E3DC"/>
-<text x="1044" y="488.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#A84E39">SIGKILL C</text>
-<text x="1030" y="548.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">Before dispatch</text>
-<text x="1030" y="635.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">The persisted outbox survives</text>
-<text x="1030" y="670.2099999999999" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and later reaches the inbox.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / NATIVE INTEGRATION · COMPLETION SEMANTICS</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Six receipts describe six different facts</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A pending native receipt can be reconciled; it is not a Hive goal or a claim of completed work.</text>
+<rect x="72" y="250" width="464" height="221" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="287.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">1 · INPUT PERSISTENCE</text>
+<text x="94" y="329.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Bytes have a scoped ref</text>
+<text x="94" y="371.64000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Real DeTTa receipt; local</text>
+<text x="94" y="402.36000000000007" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">files/process restart.</text>
+<rect x="568" y="250" width="464" height="221" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="590" y="287.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">2 · JOB ACCEPTANCE</text>
+<text x="590" y="329.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Work is durably queued</text>
+<text x="590" y="371.64000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No claim yet about execution or</text>
+<text x="590" y="402.36000000000007" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">reply delivery.</text>
+<rect x="1064" y="250" width="464" height="221" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1086" y="287.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">3 · RESULT + TERMINAL</text>
+<text x="1086" y="329.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Execution has an outcome</text>
+<text x="1086" y="371.64000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Atom result first; job</text>
+<text x="1086" y="402.36000000000007" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">terminal/outbox commit second.</text>
+<rect x="72" y="501" width="464" height="221" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="538.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">4 · MAILBOX ACCEPTANCE</text>
+<text x="94" y="580.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Completion is retained</text>
+<text x="94" y="622.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Poll can repeat until the recipient</text>
+<text x="94" y="653.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">acknowledges.</text>
+<rect x="568" y="501" width="464" height="221" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="590" y="538.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">5 · CALLER ACCEPTANCE</text>
+<text x="590" y="580.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">One outcome is recorded</text>
+<text x="590" y="622.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Known job, correlation and result</text>
+<text x="590" y="653.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">bytes verified.</text>
+<rect x="1064" y="501" width="464" height="221" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1086" y="538.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">6 · ACKNOWLEDGEMENT</text>
+<text x="1086" y="580.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Delivery is acknowledged</text>
+<text x="1086" y="622.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Retry reuses the same key if the</text>
+<text x="1086" y="653.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">ack response is lost.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">One logical result; physical computation may repeat. Tested failure model: same-host process death.</text>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Native done = verified outcome + successful acknowledgement. Terminal failure stays an explicit error.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / ADR 003 · test_contract.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">15 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / contracts.md · m1_2-evidence.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">15 / 33</text>
 </svg>

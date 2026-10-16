@@ -1,36 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Keep four architecture choices independent</title>
-<desc id="desc">A service contract is an interface, not necessarily a blockchain smart contract. One module can run in process, behind a message boundary or through an inspected chain API, provided the profile and required behavior are preserved. The current proof runs identical Peer consumer code under in-process and subprocess service bindings. Both still use real DA helper processes and separate workers. This demonstrates a transport substitution within the local composition; it does not demonstrate an alternate DA provider or a distributed deployment. Constructor/composition code imports concrete adapters. The typed domain ports do not depend on DeTTa, F1R3, PLN or ECAN implementations.</desc>
+<title id="title">AtomStorage replacement is independently exercised</title>
+<desc id="desc">The committed M1.2 matrix contains 4 workflows: DeTTa and fixture-files under both in-process and private subprocess bindings. These peers remain fixtures; this matrix is not relabelled as the new native Hive test. Execution depends on declared AtomStorage and CompletionDelivery ports and does not inspect concrete atom owners. The file fixture owns atomic payload/record files and is independently implemented. This proves substitutability in the documented fresh-store profile. It is not another DA network, live namespace switching, a journal migration or distributed placement. M1.2 preserves these boundaries without changing fusion/.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / DESIGN DETAILS · SUBSTITUTION</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Keep four architecture choices independent</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Changing placement must not silently change the meaning of an operation.</text>
-<rect x="72" y="254" width="1456" height="100" rx="10" fill="#FFFFFF"/>
-<rect x="72" y="254" width="8" height="100" rx="0" fill="#315E9C"/>
-<text x="101" y="309.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#315E9C">INTERFACE</text>
-<text x="405" y="299.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">What behavior is promised?</text>
-<text x="971" y="301.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">atom.storage / immutable-bytes/1</text>
-<rect x="72" y="370" width="1456" height="100" rx="10" fill="#FFFFFF"/>
-<rect x="72" y="370" width="8" height="100" rx="0" fill="#007C78"/>
-<text x="101" y="425.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#007C78">IMPLEMENTATION</text>
-<text x="405" y="415.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Who provides that behavior?</text>
-<text x="971" y="417.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">AtomOwner + injected DeTTa adapter</text>
-<rect x="72" y="486" width="1456" height="100" rx="10" fill="#FFFFFF"/>
-<rect x="72" y="486" width="8" height="100" rx="0" fill="#315E9C"/>
-<text x="101" y="541.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#315E9C">TRANSPORT</text>
-<text x="405" y="531.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">How does a caller cross the</text>
-<text x="405" y="566.2099999999999" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">boundary?</text>
-<text x="971" y="533.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">In-process call or private JSON stdio</text>
-<rect x="72" y="602" width="1456" height="100" rx="10" fill="#FFFFFF"/>
-<rect x="72" y="602" width="8" height="100" rx="0" fill="#A86A15"/>
-<text x="101" y="657.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#A86A15">PLACEMENT</text>
-<text x="405" y="647.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Where does the implementation</text>
-<text x="405" y="682.2099999999999" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">run?</text>
-<text x="971" y="649.7" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Trusted local service; optional chain</text>
-<text x="971" y="682.98" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">adapter</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / SUBSTITUTION · FOUR-WAY MATRIX</text>
+<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">AtomStorage replacement is independently exercised</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Protocol fixture callers exercise two providers and two transports; the worker logic is unchanged.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">SELECTED ATOMSTORAGE</text>
+<text x="598" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">IN-PROCESS BINDING</text>
+<text x="1071" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PRIVATE STDIO BINDING</text>
+<rect x="72" y="277" width="1456" height="125" rx="6" fill="#FFFFFF"/>
+<text x="88" y="320.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Real DeTTa libraries</text>
+<text x="598" y="320.6" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">PASS · independent workflow</text>
+<text x="1071" y="320.6" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">PASS · independent workflow</text>
+<rect x="72" y="407" width="1456" height="125" rx="6" fill="#FFFFFF"/>
+<text x="88" y="450.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Atomic-file fixture</text>
+<text x="598" y="450.6" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">PASS · independent workflow</text>
+<text x="1071" y="450.6" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">PASS · independent workflow</text>
+<rect x="72" y="592" width="704" height="140" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="642.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Independent implementation</text>
+<text x="94" y="685.1999999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">The file fixture does not inherit AtomOwner or use its</text>
+<text x="94" y="715.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SQLite atom table.</text>
+<rect x="800" y="592" width="728" height="140" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="822" y="642.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Fresh stores only</text>
+<text x="822" y="685.1999999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No accepted jobs or existing references are moved</text>
+<text x="822" y="715.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">between providers.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Only composition imports concrete adapters. Domain contracts stay backend-neutral.</text>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Interface, implementation, transport and placement remain independent choices.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / ADR 004–005 · bindings.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">10 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / evidence/m1_2/m11-swap-demo.json · test_m11.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">10 / 33</text>
 </svg>

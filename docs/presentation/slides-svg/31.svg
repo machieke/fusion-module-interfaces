@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Reproduce the selected gates from a fresh checkout</title>
+<desc id="desc">Run both two-line commands from a fresh Fusion checkout at the evidence revision or a reviewed descendant. artifacts/native must be absent or empty: the build refuses to overwrite existing work. SSH must already authorize access to the exact Hive and DeTTa repositories and host keys must be established. Public PeTTa and SWI sources are fetched at full commits. Cargo uses offline locked downloads; the native pip step uses hashes and --no-cache and builds Janus for the private SWI prefix. No dependency target directory, venv or binary is copied from the original workspace. The verifier deliberately hides real source paths for fixture-only testing, then runs the four-way matrix, upstream DeTTa, native baseline and actual caller tests. Chain is separate and not run. The runbook explains Linux prerequisites, missing optional native headers, the CMake guard correction and cache population limits. Building this deck does not rerun those integration tests.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX E / REPRODUCTION</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Reproduce the selected gates from a fresh checkout</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Authorized source access and warm Cargo/Python downloads are prerequisites; see the runbook.</text>
+<rect x="72" y="245" width="1456" height="187" rx="12" fill="#0B2233"/>
+<text x="100" y="285.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">BUILD PINNED NATIVE DEPENDENCIES</text>
+<text x="100" y="339.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
+<text x="100" y="387.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/build_hive.py artifacts/native</text>
+<rect x="72" y="465" width="1456" height="187" rx="12" fill="#0B2233"/>
+<text x="100" y="505.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">VERIFY FIXTURES, REAL DETTA AND NATIVE HIVE</text>
+<text x="100" y="559.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
+<text x="100" y="607.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/verify_m12.py artifacts/native/environment.json</text>
+<text x="78" y="718.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#102B3F">Fixture-only: uv run --python 3.11 --locked python scripts/verify_m11.py --fixture-only</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">Read manifest.json, verification.json, hive-trace.json and the preserved failure logs before extending scope.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / runbook.md · build_hive.py · verify_m12.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">31 / 33</text>
+</svg>

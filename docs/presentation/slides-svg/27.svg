@@ -1,43 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Typed failures preserve the caller’s recovery choices</title>
-<desc id="desc">Permanent-for-unchanged-request failures also include INVALID_ARGUMENT and DEADLINE_EXCEEDED. INTERNAL is reserved and not automatically retryable. NOT_AVAILABLE covers missing persisted DA for a known ref and queued results; NOT_FOUND is absent metadata. Overload never silently drops acknowledged work. When transport fails after acceptance, the caller can retry the same semantic mutation or query the job owner. Already accepted mutations recover their original receipt even after the deadline expires, while new admissions and worker starts still honor the deadline. Empty poll means an authorized, known-empty inbox; failures do not become empty recall results. Live policy still applies to retries.</desc>
+<title id="title">Implementation map: adapt at the native boundary</title>
+<desc id="desc">The actual adapter is integration/hive/program/program.py, registered by plugin.json. It owns only the caller receipt. native_caller.py is a test transport around the unmodified app, not a runtime replacement. The plugin invokes the same public validated binding as protocol consumers. Service is an authenticated facade; owner logic is now in atoms.py, messaging.py and execution.py, not all in service.py as the original deck suggested. composition.py alone selects concrete owner implementations. Execution depends on AtomStorage and trusted CompletionDelivery. The file fixture is independent of AtomOwner. The original Rust opaque adapter remains unchanged. Chain composition remains separate and unrun by this native flow.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX C / ERROR AND RETRY SEMANTICS</text>
-<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">Typed failures preserve the caller’s recovery choices</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Unknown outcome is different from known rejection; an empty inbox is different from failure.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVATION / ERROR</text>
-<text x="508" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEANING</text>
-<text x="1024" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CALLER ACTION</text>
-<rect x="72" y="277" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">NOT_FOUND</text>
-<text x="508" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No such scoped atom metadata</text>
-<text x="1024" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Correct the reference</text>
-<rect x="72" y="359" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">NOT_AVAILABLE</text>
-<text x="508" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Known data / result temporarily</text>
-<text x="508" y="427.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">unavailable</text>
-<text x="1024" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Retry or query the owner</text>
-<rect x="72" y="441" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">OVERLOADED</text>
-<text x="508" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Capacity or current writer lock</text>
-<text x="508" y="509.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">unavailable</text>
-<text x="1024" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Back off; reuse key + semantic input</text>
-<rect x="72" y="523" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CONFLICT</text>
-<text x="508" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Same key changed meaning / revision</text>
-<text x="508" y="591.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">mismatch</text>
-<text x="1024" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Reconcile; do not blindly replay</text>
-<rect x="72" y="605" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">UNAUTHORIZED /</text>
-<text x="88" y="673.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">UNSUPPORTED_*</text>
-<text x="508" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Access or contract requirements fail</text>
-<text x="1024" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Change authorization or requirements</text>
-<rect x="72" y="687" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Transport loss</text>
-<text x="508" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Acceptance may already be durable</text>
-<text x="1024" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Recover by key / job; do not assume</text>
-<text x="1024" y="755.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">failure</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX A / CODE NAVIGATION</text>
+<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Implementation map: adapt at the native boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Native-specific translation stays outside the backend-independent modules.</text>
+<rect x="72" y="245" width="430" height="134" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="287.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">Native entrypoint</text>
+<text x="94" y="323.21000000000004" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#536775">Hive Programs.act</text>
+<text x="94" y="347.53000000000003" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#536775">→ integration/hive/program/program.py</text>
+<rect x="584" y="245" width="430" height="134" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="606" y="294.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Validated consumer</text>
+<text x="606" y="335.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Peer → Subprocess.invoke</text>
+<text x="606" y="363.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">→ fusion.host rpc</text>
+<rect x="1096" y="245" width="432" height="134" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1118" y="292.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">Trusted composition</text>
+<text x="1118" y="331.51" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">composition.py injects</text>
+<text x="1118" y="358.39" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">AtomStorage + CompletionDelivery</text>
+<line x1="502" y1="312" x2="584" y2="312" stroke="#315E9C" stroke-width="2"/>
+<polygon points="584,312 571.0,307.0 571.0,317.0" fill="#315E9C"/>
+<line x1="1014" y1="312" x2="1096" y2="312" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1096,312 1083.0,307.0 1083.0,317.0" fill="#315E9C"/>
+<rect x="584" y="464" width="430" height="127" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="606" y="509.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Service facade</text>
+<text x="606" y="547.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">service.py · policy.py</text>
+<text x="606" y="574.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">registry.py · responses.py</text>
+<line x1="799" y1="379" x2="799" y2="464" stroke="#315E9C" stroke-width="2"/>
+<polygon points="799,464 804.0,451.0 794.0,451.0" fill="#315E9C"/>
+<rect x="72" y="464" width="430" height="127" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
+<text x="94" y="509.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Shared declarations</text>
+<text x="94" y="547.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">ports.py · contracts.py</text>
+<text x="94" y="574.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Schemas and exact profiles</text>
+<line x1="584" y1="526" x2="502" y2="526" stroke="#536775" stroke-width="2"/>
+<polygon points="502,526 515.0,531.0 515.0,521.0" fill="#536775"/>
+<rect x="1096" y="464" width="432" height="127" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1118" y="509.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Separate owners</text>
+<text x="1118" y="547.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">atoms.py · messaging.py</text>
+<text x="1118" y="574.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">execution.py</text>
+<line x1="1014" y1="526" x2="1096" y2="526" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1096,526 1083.0,521.0 1083.0,531.0" fill="#315E9C"/>
+<rect x="72" y="677" width="704" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="725.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Operator-only worker</text>
+<text x="94" y="766.69" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">host.py work / flush; deterministic inspect_atom</text>
+<rect x="824" y="677" width="704" height="120" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="846" y="725.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Selected provider</text>
+<text x="846" y="765.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">detta.py + Rust helper OR independent fixture_atoms.py</text>
+<line x1="1312" y1="591" x2="1312" y2="677" stroke="#007C78" stroke-width="2"/>
+<polygon points="1312,677 1317.0,664.0 1307.0,664.0" fill="#007C78"/>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / contracts.md · service.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">27 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / integration/hive/ · fusion/</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">27 / 33</text>
 </svg>

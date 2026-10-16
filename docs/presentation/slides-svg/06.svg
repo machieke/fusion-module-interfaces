@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
 <title id="title">Control responsibilities: move work without moving authority</title>
-<desc id="desc">Messaging owns accepted inbox entries and acknowledgements. Execution owns jobs and its outbox, and only accepts inspect_atom in M1. Registry is a static provider catalogue, not capability authority or chain registration; the resolver is a pure selection function over those descriptors. Finality is a separate bounded adapter with a registered approved commitment, durable signed intent and direct node observations. It does not establish belief confidence, execution success or indefinite availability. Authorization reads current server-owned policy from authenticated transport context; the implemented policy is a fixture for the trusted local harness. No caller-supplied sender field grants authority.</desc>
+<desc id="desc">Messaging owns accepted inbox entries, acknowledgements and replay. Execution owns jobs and the completion outbox, and accepts only inspect_atom. Its result atoms belong to AtomStorage, a separate owner. Registry and resolver select a configured descriptor, not permission. Finality is a separate adapter with a historical real M1 observation; it is not invoked by the real Hive M1.2 workflow. Native Hive authenticates the operator and supplies trusted actor context. Fusion then enforces current scope, method and route policy through a labelled local test-policy implementation. Caller-supplied identity does not confer authority.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
 <text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / RESPONSIBILITY ATLAS · 3 OF 3</text>
 <text x="70" y="133.95" font-family="DejaVu Sans" font-size="41" font-weight="700" fill="#102B3F">Control responsibilities: move work without moving authority</text>
@@ -32,13 +32,13 @@
 <text x="88" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Consensus / finality</text>
 <text x="418" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Submit approved commitment; observe</text>
 <text x="418" y="673.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">submit · observe</text>
-<text x="1008" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Signed intent journal · REAL LOCAL CHAIN</text>
+<text x="1008" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Signed intents · HISTORICAL M1</text>
 <rect x="72" y="687" width="1456" height="77" rx="6" fill="#FFFFFF"/>
 <text x="88" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Authorization</text>
 <text x="418" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Check current caller + scope + method</text>
 <text x="418" y="755.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">authorize / live policy checks</text>
 <text x="1008" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Server-owned policy · LOCAL FIXTURE</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / M0–M1 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">06 / 29</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">06 / 33</text>
 </svg>
