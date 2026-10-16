@@ -1,44 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Reproduction separates source, build and execution</title>
-<desc id="desc">Source obtainability, buildability and a passing integration are separate questions. Authorized SSH fetches retrieved the exact Hive and DeTTa commits. Public pinned PeTTa/SWI sources and SWI submodule commits identify native inputs. The native build took 139.595 seconds on the recorded host; it observed Prolog-to-Python 42, Python-to-Prolog 2, and a generated PeTTa expression 42. It compiled a private SWI prefix and installed hash-locked dependencies, rebuilding Janus with --no-cache against that prefix. No prior venv, target or binary was copied. Python and Cargo download caches were warm; an entirely empty-cache build is unrun. The CMake cache-type guard and inherited virtual-environment issue were corrected and recorded. The verifier-only import-order correction was obtained by Git fast-forward before the final tests. None of these engineering choices changes upstream source or implies production deployment portability.</desc>
+<title id="title">M1.2 remains a working, separate integration</title>
+<desc id="desc">The M2 verifier explicitly compares the preserved source files against requested M1.2 evidence ancestor 4ee5cbe8b84689a5d2432530083738b263142f90. It reruns the original thirteen real native Hive tests, the selected native baseline, upstream DeTTa and the full conformance suite. ports.py grows new local protocols, while the preserved original wire schemas and bindings remain unchanged. All six built provider source trees are clean after testing, and supplied sibling sources remain unchanged. No ECAN, inference control, general PLN kernel, live migration or chain action is added.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / HANDOFF · OBTAINABLE INPUTS</text>
-<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Reproduction separates source, build and execution</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Fresh disposable checkout; immutable authorized sources; locked new builds; actual runtime tests.</text>
-<rect x="72" y="257" width="464" height="294" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="94" y="294.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">1 · SOURCE</text>
-<text x="94" y="339.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Obtain exact bytes</text>
-<text x="94" y="385.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Fusion commit/bundle; Hive</text>
-<text x="94" y="419.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and DeTTa via authorized</text>
-<text x="94" y="454.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">SSH; public PeTTa and SWI</text>
-<text x="94" y="489.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">commits.</text>
-<line x1="536" y1="405" x2="562" y2="405" stroke="#007C78" stroke-width="2"/>
-<polygon points="562,405 549.0,400.0 549.0,410.0" fill="#007C78"/>
-<rect x="568" y="257" width="464" height="294" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="590" y="294.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">2 · BUILD</text>
-<text x="590" y="339.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Create new artifacts</text>
-<text x="590" y="385.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Python 3.12.12, SWI 10.1.14</text>
-<text x="590" y="419.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and Janus 1.5.3; locked</text>
-<text x="590" y="454.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">packages; fresh native objects</text>
-<text x="590" y="489.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and venv.</text>
-<line x1="1032" y1="405" x2="1058" y2="405" stroke="#007C78" stroke-width="2"/>
-<polygon points="1058,405 1045.0,400.0 1045.0,410.0" fill="#007C78"/>
-<rect x="1064" y="257" width="464" height="294" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1086" y="294.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">3 · RUN</text>
-<text x="1086" y="339.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Exercise the seam</text>
-<text x="1086" y="385.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Both bridges and PeTTa</text>
-<text x="1086" y="419.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">evaluate; native baseline</text>
-<text x="1086" y="454.45" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">precedes the 13 actual caller</text>
-<text x="1086" y="489.01" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">cases.</text>
-<rect x="72" y="600" width="704" height="137" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="94" y="648.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#A86A15">Warm-cache assumptions are explicit</text>
-<text x="94" y="689.69" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Python/uv and Cargo downloads reused; native pip</text>
-<text x="94" y="719.1300000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">install used --no-cache.</text>
-<rect x="800" y="600" width="728" height="137" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="822" y="648.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Clean DeTTa was rebaselined</text>
-<text x="822" y="689.69" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Historical dirty bytes remain historical; fresh stores and all</text>
-<text x="822" y="719.1300000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">applicable tests were rerun.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / REGRESSION AND SCOPE PRESERVATION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">M1.2 remains a working, separate integration</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Private cognition is added alongside the original storage, messaging and execution path.</text>
+<rect x="72" y="250" width="704" height="208" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="302.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">Original native operation</text>
+<text x="94" y="348.60999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">fusion-inspect still stores bytes, shares a ref,</text>
+<text x="94" y="383.16999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">delegates inspect_atom, recovers completion</text>
+<text x="94" y="417.72999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">and acknowledges it.</text>
+<rect x="800" y="250" width="728" height="208" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="822" y="302.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">New private operation</text>
+<text x="822" y="348.60999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">fusion-episode records private events and revises</text>
+<text x="822" y="383.16999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">eligible evidence. It constructs no mailbox,</text>
+<text x="822" y="417.72999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">execution or chain port.</text>
+<text x="88" y="521.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PRESERVED SOURCE BOUNDARY</text>
+<text x="1068" y="521.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FINAL REGRESSION</text>
+<rect x="72" y="547" width="1456" height="69" rx="6" fill="#FFFFFF"/>
+<text x="88" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">M1 wire schemas, registry/resolver, AtomStorage, DA adapter</text>
+<text x="1068" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Byte-identical to the requested M1.2</text>
+<text x="1068" y="617.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">baseline</text>
+<rect x="72" y="621" width="1456" height="69" rx="6" fill="#FFFFFF"/>
+<text x="88" y="660.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Mailbox, execution, original Hive plugin and driver</text>
+<text x="1068" y="660.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Original behavior preserved</text>
+<rect x="72" y="695" width="1456" height="69" rx="6" fill="#FFFFFF"/>
+<text x="88" y="734.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Original native Hive integration tests</text>
+<text x="1068" y="734.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">13 passed; test source unchanged</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Upstream guarded sources are unchanged. Application semantics remain above opaque DA.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / build_hive.py · native-build.json · verification.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">23 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / source-preservation.json · final/m1_2/verification.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">23 / 38</text>
 </svg>

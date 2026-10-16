@@ -1,41 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">A restarted Hive caller recovers without its old RAM</title>
-<desc id="desc">These are actual OS-process kills, not exceptions standing in for restart. The test caller is a native Hive app process with real authentication and dispatch. Trusted configuration enables a SIGSTOP checkpoint; the test waits for its marker and sends SIGKILL. Admission-loss occurs after durable Fusion acceptance but before saving the job in the caller record. Submission-loss occurs after that local record commits. Acceptance-loss occurs after outcome commit and before ack. A new app process signs in against the same native data directory and reconciles the original request. Tests assert stable job identity, two total atoms (input and one result), one outbox, one completion, one caller outcome and no delivery after ack. The receipt is a minimal boundary record, not an episodic-memory implementation.</desc>
+<title id="title">Lineage blocks double counting, even after aggregation</title>
+<desc id="desc">This is a support-lineage diagram, not a general inference graph. Registered source origins are operator assumptions. Copies inherit the union of admitted provenance roots. The unchanged upstream guards require an exact independence declaration binding both supports, with matching model, claim, context and disjoint relevant lineage. Known shared origin or evidence overlap takes precedence over that declaration. Aggregation unions lineage; reintroducing an ancestor cannot increase weight. In the generated demo ancestor_outcome is retained-alternative, while the aggregate and contribution coverage remain unchanged. The model does not detect undisclosed copying or establish the truth of source registration.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RECOVERY · ACTUAL CALLER SIGKILL</text>
-<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">A restarted Hive caller recovers without its old RAM</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Three kill points traverse the same authenticated native action route.</text>
-<rect x="72" y="258" width="464" height="345" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="295.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">AFTER ADMISSION</text>
-<text x="94" y="343.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Response lost</text>
-<text x="94" y="390.16999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Fusion accepted the job; the</text>
-<text x="94" y="424.72999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">caller has only its original</text>
-<text x="94" y="459.28999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">intent. Same input + key</text>
-<text x="94" y="493.84999999999997" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">recovers the same job.</text>
-<rect x="94" y="627" width="313.6962890625" height="35" rx="7" fill="#F4E3DC"/>
-<text x="108" y="650.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#A84E39">SIGKILL → RESTART → REPLAY</text>
-<rect x="568" y="258" width="464" height="345" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="590" y="295.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">AFTER SUBMISSION</text>
-<text x="590" y="343.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Caller stops</text>
-<text x="590" y="390.16999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">The local receipt retains the</text>
-<text x="590" y="424.72999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">job. Status /2 restores known</text>
-<text x="590" y="459.28999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">correlation after a new</text>
-<text x="590" y="493.84999999999997" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">process signs in.</text>
-<rect x="590" y="627" width="313.6962890625" height="35" rx="7" fill="#F4E3DC"/>
-<text x="604" y="650.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#A84E39">SIGKILL → RESTART → REPLAY</text>
-<rect x="1064" y="258" width="464" height="345" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1086" y="295.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">AFTER ACCEPTANCE</text>
-<text x="1086" y="343.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Ack not yet sent</text>
-<text x="1086" y="390.16999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">The outcome is durable.</text>
-<text x="1086" y="424.72999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Redelivery is checked against</text>
-<text x="1086" y="459.28999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">it, then acknowledged without</text>
-<text x="1086" y="493.84999999999997" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">a second outcome row.</text>
-<rect x="1086" y="627" width="313.6962890625" height="35" rx="7" fill="#F4E3DC"/>
-<text x="1100" y="650.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#A84E39">SIGKILL → RESTART → REPLAY</text>
-<text x="77" y="732.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Observed: one job · one result atom · one completion · one accepted outcome identity</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / EVIDENCE DEPENDENCIES</text>
+<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">Lineage blocks double counting, even after aggregation</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">An independence declaration cannot override known overlapping roots or evidence.</text>
+<rect x="72" y="248" width="464" height="145" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">Support A</text>
+<text x="94" y="345.65999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Origin A · evidence a</text>
+<rect x="568" y="248" width="464" height="145" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="590" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">Copy of A</text>
+<text x="590" y="345.65999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Origin A · evidence a′</text>
+<rect x="1064" y="248" width="464" height="145" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1086" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">Support B</text>
+<text x="1086" y="345.65999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Origin B · evidence b</text>
+<line x1="536" y1="320" x2="568" y2="320" stroke="#315E9C" stroke-width="2"/>
+<polygon points="568,320 555.0,315.0 555.0,325.0" fill="#315E9C"/>
+<text x="580" y="440.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#A86A15">Known common origin → no extra</text>
+<text x="580" y="470.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#A86A15">weight</text>
+<rect x="72" y="562" width="464" height="164" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="612.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Aggregate A + B</text>
+<text x="94" y="658.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Coverage {a, b}</text>
+<text x="94" y="692.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Roots {A, B}</text>
+<line x1="210" y1="393" x2="210" y2="562" stroke="#007C78" stroke-width="2"/>
+<polygon points="210,562 215.0,549.0 205.0,549.0" fill="#007C78"/>
+<line x1="1296" y1="393" x2="1296" y2="510" stroke="#007C78" stroke-width="2"/>
+<line x1="1296" y1="510" x2="420" y2="510" stroke="#007C78" stroke-width="2"/>
+<line x1="420" y1="510" x2="420" y2="562" stroke="#007C78" stroke-width="2"/>
+<polygon points="420,562 425.0,549.0 415.0,549.0" fill="#007C78"/>
+<text x="567" y="552.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#007C78">Only with an eligible exact-pair assumption</text>
+<rect x="824" y="594" width="704" height="132" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="846" y="644.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Aggregate + ancestor A</text>
+<text x="846" y="690.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Overlap detected → no additional weight.</text>
+<line x1="536" y1="651" x2="824" y2="651" stroke="#A86A15" stroke-width="2"/>
+<polygon points="824,651 811.0,646.0 811.0,656.0" fill="#A86A15"/>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Known-job recovery uses durable context and status; unsolicited completions do not establish causality.</text>
+<text x="94" y="802.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">New IDs, aliases or request keys do not manufacture independence.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / test_integration.py · hive-integration.xml</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">16 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / PLNAdapter.revise · beliefs.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">16 / 38</text>
 </svg>

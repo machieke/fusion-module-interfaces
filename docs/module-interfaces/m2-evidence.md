@@ -1,8 +1,10 @@
 # M2 evidence: private episodic memory and guarded native belief revision
 
 M2 is complete for the supported local C1/C2 scope. All required gates passed;
-there are no remaining blocked prerequisites. Chain is NOT_RUN. The earlier
-presentation remains an M1.2 artifact. The [machine manifest](evidence/m2/manifest.json)
+there are no remaining blocked prerequisites. Chain is NOT_RUN. The
+[presentation](../presentation/README.md) now covers M2 with an ELI16 executive
+summary; its rebuild does not rerun these integration gates. The
+[machine manifest](evidence/m2/manifest.json)
 and [complete final verification](evidence/m2/final/verification.json) retain exact
 commands, file hashes, classifications and results.
 

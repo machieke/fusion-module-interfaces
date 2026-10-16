@@ -1,43 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Typed failures preserve the caller’s recovery choices</title>
-<desc id="desc">Permanent-for-unchanged-request failures also include INVALID_ARGUMENT and DEADLINE_EXCEEDED. INTERNAL is reserved and not automatically retryable. NOT_AVAILABLE covers missing persisted DA for a known ref and queued results; NOT_FOUND is absent metadata. Overload never silently drops acknowledged work. When transport fails after acceptance, the caller can retry the same semantic mutation or query the job owner. Already accepted mutations recover their original receipt even after the deadline expires, while new admissions and worker starts still honor the deadline. Empty poll means an authorized, known-empty inbox; failures do not become empty recall results. Live policy still applies to retries.</desc>
+<title id="title">The guarantees stop at the tested boundary</title>
+<desc id="desc">The local profiles are deliberately bounded: 256 events per episode, pages/pending batches of sixteen, 32 observations per belief, at most 64 support records, and three CAS retries per drain. Owner history is retained without garbage collection or a total disk quota. Authority is a development local policy, not production identity management. Explicit model semantics and exact runtime selection are required. Native caller evidence is for the chosen Programs route and selected tests, not the full Hive suite, LLM operation or arbitrary application behavior. Future Relations/Search, ECAN, inference control and general PLN rules remain outside implemented scope. Chain and live migration are unrun. No new runtime guarantee is created by rebuilding this presentation.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX C / ERROR AND RETRY SEMANTICS</text>
-<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">Typed failures preserve the caller’s recovery choices</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Unknown outcome is different from known rejection; an empty inbox is different from failure.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVATION / ERROR</text>
-<text x="508" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEANING</text>
-<text x="1024" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CALLER ACTION</text>
-<rect x="72" y="277" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">NOT_FOUND</text>
-<text x="508" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No such scoped atom metadata</text>
-<text x="1024" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Correct the reference</text>
-<rect x="72" y="359" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">NOT_AVAILABLE</text>
-<text x="508" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Known data / result temporarily</text>
-<text x="508" y="427.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">unavailable</text>
-<text x="1024" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Retry or query the owner</text>
-<rect x="72" y="441" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">OVERLOADED</text>
-<text x="508" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Capacity or current writer lock</text>
-<text x="508" y="509.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">unavailable</text>
-<text x="1024" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Back off; reuse key + semantic input</text>
-<rect x="72" y="523" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CONFLICT</text>
-<text x="508" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Same key changed meaning / revision</text>
-<text x="508" y="591.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">mismatch</text>
-<text x="1024" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Reconcile; do not blindly replay</text>
-<rect x="72" y="605" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">UNAUTHORIZED /</text>
-<text x="88" y="673.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">UNSUPPORTED_*</text>
-<text x="508" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Access or contract requirements fail</text>
-<text x="1024" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Change authorization or requirements</text>
-<rect x="72" y="687" width="1456" height="77" rx="6" fill="#FFFFFF"/>
-<text x="88" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Transport loss</text>
-<text x="508" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Acceptance may already be durable</text>
-<text x="1024" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Recover by key / job; do not assume</text>
-<text x="1024" y="755.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">failure</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / LIMITS AND STOPPING POINT</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The guarantees stop at the tested boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Useful evidence is specific about the assumptions that made it possible.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED GUARANTEE</text>
+<text x="818" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">LIMIT OR UNRUN EXTENSION</text>
+<rect x="72" y="277" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Duplicate-safe occurrences and numerical</text>
+<text x="88" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">contributions</text>
+<text x="818" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Physical formula evaluation may repeat after a crash</text>
+<rect x="72" y="355" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="393.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Retained contrary observations and exact coverage</text>
+<text x="818" y="393.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No proof of source truth; undisclosed copying is undetected</text>
+<rect x="72" y="433" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="471.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Private local placement and tested route isolation</text>
+<text x="818" y="471.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Trusted host/operator; no encryption or admin secrecy</text>
+<text x="818" y="501.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">claim</text>
+<rect x="72" y="511" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="549.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Independent owner commits; process restart</text>
+<text x="88" y="579.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">recovery</text>
+<text x="818" y="549.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Power loss and distributed failover NOT_RUN</text>
+<rect x="72" y="589" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="627.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Fresh-store substitution; explicit model/runtime</text>
+<text x="88" y="657.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">profiles</text>
+<text x="818" y="627.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No live state migration or universal-model claim</text>
+<rect x="72" y="667" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="705.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Fresh pinned build; selected native Hive tests</text>
+<text x="818" y="705.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Empty-cache build, historical SWI 10.0.1, full Hive suite</text>
+<text x="818" y="735.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">NOT_RUN</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#EBE5F3"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#7458A2">Stopped at M2: no ECAN, inference control, general rule kernel, chain action or live migration.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / contracts.md · service.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">29 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / m2-evidence.md · manifest.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">29 / 38</text>
 </svg>

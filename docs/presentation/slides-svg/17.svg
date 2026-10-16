@@ -1,46 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Worker failure and backpressure preserve pending work</title>
-<desc id="desc">The native worker-recovery test kills the existing worker after AtomStorage has committed the result and before execution terminal state/outbox commit. The test observes two atoms, one queued job and no outbox, then restarts and verifies one result. In the full-route test, a labelled fixture fills the dedicated reply route. Flush reports zero sent and one pending. The native operation refuses the unrelated delivery and does not record an accepted outcome. After fixture cleanup, flush and native completion succeed. A separate test revokes worker create authority after admission and observes an explicit UNAUTHORIZED failed completion without a result atom. Temporary input unavailability is exercised in the preserved M1.1 matrix; the new native representative provider-failure case is route backpressure. No cross-owner atomicity is claimed.</desc>
+<title id="title">Native revision reuses the guarded implementation</title>
+<desc id="desc">Reachability is pinned at dd56f3f053ed90239de5377021a7d3b3fbf424ac; PLN at 4405956947c4b53c7ff01bd565aa3b114bc970a1; PeTTa at ae66fa8e41dcd5539d614706bd4e5cfb34f9608d. C2 loads the unchanged PLNAdapter.revise and its truth/support guards, injecting only a revision-specific native runner. The runtime profile is fusion-petta-swi-10.1.14-revision/1, with model trueagi-pln-stv-finite-k1/v1. The upstream historical 10.0.1 checks/locks were not weakened. Source and binary drift, missing binaries, invalid outputs and timeouts are refused. This is not a general PLN rule kernel or an AdmissionService/AtomSpace projection. C2 rechecks live authority and expected revision after computation before committing.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RECOVERY · INDEPENDENT COMMITS</text>
-<text x="70" y="137.75" font-family="DejaVu Sans" font-size="45" font-weight="700" fill="#102B3F">Worker failure and backpressure preserve pending work</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A result can survive worker death; a full route can delay completion without losing it.</text>
-<rect x="72" y="252" width="346" height="156" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="94" y="301.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Result atom</text>
-<text x="94" y="344.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Committed by</text>
-<text x="94" y="376.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">AtomStorage</text>
-<line x1="418" y1="331" x2="437" y2="331" stroke="#315E9C" stroke-width="2"/>
-<polygon points="437,331 424.0,326.0 424.0,336.0" fill="#315E9C"/>
-<rect x="442" y="252" width="346" height="156" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="464" y="301.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Job + outbox</text>
-<text x="464" y="344.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Committed by</text>
-<text x="464" y="376.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">execution</text>
-<line x1="788" y1="331" x2="807" y2="331" stroke="#315E9C" stroke-width="2"/>
-<polygon points="807,331 794.0,326.0 794.0,336.0" fill="#315E9C"/>
-<rect x="812" y="252" width="346" height="156" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="834" y="301.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Completion</text>
-<text x="834" y="344.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Accepted by Messaging</text>
-<line x1="1158" y1="331" x2="1177" y2="331" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1177,331 1164.0,326.0 1164.0,336.0" fill="#315E9C"/>
-<rect x="1182" y="252" width="346" height="156" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1204" y="301.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Caller outcome</text>
-<text x="1204" y="344.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Accepted, then</text>
-<text x="1204" y="376.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">acknowledged</text>
-<rect x="72" y="472" width="704" height="238" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="509.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">REAL WORKER SIGKILL</text>
-<text x="94" y="552.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Kill after result persistence</text>
-<text x="94" y="597.77" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">The job remains queued while its atom is</text>
-<text x="94" y="632.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">durable. Restart reuses the logical result and</text>
-<text x="94" y="666.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">later publishes completion.</text>
-<rect x="800" y="472" width="728" height="238" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="822" y="509.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#A86A15">NATIVE CALLER BACKPRESSURE</text>
-<text x="822" y="552.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#A86A15">Full reply route</text>
-<text x="822" y="597.77" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">The outbox remains pending. The caller refuses</text>
-<text x="822" y="632.33" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">an unrelated delivery; once capacity returns, the</text>
-<text x="822" y="666.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">known completion is accepted.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / RUNTIME COMPATIBILITY</text>
+<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Native revision reuses the guarded implementation</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A narrow revision provider binds the upstream guards, formula and native runtime explicitly.</text>
+<rect x="72" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">C2 owner</text>
+<text x="94" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Exact support</text>
+<text x="94" y="384.54" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">snapshots</text>
+<line x1="418" y1="357" x2="437" y2="357" stroke="#315E9C" stroke-width="2"/>
+<polygon points="437,357 424.0,352.0 424.0,362.0" fill="#315E9C"/>
+<rect x="442" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="464" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">PLNAdapter.revise</text>
+<text x="464" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Unchanged</text>
+<text x="464" y="384.54" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Reachability guards</text>
+<line x1="788" y1="357" x2="807" y2="357" stroke="#007C78" stroke-width="2"/>
+<polygon points="807,357 794.0,352.0 794.0,362.0" fill="#007C78"/>
+<rect x="812" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="834" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Truth_Revision</text>
+<text x="834" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Pinned PLN source</text>
+<line x1="1158" y1="357" x2="1177" y2="357" stroke="#007C78" stroke-width="2"/>
+<polygon points="1177,357 1164.0,352.0 1164.0,362.0" fill="#007C78"/>
+<rect x="1182" y="260" width="346" height="194" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1204" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">PeTTa / SWI</text>
+<text x="1204" y="351.26" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Actual native</text>
+<text x="1204" y="384.54" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">evaluation</text>
+<rect x="72" y="526" width="704" height="195" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="576.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Explicit runtime rebaseline</text>
+<text x="94" y="621.1" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Historical SWI 10.0.1 remains unchanged. This</text>
+<text x="94" y="654.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">gate selects SWI 10.1.14 under a new</text>
+<text x="94" y="687.6600000000001" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">revision-only profile.</text>
+<rect x="800" y="526" width="728" height="195" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="822" y="576.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Fail closed on drift</text>
+<text x="822" y="621.1" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Source hashes, model, runtime profile and built</text>
+<text x="822" y="654.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">binary digest are bound to durable attempts.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Worker revocation yields an explicit failed completion with no result atom; no silent success.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">No replacement production mathematics, applyRule, PLN.Derive or PLN.Query was introduced.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / execution.py · test_m11.py · test_integration.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">17 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / pln_revision.py · integration/pln/sources.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">17 / 38</text>
 </svg>

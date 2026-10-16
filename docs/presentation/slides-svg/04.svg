@@ -1,46 +1,63 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Data responsibilities: bytes → references → history</title>
-<desc id="desc">DA persists opaque payloads and erasure shares. AtomStorage owns the application reference metadata, immutable revision and semantic replay keys. Relations describe explicit ordered roles; a link is not automatically a belief. Search is a rebuildable projection that exposes its watermark, not the authoritative store. Episodic memory adds occurrence identities and episode-local ordering, so equal payload bytes may describe different observations. Its full private history remains client-side. This design deliberately does not require a parser, ontology, embedding model or LLM just to store data. Additional relation operations are outgoing/incoming; episode reads are readEpisode/findEpisodes. Those future contracts remain unimplemented through M1.2.</desc>
+<title id="title">Fifteen modules; four responsibility groups</title>
+<desc id="desc">The fifteen responsibility groups remain the same. C1 and C2 are now implemented private local modules; Relations, Search, the general PLN kernel, ECAN and inference control remain specifications. RevisionMath is a narrow dependency inside the C2 integration, not a claim to have implemented the general PLN kernel. Hive is a consumer. Provider, process and repository boundaries are independent. Blue means implemented local contracts, not production readiness. Authorization uses real native Hive authentication followed by a development Fusion policy. Finality has historical M1 evidence only; no M2 chain action occurred. Maintainer assignments remain unassigned.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / RESPONSIBILITY ATLAS · 1 OF 3</text>
-<text x="70" y="143.45" font-family="DejaVu Sans" font-size="51" font-weight="700" fill="#102B3F">Data responsibilities: bytes → references → history</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The first five modules separate persistence, identity, structure, discovery and provenance.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MODULE</text>
-<text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FUNCTION / PRIMARY OPERATIONS</text>
-<text x="1018" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNED STATE / STATUS</text>
-<rect x="72" y="277" width="1456" height="87" rx="6" fill="#FFFFFF"/>
-<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">DA storage</text>
-<text x="418" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Persist opaque bytes</text>
-<text x="418" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">put · get · availability</text>
-<text x="1018" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Payloads and shares</text>
-<text x="1018" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">REAL LOCAL PROVIDER</text>
-<rect x="72" y="369" width="1456" height="87" rx="6" fill="#FFFFFF"/>
-<text x="88" y="409.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">AtomStorage</text>
-<text x="418" y="409.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Assign scoped immutable references</text>
-<text x="418" y="441.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">create · get · getMany · availability</text>
-<text x="1018" y="409.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Reference + replay metadata</text>
-<text x="1018" y="441.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">IMPLEMENTED</text>
-<rect x="72" y="461" width="1456" height="87" rx="6" fill="#FFFFFF"/>
-<text x="88" y="501.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Relations</text>
-<text x="418" y="501.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Represent ordered structural roles</text>
-<text x="418" y="533.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">assertRelation · getRelation</text>
-<text x="1018" y="501.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Immutable relation records</text>
-<text x="1018" y="533.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">SPECIFIED</text>
-<rect x="72" y="553" width="1456" height="87" rx="6" fill="#FFFFFF"/>
-<text x="88" y="593.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Search projection</text>
-<text x="418" y="593.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Find references at a known watermark</text>
-<text x="418" y="625.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">query</text>
-<text x="1018" y="593.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Rebuildable index</text>
-<text x="1018" y="625.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">SPECIFIED</text>
-<rect x="72" y="645" width="1456" height="87" rx="6" fill="#FFFFFF"/>
-<text x="88" y="685.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Episodic memory</text>
-<text x="418" y="685.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Preserve ordered events + provenance</text>
-<text x="418" y="717.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">recordEpisode · appendEvent</text>
-<text x="1018" y="685.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Private episode history</text>
-<text x="1018" y="717.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">SPECIFIED · M2</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Capture and retrieve data before choosing its meaning.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / HELICOPTER VIEW</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Fifteen modules; four responsibility groups</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A module owns a responsibility. It need not be a separate process or repository.</text>
+<rect x="72" y="230" width="320" height="495" rx="14" fill="#EBE5F3"/>
+<text x="90" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">CLIENT / COGNITION</text>
+<rect x="420" y="230" width="400" height="495" rx="14" fill="#E4EBF5"/>
+<text x="438" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">APPLICATION PORTS</text>
+<rect x="848" y="230" width="322" height="495" rx="14" fill="#E7ECEB"/>
+<text x="866" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">CONTROL &amp; POLICY</text>
+<rect x="1198" y="230" width="330" height="495" rx="14" fill="#DCEFE8"/>
+<text x="1216" y="268.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#102B3F">PROVIDER ADAPTERS</text>
+<rect x="90" y="300" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="112" y="342.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Episodic memory</text>
+<rect x="90" y="378" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="112" y="420.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Belief revision</text>
+<rect x="90" y="456" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="498.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">PLN kernel</text>
+<rect x="90" y="534" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="576.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">ECAN / attention</text>
+<rect x="90" y="612" width="284" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="112" y="654.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">Inference control</text>
+<rect x="438" y="300" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="460" y="343.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">AtomStorage</text>
+<rect x="438" y="378" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="460" y="421.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#7458A2">Relations · future</text>
+<rect x="438" y="456" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#7458A2" stroke-dasharray="5 4"/>
+<text x="460" y="498.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#7458A2">Search projection · future</text>
+<rect x="438" y="534" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="460" y="577.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">Agent messaging</text>
+<rect x="438" y="612" width="364" height="62" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="460" y="655.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">Delegated execution</text>
+<rect x="866" y="300" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="888" y="342.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Registry</text>
+<rect x="866" y="408" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="888" y="450.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Compatibility</text>
+<text x="888" y="479.06" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">resolver</text>
+<rect x="866" y="516" width="286" height="95" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="888" y="558.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Authorization</text>
+<rect x="1216" y="300" width="294" height="144" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1238" y="347.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">DA storage</text>
+<text x="1238" y="388.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Real local DeTTa</text>
+<rect x="1216" y="485" width="294" height="168" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
+<text x="1238" y="531.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">Consensus /</text>
+<text x="1238" y="564.98" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#A86A15">finality</text>
+<text x="1238" y="604.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">M1 historical; M2</text>
+<text x="1238" y="632.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">NOT_RUN</text>
+<text x="866" y="668.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Local test policy</text>
+<text x="866" y="693.6" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">and static descriptors</text>
+<rect x="72" y="760" width="231.66015625000003" height="36" rx="7" fill="#EBE5F3"/>
+<text x="86" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#7458A2">SPECIFIED / FUTURE</text>
+<rect x="365" y="760" width="246.00390625000003" height="36" rx="7" fill="#E4EBF5"/>
+<text x="379" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#315E9C">IMPLEMENTED LOCAL</text>
+<rect x="687" y="760" width="189.90332031250003" height="36" rx="7" fill="#DCEFE8"/>
+<text x="701" y="784.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#007C78">REAL PROVIDER</text>
+<text x="987" y="785.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Narrow RevisionMath ≠ general PLN kernel</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 38</text>
 </svg>

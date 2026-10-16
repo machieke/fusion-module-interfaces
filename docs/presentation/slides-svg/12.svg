@@ -1,33 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Native identity and stable intent stay separate</title>
-<desc id="desc">The diagram shows native action fields, not a complete copy-paste HTTP request; the actual body also includes the swarm and an empty items list. Hive authenticates the operator, checks swarm visibility, rejects identity fields in params, and delivers trusted actor/command context. An exact principal/swarm configuration selects credential, scope, reply route and a fixture counterparty. The plugin accepts only an integer seed and no arbitrary input bytes. Stable keys cover input creation, sharing, job submission and acknowledgement. On retry, status/get/poll/ack continue to enforce the current Fusion policy. Test credentials and private configuration are never embedded in the deck.</desc>
+<title id="title">Private history stays in a separate local composition</title>
+<desc id="desc">open_private resolves private descriptors and constructs separate local owners over actual DeTTa. It rejects overlap with configured shared roots. C1, C2, atoms and relay have distinct owner journals; the local composition grants one authenticated principal per private scope. Native Hive supplies actor and command context, and operator configuration maps actor/swarm to the private credential and scope. Canary tests inspect real shared stores/messages, intercepted outbound bindings, diagnostics, native responses and Hive traces. This is routing and placement isolation under a trusted host/operator, not encryption, administrator secrecy or remote privacy. Native authentication is real; the downstream Fusion policy remains the labelled local test policy.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / INVOCATION · TRUSTED CONTEXT</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Native identity and stable intent stay separate</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Hive supplies the actor; the operator supplies the mapping; Fusion checks current authority.</text>
-<rect x="72" y="250" width="744" height="463" rx="14" fill="#0B2233"/>
-<text x="99" y="305.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#FFFFFF">action: inspect</text>
-<text x="99" y="356.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#FFFFFF">params: {seed: 12}</text>
-<text x="99" y="407.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#FFFFFF">idempotency_key: generated-intent-12</text>
-<text x="99" y="458.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#FFFFFF"></text>
-<text x="99" y="509.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#77DDC4">ctx.actor ← native authentication</text>
-<text x="99" y="560.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#77DDC4">ctx.command ← native request digest</text>
-<text x="99" y="611.85" font-family="DejaVu Sans Mono" font-size="23" font-weight="400" fill="#77DDC4">credential ← private operator config</text>
-<rect x="865" y="250" width="663" height="134" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="887" y="298.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Only generated shareable input</text>
-<text x="887" y="338.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">The seed produces bytes; no private history or arbitrary</text>
-<text x="887" y="366.90000000000003" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">remote operation is accepted.</text>
-<rect x="865" y="412" width="663" height="134" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="887" y="460.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Original input + original key</text>
-<text x="887" y="500.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">An ambiguous response replays the intent; it does not</text>
-<text x="887" y="528.9000000000001" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">allocate a second job.</text>
-<rect x="865" y="574" width="663" height="139" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="887" y="622.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#A86A15">Authorization remains live</text>
-<text x="887" y="664.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Even a recorded successful outcome must pass</text>
-<text x="887" y="695.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">current module checks before return.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / PLACEMENT · OWNERSHIP BEFORE ROUTING</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Private history stays in a separate local composition</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The authenticated actor selects an operator-configured scope; request data cannot nominate authority.</text>
+<rect x="72" y="242" width="920" height="485" rx="16" fill="#DCEFE8" stroke="#007C78"/>
+<text x="100" y="283.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#007C78">ONE PRINCIPAL · PRIVATE-LOCAL-ONLY</text>
+<rect x="100" y="318" width="410" height="156" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="122" y="368.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">C1 owner</text>
+<text x="122" y="412.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Events + head + delivery</text>
+<text x="122" y="444.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">intents</text>
+<rect x="554" y="318" width="410" height="156" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="576" y="368.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">C2 owner</text>
+<text x="576" y="412.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Snapshots + attempts +</text>
+<text x="576" y="444.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">decisions</text>
+<rect x="100" y="510" width="410" height="156" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="122" y="560.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Private AtomStorage</text>
+<text x="122" y="604.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Separate payloads +</text>
+<text x="122" y="636.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">metadata</text>
+<rect x="554" y="510" width="410" height="156" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="576" y="560.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Relay owner</text>
+<text x="576" y="604.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Exact handoff requests +</text>
+<text x="576" y="636.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">progress</text>
+<rect x="1040" y="242" width="488" height="190" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="1062" y="292.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Public Hive receipt</text>
+<text x="1062" y="337.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Generated counts + public</text>
+<text x="1062" y="370.37999999999994" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">command ID. Private lineage and</text>
+<text x="1062" y="403.65999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">content hashes stay local.</text>
+<rect x="1040" y="474" width="488" height="253" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="1062" y="524.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Shared services</text>
+<text x="1062" y="569.1" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">No private mailbox, execution or</text>
+<text x="1062" y="602.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">chain port is constructed.</text>
+<text x="1062" y="635.6600000000001" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Overlapping private/shared roots</text>
+<text x="1062" y="668.94" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">are rejected.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Scope labels, saved receipts and caller-supplied identity do not grant permission.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Privacy evidence covers the tested routes under a trusted host/operator with intact local files.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / ProgramActions.person_act · integration/hive/program/program.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">12 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / private.py · episode_program/program.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">12 / 38</text>
 </svg>

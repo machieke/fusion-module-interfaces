@@ -1,55 +1,66 @@
-# Omega × ASI — module-interface presentation
+# Omega × ASI — private memory and guarded belief revision
 
 [Present the PDF](omega-asi-module-interfaces.pdf) ·
 [Edit the PowerPoint](omega-asi-module-interfaces.pptx) ·
 [Speaker notes](speaker-notes.md)
 
-33 slides, 16:9. Slides 1–26 form a 30–35 minute talk; slides 27–33 are
-discussion appendices. All diagrams are vector graphics. The PowerPoint uses
-editable text, shapes and connectors, with notes embedded on every slide.
-The PDF embeds its fonts. For faithful PowerPoint editing, install the bundled
-[DejaVu fonts](fonts/), distributed with their [license](fonts/LICENSE.txt).
+38 slides, 16:9. Slides 1–30 form a 35–40 minute talk; slides 31–38 are
+discussion appendices. Two early **ELI16 executive-summary slides** explain the
+notebook, evidence ledger and calculator, then show why copied reports do not
+count as independent evidence. The complete module map, responsibilities and
+function dependencies precede the detailed implementation.
 
-The opening gives the helicopter view, all 15 module responsibilities, and
-function dependencies **before** the detailed contracts and implementation:
+All diagrams are vector graphics. The PowerPoint contains editable text, shapes
+and connectors, with speaker notes on every slide. The PDF embeds its fonts.
+For faithful PowerPoint editing, install the bundled [DejaVu fonts](fonts/),
+distributed with their [license](fonts/LICENSE.txt).
 
 | Slides | Story |
 |---|---|
-| 1–3 | Architecture thesis and complete module map |
-| 4–6 | Responsibilities, owned state and implementation status of every module |
-| 7–8 | Proposed cognitive dependencies and the exercised native call path |
-| 9–12 | Separate owner commits, independent AtomStorage replacement, profiles and native identity |
-| 13–17 | Verified Hive entrypoint, operation sequence, receipts and caller/worker crash recovery |
-| 18–22 | Application-neutral DA, authorization refusals, component classification, tests and actual Hive trace |
-| 23–26 | Reproducible source/build recipe, all ten gates, limits and explicit stop before M2 |
-| 27–33 | Code map, future contracts, errors, exact sources, commands, historical chain evidence and limits |
+| 1–3 | Thesis and ELI16 executive summary: memory, disagreement and justified updates |
+| 4–7 | All 15 modules, responsibilities, state ownership and implementation status |
+| 8–9 | Exercised M2 private dependencies and preserved M1.2 shared application path |
+| 10–13 | Application-neutral DA, independent substitution, private placement and contract decisions |
+| 14–18 | Duplicate-safe episodes, admission versus revision, lineage guards, pinned native PLN and goldens |
+| 19–23 | Four crash boundaries, live authorization, real Hive episode, recorded story and M1.2 preservation |
+| 24–27 | Provider/fixture classification, executed suites and every M2 gate |
+| 28–30 | Reproduction evidence, bounded guarantees and explicit stop at M2 |
+| 31–38 | Code, exact sources, profiles/bounds, future contracts, M1.2 sequence, historical chain, commands and retries |
 
-Current evidence is the recorded **16 October 2026 M1.2 run**, tested at
-`bb22ef5e28b089b80132b40bcf5a1bbfc38b065b` and documented by the unchanged-code
-descendant `4ee5cbe8b84689a5d2432530083738b263142f90`. Test counts, gate statuses,
-the native trace and source pins are read from committed evidence JSON. The four
-substitution workflows were checked against their recorded receipts and counts.
-Input hashes are recorded in the build manifest.
+Current claims use the recorded **16 October 2026 M2 final run**, tested at clean
+`d9e75773c34987d5791a9207190fcbf0a8c1fd7b` and documented by the unchanged-code
+descendant `f0cee248294a1fce42913782390e6c084025c67e`. The presentation starts from
+that clean evidence checkout. Counts, gates, demo decisions and source pins are
+read from committed JSON. The build manifest hashes nine evidence inputs; QA
+also checks the 54 archived M2 evidence files and 70 tested implementation hashes.
 
-The deck distinguishes real Hive/PeTTa and real local DeTTa from protocol peers,
-the counterparty, generated data, the independent file provider and development
-policy fixtures. The 34 selected upstream native baseline tests retain their
-fixture process driver; the 13 real-caller cases use the default Supervisor and
-actual native dispatch. The 51 fixture tests are a subset of the 90-test matrix.
+C1 EpisodicMemory and C2 BeliefRevision are now implemented private local modules.
+The deck distinguishes the narrow guarded RevisionMath provider from the future
+general PLN kernel. Relations/Search, ECAN and inference control remain specified
+future work. The original M1.2 native path and independent owner commits remain
+visible alongside the new private integration.
 
-Nine required M1.2 gates passed. The optional same-result chain gate is **NOT_RUN**.
-Slide 32 preserves the separate historical M1 chain observation, including
-`pending → included → finalized`, without attributing it to the new Hive result.
+Real Hive/PeTTa, real local DeTTa and actual native PLN revision are distinguished
+from generated observations/assumptions, the independent file provider,
+RecordingRuntime guard fixtures, injected failures and the local test policy.
+The CLI demo record is separately labelled; it is not presented as a Hive trace.
+The 51 original fixtures and 16 M2 fixtures are subsets of the 106-case matrix,
+so their separate isolation runs are not added to a unique-test total.
+
+All 11 required M2 gates passed; no M2 prerequisite remains blocked. CHAIN is
+**NOT_RUN**. Slide 36 retains the historical M1 isolated-chain observation,
+`pending → included → finalized`, without attributing it to a new Hive result.
 Exact historical chain-source reproduction remains **BLOCKED** by unavailable
-dirty source inputs; empty-cache builds and the full Hive suite are **NOT_RUN**.
+dirty source inputs. Empty-cache builds, historical SWI 10.0.1, power-loss and
+distributed failover, and the full Hive suite remain **NOT_RUN**.
 
-The [M1.2 report](../module-interfaces/m1_2-evidence.md),
+Read the [M2 report](../module-interfaces/m2-evidence.md),
+[M1.2 report](../module-interfaces/m1_2-evidence.md),
 [M1.1 report](../module-interfaces/m1_1-evidence.md),
 [historical M0/M1 report](../module-interfaces/evidence.md) and
-[runbook](../module-interfaces/runbook.md) retain the detailed scope and limits.
-This update changes presentation content and documentation only. It does not
-rerun integration tests, change recorded evidence, implement M2, or imply new
-performance or production guarantees.
+[runbook](../module-interfaces/runbook.md) for the detailed evidence.
+This presentation update changes documentation and presentation artifacts only.
+It does not rerun integrations or expand the observed guarantees.
 
 ## Rebuild
 
@@ -60,16 +71,15 @@ uv run --python 3.11 --with-requirements docs/presentation/requirements.txt \
   python docs/presentation/build.py
 ```
 
-The presentation dependencies are isolated from the application's runtime and
-test dependency groups. [build.py](build.py) is the complete editable source:
-content, diagrams, charts, notes and layout. It generates the PDF, PowerPoint,
-[individual SVG slides](slides-svg/), speaker notes and
-[build manifest](build-manifest.json). Font files are bundled so the build does
-not depend on Linux system font paths.
+Presentation dependencies are isolated from the application's runtime and test
+dependency groups. [build.py](build.py) is the complete editable source: content,
+diagrams, notes and layout. It generates the PDF, PowerPoint,
+[individual SVG slides](slides-svg/), notes and [build manifest](build-manifest.json).
+Bundled fonts avoid dependence on Linux system font paths.
 
-The builder checks text bounds and text overlap, reopens the PowerPoint, renders
-all PDF pages, and writes slide images/contact sheets under ignored
-`artifacts/presentation-qa/`. The PDF and PowerPoint share the same measured
-layout. See [QA record](qa.json) for the delivered files' independent renderer
-check and visual review. Rebuilds do not rerun or overwrite integration
-evidence.
+The builder checks bounds and text overlap, reopens the PowerPoint, renders every
+PDF page and creates contact sheets under ignored `artifacts/presentation-qa/`.
+PDF and PowerPoint share measured layout. The [QA record](qa.json) records the
+independent LibreOffice render, text/notes checks, evidence audit, visual review
+and ProofShot browser verification. Microsoft PowerPoint itself is unavailable.
+Rebuilds do not rerun or overwrite integration evidence.

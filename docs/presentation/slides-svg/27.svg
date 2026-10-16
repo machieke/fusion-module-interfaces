@@ -1,53 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Implementation map: adapt at the native boundary</title>
-<desc id="desc">The actual adapter is integration/hive/program/program.py, registered by plugin.json. It owns only the caller receipt. native_caller.py is a test transport around the unmodified app, not a runtime replacement. The plugin invokes the same public validated binding as protocol consumers. Service is an authenticated facade; owner logic is now in atoms.py, messaging.py and execution.py, not all in service.py as the original deck suggested. composition.py alone selects concrete owner implementations. Execution depends on AtomStorage and trusted CompletionDelivery. The file fixture is independent of AtomOwner. The original Rust opaque adapter remains unchanged. Chain composition remains separate and unrun by this native flow.</desc>
+<title id="title">M2 gates: privacy, recovery, Hive and reproducibility</title>
+<desc id="desc">PRIVACY proves canary isolation over the tested local routes under the trusted-host threat model. RECOVERY proves process restart, not power loss or distributed failover. HIVE_M2 uses actual native dispatch and the real private provider path. REPRO uses fresh native objects, venv and DeTTa Cargo target, while Git/Python/Cargo downloads may use warm caches. SCOPE limits the change to C1/C2 and preserves named original source files. CHAIN is explicitly NOT_RUN. No required M2 prerequisite remains blocked. A different historical question—exact reproduction of the dirty M1 F1R3 source state—remains blocked by unavailable source inputs and is documented separately in the appendix.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX A / CODE NAVIGATION</text>
-<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Implementation map: adapt at the native boundary</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Native-specific translation stays outside the backend-independent modules.</text>
-<rect x="72" y="245" width="430" height="134" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="287.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">Native entrypoint</text>
-<text x="94" y="323.21000000000004" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#536775">Hive Programs.act</text>
-<text x="94" y="347.53000000000003" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#536775">→ integration/hive/program/program.py</text>
-<rect x="584" y="245" width="430" height="134" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="606" y="294.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Validated consumer</text>
-<text x="606" y="335.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Peer → Subprocess.invoke</text>
-<text x="606" y="363.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">→ fusion.host rpc</text>
-<rect x="1096" y="245" width="432" height="134" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1118" y="292.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">Trusted composition</text>
-<text x="1118" y="331.51" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">composition.py injects</text>
-<text x="1118" y="358.39" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">AtomStorage + CompletionDelivery</text>
-<line x1="502" y1="312" x2="584" y2="312" stroke="#315E9C" stroke-width="2"/>
-<polygon points="584,312 571.0,307.0 571.0,317.0" fill="#315E9C"/>
-<line x1="1014" y1="312" x2="1096" y2="312" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1096,312 1083.0,307.0 1083.0,317.0" fill="#315E9C"/>
-<rect x="584" y="464" width="430" height="127" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="606" y="509.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Service facade</text>
-<text x="606" y="547.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">service.py · policy.py</text>
-<text x="606" y="574.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">registry.py · responses.py</text>
-<line x1="799" y1="379" x2="799" y2="464" stroke="#315E9C" stroke-width="2"/>
-<polygon points="799,464 804.0,451.0 794.0,451.0" fill="#315E9C"/>
-<rect x="72" y="464" width="430" height="127" rx="13" fill="#FFFFFF" stroke="#102B3F"/>
-<text x="94" y="509.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Shared declarations</text>
-<text x="94" y="547.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">ports.py · contracts.py</text>
-<text x="94" y="574.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Schemas and exact profiles</text>
-<line x1="584" y1="526" x2="502" y2="526" stroke="#536775" stroke-width="2"/>
-<polygon points="502,526 515.0,531.0 515.0,521.0" fill="#536775"/>
-<rect x="1096" y="464" width="432" height="127" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1118" y="509.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Separate owners</text>
-<text x="1118" y="547.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">atoms.py · messaging.py</text>
-<text x="1118" y="574.83" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">execution.py</text>
-<line x1="1014" y1="526" x2="1096" y2="526" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1096,526 1083.0,521.0 1083.0,531.0" fill="#315E9C"/>
-<rect x="72" y="677" width="704" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="725.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Operator-only worker</text>
-<text x="94" y="766.69" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">host.py work / flush; deterministic inspect_atom</text>
-<rect x="824" y="677" width="704" height="120" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="846" y="725.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Selected provider</text>
-<text x="846" y="765.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">detta.py + Rust helper OR independent fixture_atoms.py</text>
-<line x1="1312" y1="591" x2="1312" y2="677" stroke="#007C78" stroke-width="2"/>
-<polygon points="1312,677 1317.0,664.0 1307.0,664.0" fill="#007C78"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GATE-BY-GATE RESULTS · 2 OF 2</text>
+<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">M2 gates: privacy, recovery, Hive and reproducibility</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No M2 prerequisite remains blocked. Optional or excluded work retains its own status.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
+<text x="433" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
+<text x="623" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED BOUNDARY</text>
+<rect x="72" y="277" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">PRIVACY</text>
+<text x="433" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="623" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Tested private routing; cross-principal / scope and revocation</text>
+<rect x="72" y="356" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="395.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">RECOVERY</text>
+<text x="433" y="395.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="623" y="395.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Four real kill boundaries, stable decisions, two-process CAS</text>
+<rect x="72" y="435" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="474.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">HIVE_M2</text>
+<text x="433" y="474.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="623" y="474.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Seven actual authenticated native caller tests</text>
+<rect x="72" y="514" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="553.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">REPRO</text>
+<text x="433" y="553.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="623" y="553.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Fresh providers + clean Fusion run; download caches warm</text>
+<rect x="72" y="593" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="632.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">SCOPE</text>
+<text x="433" y="632.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="623" y="632.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">C1 + C2 only; M1.2 and upstream guarded sources preserved</text>
+<rect x="72" y="672" width="1456" height="74" rx="6" fill="#FFFFFF"/>
+<text x="88" y="711.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">CHAIN</text>
+<text x="433" y="711.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">NOT_RUN</text>
+<text x="623" y="711.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Outside M2; no chain action or fallback</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#F3E7CE"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#A86A15">Historical exact chain-source reproduction remains BLOCKED; it is not a missing M2 prerequisite.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / integration/hive/ · fusion/</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">27 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / m2/manifest.json · source-preservation.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">27 / 38</text>
 </svg>

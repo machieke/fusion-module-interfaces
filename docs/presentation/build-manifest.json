@@ -1,52 +1,64 @@
 {
-  "slides": 33,
+  "slides": 38,
   "pptx_reopened": true,
-  "pdf_pages_rendered": 33,
+  "pdf_pages_rendered": 38,
   "layout_bounds_checked": true,
   "text_overlaps": 0,
   "fonts": "DejaVu Sans / DejaVu Sans Mono (PDF embedded; TTFs bundled)",
   "independent_renderer_check": "Recorded separately in qa.json",
-  "source_commit": "bb22ef5e28b089b80132b40bcf5a1bbfc38b065b",
-  "evidence_commit": "4ee5cbe8b84689a5d2432530083738b263142f90",
-  "main_talk_slides": 26,
+  "source_commit": "d9e75773c34987d5791a9207190fcbf0a8c1fd7b",
+  "evidence_commit": "f0cee248294a1fce42913782390e6c084025c67e",
+  "main_talk_slides": 30,
   "evidence_sha256": {
-    "docs/module-interfaces/evidence/m1_2/manifest.json": "fcb822075d8f8122517ad41d1d8c77b784383be0901a36e0a53d90e4db2389e8",
-    "docs/module-interfaces/evidence/m1_2/verification.json": "8c9f91b98c62279e487ce83074c25f819a868d670b8d5d5ec4bddb6c071e22df",
+    "docs/module-interfaces/evidence/m2/manifest.json": "6205df1a084d29c33402fd13a6fdb2c5c5dbba6b197351f731beda6e5945440d",
+    "docs/module-interfaces/evidence/m2/final/verification.json": "baed82df8ff346ad54dcb66e0a90526cc1b11446a82355f34266d40a27f1afec",
+    "docs/module-interfaces/evidence/m2/final/demo.json": "d217f2b89b257d856c100fd5008c467bae019be1f8e8184e94b6ff160f57bba8",
+    "docs/module-interfaces/evidence/m2/final/m1_2/verification.json": "964c2195576cfa83f1a87712a37b8e102281ae3d34ef3fc09c01b0dc929b2124",
+    "docs/module-interfaces/evidence/m2/fresh-build.json": "e0d1844225a5b30e4025a17b2cd4c5c4a63bdb861e5b93cbfc486ddbd878e0e3",
+    "docs/module-interfaces/evidence/m2/source-preservation.json": "45cb323485a98fadc27a64f05c067e791fa0d9905f42fc12b7118ff3b95e5c4f",
+    "docs/module-interfaces/evidence/m2/checksums.json": "a654d79603b91aca4fc8fdfd80f4bd752b1f1c3e21f62f9a43495974456db141",
     "docs/module-interfaces/evidence/m1_2/m11-swap-demo.json": "69b40c4f2c62bd93b8c96f781c7ee9c10366b5038f1fac5aa4e3f247d6930d45",
-    "docs/module-interfaces/evidence/m1_2/hive-trace.json": "fe6aba610dae3d9a59611e83881314288d69fb1efad44b4c5bf767e13101ef9d",
-    "docs/module-interfaces/evidence/m1_2/native-build.json": "1f32066202d99cb3e5a3298752c072db3aef3b1c1e89f7c7b58096ca24edc769",
     "docs/module-interfaces/evidence/chain-demo.json": "a39b2642bf8a6e9a805c87f787055c0d74f79ee05aa118bf19679c0775f4cade"
   },
   "slides_manifest": [
     {
       "slide": 1,
-      "title": "One responsibility. One state owner. Many possible backends.",
+      "title": "Memory that remembers. Beliefs that can change. Boundaries that hold.",
       "section": "Module-interface architecture",
       "appendix": false,
-      "source": "M1.2 evidence snapshot 4ee5cbe",
+      "source": "M2 evidence f0cee24 \u00b7 tested d9e7577",
       "text_elements": 12,
       "editable_shapes": 15
     },
     {
       "slide": 2,
-      "title": "The architecture separates three commitments",
-      "section": "01 / Helicopter view",
+      "title": "ELI16: a notebook, an evidence ledger, a calculator",
+      "section": "Executive summary \u00b7 1 of 2",
       "appendix": false,
-      "source": "architecture.md",
+      "source": "m2-evidence.md \u00b7 architecture.md",
       "text_elements": 32,
-      "editable_shapes": 52
+      "editable_shapes": 39
     },
     {
       "slide": 3,
-      "title": "Fifteen modules; four responsibility groups",
-      "section": "01 / System map",
+      "title": "ELI16: a copied report is not a new source",
+      "section": "Executive summary \u00b7 2 of 2",
       "appendix": false,
-      "source": "architecture.md",
-      "text_elements": 34,
-      "editable_shapes": 57
+      "source": "C1 provenance \u00b7 C2 support coverage",
+      "text_elements": 22,
+      "editable_shapes": 34
     },
     {
       "slide": 4,
+      "title": "Fifteen modules; four responsibility groups",
+      "section": "01 / Helicopter view",
+      "appendix": false,
+      "source": "architecture.md",
+      "text_elements": 35,
+      "editable_shapes": 58
+    },
+    {
+      "slide": 5,
       "title": "Data responsibilities: bytes \u2192 references \u2192 history",
       "section": "01 / Responsibility atlas \u00b7 1 of 3",
       "appendix": false,
@@ -55,17 +67,17 @@
       "editable_shapes": 41
     },
     {
-      "slide": 5,
+      "slide": 6,
       "title": "Cognitive responsibilities: history \u2260 truth \u2260 attention",
       "section": "01 / Responsibility atlas \u00b7 2 of 3",
       "appendix": false,
       "source": "architecture.md",
-      "text_elements": 29,
-      "editable_shapes": 35
+      "text_elements": 30,
+      "editable_shapes": 36
     },
     {
-      "slide": 6,
-      "title": "Control responsibilities: move work without moving authority",
+      "slide": 7,
+      "title": "Control responsibilities: move work, preserve authority",
       "section": "01 / Responsibility atlas \u00b7 3 of 3",
       "appendix": false,
       "source": "architecture.md",
@@ -73,247 +85,283 @@
       "editable_shapes": 39
     },
     {
-      "slide": 7,
-      "title": "Function dependencies: the proposed cognitive path",
-      "section": "01 / Dependency map \u00b7 data and cognition",
+      "slide": 8,
+      "title": "Function dependencies: the exercised M2 path",
+      "section": "01 / Dependency map \u00b7 private cognition",
       "appendix": false,
-      "source": "ports.py + contracts.md",
-      "text_elements": 25,
-      "editable_shapes": 59
+      "source": "ports.py \u00b7 private.py \u00b7 evidence_relay.py",
+      "text_elements": 26,
+      "editable_shapes": 69
     },
     {
-      "slide": 8,
-      "title": "Function dependencies: the real native path",
-      "section": "01 / Dependency map \u00b7 runtime control",
+      "slide": 9,
+      "title": "Function dependencies: the preserved M1.2 path",
+      "section": "01 / Dependency map \u00b7 shared application ports",
       "appendix": false,
       "source": "program.py \u00b7 ports.py \u00b7 execution.py",
       "text_elements": 28,
       "editable_shapes": 62
     },
     {
-      "slide": 9,
-      "title": "Separate owners now have separate durable commits",
-      "section": "02 / Ownership \u00b7 M1.1 preserved",
-      "appendix": false,
-      "source": "architecture.md \u00b7 atoms.py \u00b7 messaging.py \u00b7 program.py",
-      "text_elements": 36,
-      "editable_shapes": 44
-    },
-    {
       "slide": 10,
-      "title": "AtomStorage replacement is independently exercised",
-      "section": "02 / Substitution \u00b7 four-way matrix",
-      "appendix": false,
-      "source": "evidence/m1_2/m11-swap-demo.json \u00b7 test_m11.py",
-      "text_elements": 21,
-      "editable_shapes": 27
-    },
-    {
-      "slide": 11,
-      "title": "Compatibility binds semantics and selected replies",
-      "section": "02 / Compatibility \u00b7 exact profiles",
-      "appendix": false,
-      "source": "registry.py \u00b7 bindings.py \u00b7 responses.py",
-      "text_elements": 24,
-      "editable_shapes": 39
-    },
-    {
-      "slide": 12,
-      "title": "Native identity and stable intent stay separate",
-      "section": "02 / Invocation \u00b7 trusted context",
-      "appendix": false,
-      "source": "ProgramActions.person_act \u00b7 integration/hive/program/program.py",
-      "text_elements": 22,
-      "editable_shapes": 28
-    },
-    {
-      "slide": 13,
-      "title": "The intended Hive source now has a verified entrypoint",
-      "section": "03 / Native integration \u00b7 source first",
-      "appendix": false,
-      "source": "sources.json \u00b7 discovery.md \u00b7 native-baseline.xml",
-      "text_elements": 20,
-      "editable_shapes": 30
-    },
-    {
-      "slide": 14,
-      "title": "One native operation crosses the existing interfaces",
-      "section": "03 / Native integration \u00b7 sequence",
-      "appendix": false,
-      "source": "program.py \u00b7 execution.py \u00b7 messaging.py",
-      "text_elements": 18,
-      "editable_shapes": 53
-    },
-    {
-      "slide": 15,
-      "title": "Six receipts describe six different facts",
-      "section": "03 / Native integration \u00b7 completion semantics",
-      "appendix": false,
-      "source": "contracts.md \u00b7 m1_2-evidence.md",
-      "text_elements": 30,
-      "editable_shapes": 38
-    },
-    {
-      "slide": 16,
-      "title": "A restarted Hive caller recovers without its old RAM",
-      "section": "03 / Recovery \u00b7 actual caller SIGKILL",
-      "appendix": false,
-      "source": "test_integration.py \u00b7 hive-integration.xml",
-      "text_elements": 28,
-      "editable_shapes": 36
-    },
-    {
-      "slide": 17,
-      "title": "Worker failure and backpressure preserve pending work",
-      "section": "03 / Recovery \u00b7 independent commits",
-      "appendix": false,
-      "source": "execution.py \u00b7 test_m11.py \u00b7 test_integration.py",
-      "text_elements": 27,
-      "editable_shapes": 41
-    },
-    {
-      "slide": 18,
       "title": "The DA boundary remains application-neutral",
-      "section": "03 / Storage \u00b7 opaque persistence",
+      "section": "02 / Boundary \u00b7 application-neutral persistence",
       "appendix": false,
       "source": "adapters/detta/src/main.rs \u00b7 test_contract.py",
       "text_elements": 31,
       "editable_shapes": 47
     },
     {
-      "slide": 19,
-      "title": "Native-path refusals preserve authorization and replay",
-      "section": "03 / Authorization \u00b7 fail closed",
+      "slide": 11,
+      "title": "Replace the provider; keep the consumer\u2019s contract",
+      "section": "02 / Substitution and compatibility",
       "appendix": false,
-      "source": "program_actions.py \u00b7 policy.py \u00b7 test_integration.py",
-      "text_elements": 27,
-      "editable_shapes": 35
+      "source": "m11-swap-demo.json \u00b7 memory_contracts.py",
+      "text_elements": 21,
+      "editable_shapes": 27
     },
     {
-      "slide": 20,
-      "title": "Real runtime, real provider, fixtures and unrun scope",
-      "section": "03 / Evidence \u00b7 component classification",
+      "slide": 12,
+      "title": "Private history stays in a separate local composition",
+      "section": "02 / Placement \u00b7 ownership before routing",
       "appendix": false,
-      "source": "m1_2-evidence.md \u00b7 manifest.json",
-      "text_elements": 26,
-      "editable_shapes": 33
+      "source": "private.py \u00b7 episode_program/program.py",
+      "text_elements": 28,
+      "editable_shapes": 37
     },
     {
-      "slide": 21,
-      "title": "Fresh verification exercises distinct layers",
-      "section": "03 / Evidence \u00b7 executed tests",
+      "slide": 13,
+      "title": "Contract gaps are resolved before adding behavior",
+      "section": "02 / C1 + C2 local contracts",
       "appendix": false,
-      "source": "evidence/m1_2/verification.json",
-      "text_elements": 25,
-      "editable_shapes": 32
-    },
-    {
-      "slide": 22,
-      "title": "One trace ties native intent to acknowledged outcome",
-      "section": "03 / Evidence \u00b7 actual M1.2 artifact",
-      "appendix": false,
-      "source": "evidence/m1_2/hive-trace.json",
-      "text_elements": 24,
-      "editable_shapes": 35
-    },
-    {
-      "slide": 23,
-      "title": "Reproduction separates source, build and execution",
-      "section": "04 / Handoff \u00b7 obtainable inputs",
-      "appendix": false,
-      "source": "build_hive.py \u00b7 native-build.json \u00b7 verification.json",
-      "text_elements": 29,
-      "editable_shapes": 39
-    },
-    {
-      "slide": 24,
-      "title": "Nine required gates passed; chain remains unrun",
-      "section": "04 / Gate-by-gate outcome",
-      "appendix": false,
-      "source": "evidence/m1_2/manifest.json",
-      "text_elements": 36,
-      "editable_shapes": 48
-    },
-    {
-      "slide": 25,
-      "title": "The real caller is proven; the cognitive increment is next",
-      "section": "04 / Scope and stopping point",
-      "appendix": false,
-      "source": "ADR 006\u2013007 \u00b7 m1_2-evidence.md",
-      "text_elements": 42,
-      "editable_shapes": 47
-    },
-    {
-      "slide": 26,
-      "title": "Modularity now survives a real caller restart.",
-      "section": "04 / Takeaway",
-      "appendix": false,
-      "source": "M1.2 implementation bb22ef5 \u00b7 evidence 4ee5cbe",
-      "text_elements": 14,
-      "editable_shapes": 15
-    },
-    {
-      "slide": 27,
-      "title": "Implementation map: adapt at the native boundary",
-      "section": "Appendix A / Code navigation",
-      "appendix": true,
-      "source": "integration/hive/ \u00b7 fusion/",
-      "text_elements": 27,
-      "editable_shapes": 48
-    },
-    {
-      "slide": 28,
-      "title": "Specified cognitive contracts carry test obligations",
-      "section": "Appendix B / Review checklist",
-      "appendix": true,
-      "source": "ports.py \u00b7 contracts.md",
-      "text_elements": 26,
-      "editable_shapes": 33
-    },
-    {
-      "slide": 29,
-      "title": "Typed failures preserve the caller\u2019s recovery choices",
-      "section": "Appendix C / Error and retry semantics",
-      "appendix": true,
-      "source": "contracts.md \u00b7 service.py",
+      "source": "memory_types.py \u00b7 memory_contracts.py \u00b7 ADR 008/009",
       "text_elements": 31,
       "editable_shapes": 38
     },
     {
+      "slide": 14,
+      "title": "C1: one occurrence, one position in the story",
+      "section": "03 / Episodic memory",
+      "appendix": false,
+      "source": "episodes.py \u00b7 tests/test_m2.py",
+      "text_elements": 22,
+      "editable_shapes": 37
+    },
+    {
+      "slide": 15,
+      "title": "C2: admitting evidence and changing belief are separate",
+      "section": "03 / Belief revision",
+      "appendix": false,
+      "source": "beliefs.py \u00b7 memory_types.py",
+      "text_elements": 26,
+      "editable_shapes": 37
+    },
+    {
+      "slide": 16,
+      "title": "Lineage blocks double counting, even after aggregation",
+      "section": "03 / Evidence dependencies",
+      "appendix": false,
+      "source": "PLNAdapter.revise \u00b7 beliefs.py",
+      "text_elements": 20,
+      "editable_shapes": 37
+    },
+    {
+      "slide": 17,
+      "title": "Native revision reuses the guarded implementation",
+      "section": "03 / Runtime compatibility",
+      "appendix": false,
+      "source": "pln_revision.py \u00b7 integration/pln/sources.json",
+      "text_elements": 24,
+      "editable_shapes": 38
+    },
+    {
+      "slide": 18,
+      "title": "Independent goldens check the actual native result",
+      "section": "03 / Numerical evidence",
+      "appendix": false,
+      "source": "integration/pln/test_revision.py \u00b7 final/demo.json",
+      "text_elements": 24,
+      "editable_shapes": 31
+    },
+    {
+      "slide": 19,
+      "title": "Four crash gaps across independent commits",
+      "section": "03 / Recovery \u00b7 actual SIGKILL",
+      "appendix": false,
+      "source": "test_recovery.py \u00b7 test_m2_integration.py",
+      "text_elements": 27,
+      "editable_shapes": 43
+    },
+    {
+      "slide": 20,
+      "title": "Authority, replay and compatibility stay live",
+      "section": "03 / Refusals and bounded recovery",
+      "appendix": false,
+      "source": "private.py \u00b7 beliefs.py \u00b7 evidence_relay.py",
+      "text_elements": 30,
+      "editable_shapes": 38
+    },
+    {
+      "slide": 21,
+      "title": "One actual Hive episode reaches private C1 and C2",
+      "section": "04 / Native integration",
+      "appendix": false,
+      "source": "episode_program/program.py \u00b7 test_m2_integration.py",
+      "text_elements": 16,
+      "editable_shapes": 42
+    },
+    {
+      "slide": 22,
+      "title": "The recorded story keeps copies and disagreement",
+      "section": "04 / Demonstrated behavior",
+      "appendix": false,
+      "source": "m2/final/demo.json \u00b7 test_m2_integration.py",
+      "text_elements": 28,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 23,
+      "title": "M1.2 remains a working, separate integration",
+      "section": "04 / Regression and scope preservation",
+      "appendix": false,
+      "source": "source-preservation.json \u00b7 final/m1_2/verification.json",
+      "text_elements": 23,
+      "editable_shapes": 30
+    },
+    {
+      "slide": 24,
+      "title": "Real providers and fixtures answer different questions",
+      "section": "04 / Evidence classification",
+      "appendix": false,
+      "source": "m2/manifest.json \u00b7 final/verification.json",
+      "text_elements": 32,
+      "editable_shapes": 40
+    },
+    {
+      "slide": 25,
+      "title": "Executed suites cover distinct layers of the claim",
+      "section": "04 / Tests \u00b7 recorded final run",
+      "appendix": false,
+      "source": "m2/final/verification.json \u00b7 final/m1_2/verification.json",
+      "text_elements": 28,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 26,
+      "title": "M2 gates: contracts, memory and native revision",
+      "section": "04 / Gate-by-gate results \u00b7 1 of 2",
+      "appendix": false,
+      "source": "m2/manifest.json \u00b7 m2-evidence.md",
+      "text_elements": 26,
+      "editable_shapes": 33
+    },
+    {
+      "slide": 27,
+      "title": "M2 gates: privacy, recovery, Hive and reproducibility",
+      "section": "04 / Gate-by-gate results \u00b7 2 of 2",
+      "appendix": false,
+      "source": "m2/manifest.json \u00b7 source-preservation.json",
+      "text_elements": 27,
+      "editable_shapes": 35
+    },
+    {
+      "slide": 28,
+      "title": "Reproducibility binds source, build and execution",
+      "section": "04 / Reproduction evidence",
+      "appendix": false,
+      "source": "m2/fresh-build.json \u00b7 final/verification.json",
+      "text_elements": 27,
+      "editable_shapes": 34
+    },
+    {
+      "slide": 29,
+      "title": "The guarantees stop at the tested boundary",
+      "section": "04 / Limits and stopping point",
+      "appendix": false,
+      "source": "m2-evidence.md \u00b7 manifest.json",
+      "text_elements": 25,
+      "editable_shapes": 33
+    },
+    {
       "slide": 30,
-      "title": "Exact source identity includes the rebaseline",
-      "section": "Appendix D / Source ledger",
+      "title": "Remember the event. Keep the disagreement. Justify the update.",
+      "section": "04 / Takeaway",
+      "appendix": false,
+      "source": "M2 tested d9e7577 \u00b7 evidence f0cee24",
+      "text_elements": 10,
+      "editable_shapes": 12
+    },
+    {
+      "slide": 31,
+      "title": "Implementation map: each owner has a small surface",
+      "section": "Appendix A / Code navigation",
       "appendix": true,
-      "source": "m1_2/manifest.json \u00b7 final-source-state.json",
+      "source": "m2-evidence.md \u00b7 architecture.md",
+      "text_elements": 36,
+      "editable_shapes": 44
+    },
+    {
+      "slide": 32,
+      "title": "Exact sources include the explicit runtime rebaseline",
+      "section": "Appendix B / Source ledger",
+      "appendix": true,
+      "source": "final/verification.json \u00b7 integration/pln/sources.json",
       "text_elements": 29,
       "editable_shapes": 37
     },
     {
-      "slide": 31,
-      "title": "Reproduce the selected gates from a fresh checkout",
-      "section": "Appendix E / Reproduction",
+      "slide": 33,
+      "title": "Profiles and bounds are part of compatibility",
+      "section": "Appendix C / Contract ledger",
       "appendix": true,
-      "source": "runbook.md \u00b7 build_hive.py \u00b7 verify_m12.py",
-      "text_elements": 13,
-      "editable_shapes": 17
+      "source": "memory_contracts.py \u00b7 contracts.md",
+      "text_elements": 32,
+      "editable_shapes": 39
     },
     {
-      "slide": 32,
+      "slide": 34,
+      "title": "Future cognition remains a set of review obligations",
+      "section": "Appendix D / Proposed dependencies",
+      "appendix": true,
+      "source": "ports.py \u00b7 architecture.md",
+      "text_elements": 19,
+      "editable_shapes": 42
+    },
+    {
+      "slide": 35,
+      "title": "One native operation crosses the existing interfaces",
+      "section": "Appendix E / Preserved M1.2 sequence",
+      "appendix": true,
+      "source": "program.py \u00b7 execution.py \u00b7 messaging.py",
+      "text_elements": 18,
+      "editable_shapes": 53
+    },
+    {
+      "slide": 36,
       "title": "Historical M1: one result reached an isolated chain",
-      "section": "Appendix F / Historical evidence only",
+      "section": "Appendix F / Historical chain evidence",
       "appendix": true,
       "source": "evidence/chain-demo.json \u00b7 M1 historical",
       "text_elements": 26,
       "editable_shapes": 36
     },
     {
-      "slide": 33,
-      "title": "Keep the guarantees inside their observed boundary",
-      "section": "Appendix G / Limits and unrun scope",
+      "slide": 37,
+      "title": "Reproduce the supported M2 gates",
+      "section": "Appendix G / Commands and prerequisites",
       "appendix": true,
-      "source": "m1_2-evidence.md \u00b7 manifest.json",
-      "text_elements": 29,
-      "editable_shapes": 36
+      "source": "runbook.md \u00b7 build_m2.py \u00b7 verify_m2.py",
+      "text_elements": 13,
+      "editable_shapes": 17
+    },
+    {
+      "slide": 38,
+      "title": "Retry decisions preserve meaning across owners",
+      "section": "Appendix H / Operational semantics",
+      "appendix": true,
+      "source": "episodes.py \u00b7 beliefs.py \u00b7 evidence_relay.py",
+      "text_elements": 37,
+      "editable_shapes": 45
     }
   ]
 }

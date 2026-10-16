@@ -1,49 +1,67 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Separate owners now have separate durable commits</title>
-<desc id="desc">This replaces the old M1 shared-journal drawing. M1.1 split atom metadata, messages and execution into separately committed owner stores and declared the dependencies actually exercised by the worker. Execution&#x27;s own terminal state and outbox are atomic with each other, not with atom persistence or mailbox acceptance. Wire replay metadata is colocated with execution, while cross-owner operations have owner-local replay. M1.2 adds only a minimal caller boundary receipt, not episodes or a new journal framework. It serializes one caller journal and permits one unfinished intent per dedicated route. All observations concern persistent local files and process restart.</desc>
+<title id="title">Function dependencies: the preserved M1.2 path</title>
+<desc id="desc">Follow the real native dispatch into the thin plugin, which holds a caller-owned receipt and uses Subprocess/Peer through descriptor-bound validation. Direct storage, messaging and execution calls all cross the same authenticated boundary. Trusted composition supplies concrete owners; the plugin never constructs them or accesses their tables. Messaging.send validates the referenced bytes through caller-authorized AtomStorage.get; Execution.submit reads the input before accepting a new job. The worker calls declared AtomStorage get/create, then execution commits terminal state/outbox. CompletionDelivery.accept belongs to the mailbox owner and commits separately. Chain remains a separate, uninvoked adapter. This is a logical call map; it does not force one process per module.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / OWNERSHIP · M1.1 PRESERVED</text>
-<text x="70" y="139.65" font-family="DejaVu Sans" font-size="47" font-weight="700" fill="#102B3F">Separate owners now have separate durable commits</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Result atoms, execution state, mailbox acceptance and caller acceptance do not share a transaction.</text>
-<rect x="72" y="250" width="464" height="220" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="94" y="287.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">IMMUTABLE REFS + REPLAY</text>
-<text x="94" y="330.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">AtomStorage</text>
-<text x="94" y="372.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Own metadata journal over</text>
-<text x="94" y="403.64000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">opaque DA; independent file</text>
-<text x="94" y="434.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">fixture also supported.</text>
-<rect x="568" y="250" width="464" height="220" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="590" y="287.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">JOBS + COMPLETION OUTBOX</text>
-<text x="590" y="330.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Execution</text>
-<text x="590" y="372.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">One terminal-state transaction;</text>
-<text x="590" y="403.64000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">result persistence already</text>
-<text x="590" y="434.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">committed.</text>
-<rect x="1064" y="250" width="464" height="220" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1086" y="287.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">INBOX + ACKNOWLEDGEMENTS</text>
-<text x="1086" y="330.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Messaging</text>
-<text x="1086" y="372.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Own acceptance and ack journal;</text>
-<text x="1086" y="403.64000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">delivery may repeat until</text>
-<text x="1086" y="434.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">acknowledged.</text>
-<rect x="72" y="506" width="464" height="220" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="94" y="543.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">INTENT + ACCEPTED OUTCOME</text>
-<text x="94" y="586.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Native caller</text>
-<text x="94" y="628.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Minimal plugin receipt; stable job</text>
-<text x="94" y="659.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">context survives loss of caller</text>
-<text x="94" y="690.3599999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">RAM.</text>
-<rect x="568" y="506" width="464" height="220" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="590" y="543.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">MUTATION RESPONSE + FINGERPRINT</text>
-<text x="590" y="586.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Wire admission</text>
-<text x="590" y="628.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Colocated with execution; each</text>
-<text x="590" y="659.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">effect owner also keeps replay</text>
-<text x="590" y="690.3599999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">identity.</text>
-<rect x="1064" y="506" width="464" height="220" rx="13" fill="#FFFFFF" stroke="#A86A15"/>
-<text x="1086" y="543.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#A86A15">CURRENT GRANTS + ROUTES</text>
-<text x="1086" y="586.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#A86A15">Authorization</text>
-<text x="1086" y="628.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Operator-owned configuration;</text>
-<text x="1086" y="659.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">access is rechecked on retries and</text>
-<text x="1086" y="690.3599999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">work.</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Co-location is allowed. Foreign SQL and shared transaction assumptions are not part of the contracts.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / DEPENDENCY MAP · SHARED APPLICATION PORTS</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Function dependencies: the preserved M1.2 path</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Solid arrows = exercised calls. Every provider effect crosses an existing validated interface.</text>
+<rect x="72" y="246" width="330" height="130" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="294.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Native Hive</text>
+<text x="94" y="333.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">POST /programs/…/act</text>
+<text x="94" y="360.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Trusted actor + command</text>
+<rect x="535" y="246" width="430" height="130" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="557" y="294.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Fusion inspect plugin</text>
+<text x="557" y="333.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Owns caller receipts</text>
+<text x="557" y="360.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Uses selected stdio binding</text>
+<rect x="1080" y="246" width="448" height="130" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1102" y="294.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Registry + resolver</text>
+<text x="1102" y="333.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">describe → select</text>
+<text x="1102" y="360.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Pin full descriptor tokens</text>
+<line x1="402" y1="312" x2="535" y2="312" stroke="#007C78" stroke-width="2"/>
+<polygon points="535,312 522.0,307.0 522.0,317.0" fill="#007C78"/>
+<line x1="965" y1="312" x2="1080" y2="312" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1080,312 1067.0,307.0 1067.0,317.0" fill="#315E9C"/>
+<rect x="535" y="455" width="430" height="120" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="557" y="500.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Validated binding + policy</text>
+<text x="557" y="538.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Wire/profile checks · live authority</text>
+<line x1="750" y1="376" x2="750" y2="455" stroke="#315E9C" stroke-width="2"/>
+<polygon points="750,455 755.0,442.0 745.0,442.0" fill="#315E9C"/>
+<rect x="72" y="455" width="330" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="504.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Execution</text>
+<text x="94" y="545.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">submit · status · result</text>
+<rect x="1080" y="455" width="448" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1102" y="504.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">AtomStorage</text>
+<text x="1102" y="544.07" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">create · get · getMany · availability</text>
+<line x1="535" y1="514" x2="402" y2="514" stroke="#315E9C" stroke-width="2"/>
+<polygon points="402,514 415.0,519.0 415.0,509.0" fill="#315E9C"/>
+<line x1="965" y1="514" x2="1080" y2="514" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1080,514 1067.0,509.0 1067.0,519.0" fill="#315E9C"/>
+<line x1="237" y1="455" x2="237" y2="414" stroke="#315E9C" stroke-width="2"/>
+<line x1="237" y1="414" x2="1304" y2="414" stroke="#315E9C" stroke-width="2"/>
+<line x1="1304" y1="414" x2="1304" y2="455" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1304,455 1309.0,442.0 1299.0,442.0" fill="#315E9C"/>
+<text x="800" y="405.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#315E9C">Submit → get(input) · worker → get / create</text>
+<rect x="535" y="677" width="430" height="105" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="557" y="725.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Messaging</text>
+<text x="557" y="765.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">send · poll · ack</text>
+<line x1="750" y1="575" x2="750" y2="677" stroke="#315E9C" stroke-width="2"/>
+<polygon points="750,677 755.0,664.0 745.0,664.0" fill="#315E9C"/>
+<line x1="237" y1="575" x2="237" y2="729" stroke="#315E9C" stroke-width="2"/>
+<line x1="237" y1="729" x2="535" y2="729" stroke="#315E9C" stroke-width="2"/>
+<polygon points="535,729 522.0,724.0 522.0,734.0" fill="#315E9C"/>
+<text x="282" y="644.05" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#315E9C">Outbox → CompletionDelivery.accept</text>
+<line x1="965" y1="729" x2="1020" y2="729" stroke="#315E9C" stroke-width="2"/>
+<line x1="1020" y1="729" x2="1020" y2="550" stroke="#315E9C" stroke-width="2"/>
+<line x1="1020" y1="550" x2="1080" y2="550" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1080,550 1067.0,545.0 1067.0,555.0" fill="#315E9C"/>
+<text x="802" y="645.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#315E9C">send → get(ref)</text>
+<rect x="1080" y="677" width="448" height="105" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1102" y="724.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">DeTTa DA / FileStorage</text>
+<text x="1102" y="763.51" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Opaque put · get · availability</text>
+<line x1="1304" y1="575" x2="1304" y2="677" stroke="#007C78" stroke-width="2"/>
+<polygon points="1304,677 1309.0,664.0 1299.0,664.0" fill="#007C78"/>
+<text x="87" y="815.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Optional finality uses a separate caller + approved digest + signer; M1.2 does not invoke it.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / architecture.md · atoms.py · messaging.py · program.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">09 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / program.py · ports.py · execution.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">09 / 38</text>
 </svg>

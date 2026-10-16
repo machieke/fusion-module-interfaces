@@ -1,40 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Cognitive responsibilities: history ≠ truth ≠ attention</title>
-<desc id="desc">Belief revision is the only owner of the truth/evidence aggregate. Its numerical profile has not been selected as a universal model. The PLN kernel is pure over ordered immutable premise snapshots and returns a proposal; it cannot update beliefs or choose its own agenda. ECAN owns attention and logical time, including allocation, decay and tie-breaking under a declared policy. readAttention is also part of its contract. Inference control orchestrates retrieval, belief snapshots, rules and feedback within candidate, rule, generation and time budgets. Control stores its own step receipts/checkpoint, not the other owners&#x27; state. Reviewers and maintainers for these new contracts remain unassigned.</desc>
+<title id="title">Data responsibilities: bytes → references → history</title>
+<desc id="desc">AtomStorage owns immutable scoped references and replay metadata, while DA only persists opaque payloads and generic coordinates. Relations and Search remain typed specifications. C1&#x27;s local v2 operations are recordEpisode, appendEvent, readEpisode, readEvidence, pendingEvidence and trusted acknowledgeEvidence. findEpisodes is not advertised. C1 preserves committed episode-local order and admitted provenance; observed time is metadata. It can run without C2 or PLN and against an independently implemented AtomStorage fixture. Its event bytes are immutable atoms, while its episode head and delivery intents belong to C1.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / RESPONSIBILITY ATLAS · 2 OF 3</text>
-<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">Cognitive responsibilities: history ≠ truth ≠ attention</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All four modules below are typed specifications. Fusion adds no cognitive provider.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / RESPONSIBILITY ATLAS · 1 OF 3</text>
+<text x="70" y="143.45" font-family="DejaVu Sans" font-size="51" font-weight="700" fill="#102B3F">Data responsibilities: bytes → references → history</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Persistence, identity, structure, discovery and provenance have different owners.</text>
 <text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MODULE</text>
 <text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FUNCTION / PRIMARY OPERATIONS</text>
-<text x="1048" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNED STATE / EXCLUSION</text>
-<rect x="72" y="277" width="1456" height="104" rx="6" fill="#FFFFFF"/>
-<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Belief revision</text>
-<text x="418" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Revise under an explicit numerical model</text>
-<text x="418" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">submitEvidence · readBelief</text>
-<text x="1048" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Belief + evidence ledger</text>
-<text x="1048" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No agenda or attention writes</text>
-<rect x="72" y="386" width="1456" height="104" rx="6" fill="#FFFFFF"/>
-<text x="88" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">PLN kernel</text>
-<text x="418" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Apply a rule to explicit premises</text>
-<text x="418" y="458.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">profiles · applyRule</text>
-<text x="1048" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No mutable domain state</text>
-<text x="1048" y="458.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Returns a proposed derivation</text>
-<rect x="72" y="495" width="1456" height="104" rx="6" fill="#FFFFFF"/>
-<text x="88" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">ECAN / attention</text>
-<text x="418" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Allocate, select and decay attention</text>
-<text x="418" y="567.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">submitStimulus · select · advance</text>
-<text x="1048" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Attention balances + logical time</text>
-<text x="1048" y="567.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No PLN dependency</text>
-<rect x="72" y="604" width="1456" height="104" rx="6" fill="#FFFFFF"/>
-<text x="88" y="644.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Inference control</text>
-<text x="418" y="644.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Schedule bounded reasoning work</text>
-<text x="418" y="676.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">step</text>
-<text x="1048" y="644.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Step receipts + checkpoint</text>
-<text x="1048" y="676.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No ownership of truth or attention</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#EBE5F3"/>
-<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#7458A2">Mathematics and attention policy remain explicit review gates.</text>
+<text x="1018" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNED STATE / STATUS</text>
+<rect x="72" y="277" width="1456" height="87" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">DA storage</text>
+<text x="418" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Persist opaque bytes</text>
+<text x="418" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">put · get · availability</text>
+<text x="1018" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Payloads + shares</text>
+<text x="1018" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">REAL LOCAL PROVIDER</text>
+<rect x="72" y="369" width="1456" height="87" rx="6" fill="#FFFFFF"/>
+<text x="88" y="408.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">AtomStorage</text>
+<text x="418" y="408.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Scoped immutable envelopes</text>
+<text x="418" y="439.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">create · get · getMany · availability</text>
+<text x="1018" y="408.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Reference + replay metadata</text>
+<text x="1018" y="439.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">IMPLEMENTED</text>
+<rect x="72" y="461" width="1456" height="87" rx="6" fill="#FFFFFF"/>
+<text x="88" y="500.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Relations</text>
+<text x="418" y="500.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Represent ordered structural roles</text>
+<text x="418" y="531.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">assertRelation · getRelation</text>
+<text x="1018" y="500.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Immutable relation records</text>
+<text x="1018" y="531.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SPECIFIED</text>
+<rect x="72" y="553" width="1456" height="87" rx="6" fill="#FFFFFF"/>
+<text x="88" y="592.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Search projection</text>
+<text x="418" y="592.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Find refs at a known watermark</text>
+<text x="418" y="623.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">query</text>
+<text x="1018" y="592.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Rebuildable index</text>
+<text x="1018" y="623.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">SPECIFIED</text>
+<rect x="72" y="645" width="1456" height="87" rx="6" fill="#FFFFFF"/>
+<text x="88" y="684.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Episodic memory C1</text>
+<text x="418" y="684.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Record / append / read ordered events</text>
+<text x="418" y="715.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">pendingEvidence · acknowledgeEvidence</text>
+<text x="1018" y="684.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Private history + delivery intents</text>
+<text x="1018" y="715.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">IMPLEMENTED · M2</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">DA persists bytes. Only the application owners interpret events, claims or beliefs.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">05 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">05 / 38</text>
 </svg>

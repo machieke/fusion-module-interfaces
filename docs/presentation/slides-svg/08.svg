@@ -1,67 +1,74 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Function dependencies: the real native path</title>
-<desc id="desc">Follow the real native dispatch into the thin plugin, which holds a caller-owned receipt and uses Subprocess/Peer through descriptor-bound validation. Direct storage, messaging and execution calls all cross the same authenticated boundary. Trusted composition supplies concrete owners; the plugin never constructs them or accesses their tables. Messaging.send validates the referenced bytes through caller-authorized AtomStorage.get; Execution.submit reads the input before accepting a new job. The worker calls declared AtomStorage get/create, then execution commits terminal state/outbox. CompletionDelivery.accept belongs to the mailbox owner and commits separately. Chain remains a separate, uninvoked adapter. This is a logical call map; it does not force one process per module.</desc>
+<title id="title">Function dependencies: the exercised M2 path</title>
+<desc id="desc">Composition alone selects concrete providers and binds authenticated private authority. The generated scenario appends to C1, drains the relay and can submit an explicit pair assumption to C2. The relay invokes C1 pendingEvidence/acknowledgeEvidence and C2 readBelief/submitEvidence, storing exact attempts in its own journal. C2 resolves C1 EvidenceRefs through readEvidence and validates immutable records/claims through AtomStorage. C1 and C2 never read each other&#x27;s SQL. C2 alone calls RevisionMath. C1&#x27;s dependencies exclude C2, Hive, PLN, mailbox and execution. Registry/authority checks surround each invocation and the final C2 commit; omitted side arrows keep the function diagram readable. All illustrated arrows are exercised local calls, not promises of remote placement.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / DEPENDENCY MAP · RUNTIME CONTROL</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Function dependencies: the real native path</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Solid arrows = exercised calls. Every provider effect crosses an existing validated interface.</text>
-<rect x="72" y="246" width="330" height="130" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="294.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Native Hive</text>
-<text x="94" y="333.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">POST /programs/…/act</text>
-<text x="94" y="360.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Trusted actor + command</text>
-<rect x="535" y="246" width="430" height="130" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="557" y="294.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Fusion inspect plugin</text>
-<text x="557" y="333.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Owns caller receipts</text>
-<text x="557" y="360.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Uses selected stdio binding</text>
-<rect x="1080" y="246" width="448" height="130" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1102" y="294.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Registry + resolver</text>
-<text x="1102" y="333.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">describe → select</text>
-<text x="1102" y="360.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Pin full descriptor tokens</text>
-<line x1="402" y1="312" x2="535" y2="312" stroke="#007C78" stroke-width="2"/>
-<polygon points="535,312 522.0,307.0 522.0,317.0" fill="#007C78"/>
-<line x1="965" y1="312" x2="1080" y2="312" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1080,312 1067.0,307.0 1067.0,317.0" fill="#315E9C"/>
-<rect x="535" y="455" width="430" height="120" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="557" y="500.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#315E9C">Validated binding + policy</text>
-<text x="557" y="538.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Wire/profile checks · live authority</text>
-<line x1="750" y1="376" x2="750" y2="455" stroke="#315E9C" stroke-width="2"/>
-<polygon points="750,455 755.0,442.0 745.0,442.0" fill="#315E9C"/>
-<rect x="72" y="455" width="330" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="504.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Execution</text>
-<text x="94" y="545.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">submit · status · result</text>
-<rect x="1080" y="455" width="448" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1102" y="504.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">AtomStorage</text>
-<text x="1102" y="544.07" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">create · get · getMany · availability</text>
-<line x1="535" y1="514" x2="402" y2="514" stroke="#315E9C" stroke-width="2"/>
-<polygon points="402,514 415.0,519.0 415.0,509.0" fill="#315E9C"/>
-<line x1="965" y1="514" x2="1080" y2="514" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1080,514 1067.0,509.0 1067.0,519.0" fill="#315E9C"/>
-<line x1="237" y1="455" x2="237" y2="414" stroke="#315E9C" stroke-width="2"/>
-<line x1="237" y1="414" x2="1304" y2="414" stroke="#315E9C" stroke-width="2"/>
-<line x1="1304" y1="414" x2="1304" y2="455" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1304,455 1309.0,442.0 1299.0,442.0" fill="#315E9C"/>
-<text x="800" y="405.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#315E9C">Submit → get(input) · worker → get / create</text>
-<rect x="535" y="677" width="430" height="105" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="557" y="725.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Messaging</text>
-<text x="557" y="765.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">send · poll · ack</text>
-<line x1="750" y1="575" x2="750" y2="677" stroke="#315E9C" stroke-width="2"/>
-<polygon points="750,677 755.0,664.0 745.0,664.0" fill="#315E9C"/>
-<line x1="237" y1="575" x2="237" y2="729" stroke="#315E9C" stroke-width="2"/>
-<line x1="237" y1="729" x2="535" y2="729" stroke="#315E9C" stroke-width="2"/>
-<polygon points="535,729 522.0,724.0 522.0,734.0" fill="#315E9C"/>
-<text x="282" y="644.05" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#315E9C">Outbox → CompletionDelivery.accept</text>
-<line x1="965" y1="729" x2="1020" y2="729" stroke="#315E9C" stroke-width="2"/>
-<line x1="1020" y1="729" x2="1020" y2="550" stroke="#315E9C" stroke-width="2"/>
-<line x1="1020" y1="550" x2="1080" y2="550" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1080,550 1067.0,545.0 1067.0,555.0" fill="#315E9C"/>
-<text x="802" y="645.0" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#315E9C">send → get(ref)</text>
-<rect x="1080" y="677" width="448" height="105" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1102" y="724.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">DeTTa DA / FileStorage</text>
-<text x="1102" y="763.51" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Opaque put · get · availability</text>
-<line x1="1304" y1="575" x2="1304" y2="677" stroke="#007C78" stroke-width="2"/>
-<polygon points="1304,677 1309.0,664.0 1299.0,664.0" fill="#007C78"/>
-<text x="87" y="815.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Optional finality uses a separate caller + approved digest + signer; M1.2 does not invoke it.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / DEPENDENCY MAP · PRIVATE COGNITION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Function dependencies: the exercised M2 path</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Solid arrows point from caller to provider. Each effect stays behind its declared port.</text>
+<rect x="72" y="245" width="330" height="120" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="287.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">Real Hive plugin</text>
+<text x="94" y="324.16" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Trusted actor → private</text>
+<text x="94" y="349.76000000000005" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">mapping</text>
+<rect x="535" y="245" width="430" height="120" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="557" y="287.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">Generated scenario</text>
+<text x="557" y="324.16" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Explicit assessment + assumption</text>
+<text x="557" y="349.76000000000005" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">policy</text>
+<rect x="1080" y="245" width="448" height="120" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="1102" y="293.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Private composition</text>
+<text x="1102" y="333.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Resolve descriptors + live authority</text>
+<line x1="402" y1="305" x2="535" y2="305" stroke="#007C78" stroke-width="2"/>
+<polygon points="535,305 522.0,300.0 522.0,310.0" fill="#007C78"/>
+<line x1="965" y1="305" x2="1080" y2="305" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1080,305 1067.0,300.0 1067.0,310.0" fill="#315E9C"/>
+<rect x="72" y="452" width="330" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C1 episodes</text>
+<text x="94" y="542.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">append · readEvidence</text>
+<rect x="535" y="452" width="430" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="557" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Durable relay</text>
+<text x="557" y="542.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">pending / ack → C1; submit → C2</text>
+<rect x="1080" y="452" width="448" height="120" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1102" y="501.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C2 beliefs</text>
+<text x="1102" y="542.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">submitEvidence · readBelief</text>
+<line x1="535" y1="507" x2="402" y2="507" stroke="#315E9C" stroke-width="2"/>
+<polygon points="402,507 415.0,512.0 415.0,502.0" fill="#315E9C"/>
+<line x1="965" y1="507" x2="1080" y2="507" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1080,507 1067.0,502.0 1067.0,512.0" fill="#315E9C"/>
+<line x1="650" y1="365" x2="650" y2="405" stroke="#315E9C" stroke-width="2"/>
+<line x1="650" y1="405" x2="237" y2="405" stroke="#315E9C" stroke-width="2"/>
+<line x1="237" y1="405" x2="237" y2="452" stroke="#315E9C" stroke-width="2"/>
+<polygon points="237,452 242.0,439.0 232.0,439.0" fill="#315E9C"/>
+<line x1="750" y1="365" x2="750" y2="452" stroke="#315E9C" stroke-width="2"/>
+<polygon points="750,452 755.0,439.0 745.0,439.0" fill="#315E9C"/>
+<line x1="850" y1="365" x2="850" y2="405" stroke="#315E9C" stroke-width="2"/>
+<line x1="850" y1="405" x2="1304" y2="405" stroke="#315E9C" stroke-width="2"/>
+<line x1="1304" y1="405" x2="1304" y2="452" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1304,452 1309.0,439.0 1299.0,439.0" fill="#315E9C"/>
+<line x1="1106" y1="572" x2="1106" y2="612" stroke="#315E9C" stroke-width="2"/>
+<line x1="1106" y1="612" x2="237" y2="612" stroke="#315E9C" stroke-width="2"/>
+<line x1="237" y1="612" x2="237" y2="572" stroke="#315E9C" stroke-width="2"/>
+<polygon points="237,572 232.0,585.0 242.0,585.0" fill="#315E9C"/>
+<rect x="553" y="592" width="470" height="34" rx="0" fill="#F4F2EB"/>
+<text x="566" y="617.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">C2 → C1.readEvidence</text>
+<rect x="72" y="692" width="330" height="109" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="736.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#315E9C">Private AtomStorage</text>
+<text x="94" y="774.6700000000001" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">C1 + C2: create / get</text>
+<rect x="535" y="692" width="430" height="109" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="557" y="740.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Real local DeTTa</text>
+<text x="557" y="780.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Opaque put / get / availability</text>
+<rect x="1080" y="692" width="448" height="109" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1102" y="740.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">RevisionMath</text>
+<text x="1102" y="780.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Guarded PLN → native PeTTa / SWI</text>
+<line x1="180" y1="572" x2="180" y2="692" stroke="#315E9C" stroke-width="2"/>
+<polygon points="180,692 185.0,679.0 175.0,679.0" fill="#315E9C"/>
+<line x1="1160" y1="572" x2="1160" y2="655" stroke="#315E9C" stroke-width="2"/>
+<line x1="1160" y1="655" x2="330" y2="655" stroke="#315E9C" stroke-width="2"/>
+<line x1="330" y1="655" x2="330" y2="692" stroke="#315E9C" stroke-width="2"/>
+<polygon points="330,692 335.0,679.0 325.0,679.0" fill="#315E9C"/>
+<line x1="402" y1="746" x2="535" y2="746" stroke="#007C78" stroke-width="2"/>
+<polygon points="535,746 522.0,741.0 522.0,751.0" fill="#007C78"/>
+<line x1="1304" y1="572" x2="1304" y2="692" stroke="#007C78" stroke-width="2"/>
+<polygon points="1304,692 1309.0,679.0 1299.0,679.0" fill="#007C78"/>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / program.py · ports.py · execution.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">08 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / ports.py · private.py · evidence_relay.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">08 / 38</text>
 </svg>

@@ -1,53 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Nine required gates passed; chain remains unrun</title>
-<desc id="desc">This board is generated from the M1.2 manifest. All nine required gates pass within the documented local profile. CHAIN is NOT_RUN, not failed and not a fixture substitute. Historical F1R3 reproduction remains blocked for its undistributed dirty source and untracked input; it would need authorized exact changes or a separately validated clean rebaseline. That optional source distribution issue does not block Hive-to-DeTTa. Empty-cache builds and the full Hive suite are intentionally unrun. Source availability alone does not pass the entrypoint or real-provider gate. Executed failed attempts remain recorded separately from the final successful run.</desc>
+<title id="title">Real providers and fixtures answer different questions</title>
+<desc id="desc">Do not flatten the system into one real/fixture label. The runtime/provider gates execute actual pinned source. The scenario data, source-origin registrations and independence declarations are generated assumptions. The independent file provider proves the AtomStorage contract but is not real DeTTa. Eight upstream guard tests use RecordingRuntime fixtures; malformed output tests inject fixtures into an otherwise native suite. The upstream Hive baseline uses its fixture process driver, while the actual integration tests use the real default Supervisor. ASGI TestClient is transport, not a fake native application. The historical chain observation remains separate, and the M2 chain gate is NOT_RUN.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GATE-BY-GATE OUTCOME</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Nine required gates passed; chain remains unrun</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A fixture pass never substitutes for a real-provider or native-runtime pass.</text>
-<rect x="72" y="247" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="92" y="282.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">BASELINE</text>
-<text x="622" y="281.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="92" y="318.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Initial applicable suites executed</text>
-<rect x="816" y="247" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="836" y="282.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">HIVE_SOURCE</text>
-<text x="1366" y="281.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="836" y="318.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Intended source and native entrypoint verified</text>
-<rect x="72" y="352" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="92" y="387.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">FIXTURE_REPRO</text>
-<text x="622" y="386.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="92" y="423.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Fresh fixture-only run without real sources</text>
-<rect x="816" y="352" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="836" y="387.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">DETTA_REPRO</text>
-<text x="1366" y="386.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="836" y="423.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Fresh clean provider build and conformance</text>
-<rect x="72" y="457" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="92" y="492.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">HIVE_ENTRYPOINT</text>
-<text x="622" y="491.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="92" y="528.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Real authentication and Programs dispatch</text>
-<rect x="816" y="457" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="836" y="492.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">HIVE_DETTA</text>
-<text x="1366" y="491.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="836" y="528.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Same workflow uses real DeTTa receipts</text>
-<rect x="72" y="562" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="92" y="597.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">HIVE_RECOVERY</text>
-<text x="622" y="596.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="92" y="633.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Restart, replay, completion and refusals</text>
-<rect x="816" y="562" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="836" y="597.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">HIVE_REPRO</text>
-<text x="1366" y="596.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="836" y="633.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Declared fresh source/build recipe exercised</text>
-<rect x="72" y="667" width="712" height="91" rx="10" fill="#FFFFFF"/>
-<text x="92" y="702.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">SCOPE</text>
-<text x="622" y="701.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">PASS</text>
-<text x="92" y="738.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">No M2, ECAN, inference control or migration</text>
-<rect x="816" y="667" width="712" height="91" rx="10" fill="#F3E7CE"/>
-<text x="836" y="702.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CHAIN</text>
-<text x="1366" y="701.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#A86A15">NOT_RUN</text>
-<text x="836" y="738.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">No same-artifact M1.2 chain submission</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / EVIDENCE CLASSIFICATION</text>
+<text x="70" y="139.65" font-family="DejaVu Sans" font-size="47" font-weight="700" fill="#102B3F">Real providers and fixtures answer different questions</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A real runtime can execute generated data. Neither label cancels the other.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">COMPONENT</text>
+<text x="618" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CLASSIFICATION</text>
+<text x="1018" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT THE EVIDENCE SUPPORTS</text>
+<rect x="72" y="277" width="1456" height="75" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Hive app / Supervisor / PeTTa</text>
+<text x="618" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">REAL NATIVE RUNTIME</text>
+<text x="1018" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Actual authenticated dispatch and caller</text>
+<text x="1018" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">restart</text>
+<rect x="72" y="357" width="1456" height="75" rx="6" fill="#FFFFFF"/>
+<text x="88" y="395.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">DeTTa DA + FileStorage</text>
+<text x="618" y="395.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">REAL LOCAL PROVIDER</text>
+<text x="1018" y="395.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Opaque persistence, reconstruction,</text>
+<text x="1018" y="425.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">owner recovery</text>
+<rect x="72" y="437" width="1456" height="75" rx="6" fill="#FFFFFF"/>
+<text x="88" y="475.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Guarded PLN + Truth_Revision</text>
+<text x="618" y="475.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">REAL NATIVE REVISION</text>
+<text x="1018" y="475.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Pinned guards + actual formula goldens</text>
+<rect x="72" y="517" width="1456" height="75" rx="6" fill="#FFFFFF"/>
+<text x="88" y="555.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Generated data / origin assumptions</text>
+<text x="618" y="555.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">FIXTURES</text>
+<text x="1018" y="555.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Deterministic scenario, not empirical truth</text>
+<rect x="72" y="597" width="1456" height="75" rx="6" fill="#FFFFFF"/>
+<text x="88" y="635.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">File provider / RecordingRuntime /</text>
+<text x="88" y="665.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">injections</text>
+<text x="618" y="635.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">FIXTURES</text>
+<text x="1018" y="635.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Independent contracts and refusal</text>
+<text x="1018" y="665.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">behavior</text>
+<rect x="72" y="677" width="1456" height="75" rx="6" fill="#FFFFFF"/>
+<text x="88" y="715.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Fusion policy / transport / failpoints</text>
+<text x="618" y="715.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">TEST SUPPORT</text>
+<text x="1018" y="715.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Local grants and controlled failure</text>
+<text x="1018" y="745.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">placement</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="794.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#102B3F">Historical chain reproduction is BLOCKED by missing exact F1R3 changes; empty-cache and full-Hive runs are NOT_RUN.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Native Hive authentication is real. Downstream Fusion authorization is a local development policy.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M1.2 / evidence/m1_2/manifest.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">24 / 33</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M2 / m2/manifest.json · final/verification.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">24 / 38</text>
 </svg>

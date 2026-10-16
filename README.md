@@ -43,9 +43,9 @@ separate and is not rerun in M1.2 or M2. No ECAN, inference control or live stat
 migration is implemented.
 
 The [conference presentation](docs/presentation/README.md) covers the architecture
-through M1.2: all 15 module responsibilities, function dependencies, separate
-owner commits, independent AtomStorage replacement, and real Hive caller recovery.
-It includes an editable PowerPoint, a PDF and speaker notes. Current real-provider
-and fixture results are distinguished from the historical M1 chain appendix and
-unrun gates. That presentation remains a historical M1.2 artifact; the current
-M2 architecture and evidence are in the documents linked above.
+through M2, opening with an ELI16 executive summary before all 15 module
+responsibilities and function dependencies. It includes private C1/C2 ownership,
+duplicate-safe evidence, guarded native PLN revision, real Hive episodes and
+cross-owner recovery, with an editable PowerPoint, PDF and speaker notes.
+Real providers, fixtures, historical chain evidence, blocked inputs and unrun
+gates remain separately labelled.
