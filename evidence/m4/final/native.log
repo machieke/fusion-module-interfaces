@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.12, pytest-9.1.1, pluggy-1.7.0 -- <BUILD>/providers/native/venv/bin/python
+cachedir: .pytest_cache
+rootdir: <FUSION>
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 6 items
+
+integration/chain/test_m4.py::test_same_artifact_node_restart_outage_readonly_and_privacy PASSED [ 16%]
+integration/chain/test_m4.py::test_native_caller_dies_after_acceptance_before_chain PASSED [ 33%]
+integration/chain/test_m4.py::test_real_adapter_kill_and_lost_submission_response[after_signed_intent] PASSED [ 50%]
+integration/chain/test_m4.py::test_real_adapter_kill_and_lost_submission_response[after_node_submission] PASSED [ 66%]
+integration/chain/test_m4.py::test_native_observation_kill_before_caller_progress PASSED [ 83%]
+integration/chain/test_m4.py::test_native_live_authority_binding_and_refused_exports PASSED [100%]
+
+- generated xml file: <FUSION>/artifacts/m4/final-02/native.xml -
+========================= 6 passed in 99.52s (0:01:39) =========================

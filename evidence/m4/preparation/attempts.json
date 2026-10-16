@@ -1,0 +1,72 @@
+{
+  "attempts": [
+    {
+      "attempt": "prerequisite-launch-01",
+      "status": "FAIL",
+      "stage": "launcher",
+      "exit": 127,
+      "reason": "Ephemeral uv Python executable unavailable after its parent invocation ended; no node started",
+      "correction": "Persistent pinned virtual environment"
+    },
+    {
+      "attempt": "development-01",
+      "status": "FAIL",
+      "reason": "Test assumed EpisodeRef.digest; actual ref has scope_ref/id",
+      "correction": "Use actual episode ID and identifying derivative in privacy scan",
+      "classification": "executed test/integration failure, not missing prerequisite or finality timeout"
+    },
+    {
+      "attempt": "development-02",
+      "status": "FAIL",
+      "reason": "Native Hive refused empty kinds declaration",
+      "correction": "Declare one generated commitment evidence kind",
+      "classification": "executed test/integration failure, not missing prerequisite or finality timeout"
+    },
+    {
+      "attempt": "development-03",
+      "status": "FAIL",
+      "reason": "Native Hive refused started results without pending/unknown receipt",
+      "correction": "Use verified native result envelope",
+      "classification": "executed test/integration failure, not missing prerequisite or finality timeout"
+    },
+    {
+      "attempt": "development-04",
+      "status": "PASS-supported-development-tests",
+      "tests": {
+        "chain_transport_fixtures": 10,
+        "real_native_chain": 6
+      },
+      "overall": "INCOMPLETE",
+      "reason": "Development checkout; BASELINE and REPRO_READBACK not eligible; superseded by clean final run"
+    },
+    {
+      "attempt": "development-05",
+      "status": "PASS-supported-development-tests",
+      "tests": {
+        "chain_transport_fixtures": 10,
+        "real_native_chain": 6
+      },
+      "overall": "INCOMPLETE",
+      "reason": "Development checkout; BASELINE and REPRO_READBACK not eligible; superseded by clean final run"
+    },
+    {
+      "attempt": "source-evidence-packaging-01",
+      "status": "FAIL",
+      "stage": "metadata packaging only",
+      "reason": "Treated a sanitized source label as filesystem path",
+      "correction": "Used the already-authorized recorded workspace path; all original edits verified unchanged"
+    },
+    {
+      "attempt": "mutable-approval-before-fix",
+      "source": "1219bb5e3c505490dd018baa079534eca9333b54",
+      "status": "FAIL",
+      "classification": "executed negative contract regression",
+      "reason": "A retained nested dictionary could mutate the registered approval after construction; expected UNAUTHORIZED was not raised",
+      "correction": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955 captures canonical copies; 11 focused fixtures pass",
+      "supersedes": "Earlier candidate suite passes do not establish the corrected approval guarantee"
+    }
+  ],
+  "missing_prerequisites": [],
+  "positive_chain_observation_timeouts": [],
+  "raw_private_logs": "retained locally in ignored artifacts; not published"
+}

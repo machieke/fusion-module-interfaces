@@ -1,0 +1,343 @@
+{
+  "m1_1_fixtures": {
+    "source": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+    "gates": {},
+    "status": "PASS (local selected gates only)",
+    "commands": [
+      {
+        "returncode": 0,
+        "elapsed_seconds": 29.02824073471129,
+        "tests": 51
+      }
+    ]
+  },
+  "m1_1": {
+    "source": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+    "gates": {},
+    "status": "PASS (local selected gates only)",
+    "commands": [
+      {
+        "returncode": 0,
+        "elapsed_seconds": 21.749603054486215,
+        "tests": null
+      },
+      {
+        "returncode": 0,
+        "elapsed_seconds": 129.5820032581687,
+        "tests": 138
+      }
+    ]
+  },
+  "m1_2": {
+    "source": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+    "gates": {
+      "FIXTURE_REPRO": "PASS",
+      "DETTA_REPRO": "PASS",
+      "HIVE_SOURCE": "PASS: verified native pin, not a dispatch pass",
+      "HIVE_ENTRYPOINT": "PASS",
+      "HIVE_DETTA": "PASS",
+      "HIVE_RECOVERY": "PASS",
+      "HIVE_REPRO": "PASS",
+      "CHAIN": "NOT_RUN",
+      "SCOPE": "M1.2 only; real native dispatch; generated input; fixture counterparty; no LLM invocation or chain"
+    },
+    "status": null,
+    "commands": [
+      {
+        "name": "fixture",
+        "returncode": 0,
+        "seconds": 32.229,
+        "test_summaries": [
+          "Ran 51 tests in 28.804s"
+        ]
+      },
+      {
+        "name": "detta",
+        "returncode": 0,
+        "seconds": 159.305,
+        "test_summaries": [
+          "Ran 138 tests in 129.387s"
+        ]
+      },
+      {
+        "name": "upstream-detta",
+        "returncode": 0,
+        "seconds": 1.113,
+        "test_summaries": [
+          "test result: ok. 62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s",
+          "test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.89s"
+        ]
+      },
+      {
+        "name": "native-baseline",
+        "returncode": 0,
+        "seconds": 72.511,
+        "tests": {
+          "tests": 34,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "hive-integration",
+        "returncode": 0,
+        "seconds": 65.867,
+        "tests": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    ]
+  },
+  "m2": {
+    "source": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+    "gates": {
+      "BASELINE": "PASS",
+      "CONTRACTS": "PASS",
+      "C1": "PASS",
+      "C1_INDEPENDENT": "PASS",
+      "C2_GUARDS": "PASS",
+      "C2_NATIVE": "PASS",
+      "PRIVACY": "PASS",
+      "RECOVERY": "PASS",
+      "HIVE_M2": "PASS",
+      "REPRO": "PASS: fresh provider build and all supported tests; download caches warm",
+      "SCOPE": "PASS: C1+C2 only; unchanged M1 wire, original Hive plugin and guarded upstream sources",
+      "CHAIN": "NOT_RUN"
+    },
+    "status": null,
+    "commands": [
+      {
+        "name": "m1_2-regression",
+        "returncode": 0,
+        "seconds": 331.526,
+        "summaries": [
+          "Ran 51 tests in 28.804s']",
+          "Ran 138 tests in 129.387s']",
+          "62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s', 'test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.89s']"
+        ]
+      },
+      {
+        "name": "m2-fixtures",
+        "returncode": 0,
+        "seconds": 6.848,
+        "summaries": [
+          "Ran 16 tests in 6.721s"
+        ]
+      },
+      {
+        "name": "upstream-revision-guards",
+        "returncode": 0,
+        "seconds": 0.084,
+        "summaries": [
+          "Ran 8 tests in 0.001s"
+        ]
+      },
+      {
+        "name": "m2-native-revision",
+        "returncode": 0,
+        "seconds": 28.295,
+        "summaries": [
+          "Ran 12 tests in 28.191s"
+        ]
+      },
+      {
+        "name": "m2-recovery-privacy",
+        "returncode": 0,
+        "seconds": 10.348,
+        "summaries": [
+          "Ran 6 tests in 10.213s"
+        ]
+      },
+      {
+        "name": "m2-native-hive",
+        "returncode": 0,
+        "seconds": 86.245,
+        "summaries": [
+          "7 passed in 86.00s (0:01:25)"
+        ],
+        "tests": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "m2-demo",
+        "returncode": 0,
+        "seconds": 7.845,
+        "summaries": []
+      }
+    ]
+  },
+  "m3": {
+    "source": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+    "gates": {
+      "BASELINE": "PASS",
+      "CONTRACTS": "PASS",
+      "C3": "PASS",
+      "C3_INDEPENDENT": "PASS",
+      "ATTENTION_SWAP": "PASS",
+      "KERNEL_NATIVE": "PASS",
+      "DERIVED_ADMISSION": "PASS",
+      "C4_BOUNDED": "PASS",
+      "RECOVERY": "PASS",
+      "PRIVACY": "PASS",
+      "HIVE_M3": "PASS",
+      "REPRO": "PASS: fresh provider objects, venv and DeTTa target; download caches warm",
+      "SCOPE": "PASS: bounded C3/C4 and required C2 admission extension; one grounded rule; no migration",
+      "CHAIN": "NOT_RUN"
+    },
+    "status": null,
+    "commands": [
+      {
+        "name": "m2-regression",
+        "returncode": 0,
+        "seconds": 471.459,
+        "summaries": [
+          "Ran 51 tests in 28.804s']\", \"Ran 138 tests in 129.387s']\", \"62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s', 'test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.89s']\"]",
+          "Ran 16 tests in 6.721s']",
+          "Ran 8 tests in 0.001s']",
+          "Ran 12 tests in 28.191s']",
+          "Ran 6 tests in 10.213s']"
+        ]
+      },
+      {
+        "name": "m3-attention-fixtures",
+        "returncode": 0,
+        "seconds": 1.206,
+        "summaries": [
+          "Ran 5 tests in 1.086s"
+        ]
+      },
+      {
+        "name": "m3-contract-fixtures",
+        "returncode": 0,
+        "seconds": 11.956,
+        "summaries": [
+          "Ran 7 tests in 11.848s"
+        ]
+      },
+      {
+        "name": "upstream-guard-fixtures",
+        "returncode": 0,
+        "seconds": 0.066,
+        "summaries": [
+          "Ran 15 tests in 0.004s"
+        ]
+      },
+      {
+        "name": "m3-native-kernel-admission",
+        "returncode": 0,
+        "seconds": 186.299,
+        "summaries": [
+          "Ran 13 tests in 186.195s"
+        ]
+      },
+      {
+        "name": "m3-real-process-kills",
+        "returncode": 0,
+        "seconds": 91.046,
+        "summaries": [
+          "Ran 3 tests in 90.943s"
+        ]
+      },
+      {
+        "name": "m3-native-hive",
+        "returncode": 0,
+        "seconds": 267.714,
+        "summaries": [
+          "8 passed in 267.47s (0:04:27)"
+        ],
+        "tests": {
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "m3-comparison",
+        "returncode": 0,
+        "seconds": 53.591,
+        "summaries": []
+      }
+    ]
+  },
+  "m3_1": {
+    "source": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+    "gates": {
+      "BASELINE": "PASS",
+      "ACK_CONTRACT": "PASS",
+      "C1_C2_PROGRESS": "PASS",
+      "EVIDENCE_RECOVERY": "PASS",
+      "FEEDBACK_CLOSURE": "PASS",
+      "CAUSAL_RACES": "PASS",
+      "BUDGETS": "PASS",
+      "PROVIDER_SWAP": "PASS",
+      "AUTH_PRIVACY": "PASS",
+      "HIVE_M3_1": "PASS",
+      "COMPAT_REPRO": "PASS: populated disposable old-profile copies; fresh provider directories and clean source checkout; download caches warm",
+      "SCOPE": "PASS: delivery closure only; guarded mathematics, DA, source pins and historical profiles preserved",
+      "CHAIN": "NOT_RUN"
+    },
+    "status": null,
+    "commands": [
+      {
+        "name": "m1-through-m3-regression",
+        "returncode": 0,
+        "seconds": 1083.552,
+        "summaries": [
+          "Ran 51 tests in 28.804s\\']\", \"Ran 138 tests in 129.387s\\']\", \"62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s\\', \\'test result: ok. 38 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.89s\\']\"]', \"Ran 16 tests in 6.721s']\", \"Ran 8 tests in 0.001s']\", \"Ran 12 tests in 28.191s']\", \"Ran 6 tests in 10.213s']\"]",
+          "Ran 5 tests in 1.086s']",
+          "Ran 7 tests in 11.848s']",
+          "Ran 15 tests in 0.004s']",
+          "Ran 13 tests in 186.195s']",
+          "Ran 3 tests in 90.943s']"
+        ]
+      },
+      {
+        "name": "closure-fixtures",
+        "returncode": 0,
+        "seconds": 12.361,
+        "summaries": [
+          "Ran 9 tests in 12.228s"
+        ]
+      },
+      {
+        "name": "closure-real-providers",
+        "returncode": 0,
+        "seconds": 116.212,
+        "summaries": [
+          "Ran 5 tests in 116.083s"
+        ]
+      },
+      {
+        "name": "closure-process-kills",
+        "returncode": 0,
+        "seconds": 63.202,
+        "summaries": [
+          "Ran 3 tests in 63.099s"
+        ]
+      },
+      {
+        "name": "closure-native-hive",
+        "returncode": 0,
+        "seconds": 138.599,
+        "summaries": [
+          "7 passed in 138.34s (0:02:18)"
+        ],
+        "tests": {
+          "tests": 7,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      }
+    ]
+  }
+}

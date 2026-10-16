@@ -1,4 +1,4 @@
-# Omega ↔ ASI module interfaces: through M3.1
+# Omega ↔ ASI module interfaces: through M4
 
 A backend-neutral contract package and bounded storage, mailbox and delegated
 execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
@@ -22,6 +22,15 @@ owner-authoritative feedback reconciliation. Native Hive reports original execut
 and later closure progress separately. New explicit profiles require fresh journals;
 existing M3 pending stores are not migrated or repaired. All 12 supported gates pass,
 with M1–M3 regressions preserved. See [M3.1 evidence](docs/module-interfaces/m3_1-evidence.md).
+
+M4 connects an authenticated native generated inspect result, retrieved through
+real DeTTa, to an approved commitment on a real isolated F1R3node. Exact inclusion
+post-state readback and matching deploy-effect finality survive caller/adapter
+kills and same-genesis node restart. All 10 required gates pass, including the full
+M1–M3.1 regression. Private cognitive owners remain separate. See the
+[M4 report](docs/module-interfaces/m4-evidence.md),
+[gate manifest](evidence/m4/manifest.json) and
+[fresh-checkout build/run recipe](docs/module-interfaces/runbook.md#m4-required-isolated-chain-reproduction).
 
 For the complete M3.1 source/build/test path (Linux prerequisites and access are
 listed in the runbook):

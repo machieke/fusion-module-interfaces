@@ -1,0 +1,18 @@
+{
+  "build_started_at": "8491c4900a5ccab872073e62b1024e3b731aeaf9",
+  "tested_implementation": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+  "unchanged_inputs": {
+    "scripts/build_hive.py": true,
+    "scripts/build_m2.py": true,
+    "scripts/build_m3.py": true,
+    "adapters/detta/src/main.rs": true,
+    "adapters/detta/Cargo.lock": true,
+    "integration/hive/requirements.lock": true,
+    "integration/hive/sources.json": true,
+    "integration/pln/sources.json": true,
+    "integration/pln/deduction-sources.json": true,
+    "fusion/adapters/pln_revision.py": true,
+    "fusion/adapters/pln_deduction.py": true
+  },
+  "explanation": "Native provider build started before the M4 implementation commit; all its recipes, source pins, guarded runtime code and adapter inputs are byte-identical. Native M4 plugins are loaded from the tested commit at run time."
+}

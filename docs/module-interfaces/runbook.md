@@ -386,6 +386,14 @@ not migrate or repair it. See `m3_1-evidence.md` for exact tested source and gat
 
 ## M4 required isolated-chain reproduction
 
+Use a fresh Fusion checkout as well as fresh provider/output directories. This
+also gives the historical M1 verifier an empty compatibility build target:
+
+```sh
+git worktree add --detach /absolute/fresh/fusion 55ed5402391ab6ed14f8ab20e1eea4c85d8be955
+cd /absolute/fresh/fusion
+```
+
 Prerequisites: authorized Git access to the pinned Hive/DeTTa/PLN sources and the
 named F1R3 fork, `uv`, Rust nightly `2026-02-09`, C/C++/SWI native build libraries,
 OpenSSL development files, `ip`, `ss`, and permission for unprivileged user/network
@@ -423,6 +431,9 @@ allowlist is not an action parameter. Complete and acknowledge the original
 an uncertain submission to recover the same signed intent. Dispatch `observe`
 to read progress without re-running the worker or submitting another deploy.
 Unavailability does not retract off-chain completion or change the genesis.
+Replaying `commit` returns its original submission receipt; use `observe` for a
+new chain observation. An unavailable observation does not erase earlier evidence
+from the chain owner's journal.
 
 A second process can run:
 

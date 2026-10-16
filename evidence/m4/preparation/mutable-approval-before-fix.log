@@ -1,0 +1,17 @@
+test_mutating_input_aliases_cannot_change_registered_approval_or_binding (alias_regression.ChainFixtures.test_mutating_input_aliases_cannot_change_registered_approval_or_binding) ... FAIL
+
+======================================================================
+FAIL: test_mutating_input_aliases_cannot_change_registered_approval_or_binding (alias_regression.ChainFixtures.test_mutating_input_aliases_cannot_change_registered_approval_or_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<FUSION>/tests/test_m4_chain.py", line 99, in test_mutating_input_aliases_cannot_change_registered_approval_or_binding
+    self.rejected('UNAUTHORIZED', lambda: owner.submit(self.command, self.approved))
+  File "<FUSION>/tests/test_m4_chain.py", line 71, in rejected
+    with self.assertRaises(ContractError) as caught:
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.165s
+
+FAILED (failures=1)
+EXPECTED REGRESSION EXPOSED ON 1219bb5

@@ -1,0 +1,312 @@
+{
+  "classification": "prerequisite only; generated value, real isolated F1R3node; not native Hive same-artifact M4 gate",
+  "source": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+  "observations": [
+    {
+      "state": "Pending",
+      "rejection_count": 0,
+      "latest_block_hash": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f"
+    },
+    {
+      "state": "Finalized",
+      "rejection_count": 0,
+      "latest_block_hash": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f"
+    }
+  ],
+  "stage": "complete",
+  "status": "PASS",
+  "isolation": {
+    "host_netns": "net:[4026532024]",
+    "run_netns": "net:[4026533054]",
+    "interfaces": [
+      "lo"
+    ],
+    "routes": [],
+    "external_probe": "192.0.2.1:443",
+    "external_errno": 101,
+    "sockets": "Netid   State    Recv-Q   Send-Q     Local Address:Port      Peer Address:Port  Process                                                                         \ntcp     LISTEN   0        128            127.0.0.1:58361          0.0.0.0:*      users:((\"node\",pid=2737791,fd=49))                                             \ntcp     LISTEN   0        128              0.0.0.0:38137          0.0.0.0:*      users:((\"node\",pid=2737791,fd=39))                                             \ntcp     LISTEN   0        128            127.0.0.1:36189          0.0.0.0:*      users:((\"node\",pid=2737791,fd=44))                                             \ntcp     LISTEN   0        128              0.0.0.0:56963          0.0.0.0:*      users:((\"node\",pid=2737791,fd=37))                                             \ntcp     LISTEN   0        128              0.0.0.0:58951          0.0.0.0:*      users:((\"node\",pid=2737791,fd=36))                                             \ntcp     LISTEN   0        128              0.0.0.0:54605          0.0.0.0:*      users:((\"node\",pid=2737791,fd=38))                                             \n"
+  },
+  "ports": [
+    58951,
+    54605,
+    38137,
+    36189,
+    56963,
+    58361
+  ],
+  "startup": {
+    "seconds": 11.662,
+    "status": {
+      "networkId": "fusion-m4-isolated",
+      "shardId": "fusion-m4",
+      "isReady": true,
+      "peers": 0,
+      "nodes": 0,
+      "version": {
+        "api": "1",
+        "node": "F1r3node Rust 0.4.15 (9ec1096)"
+      }
+    },
+    "last_finalized_block": "646badb518eeeef049a06a85ba70f3ec9e6be6431063716917247cfca5ae571f"
+  },
+  "genesis": [
+    {
+      "blockInfo": {
+        "blockHash": "646badb518eeeef049a06a85ba70f3ec9e6be6431063716917247cfca5ae571f",
+        "sender": "",
+        "seqNum": 0,
+        "sig": "",
+        "sigAlgorithm": "",
+        "shardId": "fusion-m4",
+        "extraBytes": "",
+        "version": 1,
+        "timestamp": 1792173103365,
+        "headerExtraBytes": "",
+        "parentsHashList": [],
+        "blockNumber": 0,
+        "preStateHash": "cb7480d13e774ef931c0d22379cbe4deb6fed0f096d7ff93d507a2b3276d7efe",
+        "postStateHash": "96ee3e2429efdbf2c23dbc923eda5d7ecf428a424cee6e906e455e90a9061bdc",
+        "bodyExtraBytes": "",
+        "bonds": [
+          {
+            "validator": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+            "stake": 1000
+          }
+        ],
+        "blockSize": "671575",
+        "deployCount": 12,
+        "faultTolerance": 1.0,
+        "justifications": [],
+        "rejectedDeploys": [],
+        "isFinalized": true
+      }
+    }
+  ],
+  "signed": {
+    "data": {
+      "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"generated-m4-prerequisite\", \"008f9310b53b3af28294fd1b6c51cebad331b696dd336223eaaddfdaef8a850f\")) }",
+      "timestamp": 1792173114876,
+      "phloPrice": 1,
+      "phloLimit": 10000000,
+      "validAfterBlockNumber": 0,
+      "shardId": "fusion-m4",
+      "expiration_timestamp": null
+    },
+    "deployer": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+    "signature": "30440220403bb7ca739e3b42b49c3a4c601c3a1f3a03c100a1d417dc26571ece5a1408e9022003f2c5f6695e226d5db1f2bf319d3db28641a56c9ad48cdc4eaa5dcfc7c238a9",
+    "sigAlgorithm": "secp256k1"
+  },
+  "read_name": "6e03add10e0254bc8c4a763066667911441fbb27b9b147e4799fe71680276805",
+  "expected": {
+    "namespace": "fusion:m4:commitment/1",
+    "operation": "generated-m4-prerequisite",
+    "digest": "008f9310b53b3af28294fd1b6c51cebad331b696dd336223eaaddfdaef8a850f"
+  },
+  "submission": "Success!\nDeployId is: 30440220403bb7ca739e3b42b49c3a4c601c3a1f3a03c100a1d417dc26571ece5a1408e9022003f2c5f6695e226d5db1f2bf319d3db28641a56c9ad48cdc4eaa5dcfc7c238a9",
+  "propose": "Success! Block 92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f created and added.",
+  "inclusion": {
+    "deployId": "30440220403bb7ca739e3b42b49c3a4c601c3a1f3a03c100a1d417dc26571ece5a1408e9022003f2c5f6695e226d5db1f2bf319d3db28641a56c9ad48cdc4eaa5dcfc7c238a9",
+    "blockHash": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f",
+    "blockNumber": 1,
+    "timestamp": 1792173114876,
+    "cost": 603,
+    "errored": false,
+    "isFinalized": true,
+    "finalizationState": "Finalized",
+    "rejectionCount": 0,
+    "deployer": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+    "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"generated-m4-prerequisite\", \"008f9310b53b3af28294fd1b6c51cebad331b696dd336223eaaddfdaef8a850f\")) }",
+    "systemDeployError": "",
+    "phloPrice": 1,
+    "phloLimit": 10000000,
+    "sigAlgorithm": "secp256k1",
+    "validAfterBlockNumber": 0,
+    "transfers": []
+  },
+  "query": {
+    "name": {
+      "UnforgPrivate": {
+        "data": "6e03add10e0254bc8c4a763066667911441fbb27b9b147e4799fe71680276805"
+      }
+    },
+    "blockHash": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f",
+    "usePreStateHash": false
+  },
+  "effect": {
+    "expr": [
+      {
+        "ExprTuple": {
+          "data": [
+            {
+              "ExprString": {
+                "data": "fusion:m4:commitment/1"
+              }
+            },
+            {
+              "ExprString": {
+                "data": "generated-m4-prerequisite"
+              }
+            },
+            {
+              "ExprString": {
+                "data": "008f9310b53b3af28294fd1b6c51cebad331b696dd336223eaaddfdaef8a850f"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "block": {
+      "blockHash": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f",
+      "sender": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+      "seqNum": 1,
+      "sig": "3045022100c1934c424e5990fd079ec2f51157b3d1844ca0a696c865417eb0dab23c9cdde002203cbc7701af8de238ae96a4f84ccd63b9b162e603418b84eee97759d7975f306b",
+      "sigAlgorithm": "secp256k1",
+      "shardId": "fusion-m4",
+      "extraBytes": "",
+      "version": 1,
+      "timestamp": 1792173115333,
+      "headerExtraBytes": "",
+      "parentsHashList": [
+        "646badb518eeeef049a06a85ba70f3ec9e6be6431063716917247cfca5ae571f"
+      ],
+      "blockNumber": 1,
+      "preStateHash": "96ee3e2429efdbf2c23dbc923eda5d7ecf428a424cee6e906e455e90a9061bdc",
+      "postStateHash": "ea118903e696de386d0265b279b68c52dbd898bcb8292865245460f4b552080a",
+      "bodyExtraBytes": "",
+      "bonds": [
+        {
+          "validator": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+          "stake": 1000
+        }
+      ],
+      "blockSize": "100816",
+      "deployCount": 1,
+      "faultTolerance": 1.0,
+      "justifications": [
+        {
+          "validator": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+          "latestBlockHash": "646badb518eeeef049a06a85ba70f3ec9e6be6431063716917247cfca5ae571f"
+        }
+      ],
+      "rejectedDeploys": [],
+      "isFinalized": true
+    },
+    "cost": 0
+  },
+  "restart": {
+    "seconds": 1.041,
+    "status": {
+      "networkId": "fusion-m4-isolated",
+      "shardId": "fusion-m4",
+      "isReady": true,
+      "peers": 0,
+      "nodes": 0,
+      "version": {
+        "api": "1",
+        "node": "F1r3node Rust 0.4.15 (9ec1096)"
+      }
+    },
+    "last_finalized_block": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f"
+  },
+  "after_restart_genesis": [
+    {
+      "blockInfo": {
+        "blockHash": "646badb518eeeef049a06a85ba70f3ec9e6be6431063716917247cfca5ae571f",
+        "sender": "",
+        "seqNum": 0,
+        "sig": "",
+        "sigAlgorithm": "",
+        "shardId": "fusion-m4",
+        "extraBytes": "",
+        "version": 1,
+        "timestamp": 1792173103365,
+        "headerExtraBytes": "",
+        "parentsHashList": [],
+        "blockNumber": 0,
+        "preStateHash": "cb7480d13e774ef931c0d22379cbe4deb6fed0f096d7ff93d507a2b3276d7efe",
+        "postStateHash": "96ee3e2429efdbf2c23dbc923eda5d7ecf428a424cee6e906e455e90a9061bdc",
+        "bodyExtraBytes": "",
+        "bonds": [
+          {
+            "validator": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+            "stake": 1000
+          }
+        ],
+        "blockSize": "671575",
+        "deployCount": 12,
+        "faultTolerance": 1.0,
+        "justifications": [],
+        "rejectedDeploys": [],
+        "isFinalized": true
+      }
+    }
+  ],
+  "after_restart_finality": {
+    "state": "Finalized",
+    "rejection_count": 0,
+    "latest_block_hash": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f"
+  },
+  "after_restart_effect": {
+    "expr": [
+      {
+        "ExprTuple": {
+          "data": [
+            {
+              "ExprString": {
+                "data": "fusion:m4:commitment/1"
+              }
+            },
+            {
+              "ExprString": {
+                "data": "generated-m4-prerequisite"
+              }
+            },
+            {
+              "ExprString": {
+                "data": "008f9310b53b3af28294fd1b6c51cebad331b696dd336223eaaddfdaef8a850f"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "block": {
+      "blockHash": "92f768914bffe5c6f0a354b68a0a261577be0c9a842a55437e4de522ba6a4c6f",
+      "sender": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+      "seqNum": 1,
+      "sig": "3045022100c1934c424e5990fd079ec2f51157b3d1844ca0a696c865417eb0dab23c9cdde002203cbc7701af8de238ae96a4f84ccd63b9b162e603418b84eee97759d7975f306b",
+      "sigAlgorithm": "secp256k1",
+      "shardId": "fusion-m4",
+      "extraBytes": "",
+      "version": 1,
+      "timestamp": 1792173115333,
+      "headerExtraBytes": "",
+      "parentsHashList": [
+        "646badb518eeeef049a06a85ba70f3ec9e6be6431063716917247cfca5ae571f"
+      ],
+      "blockNumber": 1,
+      "preStateHash": "96ee3e2429efdbf2c23dbc923eda5d7ecf428a424cee6e906e455e90a9061bdc",
+      "postStateHash": "ea118903e696de386d0265b279b68c52dbd898bcb8292865245460f4b552080a",
+      "bodyExtraBytes": "",
+      "bonds": [
+        {
+          "validator": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+          "stake": 1000
+        }
+      ],
+      "blockSize": "100816",
+      "deployCount": 1,
+      "faultTolerance": 1.0,
+      "justifications": [
+        {
+          "validator": "045b9fbc97a5601f4e7666f5455749c9a8f0343558c64a7c5c9537d4a2cd80d2d104c80a5fda2725b23d02078e653665181e868a3ad94df750085e980365ca57b5",
+          "latestBlockHash": "646badb518eeeef049a06a85ba70f3ec9e6be6431063716917247cfca5ae571f"
+        }
+      ],
+      "rejectedDeploys": [],
+      "isFinalized": true
+    },
+    "cost": 0
+  }
+}

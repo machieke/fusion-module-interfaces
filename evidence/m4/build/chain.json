@@ -1,0 +1,45 @@
+{
+  "source": {
+    "url": "git@github.com:machieke/f1r3node-rust.git",
+    "commit": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+    "baseline": "new clean baseline; historical dirty workspace is not reproduced",
+    "toolchain": "nightly-2026-02-09",
+    "cargo": [
+      "build",
+      "--offline",
+      "--locked",
+      "-j",
+      "2",
+      "-p",
+      "node",
+      "--bin",
+      "node"
+    ],
+    "environment": {
+      "CARGO_PROFILE_DEV_DEBUG": "0",
+      "CARGO_INCREMENTAL": "0",
+      "RUST_MIN_STACK": "8388608"
+    },
+    "profile": "f1r3-generated-post-state/2"
+  },
+  "fresh_destination": true,
+  "download_cache": "warm; locked fetch then offline build",
+  "returncode": 0,
+  "seconds": 230.124,
+  "files": {
+    "Cargo.toml": "b544730c4348d866cf98bb3570fe03609733cd9a9fd0b2bab85684db63f120f8",
+    "Cargo.lock": "43e737467149cb12a21ec934b12f3d3f5ddc5d182e858203e4bdf292af34d5e5",
+    "rust-toolchain.toml": "cef5cc010fbd237ab34a4d07129372406e11ff8595c2efc1126d9c93e039aed4",
+    ".cargo/config.toml": "da7e626941c437575405e8eade493a1994483236d0f775c39800b2b2e93f230f",
+    "models/src/main/protobuf/CasperMessage.proto": "8a488cb42432bf0743ad3531d6cf2e05cefe8369fefdaad010bcad8c6e2841c8",
+    "node/src/rust/api/web_api.rs": "3259d5f3ff594c55f7185fc6f01582baa0d4d827e12fb0b80ae575e4f0f8a9e5",
+    "node/src/rust/web/routes.rs": "a4141e66cf024df9dc36a609ece37e2b9e5064fac05842c5a154db82b676bb25"
+  },
+  "binary_sha256": "2021389d8e1a1db0470d55ba6744124e33f2bc44f5155e6cfa662798b4ffd085",
+  "recipe_sha256": "7e2054b7a3502e8bd08d03cebfea71dc352e74927acb0fa77f3e140e0282c9e2",
+  "grpcio-tools": "1.84.0",
+  "protoc": "libprotoc 35.1",
+  "rustc": "rustc 1.95.0-nightly (6efa357bf 2026-02-08)\nbinary: rustc\ncommit-hash: 6efa357bff60d192688e02de0c78cae24a7f3a55\ncommit-date: 2026-02-08\nhost: x86_64-unknown-linux-gnu\nrelease: 1.95.0-nightly\nLLVM version: 22.1.0",
+  "openssl": "1.1.1f",
+  "submodules": ""
+}
