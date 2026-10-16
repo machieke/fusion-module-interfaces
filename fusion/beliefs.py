@@ -9,7 +9,7 @@ import sqlite3
 
 from . import memory_contracts as c
 from .contracts import ContractError, canonical, digest, require, validate_ref
-from .ports import AtomStorage, EpisodicMemory, PrivateAuthority, RevisionMath, EvidenceSubmission
+from .ports import AtomStorage, EpisodicMemory, PrivateAuthority, RevisionMath, EvidenceSubmission, Mutation
 from .responses import envelope
 
 
@@ -66,6 +66,7 @@ class BeliefOwner:
 
     @c.boundary
     def readBelief(self, claim, context, revision=None):
+        claim = c.detached(claim)
         validate_ref(claim, claim['scope_ref']); c.identifier(context)
         if revision is not None: c.integer(revision)
         self._authorize(claim['scope_ref'], 'readBelief'); self._claim(claim)
@@ -81,7 +82,7 @@ class BeliefOwner:
 
     def _evidence(self, request):
         if request.evidence is None: return None
-        record = self.episodes.readEvidence(request.evidence)
+        record = c.response_copy(self.episodes.readEvidence(request.evidence))
         c.response(c.evidence_record, record, request.evidence)
         immutable = self.atoms.get(request.evidence['event_ref']); envelope(immutable, request.evidence['event_ref'])
         require(immutable.content_type == 'application/fusion-event' and json.loads(immutable.bytes) ==
@@ -136,7 +137,7 @@ class BeliefOwner:
             if candidate['id'] == aggregate['id'] or (not added and request.independence is None):
                 numerical, detail = 'no-change', 'already admitted; no new numerical evidence'
             else:
-                result = self.math.revise(aggregate, candidate, snapshot['revision'], request.independence)
+                result = c.response_copy(self.math.revise(aggregate, candidate, snapshot['revision'], request.independence))
                 c.response(c.math_result, result, aggregate, candidate, request.independence)
                 proposal = result['proposal']
                 if proposal is not None:
@@ -157,6 +158,7 @@ class BeliefOwner:
     @c.boundary
     def submitEvidence(self, request: EvidenceSubmission):
         semantic = c.submission(request)
+        request = EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
         principal = self._authorize(request.command.scope_ref, 'submitEvidence', request.independence is not None)
         require(request.runtime_selection == self.runtime_selection, 'UNSUPPORTED_PROFILE')
         identity = digest(canonical([principal, request.command.scope_ref, request.command.idempotency_key]))

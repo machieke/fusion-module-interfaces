@@ -24,7 +24,7 @@ def boundary(method):
     def checked(*args, **kwargs):
         try:
             return method(*args, **kwargs)
-        except sqlite3.OperationalError:
+        except (sqlite3.OperationalError, OSError):
             raise ContractError('NOT_AVAILABLE') from None
         except (KeyError, TypeError, ValueError, OverflowError):
             raise ContractError('INVALID_ARGUMENT') from None
@@ -33,6 +33,13 @@ def boundary(method):
 
 def detached(value):
     return json.loads(canonical(value))
+
+
+def response_copy(value):
+    try:
+        return detached(value)
+    except ContractError:
+        raise ContractError('NOT_AVAILABLE') from None
 
 
 def fields(value, names):
@@ -165,6 +172,8 @@ def independence(value):
 
 def submission(value):
     require(type(value) is EvidenceSubmission)
+    semantic = detached(asdict(value))
+    value = EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
     mutation(value.command)
     validate_ref(value.claim, value.command.scope_ref)
     identifier(value.context)
@@ -178,7 +187,7 @@ def submission(value):
     require(type(value.runtime_selection) is str and re.fullmatch('[a-f0-9]{64}', value.runtime_selection))
     if value.independence is not None:
         independence(value.independence)
-    return detached(asdict(value))
+    return semantic
 
 
 def support(value, scope):
@@ -192,6 +201,9 @@ def support(value, scope):
         identifier(item)
     require(value['formula'] is None or value['formula'] ==
             'trueagi-pln/4405956947c4b53c7ff01bd565aa3b114bc970a1/Truth_Revision')
+    require((value['formula'] is None) == (not value['premises']))
+    if not value['premises']:
+        require(value['coverage'] == [value['id']] and len(value['evidence_ids']) == 1)
     require(type(value['assumptions']) is list and len(value['assumptions']) <= 8)
     for item in value['assumptions']:
         require(type(item) is str and 1 <= len(item) <= 256)
@@ -201,13 +213,23 @@ def snapshot(value, claim, context, runtime_selection):
     fields(value, 'claim context revision truth aggregate covered_supports alternatives supports observations model runtime_selection')
     require(value['claim'] == claim and value['context'] == context)
     require(value['model'] == MODEL and value['runtime_selection'] == runtime_selection)
+    require(type(runtime_selection) is str and re.fullmatch('[a-f0-9]{64}', runtime_selection))
     integer(value['revision'])
     require(type(value['supports']) is list and len(value['supports']) <= MAX_SUPPORTS * 2)
     ids = set()
+    prior = {}
     for item in value['supports']:
         support(item, claim['scope_ref'])
         require(item['claim'] == claim and item['context'] == context and item['id'] not in ids)
+        if item['premises']:
+            require(len(set(item['premises'])) == 2 and set(item['premises']) <= set(prior))
+            a, b = [prior[p] for p in item['premises']]
+            for key in ('coverage', 'lineage_roots', 'evidence_ids'):
+                require(item[key] == sorted(set(a[key]) | set(b[key])))
+            require(not set(a['lineage_roots']) & set(b['lineage_roots']))
+            require(not set(a['evidence_ids']) & set(b['evidence_ids']))
         ids.add(item['id'])
+        prior[item['id']] = item
     roots(value['covered_supports'], True); roots(value['alternatives'], True)
     require(set(value['covered_supports']) <= ids and set(value['alternatives']) <= ids)
     require(not set(value['covered_supports']) & set(value['alternatives']))
@@ -230,6 +252,11 @@ def snapshot(value, claim, context, runtime_selection):
         if observation['truth'] is not None: truth(observation['truth'])
         require(observation['relationship'] != 'reports' or observation['truth'] is None)
         require(observation['support_id'] is None or observation['support_id'] in ids)
+        if observation['support_id'] is not None:
+            leaf = prior[observation['support_id']]
+            require(not leaf['premises'] and leaf['truth'] == observation['truth']
+                    and leaf['lineage_roots'] == observation['lineage_roots']
+                    and leaf['evidence_ids'] == [digest(canonical(observation['evidence']))])
     require(len(canonical(value)) <= 262144)
 
 
@@ -251,6 +278,13 @@ def response(validator, *args):
         validator(*args)
     except (ContractError, KeyError, TypeError, ValueError, StopIteration):
         raise ContractError('NOT_AVAILABLE') from None
+
+
+def snapshot_reply(value, claim, context):
+    value = response_copy(value)
+    require(type(value) is dict and 'runtime_selection' in value, 'NOT_AVAILABLE')
+    response(snapshot, value, claim, context, value['runtime_selection'])
+    return value
 
 
 def math_result(value, existing, incoming, declaration):

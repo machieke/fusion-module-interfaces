@@ -57,6 +57,7 @@ class RevisionRuntime:
     def __init__(self, config, upstream, *, timeout=10):
         self.config, self.upstream, self.timeout = config, upstream, timeout
 
+    @c.boundary
     def check(self):
         require(self.config['runtime_profile'] == c.RUNTIME, 'UNSUPPORTED_PROFILE')
         for name in ('reachability', 'pln', 'petta'):

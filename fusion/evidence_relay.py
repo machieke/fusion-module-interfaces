@@ -40,10 +40,11 @@ class EvidenceRelay:
             fcntl.flock(lock, fcntl.LOCK_EX)
             pending = self.episodes.pendingEvidence(episode, c.MAX_PENDING)
             require(type(pending) is tuple and len(pending) <= c.MAX_PENDING, 'NOT_AVAILABLE')
+            pending = tuple(c.response_copy(d) for d in pending)
             require(len({canonical(d) for d in pending}) == len(pending), 'NOT_AVAILABLE')
             for delivery in pending:
                 c.response(c.delivery, delivery, episode)
-                evidence = self.episodes.readEvidence(delivery['evidence'])
+                evidence = c.response_copy(self.episodes.readEvidence(delivery['evidence']))
                 c.response(c.evidence_record, evidence, delivery['evidence'])
                 numeric = evidence['event']['numerical']
                 require(numeric is not None, 'NOT_AVAILABLE')
@@ -67,8 +68,8 @@ class EvidenceRelay:
                 if prior is None or prior['state'] == 'conflict':
                     attempt = 0 if prior is None else prior['attempt'] + 1
                     require(attempt < 32, 'OVERLOADED')
-                    snapshot = self.beliefs.readBelief(numeric['claim'], numeric['context'], None)
-                    c.response(c.snapshot, snapshot, numeric['claim'], numeric['context'], snapshot['runtime_selection'])
+                    snapshot = c.snapshot_reply(self.beliefs.readBelief(numeric['claim'], numeric['context'], None),
+                                                numeric['claim'], numeric['context'])
                     request = EvidenceSubmission(Mutation(episode['scope_ref'], f'delivery/{identity}/{attempt}'),
                         numeric['claim'], numeric['context'], delivery['evidence'], None, snapshot['revision'],
                         c.BELIEF_PROFILE, snapshot['runtime_selection'], declaration)
@@ -82,7 +83,7 @@ class EvidenceRelay:
                     request = EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
             try:
                 # Even a saved result is replayed through C2: current authorization first.
-                decision = self.beliefs.submitEvidence(request)
+                decision = c.response_copy(self.beliefs.submitEvidence(request))
             except ContractError as error:
                 if error.code != 'CONFLICT': raise
                 # Only a genuine CAS race gets a NEW request identity. Semantic conflicts

@@ -184,5 +184,34 @@ class Contracts(unittest.TestCase):
         self.assertEqual(self.h.beliefs.readBelief(claim, 'generated', None)['revision'], 0)
         self.assertEqual(self.h.submit(claim, ref)['numerical'], 'initialized')
 
+    def test_ack_binds_entire_decision_and_response_lineage_is_checked(self):
+        claim, episode = self.h.claim(), self.h.episode()
+        receipt = self.h.append(episode, self.h.event(claim))
+        decision = self.h.submit(claim, receipt['evidence'])
+        command = Mutation(SCOPE, 'acknowledge')
+        self.h.episodes.acknowledgeEvidence(command, receipt['delivery_id'], decision)
+        self.error('CONFLICT', self.h.episodes.acknowledgeEvidence, command, receipt['delivery_id'],
+                   {**decision, 'detail': 'changed-semantic-body'})
+        damaged = c.detached(decision)
+        damaged['snapshot']['observations'][0]['lineage_roots'] = ['forged-root']
+        self.error('NOT_AVAILABLE', c.response, c.decision, damaged, claim, 'generated',
+                   decision['snapshot']['runtime_selection'])
+
+    def test_submission_snapshots_mutable_caller_input_before_dependency_calls(self):
+        claim, episode = self.h.claim(), self.h.episode()
+        receipt = self.h.append(episode, self.h.event(claim))
+        snapshot = self.h.beliefs.readBelief(claim, 'generated', None)
+        request = EvidenceSubmission(Mutation(SCOPE, 'detached-request'), c.detached(claim), 'generated',
+            c.detached(receipt['evidence']), None, 0, c.BELIEF_PROFILE, snapshot['runtime_selection'])
+        original = self.h.beliefs.math.profile
+        def mutate_caller_after_validation():
+            request.claim['digest'] = '0' * 64
+            request.evidence['sequence'] = 99
+            return original()
+        with patch.object(self.h.beliefs.math, 'profile', side_effect=mutate_caller_after_validation):
+            result = self.h.beliefs.submitEvidence(request)
+        self.assertEqual(result['snapshot']['claim'], claim)
+        self.assertEqual(result['evidence'], receipt['evidence'])
+
 
 if __name__ == '__main__': unittest.main()

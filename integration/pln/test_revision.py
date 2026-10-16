@@ -142,6 +142,8 @@ class NativeRevision(unittest.TestCase):
         self.error('UNSUPPORTED_PROFILE', RevisionRuntime(config, math.upstream).check)
         config = dict(math.config, swipl_sha256='0' * 64)
         self.error('UNSUPPORTED_PROFILE', RevisionRuntime(config, math.upstream).check)
+        config = dict(math.config, swipl=str(self.h.root / 'unavailable-swipl'))
+        self.error('NOT_AVAILABLE', RevisionRuntime(config, math.upstream).check)
         path = self.h.root / 'pln-drift'
         subprocess.run(['git', 'clone', '-q', '--no-hardlinks', math.config['pln'], str(path)], check=True)
         with (path / 'lib_pln.metta').open('a') as file: file.write('\n; injected drift\n')

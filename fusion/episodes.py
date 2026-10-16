@@ -92,10 +92,10 @@ class EpisodeOwner:
 
     @c.boundary
     def appendEvent(self, command: Mutation, episode: EpisodeRef, expected_sequence: int, event: EpisodeEvent):
+        episode, event = c.detached(episode), c.detached(event)
         c.episode_ref(episode); c.mutation(command, episode['scope_ref'])
         c.integer(expected_sequence, 0, c.MAX_EVENTS); c.event(event, command.scope_ref)
         principal = self.access.authorize(command.scope_ref, 'appendEvent')
-        event = c.detached(event)
         identity, fingerprint = self._identity(principal, command, 'appendEvent', [episode, expected_sequence, event])
         occurrence_fingerprint = digest(canonical([episode, event]))
         with closing(self._connect()) as db, db:
@@ -155,6 +155,7 @@ class EpisodeOwner:
 
     @c.boundary
     def readEpisode(self, ref: EpisodeRef, start: int, limit: int):
+        ref = c.detached(ref)
         c.episode_ref(ref); c.integer(start, 1, c.MAX_EVENTS+1); c.integer(limit, 1, c.MAX_PAGE)
         principal = self.access.authorize(ref['scope_ref'], 'readEpisode')
         with closing(self._connect()) as db, db:
@@ -173,6 +174,7 @@ class EpisodeOwner:
 
     @c.boundary
     def readEvidence(self, ref: EvidenceRef):
+        ref = c.detached(ref)
         c.evidence_ref(ref)
         principal = self.access.authorize(ref['episode']['scope_ref'], 'readEvidence')
         with closing(self._connect()) as db, db:
@@ -180,6 +182,7 @@ class EpisodeOwner:
 
     @c.boundary
     def pendingEvidence(self, ref: EpisodeRef, limit: int):
+        ref = c.detached(ref)
         c.episode_ref(ref); c.integer(limit, 1, c.MAX_PENDING)
         principal = self.access.authorize(ref['scope_ref'], 'pendingEvidence')
         with closing(self._connect()) as db, db:
@@ -190,11 +193,12 @@ class EpisodeOwner:
 
     @c.boundary
     def acknowledgeEvidence(self, command: Mutation, delivery_id: str, decision):
+        decision = c.detached(decision)
         c.mutation(command); c.identifier(delivery_id)
         principal = self.access.authorize(command.scope_ref, 'acknowledgeEvidence')
         c.response(c.decision, decision, decision['snapshot']['claim'], decision['snapshot']['context'],
                    decision['snapshot']['runtime_selection'])
-        identity, fingerprint = self._identity(principal, command, 'acknowledgeEvidence', [delivery_id, decision['decision_id']])
+        identity, fingerprint = self._identity(principal, command, 'acknowledgeEvidence', [delivery_id, decision])
         with closing(self._connect()) as db, db:
             db.execute('BEGIN IMMEDIATE')
             prior = self._replay(db, identity, fingerprint)
