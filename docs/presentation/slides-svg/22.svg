@@ -1,28 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Native goldens check deduction and preserved revision</title>
-<desc id="desc">The M3 golden has five ordered premises and uses the actual native Truth_Deduction. Expected values are independent test oracles, not production mathematics. M2 revision goldens still pass in the M3 regression, including reversed unequal pairs. Native suites include actual computation plus explicitly injected malformed responses, timeouts, source-drift clones and authorization/CAS interleavings. Fifteen upstream guard-only tests use RecordingRuntime and are not counted as native numerical evaluation. Evidence_count remains null, and a derived conclusion never turns into a fresh independent observation.</desc>
+<title id="title">A derived conclusion inherits its evidence trail</title>
+<desc id="desc">The five foreign premises are not five independent observations of the output claim. local-admitted-supports/1 treats the deduction as one local support unit with its inherited evidence/root union. Logical derivation identity is independent of request/step IDs, deadlines and output CAS. A duplicate cannot gain another admission or causal feedback credit. A separately authorized independence assumption can request the unchanged guarded native revision of eligible supports. Derive → revise retains grounded ancestry; a cyclic subsequent deduction is refused. Claims remain heuristic and lineage-aware, not calibrated uncertainty or proven entailment.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / NUMERICAL EVIDENCE</text>
-<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">Native goldens check deduction and preserved revision</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Independent expected values check pinned native formulas; no replacement math runs in the owners.</text>
-<rect x="72" y="248" width="704" height="347" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">M3 · Grounded deduction</text>
-<text x="94" y="348.51" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">P, Q, R = (0.5, 0.8)</text>
-<text x="94" y="385.63" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">P⇒Q, Q⇒R = (0.8, 0.7)</text>
-<text x="94" y="422.75" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775"></text>
-<text x="94" y="459.87" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Expected P⇒R: (0.68, 0.3136)</text>
-<rect x="800" y="248" width="728" height="347" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="822" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">M2 · Guarded revision</text>
-<text x="822" y="347.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">(0.75, 0.50) + (0.25, 0.50)</text>
-<text x="822" y="383.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">→ (0.50, 2/3)</text>
-<text x="822" y="419.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775"></text>
-<text x="822" y="455.08" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Unequal confidence 0.50 / 0.75</text>
-<text x="822" y="490.92" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">→ (0.375, 0.80)</text>
-<text x="78" y="667.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#102B3F">Observed deduction: 0.6800000000000002 / 0.31360000000000005</text>
-<text x="78" y="724.6" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#102B3F">Absolute tolerance 1e−12; finite-domain and lineage guards remain active.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / DERIVED-SUPPORT ADMISSION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A derived conclusion inherits its evidence trail</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The result is a new support record, while its original observations and ancestry remain the same.</text>
+<rect x="72" y="249" width="272" height="135" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="301.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">P</text>
+<text x="94" y="341.90999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Exact historical</text>
+<text x="94" y="368.78999999999996" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">support</text>
+<line x1="208" y1="384" x2="208" y2="429" stroke="#315E9C" stroke-width="2"/>
+<line x1="208" y1="429" x2="800" y2="429" stroke="#315E9C" stroke-width="2"/>
+<rect x="368" y="249" width="272" height="135" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="390" y="301.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">Q</text>
+<text x="390" y="341.90999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Exact historical</text>
+<text x="390" y="368.78999999999996" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">support</text>
+<line x1="504" y1="384" x2="504" y2="429" stroke="#315E9C" stroke-width="2"/>
+<line x1="504" y1="429" x2="800" y2="429" stroke="#315E9C" stroke-width="2"/>
+<rect x="664" y="249" width="272" height="135" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="686" y="301.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">R</text>
+<text x="686" y="341.90999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Exact historical</text>
+<text x="686" y="368.78999999999996" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">support</text>
+<line x1="800" y1="384" x2="800" y2="429" stroke="#315E9C" stroke-width="2"/>
+<line x1="800" y1="429" x2="800" y2="429" stroke="#315E9C" stroke-width="2"/>
+<rect x="960" y="249" width="272" height="135" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="982" y="301.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">P ⇒ Q</text>
+<text x="982" y="341.90999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Exact historical</text>
+<text x="982" y="368.78999999999996" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">support</text>
+<line x1="1096" y1="384" x2="1096" y2="429" stroke="#315E9C" stroke-width="2"/>
+<line x1="1096" y1="429" x2="800" y2="429" stroke="#315E9C" stroke-width="2"/>
+<rect x="1256" y="249" width="272" height="135" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="1278" y="301.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">Q ⇒ R</text>
+<text x="1278" y="341.90999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Exact historical</text>
+<text x="1278" y="368.78999999999996" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">support</text>
+<line x1="1392" y1="384" x2="1392" y2="429" stroke="#315E9C" stroke-width="2"/>
+<line x1="1392" y1="429" x2="800" y2="429" stroke="#315E9C" stroke-width="2"/>
+<line x1="800" y1="429" x2="800" y2="489" stroke="#007C78" stroke-width="2"/>
+<polygon points="800,489 805.0,476.0 795.0,476.0" fill="#007C78"/>
+<rect x="421" y="489" width="758" height="142" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="443" y="543.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">Derived P ⇒ R</text>
+<text x="443" y="589.22" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Inherited evidence roots + actual grounded ancestry</text>
+<text x="78" y="706.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Unknown target: initialize inferential support. Existing truth: keep the alternative.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">These are model-specific heuristics, not calibrated real-world confidence or proven entailment.</text>
+<text x="94" y="802.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">No new observation, root, independence assertion or evidence count is created.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / test_deduction.py · preserved test_revision.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">22 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / derived_beliefs.py · pln_deduction.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">22 / 64</text>
 </svg>

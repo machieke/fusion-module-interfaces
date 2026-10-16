@@ -40,8 +40,8 @@ def main() -> None:
     rendered = fitz.open(args.independent_pdf)
     prs = Presentation(deck / "omega-asi-module-interfaces.pptx")
     build.build_content()
-    assert len(source) == len(rendered) == len(prs.slides) == len(build.SLIDES) == build.TOTAL_SLIDES == 52
-    assert sum(not s.appendix for s in build.SLIDES) == build.MAIN_SLIDES == 43
+    assert len(source) == len(rendered) == len(prs.slides) == len(build.SLIDES) == build.TOTAL_SLIDES == 64
+    assert sum(not s.appendix for s in build.SLIDES) == build.MAIN_SLIDES == 54
     mismatches, bounds, previews, used_fonts = [], [], [], set()
     for i, (a, b, slide, model) in enumerate(zip(source, rendered, prs.slides, build.SLIDES), 1):
         if tokens(a.get_text()) != tokens(b.get_text()):
@@ -81,11 +81,15 @@ def main() -> None:
     for path, expected in manifest["evidence_sha256"].items():
         assert digest(root / path) == expected, path
         assert subprocess.check_output(["git", "show", f"{build.EVIDENCE_COMMIT}:{path}"], cwd=root) == (root / path).read_bytes(), path
-    for path, expected in build.M4VERIFY["source"]["files"].items():
+    for path, expected in build.M5VERIFY["source"]["files"].items():
         assert digest(root / path) == expected, path
         assert hashlib.sha256(subprocess.check_output(
             ["git", "show", f"{build.BASE_COMMIT}:{path}"], cwd=root)).hexdigest() == expected, path
-    # Earlier closure observations retain their own source state; M4 extends builds.
+    # Earlier chain/closure observations keep their own tested revision.
+    for path, expected in build.M4VERIFY["source"]["files"].items():
+        assert hashlib.sha256(subprocess.check_output(
+            ["git", "show", f"{build.M4_BASE_COMMIT}:{path}"], cwd=root)).hexdigest() == expected, path
+    # M5 extends interfaces; historical M3.1 hashes remain auditable.
     for path, expected in build.M31VERIFY["source"]["files"].items():
         assert hashlib.sha256(subprocess.check_output(
             ["git", "show", f"{build.M31RECORD['tested_commit']}:{path}"], cwd=root)).hexdigest() == expected, path
@@ -103,7 +107,7 @@ def main() -> None:
     m2checksums = json.loads((build.M2 / "checksums.json").read_text())
     for directory, checksums in [(build.M2, m2checksums), (build.M3, build.M3RECORD["evidence_files"]),
                                  (build.M31, build.M31RECORD["archive_sha256"]),
-                                 (build.M4, build.M4RECORD["files"])]:
+                                 (build.M4, build.M4RECORD["files"]), (build.M5, build.M5CHECKSUMS)]:
         for path, expected in checksums.items():
             assert digest(directory / path) == expected, path
     report = build.M31RECORD["report"]
@@ -149,7 +153,7 @@ def main() -> None:
     hive = next(c for c in build.M3VERIFY["commands"] if c["name"] == "m3-native-hive")
     assert hive["tests"] == dict(tests=8, failures=0, errors=0, skipped=0)
     m4, trace, readback = build.M4VERIFY, build.M4TRACE, build.M4READBACK
-    assert m4["source"]["commit"] == m4["source"]["end_commit"] == build.BASE_COMMIT
+    assert m4["source"]["commit"] == m4["source"]["end_commit"] == build.M4_BASE_COMMIT
     assert m4["source"]["status"] == [] and m4["source"]["end_runtime_matches_start"] is True
     assert m4["protected_changes"] == [] and m4["development"] is False
     assert m4["gates"] == build.M4RECORD["gates"] and set(m4["gates"].values()) == {"PASS"}
@@ -160,7 +164,7 @@ def main() -> None:
     assert build.M4RECORD["missing_prerequisites"] == []
     assert build.M4RECORD["final_executed_failures"] == build.M4RECORD["final_observation_timeouts"] == []
     assert len(m4["native_cases"]) == 6 and all(c["status"] == "PASS" for c in m4["native_cases"])
-    assert m4["baseline"]["source"]["commit"] == build.BASE_COMMIT
+    assert m4["baseline"]["source"]["commit"] == build.M4_BASE_COMMIT
     assert all(c["returncode"] == 0 for c in m4["baseline"]["commands"])
     # Preserve the distinction between required M4 chain and nested legacy scope.
     assert m4["gates"]["REAL_CHAIN_EFFECT"] == "PASS"
@@ -201,6 +205,45 @@ def main() -> None:
         assert recovery[stage]["effect_finality"] == "finalized"
     assert recovery["after_observation_before_progress"]["progress_was_uncommitted"] is True
     assert recovery["after_observation_before_progress"]["effect_finality"] == "finalized"
+    m5 = build.M5VERIFY
+    assert m5["source"]["commit"] == build.BASE_COMMIT == build.M5RECORD["tested_source"]
+    assert m5["source"]["status"] == [] and build.M5RECORD["source_stable"] is True
+    assert m5["gates"] == build.M5RECORD["gates"] and set(m5["gates"].values()) == {"PASS"}
+    assert len(m5["gates"]) == 12 and m5["result"] == build.M5RECORD["result"] == "PASS"
+    assert len(m5["commands"]) == 6 and all(c["returncode"] == 0 for c in m5["commands"])
+    for key in ("missing_prerequisites", "executed_failures", "observation_timeouts"):
+        assert m5[key] == build.M5RECORD[key] == []
+    assert m5["scope"] == dict(historical_changes=[], historical_m4_guard_unchanged=True)
+    commands = {c["name"]: c for c in m5["commands"]}
+    assert len(commands["hive"]["cases"]) == 7
+    assert len(commands["legacy-m4-real"]["cases"]) == 6
+    assert all(c["status"] == "PASS" for name in ("hive", "legacy-m4-real") for c in commands[name]["cases"])
+    assert "Ran 18 tests" in commands["fixtures"]["summaries"][0]
+    assert "Ran 4 tests" in commands["storage"]["summaries"][0]
+    coverage = build.M5RECORD["coverage"]
+    assert coverage["module_families"]["represented"] == coverage["module_families"]["denominator"] == 15
+    assert coverage["operations"]["new_exercised"] == coverage["operations"]["new_denominator"] == 9
+    assert coverage["operations"]["total_slice_exercised"] == coverage["operations"]["total_slice_denominator"] == 13
+    assert coverage["behavioral_groups"]["passed"] == coverage["behavioral_groups"]["required"] == 18
+    assert coverage["diagnostic_code_coverage"] == "NOT_MEASURED"
+    assert build.M5RECORD["test_units"]["deliberate_sigkill_cases"] == 13
+    for i in (1, 2):
+        lookup = json.loads((build.M5 / f"traces/lookup-trace-{i}.json").read_text())
+        assert lookup["initial"] == dict(payloads=8, query_pages=3, relations=15, roots=5)
+        assert lookup["lag"] == dict(query_did_not_ingest=True, strict_error="NOT_AVAILABLE")
+        assert lookup["catchup"] == dict(roots=6)
+        assert lookup["rebuild"] == dict(generation_changed=True, same_discovery=True)
+        assert lookup["setup_exited_before_lookup"] is True
+        assert lookup["substitution"]["same_discovery"] is True and lookup["restart_replay"] == "PASS"
+    payloads = json.loads((build.M5 / "native-payload-comparison.json").read_text())
+    assert payloads["tested_runtime"] == build.BASE_COMMIT and payloads["status"] == "PASS"
+    assert [(o["roots"], o["payloads"]) for o in payloads["observations"]] == [(5, 8), (6, 9), (6, 9), (6, 9)]
+    assert all(o["exact_reference_set"] and o["all_payload_fields_and_canonical_bytes_match"] for o in payloads["observations"])
+    effects = json.loads((build.M5 / "no-cognitive-effects.json").read_text())
+    assert effects["tested_runtime"] == build.BASE_COMMIT and effects["status"] == "PASS" and len(effects["cases"]) == 4
+    assert all(c["reserved_before"] == c["reserved_after"] == 1 and c["episodes_beliefs_attention_and_inference_files_unchanged"] for c in effects["cases"])
+    assert m5["chain_reuse"]["build_reused"] is True and m5["chain_reuse"]["new_chain_operations"] is False
+    assert m5["host_isolation"] == dict(connection_errors=[111]*6, status="PASS")
     result = dict(pages=len(source), speaker_notes_checked=len(prs.slides),
                   normalized_word_mismatches=mismatches, text_bounds_findings=bounds,
                   fonts=sorted(used_fonts), pdf_embedded_fonts=embedded,
@@ -209,11 +252,14 @@ def main() -> None:
                   archived_m3_files_checked=len(build.M3RECORD["evidence_files"]),
                   archived_m3_1_files_checked=len(build.M31RECORD["archive_sha256"]),
                   archived_m4_files_checked=len(build.M4RECORD["files"]),
-                  recorded_implementation_hashes_match=len(build.M4VERIFY["source"]["files"]),
+                  archived_m5_files_checked=len(build.M5CHECKSUMS),
+                  recorded_implementation_hashes_match=len(build.M5VERIFY["source"]["files"]),
                   historical_m3_1_implementation_hashes_checked=len(build.M31VERIFY["source"]["files"]),
                   historical_m3_implementation_hashes_checked=len(build.M3VERIFY["source"]["files"]),
                   preserved_boundary_files_checked=len(source_audit["unchanged"]),
-                  gate_results=build.M4RECORD["gates"], same_artifact_readback_matches=True,
+                  gate_results=build.M5RECORD["gates"], historical_m4_gate_results=build.M4RECORD["gates"],
+                  m5_coverage=coverage, m5_lookup_traces_checked=2, m5_payload_transitions_checked=4,
+                  m5_no_cognitive_effects_configurations=4, same_artifact_readback_matches=True,
                   m4_recovery_cases_checked=len(recovery),
                   independent_render_sha256=digest(args.independent_pdf))
     (office / "comparison.json").write_text(json.dumps(result, indent=2) + "\n")

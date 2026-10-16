@@ -1,46 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">M4 adds one profile and two narrow native actions</title>
-<desc id="desc">The public sibling exposes commit and observe, with only original_command. It gets completed accepted/acknowledged results through a caller-owned accessor beside the unchanged fusion-inspect plugin. ConsensusFinality signatures remain backend-independent. The new profile pins actual inclusion-block post-state semantics and fixed commitment format; it does not widen the legacy adapter. Logical timestamp/plan commit before signing, full signed deploy commits before HTTP. Replays retain the exact signature, serialization, gas limits, timestamp and deployment identity, without extending validity. Native progress is separate from adapter observations and cannot access other owners&#x27; tables. Observation calls are bounded and cooperative; an in-flight socket timeout may complete after the start deadline. Fresh single-operation journals only; no migration. Tests live in tests/test_m4_chain.py and integration/chain/test_m4.py. Build, verify and separate readback scripts provide the evidence workflow.</desc>
+<title id="title">Source, build and outcome remain independently traceable</title>
+<desc id="desc">Requested ancestor 05b1c52cfa6ced6e263700753e82ad6038a3b0dd; actual start 4093301ea6b34bb8de487a4e4d9aae8a9ee6e61d; tested bfb0ec8856c932dc2bcbc05b8949c957da8d72cd; evidence-only 3dc6c1146601a0d0aa8785e61884970ec84a57c6. M5 implementation commits 0cb61d5, 9b0ed35 and bfb0ec8 precede the evidence commit. The native provider recipe recorded 4093301 because build began before implementation, but its recipe, pins and Rust adapter bytes remained identical at the tested source. Plugins loaded from clean bfb0ec8. The existing M4 Python lock was installed before the final legacy chain run. The pinned M4 node binary was reused with fresh isolated state/genesis. Earlier incorrect test DTO assumption, duplicate PYTHONPATH and missing cryptography dependency were fixed and recorded; intermediate PARTIAL does not count toward final gates. Source/build reproducibility is not cross-host bit reproducibility or an empty-cache claim.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX I / CHAIN CONTRACT + CODE LEDGER</text>
-<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">M4 adds one profile and two narrow native actions</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Existing ConsensusFinality signatures and legacy providers remain unchanged; fresh journals are required.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">SURFACE / OWNER</text>
-<text x="438" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONTRACT OR CODE</text>
-<text x="1058" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">DURABLE RESPONSIBILITY</text>
-<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Native commitment</text>
-<text x="88" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">caller</text>
-<text x="438" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">integration/hive/commitment/</text>
-<text x="1058" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Original command mapping; public</text>
-<text x="1058" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">progress</text>
-<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Completed-result</text>
-<text x="88" y="426.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">accessor</text>
-<text x="438" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">integration/hive/program/completed.py</text>
-<text x="1058" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Read caller-owned acceptance and ack</text>
-<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">ConsensusFinality</text>
-<text x="88" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">adapter</text>
-<text x="438" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">fusion/adapters/f1r3_m4.py</text>
-<text x="1058" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Plan → signed intent → receipt →</text>
-<text x="1058" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">observations</text>
-<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Signing boundary</text>
-<text x="438" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">fusion/adapters/f1r3_signing.py</text>
-<text x="1058" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Pinned serialization + registered local</text>
-<text x="1058" y="588.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">signer</text>
-<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Explicit compatibility</text>
-<text x="438" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">f1r3-generated-post-state/2</text>
-<text x="1058" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">f1r3-local · interface 1.0.0 · impl 0.4.0</text>
-<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Bounded native</text>
-<text x="88" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">observation</text>
-<text x="438" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">≤120 calls; stop starting after 180 s</text>
-<text x="1058" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">≤256 saved observations; explicit</text>
-<text x="1058" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">exhaustion</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">07 / M5 SOURCE LEDGER</text>
+<text x="70" y="135.85" font-family="DejaVu Sans" font-size="43" font-weight="700" fill="#102B3F">Source, build and outcome remain independently traceable</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The final tested implementation and evidence-only descendant are explicit.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">LAYER</text>
+<text x="438" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECORDED STATE</text>
+<text x="963" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">BOUNDARY</text>
+<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Requested / actual</text>
+<text x="88" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">start</text>
+<text x="438" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">05b1c52 → 4093301</text>
+<text x="963" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Presentation-only descendant before M5</text>
+<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Clean tested</text>
+<text x="88" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">implementation</text>
+<text x="438" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">bfb0ec8856c9</text>
+<text x="963" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Final native plugin and Python loaded from</text>
+<text x="963" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">this source</text>
+<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Evidence snapshot</text>
+<text x="438" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">3dc6c1146601</text>
+<text x="963" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Docs/evidence only; runtime and tests</text>
+<text x="963" y="529.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">unchanged</text>
+<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Fresh native provider</text>
+<text x="88" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">build</text>
+<text x="438" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Hive 34b0fb3 · DeTTa 272888f</text>
+<text x="963" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Fresh sources, venv and native objects;</text>
+<text x="963" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">warm caches</text>
+<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Preserved math / chain</text>
+<text x="438" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PLN 4405956 · F1R3node 9ec1096</text>
+<text x="963" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Same formulas; reused pinned node binary</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">M5 archives final passes, corrected development failures and intentional negative classification separately.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / contracts.md · ADR-013 · f1r3_m4.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">52 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / evidence/m5/source-state.json · reproduction.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">52 / 64</text>
 </svg>

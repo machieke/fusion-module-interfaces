@@ -1,41 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">The real chain ran in a disposable isolated network</title>
-<desc id="desc">F1R3node pin 9ec1096e10774926ea8e72f0823482f0bf9213e1 was obtainable from the authorized repository. The historical dirty workspace at the same SHA has eight tracked modifications and one untracked input; it was untouched and unused. M4 deliberately validates the clean source as a new baseline. Fresh node build uses nightly-2026-02-09, cargo --offline --locked -j2 -p node --bin node, debug 0, incremental 0 and RUST_MIN_STACK 8388608. Node binary SHA-256 2021389d8e1a1db0470d55ba6744124e33f2bc44f5155e6cfa662798b4ffd085. Each chain run uses disposable data/genesis within an unprivileged user/network namespace; only loopback is brought up. Live socket/route tests verify actual isolation. All generated nodes are stopped after verification. Warm downloads and possible cached upstream Rust regression binaries are explicit; fresh provider binaries were not copied.</desc>
+<title id="title">Finality is tied to the actual stored effect</title>
+<desc id="desc">Pinned node source was inspected, built and probed before adapter implementation. /api/prepare-deploy derives the unforgeable read name from saved public deployer and timestamp. /api/data-at-name-by-block-hash performs a non-consuming read of inclusion-block post-state. The inspected source ignores the pre-state switch, so this profile fixes usePreStateHash:false. The name must occur in that block&#x27;s reductions; a later heartbeat or current-head block is not a substitute. Verification checks exact namespace/operation/digest, target signed deploy, successful inclusion/cost and matching deploy-effect Finalized state. A finalized block alone is insufficient. Inclusion block 6922353b9d0d0b7307d3f472a92e40cbe5902e61da01150986d9daa9188a1b82; post-state 351c1234a0d0793edc7c19eb33f1f1a221d659a97f325261c6dac9afcc01f8f1. The separate reader receives DA get-only authority and read RPC, and opens neither signer nor caller journal. Readback is node-observed, not a trustless attestation.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / M4 · REPRODUCIBLE SOURCE + SAFE ISOLATION</text>
-<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">The real chain ran in a disposable isolated network</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Clean pinned F1R3node source; no public connection, upstream patch or consensus rewrite.</text>
-<rect x="72" y="243" width="920" height="488" rx="14" fill="#DCEFE8" stroke="#007C78"/>
-<text x="99" y="289.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">UNPRIVILEGED NETWORK NAMESPACE · LOOPBACK ONLY</text>
-<rect x="105" y="337" width="386" height="175" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="127" y="387.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Generated test</text>
-<text x="127" y="425.9" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">genesis</text>
-<text x="127" y="465.75" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">One validator</text>
-<text x="127" y="492.63" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Generated stake, wallet and key</text>
-<rect x="573" y="337" width="386" height="175" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="595" y="387.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Real F1R3node</text>
-<text x="595" y="431.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">9ec1096e1077…</text>
-<text x="595" y="463.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Fresh source and local</text>
-<text x="595" y="495.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">build</text>
-<line x1="491" y1="423" x2="573" y2="423" stroke="#007C78" stroke-width="2"/>
-<polygon points="573,423 560.0,418.0 560.0,428.0" fill="#007C78"/>
-<rect x="105" y="560" width="854" height="134" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="127" y="609.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Observed sockets stay inside</text>
-<text x="127" y="650.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">P2P and gRPC wildcard listeners exist only in the namespace; no route to</text>
-<text x="127" y="678.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">an external network.</text>
-<rect x="1064" y="243" width="464" height="224" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1086" y="295.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">From the host</text>
-<text x="1086" y="343.51" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">All six probed ports refused</text>
-<text x="1086" y="380.63" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">connections while the node</text>
-<text x="1086" y="417.75" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">was ready.</text>
-<rect x="1064" y="507" width="464" height="224" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="1086" y="559.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#A86A15">From the namespace</text>
-<text x="1086" y="607.51" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">External connection failed:</text>
-<text x="1086" y="644.63" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">ENETUNREACH. Host firewall</text>
-<text x="1086" y="681.75" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">unchanged.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / M4 · SOURCE-VERIFIED READBACK</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Finality is tied to the actual stored effect</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Submission, inclusion and verified finalized effect are different observations.</text>
+<rect x="72" y="252" width="464" height="253" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="305.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#A86A15">1 · Submission</text>
+<text x="94" y="352.84000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">The node accepts the saved</text>
+<text x="94" y="388.68000000000006" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">signed deploy. The effect is</text>
+<text x="94" y="424.52000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">still pending.</text>
+<line x1="536" y1="380" x2="564" y2="380" stroke="#536775" stroke-width="2"/>
+<polygon points="564,380 551.0,375.0 551.0,385.0" fill="#536775"/>
+<rect x="568" y="252" width="464" height="253" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="590" y="305.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#315E9C">2 · Inclusion</text>
+<text x="590" y="352.84000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">The exact deploy appears in</text>
+<text x="590" y="388.68000000000006" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">a block with successful</text>
+<text x="590" y="424.52000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">execution and cost.</text>
+<line x1="1032" y1="380" x2="1060" y2="380" stroke="#536775" stroke-width="2"/>
+<polygon points="1060,380 1047.0,375.0 1047.0,385.0" fill="#536775"/>
+<rect x="1064" y="252" width="464" height="253" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1086" y="305.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#007C78">3 · Verified effect</text>
+<text x="1086" y="352.84000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Read the exact tuple in that</text>
+<text x="1086" y="388.68000000000006" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">block’s post-state; match the</text>
+<text x="1086" y="424.52000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">deploy’s finalized effect.</text>
+<rect x="72" y="550" width="704" height="177" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="600.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Fixed on-chain value</text>
+<text x="94" y="647.0" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">(namespace, generated operation ID,</text>
+<text x="94" y="682.84" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">approved result digest)</text>
+<rect x="824" y="550" width="704" height="177" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="846" y="600.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Independent verification</text>
+<text x="846" y="647.0" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Same digest + deploy + block + post-state</text>
+<text x="846" y="682.84" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">after node restart; no caller journal or signer.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Single-validator evidence establishes this local integration; multi-validator safety remains unrun.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">The adapter verifies node-observed evidence. The chain does not certify off-chain PLN reasoning.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / evidence/m4/build/chain.json · final/isolation.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">36 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / F1R3node 9ec1096 · f1r3-generated-post-state/2</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">36 / 64</text>
 </svg>

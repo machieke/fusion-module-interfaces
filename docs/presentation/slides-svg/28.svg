@@ -1,41 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Authorization, replay and profiles remain live</title>
-<desc id="desc">Input records are copied before foreign calls and authorization so a malicious boundary cannot mutate the retained command. Recovered C2 and attention responses are checked against exact owner/request identities and semantics. Current principal, scope, method and descriptor permissions apply on every invocation. The assumption permission for revision remains separate. Native proposal calculation runs outside the owner commit transaction; final authorization and expected output revision are rechecked afterward. Old-profile feedback can remain CONFLICT after a clock change. The new profile lets Attention resolve recorded stale feedback by no-credit retirement; eligible or unavailable feedback stays pending. The controller never rewrites the logical schedule. These are local trusted-authority guarantees, not a production identity system.</desc>
+<title id="title">C3 alone settles the feedback outcome</title>
+<desc id="desc">resolveFeedback never applies fresh eligible feedback. Existing application wins even after expiry or decay; it returns the original receipt without changing current STI. Otherwise stale/expired intent can create a no-credit tombstone atomically; eligible or unavailable/malformed responses remain pending, and revocation fails closed. Application and retirement share SQLite transaction or independent atomic-file locking. Concurrent eligible application versus clock advance/retirement and both serialized outcomes were exercised on both providers. First retirement consumes one existing cause and command slot; existing receipts/tombstones need no new slot. No capacity enlargement or eviction. C4 persists a bounded cursor and separate closure version. Same reconciliation key returns its original observation; fresh keys/readProgress can see newer closure. It never calls selection, C2 admission or PLN, refunds reservations, resets deadlines or retimes feedback. Finite exhausted capacity can leave work pending.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / BOUNDARY GUARANTEES</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Authorization, replay and profiles remain live</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Cached success does not bypass current authority, and compatibility is never silently widened.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">TRIGGER</text>
-<text x="598" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OBSERVED DECISION</text>
-<text x="1068" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PRESERVED BOUNDARY</text>
-<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Same key, altered nested request</text>
-<text x="598" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">CONFLICT / validation refusal</text>
-<text x="1068" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Exact immutable semantic intent</text>
-<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Permission revoked before replay</text>
-<text x="598" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">DENIED</text>
-<text x="1068" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Live authority even for cached</text>
-<text x="1068" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">receipts</text>
-<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Authority / CAS changes during</text>
-<text x="88" y="529.52" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">math</text>
-<text x="598" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Refuse final admission</text>
-<text x="1068" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">C2 rechecks before its own commit</text>
-<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Runtime or response binding</text>
-<text x="88" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">changes</text>
-<text x="598" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Explicit compatibility failure</text>
-<text x="1068" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No weaker fallback or invented</text>
-<text x="1068" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">result</text>
-<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Clock advances before feedback</text>
-<text x="598" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Retire without credit via owner</text>
-<text x="1068" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Original clock, parent and</text>
-<text x="1068" y="711.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">generation retained</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / M3.1 BOUNDED RECONCILIATION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">C3 alone settles the feedback outcome</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">C4 asks about the exact recorded intent. Attention serializes application and retirement.</text>
+<rect x="72" y="270" width="390" height="165" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="318.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Exact feedback intent</text>
+<text x="94" y="357.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Original clock, cause, parent,</text>
+<text x="94" y="384.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">generation and effect deadline</text>
+<rect x="600" y="270" width="338" height="165" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="622" y="317.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">C3 ·</text>
+<text x="622" y="352.21" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">resolveFeedback</text>
+<text x="622" y="391.07" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">One owner transaction</text>
+<text x="622" y="417.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">or one file-owner lock</text>
+<line x1="462" y1="352" x2="600" y2="352" stroke="#315E9C" stroke-width="2"/>
+<polygon points="600,352 587.0,347.0 587.0,357.0" fill="#315E9C"/>
+<rect x="1070" y="238" width="458" height="143" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1092" y="285.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">APPLIED</text>
+<text x="1092" y="327.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Return original durable receipt</text>
+<line x1="938" y1="352" x2="1000" y2="352" stroke="#007C78" stroke-width="2"/>
+<line x1="1000" y1="352" x2="1000" y2="310" stroke="#007C78" stroke-width="2"/>
+<line x1="1000" y1="310" x2="1070" y2="310" stroke="#007C78" stroke-width="2"/>
+<polygon points="1070,310 1057.0,305.0 1057.0,315.0" fill="#007C78"/>
+<rect x="1070" y="405" width="458" height="143" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="1092" y="452.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#A86A15">RETIRED · NO CREDIT</text>
+<text x="1092" y="494.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Expired or obsolete clock / parent</text>
+<line x1="938" y1="352" x2="1000" y2="352" stroke="#A86A15" stroke-width="2"/>
+<line x1="1000" y1="352" x2="1000" y2="477" stroke="#A86A15" stroke-width="2"/>
+<line x1="1000" y1="477" x2="1070" y2="477" stroke="#A86A15" stroke-width="2"/>
+<polygon points="1070,477 1057.0,472.0 1057.0,482.0" fill="#A86A15"/>
+<rect x="1070" y="572" width="458" height="143" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="1092" y="619.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">PENDING</text>
+<text x="1092" y="661.3599999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Eligible, unavailable or malformed</text>
+<line x1="938" y1="352" x2="1000" y2="352" stroke="#315E9C" stroke-width="2"/>
+<line x1="1000" y1="352" x2="1000" y2="644" stroke="#315E9C" stroke-width="2"/>
+<line x1="1000" y1="644" x2="1070" y2="644" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1070,644 1057.0,639.0 1057.0,649.0" fill="#315E9C"/>
+<rect x="72" y="503" width="866" height="212" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="554.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">C4 keeps a separate closure journal</text>
+<text x="94" y="599.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">1–16 resolutions per call · 128 commands per step</text>
+<text x="94" y="632.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Original execution, spent budget and deadline stay fixed.</text>
+<text x="94" y="665.94" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Reconciliation makes zero new native formula calls.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Attention ingress and feedback have distinct trusted bindings; selection never grants authority.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Applied before a lost reply → recover once. Retired first → delayed delivery cannot award credit.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / cognition.py · derived_beliefs.py · tests/test_m3.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">28 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / attention.py · fixture_attention.py · inference.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">28 / 64</text>
 </svg>

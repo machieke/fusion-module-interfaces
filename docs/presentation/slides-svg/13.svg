@@ -1,52 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">The DA boundary remains application-neutral</title>
-<desc id="desc">This unchanged DA boundary is exercised against a freshly fetched clean secured-contract-spaces revision 272888f264dd2dde18b574cabb53c266b0dac2ec. No Hive-specific schema is added to DeTTa. Application references and replay semantics belong above opaque DA. Conformance removes the cached payload and two erasure shares and verifies reconstruction; three missing shares and corruption fail explicitly. This is actual local library execution, not a validator/custody network or an indefinite-retention claim. The independent atomic-file provider is an AtomStorage contract fixture, not a second DA network. The clean-source rebaseline excludes historical dirty storage-format and custody-pruning additions and reruns applicable tests.</desc>
+<title id="title">Function dependencies: an approved result reaches finality</title>
+<desc id="desc">Arrows show caller-to-provider dependencies, not a cross-owner transaction. Actual authenticated Programs dispatch loads the new narrow sibling fusion-commitment. Its only user parameter is original_command; operator configuration controls the approved generated workflow and selected chain. A read-only completed-result accessor lives beside the original inspect plugin and rechecks accepted/acknowledged result and live authority. The sibling also retrieves exact bytes via the selected AtomStorage interface. A typed local ConsensusFinality session validates the explicit f1r3-generated-post-state/2 profile; existing port signatures and the legacy adapter are unchanged. The adapter owns logical plan, signed request, submission and observation state. The caller owns only command/progress mapping and calls no other owner&#x27;s SQL. The original inspect plugin, cognition and DA core are unchanged. Private C1/C2/C3/C4 state has no edge to the chain.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / BOUNDARY · APPLICATION-NEUTRAL PERSISTENCE</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The DA boundary remains application-neutral</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The external adapter translates application references into generic coordinates and opaque bytes.</text>
-<rect x="72" y="253" width="450" height="164" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="303.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Application contracts</text>
-<text x="94" y="348.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Scope · references · replay</text>
-<text x="94" y="381.37999999999994" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">identity</text>
-<rect x="619" y="253" width="405" height="164" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="641" y="303.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">External adapter</text>
-<text x="641" y="348.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Opaque payload + generic</text>
-<text x="641" y="381.37999999999994" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">coordinate</text>
-<rect x="1121" y="253" width="407" height="164" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1143" y="303.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">DeTTa core</text>
-<text x="1143" y="348.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">DA encoding + FileStorage</text>
-<line x1="522" y1="335" x2="619" y2="335" stroke="#007C78" stroke-width="2"/>
-<polygon points="619,335 606.0,330.0 606.0,340.0" fill="#007C78"/>
-<line x1="1024" y1="335" x2="1121" y2="335" stroke="#007C78" stroke-width="2"/>
-<polygon points="1121,335 1108.0,330.0 1108.0,340.0" fill="#007C78"/>
-<text x="75" y="513.1" font-family="DejaVu Sans" font-size="38" font-weight="700" fill="#102B3F">4 data shares + 2 parity shares</text>
-<rect x="74" y="555" width="125" height="115" rx="10" fill="#DCEFE8" stroke="#007C78"/>
-<text x="105" y="613.25" font-family="DejaVu Sans Mono" font-size="35" font-weight="400" fill="#007C78">S1</text>
-<text x="90" y="647.15" font-family="DejaVu Sans" font-size="17" font-weight="400" fill="#536775">present</text>
-<rect x="227" y="555" width="125" height="115" rx="10" fill="#DCEFE8" stroke="#007C78"/>
-<text x="258" y="613.25" font-family="DejaVu Sans Mono" font-size="35" font-weight="400" fill="#007C78">S2</text>
-<text x="243" y="647.15" font-family="DejaVu Sans" font-size="17" font-weight="400" fill="#536775">present</text>
-<rect x="380" y="555" width="125" height="115" rx="10" fill="#DCEFE8" stroke="#007C78"/>
-<text x="411" y="613.25" font-family="DejaVu Sans Mono" font-size="35" font-weight="400" fill="#007C78">S3</text>
-<text x="396" y="647.15" font-family="DejaVu Sans" font-size="17" font-weight="400" fill="#536775">present</text>
-<rect x="533" y="555" width="125" height="115" rx="10" fill="#DCEFE8" stroke="#007C78"/>
-<text x="564" y="613.25" font-family="DejaVu Sans Mono" font-size="35" font-weight="400" fill="#007C78">S4</text>
-<text x="549" y="647.15" font-family="DejaVu Sans" font-size="17" font-weight="400" fill="#536775">present</text>
-<rect x="686" y="555" width="125" height="115" rx="10" fill="#E7ECEB" stroke="#C9D2D4" stroke-dasharray="5 4"/>
-<text x="717" y="613.25" font-family="DejaVu Sans Mono" font-size="35" font-weight="400" fill="#536775">S5</text>
-<text x="702" y="647.15" font-family="DejaVu Sans" font-size="17" font-weight="400" fill="#536775">removed</text>
-<rect x="839" y="555" width="125" height="115" rx="10" fill="#E7ECEB" stroke="#C9D2D4" stroke-dasharray="5 4"/>
-<text x="870" y="613.25" font-family="DejaVu Sans Mono" font-size="35" font-weight="400" fill="#536775">S6</text>
-<text x="855" y="647.15" font-family="DejaVu Sans" font-size="17" font-weight="400" fill="#536775">removed</text>
-<rect x="1060" y="506" width="468" height="195" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1082" y="554.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Observed reconstruction</text>
-<text x="1082" y="596.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Cached payload + two shares</text>
-<text x="1082" y="627.36" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">removed: exact bytes recovered. A</text>
-<text x="1082" y="658.0799999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">third missing share is unavailable.</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">The DA core does not interpret Hive identities, truth values, attention balances or job state.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / DEPENDENCY MAP · M4 SHARED WORKFLOW</text>
+<text x="70" y="135.85" font-family="DejaVu Sans" font-size="43" font-weight="700" fill="#102B3F">Function dependencies: an approved result reaches finality</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A native sibling consumes the completed inspect result; private cognition has no chain dependency.</text>
+<rect x="72" y="244" width="420" height="136" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="293.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Native Hive dispatch</text>
+<text x="94" y="334.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Authenticated</text>
+<text x="94" y="364.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">original_command</text>
+<rect x="588" y="244" width="420" height="136" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="610" y="293.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">fusion-commitment</text>
+<text x="610" y="334.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">commit /</text>
+<text x="610" y="362.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">observe(original_command)</text>
+<rect x="1104" y="244" width="424" height="136" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="1126" y="293.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Operator policy</text>
+<text x="1126" y="334.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Exact result + actor + chain +</text>
+<text x="1126" y="364.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">signer</text>
+<line x1="492" y1="312" x2="588" y2="312" stroke="#007C78" stroke-width="2"/>
+<polygon points="588,312 575.0,307.0 575.0,317.0" fill="#007C78"/>
+<line x1="1008" y1="312" x2="1104" y2="312" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1104,312 1091.0,307.0 1091.0,317.0" fill="#315E9C"/>
+<rect x="72" y="430" width="420" height="113" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="474.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#315E9C">Completed-result accessor</text>
+<text x="94" y="512.6700000000001" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Read inspect acceptance + ack</text>
+<rect x="72" y="577" width="420" height="113" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="626.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">AtomStorage → DeTTa</text>
+<text x="94" y="668.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Re-read exact shared bytes</text>
+<rect x="588" y="503" width="420" height="140" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="610" y="552.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">ConsensusFinality</text>
+<text x="610" y="594.92" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">submit · observe</text>
+<text x="610" y="625.64" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Logical intent + signed journal</text>
+<rect x="1104" y="503" width="424" height="140" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1126" y="552.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Real local F1R3node</text>
+<text x="1126" y="593.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Fixed tuple → inclusion post-state</text>
+<text x="1126" y="621.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Matching deploy-effect finality</text>
+<line x1="798" y1="380" x2="798" y2="503" stroke="#315E9C" stroke-width="2"/>
+<polygon points="798,503 803.0,490.0 793.0,490.0" fill="#315E9C"/>
+<line x1="650" y1="380" x2="650" y2="425" stroke="#315E9C" stroke-width="2"/>
+<line x1="650" y1="425" x2="535" y2="425" stroke="#315E9C" stroke-width="2"/>
+<line x1="535" y1="425" x2="535" y2="486" stroke="#315E9C" stroke-width="2"/>
+<line x1="535" y1="486" x2="492" y2="486" stroke="#315E9C" stroke-width="2"/>
+<polygon points="492,486 505.0,491.0 505.0,481.0" fill="#315E9C"/>
+<line x1="710" y1="380" x2="710" y2="462" stroke="#007C78" stroke-width="2"/>
+<line x1="710" y1="462" x2="550" y2="462" stroke="#007C78" stroke-width="2"/>
+<line x1="550" y1="462" x2="550" y2="633" stroke="#007C78" stroke-width="2"/>
+<line x1="550" y1="633" x2="492" y2="633" stroke="#007C78" stroke-width="2"/>
+<polygon points="492,633 505.0,638.0 505.0,628.0" fill="#007C78"/>
+<text x="817" y="445.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#315E9C">Typed session + explicit descriptor/profile</text>
+<line x1="1008" y1="573" x2="1104" y2="573" stroke="#007C78" stroke-width="2"/>
+<polygon points="1104,573 1091.0,568.0 1091.0,578.0" fill="#007C78"/>
+<rect x="72" y="716" width="1456" height="105" rx="13" fill="#E7ECEB" stroke="#315E9C"/>
+<text x="94" y="765.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Each owner commits separately</text>
+<text x="94" y="805.07" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">DA · job/outbox · messaging · inspect acceptance/ack · signed intent/observation · native progress</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / adapters/detta/src/main.rs · test_contract.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">13 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / hive/commitment · completed.py · f1r3_m4.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">13 / 64</text>
 </svg>

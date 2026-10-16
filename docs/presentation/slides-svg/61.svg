@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Reproduce the required real M4 gates</title>
+<desc id="desc">Use the runbook M4 required isolated chain reproduction section for actual paths and Linux/SSH/toolchain prerequisites. Build_m4.py obtains all pinned sources and builds providers plus a clean F1R3node with offline locked Cargo build after fetch. User/network namespaces must be available; generated keys/genesis stay inside ignored artifacts. verify_m4.py checks exact source start/end, runs full M1–M3.1 regression plus eleven commitment fixtures and six real native chain tests. It records positive observation timeouts separately from missing prerequisites and executed failures. Independent reproduction: &lt;NATIVE_PYTHON&gt; scripts/readback_m4.py &lt;PRIVATE_READ_ACCESS_JSON&gt; &lt;SAME_ARTIFACT_JSON&gt;, with reachable isolated node and retained post-state. Follow the runbook for the exact invocation and namespace access. Do not publish raw provider environments, journals or keys. Downloads may be warm; provider builds are fresh. This deck&#x27;s export/check commands do not rerun integrations.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX G / COMMANDS AND PREREQUISITES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproduce the required real M4 gates</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Use tested 55ed540 or a reviewed descendant; fresh build/evidence destinations and authorized source access.</text>
+<rect x="72" y="245" width="1456" height="187" rx="12" fill="#0B2233"/>
+<text x="100" y="285.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">BUILD PINNED HIVE / DETTA / PLN + CLEAN F1R3NODE</text>
+<text x="100" y="339.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
+<text x="100" y="387.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/build_m4.py &lt;FRESH_BUILD&gt;</text>
+<rect x="72" y="465" width="1456" height="187" rx="12" fill="#0B2233"/>
+<text x="100" y="505.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">VERIFY REGRESSIONS + NATIVE CHAIN + RECOVERY + READBACK</text>
+<text x="100" y="559.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
+<text x="100" y="607.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/verify_m4.py &lt;FRESH_BUILD&gt; --output &lt;FRESH_EVIDENCE&gt;</text>
+<text x="78" y="720.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Read: manifest → same-artifact → readback → verification → regression summaries</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Separate reader: scripts/readback_m4.py · DA get-only authority + read RPC · no caller journal or signer.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / runbook.md · build_m4.py · verify_m4.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">61 / 64</text>
+</svg>

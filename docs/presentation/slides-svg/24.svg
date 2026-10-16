@@ -1,43 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Attention replacement preserves the measured outcome</title>
-<desc id="desc">All four fresh cases use two tasks, five premises per task, ten generated observations, two episodes and twelve claim atoms. Held fixed: exact task/evidence refs, policy parameters, one-attempt/two-candidate budgets, absolute deadline and logical schedule. Separate preference cases exchange initial scores 20/10 and 10/20. Only composition chooses SQLite or the independently implemented file fixture; no consumer code changes. Every result records examined=2, reserved=1, completed=1, refused=0, unique admission=1 and feedback_applied=1, ending at rule-budget. The second candidate is counted before discovering the exhausted rule budget. Preparation takes about 11.5–11.8 seconds and is separate from the reported step time. Store sizes are 1,040,671 and 1,020,409 bytes respectively. These are one-run local measurements, not throughput or cognitive-quality evidence.</desc>
+<title id="title">Native goldens check deduction and preserved revision</title>
+<desc id="desc">The M3 golden has five ordered premises and uses the actual native Truth_Deduction. Expected values are independent test oracles, not production mathematics. M2 revision goldens still pass in the M3 regression, including reversed unequal pairs. Native suites include actual computation plus explicitly injected malformed responses, timeouts, source-drift clones and authorization/CAS interleavings. Fifteen upstream guard-only tests use RecordingRuntime and are not counted as native numerical evaluation. Evidence_count remains null, and a derived conclusion never turns into a fresh independent observation.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / CONTROLLED SUBSTITUTION EXPERIMENT</text>
-<text x="70" y="137.75" font-family="DejaVu Sans" font-size="45" font-weight="700" fill="#102B3F">Attention replacement preserves the measured outcome</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Recorded M3 comparison: same tasks, evidence, policy and budgets; provider and preference vary.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">ATTENTION PROVIDER</text>
-<text x="678" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PREFER</text>
-<text x="868" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">SELECTION ORDER</text>
-<text x="1214" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">STEP TIME</text>
-<rect x="72" y="277" width="1456" height="83" rx="6" fill="#FFFFFF"/>
-<text x="88" y="319.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">SQLite</text>
-<text x="678" y="319.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">B</text>
-<text x="868" y="319.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">b → a</text>
-<text x="1214" y="319.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">0.744361 s</text>
-<rect x="72" y="365" width="1456" height="83" rx="6" fill="#FFFFFF"/>
-<text x="88" y="407.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">SQLite</text>
-<text x="678" y="407.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">A</text>
-<text x="868" y="407.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">a → b</text>
-<text x="1214" y="407.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">0.677157 s</text>
-<rect x="72" y="453" width="1456" height="83" rx="6" fill="#FFFFFF"/>
-<text x="88" y="495.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Atomic-file fixture</text>
-<text x="678" y="495.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">B</text>
-<text x="868" y="495.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">b → a</text>
-<text x="1214" y="495.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">0.726126 s</text>
-<rect x="72" y="541" width="1456" height="83" rx="6" fill="#FFFFFF"/>
-<text x="88" y="583.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Atomic-file fixture</text>
-<text x="678" y="583.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">A</text>
-<text x="868" y="583.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">a → b</text>
-<text x="1214" y="583.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">0.641150 s</text>
-<rect x="72" y="645" width="704" height="105" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="689.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#007C78">Every case</text>
-<text x="94" y="728.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">1 native call · 1 unique admission · 1 feedback credit</text>
-<rect x="800" y="645" width="728" height="105" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="822" y="689.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#007C78">Reopen all owners</text>
-<text x="822" y="728.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Same receipt · zero additional native calls</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / NUMERICAL EVIDENCE</text>
+<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">Native goldens check deduction and preserved revision</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Independent expected values check pinned native formulas; no replacement math runs in the owners.</text>
+<rect x="72" y="248" width="704" height="347" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">M3 · Grounded deduction</text>
+<text x="94" y="348.51" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">P, Q, R = (0.5, 0.8)</text>
+<text x="94" y="385.63" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">P⇒Q, Q⇒R = (0.8, 0.7)</text>
+<text x="94" y="422.75" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775"></text>
+<text x="94" y="459.87" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Expected P⇒R: (0.68, 0.3136)</text>
+<rect x="800" y="248" width="728" height="347" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="822" y="300.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">M2 · Guarded revision</text>
+<text x="822" y="347.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">(0.75, 0.50) + (0.25, 0.50)</text>
+<text x="822" y="383.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">→ (0.50, 2/3)</text>
+<text x="822" y="419.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775"></text>
+<text x="822" y="455.08" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Unequal confidence 0.50 / 0.75</text>
+<text x="822" y="490.92" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">→ (0.375, 0.80)</text>
+<text x="78" y="667.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#102B3F">Observed deduction: 0.6800000000000002 / 0.31360000000000005</text>
+<text x="78" y="724.6" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#102B3F">Absolute tolerance 1e−12; finite-domain and lineage guards remain active.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Four local observations demonstrate substitution and selection effect; they are not a performance ranking.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">These are model-specific heuristics, not calibrated real-world confidence or proven entailment.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / m3/final/comparison.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">24 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / test_deduction.py · preserved test_revision.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">24 / 64</text>
 </svg>

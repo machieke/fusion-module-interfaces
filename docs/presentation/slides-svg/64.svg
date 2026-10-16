@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Reproduce M5 from declared sources and private requests</title>
+<desc id="desc">The full runbook supplies concrete paths and prerequisites. build_m3.py makes fresh pinned native Hive/PeTTa/SWI/DeTTa providers; the unchanged M4 Python lock supplies legacy-chain dependencies. &lt;chain&gt; is a verified pinned M4 node build, explicitly reused in the recorded run; build_m4.py can create a fresh full build when needed. verify_m5.py supports fixtures, storage, hive, legacy or all. Fixture, real-provider, missing prerequisite, executed failure and timeout classifications remain distinct. The native writer uses declared ports then exits; the operator request map contains query attributes and source barrier only. The private caller journal retains detailed result state. Public evidence publishes sanitized counts, gate results and code/build hashes only. Reading these commands or rebuilding this deck runs no integration or chain process.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX J / M5 CODE + COMMANDS</text>
+<text x="70" y="136.8" font-family="DejaVu Sans" font-size="44" font-weight="700" fill="#102B3F">Reproduce M5 from declared sources and private requests</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Fresh provider build, existing chain dependencies, then all required gates.</text>
+<text x="89" y="261.75" font-family="DejaVu Sans Mono" font-size="25" font-weight="400" fill="#102B3F">uv run --python 3.11 --locked python scripts/build_m3.py &lt;providers&gt;</text>
+<text x="89" y="309.75" font-family="DejaVu Sans Mono" font-size="25" font-weight="400" fill="#102B3F">uv pip install --python &lt;providers&gt;/native/venv/bin/python \</text>
+<text x="89" y="357.75" font-family="DejaVu Sans Mono" font-size="25" font-weight="400" fill="#102B3F">-r integration/chain/requirements.lock</text>
+<text x="89" y="405.75" font-family="DejaVu Sans Mono" font-size="25" font-weight="400" fill="#102B3F">uv run --python 3.11 --locked python scripts/verify_m5.py \</text>
+<text x="89" y="453.75" font-family="DejaVu Sans Mono" font-size="25" font-weight="400" fill="#102B3F">--environment &lt;providers&gt;/environment.json --chain-build &lt;chain&gt; \</text>
+<text x="89" y="501.75" font-family="DejaVu Sans Mono" font-size="25" font-weight="400" fill="#102B3F">--output &lt;fresh-output&gt;</text>
+<text x="88" y="568.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CODE</text>
+<text x="888" y="568.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESPONSIBILITY</text>
+<rect x="72" y="594" width="1456" height="53" rx="6" fill="#FFFFFF"/>
+<text x="88" y="631.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">fusion/atom_feed.py · relations.py · search.py</text>
+<text x="888" y="631.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Accepted source; structural owner; projection owner</text>
+<rect x="72" y="652" width="1456" height="53" rx="6" fill="#FFFFFF"/>
+<text x="88" y="689.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">fusion/lookup.py · lookup_composition.py</text>
+<text x="888" y="689.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Declared-port consumer; private binding and placement</text>
+<rect x="72" y="710" width="1456" height="53" rx="6" fill="#FFFFFF"/>
+<text x="88" y="747.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">integration/hive/lookup/ · test_m5_integration.py</text>
+<text x="888" y="747.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Actual native dispatch and recovery; no answer refs</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Use --gates hive for the focused demo. Keep raw environments, private journals, queries and IDs private.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / runbook.md · scripts/verify_m5.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">64 / 64</text>
+</svg>

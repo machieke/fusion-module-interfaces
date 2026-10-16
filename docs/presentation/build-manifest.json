@@ -1,14 +1,14 @@
 {
-  "slides": 52,
+  "slides": 64,
   "pptx_reopened": true,
-  "pdf_pages_rendered": 52,
+  "pdf_pages_rendered": 64,
   "layout_bounds_checked": true,
   "text_overlaps": 0,
   "fonts": "DejaVu Sans / DejaVu Sans Mono (PDF embedded; TTFs bundled)",
   "independent_renderer_check": "Recorded separately in qa.json",
-  "source_commit": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
-  "evidence_commit": "05b1c52cfa6ced6e263700753e82ad6038a3b0dd",
-  "main_talk_slides": 43,
+  "source_commit": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd",
+  "evidence_commit": "3dc6c1146601a0d0aa8785e61884970ec84a57c6",
+  "main_talk_slides": 54,
   "evidence_sha256": {
     "docs/module-interfaces/evidence/m2/manifest.json": "6205df1a084d29c33402fd13a6fdb2c5c5dbba6b197351f731beda6e5945440d",
     "docs/module-interfaces/evidence/m2/final/verification.json": "baed82df8ff346ad54dcb66e0a90526cc1b11446a82355f34266d40a27f1afec",
@@ -56,22 +56,57 @@
     "evidence/m4/preparation/prerequisite-probe.json": "52b2c969caf7b6340bc80b8a214da81d9d43a99bd4b93dd773936ab438e69170",
     "evidence/m4/preparation/provider-build-input-equivalence.json": "56f146029786c0c9689d0aae146a51e5abf9a61d840e1772bbb5583c0a6b40ff",
     "evidence/m4/preparation/source-discovery.json": "9cb4c6be9c1e013ef1c6b3ab5b6843c71abd98531209b9683fd5355f119dcb02",
-    "docs/module-interfaces/m4-evidence.md": "cf0903f2f1dfc7bbda1fd82e9db3c214f38c897462d6e6d233085a0031a0fbc4"
+    "docs/module-interfaces/m4-evidence.md": "cf0903f2f1dfc7bbda1fd82e9db3c214f38c897462d6e6d233085a0031a0fbc4",
+    "evidence/m5/checksums.json": "baee2432456bfb6dc1d389a982b368a880f9a90fa6e6564d16d2137767c74612",
+    "evidence/m5/baseline/aggregate.log": "f5bedce87cab2c55c3a456af6ee6b9515d32a9282f79f5d5ef5bff5f5c41d1d2",
+    "evidence/m5/baseline/summary.json": "33dd3030d7ea3908a18f65477fc30295873a1e1a062e3aa29a5b5d412aa78096",
+    "evidence/m5/baseline/verification.json": "8cfc247101a15117bef3ddef8c0f07349c87dd64f72d926162e84acf5ab63899",
+    "evidence/m5/chain-python-dependencies.json": "418424c4b71332e82546e9f9d71e28a7f270dbb56c32f7cefc4a72232ceb8c78",
+    "evidence/m5/classification-negative-test.json": "1e2ab4a6fe7735b162805adc6380c214e2bfaf3fc98b162424d0abd02ded747f",
+    "evidence/m5/development-failures.json": "3e1d4d0107d4c43d3468eacf2af2e35144cfc642ffa53963126875dbd242b0fe",
+    "evidence/m5/final/fixtures.log": "b5a77533f079ee2652f5f61755cb0862be1ac3a690d4b26082802aac7eb5233e",
+    "evidence/m5/final/hive.log": "225f38b98f530fc662d2e0dfe831d34151d438db6774989c5bab779db7f57d9a",
+    "evidence/m5/final/hive.xml": "9ca4b54295c07385c643d41a99577e99ec01f8a3aa4bc2e231d4a1cd023b048f",
+    "evidence/m5/final/legacy-m1-m3_1.log": "be83854c0bce7e5c860545b1fc54edc2d6c39b9c5a4da78bb450d8cdea3f797d",
+    "evidence/m5/final/legacy-m4-fixtures.log": "ce31dc281f935b6029522660ac5f83e71bc8cdddaf2eec934893390cd665276c",
+    "evidence/m5/final/legacy-m4-real.log": "9a9c286f1bf7309a775f1d17394599903eed557da0c66b287ee9a47b7913b78f",
+    "evidence/m5/final/legacy-m4-real.xml": "ab9b9d91c05a03b9cfd9f43f7f875aaffb3ef4468642f923670eefba8d366982",
+    "evidence/m5/final/storage.log": "3ecce105c3b89bdceeee28eac20c16dde6c12c8fde1c65a4f7492ad775f72046",
+    "evidence/m5/final/verification.json": "aceba0897634656f2e6dbf21f3122860cfdde9119405105bb15fdb9e647a967d",
+    "evidence/m5/implementation-changes.json": "3b7df2944506a1fda83e311a207dcef92065c21f045c23cbdb38057743c8adc4",
+    "evidence/m5/legacy/chain-isolation.json": "703660b3a16b6ec8738b6756e684770d8d3783a5a5124a4f115e7f0d562b38d4",
+    "evidence/m5/legacy/m1_2-verification.json": "0e4cf97efb5e28fe414b27fcf9face7d7af6500f03bf7e8b2f9bf972e578351a",
+    "evidence/m5/legacy/m2-verification.json": "458221c9525bf51b62b78e7397ddc26cdf79402c95c3c897de51428d5385dc38",
+    "evidence/m5/legacy/m3-verification.json": "3f8669913830991b9b71bef5d21cf2276487b556c44a61b90a3e6d28bde6a98e",
+    "evidence/m5/legacy/m3_1-verification.json": "cd2e9f5cea676157c6088159d260051d8c544430f20f6a47880cd8f8a261a113",
+    "evidence/m5/manifest.json": "a6f3ddcecae0fdf2573c4f98f7a0a89a01401d7fe549c369817305842e4f4404",
+    "evidence/m5/native-payload-comparison.json": "9c49c5c10f0c2fe8734c3d02c5df6aa1a5036389a6ad50a27f083eead220f14c",
+    "evidence/m5/native_payload_probe.py": "4f0e9a761cc36319853c13af7987811a6b05aad493a8c0df946a121d47ab9680",
+    "evidence/m5/no-cognitive-effects.json": "9b523b65c2234d281834cb4b47e29f2beaef2fc04ea248ca0204be89db68d68e",
+    "evidence/m5/no_cognitive_effects_probe.py": "66064753d54bdb96e898111319bf313befa99069ef361646a7b163a37cc8d6d4",
+    "evidence/m5/provider-build.json": "fe0763921fa79dbfaa00f70f02c668afc4cd060af643ed9ff1c2747daa5c7dc7",
+    "evidence/m5/reproduction.json": "47883d9260d824c2530da5cc296ae5a39c7f90d3ba5fc0f0ee168b2151d6265d",
+    "evidence/m5/source-state.json": "f53fb8e792925779de074b4d0280a0f075832fe325d121ae7043922aeb107192",
+    "evidence/m5/traces/lookup-trace-1.json": "89cc71ac68bf82f56ae93e2d5cd93e41f80d0063a6bf674ae0e5bfc58de05db2",
+    "evidence/m5/traces/lookup-trace-2.json": "89cc71ac68bf82f56ae93e2d5cd93e41f80d0063a6bf674ae0e5bfc58de05db2",
+    "docs/module-interfaces/m5-evidence.md": "3acf2bea60474e4086cb8ac047fcb17c8342ed41b0d7f9feb97ff11a9e9f6659",
+    "docs/module-interfaces/m5-contracts.md": "c33e4d7c4b1aa2016a4d522b7a74fe52d574af33601c88f7bba49e696d452612",
+    "docs/module-interfaces/m5-capability-ledger.json": "d76a96d9b9d909270ceb12e1a6b0e17b6790afd18b20b41dcadcca1fad3fb2ce"
   },
   "slides_manifest": [
     {
       "slide": 1,
-      "title": "Keep the evidence. Bound the work. Verify the commitment.",
+      "title": "Discover the knowledge. Bound the work. Verify the result.",
       "section": "Module-interface architecture",
       "appendix": false,
-      "source": "M4 evidence 05b1c52 \u00b7 tested 55ed540",
+      "source": "M5 evidence 3dc6c11 \u00b7 tested bfb0ec8",
       "text_elements": 12,
       "editable_shapes": 15
     },
     {
       "slide": 2,
       "title": "ELI16: remember, weigh evidence, do the calculation",
-      "section": "Executive summary \u00b7 1 of 4",
+      "section": "Executive summary \u00b7 1 of 5",
       "appendix": false,
       "source": "M2 preserved \u00b7 M3 derived admission",
       "text_elements": 30,
@@ -80,7 +115,7 @@
     {
       "slide": 3,
       "title": "ELI16: a priority list and a limited attempt budget",
-      "section": "Executive summary \u00b7 2 of 4",
+      "section": "Executive summary \u00b7 2 of 5",
       "appendix": false,
       "source": "C3 attention \u00b7 C4 bounded inference",
       "text_elements": 29,
@@ -89,7 +124,7 @@
     {
       "slide": 4,
       "title": "ELI16: finishing the job and settling its receipts",
-      "section": "Executive summary \u00b7 3 of 4",
+      "section": "Executive summary \u00b7 3 of 5",
       "appendix": false,
       "source": "M3.1 delivery closure \u00b7 owner receipts",
       "text_elements": 31,
@@ -98,7 +133,7 @@
     {
       "slide": 5,
       "title": "ELI16: approve a fingerprint, then check the receipt",
-      "section": "Executive summary \u00b7 4 of 4",
+      "section": "Executive summary \u00b7 4 of 5",
       "appendix": false,
       "source": "M4 \u00b7 native Hive \u2192 isolated F1R3node",
       "text_elements": 29,
@@ -106,6 +141,15 @@
     },
     {
       "slide": 6,
+      "title": "ELI16: a catalogue, labelled links and the actual books",
+      "section": "Executive summary \u00b7 5 of 5",
+      "appendix": false,
+      "source": "M5 \u00b7 actual native fusion-lookup",
+      "text_elements": 29,
+      "editable_shapes": 35
+    },
+    {
+      "slide": 7,
       "title": "Fifteen modules; four responsibility groups",
       "section": "01 / Helicopter view",
       "appendix": false,
@@ -114,7 +158,7 @@
       "editable_shapes": 58
     },
     {
-      "slide": 7,
+      "slide": 8,
       "title": "Data responsibilities: bytes \u2192 references \u2192 history",
       "section": "01 / Responsibility atlas \u00b7 1 of 3",
       "appendix": false,
@@ -123,7 +167,7 @@
       "editable_shapes": 41
     },
     {
-      "slide": 8,
+      "slide": 9,
       "title": "Cognitive responsibilities: four separate roles",
       "section": "01 / Responsibility atlas \u00b7 2 of 3",
       "appendix": false,
@@ -132,7 +176,7 @@
       "editable_shapes": 35
     },
     {
-      "slide": 9,
+      "slide": 10,
       "title": "Control responsibilities: move work, preserve authority",
       "section": "01 / Responsibility atlas \u00b7 3 of 3",
       "appendix": false,
@@ -141,7 +185,7 @@
       "editable_shapes": 39
     },
     {
-      "slide": 10,
+      "slide": 11,
       "title": "Function dependencies: the exercised M3.1 path",
       "section": "01 / Dependency map \u00b7 private cognition",
       "appendix": false,
@@ -150,7 +194,7 @@
       "editable_shapes": 57
     },
     {
-      "slide": 11,
+      "slide": 12,
       "title": "Function dependencies: the preserved M1.2 path",
       "section": "01 / Dependency map \u00b7 shared application ports",
       "appendix": false,
@@ -159,7 +203,7 @@
       "editable_shapes": 62
     },
     {
-      "slide": 12,
+      "slide": 13,
       "title": "Function dependencies: an approved result reaches finality",
       "section": "01 / Dependency map \u00b7 M4 shared workflow",
       "appendix": false,
@@ -168,7 +212,16 @@
       "editable_shapes": 54
     },
     {
-      "slide": 13,
+      "slide": 14,
+      "title": "Function dependencies: discover \u2192 traverse \u2192 retrieve",
+      "section": "01 / Dependency map \u00b7 M5 private lookup",
+      "appendix": false,
+      "source": "lookup.py \u00b7 lookup_composition.py \u00b7 ports.py",
+      "text_elements": 27,
+      "editable_shapes": 53
+    },
+    {
+      "slide": 15,
       "title": "The DA boundary remains application-neutral",
       "section": "02 / Boundary \u00b7 application-neutral persistence",
       "appendix": false,
@@ -177,16 +230,16 @@
       "editable_shapes": 47
     },
     {
-      "slide": 14,
-      "title": "Two independent substitutions, one design principle",
+      "slide": 16,
+      "title": "Independent replacements preserve the caller contract",
       "section": "02 / Provider replacement",
       "appendix": false,
-      "source": "m11-swap-demo.json \u00b7 m3/final/comparison.json",
-      "text_elements": 21,
-      "editable_shapes": 25
+      "source": "M1.1 \u00b7 M3 \u00b7 M5 substitution evidence",
+      "text_elements": 22,
+      "editable_shapes": 27
     },
     {
-      "slide": 15,
+      "slide": 17,
       "title": "Private state has explicit owners and placement",
       "section": "02 / Privacy and authorization",
       "appendix": false,
@@ -195,7 +248,7 @@
       "editable_shapes": 33
     },
     {
-      "slide": 16,
+      "slide": 18,
       "title": "Executable contracts make the inference step finite",
       "section": "02 / Contract decisions before behavior",
       "appendix": false,
@@ -204,7 +257,7 @@
       "editable_shapes": 34
     },
     {
-      "slide": 17,
+      "slide": 19,
       "title": "C1: one occurrence, one position in the story",
       "section": "03 / Episodic memory",
       "appendix": false,
@@ -213,7 +266,7 @@
       "editable_shapes": 37
     },
     {
-      "slide": 18,
+      "slide": 20,
       "title": "C1 delivery closes without understanding PLN",
       "section": "03 / M3.1 evidence delivery",
       "appendix": false,
@@ -222,7 +275,7 @@
       "editable_shapes": 49
     },
     {
-      "slide": 19,
+      "slide": 21,
       "title": "C2: admitting evidence and changing belief are separate",
       "section": "03 / Belief revision",
       "appendix": false,
@@ -231,7 +284,7 @@
       "editable_shapes": 37
     },
     {
-      "slide": 20,
+      "slide": 22,
       "title": "A derived conclusion inherits its evidence trail",
       "section": "03 / Derived-support admission",
       "appendix": false,
@@ -240,7 +293,7 @@
       "editable_shapes": 44
     },
     {
-      "slide": 21,
+      "slide": 23,
       "title": "One grounded rule reuses the actual native PLN",
       "section": "03 / Kernel and runtime compatibility",
       "appendix": false,
@@ -249,7 +302,7 @@
       "editable_shapes": 33
     },
     {
-      "slide": 22,
+      "slide": 24,
       "title": "Native goldens check deduction and preserved revision",
       "section": "03 / Numerical evidence",
       "appendix": false,
@@ -258,7 +311,7 @@
       "editable_shapes": 23
     },
     {
-      "slide": 23,
+      "slide": 25,
       "title": "C3: a small, independent attention policy",
       "section": "03 / Short-term importance",
       "appendix": false,
@@ -267,7 +320,7 @@
       "editable_shapes": 30
     },
     {
-      "slide": 24,
+      "slide": 26,
       "title": "Attention replacement preserves the measured outcome",
       "section": "03 / Controlled substitution experiment",
       "appendix": false,
@@ -276,7 +329,7 @@
       "editable_shapes": 38
     },
     {
-      "slide": 25,
+      "slide": 27,
       "title": "C4: reserve work durably before invoking the rule",
       "section": "03 / Bounded inference control",
       "appendix": false,
@@ -285,7 +338,7 @@
       "editable_shapes": 44
     },
     {
-      "slide": 26,
+      "slide": 28,
       "title": "C3 alone settles the feedback outcome",
       "section": "03 / M3.1 bounded reconciliation",
       "appendix": false,
@@ -294,7 +347,7 @@
       "editable_shapes": 45
     },
     {
-      "slide": 27,
+      "slide": 29,
       "title": "Five crash boundaries, independent owner commits",
       "section": "03 / Recovery \u00b7 actual SIGKILL",
       "appendix": false,
@@ -303,7 +356,7 @@
       "editable_shapes": 33
     },
     {
-      "slide": 28,
+      "slide": 30,
       "title": "Authorization, replay and profiles remain live",
       "section": "03 / Boundary guarantees",
       "appendix": false,
@@ -312,7 +365,7 @@
       "editable_shapes": 36
     },
     {
-      "slide": 29,
+      "slide": 31,
       "title": "One real Hive action reaches the entire private path",
       "section": "04 / Native integration",
       "appendix": false,
@@ -321,7 +374,7 @@
       "editable_shapes": 42
     },
     {
-      "slide": 30,
+      "slide": 32,
       "title": "Native Hive exposes execution and closure separately",
       "section": "04 / M3.1 actual caller progress",
       "appendix": false,
@@ -330,7 +383,7 @@
       "editable_shapes": 29
     },
     {
-      "slide": 31,
+      "slide": 33,
       "title": "The same one-attempt budget makes attention visible",
       "section": "04 / Demonstrated behavior",
       "appendix": false,
@@ -339,7 +392,7 @@
       "editable_shapes": 27
     },
     {
-      "slide": 32,
+      "slide": 34,
       "title": "One artifact connects Hive, DA and the chain",
       "section": "05 / M4 \u00b7 measured native workflow",
       "appendix": false,
@@ -348,7 +401,7 @@
       "editable_shapes": 36
     },
     {
-      "slide": 33,
+      "slide": 35,
       "title": "Approval freezes the result and its destination",
       "section": "05 / M4 \u00b7 current authority + exact intent",
       "appendix": false,
@@ -357,7 +410,7 @@
       "editable_shapes": 24
     },
     {
-      "slide": 34,
+      "slide": 36,
       "title": "Finality is tied to the actual stored effect",
       "section": "05 / M4 \u00b7 source-verified readback",
       "appendix": false,
@@ -366,7 +419,7 @@
       "editable_shapes": 35
     },
     {
-      "slide": 35,
+      "slide": 37,
       "title": "A lost reply reuses the same signed request",
       "section": "05 / M4 \u00b7 four native SIGKILL boundaries",
       "appendix": false,
@@ -375,7 +428,7 @@
       "editable_shapes": 29
     },
     {
-      "slide": 36,
+      "slide": 38,
       "title": "The real chain ran in a disposable isolated network",
       "section": "05 / M4 \u00b7 reproducible source + safe isolation",
       "appendix": false,
@@ -384,70 +437,151 @@
       "editable_shapes": 36
     },
     {
-      "slide": 37,
-      "title": "Real providers and fixtures remain visibly separate",
-      "section": "06 / Evidence classification",
-      "appendix": false,
-      "source": "evidence/m4/manifest.json \u00b7 final/verification.json",
-      "text_elements": 31,
-      "editable_shapes": 36
-    },
-    {
-      "slide": 38,
-      "title": "Executed tests preserve cognition and verify real chain",
-      "section": "06 / M4 final verification",
-      "appendix": false,
-      "source": "evidence/m4/final/verification.json \u00b7 regression-summaries.json",
-      "text_elements": 30,
-      "editable_shapes": 38
-    },
-    {
       "slide": 39,
-      "title": "M4 gates: native result to verified chain effect",
-      "section": "06 / Gate-by-gate results \u00b7 1 of 2",
+      "title": "Four Relations operations expose accepted structure",
+      "section": "06 / M5 \u00b7 Relations",
       "appendix": false,
-      "source": "evidence/m4/manifest.json",
-      "text_elements": 24,
-      "editable_shapes": 31
+      "source": "relations.py \u00b7 lookup_contracts.py \u00b7 m5-contracts.md",
+      "text_elements": 26,
+      "editable_shapes": 32
     },
     {
       "slide": 40,
-      "title": "M4 gates: recovery, privacy and independent readback",
-      "section": "06 / Gate-by-gate results \u00b7 2 of 2",
+      "title": "A committed source makes the index rebuildable",
+      "section": "06 / M5 \u00b7 authoritative source",
+      "appendix": false,
+      "source": "atom_feed.py \u00b7 search.py \u00b7 ports.py",
+      "text_elements": 28,
+      "editable_shapes": 38
+    },
+    {
+      "slide": 41,
+      "title": "A complete page is not a promise of current knowledge",
+      "section": "06 / M5 \u00b7 exact query + freshness",
+      "appendix": false,
+      "source": "lookup_contracts.py \u00b7 m5-contracts.md",
+      "text_elements": 25,
+      "editable_shapes": 31
+    },
+    {
+      "slide": 42,
+      "title": "Actual Hive discovers the answers through the interfaces",
+      "section": "06 / M5 \u00b7 native lookup demonstration",
+      "appendix": false,
+      "source": "evidence/m5/traces/lookup-trace-1.json \u00b7 lookup-trace-2.json",
+      "text_elements": 28,
+      "editable_shapes": 40
+    },
+    {
+      "slide": 43,
+      "title": "Thirteen process kills exercise separate commit boundaries",
+      "section": "06 / M5 \u00b7 recovery + replacement",
+      "appendix": false,
+      "source": "test_m5_real.py \u00b7 test_m5_integration.py",
+      "text_elements": 27,
+      "editable_shapes": 33
+    },
+    {
+      "slide": 44,
+      "title": "Private ownership extends without changing cognition",
+      "section": "06 / M5 \u00b7 placement and profiles",
+      "appendix": false,
+      "source": "lookup_composition.py \u00b7 hive/lookup \u00b7 no-cognitive-effects.json",
+      "text_elements": 25,
+      "editable_shapes": 31
+    },
+    {
+      "slide": 45,
+      "title": "Coverage has three denominators",
+      "section": "07 / M5 \u00b7 capability ledger",
+      "appendix": false,
+      "source": "m5-capability-ledger.json \u00b7 evidence/m5/manifest.json",
+      "text_elements": 24,
+      "editable_shapes": 29
+    },
+    {
+      "slide": 46,
+      "title": "Real providers, fixtures and unrun work stay distinct",
+      "section": "07 / Evidence classification",
+      "appendix": false,
+      "source": "evidence/m5/manifest.json",
+      "text_elements": 30,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 47,
+      "title": "Executed tests cover discovery, recovery and regressions",
+      "section": "07 / M5 final verification",
+      "appendix": false,
+      "source": "evidence/m5/final/verification.json",
+      "text_elements": 28,
+      "editable_shapes": 36
+    },
+    {
+      "slide": 48,
+      "title": "M4 gates: native result to verified chain effect",
+      "section": "07 / Preserved M4 gate evidence \u00b7 1 of 2",
       "appendix": false,
       "source": "evidence/m4/manifest.json",
       "text_elements": 24,
       "editable_shapes": 31
     },
     {
-      "slide": 41,
-      "title": "Reproducibility connects source, build and observed result",
-      "section": "06 / Source and execution ledger",
+      "slide": 49,
+      "title": "M4 gates: recovery, privacy and independent readback",
+      "section": "07 / Preserved M4 gate evidence \u00b7 2 of 2",
       "appendix": false,
-      "source": "evidence/m4/build \u00b7 manifest.json \u00b7 final/verification.json",
-      "text_elements": 31,
-      "editable_shapes": 38
+      "source": "evidence/m4/manifest.json",
+      "text_elements": 24,
+      "editable_shapes": 31
     },
     {
-      "slide": 42,
-      "title": "The limitations are part of the contract",
-      "section": "06 / Guarantees and stopping point",
+      "slide": 50,
+      "title": "M5 gates: contracts, real storage and rebuild",
+      "section": "07 / M5 gate-by-gate results \u00b7 1 of 2",
       "appendix": false,
-      "source": "m4-evidence.md \u00b7 m3_1-evidence.md",
+      "source": "evidence/m5/manifest.json \u00b7 final/verification.json",
+      "text_elements": 27,
+      "editable_shapes": 35
+    },
+    {
+      "slide": 51,
+      "title": "M5 gates: substitution, recovery and actual Hive",
+      "section": "07 / M5 gate-by-gate results \u00b7 2 of 2",
+      "appendix": false,
+      "source": "evidence/m5/manifest.json \u00b7 final/verification.json",
+      "text_elements": 27,
+      "editable_shapes": 35
+    },
+    {
+      "slide": 52,
+      "title": "Source, build and outcome remain independently traceable",
+      "section": "07 / M5 source ledger",
+      "appendix": false,
+      "source": "evidence/m5/source-state.json \u00b7 reproduction.json",
+      "text_elements": 30,
+      "editable_shapes": 37
+    },
+    {
+      "slide": 53,
+      "title": "The limitations are part of the contract",
+      "section": "07 / Guarantees and stopping point",
+      "appendix": false,
+      "source": "m5-contracts.md \u00b7 m5-evidence.md",
       "text_elements": 22,
       "editable_shapes": 28
     },
     {
-      "slide": 43,
-      "title": "Keep the evidence. Preserve the budget. Verify the commitment.",
-      "section": "06 / Takeaway",
+      "slide": 54,
+      "title": "Discover the knowledge. Preserve the boundaries. Check the evidence.",
+      "section": "07 / Takeaway",
       "appendix": false,
-      "source": "M4 tested 55ed540 \u00b7 evidence 05b1c52",
+      "source": "M5 tested bfb0ec8 \u00b7 evidence 3dc6c11",
       "text_elements": 10,
       "editable_shapes": 12
     },
     {
-      "slide": 44,
+      "slide": 55,
       "title": "Implementation map: responsibilities stay local",
       "section": "Appendix A / Code navigation",
       "appendix": true,
@@ -456,16 +590,16 @@
       "editable_shapes": 38
     },
     {
-      "slide": 45,
+      "slide": 56,
       "title": "Exact sources identify the verified native stack",
       "section": "Appendix B / Source ledger",
       "appendix": true,
-      "source": "evidence/m4/final/verification.json \u00b7 source_pins",
+      "source": "evidence/m5/source-state.json \u00b7 provider-build.json",
       "text_elements": 24,
       "editable_shapes": 35
     },
     {
-      "slide": 46,
+      "slide": 57,
       "title": "Profiles and bounds make compatibility explicit",
       "section": "Appendix C / Contract ledger",
       "appendix": true,
@@ -474,7 +608,7 @@
       "editable_shapes": 40
     },
     {
-      "slide": 47,
+      "slide": 58,
       "title": "New profiles close the seam; old stores stay explicit",
       "section": "Appendix D / Existing-state compatibility",
       "appendix": true,
@@ -483,7 +617,7 @@
       "editable_shapes": 23
     },
     {
-      "slide": 48,
+      "slide": 59,
       "title": "One native operation crosses the existing interfaces",
       "section": "Appendix E / Preserved M1.2 sequence",
       "appendix": true,
@@ -492,7 +626,7 @@
       "editable_shapes": 53
     },
     {
-      "slide": 49,
+      "slide": 60,
       "title": "Historical M1: one result reached an isolated chain",
       "section": "Appendix F / Historical chain evidence",
       "appendix": true,
@@ -501,7 +635,7 @@
       "editable_shapes": 36
     },
     {
-      "slide": 50,
+      "slide": 61,
       "title": "Reproduce the required real M4 gates",
       "section": "Appendix G / Commands and prerequisites",
       "appendix": true,
@@ -510,7 +644,7 @@
       "editable_shapes": 17
     },
     {
-      "slide": 51,
+      "slide": 62,
       "title": "Retry identities answer different questions",
       "section": "Appendix H / Operational semantics",
       "appendix": true,
@@ -519,13 +653,22 @@
       "editable_shapes": 38
     },
     {
-      "slide": 52,
+      "slide": 63,
       "title": "M4 adds one profile and two narrow native actions",
       "section": "Appendix I / Chain contract + code ledger",
       "appendix": true,
       "source": "contracts.md \u00b7 ADR-013 \u00b7 f1r3_m4.py",
       "text_elements": 34,
       "editable_shapes": 41
+    },
+    {
+      "slide": 64,
+      "title": "Reproduce M5 from declared sources and private requests",
+      "section": "Appendix J / M5 code + commands",
+      "appendix": true,
+      "source": "runbook.md \u00b7 scripts/verify_m5.py",
+      "text_elements": 20,
+      "editable_shapes": 25
     }
   ]
 }

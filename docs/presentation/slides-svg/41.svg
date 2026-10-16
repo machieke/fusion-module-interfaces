@@ -1,43 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Reproducibility connects source, build and observed result</title>
-<desc id="desc">Requested ancestor 985d2f34ea8df8c5d93582e4ed6fe5cbe1843074; actual start 8491c4900a5ccab872073e62b1024e3b731aeaf9; tested 55ed5402391ab6ed14f8ab20e1eea4c85d8be955; evidence 05b1c52cfa6ced6e263700753e82ad6038a3b0dd. Implementation commits 1219bb5 and 55ed540 precede evidence-only 05b1c52. The final verifier checked 116 runtime/test/build source hashes at start/end and reran all prior supported regressions. Provider sources, venv, SWI/DeTTa/node builds, compatibility target, test directories and genesis were fresh. Downloads were cached; upstream Rust regression test binaries may be cached between attempts. Provider build began when Fusion recorded 8491c49, but recipes/pins/guard inputs were byte-identical at 55ed540, verified by the committed equivalence artifact; M4 Python plugins loaded from 55ed540. Full source and binary hashes are recorded. Binary identity is specific to this build, not cross-host bit reproducibility. This deck audits evidence without changing it.</desc>
+<title id="title">A complete page is not a promise of current knowledge</title>
+<desc id="desc">The sole Search profile is exact-attributes/1 with knowledge-attributes/1 extraction, contract 2.0.0. Canonical UTF-8 JSON requires kind and permits topic/label, all bounded strings. Search performs exact conjunction without normalization, embeddings or numerical scoring. A genuine empty result at a sufficient prefix differs from source lag. Query neither polls the current head nor advances the index. Cursors bind semantic query, principal/scope, source identity, snapshot and generation. Rebuild invalidates old-generation cursors explicitly; pending callers do not silently reset. The consumer carries independent Search and Relations snapshots, not a fictional cross-owner transaction. A stored completed intent can replay its historical result after current authorization is checked.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">06 / SOURCE AND EXECUTION LEDGER</text>
-<text x="70" y="135.85" font-family="DejaVu Sans" font-size="43" font-weight="700" fill="#102B3F">Reproducibility connects source, build and observed result</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The evidence-only descendant records a clean implementation tested at the same start/end revision.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">LAYER</text>
-<text x="438" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECORDED STATE</text>
-<text x="958" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">BOUNDARY</text>
-<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Requested / actual</text>
-<text x="88" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">start</text>
-<text x="438" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">985d2f3 → 8491c49</text>
-<text x="958" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Presentation-only descendant before M4</text>
-<text x="958" y="347.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">changes</text>
-<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Clean tested</text>
-<text x="88" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">implementation</text>
-<text x="438" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">55ed5402391a</text>
-<text x="958" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Detached checkout; start/end runtime hashes</text>
-<text x="958" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">match</text>
-<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Evidence snapshot</text>
-<text x="438" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">05b1c52cfa6c</text>
-<text x="958" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Records final evidence; no later runtime/test</text>
-<text x="958" y="529.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">edits</text>
-<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">F1R3node source</text>
-<text x="438" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">9ec1096e1077 · clean baseline</text>
-<text x="958" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Fresh build; historical dirty workspace unused</text>
-<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Native stack</text>
-<text x="438" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Hive 34b0fb3 · DeTTa 272888f</text>
-<text x="438" y="711.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PLN 4405956 · SWI 10.1.14</text>
-<text x="958" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Fresh provider builds; pinned guard code</text>
-<text x="958" y="711.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">unchanged</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">06 / M5 · EXACT QUERY + FRESHNESS</text>
+<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">A complete page is not a promise of current knowledge</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Search returns separate, inspectable claims about what it has actually indexed.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CLAIM</text>
+<text x="458" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEANING</text>
+<text x="1038" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHY IT IS SEPARATE</text>
+<rect x="72" y="277" width="1456" height="99" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Indexed prefix W</text>
+<text x="458" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Every accepted source item through W</text>
+<text x="458" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">processed</text>
+<text x="1038" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Later source commits may exist</text>
+<rect x="72" y="381" width="1456" height="99" rx="6" fill="#FFFFFF"/>
+<text x="88" y="421.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Complete page</text>
+<text x="458" y="421.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All matches for this page at its fixed prefix</text>
+<text x="1038" y="421.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A continuation can still be required</text>
+<rect x="72" y="485" width="1456" height="99" rx="6" fill="#FFFFFF"/>
+<text x="88" y="525.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Requested minimum</text>
+<text x="458" y="525.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">W meets the caller’s source barrier</text>
+<text x="1038" y="525.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Too far behind → NOT_AVAILABLE</text>
+<rect x="72" y="589" width="1456" height="99" rx="6" fill="#FFFFFF"/>
+<text x="88" y="629.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Observed source head</text>
+<text x="88" y="661.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">H</text>
+<text x="458" y="629.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Whether W equals H, with observation</text>
+<text x="458" y="661.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">context</text>
+<text x="1038" y="629.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No query-side head poll or ingestion</text>
+<text x="89" y="742.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Exact conjunction: 1–3 distinct fields from kind / topic / label; equality only.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="794.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Warm download caches and cached upstream Rust regression binaries are explicit; no provider binary was copied.</text>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Case and Unicode are exact; missing fields do not match. Search W and Relations R are separate snapshots.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / evidence/m4/build · manifest.json · final/verification.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">41 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / lookup_contracts.py · m5-contracts.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">41 / 64</text>
 </svg>

@@ -1,36 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">M4 gates: recovery, privacy and independent readback</title>
-<desc id="desc">Gate statuses are read directly from the M4 machine manifest and match the final verifier at 55ed540. Earlier M3.1&#x27;s twelve supported gates remain preserved; its optional CHAIN=NOT_RUN is a historical scope field, not the M4 outcome. M4 uses the actual same-run generated native inspect artifact and mandatory real F1R3node effect. Source discovery and independent clean build/probe preceded adapter implementation. Development failures, including an initial launcher issue and a negative mutable-alias regression, remain in preparation/attempts.json and the red regression log. They were corrected and superseded by the clean final run; they are not reported as missing prerequisites. Results establish the tested local scope only.</desc>
+<title id="title">A committed source makes the index rebuildable</title>
+<desc id="desc">Fresh AtomStorage contract 1.1.0 selects immutable-commit-feed/1. The new owner keeps accepted envelope and feed metadata atomically, while opaque DA storage commits independently before acceptance. The feed contains reference, content type, size and sequence, not interpreted knowledge. Search retrieves and validates every envelope, even when its valid content type will be ignored. It indexes only application/fusion-knowledge-v1 under knowledge-attributes/1. No feed entry or checkpoint advances over a failed item. Rebuild clears only derived state, captures a head, changes generation and remains unavailable to queries until that prefix is complete; replay keys and bounded progress survive process kills. Source rollback is rejected. There is no pruning API or automatic repair.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">06 / GATE-BY-GATE RESULTS · 2 OF 2</text>
-<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">M4 gates: recovery, privacy and independent readback</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All 10 required gates passed. CHAIN is required and real in this milestone.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
-<text x="468" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
-<text x="618" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECORDED EVIDENCE</text>
-<rect x="72" y="277" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">RECOVERY</text>
-<text x="468" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="618" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Four caller/adapter kill boundaries; real node outage and restart</text>
-<rect x="72" y="367" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">PRIVACY_ISOLATION</text>
-<text x="468" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="618" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Private canaries and identifying derivatives absent; live isolation</text>
-<rect x="72" y="457" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">REPRO_READBACK</text>
-<text x="468" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="618" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Fresh pinned builds + independent reader checking the same artifact</text>
-<rect x="72" y="547" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">DEMO_HANDOFF</text>
-<text x="468" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="618" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Native receipts/progress, runnable commands and sanitized trace</text>
-<rect x="72" y="637" width="1456" height="85" rx="6" fill="#FFFFFF"/>
-<text x="88" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">SCOPE</text>
-<text x="468" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
-<text x="618" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Original DA, cognition, math, ports and inspect plugin preserved</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">06 / M5 · AUTHORITATIVE SOURCE</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A committed source makes the index rebuildable</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The source enumerates accepted immutable envelopes; Search interprets one declared content type.</text>
+<rect x="72" y="255" width="464" height="368" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="307.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">AtomStorage owner</text>
+<text x="94" y="354.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Accept immutable envelope</text>
+<text x="94" y="390.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">+ feed metadata in one local</text>
+<text x="94" y="426.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">commit. Source UUID, scope</text>
+<text x="94" y="462.08" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and contiguous sequence</text>
+<text x="94" y="497.92" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">identify the prefix.</text>
+<rect x="568" y="255" width="464" height="368" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="590" y="307.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">Bounded maintenance</text>
+<text x="590" y="354.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Read head/readCommits,</text>
+<text x="590" y="390.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">retrieve bytes with get,</text>
+<text x="590" y="426.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">validate each envelope, then</text>
+<text x="590" y="462.08" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">extract exact attributes. At</text>
+<text x="590" y="497.92" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">most eight new records per</text>
+<text x="590" y="533.76" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">call.</text>
+<rect x="1064" y="255" width="464" height="368" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1086" y="307.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">Search owner</text>
+<text x="1086" y="354.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Commit derived index rows +</text>
+<text x="1086" y="390.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">checkpoint together. Replay</text>
+<text x="1086" y="426.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">resumes from that</text>
+<text x="1086" y="462.08" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">committed prefix.</text>
+<text x="1086" y="497.92" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">beginRebuild creates a new</text>
+<text x="1086" y="533.76" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">generation.</text>
+<line x1="536" y1="432" x2="568" y2="432" stroke="#315E9C" stroke-width="2"/>
+<polygon points="568,432 555.0,427.0 555.0,437.0" fill="#315E9C"/>
+<line x1="1032" y1="432" x2="1064" y2="432" stroke="#007C78" stroke-width="2"/>
+<polygon points="1064,432 1051.0,427.0 1051.0,437.0" fill="#007C78"/>
+<rect x="72" y="645" width="1456" height="108" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="690.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#A86A15">Fail without advancing</text>
+<text x="94" y="730.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Gaps, unavailable bytes, forged metadata or changed anchors block the batch; no invented prefix.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">No missing prerequisite, final executed failure or positive observation timeout is hidden in PASS.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">No foreign owner database is read. The alternate provider consumes the same declared source.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / evidence/m4/manifest.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">40 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / atom_feed.py · search.py · ports.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">40 / 64</text>
 </svg>

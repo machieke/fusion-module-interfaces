@@ -1,22 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Reproduce the required real M4 gates</title>
-<desc id="desc">Use the runbook M4 required isolated chain reproduction section for actual paths and Linux/SSH/toolchain prerequisites. Build_m4.py obtains all pinned sources and builds providers plus a clean F1R3node with offline locked Cargo build after fetch. User/network namespaces must be available; generated keys/genesis stay inside ignored artifacts. verify_m4.py checks exact source start/end, runs full M1–M3.1 regression plus eleven commitment fixtures and six real native chain tests. It records positive observation timeouts separately from missing prerequisites and executed failures. Independent reproduction: &lt;NATIVE_PYTHON&gt; scripts/readback_m4.py &lt;PRIVATE_READ_ACCESS_JSON&gt; &lt;SAME_ARTIFACT_JSON&gt;, with reachable isolated node and retained post-state. Follow the runbook for the exact invocation and namespace access. Do not publish raw provider environments, journals or keys. Downloads may be warm; provider builds are fresh. This deck&#x27;s export/check commands do not rerun integrations.</desc>
+<title id="title">M5 gates: contracts, real storage and rebuild</title>
+<desc id="desc">Gate statuses come directly from the committed M5 manifest and match the final verifier at clean bfb0ec8. All six final suite return codes are zero. Earlier intermediate PARTIAL and corrected development failures are preserved separately and contribute no final passes. An intentional missing-environment probe verifies BLOCKED/NOT_RUN classification and no fixture fallback. Legacy real chain is rerun as existing M4 behavior, not an added M5 operation. All fifteen reference families are represented, but scope remains exact-attribute discovery and one-hop traversal over bounded fresh private stores.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX G / COMMANDS AND PREREQUISITES</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproduce the required real M4 gates</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Use tested 55ed540 or a reviewed descendant; fresh build/evidence destinations and authorized source access.</text>
-<rect x="72" y="245" width="1456" height="187" rx="12" fill="#0B2233"/>
-<text x="100" y="285.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">BUILD PINNED HIVE / DETTA / PLN + CLEAN F1R3NODE</text>
-<text x="100" y="339.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
-<text x="100" y="387.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/build_m4.py &lt;FRESH_BUILD&gt;</text>
-<rect x="72" y="465" width="1456" height="187" rx="12" fill="#0B2233"/>
-<text x="100" y="505.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">VERIFY REGRESSIONS + NATIVE CHAIN + RECOVERY + READBACK</text>
-<text x="100" y="559.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
-<text x="100" y="607.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/verify_m4.py &lt;FRESH_BUILD&gt; --output &lt;FRESH_EVIDENCE&gt;</text>
-<text x="78" y="720.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Read: manifest → same-artifact → readback → verification → regression summaries</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">07 / M5 GATE-BY-GATE RESULTS · 1 OF 2</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">M5 gates: contracts, real storage and rebuild</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All 12 required gates pass on the exact final tested implementation.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
+<text x="488" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
+<text x="628" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECORDED EVIDENCE</text>
+<rect x="72" y="277" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">BASELINE_AND_SCOPE</text>
+<text x="488" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="628" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Requested ancestry; clean source; preserved M1–M4 boundaries</text>
+<rect x="72" y="355" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="393.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">RELATIONS_CONTRACT</text>
+<text x="488" y="393.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="628" y="393.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">All four operations; ordered roles, schemas and fixed-head pages</text>
+<rect x="72" y="433" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="471.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">RELATIONS_REAL</text>
+<text x="488" y="471.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="628" y="471.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Accepted relations and payloads through actual local DeTTa</text>
+<rect x="72" y="511" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="549.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">COMMITTED_SOURCE</text>
+<text x="488" y="549.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="628" y="549.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Replayable, scoped AtomStorage-owned contiguous feed</text>
+<rect x="72" y="589" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="627.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">SEARCH_CONTRACT</text>
+<text x="488" y="627.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="628" y="627.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Exact attributes; explicit freshness, pagination and error semantics</text>
+<rect x="72" y="667" width="1456" height="73" rx="6" fill="#FFFFFF"/>
+<text x="88" y="705.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">SEARCH_REAL_REBUILD</text>
+<text x="488" y="705.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="628" y="705.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Bounded catch-up and generation rebuild from real source</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Separate reader: scripts/readback_m4.py · DA get-only authority + read RPC · no caller journal or signer.</text>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Final missing prerequisites: 0 · executed failures: 0 · observation timeouts: 0.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / runbook.md · build_m4.py · verify_m4.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">50 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / evidence/m5/manifest.json · final/verification.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">50 / 64</text>
 </svg>

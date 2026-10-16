@@ -1,4 +1,4 @@
-# Omega ↔ ASI module interfaces: through M4
+# Omega ↔ ASI module interfaces: through M5
 
 A backend-neutral contract package and bounded storage, mailbox and delegated
 execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
@@ -75,13 +75,12 @@ reference STI policy and bounded grounded inference. No LTI, general search,
 research attention policy, live state migration or further inference expansion is included.
 
 The [conference presentation](docs/presentation/README.md) covers the architecture
-through M4, opening with four ELI16 executive-summary slides before all 15 module
-responsibilities and function dependencies. It includes private C1/C2 ownership,
-inherited evidence, guarded native deduction, independently replaceable STI,
-durable inference budgets, evidence delivery, feedback closure and the actual
-native Hive → DeTTa → approved result → isolated F1R3node workflow. The deck adds
-exact approval, durable signed-intent replay, post-state finality, crash recovery
-and independent readback, with an editable PowerPoint, PDF and speaker notes. New-profile and
-existing-state compatibility limits remain explicit.
-Real providers, fixtures, historical chain evidence, blocked inputs and unrun
-gates remain separately labelled.
+through M5 in 64 slides, opening with five ELI16 executive-summary slides before
+all 15 module responsibilities and function dependencies. It includes private
+cognition, bounded work, delivery closure, approved chain commitments and the
+new native query → relation traversal → DeTTa payload workflow. Separate coverage
+figures, real-provider/fixture labels, freshness, rebuild, independent Search
+replacement and process recovery carry exact evidence references. Editable
+PowerPoint, PDF and speaker notes are included. New-profile and existing-state
+compatibility limits remain explicit; historical, blocked and unrun results stay
+separate.

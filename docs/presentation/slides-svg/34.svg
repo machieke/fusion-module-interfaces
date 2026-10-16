@@ -1,40 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Finality is tied to the actual stored effect</title>
-<desc id="desc">Pinned node source was inspected, built and probed before adapter implementation. /api/prepare-deploy derives the unforgeable read name from saved public deployer and timestamp. /api/data-at-name-by-block-hash performs a non-consuming read of inclusion-block post-state. The inspected source ignores the pre-state switch, so this profile fixes usePreStateHash:false. The name must occur in that block&#x27;s reductions; a later heartbeat or current-head block is not a substitute. Verification checks exact namespace/operation/digest, target signed deploy, successful inclusion/cost and matching deploy-effect Finalized state. A finalized block alone is insufficient. Inclusion block 6922353b9d0d0b7307d3f472a92e40cbe5902e61da01150986d9daa9188a1b82; post-state 351c1234a0d0793edc7c19eb33f1f1a221d659a97f325261c6dac9afcc01f8f1. The separate reader receives DA get-only authority and read RPC, and opens neither signer nor caller journal. Readback is node-observed, not a trustless attestation.</desc>
+<title id="title">One artifact connects Hive, DA and the chain</title>
+<desc id="desc">Generated command generated-m4-916416dc-1394-411e-ba8f-64420a8c4ffb. The original inspect action creates a 53-byte shared input, sends its reference to the labelled fixture counterparty, delegates inspect_atom and accepts/acknowledges the 143-byte result. The approved digest shown is public generated data, not a private cognitive identifier. Timings: storage/worker/acceptance 2.296 s; signing callback including serialization/imports 0.040513 s; submission HTTP 0.041256 s; full authorized signing/submission 2.522 s; first inclusion and finalized-effect observation 4.066 s; same-genesis node restart to readiness 1.148 s. Signed JSON request 673 bytes; node execution cost 675 phlo. Regressions ran concurrently. Inclusion/finality times include proposal and authorization overhead and are not pure consensus latency. Full exact identifiers and effect transcript are in the same-artifact JSON; a separate read-only process confirms the same digest, deploy, inclusion and post-state.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / M4 · SOURCE-VERIFIED READBACK</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Finality is tied to the actual stored effect</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Submission, inclusion and verified finalized effect are different observations.</text>
-<rect x="72" y="252" width="464" height="253" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="94" y="305.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#A86A15">1 · Submission</text>
-<text x="94" y="352.84000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">The node accepts the saved</text>
-<text x="94" y="388.68000000000006" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">signed deploy. The effect is</text>
-<text x="94" y="424.52000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">still pending.</text>
-<line x1="536" y1="380" x2="564" y2="380" stroke="#536775" stroke-width="2"/>
-<polygon points="564,380 551.0,375.0 551.0,385.0" fill="#536775"/>
-<rect x="568" y="252" width="464" height="253" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="590" y="305.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#315E9C">2 · Inclusion</text>
-<text x="590" y="352.84000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">The exact deploy appears in</text>
-<text x="590" y="388.68000000000006" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">a block with successful</text>
-<text x="590" y="424.52000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">execution and cost.</text>
-<line x1="1032" y1="380" x2="1060" y2="380" stroke="#536775" stroke-width="2"/>
-<polygon points="1060,380 1047.0,375.0 1047.0,385.0" fill="#536775"/>
-<rect x="1064" y="252" width="464" height="253" rx="13" fill="#FFFFFF" stroke="#007C78"/>
-<text x="1086" y="305.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#007C78">3 · Verified effect</text>
-<text x="1086" y="352.84000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Read the exact tuple in that</text>
-<text x="1086" y="388.68000000000006" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">block’s post-state; match the</text>
-<text x="1086" y="424.52000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">deploy’s finalized effect.</text>
-<rect x="72" y="550" width="704" height="177" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="600.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Fixed on-chain value</text>
-<text x="94" y="647.0" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">(namespace, generated operation ID,</text>
-<text x="94" y="682.84" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">approved result digest)</text>
-<rect x="824" y="550" width="704" height="177" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="846" y="600.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Independent verification</text>
-<text x="846" y="647.0" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Same digest + deploy + block + post-state</text>
-<text x="846" y="682.84" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">after node restart; no caller journal or signer.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / M4 · MEASURED NATIVE WORKFLOW</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">One artifact connects Hive, DA and the chain</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The approved result is the exact result retrieved, committed and independently read back.</text>
+<rect x="72" y="252" width="464" height="207" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="306.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">53-byte input</text>
+<text x="94" y="353.16999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Generated and explicitly</text>
+<text x="94" y="387.72999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">shareable</text>
+<text x="94" y="422.28999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Real native fusion-inspect</text>
+<line x1="536" y1="354" x2="564" y2="354" stroke="#007C78" stroke-width="2"/>
+<polygon points="564,354 551.0,349.0 551.0,359.0" fill="#007C78"/>
+<rect x="568" y="252" width="464" height="207" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="590" y="306.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">143-byte result</text>
+<text x="590" y="353.16999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Real worker + real DeTTa</text>
+<text x="590" y="387.72999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Caller accepts and</text>
+<text x="590" y="422.28999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">acknowledges</text>
+<line x1="1032" y1="354" x2="1060" y2="354" stroke="#007C78" stroke-width="2"/>
+<polygon points="1060,354 1047.0,349.0 1047.0,359.0" fill="#007C78"/>
+<rect x="1064" y="252" width="464" height="207" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1086" y="306.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">One commitment</text>
+<text x="1086" y="352.21999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Approved digest in real</text>
+<text x="1086" y="385.49999999999994" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">post-state</text>
+<text x="1086" y="418.78" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Matching finalized deploy effect</text>
+<rect x="72" y="498" width="1456" height="130" rx="12" fill="#0B2233"/>
+<text x="99" y="537.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#AAC0CC">APPROVED RESULT SHA-256 · SAME VALUE AT EVERY STAGE</text>
+<text x="99" y="589.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">cd2f727689b41e243ee78207d058d00b8be64932abbfd86a02851dfcbac400bb</text>
+<rect x="72" y="643" width="704" height="104" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="687.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#315E9C">Counts remain stable</text>
+<text x="94" y="726.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">1 job · 1 outbox · 2 messages · 2 shared atoms</text>
+<rect x="824" y="643" width="704" height="104" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="846" y="687.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#007C78">First finalized-effect observation</text>
+<text x="846" y="726.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">4.066 s · one native observe call · 675 phlo</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">The adapter verifies node-observed evidence. The chain does not certify off-chain PLN reasoning.</text>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">These are local observations from one run, including proposal/observation overhead; no throughput claim.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / F1R3node 9ec1096 · f1r3-generated-post-state/2</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">34 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / evidence/m4/final/same-artifact.json · readback.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">34 / 64</text>
 </svg>

@@ -1,41 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Historical M1: one result reached an isolated chain</title>
-<desc id="desc">Preserve this historical result without promoting it into the new real-caller gate. The M1 chain JSON records pending, included with effect finality Pending, then finalized, at height 3 with no execution error, no rejection and cost 351 phlo. The committed digest belongs to the original protocol-peer result, not the generated native Hive result in M1.2. The M1 adapter used a registered approved digest, injected signer and durable signed intent against one isolated local node. That source had local changes and an untracked input. Exact historical reproduction remains blocked until those authorized bytes are supplied or a different clean revision is separately validated. M1.2, M2, M3 and M3.1 did not run chain. M4 now has a separate real native artifact, clean source rebaseline, post-state verification and readback. This historical protocol-peer result is not reused as M4 proof. The presentation update itself runs no chain process or transaction. Finality does not establish indefinite off-chain availability.</desc>
+<title id="title">M4 gates: recovery, privacy and independent readback</title>
+<desc id="desc">Gate statuses are read directly from the M4 machine manifest and match the final verifier at 55ed540. Earlier M3.1&#x27;s twelve supported gates remain preserved; its optional CHAIN=NOT_RUN is a historical scope field, not the M4 outcome. M4 uses the actual same-run generated native inspect artifact and mandatory real F1R3node effect. Source discovery and independent clean build/probe preceded adapter implementation. Development failures, including an initial launcher issue and a negative mutable-alias regression, remain in preparation/attempts.json and the red regression log. They were corrected and superseded by the clean final run; they are not reported as missing prerequisites. Results establish the tested local scope only.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX F / HISTORICAL CHAIN EVIDENCE</text>
-<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">Historical M1: one result reached an isolated chain</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">This is the earlier protocol-peer artifact. No M1.2, M2, M3 or M3.1 Hive result was submitted.</text>
-<rect x="72" y="258" width="464" height="150" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="94" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#A86A15">PENDING</text>
-<text x="94" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Signed deploy accepted</text>
-<line x1="536" y1="333" x2="564" y2="333" stroke="#536775" stroke-width="2"/>
-<polygon points="564,333 551.0,328.0 551.0,338.0" fill="#536775"/>
-<rect x="568" y="258" width="464" height="150" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="590" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#A86A15">INCLUDED</text>
-<text x="590" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Block observed; effects pending</text>
-<line x1="1032" y1="333" x2="1060" y2="333" stroke="#536775" stroke-width="2"/>
-<polygon points="1060,333 1047.0,328.0 1047.0,338.0" fill="#536775"/>
-<rect x="1064" y="258" width="464" height="150" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1086" y="312.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">FINALIZED</text>
-<text x="1086" y="356.32" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Deploy effects reported finalized</text>
-<text x="75" y="493.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">M1 recorded observation</text>
-<text x="75" y="542.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Block height</text>
-<text x="406" y="543.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">3</text>
-<text x="75" y="588.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Execution error</text>
-<text x="406" y="589.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">false</text>
-<text x="75" y="634.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Rejection count</text>
-<text x="406" y="635.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">0</text>
-<text x="75" y="680.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Execution cost</text>
-<text x="406" y="681.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">351 phlo</text>
-<rect x="785" y="452" width="743" height="255" rx="13" fill="#FFFFFF"/>
-<text x="811" y="502.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Historical commitment digest</text>
-<text x="811" y="553.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#007C78">f9236451ff785dc58315251cf864a3d1</text>
-<text x="811" y="584.52" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#007C78">0938412551cf45f448055061bc953ea1</text>
-<text x="811" y="647.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">One local validator; direct node observations.</text>
-<text x="811" y="678.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Not a consensus proof or production test.</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#F3E7CE"/>
-<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#A86A15">Historical M1 reproduction stays BLOCKED. M4 separately passes with a verified clean source baseline.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">07 / PRESERVED M4 GATE EVIDENCE · 2 OF 2</text>
+<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">M4 gates: recovery, privacy and independent readback</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All 10 required gates passed. CHAIN is required and real in this milestone.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
+<text x="468" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
+<text x="618" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECORDED EVIDENCE</text>
+<rect x="72" y="277" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">RECOVERY</text>
+<text x="468" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="618" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Four caller/adapter kill boundaries; real node outage and restart</text>
+<rect x="72" y="367" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">PRIVACY_ISOLATION</text>
+<text x="468" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="618" y="406.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Private canaries and identifying derivatives absent; live isolation</text>
+<rect x="72" y="457" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">REPRO_READBACK</text>
+<text x="468" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="618" y="496.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Fresh pinned builds + independent reader checking the same artifact</text>
+<rect x="72" y="547" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">DEMO_HANDOFF</text>
+<text x="468" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="618" y="586.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Native receipts/progress, runnable commands and sanitized trace</text>
+<rect x="72" y="637" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">SCOPE</text>
+<text x="468" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">PASS</text>
+<text x="618" y="676.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Original DA, cognition, math, ports and inspect plugin preserved</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">No missing prerequisite, final executed failure or positive observation timeout is hidden in PASS.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / evidence/chain-demo.json · M1 historical</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">49 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / evidence/m4/manifest.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">49 / 64</text>
 </svg>

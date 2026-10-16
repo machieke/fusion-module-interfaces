@@ -52,10 +52,15 @@ M4RECORD = json.loads((M4 / "manifest.json").read_text())
 M4VERIFY = json.loads((M4 / "final/verification.json").read_text())
 M4TRACE = json.loads((M4 / "final/same-artifact.json").read_text())
 M4READBACK = json.loads((M4 / "final/readback.json").read_text())
-BASE_COMMIT = M4RECORD["tested_implementation"]
-EVIDENCE_COMMIT = "05b1c52cfa6ced6e263700753e82ad6038a3b0dd"
-MAIN_SLIDES = 43
-TOTAL_SLIDES = 52
+M4_BASE_COMMIT = M4RECORD["tested_implementation"]
+M5 = ROOT / "evidence/m5"
+M5RECORD = json.loads((M5 / "manifest.json").read_text())
+M5VERIFY = json.loads((M5 / "final/verification.json").read_text())
+M5CHECKSUMS = json.loads((M5 / "checksums.json").read_text())
+BASE_COMMIT = M5RECORD["tested_source"]
+EVIDENCE_COMMIT = "3dc6c1146601a0d0aa8785e61884970ec84a57c6"
+MAIN_SLIDES = 54
+TOTAL_SLIDES = 64
 EVIDENCE_FILES = [M2 / name for name in ("manifest.json", "final/verification.json", "final/demo.json",
                   "final/m1_2/verification.json", "fresh-build.json", "source-preservation.json",
                   "checksums.json")] + [M12 / "m11-swap-demo.json", EVIDENCE / "chain-demo.json"]
@@ -65,6 +70,8 @@ EVIDENCE_FILES += [M31 / name for name in ("manifest.json", "final/verification.
     "build.json", "source-audit.json", "baseline/gaps.json", "non-numeric-processing.json")]
 EVIDENCE_FILES += [M4 / "manifest.json"] + [M4 / name for name in M4RECORD["files"]]
 EVIDENCE_FILES += [ROOT / "docs/module-interfaces/m4-evidence.md"]
+EVIDENCE_FILES += [M5 / "checksums.json"] + [M5 / name for name in M5CHECKSUMS]
+EVIDENCE_FILES += [ROOT / "docs/module-interfaces/m5-evidence.md", ROOT / "docs/module-interfaces/m5-contracts.md", ROOT / "docs/module-interfaces/m5-capability-ledger.json"]
 W, H, SCALE = 1600, 900, 0.6
 C = dict(bg="F4F2EB", ink="102B3F", muted="536775", line="C9D2D4",
          white="FFFFFF", pale="E7ECEB", teal="007C78", mint="DCEFE8",
@@ -177,7 +184,7 @@ class Slide:
     def footer(self, n, total):
         color = C["dim"] if self.dark else C["muted"]
         self.line(72, 839, 1528, 839, C["muted"] if self.dark else C["line"], 1)
-        self.text(72, 853, 1300, f"OMEGA × ASI   /   THROUGH M4   /   {self.source}", 15, color)
+        self.text(72, 853, 1300, f"OMEGA × ASI   /   THROUGH M5   /   {self.source}", 15, color)
         self.text(1410, 849, 120, f"{n:02d} / {total:02d}", 21, color, "mono")
 
 
@@ -210,16 +217,16 @@ def table(s, headers, rows, widths, y=235, row_h=88, size=25):
 
 
 def build_content():
-    s = Slide("", "Module-interface architecture", source="M4 evidence 05b1c52 · tested 55ed540", dark=True)
-    s.text(72,169,1430,"Keep the evidence.\nBound the work.\nVerify the commitment.",72,C["white"],"bold",1.15)
+    s = Slide("", "Module-interface architecture", source="M5 evidence 3dc6c11 · tested bfb0ec8", dark=True)
+    s.text(72,169,1430,"Discover the knowledge.\nBound the work.\nVerify the result.",72,C["white"],"bold",1.15)
     s.text(76,481,1250,"Omega Hive × ASI",42,C["dim"])
-    s.text(76,550,1390,"Private cognition, explicit delivery closure and verified chain commitments",30,C["white"])
-    s.tag(76,676,"THROUGH M4 · C1–C4 + CHAIN", "teal",C["mint"],20)
-    s.tag(590,676,"HIVE · DETTA · PLN · F1R3", "blue",C["ice"],20)
+    s.text(76,550,1390,"Private lookup, bounded cognition and verified chain commitments",30,C["white"])
+    s.tag(76,676,"THROUGH M5 · LOOKUP + C1–C4 + CHAIN", "teal",C["mint"],20)
+    s.tag(770,676,"HIVE · DETTA · PLN · F1R3", "blue",C["ice"],20)
     s.text(76,754,1350,"Architecture and evidence • 16 October 2026 • supported local scope",22,C["dim"])
-    note(s,f"Start with four ELI16 executive-summary slides, then all fifteen module responsibilities and the exercised dependency maps before implementation detail. M1 establishes replaceable ports; M1.2 connects real Hive; M2 adds private memory and guarded revision; M3 adds independent STI and bounded inference; M3.1 accounts for delivery and feedback. M4 connects a generated, shareable native inspect result to an isolated real chain and checks its actual post-state effect plus matching deploy-effect finality. The cognition and commitment paths stay separate. Suggested delivery: 50–55 minutes through slide {MAIN_SLIDES}; nine appendices support discussion. Tested source {BASE_COMMIT}; evidence-only descendant {EVIDENCE_COMMIT}. Presentation changes do not rerun integrations or expand their guarantees.")
+    note(s,f"Start with five ELI16 executive-summary slides, then all fifteen module responsibilities and the exercised dependency maps before implementation detail. M1 establishes replaceable ports; M1.2 connects real Hive; M2 adds private memory and guarded revision; M3 adds independent STI and bounded inference; M3.1 accounts for delivery and feedback. M4 connects a generated, shareable native inspect result to an isolated real chain and checks its actual post-state effect plus matching deploy-effect finality. M5 adds four Relations operations, an authoritative commit feed and exact-attribute Search. Actual native lookup discovers roots, traverses relations and retrieves payloads without seeded answer references. The lookup, cognition and commitment paths have separate owners. Suggested delivery: 60–65 minutes through slide {MAIN_SLIDES}; ten appendices support discussion. Tested source {BASE_COMMIT}; evidence-only descendant {EVIDENCE_COMMIT}. Presentation changes do not rerun integrations or expand their guarantees.")
 
-    s = Slide("ELI16: remember, weigh evidence, do the calculation", "Executive summary · 1 of 4",
+    s = Slide("ELI16: remember, weigh evidence, do the calculation", "Executive summary · 1 of 5",
               "Think of a student investigating a question with a notebook, evidence ledger and calculator.",source="M2 preserved · M3 derived admission")
     for x,tag,title,body in [
         (72,"C1 · NOTEBOOK","Keep the original story","Record what happened and where each report came from. Keep contrary observations; replay does not add another event."),
@@ -230,7 +237,7 @@ def build_content():
     band(s,"A repeated message, a new conclusion and an independent observation mean different things.",size=26)
     note(s,"ELI16 assumes a technically curious sixteen-year-old. The analogy explains responsibilities, not an additional experiment. C1 records occurrences and provenance. C2 distinguishes admission from numerical aggregation and retains disagreement. The pure providers reuse guarded Truth_Revision and one grounded Truth_Deduction rule. Their outputs remain model-specific heuristics, not proof of external truth or source independence. Derived conclusions inherit evidence roots and ancestry and add no observation or evidence count. Generated observations and operator assumptions remain fixtures, even when they travel through real runtimes.")
 
-    s = Slide("ELI16: a priority list and a limited attempt budget", "Executive summary · 2 of 4",
+    s = Slide("ELI16: a priority list and a limited attempt budget", "Executive summary · 2 of 5",
               "There are two prepared questions, but time for only one calculation. Which should run first?",source="C3 attention · C4 bounded inference")
     s.box(72,254,464,272,"C3 · Priority list","Give each eligible task an integer score. Rank it, decay it explicitly, and remember feedback once.","blue","ice",title_size=34,body_size=29)
     s.box(568,254,464,272,"C4 · Work coordinator","Choose from that list. Save the attempt reservation before calculation, then track admission and feedback.","teal","mint",title_size=34,body_size=29)
@@ -241,7 +248,7 @@ def build_content():
     band(s,"Priority is not truth. A bounded step finishing is not a promise that a conclusion was found.",size=26)
     note(s,"Short-term importance, or STI, is a simple deterministic priority score. It is separate from PLN truth values. C4 handles a fixed explicit workset; it does not invent new tasks or search the knowledge base. The measured two-task experiment changes initial attention to select the other task while keeping the one-attempt budget fixed. Attempts are durable physical evaluation opportunities. A crash after reservation spends the slot even if no result commits. Successful replay recovers recorded admission and feedback without extra native calls. These are local process-restart observations, not hard real-time or production-quality claims.")
 
-    s = Slide("ELI16: finishing the job and settling its receipts", "Executive summary · 3 of 4",
+    s = Slide("ELI16: finishing the job and settling its receipts", "Executive summary · 3 of 5",
               "A notebook entry, a calculation and a reward can finish at different times.",source="M3.1 delivery closure · owner receipts")
     for x,tag,title,body,color in [
         (72,"C1 + RELAY","The report was processed","The notebook gets a delivery receipt even when a report cannot change a number. Contrary evidence stays in the story.","teal"),
@@ -252,7 +259,7 @@ def build_content():
     band(s,"M3.1 settles recorded effects. It does not extend the deadline, change the past or start new thinking.",size=25)
     note(s,"Closure means accounting for recorded effects, not guaranteeing global completion. Nine fixture methods, five real-provider methods, sixteen direct SIGKILL cases and seven native Hive cases (four with kills) support the new behavior. The 33-event episode uses real DeTTa/native PLN with generated observations. A report can be durably processed without a numerical truth value. Feedback resolution never newly applies eligible feedback: it returns an existing receipt, creates a no-credit retirement if stale or expired, or stays pending. C4 exposes progress separately from immutable execution counters. New profiles require fresh journals; old M3 pending stores are not migrated or repaired.")
 
-    s = Slide("ELI16: approve a fingerprint, then check the receipt", "Executive summary · 4 of 4",
+    s = Slide("ELI16: approve a fingerprint, then check the receipt", "Executive summary · 4 of 5",
               "Imagine signing a sealed envelope containing the fingerprint of one shareable result.",source="M4 · native Hive → isolated F1R3node")
     for x,tag,title,body,color in [
         (72,"1 · APPROVE","Name the exact result","Hive finishes a generated task. The operator approves that result, its destination and who may sign it.","blue"),
@@ -263,6 +270,17 @@ def build_content():
     band(s,"A stored fingerprint identifies the approved result. It does not establish that the reasoning is true.",size=25)
     note(s,"The sealed-envelope analogy describes durable signed-intent replay. M4 uses the real native fusion-inspect operation and a separate fusion-commitment action, with generated shareable input and a labelled fixture counterparty. Operator approval binds exact result reference/digest, actor, expiry, chain/genesis/profile, signer and operation. The same stored signed request survives caller/adapter kills, including a lost response after real finality. A separate reader verifies DA bytes and the chain tuple without opening a caller journal or signing key. The chain records a commitment; it neither executes PLN nor certifies off-chain reasoning. This is one real local validator, not decentralized security or a production network.")
 
+    s = Slide("ELI16: a catalogue, labelled links and the actual books", "Executive summary · 5 of 5",
+              "Ask the library for matching records, follow their links, then read the stored content.",source="M5 · actual native fusion-lookup")
+    for x,tag,title,body,color in [
+        (72,"SEARCH · CATALOGUE","Find matching records","Ask for exact attributes. The catalogue returns references and says how far it has indexed the accepted records.","blue"),
+        (568,"RELATIONS · LINKS","Follow explicit structure","A record may require three other records. Follow the labelled, ordered roles to discover their references.","teal"),
+        (1064,"ATOMSTORAGE · BOOKS","Retrieve the actual bytes","Read the discovered references through the storage contract. The consumer was never given an answer list.","blue")]:
+        s.box(x,252,464,390,title,body,color,"white",tag=tag,title_size=31,body_size=27)
+    s.box(72,650,1456,99,"Observed in real Hive","5 matching records → 15 relations → 8 payloads. Append, catch up, rebuild, restart and replace Search.","teal","mint",title_size=25,body_size=23)
+    band(s,"“No match in this indexed prefix” and “the index is too far behind” are different answers.",size=26)
+    note(s,"The catalogue is a rebuildable projection of an AtomStorage-owned accepted commit feed. It indexes a single explicit exact-attribute profile; it is not an embedding engine or inference search. Relations owns acceptance and incidence separately from immutable payload storage. Setup writes the generated corpus through public ports and exits before actual authenticated native Hive lookup. The private request contains query attributes and a freshness barrier only. The test-only oracle is removed before consumer startup. At page size two, five roots require three Search pages. Fifteen requires edges connect them to three prerequisites, producing eight unique payloads. One new matching record later yields six roots and nine payloads. Public receipts show counts/status; full records remain private.")
+
     s = Slide("Fifteen modules; four responsibility groups", "01 / Helicopter view",
               "A module owns a responsibility. It need not be a separate process or repository.")
     lanes=[(72,320,"CLIENT / COGNITION","lavender"),(420,400,"APPLICATION PORTS","ice"),
@@ -272,30 +290,30 @@ def build_content():
     for i,(label,color) in enumerate([("Episodic memory","blue"),("Belief revision","blue"),
                                      ("PLN · one rule","blue"),("STI attention","blue"),("Inference control","blue")]):
         s.box(90,300+i*78,284,62,label,color=color,title_size=22,dashed=color=="violet")
-    for i,(label,color) in enumerate([("AtomStorage","blue"),("Relations · future","violet"),
-                                    ("Search projection · future","violet"),("Agent messaging","blue"),("Delegated execution","blue")]):
+    for i,(label,color) in enumerate([("AtomStorage","blue"),("Relations","blue"),
+                                    ("Search projection","blue"),("Agent messaging","blue"),("Delegated execution","blue")]):
         s.box(438,300+i*78,364,62,label,color=color,title_size=23,dashed=color=="violet")
     for i,label in enumerate(["Registry","Compatibility resolver","Authorization"]):
         s.box(866,300+i*108,286,95,label,color="blue",title_size=22)
     s.box(1216,300,294,144,"DA storage","Real local DeTTa","teal",title_size=27,body_size=23)
     s.box(1216,485,294,168,"Consensus / finality","Real isolated F1R3node · M4","teal",title_size=26,body_size=22)
     s.text(866,649,282,"Local test policy\nand static descriptors",20,C["muted"])
-    s.tag(72,760,"SPECIFIED / FUTURE","violet",C["lavender"])
+    s.tag(72,760,"15 / 15 BOUNDED FAMILIES","blue",C["ice"],16)
     s.tag(365,760,"IMPLEMENTED LOCAL","blue",C["ice"])
     s.tag(687,760,"REAL PROVIDER","teal",C["mint"])
     s.text(987,766,540,"One grounded rule; no ECAN or LTI",20,C["muted"])
-    note(s,"All fifteen responsibility groups remain visible. C1/C2 implement private memory and beliefs; M3 adds independent STI and bounded C4 plus a pure kernel for one grounded rule. Relations and Search remain specifications. Attention implements a bounded reference policy, not ECAN, LTI or the coupled metta-attention algorithm. RevisionMath is separate from PLNKernel.applyRule. Hive consumes these modules; a module need not be a separate process or repository. Blue means implemented local contracts, not production readiness. Authorization uses real Hive authentication followed by local test policy. M4 selects a new explicit finality profile against clean pinned F1R3node; the required real chain gate passes. It commits only the approved generated inspect result, with no cognitive dependency. Maintainer assignments remain unassigned.")
+    note(s,"All fifteen responsibility groups remain visible. C1/C2 implement private memory and beliefs; M3 adds independent STI and bounded C4 plus a pure kernel for one grounded rule. M5 implements bounded Relations and exact-attribute Search with explicit private profiles. All fifteen reference families are represented; this is not full Omega requirement coverage. Attention implements a bounded reference policy, not ECAN, LTI or the coupled metta-attention algorithm. RevisionMath is separate from PLNKernel.applyRule. Hive consumes these modules; a module need not be a separate process or repository. Blue means implemented local contracts, not production readiness. Authorization uses real Hive authentication followed by local test policy. M4 selects a new explicit finality profile against clean pinned F1R3node; the required real chain gate passes. It commits only the approved generated inspect result, with no cognitive dependency. Maintainer assignments remain unassigned.")
 
     s = Slide("Data responsibilities: bytes → references → history", "01 / Responsibility atlas · 1 of 3",
               "Persistence, identity, structure, discovery and provenance have different owners.")
     table(s,["Module","Function / primary operations","Owned state / status"],[
         ("DA storage","Persist opaque bytes\nput · get · availability","Payloads + shares\nREAL LOCAL PROVIDER"),
-        ("AtomStorage","Scoped immutable envelopes\ncreate · get · getMany · availability","Reference + replay metadata\nIMPLEMENTED"),
-        ("Relations","Represent ordered structural roles\nassertRelation · getRelation","Immutable relation records\nSPECIFIED"),
-        ("Search projection","Find refs at a known watermark\nquery","Rebuildable index\nSPECIFIED"),
+        ("AtomStorage","Scoped immutable envelopes\ncreate · get/getMany · head/readCommits","Reference + replay + accepted feed\nIMPLEMENTED · M5"),
+        ("Relations","Represent ordered structural roles\nassert/getRelation · outgoing/incoming","Accepted structures + incidence\nIMPLEMENTED · M5"),
+        ("Search projection","Find refs at a known watermark\nquery · catchUp · beginRebuild","Index + checkpoint + generation\nIMPLEMENTED · M5"),
         ("Episodic memory C1","Record / append / read ordered events\npendingEvidence · trusted completion","Private history + delivery intents\nIMPLEMENTED · M3.1")],[330,600,526],row_h=92,size=24)
     band(s,"DA persists bytes. Only the application owners interpret events, claims or beliefs.",size=27)
-    note(s,"AtomStorage owns immutable scoped references and replay metadata, while DA only persists opaque payloads and generic coordinates. Relations and Search remain typed specifications. C1 exposes recordEpisode, appendEvent, readEpisode, readEvidence and pendingEvidence. The new local v3 completion port is bound to a trusted relay context separately from the ordinary EpisodeJournal. C1 validates completion identity and selected consumer, not PLN snapshots. Original v2 remains selectable. findEpisodes is not advertised. C1 preserves committed episode-local order and admitted provenance; observed time is metadata. It can run without C2 or PLN and against an independently implemented AtomStorage fixture. Its event bytes are immutable atoms, while its episode head and delivery intents belong to C1.")
+    note(s,"AtomStorage owns immutable scoped references and replay metadata, while DA only persists opaque payloads and generic coordinates. AtomStorage now offers an accepted commit feed in a fresh profile. Relations owns accepted structure and incidence; Search owns only a rebuildable projection and checkpoint. All four relation operations and query/catchUp/beginRebuild are exercised through declared ports. C1 exposes recordEpisode, appendEvent, readEpisode, readEvidence and pendingEvidence. The new local v3 completion port is bound to a trusted relay context separately from the ordinary EpisodeJournal. C1 validates completion identity and selected consumer, not PLN snapshots. Original v2 remains selectable. findEpisodes is not advertised. C1 preserves committed episode-local order and admitted provenance; observed time is metadata. It can run without C2 or PLN and against an independently implemented AtomStorage fixture. Its event bytes are immutable atoms, while its episode head and delivery intents belong to C1.")
 
     s = Slide("Cognitive responsibilities: four separate roles", "01 / Responsibility atlas · 2 of 3",
               "Attention, belief admission, pure mathematics and work coordination remain separate.")
@@ -388,6 +406,24 @@ def build_content():
     s.box(72,716,1456,105,"Each owner commits separately","DA · job/outbox · messaging · inspect acceptance/ack · signed intent/observation · native progress","blue","pale",title_size=29,body_size=23)
     note(s,"Arrows show caller-to-provider dependencies, not a cross-owner transaction. Actual authenticated Programs dispatch loads the new narrow sibling fusion-commitment. Its only user parameter is original_command; operator configuration controls the approved generated workflow and selected chain. A read-only completed-result accessor lives beside the original inspect plugin and rechecks accepted/acknowledged result and live authority. The sibling also retrieves exact bytes via the selected AtomStorage interface. A typed local ConsensusFinality session validates the explicit f1r3-generated-post-state/2 profile; existing port signatures and the legacy adapter are unchanged. The adapter owns logical plan, signed request, submission and observation state. The caller owns only command/progress mapping and calls no other owner's SQL. The original inspect plugin, cognition and DA core are unchanged. Private C1/C2/C3/C4 state has no edge to the chain.")
 
+    s = Slide("Function dependencies: discover → traverse → retrieve", "01 / Dependency map · M5 private lookup",
+              "Solid arrows show caller-to-provider calls; each owner commits its own state.",source="lookup.py · lookup_composition.py · ports.py")
+    s.box(72,235,380,126,"Native Hive dispatch","Authenticated request label","teal","mint",title_size=30,body_size=25)
+    s.box(610,235,458,126,"LookupConsumer","Private pages, snapshots and result","blue","ice",title_size=30,body_size=25)
+    s.box(1190,235,338,126,"Current authority","Scope + caller + operation","blue","white",title_size=28,body_size=23)
+    s.line(452,298,610,298,C['teal'],arrow=True);s.line(1068,298,1190,298,C['blue'],arrow=True)
+    for x,title,body in [(72,"1 · Search.query","Exact attributes → discovered refs"),(576,"2 · Relations","outgoing / getRelation / incoming"),(1080,"3 · AtomStorage","get / getMany → authorized bytes")]:
+        s.box(x,440,448,140,title,body,"blue","white",title_size=31,body_size=24)
+    s.path([(715,361),(715,402),(296,402),(296,440)],C['blue'])
+    s.line(800,361,800,440,C['blue'],arrow=True)
+    s.path([(890,361),(890,402),(1304,402),(1304,440)],C['blue'])
+    s.box(72,642,448,139,"Projection maintenance","catchUp / beginRebuild\nAtomStorage head/readCommits/get","teal","mint",title_size=28,body_size=23)
+    s.box(576,642,448,139,"Relation acceptance","assertRelation → AtomStorage\nPayload first; acceptance separately","blue","ice",title_size=28,body_size=23)
+    s.box(1080,642,448,139,"Opaque DA · DeTTa","AtomStorage calls put/get\nDA interprets no query or relation","teal","mint",title_size=28,body_size=23)
+    s.line(1304,580,1304,642,C['teal'],arrow=True)
+    s.text(74,603,1400,"Setup and bounded maintenance use separate commands. Query never advances the index.",23,C['muted'])
+    note(s,"LookupConsumer depends only on ExactSearch, PagedRelations, AtomStorage and current private authority. Numbered calls show discovery, one-hop traversal including reverse-incidence verification, and payload retrieval. The caller owns its journal and retained full result. Search owns derived rows, checkpoint and generation and reads only declared source ports; it never opens another owner's database. Relations owns accepted structures, replay keys and incidence; immutable relation payload creation commits before relation acceptance. AtomStorage owns immutable envelopes plus its contiguous scoped accepted feed, above unchanged opaque DeTTa. Head/readCommits/get dependencies belong to maintenance, not query. Neither lookup nor these new owners invokes C1/C2, attention, inference or chain. Existing caller intents retain their selected provider; fresh replacement uses a new request and rebuilt derived store.")
+
     s = Slide("The DA boundary remains application-neutral", "02 / Boundary · application-neutral persistence",
               "The external adapter translates application references into generic coordinates and opaque bytes.",source="adapters/detta/src/main.rs · test_contract.py")
     for x,w,title,body,color,fill in [(72,450,"Application contracts","Scope · references · replay identity","blue","ice"),
@@ -405,13 +441,16 @@ def build_content():
     band(s,"The DA core does not interpret Hive identities, truth values, attention balances or job state.",size=25)
     note(s,"This unchanged DA boundary is exercised against a freshly fetched clean secured-contract-spaces revision 272888f264dd2dde18b574cabb53c266b0dac2ec. No Hive-specific schema is added to DeTTa. Application references and replay semantics belong above opaque DA. Conformance removes the cached payload and two erasure shares and verifies reconstruction; three missing shares and corruption fail explicitly. This is actual local library execution, not a validator/custody network or an indefinite-retention claim. The independent atomic-file provider is an AtomStorage contract fixture, not a second DA network. The clean-source rebaseline excludes historical dirty storage-format and custody-pruning additions and reruns applicable tests.")
 
-    s = Slide("Two independent substitutions, one design principle", "02 / Provider replacement",
-              "Select semantics and capabilities explicitly; keep callers independent of provider internals.",source="m11-swap-demo.json · m3/final/comparison.json")
-    s.box(72,252,704,350,"AtomStorage · preserved M1/M2","Real local DeTTa or an independent atomic-file fixture.\n\nIn-process and private stdio bindings pass the same workflow.","teal","mint",title_size=34,body_size=29)
-    s.box(800,252,728,350,"Attention · new in M3","SQLite owner or an independent atomic-file fixture.\n\nSame STI policy, tasks and budgets; unchanged consumer produces matching outcomes.","blue","ice",title_size=34,body_size=29)
-    s.text(76,649,1440,"No shared owner transitions, inheritance or private-table access in the attention replacement.",29,C["ink"],"bold")
-    band(s,"These are fresh-store replacements. Existing accepted state is not migrated.",size=29)
-    note(s,"The storage matrix has two implementations times two bindings. C1 is independently exercised without cognition using hostile declared-port wrappers. M3 attention replacement uses a separately implemented atomic-file provider; only DTO validation is shared with the SQLite implementation. Four controlled native cases hold exact task/evidence identities, policy, budgets and deadline fixed while selecting the provider in composition. Separate initial-preference cases show the selection effect. Both replacements persist actual state, but the file implementations remain classified fixtures rather than real DeTTa or a production attention service. This demonstrates same-profile replacement on fresh stores, not live migration.")
+    s = Slide("Independent replacements preserve the caller contract", "02 / Provider replacement",
+              "Select explicit profiles; rebuild derived state through the authoritative source.",source="M1.1 · M3 · M5 substitution evidence")
+    for x,title,body,color in [
+        (72,"AtomStorage · M1 / M5","Real DeTTa-backed owner or atomic-file fixture. The M5 feed remains ordered and replayable.","teal"),
+        (568,"Attention · M3","SQLite or atomic-file fixture. Same STI policy, tasks and budgets; same consumer outcomes.","blue"),
+        (1064,"Search · M5","SQLite or atomic-file fixture. Same corpus and prefix; independent predicate evaluation and persistence.","teal")]:
+        s.box(x,252,464,370,title,body,color,"white",title_size=32,body_size=29)
+    s.text(76,660,1430,"The Search fixture still answers when the primary predicate helper is disabled.",28,C["ink"],"bold")
+    band(s,"Fresh stores and explicit profiles; accepted state is not migrated.",size=29)
+    note(s,"M1.1 covers two AtomStorage implementations times two bindings. M5 adds independent atomic-file feed and Search fixtures. Search shares only pure DTO validation, extraction and encoding, not primary SQL, owner transitions or the predicate helper. A regression disables the primary predicate helper while the fixture evaluates positive and empty queries. Native lookup keeps the same consumer, source, corpus and prefix across replacement; the new Search store rebuilds its derived state. Provider choice is bound to an existing caller intent, so substitution uses a fresh request. Attention retains its separately implemented transitions. File providers are labelled fixtures, not second production services. No populated-state migration is claimed.")
 
     s = Slide("Private state has explicit owners and placement", "02 / Privacy and authorization",
               "A trusted Hive actor maps to an operator-configured private scope and credential.",source="cognition.py · inference_program/program.py")
@@ -677,26 +716,107 @@ def build_content():
     band(s,"Single-validator evidence establishes this local integration; multi-validator safety remains unrun.",size=25)
     note(s,"F1R3node pin 9ec1096e10774926ea8e72f0823482f0bf9213e1 was obtainable from the authorized repository. The historical dirty workspace at the same SHA has eight tracked modifications and one untracked input; it was untouched and unused. M4 deliberately validates the clean source as a new baseline. Fresh node build uses nightly-2026-02-09, cargo --offline --locked -j2 -p node --bin node, debug 0, incremental 0 and RUST_MIN_STACK 8388608. Node binary SHA-256 2021389d8e1a1db0470d55ba6744124e33f2bc44f5155e6cfa662798b4ffd085. Each chain run uses disposable data/genesis within an unprivileged user/network namespace; only loopback is brought up. Live socket/route tests verify actual isolation. All generated nodes are stopped after verification. Warm downloads and possible cached upstream Rust regression binaries are explicit; fresh provider binaries were not copied.")
 
-    s = Slide("Real providers and fixtures remain visibly separate", "06 / Evidence classification",
-              "A real runtime can execute generated inputs. Each claim carries its own evidence label.",source="evidence/m4/manifest.json · final/verification.json")
-    table(s,["Classification","Exercised components","What the result supports"],[
-        ("REAL PROVIDERS","Native Hive / Supervisor / PeTTa · DeTTa\nPinned PLN · SQLite STI · isolated F1R3node","Actual runtime, durable owner state,\nchain effect and restart/readback"),
-        ("FIXTURES","Generated input, policy, grants, genesis and key\nReference-message counterparty; atomic-file attention","Controlled inputs, replacement\nand deliberate fault/refusal cases"),
-        ("BLOCKED","None for required M4 prerequisites\nExact historical dirty M1 chain source unavailable","M4 uses a separately validated\nclean source baseline"),
-        ("NOT_RUN","Multi-validator safety, power loss, distributed failover,\nempty global caches, migration, production economics","No claims beyond the supported\nlocal generated workflow")],[310,650,496],row_h=116,size=24)
-    note(s,"All ten required M4 gates pass, including real chain. Legacy nested verifier CHAIN=NOT_RUN fields describe earlier scope; the outer M4 REAL_CHAIN_EFFECT=PASS supplies the new evidence. The historical M1 dirty-source reproduction remains blocked independently. One actual native caller and one fixture counterparty are not two production Omega agents. TestClient transport, generated identities and deterministic kill pauses are fixtures; Hive authentication/dispatch, default Supervisor, PeTTa, DeTTa and F1R3node are real. The independent atomic-file attention provider remains a fixture. The full upstream Hive suite, historical SWI 10.0.1, public networks and production security/quality studies are unrun. No fixture pass substitutes for chain or native math.")
+    s = Slide("Four Relations operations expose accepted structure", "06 / M5 · Relations",
+              "Relation meaning includes schema, direction, ordered roles and private scope.",source="relations.py · lookup_contracts.py · m5-contracts.md")
+    table(s,["Operation","Responsibility","Observed semantics"],[
+        ("assertRelation","Persist payload, then accept structure","Semantic duplicates converge; changed replay intent conflicts"),
+        ("getRelation","Read an accepted relation","A payload orphan alone is never an accepted relation"),
+        ("outgoing","Page source-role incidence","Fixed accepted head; query-bound continuation"),
+        ("incoming","Page target-role incidence","Reverse incidence verified by the native consumer")],[330,540,586],row_h=104,size=25)
+    s.text(88,718,1410,"requires: dependent → prerequisite    ·    transfer: 3 roles    ·    association: symmetric",25,C['ink'],'bold')
+    band(s,"Role order is preserved. Repeated endpoints and self-links are explicit, with each incidence returned once.",size=24)
+    note(s,"All four logical operations are executable in schema-ordered-relations/2, contract 2.0.0. Structural identity excludes the transport idempotency key but includes type/schema/direction/ordered roles/scope. Same-key changed semantics fails CONFLICT. requires/1 is dependent to prerequisite; transfer/1 has sender, object and recipient roles; association/1 has symmetric incidence while retaining stored role order. Pagination fixes an accepted-head snapshot; cursors bind operation, direction, endpoint, principal, scope and owner incarnation. Tests cover ordering, repeats, self-links, symmetric and three-role semantics, malformed records, cross-scope denial and crash recovery. The four operations do not imply a general graph database or transitive traversal engine.")
 
-    s = Slide("Executed tests preserve cognition and verify real chain", "06 / M4 final verification",
-              "Repeated subsets overlap. These counts must not be added into a unique test total.",source="evidence/m4/final/verification.json · regression-summaries.json")
-    table(s,["Command / layer","Cases","Evidence type"],[
-        ("Preserved M1–M3.1 regression","138 aggregate","Includes the 11 M4 fixtures; all native suites rerun"),
-        ("Focused commitment fixtures","11","Approval, replay, malformed effects and mutable aliases"),
-        ("Actual native Hive + real chain",str(len(M4VERIFY['native_cases'])),"All passed; four explicit native SIGKILL boundaries"),
-        ("Node outage / restart + readback","In native suite","Same data/genesis; separate reader; privacy + authority"),
-        ("M3.1 regression retained","9 / 5 / 3 / 7","Fixtures / provider / recovery / Hive; 16 + 4 kills"),
-        ("Both attention providers","Preserved","Old-profile compatibility and independent replacement")],[540,280,636],row_h=79,size=23)
-    band(s,"Final source: 55ed540. Missing prerequisites: 0 · executed failures: 0 · observation timeouts: 0.",size=25)
-    note(s,"M4 final execution uses clean detached 55ed540 at start and end with unchanged runtime hashes. Eleven focused fixture cases and six native chain cases passed, with no skipped native case. The full M1–M3.1 regression ran for 1414.133 seconds. It includes the 138-case aggregate, M1 subset 51, upstream DeTTa 62+38, native Hive baseline 34 and original inspect 13. M2 fixture/guard/native/recovery/Hive: 16/8/12/6/7. M3 attention/contracts/guards/native/recovery/Hive: 5/7/15/13/3/8 plus four comparison cases. M3.1 fixtures/providers/direct recovery/Hive: 9/5/3/7; direct recovery methods cover sixteen kills and native cases four caller kills. Repeated subsets overlap. Earlier M3.1 non-numerical probes and 33-event observations retain their original source labels. Development harness failures and the nested approval-alias negative regression are archived separately, corrected before the final pass. Presentation QA does not rerun these integrations.")
+    s = Slide("A committed source makes the index rebuildable", "06 / M5 · authoritative source",
+              "The source enumerates accepted immutable envelopes; Search interprets one declared content type.",source="atom_feed.py · search.py · ports.py")
+    for x,title,body,color in [
+        (72,"AtomStorage owner","Accept immutable envelope + feed metadata in one local commit. Source UUID, scope and contiguous sequence identify the prefix.","blue"),
+        (568,"Bounded maintenance","Read head/readCommits, retrieve bytes with get, validate each envelope, then extract exact attributes. At most eight new records per call.","teal"),
+        (1064,"Search owner","Commit derived index rows + checkpoint together. Replay resumes from that committed prefix. beginRebuild creates a new generation.","blue")]:
+        s.box(x,255,464,368,title,body,color,"white",title_size=32,body_size=28)
+    s.line(536,432,568,432,C['blue'],arrow=True);s.line(1032,432,1064,432,C['teal'],arrow=True)
+    s.box(72,645,1456,108,"Fail without advancing","Gaps, unavailable bytes, forged metadata or changed anchors block the batch; no invented prefix.","amber","sand",title_size=25,body_size=23)
+    band(s,"No foreign owner database is read. The alternate provider consumes the same declared source.",size=27)
+    note(s,"Fresh AtomStorage contract 1.1.0 selects immutable-commit-feed/1. The new owner keeps accepted envelope and feed metadata atomically, while opaque DA storage commits independently before acceptance. The feed contains reference, content type, size and sequence, not interpreted knowledge. Search retrieves and validates every envelope, even when its valid content type will be ignored. It indexes only application/fusion-knowledge-v1 under knowledge-attributes/1. No feed entry or checkpoint advances over a failed item. Rebuild clears only derived state, captures a head, changes generation and remains unavailable to queries until that prefix is complete; replay keys and bounded progress survive process kills. Source rollback is rejected. There is no pruning API or automatic repair.")
+
+    s = Slide("A complete page is not a promise of current knowledge", "06 / M5 · exact query + freshness",
+              "Search returns separate, inspectable claims about what it has actually indexed.",source="lookup_contracts.py · m5-contracts.md")
+    table(s,["Claim","Meaning","Why it is separate"],[
+        ("Indexed prefix W","Every accepted source item through W processed","Later source commits may exist"),
+        ("Complete page","All matches for this page at its fixed prefix","A continuation can still be required"),
+        ("Requested minimum","W meets the caller’s source barrier","Too far behind → NOT_AVAILABLE"),
+        ("Observed source head H","Whether W equals H, with observation context","No query-side head poll or ingestion")],[370,580,506],row_h=104,size=25)
+    s.text(89,718,1410,"Exact conjunction: 1–3 distinct fields from kind / topic / label; equality only.",26,C['ink'],'bold')
+    band(s,"Case and Unicode are exact; missing fields do not match. Search W and Relations R are separate snapshots.",size=24)
+    note(s,"The sole Search profile is exact-attributes/1 with knowledge-attributes/1 extraction, contract 2.0.0. Canonical UTF-8 JSON requires kind and permits topic/label, all bounded strings. Search performs exact conjunction without normalization, embeddings or numerical scoring. A genuine empty result at a sufficient prefix differs from source lag. Query neither polls the current head nor advances the index. Cursors bind semantic query, principal/scope, source identity, snapshot and generation. Rebuild invalidates old-generation cursors explicitly; pending callers do not silently reset. The consumer carries independent Search and Relations snapshots, not a fictional cross-owner transaction. A stored completed intent can replay its historical result after current authorization is checked.")
+
+    s = Slide("Actual Hive discovers the answers through the interfaces", "06 / M5 · native lookup demonstration",
+              "Setup exits before lookup; the consumer receives query attributes and a freshness barrier only.",source="evidence/m5/traces/lookup-trace-1.json · lookup-trace-2.json")
+    for x,value,label in [(72,"5","matching roots"),(568,"15","accepted relations"),(1064,"8","unique payloads")]:
+        s.rect(x,248,464,222,C['mint'],radius=14)
+        s.text(x+26,266,412,value,83,C['teal'],'bold');s.text(x+26,385,412,label,30,C['ink'],'bold')
+    s.line(536,359,568,359,C['teal'],arrow=True);s.line(1032,359,1064,359,C['teal'],arrow=True)
+    table(s,["Transition","Native behavior","Evidence"],[
+        ("Initial query","3 pages at page size 2","Distractors and another private scope excluded"),
+        ("Append → lag → catch up","NOT_AVAILABLE → 6 roots / 9 payloads","Query did not ingest; maintenance advanced prefix"),
+        ("Rebuild → restart → substitute","Same discovery and canonical bytes","New generation; independent file Search fixture")],[375,515,566],y=503,row_h=72,size=23)
+    band(s,"The oracle is test-only and removed before startup. No answer references are supplied to Hive.",size=26)
+    note(s,"The real native fusion-lookup sibling uses authenticated Hive Programs dispatch and the pinned PeTTa runtime. A separate writer uses only declared ports to create five matching task records, three prerequisites, fifteen requires edges, distractors, an unrelated association, an ignored text atom and a same-match record in another scope; IDs are random and insertion order is shuffled. Two native corpus runs confirm counts and restart/rebuild/substitution. The consumer calls query, outgoing, getRelation, incoming and get/getMany through backend-independent ports. Supplemental authorized private probes compare complete reference sets and canonical payload bytes across initial, catch-up, rebuild and substitution, without publishing private identifiers. Search replacement rebuilds from the same feed rather than inheriting primary index state.")
+
+    s = Slide("Thirteen process kills exercise separate commit boundaries", "06 / M5 · recovery + replacement",
+              "A lost response does not merge owner transactions or erase accepted work.",source="test_m5_real.py · test_m5_integration.py")
+    table(s,["Boundary","Deliberate SIGKILL cases","Recovered fact"],[
+        ("Atom / feed acceptance","1","Accepted envelope and contiguous feed stay together"),
+        ("Relation payload / acceptance","2","Orphan is invisible; accepted relation replays once"),
+        ("Projection checkpoint / rebuild","6 · both Search providers","Before/after checkpoint and rebuild intent resume"),
+        ("Native page / result progress","4 · both Search providers","Page continuation and completed result survive")],[420,425,611],row_h=109,size=24)
+    band(s,"Same profile, independent Search implementation, unchanged consumer; fresh derived store for substitution.",size=24)
+    note(s,"Nine direct process-kill cases plus four native cases total thirteen deliberately placed M5 SIGKILL scenarios. Test hooks pause at known boundaries with SIGSTOP, then the harness kills the actual process; fixtures position the fault but recovery uses real persisted files. Provider methods also verify malformed responses, invalid source ranges and restart. The independent Search fixture uses its own atomic-file state transitions and predicate evaluation. Both providers consume the authoritative commit feed; neither uses the oracle or foreign SQL. Current authorization is checked before reads, continuation, replay and commit, including revocation. These observations cover same-host process termination with intact storage, not filesystem power failure or distributed failover.")
+
+    s = Slide("Private ownership extends without changing cognition", "06 / M5 · placement and profiles",
+              "Each new profile is explicit; old M1–M4 owners and behavior remain selectable.",source="lookup_composition.py · hive/lookup · no-cognitive-effects.json")
+    table(s,["Owner","State and compatibility","Private boundary"],[
+        ("AtomStorage","immutable-commit-feed/1 · contract 1.1.0","Envelopes + accepted source metadata"),
+        ("Relations","schema-ordered-relations/2 · contract 2.0.0","Accepted structures + replay + incidence"),
+        ("Search","exact-attributes/1 · contract 2.0.0","Derived index + checkpoint + generation"),
+        ("Native lookup caller","Request + pages + full authorized result","Operator request label; ordinary receipt = counts/status")],[330,625,501],row_h=109,size=24)
+    band(s,"Lookup has no runtime dependency on C1/C2, attention, inference or chain; no private identifiers are exported.",size=24)
+    note(s,"Hive logs native parameters, so an operator-registered opaque request label maps to private query attributes and source barrier. It contains no answer references. Credentials, private query text, atom IDs/hashes and full results remain in operator/private state. The private caller journal binds the selected provider and intent; completed historical replay requires current authority. Four populated-state attention/Search configurations confirm unchanged cognitive files, budgets and result replay. Lookup has no cognitive, formula, messaging or chain dependency. Fresh stores are required; historical tuple Relations/Query declarations remain clearly labelled specifications rather than silently widened profiles. No backfill or populated-state migration is added. The DeTTa core and adapter remain unchanged and application-neutral.")
+
+    s = Slide("Coverage has three denominators", "07 / M5 · capability ledger",
+              "Module representation, exercised operations and behavioral coverage answer different questions.",source="m5-capability-ledger.json · evidence/m5/manifest.json")
+    for x,value,title,body in [
+        (72,"15 / 15","Module families","Up from 13. All bounded reference families now have a represented implementation."),
+        (568,"9 / 9","New operations","4 Relations + query + 2 feed + 2 maintenance. With inherited storage: 13 / 13 in this slice."),
+        (1064,"18 / 18","Behavioral groups","12 required scenario groups + 6 crash-boundary groups. Separate from test-method counts.")]:
+        s.rect(x,250,464,444,C['white'],C['teal'],14)
+        s.text(x+24,275,416,value,65,C['teal'],'bold')
+        s.text(x+24,378,416,title,31,C['ink'],'bold')
+        s.text(x+24,445,416,body,29,C['muted'])
+    band(s,"This is bounded reference coverage, not full Omega completeness. Line/branch coverage: NOT_MEASURED.",size=24)
+    note(s,"The ledger explicitly separates module, operation and behavioral axes. The fifteen-family denominator is the reference inventory, not a complete product requirements set. Nine new operations are assertRelation/getRelation/outgoing/incoming, Search.query, AtomStorage.head/readCommits and Search.catchUp/beginRebuild. Four inherited dependencies create/get/getMany/availability bring the exercised M5 slice to thirteen. Eighteen behavioral groups comprise twelve brief scenarios plus six crash boundaries; thirteen kill instances instantiate those boundaries. No line or branch coverage percentage is measured. The new fixture, real-provider and native methods overlap repeated legacy runs and must not be summed into a false total. Human maintainers remain UNASSIGNED.")
+
+    s = Slide("Real providers, fixtures and unrun work stay distinct", "07 / Evidence classification",
+              "All required M5 gates pass; each claim retains its actual provider and source label.",source="evidence/m5/manifest.json")
+    table(s,["Classification","M5 evidence","Meaning"],[
+        ("REAL PROVIDERS","Authenticated native Hive / PeTTa · DeTTa\nSQLite AtomStorage, Relations and Search","Actual dispatch, persistence,\ndiscovery and restart"),
+        ("FIXTURES","Generated corpus / oracle / local policy\nIndependent atomic-file providers; injected faults","Controlled inputs and substitutions;\nnot production data or services"),
+        ("BLOCKED","No required M5 prerequisite\nHistorical dirty M1 chain source unavailable","Historical blocker remains separate\nfrom the clean M4 rebaseline"),
+        ("UNRUN / OUT OF SCOPE","Power loss, distributed failover, empty caches\nLive migration, public networks, new chain work","No claims for these scenarios;\ncode coverage not measured")],[325,670,461],row_h=112,size=24)
+    band(s,"The six real M4 chain cases passed again as legacy regression; M5 adds no chain operation.",size=25)
+    note(s,"Generated private records and a test-only oracle do not become real user knowledge because real providers store them. The oracle is removed before the consumer runs and never supplies answer references. Hive authentication and Programs dispatch, local DeTTa and SQLite journals are real. Alternate atomic-file providers and local grants remain fixtures. The required final M5 missing-prerequisite, executed-failure and observation-timeout arrays are separately empty. A negative verifier test deliberately confirms BLOCKED/NOT_RUN classification without fixture fallback. Earlier development failures remain archived and do not count as final passes. Historical dirty M1 chain source reproduction remains blocked; the clean pinned M4 chain is separately verified and rerun in M5.")
+
+    s = Slide("Executed tests cover discovery, recovery and regressions", "07 / M5 final verification",
+              "Repeated subsets overlap. These counts must not be added into a unique test total.",source="evidence/m5/final/verification.json")
+    table(s,["Layer","Cases / groups","Recorded outcome"],[
+        ("New contract / fixture methods","18","PASS · pagination, freshness, auth, independent providers"),
+        ("Real DeTTa + owners","4 methods","PASS · includes nine direct SIGKILL cases"),
+        ("Actual authenticated Hive","7 cases","PASS · includes four native SIGKILL cases"),
+        ("Supplemental private probes","4 + 4","No cognitive effects; complete payload comparisons"),
+        ("M1–M3.1 regression","156 aggregate","PASS · includes old 138 plus new 18 methods"),
+        ("Unchanged M4 suites","11 fixtures + 6 real","PASS · real isolated chain and independent readback")],[510,290,656],row_h=79,size=23)
+    band(s,"Tested bfb0ec8 · 13 deliberate M5 SIGKILL cases · zero final failures, blockers or timeouts.",size=25)
+    note(s,"The final clean bfb0ec8 run executed 18 fixture methods in 27.434 seconds, four real-provider methods in 22.088 seconds and seven native Hive cases in 111.519 seconds. Nine direct kills cover atom/feed commit, relation payload/acceptance and projection checkpoint/rebuild boundaries; four native kills cover page/result commits across both Search providers. Ordinary restarts are not extra kill scenarios. Supplemental probes check four attention/Search configurations and four payload transitions. The unchanged M1–M3.1 wrapper passed in 1325.251 seconds with aggregate 156, followed by 11 M4 fixtures and six real M4 cases in a new isolated namespace/state. Reused pinned node binary is explicit. Intermediate failures and repeated subsets are excluded from final counts. This presentation update audits the recorded results; it does not rerun integrations.")
 
     for part,gate_items in enumerate([
         [("BASELINE","Full M1–M3.1 regression; both attention providers and old profiles"),
@@ -710,38 +830,59 @@ def build_content():
          ("DEMO_HANDOFF","Native receipts/progress, runnable commands and sanitized trace"),
          ("SCOPE","Original DA, cognition, math, ports and inspect plugin preserved")]],1):
         s = Slide("M4 gates: native result to verified chain effect" if part==1 else "M4 gates: recovery, privacy and independent readback",
-                  f"06 / Gate-by-gate results · {part} of 2",
+                  f"07 / Preserved M4 gate evidence · {part} of 2",
                   "All 10 required gates passed. CHAIN is required and real in this milestone.",source="evidence/m4/manifest.json")
         table(s,["Gate","Result","Recorded evidence"],[(key,M4RECORD['gates'][key],description) for key,description in gate_items],[380,150,926],row_h=90,size=24)
         band(s,"No missing prerequisite, final executed failure or positive observation timeout is hidden in PASS.",size=25)
         note(s,"Gate statuses are read directly from the M4 machine manifest and match the final verifier at 55ed540. Earlier M3.1's twelve supported gates remain preserved; its optional CHAIN=NOT_RUN is a historical scope field, not the M4 outcome. M4 uses the actual same-run generated native inspect artifact and mandatory real F1R3node effect. Source discovery and independent clean build/probe preceded adapter implementation. Development failures, including an initial launcher issue and a negative mutable-alias regression, remain in preparation/attempts.json and the red regression log. They were corrected and superseded by the clean final run; they are not reported as missing prerequisites. Results establish the tested local scope only.")
 
-    s = Slide("Reproducibility connects source, build and observed result", "06 / Source and execution ledger",
-              "The evidence-only descendant records a clean implementation tested at the same start/end revision.",source="evidence/m4/build · manifest.json · final/verification.json")
+    for part,items in enumerate([
+        [("BASELINE_AND_SCOPE","Requested ancestry; clean source; preserved M1–M4 boundaries"),
+         ("RELATIONS_CONTRACT","All four operations; ordered roles, schemas and fixed-head pages"),
+         ("RELATIONS_REAL","Accepted relations and payloads through actual local DeTTa"),
+         ("COMMITTED_SOURCE","Replayable, scoped AtomStorage-owned contiguous feed"),
+         ("SEARCH_CONTRACT","Exact attributes; explicit freshness, pagination and error semantics"),
+         ("SEARCH_REAL_REBUILD","Bounded catch-up and generation rebuild from real source")],
+        [("SUBSTITUTION","Independent feed/Search fixtures; unchanged declared-port consumer"),
+         ("RECOVERY","13 deliberate process kills, replay and durable owner boundaries"),
+         ("AUTH_PRIVACY","Live authorization, private placement and refusal coverage"),
+         ("HIVE_LOOKUP","Actual authenticated native query → traversal → payload retrieval"),
+         ("REPRO_AND_LEDGER","Pinned recipes; separate module/operation/behavior coverage"),
+         ("LEGACY_REGRESSION","M1–M3.1 and unchanged M4 fixture + real-chain suites pass")]],1):
+        s = Slide("M5 gates: contracts, real storage and rebuild" if part==1 else "M5 gates: substitution, recovery and actual Hive",
+                  f"07 / M5 gate-by-gate results · {part} of 2",
+                  "All 12 required gates pass on the exact final tested implementation.",source="evidence/m5/manifest.json · final/verification.json")
+        table(s,["Gate","Result","Recorded evidence"],[(key,M5RECORD['gates'][key],body) for key,body in items],[400,140,916],row_h=78,size=23)
+        band(s,"Final missing prerequisites: 0 · executed failures: 0 · observation timeouts: 0.",size=27)
+        note(s,"Gate statuses come directly from the committed M5 manifest and match the final verifier at clean bfb0ec8. All six final suite return codes are zero. Earlier intermediate PARTIAL and corrected development failures are preserved separately and contribute no final passes. An intentional missing-environment probe verifies BLOCKED/NOT_RUN classification and no fixture fallback. Legacy real chain is rerun as existing M4 behavior, not an added M5 operation. All fifteen reference families are represented, but scope remains exact-attribute discovery and one-hop traversal over bounded fresh private stores.")
+
+    s = Slide("Source, build and outcome remain independently traceable", "07 / M5 source ledger",
+              "The final tested implementation and evidence-only descendant are explicit.",source="evidence/m5/source-state.json · reproduction.json")
     table(s,["Layer","Recorded state","Boundary"],[
-        ("Requested / actual start","985d2f3 → 8491c49","Presentation-only descendant before M4 changes"),
-        ("Clean tested implementation",BASE_COMMIT[:12],"Detached checkout; start/end runtime hashes match"),
-        ("Evidence snapshot",EVIDENCE_COMMIT[:12],"Records final evidence; no later runtime/test edits"),
-        ("F1R3node source","9ec1096e1077 · clean baseline","Fresh build; historical dirty workspace unused"),
-        ("Native stack","Hive 34b0fb3 · DeTTa 272888f\nPLN 4405956 · SWI 10.1.14","Fresh provider builds; pinned guard code unchanged")],[350,520,586],row_h=91,size=24)
-    band(s,"Warm download caches and cached upstream Rust regression binaries are explicit; no provider binary was copied.",size=23)
-    note(s,f"Requested ancestor {M4RECORD['requested_ancestor']}; actual start {M4RECORD['starting_descendant']}; tested {BASE_COMMIT}; evidence {EVIDENCE_COMMIT}. Implementation commits 1219bb5 and 55ed540 precede evidence-only 05b1c52. The final verifier checked 116 runtime/test/build source hashes at start/end and reran all prior supported regressions. Provider sources, venv, SWI/DeTTa/node builds, compatibility target, test directories and genesis were fresh. Downloads were cached; upstream Rust regression test binaries may be cached between attempts. Provider build began when Fusion recorded 8491c49, but recipes/pins/guard inputs were byte-identical at 55ed540, verified by the committed equivalence artifact; M4 Python plugins loaded from 55ed540. Full source and binary hashes are recorded. Binary identity is specific to this build, not cross-host bit reproducibility. This deck audits evidence without changing it.")
+        ("Requested / actual start","05b1c52 → 4093301","Presentation-only descendant before M5"),
+        ("Clean tested implementation",BASE_COMMIT[:12],"Final native plugin and Python loaded from this source"),
+        ("Evidence snapshot",EVIDENCE_COMMIT[:12],"Docs/evidence only; runtime and tests unchanged"),
+        ("Fresh native provider build","Hive 34b0fb3 · DeTTa 272888f","Fresh sources, venv and native objects; warm caches"),
+        ("Preserved math / chain","PLN 4405956 · F1R3node 9ec1096","Same formulas; reused pinned node binary")],[350,525,581],row_h=91,size=24)
+    band(s,"M5 archives final passes, corrected development failures and intentional negative classification separately.",size=24)
+    note(s,f"Requested ancestor {M5RECORD['requested_ancestor']}; actual start {M5RECORD['starting_descendant']}; tested {BASE_COMMIT}; evidence-only {EVIDENCE_COMMIT}. M5 implementation commits 0cb61d5, 9b0ed35 and bfb0ec8 precede the evidence commit. The native provider recipe recorded 4093301 because build began before implementation, but its recipe, pins and Rust adapter bytes remained identical at the tested source. Plugins loaded from clean bfb0ec8. The existing M4 Python lock was installed before the final legacy chain run. The pinned M4 node binary was reused with fresh isolated state/genesis. Earlier incorrect test DTO assumption, duplicate PYTHONPATH and missing cryptography dependency were fixed and recorded; intermediate PARTIAL does not count toward final gates. Source/build reproducibility is not cross-host bit reproducibility or an empty-cache claim.")
 
-    s = Slide("The limitations are part of the contract", "06 / Guarantees and stopping point",
-              "A successful local commitment preserves the existing private cognition and closure limits.",source="m4-evidence.md · m3_1-evidence.md")
-    for x,y,title,body,color in [(72,250,"One shareable workflow","Generated inspect result only. Private episodes, beliefs, provenance and identifying hashes stay private.","teal"),
-        (824,250,"One real local validator","Node-observed effect and finality. No decentralized safety, trustless attestation or reasoning certification.","amber"),
-        (72,505,"Fresh profiles and intact files","No journal migration. Recovery is same-host process restart; power loss and distributed failover unrun.","blue"),
-        (824,505,"Bounded progress stays explicit","Old inference budgets stay spent; closure can remain pending. Chain observation is call-driven and finite.","blue")]:
+    s = Slide("The limitations are part of the contract", "07 / Guarantees and stopping point",
+              "M5 adds bounded private discovery while preserving the prior cognition and chain limits.",source="m5-contracts.md · m5-evidence.md")
+    for x,y,title,body,color in [
+        (72,250,"Exact attributes; one-hop lookup","Case-sensitive conjunction over kind, topic and label. No embeddings, semantic search or task generation.","teal"),
+        (824,250,"Fresh profiles and intact files","Finite local stores. No migration, eviction or automatic repair; unavailable source bytes block indexing.","amber"),
+        (72,505,"Independent snapshots","Search prefix W and Relations head R are explicit. They do not form a global atomic snapshot.","blue"),
+        (824,505,"Earlier guarantees retain their limits","Cognitive budgets stay spent; closure can remain pending. Chain proof remains one local validator.","blue")]:
         s.box(x,y,704,219,title,body,color,"sand" if color=="amber" else "ice",title_size=31,body_size=28)
-    band(s,"Stopped at M4: no new cognition, scheduler, ECAN, LTI, search, migration or public-network attachment.",color="violet",fill="lavender",size=24)
-    note(s,"M4 adds a fresh single-operation journal and explicit chain profile; legacy finality and cognitive profiles remain selectable. It does not migrate state or repair pre-existing M3 pending work. M3.1 closure retains finite capacity and eligible/unavailable pending outcomes; reservations and absolute deadlines never reset. M4 observation is bounded and call-driven: at most 120 calls start, no new calls start after 180 seconds, and existing 15-second socket timeouts can finish later; at most 256 observations are retained. No scheduler or unbounded polling is added. One native caller and one fixture counterparty do not establish a multi-agent production system. Files and local post-state must remain available. Trusted operator/host, warm downloads and single-validator genesis are explicit assumptions. Production security/economics, power loss, distributed failover and full upstream Hive suite remain unrun.")
+    band(s,"Stopped at M5: no new cognition, embeddings, scheduler, migration or chain operation.",color="violet",fill="lavender",size=26)
+    note(s,"Bounds are 512 atoms, 4096 bytes per atom, 128 accepted relations, 512 relation replay keys, 256 indexed records, and pages/batches of at most eight. One lookup permits eight query pages, 32 roots, 128 relations and 64 payloads; caller commands and rebuild keys cap at 64. Strings are bounded to 128 codepoints/512 UTF-8 bytes; query encoding to 1024 bytes. Search trusts the immutable source contract and does not attest cryptographically against a compromised owner. Current authorization is rechecked, including historical result replay. Recovery covers same-host process kills with intact files, not power loss/distributed failover. Old profiles stay explicit; existing stores are not migrated. Maintainership remains UNASSIGNED. These are bounded reference modules, not full Omega product coverage.")
 
-    s = Slide("", "06 / Takeaway", source="M4 tested 55ed540 · evidence 05b1c52", dark=True)
-    s.text(72,177,1430,"Keep the evidence.\nPreserve the budget.\nVerify the commitment.",72,C["white"],"bold",1.15)
-    s.text(77,508,1370,"Real Hive → real DeTTa → approved result → real local chain\nwith independent commits, restart and matching readback.",34,C["dim"],lineheight=1.35)
-    s.tag(76,711,"M4 COMPLETE · ALL 10 REQUIRED GATES PASS","teal",C["mint"],22)
-    note(s,"Return to the four ELI16 stories. C1 preserves history; C2 owns beliefs with inherited evidence; pure PLN supplies the existing guarded mathematics; C3 owns priority and causal feedback; C4 bounds work and reports closure separately. M4 adds a narrow shared generated-result commitment through existing ports. Exact approval precedes signing; saved signed bytes survive retry; actual post-state readback and matching deploy-effect finality close the chain claim. Four native kill boundaries, node outage/restart and an independent read-only process exercise recovery. All ten required M4 gates and full M1–M3.1 regression pass. Private cognition remains off-chain. Single-validator local success is a precise integration result, not production readiness or evidence that the reasoning is true.")
+    s = Slide("", "07 / Takeaway", source="M5 tested bfb0ec8 · evidence 3dc6c11", dark=True)
+    s.text(72,177,1430,"Discover the knowledge.\nPreserve the boundaries.\nCheck the evidence.",72,C["white"],"bold",1.15)
+    s.text(77,508,1370,"Real Hive → exact query → relations → real DeTTa payloads\nwith explicit freshness, independent owners and restart.",34,C["dim"],lineheight=1.35)
+    s.tag(76,711,"M5 COMPLETE · ALL 12 REQUIRED GATES PASS","teal",C["mint"],22)
+    note(s,"Return to the five ELI16 stories: history and support, priorities and budgets, delivery closure, approved commitments, and a library catalogue with explicit freshness. M5 completes the bounded fifteen-family inventory with four Relations operations and exact-attribute Search. The native consumer discovers five roots, fifteen relations and eight payloads without supplied answer references. Lag, catch-up, rebuild, restart and independent replacement are demonstrated through declared interfaces. M1–M4 regressions pass, including real chain; no new cognition, numerical behavior or chain work is added. Separate module, operation and behavior coverage says precisely what was demonstrated. Private data and identifiers remain private. The useful result is a tested local integration with explicit limits.")
 
     s = Slide("Implementation map: responsibilities stay local", "Appendix A / Code navigation",
               "Follow interfaces and owner journals before following concrete provider classes.",source="architecture.md · ports.py",appendix=True)
@@ -755,7 +896,7 @@ def build_content():
     note(s,"Paths are relative to fusion/ unless marked hive/, which is under integration/. ports.py declares the protocols; attention_contracts.py and cognition_contracts.py enforce the executable bounded schemas. Shared DTO validators are permitted in the independent fixture, shared owner transitions are not. C2 default M2 behavior remains via its original validators and profile; the derived owner selects fresh v3 behavior. The native plugin uses integration/m3_scenario.py and holds only caller intent and public receipt. No owner reaches into another owner's private SQL. Tests and exact source hashes are indexed in the M3.1 machine manifest. Historical protocol declarations are preserved; new closure protocols are explicit.")
 
     s = Slide("Exact sources identify the verified native stack", "Appendix B / Source ledger",
-              "Full revisions are printed here; source files and built binary hashes remain in the committed evidence.",source="evidence/m4/final/verification.json · source_pins",appendix=True)
+              "Full revisions are printed here; source files and built binary hashes remain in the committed evidence.",source="evidence/m5/source-state.json · provider-build.json",appendix=True)
     runtime=M31VERIFY['runtime'];pins=M31VERIFY['hive_sources']
     source_rows=[("Fusion · tested",BASE_COMMIT),("Hive schematics",pins['schematics']['commit']),
                  ("Hive",pins['repositories']['omegahive']['commit']),
@@ -860,6 +1001,23 @@ def build_content():
         ("Bounded native observation","≤120 calls; stop starting after 180 s","≤256 saved observations; explicit exhaustion")],[350,620,486],row_h=81,size=23)
     note(s,"The public sibling exposes commit and observe, with only original_command. It gets completed accepted/acknowledged results through a caller-owned accessor beside the unchanged fusion-inspect plugin. ConsensusFinality signatures remain backend-independent. The new profile pins actual inclusion-block post-state semantics and fixed commitment format; it does not widen the legacy adapter. Logical timestamp/plan commit before signing, full signed deploy commits before HTTP. Replays retain the exact signature, serialization, gas limits, timestamp and deployment identity, without extending validity. Native progress is separate from adapter observations and cannot access other owners' tables. Observation calls are bounded and cooperative; an in-flight socket timeout may complete after the start deadline. Fresh single-operation journals only; no migration. Tests live in tests/test_m4_chain.py and integration/chain/test_m4.py. Build, verify and separate readback scripts provide the evidence workflow.")
 
+    s = Slide("Reproduce M5 from declared sources and private requests", "Appendix J / M5 code + commands",
+              "Fresh provider build, existing chain dependencies, then all required gates.",source="runbook.md · scripts/verify_m5.py",appendix=True)
+    for i,line in enumerate([
+        "uv run --python 3.11 --locked python scripts/build_m3.py <providers>",
+        "uv pip install --python <providers>/native/venv/bin/python \\",
+        "  -r integration/chain/requirements.lock",
+        "uv run --python 3.11 --locked python scripts/verify_m5.py \\",
+        "  --environment <providers>/environment.json --chain-build <chain> \\",
+        "  --output <fresh-output>"]):
+        s.text(89,238+i*48,1430,line,25,C['ink'],'mono')
+    table(s,["Code","Responsibility"],[
+        ("fusion/atom_feed.py · relations.py · search.py","Accepted source; structural owner; projection owner"),
+        ("fusion/lookup.py · lookup_composition.py","Declared-port consumer; private binding and placement"),
+        ("integration/hive/lookup/ · test_m5_integration.py","Actual native dispatch and recovery; no answer refs")],[800,656],y=552,row_h=58,size=22)
+    band(s,"Use --gates hive for the focused demo. Keep raw environments, private journals, queries and IDs private.",size=24)
+    note(s,"The full runbook supplies concrete paths and prerequisites. build_m3.py makes fresh pinned native Hive/PeTTa/SWI/DeTTa providers; the unchanged M4 Python lock supplies legacy-chain dependencies. <chain> is a verified pinned M4 node build, explicitly reused in the recorded run; build_m4.py can create a fresh full build when needed. verify_m5.py supports fixtures, storage, hive, legacy or all. Fixture, real-provider, missing prerequisite, executed failure and timeout classifications remain distinct. The native writer uses declared ports then exits; the operator request map contains query attributes and source barrier only. The private caller journal retains detailed result state. Public evidence publishes sanitized counts, gate results and code/build hashes only. Reading these commands or rebuilding this deck runs no integration or chain process.")
+
     assert len(SLIDES) == TOTAL_SLIDES
     assert sum(not s.appendix for s in SLIDES) == MAIN_SLIDES
 
@@ -883,18 +1041,18 @@ def export():
     prs = Presentation()
     prs.slide_width = Inches(13.333333)
     prs.slide_height = Inches(7.5)
-    prs.core_properties.title = "Omega × ASI — Private cognition and verified chain commitments"
-    prs.core_properties.subject = "Through M4: private cognition, delivery closure and native Hive-to-chain commitments"
+    prs.core_properties.title = "Omega × ASI — Private discovery, cognition and verified commitments"
+    prs.core_properties.subject = "Through M5: private discovery, bounded cognition and verified chain commitments"
     prs.core_properties.author = "Omega × ASI module-interface project"
-    prs.core_properties.keywords = "Omega, ASI, M4, ELI16, Hive, DeTTa, PLN, F1R3node, commitment, attention, recovery"
+    prs.core_properties.keywords = "Omega, ASI, M5, Relations, Search, ELI16, Hive, DeTTa, PLN, F1R3node, commitment, attention, recovery"
     pdf_path = HERE / "omega-asi-module-interfaces.pdf"
     pdf = canvas.Canvas(str(pdf_path), pagesize=(W*SCALE,H*SCALE), invariant=1)
     pdf.setTitle(prs.core_properties.title)
     pdf.setAuthor(prs.core_properties.author)
     notes = ["# Omega × ASI — speaker notes", "", f"Implementation baseline: `{BASE_COMMIT}`.",
              f"Evidence snapshot: `{EVIDENCE_COMMIT}`.",
-             f"Suggested delivery: 50–55 minutes for slides 1–{MAIN_SLIDES}, with appendices for discussion.",
-             "Current claims use the recorded 16 October 2026 M4 run, including M1–M3.1 regression. Earlier cognitive observations and M3 timings retain their source labels. Historical M1 chain evidence is distinct from the required real M4 same-artifact proof.", ""]
+             f"Suggested delivery: 60–65 minutes for slides 1–{MAIN_SLIDES}, with appendices for discussion.",
+             "Current claims use the recorded 16 October 2026 M5 run, including M1–M4 regression. Earlier cognitive observations and M3 timings retain their source labels. Historical M1 chain evidence is distinct from the required real M4 same-artifact proof.", ""]
     manifest=[]
     for index,s in enumerate(SLIDES,1):
         s.footer(index,len(SLIDES))
@@ -980,7 +1138,7 @@ def export():
         svg.append("</svg>")
         (svg_dir/f"{index:02d}.svg").write_text("\n".join(svg)+"\n")
         pdf.showPage()
-        title=s.title or ("Keep the evidence. Bound the work. Verify the commitment." if index==1 else "Keep the evidence. Preserve the budget. Verify the commitment.")
+        title=s.title or ("Discover the knowledge. Bound the work. Verify the result." if index==1 else "Discover the knowledge. Preserve the boundaries. Check the evidence.")
         notes += [f"## {index:02d} — {title}","",s.notes,"",f"Source: `{s.source}`.",""]
         manifest.append(dict(slide=index,title=title,section=s.section,appendix=s.appendix,source=s.source,
                              text_elements=sum(e["kind"]=="text" for e in s.elements),

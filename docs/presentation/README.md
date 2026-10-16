@@ -1,114 +1,126 @@
-# Omega × ASI — private cognition and verified chain commitments
+# Omega × ASI — private discovery, cognition and verified commitments
 
 [Present the PDF](omega-asi-module-interfaces.pdf) ·
 [Edit the PowerPoint](omega-asi-module-interfaces.pptx) ·
 [Speaker notes](speaker-notes.md)
 
-52 slides, 16:9. Slides 1–43 form a 50–55 minute talk; slides 44–52 are
-technical discussion appendices. Four early **ELI16 executive-summary slides**
+64 slides, 16:9. Slides 1–54 form a 60–65 minute talk; slides 55–64 are
+technical discussion appendices. Five early **ELI16 executive-summary slides**
 explain the notebook, evidence ledger, calculator, priority list, work budget,
-delivery receipts and approved chain commitment. The helicopter view covers all
-15 modules, responsibilities, state ownership and function dependencies before
-implementation detail. Separate diagrams show private cognition, the preserved
-native inspect workflow and the new approved-result commitment path.
+delivery receipts, approved commitment and searchable library catalogue.
+The helicopter view covers all 15 module families, responsibilities, state
+ownership and function dependencies before implementation detail. Separate maps
+show private cognition, original inspect dispatch, approved chain commitment
+and the new **query → relation traversal → payload retrieval** workflow.
 
-All diagrams are vector graphics. The PowerPoint contains editable text, shapes
-and connectors, with speaker notes on every slide. The PDF embeds its fonts.
+All diagrams are vector graphics. PowerPoint text, shapes and connectors are
+editable, with speaker notes on every slide. The PDF embeds its fonts.
 For faithful PowerPoint editing, install the bundled [DejaVu fonts](fonts/),
 distributed with their [license](fonts/LICENSE.txt).
 
 | Slides | Story |
 |---|---|
-| 1–5 | Thesis and ELI16 summary: evidence, budgets, delivery and verified commitments |
-| 6–9 | All 15 modules, responsibilities, state ownership and implementation status |
-| 10–12 | Private cognition, preserved M1.2 dependencies and new M4 chain dependency map |
-| 13–16 | Application-neutral DA, independent replacement, private placement and contracts |
-| 17–22 | C1 history and delivery; C2, inherited support and unchanged native mathematics |
-| 23–28 | Independent STI, historical comparison, durable budgets, feedback closure and recovery |
-| 29–31 | Actual native Hive inference and closure progress; demonstrated selection effect |
-| 32–36 | Same-artifact Hive/DA/chain trace, exact approval, post-state finality, four kills and isolation |
-| 37–43 | Evidence classifications, executed tests, all ten M4 gates, exact sources, limits and takeaway |
-| 44–52 | Code, full pins, cognitive profiles, old stores, original sequence, historical chain, reproduction, retry identities and M4 profile |
+| 1–6 | Thesis and five ELI16 summaries, including the new catalogue analogy |
+| 7–10 | All 15 module families, responsibilities, owners and bounded implementation status |
+| 11–14 | Function dependencies: cognition, inspect, commitment and private lookup |
+| 15–18 | Application-neutral DA, independent replacement, placement and contracts |
+| 19–24 | C1 history/delivery, C2 admission, inherited support and guarded native mathematics |
+| 25–33 | Independent STI, durable budgets, feedback closure, recovery and actual native inference |
+| 34–38 | Preserved M4 same-artifact chain proof, exact approval, finality, recovery and isolation |
+| 39–44 | M5 Relations, authoritative feed, exact Search, freshness, native lookup and recovery |
+| 45–47 | Separate coverage denominators, provider classifications and executed tests |
+| 48–51 | Preserved M4 gates and all 12 required M5 gates |
+| 52–54 | Exact sources, limitations and takeaway |
+| 55–64 | Code, pins, profiles, old stores, original sequence, historical chain, reproduction and retry identities |
 
-Current claims use the recorded **16 October 2026 M4 final run**, tested from
-clean detached `55ed5402391ab6ed14f8ab20e1eea4c85d8be955` and recorded in the
-evidence-only descendant `05b1c52cfa6ced6e263700753e82ad6038a3b0dd`. This
-presentation update starts from that clean evidence checkout. The build manifest
-hashes 47 evidence/report inputs. QA audits all four M2/M3/M3.1/M4 archives,
-current tested runtime hashes, earlier observations against their historical
-revisions, and the same-artifact readback. This update changes presentation and
-its documentation only; it does not rerun integrations or expand their guarantees.
+Current claims use the recorded **16 October 2026 M5 final run**, tested at clean
+`bfb0ec8856c932dc2bcbc05b8949c957da8d72cd` and recorded in the evidence-only
+descendant `3dc6c1146601a0d0aa8785e61884970ec84a57c6`. This presentation update
+starts from that evidence checkout. The build manifest hashes 82 evidence/report
+inputs. QA audits the M2/M3/M3.1/M4/M5 archives, 132 current runtime/test/build
+hashes and earlier observations against their historical revisions. The update
+changes presentation and documentation only; it does not rerun integrations or
+expand their guarantees.
 
-M4 connects one actual authenticated native `fusion-inspect` result through
-real DeTTa and the existing execution/messaging interfaces to a narrow native
-`fusion-commitment` sibling. Operator approval binds the exact accepted result,
-actor, chain/genesis/profile, signer and fixed operation. The adapter commits the
-logical plan before signing and the full signed request before sending. Retries
-reuse the exact signed bytes, timestamp and deployment identity. Current authority
-is checked on replay as well as new work. Existing backend-independent ports,
-original inspect dispatch and private cognitive owners stay unchanged.
+M5 implements all four Relations operations (`assertRelation`, `getRelation`,
+`outgoing`, `incoming`) and one explicit exact-attribute Search profile. An
+AtomStorage-owned contiguous accepted commit feed supplies replayable indexing.
+Search uses declared `head`, `readCommits` and `get` ports; no foreign owner
+SQL or answer list supplies its index. Bounded `catchUp` and `beginRebuild`
+maintenance own separate commands. Query exposes indexed prefix, page completion,
+requested freshness and observed source head separately. Search and Relations
+have independent snapshots and owner commits.
 
-The real isolated F1R3node stores the fixed tuple of namespace, generated operation
-ID and approved result digest. Success requires the **actual inclusion-block
-post-state value plus matching successful deploy-effect finality**. A separate
-read-only process verifies the same digest, deploy, block and post-state after a
-same-genesis node restart, without opening a caller journal or signing key.
-Only the explicitly shareable generated workflow is eligible; private episodes,
-beliefs, provenance and their identifying hashes stay off-chain.
+Actual authenticated native Hive `fusion-lookup` discovers **5 matching roots,
+15 relations and 8 payloads**, across three Search pages. Setup exits before the
+consumer starts; its request contains query attributes and a freshness barrier,
+with no answer references. A later matching record produces an explicit lag
+failure, then **6 roots and 9 payloads** after catch-up. Rebuild, restart and
+same-profile independent Search substitution preserve discovery and canonical
+payload bytes. The alternate atomic-file Search provider evaluates predicates
+and persists state independently; it is explicitly a fixture. An opaque native
+request label keeps private query text out of Hive parameter logs. Ordinary
+receipts expose counts/status; detailed results and identifiers remain private.
 
-All **10 required M4 gates passed**, including **REAL_CHAIN_EFFECT**. There are
-11 focused commitment fixtures and six actual native chain cases, including four
-caller/adapter SIGKILL boundaries. Real node outage/restart and independent readback
-also pass. The complete M1–M3.1 regression passed; its 138-case aggregate already
-includes those 11 fixtures, and repeated subsets must not be summed into a unique
-total. Both attention providers, strict causal/time semantics, durable budgets,
-private placement and old-profile compatibility remain covered.
+All **12 required M5 gates pass**. Coverage has three distinct denominators:
 
-The same-artifact trace records a 53-byte generated input, a 143-byte accepted
-result and a 673-byte signed request. First finalized-effect observation was
-4.066 seconds, including proposal and authorized observation overhead, with
-675 phlo execution cost. These are individual local observations with concurrent
-regressions, **not performance, throughput or economic claims**.
+- **15/15 bounded reference module families**, up from 13; this is not full Omega completeness.
+- **9/9 new operations**, or **13/13 operations** including inherited AtomStorage dependencies in the M5 slice.
+- **18/18 behavioral groups**: 12 brief scenarios and six crash-boundary groups. Line/branch coverage is **NOT_MEASURED**.
 
-The original cognitive story remains intact: C1 retains contrary observations,
-C2 admits evidence and derived support, pure PLN reuses guarded native formulas,
-C3 owns independent STI and causal feedback, and C4 owns durable work budgets.
-M3.1 makes C1 processing completion independent of PLN snapshots and exposes
-execution separately from later closure. The recorded 33-event drain and historical
-four-case M3 comparison keep their own source labels. Reconciliation adds no new
-formula calls, does not retime feedback, and never refunds a reservation or resets
-a deadline. Eligible/unavailable feedback and finite capacity can still leave
-closure pending.
+The final run executes 18 new fixture methods, four real-provider methods and
+seven native Hive cases, including **13 deliberate M5 SIGKILL cases** (nine direct,
+four native). Supplemental probes cover four populated attention/Search
+configurations and four complete native payload comparisons. The unchanged
+M1–M3.1 regression passes with a 156-case aggregate (old 138 plus new 18); repeated
+subsets must not be summed. Eleven unchanged M4 fixtures and six real isolated
+M4 chain cases also pass as legacy regression. M5 adds no chain operation.
 
-Real Hive, native PLN/PeTTa, local DeTTa, SQLite owners and isolated F1R3node are
-separate from generated inputs, operator grants, test keys/genesis, the fixture
-reference-message counterparty, independent file attention and injected faults.
-One native caller and one fixture counterparty are not two production agents.
-One local validator establishes node-observed integration, not decentralized
-safety, trustless attestation or correctness of off-chain reasoning.
+The original cognitive story remains intact: C1 retains contrary observations;
+C2 admits evidence and derived support; pure PLN reuses guarded native formulas;
+C3 owns independent STI and causal feedback; C4 owns durable budgets. M3.1 keeps
+execution separate from delivery/feedback closure. Historical 33-event draining
+and M3 comparison timings retain their own source labels. Reconciliation adds
+no native formula calls, retiming, reservation refunds or deadline resets;
+finite capacity and eligible/unavailable feedback can leave closure pending.
 
-The clean F1R3node source rebaseline is pinned at
-`9ec1096e10774926ea8e72f0823482f0bf9213e1`. The old dirty workspace was untouched
-and unused; exact historical M1 source reproduction remains **BLOCKED**. Slide 49
-preserves that earlier chain observation without substituting it for M4 proof.
-Nested legacy verifier `CHAIN=NOT_RUN` fields describe the older scope; the outer
-M4 required real chain gate is **PASS**. Final M4 missing prerequisites, executed
-failures and observation timeouts are separately recorded and all empty. Earlier
-launcher/harness failures and the corrected mutable-approval regression remain
-in the committed preparation evidence.
+The preserved M4 workflow connects one approved generated native inspect result
+to real isolated F1R3node inclusion post-state and matching deploy-effect finality.
+Signed-intent replay, four native kill boundaries and independent readback remain
+visible. The original M4 measurement is explicitly historical: 53-byte input,
+143-byte result, 673-byte signed request, 4.066-second first finalized-effect
+observation and 675 phlo. It is one local observation, not a throughput or economic
+claim. Private episodes, beliefs, provenance and identifying hashes stay off-chain.
+One local validator demonstrates node-observed integration, not decentralized
+safety or correctness of off-chain reasoning.
 
-Explicit new profiles require **fresh journals**. No existing state is migrated.
-Recovery covers same-host process termination with intact files. Builds used
-fresh provider sources/objects and warm downloads; upstream Rust regression test
-binaries may be cached between attempts. Public networks, multi-validator safety,
-empty global caches, power loss, distributed failover, production security/economics,
-historical SWI 10.0.1 and the full upstream Hive suite remain **NOT_RUN**.
-No new cognition, scheduler, ECAN, LTI, general search or migration is added.
+Real Hive/PeTTa, native PLN, DeTTa, SQLite owners and isolated F1R3node stay separate
+from generated corpora/oracles, policy/grants, keys/genesis, fixture counterparties,
+independent atomic-file providers and injected faults. Final M5 missing prerequisites,
+executed failures and observation timeouts are separately empty. Corrected development
+failures and an intermediate **PARTIAL** run remain archived; neither supplies a
+final pass. An intentional negative verifier probe retains **BLOCKED/NOT_RUN**
+classification with no fixture fallback. Historical dirty M1 chain-source reproduction
+is still **BLOCKED**; the verified clean M4 rebaseline remains separate.
 
-Read the [M4 report](../module-interfaces/m4-evidence.md),
-[M4 manifest](../../evidence/m4/manifest.json),
-[same-artifact trace](../../evidence/m4/final/same-artifact.json),
-[independent readback](../../evidence/m4/final/readback.json),
+New lookup profiles require **fresh stores**. Limits include 512 atoms, 4096 bytes
+per atom, 128 accepted relations, 256 indexed records and pages/batches of at most
+eight. One-hop lookup and exact case/Unicode attributes are bounded; unavailable
+source bytes block indexing. There is no migration, eviction, automatic repair,
+embedding search, new cognition, scheduler or new chain work. Recovery covers
+same-host process termination with intact files. Provider source/objects were
+fresh with warm downloads; the pinned M4 node binary was explicitly reused with
+fresh isolated state. Power loss, distributed failover, public networks, empty
+global caches, full upstream Hive tests and production security remain unrun.
+Human maintainers remain unassigned.
+
+Read the [M5 report](../module-interfaces/m5-evidence.md),
+[M5 manifest](../../evidence/m5/manifest.json),
+[capability ledger](../module-interfaces/m5-capability-ledger.json),
+[contracts](../module-interfaces/m5-contracts.md),
+[native trace](../../evidence/m5/traces/lookup-trace-1.json),
+[payload comparisons](../../evidence/m5/native-payload-comparison.json),
+[M4 report](../module-interfaces/m4-evidence.md),
 [M3.1 report](../module-interfaces/m3_1-evidence.md),
 [M3 report](../module-interfaces/m3-evidence.md),
 [M2 report](../module-interfaces/m2-evidence.md),
@@ -133,20 +145,20 @@ It generates the PDF, PowerPoint, [SVG slides](slides-svg/), notes and
 The builder checks bounds/text overlap, reopens the PowerPoint and renders every
 PDF page to contact sheets under ignored `artifacts/presentation-qa/`.
 
-Export the PowerPoint independently with LibreOffice, then compare both renderers
+Export PowerPoint independently with LibreOffice, then compare both renderers
 and audit the source evidence:
 
 ```bash
 libreoffice --headless --convert-to pdf \
-  --outdir artifacts/presentation-qa/office-m4 \
+  --outdir artifacts/presentation-qa/office-m5 \
   docs/presentation/omega-asi-module-interfaces.pptx
 uv run --python 3.11 --with-requirements docs/presentation/requirements.txt \
   python docs/presentation/check.py \
-  artifacts/presentation-qa/office-m4/omega-asi-module-interfaces.pdf
+  artifacts/presentation-qa/office-m5/omega-asi-module-interfaces.pdf
 ```
 
 The [QA record](qa.json) records independent LibreOffice rendering, slide text,
 notes, fonts, evidence audit, visual review and ProofShot browser verification.
 Microsoft PowerPoint itself is unavailable. Local visual proof artifacts are
 ignored; generated presentation files and the QA record are committed. Rebuilding
-or checking the presentation does not rerun or overwrite integration evidence.
+or checking this deck does not rerun or overwrite integration evidence.

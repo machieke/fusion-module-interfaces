@@ -1,38 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">One grounded rule reuses the actual native PLN</title>
-<desc id="desc">The unchanged Reachability dd56f3f implementation invokes PLN 4405956 Truth_Deduction on PeTTa ae66fa8 and SWI source 6977543, version 10.1.14. The exact runtime profile is fusion-petta-swi-10.1.14-deduction/1. No PLN.Derive, PLN.Query or task search is used. The Q&gt;0.9999 branch and its assumptions remain upstream semantics and are tested. Kernel source checks and native subprocesses use the remaining absolute deadline. This pure component owns no belief, agenda or attention state. Source drift, malformed output and timeout are explicit refusals, with fault injections labelled in the native suite.</desc>
+<title id="title">C2: admitting evidence and changing belief are separate</title>
+<desc id="desc">This slide describes preserved observation admission. M3 adds a separate derivation command with inherited evidence, described next. The first eligible explicit assessment initializes the aggregate. Later evidence is retained without automatic aggregation unless an exact pair assumption and guards permit revision. Unknown origins cannot initialize a justified numerical aggregate. A report without numerical assessment is model-inapplicable. The ledger retains observations, support records, immutable snapshots and exact decisions. A later authorized independence declaration may combine already admitted supports, without creating another observation. Exact successful replay returns the original historical decision even after later revisions; a new-key duplicate returns current state without adding weight. Retained-alternative is a pair outcome, so an already covered ancestor need not produce a new alternative list entry or revision. Coverage fields state the actual result.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / KERNEL AND RUNTIME COMPATIBILITY</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">One grounded rule reuses the actual native PLN</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No replacement arithmetic and no general search loop: five explicit premises produce one proposal.</text>
-<rect x="72" y="260" width="420" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Fusion PLNKernel</text>
-<text x="94" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Exact bindings,</text>
-<text x="94" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">source/profile checks and</text>
-<text x="94" y="429.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">remaining deadline</text>
-<rect x="560" y="260" width="480" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="582" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Pinned Reachability</text>
-<text x="582" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">PLNAdapter.apply_rule</text>
-<text x="582" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">DeductionRule + guards</text>
-<rect x="1108" y="260" width="420" height="224" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1130" y="311.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Native PLN / PeTTa</text>
-<text x="1130" y="358.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Truth_Deduction</text>
-<text x="1130" y="394.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">SWI 10.1.14 + Janus</text>
-<line x1="492" y1="372" x2="560" y2="372" stroke="#007C78" stroke-width="2"/>
-<polygon points="560,372 547.0,367.0 547.0,377.0" fill="#007C78"/>
-<line x1="1040" y1="372" x2="1108" y2="372" stroke="#007C78" stroke-width="2"/>
-<polygon points="1108,372 1095.0,367.0 1095.0,377.0" fill="#007C78"/>
-<rect x="72" y="548" width="704" height="183" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="94" y="598.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Two probability checks</text>
-<text x="94" y="644.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Upstream exact Python precheck and the native</text>
-<text x="94" y="678.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">consistency guard both apply.</text>
-<rect x="800" y="548" width="728" height="183" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="822" y="598.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Separate compatibility profile</text>
-<text x="822" y="644.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Deduction has its own source/runtime allowlist;</text>
-<text x="822" y="678.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">the revision-only profile stays intact.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / BELIEF REVISION</text>
+<text x="70" y="137.75" font-family="DejaVu Sans" font-size="45" font-weight="700" fill="#102B3F">C2: admitting evidence and changing belief are separate</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">New observations remain visible even when they cannot change the current aggregate.</text>
+<rect x="72" y="252" width="380" height="180" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="300.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">Evidence submission</text>
+<text x="94" y="339.79" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">C1 evidence reference or an</text>
+<text x="94" y="366.67" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">existing C2 support; exact</text>
+<text x="94" y="393.55" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">claim and context.</text>
+<line x1="452" y1="342" x2="554" y2="342" stroke="#315E9C" stroke-width="2"/>
+<polygon points="554,342 541.0,337.0 541.0,347.0" fill="#315E9C"/>
+<rect x="554" y="252" width="400" height="180" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="576" y="302.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#315E9C">Admission decision</text>
+<text x="576" y="346.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">ADMITTED or DUPLICATE</text>
+<text x="576" y="378.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Track occurrence and</text>
+<text x="576" y="410.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">provenance.</text>
+<line x1="954" y1="342" x2="1056" y2="342" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1056,342 1043.0,337.0 1043.0,347.0" fill="#315E9C"/>
+<rect x="1056" y="252" width="472" height="180" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1078" y="302.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Numerical decision</text>
+<text x="1078" y="346.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Initialize, revise, no change,</text>
+<text x="1078" y="378.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">retain alternative, or</text>
+<text x="1078" y="410.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">model-inapplicable.</text>
+<rect x="72" y="510" width="704" height="211" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="561.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#007C78">Aggregate with exact coverage</text>
+<text x="94" y="607.3299999999999" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Every numerical result names the contributing</text>
+<text x="94" y="641.89" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">leaves, origins, premises, formula and</text>
+<text x="94" y="676.4499999999999" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">assumption.</text>
+<rect x="800" y="510" width="728" height="211" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="822" y="560.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#A86A15">Unaggregated alternatives</text>
+<text x="822" y="606.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Copied or contrary observations remain in the</text>
+<text x="822" y="640.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">snapshot. Later eligible assumptions can combine</text>
+<text x="822" y="675.17" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">existing supports.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="801.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Kernel output is a proposal. C2 performs final authorization, CAS and admission.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">One saved truth value is not a summary of every observation. Read its coverage and alternatives.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / deduction-sources.json · integration/pln/test_deduction.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">21 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / beliefs.py · memory_types.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">21 / 64</text>
 </svg>

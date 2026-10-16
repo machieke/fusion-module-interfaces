@@ -1,43 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Executed tests preserve cognition and verify real chain</title>
-<desc id="desc">M4 final execution uses clean detached 55ed540 at start and end with unchanged runtime hashes. Eleven focused fixture cases and six native chain cases passed, with no skipped native case. The full M1–M3.1 regression ran for 1414.133 seconds. It includes the 138-case aggregate, M1 subset 51, upstream DeTTa 62+38, native Hive baseline 34 and original inspect 13. M2 fixture/guard/native/recovery/Hive: 16/8/12/6/7. M3 attention/contracts/guards/native/recovery/Hive: 5/7/15/13/3/8 plus four comparison cases. M3.1 fixtures/providers/direct recovery/Hive: 9/5/3/7; direct recovery methods cover sixteen kills and native cases four caller kills. Repeated subsets overlap. Earlier M3.1 non-numerical probes and 33-event observations retain their original source labels. Development harness failures and the nested approval-alias negative regression are archived separately, corrected before the final pass. Presentation QA does not rerun these integrations.</desc>
+<title id="title">The real chain ran in a disposable isolated network</title>
+<desc id="desc">F1R3node pin 9ec1096e10774926ea8e72f0823482f0bf9213e1 was obtainable from the authorized repository. The historical dirty workspace at the same SHA has eight tracked modifications and one untracked input; it was untouched and unused. M4 deliberately validates the clean source as a new baseline. Fresh node build uses nightly-2026-02-09, cargo --offline --locked -j2 -p node --bin node, debug 0, incremental 0 and RUST_MIN_STACK 8388608. Node binary SHA-256 2021389d8e1a1db0470d55ba6744124e33f2bc44f5155e6cfa662798b4ffd085. Each chain run uses disposable data/genesis within an unprivileged user/network namespace; only loopback is brought up. Live socket/route tests verify actual isolation. All generated nodes are stopped after verification. Warm downloads and possible cached upstream Rust regression binaries are explicit; fresh provider binaries were not copied.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">06 / M4 FINAL VERIFICATION</text>
-<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">Executed tests preserve cognition and verify real chain</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Repeated subsets overlap. These counts must not be added into a unique test total.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">COMMAND / LAYER</text>
-<text x="628" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CASES</text>
-<text x="908" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EVIDENCE TYPE</text>
-<rect x="72" y="277" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Preserved M1–M3.1 regression</text>
-<text x="628" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">138 aggregate</text>
-<text x="908" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Includes the 11 M4 fixtures; all native suites rerun</text>
-<rect x="72" y="356" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Focused commitment fixtures</text>
-<text x="628" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">11</text>
-<text x="908" y="394.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Approval, replay, malformed effects and mutable</text>
-<text x="908" y="424.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">aliases</text>
-<rect x="72" y="435" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Actual native Hive + real chain</text>
-<text x="628" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">6</text>
-<text x="908" y="473.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">All passed; four explicit native SIGKILL boundaries</text>
-<rect x="72" y="514" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Node outage / restart + readback</text>
-<text x="628" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">In native suite</text>
-<text x="908" y="552.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Same data/genesis; separate reader; privacy +</text>
-<text x="908" y="582.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">authority</text>
-<rect x="72" y="593" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">M3.1 regression retained</text>
-<text x="628" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">9 / 5 / 3 / 7</text>
-<text x="908" y="631.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Fixtures / provider / recovery / Hive; 16 + 4 kills</text>
-<rect x="72" y="672" width="1456" height="74" rx="6" fill="#FFFFFF"/>
-<text x="88" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Both attention providers</text>
-<text x="628" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Preserved</text>
-<text x="908" y="710.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Old-profile compatibility and independent</text>
-<text x="908" y="740.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">replacement</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / M4 · REPRODUCIBLE SOURCE + SAFE ISOLATION</text>
+<text x="70" y="142.5" font-family="DejaVu Sans" font-size="50" font-weight="700" fill="#102B3F">The real chain ran in a disposable isolated network</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Clean pinned F1R3node source; no public connection, upstream patch or consensus rewrite.</text>
+<rect x="72" y="243" width="920" height="488" rx="14" fill="#DCEFE8" stroke="#007C78"/>
+<text x="99" y="289.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">UNPRIVILEGED NETWORK NAMESPACE · LOOPBACK ONLY</text>
+<rect x="105" y="337" width="386" height="175" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="127" y="387.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Generated test</text>
+<text x="127" y="425.9" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">genesis</text>
+<text x="127" y="465.75" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">One validator</text>
+<text x="127" y="492.63" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Generated stake, wallet and key</text>
+<rect x="573" y="337" width="386" height="175" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="595" y="387.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Real F1R3node</text>
+<text x="595" y="431.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">9ec1096e1077…</text>
+<text x="595" y="463.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Fresh source and local</text>
+<text x="595" y="495.15" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">build</text>
+<line x1="491" y1="423" x2="573" y2="423" stroke="#007C78" stroke-width="2"/>
+<polygon points="573,423 560.0,418.0 560.0,428.0" fill="#007C78"/>
+<rect x="105" y="560" width="854" height="134" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="127" y="609.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Observed sockets stay inside</text>
+<text x="127" y="650.02" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">P2P and gRPC wildcard listeners exist only in the namespace; no route to</text>
+<text x="127" y="678.18" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">an external network.</text>
+<rect x="1064" y="243" width="464" height="224" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1086" y="295.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">From the host</text>
+<text x="1086" y="343.51" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">All six probed ports refused</text>
+<text x="1086" y="380.63" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">connections while the node</text>
+<text x="1086" y="417.75" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">was ready.</text>
+<rect x="1064" y="507" width="464" height="224" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="1086" y="559.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#A86A15">From the namespace</text>
+<text x="1086" y="607.51" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">External connection failed:</text>
+<text x="1086" y="644.63" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">ENETUNREACH. Host firewall</text>
+<text x="1086" y="681.75" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">unchanged.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Final source: 55ed540. Missing prerequisites: 0 · executed failures: 0 · observation timeouts: 0.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Single-validator evidence establishes this local integration; multi-validator safety remains unrun.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M4 / evidence/m4/final/verification.json · regression-summaries.json</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">38 / 52</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / evidence/m4/build/chain.json · final/isolation.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">38 / 64</text>
 </svg>
