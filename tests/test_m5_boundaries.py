@@ -151,3 +151,11 @@ class Boundaries(unittest.TestCase):
         session=AtomSession(PortOnly(Oversized(),('get','getMany')),h.modules.access['atom.storage'])
         self.error('NOT_AVAILABLE',lambda:session.get(ref))
         self.error('NOT_AVAILABLE',lambda:session.getMany((ref,)))
+
+    def test_search_fixture_evaluates_predicates_independently(self):
+        h=self.harness('atomic-file-fixture')
+        expected=h.create('match',kind='task',topic='exact')
+        h.create('wrong-kind',kind='note',topic='exact');h.create('missing',kind='task');h.drain()
+        with patch('fusion.lookup_contracts.matches',side_effect=AssertionError('shared query evaluator')):
+            self.assertEqual(h.search.query(h.query(kind='task',topic='exact'))['refs'],[expected])
+            self.assertEqual(h.search.query(h.query(kind='absent'))['refs'],[])

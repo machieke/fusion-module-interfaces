@@ -36,7 +36,8 @@ def verify(args):
                 state='PASS' if failure is None else 'NOT_RUN' if failure.tag=='skipped' else 'OBSERVATION_TIMEOUT' if 'OBSERVATION_TIMEOUT:' in (failure.text or '') else 'FAIL'
                 cases.append({'name':case.get('name'),'status':state,'seconds':float(case.get('time'))})
             item['cases']=cases
-            if any(x['status']!='PASS' for x in cases):status=item['status']='FAIL'
+            if cases:
+                status=item['status']=next((state for state in ('FAIL','OBSERVATION_TIMEOUT','NOT_RUN') if any(x['status']==state for x in cases)),status)
             report['observation_timeouts'].extend(x for x in cases if x['status']=='OBSERVATION_TIMEOUT')
         report['commands'].append(item);report['suites'][name]=status
         if status=='FAIL':report['executed_failures'].append({'suite':name,'returncode':code})
@@ -131,7 +132,7 @@ def verify(args):
     if not stable:report['gates']['BASELINE_AND_SCOPE']='FAIL'
     if args.development:report['gates']['BASELINE_AND_SCOPE']='NOT_RUN'
     report['result']='PASS' if all(s=='PASS' for s in report['gates'].values()) else 'PARTIAL'
-    save();return 0 if all(report['suites'].get(s) in ('PASS',None) for s in report['suites']) and stable else 1
+    save();return 0 if all(report['suites'].get(s) in ('PASS',None) for s in report['suites']) and stable and not violations else 1
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--environment',type=Path);parser.add_argument('--chain-build',type=Path)

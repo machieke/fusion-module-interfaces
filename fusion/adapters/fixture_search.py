@@ -102,7 +102,12 @@ class FileSearchFixture:
         else:at=state['watermark'];observation=state['observation'];after=0
         hits=[]
         for row in state['documents']:
-            if after<row['number']<=at['sequence'] and c.matches(row['attributes'],q.expression):hits.append(row)
+            if not after<row['number']<=at['sequence']:continue
+            accepted=True
+            for clause in q.expression['all']:
+                if clause['field'] not in row['attributes'] or row['attributes'][clause['field']]!=clause['eq']:
+                    accepted=False;break
+            if accepted:hits.append(row)
         hits.sort(key=lambda item:item['number']);chosen=hits[:q.limit];remaining=len(hits)>q.limit
         cursor=c.seal(state['secret'],{'binding':binding,'generation':state['generation'],'watermark':at,'observation':observation,'after':chosen[-1]['number']}) if remaining else None
         result={'refs':[row['reference'] for row in chosen],'at':at,'observed_head':observation,'generation':state['generation'],
