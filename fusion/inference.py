@@ -7,8 +7,8 @@ import sqlite3
 import time
 from . import cognition_contracts as c
 from . import attention_contracts as a
-from .contracts import ContractError, canonical, digest, require
-from .ports import DerivationSubmission, Mutation, Stimulus
+from .contracts import ERRORS, ContractError, canonical, digest, require
+from .ports import DerivationSubmission, Mutation, Stimulus, InferenceRequest, WorkBudget
 from .responses import envelope
 
 
@@ -16,7 +16,7 @@ class InferenceOwner:
     def __init__(self, database, atoms, beliefs, attention, access, selections, *, hook=lambda stage: None):
         self.database,self.atoms,self.beliefs,self.attention,self.access=str(database),atoms,beliefs,attention,access
         self.selections=c.detached(selections);self.hook=hook
-        self.parameters=attention.profile()['parameters'];a.policy(self.parameters)
+        self.parameters=c.response_copy(attention.profile())['parameters'];a.policy(self.parameters)
         self.identity=digest(canonical([self.profile(),selections,access.selection(),attention.profile()]))
         with closing(self._connect()) as db,db:
             db.executescript('CREATE TABLE IF NOT EXISTS meta(identity TEXT); CREATE TABLE IF NOT EXISTS steps(id TEXT PRIMARY KEY, fingerprint TEXT, value TEXT);')
@@ -42,7 +42,9 @@ class InferenceOwner:
 
     @c.boundary
     def step(self, request):
-        semantic=c.inference(request);scope=request.command.scope_ref
+        semantic=c.inference(request)
+        request=InferenceRequest(**{**semantic,'command':Mutation(**semantic['command']),'budget':WorkBudget(**semantic['budget'])})
+        scope=request.command.scope_ref
         actor=self.access.authorize(scope,'step');require(request.selections==self.selections,'UNSUPPORTED_PROFILE')
         require(self.attention.profile()=={'profile':a.PROFILE,'parameters':self.parameters,'policy':a.policy(self.parameters)},'UNSUPPORTED_PROFILE')
         identity=digest(canonical([actor,scope,request.command.idempotency_key]));fingerprint=digest(canonical([semantic,self.identity]))
@@ -80,7 +82,13 @@ class InferenceOwner:
             while True:
                 # Recover a committed C2 decision before deciding whether any new dispatch is affordable.
                 if state['attempt'] is not None:
-                    attempt=state['attempt'];decision=self.beliefs.readDerivation(scope,attempt['command']['idempotency_key'])
+                    attempt=state['attempt'];decision=c.response_copy(self.beliefs.readDerivation(scope,attempt['command']['idempotency_key']))
+                    if decision is not None:
+                        expected=digest(canonical([actor,scope,attempt['command']['idempotency_key']]))
+                        require(type(decision) is dict and decision.get('decision_id')==expected,'NOT_AVAILABLE')
+                        if decision.get('state')=='error':
+                            c.response(c.fields,decision,'state decision_id code')
+                            require(decision['code'] in ERRORS,'NOT_AVAILABLE')
                     if decision is not None and decision.get('state') == 'pending':
                         c.response(c.fields, decision, 'state decision_id')
                         expected=digest(canonical([actor,scope,attempt['command']['idempotency_key']]))
@@ -140,6 +148,7 @@ class InferenceOwner:
     def _accept(self,state,decision,attempt,request):
         """Validate C2 response before progress/feedback. Never mutate another owner."""
         scope=request.command.scope_ref
+        decision=c.response_copy(decision)
         require(type(decision) is dict,'NOT_AVAILABLE')
         expected=digest(canonical([self.access.authorize(scope,'step'),scope,attempt['command']['idempotency_key']]))
         require(decision.get('decision_id')==expected,'NOT_AVAILABLE')
@@ -168,9 +177,11 @@ class InferenceOwner:
             c.response(c.fields,decision,'state decision_id logical_id status detail')
             require(decision['logical_id']==c.logical_id(attempt['task'],attempt['premises'],self.selections['kernel']),'NOT_AVAILABLE')
             require(decision['status'] in ('FAIL','UNKNOWN'),'NOT_AVAILABLE')
+            require(type(decision['detail']) is str and len(decision['detail'])<=256,'NOT_AVAILABLE')
             state['counts']['refused']+=1;state['results'].append({'task':attempt['task'],'state':'refused','status':decision['status']})
         elif decision.get('state')=='error':
             c.response(c.fields,decision,'state decision_id code')
+            require(decision['code'] in ERRORS,'NOT_AVAILABLE')
             require(decision['code'] not in ('UNAUTHORIZED','UNSUPPORTED_PROFILE'),decision['code'])
             state['counts']['refused']+=1;state['results'].append({'task':attempt['task'],'state':'error','code':decision['code']})
         else:raise ContractError('NOT_AVAILABLE')

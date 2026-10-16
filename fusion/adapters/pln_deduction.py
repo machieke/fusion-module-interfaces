@@ -80,6 +80,8 @@ class GuardedDeduction:
     @c.boundary
     def applyRule(self, task, premises, deadline_ms):
         c.integer(deadline_ms,1);remaining(deadline_ms)
+        require(type(premises) is tuple and len(premises)==5)
+        task=c.detached(task);premises=tuple(c.detached(premises))
         scope=task['ref']['scope_ref'];context=task['record']['context'];literals=c.task(task,scope,context)
         require(type(premises) is tuple and len(premises)==5)
         for role,item in zip(c.ROLES,premises):

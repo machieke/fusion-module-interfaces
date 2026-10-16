@@ -71,3 +71,38 @@ class AdversarialContracts(unittest.TestCase):
             h.config['cognition_descriptors'][0]['profiles']=['pln-revision-private/1'];h.save()
             with self.assertRaises(ContractError):h.reopen()
         finally:h.close()
+
+    def test_mutable_caller_workset_cannot_change_durable_step_intent(self):
+        h=CognitionHarness()
+        try:
+            entry,_,_=h.generated();h.stimulate(entry);request=h.request(h.workset([entry]),candidates=1)
+            original=h.controller.access
+            class MutatingAuthority:
+                def selection(self):return original.selection()
+                def authorize(self,scope,operation):
+                    request.workset['id']='mutated-after-validation'
+                    return original.authorize(scope,operation)
+            h.controller.access=MutatingAuthority()
+            result=h.controller.step(request)
+            self.assertEqual(result['counts']['reserved'],1)
+            self.assertEqual(result['results'][0]['task'],entry['task'])
+        finally:h.close()
+
+    def test_wrong_admission_response_is_rejected_then_owner_decision_recovers(self):
+        h=CognitionHarness()
+        try:
+            entry,_,_=h.generated();h.stimulate(entry);request=h.request(h.workset([entry]),candidates=1)
+            owner=h.beliefs
+            class BadReply:
+                def readBelief(self,*args):return owner.readBelief(*args)
+                def readDerivation(self,*args):return owner.readDerivation(*args)
+                def submitDerivation(self,*args):
+                    result=owner.submitDerivation(*args)
+                    return dict(result,logical_id='unbound-derivation')
+            h.controller.beliefs=BadReply()
+            with self.assertRaises(ContractError) as caught:h.controller.step(request)
+            self.assertEqual(caught.exception.code,'NOT_AVAILABLE')
+            h.reopen();result=h.controller.step(request)
+            self.assertEqual(result['counts']['reserved'],1)
+            self.assertEqual(result['counts']['refused'],1)
+        finally:h.close()

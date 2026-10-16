@@ -394,3 +394,10 @@ M2 profiles/DTOs and `fusion-inspect`/`fusion-episode` stay supported. M3 opens 
 feed its version-3 decisions into the version-2 C1 acknowledgment DTO: generated
 observation delivery intents remain available in C1. Direct M3 admission and its
 own durable decisions prove replay; no incompatible acknowledgment is fabricated.
+
+C3 mutations/selections, C4 requests and kernel inputs defensively detach nested
+caller dictionaries before authorization or foreign calls. C4 also detaches
+provider replies and binds their decision ID, task/output claim, logical derivation,
+profile and closed outcome fields before changing progress. Boundary tests mutate
+caller-owned dictionaries during authorization and inject a mismatched admission
+reply, then recover the original owner decision without another reservation.

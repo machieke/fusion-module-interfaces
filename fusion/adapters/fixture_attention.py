@@ -1,4 +1,5 @@
 """Independent atomic-file C3 fixture; shares DTO validation, never transitions."""
+from ..ports import Mutation, Stimulus
 from contextlib import contextmanager
 import fcntl
 import json
@@ -41,7 +42,9 @@ class FileAttentionFixture:
 
     @c.boundary
     def submitStimulus(self, request):
-        body = c.stimulus(request, self.policy); scope = request.command.scope_ref
+        body = c.stimulus(request, self.policy)
+        request = Stimulus(**{**body, 'command': Mutation(**body['command'])})
+        scope = request.command.scope_ref
         actor = self.access.authorize(scope, 'submitStimulus'); self.access.authorize(scope, request.kind)
         body['principal'] = actor
         command_id = digest(canonical([actor, scope, request.command.idempotency_key]))
@@ -94,6 +97,8 @@ class FileAttentionFixture:
 
     @c.boundary
     def select(self, scope, context, eligible, limit):
+        require(type(eligible) is tuple)
+        eligible = tuple(c.detached(eligible))
         c.eligible_refs(scope, context, eligible, limit, self.parameters); self.access.authorize(scope, 'select')
         with self._locked() as data:
             require(data['identity'] == self.identity, 'UNSUPPORTED_PROFILE')
@@ -106,6 +111,7 @@ class FileAttentionFixture:
 
     @c.boundary
     def readAttention(self, target, context):
+        target = c.detached(target)
         validate_ref(target, target['scope_ref']); c.identifier(context); self.access.authorize(target['scope_ref'], 'readAttention')
         with self._locked() as data:
             require(data['identity'] == self.identity, 'UNSUPPORTED_PROFILE')

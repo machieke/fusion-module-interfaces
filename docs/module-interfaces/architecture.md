@@ -40,9 +40,17 @@ flowchart TD
   RM --> GR[Unchanged pinned PLNAdapter.revise guards]
   GR --> NR[Revision-only PeTTa / SWI 10.1.14 runtime]
   PA --> PD[Separate local DeTTa payloads]
-  IC[Future bounded inference control] -. snapshots .-> BR
-  IC -. rules .-> PLN[Future pure PLN kernel]
-  IC -. commands .-> EC[Future ECAN: attention]
+  HI[Native Hive generated inference action] --> PC
+  PC --> IC[C4: bounded inference journal]
+  IC -->|read workset and tasks| PA
+  IC -->|read / submitDerivation| DB[C2 v3: tagged derived admission]
+  DB --> PA
+  DB -->|readEvidence| EP
+  DB --> RM
+  DB -->|applyRule| PLN[Pure guarded grounded PLN kernel]
+  PLN --> ND[Deduction-only PeTTa / SWI 10.1.14]
+  IC -->|select / submitStimulus| EC[C3: independent integer STI]
+  EC -. fresh composition swap .-> EF[Independent atomic-file attention fixture]
 ```
 
 Foreign module calls from domain code terminate at declared ports; composition
@@ -59,10 +67,10 @@ routes in M1. The worker has a separate trusted entry point, never a client comm
 | Relations | Explicit ordered roles/hyperedges; immutable relation records | AtomStorage | No authoritative beliefs/attention; `ordered-roles/1`; arity/order/scope validation, specified only |
 | Search projection | Query refs + index watermark; rebuildable index | Record/event reads, auth | Not authoritative memory; distinct symbolic/embedding profiles; staleness checks, specified only |
 | Episodic memory C1 | Episode identity/head, immutable event ledger, mutation replay and delivery intents | AtomStorage, PrivateAuthority | Private local, no PLN/Hive requirement; `episode-local-sequence/2`; sequence/CAS/occurrence/recovery tested |
-| Belief revision C2 | Observation/support ledger, immutable belief snapshots, exact semantic attempts/decisions | AtomStorage, EpisodicMemory.readEvidence, PrivateAuthority, RevisionMath | `pln-revision-private/1`; guarded upstream revision only, no search/ECAN; alternatives retain uncovered evidence |
-| PLN kernel C4 | Pure rule on explicit premise snapshots; no mutable domain state | Declared rule implementation | No agenda/episode/attention writes; model pending; golden/ordered-premise tests later |
-| Attention C3 | Stimuli, STI allocation/selection/decay; attention balances/logical time | Opaque refs, policy | No PLN/LLM dependency; STI policy pending; independent budget/tie/decay tests later |
-| Inference control C4 | Bounded selection and scheduling; step receipts/checkpoint | Search, revision, attention, PLN | No reimplementation of mathematics or owned state; `bounded-step/1`; limits/feedback tests later |
+| Belief revision C2 | Observation/support ledger, historical snapshots and admission decisions | AtomStorage, EpisodicMemory.readEvidence, PrivateAuthority, RevisionMath; v3 also PLNKernel | M2 `pln-revision-private/1` unchanged; fresh M3 `pln-derived-private/1` adds tagged deduction admission without new observations |
+| PLN kernel | Pure guarded five-premise grounded deduction; no mutable domain state | Pinned Reachability guards and native PLN | No agenda or owner writes; `grounded-five-premise-deduction/1`; explicit historical vectors and native goldens |
+| Attention C3 | STI, causal/command receipts, logical clock and watermark | PrivateAuthority; syntactic opaque refs | No PLN/DA/Hive or C1/C2 dependency; `sti-additive-linear-decay/1`; standalone and independent provider substitution |
+| Inference control C4 | Explicit workset selection, durable attempt reservations and feedback intents | AtomStorage, DerivedBeliefRevision, Attention, PrivateAuthority | No search or PLN arithmetic; `bounded-grounded-inference/1`; persistent attempt/deadline/generation limits |
 | Messaging | Durable acceptance, poll, acknowledgement; inbox and deduplication | Journal, auth/route policy | Delivery ≠ acceptance; `durable-mailbox/2`; replay, backpressure, recipient isolation |
 | Execution | Allowlisted delegation and correlated completion; jobs/results/outbox | Atoms, messaging, journal, auth | Not reasoning/process migration; `inspect-atom/2`; deterministic process/replay/recovery |
 | Registry | Describe configured implementations; descriptor list | None | Not capability authority or chain registration; `static/1`; immutable descriptors |
@@ -72,8 +80,9 @@ routes in M1. The worker has a separate trusted entry point, never a client comm
 
 Future ports are typed specifications and named test obligations, not empty services.
 The M1 consumer only stores, shares a reference, fetches bytes, delegates inspection
-and reads a durable result. M2 now adds private C1/C2 only. Relations/search,
-attention and inference control remain specifications. Motivation is absent.
+and reads a durable result. M2 adds private C1/C2; M3 adds independent C3 and
+bounded C4 plus the required explicit C2 admission extension. Relations/search
+remain specifications. Motivation is absent.
 
 ## M1.1 runtime composition
 
@@ -218,3 +227,58 @@ The threat model trusts the host/operator and intact local files. Directory
 permissions and routing isolation do not claim encrypted storage, protection
 from an administrator, power-loss survival, distributed failover, exactly-once
 physical calculation, or the truth of registered origins/independence assertions.
+
+
+## M3 grounded inference and independent attention
+
+The M3 composition preserves separate owner commits and the application-neutral
+DA boundary. A task is an immutable role manifest, and a workset freezes the five
+historical support bindings for each eligible task. C4 never discovers new tasks
+or reads foreign SQL. C2 invokes the pure kernel itself so a caller cannot inject
+a numerical proposal directly into the ledger. C2 final admission checks current
+authorization and output CAS after evaluation.
+
+```mermaid
+sequenceDiagram
+  participant H as Native generated Hive action
+  participant I as C4 inference owner
+  participant T as C3 attention owner
+  participant B as C2 derived belief owner
+  participant K as Pure PLNKernel
+  H->>I: step(workset, selections, absolute budget)
+  I->>I: commit immutable step intent
+  I->>T: select(context, eligible refs)
+  T-->>I: ranked snapshot + clock/watermark
+  I->>I: commit selection and attempt reservation
+  I->>B: submitDerivation(task, historical vector, CAS)
+  B->>B: commit exact evaluation attempt
+  B->>K: applyRule(verified task and five supports)
+  K-->>B: guarded native proposal + inherited lineage
+  B->>B: authorize, CAS and commit tagged support/decision
+  B-->>I: logical admission or refusal
+  I->>I: commit progress and fixed feedback intent
+  I->>T: submitStimulus(logical derivation cause)
+  T->>T: commit STI and causal replay receipt
+  T-->>I: original receipt on redelivery
+  I->>I: commit acknowledgment and bounded outcome
+```
+
+On restart C4 queries the prior C2 attempt before reserving more work. A lost
+pending computation keeps its spent slot; a committed decision is recovered
+without another evaluation. Logical support identity is independent of step ID.
+Feedback uses that identity and the attention target's retained generation, so
+neither new ingress nor a new step can reset its limit. The source lineage used
+by revision is separate from feedback generation.
+
+SQLite and atomic-file attention providers independently implement the same
+integer policy. Both are real persistent implementations of that limited policy;
+the second is classified as a fixture, not an alternative research algorithm.
+No ECAN/LTI claim is made. Their consumer, worksets, budgets and logical schedule
+are unchanged in the substitution experiment. No live migration is attempted.
+
+The native sibling `fusion-inference` projects only generated counts/status.
+Its full episode, historical premise vector, proposal/admission and attention
+trace stay private. M2 recording and revision remain usable without C3/C4.
+The M3 generated episode retains C1 delivery intents because its v3 decision is
+not passed to the existing v2 C1 acknowledgment interface. That compatibility
+limit is explicit in the contracts and evidence report.

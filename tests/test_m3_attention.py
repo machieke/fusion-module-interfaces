@@ -98,4 +98,18 @@ class AttentionTests(unittest.TestCase):
                 with self.assertRaises(ContractError):owner.submitStimulus(replace(f2,command=Mutation('private','f3'),cause='f3',generation=3,parent='f2',expected_step=10))
                 self.assertEqual(owner.submitStimulus(replace(f2,command=Mutation('private','redeliver'))),owner.submitStimulus(f2))
 
+    def test_mutable_caller_dictionary_cannot_change_admitted_stimulus(self):
+        for provider in (AttentionOwner,FileAttentionFixture):
+            with self.subTest(provider=provider.__name__),tempfile.TemporaryDirectory() as root:
+                access=Authority();owner=provider(Path(root)/'state',access)
+                original=ref('a');request=Stimulus(Mutation('private','mutable'),'ctx',dict(original),'3','cause',0,owner.policy,0,'ingress')
+                authorize=access.authorize
+                def mutate(scope,operation):
+                    request.target['id']='mutated-after-validation'
+                    return authorize(scope,operation)
+                access.authorize=mutate
+                result=owner.submitStimulus(request)
+                self.assertEqual(result['target'],original)
+                self.assertEqual(owner.readAttention(original,'ctx')['value']['sti'],'3')
+
 if __name__=='__main__':unittest.main()

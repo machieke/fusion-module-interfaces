@@ -1,4 +1,5 @@
 """C3 SQLite owner: exact integer STI, independent of every cognitive owner."""
+from .ports import Mutation, Stimulus
 from contextlib import closing
 import json
 import sqlite3
@@ -47,7 +48,9 @@ class AttentionOwner:
 
     @c.boundary
     def submitStimulus(self, request):
-        body = c.stimulus(request, self.policy); scope = request.command.scope_ref
+        body = c.stimulus(request, self.policy)
+        request = Stimulus(**{**body, 'command': Mutation(**body['command'])})
+        scope = request.command.scope_ref
         principal = self.access.authorize(scope, 'submitStimulus')
         self.access.authorize(scope, request.kind)
         body['principal'] = principal
@@ -97,6 +100,8 @@ class AttentionOwner:
 
     @c.boundary
     def select(self, scope, context, eligible, limit):
+        require(type(eligible) is tuple)
+        eligible = tuple(c.detached(eligible))
         c.eligible_refs(scope, context, eligible, limit, self.parameters)
         self.access.authorize(scope, 'select')
         with closing(self._connect()) as db: state = self._load(db, scope, context)
@@ -108,6 +113,7 @@ class AttentionOwner:
 
     @c.boundary
     def readAttention(self, target, context):
+        target = c.detached(target)
         validate_ref(target, target['scope_ref']); c.identifier(context)
         self.access.authorize(target['scope_ref'], 'readAttention')
         with closing(self._connect()) as db: state = self._load(db, target['scope_ref'], context)
