@@ -1,22 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Reproduce the supported M3 gates</title>
-<desc id="desc">Linux build prerequisites and authorized SSH access to exact Hive/DeTTa sources are documented in the runbook; public HTTPS retrieves the pinned Reachability/PLN sources. New native objects, Python/Janus venv and DeTTa Cargo target are built in a fresh directory. Download caches may be warm. build_m3.py preserves the M2 build recipe and adds the explicit deduction profile. verify_m3.py runs M2 regression, isolated M3 fixtures, upstream guards, native deduction/admission, actual process kills, real native Hive and controlled substitution. The final record was executed from clean detached /tmp/fusion-m3-verify-1af3979. Do not publish broad local environment files. Deck generation is a separate documentation operation and does not rerun these gates.</desc>
+<title id="title">Profiles and bounds make compatibility explicit</title>
+<desc id="desc">The configuration selector is fusion-delivery-closure/1. C1&#x27;s trusted completion DTO has profile trusted-evidence-completion/1. C3 arithmetic policy remains sti-additive-linear-decay/1 while its interface/profile explicitly adds submitFeedback and resolveFeedback. C4 adds readProgress and reconcile. Max 16 targets, 16 advance steps, eight contexts, 512 causes/context, 1024 commands/owner and feedback generation three are unchanged. First retirement consumes existing cause/command capacity; recovering an existing application or retirement does not allocate a new slot. Reconciliation has its own finite command budget and cannot reset original WorkBudget/deadline. M1 wire, M2 revision and M3 old cognition profiles remain supported. Algorithm profile, interface version, selected descriptor, runtime and current permissions all matter.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX G / COMMANDS AND PREREQUISITES</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Reproduce the supported M3 gates</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Use the tested revision or a reviewed descendant, with source access and a fresh destination.</text>
-<rect x="72" y="245" width="1456" height="187" rx="12" fill="#0B2233"/>
-<text x="100" y="285.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">BUILD FRESH PINNED PROVIDERS</text>
-<text x="100" y="339.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
-<text x="100" y="387.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/build_m3.py artifacts/m3-providers</text>
-<rect x="72" y="465" width="1456" height="187" rx="12" fill="#0B2233"/>
-<text x="100" y="505.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#77DDC4">VERIFY M1/M2 + C3/C4 + NATIVE HIVE + CONTROLLED SWAP</text>
-<text x="100" y="559.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">uv run --python 3.11 --locked python \</text>
-<text x="100" y="607.65" font-family="DejaVu Sans Mono" font-size="27" font-weight="400" fill="#FFFFFF">scripts/verify_m3.py artifacts/m3-providers/environment.json</text>
-<text x="78" y="720.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Read: manifest.json → final/verification.json → suite logs → final/comparison.json</text>
-<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="795.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#102B3F">Source access, fixture tests, native execution and archived evidence are separate reproducibility requirements.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX C / CONTRACT LEDGER</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Profiles and bounds make compatibility explicit</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">fusion-delivery-closure/1 selects fresh C1 / C3 / C4 journals; C2 and the math stay unchanged.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PORT / PROFILE</text>
+<text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EXPLICIT SELECTION</text>
+<text x="1028" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">KEY BOUND</text>
+<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C1 · local 3.0.0</text>
+<text x="418" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">episode-delivery-completion/1</text>
+<text x="1028" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">16 pending; 256 events; trusted</text>
+<text x="1028" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">completion only</text>
+<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C2 derived · local</text>
+<text x="88" y="426.29" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">3.0.0</text>
+<text x="418" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">pln-derived-private/1 · unchanged</text>
+<text x="1028" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Historical premises and inherited support</text>
+<text x="1028" y="426.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">roots</text>
+<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C3 · local 2.1.0</text>
+<text x="418" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">sti-additive-linear-decay-closure/1</text>
+<text x="1028" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Existing STI, cause and command</text>
+<text x="1028" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">capacities</text>
+<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C4 · local 2.1.0</text>
+<text x="418" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">bounded-grounded-closure/1</text>
+<text x="1028" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">1–16 resolutions/call; 128</text>
+<text x="1028" y="588.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">commands/step</text>
+<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">PLN kernel · local</text>
+<text x="88" y="669.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">2.0.0</text>
+<text x="418" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">grounded-five-premise-deduction/1</text>
+<text x="1028" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">One unchanged native rule; five exact</text>
+<text x="1028" y="669.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">premises</text>
+<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
+<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Historical M1 / M2 / M3</text>
+<text x="418" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Original descriptors remain selectable</text>
+<text x="1028" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No silent upgrade; no live state migration</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / runbook.md · build_m3.py · verify_m3.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">39 / 40</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / contracts.md · cognition.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">39 / 44</text>
 </svg>

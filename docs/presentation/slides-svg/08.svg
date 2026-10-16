@@ -1,57 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Function dependencies: the exercised M3 path</title>
-<desc id="desc">This is the exercised port graph, not a proposed future cognitive loop. C4 reads immutable task/workset atoms and C2 snapshots, asks Attention to select, reserves work, then submits or recovers a C2 derivation. C2 reads evidence from C1, invokes pure PLNKernel or RevisionMath and alone commits admitted support. The Hive scenario also records a private episode and seeds exact inputs; those setup edges are omitted for readability. C3 depends only on PrivateAuthority and opaque-reference syntax, not AtomStorage, C1/C2, PLN or Hive. Every owner checks live authority and descriptors; omitted authority arrows apply to all calls. The M2 relay remains supported under its original profile; M3 v3 responses do not masquerade as M2 C1 acknowledgments.</desc>
+<title id="title">Control responsibilities: move work, preserve authority</title>
+<desc id="desc">Messaging acceptance differs from delivery and acknowledgement. Execution accepts only inspect_atom and owns jobs plus its completion outbox; result atoms commit independently. The registry advertises descriptors, and the resolver matches consumer requirements. Neither grants permission. Finality records independent chain observations from historical M1; it is not a C1/C2 dependency. Native authentication supplies trusted actor context, while local Fusion policy determines current access. The preserved M2 relay is a narrow delivery cursor between C1 and C2. M3 C4 separately owns its bounded step journal; neither grants authority.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / DEPENDENCY MAP · PRIVATE COGNITION</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Function dependencies: the exercised M3 path</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Solid arrows point from caller to provider. Owners expose ports, never each other’s tables.</text>
-<rect x="72" y="240" width="350" height="120" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="282.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#007C78">Native Hive plugin</text>
-<text x="94" y="319.16" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">Trusted actor → generated</text>
-<text x="94" y="344.76000000000005" font-family="DejaVu Sans" font-size="20" font-weight="400" fill="#536775">scenario</text>
-<rect x="555" y="240" width="440" height="120" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="577" y="289.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C4 · InferenceControl</text>
-<text x="577" y="330.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">step → select, reserve, reconcile</text>
-<rect x="1128" y="240" width="400" height="120" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="1150" y="289.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C3 · Attention</text>
-<text x="1150" y="330.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">select · submitStimulus</text>
-<line x1="422" y1="300" x2="555" y2="300" stroke="#007C78" stroke-width="2"/>
-<polygon points="555,300 542.0,295.0 542.0,305.0" fill="#007C78"/>
-<line x1="995" y1="300" x2="1128" y2="300" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1128,300 1115.0,295.0 1115.0,305.0" fill="#315E9C"/>
-<rect x="72" y="468" width="350" height="125" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="512.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#315E9C">C1 · Episodes</text>
-<text x="94" y="550.6700000000001" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">readEvidence; scenario</text>
-<text x="94" y="577.5500000000001" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">appends</text>
-<rect x="555" y="468" width="440" height="125" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
-<text x="577" y="516.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">C2 · BeliefRevision</text>
-<text x="577" y="556.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">readBelief · submit/readDerivation</text>
-<rect x="1128" y="468" width="400" height="125" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1150" y="516.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Pure PLN providers</text>
-<text x="1150" y="556.74" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">applyRule / revise → native PLN</text>
-<line x1="775" y1="360" x2="775" y2="468" stroke="#315E9C" stroke-width="2"/>
-<polygon points="775,468 780.0,455.0 770.0,455.0" fill="#315E9C"/>
-<text x="800" y="420.95" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#315E9C">Exact task + attempt</text>
-<line x1="555" y1="530" x2="422" y2="530" stroke="#315E9C" stroke-width="2"/>
-<polygon points="422,530 435.0,535.0 435.0,525.0" fill="#315E9C"/>
-<line x1="995" y1="530" x2="1128" y2="530" stroke="#007C78" stroke-width="2"/>
-<polygon points="1128,530 1115.0,525.0 1115.0,535.0" fill="#007C78"/>
-<rect x="72" y="695" width="923" height="115" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="745.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Private AtomStorage → real DeTTa</text>
-<text x="94" y="788.1999999999999" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">C1 / C2 / C4 use immutable refs. DA persists opaque bytes.</text>
-<line x1="247" y1="593" x2="247" y2="695" stroke="#315E9C" stroke-width="2"/>
-<polygon points="247,695 252.0,682.0 242.0,682.0" fill="#315E9C"/>
-<line x1="775" y1="593" x2="775" y2="695" stroke="#315E9C" stroke-width="2"/>
-<polygon points="775,695 780.0,682.0 770.0,682.0" fill="#315E9C"/>
-<line x1="600" y1="360" x2="490" y2="360" stroke="#315E9C" stroke-width="2"/>
-<line x1="490" y1="360" x2="490" y2="650" stroke="#315E9C" stroke-width="2"/>
-<line x1="490" y1="650" x2="530" y2="650" stroke="#315E9C" stroke-width="2"/>
-<line x1="530" y1="650" x2="530" y2="695" stroke="#315E9C" stroke-width="2"/>
-<polygon points="530,695 535.0,682.0 525.0,682.0" fill="#315E9C"/>
-<rect x="1128" y="695" width="400" height="115" rx="13" fill="#E7ECEB" stroke="#315E9C"/>
-<text x="1150" y="741.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#315E9C">Authority + descriptors</text>
-<text x="1150" y="782.13" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Checked by every owner</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / RESPONSIBILITY ATLAS · 3 OF 3</text>
+<text x="70" y="138.7" font-family="DejaVu Sans" font-size="46" font-weight="700" fill="#102B3F">Control responsibilities: move work, preserve authority</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The remaining six modules connect owners and report specific facts.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MODULE</text>
+<text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FUNCTION / PRIMARY OPERATIONS</text>
+<text x="1008" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNED STATE / STATUS</text>
+<rect x="72" y="277" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Messaging</text>
+<text x="418" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Accept, deliver, acknowledge</text>
+<text x="418" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">send · poll · ack</text>
+<text x="1008" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Inbox + deduplication · IMPLEMENTED</text>
+<rect x="72" y="359" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Execution</text>
+<text x="418" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Run one named operation</text>
+<text x="418" y="427.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">submit · status · result</text>
+<text x="1008" y="397.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Jobs + completion outbox · IMPLEMENTED</text>
+<rect x="72" y="441" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Registry</text>
+<text x="418" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Describe configured providers</text>
+<text x="418" y="509.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">descriptors</text>
+<text x="1008" y="479.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Static configuration · IMPLEMENTED</text>
+<rect x="72" y="523" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Resolver</text>
+<text x="418" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Match required semantics</text>
+<text x="418" y="591.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">resolve</text>
+<text x="1008" y="561.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No mutable state · IMPLEMENTED</text>
+<rect x="72" y="605" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Consensus / finality</text>
+<text x="418" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Submit approved commitment; observe</text>
+<text x="418" y="673.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">submit · observe</text>
+<text x="1008" y="643.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Signed intents · HISTORICAL M1</text>
+<rect x="72" y="687" width="1456" height="77" rx="6" fill="#FFFFFF"/>
+<text x="88" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Authorization</text>
+<text x="418" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Check current caller + scope + method</text>
+<text x="418" y="755.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">authorize / live policy checks</text>
+<text x="1008" y="725.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Operator policy · LOCAL FIXTURE</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / cognition.py · ports.py · architecture.md</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">08 / 40</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / architecture.md</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">08 / 44</text>
 </svg>

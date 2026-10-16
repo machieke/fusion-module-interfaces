@@ -1,42 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Implementation map: responsibilities stay local</title>
-<desc id="desc">Paths are relative to fusion/ unless marked hive/, which is under integration/. ports.py declares the protocols; attention_contracts.py and cognition_contracts.py enforce the executable bounded schemas. Shared DTO validators are permitted in the independent fixture, shared owner transitions are not. C2 default M2 behavior remains via its original validators and profile; the derived owner selects fresh v3 behavior. The native plugin uses integration/m3_scenario.py and holds only caller intent and public receipt. No owner reaches into another owner&#x27;s private SQL. Tests and exact source hashes are indexed in the M3 machine manifest.</desc>
+<title id="title">M3.1 gates: bounded recovery and native integration</title>
+<desc id="desc">Statuses are read from the M3.1 machine manifest and match the corrected final verifier. Twelve supported gates pass; CHAIN is NOT_RUN. The complete prior M1–M3 regression passes separately. COMPAT_REPRO uses fresh provider directories and original pins with warm download caches. Populated old-profile copies reject the new profiles without modification and still replay through the old selection. This is not migration or repair of existing pending stores. Exact historical chain-source reproduction remains blocked by unavailable dirty inputs, a separate historical question. Passes cover only the tested local scope; power-loss, distributed and production claims remain unrun.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX A / CODE NAVIGATION</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Implementation map: responsibilities stay local</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Follow interfaces and owner journals before following concrete provider classes.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESPONSIBILITY</text>
-<text x="408" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">FILES / SURFACE</text>
-<text x="1078" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNED STATE</text>
-<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C1 / original C2</text>
-<text x="408" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">episodes.py · beliefs.py · evidence_relay.py</text>
-<text x="1078" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Episode history; revision-only</text>
-<text x="1078" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">journals</text>
-<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C2 derived admission</text>
-<text x="408" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">derived_beliefs.py · cognition_contracts.py</text>
-<text x="1078" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Fresh derived-beliefs.sqlite · local v3</text>
-<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C3 attention</text>
-<text x="408" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">attention.py · adapters/fixture_attention.py</text>
-<text x="1078" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">SQLite or independent atomic-file</text>
-<text x="1078" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">state</text>
-<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Pure PLN providers</text>
-<text x="408" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">adapters/pln_deduction.py · pln_revision.py</text>
-<text x="1078" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">No mutable domain state</text>
-<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C4 controller</text>
-<text x="408" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">inference.py · deadlines.py</text>
-<text x="1078" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">inference.sqlite · budgets / progress</text>
-<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">Composition / native</text>
-<text x="88" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">caller</text>
-<text x="408" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">cognition.py · hive/inference_program/</text>
-<text x="1078" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Explicit provider bindings; caller</text>
-<text x="1078" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">receipt</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GATE-BY-GATE RESULTS · 2 OF 2</text>
+<text x="70" y="140.6" font-family="DejaVu Sans" font-size="48" font-weight="700" fill="#102B3F">M3.1 gates: bounded recovery and native integration</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">All 12 supported gates passed. No supported runtime prerequisite remains blocked.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">GATE</text>
+<text x="468" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESULT</text>
+<text x="653" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RECORDED EVIDENCE</text>
+<rect x="72" y="277" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">BUDGETS</text>
+<text x="468" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Original execution fixed; zero new math during reconciliation</text>
+<rect x="72" y="346" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="384.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">PROVIDER_SWAP</text>
+<text x="468" y="384.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="384.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">SQLite and independent atomic-file closure semantics</text>
+<rect x="72" y="415" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="453.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">AUTH_PRIVACY</text>
+<text x="468" y="453.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="453.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Live revocation, malformed replies and native isolation</text>
+<rect x="72" y="484" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="522.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">HIVE_M3_1</text>
+<text x="468" y="522.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="522.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Seven real native cases; four process kills</text>
+<rect x="72" y="553" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="591.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">COMPAT_REPRO</text>
+<text x="468" y="591.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="591.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Fresh pinned build; populated old copies reject new profile</text>
+<rect x="72" y="622" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="660.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">SCOPE</text>
+<text x="468" y="660.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">PASS</text>
+<text x="653" y="660.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Delivery closure only; DA and guarded math unchanged</text>
+<rect x="72" y="691" width="1456" height="64" rx="6" fill="#FFFFFF"/>
+<text x="88" y="729.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">CHAIN</text>
+<text x="468" y="729.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">NOT_RUN</text>
+<text x="653" y="729.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Excluded; no chain action or deployment</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="801.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#102B3F">Fixture, real-provider, blocked and unrun results retain separate meanings.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / architecture.md · ports.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">33 / 40</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / m3_1/manifest.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">33 / 44</text>
 </svg>

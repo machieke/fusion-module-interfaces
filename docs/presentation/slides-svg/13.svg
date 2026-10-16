@@ -1,39 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Executable contracts make the inference step finite</title>
-<desc id="desc">The contracts use closed bounded DTOs and detach nested request inputs before authorization or foreign calls. A task binds P,Q,R,P⇒Q,Q⇒R to exact private references. Premise vectors record each belief&#x27;s historical revision and support ID; the upstream knowledge revision of zero is only a local evaluation ID, not a global ledger. Derived support tags distinguish observation, two-local-premise revision and five-foreign-premise deduction. C2 local v3 is explicit and does not widen M2 v2. WorkBudget contains an absolute Unix-ms deadline, max_candidates, max_rule_applications and max_feedback_generation. Historical reads and recovered owner responses are validated against the exact request.</desc>
+<title id="title">Private state has explicit owners and placement</title>
+<desc id="desc">The native plugin receives authenticated actor context and derives authority from operator configuration. Request parameters cannot select credentials, arbitrary scopes or private premise identities. Public parameters are generated seed, preference a/b and an absolute deadline. Privacy tests intercept shared bindings, populate shared stores and inspect native receipts/logs/state for canaries and private hashes. This is tested local placement under a trusted operator/host, not secrecy from administrators. Each journal has one owner and commits independently; there is no cross-owner SQL transaction.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / CONTRACT DECISIONS BEFORE BEHAVIOR</text>
-<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Executable contracts make the inference step finite</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The supported task is explicit, immutable and grounded before the controller starts.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONTRACT</text>
-<text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT IS FIXED</text>
-<text x="1043" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHY IT MATTERS</text>
-<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Context + task</text>
-<text x="418" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Private context; exact role references</text>
-<text x="1043" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Labels cannot merge distinct identities</text>
-<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Workset</text>
-<text x="418" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">1–16 unique immutable tasks</text>
-<text x="1043" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No search or automatic task</text>
-<text x="1043" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">expansion</text>
-<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Premise snapshot</text>
-<text x="418" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Claim / context / revision / support ID</text>
-<text x="1043" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No silent substitution with latest state</text>
-<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Derived support</text>
-<text x="418" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Closed tag + inherited roots / ancestry</text>
-<text x="1043" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No fresh observation or evidence</text>
-<text x="1043" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">count</text>
-<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
-<text x="88" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Work budget</text>
-<text x="418" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Candidates, attempts, generation, deadline</text>
-<text x="1043" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Restart cannot silently refill the</text>
-<text x="1043" y="711.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">allowance</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / PRIVACY AND AUTHORIZATION</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Private state has explicit owners and placement</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A trusted Hive actor maps to an operator-configured private scope and credential.</text>
+<rect x="72" y="243" width="940" height="487" rx="14" fill="#E4EBF5"/>
+<text x="98" y="289.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">PRIVATE LOCAL COMPOSITION</text>
+<rect x="98" y="329" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="120" y="378.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C1 · Episodes</text>
+<text x="120" y="421.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">History + delivery intents</text>
+<rect x="555" y="329" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="577" y="378.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C2 · Beliefs</text>
+<text x="577" y="421.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Supports + exact attempts</text>
+<rect x="98" y="516" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="120" y="565.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C3 · Attention</text>
+<text x="120" y="608.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">STI + clock + causal replay</text>
+<rect x="555" y="516" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="577" y="565.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C4 · Controller</text>
+<text x="577" y="608.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Budgets + progress +</text>
+<text x="577" y="640.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">feedback</text>
+<rect x="1082" y="243" width="446" height="212" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="1104" y="295.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">Public Hive receipt</text>
+<text x="1104" y="342.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Generated counters, status</text>
+<text x="1104" y="378.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and public command receipt</text>
+<text x="1104" y="414.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">ID.</text>
+<rect x="1082" y="493" width="446" height="237" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="1104" y="545.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#A86A15">Private trace</text>
+<text x="1104" y="592.5600000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Task/support hashes,</text>
+<text x="1104" y="628.4000000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">premises, lineage, attention</text>
+<text x="1104" y="664.2400000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and payloads stay private.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Profile mismatch, malformed response or changed semantic intent fails explicitly.</text>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Shared M1 wire and DA contracts stay unchanged; every owner rechecks current authorization.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / attention_contracts.py · cognition_contracts.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">13 / 40</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / cognition.py · inference_program/program.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">13 / 44</text>
 </svg>

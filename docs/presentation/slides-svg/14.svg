@@ -1,42 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">C1: one occurrence, one position in the story</title>
-<desc id="desc">The four illustrated event roles match the generated story. Each immutable event is referenced by an AtomRef; the episode head begins at zero and advances by one for accepted occurrences. A duplicate occurrence with the same semantic content returns its original receipt before a stale expected-head check, even under a new request key. Changed content or provenance for that occurrence conflicts. Distinct occurrences can have identical bytes. Payload persistence can precede episode commit and leave an orphan after death; replay recovers the same atom without inventing an acknowledged event. C1 exposes bounded reads, pending evidence and trusted acknowledgements, with no cognition dependency. No dynamic episode search or garbage collector is implemented.</desc>
+<title id="title">Executable contracts make the inference step finite</title>
+<desc id="desc">The contracts use closed bounded DTOs and detach nested request inputs before authorization or foreign calls. A task binds P,Q,R,P⇒Q,Q⇒R to exact private references. Premise vectors record each belief&#x27;s historical revision and support ID; the upstream knowledge revision of zero is only a local evaluation ID, not a global ledger. Derived support tags distinguish observation, two-local-premise revision and five-foreign-premise deduction. C2 local v3 is explicit and does not widen M2 v2. WorkBudget contains an absolute Unix-ms deadline, max_candidates, max_rule_applications and max_feedback_generation. Historical reads and recovered owner responses are validated against the exact request.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / EPISODIC MEMORY</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">C1: one occurrence, one position in the story</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Immutable event atoms sit behind a stable episode identity and a committed sequence.</text>
-<rect x="72" y="236" width="332.498046875" height="40" rx="7" fill="#E4EBF5"/>
-<text x="86" y="263.9" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#315E9C">EpisodeRef = scope + ID</text>
-<rect x="72" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="94" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">1 · Report</text>
-<text x="94" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">No numerical claim</text>
-<line x1="418" y1="413" x2="437" y2="413" stroke="#315E9C" stroke-width="2"/>
-<polygon points="437,413 424.0,408.0 424.0,418.0" fill="#315E9C"/>
-<rect x="442" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="464" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">2 · Assessment</text>
-<text x="464" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Explicit strength /</text>
-<text x="464" y="449.09999999999997" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">confidence</text>
-<line x1="788" y1="413" x2="807" y2="413" stroke="#315E9C" stroke-width="2"/>
-<polygon points="807,413 794.0,408.0 794.0,418.0" fill="#315E9C"/>
-<rect x="812" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="834" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">3 · Copy</text>
-<text x="834" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Inherits original roots</text>
-<line x1="1158" y1="413" x2="1177" y2="413" stroke="#315E9C" stroke-width="2"/>
-<polygon points="1177,413 1164.0,408.0 1164.0,418.0" fill="#315E9C"/>
-<rect x="1182" y="322" width="346" height="182" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="1204" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">4 · Contrary</text>
-<text x="1204" y="415.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Kept in the history</text>
-<rect x="72" y="556" width="704" height="169" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="94" y="605.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Same occurrence + same body</text>
-<text x="94" y="649.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Return the original receipt, even under a new</text>
-<text x="94" y="683.1" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">request key. The head does not advance.</text>
-<rect x="800" y="556" width="728" height="169" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="822" y="604.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#A86A15">Same occurrence + changed meaning</text>
-<text x="822" y="648.5400000000001" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Conflict on body or provenance changes. Distinct</text>
-<text x="822" y="681.82" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">real occurrences may share identical bytes.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / CONTRACT DECISIONS BEFORE BEHAVIOR</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Executable contracts make the inference step finite</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The supported task is explicit, immutable and grounded before the controller starts.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONTRACT</text>
+<text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHAT IS FIXED</text>
+<text x="1043" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">WHY IT MATTERS</text>
+<rect x="72" y="277" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Context + task</text>
+<text x="418" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Private context; exact role references</text>
+<text x="1043" y="316.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Labels cannot merge distinct identities</text>
+<rect x="72" y="368" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Workset</text>
+<text x="418" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">1–16 unique immutable tasks</text>
+<text x="1043" y="407.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No search or automatic task</text>
+<text x="1043" y="438.52000000000004" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">expansion</text>
+<rect x="72" y="459" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Premise snapshot</text>
+<text x="418" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Claim / context / revision / support ID</text>
+<text x="1043" y="498.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No silent substitution with latest state</text>
+<rect x="72" y="550" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Derived support</text>
+<text x="418" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Closed tag + inherited roots / ancestry</text>
+<text x="1043" y="589.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">No fresh observation or evidence</text>
+<text x="1043" y="620.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">count</text>
+<rect x="72" y="641" width="1456" height="86" rx="6" fill="#FFFFFF"/>
+<text x="88" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Work budget</text>
+<text x="418" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Candidates, attempts, generation, deadline</text>
+<text x="1043" y="680.8" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Restart cannot silently refill the</text>
+<text x="1043" y="711.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">allowance</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C1 commits event + evidence intent together; AtomStorage has already committed independently.</text>
+<text x="94" y="800.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#102B3F">Profile mismatch, malformed response or changed semantic intent fails explicitly.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / episodes.py · tests/test_m2.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">14 / 40</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / attention_contracts.py · cognition_contracts.py</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">14 / 44</text>
 </svg>

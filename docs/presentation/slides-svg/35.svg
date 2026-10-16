@@ -1,42 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Profiles and bounds make compatibility explicit</title>
-<desc id="desc">Exact attention profile sti-additive-linear-decay/1: decay one, max targets sixteen, max advance sixteen, contexts eight, causes/context 512, commands/owner 1024 and feedback generation three. Kernel and C4 local interfaces are 2.0.0. Kernel runtime profile fusion-petta-swi-10.1.14-deduction/1 is separate from revision-only; M2 pln-revision-private/1 remains unchanged/default. The derived profile has three closed support forms and explicit local-admitted-supports/1 coverage. WorkBudget names candidates, physical rule opportunities, feedback generation and absolute Unix-ms deadline. Capacity exhaustion is explicit refusal, not eviction or automatic scope expansion. Interface version, algorithm profile, runtime identity, permissions and selected descriptor all matter.</desc>
+<title id="title">The limitations are part of the contract</title>
+<desc id="desc">M3.1 solves the delivery/feedback seams only for explicitly selected new profiles and fresh journals. Disposable copies of populated old stores reject the selection with UNSUPPORTED_PROFILE and remain replayable under old profiles. Existing user stores are not migrated or repaired. Pending feedback need not converge: eligible effects are not newly applied by reconciliation, unavailable/malformed replies stay pending, and bounded tombstone/command capacity can exhaust. Unresolved derivation attempts use original step recovery, not reconciliation; lost reservations are not reclaimed. No exactly-one physical computation, hard real-time, power-loss, administrator secrecy, distributed failover, production throughput or cognitive-quality claim. Origin/independence remain operator assumptions. Specialist maintainer assignments remain open.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">APPENDIX C / CONTRACT LEDGER</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Profiles and bounds make compatibility explicit</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Existing profiles remain selectable; fresh M3 owners opt into new semantics.</text>
-<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PORT / PROFILE</text>
-<text x="418" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">VERSION AND POLICY</text>
-<text x="1028" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">KEY BOUND</text>
-<rect x="72" y="277" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">M1 shared interfaces</text>
-<text x="418" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Wire 1.0.0 · immutable-bytes/1</text>
-<text x="1028" y="315.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Existing storage / messaging / execution</text>
-<text x="1028" y="345.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">preserved</text>
-<rect x="72" y="358" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C1 / original C2</text>
-<text x="418" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Local 2.0.0 · original M2 profiles</text>
-<text x="1028" y="396.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Original relay / acknowledgment DTOs</text>
-<rect x="72" y="439" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C2 derived</text>
-<text x="418" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Local 3.0.0 · pln-derived-private/1</text>
-<text x="1028" y="477.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Exact history; tagged supports; fresh</text>
-<text x="1028" y="507.29" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">journal</text>
-<rect x="72" y="520" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C3 attention</text>
-<text x="418" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Local 2.0.0 · additive / linear decay</text>
-<text x="1028" y="558.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">100 per target; 300 per context;</text>
-<text x="1028" y="588.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">generation 3</text>
-<rect x="72" y="601" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">PLN kernel</text>
-<text x="418" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">grounded-five-premise-deduction/1</text>
-<text x="1028" y="639.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">One rule; five exact premises</text>
-<rect x="72" y="682" width="1456" height="76" rx="6" fill="#FFFFFF"/>
-<text x="88" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">C4 controller</text>
-<text x="418" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">bounded-grounded-inference/1</text>
-<text x="1028" y="720.85" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">1–16 tasks; candidate / attempt / time</text>
-<text x="1028" y="750.2900000000001" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">limits</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / GUARANTEES AND STOPPING POINT</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The limitations are part of the contract</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Accurate closure can still report pending work. No state migration is implied.</text>
+<rect x="72" y="250" width="704" height="219" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Conservative crash budget</text>
+<text x="94" y="348.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">A lost pending attempt consumes its slot.</text>
+<text x="94" y="384.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Reconciliation never refunds or starts new</text>
+<text x="94" y="419.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">inference.</text>
+<rect x="824" y="250" width="704" height="219" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="846" y="301.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Finite closure capacity</text>
+<text x="846" y="348.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Eligible or unavailable feedback stays</text>
+<text x="846" y="384.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">pending. Full command / cause journals are</text>
+<text x="846" y="419.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">not evicted.</text>
+<rect x="72" y="505" width="704" height="219" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="556.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Fresh profiles, fresh journals</text>
+<text x="94" y="603.28" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Old M3 pending work cannot be repaired here.</text>
+<text x="94" y="639.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Old stores reject the new profile and retain old</text>
+<text x="94" y="674.9599999999999" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">replay.</text>
+<rect x="824" y="505" width="704" height="219" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="846" y="556.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Local recovery evidence</text>
+<text x="846" y="603.28" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Same host, cooperative clock, intact files and</text>
+<text x="846" y="639.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">trusted operator. Power loss and distributed</text>
+<text x="846" y="674.9599999999999" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">failover unrun.</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#EBE5F3"/>
+<text x="94" y="799.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#7458A2">Stopped at M3.1: no new cognition, scheduler, ECAN, LTI, search, migration or chain work.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / contracts.md · cognition.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">35 / 40</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / m3_1-evidence.md · compatibility and recovery limits</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">35 / 44</text>
 </svg>

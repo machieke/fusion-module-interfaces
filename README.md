@@ -1,4 +1,4 @@
-# Omega ↔ ASI module interfaces: through M3
+# Omega ↔ ASI module interfaces: through M3.1
 
 A backend-neutral contract package and bounded storage, mailbox and delegated
 execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
@@ -17,12 +17,18 @@ support admission and a bounded inference controller. The new native Hive action
 exercises restart, replay, causal feedback and durable attempt budgets. See
 [M3 evidence](docs/module-interfaces/m3-evidence.md) and the executable contracts.
 
-For the complete M3 source/build/test path (Linux prerequisites and access are
+M3.1 adds model-independent C1 completion, repeated evidence draining and bounded,
+owner-authoritative feedback reconciliation. Native Hive reports original execution
+and later closure progress separately. New explicit profiles require fresh journals;
+existing M3 pending stores are not migrated or repaired. All 12 supported gates pass,
+with M1–M3 regressions preserved. See [M3.1 evidence](docs/module-interfaces/m3_1-evidence.md).
+
+For the complete M3.1 source/build/test path (Linux prerequisites and access are
 listed in the runbook):
 
 ```bash
-uv run --python 3.11 --locked python scripts/build_m3.py artifacts/m3-providers
-uv run --python 3.11 --locked python scripts/verify_m3.py artifacts/m3-providers/environment.json
+uv run --python 3.11 --locked python scripts/build_m3.py artifacts/m3_1/providers
+uv run --python 3.11 --locked python scripts/verify_m3_1.py artifacts/m3_1/providers/environment.json
 ```
 
 For the original M1 conformance slice:
@@ -45,15 +51,16 @@ Read [architecture](docs/module-interfaces/architecture.md),
 The [original M1 evidence](docs/module-interfaces/evidence.md) is historical.
 The M1.1 blocked runtime observation remains historical; M1.2 uses the revision
 identified by the supplied `omegahive-schematics`. The optional chain gate is
-separate and is not rerun in M1.2, M2 or M3. M3 implements only the specified
+separate and is not rerun in M1.2, M2, M3 or M3.1. M3 implements only the specified
 reference STI policy and bounded grounded inference. No LTI, general search,
 research attention policy, live state migration or further inference expansion is included.
 
 The [conference presentation](docs/presentation/README.md) covers the architecture
-through M3, opening with an ELI16 executive summary before all 15 module
+through M3.1, opening with three ELI16 executive-summary slides before all 15 module
 responsibilities and function dependencies. It includes private C1/C2 ownership,
 inherited evidence, guarded native deduction, independently replaceable STI,
-durable inference budgets and actual Hive recovery, with an editable PowerPoint,
-PDF and speaker notes. The C1 acknowledgment compatibility limit remains explicit.
+durable inference budgets, evidence delivery, feedback closure and actual Hive
+progress, with an editable PowerPoint, PDF and speaker notes. New-profile and
+existing-state compatibility limits remain explicit.
 Real providers, fixtures, historical chain evidence, blocked inputs and unrun
 gates remain separately labelled.

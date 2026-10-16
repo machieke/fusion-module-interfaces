@@ -40,8 +40,8 @@ def main() -> None:
     rendered = fitz.open(args.independent_pdf)
     prs = Presentation(deck / "omega-asi-module-interfaces.pptx")
     build.build_content()
-    assert len(source) == len(rendered) == len(prs.slides) == len(build.SLIDES) == 40
-    assert sum(not s.appendix for s in build.SLIDES) == build.MAIN_SLIDES == 32
+    assert len(source) == len(rendered) == len(prs.slides) == len(build.SLIDES) == 44
+    assert sum(not s.appendix for s in build.SLIDES) == build.MAIN_SLIDES == 36
     mismatches, bounds, previews, used_fonts = [], [], [], set()
     for i, (a, b, slide, model) in enumerate(zip(source, rendered, prs.slides, build.SLIDES), 1):
         if tokens(a.get_text()) != tokens(b.get_text()):
@@ -81,8 +81,14 @@ def main() -> None:
     for path, expected in manifest["evidence_sha256"].items():
         assert digest(root / path) == expected, path
         assert subprocess.check_output(["git", "show", f"{build.EVIDENCE_COMMIT}:{path}"], cwd=root) == (root / path).read_bytes(), path
-    for path, expected in build.M3VERIFY["source"]["files"].items():
+    for path, expected in build.M31VERIFY["source"]["files"].items():
         assert digest(root / path) == expected, path
+        assert hashlib.sha256(subprocess.check_output(
+            ["git", "show", f"{build.BASE_COMMIT}:{path}"], cwd=root)).hexdigest() == expected, path
+    # M3 measurements remain historical: audit against their own tested source.
+    for path, expected in build.M3VERIFY["source"]["files"].items():
+        assert hashlib.sha256(subprocess.check_output(
+            ["git", "show", f"{build.M3RECORD['tested_source']['commit']}:{path}"], cwd=root)).hexdigest() == expected, path
     assert build.M3VERIFY["source"] == build.M3RECORD["tested_source"]
     assert build.M3VERIFY["source"]["status"] == []
     assert all(c["returncode"] == 0 for c in build.M3VERIFY["commands"])
@@ -91,9 +97,36 @@ def main() -> None:
     assert build.M3RECORD["gates"]["CHAIN"] == "NOT_RUN"
     assert build.M3RECORD["blocked_prerequisites"] == []
     m2checksums = json.loads((build.M2 / "checksums.json").read_text())
-    for directory, checksums in [(build.M2, m2checksums), (build.M3, build.M3RECORD["evidence_files"])]:
+    for directory, checksums in [(build.M2, m2checksums), (build.M3, build.M3RECORD["evidence_files"]),
+                                 (build.M31, build.M31RECORD["archive_sha256"])]:
         for path, expected in checksums.items():
             assert digest(directory / path) == expected, path
+    report = build.M31RECORD["report"]
+    assert digest(build.M31 / report["path"]) == report["sha256"]
+    assert build.M31VERIFY["source"]["commit"] == build.M31RECORD["tested_commit"] == build.BASE_COMMIT
+    assert build.M31VERIFY["source"]["status"] == build.M31RECORD["tested_status"] == []
+    assert all(c["returncode"] == 0 for c in build.M31VERIFY["commands"])
+    assert build.M31VERIFY["gates"] == build.M31RECORD["gates"]
+    assert sum(v.startswith("PASS") for v in build.M31RECORD["gates"].values()) == 12
+    assert build.M31RECORD["gates"]["CHAIN"] == "NOT_RUN"
+    assert build.M31RECORD["blocked_supported_prerequisites"] == []
+    observed = build.M31VERIFY["observed"]
+    assert observed["repeated_episode"] == dict(events=33, logical_observations=33,
+        drain_batches=[16, 16, 1], pending_after_each_drain=0, backpressure_at=16)
+    assert observed["feedback"]["native_calls_during_reconciliation"] == 0
+    assert observed["feedback"]["original_result_and_budget"] == "unchanged"
+    assert observed["feedback"]["attention_providers"] == ["sqlite", "atomic-file-fixture"]
+    source_audit = json.loads((build.M31 / "source-audit.json").read_text())
+    for path, expected in source_audit["unchanged"].items():
+        assert digest(root / path) == expected, path
+    probe = json.loads((build.M31 / "non-numeric-processing.json").read_text())
+    assert probe["source"] == build.BASE_COMMIT and len(probe["cases"]) == 2
+    for case in probe["cases"]:
+        assert case["processing"] == "committed-and-acknowledged"
+        assert case["numerical"] == "model-inapplicable" and case["truth"] is None
+        assert case["observations"] == 1 and case["pending"] == 0
+    closure_hive = next(c for c in build.M31VERIFY["commands"] if c["name"] == "closure-native-hive")
+    assert closure_hive["tests"] == dict(tests=7, failures=0, errors=0, skipped=0)
     swap = json.loads((build.M12 / "m11-swap-demo.json").read_text())
     assert len(swap["runs"]) == 4
     for run in swap["runs"]:
@@ -116,8 +149,11 @@ def main() -> None:
                   evidence_inputs_unchanged=len(manifest["evidence_sha256"]),
                   archived_m2_files_checked=len(m2checksums),
                   archived_m3_files_checked=len(build.M3RECORD["evidence_files"]),
-                  recorded_implementation_hashes_match=len(build.M3VERIFY["source"]["files"]),
-                  gate_results=build.M3RECORD["gates"], independent_render_sha256=digest(args.independent_pdf))
+                  archived_m3_1_files_checked=len(build.M31RECORD["archive_sha256"]),
+                  recorded_implementation_hashes_match=len(build.M31VERIFY["source"]["files"]),
+                  historical_m3_implementation_hashes_checked=len(build.M3VERIFY["source"]["files"]),
+                  preserved_boundary_files_checked=len(source_audit["unchanged"]),
+                  gate_results=build.M31RECORD["gates"], independent_render_sha256=digest(args.independent_pdf))
     (office / "comparison.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
     assert not mismatches and not bounds

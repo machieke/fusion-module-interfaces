@@ -1,14 +1,14 @@
 {
-  "slides": 40,
+  "slides": 44,
   "pptx_reopened": true,
-  "pdf_pages_rendered": 40,
+  "pdf_pages_rendered": 44,
   "layout_bounds_checked": true,
   "text_overlaps": 0,
   "fonts": "DejaVu Sans / DejaVu Sans Mono (PDF embedded; TTFs bundled)",
   "independent_renderer_check": "Recorded separately in qa.json",
-  "source_commit": "1af39794649d0ca95cd729c64868202368da1ec4",
-  "evidence_commit": "c4498ce3047f1283d3a4a3ae3d09b713e7dcf312",
-  "main_talk_slides": 32,
+  "source_commit": "1b17d74f2808703894ea55c9539adf264bc87976",
+  "evidence_commit": "985d2f34ea8df8c5d93582e4ed6fe5cbe1843074",
+  "main_talk_slides": 36,
   "evidence_sha256": {
     "docs/module-interfaces/evidence/m2/manifest.json": "6205df1a084d29c33402fd13a6fdb2c5c5dbba6b197351f731beda6e5945440d",
     "docs/module-interfaces/evidence/m2/final/verification.json": "baed82df8ff346ad54dcb66e0a90526cc1b11446a82355f34266d40a27f1afec",
@@ -23,22 +23,28 @@
     "docs/module-interfaces/evidence/m3/final/verification.json": "911678464ebf8f17d7f893380b97af96e8af4e49b1b745985b47c33ba92b0447",
     "docs/module-interfaces/evidence/m3/final/comparison.json": "a9b1bf4384b464902d1a766c5965eb53f51a25ee15f0721be9bf5b6e737bfa54",
     "docs/module-interfaces/evidence/m3/build.json": "4c0ef44af1fc90f1a1e453a97e34bd9b35a067758282b0c10c6c9d8e5c0f55d0",
-    "docs/module-interfaces/evidence/m3/supplemental-empty-selection.json": "f6d9686d93f2b80470f8afcae5e8e5048df8f3a596f90a959b63f48dc967f91e"
+    "docs/module-interfaces/evidence/m3/supplemental-empty-selection.json": "f6d9686d93f2b80470f8afcae5e8e5048df8f3a596f90a959b63f48dc967f91e",
+    "docs/module-interfaces/evidence/m3_1/manifest.json": "847737f17888baffa8a016f48642a1adeaa4ac8049138ec0d19722c5a6c9a6dc",
+    "docs/module-interfaces/evidence/m3_1/final/verification.json": "23d47a1d09154831597840945721f91e1d92680dd8e7b9ec13346d8bf63068af",
+    "docs/module-interfaces/evidence/m3_1/build.json": "a84da32a91f8e546d53d2ef14c4adfa090e32dd57ee39ad0567a3f1636817dca",
+    "docs/module-interfaces/evidence/m3_1/source-audit.json": "ddf35d275112670b1ed1cc3772cb6e937a1c01ce42bdec1bd766bfb5f3e4d00e",
+    "docs/module-interfaces/evidence/m3_1/baseline/gaps.json": "a97822d333a6cb767ac52f5272a019d9894a84dd951b6edd10f56ff88484598e",
+    "docs/module-interfaces/evidence/m3_1/non-numeric-processing.json": "3ff0f7ea39844a038a15cf0f9ae97914068aca0cc0587e72f9f6d922dbba6528"
   },
   "slides_manifest": [
     {
       "slide": 1,
-      "title": "Remember the evidence. Choose where to focus. Bound the work.",
+      "title": "Remember the evidence. Bound the work. Account for every effect.",
       "section": "Module-interface architecture",
       "appendix": false,
-      "source": "M3 evidence c4498ce \u00b7 tested 1af3979",
+      "source": "M3.1 evidence 985d2f3 \u00b7 tested 1b17d74",
       "text_elements": 12,
       "editable_shapes": 15
     },
     {
       "slide": 2,
       "title": "ELI16: remember, weigh evidence, do the calculation",
-      "section": "Executive summary \u00b7 1 of 2",
+      "section": "Executive summary \u00b7 1 of 3",
       "appendix": false,
       "source": "M2 preserved \u00b7 M3 derived admission",
       "text_elements": 30,
@@ -47,7 +53,7 @@
     {
       "slide": 3,
       "title": "ELI16: a priority list and a limited attempt budget",
-      "section": "Executive summary \u00b7 2 of 2",
+      "section": "Executive summary \u00b7 2 of 3",
       "appendix": false,
       "source": "C3 attention \u00b7 C4 bounded inference",
       "text_elements": 29,
@@ -55,6 +61,15 @@
     },
     {
       "slide": 4,
+      "title": "ELI16: finishing the job and settling its receipts",
+      "section": "Executive summary \u00b7 3 of 3",
+      "appendix": false,
+      "source": "M3.1 delivery closure \u00b7 owner receipts",
+      "text_elements": 31,
+      "editable_shapes": 37
+    },
+    {
+      "slide": 5,
       "title": "Fifteen modules; four responsibility groups",
       "section": "01 / Helicopter view",
       "appendix": false,
@@ -63,7 +78,7 @@
       "editable_shapes": 58
     },
     {
-      "slide": 5,
+      "slide": 6,
       "title": "Data responsibilities: bytes \u2192 references \u2192 history",
       "section": "01 / Responsibility atlas \u00b7 1 of 3",
       "appendix": false,
@@ -72,16 +87,16 @@
       "editable_shapes": 41
     },
     {
-      "slide": 6,
+      "slide": 7,
       "title": "Cognitive responsibilities: four separate roles",
       "section": "01 / Responsibility atlas \u00b7 2 of 3",
       "appendix": false,
       "source": "architecture.md",
-      "text_elements": 28,
-      "editable_shapes": 34
+      "text_elements": 29,
+      "editable_shapes": 35
     },
     {
-      "slide": 7,
+      "slide": 8,
       "title": "Control responsibilities: move work, preserve authority",
       "section": "01 / Responsibility atlas \u00b7 3 of 3",
       "appendix": false,
@@ -90,16 +105,16 @@
       "editable_shapes": 39
     },
     {
-      "slide": 8,
-      "title": "Function dependencies: the exercised M3 path",
+      "slide": 9,
+      "title": "Function dependencies: the exercised M3.1 path",
       "section": "01 / Dependency map \u00b7 private cognition",
       "appendix": false,
-      "source": "cognition.py \u00b7 ports.py \u00b7 architecture.md",
-      "text_elements": 24,
-      "editable_shapes": 52
+      "source": "cognition.py \u00b7 ports.py \u00b7 evidence_relay.py",
+      "text_elements": 27,
+      "editable_shapes": 57
     },
     {
-      "slide": 9,
+      "slide": 10,
       "title": "Function dependencies: the preserved M1.2 path",
       "section": "01 / Dependency map \u00b7 shared application ports",
       "appendix": false,
@@ -108,7 +123,7 @@
       "editable_shapes": 62
     },
     {
-      "slide": 10,
+      "slide": 11,
       "title": "The DA boundary remains application-neutral",
       "section": "02 / Boundary \u00b7 application-neutral persistence",
       "appendix": false,
@@ -117,7 +132,7 @@
       "editable_shapes": 47
     },
     {
-      "slide": 11,
+      "slide": 12,
       "title": "Two independent substitutions, one design principle",
       "section": "02 / Provider replacement",
       "appendix": false,
@@ -126,7 +141,7 @@
       "editable_shapes": 25
     },
     {
-      "slide": 12,
+      "slide": 13,
       "title": "Private state has explicit owners and placement",
       "section": "02 / Privacy and authorization",
       "appendix": false,
@@ -135,7 +150,7 @@
       "editable_shapes": 33
     },
     {
-      "slide": 13,
+      "slide": 14,
       "title": "Executable contracts make the inference step finite",
       "section": "02 / Contract decisions before behavior",
       "appendix": false,
@@ -144,7 +159,7 @@
       "editable_shapes": 34
     },
     {
-      "slide": 14,
+      "slide": 15,
       "title": "C1: one occurrence, one position in the story",
       "section": "03 / Episodic memory",
       "appendix": false,
@@ -153,7 +168,16 @@
       "editable_shapes": 37
     },
     {
-      "slide": 15,
+      "slide": 16,
+      "title": "C1 delivery closes without understanding PLN",
+      "section": "03 / M3.1 evidence delivery",
+      "appendix": false,
+      "source": "delivery_contracts.py \u00b7 evidence_relay.py \u00b7 m3_1 evidence",
+      "text_elements": 32,
+      "editable_shapes": 49
+    },
+    {
+      "slide": 17,
       "title": "C2: admitting evidence and changing belief are separate",
       "section": "03 / Belief revision",
       "appendix": false,
@@ -162,7 +186,7 @@
       "editable_shapes": 37
     },
     {
-      "slide": 16,
+      "slide": 18,
       "title": "A derived conclusion inherits its evidence trail",
       "section": "03 / Derived-support admission",
       "appendix": false,
@@ -171,7 +195,7 @@
       "editable_shapes": 44
     },
     {
-      "slide": 17,
+      "slide": 19,
       "title": "One grounded rule reuses the actual native PLN",
       "section": "03 / Kernel and runtime compatibility",
       "appendix": false,
@@ -180,7 +204,7 @@
       "editable_shapes": 33
     },
     {
-      "slide": 18,
+      "slide": 20,
       "title": "Native goldens check deduction and preserved revision",
       "section": "03 / Numerical evidence",
       "appendix": false,
@@ -189,7 +213,7 @@
       "editable_shapes": 23
     },
     {
-      "slide": 19,
+      "slide": 21,
       "title": "C3: a small, independent attention policy",
       "section": "03 / Short-term importance",
       "appendix": false,
@@ -198,7 +222,7 @@
       "editable_shapes": 30
     },
     {
-      "slide": 20,
+      "slide": 22,
       "title": "Attention replacement preserves the measured outcome",
       "section": "03 / Controlled substitution experiment",
       "appendix": false,
@@ -207,7 +231,7 @@
       "editable_shapes": 38
     },
     {
-      "slide": 21,
+      "slide": 23,
       "title": "C4: reserve work durably before invoking the rule",
       "section": "03 / Bounded inference control",
       "appendix": false,
@@ -216,7 +240,16 @@
       "editable_shapes": 44
     },
     {
-      "slide": 22,
+      "slide": 24,
+      "title": "C3 alone settles the feedback outcome",
+      "section": "03 / M3.1 bounded reconciliation",
+      "appendix": false,
+      "source": "attention.py \u00b7 fixture_attention.py \u00b7 inference.py",
+      "text_elements": 23,
+      "editable_shapes": 45
+    },
+    {
+      "slide": 25,
       "title": "Five crash boundaries, independent owner commits",
       "section": "03 / Recovery \u00b7 actual SIGKILL",
       "appendix": false,
@@ -225,7 +258,7 @@
       "editable_shapes": 33
     },
     {
-      "slide": 23,
+      "slide": 26,
       "title": "Authorization, replay and profiles remain live",
       "section": "03 / Boundary guarantees",
       "appendix": false,
@@ -234,7 +267,7 @@
       "editable_shapes": 36
     },
     {
-      "slide": 24,
+      "slide": 27,
       "title": "One real Hive action reaches the entire private path",
       "section": "04 / Native integration",
       "appendix": false,
@@ -243,7 +276,16 @@
       "editable_shapes": 42
     },
     {
-      "slide": 25,
+      "slide": 28,
+      "title": "Native Hive exposes execution and closure separately",
+      "section": "04 / M3.1 actual caller progress",
+      "appendix": false,
+      "source": "inference_program/program.py \u00b7 test_m3_1_integration.py",
+      "text_elements": 21,
+      "editable_shapes": 29
+    },
+    {
+      "slide": 29,
       "title": "The same one-attempt budget makes attention visible",
       "section": "04 / Demonstrated behavior",
       "appendix": false,
@@ -252,106 +294,106 @@
       "editable_shapes": 27
     },
     {
-      "slide": 26,
+      "slide": 30,
       "title": "Real providers and fixtures remain visibly separate",
       "section": "04 / Evidence classification",
       "appendix": false,
-      "source": "m3/manifest.json \u00b7 m3-evidence.md",
-      "text_elements": 29,
-      "editable_shapes": 34
+      "source": "m3_1/manifest.json \u00b7 m3_1-evidence.md",
+      "text_elements": 30,
+      "editable_shapes": 35
     },
     {
-      "slide": 27,
-      "title": "Executed tests cover contracts, native calls and crashes",
-      "section": "04 / Recorded final verification",
+      "slide": 31,
+      "title": "Executed tests cover delivery, races and real crashes",
+      "section": "04 / Recorded M3.1 final verification",
       "appendix": false,
-      "source": "m3/final/verification.json",
+      "source": "m3_1/final/verification.json \u00b7 non-numeric-processing.json",
       "text_elements": 30,
       "editable_shapes": 38
     },
     {
-      "slide": 28,
-      "title": "M3 gates: contracts and independent cognition",
+      "slide": 32,
+      "title": "M3.1 gates: delivery and authoritative outcomes",
       "section": "04 / Gate-by-gate results \u00b7 1 of 2",
       "appendix": false,
-      "source": "m3/manifest.json",
-      "text_elements": 30,
-      "editable_shapes": 39
+      "source": "m3_1/manifest.json",
+      "text_elements": 27,
+      "editable_shapes": 35
     },
     {
-      "slide": 29,
-      "title": "M3 gates: bounded operation and real integration",
+      "slide": 33,
+      "title": "M3.1 gates: bounded recovery and native integration",
       "section": "04 / Gate-by-gate results \u00b7 2 of 2",
       "appendix": false,
-      "source": "m3/manifest.json",
+      "source": "m3_1/manifest.json",
       "text_elements": 30,
       "editable_shapes": 39
     },
     {
-      "slide": 30,
+      "slide": 34,
       "title": "Reproducibility connects source, build and observed result",
       "section": "04 / Source and execution ledger",
       "appendix": false,
-      "source": "m3/build.json \u00b7 manifest.json \u00b7 final/verification.json",
+      "source": "m3_1/build.json \u00b7 manifest.json \u00b7 final/verification.json",
       "text_elements": 31,
       "editable_shapes": 38
     },
     {
-      "slide": 31,
+      "slide": 35,
       "title": "The limitations are part of the contract",
       "section": "04 / Guarantees and stopping point",
       "appendix": false,
-      "source": "m3-evidence.md \u00b7 compatibility and recovery limits",
+      "source": "m3_1-evidence.md \u00b7 compatibility and recovery limits",
       "text_elements": 22,
       "editable_shapes": 28
     },
     {
-      "slide": 32,
-      "title": "Keep the evidence. Separate the decisions. Make the budget real.",
+      "slide": 36,
+      "title": "Keep the evidence. Preserve the budget. Account for every effect.",
       "section": "04 / Takeaway",
       "appendix": false,
-      "source": "M3 tested 1af3979 \u00b7 evidence c4498ce",
+      "source": "M3.1 tested 1b17d74 \u00b7 evidence 985d2f3",
       "text_elements": 10,
       "editable_shapes": 12
     },
     {
-      "slide": 33,
+      "slide": 37,
       "title": "Implementation map: responsibilities stay local",
       "section": "Appendix A / Code navigation",
       "appendix": true,
       "source": "architecture.md \u00b7 ports.py",
-      "text_elements": 30,
-      "editable_shapes": 37
+      "text_elements": 31,
+      "editable_shapes": 38
     },
     {
-      "slide": 34,
+      "slide": 38,
       "title": "Exact sources identify the verified native stack",
       "section": "Appendix B / Source ledger",
       "appendix": true,
-      "source": "m3/final/verification.json \u00b7 build.json",
+      "source": "m3_1/final/verification.json \u00b7 build.json",
       "text_elements": 22,
       "editable_shapes": 32
     },
     {
-      "slide": 35,
+      "slide": 39,
       "title": "Profiles and bounds make compatibility explicit",
       "section": "Appendix C / Contract ledger",
       "appendix": true,
       "source": "contracts.md \u00b7 cognition.py",
-      "text_elements": 30,
-      "editable_shapes": 37
+      "text_elements": 33,
+      "editable_shapes": 40
     },
     {
-      "slide": 36,
-      "title": "C1 acknowledgment compatibility remains an open seam",
-      "section": "Appendix D / Honest completion semantics",
+      "slide": 40,
+      "title": "New profiles close the seam; old stores stay explicit",
+      "section": "Appendix D / Existing-state compatibility",
       "appendix": true,
-      "source": "m3-evidence.md \u00b7 C1/C2 version boundary",
-      "text_elements": 20,
-      "editable_shapes": 29
+      "source": "m3_1/baseline/gaps.json \u00b7 test_m3_1_compat.py",
+      "text_elements": 18,
+      "editable_shapes": 23
     },
     {
-      "slide": 37,
+      "slide": 41,
       "title": "One native operation crosses the existing interfaces",
       "section": "Appendix E / Preserved M1.2 sequence",
       "appendix": true,
@@ -360,7 +402,7 @@
       "editable_shapes": 53
     },
     {
-      "slide": 38,
+      "slide": 42,
       "title": "Historical M1: one result reached an isolated chain",
       "section": "Appendix F / Historical chain evidence",
       "appendix": true,
@@ -369,16 +411,16 @@
       "editable_shapes": 36
     },
     {
-      "slide": 39,
-      "title": "Reproduce the supported M3 gates",
+      "slide": 43,
+      "title": "Reproduce the supported M3.1 gates",
       "section": "Appendix G / Commands and prerequisites",
       "appendix": true,
-      "source": "runbook.md \u00b7 build_m3.py \u00b7 verify_m3.py",
+      "source": "runbook.md \u00b7 build_m3.py \u00b7 verify_m3_1.py",
       "text_elements": 13,
       "editable_shapes": 17
     },
     {
-      "slide": 40,
+      "slide": 44,
       "title": "Retry identities answer different questions",
       "section": "Appendix H / Operational semantics",
       "appendix": true,

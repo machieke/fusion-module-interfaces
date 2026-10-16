@@ -1,38 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Private state has explicit owners and placement</title>
-<desc id="desc">The native plugin receives authenticated actor context and derives authority from operator configuration. Request parameters cannot select credentials, arbitrary scopes or private premise identities. Public parameters are generated seed, preference a/b and an absolute deadline. Privacy tests intercept shared bindings, populate shared stores and inspect native receipts/logs/state for canaries and private hashes. This is tested local placement under a trusted operator/host, not secrecy from administrators. Each journal has one owner and commits independently; there is no cross-owner SQL transaction.</desc>
+<title id="title">Two independent substitutions, one design principle</title>
+<desc id="desc">The storage matrix has two implementations times two bindings. C1 is independently exercised without cognition using hostile declared-port wrappers. M3 attention replacement uses a separately implemented atomic-file provider; only DTO validation is shared with the SQLite implementation. Four controlled native cases hold exact task/evidence identities, policy, budgets and deadline fixed while selecting the provider in composition. Separate initial-preference cases show the selection effect. Both replacements persist actual state, but the file implementations remain classified fixtures rather than real DeTTa or a production attention service. This demonstrates same-profile replacement on fresh stores, not live migration.</desc>
 <rect width="1600" height="900" fill="#F4F2EB"/>
-<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / PRIVACY AND AUTHORIZATION</text>
-<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Private state has explicit owners and placement</text>
-<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A trusted Hive actor maps to an operator-configured private scope and credential.</text>
-<rect x="72" y="243" width="940" height="487" rx="14" fill="#E4EBF5"/>
-<text x="98" y="289.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#315E9C">PRIVATE LOCAL COMPOSITION</text>
-<rect x="98" y="329" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="120" y="378.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C1 · Episodes</text>
-<text x="120" y="421.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">History + delivery intents</text>
-<rect x="555" y="329" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="577" y="378.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C2 · Beliefs</text>
-<text x="577" y="421.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Supports + exact attempts</text>
-<rect x="98" y="516" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="120" y="565.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C3 · Attention</text>
-<text x="120" y="608.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">STI + clock + causal replay</text>
-<rect x="555" y="516" width="430" height="150" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
-<text x="577" y="565.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">C4 · Controller</text>
-<text x="577" y="608.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Budgets + progress +</text>
-<text x="577" y="640.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">feedback</text>
-<rect x="1082" y="243" width="446" height="212" rx="13" fill="#DCEFE8" stroke="#007C78"/>
-<text x="1104" y="295.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#007C78">Public Hive receipt</text>
-<text x="1104" y="342.56" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Generated counters, status</text>
-<text x="1104" y="378.4" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and public command receipt</text>
-<text x="1104" y="414.24" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">ID.</text>
-<rect x="1082" y="493" width="446" height="237" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
-<text x="1104" y="545.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#A86A15">Private trace</text>
-<text x="1104" y="592.5600000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Task/support hashes,</text>
-<text x="1104" y="628.4000000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">premises, lineage, attention</text>
-<text x="1104" y="664.2400000000001" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and payloads stay private.</text>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / PROVIDER REPLACEMENT</text>
+<text x="70" y="141.55" font-family="DejaVu Sans" font-size="49" font-weight="700" fill="#102B3F">Two independent substitutions, one design principle</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Select semantics and capabilities explicitly; keep callers independent of provider internals.</text>
+<rect x="72" y="252" width="704" height="350" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="306.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#007C78">AtomStorage · preserved M1/M2</text>
+<text x="94" y="355.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Real local DeTTa or an independent</text>
+<text x="94" y="392.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">atomic-file fixture.</text>
+<text x="94" y="429.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775"></text>
+<text x="94" y="466.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">In-process and private stdio bindings pass</text>
+<text x="94" y="503.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">the same workflow.</text>
+<rect x="800" y="252" width="728" height="350" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="822" y="306.3" font-family="DejaVu Sans" font-size="34" font-weight="700" fill="#315E9C">Attention · new in M3</text>
+<text x="822" y="355.07" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">SQLite owner or an independent atomic-file</text>
+<text x="822" y="392.19" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">fixture.</text>
+<text x="822" y="429.31" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775"></text>
+<text x="822" y="466.43" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">Same STI policy, tasks and budgets;</text>
+<text x="822" y="503.55" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">unchanged consumer produces matching</text>
+<text x="822" y="540.67" font-family="DejaVu Sans" font-size="29" font-weight="400" fill="#536775">outcomes.</text>
+<text x="76" y="676.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">No shared owner transitions, inheritance or private-table access in the attention</text>
+<text x="76" y="713.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">replacement.</text>
 <rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
-<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Shared M1 wire and DA contracts stay unchanged; every owner rechecks current authorization.</text>
+<text x="94" y="802.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#102B3F">These are fresh-store replacements. Existing accepted state is not migrated.</text>
 <line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
-<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3 / cognition.py · inference_program/program.py</text>
-<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">12 / 40</text>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M3.1 / m11-swap-demo.json · m3/final/comparison.json</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">12 / 44</text>
 </svg>
