@@ -1,0 +1,102 @@
+{
+  "schema": "omega-mapping-gates/1",
+  "scope": "Mapping/design review gates only; not remote capability or runtime integration completion",
+  "gates": [
+    {
+      "gate": "SOURCE_PIN",
+      "result": "PASS",
+      "basis": "Exact observed source revisions/worktrees/hash manifest; deployed and moving inputs explicit.",
+      "evidence": "source-state.json"
+    },
+    {
+      "gate": "COMPLETE_INVENTORY",
+      "result": "PASS",
+      "basis": "105 components; 19 commands plus imported and runtime surfaces, stores/threads/effects.",
+      "evidence": "mapping-ledger.json"
+    },
+    {
+      "gate": "SYMBOL_TRACE",
+      "result": "PASS",
+      "basis": "327 source occurrences and pinned per-row line citations/dependency traces.",
+      "evidence": "symbol-index.json"
+    },
+    {
+      "gate": "MODULE_MAPPING",
+      "result": "PASS",
+      "basis": "Roles and multi-family responsibility mappings; nine analogues, zero conformance claims.",
+      "evidence": "component-map.md"
+    },
+    {
+      "gate": "COMMAND_COMPOSITION",
+      "result": "PASS",
+      "basis": "Ordered operations, owner commits, compatibility and error mapping.",
+      "evidence": "command-map.md"
+    },
+    {
+      "gate": "STATE_OWNERSHIP",
+      "result": "PASS",
+      "basis": "Authoritative stores/writers/readers/coupling and recovery limits.",
+      "evidence": "state-ownership.md"
+    },
+    {
+      "gate": "PROFILE_DISCIPLINE",
+      "result": "PASS",
+      "basis": "Current profiles distinct from DRAFT proposals and private placement remains local.",
+      "evidence": "fusion-baseline.md"
+    },
+    {
+      "gate": "REMOTE_PLACEMENT",
+      "result": "PASS",
+      "basis": "Ten seams, twelve scores each, rationale and three ranked prototypes.",
+      "evidence": "remote-scorecard.json"
+    },
+    {
+      "gate": "GAP_DISCIPLINE",
+      "result": "PASS",
+      "basis": "All thirteen mismatches and seven additional gap groups; out-of-inventory explicit.",
+      "evidence": "interface-gaps.md"
+    },
+    {
+      "gate": "TARGET_ARCHITECTURE",
+      "result": "PASS",
+      "basis": "Three architecture and four current/target sequence diagrams with acceptance/persistence/recovery.",
+      "evidence": "diagrams.md"
+    },
+    {
+      "gate": "NEXT_SLICE",
+      "result": "PASS",
+      "basis": "Named native NAL operation selected; prospective tests only, no implementation.",
+      "evidence": "next-slice.md"
+    },
+    {
+      "gate": "NO_RUNTIME_CHANGE",
+      "result": "PASS",
+      "basis": "Only review-area files and the original brief differ from the inspection baseline; runtime unchanged, source trees clean and original local checkout preserved.",
+      "evidence": "validation-results.json"
+    },
+    {
+      "gate": "REVIEW_PACKET",
+      "result": "PASS",
+      "basis": "Required deliverables, links/counts/source/diagram consistency checked; human review is next.",
+      "evidence": "validation-results.json"
+    }
+  ],
+  "unrun": [
+    "full Omega startup and actual command/facade invocation",
+    "live Chroma, channels, model, embeddings, media",
+    "all proposed remote adapters and next-slice acceptance tests",
+    "fresh full Fusion native/DeTTa/chain regressions"
+  ],
+  "prerequisite_blockers": [
+    "Omega declares no exact deployed PeTTa/Chroma-adapter/Python SDK/model revision set",
+    "memory vector/promotion/provenance/identity/source-feed contracts absent",
+    "current private profiles remain local-only",
+    "model/perception/tool/sandbox interfaces missing"
+  ],
+  "resolved_documentation_failures": [
+    "Initial Mermaid parser rejected sequence-message semicolons; labels corrected before complete revalidation.",
+    "Initial packet validator compared trailing source whitespace literally; line-edge normalization corrected and validation rerun."
+  ],
+  "unresolved_executed_failures": [],
+  "observation_timeouts": []
+}

@@ -1,0 +1,116 @@
+{
+  "schema": "omega-mapping-validation/1",
+  "scope": "Review consistency only; not semantic or runtime conformance proof",
+  "results": [
+    {
+      "check": "source-pins-cleanliness-and-file-hashes",
+      "status": "PASS",
+      "detail": {
+        "repositories": 4,
+        "hashes": 169
+      }
+    },
+    {
+      "check": "ledger-symbols-classifications-and-family-coverage",
+      "status": "PASS",
+      "detail": {
+        "rows": 105,
+        "definitions": 327,
+        "counts": {
+          "ADAPTER_FIT": 1,
+          "DIRECT_FIT": 0,
+          "INTERFACE_GAP": 13,
+          "NOT_A_MODULE": 29,
+          "PROFILE_REQUIRED": 47,
+          "SPLIT_REQUIRED": 14,
+          "UNASSESSED": 1
+        }
+      }
+    },
+    {
+      "check": "independent-application-and-adapter-definition-reconciliation",
+      "status": "PASS",
+      "detail": 281
+    },
+    {
+      "check": "advertised-command-and-runtime-receive-coverage",
+      "status": "PASS",
+      "detail": [
+        "append-file",
+        "contradict",
+        "demote",
+        "episodes",
+        "forget",
+        "link",
+        "metta",
+        "pin",
+        "promote",
+        "query",
+        "read-file",
+        "remember",
+        "search",
+        "send",
+        "shell",
+        "support",
+        "unlink",
+        "update",
+        "write-file"
+      ]
+    },
+    {
+      "check": "placement-scores-and-ranked-candidates",
+      "status": "PASS",
+      "detail": 10
+    },
+    {
+      "check": "required-deliverables-and-local-links",
+      "status": "PASS",
+      "detail": {
+        "required": 10,
+        "links": 60
+      }
+    },
+    {
+      "check": "mermaid-render-evidence-matches-current-diagrams",
+      "status": "PASS",
+      "detail": 7
+    },
+    {
+      "check": "no-runtime-change-and-preserved-existing-worktrees",
+      "status": "PASS",
+      "detail": {
+        "runtime_changes": [],
+        "review_scope_paths": [
+          "codex_mettaclaw_neoclaw_module_mapping.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/README.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/command-map.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/component-map.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/coverage.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/diagram-validation.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/diagrams.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/evidence.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/fusion-baseline.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/gates.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/interface-gaps.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/mapping-ledger.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/next-slice.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/probe-results.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/probes.py",
+          "docs/omega-adoption/mettaclaw-neoclaw/remote-placement.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/remote-scorecard.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/seam-contracts.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/source-state.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/state-ownership.md",
+          "docs/omega-adoption/mettaclaw-neoclaw/symbol-index.json",
+          "docs/omega-adoption/mettaclaw-neoclaw/validate.py",
+          "docs/omega-adoption/mettaclaw-neoclaw/validation-results.json"
+        ]
+      }
+    },
+    {
+      "check": "mapping-gate-consistency",
+      "status": "PASS",
+      "detail": 13
+    }
+  ]
+}
