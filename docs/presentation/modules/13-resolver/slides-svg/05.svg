@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">The executable surface</title>
+<desc id="desc">Walk the contract from inputs to effects. Version filter: Same major and explicit [minimum, maximum) range; No candidate → UNSUPPORTED_VERSION. Profile/features filter: Exact profile and required feature subset; Mismatch → UNSUPPORTED_PROFILE. Operation filter: Required operation subset; Mismatch → UNSUPPORTED_OPERATION. Guarantee/resource filter: Guarantees, payload, privacy and latency requirement; Unsatisfied → NOT_AVAILABLE. Deterministic selection: Highest matching version/provider ordering; No hidden semantic relaxation. Operation groups on this slide are not a new coverage denominator. The evidence ledger distinguishes new operations from inherited dependencies. Supporting internal helpers are labelled as seams and are not advertised remote services.
+
+Evidence and implementation: [registry.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/registry.py), [bindings.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/bindings.py), [test_contract.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_contract.py), [test_m11.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m11.py), [contracts.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/contracts.md).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / CONTRACT</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The executable surface</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">These operations and implementation seams define the supported scope; versions and profiles remain explicit.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OPERATION / SEAM</text>
+<text x="488" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESPONSIBILITY</text>
+<text x="1023" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONTRACT CONSEQUENCE</text>
+<rect x="72" y="277" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Version filter</text>
+<text x="488" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Same major and explicit [minimum,</text>
+<text x="488" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">maximum) range</text>
+<text x="1023" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No candidate →</text>
+<text x="1023" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">UNSUPPORTED_VERSION</text>
+<rect x="72" y="367" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="407.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Profile/features filter</text>
+<text x="488" y="407.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Exact profile and required feature</text>
+<text x="488" y="439.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">subset</text>
+<text x="1023" y="407.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Mismatch → UNSUPPORTED_PROFILE</text>
+<rect x="72" y="457" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="497.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Operation filter</text>
+<text x="488" y="497.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Required operation subset</text>
+<text x="1023" y="497.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Mismatch →</text>
+<text x="1023" y="529.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">UNSUPPORTED_OPERATION</text>
+<rect x="72" y="547" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="587.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Guarantee/resource filter</text>
+<text x="488" y="587.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Guarantees, payload, privacy and</text>
+<text x="488" y="619.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">latency requirement</text>
+<text x="1023" y="587.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Unsatisfied → NOT_AVAILABLE</text>
+<rect x="72" y="637" width="1456" height="85" rx="6" fill="#FFFFFF"/>
+<text x="88" y="677.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Deterministic selection</text>
+<text x="488" y="677.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Highest matching version/provider</text>
+<text x="488" y="709.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">ordering</text>
+<text x="1023" y="677.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No hidden semantic relaxation</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Trusted-local metadata checks; no proof of advertised reliability or measured performance.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Compatibility resolver · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">05 / 12</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Four invariants to preserve</title>
+<desc id="desc">These invariants should survive provider substitution and future optimization. Pinned mathematics: No alternative formula is substituted to obtain a desired result. Exact premise vector: Historical support identities are not replaced by latest beliefs. Refuse invalid domains: Nonfinite or inconsistent inputs fail guarded checks. No owner writes: A successful formula result alone changes no belief or attention state. The supporting tests and runtime evidence are in the linked sources; this slide does not claim a formal proof or a production security audit.
+
+Evidence and implementation: [pln_deduction.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/pln_deduction.py), [test_deduction.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/pln/test_deduction.py), [deduction-sources.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/pln/deduction-sources.json), [m3-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m3-evidence.md), [verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3/final/verification.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">06 / BEHAVIORAL GUARANTEES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Four invariants to preserve</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Each statement is bounded by the selected profile, authority model and tested failure model.</text>
+<rect x="72" y="245" width="712" height="213" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="282.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">I1</text>
+<text x="94" y="326.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Pinned mathematics</text>
+<text x="94" y="372.04999999999995" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">No alternative formula is substituted to obtain a</text>
+<text x="94" y="406.60999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">desired result.</text>
+<rect x="816" y="245" width="712" height="213" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="838" y="282.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">I2</text>
+<text x="838" y="326.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Exact premise vector</text>
+<text x="838" y="372.04999999999995" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Historical support identities are not replaced by</text>
+<text x="838" y="406.60999999999996" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">latest beliefs.</text>
+<rect x="72" y="488" width="712" height="213" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="525.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">I3</text>
+<text x="94" y="569.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">Refuse invalid domains</text>
+<text x="94" y="615.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Nonfinite or inconsistent inputs fail guarded</text>
+<text x="94" y="649.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">checks.</text>
+<rect x="816" y="488" width="712" height="213" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="838" y="525.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#007C78">I4</text>
+<text x="838" y="569.5" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#007C78">No owner writes</text>
+<text x="838" y="615.05" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">A successful formula result alone changes no</text>
+<text x="838" y="649.61" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">belief or attention state.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / PLNKernel · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">07 / 12</text>
+</svg>

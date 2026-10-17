@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Responsibility, state and scope</title>
+<desc id="desc">State ownership is the key contract, not the file layout. Envelope + replay identity: Immutable reference, content type and request semantics. Accepted source feed: Source UUID, scope and contiguous sequence in the M5 profile. Knowledge meaning: No query interpretation, belief admission or relation acceptance. Cross-owner transaction: DA bytes may commit before envelope acceptance; clients recover through ports. Explicit compatibility: Historical immutable-bytes/1; fresh immutable-commit-feed/1 · contract 1.1.0. Limits: M5 caps 512 accepted atoms and 4096 bytes/atom; legacy limits remain profile-specific.
+
+Evidence and implementation: [atoms.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/atoms.py), [atom_feed.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/atom_feed.py), [fixture_feed.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/fixture_feed.py), [m5-contracts.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m5-contracts.md), [m11-swap-demo.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m1_2/m11-swap-demo.json), [manifest.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/manifest.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / OWNERSHIP</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Responsibility, state and scope</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The owner is authoritative for its own state; other responsibilities are deliberately separate.</text>
+<text x="84" y="252.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#315E9C">OWNS / GUARANTEES</text>
+<rect x="72" y="280" width="712" height="190" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="331.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Envelope + replay identity</text>
+<text x="94" y="376.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Immutable reference, content type and request</text>
+<text x="94" y="409.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">semantics</text>
+<rect x="72" y="494" width="712" height="190" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="545.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Accepted source feed</text>
+<text x="94" y="590.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Source UUID, scope and contiguous sequence in</text>
+<text x="94" y="623.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">the M5 profile</text>
+<text x="828" y="252.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#A86A15">OUTSIDE THIS RESPONSIBILITY</text>
+<rect x="816" y="280" width="712" height="190" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="838" y="331.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Knowledge meaning</text>
+<text x="838" y="376.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">No query interpretation, belief admission or</text>
+<text x="838" y="409.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">relation acceptance</text>
+<rect x="816" y="494" width="712" height="190" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="838" y="545.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Cross-owner transaction</text>
+<text x="838" y="590.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">DA bytes may commit before envelope</text>
+<text x="838" y="623.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">acceptance; clients recover through ports</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Historical immutable-bytes/1; fresh immutable-commit-feed/1 · contract 1.1.0</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / AtomStorage · C0 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 12</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">The executable surface</title>
+<desc id="desc">Walk the contract from inputs to effects. submitEvidence: Validate C1 evidence or existing support; Admit/duplicate separately from numerical outcome. readBelief: Read exact historical or current snapshot; Aggregate states its admitted coverage. submitDerivation: Bind exact historical premise vector; v3 tagged support; no new observation. readDerivation: Recover a saved semantic decision; Replay does not force another calculation. Operation groups on this slide are not a new coverage denominator. The evidence ledger distinguishes new operations from inherited dependencies. Supporting internal helpers are labelled as seams and are not advertised remote services.
+
+Evidence and implementation: [beliefs.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/beliefs.py), [derived_beliefs.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/derived_beliefs.py), [cognition_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/cognition_contracts.py), [test_m2.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m2.py), [demo.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m2/final/demo.json), [m3-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m3-evidence.md).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / CONTRACT</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The executable surface</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">These operations and implementation seams define the supported scope; versions and profiles remain explicit.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OPERATION / SEAM</text>
+<text x="488" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESPONSIBILITY</text>
+<text x="1023" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONTRACT CONSEQUENCE</text>
+<rect x="72" y="277" width="1456" height="104" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">submitEvidence</text>
+<text x="488" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Validate C1 evidence or existing</text>
+<text x="488" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">support</text>
+<text x="1023" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Admit/duplicate separately from</text>
+<text x="1023" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">numerical outcome</text>
+<rect x="72" y="386" width="1456" height="104" rx="6" fill="#FFFFFF"/>
+<text x="88" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">readBelief</text>
+<text x="488" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Read exact historical or current</text>
+<text x="488" y="458.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">snapshot</text>
+<text x="1023" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Aggregate states its admitted</text>
+<text x="1023" y="458.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">coverage</text>
+<rect x="72" y="495" width="1456" height="104" rx="6" fill="#FFFFFF"/>
+<text x="88" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">submitDerivation</text>
+<text x="488" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Bind exact historical premise vector</text>
+<text x="1023" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">v3 tagged support; no new</text>
+<text x="1023" y="567.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">observation</text>
+<rect x="72" y="604" width="1456" height="104" rx="6" fill="#FFFFFF"/>
+<text x="88" y="644.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">readDerivation</text>
+<text x="488" y="644.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Recover a saved semantic decision</text>
+<text x="1023" y="644.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Replay does not force another</text>
+<text x="1023" y="676.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">calculation</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="797.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Bounded local support history; aggregate covers admitted supports, not every retained observation.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / BeliefRevision · C2 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">05 / 12</text>
+</svg>

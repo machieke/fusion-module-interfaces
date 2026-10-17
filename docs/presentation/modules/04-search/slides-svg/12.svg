@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Evidence you can inspect and reproduce</title>
+<desc id="desc">Conclude with: An answer is useful only when its freshness means something precise. The reproduction entrypoint is uv run --python 3.11 --locked python scripts/verify_m5.py --gates hive --environment &lt;env&gt; --output &lt;fresh&gt;. Requires pinned native providers. The writer exits and the oracle is removed before native lookup. Fresh replacement rebuilds derived state; it is not migration. Build/export checks for this series are separate from runtime tests. Exact upstream pins remain in integration/hive/sources.json, integration/pln/sources.json, integration/pln/deduction-sources.json and the M4/M5 source manifests. Commands use fresh output/state; raw provider environments, credentials, journals and private IDs should not be published.
+
+Evidence and implementation: [search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/search.py), [fixture_search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/fixture_search.py), [lookup_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_contracts.py), [test_m5_boundaries.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m5_boundaries.py), [lookup-trace-1.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/traces/lookup-trace-1.json), [native-payload-comparison.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/native-payload-comparison.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">11 / SOURCES AND TAKEAWAY</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Evidence you can inspect and reproduce</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Read the exact code, contracts and recorded run before treating a claim as a guarantee.</text>
+<rect x="72" y="234" width="1456" height="112" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="94" y="282.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#007C78">Takeaway</text>
+<text x="94" y="328.44000000000005" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">An answer is useful only when its freshness means something precise.</text>
+<text x="80" y="387.1" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#536775">SUPPORTED REPRODUCTION ENTRYPOINT · PREREQUISITES REQUIRED</text>
+<text x="80" y="432.8" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#102B3F">uv run --python 3.11 --locked python scripts/verify_m5.py --gates hive --environment &lt;env&gt; --output</text>
+<text x="80" y="463.52000000000004" font-family="DejaVu Sans Mono" font-size="24" font-weight="400" fill="#102B3F">&lt;fresh&gt;</text>
+<text x="80" y="512.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Requires pinned native providers. The writer exits and the oracle is removed before native lookup. Fresh</text>
+<text x="80" y="544.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">replacement rebuilds derived state; it is not migration.</text>
+<text x="80" y="638.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#315E9C">fusion/search.py</text>
+<text x="80" y="671.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#315E9C">fusion/adapters/fixture_search.py</text>
+<text x="80" y="704.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#315E9C">fusion/lookup_contracts.py</text>
+<text x="80" y="737.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#315E9C">tests/test_m5_boundaries.py</text>
+<text x="80" y="788.05" font-family="DejaVu Sans" font-size="19" font-weight="400" fill="#536775">Source 494df69a1ac401c3d3b2cf79dbfde07f74b5e277 · all citations and full notes accompany this deck.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Search projection · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">12 / 12</text>
+</svg>

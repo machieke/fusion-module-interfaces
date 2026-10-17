@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">The executable surface</title>
+<desc id="desc">Walk the contract from inputs to effects. step: Run one immutable explicit workset; Budget, deadline and selections bind the intent. readProgress: Expose execution and closure independently; Terminal execution may have pending closure. reconcile: Resolve already-recorded feedback intents; No new inference, retiming, refunds or deadline reset. Operation groups on this slide are not a new coverage denominator. The evidence ledger distinguishes new operations from inherited dependencies. Supporting internal helpers are labelled as seams and are not advertised remote services.
+
+Evidence and implementation: [inference.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/inference.py), [deadlines.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/deadlines.py), [cognition_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/cognition_contracts.py), [program.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/hive/inference_program/program.py), [comparison.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3/final/comparison.json), [verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3_1/final/verification.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">04 / CONTRACT</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">The executable surface</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">These operations and implementation seams define the supported scope; versions and profiles remain explicit.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OPERATION / SEAM</text>
+<text x="488" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">RESPONSIBILITY</text>
+<text x="1023" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">CONTRACT CONSEQUENCE</text>
+<rect x="72" y="277" width="1456" height="104" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">step</text>
+<text x="488" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Run one immutable explicit workset</text>
+<text x="1023" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Budget, deadline and selections bind</text>
+<text x="1023" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">the intent</text>
+<rect x="72" y="386" width="1456" height="104" rx="6" fill="#FFFFFF"/>
+<text x="88" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">readProgress</text>
+<text x="488" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Expose execution and closure</text>
+<text x="488" y="458.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">independently</text>
+<text x="1023" y="426.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Terminal execution may have pending</text>
+<text x="1023" y="458.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">closure</text>
+<rect x="72" y="495" width="1456" height="104" rx="6" fill="#FFFFFF"/>
+<text x="88" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">reconcile</text>
+<text x="488" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Resolve already-recorded feedback</text>
+<text x="488" y="567.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">intents</text>
+<text x="1023" y="535.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No new inference, retiming, refunds or</text>
+<text x="1023" y="567.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">deadline reset</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Finite worksets and journals; ≤16 resolutions/reconcile call; absolute deadlines never renewed.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / InferenceControl · C4 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">05 / 12</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Future directions need acceptance criteria</title>
+<desc id="desc">Discuss future work as conditional engineering proposals. Measure backlog behavior requires Rate-controlled append/drain and outages; success means No loss; bounded backpressure and recovery age. Add explicit retention policy requires Provenance and replay obligations first; success means Deletion cannot silently invalidate accepted evidence. Improve inspection tools requires Authorized read-only views with privacy controls; success means Explain event order and delivery state without exposing identifiers. No new cognition, scheduler, migration or chain capability is implemented by this series. Any changed numerical semantics, placement or replay lifetime requires separate design and verification rather than a presentation claim.
+
+Evidence and implementation: [episodes.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/episodes.py), [delivery_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/delivery_contracts.py), [evidence_relay.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/evidence_relay.py), [test_m3_1_delivery.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m3_1_delivery.py), [verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3_1/final/verification.json), [non-numeric-processing.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3_1/non-numeric-processing.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">10 / PROPOSED WORK · NOT IMPLEMENTED</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Future directions need acceptance criteria</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">These are discussion options, not a committed roadmap or permission to expand the current profile.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">DIRECTION</text>
+<text x="498" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PREREQUISITE / DESIGN GATE</text>
+<text x="1038" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEASURE OF SUCCESS</text>
+<rect x="72" y="277" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Measure backlog behavior</text>
+<text x="498" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Rate-controlled append/drain and</text>
+<text x="498" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">outages</text>
+<text x="1038" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No loss; bounded backpressure and</text>
+<text x="1038" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">recovery age</text>
+<rect x="72" y="421" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Add explicit retention</text>
+<text x="88" y="493.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">policy</text>
+<text x="498" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Provenance and replay obligations first</text>
+<text x="1038" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Deletion cannot silently invalidate</text>
+<text x="1038" y="493.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">accepted evidence</text>
+<rect x="72" y="565" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Improve inspection tools</text>
+<text x="498" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Authorized read-only views with privacy</text>
+<text x="498" y="637.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">controls</text>
+<text x="1038" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Explain event order and delivery</text>
+<text x="1038" y="637.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">state without exposing identifiers</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="794.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Keep ownership, current authorization and explicit compatibility intact; qualify new semantics with a new profile.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / EpisodicMemory · C1 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">11 / 12</text>
+</svg>

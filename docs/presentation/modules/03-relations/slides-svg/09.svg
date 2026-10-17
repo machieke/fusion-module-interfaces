@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Measurements and benchmark gaps</title>
+<desc id="desc">Read every number with its unit and source class. 4 / 4 Logical operations exercised: Contract + real-provider + native consumer. 15 Requires edges in native demo: Five roots connected to three prerequisites. 128 Accepted relations per fresh store: Declared cap; no throughput claim. The 15-edge example demonstrates one-hop traversal and reverse incidence. No isolated relation throughput, latency or large-graph scaling benchmark has been run. Proposed: vary fan-out, schema arity, repeated endpoints and page size; measure append and traversal p50/p95 with fixed-head correctness under concurrent appends. No new benchmark is executed for this presentation. Do not compare overlapping suite times or use a one-run workflow measurement as a latency percentile.
+
+Evidence and implementation: [relations.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/relations.py), [lookup_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_contracts.py), [lookup.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup.py), [test_m5.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m5.py), [test_m5_real.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/test_m5_real.py), [lookup-trace-1.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/traces/lookup-trace-1.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">08 / BENCHMARKS</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Measurements and benchmark gaps</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Observed values, contract limits and proposed experiments are explicitly different kinds of evidence.</text>
+<rect x="72" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="95" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#315E9C">4 / 4</text>
+<text x="95" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Logical operations</text>
+<text x="95" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">exercised</text>
+<text x="95" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Contract + real-provider + native</text>
+<text x="95" y="480.06" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">consumer</text>
+<rect x="568" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="591" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#315E9C">15</text>
+<text x="591" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Requires edges in native</text>
+<text x="591" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">demo</text>
+<text x="591" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Five roots connected to three</text>
+<text x="591" y="480.06" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">prerequisites</text>
+<rect x="1064" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1087" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#315E9C">128</text>
+<text x="1087" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Accepted relations per fresh</text>
+<text x="1087" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">store</text>
+<text x="1087" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Declared cap; no throughput claim</text>
+<text x="76" y="560.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The 15-edge example demonstrates one-hop traversal and reverse incidence. No isolated relation throughput,</text>
+<text x="76" y="592.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">latency or large-graph scaling benchmark has been run.</text>
+<rect x="72" y="665" width="1456" height="151" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="709.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#A86A15">PROPOSED BENCHMARK · NOT RUN</text>
+<text x="94" y="750.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Proposed: vary fan-out, schema arity, repeated endpoints and page size; measure append and traversal p50/p95</text>
+<text x="94" y="781.24" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">with fixed-head correctness under concurrent appends.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Relations · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">09 / 12</text>
+</svg>

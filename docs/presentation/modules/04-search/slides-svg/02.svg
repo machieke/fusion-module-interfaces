@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">One module in a system of fifteen</title>
+<desc id="desc">Locate Search projection in the bounded fifteen-family inventory. The grey groups are explanatory categories, not deployment units. RevisionMath, the evidence relay, native plugins and transport bindings are supporting seams rather than additional module families. Registry and Resolver are separate responsibilities even though both are implemented in registry.py. Fifteen represented families is not full Omega requirements coverage. Maintenance consumes only declared source ports. Query does not ingest or poll the current head. Neither implementation reads foreign owner SQL or the test oracle.
+
+Evidence and implementation: [search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/search.py), [fixture_search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/fixture_search.py), [lookup_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_contracts.py), [test_m5_boundaries.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m5_boundaries.py), [lookup-trace-1.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/traces/lookup-trace-1.json), [native-payload-comparison.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/native-payload-comparison.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">01 / HELICOPTER VIEW</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">One module in a system of fifteen</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The highlighted responsibility is the subject of this talk; placement and process count are separate decisions.</text>
+<rect x="72" y="236" width="346" height="468" rx="14" fill="#E7ECEB"/>
+<text x="90" y="276.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#536775">Persistence</text>
+<rect x="87" y="309" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="100" y="346.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">DA storage</text>
+<rect x="87" y="382" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="100" y="419.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">AtomStorage · C0</text>
+<rect x="87" y="455" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="100" y="492.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">ConsensusFinality</text>
+<rect x="442" y="236" width="346" height="468" rx="14" fill="#E7ECEB"/>
+<text x="460" y="276.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#536775">Knowledge access</text>
+<rect x="457" y="309" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="470" y="346.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Relations</text>
+<rect x="457" y="382" width="316" height="59" rx="8" fill="#007C78"/>
+<text x="470" y="419.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#FFFFFF">Search projection</text>
+<rect x="812" y="236" width="346" height="468" rx="14" fill="#E7ECEB"/>
+<text x="830" y="276.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#536775">Cognition</text>
+<rect x="827" y="309" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="840" y="346.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Episodes · C1</text>
+<rect x="827" y="382" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="840" y="419.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Beliefs · C2</text>
+<rect x="827" y="455" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="840" y="492.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">PLNKernel</text>
+<rect x="827" y="528" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="840" y="565.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Attention · C3</text>
+<rect x="827" y="601" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="840" y="638.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Inference · C4</text>
+<rect x="1182" y="236" width="346" height="468" rx="14" fill="#E7ECEB"/>
+<text x="1200" y="276.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#536775">Coordination + policy</text>
+<rect x="1197" y="309" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="1210" y="346.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Messaging</text>
+<rect x="1197" y="382" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="1210" y="419.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Execution</text>
+<rect x="1197" y="455" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="1210" y="492.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Registry</text>
+<rect x="1197" y="528" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="1210" y="565.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Resolver</text>
+<rect x="1197" y="601" width="316" height="59" rx="8" fill="#FFFFFF"/>
+<text x="1210" y="638.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#102B3F">Authorization</text>
+<text x="80" y="753.65" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#102B3F">Maintain an exact-attribute projection and return references with explicit prefix, page and freshness</text>
+<text x="80" y="788.2099999999999" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#102B3F">semantics.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Search projection · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">02 / 12</text>
+</svg>

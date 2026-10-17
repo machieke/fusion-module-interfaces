@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Future directions need acceptance criteria</title>
+<desc id="desc">Discuss future work as conditional engineering proposals. Quantify provider overhead requires Fixed corpus and equivalent durability labels; success means Separate lookup latency from DA reconstruction. Design retention/pruning requires Source-prefix and cursor invalidation contract first; success means No silent holes in accepted history. Add a production replacement requires Independent owner transitions + conformance; success means Same consumer, explicit profile, no hidden migration. No new cognition, scheduler, migration or chain capability is implemented by this series. Any changed numerical semantics, placement or replay lifetime requires separate design and verification rather than a presentation claim.
+
+Evidence and implementation: [atoms.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/atoms.py), [atom_feed.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/atom_feed.py), [fixture_feed.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/fixture_feed.py), [m5-contracts.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m5-contracts.md), [m11-swap-demo.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m1_2/m11-swap-demo.json), [manifest.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/manifest.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">10 / PROPOSED WORK · NOT IMPLEMENTED</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Future directions need acceptance criteria</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">These are discussion options, not a committed roadmap or permission to expand the current profile.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">DIRECTION</text>
+<text x="498" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PREREQUISITE / DESIGN GATE</text>
+<text x="1038" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEASURE OF SUCCESS</text>
+<rect x="72" y="277" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Quantify provider</text>
+<text x="88" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">overhead</text>
+<text x="498" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Fixed corpus and equivalent durability</text>
+<text x="498" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">labels</text>
+<text x="1038" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Separate lookup latency from DA</text>
+<text x="1038" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">reconstruction</text>
+<rect x="72" y="421" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Design retention/pruning</text>
+<text x="498" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Source-prefix and cursor invalidation</text>
+<text x="498" y="493.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">contract first</text>
+<text x="1038" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No silent holes in accepted history</text>
+<rect x="72" y="565" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Add a production</text>
+<text x="88" y="637.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">replacement</text>
+<text x="498" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Independent owner transitions +</text>
+<text x="498" y="637.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">conformance</text>
+<text x="1038" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Same consumer, explicit profile, no</text>
+<text x="1038" y="637.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">hidden migration</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="794.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Keep ownership, current authorization and explicit compatibility intact; qualify new semantics with a new profile.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / AtomStorage · C0 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">11 / 12</text>
+</svg>

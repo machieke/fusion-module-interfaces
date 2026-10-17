@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Responsibility, state and scope</title>
+<desc id="desc">State ownership is the key contract, not the file layout. Current policy configuration: Credentials, grants, routes, origin mappings and selected contexts. No business-effect journal: Each domain owner checks authority around its own effects and replay. Caller-selected identity: No sender field, scope name or parameter bundle can grant itself authority. Production identity system: No claim of remote attestation, secrecy from administrators or full IAM. Explicit compatibility: local-test-policy/1; private authority/selection ports; exact M4 approval constraints. Limits: Trusted local host/operator; directory placement is not encryption or administrator secrecy.
+
+Evidence and implementation: [policy.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/policy.py), [private.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/private.py), [service.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/service.py), [test_m11.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m11.py), [test_m2.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m2.py), [test_m5_integration.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/hive/test_m5_integration.py), [m1_1-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m1_1-evidence.md).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / OWNERSHIP</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Responsibility, state and scope</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The owner is authoritative for its own state; other responsibilities are deliberately separate.</text>
+<text x="84" y="252.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#315E9C">OWNS / GUARANTEES</text>
+<rect x="72" y="280" width="712" height="190" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="331.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Current policy configuration</text>
+<text x="94" y="376.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Credentials, grants, routes, origin mappings and</text>
+<text x="94" y="409.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">selected contexts</text>
+<rect x="72" y="494" width="712" height="190" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="545.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">No business-effect journal</text>
+<text x="94" y="590.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Each domain owner checks authority around its</text>
+<text x="94" y="623.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">own effects and replay</text>
+<text x="828" y="252.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#A86A15">OUTSIDE THIS RESPONSIBILITY</text>
+<rect x="816" y="280" width="712" height="190" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="838" y="331.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Caller-selected identity</text>
+<text x="838" y="376.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">No sender field, scope name or parameter bundle</text>
+<text x="838" y="409.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">can grant itself authority</text>
+<rect x="816" y="494" width="712" height="190" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="838" y="545.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Production identity system</text>
+<text x="838" y="590.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">No claim of remote attestation, secrecy from</text>
+<text x="838" y="623.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">administrators or full IAM</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">local-test-policy/1; private authority/selection ports; exact M4 approval constraints</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Authorization · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 12</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Dependencies explain the boundary</title>
+<desc id="desc">The application owner calls the opaque Storage port. The external Rust adapter translates it to DeTTa; Hive and cognition are upstream consumers, not DA dependencies. The left node is a caller or caller class; the right nodes distinguish foreign ports, pure helpers, local state and runtime internals. There is no implied shared transaction. No episode identity, belief, attention, job or query semantics.
+
+Evidence and implementation: [detta.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/detta.py), [main.rs](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/adapters/detta/src/main.rs), [m1_2-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m1_2-evidence.md), [m1_2-verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/legacy/m1_2-verification.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / FUNCTION DEPENDENCIES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Dependencies explain the boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Arrows point from caller to dependency. Stores and runtime internals are labelled explicitly.</text>
+<rect x="72" y="322" width="375" height="219" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">AtomStorage</text>
+<text x="94" y="414.87" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">put · get · availability</text>
+<rect x="555" y="322" width="425" height="219" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="577" y="375.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#007C78">DA storage</text>
+<text x="577" y="419.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Opaque persistence, retrieval</text>
+<text x="577" y="451.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">and local availability through</text>
+<text x="577" y="483.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">the DeTTa DA and FileStorage</text>
+<text x="577" y="515.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">libraries.</text>
+<line x1="447" y1="431" x2="555" y2="431" stroke="#007C78" stroke-width="2"/>
+<polygon points="555,431 542.0,426.0 542.0,436.0" fill="#007C78"/>
+<rect x="1103" y="260" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">External adapter</text>
+<text x="1125" y="347.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Generic coordinates + opaque</text>
+<text x="1125" y="375.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">bytes</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="326.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="326.0" x2="1103" y2="326.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,326.0 1090.0,321.0 1090.0,331.0" fill="#007C78"/>
+<rect x="1103" y="417" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="464.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">DeTTa DA / FileStorage</text>
+<text x="1125" y="504.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Encoding, share files and</text>
+<text x="1125" y="532.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">reconstruction</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="483.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="483.0" x2="1103" y2="483.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,483.0 1090.0,478.0 1090.0,488.0" fill="#007C78"/>
+<rect x="1103" y="574" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="621.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Local filesystem</text>
+<text x="1125" y="661.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Selected persistence and restart</text>
+<text x="1125" y="689.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">substrate</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="640.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="640.0" x2="1103" y2="640.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,640.0 1090.0,635.0 1090.0,645.0" fill="#007C78"/>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">One responsibility does not imply one process. A dependency does not grant access to its private tables.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / DA storage · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 12</text>
+</svg>

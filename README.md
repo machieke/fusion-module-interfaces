@@ -84,3 +84,9 @@ replacement and process recovery carry exact evidence references. Editable
 PowerPoint, PDF and speaker notes are included. New-profile and existing-state
 compatibility limits remain explicit; historical, blocked and unrun results stay
 separate.
+
+The [module presentation series](docs/presentation/modules/README.md) adds 15
+standalone talks (12 slides each), with an ELI16 introduction, dependency diagrams,
+responsibilities, scope, invariants, recovery, current evidence, benchmark gaps
+and proposed future directions for every module. Download individual editable
+decks or the combined PDF/ZIP from the series index.

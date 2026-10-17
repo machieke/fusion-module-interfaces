@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Dependencies explain the boundary</title>
+<desc id="desc">C2 invokes mathematics and then performs authority, binding and CAS checks before its own commit. C4 requests admission; it never writes beliefs or calls the kernel directly. The left node is a caller or caller class; the right nodes distinguish foreign ports, pure helpers, local state and runtime internals. There is no implied shared transaction. C1 owns episodes and evidence-delivery intent.
+
+Evidence and implementation: [beliefs.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/beliefs.py), [derived_beliefs.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/derived_beliefs.py), [cognition_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/cognition_contracts.py), [test_m2.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m2.py), [demo.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m2/final/demo.json), [m3-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m3-evidence.md).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / FUNCTION DEPENDENCIES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Dependencies explain the boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Arrows point from caller to dependency. Stores and runtime internals are labelled explicitly.</text>
+<rect x="72" y="322" width="375" height="219" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">Evidence relay /</text>
+<text x="94" y="408.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">InferenceControl</text>
+<text x="94" y="451.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">submitEvidence ·</text>
+<text x="94" y="483.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">readBelief ·</text>
+<text x="94" y="515.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">submit/readDerivation</text>
+<rect x="555" y="322" width="425" height="219" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="577" y="375.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#007C78">BeliefRevision · C2</text>
+<text x="577" y="419.04" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Own evidence/support</text>
+<text x="577" y="449.76000000000005" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">admission, historical belief</text>
+<text x="577" y="480.48" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">snapshots, semantic attempts</text>
+<text x="577" y="511.2" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">and derived-support decisions.</text>
+<line x1="447" y1="431" x2="555" y2="431" stroke="#007C78" stroke-width="2"/>
+<polygon points="555,431 542.0,426.0 542.0,436.0" fill="#007C78"/>
+<rect x="1103" y="218" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="265.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">AtomStorage + C1</text>
+<text x="1125" y="305.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Exact grounded claims and</text>
+<text x="1125" y="333.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">readEvidence</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="284.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="284.0" x2="1103" y2="284.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,284.0 1090.0,279.0 1090.0,289.0" fill="#007C78"/>
+<rect x="1103" y="355" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="402.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">RevisionMath</text>
+<text x="1125" y="442.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Guarded native revision proposal</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="421.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="421.0" x2="1103" y2="421.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,421.0 1090.0,416.0 1090.0,426.0" fill="#007C78"/>
+<rect x="1103" y="492" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="539.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">PLNKernel · v3 only</text>
+<text x="1125" y="580.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Guarded deduction proposal</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="558.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="558.0" x2="1103" y2="558.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,558.0 1090.0,553.0 1090.0,563.0" fill="#007C78"/>
+<rect x="1103" y="629" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="676.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">PrivateAuthority</text>
+<text x="1125" y="716.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Live scope, origin and selected</text>
+<text x="1125" y="744.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">provider</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="695.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="695.0" x2="1103" y2="695.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,695.0 1090.0,690.0 1090.0,700.0" fill="#007C78"/>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">One responsibility does not imply one process. A dependency does not grant access to its private tables.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / BeliefRevision · C2 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 12</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Responsibility, state and scope</title>
+<desc id="desc">State ownership is the key contract, not the file layout. Derived projection: Extracted exact attributes; disposable and rebuildable. Progress and generation: Atomic index/checkpoint updates, rebuild intent and cursor generation. Authoritative source: Acceptance and immutable bytes belong to AtomStorage. Semantic cognition: No embeddings, scoring, inferred tasks or general knowledge search. Explicit compatibility: exact-attributes/1 · knowledge-attributes/1 · contract 2.0.0. Limits: 256 indexed records; page/batch ≤8; query ≤1024 bytes; no automatic repair.
+
+Evidence and implementation: [search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/search.py), [fixture_search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/fixture_search.py), [lookup_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_contracts.py), [test_m5_boundaries.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m5_boundaries.py), [lookup-trace-1.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/traces/lookup-trace-1.json), [native-payload-comparison.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/native-payload-comparison.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">03 / OWNERSHIP</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Responsibility, state and scope</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The owner is authoritative for its own state; other responsibilities are deliberately separate.</text>
+<text x="84" y="252.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#315E9C">OWNS / GUARANTEES</text>
+<rect x="72" y="280" width="712" height="190" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="331.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Derived projection</text>
+<text x="94" y="376.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Extracted exact attributes; disposable and</text>
+<text x="94" y="409.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">rebuildable</text>
+<rect x="72" y="494" width="712" height="190" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="545.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Progress and generation</text>
+<text x="94" y="590.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Atomic index/checkpoint updates, rebuild intent</text>
+<text x="94" y="623.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">and cursor generation</text>
+<text x="828" y="252.0" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#A86A15">OUTSIDE THIS RESPONSIBILITY</text>
+<rect x="816" y="280" width="712" height="190" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="838" y="331.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Authoritative source</text>
+<text x="838" y="376.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">Acceptance and immutable bytes belong to</text>
+<text x="838" y="409.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">AtomStorage</text>
+<rect x="816" y="494" width="712" height="190" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="838" y="545.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#A86A15">Semantic cognition</text>
+<text x="838" y="590.38" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">No embeddings, scoring, inferred tasks or general</text>
+<text x="838" y="623.66" font-family="DejaVu Sans" font-size="26" font-weight="400" fill="#536775">knowledge search</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="798.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">exact-attributes/1 · knowledge-attributes/1 · contract 2.0.0</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Search projection · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">04 / 12</text>
+</svg>

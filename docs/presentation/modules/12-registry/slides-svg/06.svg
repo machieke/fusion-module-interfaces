@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">A worked example through the boundary</title>
+<desc id="desc">Use this example to connect the responsibility to observable behavior. 1. Configure: Operator installs DeTTa-backed AtomStorage. 2. Describe: Publish version, operations, profile and local durability. 3. Select: Resolver matches a fixed consumer requirement. 4. Bind: Invocation checks the complete selected token again. Evidence classification: LOCAL IMPLEMENTATION · configuration and compatibility fixtures; no registry network. Do not infer performance, broad production readiness or extra runtime integrations from this example.
+
+Evidence and implementation: [registry.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/registry.py), [bindings.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/bindings.py), [cognition.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/cognition.py), [lookup_composition.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_composition.py), [test_contract.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_contract.py), [test_m11.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m11.py).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / CONCRETE BEHAVIOR</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A worked example through the boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">LOCAL IMPLEMENTATION · configuration and compatibility fixtures; no registry network</text>
+<rect x="72" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">01 · STEP</text>
+<text x="94" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Configure</text>
+<text x="94" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Operator installs</text>
+<text x="94" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">DeTTa-backed</text>
+<text x="94" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">AtomStorage.</text>
+<line x1="418" y1="425" x2="442" y2="425" stroke="#315E9C" stroke-width="2"/>
+<polygon points="442,425 429.0,420.0 429.0,430.0" fill="#315E9C"/>
+<rect x="442" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="464" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">02 · STEP</text>
+<text x="464" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Describe</text>
+<text x="464" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Publish version,</text>
+<text x="464" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">operations, profile</text>
+<text x="464" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">and local durability.</text>
+<line x1="788" y1="425" x2="812" y2="425" stroke="#315E9C" stroke-width="2"/>
+<polygon points="812,425 799.0,420.0 799.0,430.0" fill="#315E9C"/>
+<rect x="812" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="834" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">03 · STEP</text>
+<text x="834" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Select</text>
+<text x="834" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Resolver matches a</text>
+<text x="834" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">fixed consumer</text>
+<text x="834" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">requirement.</text>
+<line x1="1158" y1="425" x2="1182" y2="425" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1182,425 1169.0,420.0 1169.0,430.0" fill="#315E9C"/>
+<rect x="1182" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1204" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">04 · STEP</text>
+<text x="1204" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Bind</text>
+<text x="1204" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Invocation checks</text>
+<text x="1204" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">the complete</text>
+<text x="1204" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">selected token again.</text>
+<rect x="72" y="638" width="1456" height="112" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="686.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">What the example establishes</text>
+<text x="94" y="731.49" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">A useful descriptor makes both capabilities and uncertainty visible.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Module registry · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">06 / 12</text>
+</svg>

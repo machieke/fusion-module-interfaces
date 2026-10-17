@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Dependencies explain the boundary</title>
+<desc id="desc">C1 has no PLN, C2 or Hive runtime requirement. The relay calls C1 and C2 through ports, but owns only handoff progress; C1 validates completion identity, not belief snapshots. The left node is a caller or caller class; the right nodes distinguish foreign ports, pure helpers, local state and runtime internals. There is no implied shared transaction. C2 owns admission; RevisionMath/PLN supply proposals.
+
+Evidence and implementation: [episodes.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/episodes.py), [delivery_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/delivery_contracts.py), [evidence_relay.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/evidence_relay.py), [test_m3_1_delivery.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m3_1_delivery.py), [verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3_1/final/verification.json), [non-numeric-processing.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3_1/non-numeric-processing.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / FUNCTION DEPENDENCIES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Dependencies explain the boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Arrows point from caller to dependency. Stores and runtime internals are labelled explicitly.</text>
+<rect x="72" y="322" width="375" height="219" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">Native</text>
+<text x="94" y="408.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">episode/inference</text>
+<text x="94" y="445.79" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#315E9C">scenario / relay</text>
+<text x="94" y="489.11" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">record · append · read ·</text>
+<text x="94" y="521.11" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">pending · acknowledge</text>
+<rect x="555" y="322" width="425" height="219" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="577" y="374.4" font-family="DejaVu Sans" font-size="32" font-weight="700" fill="#315E9C">EpisodicMemory · C1</text>
+<text x="577" y="414.90999999999997" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Own episode identity, ordered</text>
+<text x="577" y="441.78999999999996" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">event acceptance, occurrence</text>
+<text x="577" y="468.66999999999996" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">replay and evidence-delivery</text>
+<text x="577" y="495.54999999999995" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">intents.</text>
+<line x1="447" y1="431" x2="555" y2="431" stroke="#315E9C" stroke-width="2"/>
+<polygon points="555,431 542.0,426.0 542.0,436.0" fill="#315E9C"/>
+<rect x="1103" y="260" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1125" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">AtomStorage</text>
+<text x="1125" y="348.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Immutable event/payload bytes</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#315E9C" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="326.0" stroke="#315E9C" stroke-width="2"/>
+<line x1="1036" y1="326.0" x2="1103" y2="326.0" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1103,326.0 1090.0,321.0 1090.0,331.0" fill="#315E9C"/>
+<rect x="1103" y="417" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1125" y="464.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#315E9C">PrivateAuthority</text>
+<text x="1125" y="505.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Current scope + origin/selection</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#315E9C" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="483.0" stroke="#315E9C" stroke-width="2"/>
+<line x1="1036" y1="483.0" x2="1103" y2="483.0" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1103,483.0 1090.0,478.0 1090.0,488.0" fill="#315E9C"/>
+<rect x="1103" y="574" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1125" y="618.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#315E9C">Trusted completion context</text>
+<text x="1125" y="656.6700000000001" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">Selected consumer identity for</text>
+<text x="1125" y="683.5500000000001" font-family="DejaVu Sans" font-size="21" font-weight="400" fill="#536775">M3.1 acknowledgment</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#315E9C" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="640.0" stroke="#315E9C" stroke-width="2"/>
+<line x1="1036" y1="640.0" x2="1103" y2="640.0" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1103,640.0 1090.0,635.0 1090.0,645.0" fill="#315E9C"/>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">One responsibility does not imply one process. A dependency does not grant access to its private tables.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / EpisodicMemory · C1 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 12</text>
+</svg>

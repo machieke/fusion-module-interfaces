@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Future directions need acceptance criteria</title>
+<desc id="desc">Discuss future work as conditional engineering proposals. Measure storage tradeoffs requires Controlled size/cache/failure matrix; success means Latency distribution and amplification per payload. Specify retention explicitly requires New custody/retention contract and evidence; success means Expired retention cannot masquerade as availability. Explore another DA provider requires Same opaque port and explicit profile; success means Equivalent byte/integrity conformance before adoption. No new cognition, scheduler, migration or chain capability is implemented by this series. Any changed numerical semantics, placement or replay lifetime requires separate design and verification rather than a presentation claim.
+
+Evidence and implementation: [detta.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/detta.py), [main.rs](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/adapters/detta/src/main.rs), [m1_2-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m1_2-evidence.md), [m1_2-verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/legacy/m1_2-verification.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">10 / PROPOSED WORK · NOT IMPLEMENTED</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Future directions need acceptance criteria</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">These are discussion options, not a committed roadmap or permission to expand the current profile.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">DIRECTION</text>
+<text x="498" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">PREREQUISITE / DESIGN GATE</text>
+<text x="1038" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">MEASURE OF SUCCESS</text>
+<rect x="72" y="277" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Measure storage tradeoffs</text>
+<text x="498" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Controlled size/cache/failure matrix</text>
+<text x="1038" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Latency distribution and</text>
+<text x="1038" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">amplification per payload</text>
+<rect x="72" y="421" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Specify retention</text>
+<text x="88" y="493.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">explicitly</text>
+<text x="498" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">New custody/retention contract and</text>
+<text x="498" y="493.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">evidence</text>
+<text x="1038" y="461.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Expired retention cannot</text>
+<text x="1038" y="493.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">masquerade as availability</text>
+<rect x="72" y="565" width="1456" height="139" rx="6" fill="#FFFFFF"/>
+<text x="88" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Explore another DA</text>
+<text x="88" y="637.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">provider</text>
+<text x="498" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Same opaque port and explicit profile</text>
+<text x="1038" y="605.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Equivalent byte/integrity</text>
+<text x="1038" y="637.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">conformance before adoption</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="794.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Keep ownership, current authorization and explicit compatibility intact; qualify new semantics with a new profile.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / DA storage · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">11 / 12</text>
+</svg>

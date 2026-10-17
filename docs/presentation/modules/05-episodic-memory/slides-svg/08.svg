@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Failure is part of the interface</title>
+<desc id="desc">State the owner boundary before the recovery claim. Payload saved; append not committed: Retry through AtomStorage, then commit episode state. No cross-owner transaction. C2 decision committed; acknowledgment lost: Relay recovers exact decision and retries trusted completion. No manufactured acknowledgment. Capacity or malformed receipt: Pause with pending evidence; never drop or falsely complete. Repeated-drain and hostile-receipt tests. A fixture can position the failure while a real process is killed. Local replay semantics do not imply exactly-once physical execution, a distributed transaction, or global failover. For pure/static modules the relevant failure is selection/refusal, not invented journal recovery.
+
+Evidence and implementation: [episodes.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/episodes.py), [delivery_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/delivery_contracts.py), [evidence_relay.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/evidence_relay.py), [test_m3_1_delivery.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m3_1_delivery.py), [verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3_1/final/verification.json), [non-numeric-processing.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3_1/non-numeric-processing.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">07 / RECOVERY AND REFUSAL</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Failure is part of the interface</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A lost response, a missing prerequisite and a deliberate refusal require different interpretations.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">BOUNDARY / TRIGGER</text>
+<text x="543" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNER-AUTHORITATIVE OUTCOME</text>
+<text x="1128" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EVIDENCE / LIMITATION</text>
+<rect x="72" y="277" width="1456" height="140" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Payload saved; append not</text>
+<text x="88" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">committed</text>
+<text x="543" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Retry through AtomStorage, then commit</text>
+<text x="543" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">episode state.</text>
+<text x="1128" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No cross-owner transaction</text>
+<rect x="72" y="422" width="1456" height="140" rx="6" fill="#FFFFFF"/>
+<text x="88" y="462.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">C2 decision committed;</text>
+<text x="88" y="494.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">acknowledgment lost</text>
+<text x="543" y="462.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Relay recovers exact decision and retries</text>
+<text x="543" y="494.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">trusted completion.</text>
+<text x="1128" y="462.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">No manufactured</text>
+<text x="1128" y="494.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">acknowledgment</text>
+<rect x="72" y="567" width="1456" height="140" rx="6" fill="#FFFFFF"/>
+<text x="88" y="607.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Capacity or malformed</text>
+<text x="88" y="639.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">receipt</text>
+<text x="543" y="607.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Pause with pending evidence; never drop</text>
+<text x="543" y="639.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">or falsely complete.</text>
+<text x="1128" y="607.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Repeated-drain and</text>
+<text x="1128" y="639.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">hostile-receipt tests</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="794.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Recovery evidence covers same-host process termination with intact files; it does not prove power-loss durability.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / EpisodicMemory · C1 · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">08 / 12</text>
+</svg>

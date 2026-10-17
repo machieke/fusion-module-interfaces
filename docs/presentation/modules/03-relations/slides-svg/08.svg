@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Failure is part of the interface</title>
+<desc id="desc">State the owner boundary before the recovery claim. Crash after payload, before acceptance: Orphan stays invisible; retry may accept it. One real process-kill case. Crash after acceptance, before reply: Recover the accepted relation once. One real process-kill case. Changed cursor / revoked authority: Fail explicitly; no cross-scope continuation. Malformed/cursor/auth tests. A fixture can position the failure while a real process is killed. Local replay semantics do not imply exactly-once physical execution, a distributed transaction, or global failover. For pure/static modules the relevant failure is selection/refusal, not invented journal recovery.
+
+Evidence and implementation: [relations.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/relations.py), [lookup_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_contracts.py), [lookup.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup.py), [test_m5.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m5.py), [test_m5_real.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/test_m5_real.py), [lookup-trace-1.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/traces/lookup-trace-1.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">07 / RECOVERY AND REFUSAL</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Failure is part of the interface</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">A lost response, a missing prerequisite and a deliberate refusal require different interpretations.</text>
+<text x="88" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">BOUNDARY / TRIGGER</text>
+<text x="543" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">OWNER-AUTHORITATIVE OUTCOME</text>
+<text x="1128" y="251.15" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#536775">EVIDENCE / LIMITATION</text>
+<rect x="72" y="277" width="1456" height="140" rx="6" fill="#FFFFFF"/>
+<text x="88" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Crash after payload, before</text>
+<text x="88" y="349.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">acceptance</text>
+<text x="543" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Orphan stays invisible; retry may accept it.</text>
+<text x="1128" y="317.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">One real process-kill case</text>
+<rect x="72" y="422" width="1456" height="140" rx="6" fill="#FFFFFF"/>
+<text x="88" y="462.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Crash after acceptance,</text>
+<text x="88" y="494.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">before reply</text>
+<text x="543" y="462.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Recover the accepted relation once.</text>
+<text x="1128" y="462.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">One real process-kill case</text>
+<rect x="72" y="567" width="1456" height="140" rx="6" fill="#FFFFFF"/>
+<text x="88" y="607.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">Changed cursor / revoked</text>
+<text x="88" y="639.75" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#102B3F">authority</text>
+<text x="543" y="607.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Fail explicitly; no cross-scope continuation.</text>
+<text x="1128" y="607.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Malformed/cursor/auth tests</text>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="794.95" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#102B3F">Recovery evidence covers same-host process termination with intact files; it does not prove power-loss durability.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Relations · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">08 / 12</text>
+</svg>

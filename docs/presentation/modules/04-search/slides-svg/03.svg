@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Dependencies explain the boundary</title>
+<desc id="desc">Maintenance consumes only declared source ports. Query does not ingest or poll the current head. Neither implementation reads foreign owner SQL or the test oracle. The left node is a caller or caller class; the right nodes distinguish foreign ports, pure helpers, local state and runtime internals. There is no implied shared transaction. Acceptance and immutable bytes belong to AtomStorage.
+
+Evidence and implementation: [search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/search.py), [fixture_search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/fixture_search.py), [lookup_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_contracts.py), [test_m5_boundaries.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m5_boundaries.py), [lookup-trace-1.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/traces/lookup-trace-1.json), [native-payload-comparison.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/native-payload-comparison.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / FUNCTION DEPENDENCIES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Dependencies explain the boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Arrows point from caller to dependency. Stores and runtime internals are labelled explicitly.</text>
+<rect x="72" y="322" width="375" height="219" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">LookupConsumer /</text>
+<text x="94" y="408.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">operator</text>
+<text x="94" y="445.79" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">maintenance</text>
+<text x="94" y="489.11" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">query · catchUp ·</text>
+<text x="94" y="521.11" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">beginRebuild</text>
+<rect x="555" y="322" width="425" height="219" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="577" y="375.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#007C78">Search projection</text>
+<text x="577" y="419.04" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Maintain an exact-attribute</text>
+<text x="577" y="449.76000000000005" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">projection and return</text>
+<text x="577" y="480.48" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">references with explicit prefix,</text>
+<text x="577" y="511.2" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">page and freshness semantics.</text>
+<line x1="447" y1="431" x2="555" y2="431" stroke="#007C78" stroke-width="2"/>
+<polygon points="555,431 542.0,426.0 542.0,436.0" fill="#007C78"/>
+<rect x="1103" y="218" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="265.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">AtomCommitSource</text>
+<text x="1125" y="305.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">head / readCommits: accepted</text>
+<text x="1125" y="333.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">scoped prefix</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="284.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="284.0" x2="1103" y2="284.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,284.0 1090.0,279.0 1090.0,289.0" fill="#007C78"/>
+<rect x="1103" y="355" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="402.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">AtomStorage.get</text>
+<text x="1125" y="442.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Retrieve and validate every</text>
+<text x="1125" y="470.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">envelope</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="421.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="421.0" x2="1103" y2="421.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,421.0 1090.0,416.0 1090.0,426.0" fill="#007C78"/>
+<rect x="1103" y="492" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="539.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Current authorization</text>
+<text x="1125" y="580.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Scope, principal and operation</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="558.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="558.0" x2="1103" y2="558.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,558.0 1090.0,553.0 1090.0,563.0" fill="#007C78"/>
+<rect x="1103" y="629" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="676.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Own index journal</text>
+<text x="1125" y="716.4599999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Derived rows + checkpoint +</text>
+<text x="1125" y="744.6199999999999" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">generation</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="695.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="695.0" x2="1103" y2="695.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,695.0 1090.0,690.0 1090.0,700.0" fill="#007C78"/>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">One responsibility does not imply one process. A dependency does not grant access to its private tables.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Search projection · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 12</text>
+</svg>

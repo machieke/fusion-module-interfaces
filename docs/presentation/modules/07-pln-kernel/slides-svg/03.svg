@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Dependencies explain the boundary</title>
+<desc id="desc">PLNKernel has no domain journal, AtomStorage, Attention, C1 or scheduler dependency. RevisionMath is a separate pure revision port; neither is a general inference controller. The left node is a caller or caller class; the right nodes distinguish foreign ports, pure helpers, local state and runtime internals. There is no implied shared transaction. C2 validates exact claim/lineage and commits the result.
+
+Evidence and implementation: [pln_deduction.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/pln_deduction.py), [test_deduction.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/pln/test_deduction.py), [deduction-sources.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/pln/deduction-sources.json), [m3-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m3-evidence.md), [verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3/final/verification.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">02 / FUNCTION DEPENDENCIES</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Dependencies explain the boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Arrows point from caller to dependency. Stores and runtime internals are labelled explicitly.</text>
+<rect x="72" y="322" width="375" height="219" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="94" y="371.55" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">C2 · Derived belief</text>
+<text x="94" y="408.67" font-family="DejaVu Sans" font-size="29" font-weight="700" fill="#007C78">owner</text>
+<text x="94" y="451.99" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">profile · applyRule</text>
+<rect x="555" y="322" width="425" height="219" rx="13" fill="#DCEFE8" stroke="#007C78"/>
+<text x="577" y="375.35" font-family="DejaVu Sans" font-size="33" font-weight="700" fill="#007C78">PLNKernel</text>
+<text x="577" y="418.09000000000003" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Apply the existing guarded</text>
+<text x="577" y="447.53000000000003" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">five-premise grounded</text>
+<text x="577" y="476.97" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">deduction implementation under</text>
+<text x="577" y="506.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">exact source/runtime profiles.</text>
+<line x1="447" y1="431" x2="555" y2="431" stroke="#007C78" stroke-width="2"/>
+<polygon points="555,431 542.0,426.0 542.0,436.0" fill="#007C78"/>
+<rect x="1103" y="260" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="307.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Reachability adapter</text>
+<text x="1125" y="347.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Unchanged</text>
+<text x="1125" y="375.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">PLNAdapter.apply_rule guards</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="326.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="326.0" x2="1103" y2="326.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,326.0 1090.0,321.0 1090.0,331.0" fill="#007C78"/>
+<rect x="1103" y="417" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="464.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">Native PLN library</text>
+<text x="1125" y="504.46" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Pinned Truth_Deduction</text>
+<text x="1125" y="532.62" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">implementation</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="483.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="483.0" x2="1103" y2="483.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,483.0 1090.0,478.0 1090.0,488.0" fill="#007C78"/>
+<rect x="1103" y="574" width="425" height="132" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1125" y="621.65" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#007C78">PeTTa / SWI / Janus</text>
+<text x="1125" y="662.41" font-family="DejaVu Sans" font-size="23" font-weight="400" fill="#536775">Verified native execution bridge</text>
+<line x1="980" y1="431" x2="1036" y2="431" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="431" x2="1036" y2="640.0" stroke="#007C78" stroke-width="2"/>
+<line x1="1036" y1="640.0" x2="1103" y2="640.0" stroke="#007C78" stroke-width="2"/>
+<polygon points="1103,640.0 1090.0,635.0 1090.0,645.0" fill="#007C78"/>
+<rect x="72" y="765" width="1456" height="53" rx="8" fill="#E7ECEB"/>
+<text x="94" y="796.85" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#102B3F">One responsibility does not imply one process. A dependency does not grant access to its private tables.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / PLNKernel · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">03 / 12</text>
+</svg>

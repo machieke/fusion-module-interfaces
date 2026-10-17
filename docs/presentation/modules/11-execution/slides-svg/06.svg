@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">A worked example through the boundary</title>
+<desc id="desc">Use this example to connect the responsibility to observable behavior. 1. Accept input: Read the generated atom and accept inspect_atom. 2. Persist result: Store digest, byte length and algorithm version. 3. Commit terminal: Save result reference + outbox in one owner commit. 4. Deliver / recover: Mailbox accepts; caller verifies and acknowledges. Evidence classification: ACTUAL native Hive inspect + real DeTTa · deterministic worker; fixture counterparty. Do not infer performance, broad production readiness or extra runtime integrations from this example.
+
+Evidence and implementation: [execution.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/execution.py), [service.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/service.py), [test_m11.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m11.py), [test_integration.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/hive/test_integration.py), [m1_2-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m1_2-evidence.md), [same-artifact.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m4/final/same-artifact.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">05 / CONCRETE BEHAVIOR</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">A worked example through the boundary</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">ACTUAL native Hive inspect + real DeTTa · deterministic worker; fixture counterparty</text>
+<rect x="72" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="94" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">01 · STEP</text>
+<text x="94" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Accept input</text>
+<text x="94" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Read the generated</text>
+<text x="94" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">atom and accept</text>
+<text x="94" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">inspect_atom.</text>
+<line x1="418" y1="425" x2="442" y2="425" stroke="#315E9C" stroke-width="2"/>
+<polygon points="442,425 429.0,420.0 429.0,430.0" fill="#315E9C"/>
+<rect x="442" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="464" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">02 · STEP</text>
+<text x="464" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Persist result</text>
+<text x="464" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Store digest, byte</text>
+<text x="464" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">length and algorithm</text>
+<text x="464" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">version.</text>
+<line x1="788" y1="425" x2="812" y2="425" stroke="#315E9C" stroke-width="2"/>
+<polygon points="812,425 799.0,420.0 799.0,430.0" fill="#315E9C"/>
+<rect x="812" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="834" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">03 · STEP</text>
+<text x="834" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Commit terminal</text>
+<text x="834" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Save result reference</text>
+<text x="834" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">+ outbox in one</text>
+<text x="834" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">owner commit.</text>
+<line x1="1158" y1="425" x2="1182" y2="425" stroke="#315E9C" stroke-width="2"/>
+<polygon points="1182,425 1169.0,420.0 1169.0,430.0" fill="#315E9C"/>
+<rect x="1182" y="264" width="346" height="324" rx="13" fill="#FFFFFF" stroke="#315E9C"/>
+<text x="1204" y="301.2" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#315E9C">04 · STEP</text>
+<text x="1204" y="346.45" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#315E9C">Deliver / recover</text>
+<text x="1204" y="393.28000000000003" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">Mailbox accepts;</text>
+<text x="1204" y="429.12" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">caller verifies and</text>
+<text x="1204" y="464.96000000000004" font-family="DejaVu Sans" font-size="28" font-weight="400" fill="#536775">acknowledges.</text>
+<rect x="72" y="638" width="1456" height="112" rx="13" fill="#E4EBF5" stroke="#315E9C"/>
+<text x="94" y="686.6" font-family="DejaVu Sans" font-size="28" font-weight="700" fill="#315E9C">What the example establishes</text>
+<text x="94" y="731.49" font-family="DejaVu Sans" font-size="27" font-weight="400" fill="#536775">Execution completion and completion delivery have different owners.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Delegated execution · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">06 / 12</text>
+</svg>

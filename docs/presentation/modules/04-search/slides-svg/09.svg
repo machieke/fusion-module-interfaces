@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Measurements and benchmark gaps</title>
+<desc id="desc">Read every number with its unit and source class. 5 → 6 Matching roots before/after catch-up: Native discovery counts, not a relevance score. 2 Independent Search providers: SQLite owner + atomic-file fixture. 256 / 8 Indexed records / max page or batch: Finite contract limits, not scaling results. Native tests compare complete reference sets and canonical payload bytes across four transitions. No query-latency, ingestion-rate or relevance benchmark is recorded. Proposed: vary corpus size, selectivity, page size and index lag; report p50/p95 query latency, catch-up rate and rebuild time with explicit freshness barriers. No new benchmark is executed for this presentation. Do not compare overlapping suite times or use a one-run workflow measurement as a latency percentile.
+
+Evidence and implementation: [search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/search.py), [fixture_search.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/fixture_search.py), [lookup_contracts.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/lookup_contracts.py), [test_m5_boundaries.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/tests/test_m5_boundaries.py), [lookup-trace-1.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/traces/lookup-trace-1.json), [native-payload-comparison.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/evidence/m5/native-payload-comparison.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">08 / BENCHMARKS</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Measurements and benchmark gaps</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Observed values, contract limits and proposed experiments are explicitly different kinds of evidence.</text>
+<rect x="72" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="95" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#007C78">5 → 6</text>
+<text x="95" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Matching roots before/after</text>
+<text x="95" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">catch-up</text>
+<text x="95" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Native discovery counts, not a</text>
+<text x="95" y="480.06" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">relevance score</text>
+<rect x="568" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="591" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#007C78">2</text>
+<text x="591" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Independent Search</text>
+<text x="591" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">providers</text>
+<text x="591" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">SQLite owner + atomic-file fixture</text>
+<rect x="1064" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1087" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#007C78">256 / 8</text>
+<text x="1087" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Indexed records / max page</text>
+<text x="1087" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">or batch</text>
+<text x="1087" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Finite contract limits, not scaling</text>
+<text x="1087" y="480.06" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">results</text>
+<text x="76" y="560.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Native tests compare complete reference sets and canonical payload bytes across four transitions. No</text>
+<text x="76" y="592.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">query-latency, ingestion-rate or relevance benchmark is recorded.</text>
+<rect x="72" y="665" width="1456" height="151" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="709.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#A86A15">PROPOSED BENCHMARK · NOT RUN</text>
+<text x="94" y="750.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Proposed: vary corpus size, selectivity, page size and index lag; report p50/p95 query latency, catch-up rate and</text>
+<text x="94" y="781.24" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">rebuild time with explicit freshness barriers.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / Search projection · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">09 / 12</text>
+</svg>

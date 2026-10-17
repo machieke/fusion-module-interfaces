@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Measurements and benchmark gaps</title>
+<desc id="desc">Read every number with its unit and source class. 5 → 1 Premises → grounded proposal: One rule, not general inference. 0.68 / 0.3136 Recorded deduction strength / confidence: Generated golden; tolerance 1e−12. 0 Mutable domain owners in kernel: Architectural invariant, not performance. The numerical golden checks implementation agreement, not probabilistic calibration or theorem validity. No isolated native-call latency or large-rule benchmark is recorded. Proposed: separate process startup from warm native calls; fix exact valid vectors and refusal cases; report p50/p95, guard cost and timeout behavior without changing the formula. No new benchmark is executed for this presentation. Do not compare overlapping suite times or use a one-run workflow measurement as a latency percentile.
+
+Evidence and implementation: [pln_deduction.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/fusion/adapters/pln_deduction.py), [test_deduction.py](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/pln/test_deduction.py), [deduction-sources.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/integration/pln/deduction-sources.json), [m3-evidence.md](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/m3-evidence.md), [verification.json](https://github.com/machieke/fusion-module-interfaces/blob/494df69a1ac401c3d3b2cf79dbfde07f74b5e277/docs/module-interfaces/evidence/m3/final/verification.json).
+
+Scope: repository snapshot 494df69a1ac401c3d3b2cf79dbfde07f74b5e277; tested M5 runtime bfb0ec8856c932dc2bcbc05b8949c957da8d72cd. Historical observations keep their own milestone source. This deck build runs no runtime or benchmark. Future directions and proposed benchmark designs are not implemented work or measured results.</desc>
+<rect width="1600" height="900" fill="#F4F2EB"/>
+<text x="72" y="61.05" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#007C78">08 / BENCHMARKS</text>
+<text x="70" y="144.4" font-family="DejaVu Sans" font-size="52" font-weight="700" fill="#102B3F">Measurements and benchmark gaps</text>
+<text x="73" y="188.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">Observed values, contract limits and proposed experiments are explicitly different kinds of evidence.</text>
+<rect x="72" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="95" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#007C78">5 → 1</text>
+<text x="95" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Premises → grounded</text>
+<text x="95" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">proposal</text>
+<text x="95" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">One rule, not general inference</text>
+<rect x="568" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="591" y="318.2" font-family="DejaVu Sans" font-size="56" font-weight="700" fill="#007C78">0.68 / 0.3136</text>
+<text x="591" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Recorded deduction</text>
+<text x="591" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">strength / confidence</text>
+<text x="591" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Generated golden; tolerance 1e−12</text>
+<rect x="1064" y="244" width="464" height="263" rx="13" fill="#FFFFFF" stroke="#007C78"/>
+<text x="1087" y="322.0" font-family="DejaVu Sans" font-size="60" font-weight="700" fill="#007C78">0</text>
+<text x="1087" y="380.7" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">Mutable domain owners in</text>
+<text x="1087" y="413.97999999999996" font-family="DejaVu Sans" font-size="26" font-weight="700" fill="#102B3F">kernel</text>
+<text x="1087" y="451.9" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">Architectural invariant, not</text>
+<text x="1087" y="480.06" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#536775">performance</text>
+<text x="76" y="560.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">The numerical golden checks implementation agreement, not probabilistic calibration or theorem validity. No</text>
+<text x="76" y="592.75" font-family="DejaVu Sans" font-size="25" font-weight="400" fill="#536775">isolated native-call latency or large-rule benchmark is recorded.</text>
+<rect x="72" y="665" width="1456" height="151" rx="13" fill="#F3E7CE" stroke="#A86A15"/>
+<text x="94" y="709.8" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#A86A15">PROPOSED BENCHMARK · NOT RUN</text>
+<text x="94" y="750.52" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">Proposed: separate process startup from warm native calls; fix exact valid vectors and refusal cases; report</text>
+<text x="94" y="781.24" font-family="DejaVu Sans" font-size="24" font-weight="400" fill="#536775">p50/p95, guard cost and timeout behavior without changing the formula.</text>
+<line x1="72" y1="839" x2="1528" y2="839" stroke="#C9D2D4" stroke-width="1"/>
+<text x="72" y="867.25" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#536775">OMEGA × ASI / THROUGH M5 / PLNKernel · M5 source bfb0ec8</text>
+<text x="1410" y="868.95" font-family="DejaVu Sans Mono" font-size="21" font-weight="400" fill="#536775">09 / 12</text>
+</svg>
