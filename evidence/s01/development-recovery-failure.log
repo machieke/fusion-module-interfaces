@@ -1,0 +1,169 @@
+test_crash_reservations_exhaust_budget_without_reset_or_computation (integration.neoclaw.test_recovery.RecoveryS01.test_crash_reservations_exhaust_budget_without_reset_or_computation) ... ERROR
+test_deadline_after_output_commit_allows_closure_not_new_math (integration.neoclaw.test_recovery.RecoveryS01.test_deadline_after_output_commit_allows_closure_not_new_math) ... ok
+test_killed_https_acceptance_server_replays_lost_receipt (integration.neoclaw.test_recovery.RecoveryS01.test_killed_https_acceptance_server_replays_lost_receipt) ... ok
+test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) ... 
+  test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_request_persist') ... FAIL
+  test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_call_reservation') ... FAIL
+  test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_submit_reply') ... FAIL
+  test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_caller_receipt') ... FAIL
+  test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_mailbox_ack') ... FAIL
+test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) ... 
+  test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_reservation') ... ERROR
+  test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_output_commit') ... ERROR
+  test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_result_persist') ... ERROR
+  test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_completion_commit') ... ERROR
+  test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_delivery_accept') ... ERROR
+/home/purplezky/.local/share/uv/python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/unittest/case.py:657: ResourceWarning: unclosed file <_io.TextIOWrapper name=5 encoding='UTF-8'>
+  function, args, kwargs = self._cleanups.pop()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/purplezky/.local/share/uv/python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/unittest/case.py:657: ResourceWarning: unclosed file <_io.TextIOWrapper name=16 encoding='UTF-8'>
+  function, args, kwargs = self._cleanups.pop()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+test_revocation_after_native_receipt_blocks_ack_then_recovers (integration.neoclaw.test_recovery.RecoveryS01.test_revocation_after_native_receipt_blocks_ack_then_recovers) ... ok
+
+======================================================================
+ERROR: test_crash_reservations_exhaust_budget_without_reset_or_computation (integration.neoclaw.test_recovery.RecoveryS01.test_crash_reservations_exhaust_budget_without_reset_or_computation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 164, in test_crash_reservations_exhaust_budget_without_reset_or_computation
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 40, in wait
+    if predicate():return
+       ^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 164, in <lambda>
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+                     ^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 194, in counts
+    result['caller_requests'] = db.execute('SELECT count(*) FROM caller_requests').fetchone()[0]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: caller_requests
+
+======================================================================
+ERROR: test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_reservation')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in test_killed_native_worker_and_mailbox_delivery_recover
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 40, in wait
+    if predicate():return
+       ^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in <lambda>
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+                     ^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 194, in counts
+    result['caller_requests'] = db.execute('SELECT count(*) FROM caller_requests').fetchone()[0]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: caller_requests
+
+======================================================================
+ERROR: test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_output_commit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in test_killed_native_worker_and_mailbox_delivery_recover
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 40, in wait
+    if predicate():return
+       ^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in <lambda>
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+                     ^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 194, in counts
+    result['caller_requests'] = db.execute('SELECT count(*) FROM caller_requests').fetchone()[0]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: caller_requests
+
+======================================================================
+ERROR: test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_result_persist')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in test_killed_native_worker_and_mailbox_delivery_recover
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 40, in wait
+    if predicate():return
+       ^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in <lambda>
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+                     ^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 194, in counts
+    result['caller_requests'] = db.execute('SELECT count(*) FROM caller_requests').fetchone()[0]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: caller_requests
+
+======================================================================
+ERROR: test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_completion_commit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in test_killed_native_worker_and_mailbox_delivery_recover
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 40, in wait
+    if predicate():return
+       ^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in <lambda>
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+                     ^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 194, in counts
+    result['caller_requests'] = db.execute('SELECT count(*) FROM caller_requests').fetchone()[0]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: caller_requests
+
+======================================================================
+ERROR: test_killed_native_worker_and_mailbox_delivery_recover (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover) (stage='after_delivery_accept')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in test_killed_native_worker_and_mailbox_delivery_recover
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 40, in wait
+    if predicate():return
+       ^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 122, in <lambda>
+    self.wait(lambda:self.h.counts()['jobs'] == 1, process)
+                     ^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 194, in counts
+    result['caller_requests'] = db.execute('SELECT count(*) FROM caller_requests').fetchone()[0]
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: caller_requests
+
+======================================================================
+FAIL: test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_request_persist')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 94, in test_killed_native_caller_replays_every_independent_commit
+    self.assertEqual(killed['exit_code'], -signal.SIGKILL, killed)
+AssertionError: 137 != -9 : {'exit_code': 137, 'values': None, 'stdout': '', 'stderr': '', 'command': 'metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))', 'adapted': True, 'skill_sha256': '0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6', 'denied_paths': ['/tmp/fusion-s01-8lunv_0m/provider', '/home/purplezky/work/takopi/mettaclaw']}
+
+======================================================================
+FAIL: test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_call_reservation')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 94, in test_killed_native_caller_replays_every_independent_commit
+    self.assertEqual(killed['exit_code'], -signal.SIGKILL, killed)
+AssertionError: 137 != -9 : {'exit_code': 137, 'values': None, 'stdout': '', 'stderr': '', 'command': 'metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))', 'adapted': True, 'skill_sha256': '0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6', 'denied_paths': ['/tmp/fusion-s01-e51hql16/provider', '/home/purplezky/work/takopi/mettaclaw']}
+
+======================================================================
+FAIL: test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_submit_reply')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 94, in test_killed_native_caller_replays_every_independent_commit
+    self.assertEqual(killed['exit_code'], -signal.SIGKILL, killed)
+AssertionError: 137 != -9 : {'exit_code': 137, 'values': None, 'stdout': '', 'stderr': '', 'command': 'metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))', 'adapted': True, 'skill_sha256': '0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6', 'denied_paths': ['/tmp/fusion-s01-q51uymzb/provider', '/home/purplezky/work/takopi/mettaclaw']}
+
+======================================================================
+FAIL: test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_caller_receipt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 94, in test_killed_native_caller_replays_every_independent_commit
+    self.assertEqual(killed['exit_code'], -signal.SIGKILL, killed)
+AssertionError: 137 != -9 : {'exit_code': 137, 'values': None, 'stdout': '', 'stderr': '', 'command': 'metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))', 'adapted': True, 'skill_sha256': '0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6', 'denied_paths': ['/tmp/fusion-s01-akg7qmlq/provider', '/home/purplezky/work/takopi/mettaclaw']}
+
+======================================================================
+FAIL: test_killed_native_caller_replays_every_independent_commit (integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit) (stage='after_mailbox_ack')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_recovery.py", line 94, in test_killed_native_caller_replays_every_independent_commit
+    self.assertEqual(killed['exit_code'], -signal.SIGKILL, killed)
+AssertionError: 137 != -9 : {'exit_code': 137, 'values': None, 'stdout': '', 'stderr': '', 'command': 'metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))', 'adapted': True, 'skill_sha256': '0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6', 'denied_paths': ['/tmp/fusion-s01-gres9bdd/provider', '/home/purplezky/work/takopi/mettaclaw']}
+
+----------------------------------------------------------------------
+Ran 6 tests in 20.165s
+
+FAILED (failures=5, errors=6)

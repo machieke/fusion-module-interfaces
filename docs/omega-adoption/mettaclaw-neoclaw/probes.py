@@ -100,7 +100,7 @@ with tempfile.TemporaryDirectory(prefix="omega-mapping-probes-") as td:
     try:
         p = subprocess.run(cmd, cwd=td, env=env, capture_output=True, text=True, timeout=30)
         # Record output; no success inference from exit status alone.
-        passed = p.returncode == 0 and "(stv 0.5 0.6666666666666666)" in p.stdout and "(stv 1.0 0.75)" in p.stdout
+        passed = p.returncode == 0 and "(stv 0.5599999999999999 0.4032)" in p.stdout.splitlines() and "(stv 0.5 0.6666666666666666)" in p.stdout and "(stv 1.0 0.75)" in p.stdout
         results.append(dict(name="native-nal-isolated", evidence_class="REAL_NATIVE_SYNTHETIC_INPUT",
                             status="PASS" if passed else "EXECUTED_FAILURE", exit_code=p.returncode,
                             command=[s.replace(td, "<temporary-directory>") for s in cmd],

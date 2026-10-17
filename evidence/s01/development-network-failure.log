@@ -1,0 +1,23 @@
+test_broader_native_command_remains_local_and_no_fallback (integration.neoclaw.test_s01.NativeS01.test_broader_native_command_remains_local_and_no_fallback) ... ok
+test_numeric_boundaries_match_original_in_both_placements (integration.neoclaw.test_s01.NativeS01.test_numeric_boundaries_match_original_in_both_placements) ... ok
+test_three_native_command_paths_and_exact_representation (integration.neoclaw.test_s01.NativeS01.test_three_native_command_paths_and_exact_representation) ... ok
+test_certificate_verification_and_non_loopback_refusal (integration.neoclaw.test_network.NetworkS01.test_certificate_verification_and_non_loopback_refusal) ... ok
+test_current_authority_on_result_and_read_over_https (integration.neoclaw.test_network.NetworkS01.test_current_authority_on_result_and_read_over_https) ... ok
+test_filesystem_namespace_masks_provider_and_old_omega (integration.neoclaw.test_network.NetworkS01.test_filesystem_namespace_masks_provider_and_old_omega) ... ok
+test_malformed_network_completion_not_acknowledged_then_recovered (integration.neoclaw.test_network.NetworkS01.test_malformed_network_completion_not_acknowledged_then_recovered) ... FAIL
+test_native_invalid_named_command_never_falls_through (integration.neoclaw.test_network.NetworkS01.test_native_invalid_named_command_never_falls_through) ... ok
+test_real_https_authority_closed_input_and_selection_matrix (integration.neoclaw.test_network.NetworkS01.test_real_https_authority_closed_input_and_selection_matrix) ... ok
+test_valid_digest_wrong_result_profile_refused_by_native_network_caller (integration.neoclaw.test_network.NetworkS01.test_valid_digest_wrong_result_profile_refused_by_native_network_caller) ... ok
+
+======================================================================
+FAIL: test_malformed_network_completion_not_acknowledged_then_recovered (integration.neoclaw.test_network.NetworkS01.test_malformed_network_completion_not_acknowledged_then_recovered)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_network.py", line 134, in test_malformed_network_completion_not_acknowledged_then_recovered
+    self.assertEqual(self.h.native()['values'], [GOLDEN])
+AssertionError: None != ['(stv 0.5599999999999999 0.4032)']
+
+----------------------------------------------------------------------
+Ran 10 tests in 33.408s
+
+FAILED (failures=1)

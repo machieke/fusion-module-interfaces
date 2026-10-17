@@ -1,0 +1,17 @@
+{
+  "kind": "REAL_NATIVE_ORIGINAL_COMMAND",
+  "runtime_profile": "neoclaw-petta-swi-10.0.1/1",
+  "command": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+  "path": [
+    "helper.balance_parentheses",
+    "PeTTa sread/eval",
+    "src/skills.metta::metta",
+    "lib_nal.metta::Truth_Deduction",
+    "PeTTa repr"
+  ],
+  "stdout": "true\ntrue\ntrue\ntrue\ntrue\ntrue\n(\"(stv 0.5599999999999999 0.4032)\")\n",
+  "stderr": "Could not find platform dependent libraries <exec_prefix>\n",
+  "deduction_assertion": "PASS",
+  "result": "(stv 0.5599999999999999 0.4032)",
+  "status": "PASS"
+}

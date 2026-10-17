@@ -1,0 +1,37 @@
+{
+  "counts": {
+    "jobs": 1,
+    "outbox": 1,
+    "attempts": 1,
+    "messages": 1,
+    "unacked": 0,
+    "caller_requests": 1,
+    "caller_completed": 1,
+    "caller_acked": 1,
+    "caller_calls": 22
+  },
+  "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+  "result": {
+    "receipt": {
+      "durability": "local-files-process-restart",
+      "evidence": {
+        "chain": null,
+        "custody_certificate": null,
+        "manifest": "57e323a302366597e6ed6070ada507eed78336ff3a04ceb7cc534d1d95874118",
+        "payload_bytes": 2447,
+        "payload_hash": "c2dd6c5cbf04d26ca03a7c4178a445c7a692eb06aa99f81c33d3e871c21a45c1",
+        "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+        "shares": 6,
+        "threshold": 4
+      },
+      "provider": "detta-local-rs/1"
+    },
+    "ref": {
+      "digest": "4711bf70ca0db4e33830b20288624be1519b8229f61e2165a2071e1900da2ac9",
+      "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+      "revision": 1,
+      "scope_ref": "generated-s01"
+    }
+  },
+  "deadline_ms": 1792267858055
+}

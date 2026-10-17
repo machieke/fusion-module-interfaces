@@ -3227,7 +3227,7 @@
         ]
       },
       "omega_role": "provider",
-      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
+      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
       "owned_state": [],
       "dependencies": [
         "datetime",
@@ -3246,7 +3246,7 @@
           "current_profile": null,
           "fusion_baseline_profile": "episode-delivery-completion/1",
           "candidate_profile": "Requires explicit compatibility design; not selected",
-          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
+          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
           "observed_semantic_responsibility": true
         }
       ],
@@ -7575,6 +7575,69 @@
         }
       ],
       "confidence": "medium"
+    }
+  ],
+  "operation_adoptions": [
+    {
+      "slice": "S01",
+      "operation": "nal_truth_deduction",
+      "profile": "neoclaw-nal-truth-deduction/1",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "component_ids": [
+        "tools.metta",
+        "nal.truth.math"
+      ],
+      "exact_symbol": "lib_nal.metta::Truth_Deduction",
+      "contract": "Exactly two validated grounded STVs -> original pinned native function -> one representation-preserving STV",
+      "numerical_provider": "real pinned MeTTaClaw NAL + PeTTa + SWI 10.0.1",
+      "storage_provider": "real pinned DeTTa",
+      "exercised_ports": [
+        "pln.kernel.applyTruth",
+        "execution.submit",
+        "execution.status",
+        "execution.result",
+        "atom.storage.get",
+        "agent.messaging.poll",
+        "agent.messaging.ack"
+      ],
+      "internal_effects": [
+        "AtomStorage.create result",
+        "Messaging.accept completion"
+      ],
+      "placement": [
+        "original native local",
+        "adapted in-process local",
+        "authenticated same-host isolated HTTPS/TCP"
+      ],
+      "multi_host": "UNRUN; loopback-only supported profile",
+      "fallback": false,
+      "coverage": {
+        "adopted_operations": 1,
+        "whole_families_promoted": 0,
+        "whole_omega_integrated": false
+      },
+      "private_omega_stores_accessed": false,
+      "source_pin": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "evidence": "../../../evidence/s01/verification.json",
+      "report": "s01.md",
+      "qualifications": [
+        "Generated shareable inputs and local test policy/CA",
+        "Real native command parser and skill; full LLM/wake/channel startup unrun",
+        "Corruption, unit kernel/files and failpoint coordination are labelled fixtures",
+        "No arbitrary remote code, extra NAL rules, memory/belief/inference-control change, migration or chain operation"
+      ],
+      "status": "IMPLEMENTED_AND_EXECUTED",
+      "test_methods": {
+        "fixture_contracts": 13,
+        "real_native_and_network": 19
+      },
+      "guarantees": [
+        "Current authority and descriptor/profile binding",
+        "Intent persisted before submission",
+        "Independent acceptance/output/payload/outbox/mailbox/caller receipt/ack commits",
+        "Durable attempts/deadline across SIGKILL",
+        "One logical completion/result on replay; repeat pure computation permitted"
+      ]
     }
   ]
 }

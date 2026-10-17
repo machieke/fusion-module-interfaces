@@ -1,5 +1,7 @@
 # Recommended next brief — bounded native NAL truth deduction
 
+**Historical brief, now implemented under the subsequent S01 authorization.** See [S01 evidence](s01.md). The original mapping handoff remained proposal-only. This increment admits exactly two grounded STVs and forbids fallback; the prospective optional-fallback row below was not implemented. Full agent startup and multi-host deployment remain unrun.
+
 **Proposal only. Do not implement under the mapping handoff.** Select S01, DRAFT `neoclaw-nal-truth-deduction/1`, exposed through a named `nal_truth_deduction` execution profile and a separate pure kernel provider. This is a different profile/input shape from Fusion's guarded five-premise PLN. It does not replace that implementation or alter C2 beliefs.
 
 The architectural test is whether the actual MeTTaClaw command can switch local/remote placement by composition while preserving admitted numerical behavior, current authority, owner commits and recoverable result identity. Two STVs are small; network overhead will likely outweigh compute savings. The selected function has an exact source/native oracle and avoids unresolved memory ownership. S02 web search lacks a stable numerical oracle; S03 memory reads need several missing profiles and a source feed.

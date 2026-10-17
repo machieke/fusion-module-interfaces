@@ -1,0 +1,314 @@
+[
+  {
+    "stage": "after_reservation",
+    "killed_operator_signal": 9,
+    "before": {
+      "jobs": 1,
+      "outbox": 0,
+      "attempts": 1,
+      "messages": 0,
+      "unacked": 0,
+      "caller_requests": 1,
+      "caller_completed": 0,
+      "caller_acked": 0,
+      "caller_calls": 3
+    },
+    "after": {
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "attempts": 2,
+        "messages": 1,
+        "unacked": 0,
+        "caller_requests": 1,
+        "caller_completed": 1,
+        "caller_acked": 1,
+        "caller_calls": 21
+      },
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "3730e170d09299053eb5fe9fe0b6e079ae19692509e8a25169413239c9a33991",
+            "payload_bytes": 2443,
+            "payload_hash": "b232818659090b944aebab5e45e060da0028f80a002c6e7deb12bd3994cbedc4",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "c70779b2837b3566ad320633a08be598b00ec0d48e20086cfe5f77aaab58523b",
+          "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      },
+      "deadline_ms": 1792267840477
+    }
+  },
+  {
+    "stage": "after_compute",
+    "killed_operator_signal": 9,
+    "before": {
+      "jobs": 1,
+      "outbox": 0,
+      "attempts": 1,
+      "messages": 0,
+      "unacked": 0,
+      "caller_requests": 1,
+      "caller_completed": 0,
+      "caller_acked": 0,
+      "caller_calls": 10
+    },
+    "after": {
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "attempts": 2,
+        "messages": 1,
+        "unacked": 0,
+        "caller_requests": 1,
+        "caller_completed": 1,
+        "caller_acked": 1,
+        "caller_calls": 27
+      },
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "83d94706dafedd6be13179c529da5df94ee267d230c67c338d655f8bda74e132",
+            "payload_bytes": 2447,
+            "payload_hash": "6b048142a8e09790fd685a973f2185c94f205e8cfd4485ffcac1c98f8b4b4536",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "c78edaa1a6c6917dec203cca000c9e5767502aef3ae9bf5efd7629a2cb5f208c",
+          "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      },
+      "deadline_ms": 1792267843010
+    }
+  },
+  {
+    "stage": "after_output_commit",
+    "killed_operator_signal": 9,
+    "before": {
+      "jobs": 1,
+      "outbox": 0,
+      "attempts": 1,
+      "messages": 0,
+      "unacked": 0,
+      "caller_requests": 1,
+      "caller_completed": 0,
+      "caller_acked": 0,
+      "caller_calls": 9
+    },
+    "after": {
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "attempts": 1,
+        "messages": 1,
+        "unacked": 0,
+        "caller_requests": 1,
+        "caller_completed": 1,
+        "caller_acked": 1,
+        "caller_calls": 21
+      },
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "85484981184fd9de36f1ec545f5778e98eefd0af1c0b1c4d72b0c145781d558c",
+            "payload_bytes": 2448,
+            "payload_hash": "ed4abb467b883950d2fc7295fa70b0221689c859f1186c5374ffb282692d1164",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "aebcb9c187629a61823c476e41865a4546f77b84afd0079383903bc678c4cae2",
+          "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      },
+      "deadline_ms": 1792267845732
+    }
+  },
+  {
+    "stage": "after_result_persist",
+    "killed_operator_signal": 9,
+    "before": {
+      "jobs": 1,
+      "outbox": 0,
+      "attempts": 1,
+      "messages": 0,
+      "unacked": 0,
+      "caller_requests": 1,
+      "caller_completed": 0,
+      "caller_acked": 0,
+      "caller_calls": 13
+    },
+    "after": {
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "attempts": 1,
+        "messages": 1,
+        "unacked": 0,
+        "caller_requests": 1,
+        "caller_completed": 1,
+        "caller_acked": 1,
+        "caller_calls": 20
+      },
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "66347972bb207981eede65591a819b3eaf2cf1c3560310570c7b92063f56b862",
+            "payload_bytes": 2449,
+            "payload_hash": "9197ae1f631a63b788a2ca7d335f314f6f3244eeedca0796168ec583ebd79083",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "d1a365713bb766f4816abdc64037640b9230795bfb4dac766da71e4bd3c92c1c",
+          "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      },
+      "deadline_ms": 1792267848167
+    }
+  },
+  {
+    "stage": "after_completion_commit",
+    "killed_operator_signal": 9,
+    "before": {
+      "jobs": 1,
+      "outbox": 1,
+      "attempts": 1,
+      "messages": 0,
+      "unacked": 0,
+      "caller_requests": 1,
+      "caller_completed": 0,
+      "caller_acked": 0,
+      "caller_calls": 14
+    },
+    "after": {
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "attempts": 1,
+        "messages": 1,
+        "unacked": 0,
+        "caller_requests": 1,
+        "caller_completed": 1,
+        "caller_acked": 1,
+        "caller_calls": 20
+      },
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "6b3ac481c2be62f1db823fb4eb29d7f5989ec54238a67a26a2e87a639e9ed9a1",
+            "payload_bytes": 2453,
+            "payload_hash": "b9583d541f1d8f24528a86107614aeac7e60de30927a7456c4066786d5ec4d9d",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "6ed285d8bc419b76c9c49de371187cbd1a80686d80f028e04149a273d9c49739",
+          "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      },
+      "deadline_ms": 1792267850481
+    }
+  },
+  {
+    "stage": "after_delivery_accept",
+    "killed_operator_signal": 9,
+    "before": {
+      "jobs": 1,
+      "outbox": 1,
+      "attempts": 1,
+      "messages": 1,
+      "unacked": 1,
+      "caller_requests": 1,
+      "caller_completed": 0,
+      "caller_acked": 0,
+      "caller_calls": 18
+    },
+    "after": {
+      "counts": {
+        "jobs": 1,
+        "outbox": 1,
+        "attempts": 1,
+        "messages": 1,
+        "unacked": 0,
+        "caller_requests": 1,
+        "caller_completed": 1,
+        "caller_acked": 1,
+        "caller_calls": 20
+      },
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "142d9877904da4034ee207fcfed5fa42ff1f08443e7dc85e3095dde33abc19b2",
+            "payload_bytes": 2451,
+            "payload_hash": "33a91011cad3508171e77c30d708f67b4ab749d1bd8ab701deacc1f2109c0279",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "076c794933d97e1c06701ac9bcf3462d6574662d7ed20121477ab878026960c8",
+          "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      },
+      "deadline_ms": 1792267853023
+    }
+  }
+]

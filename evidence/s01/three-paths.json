@@ -1,0 +1,233 @@
+{
+  "command": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+  "original": {
+    "exit_code": 0,
+    "values": [
+      "(stv 0.5599999999999999 0.4032)"
+    ],
+    "stdout": "true\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\n",
+    "stderr": "",
+    "command": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+    "adapted": false,
+    "skill_sha256": "cdad88d96a6d5c38a2ae256fc874b6ff15e3ac46db75370e4edc572d7b1e5a2d",
+    "denied_paths": []
+  },
+  "local": {
+    "exit_code": 0,
+    "values": [
+      "(stv 0.5599999999999999 0.4032)"
+    ],
+    "stdout": "true\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\n",
+    "stderr": "",
+    "command": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+    "adapted": true,
+    "skill_sha256": "0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6",
+    "denied_paths": []
+  },
+  "network": {
+    "exit_code": 0,
+    "values": [
+      "(stv 0.5599999999999999 0.4032)"
+    ],
+    "stdout": "true\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\n",
+    "stderr": "",
+    "command": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+    "adapted": true,
+    "skill_sha256": "0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6",
+    "denied_paths": [
+      "/tmp/fusion-s01-a91tbe6x/provider",
+      "/home/purplezky/work/takopi/mettaclaw"
+    ]
+  },
+  "placement": "same-host isolated loopback HTTPS, not multi-host",
+  "counts": {
+    "jobs": 2,
+    "outbox": 2,
+    "attempts": 2,
+    "messages": 2,
+    "unacked": 0,
+    "caller_requests": 2,
+    "caller_completed": 2,
+    "caller_acked": 2,
+    "caller_calls": 36
+  },
+  "trace": [
+    {
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "request": {
+        "body": {
+          "max_attempts": 3,
+          "operation": "nal_truth_deduction",
+          "premises": [
+            {
+              "confidence": "0.9",
+              "strength": "0.8"
+            },
+            {
+              "confidence": "0.8",
+              "strength": "0.7"
+            }
+          ],
+          "sharing": "generated-shareable"
+        },
+        "correlation_id": "command-1",
+        "deadline_ms": 1792267783001,
+        "idempotency_key": "command-1",
+        "interface_ref": {
+          "id": "execution",
+          "version": "1.1.0"
+        },
+        "message_id": "command-1",
+        "operation": "submit",
+        "profile": "neoclaw-nal-truth-deduction/1",
+        "reply_route": "reply-A",
+        "scope_ref": "generated-s01",
+        "selection": "679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13"
+      },
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "b8c6f9102bf5d6c09361dd2ceab496c5d0c39395e16577e7b1f35f27a33f924a",
+            "payload_bytes": 2449,
+            "payload_hash": "b8d0f255824466dbe37777aac73c9fb3a8864e8f4f870327e3bd5f454dafc0db",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "6934299c358de171f397ac3fa88085f9ea1924cf1ac631ef84e67841937c140b",
+          "id": "c92e252c-8d3b-5875-b619-22f39d70cf86",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      }
+    },
+    {
+      "job_id": "92836f0c-c0bc-5f74-a5e3-518a6a52d2b4",
+      "request": {
+        "body": {
+          "max_attempts": 3,
+          "operation": "nal_truth_deduction",
+          "premises": [
+            {
+              "confidence": "0.9",
+              "strength": "0.8"
+            },
+            {
+              "confidence": "0.8",
+              "strength": "0.7"
+            }
+          ],
+          "sharing": "generated-shareable"
+        },
+        "correlation_id": "network-command",
+        "deadline_ms": 1792267785452,
+        "idempotency_key": "network-command",
+        "interface_ref": {
+          "id": "execution",
+          "version": "1.1.0"
+        },
+        "message_id": "network-command",
+        "operation": "submit",
+        "profile": "neoclaw-nal-truth-deduction/1",
+        "reply_route": "reply-A",
+        "scope_ref": "generated-s01",
+        "selection": "679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13"
+      },
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "49b1863af73972b4d890ee4c32890c2647d6d4e50bcb8fdb8f0aab4c3fffa41f",
+            "payload_bytes": 2444,
+            "payload_hash": "d00506ae0d6404bf27ea0750e6108377920f09041d915184f258fa0babe5369f",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "89f5b9e6c6d3fed0fe0fa05e6f77e7fee20608a8f8445b933e09caba665fe801",
+          "id": "9b9a641d-a59d-5af3-a495-77dc00c8f374",
+          "revision": 1,
+          "scope_ref": "generated-s01"
+        }
+      }
+    }
+  ],
+  "caller_receipts": [
+    {
+      "delivery_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "error": null,
+      "job_id": "7ad23dc7-c6b0-578c-9fe2-6b5fa9f621dd",
+      "result": {
+        "operation": "nal_truth_deduction",
+        "premises": [
+          {
+            "confidence": "0.9",
+            "strength": "0.8"
+          },
+          {
+            "confidence": "0.8",
+            "strength": "0.7"
+          }
+        ],
+        "profile": "neoclaw-nal-truth-deduction/1",
+        "representation": "(stv 0.5599999999999999 0.4032)",
+        "request_digest": "4f5bb18929e269fc6e265a1a66dc41c109fc11a7f355ece1f34a59a8c4e950db",
+        "runtime": "neoclaw-petta-swi-10.0.1/1",
+        "selection": "e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd",
+        "truth": {
+          "confidence": "0.4032",
+          "strength": "0.5599999999999999"
+        }
+      }
+    },
+    {
+      "delivery_id": "92836f0c-c0bc-5f74-a5e3-518a6a52d2b4",
+      "error": null,
+      "job_id": "92836f0c-c0bc-5f74-a5e3-518a6a52d2b4",
+      "result": {
+        "operation": "nal_truth_deduction",
+        "premises": [
+          {
+            "confidence": "0.9",
+            "strength": "0.8"
+          },
+          {
+            "confidence": "0.8",
+            "strength": "0.7"
+          }
+        ],
+        "profile": "neoclaw-nal-truth-deduction/1",
+        "representation": "(stv 0.5599999999999999 0.4032)",
+        "request_digest": "760295de0b6b964489c506a9a417455cdc39385a77701823e190ad9fa914e1c4",
+        "runtime": "neoclaw-petta-swi-10.0.1/1",
+        "selection": "e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd",
+        "truth": {
+          "confidence": "0.4032",
+          "strength": "0.5599999999999999"
+        }
+      }
+    }
+  ],
+  "providers": {
+    "kernel": "real pinned original NAL",
+    "payload": "real DeTTa",
+    "caller": "real MeTTaClaw parser + native metta handler",
+    "authority": "generated local test policy"
+  },
+  "fixtures": [
+    "generated STVs",
+    "test credentials",
+    "ephemeral trusted TLS CA"
+  ]
+}

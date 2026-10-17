@@ -1,0 +1,1520 @@
+{
+  "schema": "omega-s01-executed-gates/1",
+  "recorded_at": "2026-10-17T20:16:34.982753+00:00",
+  "outcome": "S01_REQUIRED_GATES_PASS",
+  "operation": "nal_truth_deduction",
+  "profile": "neoclaw-nal-truth-deduction/1",
+  "source": "source-state.json",
+  "sources": {
+    "mettaclaw": {
+      "commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "status": "clean"
+    },
+    "PeTTa": {
+      "commit": "fea83178af3722666d2948d074591d10a3134f56",
+      "status": "clean"
+    },
+    "swipl": {
+      "commit": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+      "status": "clean"
+    }
+  },
+  "legacy_regression_sources": {
+    "PETTA_PATH": {
+      "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+      "status": "clean"
+    },
+    "HIVE_REPO": {
+      "commit": "34b0fb32ab3806e5609fc89bb7535518a35e1aea",
+      "status": "clean"
+    },
+    "DETTA_REPO": {
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "status": "clean"
+    },
+    "reachability": {
+      "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+      "status": "clean"
+    },
+    "pln": {
+      "commit": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+      "status": "clean"
+    }
+  },
+  "runtime": {
+    "profile": "neoclaw-petta-swi-10.0.1/1",
+    "python": "3.12.12",
+    "build": "build.json",
+    "native_build_fresh": true,
+    "detta_build_reused": true,
+    "detta_binary_sha256": "0d30f836a927b3f684b68daf515ec07b5214c1f457def6f3b7fd44e709bb2917"
+  },
+  "gates": {
+    "PREFLIGHT_CONTRACT_AND_ORACLE": {
+      "status": "PASS",
+      "evidence": "command-map corrected; 8 preflight probes, explicit deduction assertion; source-built native command before adapter"
+    },
+    "PINNED_NATIVE_RECIPE": {
+      "status": "PASS",
+      "evidence": "fresh SWI 10.0.1/Janus + Python 3.12.12 source build; pinned original application/PeTTa; no changed old PLN runtime"
+    },
+    "ORIGINAL_NATIVE_COMMAND": {
+      "status": "PASS",
+      "evidence": "actual helper parser -> native sread/eval -> original skill -> original Truth_Deduction -> repr"
+    },
+    "ADAPTED_LOCAL_COMMAND": {
+      "status": "PASS",
+      "evidence": "same command and admitted representation through local provider"
+    },
+    "AUTHENTICATED_NETWORK_PLACEMENT": {
+      "status": "PASS",
+      "evidence": "real certificate-verified HTTPS/TCP; loopback same-host isolation, caller cannot read provider or old Omega checkout"
+    },
+    "NUMERICAL_IDENTITY": {
+      "status": "PASS",
+      "evidence": "original source function, six vectors including integer/float/zero/one/rounding/scientific output; no replacement arithmetic"
+    },
+    "SELECTION_AND_CLOSED_INPUT": {
+      "status": "PASS",
+      "evidence": "one named operation; source/runtime/kernel/profile/privacy/limits binding; rejected malformed DTO and arbitrary code"
+    },
+    "CURRENT_AUTHORIZATION": {
+      "status": "PASS",
+      "evidence": "missing/wrong credential, scope, route, principal, revoked submit/read/poll/ack; current owner checks"
+    },
+    "DURABLE_IDENTITY_AND_INDEPENDENT_COMMITS": {
+      "status": "PASS",
+      "evidence": "persist before submit; server acceptance SIGKILL; five caller and six worker/delivery kill boundaries"
+    },
+    "DUPLICATE_COMPLETION": {
+      "status": "PASS",
+      "evidence": "repeated native replay; one logical job/result/outbox/message/caller receipt; independently idempotent ack"
+    },
+    "DEADLINE_RETRY_AND_CAPACITY": {
+      "status": "PASS",
+      "evidence": "persisted RPC/native reservations; kill exhaustion; no reset/refund/deadline renewal; no new math after expiry; fixture capacity recovery"
+    },
+    "RESULT_VALIDATION": {
+      "status": "PASS",
+      "evidence": "profile/request/runtime/selection/hash/receipt binding; malformed JSON/truth/extra fields/unrelated receipt rejected without acknowledgment"
+    },
+    "M1_TO_M5_CORE_REGRESSION": {
+      "status": "PASS",
+      "evidence": "156 existing tests; fixtures and real local DeTTa; includes M4 fixture regressions, no chain node"
+    },
+    "EXISTING_NATIVE_PROVIDERS_REGRESSION": {
+      "status": "PASS",
+      "evidence": "46 tests: unchanged guarded PLN revision/deduction, DeTTa, owner recovery, M5 real relations/search"
+    },
+    "EXISTING_NATIVE_HIVE_REGRESSION": {
+      "status": "PASS",
+      "evidence": "42 cases using authenticated native Hive ASGI dispatch, actual PeTTa; generated test stores"
+    },
+    "MAPPING_AND_OWNER_BOUNDARIES": {
+      "status": "PASS",
+      "evidence": "historical 105 rows and coverage retained; all 132 M5 runtime/source hashes unchanged; exact-operation adoption only"
+    },
+    "GENUINE_MULTI_HOST": {
+      "status": "UNRUN",
+      "evidence": "unsupported by S01 loopback-only transport; not claimed"
+    },
+    "FULL_OMEGA_STARTUP": {
+      "status": "UNRUN",
+      "evidence": "bounded real command handler only; full LLM/wake/Chroma/channel/provider runtime not started"
+    },
+    "REAL_CHAIN_REGRESSION": {
+      "status": "UNRUN",
+      "evidence": "excluded by this task; no chain operation or public network"
+    },
+    "POWER_LOSS_DISTRIBUTED_FAILOVER_MIGRATION": {
+      "status": "UNRUN",
+      "evidence": "process-kill scope only"
+    },
+    "EMPTY_GLOBAL_CACHE": {
+      "status": "UNRUN",
+      "evidence": "download caches may be warm; fresh native objects/venv"
+    },
+    "PERFORMANCE_BENCHMARK": {
+      "status": "UNRUN",
+      "evidence": "test wall times are not performance claims"
+    }
+  },
+  "commands": [
+    {
+      "name": "native-build",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "scripts/build_s01.py",
+        "artifacts/s01/native-02"
+      ],
+      "status": "PASS",
+      "seconds": 102.336,
+      "recipe_sha256": "e800507a71ff6218645dabeddbffbd3dd3abf885fa5325b922928a4e10bc6c37"
+    },
+    {
+      "name": "s01",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_neoclaw",
+        "integration.neoclaw.test_s01",
+        "integration.neoclaw.test_network",
+        "integration.neoclaw.test_recovery"
+      ],
+      "environment": {
+        "S01_EVIDENCE": "artifacts/s01/final",
+        "S01_RUNTIME": "default: artifacts/s01/native-02/runtime.json",
+        "S01_DETTA": "artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+      },
+      "log": "s01-tests.log",
+      "status": "PASS",
+      "test_methods": 32,
+      "seconds": 107.486,
+      "cases": [
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_acceptance_completion_and_payload_receipts_reject_malformed_data.test_acceptance_completion_and_payload_receipts_reject_malformed_data",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_authority_method_scope_route_and_replay_revocation.test_authority_method_scope_route_and_replay_revocation",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_caller_budget_is_durable_and_cannot_be_reset.test_caller_budget_is_durable_and_cannot_be_reset",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_capacity_recovery_and_independent_owner_databases.test_capacity_recovery_and_independent_owner_databases",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_closed_two_stv_contract_rejects_code_and_invalid_values.test_closed_two_stv_contract_rejects_code_and_invalid_values",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_current_authority_on_result_poll_ack_and_worker.test_current_authority_on_result_poll_ack_and_worker",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_deadline_prevents_new_computation_but_not_completed_replay.test_deadline_prevents_new_computation_but_not_completed_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_descriptor_version_profile_runtime_and_operation_binding.test_descriptor_version_profile_runtime_and_operation_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_existing_numerical_sources_unchanged.test_existing_numerical_sources_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_native_attempt_budget_survives_owner_restart_and_bad_kernel.test_native_attempt_budget_survives_owner_restart_and_bad_kernel",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_no_fallback_and_duplicate_json_keys_rejected.test_no_fallback_and_duplicate_json_keys_rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_replay_identity_conflict_and_deadline_not_renewed.test_replay_identity_conflict_and_deadline_not_renewed",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_neoclaw.S01Contracts.test_result_binding_and_representation_validation.test_result_binding_and_representation_validation",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_s01.NativeS01.test_broader_native_command_remains_local_and_no_fallback.test_broader_native_command_remains_local_and_no_fallback",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_s01.NativeS01.test_numeric_boundaries_match_original_in_both_placements.test_numeric_boundaries_match_original_in_both_placements",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_s01.NativeS01.test_same_durable_intent_replays_after_composition_switch.test_same_durable_intent_replays_after_composition_switch",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_s01.NativeS01.test_three_native_command_paths_and_exact_representation.test_three_native_command_paths_and_exact_representation",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_network.NetworkS01.test_certificate_verification_and_non_loopback_refusal.test_certificate_verification_and_non_loopback_refusal",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_network.NetworkS01.test_current_authority_on_result_and_read_over_https.test_current_authority_on_result_and_read_over_https",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_network.NetworkS01.test_filesystem_namespace_masks_provider_and_old_omega.test_filesystem_namespace_masks_provider_and_old_omega",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_network.NetworkS01.test_malformed_network_completion_cannot_ack_or_reset_budget.test_malformed_network_completion_cannot_ack_or_reset_budget",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_network.NetworkS01.test_native_invalid_named_command_never_falls_through.test_native_invalid_named_command_never_falls_through",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_network.NetworkS01.test_real_https_authority_closed_input_and_selection_matrix.test_real_https_authority_closed_input_and_selection_matrix",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_network.NetworkS01.test_valid_digest_malformed_payload_refused_before_completion_poll.test_valid_digest_malformed_payload_refused_before_completion_poll",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_crash_reservations_exhaust_budget_without_reset_or_computation.test_crash_reservations_exhaust_budget_without_reset_or_computation",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_deadline_after_output_commit_allows_closure_not_new_math.test_deadline_after_output_commit_allows_closure_not_new_math",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_expired_reservation_after_kill_never_recomputes.test_expired_reservation_after_kill_never_recomputes",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_killed_https_acceptance_server_replays_lost_receipt.test_killed_https_acceptance_server_replays_lost_receipt",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit.test_killed_native_caller_replays_every_independent_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover.test_killed_native_worker_and_mailbox_delivery_recover",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_native_caller_kills_spend_rpc_budget_without_reset.test_native_caller_kills_spend_rpc_budget_without_reset",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.neoclaw.test_recovery.RecoveryS01.test_revocation_after_native_receipt_blocks_ack_then_recovers.test_revocation_after_native_receipt_blocks_ack_then_recovers",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "regression-core",
+      "log": "regression-core.log",
+      "returncode": 0,
+      "seconds": 106.057,
+      "modules": [
+        "tests.test_adapters",
+        "tests.test_contract",
+        "tests.test_m11",
+        "tests.test_m2",
+        "tests.test_m3",
+        "tests.test_m3_1_attention",
+        "tests.test_m3_1_compat",
+        "tests.test_m3_1_delivery",
+        "tests.test_m3_attention",
+        "tests.test_m4_chain",
+        "tests.test_m5",
+        "tests.test_m5_boundaries",
+        "tests.test_responses"
+      ],
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_adapters",
+        "tests.test_contract",
+        "tests.test_m11",
+        "tests.test_m2",
+        "tests.test_m3",
+        "tests.test_m3_1_attention",
+        "tests.test_m3_1_compat",
+        "tests.test_m3_1_delivery",
+        "tests.test_m3_attention",
+        "tests.test_m4_chain",
+        "tests.test_m5",
+        "tests.test_m5_boundaries",
+        "tests.test_responses"
+      ],
+      "status": "PASS",
+      "test_methods": 156,
+      "cases": [
+        {
+          "name": "tests.test_adapters.AdapterTests.test_corrupt_share_is_never_returned_as_payload.test_corrupt_share_is_never_returned_as_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_adapters.AdapterTests.test_generic_storage_scope_binding_rejects_wrong_scope.test_generic_storage_scope_binding_rejects_wrong_scope",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_adapters.AdapterTests.test_reconstruct_after_two_missing_shares_and_fail_after_three.test_reconstruct_after_two_missing_shares_and_fail_after_three",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_adapters.AdapterTests.test_schema_is_reproducible_and_positive_negative_fixtures_agree.test_schema_is_reproducible_and_positive_negative_fixtures_agree",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_adapters.AdapterTests.test_simultaneous_duplicate_submission_has_one_logical_job.test_simultaneous_duplicate_submission_has_one_logical_job",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_adapters.ChainObservationTests.test_pending_inclusion_and_deploy_effect_finality_stay_distinct.test_pending_inclusion_and_deploy_effect_finality_stay_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_adapters.ChainObservationTests.test_signed_intent_survives_uncertain_submission_without_resigning.test_signed_intent_survives_uncertain_submission_without_resigning",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.Compatibility.test_contract_imports_no_backends_or_cognition.test_contract_imports_no_backends_or_cognition",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.Compatibility.test_same_major_positive_and_negative_fixtures.test_same_major_positive_and_negative_fixtures",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_backpressure_keeps_outbox_until_consumer_ack.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_durable_acceptance_survives_sigkill_before_ack.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_idempotency_conflict_and_occurrence_identity.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_reference_integrity_missing_and_unavailable_are_distinct.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_result_da_write_replay_and_completion_outbox_crashes.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_scope_routes_authentication_revocation_and_state_ownership.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_slice_and_delayed_restart_completion.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureInProcessContract.test_wire_validation_versions_features_deadlines.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_backpressure_keeps_outbox_until_consumer_ack.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_durable_acceptance_survives_sigkill_before_ack.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_idempotency_conflict_and_occurrence_identity.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_reference_integrity_missing_and_unavailable_are_distinct.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_result_da_write_replay_and_completion_outbox_crashes.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_scope_routes_authentication_revocation_and_state_ownership.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_slice_and_delayed_restart_completion.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.FixtureSubprocessContract.test_wire_validation_versions_features_deadlines.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_backpressure_keeps_outbox_until_consumer_ack.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_durable_acceptance_survives_sigkill_before_ack.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_idempotency_conflict_and_occurrence_identity.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_reference_integrity_missing_and_unavailable_are_distinct.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_result_da_write_replay_and_completion_outbox_crashes.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_scope_routes_authentication_revocation_and_state_ownership.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_slice_and_delayed_restart_completion.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.InProcessContract.test_wire_validation_versions_features_deadlines.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_backpressure_keeps_outbox_until_consumer_ack.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_durable_acceptance_survives_sigkill_before_ack.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_idempotency_conflict_and_occurrence_identity.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_reference_integrity_missing_and_unavailable_are_distinct.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_result_da_write_replay_and_completion_outbox_crashes.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_scope_routes_authentication_revocation_and_state_ownership.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_slice_and_delayed_restart_completion.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_contract.SubprocessContract.test_wire_validation_versions_features_deadlines.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_ack_replay_rechecks_current_route_ownership.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_revoked_reply_route_retains_outbox_until_restored.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaInProcessRecovery.test_worker_revocation_is_effective_at_restart.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_ack_replay_rechecks_current_route_ownership.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_revoked_reply_route_retains_outbox_until_restored.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.DettaSubprocessRecovery.test_worker_revocation_is_effective_at_restart.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_ack_replay_rechecks_current_route_ownership.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_revoked_reply_route_retains_outbox_until_restored.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureInProcessRecovery.test_worker_revocation_is_effective_at_restart.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_ack_replay_rechecks_current_route_ownership.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_revoked_reply_route_retains_outbox_until_restored.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.FixtureSubprocessRecovery.test_worker_revocation_is_effective_at_restart.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.PortStructure.test_combined_legacy_journal_is_rejected_without_dropping_it.test_combined_legacy_journal_is_rejected_without_dropping_it",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.PortStructure.test_execution_uses_only_declared_foreign_ports_and_own_sql.test_execution_uses_only_declared_foreign_ports_and_own_sql",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.PortStructure.test_fixture_opaque_id_never_resolves_as_a_filesystem_path.test_fixture_opaque_id_never_resolves_as_a_filesystem_path",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.PortStructure.test_hostile_port_denies_every_undeclared_attribute_at_runtime.test_hostile_port_denies_every_undeclared_attribute_at_runtime",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.PortStructure.test_published_signatures_match_exercised_providers.test_published_signatures_match_exercised_providers",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m11.PortStructure.test_weaker_guarantees_and_changed_selected_provider_are_rejected.test_weaker_guarantees_and_changed_selected_provider_are_rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_ack_binds_entire_decision_and_response_lineage_is_checked.test_ack_binds_entire_decision_and_response_lineage_is_checked",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_bounded_delivery_capacity_does_not_drop_events.test_bounded_delivery_capacity_does_not_drop_events",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_c1_has_no_revision_dependency_and_no_foreign_sql.test_c1_has_no_revision_dependency_and_no_foreign_sql",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_cross_claim_context_scope_and_unknown_origin.test_cross_claim_context_scope_and_unknown_origin",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_cross_principal_read_and_revoked_belief_replay.test_cross_principal_read_and_revoked_belief_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_declared_operations_and_hostile_independent_c2_dependencies.test_declared_operations_and_hostile_independent_c2_dependencies",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_hostile_evidence_response_is_not_admitted.test_hostile_evidence_response_is_not_admitted",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_lineage_copy_new_speaker_and_new_key_do_not_create_origins.test_lineage_copy_new_speaker_and_new_key_do_not_create_origins",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_live_authority_and_profile_before_replay.test_live_authority_and_profile_before_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_numeric_domain_and_closed_inputs.test_numeric_domain_and_closed_inputs",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_occurrence_replay_before_cas_and_changed_body_conflicts.test_occurrence_replay_before_cas_and_changed_body_conflicts",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_relay_through_only_declared_ports_and_unavailable_is_pending.test_relay_through_only_declared_ports_and_unavailable_is_pending",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_report_alternative_and_duplicate_admission.test_report_alternative_and_duplicate_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_shared_placement_and_descriptor_drift_rejected.test_shared_placement_and_descriptor_drift_rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_stable_identity_empty_and_bounded_pages.test_stable_identity_empty_and_bounded_pages",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m2.Contracts.test_submission_snapshots_mutable_caller_input_before_dependency_calls.test_submission_snapshots_mutable_caller_input_before_dependency_calls",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3.AdversarialContracts.test_descriptor_and_old_journal_incompatibility_fail_closed.test_descriptor_and_old_journal_incompatibility_fail_closed",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3.AdversarialContracts.test_malformed_selection_and_unavailable_belief_never_become_empty.test_malformed_selection_and_unavailable_belief_never_become_empty",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3.AdversarialContracts.test_mutable_caller_workset_cannot_change_durable_step_intent.test_mutable_caller_workset_cannot_change_durable_step_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3.AdversarialContracts.test_wrong_admission_response_is_rejected_then_owner_decision_recovers.test_wrong_admission_response_is_rejected_then_owner_decision_recovers",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3.CognitionFixtures.test_deadline_is_absolute_and_current_auth_applies_to_replay.test_deadline_is_absolute_and_current_auth_applies_to_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3.CognitionFixtures.test_refusing_kernel_budgets_replay_and_swap.test_refusing_kernel_budgets_replay_and_swap",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3.CognitionFixtures.test_unresolved_candidate_consumes_candidate_budget.test_unresolved_candidate_consumes_candidate_budget",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_attention.AttentionClosure.test_capacity_is_pending_then_obsolete_without_credit_or_eviction.test_capacity_is_pending_then_obsolete_without_credit_or_eviction",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_attention.AttentionClosure.test_same_profile_applied_expired_clock_and_parent.test_same_profile_applied_expired_clock_and_parent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_attention.AttentionClosure.test_serialized_race_orders_and_concurrent_delivery.test_serialized_race_orders_and_concurrent_delivery",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_compat.Compatibility.test_bounded_reconciliation_commands_and_live_descriptor_binding.test_bounded_reconciliation_commands_and_live_descriptor_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_compat.Compatibility.test_old_populated_copies_reject_new_profile_keep_old_replay.test_old_populated_copies_reject_new_profile_keep_old_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_delivery.DeliveryTests.test_33_events_one_persistent_episode_and_capacity_recovery.test_33_events_one_persistent_episode_and_capacity_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers.test_bad_c2_receipts_never_ack_and_exact_replay_recovers",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_delivery.DeliveryTests.test_c1_can_run_without_c2_pln_or_hive_imports.test_c1_can_run_without_c2_pln_or_hive_imports",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_1_delivery.DeliveryTests.test_standalone_c1_trust_closed_dto_and_semantic_replay.test_standalone_c1_trust_closed_dto_and_semantic_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_attention.AttentionTests.test_capacity_rejects_without_eviction.test_capacity_rejects_without_eviction",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_attention.AttentionTests.test_causal_generation_never_resets_across_decay_ingress_or_keys.test_causal_generation_never_resets_across_decay_ingress_or_keys",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_attention.AttentionTests.test_independent_same_profile_replacement.test_independent_same_profile_replacement",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_attention.AttentionTests.test_mutable_caller_dictionary_cannot_change_admitted_stimulus.test_mutable_caller_dictionary_cannot_change_admitted_stimulus",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m3_attention.AttentionTests.test_roles_ties_saturation_and_closed_inputs.test_roles_ties_saturation_and_closed_inputs",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_concurrent_duplicates_sign_one_durable_deploy.test_concurrent_duplicates_sign_one_durable_deploy",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_durable_logical_intent_precedes_signing_and_exact_replay.test_durable_logical_intent_precedes_signing_and_exact_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_malformed_finality_inclusion_and_effect_never_pass.test_malformed_finality_inclusion_and_effect_never_pass",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_matching_actual_effect_required.test_matching_actual_effect_required",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_mutating_input_aliases_cannot_change_registered_approval_or_binding.test_mutating_input_aliases_cannot_change_registered_approval_or_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_old_journal_rejected_without_migration.test_old_journal_rejected_without_migration",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_response_loss_keeps_every_signed_byte_and_timestamp.test_response_loss_keeps_every_signed_byte_and_timestamp",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_revocation_before_cached_reply_and_before_send.test_revocation_before_cached_reply_and_before_send",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_typed_rejection_and_pending_are_separate.test_typed_rejection_and_pending_are_separate",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_wrong_approval_scope_ref_digest_key_and_intent.test_wrong_approval_scope_ref_digest_key_and_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m4_chain.ChainFixtures.test_wrong_chain_binding_signer_and_profile.test_wrong_chain_binding_signer_and_profile",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_all_relation_roles_directions_identity_and_replay.test_all_relation_roles_directions_identity_and_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_exact_query_lag_rebuild_and_independent_search_substitution.test_exact_query_lag_rebuild_and_independent_search_substitution",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_feed_snapshot_replay_and_source_binding.test_feed_snapshot_replay_and_source_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint.test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_query_exact_unicode_missing_field_and_bounded_parser.test_query_exact_unicode_missing_field_and_bounded_parser",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_relation_boundary_validation_unaccepted_payload_and_revocation.test_relation_boundary_validation_unaccepted_payload_and_revocation",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_relation_pagination_fixed_head_cursor_binding.test_relation_pagination_fixed_head_cursor_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5.LookupContracts.test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor.test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_atom_response_budget_is_checked_at_session_boundary.test_atom_response_budget_is_checked_at_session_boundary",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_authority_revocation_between_reads_and_commit.test_authority_revocation_between_reads_and_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_bad_shape_bounds_profile_and_private_placement.test_bad_shape_bounds_profile_and_private_placement",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_capacity_refusal_retains_complete_prefix.test_capacity_refusal_retains_complete_prefix",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_consumer_rejects_forged_search_relation_and_payload.test_consumer_rejects_forged_search_relation_and_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_each_advertised_operation_checks_live_authority.test_each_advertised_operation_checks_live_authority",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_feed_rejects_legacy_store_and_missing_incarnation.test_feed_rejects_legacy_store_and_missing_incarnation",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation.test_lookup_has_no_cognitive_runtime_dependency_or_mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_query_cursor_rebinding_auth_and_generation.test_query_cursor_rebinding_auth_and_generation",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_m5_boundaries.Boundaries.test_search_fixture_evaluates_predicates_independently.test_search_fixture_evaluates_predicates_independently",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_responses.ResponseConformance.test_all_error_responses_and_retryability_are_closed.test_all_error_responses_and_retryability_are_closed",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_responses.ResponseConformance.test_all_operations_and_profiles_validate_real_fixture_replies.test_all_operations_and_profiles_validate_real_fixture_replies",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_responses.ResponseConformance.test_both_bindings_apply_response_checks_before_returning_success.test_both_bindings_apply_response_checks_before_returning_success",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_responses.ResponseConformance.test_every_operation_rejects_missing_malformed_and_unselected_replies.test_every_operation_rejects_missing_malformed_and_unselected_replies",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_responses.ResponseConformance.test_generated_schemas_match_checked_in_contracts.test_generated_schemas_match_checked_in_contracts",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_responses.ResponseConformance.test_invalid_completion_acceptance_does_not_mark_outbox_sent.test_invalid_completion_acceptance_does_not_mark_outbox_sent",
+          "status": "PASS"
+        },
+        {
+          "name": "tests.test_responses.ResponseConformance.test_request_scope_reference_order_correlation_and_guarantees_are_checked.test_request_scope_reference_order_correlation_and_guarantees_are_checked",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "regression-native-providers",
+      "log": "regression-native.log",
+      "returncode": 0,
+      "seconds": 468.863,
+      "argv": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.pln.test_revision",
+        "integration.pln.test_recovery",
+        "integration.pln.test_deduction",
+        "integration.pln.test_m3_recovery",
+        "integration.pln.test_m3_1",
+        "integration.pln.test_m3_1_recovery",
+        "integration.test_m5_real"
+      ],
+      "status": "PASS",
+      "test_methods": 46,
+      "cases": [
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_actual_equal_weight_golden_and_historical_snapshots.test_actual_equal_weight_golden_and_historical_snapshots",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_actual_swapped_order_golden.test_actual_swapped_order_golden",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_actual_unequal_weight_golden.test_actual_unequal_weight_golden",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_authority_rechecked_after_native_formula_before_commit.test_authority_rechecked_after_native_formula_before_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_cas_conflict_requires_a_new_attempt_identity.test_cas_conflict_requires_a_new_attempt_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_malformed_empty_multiple_and_nonfinite_output_fixtures.test_malformed_empty_multiple_and_nonfinite_output_fixtures",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_missing_independence_retains_contrary_and_no_formula.test_missing_independence_retains_contrary_and_no_formula",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_native_timeout_leaves_delivery_pending_and_exact_attempt_replays.test_native_timeout_leaves_delivery_pending_and_exact_attempt_replays",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_overlap_and_aggregate_ancestor_no_extra_weight.test_overlap_and_aggregate_ancestor_no_extra_weight",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_wrong_pair_rejected_and_assumption_permission_separate.test_wrong_pair_rejected_and_assumption_permission_separate",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_revision.NativeRevision.test_zero_weight_pair_is_model_inapplicable_without_formula.test_zero_weight_pair_is_model_inapplicable_without_formula",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_recovery.Recovery.test_kill_after_belief_commit_before_ack.test_kill_after_belief_commit_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_recovery.Recovery.test_kill_after_episode_and_intent_before_belief.test_kill_after_episode_and_intent_before_belief",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_recovery.Recovery.test_kill_after_native_formula_before_belief_commit.test_kill_after_native_formula_before_belief_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_recovery.Recovery.test_kill_after_payload_before_episode_commit.test_kill_after_payload_before_episode_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_recovery.Recovery.test_private_canary_never_enters_shared_binding_or_diagnostics.test_private_canary_never_enters_shared_binding_or_diagnostics",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_recovery.Recovery.test_two_process_cas_race_has_one_winner.test_two_process_cas_race_has_one_winner",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_authorization_and_cas_rechecked_after_kernel.test_authorization_and_cas_rechecked_after_kernel",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_concurrent_clock_advance_keeps_feedback_pending.test_concurrent_clock_advance_keeps_feedback_pending",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_derive_revise_derive_preserves_ancestry_and_blocks_cycle.test_derive_revise_derive_preserves_ancestry_and_blocks_cycle",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_exact_historical_binding_not_latest_and_missing_support.test_exact_historical_binding_not_latest_and_missing_support",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_generation_limit_across_new_worksets_steps_and_ingress.test_generation_limit_across_new_worksets_steps_and_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_native_conditional_refusal_never_admits_fallback.test_native_conditional_refusal_never_admits_fallback",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_native_golden_historical_vector_and_duplicate_safe_admission.test_native_golden_historical_vector_and_duplicate_safe_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_native_near_one_branch_and_infeasible_and_zero_guards.test_native_near_one_branch_and_infeasible_and_zero_guards",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_private_inference_never_calls_populated_shared_bindings.test_private_inference_never_calls_populated_shared_bindings",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_pure_kernel_closed_vectors_and_malformed_proposal_admission.test_pure_kernel_closed_vectors_and_malformed_proposal_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_retains_existing_observation_and_does_not_infer_independence.test_retains_existing_observation_and_does_not_infer_independence",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_deduction.NativeDeduction.test_two_tasks_one_attempt_selection_feedback_and_swap.test_two_tasks_one_attempt_selection_feedback_and_swap",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_recovery.CrashRecovery.test_attention_commit_before_response_both_providers.test_attention_commit_before_response_both_providers",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_recovery.CrashRecovery.test_belief_commit_and_feedback_commit_replay_without_new_native_work.test_belief_commit_and_feedback_commit_replay_without_new_native_work",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_recovery.CrashRecovery.test_reservation_and_kernel_return_spend_crash_slots.test_reservation_and_kernel_return_spend_crash_slots",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1.NativeClosure.test_actual_m3_path_and_deduction_ledger_receipts.test_actual_m3_path_and_deduction_ledger_receipts",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1.NativeClosure.test_applied_receipt_after_deadline_and_decay_execution_stays_immutable.test_applied_receipt_after_deadline_and_decay_execution_stays_immutable",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1.NativeClosure.test_eligible_feedback_remains_pending_until_owner_retires_at_expiry.test_eligible_feedback_remains_pending_until_owner_retires_at_expiry",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1.NativeClosure.test_real_33_events_backpressure_drain_and_reopen.test_real_33_events_backpressure_drain_and_reopen",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1.NativeClosure.test_terminal_reconciliation_malformed_unavailable_revoke_and_no_new_work.test_terminal_reconciliation_malformed_unavailable_revoke_and_no_new_work",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1_recovery.ClosureRecovery.test_applied_kill_deadline_expired_before_restart.test_applied_kill_deadline_expired_before_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1_recovery.ClosureRecovery.test_evidence_separate_commit_kills.test_evidence_separate_commit_kills",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.pln.test_m3_1_recovery.ClosureRecovery.test_retirement_and_controller_progress_kills.test_retirement_and_controller_progress_kills",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.test_m5_real.RealLookup.test_feed_commit_lost_ack.test_feed_commit_lost_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.test_m5_real.RealLookup.test_projection_kills_both_providers.test_projection_kills_both_providers",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.test_m5_real.RealLookup.test_real_all_operations_rebuild_and_unavailable_payload.test_real_all_operations_rebuild_and_unavailable_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "integration.test_m5_real.RealLookup.test_relation_separate_owner_kills.test_relation_separate_owner_kills",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "regression-hive",
+      "log": "regression-hive.log",
+      "returncode": 0,
+      "seconds": 657.6342152999714,
+      "argv": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--tb=short",
+        "integration/hive/test_integration.py",
+        "integration/hive/test_m2_integration.py",
+        "integration/hive/test_m3_integration.py",
+        "integration/hive/test_m3_1_integration.py",
+        "integration/hive/test_m5_integration.py",
+        "--basetemp=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/regression/hive-private-tests",
+        "--junitxml=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/regression/hive.xml"
+      ],
+      "status": "PASS",
+      "test_cases": 42,
+      "cases": [
+        {
+          "name": "integration.hive.test_integration.test_native_dispatch_real_detta_trace_and_replay",
+          "status": "PASS",
+          "seconds": 5.369
+        },
+        {
+          "name": "integration.hive.test_integration.test_actual_caller_sigkill_recovery[after_admission]",
+          "status": "PASS",
+          "seconds": 4.912
+        },
+        {
+          "name": "integration.hive.test_integration.test_actual_caller_sigkill_recovery[after_submission]",
+          "status": "PASS",
+          "seconds": 4.901
+        },
+        {
+          "name": "integration.hive.test_integration.test_actual_caller_sigkill_recovery[after_acceptance]",
+          "status": "PASS",
+          "seconds": 5.288
+        },
+        {
+          "name": "integration.hive.test_integration.test_worker_sigkill_independent_result_commit",
+          "status": "PASS",
+          "seconds": 4.501
+        },
+        {
+          "name": "integration.hive.test_integration.test_full_reply_route_retains_outbox",
+          "status": "PASS",
+          "seconds": 4.24
+        },
+        {
+          "name": "integration.hive.test_integration.test_worker_revocation_becomes_explicit_failed_completion",
+          "status": "PASS",
+          "seconds": 3.35
+        },
+        {
+          "name": "integration.hive.test_integration.test_native_path_fails_closed[wrong-scope]",
+          "status": "PASS",
+          "seconds": 2.154
+        },
+        {
+          "name": "integration.hive.test_integration.test_native_path_fails_closed[revoked]",
+          "status": "PASS",
+          "seconds": 3.557
+        },
+        {
+          "name": "integration.hive.test_integration.test_native_path_fails_closed[profile]",
+          "status": "PASS",
+          "seconds": 1.821
+        },
+        {
+          "name": "integration.hive.test_integration.test_native_path_fails_closed[provider]",
+          "status": "PASS",
+          "seconds": 1.918
+        },
+        {
+          "name": "integration.hive.test_integration.test_native_path_fails_closed[identity]",
+          "status": "PASS",
+          "seconds": 1.677
+        },
+        {
+          "name": "integration.hive.test_integration.test_native_path_fails_closed[changed-input]",
+          "status": "PASS",
+          "seconds": 2.532
+        },
+        {
+          "name": "integration.hive.test_m2_integration.test_actual_dispatch_duplicate_and_native_caller_restart",
+          "status": "PASS",
+          "seconds": 9.562
+        },
+        {
+          "name": "integration.hive.test_m2_integration.test_actual_caller_kill_boundaries[after_payload_persist]",
+          "status": "PASS",
+          "seconds": 9.321
+        },
+        {
+          "name": "integration.hive.test_m2_integration.test_actual_caller_kill_boundaries[after_episode_commit]",
+          "status": "PASS",
+          "seconds": 9.25
+        },
+        {
+          "name": "integration.hive.test_m2_integration.test_actual_caller_kill_boundaries[after_formula]",
+          "status": "PASS",
+          "seconds": 9.563
+        },
+        {
+          "name": "integration.hive.test_m2_integration.test_actual_caller_kill_boundaries[after_belief_commit]",
+          "status": "PASS",
+          "seconds": 9.079
+        },
+        {
+          "name": "integration.hive.test_m2_integration.test_live_revocation_and_changed_intent_replay",
+          "status": "PASS",
+          "seconds": 7.246
+        },
+        {
+          "name": "integration.hive.test_m2_integration.test_native_responses_views_and_traces_have_no_private_payloads_or_identifiers",
+          "status": "PASS",
+          "seconds": 7.933
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_inference_replay_restart_and_attention_swap[sqlite]",
+          "status": "PASS",
+          "seconds": 46.676
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_inference_replay_restart_and_attention_swap[atomic-file-fixture]",
+          "status": "PASS",
+          "seconds": 47.429
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_caller_actual_kills_keep_one_attempt_budget[after_attention_commit]",
+          "status": "PASS",
+          "seconds": 25.385
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_caller_actual_kills_keep_one_attempt_budget[after_attempt_reservation]",
+          "status": "PASS",
+          "seconds": 25.056
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_caller_actual_kills_keep_one_attempt_budget[after_kernel_return]",
+          "status": "PASS",
+          "seconds": 25.718
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_caller_actual_kills_keep_one_attempt_budget[after_derived_commit]",
+          "status": "PASS",
+          "seconds": 27.688
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_caller_actual_kills_keep_one_attempt_budget[after_feedback_commit]",
+          "status": "PASS",
+          "seconds": 27.308
+        },
+        {
+          "name": "integration.hive.test_m3_integration.test_native_privacy_current_auth_and_changed_intent",
+          "status": "PASS",
+          "seconds": 26.851
+        },
+        {
+          "name": "integration.hive.test_m3_1_integration.test_native_progress_replay_restart_and_privacy[sqlite]",
+          "status": "PASS",
+          "seconds": 29.739
+        },
+        {
+          "name": "integration.hive.test_m3_1_integration.test_native_progress_replay_restart_and_privacy[atomic-file-fixture]",
+          "status": "PASS",
+          "seconds": 30.501
+        },
+        {
+          "name": "integration.hive.test_m3_1_integration.test_native_caller_kill_then_stale_feedback_retirement[sqlite]",
+          "status": "PASS",
+          "seconds": 28.952
+        },
+        {
+          "name": "integration.hive.test_m3_1_integration.test_native_caller_kill_then_stale_feedback_retirement[atomic-file-fixture]",
+          "status": "PASS",
+          "seconds": 27.871
+        },
+        {
+          "name": "integration.hive.test_m3_1_integration.test_native_caller_evidence_kills_resume_same_observations[after_evidence_decision_commit]",
+          "status": "PASS",
+          "seconds": 19.249
+        },
+        {
+          "name": "integration.hive.test_m3_1_integration.test_native_caller_evidence_kills_resume_same_observations[after_evidence_ack_commit]",
+          "status": "PASS",
+          "seconds": 19.723
+        },
+        {
+          "name": "integration.hive.test_m3_1_integration.test_native_completed_execution_with_no_conclusion_is_explicit",
+          "status": "PASS",
+          "seconds": 17.258
+        },
+        {
+          "name": "integration.hive.test_m5_integration.test_native_discovery_no_answers_restart_lag_rebuild_and_swap[1]",
+          "status": "PASS",
+          "seconds": 25.199
+        },
+        {
+          "name": "integration.hive.test_m5_integration.test_native_discovery_no_answers_restart_lag_rebuild_and_swap[2]",
+          "status": "PASS",
+          "seconds": 25.638
+        },
+        {
+          "name": "integration.hive.test_m5_integration.test_native_paged_caller_sigkill[after_lookup_page-sqlite]",
+          "status": "PASS",
+          "seconds": 14.106
+        },
+        {
+          "name": "integration.hive.test_m5_integration.test_native_paged_caller_sigkill[after_lookup_page-atomic-file-fixture]",
+          "status": "PASS",
+          "seconds": 15.406
+        },
+        {
+          "name": "integration.hive.test_m5_integration.test_native_paged_caller_sigkill[after_lookup_result-sqlite]",
+          "status": "PASS",
+          "seconds": 14.445
+        },
+        {
+          "name": "integration.hive.test_m5_integration.test_native_paged_caller_sigkill[after_lookup_result-atomic-file-fixture]",
+          "status": "PASS",
+          "seconds": 15.195
+        },
+        {
+          "name": "integration.hive.test_m5_integration.test_native_authority_privacy_and_request_binding",
+          "status": "PASS",
+          "seconds": 13.719
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "s01_fixture_contract_tests": 13,
+    "s01_real_integration_test_methods": 19,
+    "existing_core_tests": 156,
+    "existing_native_provider_tests": 46,
+    "existing_native_hive_cases": 42,
+    "whole_families_promoted": 0,
+    "adopted_operations": 1,
+    "whole_omega_integrated": false
+  },
+  "evidence_classes": {
+    "real": [
+      "pinned original MeTTaClaw parser/skill/NAL",
+      "source-built PeTTa/SWI/Janus runtime",
+      "DeTTa payload persistence",
+      "HTTPS/TCP + TLS verification",
+      "separate owner journals and SIGKILL processes"
+    ],
+    "fixtures": [
+      "generated STVs and shareable test corpus",
+      "generated local policy/credentials/CA",
+      "unit fixed kernel response and file AtomStorage",
+      "malformed payload/receipt injections",
+      "deterministic failpoint coordination",
+      "unit deadline clock"
+    ],
+    "placement": "same-host isolated; not multi-host"
+  },
+  "missing_prerequisites": [],
+  "observation_timeouts": [],
+  "unresolved_executed_failures": [],
+  "resolved_development_failures": [
+    {
+      "finding": "native scientific output rejected",
+      "observed": "two parameterized cases of small numerical input",
+      "resolution": "output lexer accepts native scientific notation; comparisons pass without changing math"
+    },
+    {
+      "finding": "kill harness assumptions",
+      "log": "development-recovery-failure.log",
+      "resolution": "observe empty SQLite startup safely; bubblewrap exit 137 represents SIGKILL; all boundaries pass"
+    },
+    {
+      "finding": "malformed receipt test expected budget replenishment",
+      "log": "development-network-failure.log",
+      "resolution": "assert exhausted budget remains exhausted; repaired receipt cannot manufacture renewed authority to retry"
+    },
+    {
+      "finding": "unit deadline expired during setup under concurrent native load",
+      "log": "development-test-deadline-failure.log",
+      "resolution": "explicit fixture clock for unit expiry; real native expiry across SIGKILL retained; full 32-test rerun passes"
+    }
+  ],
+  "limitations": [
+    "one unfinished intent per reply route",
+    "finite 128-row lifetime journals; no migration/GC",
+    "local test authorization/CA; no production identity system claim",
+    "exactly-once logical records, not exactly-once physical computation",
+    "no global atomic transaction across policy and state owners",
+    "result binding/integrity checks are not cryptographic proof of computation",
+    "generated skill patch against exact upstream hash, not deployed full Omega agent",
+    "source-build reproducibility on observed platform, not bit-identical compiler output across hosts",
+    "no arbitrary-instruction kill or power-loss claim"
+  ],
+  "final_review": {
+    "source_and_evidence_hashes": "PASS",
+    "changed_markdown_links": "PASS",
+    "saved_evidence_credential_fields": "none",
+    "git_diff_check": "PASS",
+    "remaining_s01_listeners": "none"
+  },
+  "artifacts": {
+    "acceptance-kill.json": "3128957777db7f758937521173620af9625415db40dc5d40ce17e61e06b266bf",
+    "build.json": "9d7672cf40a639424db48aaf43b4c1fdb968fcebebe0969eb686cd20203ef107",
+    "caller-crash-budget.json": "3a9ba7c87a1f71018017c8a67158a6398fb513324018e3cf4dff8fff24abd430",
+    "caller-kills.json": "3cdb2e955d3c8d1a48d12cb64bfb4fd541a50164e8cfe4f3dfea11bf6388bdff",
+    "crash-budget.json": "ce611cc7867629476974c4d36ede356c87eebb9ac95215cff43c0c367688a57d",
+    "deadline-closure.json": "db28ead9e9f82fad3c166f2258fc812eeece1df4b0ad0038fb00bef55cb2caa9",
+    "deadline-crash.json": "f0909f00c245b5c771fc358335cb7eb45965e30d526f02ab1b3b75532c372fce",
+    "development-network-failure.log": "ce4bf125c0ebae37e749ef6905a9898a065da0d0a9caf3998f3bdd824ac40af8",
+    "development-recovery-failure.log": "ff96565e51988792449db5d875b0236993206bc2c2544d26a5db3ec87f1d205b",
+    "development-test-deadline-failure.log": "a425d3aa3f13d8cb8eee3b6b3af8192ab21abdefaf24049ea9c228e1863ca9c8",
+    "network-authority.json": "66812a05f133202c8351ffba5d47950edf0c469bf2c15795d0ab9cee6c00d570",
+    "numeric-boundaries.json": "9417653d10ee00f02e0a314b715cf40c21faa84142013d14e8db0ec2cbed0495",
+    "placement.json": "c63dfe3654b2919263511997fa70a4b2dcae2327dd7fc6e3ca7ee0196638bd50",
+    "preflight-native-command.json": "c4a6ff7c8db5e21af6212dcce0f1ad0f34480d15b4eb4fca750320d4c7f3179d",
+    "preflight-oracle.json": "0eeb378ee83411ed4c5bc185d3372a8279a05d89d91083ef447ad1bd5ea5e3d8",
+    "regression-core.log": "44c0eeaf7cb5daa7815c6da9ecb72854b665b1d0d18904167fbab40b1ba09c25",
+    "regression-hive.log": "76ceab475cd35e2cffa09cf2f2842e8d9f1f3249f13b0b749902aa7f995cb013",
+    "regression-hive.xml": "13ad93d092f95ee96f0ceb4d645455c584df4782450587045788eee3924d1329",
+    "regression-native.log": "867fde9be3345e17ecdb61eb5afa668ba7a12cba0e2ea2c9d97965a9035f8cb2",
+    "revocation-recovery.json": "a9e47b3aae5c6a056a0f976bc5f51a2cd0d6777fb9b2cb1da5b4113fc665ed14",
+    "s01-tests.log": "7c9a0b514755e5f1abbf4b0451cc7deeccdf79e6131c7b7cf703397475421b85",
+    "source-state.json": "b51d5c63a7f67d7d9f157d6c69c794b0d8720e61097884390fc0331fb0ab8927",
+    "three-paths.json": "505ca752b93e95cd59af0e4f76da66966baa675ca6c878778b17b82668d659bf",
+    "worker-kills.json": "021c0e8014b57d39f55515424f0172ffc5d09eaf082d1dbf8999ba2b439802ec"
+  }
+}

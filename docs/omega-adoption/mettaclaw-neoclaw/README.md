@@ -1,5 +1,9 @@
 # MeTTaClaw neoclaw → Fusion mapping review
 
+**S01 implementation update:** the exact `neoclaw-nal-truth-deduction/1` operation now has executed original-native, adapted-local and authenticated same-host HTTPS evidence. See [S01 report and reproduction](s01.md) and `operation_adoptions` in the [ledger](mapping-ledger.json). No entire family or broader Omega integration is claimed.
+
+The review narrative and counts below are the **historical mapping snapshot at `c305a66fe1eda17a47134ec56d4fefdf55354147`**, preserved separately from S01.
+
 **Mapping complete; no modularization or remote adapter implemented.** MeTTaClaw has responsibilities resembling **9 of Fusion's 15 bounded families**, but **zero demonstrated Omega-to-Fusion contract conformance**. Its memory path combines several owners; moving that code wholesale would preserve the coupling rather than establish module boundaries. Model inference, embeddings, perception, tool descriptors and execution policy remain genuine interface gaps outside the denominator.
 
 For a first remote experiment, select **one named NAL truth-deduction operation on generated shareable inputs**. It gives a native numerical oracle and a clean test of selection, independent owner commits and restart/replay without moving private memory. Web search ranks second; core memory reads require several contract decisions first. The proposed NAL profile is different from current Fusion PLN. This packet stops at a prospective brief.

@@ -1,0 +1,76 @@
+[
+  {
+    "name": "upstream-helper-tests",
+    "evidence_class": "REAL_LOCAL_SQLITE_SYNTHETIC_INPUT",
+    "status": "PASS",
+    "detail": "promotion hashmap tests passed"
+  },
+  {
+    "name": "parser-is-not-an-allowlist-or-five-command-budget",
+    "evidence_class": "REAL_LOCAL_FUNCTION",
+    "status": "PASS",
+    "detail": {
+      "six_commands": "((send \"x\") (send \"x\") (send \"x\") (send \"x\") (send \"x\") (send \"x\"))",
+      "unknown_command": "((unknown-command \"input\"))"
+    }
+  },
+  {
+    "name": "irc-read-consumes-volatile-buffer",
+    "evidence_class": "REAL_LOCAL_FUNCTION",
+    "status": "PASS",
+    "detail": "one | two; then empty; no socket opened"
+  },
+  {
+    "name": "chroma-wrapper-link-dedup-and-missing-stv",
+    "evidence_class": "FIXTURE_BACKEND_REAL_WRAPPER",
+    "status": "PASS",
+    "detail": "One linked timestamp after two calls; deleted get_stv returns None. Does not validate Chroma SDK metadata acceptance or merge semantics."
+  },
+  {
+    "name": "update-deletes-before-reading-old-truth",
+    "evidence_class": "STATIC_SOURCE_ASSERTION",
+    "status": "PASS",
+    "detail": "Full update execution unrun; source orders delete before old get_stv."
+  },
+  {
+    "name": "native-nal-isolated",
+    "evidence_class": "REAL_NATIVE_SYNTHETIC_INPUT",
+    "status": "PASS",
+    "exit_code": 0,
+    "command": [
+      "swipl",
+      "-q",
+      "-s",
+      "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/omega-mapping-source/PeTTa/src/main.pl",
+      "--",
+      "<temporary-directory>/nal-probe.metta",
+      "--silent"
+    ],
+    "stdout": "true\n(stv 0.5599999999999999 0.4032)\n(stv 0.5 0.6666666666666666)\n(stv 1.0 0.75)\n",
+    "stderr": ""
+  },
+  {
+    "name": "python-source-parse",
+    "evidence_class": "STATIC_SOURCE",
+    "status": "PASS",
+    "detail": [
+      "mettaclaw/channels/irc.py",
+      "mettaclaw/channels/mattermost.py",
+      "mettaclaw/channels/websearch.py",
+      "mettaclaw/lib_llm_ext.py",
+      "mettaclaw/src/helper.py",
+      "petta_lib_chromadb/lib_chromadb.py"
+    ]
+  },
+  {
+    "name": "fusion-m5-evidence-hash-audit",
+    "evidence_class": "RECORDED_EVIDENCE_REVALIDATED_SOURCE",
+    "status": "PASS",
+    "detail": {
+      "files": 132,
+      "tested_revision": "bfb0ec8856c932dc2bcbc05b8949c957da8d72cd",
+      "mismatches": [],
+      "runtime_gates_rerun": false
+    }
+  }
+]
