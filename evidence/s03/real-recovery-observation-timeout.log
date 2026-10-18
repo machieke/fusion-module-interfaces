@@ -1,0 +1,14 @@
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 4443.25it/s]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/memory_recovery_run.py", line 39, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/memory_recovery_run.py", line 22, in main
+    run.h.wait_file(marker,process);run.kill(process);require(process.returncode==-signal.SIGKILL)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 162, in wait_file
+    assert Path(path).exists(), ('missing failpoint/ready', path, None if process is None else process.poll())
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: ('missing failpoint/ready', PosixPath('/tmp/fusion-s01-1gfikrky/caller/pause.json'), None)

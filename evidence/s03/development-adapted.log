@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/preflight/adapted_run.py", line 10, in <module>
+    config=configure(run)
+           ^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/memory_composition.py", line 34, in configure
+    head=service.atoms.head(scope);snapshot=service.search().build(scope,head)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/chroma_vector.py", line 68, in build
+    actual={u:(m['ref'],digest(c.vector_bytes(list(v)))) for u,m,v in zip(got['ids'],got['metadatas'],got['embeddings'])}
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/vector_contracts.py", line 33, in vector_bytes
+    def vector_bytes(value): return struct.pack('<1024f', *vector(value))
+                                                           ^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/vector_contracts.py", line 28, in vector
+    require(all(type(x) in (int,float) and math.isfinite(x) and -1.00001 <= x <= 1.00001 for x in value))
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: INVALID_ARGUMENT

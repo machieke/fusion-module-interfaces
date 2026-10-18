@@ -157,15 +157,19 @@
   "operation_adoptions": {
     "profiles": [
       "neoclaw-nal-truth-deduction/1",
-      "external-web-search/1"
+      "external-web-search/1",
+      "semantic-embedding-memory/1"
     ],
-    "adopted_operations": 2,
+    "adopted_operations": 3,
     "whole_families_promoted": 0,
-    "explanation": "Historical 105-row classifications and 9/15 semantic coverage remain unchanged. Two separately evidenced operations do not imply family conformance or a product completion fraction.",
+    "explanation": "Historical 105-row classifications and 9/15 semantic resemblance remain unchanged. Three closed native operation boundaries have evidence: Truth_Deduction, external search, and query_with_ids_and_dists. Hydration/transport do not increment this count; no whole-family or product-completion fraction is implied.",
     "evidence": "../../../evidence/s01/verification.json",
     "application_evidence": "../../../evidence/s01_1/verification.json",
-    "application_scope": "Both operations use the controlled native loop; S02 has live external search locally and over same-host HTTPS, with explicit model/channel/unused-memory fixtures. Default full Omega remains unrun.",
+    "application_scope": "Three operations are available sequentially in controlled-native-loop/3. S03 preserves local enrichment on a sealed generated corpus; real E5/Chroma/DeTTa/local and same-host HTTPS are executed. S02 retains historical live evidence and current recorded-response regressions. Default full Omega remains unrun.",
     "s02_evidence": "../../../evidence/s02/verification.json",
-    "s02_report": "s02.md"
+    "s02_report": "s02.md",
+    "s03_evidence": "../../../evidence/s03/verification.json",
+    "s03_report": "s03.md",
+    "whole_query_family_integrated": false
   }
 }

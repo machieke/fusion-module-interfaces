@@ -7735,6 +7735,87 @@
         "Original deadlines and durable RPC budgets survive restart",
         "S01 and S02 in the same controlled session with identical local/network caller code"
       ]
+    },
+    {
+      "slice": "S03-first-read",
+      "operation": "query_with_ids_and_dists",
+      "profile": "semantic-embedding-memory/1",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "component_ids": [
+        "memory.query",
+        "chroma.vector.query"
+      ],
+      "exact_symbol": "lib_chromadb.py::query_with_ids_and_dists",
+      "native_composition": "src/memory.metta::query",
+      "contract": "Named vector Search returns scoped refs/distances; AtomStorage hydration reconstructs native UUID/time/content/distance rows; native local enrichment remains unchanged",
+      "providers": [
+        "real Chroma 1.5.5",
+        "real pinned DeTTa",
+        "real pinned local E5",
+        "real native MeTTaClaw/PeTTa/SWI"
+      ],
+      "exercised_ports": [
+        "search.query",
+        "atom.storage.getMany"
+      ],
+      "maintenance_ports": [
+        "atom.storage.create",
+        "atom.storage.get",
+        "atom.storage.head",
+        "atom.storage.readCommits",
+        "vector.maintenance.build"
+      ],
+      "placement": [
+        "original native local",
+        "adapted local",
+        "authenticated same-host isolated HTTPS"
+      ],
+      "application_composition": "controlled-native-loop/3",
+      "fresh_journals_only": true,
+      "fallback": false,
+      "private_omega_stores_accessed": false,
+      "status": "IMPLEMENTED_AND_EXECUTED_BOUNDED_READ_BOUNDARY",
+      "evidence": "../../../evidence/s03/verification.json",
+      "report": "s03.md",
+      "coverage": {
+        "adopted_operations": 1,
+        "unit": "one explicitly adopted native internal operation boundary; hydration and transport are dependencies, not additional adopted commands",
+        "whole_families_promoted": 0,
+        "whole_query_family_integrated": false,
+        "whole_omega_integrated": false
+      },
+      "local_unadopted": [
+        "promotion policy/SQLite",
+        "linked episode labels",
+        "STV ownership",
+        "embedding as a remote service",
+        "history",
+        "memory writes",
+        "private user memory"
+      ],
+      "guarantees": [
+        "durable occurrence/vector/generation binding",
+        "verified authoritative payloads",
+        "native selection/presentation parity for the admitted generated corpus",
+        "real SIGKILL recovery and current disclosure authority",
+        "source-fed immutable generation publication and rebuild"
+      ],
+      "qualifications": [
+        "scripted model/channel and unused history/global-promoted-context fixtures",
+        "fixed enrichment clock for parity",
+        "hand-vector tests separate from real E5 gates",
+        "no stable tie order or ANN recall promise",
+        "no global atomic snapshot or cross-store transaction",
+        "same host only; no private migration/full Omega/chain"
+      ],
+      "test_methods": {
+        "contract_vector_fixtures": 5,
+        "real_chroma_detta_native_tls_with_vector_fixtures": 17
+      },
+      "real_model_demonstrations": [
+        "three-path native comparison",
+        "three native-caller SIGKILL boundaries and later identical occurrence"
+      ]
     }
   ]
 }

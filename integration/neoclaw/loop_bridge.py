@@ -56,3 +56,10 @@ def more():
     if not result:
         Path(_app.config['status_file']).write_text(json.dumps(dict(status='BOUNDED_STOP')))
     return result
+
+# S03 synchronous reads share application occurrence and context handoff only.
+def read_captured(): return call('read_captured')
+def read_replay(): return call('read_replay')
+def read_candidates(vector, k): return call('read_candidates', vector, k)
+def read_clock(observed): return call('read_clock', observed)
+def capture_native(value): return call('capture_native', value)

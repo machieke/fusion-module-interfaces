@@ -90,3 +90,5 @@ standalone talks (12 slides each), with an ELI16 introduction, dependency diagra
 responsibilities, scope, invariants, recovery, current evidence, benchmark gaps
 and proposed future directions for every module. Download individual editable
 decks or the combined PDF/ZIP from the series index.
+
+The bounded [S03 native memory-read adoption](docs/omega-adoption/mettaclaw-neoclaw/s03.md) adds real Chroma vector Search and verified AtomStorage hydration inside the controlled MeTTaClaw query, with local E5 and local/HTTPS parity. Local enrichment and private memory remain outside this adoption boundary.

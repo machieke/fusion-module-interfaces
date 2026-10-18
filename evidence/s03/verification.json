@@ -1,0 +1,406 @@
+{
+  "schema": "omega-s03-read-adoption-gates/1",
+  "recorded_at": "2026-10-18T13:13:38.861809+00:00",
+  "outcome": "S03_FIRST_BOUNDED_READ_REQUIRED_GATES_PASS",
+  "starting_commit": "34295802e16cd3f0ab1998d2876462dff3a7978a",
+  "exact_tested_source_manifest": "source-state.json",
+  "operation": "lib_chromadb.query_with_ids_and_dists",
+  "native_composition": "src/memory.metta::query",
+  "profile": "semantic-embedding-memory/1",
+  "gates": [
+    {
+      "gate": "BASELINE_SOURCE",
+      "result": "PASS",
+      "evidence": [
+        "source-state.json",
+        "s01-s02-regression-initial.log",
+        "s02-regression-recheck.log",
+        "regression-core.log",
+        "regression-native.log",
+        "regression-hive.log"
+      ]
+    },
+    {
+      "gate": "MEMORY_ORACLE",
+      "result": "PASS",
+      "evidence": [
+        "original-vector-oracle.json",
+        "three-paths.json",
+        "reproduction-real-three-paths-final.json",
+        "ties-near-ties.json"
+      ]
+    },
+    {
+      "gate": "EMBEDDING_REAL",
+      "result": "PASS",
+      "evidence": [
+        "reproduction-real-three-paths-final.json",
+        "real-model-recovery-final.json",
+        "source-state.json"
+      ]
+    },
+    {
+      "gate": "VECTOR_CONTRACT",
+      "result": "PASS",
+      "evidence": [
+        "s03-final-principal-tests.log",
+        "chroma-preflight.json",
+        "scope-isolation.json"
+      ]
+    },
+    {
+      "gate": "SOURCE_REBUILD",
+      "result": "PASS",
+      "evidence": [
+        "source-rebuild.json",
+        "index-kills.json",
+        "fresh-enrollment-immutability.json",
+        "s03-final-principal-tests.log"
+      ]
+    },
+    {
+      "gate": "OWNER_BOUNDARIES",
+      "result": "PASS",
+      "evidence": [
+        "three-paths.json",
+        "fresh-enrollment-immutability.json",
+        "scope-isolation.json"
+      ]
+    },
+    {
+      "gate": "NATIVE_LOCAL",
+      "result": "PASS",
+      "evidence": [
+        "reproduction-real-three-paths-final.json",
+        "mixed-session.json"
+      ]
+    },
+    {
+      "gate": "NATIVE_HTTPS",
+      "result": "PASS",
+      "evidence": [
+        "reproduction-real-three-paths-final.json",
+        "real-model-recovery-final.json",
+        "mixed-session.json"
+      ]
+    },
+    {
+      "gate": "READ_RECOVERY",
+      "result": "PASS",
+      "evidence": [
+        "caller-kills.json",
+        "real-model-recovery-final.json",
+        "spent-budget.json",
+        "original-deadline.json"
+      ]
+    },
+    {
+      "gate": "AUTH_PRIVACY",
+      "result": "PASS",
+      "evidence": [
+        "principal-binding.json",
+        "revoked-capture.json",
+        "scope-isolation.json",
+        "native-binding-refusal.json",
+        "s03-final-principal-tests.log",
+        "s03-binding-test.log"
+      ]
+    },
+    {
+      "gate": "COMPAT_REPRO",
+      "result": "PASS",
+      "evidence": [
+        "fresh-build.log",
+        "source-state.json",
+        "reproduction-real-three-paths-final.json",
+        "s01-s02-regression-initial.log",
+        "s02-regression-recheck.log"
+      ]
+    },
+    {
+      "gate": "SCOPE_LEDGER",
+      "result": "PASS",
+      "evidence": [
+        "source-state.json"
+      ]
+    }
+  ],
+  "blocked_prerequisites": [],
+  "tests": {
+    "new_unique_methods": 22,
+    "new_contract_vector_fixture_methods": 5,
+    "new_real_provider_methods_with_declared_vector_model_channel_fixtures": 17,
+    "regression_unique_methods": 318,
+    "total_unique_methods": 340,
+    "skipped": 0,
+    "separate_parameterized_phases": {
+      "index_kills": 4,
+      "caller_kills": 5,
+      "lost_reply_kills": 3,
+      "deadline_states": 2,
+      "mixed_session_placements": 2,
+      "admission_cases": 3,
+      "native_binding_refusals": 2,
+      "principal_substitution_cases": 2
+    },
+    "additional_real_model_gates": [
+      "three-path native comparison on fresh-target SDK/model",
+      "three caller SIGKILL stages and later identical occurrence"
+    ],
+    "repeated_development_runs_not_added_to_unique_count": true
+  },
+  "commands": [
+    {
+      "name": "s03-contract-and-integration",
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_vector_contracts",
+        "integration.neoclaw.test_memory",
+        "integration.neoclaw.test_memory_edges.MemoryEdges"
+      ],
+      "count": 22,
+      "result": "PASS",
+      "log": "s03-final-principal-tests.log"
+    },
+    {
+      "name": "s01-s01_1-s02",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_neoclaw_application",
+        "integration.neoclaw.test_loop",
+        "tests.test_neoclaw",
+        "integration.neoclaw.test_s01",
+        "integration.neoclaw.test_network",
+        "integration.neoclaw.test_recovery",
+        "tests.test_neoclaw_search",
+        "integration.neoclaw.test_search_loop"
+      ],
+      "count": 74,
+      "result": "INITIAL_FAIL_1_RECHECK_PASS",
+      "log": "s01-s02-regression-initial.log"
+    },
+    {
+      "name": "s02-isolated-recheck",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_supervised_sdk_timeout_and_parent_death"
+      ],
+      "count": 1,
+      "unique_count_delta": 0,
+      "result": "PASS",
+      "log": "s02-regression-recheck.log"
+    },
+    {
+      "name": "regression-native-providers",
+      "argv": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.pln.test_revision",
+        "integration.pln.test_recovery",
+        "integration.pln.test_deduction",
+        "integration.pln.test_m3_recovery",
+        "integration.pln.test_m3_1",
+        "integration.pln.test_m3_1_recovery",
+        "integration.test_m5_real"
+      ],
+      "log": "regression-native.log",
+      "returncode": 0,
+      "seconds": 574.8727313717827
+    },
+    {
+      "name": "regression-core",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_adapters",
+        "tests.test_contract",
+        "tests.test_m11",
+        "tests.test_m2",
+        "tests.test_m3",
+        "tests.test_m3_1_attention",
+        "tests.test_m3_1_compat",
+        "tests.test_m3_1_delivery",
+        "tests.test_m3_attention",
+        "tests.test_m4_chain",
+        "tests.test_m5",
+        "tests.test_m5_boundaries",
+        "tests.test_responses"
+      ],
+      "log": "regression-core.log",
+      "returncode": 0,
+      "seconds": 146.97440678346902
+    },
+    {
+      "name": "regression-hive",
+      "argv": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--tb=short",
+        "integration/hive/test_integration.py",
+        "integration/hive/test_m2_integration.py",
+        "integration/hive/test_m3_integration.py",
+        "integration/hive/test_m3_1_integration.py",
+        "integration/hive/test_m5_integration.py",
+        "--basetemp=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/regression/hive-private-tests",
+        "--junitxml=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/regression/hive.xml"
+      ],
+      "log": "regression-hive.log",
+      "returncode": 0,
+      "seconds": 733.5514859976247
+    }
+  ],
+  "environment": {
+    "S01_RUNTIME": "artifacts/s01/native-02/runtime.json",
+    "S01_DETTA": "artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+    "S02_RUNTIME": "artifacts/s02/search-runtime.json",
+    "S03_SDK": "artifacts/s03/venv",
+    "fresh_S03_SDK": "artifacts/s03/reproduction-01/venv",
+    "PYTHONPATH": "repository root",
+    "HF_HUB_OFFLINE": "1 for model runs"
+  },
+  "real_providers": [
+    "original native MeTTaClaw/PeTTa/SWI",
+    "Chroma 1.5.5",
+    "DeTTa",
+    "pinned local E5",
+    "certificate-verified authenticated loopback HTTPS"
+  ],
+  "fixtures": [
+    "scripted external model",
+    "IRC/channel boundary",
+    "unused history/global promoted-context",
+    "fixed post-retrieval enrichment clock",
+    "hand vectors in contract/recovery regression suites",
+    "recorded S02 responses"
+  ],
+  "executed_development_failures": [
+    {
+      "reason": "original driver missing actual lib_combinatorics import",
+      "resolution": "load pinned native dependency; unchanged query passes",
+      "evidence": "development-oracle-03.log"
+    },
+    {
+      "reason": "projection verifier rejected SDK numpy scalar types",
+      "resolution": "explicit float conversion at SDK adapter boundary before contract validation",
+      "evidence": "development-adapted.log"
+    },
+    {
+      "reason": "S02 bubblewrap root remount raced disappearing container mount",
+      "resolution": "same test passed on isolated rerun; no SDK/egress code change",
+      "evidence": [
+        "s01-s02-regression-initial.log",
+        "s02-regression-recheck.log"
+      ]
+    }
+  ],
+  "observation_timeouts": [
+    {
+      "reason": "12-second failpoint observer expired during real model startup",
+      "resolution": "35-second startup observer; application deadlines unchanged; real recovery passed",
+      "evidence": [
+        "real-recovery-observation-timeout.log",
+        "real-model-recovery-final.json"
+      ]
+    }
+  ],
+  "not_run": [
+    "default full Omega startup",
+    "live hosted model/channel",
+    "S02 live external-search recheck (SDK/egress path unchanged; historical live passes retained)",
+    "private remote memory",
+    "multi-host",
+    "chain",
+    "power loss",
+    "empty global caches",
+    "populated-state migration",
+    "production ANN recall/quality/scale benchmarks"
+  ],
+  "limitations": [
+    "scope is one internal read boundary; no whole query/family adoption",
+    "legacy enrichment remains local and sealed",
+    "no globally atomic metadata/search/payload snapshot",
+    "no stable tie order or ANN recall promise",
+    "uncaptured queries on a lost physical generation are unavailable; captured candidates/results retain their original observation; no silent rebind",
+    "generated shareable corpus only; no private user stores",
+    "same-host filesystem isolation is not an egress firewall"
+  ],
+  "adoption_count": {
+    "total": 3,
+    "delta": 1,
+    "unit": "closed native operation boundary",
+    "hydration_and_transport_count_delta": 0,
+    "whole_families_promoted": 0
+  },
+  "evidence_sha256": {
+    "source-rebuild.json": "c3b19729080b4fff1c4142026d349109fd7bc98c058fd49643db44bd8f0b4cff",
+    "regression-native.log": "3914abff19eba62fa3afbec4149c860031b380c11b60f7857724a035c5084659",
+    "scope-isolation.json": "df50e9c4fb8b43b7fd043ba8aa2b8b617428fa7599304e9204e7c2961150e7d3",
+    "spent-budget.json": "21b07b8a6572f51c0e4f023869fcd1abde5effae50087fd743cb763233e50509",
+    "s03-tests.log": "e0a67c6730be3714761a564a1408a9ef6c3bae9b6e62e5c2cb9fe477a0158fc5",
+    "principal-binding.json": "13ff36728f704fb51920c6931e867fc733572bdd5142336428f5f6c9c4c60607",
+    "three-paths.json": "1847cc271a51f1df55f81a6715e6edfb8c297c75b14fb470070bf7793edc9652",
+    "real-model-recovery.json": "a4950490a40296205987c2df843f4797281581c16a61baab6689dea1506d447c",
+    "s03-edge-tests.log": "e961f04a528472179b2553068c306c6f69ede8c45283901c2be2f381fcff5258",
+    "s03-binding-test.log": "f440a1dafb239dac3874e51080faec1525a7e09d6c6485af9e22d06bb486aac3",
+    "real-recovery-observation-timeout.log": "b62124600f79360853a296d6a9d571d1631828fc3fdb3ce8ca41f3610cd66b5e",
+    "original-deadline.json": "8483940c7485bc5e5a12cd1c9c19b59142194112084a6fb5386a76f797128a91",
+    "index-kills.json": "ea5d9fb6d870fa043f661b0db64e8c2ccd16ac4b5bd3a07fe1ce49c2a57cdbde",
+    "development-adapted.log": "f6c38911e8ff12e9745fec998146e7f90c8b3ed6bea0b5e1e11aac531f48d723",
+    "adapted-network-vector.json": "636f49f47a651338c35eb444d8850a2836c675373aca1fffe18d02d548d40ca5",
+    "mixed-session.json": "52935d1e8aa37b43797df11b932ff36d7242b6218042a8331f491f87a5b9ed84",
+    "native-binding-refusal.json": "b359788f426d933fad7c2ea87bd4bc6cf6537a81972fd540ede5e73c3fdc2bc8",
+    "real-recovery-final-source.log": "83024c5a6becd6f8192f110f77b4107d279099607e22899320056896f693a893",
+    "fresh-enrollment-immutability.json": "a62a6f7fa9212d6652ad03a297c92f6f971ecd92c62087b5dd800838d9602cff",
+    "real-model-three-paths.json": "219c0b97ebb17ae6325224dd7a6c002c09a67eb18610e9241b1d9ed1bbbea978",
+    "real-recovery-final.log": "e40cfa3d4b8e12d9394c51f12e4b76044fca737fd00be529079e74e91803db18",
+    "s03-final-principal-tests.log": "056d15a9d5387a939e8ce360bd445e92dbc3ff13cde13d0eb17813b81277e52e",
+    "real-model-recovery-final.json": "901fb2eabae688559ee005bc2e079211a3d56189fe3403b63bb9d5f219117063",
+    "fresh-build.log": "69c4a0cc5da89d2572e92ef915d1b9744974f60c4c029256b1a557de8122165c",
+    "revoked-capture.json": "f47bbb61d9d8f4972e18d152a5f7af335dd4517a405c8c2aad2a717dc31839cb",
+    "reproduction-real-three-paths.json": "0c81fbaadc7db68dccd4fe85f7c0a8623eba1cf900af8b6665cad7e516ed57b2",
+    "ties-near-ties.json": "e2a33cc7baae9a51958add0716a7edea3c8fc3d94c0e53fd3b203b845f619018",
+    "regression-hive.log": "2f403a4762c81251ba49d9ec346e27433c33502803d725c174a963667daf9f66",
+    "development-oracle-03.log": "21b3f1b3c2797184e0817f5e48429eb0d84c32667b6af189d9ca411b5681ee2c",
+    "s01-s02-regression-initial.log": "59dc9526f3b4e27680d0c1c116c091316a74f402f166629f9ed16fab3186b6a6",
+    "s02-regression-recheck.log": "e296c8a5edd8f9499551c48d7c352ba4e4a329c34ece8bf13e2670a5e145b623",
+    "reproduction-real-three-paths-final.json": "d886efe7e869e02f148938e9cf71529a9d6cfb557e98b05e182b01a789e4f42a",
+    "real-three-paths-final.log": "349fee79db84ada10dfd20484ec2e78c12bc1ffb0fc1d15c64280ac5442ba21d",
+    "development-oracle.log": "01936534079108329338ccb93bb9fd722ef4d3645fc7ecbbf131af59d81edafa",
+    "chroma-preflight.json": "84923332ec823c8444405cf5c3d211f0944cb1ae70896eceb99221389be16aad",
+    "adapted-local-vector.json": "70b72e37fa16c946ac7c845c85fa20d2f36fb8c1445d2c10e60815d77af6fe69",
+    "source-state.json": "409370ecf3fb7df2cce551b7a2430ae30b80131cd3dc6c281333b5a27662cc9d",
+    "original-vector-oracle.json": "05ca8ade7ebb60d2f29ddf1288b33a15389b08c9448520ba9fb7a4c696c9e32f",
+    "caller-kills.json": "25850a411ea5d4600d088608c719502edb9670ae47506518bf2279aafddc92f2",
+    "regression-core.log": "1e903bf6eed7e47a24549cbd5557881014987e24a2a597dc06b77db5f80f9284"
+  }
+}

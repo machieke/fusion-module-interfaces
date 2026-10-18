@@ -14,6 +14,7 @@ from .contracts import canonical, require
 from . import neoclaw_contracts as c
 from . import neoclaw_search_contracts as s, neoclaw_operations as ops
 from .neoclaw_client import Caller
+from . import vector_contracts as v
 from .registry import selection_token
 
 
@@ -34,8 +35,9 @@ class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION), 'UNSUPPORTED_PROFILE')
-        self.two_operations = self.config['composition'] == ops.APPLICATION
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION), 'UNSUPPORTED_PROFILE')
+        self.memory_enabled = self.config['composition'] == v.APPLICATION
+        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION)
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
@@ -46,6 +48,9 @@ class Application:
                 search_caller = Caller(self.config['caller_config'], profile=s.PROFILE)
                 try: binding.update(composition=ops.APPLICATION, search=caller_binding(search_caller))
                 finally: search_caller.close()
+            if self.memory_enabled:
+                from .neoclaw_memory import configuration
+                binding.update(composition=v.APPLICATION, memory=configuration(self.config['memory_read_config'])[2])
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -82,6 +87,9 @@ class Application:
                 else:
                     self.session = str(uuid.uuid4())
                     self.db.execute('INSERT INTO app_session VALUES(?,?)', (self.session, canonical(binding).decode()))
+            if self.memory_enabled:
+                from .neoclaw_memory import MemoryRead
+                self.memory = MemoryRead(self)
             pending = self.pending()
             if pending:
                 # No replay of arbitrary local effects, even if their old result exists.
@@ -108,6 +116,17 @@ class Application:
             module, arguments = s, s.arguments(dict(query=command[1], max_results=10))
             current = json.loads(Path(self.config['caller_config']).read_text())
             require(arguments['query'] in current.get('search_queries', []), 'UNAUTHORIZED')
+        elif self.memory_enabled and isinstance(command, list) and command and command[0] == 'query':
+            require(len(command) == 2 and type(command[1]) is str)
+            from .neoclaw_memory import configuration
+            cfg, _, frozen = configuration(self.config['memory_read_config'])
+            require(frozen == self.binding['memory'], 'CONFLICT')
+            require(command[1] in cfg['queries'], 'UNAUTHORIZED')
+            return dict(profile=v.PROFILE, operation='query_with_ids_and_dists', arguments=dict(query=command[1]))
+        if self.memory_enabled:
+            # The generated read-only installation admits only these three named operations.
+            # This excludes mutation via shell/arbitrary MeTTa as well as memory commands.
+            require(arguments is not None, 'UNSUPPORTED_OPERATION')
         if arguments is None: return None
         # The legacy column name remains "premises"; /2 fresh journals explicitly
         # store a tagged intent there. Version 1 rows are never reinterpreted.
@@ -164,6 +183,8 @@ class Application:
 
     def _run(self, row):
         intent = json.loads(row['premises'])
+        if self.memory_enabled and intent['profile'] == v.PROFILE:
+            return self.memory.replay(row)
         module = ops.contract(intent['profile']) if self.two_operations else c
         if self.two_operations:
             c.fields(intent, 'profile operation arguments')
@@ -197,6 +218,18 @@ class Application:
         with self.db:
             self.db.execute('UPDATE app_occurrences SET result=?,done=1 WHERE turn=? AND position=?', (result, *self.current))
         return result
+
+    def is_memory(self):
+        if not self.memory_enabled or self.current is None: return False
+        row = self.db.execute('SELECT premises FROM app_occurrences WHERE turn=? AND position=?', self.current).fetchone()
+        return row is not None and row['premises'] is not None and json.loads(row['premises'])['profile'] == v.PROFILE
+
+    def read_captured(self): return self.is_memory() and self.memory.captured()
+    def read_replay(self): return self.memory.replay()
+    def read_candidates(self, vector, k): return self.memory.retrieve(vector, k)
+    def read_clock(self, observed): return self.memory.clock(observed)
+    def capture_native(self, value):
+        return self.memory.capture(value) if self.is_memory() else value
 
     def end(self, position):
         require(self.current is not None and self.current[1] == position, 'CONFLICT')
