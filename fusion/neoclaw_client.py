@@ -11,8 +11,15 @@ from .registry import descriptor_read, selection_token
 
 
 class Caller:
-    def __init__(self, config_file, hook=lambda _: None, transport=None):
+    def __init__(self, config_file, hook=lambda _: None, transport=None, invocation=None):
+        self.application_invocation = invocation is not None
         self.config = json.loads(Path(config_file).read_text())
+        # Trusted local application context; never populated from tool/model text.
+        if invocation is not None:
+            c.fields(invocation, 'request_id deadline_ms')
+            require(label(invocation['request_id']))
+            require(type(invocation['deadline_ms']) is int and invocation['deadline_ms'] > 0)
+            self.config.update(invocation)
         require(self.config['scope'] == c.SCOPE and self.config['sharing'] == 'generated-shareable', 'UNAUTHORIZED')
         require(self.config.get('fallback') is False, 'UNSUPPORTED_PROFILE')
         require(label(self.config['principal']))
@@ -38,6 +45,12 @@ class Caller:
                     profile=profile, selection=selection_token(desc), operation=operation,
                     scope_ref=self.config['scope'], body=body)
 
+    def ensure_route_available(self, request_id=None):
+        """Local caller-owner admission check; never acknowledges unrelated delivery."""
+        for row in self.db.execute('SELECT id,request FROM caller_requests WHERE acknowledged=0'):
+            if json.loads(row['request'])['reply_route'] == self.config['reply_route']:
+                require(row['id'] == request_id, 'OVERLOADED')
+
     def prepare(self, premises):
         config = self.config
         require(label(config['request_id']))
@@ -52,6 +65,8 @@ class Caller:
         with self.db:
             self.db.execute('BEGIN IMMEDIATE')
             old = self.db.execute('SELECT * FROM caller_requests WHERE id=?', (config['request_id'],)).fetchone()
+            if self.application_invocation and (old is None or not old['acknowledged']):
+                self.ensure_route_available(config['request_id'])
             if old:
                 require(old['request'] == encoded and old['selections'] == selections and old['max_calls'] == config['max_calls'], 'CONFLICT')
             else:

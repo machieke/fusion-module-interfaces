@@ -24,6 +24,9 @@ def recognizes(expression):
 
 
 def invoke(expression):
+    if 'NEOCLAW_S01_APPLICATION' in os.environ:
+        from loop_bridge import invoke as application_invoke
+        return application_invoke(expression)
     premises = c.parse_expression(expression)
     config_path = os.environ['NEOCLAW_S01_CALLER']
     config = json.loads(Path(config_path).read_text())

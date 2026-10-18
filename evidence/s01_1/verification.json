@@ -1,0 +1,1782 @@
+{
+  "schema": "fusion-s01.1-evidence/1",
+  "recorded_at": "2026-10-17T23:50:20.238812+00:00",
+  "outcome": "S01.1_COMPLETE_CONTROLLED_NATIVE_LOOP",
+  "operation": "nal_truth_deduction",
+  "profile": "neoclaw-nal-truth-deduction/1",
+  "source": "source-state.json",
+  "reproduction_environment": {
+    "S01_RUNTIME": "artifacts/s01/native-02/runtime.json",
+    "S01_DETTA": "artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+    "legacy_provider_environment": "artifacts/m5/reproduction-01/providers/environment.json; only PATH, LD_LIBRARY_PATH, VIRTUAL_ENV, PETTA_PATH, HIVE_REPO, DETTA_REPO, M2_REVISION_ENV, M2_DETTA_BINARY, M3_DEDUCTION_ENV; PYTHONPATH=root:HIVE_REPO"
+  },
+  "gates": {
+    "BASELINE": {
+      "status": "PASS",
+      "evidence": "Exact 64d2d158...; 148 baseline hashes verified; existing 32 S01 plus 156 core, 46 native-provider, 42 Hive regressions rerun"
+    },
+    "STARTUP_HOOK": {
+      "status": "PASS",
+      "evidence": "Supported checked native_loop launcher and shared skill overlay; pinned local imports; startup-overlay.diff"
+    },
+    "NATIVE_LOOP": {
+      "status": "PASS",
+      "evidence": "Actual mettaclaw loop, original parser/skill/result construction; declared external model/channel/memory fixtures"
+    },
+    "INVOCATION_IDENTITY": {
+      "status": "PASS",
+      "evidence": "Session + accepted turn + ordered position; five distinct calls per placement, exact replay/conflict; no per-call operator edits"
+    },
+    "RESULT_HANDOFF": {
+      "status": "PASS",
+      "evidence": "Next model context observes exact native STV; restored native projection and second-position replay avoid duplicates"
+    },
+    "PLACEMENT": {
+      "status": "PASS",
+      "evidence": "Same loop/skill/caller local and verified same-host HTTPS; real NAL and DeTTa; provider/old-Omega filesystem masks"
+    },
+    "RECOVERY_LIMITS": {
+      "status": "PASS",
+      "evidence": "SIGKILL before submit, after acceptance, after caller completion, after projection and during second position; original budgets/deadlines; mixed batches reject"
+    },
+    "AUTH_PRIVACY": {
+      "status": "PASS",
+      "evidence": "Revocation before receipt and projection handoff; wrong CA/outage; malformed payload/profile/input; generated canary/config-path/credential scan"
+    },
+    "REPRO_SCOPE": {
+      "status": "PASS",
+      "evidence": "Bounded explicit-PID trusted operator plus supported application launcher; existing verified builds; one operation only"
+    },
+    "DEFAULT_FULL_OMEGA_STARTUP": {
+      "status": "UNRUN",
+      "evidence": "Outside controlled S01.1 evidence; no substitute completion claim"
+    },
+    "LIVE_HOSTED_MODEL": {
+      "status": "UNRUN",
+      "evidence": "Outside controlled S01.1 evidence; no substitute completion claim"
+    },
+    "LIVE_CHANNELS": {
+      "status": "UNRUN",
+      "evidence": "Outside controlled S01.1 evidence; no substitute completion claim"
+    },
+    "GENUINE_MULTI_HOST": {
+      "status": "UNRUN",
+      "evidence": "Outside controlled S01.1 evidence; no substitute completion claim"
+    },
+    "REAL_CHAIN": {
+      "status": "UNRUN",
+      "evidence": "Outside controlled S01.1 evidence; no substitute completion claim"
+    },
+    "POWER_LOSS": {
+      "status": "UNRUN",
+      "evidence": "Outside controlled S01.1 evidence; no substitute completion claim"
+    },
+    "EMPTY_GLOBAL_CACHE": {
+      "status": "UNRUN",
+      "evidence": "Outside controlled S01.1 evidence; no substitute completion claim"
+    }
+  },
+  "commands": [
+    {
+      "name": "S01-and-S01.1",
+      "status": "PASS",
+      "test_methods": 52,
+      "seconds": 210.963,
+      "classification": "22 fixture contract methods; 30 real native/network integration methods; model/channel/memory substitutions explicitly declared",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_neoclaw_application",
+        "integration.neoclaw.test_loop",
+        "tests.test_neoclaw",
+        "integration.neoclaw.test_s01",
+        "integration.neoclaw.test_network",
+        "integration.neoclaw.test_recovery"
+      ],
+      "log": "s01-s01_1-tests.log",
+      "cases": [
+        {
+          "name": "test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn",
+          "status": "PASS"
+        },
+        {
+          "name": "test_exclusive_application_route_and_finite_admission",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_exclusive_application_route_and_finite_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_invalid_selected_batch_is_rejected_before_any_execution",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_invalid_selected_batch_is_rejected_before_any_execution",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mixed_pending_batch_cannot_be_replayed",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_mixed_pending_batch_cannot_be_replayed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_new_identical_turn_is_not_replay_and_no_config_rewrite",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_new_identical_turn_is_not_replay_and_no_config_rewrite",
+          "status": "PASS"
+        },
+        {
+          "name": "test_ordered_identity_and_exact_pending_replay_conflict",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_ordered_identity_and_exact_pending_replay_conflict",
+          "status": "PASS"
+        },
+        {
+          "name": "test_restore_requires_current_authority_and_preserves_projection",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_restore_requires_current_authority_and_preserves_projection",
+          "status": "PASS"
+        },
+        {
+          "name": "test_startup_overlay_refuses_unknown_source",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_startup_overlay_refuses_unknown_source",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unfinished_unrelated_caller_request_blocks_new_turn",
+          "owner": "tests.test_neoclaw_application.ApplicationContracts.test_unfinished_unrelated_caller_request_blocks_new_turn",
+          "status": "PASS"
+        },
+        {
+          "name": "test_capacity_failure_does_not_advance_or_replenish_budget",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_capacity_failure_does_not_advance_or_replenish_budget",
+          "status": "PASS"
+        },
+        {
+          "name": "test_completed_receipt_revocation_blocks_recovery_context",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_completed_receipt_revocation_blocks_recovery_context",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deadline_before_submit_is_not_renewed_on_native_restart",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_deadline_before_submit_is_not_renewed_on_native_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "test_killed_rpc_reservations_do_not_refund_or_start_new_turn",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_killed_rpc_reservations_do_not_refund_or_start_new_turn",
+          "status": "PASS"
+        },
+        {
+          "name": "test_malformed_bound_payload_refused_before_handoff",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_malformed_bound_payload_refused_before_handoff",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mixed_pending_batch_recovery_is_explicitly_unsupported",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_mixed_pending_batch_recovery_is_explicitly_unsupported",
+          "status": "PASS"
+        },
+        {
+          "name": "test_multi_turn_original_oracle_local_and_https_same_caller",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_multi_turn_original_oracle_local_and_https_same_caller",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_invalid_selected_input_and_profile_never_fall_through",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_native_invalid_selected_input_and_profile_never_fall_through",
+          "status": "PASS"
+        },
+        {
+          "name": "test_network_outage_wrong_ca_and_revocation_are_typed_no_fallback",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_network_outage_wrong_ca_and_revocation_are_typed_no_fallback",
+          "status": "PASS"
+        },
+        {
+          "name": "test_second_position_restart_preserves_batch_order_and_single_route",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_second_position_restart_preserves_batch_order_and_single_route",
+          "status": "PASS"
+        },
+        {
+          "name": "test_sigkill_recovers_accepted_turn_without_model_regeneration",
+          "owner": "integration.neoclaw.test_loop.NativeLoop.test_sigkill_recovers_accepted_turn_without_model_regeneration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_acceptance_completion_and_payload_receipts_reject_malformed_data",
+          "owner": "tests.test_neoclaw.S01Contracts.test_acceptance_completion_and_payload_receipts_reject_malformed_data",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authority_method_scope_route_and_replay_revocation",
+          "owner": "tests.test_neoclaw.S01Contracts.test_authority_method_scope_route_and_replay_revocation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_caller_budget_is_durable_and_cannot_be_reset",
+          "owner": "tests.test_neoclaw.S01Contracts.test_caller_budget_is_durable_and_cannot_be_reset",
+          "status": "PASS"
+        },
+        {
+          "name": "test_capacity_recovery_and_independent_owner_databases",
+          "owner": "tests.test_neoclaw.S01Contracts.test_capacity_recovery_and_independent_owner_databases",
+          "status": "PASS"
+        },
+        {
+          "name": "test_closed_two_stv_contract_rejects_code_and_invalid_values",
+          "owner": "tests.test_neoclaw.S01Contracts.test_closed_two_stv_contract_rejects_code_and_invalid_values",
+          "status": "PASS"
+        },
+        {
+          "name": "test_current_authority_on_result_poll_ack_and_worker",
+          "owner": "tests.test_neoclaw.S01Contracts.test_current_authority_on_result_poll_ack_and_worker",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deadline_prevents_new_computation_but_not_completed_replay",
+          "owner": "tests.test_neoclaw.S01Contracts.test_deadline_prevents_new_computation_but_not_completed_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_descriptor_version_profile_runtime_and_operation_binding",
+          "owner": "tests.test_neoclaw.S01Contracts.test_descriptor_version_profile_runtime_and_operation_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "test_existing_numerical_sources_unchanged",
+          "owner": "tests.test_neoclaw.S01Contracts.test_existing_numerical_sources_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_attempt_budget_survives_owner_restart_and_bad_kernel",
+          "owner": "tests.test_neoclaw.S01Contracts.test_native_attempt_budget_survives_owner_restart_and_bad_kernel",
+          "status": "PASS"
+        },
+        {
+          "name": "test_no_fallback_and_duplicate_json_keys_rejected",
+          "owner": "tests.test_neoclaw.S01Contracts.test_no_fallback_and_duplicate_json_keys_rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "test_replay_identity_conflict_and_deadline_not_renewed",
+          "owner": "tests.test_neoclaw.S01Contracts.test_replay_identity_conflict_and_deadline_not_renewed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_binding_and_representation_validation",
+          "owner": "tests.test_neoclaw.S01Contracts.test_result_binding_and_representation_validation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_broader_native_command_remains_local_and_no_fallback",
+          "owner": "integration.neoclaw.test_s01.NativeS01.test_broader_native_command_remains_local_and_no_fallback",
+          "status": "PASS"
+        },
+        {
+          "name": "test_numeric_boundaries_match_original_in_both_placements",
+          "owner": "integration.neoclaw.test_s01.NativeS01.test_numeric_boundaries_match_original_in_both_placements",
+          "status": "PASS"
+        },
+        {
+          "name": "test_same_durable_intent_replays_after_composition_switch",
+          "owner": "integration.neoclaw.test_s01.NativeS01.test_same_durable_intent_replays_after_composition_switch",
+          "status": "PASS"
+        },
+        {
+          "name": "test_three_native_command_paths_and_exact_representation",
+          "owner": "integration.neoclaw.test_s01.NativeS01.test_three_native_command_paths_and_exact_representation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_certificate_verification_and_non_loopback_refusal",
+          "owner": "integration.neoclaw.test_network.NetworkS01.test_certificate_verification_and_non_loopback_refusal",
+          "status": "PASS"
+        },
+        {
+          "name": "test_current_authority_on_result_and_read_over_https",
+          "owner": "integration.neoclaw.test_network.NetworkS01.test_current_authority_on_result_and_read_over_https",
+          "status": "PASS"
+        },
+        {
+          "name": "test_filesystem_namespace_masks_provider_and_old_omega",
+          "owner": "integration.neoclaw.test_network.NetworkS01.test_filesystem_namespace_masks_provider_and_old_omega",
+          "status": "PASS"
+        },
+        {
+          "name": "test_malformed_network_completion_cannot_ack_or_reset_budget",
+          "owner": "integration.neoclaw.test_network.NetworkS01.test_malformed_network_completion_cannot_ack_or_reset_budget",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_invalid_named_command_never_falls_through",
+          "owner": "integration.neoclaw.test_network.NetworkS01.test_native_invalid_named_command_never_falls_through",
+          "status": "PASS"
+        },
+        {
+          "name": "test_real_https_authority_closed_input_and_selection_matrix",
+          "owner": "integration.neoclaw.test_network.NetworkS01.test_real_https_authority_closed_input_and_selection_matrix",
+          "status": "PASS"
+        },
+        {
+          "name": "test_valid_digest_malformed_payload_refused_before_completion_poll",
+          "owner": "integration.neoclaw.test_network.NetworkS01.test_valid_digest_malformed_payload_refused_before_completion_poll",
+          "status": "PASS"
+        },
+        {
+          "name": "test_crash_reservations_exhaust_budget_without_reset_or_computation",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_crash_reservations_exhaust_budget_without_reset_or_computation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deadline_after_output_commit_allows_closure_not_new_math",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_deadline_after_output_commit_allows_closure_not_new_math",
+          "status": "PASS"
+        },
+        {
+          "name": "test_expired_reservation_after_kill_never_recomputes",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_expired_reservation_after_kill_never_recomputes",
+          "status": "PASS"
+        },
+        {
+          "name": "test_killed_https_acceptance_server_replays_lost_receipt",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_killed_https_acceptance_server_replays_lost_receipt",
+          "status": "PASS"
+        },
+        {
+          "name": "test_killed_native_caller_replays_every_independent_commit",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_caller_replays_every_independent_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "test_killed_native_worker_and_mailbox_delivery_recover",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_killed_native_worker_and_mailbox_delivery_recover",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_kills_spend_rpc_budget_without_reset",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_native_caller_kills_spend_rpc_budget_without_reset",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_after_native_receipt_blocks_ack_then_recovers",
+          "owner": "integration.neoclaw.test_recovery.RecoveryS01.test_revocation_after_native_receipt_blocks_ack_then_recovers",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "regression-core",
+      "status": "PASS",
+      "test_methods": 156,
+      "seconds": 126.488,
+      "classification": "Existing core/fixture/DeTTa track; no chain node",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_adapters",
+        "tests.test_contract",
+        "tests.test_m11",
+        "tests.test_m2",
+        "tests.test_m3",
+        "tests.test_m3_1_attention",
+        "tests.test_m3_1_compat",
+        "tests.test_m3_1_delivery",
+        "tests.test_m3_attention",
+        "tests.test_m4_chain",
+        "tests.test_m5",
+        "tests.test_m5_boundaries",
+        "tests.test_responses"
+      ],
+      "log": "regression-core.log",
+      "cases": [
+        {
+          "name": "test_corrupt_share_is_never_returned_as_payload",
+          "owner": "tests.test_adapters.AdapterTests.test_corrupt_share_is_never_returned_as_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_generic_storage_scope_binding_rejects_wrong_scope",
+          "owner": "tests.test_adapters.AdapterTests.test_generic_storage_scope_binding_rejects_wrong_scope",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reconstruct_after_two_missing_shares_and_fail_after_three",
+          "owner": "tests.test_adapters.AdapterTests.test_reconstruct_after_two_missing_shares_and_fail_after_three",
+          "status": "PASS"
+        },
+        {
+          "name": "test_schema_is_reproducible_and_positive_negative_fixtures_agree",
+          "owner": "tests.test_adapters.AdapterTests.test_schema_is_reproducible_and_positive_negative_fixtures_agree",
+          "status": "PASS"
+        },
+        {
+          "name": "test_simultaneous_duplicate_submission_has_one_logical_job",
+          "owner": "tests.test_adapters.AdapterTests.test_simultaneous_duplicate_submission_has_one_logical_job",
+          "status": "PASS"
+        },
+        {
+          "name": "test_pending_inclusion_and_deploy_effect_finality_stay_distinct",
+          "owner": "tests.test_adapters.ChainObservationTests.test_pending_inclusion_and_deploy_effect_finality_stay_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_signed_intent_survives_uncertain_submission_without_resigning",
+          "owner": "tests.test_adapters.ChainObservationTests.test_signed_intent_survives_uncertain_submission_without_resigning",
+          "status": "PASS"
+        },
+        {
+          "name": "test_contract_imports_no_backends_or_cognition",
+          "owner": "tests.test_contract.Compatibility.test_contract_imports_no_backends_or_cognition",
+          "status": "PASS"
+        },
+        {
+          "name": "test_same_major_positive_and_negative_fixtures",
+          "owner": "tests.test_contract.Compatibility.test_same_major_positive_and_negative_fixtures",
+          "status": "PASS"
+        },
+        {
+          "name": "test_backpressure_keeps_outbox_until_consumer_ack",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_durable_acceptance_survives_sigkill_before_ack",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_idempotency_conflict_and_occurrence_identity",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reference_integrity_missing_and_unavailable_are_distinct",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_da_write_replay_and_completion_outbox_crashes",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scope_routes_authentication_revocation_and_state_ownership",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_slice_and_delayed_restart_completion",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wire_validation_versions_features_deadlines",
+          "owner": "tests.test_contract.FixtureInProcessContract.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "test_backpressure_keeps_outbox_until_consumer_ack",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_durable_acceptance_survives_sigkill_before_ack",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_idempotency_conflict_and_occurrence_identity",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reference_integrity_missing_and_unavailable_are_distinct",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_da_write_replay_and_completion_outbox_crashes",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scope_routes_authentication_revocation_and_state_ownership",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_slice_and_delayed_restart_completion",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wire_validation_versions_features_deadlines",
+          "owner": "tests.test_contract.FixtureSubprocessContract.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "test_backpressure_keeps_outbox_until_consumer_ack",
+          "owner": "tests.test_contract.InProcessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_durable_acceptance_survives_sigkill_before_ack",
+          "owner": "tests.test_contract.InProcessContract.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_idempotency_conflict_and_occurrence_identity",
+          "owner": "tests.test_contract.InProcessContract.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "owner": "tests.test_contract.InProcessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reference_integrity_missing_and_unavailable_are_distinct",
+          "owner": "tests.test_contract.InProcessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_da_write_replay_and_completion_outbox_crashes",
+          "owner": "tests.test_contract.InProcessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scope_routes_authentication_revocation_and_state_ownership",
+          "owner": "tests.test_contract.InProcessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_slice_and_delayed_restart_completion",
+          "owner": "tests.test_contract.InProcessContract.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wire_validation_versions_features_deadlines",
+          "owner": "tests.test_contract.InProcessContract.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "test_backpressure_keeps_outbox_until_consumer_ack",
+          "owner": "tests.test_contract.SubprocessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_durable_acceptance_survives_sigkill_before_ack",
+          "owner": "tests.test_contract.SubprocessContract.test_durable_acceptance_survives_sigkill_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_idempotency_conflict_and_occurrence_identity",
+          "owner": "tests.test_contract.SubprocessContract.test_idempotency_conflict_and_occurrence_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "owner": "tests.test_contract.SubprocessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reference_integrity_missing_and_unavailable_are_distinct",
+          "owner": "tests.test_contract.SubprocessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_da_write_replay_and_completion_outbox_crashes",
+          "owner": "tests.test_contract.SubprocessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+          "status": "PASS"
+        },
+        {
+          "name": "test_scope_routes_authentication_revocation_and_state_ownership",
+          "owner": "tests.test_contract.SubprocessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_slice_and_delayed_restart_completion",
+          "owner": "tests.test_contract.SubprocessContract.test_slice_and_delayed_restart_completion",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wire_validation_versions_features_deadlines",
+          "owner": "tests.test_contract.SubprocessContract.test_wire_validation_versions_features_deadlines",
+          "status": "PASS"
+        },
+        {
+          "name": "test_ack_replay_rechecks_current_route_ownership",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_atom_persistence_before_admission_commit_retains_full_intent",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mailbox_acceptance_survives_outbox_marking_crash",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_commits_before_job_and_public_port_replay_is_stable",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revoked_reply_route_retains_outbox_until_restored",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unavailable_input_keeps_accepted_job_for_recovery",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "test_worker_revocation_is_effective_at_restart",
+          "owner": "tests.test_m11.DettaInProcessRecovery.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "test_ack_replay_rechecks_current_route_ownership",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_atom_persistence_before_admission_commit_retains_full_intent",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mailbox_acceptance_survives_outbox_marking_crash",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_commits_before_job_and_public_port_replay_is_stable",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revoked_reply_route_retains_outbox_until_restored",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unavailable_input_keeps_accepted_job_for_recovery",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "test_worker_revocation_is_effective_at_restart",
+          "owner": "tests.test_m11.DettaSubprocessRecovery.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "test_ack_replay_rechecks_current_route_ownership",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_atom_persistence_before_admission_commit_retains_full_intent",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mailbox_acceptance_survives_outbox_marking_crash",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_commits_before_job_and_public_port_replay_is_stable",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revoked_reply_route_retains_outbox_until_restored",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unavailable_input_keeps_accepted_job_for_recovery",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "test_worker_revocation_is_effective_at_restart",
+          "owner": "tests.test_m11.FixtureInProcessRecovery.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "test_ack_replay_rechecks_current_route_ownership",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_ack_replay_rechecks_current_route_ownership",
+          "status": "PASS"
+        },
+        {
+          "name": "test_atom_persistence_before_admission_commit_retains_full_intent",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mailbox_acceptance_survives_outbox_marking_crash",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+          "status": "PASS"
+        },
+        {
+          "name": "test_result_commits_before_job_and_public_port_replay_is_stable",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revoked_reply_route_retains_outbox_until_restored",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unavailable_input_keeps_accepted_job_for_recovery",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "test_worker_revocation_is_effective_at_restart",
+          "owner": "tests.test_m11.FixtureSubprocessRecovery.test_worker_revocation_is_effective_at_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "test_combined_legacy_journal_is_rejected_without_dropping_it",
+          "owner": "tests.test_m11.PortStructure.test_combined_legacy_journal_is_rejected_without_dropping_it",
+          "status": "PASS"
+        },
+        {
+          "name": "test_execution_uses_only_declared_foreign_ports_and_own_sql",
+          "owner": "tests.test_m11.PortStructure.test_execution_uses_only_declared_foreign_ports_and_own_sql",
+          "status": "PASS"
+        },
+        {
+          "name": "test_fixture_opaque_id_never_resolves_as_a_filesystem_path",
+          "owner": "tests.test_m11.PortStructure.test_fixture_opaque_id_never_resolves_as_a_filesystem_path",
+          "status": "PASS"
+        },
+        {
+          "name": "test_hostile_port_denies_every_undeclared_attribute_at_runtime",
+          "owner": "tests.test_m11.PortStructure.test_hostile_port_denies_every_undeclared_attribute_at_runtime",
+          "status": "PASS"
+        },
+        {
+          "name": "test_published_signatures_match_exercised_providers",
+          "owner": "tests.test_m11.PortStructure.test_published_signatures_match_exercised_providers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_weaker_guarantees_and_changed_selected_provider_are_rejected",
+          "owner": "tests.test_m11.PortStructure.test_weaker_guarantees_and_changed_selected_provider_are_rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "test_ack_binds_entire_decision_and_response_lineage_is_checked",
+          "owner": "tests.test_m2.Contracts.test_ack_binds_entire_decision_and_response_lineage_is_checked",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bounded_delivery_capacity_does_not_drop_events",
+          "owner": "tests.test_m2.Contracts.test_bounded_delivery_capacity_does_not_drop_events",
+          "status": "PASS"
+        },
+        {
+          "name": "test_c1_has_no_revision_dependency_and_no_foreign_sql",
+          "owner": "tests.test_m2.Contracts.test_c1_has_no_revision_dependency_and_no_foreign_sql",
+          "status": "PASS"
+        },
+        {
+          "name": "test_cross_claim_context_scope_and_unknown_origin",
+          "owner": "tests.test_m2.Contracts.test_cross_claim_context_scope_and_unknown_origin",
+          "status": "PASS"
+        },
+        {
+          "name": "test_cross_principal_read_and_revoked_belief_replay",
+          "owner": "tests.test_m2.Contracts.test_cross_principal_read_and_revoked_belief_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_declared_operations_and_hostile_independent_c2_dependencies",
+          "owner": "tests.test_m2.Contracts.test_declared_operations_and_hostile_independent_c2_dependencies",
+          "status": "PASS"
+        },
+        {
+          "name": "test_hostile_evidence_response_is_not_admitted",
+          "owner": "tests.test_m2.Contracts.test_hostile_evidence_response_is_not_admitted",
+          "status": "PASS"
+        },
+        {
+          "name": "test_lineage_copy_new_speaker_and_new_key_do_not_create_origins",
+          "owner": "tests.test_m2.Contracts.test_lineage_copy_new_speaker_and_new_key_do_not_create_origins",
+          "status": "PASS"
+        },
+        {
+          "name": "test_live_authority_and_profile_before_replay",
+          "owner": "tests.test_m2.Contracts.test_live_authority_and_profile_before_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_numeric_domain_and_closed_inputs",
+          "owner": "tests.test_m2.Contracts.test_numeric_domain_and_closed_inputs",
+          "status": "PASS"
+        },
+        {
+          "name": "test_occurrence_replay_before_cas_and_changed_body_conflicts",
+          "owner": "tests.test_m2.Contracts.test_occurrence_replay_before_cas_and_changed_body_conflicts",
+          "status": "PASS"
+        },
+        {
+          "name": "test_relay_through_only_declared_ports_and_unavailable_is_pending",
+          "owner": "tests.test_m2.Contracts.test_relay_through_only_declared_ports_and_unavailable_is_pending",
+          "status": "PASS"
+        },
+        {
+          "name": "test_report_alternative_and_duplicate_admission",
+          "owner": "tests.test_m2.Contracts.test_report_alternative_and_duplicate_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_shared_placement_and_descriptor_drift_rejected",
+          "owner": "tests.test_m2.Contracts.test_shared_placement_and_descriptor_drift_rejected",
+          "status": "PASS"
+        },
+        {
+          "name": "test_stable_identity_empty_and_bounded_pages",
+          "owner": "tests.test_m2.Contracts.test_stable_identity_empty_and_bounded_pages",
+          "status": "PASS"
+        },
+        {
+          "name": "test_submission_snapshots_mutable_caller_input_before_dependency_calls",
+          "owner": "tests.test_m2.Contracts.test_submission_snapshots_mutable_caller_input_before_dependency_calls",
+          "status": "PASS"
+        },
+        {
+          "name": "test_descriptor_and_old_journal_incompatibility_fail_closed",
+          "owner": "tests.test_m3.AdversarialContracts.test_descriptor_and_old_journal_incompatibility_fail_closed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_malformed_selection_and_unavailable_belief_never_become_empty",
+          "owner": "tests.test_m3.AdversarialContracts.test_malformed_selection_and_unavailable_belief_never_become_empty",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mutable_caller_workset_cannot_change_durable_step_intent",
+          "owner": "tests.test_m3.AdversarialContracts.test_mutable_caller_workset_cannot_change_durable_step_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wrong_admission_response_is_rejected_then_owner_decision_recovers",
+          "owner": "tests.test_m3.AdversarialContracts.test_wrong_admission_response_is_rejected_then_owner_decision_recovers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_deadline_is_absolute_and_current_auth_applies_to_replay",
+          "owner": "tests.test_m3.CognitionFixtures.test_deadline_is_absolute_and_current_auth_applies_to_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_refusing_kernel_budgets_replay_and_swap",
+          "owner": "tests.test_m3.CognitionFixtures.test_refusing_kernel_budgets_replay_and_swap",
+          "status": "PASS"
+        },
+        {
+          "name": "test_unresolved_candidate_consumes_candidate_budget",
+          "owner": "tests.test_m3.CognitionFixtures.test_unresolved_candidate_consumes_candidate_budget",
+          "status": "PASS"
+        },
+        {
+          "name": "test_capacity_is_pending_then_obsolete_without_credit_or_eviction",
+          "owner": "tests.test_m3_1_attention.AttentionClosure.test_capacity_is_pending_then_obsolete_without_credit_or_eviction",
+          "status": "PASS"
+        },
+        {
+          "name": "test_same_profile_applied_expired_clock_and_parent",
+          "owner": "tests.test_m3_1_attention.AttentionClosure.test_same_profile_applied_expired_clock_and_parent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_serialized_race_orders_and_concurrent_delivery",
+          "owner": "tests.test_m3_1_attention.AttentionClosure.test_serialized_race_orders_and_concurrent_delivery",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bounded_reconciliation_commands_and_live_descriptor_binding",
+          "owner": "tests.test_m3_1_compat.Compatibility.test_bounded_reconciliation_commands_and_live_descriptor_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "test_old_populated_copies_reject_new_profile_keep_old_replay",
+          "owner": "tests.test_m3_1_compat.Compatibility.test_old_populated_copies_reject_new_profile_keep_old_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_33_events_one_persistent_episode_and_capacity_recovery",
+          "owner": "tests.test_m3_1_delivery.DeliveryTests.test_33_events_one_persistent_episode_and_capacity_recovery",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bad_c2_receipts_never_ack_and_exact_replay_recovers",
+          "owner": "tests.test_m3_1_delivery.DeliveryTests.test_bad_c2_receipts_never_ack_and_exact_replay_recovers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_c1_can_run_without_c2_pln_or_hive_imports",
+          "owner": "tests.test_m3_1_delivery.DeliveryTests.test_c1_can_run_without_c2_pln_or_hive_imports",
+          "status": "PASS"
+        },
+        {
+          "name": "test_standalone_c1_trust_closed_dto_and_semantic_replay",
+          "owner": "tests.test_m3_1_delivery.DeliveryTests.test_standalone_c1_trust_closed_dto_and_semantic_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_capacity_rejects_without_eviction",
+          "owner": "tests.test_m3_attention.AttentionTests.test_capacity_rejects_without_eviction",
+          "status": "PASS"
+        },
+        {
+          "name": "test_causal_generation_never_resets_across_decay_ingress_or_keys",
+          "owner": "tests.test_m3_attention.AttentionTests.test_causal_generation_never_resets_across_decay_ingress_or_keys",
+          "status": "PASS"
+        },
+        {
+          "name": "test_independent_same_profile_replacement",
+          "owner": "tests.test_m3_attention.AttentionTests.test_independent_same_profile_replacement",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mutable_caller_dictionary_cannot_change_admitted_stimulus",
+          "owner": "tests.test_m3_attention.AttentionTests.test_mutable_caller_dictionary_cannot_change_admitted_stimulus",
+          "status": "PASS"
+        },
+        {
+          "name": "test_roles_ties_saturation_and_closed_inputs",
+          "owner": "tests.test_m3_attention.AttentionTests.test_roles_ties_saturation_and_closed_inputs",
+          "status": "PASS"
+        },
+        {
+          "name": "test_concurrent_duplicates_sign_one_durable_deploy",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_concurrent_duplicates_sign_one_durable_deploy",
+          "status": "PASS"
+        },
+        {
+          "name": "test_durable_logical_intent_precedes_signing_and_exact_replay",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_durable_logical_intent_precedes_signing_and_exact_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_malformed_finality_inclusion_and_effect_never_pass",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_malformed_finality_inclusion_and_effect_never_pass",
+          "status": "PASS"
+        },
+        {
+          "name": "test_matching_actual_effect_required",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_matching_actual_effect_required",
+          "status": "PASS"
+        },
+        {
+          "name": "test_mutating_input_aliases_cannot_change_registered_approval_or_binding",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_mutating_input_aliases_cannot_change_registered_approval_or_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "test_old_journal_rejected_without_migration",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_old_journal_rejected_without_migration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_response_loss_keeps_every_signed_byte_and_timestamp",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_response_loss_keeps_every_signed_byte_and_timestamp",
+          "status": "PASS"
+        },
+        {
+          "name": "test_revocation_before_cached_reply_and_before_send",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_revocation_before_cached_reply_and_before_send",
+          "status": "PASS"
+        },
+        {
+          "name": "test_typed_rejection_and_pending_are_separate",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_typed_rejection_and_pending_are_separate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wrong_approval_scope_ref_digest_key_and_intent",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_wrong_approval_scope_ref_digest_key_and_intent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wrong_chain_binding_signer_and_profile",
+          "owner": "tests.test_m4_chain.ChainFixtures.test_wrong_chain_binding_signer_and_profile",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_relation_roles_directions_identity_and_replay",
+          "owner": "tests.test_m5.LookupContracts.test_all_relation_roles_directions_identity_and_replay",
+          "status": "PASS"
+        },
+        {
+          "name": "test_exact_query_lag_rebuild_and_independent_search_substitution",
+          "owner": "tests.test_m5.LookupContracts.test_exact_query_lag_rebuild_and_independent_search_substitution",
+          "status": "PASS"
+        },
+        {
+          "name": "test_feed_snapshot_replay_and_source_binding",
+          "owner": "tests.test_m5.LookupContracts.test_feed_snapshot_replay_and_source_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint",
+          "owner": "tests.test_m5.LookupContracts.test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint",
+          "status": "PASS"
+        },
+        {
+          "name": "test_query_exact_unicode_missing_field_and_bounded_parser",
+          "owner": "tests.test_m5.LookupContracts.test_query_exact_unicode_missing_field_and_bounded_parser",
+          "status": "PASS"
+        },
+        {
+          "name": "test_relation_boundary_validation_unaccepted_payload_and_revocation",
+          "owner": "tests.test_m5.LookupContracts.test_relation_boundary_validation_unaccepted_payload_and_revocation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_relation_pagination_fixed_head_cursor_binding",
+          "owner": "tests.test_m5.LookupContracts.test_relation_pagination_fixed_head_cursor_binding",
+          "status": "PASS"
+        },
+        {
+          "name": "test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor",
+          "owner": "tests.test_m5.LookupContracts.test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor",
+          "status": "PASS"
+        },
+        {
+          "name": "test_atom_response_budget_is_checked_at_session_boundary",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_atom_response_budget_is_checked_at_session_boundary",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authority_revocation_between_reads_and_commit",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_authority_revocation_between_reads_and_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "test_bad_shape_bounds_profile_and_private_placement",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_bad_shape_bounds_profile_and_private_placement",
+          "status": "PASS"
+        },
+        {
+          "name": "test_capacity_refusal_retains_complete_prefix",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_capacity_refusal_retains_complete_prefix",
+          "status": "PASS"
+        },
+        {
+          "name": "test_consumer_rejects_forged_search_relation_and_payload",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_consumer_rejects_forged_search_relation_and_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_each_advertised_operation_checks_live_authority",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_each_advertised_operation_checks_live_authority",
+          "status": "PASS"
+        },
+        {
+          "name": "test_feed_rejects_legacy_store_and_missing_incarnation",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_feed_rejects_legacy_store_and_missing_incarnation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_lookup_has_no_cognitive_runtime_dependency_or_mutation",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_query_cursor_rebinding_auth_and_generation",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_query_cursor_rebinding_auth_and_generation",
+          "status": "PASS"
+        },
+        {
+          "name": "test_search_fixture_evaluates_predicates_independently",
+          "owner": "tests.test_m5_boundaries.Boundaries.test_search_fixture_evaluates_predicates_independently",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_error_responses_and_retryability_are_closed",
+          "owner": "tests.test_responses.ResponseConformance.test_all_error_responses_and_retryability_are_closed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_all_operations_and_profiles_validate_real_fixture_replies",
+          "owner": "tests.test_responses.ResponseConformance.test_all_operations_and_profiles_validate_real_fixture_replies",
+          "status": "PASS"
+        },
+        {
+          "name": "test_both_bindings_apply_response_checks_before_returning_success",
+          "owner": "tests.test_responses.ResponseConformance.test_both_bindings_apply_response_checks_before_returning_success",
+          "status": "PASS"
+        },
+        {
+          "name": "test_every_operation_rejects_missing_malformed_and_unselected_replies",
+          "owner": "tests.test_responses.ResponseConformance.test_every_operation_rejects_missing_malformed_and_unselected_replies",
+          "status": "PASS"
+        },
+        {
+          "name": "test_generated_schemas_match_checked_in_contracts",
+          "owner": "tests.test_responses.ResponseConformance.test_generated_schemas_match_checked_in_contracts",
+          "status": "PASS"
+        },
+        {
+          "name": "test_invalid_completion_acceptance_does_not_mark_outbox_sent",
+          "owner": "tests.test_responses.ResponseConformance.test_invalid_completion_acceptance_does_not_mark_outbox_sent",
+          "status": "PASS"
+        },
+        {
+          "name": "test_request_scope_reference_order_correlation_and_guarantees_are_checked",
+          "owner": "tests.test_responses.ResponseConformance.test_request_scope_reference_order_correlation_and_guarantees_are_checked",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "regression-native-providers",
+      "status": "PASS",
+      "test_methods": 46,
+      "seconds": 548.465,
+      "classification": "Existing real guarded PLN and DeTTa track",
+      "argv": [
+        "artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.pln.test_revision",
+        "integration.pln.test_recovery",
+        "integration.pln.test_deduction",
+        "integration.pln.test_m3_recovery",
+        "integration.pln.test_m3_1",
+        "integration.pln.test_m3_1_recovery",
+        "integration.test_m5_real"
+      ],
+      "log": "regression-native.log",
+      "cases": [
+        {
+          "name": "test_actual_equal_weight_golden_and_historical_snapshots",
+          "owner": "integration.pln.test_revision.NativeRevision.test_actual_equal_weight_golden_and_historical_snapshots",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_swapped_order_golden",
+          "owner": "integration.pln.test_revision.NativeRevision.test_actual_swapped_order_golden",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_unequal_weight_golden",
+          "owner": "integration.pln.test_revision.NativeRevision.test_actual_unequal_weight_golden",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authority_rechecked_after_native_formula_before_commit",
+          "owner": "integration.pln.test_revision.NativeRevision.test_authority_rechecked_after_native_formula_before_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "test_cas_conflict_requires_a_new_attempt_identity",
+          "owner": "integration.pln.test_revision.NativeRevision.test_cas_conflict_requires_a_new_attempt_identity",
+          "status": "PASS"
+        },
+        {
+          "name": "test_malformed_empty_multiple_and_nonfinite_output_fixtures",
+          "owner": "integration.pln.test_revision.NativeRevision.test_malformed_empty_multiple_and_nonfinite_output_fixtures",
+          "status": "PASS"
+        },
+        {
+          "name": "test_missing_independence_retains_contrary_and_no_formula",
+          "owner": "integration.pln.test_revision.NativeRevision.test_missing_independence_retains_contrary_and_no_formula",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_timeout_leaves_delivery_pending_and_exact_attempt_replays",
+          "owner": "integration.pln.test_revision.NativeRevision.test_native_timeout_leaves_delivery_pending_and_exact_attempt_replays",
+          "status": "PASS"
+        },
+        {
+          "name": "test_overlap_and_aggregate_ancestor_no_extra_weight",
+          "owner": "integration.pln.test_revision.NativeRevision.test_overlap_and_aggregate_ancestor_no_extra_weight",
+          "status": "PASS"
+        },
+        {
+          "name": "test_runtime_pin_binary_and_formula_drift_fail_closed",
+          "owner": "integration.pln.test_revision.NativeRevision.test_runtime_pin_binary_and_formula_drift_fail_closed",
+          "status": "PASS"
+        },
+        {
+          "name": "test_wrong_pair_rejected_and_assumption_permission_separate",
+          "owner": "integration.pln.test_revision.NativeRevision.test_wrong_pair_rejected_and_assumption_permission_separate",
+          "status": "PASS"
+        },
+        {
+          "name": "test_zero_weight_pair_is_model_inapplicable_without_formula",
+          "owner": "integration.pln.test_revision.NativeRevision.test_zero_weight_pair_is_model_inapplicable_without_formula",
+          "status": "PASS"
+        },
+        {
+          "name": "test_kill_after_belief_commit_before_ack",
+          "owner": "integration.pln.test_recovery.Recovery.test_kill_after_belief_commit_before_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_kill_after_episode_and_intent_before_belief",
+          "owner": "integration.pln.test_recovery.Recovery.test_kill_after_episode_and_intent_before_belief",
+          "status": "PASS"
+        },
+        {
+          "name": "test_kill_after_native_formula_before_belief_commit",
+          "owner": "integration.pln.test_recovery.Recovery.test_kill_after_native_formula_before_belief_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "test_kill_after_payload_before_episode_commit",
+          "owner": "integration.pln.test_recovery.Recovery.test_kill_after_payload_before_episode_commit",
+          "status": "PASS"
+        },
+        {
+          "name": "test_private_canary_never_enters_shared_binding_or_diagnostics",
+          "owner": "integration.pln.test_recovery.Recovery.test_private_canary_never_enters_shared_binding_or_diagnostics",
+          "status": "PASS"
+        },
+        {
+          "name": "test_two_process_cas_race_has_one_winner",
+          "owner": "integration.pln.test_recovery.Recovery.test_two_process_cas_race_has_one_winner",
+          "status": "PASS"
+        },
+        {
+          "name": "test_authorization_and_cas_rechecked_after_kernel",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_authorization_and_cas_rechecked_after_kernel",
+          "status": "PASS"
+        },
+        {
+          "name": "test_concurrent_clock_advance_keeps_feedback_pending",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_concurrent_clock_advance_keeps_feedback_pending",
+          "status": "PASS"
+        },
+        {
+          "name": "test_derive_revise_derive_preserves_ancestry_and_blocks_cycle",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_derive_revise_derive_preserves_ancestry_and_blocks_cycle",
+          "status": "PASS"
+        },
+        {
+          "name": "test_exact_historical_binding_not_latest_and_missing_support",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_exact_historical_binding_not_latest_and_missing_support",
+          "status": "PASS"
+        },
+        {
+          "name": "test_generation_limit_across_new_worksets_steps_and_ingress",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_generation_limit_across_new_worksets_steps_and_ingress",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_conditional_refusal_never_admits_fallback",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_native_conditional_refusal_never_admits_fallback",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_golden_historical_vector_and_duplicate_safe_admission",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_native_golden_historical_vector_and_duplicate_safe_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_near_one_branch_and_infeasible_and_zero_guards",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_native_near_one_branch_and_infeasible_and_zero_guards",
+          "status": "PASS"
+        },
+        {
+          "name": "test_private_inference_never_calls_populated_shared_bindings",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_private_inference_never_calls_populated_shared_bindings",
+          "status": "PASS"
+        },
+        {
+          "name": "test_pure_kernel_closed_vectors_and_malformed_proposal_admission",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_pure_kernel_closed_vectors_and_malformed_proposal_admission",
+          "status": "PASS"
+        },
+        {
+          "name": "test_retains_existing_observation_and_does_not_infer_independence",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_retains_existing_observation_and_does_not_infer_independence",
+          "status": "PASS"
+        },
+        {
+          "name": "test_runtime_drift_wrong_profile_parse_errors_and_native_timeout",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_runtime_drift_wrong_profile_parse_errors_and_native_timeout",
+          "status": "PASS"
+        },
+        {
+          "name": "test_two_tasks_one_attempt_selection_feedback_and_swap",
+          "owner": "integration.pln.test_deduction.NativeDeduction.test_two_tasks_one_attempt_selection_feedback_and_swap",
+          "status": "PASS"
+        },
+        {
+          "name": "test_attention_commit_before_response_both_providers",
+          "owner": "integration.pln.test_m3_recovery.CrashRecovery.test_attention_commit_before_response_both_providers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_belief_commit_and_feedback_commit_replay_without_new_native_work",
+          "owner": "integration.pln.test_m3_recovery.CrashRecovery.test_belief_commit_and_feedback_commit_replay_without_new_native_work",
+          "status": "PASS"
+        },
+        {
+          "name": "test_reservation_and_kernel_return_spend_crash_slots",
+          "owner": "integration.pln.test_m3_recovery.CrashRecovery.test_reservation_and_kernel_return_spend_crash_slots",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_m3_path_and_deduction_ledger_receipts",
+          "owner": "integration.pln.test_m3_1.NativeClosure.test_actual_m3_path_and_deduction_ledger_receipts",
+          "status": "PASS"
+        },
+        {
+          "name": "test_applied_receipt_after_deadline_and_decay_execution_stays_immutable",
+          "owner": "integration.pln.test_m3_1.NativeClosure.test_applied_receipt_after_deadline_and_decay_execution_stays_immutable",
+          "status": "PASS"
+        },
+        {
+          "name": "test_eligible_feedback_remains_pending_until_owner_retires_at_expiry",
+          "owner": "integration.pln.test_m3_1.NativeClosure.test_eligible_feedback_remains_pending_until_owner_retires_at_expiry",
+          "status": "PASS"
+        },
+        {
+          "name": "test_real_33_events_backpressure_drain_and_reopen",
+          "owner": "integration.pln.test_m3_1.NativeClosure.test_real_33_events_backpressure_drain_and_reopen",
+          "status": "PASS"
+        },
+        {
+          "name": "test_terminal_reconciliation_malformed_unavailable_revoke_and_no_new_work",
+          "owner": "integration.pln.test_m3_1.NativeClosure.test_terminal_reconciliation_malformed_unavailable_revoke_and_no_new_work",
+          "status": "PASS"
+        },
+        {
+          "name": "test_applied_kill_deadline_expired_before_restart",
+          "owner": "integration.pln.test_m3_1_recovery.ClosureRecovery.test_applied_kill_deadline_expired_before_restart",
+          "status": "PASS"
+        },
+        {
+          "name": "test_evidence_separate_commit_kills",
+          "owner": "integration.pln.test_m3_1_recovery.ClosureRecovery.test_evidence_separate_commit_kills",
+          "status": "PASS"
+        },
+        {
+          "name": "test_retirement_and_controller_progress_kills",
+          "owner": "integration.pln.test_m3_1_recovery.ClosureRecovery.test_retirement_and_controller_progress_kills",
+          "status": "PASS"
+        },
+        {
+          "name": "test_feed_commit_lost_ack",
+          "owner": "integration.test_m5_real.RealLookup.test_feed_commit_lost_ack",
+          "status": "PASS"
+        },
+        {
+          "name": "test_projection_kills_both_providers",
+          "owner": "integration.test_m5_real.RealLookup.test_projection_kills_both_providers",
+          "status": "PASS"
+        },
+        {
+          "name": "test_real_all_operations_rebuild_and_unavailable_payload",
+          "owner": "integration.test_m5_real.RealLookup.test_real_all_operations_rebuild_and_unavailable_payload",
+          "status": "PASS"
+        },
+        {
+          "name": "test_relation_separate_owner_kills",
+          "owner": "integration.test_m5_real.RealLookup.test_relation_separate_owner_kills",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "regression-hive",
+      "status": "PASS",
+      "test_cases": 42,
+      "seconds": 733.9477658467367,
+      "argv": [
+        "artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--tb=short",
+        "integration/hive/test_integration.py",
+        "integration/hive/test_m2_integration.py",
+        "integration/hive/test_m3_integration.py",
+        "integration/hive/test_m3_1_integration.py",
+        "integration/hive/test_m5_integration.py",
+        "--basetemp=artifacts/s01_1/regression/hive-private-tests",
+        "--junitxml=artifacts/s01_1/regression/hive.xml"
+      ],
+      "log": "regression-hive.log",
+      "classification": "Separate historical real native Hive ASGI runtime; generated test state, not MeTTaClaw loop or real chain",
+      "cases": [
+        {
+          "name": "test_native_dispatch_real_detta_trace_and_replay",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_caller_sigkill_recovery[after_admission]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_caller_sigkill_recovery[after_submission]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_caller_sigkill_recovery[after_acceptance]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_worker_sigkill_independent_result_commit",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_full_reply_route_retains_outbox",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_worker_revocation_becomes_explicit_failed_completion",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_path_fails_closed[wrong-scope]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_path_fails_closed[revoked]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_path_fails_closed[profile]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_path_fails_closed[provider]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_path_fails_closed[identity]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_path_fails_closed[changed-input]",
+          "owner": "integration.hive.test_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_dispatch_duplicate_and_native_caller_restart",
+          "owner": "integration.hive.test_m2_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_caller_kill_boundaries[after_payload_persist]",
+          "owner": "integration.hive.test_m2_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_caller_kill_boundaries[after_episode_commit]",
+          "owner": "integration.hive.test_m2_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_caller_kill_boundaries[after_formula]",
+          "owner": "integration.hive.test_m2_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_actual_caller_kill_boundaries[after_belief_commit]",
+          "owner": "integration.hive.test_m2_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_live_revocation_and_changed_intent_replay",
+          "owner": "integration.hive.test_m2_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_responses_views_and_traces_have_no_private_payloads_or_identifiers",
+          "owner": "integration.hive.test_m2_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_inference_replay_restart_and_attention_swap[sqlite]",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_inference_replay_restart_and_attention_swap[atomic-file-fixture]",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_actual_kills_keep_one_attempt_budget[after_attention_commit]",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_actual_kills_keep_one_attempt_budget[after_attempt_reservation]",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_actual_kills_keep_one_attempt_budget[after_kernel_return]",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_actual_kills_keep_one_attempt_budget[after_derived_commit]",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_actual_kills_keep_one_attempt_budget[after_feedback_commit]",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_privacy_current_auth_and_changed_intent",
+          "owner": "integration.hive.test_m3_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_progress_replay_restart_and_privacy[sqlite]",
+          "owner": "integration.hive.test_m3_1_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_progress_replay_restart_and_privacy[atomic-file-fixture]",
+          "owner": "integration.hive.test_m3_1_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_kill_then_stale_feedback_retirement[sqlite]",
+          "owner": "integration.hive.test_m3_1_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_kill_then_stale_feedback_retirement[atomic-file-fixture]",
+          "owner": "integration.hive.test_m3_1_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_evidence_kills_resume_same_observations[after_evidence_decision_commit]",
+          "owner": "integration.hive.test_m3_1_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_caller_evidence_kills_resume_same_observations[after_evidence_ack_commit]",
+          "owner": "integration.hive.test_m3_1_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_completed_execution_with_no_conclusion_is_explicit",
+          "owner": "integration.hive.test_m3_1_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_discovery_no_answers_restart_lag_rebuild_and_swap[1]",
+          "owner": "integration.hive.test_m5_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_discovery_no_answers_restart_lag_rebuild_and_swap[2]",
+          "owner": "integration.hive.test_m5_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_page-sqlite]",
+          "owner": "integration.hive.test_m5_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_page-atomic-file-fixture]",
+          "owner": "integration.hive.test_m5_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_result-sqlite]",
+          "owner": "integration.hive.test_m5_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_paged_caller_sigkill[after_lookup_result-atomic-file-fixture]",
+          "owner": "integration.hive.test_m5_integration",
+          "status": "PASS"
+        },
+        {
+          "name": "test_native_authority_privacy_and_request_binding",
+          "owner": "integration.hive.test_m5_integration",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "new_application_fixture_tests": 9,
+    "new_real_controlled_loop_test_methods": 11,
+    "existing_s01_tests": 32,
+    "existing_core_tests": 156,
+    "existing_native_provider_tests": 46,
+    "existing_native_hive_cases": 42,
+    "total_final_test_cases": 296,
+    "adopted_operations": 1,
+    "additional_operations": 0,
+    "whole_families_promoted": 0
+  },
+  "evidence_classes": {
+    "real": [
+      "native MeTTaClaw loop/parser/skill",
+      "original pinned NAL Truth_Deduction",
+      "PeTTa/SWI/Janus",
+      "DeTTa immutable payload storage",
+      "TLS/TCP and current bearer authorization",
+      "independent durable owner commits and SIGKILL"
+    ],
+    "fixtures": [
+      "external model responses and observation assertions",
+      "channel ingress/no-socket initialization",
+      "unused memory/history facade",
+      "generated local authority/CA/STVs",
+      "explicit corruption/capacity/failpoint test instrumentation"
+    ],
+    "reused": [
+      "Verified S01 native build and DeTTa binary; source and hashes rechecked",
+      "Historical S01 evidence preserved separately"
+    ],
+    "unrun": [
+      "DEFAULT_FULL_OMEGA_STARTUP",
+      "LIVE_HOSTED_MODEL",
+      "LIVE_CHANNELS",
+      "GENUINE_MULTI_HOST",
+      "REAL_CHAIN",
+      "POWER_LOSS",
+      "EMPTY_GLOBAL_CACHE"
+    ]
+  },
+  "missing_prerequisites": [],
+  "observation_timeouts": [],
+  "unresolved_executed_failures": [],
+  "resolved_development_failures": "development-corrections.json",
+  "decisions": [
+    "Application occurrence and projection records share caller-owned journal, with separate commits",
+    "Persist native parsed order before dispatch; replay accepted S01 batches before requesting a new model response",
+    "Current-authority Caller replay validates cached results and spends remaining original RPC budget",
+    "Reject unfinished mixed local-effect batch recovery; no general tool or hosted-model exactly-once claim",
+    "Retain exact S01 and distinct guarded PLN profiles, finite capacities and independent provider owners"
+  ],
+  "limitations": [
+    "Controlled composition only; full default/live startup remains separate",
+    "Same-host loopback TLS only; no multi-host or public service",
+    "Pure numerical computation may repeat within durable native attempt bound",
+    "No power-loss/fsync hardware or arbitrary-instruction crash claim",
+    "No automatic local fallback, exhausted-budget renewal, populated-state migration or broader NAL operation",
+    "Response lost before local acceptance is outside invocation identity guarantee",
+    "Already completed result revalidation can exhaust remaining budget; operator cannot reset it",
+    "Bounded session turn limit is durable and cannot be increased in place"
+  ],
+  "operator_recipe": {
+    "status": "PASS",
+    "placement": "same-host isolated HTTPS",
+    "command": [
+      "uv",
+      "run",
+      "--python",
+      "3.11",
+      "--locked",
+      "python",
+      "-m",
+      "integration.neoclaw.controlled_run",
+      "--placement",
+      "network",
+      "--evidence",
+      "artifacts/s01_1/final/operator-recipe-network.json"
+    ],
+    "artifact": "operator-recipe-network.json",
+    "logical_jobs": 5,
+    "model_contexts": 6,
+    "readiness": [
+      "HTTPS bound-port/PID",
+      "bounded worker PID"
+    ]
+  },
+  "artifacts": {
+    "application-budget.json": "72f2fdd82505dbcabf591bd0deeb0a14eea89afad8e5958a40292aff9974a45f",
+    "application-deadline.json": "1d801cf98de9df9e3dee792f917d76579a1720bdd1a3d726177613c152adc2cd",
+    "capacity.json": "75451dae99d8900ac261afa44eefb844f56f16e7ef8b5f247b5bf48722b84d5b",
+    "development-corrections.json": "6f2d04de6cda225fa6aa8ddf9c904656de01b038c86849e992a34f15a7a65048",
+    "development-mixed-source-run.log": "30edfbadc2b2589b36bc14ab38d6fc0753831bc3735d131c44ec1e1850ee2618",
+    "development-unit-failures.log": "07bb9c27529c7a7a6b498d4284f80e8a5bf6458b67b7017562c414693670ff8c",
+    "handoff-revocation-after_application_projection.json": "cc8c9d9bab732d150e3db67fc9f083a70376b74368b0285f092f67c8329acbd4",
+    "handoff-revocation-after_caller_completion.json": "cadc29eef4013803566f274b26a0687dd126caa5ca7f74da2cf6dbe85e824da1",
+    "malformed-payload.json": "b78f43bde868e1fe6d1c1b2ff365b13eb32a7230fcb05687ce46413c189ef67f",
+    "mixed-batch-recovery.json": "4f9f7224b35ea3fd9fa929c82e6cc76ea18d4f7cfb2428bd471fa4a89493bbf0",
+    "multi-turn.json": "1a24f0d0786fa9448a3844f40327d623f97c6e7637cc9e86f6cdbdebd6d25700",
+    "native-loop-kills.json": "1bbd8431c806a2e50f62025a7d6efcacd7ba5546cce0de74b5e9aa6c2b9d74ab",
+    "native-validation.json": "55cdbee2f3c4864d58cdf3fe665dbccea6fb6bbb50a9755dcb2631cafd6dd8f3",
+    "network-failures.json": "c0ab67a19bd9b5159515ecbd92a99fbba094860281602216181dd8054ff1b144",
+    "operator-recipe-network.json": "f092e3813648902719cd4d9249792cebba2002426c7b9813cec1897cb4f08981",
+    "regression-core.log": "205aaeee8709f2c6c64ed9ac734adf6a795320bf35ecd4abb3bae6eb4c9646d2",
+    "regression-hive.log": "162d9fd3eab8b8cb1253220d57d1bb8fb588fa41f9f1e1a8044d503b6880d8a6",
+    "regression-native.log": "0564b6b5c0e909b7e6a17a25247d7833c88c44cbfab262f3c17c447f31be1e59",
+    "s01-preflight.log": "b4a83a78bff0cb25dd9b615fe28526bb4ca8cae3cda4e47543245b05397a3e3a",
+    "s01-s01_1-tests.log": "e960b8f689aa3d6b4c30958448e03f12a04bd60d7f6355f2575603ce4055ca2a",
+    "second-position-recovery.json": "3d9f339c8f0caf4abd2f347af25f6023429cd5d9a3714e9108f09c0064905d58",
+    "source-state.json": "cc3c0786fd82866365871043e6b971340b938def2b1e6eaa7ac9a73b404ba0c1",
+    "startup-overlay.diff": "9ace5849ea4727053e54129c66418b1d4f64727dcf25392c222f33afb1df32dd"
+  }
+}

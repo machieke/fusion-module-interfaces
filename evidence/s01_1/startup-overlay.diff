@@ -1,0 +1,74 @@
+--- pinned/mettaclaw/src/skills.metta
++++ controlled/mettaclaw/src/skills.metta
+@@ -56,8 +56,10 @@
+ 
+ !(import_prolog_function call_with_inference_limit)
+ (= (metta $str)
+-   (let $code (sread $str)
+-        (repr (progn (call_with_inference_limit (Predicate (quote (eval $code $x))) 100000000) $x))))
++   (if (py-call (neoclaw_bridge.recognizes $str))
++       (py-call (neoclaw_bridge.invoke $str))
++       (let $code (sread $str)
++            (repr (progn (call_with_inference_limit (Predicate (quote (eval $code $x))) 100000000) $x)))))
+ 
+ (= (pin $x)
+    PIN-SUCCESS)
+--- pinned/mettaclaw/src/loop.metta
++++ controlled/mettaclaw/src/loop.metta
+@@ -52,7 +52,7 @@
+ (= (mettaclaw $k)
+    (progn (if (== $k 1) (progn (initLoop)
+                                (initMemory)
+-                               (initChannels)
++                               (initChannels) (change-state! &lastresults (py-call (loop_bridge.restore)))
+                                ;(remember "hello world")
+                                ;(promote "2026-07-20 02:45:46")
+                                ;(support "2026-05-06 11:57:19")
+@@ -75,7 +75,7 @@
+                                        ($_ (println! $lastmessage))
+                                        ($send (py-str ($prompt :-:-:-: $lastmessage)))
+                                        ($_ (println! (CHARS_SENT: (string_length $send) $send)))
+-                                       ($respi (if (and (visionChannelActive) (== 0 (% $k (visionRate))))
++                                       ($respi (if (py-call (loop_bridge.pending)) (py-call (loop_bridge.response)) (if (and (visionChannelActive) (== 0 (% $k (visionRate))))
+                                                    (py-call (lib_llm_ext.useClaudeYoutubeImage $send (visionChannel)))
+                                                    (if (== (provider) OpenAI)
+                                                        (useGPT (LLM) (maxOutputToken) (reasoningMode) $send)
+@@ -83,17 +83,17 @@
+                                                            (py-call (lib_llm_ext.useClaude $send))
+                                                            (if (== (provider) OpenRouter)
+                                                                (py-call (lib_llm_ext.useOpenRouter $send))
+-                                                               (py-call (lib_llm_ext.useMiniMax $send)))))))
++                                                               (py-call (lib_llm_ext.useMiniMax $send))))))))
+                                        ($resp (py-call (helper.balance_parentheses $respi)))
+                                        ($response (if (== "(" (first_char $resp)) $resp (progn (println! $resp) (repr (REMEMBER:OUTPUT_NOTHING_ELSE_THAN: ((skill arg) ...))))))
+                                        ($sexpr (catch (sread $response)))
+                                        ($_ (change-state! &error ()))
+                                        ($_ (HandleError MULTI_COMMAND_FAILURE_NOTHING_WAS_DONE_PLEASE_CORRECT_PARENTHESES_AND_USE_QUOTES_AND_RETRY $response $sexpr))
+-                                       ($_ (println! (RESPONSE: $sexpr)))
+-                                       ($results (RESULTS: (collapse (let $s (superpose $sexpr) (COMMAND_RETURN: ($s (HandleError SINGLE_COMMAND_FORMAT_ERROR_NOTHING_WAS_DONE_PLEASE_FIX_AND_RETRY $s (catch (let $R (eval $s) (py-call (helper.normalize_string $R)))))))))))
++                                       ($_ (println! (RESPONSE: $sexpr))) ($indexed (py-call (loop_bridge.accept $respi $sexpr)))
++                                       ($results (RESULTS: (collapse (let ($position $s) (superpose $indexed) (COMMAND_RETURN: ($s (HandleError SINGLE_COMMAND_FORMAT_ERROR_NOTHING_WAS_DONE_PLEASE_FIX_AND_RETRY $s (catch (let* (($_ (py-call (loop_bridge.begin $position $s))) ($R (eval $s)) ($_ (py-call (loop_bridge.end $position)))) (py-call (helper.normalize_string $R)))))))))))
+                                        ($_ (println! $results)))
+                                       (progn (if (or $msgnew  (not (== $sexpr ()))) (addToHistory $msg $response $sexpr $msgnew) _)
+-                                             (change-state! &lastresults (string-safe (repr $results)))))
++                                             (progn (change-state! &lastresults (string-safe (repr $results))) (py-call (loop_bridge.finish (get-state &lastresults))))))
+                                 (if (> (get_time) (get-state &nextWakeAt))
+                                     (change-state! &loops (+ 1 (maxWakeLoops))) _)))
+                       (bound-space! &persistent (maxPersistentAtomsChars))
+@@ -101,4 +101,4 @@
+                       (sleep (sleepInterval))
+                       (cut)
+                       (gc)
+-                      (mettaclaw (+ 1 $k))))))
++                      (if (py-call (loop_bridge.more)) (mettaclaw (+ 1 $k)) S01-BOUNDED-STOP)))))
+--- pinned/PeTTa/lib/lib_llm.metta
++++ controlled/PeTTa/lib/lib_llm.metta
+@@ -23,7 +23,7 @@
+ !(py-eval "setattr(__import__('builtins'),'make_openai_responses_kwargs',(lambda m,t,e,p:{'model':m,'input':p,'max_output_tokens':t,'reasoning':{'effort':e}})) or 0")
+ !(py-eval "setattr(__import__('builtins'),'make_openai_embedding_kwargs',(lambda x:{'model':'text-embedding-3-large','input':x})) or 0")
+ 
+-!(change-state! &openai_client (py-call (openai.OpenAI)))
++; controlled composition: hosted OpenAI client is not initialized
+ 
+ ;Function to prompt GPT via OpenAI API:
+ (= (useGPT $prompt)

@@ -15,14 +15,7 @@ from fusion.contracts import digest, require
 from fusion import neoclaw_contracts as c
 
 ROOT = Path(__file__).resolve().parents[2]
-ORIGINAL = '''(= (metta $str)
-   (let $code (sread $str)
-        (repr (progn (call_with_inference_limit (Predicate (quote (eval $code $x))) 100000000) $x))))'''
-ADAPTED = '''(= (metta $str)
-   (if (py-call (neoclaw_bridge.recognizes $str))
-       (py-call (neoclaw_bridge.invoke $str))
-       (let $code (sread $str)
-            (repr (progn (call_with_inference_limit (Predicate (quote (eval $code $x))) 100000000) $x)))))'''
+from .startup_overlay import adapted_skill
 
 
 def run(runtime_file, command, caller_config=None, denied_paths=()):
@@ -41,9 +34,8 @@ def run(runtime_file, command, caller_config=None, denied_paths=()):
         if caller_config:
             env['NEOCLAW_S01_CALLER'] = str(Path(caller_config).resolve())
             original = skills.read_text()
-            require(original.count(ORIGINAL) == 1, 'UNSUPPORTED_PROFILE')
             skills = directory / 'skills.metta'
-            skills.write_text(original.replace(ORIGINAL, ADAPTED))
+            skills.write_text(adapted_skill(original))
         lines = ['!(import! &self (library lib_import))', '!(import! &self (library lib_patrick))']
         imports = [omega/'src/helper.py', omega/'src/utils.metta', skills, omega/'lib_nal.metta', ROOT/'integration/neoclaw/neoclaw_capture.py']
         if caller_config:

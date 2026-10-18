@@ -1,5 +1,7 @@
 # MeTTaClaw neoclaw → Fusion mapping review
 
+**S01.1 application update:** the same operation now has controlled native `mettaclaw` loop, next-context consumption, durable turn/position identity and real process-kill recovery evidence under local and HTTPS placement. See [S01.1 report and reproduction](s01_1.md). Model/channel/unused-memory fixtures are explicit; default full Omega and live providers remain unrun.
+
 **S01 implementation update:** the exact `neoclaw-nal-truth-deduction/1` operation now has executed original-native, adapted-local and authenticated same-host HTTPS evidence. See [S01 report and reproduction](s01.md) and `operation_adoptions` in the [ledger](mapping-ledger.json). No entire family or broader Omega integration is claimed.
 
 The review narrative and counts below are the **historical mapping snapshot at `c305a66fe1eda17a47134ec56d4fefdf55354147`**, preserved separately from S01.

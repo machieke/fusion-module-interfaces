@@ -7637,7 +7637,35 @@
         "Independent acceptance/output/payload/outbox/mailbox/caller receipt/ack commits",
         "Durable attempts/deadline across SIGKILL",
         "One logical completion/result on replay; repeat pure computation permitted"
-      ]
+      ],
+      "application_adoption": {
+        "slice": "S01.1",
+        "status": "IMPLEMENTED_AND_EXECUTED_CONTROLLED_NATIVE_LOOP",
+        "starting_commit": "64d2d1583376f37811d37cb7f2557145690b3b00",
+        "entrypoint": "src/loop.metta::mettaclaw",
+        "startup": "integration.neoclaw.native_loop; source-checked disposable overlay",
+        "identity": "caller-owned durable session + accepted turn + ordered command position",
+        "context_handoff": "native RESULTS -> lastresults -> getContext -> external model observation",
+        "placement": [
+          "local composition",
+          "authenticated same-host isolated HTTPS composition"
+        ],
+        "evidence": "../../../evidence/s01_1/verification.json",
+        "report": "s01_1.md",
+        "test_methods": {
+          "fixture_application_contracts": 9,
+          "real_controlled_native_loop": 11
+        },
+        "qualifications": [
+          "Deterministic external model, channel ingress and unused-memory fixtures",
+          "Actual native loop, parser, skill, original NAL, DeTTa and verified HTTPS",
+          "No default full Omega startup or live model/channel claim",
+          "Pending mixed local-effect batch recovery explicitly unsupported",
+          "Existing finite budgets, original deadlines and current authorization retained"
+        ],
+        "adopted_operation_count_delta": 0,
+        "whole_family_count_delta": 0
+      }
     }
   ]
 }

@@ -1,0 +1,46 @@
+[
+  {
+    "kind": "evidence-assembly",
+    "failure": "A line-only test-log parser omitted two passing native-provider case records because their output wrapped",
+    "resolution": "Capture all test start records and require the full suite OK summary; all 46 case names now included"
+  },
+  {
+    "kind": "setup",
+    "failure": "Host Python was too old for dict[str, Any]",
+    "resolution": "Used the existing locked uv Python 3.11 environment; embedded native Python remains 3.12.12"
+  },
+  {
+    "kind": "setup",
+    "failure": "Temporary probe outside repository import path could not import tests.neoclaw_support",
+    "resolution": "Set PYTHONPATH to repository for that scratch probe; supported commands use python -m from repository root"
+  },
+  {
+    "kind": "native-startup",
+    "failure": "is/2: Type error: character expected, found maxFeedback",
+    "resolution": "Fixture memory initializer now includes the original empty configuration sentinel before configure",
+    "trace": "transcribed from disposable probe log"
+  },
+  {
+    "kind": "native-startup",
+    "failure": "split_string/4: Type error: character_code expected, found py-str",
+    "resolution": "Loaded checked original PeTTa lib_llm string helpers; suppressed only hosted OpenAI client initialization",
+    "trace": "transcribed from disposable probe log"
+  },
+  {
+    "kind": "test-oracle",
+    "failure": "Changed-input oracle was also present twice in its input premises, making substring-count assertion ambiguous",
+    "resolution": "Changed generated input vector; compare original native oracle and exact feedback multiplicities"
+  },
+  {
+    "kind": "unit-tests",
+    "failure": "Three absence checks assumed provider tables existed before any provider operation; constructor refusal also emitted unclosed lock warnings",
+    "resolution": "Assert absent counts as zero and close application DB/lock on construction refusal",
+    "trace": "development-unit-failures.log"
+  },
+  {
+    "kind": "invalid-development-run",
+    "failure": "A 17-method development run overlapped an application binding change and a restart returned CONFLICT",
+    "resolution": "Discarded mixed-source acceptance evidence; subsequent stable-source 20-method run and final hashed-source 52-method run passed",
+    "trace": "development-mixed-source-run.log"
+  }
+]

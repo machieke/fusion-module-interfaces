@@ -1,0 +1,46 @@
+test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn (tests.test_neoclaw_application.ApplicationContracts.test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn) ... <python-runtime>/lib/python3.11/traceback.py:237: ResourceWarning: unclosed file <_io.TextIOWrapper name='<generated-root>/caller/caller.db.application.lock' mode='a' encoding='UTF-8'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ERROR
+test_exclusive_application_route_and_finite_admission (tests.test_neoclaw_application.ApplicationContracts.test_exclusive_application_route_and_finite_admission) ... ok
+test_invalid_selected_batch_is_rejected_before_any_execution (tests.test_neoclaw_application.ApplicationContracts.test_invalid_selected_batch_is_rejected_before_any_execution) ... ERROR
+test_mixed_pending_batch_cannot_be_replayed (tests.test_neoclaw_application.ApplicationContracts.test_mixed_pending_batch_cannot_be_replayed) ... <python-runtime>/lib/python3.11/traceback.py:237: ResourceWarning: unclosed file <_io.TextIOWrapper name='<generated-root>/caller/caller.db.application.lock' mode='a' encoding='UTF-8'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_new_identical_turn_is_not_replay_and_no_config_rewrite (tests.test_neoclaw_application.ApplicationContracts.test_new_identical_turn_is_not_replay_and_no_config_rewrite) ... ok
+test_ordered_identity_and_exact_pending_replay_conflict (tests.test_neoclaw_application.ApplicationContracts.test_ordered_identity_and_exact_pending_replay_conflict) ... ERROR
+test_restore_requires_current_authority_and_preserves_projection (tests.test_neoclaw_application.ApplicationContracts.test_restore_requires_current_authority_and_preserves_projection) ... ok
+test_startup_overlay_refuses_unknown_source (tests.test_neoclaw_application.ApplicationContracts.test_startup_overlay_refuses_unknown_source) ... ok
+
+======================================================================
+ERROR: test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn (tests.test_neoclaw_application.ApplicationContracts.test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_neoclaw_application.py", line 79, in test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn
+    self.assertEqual(self.h.counts()['jobs'],0)
+                     ~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'jobs'
+
+======================================================================
+ERROR: test_invalid_selected_batch_is_rejected_before_any_execution (tests.test_neoclaw_application.ApplicationContracts.test_invalid_selected_batch_is_rejected_before_any_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_neoclaw_application.py", line 87, in test_invalid_selected_batch_is_rejected_before_any_execution
+    self.assertEqual(self.h.counts()['jobs'],0)
+                     ~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'jobs'
+
+======================================================================
+ERROR: test_ordered_identity_and_exact_pending_replay_conflict (tests.test_neoclaw_application.ApplicationContracts.test_ordered_identity_and_exact_pending_replay_conflict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repository>/tests/test_neoclaw_application.py", line 42, in test_ordered_identity_and_exact_pending_replay_conflict
+    self.assertEqual(self.h.counts()['jobs'],0)
+                     ~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'jobs'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.731s
+
+FAILED (errors=3)
