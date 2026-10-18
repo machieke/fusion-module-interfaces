@@ -1,0 +1,42 @@
+{
+  "scope": "Development failures retained separately from final passing methods",
+  "corrections": [
+    {
+      "failure": "Temporary smoke driver lacked PYTHONPATH",
+      "resolution": "Invoked with repository root on Python path; supported module recipes already use -m"
+    },
+    {
+      "failure": "Original native oracle could not import DDGS: Janus did not use the extra PYTHONPATH",
+      "resolution": "Trusted original-only fixture bootstrap adds the isolated SDK site path; adapted caller still cannot import DDGS"
+    },
+    {
+      "failure": "Fixture composition appended duplicate operation permission because Harness shared method lists",
+      "resolution": "Composition copies and deduplicates permission lists; one revocation now removes the permission"
+    },
+    {
+      "failure": "Negative-test reporter queried app_occurrences after early profile rejection",
+      "resolution": "Reports only the verified rejection and zero SDK calls; does not assume a schema exists"
+    },
+    {
+      "failure": "Restarted controlled operator saw stale readiness file with old PID",
+      "resolution": "Existing lifecycle removes its own old readiness marker before launching the new operator"
+    },
+    {
+      "failure": "Capacity test used a different route and incorrectly expected global capacity",
+      "resolution": "Competing test caller occupies the same route; per-route mailbox capacity and recovery pass"
+    },
+    {
+      "failure": "Preflight source cleanliness audit saw generated helper bytecode",
+      "resolution": "Removed only the preflight-generated websearch.cpython-312.pyc cache; tracked upstream source remained unchanged"
+    }
+  ],
+  "upstream_probe": {
+    "backend": "Brave",
+    "status": 429,
+    "result": "FAIL",
+    "retry": false,
+    "selected_after_admission": false
+  },
+  "observation_timeouts": [],
+  "missing_supported_prerequisites": []
+}

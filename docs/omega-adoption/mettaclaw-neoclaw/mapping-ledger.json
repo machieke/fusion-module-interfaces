@@ -7666,6 +7666,75 @@
         "adopted_operation_count_delta": 0,
         "whole_family_count_delta": 0
       }
+    },
+    {
+      "slice": "S02",
+      "operation": "web_search",
+      "profile": "external-web-search/1",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "component_ids": [
+        "channel.search",
+        "web.provider"
+      ],
+      "exact_symbols": [
+        "src/channels.metta::search",
+        "channels/websearch.py::search_"
+      ],
+      "contract": "One explicitly shareable query, native max_results=10; original pinned helper and SDK; first durably captured bounded observation is immutable",
+      "provider": "Real pinned helper + DDGS 9.16.0 / DuckDuckGo HTML; no upstream version claimed",
+      "storage_provider": "real pinned DeTTa",
+      "exercised_ports": [
+        "execution.submit",
+        "execution.status",
+        "execution.result",
+        "atom.storage.get",
+        "agent.messaging.poll",
+        "agent.messaging.ack"
+      ],
+      "internal_effects": [
+        "Execution captures selected observation",
+        "AtomStorage.create result",
+        "Messaging.accept completion"
+      ],
+      "placement": [
+        "original native local (recorded SDK rows)",
+        "adapted controlled native loop local (live and recorded)",
+        "authenticated same-host isolated HTTPS (live and recorded)"
+      ],
+      "multi_host": "NOT_RUN; loopback-only supported profile",
+      "fallback": false,
+      "private_omega_stores_accessed": false,
+      "coverage": {
+        "adopted_operations": 1,
+        "whole_families_promoted": 0,
+        "whole_omega_integrated": false
+      },
+      "source_pin": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "evidence": "../../../evidence/s02/verification.json",
+      "report": "s02.md",
+      "status": "IMPLEMENTED_AND_EXECUTED_CONTROLLED_NATIVE_LOOP_WITH_LIVE_EXTERNAL_SEARCH",
+      "test_methods": {
+        "recorded_contracts": 9,
+        "real_controlled_loop_with_recorded_external_responses": 13
+      },
+      "real_external_search_sessions": 2,
+      "application_composition": "controlled-native-loop/2",
+      "qualifications": [
+        "Generated exact-allowlist public query only; local test policy and CA",
+        "Deterministic model, channel and unused-memory fixtures; actual native loop, parser, skill, SDK, DeTTa and HTTPS",
+        "Recorded SDK rows are fixtures and distinct from the two live gates",
+        "Same-host isolation only; full default Omega, hosted models and channels unrun",
+        "Fresh journals only; no populated-state migration",
+        "No exactly-once upstream or deterministic web-content claim; protocol-level retries are bounded, wire transmissions unmeasured"
+      ],
+      "guarantees": [
+        "Existing shared occurrence, caller receipt and owner state machines; no lifecycle clone",
+        "Current authority/disclosure and descriptor/profile validation at admission, dispatch, release, replay and native handoff",
+        "Independent acceptance, attempt, capture, payload, outbox, delivery, receipt and acknowledgment commits",
+        "SIGKILL before capture spends the sole SDK reservation; after capture reuses exact bytes without another query",
+        "Original deadlines and durable RPC budgets survive restart",
+        "S01 and S02 in the same controlled session with identical local/network caller code"
+      ]
     }
   ]
 }

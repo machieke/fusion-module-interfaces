@@ -17,7 +17,7 @@ from tests.neoclaw_support import Harness, ROOT, RUNTIME, COMMAND, GOLDEN
 
 
 class ControlledRun:
-    def __init__(self, placement='network', responses=None, expected=None, capacity=8):
+    def __init__(self, placement='network', responses=None, expected=None, capacity=8, search=None):
         self.h = Harness(real=True, capacity=capacity)  # Generated credentials/state only.
         self.processes = []
         self.logs = []
@@ -33,6 +33,10 @@ class ControlledRun:
             denied_paths=[str(self.h.server_root), str(Path.home()/'work/takopi/mettaclaw')] if placement == 'network' else [])
         self.model = dict(responses=responses or [COMMAND, ''], expected_feedback=expected or {'1': [[GOLDEN, 1]]},
                           log=str(root/'model.jsonl'))
+        if search is not None:
+            # Trusted composition extension, before any application acceptance.
+            from .search_composition import configure
+            configure(self, search)
         self.save()
 
     def save(self):
@@ -49,6 +53,7 @@ class ControlledRun:
 
     def operator(self):
         ready = self.h.server_root/'operator-ready.json'
+        ready.unlink(missing_ok=True)  # A restarted operator must publish its own PID.
         process = self.spawn('integration.neoclaw.operator', [self.h.config_path, '--ready', ready, '--seconds', '120'], 'operator')
         self.h.wait_file(ready, process)
         assert json.loads(ready.read_text())['pid'] == process.pid

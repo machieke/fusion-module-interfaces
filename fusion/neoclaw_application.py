@@ -12,6 +12,7 @@ import uuid
 
 from .contracts import canonical, require
 from . import neoclaw_contracts as c
+from . import neoclaw_search_contracts as s, neoclaw_operations as ops
 from .neoclaw_client import Caller
 from .registry import selection_token
 
@@ -23,18 +24,28 @@ def selected_expression(command):
             and re.match(r'^\s*\(\s*Truth_Deduction(?:\s|\))', command[1]) is not None)
 
 
+def caller_binding(caller):
+    value = {k: caller.config[k] for k in ('database', 'principal', 'scope', 'reply_route', 'sharing', 'max_calls', 'max_attempts')}
+    value['selections'] = {k: selection_token(v) for k, v in caller.chosen.items()}
+    return value
+
+
 class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] == 'controlled-native-loop/1', 'UNSUPPORTED_PROFILE')
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION), 'UNSUPPORTED_PROFILE')
+        self.two_operations = self.config['composition'] == ops.APPLICATION
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
         try:
             cfg = caller.config
-            binding = {k: cfg[k] for k in ('database', 'principal', 'scope', 'reply_route', 'sharing', 'max_calls', 'max_attempts')}
-            binding['selections'] = {k: selection_token(v) for k, v in caller.chosen.items()}
+            binding = caller_binding(caller)
+            if self.two_operations:
+                search_caller = Caller(self.config['caller_config'], profile=s.PROFILE)
+                try: binding.update(composition=ops.APPLICATION, search=caller_binding(search_caller))
+                finally: search_caller.close()
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -49,6 +60,11 @@ class Application:
             self.db.row_factory = sqlite3.Row
             self.db.execute('PRAGMA journal_mode=WAL')
             self.db.execute('PRAGMA synchronous=FULL')
+            if self.two_operations:
+                # No adoption of pre-existing standalone caller rows as app intents.
+                has_session = self.db.execute("SELECT 1 FROM sqlite_master WHERE name='app_session'").fetchone()
+                require(has_session or self.db.execute('SELECT count(*) FROM caller_requests').fetchone()[0] == 0,
+                        'UNSUPPORTED_PROFILE')
             self.db.executescript('''
                 CREATE TABLE IF NOT EXISTS app_session (id TEXT PRIMARY KEY, binding TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS app_turns (
@@ -69,7 +85,7 @@ class Application:
             pending = self.pending()
             if pending:
                 # No replay of arbitrary local effects, even if their old result exists.
-                require(all(selected_expression(x) for x in json.loads(pending['commands'])), 'UNSUPPORTED_PROFILE')
+                require(all(self.intent(x) is not None for x in json.loads(pending['commands'])), 'UNSUPPORTED_PROFILE')
         except BaseException:
             self.db.close()
             self.lock.close()
@@ -81,6 +97,21 @@ class Application:
 
     def pending(self):
         return self.db.execute('SELECT * FROM app_turns WHERE projection IS NULL ORDER BY id LIMIT 1').fetchone()
+
+    def intent(self, command):
+        module, arguments = c, None
+        if selected_expression(command):
+            require(len(command) == 2)
+            arguments = c.parse_expression(command[1])
+        elif self.two_operations and isinstance(command, list) and command and command[0] == 'search':
+            require(len(command) == 2)
+            module, arguments = s, s.arguments(dict(query=command[1], max_results=10))
+            current = json.loads(Path(self.config['caller_config']).read_text())
+            require(arguments['query'] in current.get('search_queries', []), 'UNAUTHORIZED')
+        if arguments is None: return None
+        # The legacy column name remains "premises"; /2 fresh journals explicitly
+        # store a tagged intent there. Version 1 rows are never reinterpreted.
+        return dict(profile=module.PROFILE, operation=module.OPERATION, arguments=arguments) if self.two_operations else arguments
 
     def more(self):
         if self.pending() is not None:
@@ -97,11 +128,10 @@ class Application:
         intents = []
         for command in commands:
             require(type(command) is list and command and type(command[0]) is str)
-            if selected_expression(command):
-                require(len(command) == 2)
-                intents.append(c.parse_expression(command[1]))
-            else:
-                intents.append(None)
+            intents.append(self.intent(command))
+        if self.two_operations:
+            require(len({x['profile'] for x in intents if x is not None}) <= 1, 'UNSUPPORTED_PROFILE')
+            require(sum(x is not None and x['profile'] == s.PROFILE for x in intents) <= 2, 'OVERLOADED')
         encoded = canonical(commands).decode()
         with self.db:
             self.db.execute('BEGIN IMMEDIATE')
@@ -133,19 +163,34 @@ class Application:
         self.current = (pending['id'], position)
 
     def _run(self, row):
+        intent = json.loads(row['premises'])
+        module = ops.contract(intent['profile']) if self.two_operations else c
+        if self.two_operations:
+            c.fields(intent, 'profile operation arguments')
+            require(intent['operation'] == module.OPERATION, 'CONFLICT')
+            if module is s:
+                current = json.loads(Path(self.config['caller_config']).read_text())
+                require(intent['arguments']['query'] in current.get('search_queries', []), 'UNAUTHORIZED')
         caller = Caller(self.config['caller_config'], self.hook,
-                        invocation=dict(request_id=row['id'], deadline_ms=row['deadline']))
+                        invocation=dict(request_id=row['id'], deadline_ms=row['deadline']), profile=module.PROFILE)
         try:
-            current = {k: caller.config[k] for k in ('database', 'principal', 'scope', 'reply_route', 'sharing', 'max_calls', 'max_attempts')}
-            current['selections'] = {k: selection_token(v) for k, v in caller.chosen.items()}
-            require(all(self.binding[k] == value for k, value in current.items()), 'CONFLICT')
-            return caller.run(json.loads(row['premises']))
+            current = caller_binding(caller)
+            expected = self.binding['search'] if module is s else self.binding
+            require(all(expected[k] == value for k, value in current.items()), 'CONFLICT')
+            return caller.run(intent['arguments'] if self.two_operations else intent)
         finally: caller.close()
 
     def invoke(self, expression):
+        return self._invoke(['metta', expression])
+
+    def search(self, query):
+        require(self.two_operations, 'UNSUPPORTED_PROFILE')
+        return self._invoke(['search', query])
+
+    def _invoke(self, command):
         require(self.current is not None, 'CONFLICT')
         row = self.db.execute('SELECT * FROM app_occurrences WHERE turn=? AND position=?', self.current).fetchone()
-        require(row is not None and row['premises'] == canonical(c.parse_expression(expression)).decode(), 'CONFLICT')
+        require(row is not None and row['premises'] == canonical(self.intent(command)).decode(), 'CONFLICT')
         result = self._run(row)  # Includes current authority and receipt/ack checks on replay.
         self.hook('after_caller_completion')
         require(row['result'] is None or row['result'] == result, 'CONFLICT')
@@ -165,6 +210,9 @@ class Application:
         row = self.pending()
         require(row is not None and type(projection) is str and len(projection.encode()) <= 50000, 'CONFLICT')
         require(self.db.execute('SELECT count(*) FROM app_occurrences WHERE turn=? AND done=0', (row['id'],)).fetchone()[0] == 0, 'NOT_AVAILABLE')
+        if self.two_operations:
+            for occurrence in self.db.execute('SELECT * FROM app_occurrences WHERE turn=? AND premises IS NOT NULL ORDER BY position', (row['id'],)).fetchall():
+                require(self._run(occurrence) == occurrence['result'], 'NOT_AVAILABLE')
         with self.db:
             self.db.execute('UPDATE app_turns SET projection=? WHERE id=?', (projection, row['id']))
         self.hook('after_application_projection')

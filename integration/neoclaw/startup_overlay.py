@@ -37,3 +37,5 @@ def adapted_loop(source):
     for before, after in edits:
         source = replace_once(source, before, after)
     return source
+def adapted_channels(source):
+    return replace_once(source, '(py-call (websearch.search $msg))', '(py-call (loop_bridge.search $msg))')

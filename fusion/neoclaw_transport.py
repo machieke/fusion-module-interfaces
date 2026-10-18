@@ -7,6 +7,7 @@ import sqlite3
 
 from .contracts import ContractError, canonical, require
 from . import neoclaw_contracts as c
+from . import neoclaw_search_contracts as s, neoclaw_operations as ops
 from .registry import selection_token
 from .responses import validate_reply
 
@@ -28,12 +29,14 @@ def checked_reply(request, reply, chosen, correlations):
     # Reuse the existing M1 operation/receipt validators. S01 adds only durable
     # attempt/failure metadata to status, validated before the M1 status shape.
     extra = {}
+    module = ops.from_chosen(chosen)
     if request['operation'] == 'status' and type(reply) is dict and 'ok' in reply:
         try:
             value = dict(reply['ok'])
             extra = {k: value.pop(k) for k in ('attempts', 'failure_reason')}
-            require(type(extra['attempts']) is int and 0 <= extra['attempts'] <= c.MAX_ATTEMPTS, 'NOT_AVAILABLE')
-            require(extra['failure_reason'] in (None, 'attempt-budget-exhausted'), 'NOT_AVAILABLE')
+            require(type(extra['attempts']) is int and 0 <= extra['attempts'] <= module.MAX_ATTEMPTS, 'NOT_AVAILABLE')
+            reasons = {None, *s.FAILURES} if module is s else {None, 'attempt-budget-exhausted'}
+            require(type(extra['failure_reason']) in (str, type(None)) and extra['failure_reason'] in reasons, 'NOT_AVAILABLE')
             reply = {**reply, 'ok': value}
         except (KeyError, TypeError, ValueError):
             raise ContractError('NOT_AVAILABLE') from None
@@ -48,7 +51,7 @@ class Local:
 
     def invoke(self, request):
         from .neoclaw import NalService
-        c.validate(request, self.chosen)
+        ops.from_chosen(self.chosen).validate(request, self.chosen)
         service = NalService(self.config)
         try:
             try:
@@ -73,7 +76,7 @@ class Network:
         self.correlations = {}
 
     def invoke(self, request):
-        c.validate(request, self.chosen)
+        ops.from_chosen(self.chosen).validate(request, self.chosen)
         conn = http.client.HTTPSConnection(self.endpoint['host'], self.endpoint['port'],
                                           timeout=self.timeout, context=self.context)
         try:
@@ -81,8 +84,9 @@ class Network:
                 'Authorization': 'Bearer ' + self.credential, 'Content-Type': 'application/json'})
             response = conn.getresponse()
             require(response.status in (200, 400, 401, 403, 503), 'NOT_AVAILABLE')
-            raw = response.read(16385)
-            require(len(raw) <= 16384, 'NOT_AVAILABLE')
+            limit = 65536 if ops.from_chosen(self.chosen) is s else 16384
+            raw = response.read(limit+1)
+            require(len(raw) <= limit, 'NOT_AVAILABLE')
             reply = json_loads(raw)
         except (OSError, http.client.HTTPException, ValueError, ContractError):
             raise ContractError('NOT_AVAILABLE') from None

@@ -22,11 +22,24 @@ def call(method, *args):
         # No Python exceptions/provider paths/credentials become native tool output.
         code = exc.code if isinstance(exc, ContractError) else 'NOT_AVAILABLE'
         config = json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
-        Path(config['status_file']).write_text(json.dumps(dict(status='PENDING_OR_FAILED', code=code)))
+        status = dict(status='PENDING_OR_FAILED', code=code)
+        from fusion.adapters.neoclaw_search import SearchFailure
+        if isinstance(exc, SearchFailure): status['failure_reason'] = exc.reason
+        Path(config['status_file']).write_text(json.dumps(status))
         os._exit(2)
 
 
-def start(): return more()
+def start():
+    result = more()
+    if _app.two_operations:
+        import importlib.util
+        from fusion.contracts import require
+        available = importlib.util.find_spec('ddgs') is not None
+        require(not available, 'UNSUPPORTED_PROFILE')
+        Path(_app.config['workdir'], 'caller-boundary.json').write_text(json.dumps(dict(
+            search_sdk_importable=available,
+            denied_paths_visible=[str(p) for p in _app.config.get('denied_paths', []) if Path(p).exists() and any(Path(p).iterdir())])))
+    return result
 def restore(): return call('restore')
 def pending(): return call('pending') is not None
 def response(): return call('pending')['response']
@@ -35,6 +48,7 @@ def begin(position, command): return call('begin', position, command) is None
 def end(position): return call('end', position) is None
 def finish(projection): return call('finish', projection) is None
 def invoke(expression): return call('invoke', expression)
+def search(query): return call('search', query)
 
 
 def more():

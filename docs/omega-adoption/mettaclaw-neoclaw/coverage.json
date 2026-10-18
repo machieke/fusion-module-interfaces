@@ -156,13 +156,16 @@
   "mapping_snapshot_commit": "c305a66fe1eda17a47134ec56d4fefdf55354147",
   "operation_adoptions": {
     "profiles": [
-      "neoclaw-nal-truth-deduction/1"
+      "neoclaw-nal-truth-deduction/1",
+      "external-web-search/1"
     ],
-    "adopted_operations": 1,
+    "adopted_operations": 2,
     "whole_families_promoted": 0,
-    "explanation": "Historical 105-row classifications and 9/15 semantic coverage remain unchanged; this separate executed operation is not family conformance.",
+    "explanation": "Historical 105-row classifications and 9/15 semantic coverage remain unchanged. Two separately evidenced operations do not imply family conformance or a product completion fraction.",
     "evidence": "../../../evidence/s01/verification.json",
     "application_evidence": "../../../evidence/s01_1/verification.json",
-    "application_scope": "Same operation through controlled native loop, durable occurrence identity and result recovery; full live stack unrun"
+    "application_scope": "Both operations use the controlled native loop; S02 has live external search locally and over same-host HTTPS, with explicit model/channel/unused-memory fixtures. Default full Omega remains unrun.",
+    "s02_evidence": "../../../evidence/s02/verification.json",
+    "s02_report": "s02.md"
   }
 }

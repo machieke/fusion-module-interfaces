@@ -1,0 +1,479 @@
+{
+  "schema": "omega-s02-executed-gates/1",
+  "recorded_at": "2026-10-18T08:22:45.003445+00:00",
+  "outcome": "S02_REQUIRED_GATES_PASS",
+  "operation": "web_search",
+  "profile": "external-web-search/1",
+  "starting_commit": "58a5855ea55091c8f15e86d8293e519494bf728d",
+  "source": "source-state.json",
+  "gates": [
+    {
+      "gate": "BASELINE_SOURCE",
+      "result": "PASS",
+      "evidence": [
+        "starting-state.json",
+        "source-state.json",
+        "s01-s01_1-tests.log",
+        "regression-core.log",
+        "regression-native.log",
+        "regression-hive.log"
+      ]
+    },
+    {
+      "gate": "S02_CONTRACT",
+      "result": "PASS",
+      "evidence": [
+        "final-tests-02.log",
+        "sdk-source.json",
+        "native-disclosure.json",
+        "source-state.json"
+      ]
+    },
+    {
+      "gate": "LIFECYCLE_REUSE",
+      "result": "PASS",
+      "evidence": [
+        "original-mixed-local-https.json",
+        "caller-loop-recovery.json",
+        "live-local.json",
+        "live-https-recovery.json"
+      ]
+    },
+    {
+      "gate": "ORIGINAL_COMPAT",
+      "result": "PASS",
+      "evidence": [
+        "original-mixed-local-https.json",
+        "empty-versus-failure.json",
+        "untrusted-text.json"
+      ]
+    },
+    {
+      "gate": "LOCAL_LIVE",
+      "result": "PASS",
+      "evidence": [
+        "live-local.json"
+      ]
+    },
+    {
+      "gate": "HTTPS_LIVE",
+      "result": "PASS",
+      "evidence": [
+        "live-https-recovery.json"
+      ]
+    },
+    {
+      "gate": "OBSERVATION_RECOVERY",
+      "result": "PASS",
+      "evidence": [
+        "worker-process-kills.json",
+        "caller-loop-recovery.json",
+        "changing-observation.json",
+        "live-https-recovery.json",
+        "supervised-timeout.json"
+      ]
+    },
+    {
+      "gate": "AUTH_UNTRUSTED_DATA",
+      "result": "PASS",
+      "evidence": [
+        "current-revocation.json",
+        "network-negative.json",
+        "native-disclosure.json",
+        "untrusted-text.json",
+        "malformed-and-mixed.json",
+        "durable-bounds.json"
+      ]
+    },
+    {
+      "gate": "REPRO_SCOPE",
+      "result": "PASS",
+      "evidence": [
+        "sdk-build.log",
+        "sdk-source.json",
+        "source-state.json",
+        "capacity-recovery.json",
+        "recorded-operator-recovery.json"
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "name": "regression-core",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_adapters",
+        "tests.test_contract",
+        "tests.test_m11",
+        "tests.test_m2",
+        "tests.test_m3",
+        "tests.test_m3_1_attention",
+        "tests.test_m3_1_compat",
+        "tests.test_m3_1_delivery",
+        "tests.test_m3_attention",
+        "tests.test_m4_chain",
+        "tests.test_m5",
+        "tests.test_m5_boundaries",
+        "tests.test_responses"
+      ],
+      "log": "regression-core.log",
+      "returncode": 0,
+      "seconds": 139.5904368115589,
+      "unique_methods": 156,
+      "classification": "historical regression; no new chain or cognition"
+    },
+    {
+      "name": "regression-native-providers",
+      "argv": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.pln.test_revision",
+        "integration.pln.test_recovery",
+        "integration.pln.test_deduction",
+        "integration.pln.test_m3_recovery",
+        "integration.pln.test_m3_1",
+        "integration.pln.test_m3_1_recovery",
+        "integration.test_m5_real"
+      ],
+      "log": "regression-native.log",
+      "returncode": 0,
+      "seconds": 554.6862074555829,
+      "unique_methods": 46,
+      "classification": "historical regression; no new chain or cognition"
+    },
+    {
+      "name": "regression-hive",
+      "argv": [
+        "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/native/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--tb=short",
+        "integration/hive/test_integration.py",
+        "integration/hive/test_m2_integration.py",
+        "integration/hive/test_m3_integration.py",
+        "integration/hive/test_m3_1_integration.py",
+        "integration/hive/test_m5_integration.py",
+        "--basetemp=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s02/regression/hive-private-tests",
+        "--junitxml=/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s02/regression/hive.xml"
+      ],
+      "log": "regression-hive.log",
+      "returncode": 0,
+      "seconds": 722.7263461640105,
+      "unique_methods": 42,
+      "classification": "historical regression; no new chain or cognition"
+    },
+    {
+      "name": "S01-and-S01.1",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_neoclaw_application",
+        "integration.neoclaw.test_loop",
+        "tests.test_neoclaw",
+        "integration.neoclaw.test_s01",
+        "integration.neoclaw.test_network",
+        "integration.neoclaw.test_recovery"
+      ],
+      "log": "s01-s01_1-tests.log",
+      "returncode": 0,
+      "unique_methods": 52,
+      "seconds": 214.139,
+      "classification": "22 fixture contracts + 30 real native/network/controlled-loop methods"
+    },
+    {
+      "name": "S02-contract-and-native",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_neoclaw_search",
+        "integration.neoclaw.test_search_loop"
+      ],
+      "log": "final-tests-02.log",
+      "returncode": 0,
+      "unique_methods": 21,
+      "seconds": 147.816,
+      "methods": [
+        "tests.test_neoclaw_search.SearchContracts.test_authorization_and_disclosure_on_submit_worker_and_shared_ports",
+        "tests.test_neoclaw_search.SearchContracts.test_closed_query_and_numeric_bounds_no_semantic_rewrite",
+        "tests.test_neoclaw_search.SearchContracts.test_descriptor_and_profile_are_not_internal_search_or_nal",
+        "tests.test_neoclaw_search.SearchContracts.test_empty_and_typed_failures_are_distinct_and_terminal",
+        "tests.test_neoclaw_search.SearchContracts.test_identity_conflict_and_observation_binding",
+        "tests.test_neoclaw_search.SearchContracts.test_new_composition_refuses_populated_old_journals",
+        "tests.test_neoclaw_search.SearchContracts.test_no_nonloopback_or_fallback_composition",
+        "tests.test_neoclaw_search.SearchContracts.test_original_deadline_and_attempt_budget_are_not_reset",
+        "tests.test_neoclaw_search.SearchContracts.test_output_limits_and_controls_are_explicit",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_adversarial_text_stays_data_and_oversize_is_failure",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_caller_receipt_ack_projection_and_two_position_recovery",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_capacity_recovery_preserves_captured_observation",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_current_revocation_blocks_worker_replay_and_next_context",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_deadline_and_rpc_reservations_survive_kills",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_malformed_bound_result_and_legacy_mixed_batch_fail_closed",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_native_empty_success_and_legacy_failure_correction",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_original_local_https_and_s01_in_one_session",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_real_worker_sigkill_before_and_after_capture",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_stateful_response_replay_and_new_identical_occurrence",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_supervised_sdk_timeout_and_parent_death",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_wrong_ca_outage_scope_route_and_profile_have_no_fallback"
+      ],
+      "classification": "recorded SDK response boundary; real helper and SDK installation; native/HTTPS/DeTTa real in integration methods"
+    },
+    {
+      "name": "S02-disclosure",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.neoclaw.test_search_loop.SearchLoop.test_native_disclosure_and_malformed_queries_stop_before_submission"
+      ],
+      "log": "disclosure-tests.log",
+      "returncode": 0,
+      "unique_methods": 1,
+      "seconds": 3.836,
+      "methods": [
+        "integration.neoclaw.test_search_loop.SearchLoop.test_native_disclosure_and_malformed_queries_stop_before_submission"
+      ],
+      "classification": "recorded SDK response boundary; real helper and SDK installation; native/HTTPS/DeTTa real in integration methods"
+    },
+    {
+      "name": "live-local",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "integration.neoclaw.search_run",
+        "--placement",
+        "local",
+        "--boundary",
+        "live",
+        "--evidence",
+        "artifacts/s02/live-local.json"
+      ],
+      "log": "live-local.log",
+      "returncode": 0,
+      "evidence": "live-local.json",
+      "classification": "live external provider; actual native loop + original NAL + helper + SDK + DeTTa; deterministic model/channel/unused-memory fixtures",
+      "live_SDK_invocations": 1,
+      "HTTP_entries": 1,
+      "item_count": 10,
+      "recovery_without_new_query": false
+    },
+    {
+      "name": "live-network",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "integration.neoclaw.search_run",
+        "--placement",
+        "network",
+        "--boundary",
+        "live",
+        "--evidence",
+        "artifacts/s02/live-https-recovery.json",
+        "--recover-capture"
+      ],
+      "log": "live-https-recovery.log",
+      "returncode": 0,
+      "evidence": "live-https-recovery.json",
+      "classification": "live external provider; actual native loop + original NAL + helper + SDK + DeTTa; deterministic model/channel/unused-memory fixtures",
+      "live_SDK_invocations": 1,
+      "HTTP_entries": 1,
+      "item_count": 10,
+      "recovery_without_new_query": true
+    },
+    {
+      "name": "SDK-fresh-target",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "integration.neoclaw.search_build",
+        "artifacts/s02/reproduction-01",
+        "--helper",
+        "artifacts/s01/native-02/sources/mettaclaw/channels/websearch.py"
+      ],
+      "returncode": 0,
+      "log": "sdk-build.log",
+      "classification": "fresh target, warm package/Python caches; 246 wheel RECORD hashes verified"
+    }
+  ],
+  "test_counts": {
+    "new_unique_methods": 22,
+    "new_recorded_contract_methods": 9,
+    "new_real_controlled_loop_methods": 13,
+    "controlled_native_scenarios": 36,
+    "scenario_counts": {
+      "original_local_https_mixed_session": 2,
+      "stateful_observation": 1,
+      "worker_kill_windows": 4,
+      "receipt_ack_projection_and_batch_recovery": 4,
+      "revocation_restart_and_live_handoff": 4,
+      "HTTPS_outage_CA_scope_route_profile_selection": 6,
+      "durable_rpc_and_deadline_bounds": 2,
+      "supervised_timeout_parent_death": 2,
+      "adversarial_text_and_oversize": 3,
+      "malformed_result_and_mixed_batches": 3,
+      "empty_and_legacy_error_correction": 2,
+      "capacity_recovery": 1,
+      "native_disclosure_and_malformed_query": 2
+    },
+    "historical_unique_methods": 296,
+    "all_unique_test_methods": 318,
+    "skipped": 0,
+    "historical_groups": {
+      "S01_S01_1": 52,
+      "core": 156,
+      "real_native_providers": 46,
+      "real_Hive": 42
+    },
+    "live_sessions_additional_not_counted_as_methods": 2,
+    "development_reruns_not_added": true
+  },
+  "live_query_allowlist": [
+    "Python programming language official documentation"
+  ],
+  "live_calls": {
+    "total_task_SDK_invocations": 4,
+    "pre_admission_Brave_failure": 1,
+    "pre_admission_DuckDuckGo_success": 1,
+    "local_gate": 1,
+    "HTTPS_gate": 1,
+    "recovery_calls": 0,
+    "HTTP_entries_per_successful_gate": 1,
+    "wire_transmissions": "UNMEASURED; bounded protocol-NACK retries disclosed in sdk-source.json"
+  },
+  "missing_supported_prerequisites": [],
+  "required_live_gate_failures": [],
+  "observation_timeouts": [],
+  "executed_failures": [
+    {
+      "kind": "upstream restriction during pre-admission compatibility probe",
+      "status": 429,
+      "backend": "Brave",
+      "result": "FAIL",
+      "retry": false,
+      "evidence": "preflight-brave-failure.json"
+    },
+    {
+      "kind": "development failures corrected before final evidence",
+      "evidence": "development-corrections.json"
+    }
+  ],
+  "expected_negative_results": "PASS only when the asserted typed rejection, no release/new call and retained identity/budget were observed",
+  "not_run": [
+    "DEFAULT_FULL_OMEGA_STARTUP",
+    "LIVE_HOSTED_MODEL",
+    "LIVE_IRC_MATTERMOST",
+    "GENUINE_MULTI_HOST",
+    "CHAIN",
+    "POWER_LOSS",
+    "EMPTY_GLOBAL_CACHE"
+  ],
+  "substitutions": [
+    "scripted external model checks actual next context",
+    "empty IRC ingress/rejecting send",
+    "unused-memory facade",
+    "explicit recorded DDGS.text responses in fixture tests only",
+    "fault injection/corruption/competing test caller"
+  ],
+  "coverage": {
+    "adopted_operations": 2,
+    "new_operation_delta": 1,
+    "whole_families_promoted": 0,
+    "unchanged_historical_mapping_rows": 105,
+    "reference_family_denominator": 15,
+    "explanation": "Operation adoption is not divided by 15 or 105 and does not imply whole-family/full-Omega integration"
+  },
+  "limitations": [
+    "same-host loopback HTTPS only",
+    "fresh journals; no migration",
+    "one SDK reservation can be lost before capture",
+    "captured results are observations, not beliefs or truth",
+    "SDK boundary egress guard, not OS firewall",
+    "wire HTTP transmissions not counted; no exactly-once upstream claim",
+    "finite replay authorization spends remaining RPC budget",
+    "live result contents are not deterministic",
+    "two S02 commands per batch; mixed adopted-operation batch rejected; pending legacy effects never replayed"
+  ],
+  "evidence_sha256": {
+    "development-corrections.json": "03804972261110e68ae30c847a44b5e2a330bd3ffc7f6c984fea2a04149a0c19",
+    "s01-s01_1-tests.log": "e00c709bdef3620c8205d9ce8418b3370220053d5c81c5d375fc329079431469",
+    "hive.xml": "5acdd9884a5b4197ee64d17e28f7feb92bb4b0189e6f349c00ebd007bcaf0d88",
+    "changing-observation.json": "afa19221579c86a84470be4c5cdc01bb5746450d0dd8a50805e005d2e04bd740",
+    "regression-native.log": "7bb8c2d914c411314eba02cffb0e1362d5e13035a2fcb0f6aa5bff7de5c0c124",
+    "live-local.json": "46fb96d4ede8fafd63710a6c7108968bcaf32180dd08a6016fad32d677033b6d",
+    "live-https-recovery.log": "053ea15a465becb4dea9c5ecd4e62a797b789cf11f7f4460707df1d68e437f63",
+    "capacity-recovery.json": "0a0758a528faf3f4220a48ed5c8a783468fe15c14da70cf7cf38213e0cf82b05",
+    "development-contract-failure.log": "add80e139cc630f1c201ea6ca6c1838ca5e5c22063de6a0348f9f53dc4130c56",
+    "starting-state.json": "631edae63c66d34f56abe301e65c689a38de1653de89f92ff0f9ea72018be865",
+    "development-operator-failure.json": "dfa93fa5498e40ec02212fbe410943e7e8b8d3164b2c0c66f53dbfea9296d899",
+    "live-https-recovery.json": "724e13095d0b719a932025873fa99e973c046e4485aeb6b736ba20ba7b6d6850",
+    "sdk-build.log": "17bf188e80509c81c503ab8ec785de8ab6f9ecc89a81223f074bae9502ad761c",
+    "supervised-timeout.json": "04e3b690f7638f33aa898c1ffa1d7bd6482fa1a1120e26f202ec54fcb509801c",
+    "empty-versus-failure.json": "32d04e52e006c26506974f84d8c749d958ec421434acd77bd624df51e0f8b34f",
+    "live-local.log": "053ea15a465becb4dea9c5ecd4e62a797b789cf11f7f4460707df1d68e437f63",
+    "recorded-operator-recovery.json": "6ade5ff828d583c4b8d3bc421e6bd567a9bc5c1506af11b593e9f3fec7357e34",
+    "untrusted-text.json": "9dd78125111f82e3d11ae106624fcd4251dd553aae32a59d10b5c67271eacbcc",
+    "durable-bounds.json": "cfddb2f3f3eeb2c9e4e531a930b7f28456454bd7fad18e20ad4e8050d25e65e2",
+    "malformed-and-mixed.json": "d8f031190a69b9893d6610b05065c437b06ab0dfd548ac0878168e7d0659c973",
+    "preflight-duckduckgo.json": "a0c892e785472e4081f23ba2c9effe701db848bbd86277de9af76b25c11945e4",
+    "native-disclosure.json": "f1dc63f75ad76b8aa8765de5871a95a69cb9738497bf6f1ab2127714348401c4",
+    "network-negative.json": "8249d5938ed3968cd89e884fa4705da0f21084352f0a36d8cdd2fcc6c7fed925",
+    "original-mixed-local-https.json": "ed96c1f17433e354089f8314ddfd8ae7a60ba9089243fcbfce31fc5a607ddb76",
+    "development-report-failure.log": "6d86df9c8ea79f030894937a17bfd5ccae5ebda9dd8466cf835ef0edfbf9aa2b",
+    "final-tests-02.log": "0a3ae6f868b2a6717d60a3de3cb9fba20acd4802e935f680bb4ca0eeea2c8ba0",
+    "current-revocation.json": "c2a14844528a00bdfb9ba214fb7062d5acebb54eca96e2dc3f585a23ec26a580",
+    "regression-hive.log": "52b21d0e0bd903d138285bf3ff49facd269e9ff2119f99c6586cf2a9a1141275",
+    "sdk-source.json": "0881fa3d8fb140157426b8b6046f5bc7707617491651691a702411e80c28f409",
+    "development-capacity-failure.log": "d2bd91f1770f9aea36ecd2bdd17891b7f66c7c838eabf2c2f595714c4a09cfb0",
+    "caller-loop-recovery.json": "4edf90963f5d051f91c2922b7fa3876ff00fc4e66f89a8db8463e73585c44589",
+    "worker-process-kills.json": "1a068ba902744ec6641f040a8762e639cb298cde0ab5d18a10f362a7cc3bf8b9",
+    "source-state.json": "2770afefba3f197315ddc6792490f3eef11068a5e5f19010311d2a3395bdbdd3",
+    "preflight-brave-failure.json": "9f4726fda417c435340cccc35ce388a6edb18957d7a100be93fe2c092907d874",
+    "disclosure-tests.log": "bbd25a06d8504942f73fdc838594949d5ee7cecabb6c9bd59b3080d86ba10e3d",
+    "regression-core.log": "bb5b74ccceb9fecb07ee465529836cf1c399f792c3f92285b4d82c642d705eee"
+  }
+}

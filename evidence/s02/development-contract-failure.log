@@ -1,0 +1,22 @@
+test_authorization_and_disclosure_on_submit_worker_and_shared_ports (tests.test_neoclaw_search.SearchContracts.test_authorization_and_disclosure_on_submit_worker_and_shared_ports) ... FAIL
+test_closed_query_and_numeric_bounds_no_semantic_rewrite (tests.test_neoclaw_search.SearchContracts.test_closed_query_and_numeric_bounds_no_semantic_rewrite) ... ok
+test_descriptor_and_profile_are_not_internal_search_or_nal (tests.test_neoclaw_search.SearchContracts.test_descriptor_and_profile_are_not_internal_search_or_nal) ... ok
+test_empty_and_typed_failures_are_distinct_and_terminal (tests.test_neoclaw_search.SearchContracts.test_empty_and_typed_failures_are_distinct_and_terminal) ... ok
+test_identity_conflict_and_observation_binding (tests.test_neoclaw_search.SearchContracts.test_identity_conflict_and_observation_binding) ... ok
+test_new_composition_refuses_populated_old_journals (tests.test_neoclaw_search.SearchContracts.test_new_composition_refuses_populated_old_journals) ... ok
+test_no_nonloopback_or_fallback_composition (tests.test_neoclaw_search.SearchContracts.test_no_nonloopback_or_fallback_composition) ... ok
+test_original_deadline_and_attempt_budget_are_not_reset (tests.test_neoclaw_search.SearchContracts.test_original_deadline_and_attempt_budget_are_not_reset) ... ok
+test_output_limits_and_controls_are_explicit (tests.test_neoclaw_search.SearchContracts.test_output_limits_and_controls_are_explicit) ... ok
+
+======================================================================
+FAIL: test_authorization_and_disclosure_on_submit_worker_and_shared_ports (tests.test_neoclaw_search.SearchContracts.test_authorization_and_disclosure_on_submit_worker_and_shared_ports)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_neoclaw_search.py", line 117, in test_authorization_and_disclosure_on_submit_worker_and_shared_ports
+    with self.assertRaisesRegex(ContractError,'UNAUTHORIZED'): service.invoke(h.client['credential'],req)
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.402s
+
+FAILED (failures=1)

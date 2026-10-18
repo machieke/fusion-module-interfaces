@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 from .startup_overlay import adapted_skill
 
 
-def run(runtime_file, command, caller_config=None, denied_paths=()):
+def run(runtime_file, command, caller_config=None, denied_paths=(), search_recording=None, search_runtime=None):
     from fusion.adapters.neoclaw_nal import NativeTruthDeduction
     runtime = NativeTruthDeduction(runtime_file).runtime
     omega, petta = Path(runtime['mettaclaw']), Path(runtime['petta'])
@@ -26,6 +26,18 @@ def run(runtime_file, command, caller_config=None, denied_paths=()):
         require(digest((omega / file).read_bytes()) == c.PINS['sources']['mettaclaw']['files'][file], 'UNSUPPORTED_PROFILE')
     env = {k: v for k, v in os.environ.items() if k in ('PATH', 'LANG', 'LC_ALL', 'TMPDIR')}
     env.update(runtime['environment'])
+    if search_recording is not None:
+        # Original search compatibility oracle only: external SDK response fixture.
+        # This is not the adapted application or a network-provider substitute.
+        from fusion.adapters.neoclaw_search import NativeWebSearch
+        require(caller_config is None, 'UNSUPPORTED_PROFILE')
+        sdk = NativeWebSearch(dict(runtime=str(search_runtime), boundary='recorded-response',
+                                  recording=str(search_recording), audit='/dev/null')).runtime
+        site = Path(sdk['python']).parent.parent/'lib/python3.12/site-packages'
+        env['PYTHONPATH'] = str(site)+os.pathsep+env.get('PYTHONPATH', '')
+        env['NEOCLAW_SEARCH_ORIGINAL_SITE'] = str(site)
+        env['NEOCLAW_SEARCH_ORIGINAL_HELPER'] = str(Path(sdk['helper']).parent)
+        env['NEOCLAW_SEARCH_ORIGINAL_RECORDING'] = str(Path(search_recording).resolve())
     with tempfile.TemporaryDirectory(prefix='neoclaw-command-') as directory:
         directory = Path(directory)
         capture = directory / 'result.json'
@@ -38,6 +50,8 @@ def run(runtime_file, command, caller_config=None, denied_paths=()):
             skills.write_text(adapted_skill(original))
         lines = ['!(import! &self (library lib_import))', '!(import! &self (library lib_patrick))']
         imports = [omega/'src/helper.py', omega/'src/utils.metta', skills, omega/'lib_nal.metta', ROOT/'integration/neoclaw/neoclaw_capture.py']
+        if search_recording is not None:
+            imports += [ROOT/'integration/neoclaw/search_original_fixture.py', omega/'channels/websearch.py', omega/'src/channels.metta']
         if caller_config:
             imports.append(ROOT/'integration/neoclaw/neoclaw_bridge.py')
         lines += ['!(import! &self ' + json.dumps(str(p)) + ')' for p in imports]

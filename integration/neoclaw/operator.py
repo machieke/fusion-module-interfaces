@@ -7,6 +7,7 @@ import time
 
 from fusion.contracts import ContractError, require
 from fusion.neoclaw import NalService
+from .host import failpoint
 
 
 def main():
@@ -21,7 +22,7 @@ def main():
     service.close()
     Path(args.ready).write_text(json.dumps(dict(pid=os.getpid(), seconds=args.seconds)))
     while time.monotonic() < deadline:
-        service = NalService(args.config)
+        service = NalService(args.config, lambda stage: failpoint(service.config, stage))
         try:
             service.work()
             service.flush()

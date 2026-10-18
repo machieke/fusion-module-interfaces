@@ -6,12 +6,13 @@ import time
 
 from .contracts import ContractError, canonical, decode, digest, label, require
 from . import neoclaw_contracts as c
+from . import neoclaw_search_contracts as s, neoclaw_operations as ops
 from .neoclaw_transport import binding, json_loads
 from .registry import descriptor_read, selection_token
 
 
 class Caller:
-    def __init__(self, config_file, hook=lambda _: None, transport=None, invocation=None):
+    def __init__(self, config_file, hook=lambda _: None, transport=None, invocation=None, profile=c.PROFILE):
         self.application_invocation = invocation is not None
         self.config = json.loads(Path(config_file).read_text())
         # Trusted local application context; never populated from tool/model text.
@@ -23,7 +24,13 @@ class Caller:
         require(self.config['scope'] == c.SCOPE and self.config['sharing'] == 'generated-shareable', 'UNAUTHORIZED')
         require(self.config.get('fallback') is False, 'UNSUPPORTED_PROFILE')
         require(label(self.config['principal']))
-        self.chosen = c.selected([descriptor_read(x) for x in self.config['catalogue']])
+        self.contract = ops.contract(profile)
+        if profile == s.PROFILE:
+            require(self.config.get('composition') == ops.COMPOSITION, 'UNSUPPORTED_PROFILE')
+            require(self.config.get('search_max_attempts') == 1, 'UNSUPPORTED_PROFILE')
+            self.config['max_attempts'] = self.config['search_max_attempts']
+        catalogue = self.config['search_catalogue'] if profile == s.PROFILE else self.config['catalogue']
+        self.chosen = self.contract.selected([descriptor_read(x) for x in catalogue])
         self.transport = transport or binding(self.config, self.chosen)
         self.hook = hook
         self.db = sqlite3.connect(self.config['database'], timeout=.2)
@@ -40,7 +47,7 @@ class Caller:
 
     def _request(self, name, operation, body):
         desc = self.chosen[name]
-        profile = c.PROFILE if name == 'execution' else 'immutable-bytes/1' if name == 'atom.storage' else 'durable-mailbox/2'
+        profile = self.contract.PROFILE if name == 'execution' else 'immutable-bytes/1' if name == 'atom.storage' else 'durable-mailbox/2'
         return dict(message_id=self.config['request_id'], interface_ref=dict(id=name, version=desc.version),
                     profile=profile, selection=selection_token(desc), operation=operation,
                     scope_ref=self.config['scope'], body=body)
@@ -55,11 +62,12 @@ class Caller:
         config = self.config
         require(label(config['request_id']))
         require(type(config['max_calls']) is int and 1 <= config['max_calls'] <= c.MAX_CALLS)
-        request = self._request('execution', 'submit', dict(operation=c.OPERATION, premises=c.premises(premises),
-                sharing=config['sharing'], max_attempts=config['max_attempts']))
+        body = dict(operation=self.contract.OPERATION, sharing=config['sharing'], max_attempts=config['max_attempts'])
+        body[ops.argument_key(self.contract)] = ops.arguments(self.contract, premises)
+        request = self._request('execution', 'submit', body)
         request.update(idempotency_key=config['request_id'], correlation_id=config['request_id'],
                        reply_route=config['reply_route'], deadline_ms=config['deadline_ms'])
-        c.validate(request, self.chosen)
+        self.contract.validate(request, self.chosen)
         encoded = canonical(request).decode()
         selections = canonical({k: selection_token(v) for k, v in self.chosen.items()}).decode()
         with self.db:
@@ -109,27 +117,30 @@ class Caller:
             status = self._retry(status_request, deadline)
             require(status['attempts'] <= request['body']['max_attempts'], 'NOT_AVAILABLE')
             if status['failure_reason'] is not None:
-                require(status['execution'] == 'failed' and status['error'] == 'NOT_AVAILABLE'
+                expected = s.FAILURES[status['failure_reason']] if self.contract is s else 'NOT_AVAILABLE'
+                require(status['execution'] == 'failed' and status['error'] == expected
                         and status['attempts'] == request['body']['max_attempts'], 'NOT_AVAILABLE')
             if status['execution'] != 'queued':
                 break
             require(time.time()*1000 < deadline, 'DEADLINE_EXCEEDED')
-            time.sleep(.05)
+            time.sleep(.25 if self.contract is s else .05)
         result, atom = None, None
         if status['execution'] == 'succeeded':
             atom = self._retry(self._request('execution', 'result', dict(job_id=job)), deadline)
             payload = self._retry(self._request('atom.storage', 'get', dict(ref=atom['ref'])), deadline)
-            require(payload['content_type'] == 'application/neoclaw-nal-result', 'NOT_AVAILABLE')
+            require(payload['content_type'] == ops.content_type(self.contract), 'NOT_AVAILABLE')
             data = decode(payload['bytes'])
-            require(len(data) <= c.MAX_BYTES and digest(data) == atom['ref']['digest'], 'NOT_AVAILABLE')
+            require(len(data) <= self.contract.MAX_BYTES and digest(data) == atom['ref']['digest'], 'NOT_AVAILABLE')
             try:
-                result = c.result(json_loads(data), request, self.chosen)
+                result = self.contract.result(json_loads(data), request, self.chosen)
+                if self.contract is s: require(result['job_id'] == job, 'NOT_AVAILABLE')
             except (ContractError, ValueError, TypeError):
                 raise ContractError('NOT_AVAILABLE') from None
         row = self.db.execute('SELECT receipt FROM caller_requests WHERE id=?', (self.config['request_id'],)).fetchone()
         if row['receipt']:
             receipt = json.loads(row['receipt'])
             require(receipt['job_id'] == job and receipt['result'] == result and receipt['error'] == status['error'], 'NOT_AVAILABLE')
+            if self.contract is s: require(receipt['failure_reason'] == status['failure_reason'], 'NOT_AVAILABLE')
             delivery_id = receipt['delivery_id']
         else:
             poll = self._request('agent.messaging', 'poll', dict(route=request['reply_route']))
@@ -145,6 +156,7 @@ class Caller:
             require(delivery['delivery_id'] == job, 'NOT_AVAILABLE')
             delivery_id = delivery['delivery_id']
             receipt = dict(job_id=job, delivery_id=delivery_id, result=result, error=status['error'])
+            if self.contract is s: receipt['failure_reason'] = status['failure_reason']
             with self.db:
                 self.db.execute('UPDATE caller_requests SET receipt=? WHERE id=?', (canonical(receipt).decode(), self.config['request_id']))
             self.hook('after_caller_receipt')
@@ -157,5 +169,8 @@ class Caller:
         with self.db:
             self.db.execute('UPDATE caller_requests SET acknowledged=1 WHERE id=?', (self.config['request_id'],))
         if receipt['error'] is not None:
+            if self.contract is s and receipt.get('failure_reason') is not None:
+                from .adapters.neoclaw_search import SearchFailure
+                raise SearchFailure(receipt['failure_reason'])
             raise ContractError(receipt['error'])
         return result['representation']

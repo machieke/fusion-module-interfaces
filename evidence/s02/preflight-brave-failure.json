@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "exception_type": "DDGSException",
+  "diagnostic": "UPSTREAM_HTTP_429",
+  "query": "Python programming language official documentation",
+  "trace": [
+    {
+      "method": "GET",
+      "destination": "https://search.brave.com/search",
+      "status": 429
+    }
+  ],
+  "seconds": 0.4232452791184187,
+  "helper": "original search_",
+  "sdk": "ddgs==9.16.0",
+  "backend": "brave",
+  "live_sdk_invocations": 1
+}

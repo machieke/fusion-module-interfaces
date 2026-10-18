@@ -1,10 +1,12 @@
 # MeTTaClaw neoclaw → Fusion mapping review
 
-**S01.1 application update:** the same operation now has controlled native `mettaclaw` loop, next-context consumption, durable turn/position identity and real process-kill recovery evidence under local and HTTPS placement. See [S01.1 report and reproduction](s01_1.md). Model/channel/unused-memory fixtures are explicit; default full Omega and live providers remain unrun.
+**S02 update:** native `search` now uses the named `external-web-search/1` profile through the shared application lifecycle. Both S01 and S02 ran in the same controlled session locally and over authenticated same-host HTTPS; both search placements reached the real external provider. Captured live observation recovery reused exact bytes without another SDK invocation. See [S02 report, bounds and reproduction](s02.md). Recorded responses and live gates remain separate. This is the second operation, not a whole-family or full-Omega claim.
+
+**Historical S01.1 application update:** the same operation now has controlled native `mettaclaw` loop, next-context consumption, durable turn/position identity and real process-kill recovery evidence under local and HTTPS placement. See [S01.1 report and reproduction](s01_1.md). Model/channel/unused-memory fixtures are explicit. At that delivery, default full Omega and live external providers were unrun.
 
 **S01 implementation update:** the exact `neoclaw-nal-truth-deduction/1` operation now has executed original-native, adapted-local and authenticated same-host HTTPS evidence. See [S01 report and reproduction](s01.md) and `operation_adoptions` in the [ledger](mapping-ledger.json). No entire family or broader Omega integration is claimed.
 
-The review narrative and counts below are the **historical mapping snapshot at `c305a66fe1eda17a47134ec56d4fefdf55354147`**, preserved separately from S01.
+The review narrative and counts below are the **historical mapping snapshot at `c305a66fe1eda17a47134ec56d4fefdf55354147`**, preserved separately from subsequent operation adoptions.
 
 **Mapping complete; no modularization or remote adapter implemented.** MeTTaClaw has responsibilities resembling **9 of Fusion's 15 bounded families**, but **zero demonstrated Omega-to-Fusion contract conformance**. Its memory path combines several owners; moving that code wholesale would preserve the coupling rather than establish module boundaries. Model inference, embeddings, perception, tool descriptors and execution policy remain genuine interface gaps outside the denominator.
 
