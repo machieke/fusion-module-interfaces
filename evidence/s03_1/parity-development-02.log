@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/embedding_run.py", line 104, in <module>
+    else: value=compare(json.loads(Path(args.corpus).read_text()) if args.corpus else real_corpus())
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/embedding_run.py", line 81, in compare
+    raise RuntimeError(str((code,status))+'\n'+(run.h.root/'native.log').read_text()[-7000:])
+RuntimeError: (2, {'status': 'PENDING_OR_FAILED', 'code': 'NOT_AVAILABLE'})
+

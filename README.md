@@ -92,3 +92,5 @@ and proposed future directions for every module. Download individual editable
 decks or the combined PDF/ZIP from the series index.
 
 The bounded [S03 native memory-read adoption](docs/omega-adoption/mettaclaw-neoclaw/s03.md) adds real Chroma vector Search and verified AtomStorage hydration inside the controlled MeTTaClaw query, with local E5 and local/HTTPS parity. Local enrichment and private memory remain outside this adoption boundary.
+
+The [S03.1 query-embedding extension](docs/omega-adoption/mettaclaw-neoclaw/s03_1.md) independently places the pinned native E5 helper behind a typed Embedding port. Its HTTPS caller uses a separate environment without E5 inference libraries or model access; retrieval and local enrichment remain separate.

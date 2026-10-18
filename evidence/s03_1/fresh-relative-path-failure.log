@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/embedding_run.py", line 135, in <module>
+    else: value=compare(json.loads(Path(args.corpus).read_text()) if args.corpus else real_corpus(),args.caller_runtime,args.provider_runtime)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/embedding_run.py", line 106, in compare
+    timing=observed_finish(run,caller_runtime)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/embedding_run.py", line 65, in observed_finish
+    raise RuntimeError(str((code,status))+'\n'+(run.h.root/'native.log').read_text()[-7000:])
+RuntimeError: (2, None)
+ERROR: [Thread main] /home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/PeTTa/src/main.pl:123: user:main Python 'FileNotFoundError':
+ERROR: [Thread main]   [Errno 2] No such file or directory: 'artifacts/s03_1/reproduction/caller-runtime.json'
+ERROR: [Thread main] Python stack:
+ERROR: [Thread main]   File "/tmp/fusion-s01-xi9dr313/caller/native/memory_bootstrap.py", line 2, in <module>
+ERROR: [Thread main]     initialize()
+ERROR: [Thread main]   File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/memory_bootstrap.py", line 35, in initialize
+ERROR: [Thread main]     require(digest(runtime_path.read_bytes())==cfg.get('runtime_sha256',digest(runtime_path.read_bytes())),'CONFLICT')
+ERROR: [Thread main]                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR: [Thread main]   File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/pathlib.py", line 1019, in read_bytes
+ERROR: [Thread main]     with self.open(mode='rb') as f:
+ERROR: [Thread main]          ^^^^^^^^^^^^^^^^^^^^
+ERROR: [Thread main]   File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/pathlib.py", line 1013, in open
+ERROR: [Thread main]     return io.open(self, mode, buffering, encoding, errors, newline)
+ERROR: [Thread main]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR: [Thread main] 
+
+Traceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['artifacts/s03/venv/bin/python', '-m', 'integration.neoclaw.embedding_run', '--corpus', 'artifacts/s03_1/corpus.json', '--caller-runtime', 'artifacts/s03_1/reproduction/caller-runtime.json', '--evidence', 'evidence/s03_1/same-query-final.json']' returned non-zero exit status 1.

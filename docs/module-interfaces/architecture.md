@@ -385,3 +385,16 @@ All new stores, query text, cursors and detailed results remain private. Native
 receipts carry counts/status; M4's explicitly shareable approval workflow remains
 unchanged. See [M5 contracts](m5-contracts.md) for schemas, error behavior, capacities,
 source trust and compatibility, and [M5 evidence](m5-evidence.md) for executed gates.
+
+## X02 adoption extension: query-time Embedding
+
+S03.1 adds one model-specific `Embedding.encode` port outside the historical
+fifteen-family inventory: `embedding@1.0.0`, `neoclaw-e5-query-text/1`. The native
+MeTTaClaw query supplies its original processed helper string; the provider returns
+a bound normalized float32 vector. Embedding owns only its model and durable
+physical-call reservations, with no corpus, Search, promotion or belief dependency.
+The application owns accepted occurrence/input and selected vector capture. Search
+consumes that vector, AtomStorage returns authoritative payloads, and legacy local
+enrichment retains its native state and semantics. Encoder and retrieval placement
+are independently selected. This extension adds no whole-family or whole-Omega
+completion claim. See the [S03.1 contract and evidence report](../omega-adoption/mettaclaw-neoclaw/s03_1.md).

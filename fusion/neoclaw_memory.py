@@ -65,6 +65,7 @@ class MemoryRead:
         return result
 
     def authorize(self,row):
+        if self.app.embedding_enabled:self.app.embedding.authorize(row)
         cfg,_=self.settings();intent=json.loads(row['premises'])
         require(intent['arguments']['query'] in cfg['queries'],'UNAUTHORIZED')
         result=self.call(row,'search','authorize',dict(query=intent['arguments']['query'],snapshot=cfg['snapshot']),bounded=False)
@@ -72,6 +73,8 @@ class MemoryRead:
 
     def retrieve(self,vector,k):
         row=self.current();cfg,_=self.settings()
+        if self.app.embedding_enabled:
+            require(vector==self.app.embedding.selected(row)['vector'],'CONFLICT')
         request=c.query(asdict(c.VectorQuery(row['id'],cfg['scope'],cfg['snapshot'],c.vector(vector),k,row['deadline'])))
         encoded=canonical(request).decode()
         with self.db:

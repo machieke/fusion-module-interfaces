@@ -1,0 +1,145 @@
+{
+  "schema": "s03.1-controlled-measurements/1",
+  "observations_per_composition": 1,
+  "baseline": {
+    "composition": "controlled-native-loop/3",
+    "cold_start_to_first_context_ms": 12066.84149056673,
+    "caller_peak_rss_kib": 1708204,
+    "end_to_end_process_ms": 13679.140840657055
+  },
+  "paths": {
+    "local-encoder_local-retrieval": {
+      "cold_start_to_first_context_ms": 13631.566604599357,
+      "caller_peak_rss_kib": 1635160,
+      "end_to_end_process_ms": 14517.994132824242,
+      "post_startup_query_and_handoff_ms": 886.4275282248855,
+      "encode_ms": 219.72844935953617,
+      "retrieval_hydration_authorization_capture_ms": 355.444073677063,
+      "encoder_http_body_over_tls": {},
+      "model_ready_ms": null,
+      "vector_norm": 1.0000000380641136,
+      "exact_vector_match": true,
+      "exact_feedback_match": true,
+      "candidate_order_match": true,
+      "caller_dependencies": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "denied_file_probes": {},
+        "denied_paths_visible": [],
+        "local_initializer_forbidden": true,
+        "source": "original native embed/string-safe; query-time helper is the typed port"
+      }
+    },
+    "local-encoder_network-retrieval": {
+      "cold_start_to_first_context_ms": 13652.43646595627,
+      "caller_peak_rss_kib": 1635432,
+      "end_to_end_process_ms": 14679.98372297734,
+      "post_startup_query_and_handoff_ms": 1027.5472570210695,
+      "encode_ms": 191.10930152237415,
+      "retrieval_hydration_authorization_capture_ms": 476.8265299499035,
+      "encoder_http_body_over_tls": {},
+      "model_ready_ms": null,
+      "vector_norm": 1.0000000380641136,
+      "exact_vector_match": true,
+      "exact_feedback_match": true,
+      "candidate_order_match": true,
+      "caller_dependencies": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "denied_file_probes": {},
+        "denied_paths_visible": [],
+        "local_initializer_forbidden": true,
+        "source": "original native embed/string-safe; query-time helper is the typed port"
+      }
+    },
+    "network-encoder_local-retrieval": {
+      "cold_start_to_first_context_ms": 3984.1928835958242,
+      "caller_peak_rss_kib": 144504,
+      "end_to_end_process_ms": 4811.4525163546205,
+      "post_startup_query_and_handoff_ms": 827.2596327587962,
+      "encode_ms": 189.3736058846116,
+      "retrieval_hydration_authorization_capture_ms": 327.5670250877738,
+      "encoder_http_body_over_tls": {
+        "elapsed_ms": 204.1058512404561,
+        "request_body_bytes": 599,
+        "response_body_bytes": 22161
+      },
+      "model_ready_ms": 9459.195964038372,
+      "vector_norm": 1.0000000380641136,
+      "exact_vector_match": true,
+      "exact_feedback_match": true,
+      "candidate_order_match": true,
+      "caller_dependencies": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "denied_file_probes": {
+          "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/model/model.safetensors": "inaccessible",
+          "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/model/tokenizer.json": "inaccessible",
+          "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/lib/python3.12/site-packages/torch/__init__.py": "inaccessible",
+          "/tmp/fusion-s01-jbu5hvoa/encoder/synthetic-provider-canary.txt": "inaccessible"
+        },
+        "denied_paths_visible": [],
+        "local_initializer_forbidden": true,
+        "source": "original native embed/string-safe; query-time helper is the typed port"
+      }
+    },
+    "network-encoder_network-retrieval": {
+      "cold_start_to_first_context_ms": 4017.970774322748,
+      "caller_peak_rss_kib": 145264,
+      "end_to_end_process_ms": 4904.492634348571,
+      "post_startup_query_and_handoff_ms": 886.5218600258231,
+      "encode_ms": 190.7506361603737,
+      "retrieval_hydration_authorization_capture_ms": 406.3771115615964,
+      "encoder_http_body_over_tls": {
+        "elapsed_ms": 209.16699524968863,
+        "request_body_bytes": 599,
+        "response_body_bytes": 22161
+      },
+      "model_ready_ms": 9410.537384450436,
+      "vector_norm": 1.0000000380641136,
+      "exact_vector_match": true,
+      "exact_feedback_match": true,
+      "candidate_order_match": true,
+      "caller_dependencies": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "denied_file_probes": {
+          "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/model/model.safetensors": "inaccessible",
+          "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/model/tokenizer.json": "inaccessible",
+          "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/lib/python3.12/site-packages/torch/__init__.py": "inaccessible",
+          "/tmp/fusion-s01-38zgmnj5/encoder/synthetic-provider-canary.txt": "inaccessible"
+        },
+        "denied_paths_visible": [],
+        "local_initializer_forbidden": true,
+        "source": "original native embed/string-safe; query-time helper is the typed port"
+      }
+    }
+  },
+  "environment": {
+    "platform": "Linux-5.4.0-216-generic-x86_64-with-glibc2.29",
+    "logical_cpus": 8,
+    "cpu_model": "Intel(R) Xeon(R) W-2225 CPU @ 4.10GHz",
+    "torch_threads": 2
+  },
+  "qualifications": [
+    "Fresh processes, warm filesystem/uv caches; sequential after verification suites finished; no CPU affinity or global machine quiescence control",
+    "Cold-start observer resolution 20 ms; records first scripted model context after native readiness",
+    "RSS is /usr/bin/time maximum of the caller process tree, not a sum of concurrent resident processes; HTTPS provider excluded",
+    "Model readiness interval covers provider verification/load, not full service spawn/TLS/Chroma startup; local /4 readiness is included in caller cold startup and not separately captured",
+    "TLS byte counts are JSON request/response bodies; HTTP headers, TLS record framing and handshake wire bytes unmeasured",
+    "Retrieval interval includes authority, Search, hydration and capture; not pure ANN ranking time",
+    "Small generated corpus; no production throughput, cost, ANN quality or cross-hardware determinism claim"
+  ]
+}

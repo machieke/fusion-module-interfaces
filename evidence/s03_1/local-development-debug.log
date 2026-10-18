@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 11, in <module>
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/neoclaw_application.py", line 64, in __init__
+    self.lock = open(cfg['database'] + '.application.lock', 'a')
+                     ~~~^^^^^^^^^^^^
+KeyError: 'database'

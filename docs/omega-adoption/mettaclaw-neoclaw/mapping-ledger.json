@@ -3227,7 +3227,7 @@
         ]
       },
       "omega_role": "provider",
-      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
+      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
       "owned_state": [],
       "dependencies": [
         "datetime",
@@ -3246,7 +3246,7 @@
           "current_profile": null,
           "fusion_baseline_profile": "episode-delivery-completion/1",
           "candidate_profile": "Requires explicit compatibility design; not selected",
-          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
+          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
           "observed_semantic_responsibility": true
         }
       ],
@@ -7815,6 +7815,71 @@
       "real_model_demonstrations": [
         "three-path native comparison",
         "three native-caller SIGKILL boundaries and later identical occurrence"
+      ]
+    },
+    {
+      "slice": "S03.1",
+      "operation": "query-time Local useLocalEmbedding",
+      "profile": "neoclaw-e5-query-text/1",
+      "interface": "embedding@1.0.0",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "source_baseline": "2bddbc3467f98ed258741a21a329230a0cd21dd9",
+      "exact_symbol": "lib_llm_ext.py::useLocalEmbedding",
+      "native_composition": "src/memory.metta::query -> embed -> native string-safe -> Local helper",
+      "extension": "X02 Embedding; outside the historical fifteen-family denominator",
+      "contract": "One approved exact helper-input string to bound normalized 1024-float32 vector under the existing pinned E5 model; durable application capture precedes Search",
+      "providers": [
+        "original pinned native E5 CPU implementation",
+        "real native MeTTaClaw/PeTTa/SWI",
+        "real Chroma",
+        "real DeTTa"
+      ],
+      "placement": [
+        "local encoder + local retrieval",
+        "HTTPS encoder + HTTPS retrieval",
+        "HTTPS encoder + local retrieval",
+        "local encoder + HTTPS retrieval"
+      ],
+      "same_host": true,
+      "multi_host": "NOT_RUN",
+      "fallback": false,
+      "private_omega_stores_accessed": false,
+      "application_composition": "controlled-native-loop/4",
+      "fresh_journals_only": true,
+      "coverage": {
+        "adopted_internal_operations": 1,
+        "additional_user_commands": 0,
+        "whole_families_promoted": 0,
+        "whole_omega_integrated": false
+      },
+      "evidence": "../../../evidence/s03_1/verification.json",
+      "report": "s03_1.md",
+      "status": "IMPLEMENTED_AND_EXECUTED_QUERY_TIME_LOCAL_EMBEDDING_EXTENSION",
+      "guarantees": [
+        "independent encoder and retrieval selection",
+        "bound helper input/model/principal/occurrence before evaluation",
+        "durable application and provider attempts",
+        "validated vector capture before Search",
+        "no re-evaluation after capture",
+        "current invocation and disclosure authority",
+        "HTTPS caller lacks E5 libraries and model access"
+      ],
+      "local_unadopted": [
+        "promotion",
+        "linked labels",
+        "STV ownership",
+        "history",
+        "memory writes",
+        "private user memory",
+        "other callers and embedding modes"
+      ],
+      "qualifications": [
+        "scripted model/channel; generated approved corpus and queries",
+        "same host, certificate-verified HTTPS only",
+        "existing raw query disclosure to S03 Search authorization retained",
+        "no execution attestation or cross-hardware bitwise guarantee",
+        "no exactly-once inference; pre-capture evaluations may repeat within original bounds",
+        "physical library/asset removal is specific to the HTTPS caller; real Chroma metadata remains"
       ]
     }
   ]

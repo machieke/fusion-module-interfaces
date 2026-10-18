@@ -23,6 +23,11 @@ def failpoint(config, stage):
 
 def serve(config_path, port, ready):
     config = json.loads(Path(config_path).read_text())
+    encoder_service = None
+    if config.get('embedding'):
+        from fusion.adapters.native_e5 import NativeE5
+        from fusion.embedding_service import EmbeddingService
+        encoder_service = EmbeddingService(config_path, NativeE5(config_path), lambda stage: failpoint(config, stage))
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *args):
@@ -31,7 +36,7 @@ def serve(config_path, port, ready):
         def do_POST(self):
             service = None
             try:
-                require(self.path in ('/s01', '/s03-read'), 'UNSUPPORTED_OPERATION')
+                require(self.path in ('/s01', '/s03-read', '/s03-encode'), 'UNSUPPORTED_OPERATION')
                 auth = self.headers.get_all('Authorization', [])
                 require(len(auth) == 1 and auth[0].startswith('Bearer '), 'UNAUTHORIZED')
                 require(self.headers.get('Content-Type') == 'application/json')
@@ -39,11 +44,14 @@ def serve(config_path, port, ready):
                 lengths = self.headers.get_all('Content-Length', [])
                 require(len(lengths) == 1 and lengths[0].isdigit())
                 length = int(lengths[0])
-                require(0 < length <= (98304 if self.path == '/s03-read' else 4096))
+                require(0 < length <= (98304 if self.path == '/s03-read' else 65536 if self.path == '/s03-encode' else 4096))
                 raw = self.rfile.read(length)
                 require(len(raw) == length)
                 request = json_loads(raw)
-                if self.path == '/s03-read':
+                if self.path == '/s03-encode':
+                    require(encoder_service is not None, 'UNSUPPORTED_OPERATION')
+                    reply = encoder_service.invoke(auth[0][7:], request)
+                elif self.path == '/s03-read':
                     from fusion.vector_composition import ReadService
                     reply = ReadService(config_path, auth[0][7:], lambda stage: failpoint(config, stage)).invoke(request)
                 else:
@@ -86,7 +94,8 @@ def serve(config_path, port, ready):
     with Server(('127.0.0.1', port), Handler) as server:
         Path(ready).write_text(json.dumps(dict(host='127.0.0.1', port=server.server_port,
             placement='same-host loopback HTTPS; not multi-host', pid=os.getpid(),
-            denied_paths_visible=[p for p in config.get('memory_read',{}).get('denied_paths',[]) if Path(p).exists() and any(Path(p).iterdir())])))
+            denied_paths_visible=[p for p in config.get('memory_read',{}).get('denied_paths',[]) if Path(p).exists() and any(Path(p).iterdir())],
+            **({'encoder':encoder_service.encoder.readiness,'encoder_pid':encoder_service.encoder.process.pid} if encoder_service else {}))))
         server.serve_forever(poll_interval=.05)
 
 

@@ -1,0 +1,180 @@
+{
+  "schema": "s03.1-source-state/1",
+  "starting_commit": "2bddbc3467f98ed258741a21a329230a0cd21dd9",
+  "current_parent_commit": "2bddbc3467f98ed258741a21a329230a0cd21dd9",
+  "branch": "master",
+  "initial_status": [
+    "untracked supplied S03.1 brief"
+  ],
+  "tested_state": "additive uncommitted working tree; test and later operator-recipe source identities recorded separately",
+  "brief_sha256": "e4226ea74ab242cee619f79cf2bfa883cb616044f3f4d9134d55151e1be512ea",
+  "repositories": {
+    "mettaclaw": {
+      "path": "artifacts/s01/native-02/sources/mettaclaw",
+      "commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "tracked_changes": [],
+      "status": [
+        "?? src/__pycache__/"
+      ]
+    },
+    "petta": {
+      "path": "artifacts/s01/native-02/sources/PeTTa",
+      "commit": "fea83178af3722666d2948d074591d10a3134f56",
+      "tracked_changes": [],
+      "status": []
+    },
+    "swipl": {
+      "path": "artifacts/s01/native-02/sources/swipl",
+      "commit": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+      "tracked_changes": [],
+      "status": []
+    },
+    "chroma-helper": {
+      "path": "artifacts/omega-mapping-source/petta_lib_chromadb",
+      "commit": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+      "tracked_changes": [],
+      "status": []
+    },
+    "detta": {
+      "path": "artifacts/m5/reproduction-01/providers/native/sources/secured-contract-spaces",
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "tracked_changes": [],
+      "status": []
+    }
+  },
+  "builds": "builds.json",
+  "model": {
+    "model": "intfloat/e5-large-v2",
+    "revision": "f169b11e22de13617baa190a028a32f3493550b6",
+    "files": {
+      "1_Pooling/config.json": "56c469dba9e31869bb7dfceb9b3d76ac06549d1ba869509d8eb4e8aeb31d62d1",
+      "config.json": "2394ce5c9ffac96c88496de5d7a92f5d3fec1015b9d25f9f85545f13dfd7a269",
+      "model.safetensors": "d741c1a688a6169af0ecb5a047c44645cd992c31e1bf431269f98bba9ae2911a",
+      "modules.json": "c6e29747481e8b5dd2b58401966aeac910de39092f90cda9a704b1545f902b04",
+      "sentence_bert_config.json": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529",
+      "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+      "tokenizer_config.json": "ae83fa6ca0333117ff12606020af925d648667ef70d92ff7f27d781ba0ca4544",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  },
+  "native_entrypoint": "integration.neoclaw.native_loop -> source-checked src/loop.metta::mettaclaw -> query -> embed -> original string-safe -> typed Local helper",
+  "baseline_reconciliation": "baseline-source.json",
+  "historical_s03_identity_preserved": true,
+  "historical_mapping_rows_preserved": 105,
+  "prior_operation_adoptions_preserved": 3,
+  "reference_families": 15,
+  "extension": "X02 Embedding outside denominator",
+  "corpus": {
+    "path": "artifacts/s03_1/corpus.json",
+    "sha256": "4c4ba9ddcb4b1fbd7c25e37542f83104799c712ee9f848035720d55907d69cb1",
+    "origin": "generated S03 corpus encoded with pinned original native E5; operator enrollment feed, not a consumer answer list"
+  },
+  "detta_binary": {
+    "path": "artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+    "sha256": "0d30f836a927b3f684b68daf515ec07b5214c1f457def6f3b7fd44e709bb2917"
+  },
+  "test_source_manifest": {
+    "fusion/adapters/native_e5.py": "efe08720557eb8fca8fbef2435676a0d8bf747b479b4fb8d42c4ce507cf94ecf",
+    "fusion/embedding_composition.py": "4065e3a84e884d96d8d785066c183f6bae6f295d4d66f7587515324762df06c2",
+    "fusion/embedding_contracts.py": "715c59427f5f1da4065442f2431ea9c378f9537585ec7ce09142e1374614cb30",
+    "fusion/embedding_service.py": "796d9d4f32fae7c728abe3b630ff64b7eabfad8f20f5cf5f02f976d179ee11b9",
+    "fusion/embedding_transport.py": "be1e08cdbfc83f8641f752618118ea570fa7e403b43b0da7080c16c4398d70e8",
+    "fusion/neoclaw_application.py": "781f793ee83e8b21fe1273d45b4ae8cd719eadf19f9acc6b77042103944b9d5d",
+    "fusion/neoclaw_embedding.py": "3ee508a853c15540a8ef0b19b474ae8fffbd862ffb9b474662559592338fbd82",
+    "fusion/neoclaw_memory.py": "2bf9da5fd2eb915f2c57ded19ca16346ebe2e25511e545826f9b345926b8493b",
+    "integration/neoclaw/embedding-caller-requirements.in": "aead338c80a4de9dc56b91207e2a2a2ca25d2734e31dd3754031243130902220",
+    "integration/neoclaw/embedding-caller-requirements.lock": "3d39868b05206645810961155cb4cf311a7a2eefbace12d88762b17a292eff9a",
+    "integration/neoclaw/embedding_caller_build.py": "70905cf911c9d69a39d3eceadd43d29540e42f4fef9283b45d907d6597db79a4",
+    "integration/neoclaw/embedding_composition.py": "70cf63e26284c1192c0730335bb872371de74377646e8979ace63a67e2d89319",
+    "integration/neoclaw/embedding_run.py": "9aa905d8ca77ea47e7a9b942ea135a1376f89765a5392cf9755a61e750e56e10",
+    "integration/neoclaw/embedding_worker.py": "71cd398046e23a042bf578ce6dae44e0069663995d2fa0cc923a6fc667ddd371",
+    "integration/neoclaw/host.py": "8b97d65e3e59a56f4b997c7cb95e41d636b7566f42a62b95a6486ec1807eef7e",
+    "integration/neoclaw/loop_bridge.py": "5c4bc8d9461c55807e05fed1b1f0f605cc01fc1011b4250a62e23dc38de6d32b",
+    "integration/neoclaw/memory_bootstrap.py": "f181b13ccd31c5e919c47b5914d598b3968b8711c27ec93d2f3a6d4783a951e6",
+    "integration/neoclaw/native_loop.py": "a0ab1d5069448e2b979c3557fe4822406b8483a69a78656786bc8d50d79e161e",
+    "integration/neoclaw/test_embedding.py": "f2860997213ab1a5b2315a5b9efe0e9c29b699250bc0eb3d405f3e4aa745bac2",
+    "tests/neoclaw_support.py": "41a4edbefa253080d7c50e40f34c967f66fa65fab904c0c3884c8adeb7054e4a",
+    "tests/test_embedding_contracts.py": "f0fc6608cf83e2c2f012a4060c4477ea831bc0041c7a51fe573861a1e52fa7bd"
+  },
+  "implementation_manifest": {
+    "fusion/adapters/native_e5.py": "efe08720557eb8fca8fbef2435676a0d8bf747b479b4fb8d42c4ce507cf94ecf",
+    "fusion/embedding_composition.py": "4065e3a84e884d96d8d785066c183f6bae6f295d4d66f7587515324762df06c2",
+    "fusion/embedding_contracts.py": "715c59427f5f1da4065442f2431ea9c378f9537585ec7ce09142e1374614cb30",
+    "fusion/embedding_service.py": "796d9d4f32fae7c728abe3b630ff64b7eabfad8f20f5cf5f02f976d179ee11b9",
+    "fusion/embedding_transport.py": "be1e08cdbfc83f8641f752618118ea570fa7e403b43b0da7080c16c4398d70e8",
+    "fusion/neoclaw_application.py": "781f793ee83e8b21fe1273d45b4ae8cd719eadf19f9acc6b77042103944b9d5d",
+    "fusion/neoclaw_embedding.py": "3ee508a853c15540a8ef0b19b474ae8fffbd862ffb9b474662559592338fbd82",
+    "fusion/neoclaw_memory.py": "2bf9da5fd2eb915f2c57ded19ca16346ebe2e25511e545826f9b345926b8493b",
+    "integration/neoclaw/embedding-caller-requirements.in": "aead338c80a4de9dc56b91207e2a2a2ca25d2734e31dd3754031243130902220",
+    "integration/neoclaw/embedding-caller-requirements.lock": "3d39868b05206645810961155cb4cf311a7a2eefbace12d88762b17a292eff9a",
+    "integration/neoclaw/embedding_caller_build.py": "70905cf911c9d69a39d3eceadd43d29540e42f4fef9283b45d907d6597db79a4",
+    "integration/neoclaw/embedding_composition.py": "895570ebab7ee1803528a59a642af4d6d32af282d2744a17c9d9a4e5193879c9",
+    "integration/neoclaw/embedding_run.py": "9aa905d8ca77ea47e7a9b942ea135a1376f89765a5392cf9755a61e750e56e10",
+    "integration/neoclaw/embedding_worker.py": "71cd398046e23a042bf578ce6dae44e0069663995d2fa0cc923a6fc667ddd371",
+    "integration/neoclaw/host.py": "8b97d65e3e59a56f4b997c7cb95e41d636b7566f42a62b95a6486ec1807eef7e",
+    "integration/neoclaw/loop_bridge.py": "5c4bc8d9461c55807e05fed1b1f0f605cc01fc1011b4250a62e23dc38de6d32b",
+    "integration/neoclaw/memory_bootstrap.py": "f181b13ccd31c5e919c47b5914d598b3968b8711c27ec93d2f3a6d4783a951e6",
+    "integration/neoclaw/native_loop.py": "a0ab1d5069448e2b979c3557fe4822406b8483a69a78656786bc8d50d79e161e",
+    "integration/neoclaw/test_embedding.py": "f2860997213ab1a5b2315a5b9efe0e9c29b699250bc0eb3d405f3e4aa745bac2",
+    "tests/neoclaw_support.py": "41a4edbefa253080d7c50e40f34c967f66fa65fab904c0c3884c8adeb7054e4a",
+    "tests/test_embedding_contracts.py": "f0fc6608cf83e2c2f012a4060c4477ea831bc0041c7a51fe573861a1e52fa7bd"
+  },
+  "non_evidence_manifest": {
+    "README.md": "7bd941310d0aa0eaf3ede9ac6695a9639aee30112106340c43c7073fde90d8a5",
+    "codex_neoclaw_s03_1_query_embedding_placement.md": "e4226ea74ab242cee619f79cf2bfa883cb616044f3f4d9134d55151e1be512ea",
+    "docs/module-interfaces/architecture.md": "01d37450be3f6b1773a91c1cf56938622cf57585e729ecffa958c17c546aca9b",
+    "docs/omega-adoption/mettaclaw-neoclaw/README.md": "83bf9d1319390448ba78ac0b7d74c39668d004e1cdbe90a0463ef047ed63b089",
+    "docs/omega-adoption/mettaclaw-neoclaw/coverage.json": "ed833ad573dd8c3718fcc2df2b2d335cd1f69adbf105df1e7cc28dc111b59d8f",
+    "docs/omega-adoption/mettaclaw-neoclaw/mapping-ledger.json": "684bd5d3561eb5763de67edec7d20cc0cfecb7274c84b9ecce8ade5e715f9350",
+    "docs/omega-adoption/mettaclaw-neoclaw/s03_1-contract-decisions.md": "92fc51b5fcd25add947c012bce5d93bd7b9105c29d7bdb40351d3d93777ad56a",
+    "docs/omega-adoption/mettaclaw-neoclaw/s03_1.md": "700ccee939f72db58a009ec0286e10c3478a651c208f26be27f2fcfc9afe8075",
+    "fusion/adapters/native_e5.py": "efe08720557eb8fca8fbef2435676a0d8bf747b479b4fb8d42c4ce507cf94ecf",
+    "fusion/embedding_composition.py": "4065e3a84e884d96d8d785066c183f6bae6f295d4d66f7587515324762df06c2",
+    "fusion/embedding_contracts.py": "715c59427f5f1da4065442f2431ea9c378f9537585ec7ce09142e1374614cb30",
+    "fusion/embedding_service.py": "796d9d4f32fae7c728abe3b630ff64b7eabfad8f20f5cf5f02f976d179ee11b9",
+    "fusion/embedding_transport.py": "be1e08cdbfc83f8641f752618118ea570fa7e403b43b0da7080c16c4398d70e8",
+    "fusion/neoclaw_application.py": "781f793ee83e8b21fe1273d45b4ae8cd719eadf19f9acc6b77042103944b9d5d",
+    "fusion/neoclaw_embedding.py": "3ee508a853c15540a8ef0b19b474ae8fffbd862ffb9b474662559592338fbd82",
+    "fusion/neoclaw_memory.py": "2bf9da5fd2eb915f2c57ded19ca16346ebe2e25511e545826f9b345926b8493b",
+    "integration/neoclaw/embedding-caller-requirements.in": "aead338c80a4de9dc56b91207e2a2a2ca25d2734e31dd3754031243130902220",
+    "integration/neoclaw/embedding-caller-requirements.lock": "3d39868b05206645810961155cb4cf311a7a2eefbace12d88762b17a292eff9a",
+    "integration/neoclaw/embedding_caller_build.py": "70905cf911c9d69a39d3eceadd43d29540e42f4fef9283b45d907d6597db79a4",
+    "integration/neoclaw/embedding_composition.py": "895570ebab7ee1803528a59a642af4d6d32af282d2744a17c9d9a4e5193879c9",
+    "integration/neoclaw/embedding_run.py": "9aa905d8ca77ea47e7a9b942ea135a1376f89765a5392cf9755a61e750e56e10",
+    "integration/neoclaw/embedding_worker.py": "71cd398046e23a042bf578ce6dae44e0069663995d2fa0cc923a6fc667ddd371",
+    "integration/neoclaw/host.py": "8b97d65e3e59a56f4b997c7cb95e41d636b7566f42a62b95a6486ec1807eef7e",
+    "integration/neoclaw/loop_bridge.py": "5c4bc8d9461c55807e05fed1b1f0f605cc01fc1011b4250a62e23dc38de6d32b",
+    "integration/neoclaw/memory_bootstrap.py": "f181b13ccd31c5e919c47b5914d598b3968b8711c27ec93d2f3a6d4783a951e6",
+    "integration/neoclaw/native_loop.py": "a0ab1d5069448e2b979c3557fe4822406b8483a69a78656786bc8d50d79e161e",
+    "integration/neoclaw/test_embedding.py": "f2860997213ab1a5b2315a5b9efe0e9c29b699250bc0eb3d405f3e4aa745bac2",
+    "tests/neoclaw_support.py": "41a4edbefa253080d7c50e40f34c967f66fa65fab904c0c3884c8adeb7054e4a",
+    "tests/test_embedding_contracts.py": "f0fc6608cf83e2c2f012a4060c4477ea831bc0041c7a51fe573861a1e52fa7bd"
+  },
+  "post_test_deltas": [
+    {
+      "path": "integration/neoclaw/embedding_composition.py",
+      "change": "Two Path.resolve calls for operator-supplied caller/provider runtime paths; no owner/runtime/contract/numerical change",
+      "validation": "same-query-final.json: original, S03 baseline and all four placements using fresh caller with a relative --caller-runtime argument"
+    }
+  ],
+  "s03_implementation_deltas": [
+    "fusion/neoclaw_application.py",
+    "fusion/neoclaw_memory.py",
+    "integration/neoclaw/host.py",
+    "integration/neoclaw/loop_bridge.py",
+    "integration/neoclaw/memory_bootstrap.py",
+    "integration/neoclaw/native_loop.py"
+  ],
+  "unchanged_profiles": [
+    "controlled-native-loop/1",
+    "controlled-native-loop/2",
+    "controlled-native-loop/3",
+    "neoclaw-nal-truth-deduction/1",
+    "external-web-search/1",
+    "semantic-embedding-memory/1",
+    "existing guarded Fusion PLN profiles"
+  ],
+  "source_status_note": "Only generated __pycache__ artifacts may be untracked in pinned dependency checkouts; no tracked upstream source changes",
+  "recorded_at": "2026-10-18T14:57:29.187698+00:00"
+}

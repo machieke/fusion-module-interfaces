@@ -25,9 +25,12 @@ def initialize():
     from fusion import vector_contracts as c
     selected=json.loads(Path(app['memory_read_config']).read_text())
     require(cfg['metadata_seal']==selected['metadata_seal'],'CONFLICT')
-    require((selected['embedding']==c.EMBEDDING and cfg['embedding_boundary']=='real') or
+    require((selected['embedding']==c.EMBEDDING and cfg['embedding_boundary'] in ('real','port')) or
             (selected['embedding']==c.FIXTURE and cfg['embedding_boundary']=='vector-fixture'),'UNSUPPORTED_PROFILE')
-    from .memory_build import validate_runtime
+    if cfg['embedding_boundary']=='port':
+        from .embedding_caller_build import validate_runtime
+    else:
+        from .memory_build import validate_runtime
     runtime_path=Path(cfg.get('runtime',Path(cfg['site']).parents[2].parent/'memory-runtime.json'))
     require(digest(runtime_path.read_bytes())==cfg.get('runtime_sha256',digest(runtime_path.read_bytes())),'CONFLICT')
     runtime=validate_runtime(runtime_path)
@@ -64,7 +67,32 @@ def initialize():
     for row in rows:
         require(helper.promotion_get_value(row['uuid'])==row['promotion'] and helper.promotion_get_lasttime(row['uuid'])==manifest['promotion_time'],'CONFLICT')
     require(set(helper.promotion_get_all_keys())=={r['uuid'] for r in rows},'CONFLICT')
-    if cfg['embedding_boundary']=='real':
+    if cfg['embedding_boundary']=='port':
+        from fusion import embedding_contracts as e
+        require(app['composition']==e.APPLICATION,'UNSUPPORTED_PROFILE')
+        import importlib.util
+        absent={name:importlib.util.find_spec(name) is None and name not in sys.modules for name in ('torch','sentence_transformers','transformers')}
+        require(all(absent.values()),'UNSUPPORTED_PROFILE')
+        # PeTTa imports this bootstrap before its loop bridge. Use the same
+        # top-level module identity that its subsequent Python import selects.
+        sys.path.insert(0,str(Path(__file__).parent))
+        import loop_bridge
+        lib_llm_ext.initLocalEmbedding=forbidden
+        lib_llm_ext.useLocalEmbedding=loop_bridge.encode_query
+        probes={}
+        for file in app.get('embedding_denied_files',[]):
+            try:
+                with open(file,'rb') as stream:stream.read(1)
+            except OSError:probes[file]='inaccessible'
+            else:require(False,'UNAUTHORIZED')
+        try:lib_llm_ext.initLocalEmbedding()
+        except RuntimeError:initializer_forbidden=True
+        else:require(False,'UNAUTHORIZED')
+        Path(app['workdir'],'embedding-boundary.json').write_bytes(canonical(dict(absent=absent,
+            denied_file_probes=probes,local_initializer_forbidden=initializer_forbidden,
+            source='original native embed/string-safe; query-time helper is the typed port',
+            denied_paths_visible=[p for p in app.get('denied_paths',[]) if Path(p).exists() and any(Path(p).iterdir())])))
+    elif cfg['embedding_boundary']=='real':
         from .memory_embedding import load
         lib_llm_ext.useLocalEmbedding=load(cfg['embedding_source'],cfg['model'],cfg['model_hashes'])
     else:

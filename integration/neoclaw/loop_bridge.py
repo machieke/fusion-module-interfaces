@@ -31,6 +31,10 @@ def call(method, *args):
 
 def start():
     result = more()
+    if _app.embedding_enabled:
+        import time, resource
+        Path(_app.config['workdir'],'embedding-ready.json').write_text(json.dumps(dict(
+            ready_unix_ms=time.time()*1000, peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss)))
     if _app.two_operations:
         import importlib.util
         from fusion.contracts import require
@@ -63,3 +67,4 @@ def read_replay(): return call('read_replay')
 def read_candidates(vector, k): return call('read_candidates', vector, k)
 def read_clock(observed): return call('read_clock', observed)
 def capture_native(value): return call('capture_native', value)
+def encode_query(text): return call('encode_query', text)

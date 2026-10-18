@@ -15,6 +15,7 @@ from . import neoclaw_contracts as c
 from . import neoclaw_search_contracts as s, neoclaw_operations as ops
 from .neoclaw_client import Caller
 from . import vector_contracts as v
+from . import embedding_contracts as e
 from .registry import selection_token
 
 
@@ -35,9 +36,10 @@ class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION), 'UNSUPPORTED_PROFILE')
-        self.memory_enabled = self.config['composition'] == v.APPLICATION
-        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION)
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION), 'UNSUPPORTED_PROFILE')
+        self.embedding_enabled = self.config['composition'] == e.APPLICATION
+        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION)
+        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION)
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
@@ -51,6 +53,13 @@ class Application:
             if self.memory_enabled:
                 from .neoclaw_memory import configuration
                 binding.update(composition=v.APPLICATION, memory=configuration(self.config['memory_read_config'])[2])
+            if self.embedding_enabled:
+                from .embedding_composition import configuration
+                encoder_cfg, _, selected = configuration(self.config['embedding_config'])
+                require(encoder_cfg['principal'] == binding['memory']['principal'] and encoder_cfg['scope'] == binding['memory']['scope'], 'UNAUTHORIZED')
+                require(binding['memory']['embedding'] == encoder_cfg['model'] == v.EMBEDDING, 'UNSUPPORTED_PROFILE')
+                require(set(encoder_cfg['inputs']) == set(binding['memory']['queries']), 'UNSUPPORTED_PROFILE')
+                binding.update(composition=e.APPLICATION, query_embedding=selected)
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -90,16 +99,21 @@ class Application:
             if self.memory_enabled:
                 from .neoclaw_memory import MemoryRead
                 self.memory = MemoryRead(self)
+            if self.embedding_enabled:
+                from .neoclaw_embedding import QueryEmbedding
+                self.embedding = QueryEmbedding(self)
             pending = self.pending()
             if pending:
                 # No replay of arbitrary local effects, even if their old result exists.
                 require(all(self.intent(x) is not None for x in json.loads(pending['commands'])), 'UNSUPPORTED_PROFILE')
         except BaseException:
+            if hasattr(self, 'embedding'): self.embedding.close()
             self.db.close()
             self.lock.close()
             raise
 
     def close(self):
+        if hasattr(self, 'embedding'): self.embedding.close()
         self.db.close()
         self.lock.close()
 
@@ -226,7 +240,17 @@ class Application:
 
     def read_captured(self): return self.is_memory() and self.memory.captured()
     def read_replay(self): return self.memory.replay()
-    def read_candidates(self, vector, k): return self.memory.retrieve(vector, k)
+    def read_candidates(self, vector, k):
+        start = time.monotonic()
+        value = self.memory.retrieve(vector, k)
+        if self.embedding_enabled:
+            with self.db:
+                self.db.execute('UPDATE app_query_vectors SET retrieval_ms=? WHERE id=?',
+                    ((time.monotonic()-start)*1000, self.memory.current()['id']))
+        return value
+    def encode_query(self, text):
+        require(self.embedding_enabled, 'UNSUPPORTED_PROFILE')
+        return self.embedding.encode(text)
     def read_clock(self, observed): return self.memory.clock(observed)
     def capture_native(self, value):
         return self.memory.capture(value) if self.is_memory() else value

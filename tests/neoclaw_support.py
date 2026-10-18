@@ -112,7 +112,7 @@ class Harness:
         self.server_log = open(self.server_root/'server.log', 'a')
         self.server = subprocess.Popen([sys.executable, '-m', 'integration.neoclaw.host', 'serve', str(self.config_path),
             '--port', str(self.port or 0), '--ready', str(ready)], cwd=ROOT, stdout=self.server_log, stderr=self.server_log)
-        self.wait_file(ready, self.server)
+        self.wait_file(ready, self.server, seconds=50 if self.config.get('embedding') else 12)
         self.port = json.loads(ready.read_text())['port']
 
     def stop_server(self, kill=False):
@@ -154,8 +154,8 @@ class Harness:
     def native(self, command=COMMAND, original=False):
         return self.finish_native(self.start_native(command, original), drive=not original)
 
-    def wait_file(self, path, process=None):
-        until = time.monotonic()+12
+    def wait_file(self, path, process=None, seconds=12):
+        until = time.monotonic()+seconds
         while not Path(path).exists() and time.monotonic() < until:
             if process is not None and process.poll() is not None:break
             time.sleep(.02)

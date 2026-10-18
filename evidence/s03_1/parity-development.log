@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/embedding_run.py", line 104, in <module>
+    else: value=compare(json.loads(Path(args.corpus).read_text()) if args.corpus else real_corpus())
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/embedding_run.py", line 81, in compare
+    raise RuntimeError(str((code,status))+'\n'+(run.h.root/'native.log').read_text()[-7000:])
+RuntimeError: (2, None)
+ERROR: [Thread main] /home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/PeTTa/src/main.pl:123: user:main Python 'ModuleNotFoundError':
+ERROR: [Thread main]   No module named 'loop_bridge'
+ERROR: [Thread main] Python stack:
+ERROR: [Thread main]   File "/tmp/fusion-s01-xfsxiy5s/caller/native/memory_bootstrap.py", line 2, in <module>
+ERROR: [Thread main]     initialize()
+ERROR: [Thread main]   File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/memory_bootstrap.py", line 76, in initialize
+ERROR: [Thread main]     import loop_bridge
+ERROR: [Thread main] 
+
