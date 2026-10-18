@@ -160,14 +160,15 @@
       "external-web-search/1",
       "semantic-embedding-memory/1",
       "neoclaw-e5-query-text/1",
-      "neoclaw-append-only-memory/1"
+      "neoclaw-append-only-memory/1",
+      "neoclaw-episodic-assessment/1"
     ],
-    "adopted_operations": 5,
+    "adopted_operations": 6,
     "whole_families_promoted": 0,
-    "explanation": "Historical 105-row classifications and 9/15 semantic resemblance remain unchanged. Five adoption entries cover four native user commands: Truth_Deduction, external search, query retrieval, query encoding (X02 extension), and append-only remember. The fifth includes the separate memory-purpose Embedding dependency; no whole family is promoted.",
+    "explanation": "Historical 105-row classifications and 9/15 semantic resemblance remain unchanged. Six precise adoption entries cover six user commands. S04 adds support/contradict through one shared local assessment boundary, with separate C1/C2 ownership; no whole family is promoted.",
     "evidence": "../../../evidence/s01/verification.json",
     "application_evidence": "../../../evidence/s01_1/verification.json",
-    "application_scope": "controlled-native-loop/5 adds append-only remember and retained application read views to the existing controlled session. Query enrichment stays local; old profiles and historical live S02 evidence remain distinct. Default full Omega is unrun.",
+    "application_scope": "controlled-native-loop/6 adds local source capture, support/contradict, distinct NAL revision and committed owner-bound query presentation to the existing lifecycle. Historical /1 through /5 and HTTPS memory remain separate profiles. Full Omega is unrun.",
     "s02_evidence": "../../../evidence/s02/verification.json",
     "s02_report": "s02.md",
     "s03_evidence": "../../../evidence/s03/verification.json",
@@ -177,8 +178,11 @@
     "s03_1_report": "s03_1.md",
     "s03_2_evidence": "../../../evidence/s03_2/verification.json",
     "s03_2_report": "s03_2.md",
-    "native_user_commands": 4,
-    "whole_memory_service_integrated": false
+    "native_user_commands": 6,
+    "whole_memory_service_integrated": false,
+    "s04_evidence": "../../../evidence/s04/verification.json",
+    "s04_report": "s04.md",
+    "whole_cognitive_family_integrated": false
   },
   "extension_adoptions": {
     "historical_family_denominator_unchanged": 15,

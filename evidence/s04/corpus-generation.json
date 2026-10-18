@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "original_prepared_sha256": "0cb5e5946eb41d5b351f0a3c62257ca6678293c434afee63c42a58d4645d5477",
+  "regenerated_sha256": "bfcda89736893456b02c7218d1d43c0547059fdc7f3b22504863e46aa40afa0d",
+  "exact_json_values_match": true,
+  "model": "intfloat/e5-large-v2@f169b11e22de13617baa190a028a32f3493550b6",
+  "recipe": "artifacts/s03/venv/bin/python -m integration.neoclaw.evidence_corpus --out artifacts/s04/corpus-regenerated.json",
+  "cache": "warm local pinned assets; offline real CPU inference",
+  "note": "Initial prepared JSON used ASCII escapes; canonical regeneration preserves exact values."
+}

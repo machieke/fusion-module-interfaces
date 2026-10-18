@@ -3227,7 +3227,7 @@
         ]
       },
       "omega_role": "provider",
-      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
+      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
       "owned_state": [],
       "dependencies": [
         "datetime",
@@ -3246,7 +3246,7 @@
           "current_profile": null,
           "fusion_baseline_profile": "episode-delivery-completion/1",
           "candidate_profile": "Requires explicit compatibility design; not selected",
-          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
+          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
           "observed_semantic_responsibility": true
         }
       ],
@@ -7958,6 +7958,79 @@
         "single trusted application writer; no multiwriter or power-loss claim",
         "receipt/digest validation is consistency checking, not computation attestation"
       ]
+    },
+    {
+      "slice": "S04",
+      "operation": "native support/contradict through one local tvUpdate assessment boundary",
+      "profile": "neoclaw-episodic-assessment/1",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "source_baseline": "ecf5f48dec699a333853396e12141dc3a23720ac",
+      "components": [
+        "memory.support",
+        "memory.contradict"
+      ],
+      "exact_symbol": "src/memory.metta::support/contradict -> tvUpdate; src/loop.metta::receive capture; later native query/getSTV/linked-label readback",
+      "interfaces": [
+        "episodic.memory@4.0.0 / neoclaw-local-source-assessment/1",
+        "belief.revision@4.0.0 / neoclaw-nal-revision-private/1",
+        "existing private AtomStorage and trusted evidence completion"
+      ],
+      "numerical_profile": "neoclaw-nal-stv-capped-099/1",
+      "prior": "neoclaw-fresh-memory-compatibility-prior/1; zero empirical roots and observations",
+      "providers": [
+        "real C1/C2 owners",
+        "real local DeTTa",
+        "original pinned native MeTTaClaw Truth_Revision",
+        "existing real E5/Chroma memory integration"
+      ],
+      "placement": [
+        "controlled native local C1/C2/provenance/revision"
+      ],
+      "same_host": true,
+      "multi_host": "NOT_RUN",
+      "remote_cognitive_placement": "UNSUPPORTED_PROFILE",
+      "fallback": false,
+      "private_omega_stores_accessed": false,
+      "application_composition": "controlled-native-loop/6",
+      "fresh_journals_only": true,
+      "coverage": {
+        "adopted_internal_operations": 1,
+        "additional_user_commands": 2,
+        "whole_families_promoted": 0,
+        "whole_omega_integrated": false
+      },
+      "evidence": "../../../evidence/s04/verification.json",
+      "report": "s04.md",
+      "status": "IMPLEMENTED_AND_EXECUTED_LOCAL_EVIDENCE_BOUNDARY",
+      "guarantees": [
+        "original capped native arithmetic on the selected finite domain",
+        "owner-issued source occurrences and exact target/source binding",
+        "nonempirical compatibility prior kept separate from observations",
+        "command replay and contribution duplication are distinct",
+        "contrary/overlapping/unknown evidence retained without unjustified aggregation",
+        "explicit authorized assumptions bound to actual supports",
+        "existing independent owners and trusted relay; no foreign owner SQL in runtime consumers",
+        "original deadlines and durable evaluation budgets",
+        "exact owner-bound query views; belief-only changes retain Search generation and source head"
+      ],
+      "local_unadopted": [
+        "general episodes/history or Relations",
+        "promotion/Attention",
+        "legacy memory histories",
+        "update/delete/forget/link/unlink",
+        "remote private cognitive placement",
+        "full Omega and live channels/models"
+      ],
+      "qualifications": [
+        "scripted external model/channel, unused history/context and comparison clocks are fixtures",
+        "new approved synthetic records only",
+        "ambiguous timestamps fail rather than fan out",
+        "source assessments and independence are declared assumptions, not calibrated truth",
+        "same-profile historical PLN is not relabelled NAL",
+        "process restart with intact files; no power-loss or malicious-host claim"
+      ],
+      "executed_test_methods": 21,
+      "regression_methods": 207
     }
   ]
 }

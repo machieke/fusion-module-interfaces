@@ -52,6 +52,7 @@ class MemoryAppend:
         initial=json.loads(Path(json.loads(Path(app.config['memory_native_config']).read_text())['metadata_manifest']).read_text())
         memory=app.binding['memory'];require(digest(canonical(initial))==memory['metadata_seal'],'CONFLICT')
         view=dict(snapshot=memory['snapshot'],metadata_seal=memory['metadata_seal'],metadata=initial)
+        if getattr(self.app,'evidence_enabled',False):view['defaults']={r['uuid']:'fixture-metadata-not-a-belief' for r in initial['records']}
         key=digest(canonical(view))
         with self.db:
             self.db.execute('INSERT OR IGNORE INTO app_read_views VALUES(?,?)',(key,canonical(view).decode()))
@@ -187,7 +188,13 @@ class MemoryAppend:
         collection(cfg['metadata_root'],manifest,prepare=True,deadline=row['deadline'])
         self.note(row,'metadata-ready')
         self.app.hook('after_append_metadata')
-        view=dict(snapshot=snapshot,metadata_seal=digest(canonical(manifest)),metadata=manifest);key=digest(canonical(view))
+        view=dict(snapshot=snapshot,metadata_seal=digest(canonical(manifest)),metadata=manifest)
+        if getattr(self.app,'evidence_enabled',False) and prior.get('beliefs'):
+            view['beliefs']=prior['beliefs']
+        if getattr(self.app,'evidence_enabled',False):
+            view['defaults']={**prior.get('defaults',{}),state['uuid']:'neoclaw-fresh-memory-compatibility-prior/1:not-registered'}
+            if view.get('beliefs'):self.app.evidence.materialize(view,row['deadline'])
+        key=digest(canonical(view))
         self.authorize(row)
         with self.db:
             self.db.execute('INSERT OR IGNORE INTO app_read_views VALUES(?,?)',(key,canonical(view).decode()))

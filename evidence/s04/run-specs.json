@@ -1,0 +1,308 @@
+{
+  "schema": "s04-run-specs/1",
+  "cwd": "/home/purplezky/work/takopi/fusion-module-interfaces",
+  "runs": [
+    {
+      "log": "baseline-append.log",
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_append_contracts",
+        "integration.neoclaw.test_append"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S03_2_EVIDENCE": "/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s04/baseline-append"
+      },
+      "source_identity": "completed S03.2 application/startup bytes checked before patch; baseline-source.json"
+    },
+    {
+      "log": "baseline-cognitive.log",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_m2",
+        "tests.test_m3",
+        "tests.test_m3_1_delivery",
+        "tests.test_m3_1_compat",
+        "integration.pln.test_revision",
+        "integration.pln.test_m3_1",
+        "integration.pln.test_m3_1_recovery"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "M2_REVISION_ENV": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m3/providers/revision-environment.json",
+        "M3_DEDUCTION_ENV": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m3/providers/deduction-environment.json"
+      },
+      "source_identity": "baseline-source.json"
+    },
+    {
+      "log": "cognitive-development-regression.log",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_m2",
+        "tests.test_m3",
+        "tests.test_m3_1_delivery",
+        "tests.test_m3_1_compat",
+        "integration.pln.test_revision",
+        "integration.pln.test_m3_1",
+        "integration.pln.test_m3_1_recovery"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "M2_REVISION_ENV": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m3/providers/revision-environment.json",
+        "M3_DEDUCTION_ENV": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m3/providers/deduction-environment.json"
+      },
+      "source_identity": "post selected-profile owner/relay hooks; exact shared source matches candidate-01 and final test-source.json"
+    },
+    {
+      "log": "regression-append.log",
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_append_contracts",
+        "integration.neoclaw.test_append"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S03_2_EVIDENCE": "/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s04/regression-append"
+      },
+      "source_identity": "test-source-candidate-01.json"
+    },
+    {
+      "log": "regression-s01-s02-m5.log",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_neoclaw_application",
+        "integration.neoclaw.test_loop",
+        "tests.test_neoclaw",
+        "integration.neoclaw.test_s01",
+        "integration.neoclaw.test_network",
+        "integration.neoclaw.test_recovery",
+        "tests.test_neoclaw_search",
+        "integration.neoclaw.test_search_loop",
+        "tests.test_m5",
+        "tests.test_m5_boundaries",
+        "integration.test_m5_real"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1"
+      },
+      "source_identity": "test-source-candidate-01.json"
+    },
+    {
+      "log": "regression-s03-s03_1.log",
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_embedding_contracts",
+        "integration.neoclaw.test_embedding",
+        "tests.test_vector_contracts",
+        "integration.neoclaw.test_memory",
+        "integration.neoclaw.test_memory_edges.MemoryEdges"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S03_EVIDENCE": "/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s04/regression-s03",
+        "S03_1_EVIDENCE": "/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s04/regression-s03_1"
+      },
+      "source_identity": "test-source-candidate-01.json"
+    },
+    {
+      "log": "tests-candidate-02.log",
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.neoclaw.test_nal_revision",
+        "integration.neoclaw.test_evidence_owners",
+        "integration.neoclaw.test_evidence_loop"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S04_EVIDENCE": "/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s04/candidate-02"
+      },
+      "source_identity": "test-source-candidate-02.json; module loaded before later test additions"
+    },
+    {
+      "log": "source-lock-and-authority-recheck.log",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "tests.test_neoclaw",
+        "integration.neoclaw.test_evidence_owners.EvidenceOwners.test_credential_substitution_and_assumption_revocation"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1"
+      },
+      "source_identity": "test-source-candidate-03.json except privacy method subsequently expanded"
+    },
+    {
+      "log": "privacy-recheck.log",
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.neoclaw.test_evidence_loop.NativeEvidenceLoop.test_current_authority_revoked_after_c1_and_private_scope_stays_local"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S04_EVIDENCE": "/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s04/candidate-03"
+      },
+      "source_identity": "test-source-candidate-03.json"
+    },
+    {
+      "log": "identity-guard-recheck.log",
+      "argv": [
+        "uv",
+        "run",
+        "--python",
+        "3.11",
+        "--locked",
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.neoclaw.test_evidence_owners.EvidenceOwners.test_bounds_authority_model_prior_and_exact_replay"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1"
+      },
+      "source_identity": "test-source-candidate-03b.json; executed failure exposed cross-key occurrence replay"
+    },
+    {
+      "log": "tests-final.log",
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "integration.neoclaw.test_nal_revision",
+        "integration.neoclaw.test_evidence_owners",
+        "integration.neoclaw.test_evidence_loop"
+      ],
+      "environment": {
+        "S01_DETTA": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "M2_DETTA_BINARY": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "/home/purplezky/work/takopi/fusion-module-interfaces",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S04_EVIDENCE": "/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s04/final"
+      },
+      "source_identity": "test-source.json"
+    }
+  ],
+  "standalone": [
+    {
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "integration.neoclaw.evidence_corpus",
+        "--out",
+        "artifacts/s04/corpus-regenerated.json"
+      ],
+      "log": "corpus-build.log",
+      "classification": "real E5, new generated corpus; canonical result copied to artifacts/s04/corpus.json"
+    },
+    {
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "-m",
+        "integration.neoclaw.evidence_oracle",
+        "--corpus",
+        "artifacts/s04/corpus.json",
+        "--evidence",
+        "evidence/s04/native-oracle-fresh.json"
+      ],
+      "log": "native-oracle-fresh.log",
+      "classification": "original real native/E5/Chroma; scripted external boundaries"
+    },
+    {
+      "argv": [
+        "artifacts/s03/venv/bin/python",
+        "artifacts/s04/verify_sources.py"
+      ],
+      "log": "build-verification.log",
+      "classification": "one-off read-only source/build byte verification; facts retained in builds.json"
+    }
+  ],
+  "note": "Historical live web and chain gates are not rerun. Development logs remain separately retained, not counted again. Commands use disposable generated stores; no private Omega data. Source manifests distinguish test changes from runtime changes."
+}

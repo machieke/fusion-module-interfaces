@@ -1,0 +1,58 @@
+{
+  "schema": "s04-baseline-source/1",
+  "starting_commit": "ecf5f48dec699a333853396e12141dc3a23720ac",
+  "checks": {
+    "tested": {
+      "count": 215,
+      "mismatches": []
+    },
+    "final": {
+      "count": 44,
+      "mismatches": []
+    },
+    "evidence": {
+      "count": 98,
+      "mismatches": []
+    }
+  },
+  "s03_2_manifest_sha256": {
+    "source-state.json": "f1795d0e048c9a699fdaddd4fa679b2cec376dba48c085789fb7dba8db9969bf",
+    "test-source.json": "3cc493d02243f45e018587e5dc2c347c28878ee2c345b836f7452dee2da39521",
+    "verification.json": "c5895f1fd93f0035e13aa0cc7e889ddc58523de089d36c876156bf06ec4513eb",
+    "final-audit.json": "2ce9befcb80ec9b6fc39f95e9d9dd1e8faa847b1d6a732a8fadea3c9a7044fdb"
+  },
+  "repositories": {
+    "mettaclaw": {
+      "path": "artifacts/s01/native-02/sources/mettaclaw",
+      "commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "status": [
+        "?? src/__pycache__/"
+      ]
+    },
+    "petta": {
+      "path": "artifacts/s01/native-02/sources/PeTTa",
+      "commit": "fea83178af3722666d2948d074591d10a3134f56",
+      "status": []
+    },
+    "swipl": {
+      "path": "artifacts/s01/native-02/sources/swipl",
+      "commit": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+      "status": []
+    },
+    "chroma-helper": {
+      "path": "artifacts/omega-mapping-source/petta_lib_chromadb",
+      "commit": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+      "status": []
+    },
+    "detta": {
+      "path": "artifacts/m5/reproduction-01/providers/native/sources/secured-contract-spaces",
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "status": []
+    }
+  },
+  "initial_status": [
+    "?? codex_neoclaw_s04_episodic_evidence_and_revision_adoption.md"
+  ],
+  "recorded_at": "2026-10-18T18:43:13.836819+00:00",
+  "inspection_note": "Initial hash script used system python (Python 2) and failed before writes; rerun with python3."
+}

@@ -10,7 +10,8 @@ from .responses import envelope
 
 
 class EpisodeOwner:
-    def __init__(self, database, atoms: AtomStorage, access: PrivateAuthority, *, hook=lambda stage: None):
+    def __init__(self, database, atoms: AtomStorage, access: PrivateAuthority, *, hook=lambda stage: None, contracts=c):
+        self.c = contracts
         self.database, self.atoms, self.access, self.hook = str(database), atoms, access, hook
         db = self._connect()
         try:
@@ -64,7 +65,7 @@ class EpisodeOwner:
 
     @c.boundary
     def recordEpisode(self, command: Mutation, source: str):
-        c.mutation(command); c.identifier(source)
+        self.c.mutation(command); self.c.identifier(source)
         principal = self.access.authorize(command.scope_ref, 'recordEpisode')
         identity, fingerprint = self._identity(principal, command, 'recordEpisode', source)
         with closing(self._connect()) as db, db:
@@ -87,14 +88,21 @@ class EpisodeOwner:
         envelope(stored, ref['event_ref'])
         require(stored.content_type == 'application/fusion-event' and
                 json.loads(stored.bytes) == {'event': value['event'], 'lineage_roots': value['lineage_roots']}, 'NOT_AVAILABLE')
-        c.response(c.evidence_record, value, ref)
+        self.c.response(self.c.evidence_record, value, ref)
         return value
+
+    def _append_guard(self, command, episode, event):
+        pass
+
+    def _origin(self, command, event):
+        origin = self.access.origin(command.scope_ref, event['source'])
+        return None if origin is None else digest(canonical([command.scope_ref, origin]))
 
     @c.boundary
     def appendEvent(self, command: Mutation, episode: EpisodeRef, expected_sequence: int, event: EpisodeEvent):
-        episode, event = c.detached(episode), c.detached(event)
-        c.episode_ref(episode); c.mutation(command, episode['scope_ref'])
-        c.integer(expected_sequence, 0, c.MAX_EVENTS); c.event(event, command.scope_ref)
+        episode, event = self.c.detached(episode), self.c.detached(event)
+        self.c.episode_ref(episode); self.c.mutation(command, episode['scope_ref'])
+        self.c.integer(expected_sequence, 0, self.c.MAX_EVENTS); self.c.event(event, command.scope_ref)
         principal = self.access.authorize(command.scope_ref, 'appendEvent')
         identity, fingerprint = self._identity(principal, command, 'appendEvent', [episode, expected_sequence, event])
         occurrence_fingerprint = digest(canonical([episode, event]))
@@ -110,10 +118,11 @@ class EpisodeOwner:
                 return self._save(db, identity, fingerprint, json.loads(prior['receipt']))
             row = self._episode(db, episode, principal)
             require(row['head'] == expected_sequence, 'CONFLICT')
-            require(row['head'] < c.MAX_EVENTS, 'OVERLOADED')
+            require(row['head'] < self.c.MAX_EVENTS, 'OVERLOADED')
             if event['numerical'] is not None:
                 pending = db.execute('SELECT count(*) FROM deliveries WHERE episode=? AND decision IS NULL', (episode['id'],)).fetchone()[0]
-                require(pending < c.MAX_PENDING, 'OVERLOADED')
+                require(pending < self.c.MAX_PENDING, 'OVERLOADED')
+            self._append_guard(command, episode, event)
             for ref in [event['payload'], *event['causation']]:
                 envelope(self.atoms.get(ref), ref)
             lineage = set()
@@ -125,19 +134,20 @@ class EpisodeOwner:
                 if any(not self._record(db, ref, principal)['lineage_roots'] for ref in event['provenance']):
                     lineage.clear()
             else:
-                origin = self.access.origin(command.scope_ref, event['source'])
+                origin = self._origin(command, event)
                 if origin is not None:
-                    lineage.add(digest(canonical([command.scope_ref, origin])))
-            c.roots(sorted(lineage), allow_empty=True)
+                    lineage.add(origin)
+            self.c.roots(sorted(lineage), allow_empty=True)
             payload = canonical({'event': event, 'lineage_roots': sorted(lineage)})
             stored = self.atoms.create(Mutation(command.scope_ref, 'event/' + occurrence_fingerprint),
                                        'application/fusion-event', payload)
-            c.response(c.atom_write, stored, command.scope_ref)
+            self.c.response(self.c.atom_write, stored, command.scope_ref)
             # Read through the port; an injected provider cannot forge these bytes.
             observed = self.atoms.get(stored['ref']); envelope(observed, stored['ref'])
             require(observed.bytes == payload, 'NOT_AVAILABLE')
             self.hook('after_payload_persist')
             self.access.authorize(command.scope_ref, 'appendEvent')
+            self._append_guard(command, episode, event)
             sequence = row['head'] + 1
             evidence = {'episode': episode, 'occurrence_id': event['occurrence_id'],
                         'sequence': sequence, 'event_ref': stored['ref']}
@@ -155,8 +165,8 @@ class EpisodeOwner:
 
     @c.boundary
     def readEpisode(self, ref: EpisodeRef, start: int, limit: int):
-        ref = c.detached(ref)
-        c.episode_ref(ref); c.integer(start, 1, c.MAX_EVENTS+1); c.integer(limit, 1, c.MAX_PAGE)
+        ref = self.c.detached(ref)
+        self.c.episode_ref(ref); self.c.integer(start, 1, self.c.MAX_EVENTS+1); self.c.integer(limit, 1, self.c.MAX_PAGE)
         principal = self.access.authorize(ref['scope_ref'], 'readEpisode')
         with closing(self._connect()) as db, db:
             db.execute('BEGIN')
@@ -174,16 +184,16 @@ class EpisodeOwner:
 
     @c.boundary
     def readEvidence(self, ref: EvidenceRef):
-        ref = c.detached(ref)
-        c.evidence_ref(ref)
+        ref = self.c.detached(ref)
+        self.c.evidence_ref(ref)
         principal = self.access.authorize(ref['episode']['scope_ref'], 'readEvidence')
         with closing(self._connect()) as db, db:
             return self._record(db, ref, principal)
 
     @c.boundary
     def pendingEvidence(self, ref: EpisodeRef, limit: int):
-        ref = c.detached(ref)
-        c.episode_ref(ref); c.integer(limit, 1, c.MAX_PENDING)
+        ref = self.c.detached(ref)
+        self.c.episode_ref(ref); self.c.integer(limit, 1, self.c.MAX_PENDING)
         principal = self.access.authorize(ref['scope_ref'], 'pendingEvidence')
         with closing(self._connect()) as db, db:
             self._episode(db, ref, principal)
@@ -193,10 +203,10 @@ class EpisodeOwner:
 
     @c.boundary
     def acknowledgeEvidence(self, command: Mutation, delivery_id: str, decision):
-        decision = c.detached(decision)
-        c.mutation(command); c.identifier(delivery_id)
+        decision = self.c.detached(decision)
+        self.c.mutation(command); self.c.identifier(delivery_id)
         principal = self.access.authorize(command.scope_ref, 'acknowledgeEvidence')
-        c.response(c.decision, decision, decision['snapshot']['claim'], decision['snapshot']['context'],
+        self.c.response(self.c.decision, decision, decision['snapshot']['claim'], decision['snapshot']['context'],
                    decision['snapshot']['runtime_selection'])
         identity, fingerprint = self._identity(principal, command, 'acknowledgeEvidence', [delivery_id, decision])
         with closing(self._connect()) as db, db:
@@ -218,8 +228,8 @@ class EpisodeOwner:
     def acknowledgeDelivery(self, command: Mutation, completed):
         """Selected closure profile only; the ordinary C1 binding cannot attest."""
         from . import delivery_contracts as d
-        completed = c.detached(completed)
-        c.mutation(command); d.completion(completed)
+        completed = self.c.detached(completed)
+        self.c.mutation(command); d.completion(completed)
         require(completed['scope_ref'] == command.scope_ref, 'UNAUTHORIZED')
         principal = self.access.authorize(command.scope_ref, 'acknowledgeDelivery')
         require(completed['consumer'] == self.access.completionConsumer(command.scope_ref), 'UNSUPPORTED_PROFILE')

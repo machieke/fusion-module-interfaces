@@ -242,6 +242,11 @@ class S01Contracts(unittest.TestCase):
             'fusion/lookup_composition.py': ('AtomSession', 'observe', 0),
             'fusion/ports.py': (None, 'AtomMutationObservation', 2),
         }
+        # S04 deliberately extends these existing owners/relay with selected-profile
+        # hooks. Pin both the reviewed historical identity and the new source;
+        # the M2/M3/M3.1 behavioral suite covers their historical default paths.
+        # Pure numerical providers above remain byte-for-byte unchanged.
+        owner_extensions = {'fusion/beliefs.py': ('7f60de5b5f8baa28449159c32077a771f313f1eee102da02206c618154cf1fe8', '7ac533b523d01336a6dbcc79e7df0a308dba758d5833f31d0c9216df1295dbd1'), 'fusion/episodes.py': ('494bd83b5c25630544cf7d0d091f7652cbfa694ba30440e060bd71139b50f7e6', '4e1375ca351572ec93c53c1b1b48570c9cef9995f2abead7a8f6c8dc1b4decec'), 'fusion/evidence_relay.py': ('6f2170d73fc974b5ebb054fc2ace6f5a50cb976b86f3483b8efe40648e4a8b41', '4b35e3d32e7240dc381f9b7c45783cf0614c440b1c7fec36ca7e43e721743b3e')}
         for name, expected in manifest['source']['files'].items():
             source = (ROOT/name).read_bytes()
             if name in additions:
@@ -253,6 +258,10 @@ class S01Contracts(unittest.TestCase):
                 node = nodes[0]; lines = source.splitlines(keepends=True)
                 self.assertTrue(all(not line.strip() for line in lines[node.end_lineno:node.end_lineno+trailing_blanks]))
                 source = b''.join(lines[:node.lineno-1] + lines[node.end_lineno+trailing_blanks:])
+            if name in owner_extensions:
+                historical, selected = owner_extensions[name]
+                self.assertEqual(expected, historical, name)
+                expected = selected
             self.assertEqual(hashlib.sha256(source).hexdigest(), expected, name)
 
 

@@ -1,0 +1,331 @@
+{
+  "schema": "s04-generated-same-session-trace/1",
+  "source": "final/native-loop.json",
+  "source_sha256": "f9b648846c8392dc47d27ffe34f51dcb403e4850c266032651b288c5ab078fb8",
+  "turns": 11,
+  "commands": 10,
+  "sources": [
+    {
+      "slot": 2,
+      "occurrence": "source-occurrence/76c7cdec1d90f8fdea2be0cfd71e5d43a7f35e5ffe47396cb2e7ef48e4a2c47a",
+      "receipt": {
+        "delivery_id": null,
+        "evidence": {
+          "episode": {
+            "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+            "scope_ref": "private-s04"
+          },
+          "event_ref": {
+            "digest": "e72238054c859890222dfc50d6feca0acb7bc7ce1ac186c3b8ec154cf9f71a60",
+            "id": "c8b92e3a-4986-548a-9878-a48a45c94191",
+            "revision": 1,
+            "scope_ref": "private-s04"
+          },
+          "occurrence_id": "source-occurrence/76c7cdec1d90f8fdea2be0cfd71e5d43a7f35e5ffe47396cb2e7ef48e4a2c47a",
+          "sequence": 1
+        },
+        "head": 1,
+        "persistence": "process-restart"
+      },
+      "observed_time": "2026-10-18T19:40:06.282522Z"
+    },
+    {
+      "slot": 9,
+      "occurrence": "source-occurrence/4e47aaa91c79eb6ba21a4e9ef1b2d1bdd17ae2cf61d640fb1b240753d0ad4afe",
+      "receipt": {
+        "delivery_id": null,
+        "evidence": {
+          "episode": {
+            "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+            "scope_ref": "private-s04"
+          },
+          "event_ref": {
+            "digest": "8af5b67059f057dbe3e1b9dc80824dc2f446fe558e1c31b823f41a3b41d74491",
+            "id": "5d00aa57-5a9f-5f44-be3d-de187a8f6ad7",
+            "revision": 1,
+            "scope_ref": "private-s04"
+          },
+          "occurrence_id": "source-occurrence/4e47aaa91c79eb6ba21a4e9ef1b2d1bdd17ae2cf61d640fb1b240753d0ad4afe",
+          "sequence": 5
+        },
+        "head": 5,
+        "persistence": "process-restart"
+      },
+      "observed_time": "2026-10-18T19:40:15.919181Z"
+    }
+  ],
+  "assessments": [
+    {
+      "command_occurrence": "068932f3-b5eb-5c26-a9fa-6d85d6634bd0",
+      "source": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "e72238054c859890222dfc50d6feca0acb7bc7ce1ac186c3b8ec154cf9f71a60",
+          "id": "c8b92e3a-4986-548a-9878-a48a45c94191",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/76c7cdec1d90f8fdea2be0cfd71e5d43a7f35e5ffe47396cb2e7ef48e4a2c47a",
+        "sequence": 1
+      },
+      "assessment": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "fbdd1f11a757b85b8d9194c0dd1842dbc22e69bf79f9ba8665adf7ce7a1781ba",
+          "id": "62cf2f1b-d367-58cb-b65b-4dd36211392b",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/23856d3bea7f5681388f85852ed621dc3a523325019962652cb3b480746d2186",
+        "sequence": 2
+      },
+      "decision_id": "9713311bb80b79d4f5099417b5b36dd487ed1aa99e0291de0625b7f1a92defb4",
+      "admission": "admitted",
+      "numerical": "revised",
+      "revision": 2,
+      "truth": {
+        "confidence": "0.6666666666666666",
+        "evidence_count": null,
+        "model": "neoclaw-nal-stv-capped-099/1",
+        "strength": "1.0"
+      },
+      "view": "768e8c1b9c5605a09b63630dc9e39c8dfc10c1c8750a1724e40c6b29e394aa47"
+    },
+    {
+      "command_occurrence": "4c7b820e-3347-5daf-9fa9-b554ec91ec9f",
+      "source": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "e72238054c859890222dfc50d6feca0acb7bc7ce1ac186c3b8ec154cf9f71a60",
+          "id": "c8b92e3a-4986-548a-9878-a48a45c94191",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/76c7cdec1d90f8fdea2be0cfd71e5d43a7f35e5ffe47396cb2e7ef48e4a2c47a",
+        "sequence": 1
+      },
+      "assessment": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "4549c9386ea634de3f9f93faab3e92191c2342381b0827709971d3d882ea04c1",
+          "id": "4b9a4f57-f352-5d31-ab63-a71dbbe37fa8",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/37c3107e25ba7e73e30e568b6c427827a3a9cf61c6737b6db9afeb9ce4989b31",
+        "sequence": 3
+      },
+      "decision_id": "d8c5c331bead5db2d2aa167d906c95a4c1b206640239f82f53298c2178032c06",
+      "admission": "duplicate",
+      "numerical": "no-change",
+      "revision": 2,
+      "truth": {
+        "confidence": "0.6666666666666666",
+        "evidence_count": null,
+        "model": "neoclaw-nal-stv-capped-099/1",
+        "strength": "1.0"
+      },
+      "view": "768e8c1b9c5605a09b63630dc9e39c8dfc10c1c8750a1724e40c6b29e394aa47"
+    },
+    {
+      "command_occurrence": "f3f8ec03-d3c9-5d7f-92d9-62b9ae837778",
+      "source": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "e72238054c859890222dfc50d6feca0acb7bc7ce1ac186c3b8ec154cf9f71a60",
+          "id": "c8b92e3a-4986-548a-9878-a48a45c94191",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/76c7cdec1d90f8fdea2be0cfd71e5d43a7f35e5ffe47396cb2e7ef48e4a2c47a",
+        "sequence": 1
+      },
+      "assessment": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "fcf5923af7230e3e3b312e0715c817963f019df589adc326e7bd3e23a5f65ac1",
+          "id": "30f12fd4-b3fb-58d6-9713-c9f70d35edb3",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/db902bdee84d4b54fff46aaa877f03980ccf2a368859260ef27ec55c7d288289",
+        "sequence": 4
+      },
+      "decision_id": "b4d2396ea4d47d73a8bcd19af648e03798e6fa2faa10dd4ca8b69a47b493df1f",
+      "admission": "admitted",
+      "numerical": "retained-alternative",
+      "revision": 3,
+      "truth": {
+        "confidence": "0.6666666666666666",
+        "evidence_count": null,
+        "model": "neoclaw-nal-stv-capped-099/1",
+        "strength": "1.0"
+      },
+      "view": "24d4960769e14f006a0afd5ab11a29d4f1ba09596e12fccd7bb50a2d0bcc0985"
+    },
+    {
+      "command_occurrence": "38f853fa-1174-5d50-8b09-0224124b3316",
+      "source": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "8af5b67059f057dbe3e1b9dc80824dc2f446fe558e1c31b823f41a3b41d74491",
+          "id": "5d00aa57-5a9f-5f44-be3d-de187a8f6ad7",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/4e47aaa91c79eb6ba21a4e9ef1b2d1bdd17ae2cf61d640fb1b240753d0ad4afe",
+        "sequence": 5
+      },
+      "assessment": {
+        "episode": {
+          "id": "16565576dd57d6e107afc0bea126765e9d0252bd7720e672cb229728e2ff5620",
+          "scope_ref": "private-s04"
+        },
+        "event_ref": {
+          "digest": "6e2390fef6e0e978111f33f636618d875fa3553561b2acc32861c9dc11db955f",
+          "id": "4fbc27f4-3e55-538a-8ea6-a037882d7dab",
+          "revision": 1,
+          "scope_ref": "private-s04"
+        },
+        "occurrence_id": "source-occurrence/7a659ff9418b9e52ca1604a5f2ed0ddb025a7cf9fe1ebfaabfef9cba74de99c3",
+        "sequence": 6
+      },
+      "decision_id": "e0b6a39fc859106982e298445d417194b83d8ef5cfbee97a58d426c0d37b2e2f",
+      "admission": "admitted",
+      "numerical": "revised",
+      "revision": 4,
+      "truth": {
+        "confidence": "0.75",
+        "evidence_count": null,
+        "model": "neoclaw-nal-stv-capped-099/1",
+        "strength": "0.6666666666666666"
+      },
+      "view": "83cbbc5918254584175f3ffc0e10dfcf98453a46fec0702df09992fc5d063913"
+    }
+  ],
+  "queries": [
+    {
+      "id": "c536f341-2443-5ac1-b498-3da3346a76a6",
+      "view": "6f71be9043760bf6d3f3e4b058cfb4b1922181a30bee6fdaee675a01286b59cb"
+    },
+    {
+      "id": "65dd91a1-58fc-5ea5-93b6-429b134785f0",
+      "view": "768e8c1b9c5605a09b63630dc9e39c8dfc10c1c8750a1724e40c6b29e394aa47"
+    },
+    {
+      "id": "7922d47d-fc02-5ae6-ae55-80f6608a98d9",
+      "view": "768e8c1b9c5605a09b63630dc9e39c8dfc10c1c8750a1724e40c6b29e394aa47"
+    },
+    {
+      "id": "0574555c-2a78-5d23-8d2c-5cbd8cb03ef3",
+      "view": "24d4960769e14f006a0afd5ab11a29d4f1ba09596e12fccd7bb50a2d0bcc0985"
+    },
+    {
+      "id": "14bacd45-6bba-5f1d-b5e7-e7ffce27b7f6",
+      "view": "83cbbc5918254584175f3ffc0e10dfcf98453a46fec0702df09992fc5d063913"
+    }
+  ],
+  "query_snapshots": [
+    {
+      "corpus": "synthetic-s04-local-evidence-2031",
+      "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+      "generation": "6c244652-7881-5e85-9acf-c9e4a563602d",
+      "head": {
+        "profile": "immutable-commit-feed/1",
+        "scope_ref": "generated-s03",
+        "sequence": 10,
+        "source": "f00dc42e-f2ef-4504-86c1-546498c9eaa1"
+      },
+      "index": "chroma-1.5.5-hnsw-l2-default/1",
+      "logical": "1b1c0dfc370625f086bea169cf11327a032bff628e5fec11342f2d7b4ff6ad23",
+      "profile": "semantic-embedding-memory/1"
+    },
+    {
+      "corpus": "synthetic-s04-local-evidence-2031",
+      "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+      "generation": "6c244652-7881-5e85-9acf-c9e4a563602d",
+      "head": {
+        "profile": "immutable-commit-feed/1",
+        "scope_ref": "generated-s03",
+        "sequence": 10,
+        "source": "f00dc42e-f2ef-4504-86c1-546498c9eaa1"
+      },
+      "index": "chroma-1.5.5-hnsw-l2-default/1",
+      "logical": "1b1c0dfc370625f086bea169cf11327a032bff628e5fec11342f2d7b4ff6ad23",
+      "profile": "semantic-embedding-memory/1"
+    },
+    {
+      "corpus": "synthetic-s04-local-evidence-2031",
+      "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+      "generation": "6c244652-7881-5e85-9acf-c9e4a563602d",
+      "head": {
+        "profile": "immutable-commit-feed/1",
+        "scope_ref": "generated-s03",
+        "sequence": 10,
+        "source": "f00dc42e-f2ef-4504-86c1-546498c9eaa1"
+      },
+      "index": "chroma-1.5.5-hnsw-l2-default/1",
+      "logical": "1b1c0dfc370625f086bea169cf11327a032bff628e5fec11342f2d7b4ff6ad23",
+      "profile": "semantic-embedding-memory/1"
+    },
+    {
+      "corpus": "synthetic-s04-local-evidence-2031",
+      "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+      "generation": "6c244652-7881-5e85-9acf-c9e4a563602d",
+      "head": {
+        "profile": "immutable-commit-feed/1",
+        "scope_ref": "generated-s03",
+        "sequence": 10,
+        "source": "f00dc42e-f2ef-4504-86c1-546498c9eaa1"
+      },
+      "index": "chroma-1.5.5-hnsw-l2-default/1",
+      "logical": "1b1c0dfc370625f086bea169cf11327a032bff628e5fec11342f2d7b4ff6ad23",
+      "profile": "semantic-embedding-memory/1"
+    },
+    {
+      "corpus": "synthetic-s04-local-evidence-2031",
+      "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+      "generation": "6c244652-7881-5e85-9acf-c9e4a563602d",
+      "head": {
+        "profile": "immutable-commit-feed/1",
+        "scope_ref": "generated-s03",
+        "sequence": 10,
+        "source": "f00dc42e-f2ef-4504-86c1-546498c9eaa1"
+      },
+      "index": "chroma-1.5.5-hnsw-l2-default/1",
+      "logical": "1b1c0dfc370625f086bea169cf11327a032bff628e5fec11342f2d7b4ff6ad23",
+      "profile": "semantic-embedding-memory/1"
+    }
+  ],
+  "episode_records": 6,
+  "pending_deliveries": [],
+  "maintenance_builds": 1,
+  "memory_vector_captures": 1,
+  "native_evaluations": [
+    1,
+    1
+  ],
+  "configuration_edits": 0,
+  "scope": "Fresh approved synthetic corpus only; local private C1/C2; not private user memory"
+}

@@ -77,3 +77,11 @@ def encode_query(text): return call('encode_query', text)
 def remember_time(value): return call('remember_time',value)
 def append_memory(content,vector,timestamp):return call('append_memory',content,vector,timestamp)
 def creation_link(key,timestamp):return call('creation_link',key,timestamp)
+
+# S04 local-only source/assessment path; shared lifecycle above.
+def input_message():return call('input_message')
+def source(text):return call('source',text)
+def revise(target,source,sign):
+    from fusion.contracts import require
+    require(type(sign) is int and sign in (0,1),'INVALID_ARGUMENT')
+    return call('revise',target,source,sign==1)

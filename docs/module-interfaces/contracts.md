@@ -574,3 +574,24 @@ writes or arbitrary execution available. Application occurrence, storage accepts
 publication, metadata readiness and result capture retain independent commits.
 See [S03.2 executable decisions](../omega-adoption/mettaclaw-neoclaw/s03_2-contract-decisions.md)
 and [executed evidence](../omega-adoption/mettaclaw-neoclaw/s03_2.md).
+
+## S04 local source assessment and NAL revision
+
+Fresh `controlled-native-loop/6` selects `neoclaw-episodic-assessment/1`.
+`neoclaw-local-source-assessment/1` adds owner-issued occurrence identity,
+read-only occurrence observation, explicit lineage and deadline-bound appends to
+C1. `neoclaw-nal-revision-private/1` adds a tagged nonempirical compatibility prior,
+contribution admission, bounded native evaluation and exact committed-decision
+observation to C2. Both are explicit version 4.0.0 local-only descriptors.
+
+The numerical model is `neoclaw-nal-stv-capped-099/1`, executing the original pinned
+MeTTaClaw `Truth_Revision` under its SWI 10.0.1 runtime. Historical Fusion PLN
+profiles and their separate SWI runtime remain unchanged. The existing trusted
+relay explicitly selects the new response validator; C1 acknowledges the same
+model-independent completion contract.
+
+Application views bind exact C1/C2 records, retain old query selections and reuse
+the same vector Search generation for belief-only changes. Defaults, admitted
+priors, empirical observations and retained alternatives are distinct. See the
+[S04 executable decisions](../omega-adoption/mettaclaw-neoclaw/s04-contract-decisions.md)
+and [gate report](../omega-adoption/mettaclaw-neoclaw/s04.md).

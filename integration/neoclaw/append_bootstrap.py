@@ -14,4 +14,6 @@ def select_view(application):
     row=application.memory.current();view=application.write.view_for(row)
     require(digest(canonical(view['metadata']))==view['metadata_seal'],'CONFLICT')
     cfg,_=application.write.settings()
-    lib_chromadb.COLLECTION=collection(cfg['metadata_root'],view['metadata'])
+    if getattr(application,'evidence_enabled',False) and view.get('beliefs'):
+        lib_chromadb.COLLECTION=application.evidence.projection(view)
+    else:lib_chromadb.COLLECTION=collection(cfg['metadata_root'],view['metadata'])

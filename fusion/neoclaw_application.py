@@ -17,6 +17,7 @@ from .neoclaw_client import Caller
 from . import vector_contracts as v
 from . import embedding_contracts as e
 from . import append_contracts as w
+from . import nal_memory_contracts as n
 from .registry import selection_token
 
 
@@ -37,11 +38,12 @@ class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION), 'UNSUPPORTED_PROFILE')
-        self.append_enabled = self.config['composition'] == w.APPLICATION
-        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION)
-        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION)
-        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION)
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION), 'UNSUPPORTED_PROFILE')
+        self.evidence_enabled = self.config['composition'] == n.APPLICATION
+        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION)
+        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION)
+        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION)
+        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION)
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
@@ -74,6 +76,10 @@ class Application:
                 require(write_cfg['inputs']==memory_encoder['inputs'],'UNSUPPORTED_PROFILE')
                 require(binding['memory'].get('require_ready') is True,'UNSUPPORTED_PROFILE')
                 binding.update(composition=w.APPLICATION,memory_append=write_binding,memory_embedding=encoder_binding)
+            if self.evidence_enabled:
+                from .neoclaw_evidence import settings
+                self.binding=binding
+                binding.update(composition=n.APPLICATION,evidence=settings(self)[1])
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -119,6 +125,9 @@ class Application:
             if self.append_enabled:
                 from .neoclaw_append import MemoryAppend
                 self.write=MemoryAppend(self)
+            if self.evidence_enabled:
+                from .neoclaw_evidence import EvidenceAdoption
+                self.evidence=EvidenceAdoption(self)
             pending = self.pending()
             if pending:
                 # No replay of arbitrary local effects, even if their old result exists.
@@ -140,6 +149,8 @@ class Application:
         return self.db.execute('SELECT * FROM app_turns WHERE projection IS NULL ORDER BY id LIMIT 1').fetchone()
 
     def intent(self, command):
+        if self.evidence_enabled and isinstance(command,list) and command and command[0] in ('support','contradict'):
+            return self.evidence.intent(command)
         module, arguments = c, None
         if selected_expression(command):
             require(len(command) == 2)
@@ -211,6 +222,7 @@ class Application:
                     self.db.execute('INSERT INTO app_occurrences VALUES(?,?,?,?,?,NULL,0)',
                         (turn, position, key, canonical(premises).decode() if premises is not None else None, deadline))
                     if self.append_enabled and premises is not None:self.write.admit(key,premises)
+                    if self.evidence_enabled and premises is not None:self.evidence.admit(key,premises)
         self.hook('after_occurrence_bind')
         return [[i, command] for i, command in enumerate(commands)]
 
@@ -222,9 +234,11 @@ class Application:
         require(self.db.execute('SELECT count(*) FROM app_occurrences WHERE turn=? AND position<? AND done=0',
                                 (pending['id'], position)).fetchone()[0] == 0, 'CONFLICT')
         self.current = (pending['id'], position)
+        if self.is_evidence():self.evidence.begin()
 
     def _run(self, row):
         intent = json.loads(row['premises'])
+        if self.evidence_enabled and intent['profile']==n.PROFILE:return self.evidence.replay(row)
         if self.append_enabled and intent['profile']==w.PROFILE:return self.write.replay(row)
         if self.memory_enabled and intent['profile'] == v.PROFILE:
             return self.memory.replay(row)
@@ -272,9 +286,20 @@ class Application:
         row=self.db.execute('SELECT premises FROM app_occurrences WHERE turn=? AND position=?',self.current).fetchone()
         return row is not None and row['premises'] is not None and json.loads(row['premises'])['profile']==w.PROFILE
 
+    def is_evidence(self):
+        if not self.evidence_enabled or self.current is None:return False
+        row=self.db.execute('SELECT premises FROM app_occurrences WHERE turn=? AND position=?',self.current).fetchone()
+        return row is not None and row['premises'] is not None and json.loads(row['premises'])['profile']==n.PROFILE
+    def input_message(self):return self.evidence.input_message()
+    def source(self,text):return self.evidence.source(text)
+    def revise(self,target,source,sign):return self.evidence.revise(target,source,sign)
+
     def read_captured(self):
+        if self.is_evidence():return self.evidence.current()['result'] is not None
         return self.write.current()['result'] is not None if self.is_append() else self.is_memory() and self.memory.captured()
-    def read_replay(self): return self.write.replay() if self.is_append() else self.memory.replay()
+    def read_replay(self):
+        if self.is_evidence():return self.evidence.replay()
+        return self.write.replay() if self.is_append() else self.memory.replay()
     def read_candidates(self, vector, k):
         start = time.monotonic()
         value = self.memory.retrieve(vector, k)
@@ -288,6 +313,7 @@ class Application:
         return self.write.embedding.encode(text) if self.is_append() else self.embedding.encode(text)
     def read_clock(self, observed): return self.memory.clock(observed)
     def capture_native(self, value):
+        if self.is_evidence():return self.evidence.capture(value)
         if self.is_append():return self.write.capture(value)
         return self.memory.capture(value) if self.is_memory() else value
 

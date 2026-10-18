@@ -1,0 +1,58 @@
+test_authority_after_formula_cas_and_expired_committed_observation (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_authority_after_formula_cas_and_expired_committed_observation) ... ok
+test_bounds_authority_model_prior_and_exact_replay (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_bounds_authority_model_prior_and_exact_replay) ... ok
+test_formula_expiry_retry_budget_and_post_commit_observation (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_formula_expiry_retry_budget_and_post_commit_observation) ... ok
+test_identical_text_distinct_occurrences_copy_and_unknown (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_identical_text_distinct_occurrences_copy_and_unknown) ... ok
+test_malformed_relay_response_never_acknowledges (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_malformed_relay_response_never_acknowledges) ... FAIL
+test_prior_native_revision_duplicate_and_contrary (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_prior_native_revision_duplicate_and_contrary) ... ok
+test_pure_c1_without_nal_and_hostile_owner_ports (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_pure_c1_without_nal_and_hostile_owner_ports) ... ok
+test_queue_capacity_backpressure_draining_and_reuse_same_episode (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_queue_capacity_backpressure_draining_and_reuse_same_episode) ... ERROR
+
+======================================================================
+ERROR: test_queue_capacity_backpressure_draining_and_reuse_same_episode (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_queue_capacity_backpressure_draining_and_reuse_same_episode)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_evidence_owners.py", line 83, in test_queue_capacity_backpressure_draining_and_reuse_same_episode
+    out=h.relay.drain(episode);decisions.extend(out);deliveries.extend(receipts)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/memory_contracts.py", line 26, in checked
+    return method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/evidence_relay.py", line 90, in drain
+    decision = self._deliver(episode, delivery, numeric, declarations.get(delivery['delivery_id']), evidence)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/evidence_relay.py", line 134, in _deliver
+    decision = c.response_copy(self._decision(request))
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/nal_relay.py", line 20, in _decision
+    return self.beliefs.submitEvidence(request) if decision is None else decision
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/memory_contracts.py", line 26, in checked
+    return method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/nal_beliefs.py", line 56, in submitEvidence
+    try: return super().submitEvidence(request)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/memory_contracts.py", line 26, in checked
+    return method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/beliefs.py", line 170, in submitEvidence
+    principal = self._authorize(request.command.scope_ref, 'submitEvidence', request.independence is not None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/nal_beliefs.py", line 32, in _authorize
+    require(time.time_ns()//1_000_000<=request.deadline_ms,'DEADLINE_EXCEEDED')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: DEADLINE_EXCEEDED
+
+======================================================================
+FAIL: test_malformed_relay_response_never_acknowledges (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_malformed_relay_response_never_acknowledges)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_evidence_owners.py", line 113, in test_malformed_relay_response_never_acknowledges
+    with self.assertRaises(ContractError) as error:h.relay.drain(source['episode'],{receipt['delivery_id']:declaration})
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 55.132s
+
+FAILED (failures=1, errors=1)

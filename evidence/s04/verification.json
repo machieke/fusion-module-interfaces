@@ -1,0 +1,154 @@
+{
+  "schema": "s04-gates/1",
+  "status": "PASS",
+  "scope": "first bounded local native support/contradict assessment and committed query readback only",
+  "starting_commit": "ecf5f48dec699a333853396e12141dc3a23720ac",
+  "gates": {
+    "BASELINE_SOURCE": {
+      "status": "PASS",
+      "evidence": [
+        "baseline-source.json",
+        "baseline-append.log",
+        "baseline-cognitive.log",
+        "source-state.json"
+      ]
+    },
+    "NATIVE_ORACLE": {
+      "status": "PASS",
+      "evidence": [
+        "native-oracle-fresh.json",
+        "final/pure-native.json",
+        "final/native-loop.json"
+      ]
+    },
+    "CONTRACTS": {
+      "status": "PASS",
+      "evidence": [
+        "test-source.json",
+        "source-lock-and-authority-recheck.log",
+        "tests-final.log"
+      ]
+    },
+    "C1_PROVENANCE": {
+      "status": "PASS",
+      "evidence": [
+        "final/native-loop.json",
+        "same-session-trace.json",
+        "tests-final.log"
+      ]
+    },
+    "C2_NATIVE": {
+      "status": "PASS",
+      "evidence": [
+        "final/pure-native.json",
+        "final/native-loop.json",
+        "tests-final.log"
+      ]
+    },
+    "EVIDENCE_GUARDS": {
+      "status": "PASS",
+      "evidence": [
+        "tests-final.log",
+        "final/ambiguous-or-missing-target.json",
+        "final/same-turn-positions.json"
+      ]
+    },
+    "NATIVE_READBACK": {
+      "status": "PASS",
+      "evidence": [
+        "final/native-loop.json",
+        "final/view-repair.json",
+        "same-session-trace.json"
+      ]
+    },
+    "DELIVERY_RECOVERY": {
+      "status": "PASS",
+      "evidence": [
+        "final/native-kills.json",
+        "final/expired-partial.json",
+        "tests-final.log"
+      ]
+    },
+    "AUTH_PRIVACY": {
+      "status": "PASS",
+      "evidence": [
+        "final/privacy-revocation.json",
+        "tests-final.log",
+        "regression-results.json"
+      ]
+    },
+    "COMPAT_REPRO": {
+      "status": "PASS",
+      "evidence": [
+        "builds.json",
+        "run-specs.json",
+        "regression-results.json",
+        "source-state.json"
+      ]
+    },
+    "SCOPE_LEDGER": {
+      "status": "PASS",
+      "evidence": [
+        "source-state.json",
+        "final-audit.json"
+      ]
+    }
+  },
+  "coverage": {
+    "new_internal_seams": 1,
+    "native_wrappers": 2,
+    "s04_test_methods": 21,
+    "adoption_regressions": 158,
+    "cognitive_regressions": 49,
+    "distinct_passing_union": 228,
+    "whole_families_promoted": 0
+  },
+  "real_providers": [
+    "pinned actual MeTTaClaw native loop/parser/query/NAL",
+    "local C1/C2/relay",
+    "DeTTa",
+    "real local E5 and Chroma",
+    "separate real Fusion PLN regressions",
+    "existing authenticated same-host HTTPS placement regressions"
+  ],
+  "fixtures": [
+    "scripted external model and generated channel",
+    "unused history/global context and comparison clocks",
+    "direct-port creation attestations",
+    "hostile ports and injected malformed/timeout/clock/source-drift cases",
+    "explicit historical unit providers; not substitutes for required real gates"
+  ],
+  "blocked_prerequisites": [],
+  "unrun": [
+    "live model/channel",
+    "live web search this turn",
+    "optional combined HTTPS memory with private S04 cognition",
+    "remote private C1/C2",
+    "full Omega startup",
+    "multi-host",
+    "chain",
+    "populated-state migration",
+    "power loss"
+  ],
+  "failures_retained": [
+    "native-math-development.log",
+    "owners-development-02.log",
+    "native-loop-development.log",
+    "native-loop-development-02.log",
+    "regression-s01-s02-m5.log",
+    "identity-guard-recheck.log"
+  ],
+  "unresolved_failures": [],
+  "observation_timeouts": "Injected timeout guards and expected expiry are classified in tests; no unresolved observation timeout or unavailable prerequisite is claimed PASS.",
+  "source_manifest": "test-source.json",
+  "source_manifest_sha256": "ab4d2d37564f7219c65b8a08bdf783e546260cb8d52f7c10d165a2a6d8fa232e",
+  "regression_results": "regression-results.json",
+  "same_session_trace": "same-session-trace.json",
+  "limits": [
+    "Fresh synthetic data/journals and controlled loop only.",
+    "Local trusted host with intact files; no exactly-once evaluation or atomic cross-owner snapshot.",
+    "Prior mass, ingestion confidence and independence are explicit compatibility assumptions, not empirical calibration.",
+    "Original native wrappers/math preserved on admitted domain; duplicate and ambiguous-label semantics intentionally safer.",
+    "Old profiles retained; no existing-state migration."
+  ]
+}

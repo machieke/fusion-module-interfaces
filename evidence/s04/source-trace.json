@@ -1,0 +1,153 @@
+{
+  "schema": "s04-symbol-source-trace/1",
+  "native": [
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "src/memory.metta",
+      "symbol": "tvUpdate",
+      "definition_lines": [
+        97
+      ],
+      "source_sha256": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "src/memory.metta",
+      "symbol": "support",
+      "definition_lines": [
+        110
+      ],
+      "source_sha256": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "src/memory.metta",
+      "symbol": "contradict",
+      "definition_lines": [
+        113
+      ],
+      "source_sha256": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "src/memory.metta",
+      "symbol": "getSTV",
+      "definition_lines": [
+        125
+      ],
+      "source_sha256": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "src/memory.metta",
+      "symbol": "query",
+      "definition_lines": [
+        143
+      ],
+      "source_sha256": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "src/memory.metta",
+      "symbol": "remember",
+      "definition_lines": [
+        55
+      ],
+      "source_sha256": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "lib_nal.metta",
+      "symbol": "Truth_c2w",
+      "definition_lines": [
+        2
+      ],
+      "source_sha256": "604e2608a5938e36e428bce257fc3806dd9ef6be99102c5e973909e0a8f9c10e"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "lib_nal.metta",
+      "symbol": "Truth_w2c",
+      "definition_lines": [
+        5
+      ],
+      "source_sha256": "604e2608a5938e36e428bce257fc3806dd9ef6be99102c5e973909e0a8f9c10e"
+    },
+    {
+      "source": "MeTTaClaw",
+      "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "file": "lib_nal.metta",
+      "symbol": "Truth_Revision",
+      "definition_lines": [
+        92
+      ],
+      "source_sha256": "604e2608a5938e36e428bce257fc3806dd9ef6be99102c5e973909e0a8f9c10e"
+    },
+    {
+      "source": "MeTTaClaw",
+      "file": "src/loop.metta",
+      "role": "actual receive call/definition",
+      "line": 66,
+      "text": "(let* (($msgrcv (string-safe (repr (receive))))",
+      "source_sha256": "5702710d6e5e8bc0e36464eb42e9330801cde30f5f4193055ca366c363217924"
+    },
+    {
+      "source": "MeTTaClaw",
+      "file": "src/channels.metta",
+      "role": "actual receive call/definition",
+      "line": 27,
+      "text": "(= (receive)",
+      "source_sha256": "cc354e3a428176d90d87953adf72e31ee9be642406ac6b96109fa567ba7db449"
+    }
+  ],
+  "local_boundaries": {
+    "integration/neoclaw/evidence_startup.py": [
+      "revision_wrappers",
+      "initialize_sources"
+    ],
+    "integration/neoclaw/memory_startup.py": [
+      "extend"
+    ],
+    "fusion/neoclaw_evidence.py": [
+      "source",
+      "intent",
+      "begin",
+      "revise",
+      "presentation",
+      "validate_view",
+      "capture",
+      "replay"
+    ],
+    "fusion/nal_episodes.py": [
+      "occurrenceIdentity",
+      "appendEvent",
+      "readOccurrence",
+      "_origin"
+    ],
+    "fusion/nal_beliefs.py": [
+      "registerPrior",
+      "submitEvidence",
+      "observeDecision",
+      "_reserve",
+      "_calculate"
+    ],
+    "fusion/adapters/neoclaw_revision.py": [
+      "evaluate",
+      "revise"
+    ],
+    "fusion/nal_relay.py": [
+      "_make_request",
+      "_request",
+      "_decision"
+    ]
+  },
+  "note": "Local definition hashes are in test-source.json. Whole upstream files are pinned and verified before overlay; sources were not edited. The source-capture model/channel is explicitly generated, not a production authenticated ingress."
+}

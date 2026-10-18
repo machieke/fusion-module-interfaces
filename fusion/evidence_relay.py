@@ -22,13 +22,16 @@ class EvidenceRelay:
         self.database, self.episodes, self.beliefs, self.hook = str(database), episodes, beliefs, hook
         self.consumer, self.access, self.acknowledger = c.detached(consumer), access, acknowledger
         self.validation = c
+        self.episode_validation = c
         if consumer is not None:
             d.consumer(self.consumer)
             require(access is not None and acknowledger is not None, 'UNSUPPORTED_PROFILE')
             from . import cognition_contracts as derived
-            adapters = {c.BELIEF_PROFILE: c, derived.BELIEF_PROFILE: derived}
+            from . import nal_memory_contracts as nal
+            adapters = {c.BELIEF_PROFILE: c, derived.BELIEF_PROFILE: derived, nal.BELIEF_PROFILE: nal}
             require(consumer['profile'] in adapters, 'UNSUPPORTED_PROFILE')
             self.validation = adapters[consumer['profile']]
+            if consumer['profile'] == nal.BELIEF_PROFILE: self.episode_validation = nal
         else:
             require(access is None and acknowledger is None, 'UNSUPPORTED_PROFILE')
         with closing(self._connect()) as db, db:
@@ -81,10 +84,10 @@ class EvidenceRelay:
             for delivery in pending:
                 c.response(c.delivery, delivery, episode)
                 evidence = c.response_copy(self.episodes.readEvidence(delivery['evidence']))
-                c.response(c.evidence_record, evidence, delivery['evidence'])
+                c.response(self.episode_validation.evidence_record, evidence, delivery['evidence'])
                 numeric = evidence['event']['numerical']
                 require(numeric is not None, 'NOT_AVAILABLE')
-                decision = self._deliver(episode, delivery, numeric, declarations.get(delivery['delivery_id']))
+                decision = self._deliver(episode, delivery, numeric, declarations.get(delivery['delivery_id']), evidence)
                 self.hook('after_belief_commit')
                 if self.consumer is None:
                     receipt = self.episodes.acknowledgeEvidence(Mutation(episode['scope_ref'], 'ack/' + delivery['delivery_id']),
@@ -103,7 +106,7 @@ class EvidenceRelay:
                 decisions.append(decision)
         return tuple(decisions)
 
-    def _deliver(self, episode, delivery, numeric, declaration):
+    def _deliver(self, episode, delivery, numeric, declaration, record=None):
         identity = delivery['delivery_id']
         v = self.validation
         for _ in range(3):
@@ -114,9 +117,7 @@ class EvidenceRelay:
                     require(attempt < 32, 'OVERLOADED')
                     snapshot = v.snapshot_reply(self.beliefs.readBelief(numeric['claim'], numeric['context'], None),
                                                 numeric['claim'], numeric['context'])
-                    request = EvidenceSubmission(Mutation(episode['scope_ref'], f'delivery/{identity}/{attempt}'),
-                        numeric['claim'], numeric['context'], delivery['evidence'], None, snapshot['revision'],
-                        v.BELIEF_PROFILE, snapshot['runtime_selection'], declaration)
+                    request = self._make_request(episode, delivery, numeric, declaration, record, snapshot, attempt)
                     semantic = v.submission(request)
                     db.execute("INSERT INTO deliveries VALUES(?,?,?,?,'pending',NULL)",
                                (identity, attempt, canonical(episode).decode(), canonical(semantic).decode()))
@@ -125,12 +126,12 @@ class EvidenceRelay:
                     require(semantic['independence'] == declaration, 'CONFLICT')
                     require(semantic['evidence'] == delivery['evidence'], 'CONFLICT')
                     require(semantic['claim'] == numeric['claim'] and semantic['context'] == numeric['context'], 'CONFLICT')
-                    request = EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
+                    request = self._request(semantic)
                     v.submission(request)
             try:
                 # Even a saved result is replayed through C2: current authorization first.
                 self._authorize(episode['scope_ref'])
-                decision = c.response_copy(self.beliefs.submitEvidence(request))
+                decision = c.response_copy(self._decision(request))
             except ContractError as error:
                 if error.code != 'CONFLICT': raise
                 # Only a genuine CAS race gets a NEW request identity. Semantic conflicts
@@ -155,6 +156,17 @@ class EvidenceRelay:
             return decision
         raise ContractError('OVERLOADED')
 
+    def _make_request(self, episode, delivery, numeric, declaration, record, snapshot, attempt):
+        return EvidenceSubmission(Mutation(episode['scope_ref'], f"delivery/{delivery['delivery_id']}/{attempt}"),
+            numeric['claim'], numeric['context'], delivery['evidence'], None, snapshot['revision'],
+            self.validation.BELIEF_PROFILE, snapshot['runtime_selection'], declaration)
+
+    def _request(self, semantic):
+        return EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
+
+    def _decision(self, request):
+        return self.beliefs.submitEvidence(request)
+
     def _completion(self, delivery, decision):
         with closing(self._connect()) as db:
             row = db.execute('SELECT semantic,decision FROM deliveries WHERE id=? ORDER BY attempt DESC LIMIT 1',
@@ -173,7 +185,7 @@ class EvidenceRelay:
         c.episode_ref(episode)
         self._authorize(episode['scope_ref'])
         page = self.episodes.readEpisode(episode, 1, 1)
-        c.response(c.episode_page, page, episode, 1, 1)
+        c.response(self.episode_validation.episode_page, page, episode, 1, 1)
         with closing(self._connect()) as db:
             rows = db.execute('SELECT semantic,decision FROM deliveries WHERE episode=? AND decision IS NOT NULL LIMIT ?',
                               (canonical(episode).decode(), c.MAX_EVENTS + 1)).fetchall()
@@ -181,8 +193,8 @@ class EvidenceRelay:
         values = []
         for row in rows:
             semantic = json.loads(row['semantic'])
-            request = EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
-            observed = self.beliefs.submitEvidence(request)
+            request = self._request(semantic)
+            observed = self._decision(request)
             c.response(self.validation.decision, observed, request.claim, request.context, request.runtime_selection)
             require(observed == json.loads(row['decision']), 'NOT_AVAILABLE')
             values.append(observed)

@@ -1,0 +1,14 @@
+test_bounds_authority_model_prior_and_exact_replay (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_bounds_authority_model_prior_and_exact_replay) ... FAIL
+
+======================================================================
+FAIL: test_bounds_authority_model_prior_and_exact_replay (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_bounds_authority_model_prior_and_exact_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_evidence_owners.py", line 60, in test_bounds_authority_model_prior_and_exact_replay
+    with self.assertRaises(ContractError):
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 2.262s
+
+FAILED (failures=1)

@@ -160,10 +160,13 @@ class BeliefOwner:
         if changed: snapshot['revision'] += 1
         return candidate, added, numerical, detail, changed
 
+    def _request(self, semantic):
+        return EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
+
     @c.boundary
     def submitEvidence(self, request: EvidenceSubmission):
         semantic = self.c.submission(request)
-        request = EvidenceSubmission(**{**semantic, 'command': Mutation(**semantic['command'])})
+        request = self._request(semantic)
         principal = self._authorize(request.command.scope_ref, 'submitEvidence', request.independence is not None)
         require(request.runtime_selection == self.runtime_selection, 'UNSUPPORTED_PROFILE')
         identity = digest(canonical([principal, request.command.scope_ref, request.command.idempotency_key]))

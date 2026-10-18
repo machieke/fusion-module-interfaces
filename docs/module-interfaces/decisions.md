@@ -496,3 +496,24 @@ Historical profiles retain their meanings. The exact contracts, partial states,
 privacy boundaries and same-host evidence are in the
 [S03.2 decisions](../omega-adoption/mettaclaw-neoclaw/s03_2-contract-decisions.md)
 and [report](../omega-adoption/mettaclaw-neoclaw/s03_2.md).
+
+## ADR-016: S04 source identity, compatibility priors and local belief views
+
+The original native timestamp mutation conflates an assessment command, source
+identity, linked-label update and numerical revision. The selected S04 profile
+keeps the native wrappers and formula while resolving an unambiguous fresh memory
+and previously captured source through trusted local application state. C1 owns
+source/assessment records and lineage; C2 owns priors, contribution deduplication,
+alternatives and immutable revisions. A repeat command is not independent evidence.
+
+The fresh `(1.0,0.5)` default becomes a labelled compatibility prior with no empirical
+roots or observation. Aggregation requires declared assumptions and current authority;
+contrary and unknown-lineage assessments remain visible without unjustified weight.
+The pure NAL adapter preserves the original cap and is a distinct numerical profile.
+
+The existing relay and independent commits are reused. Durable native reservations
+and original assessment deadlines survive restart; exact committed decisions have a
+read-only recovery path. Local presentation binds owner snapshots without re-embedding
+or rebuilding Search. Historical application profiles and populated state are not
+reinterpreted. Cognitive state and provenance remain local. See the
+[S04 contract decisions](../omega-adoption/mettaclaw-neoclaw/s04-contract-decisions.md).

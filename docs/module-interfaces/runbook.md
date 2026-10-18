@@ -538,3 +538,32 @@ acceptance/publication before retrying effects. Stored-but-not-ready failures re
 partial outcomes; do not return `REMEMBER-SUCCESS`, renew a deadline or replace a
 query's retained view to hide them. Do not use populated older journals or private
 Omega stores for this reproduction.
+
+## Controlled local source/revision reproduction (S04)
+
+Use the existing pinned S03.2 native/E5/Chroma/DeTTa builds and fresh journals. The
+[S04 report](../omega-adoption/mettaclaw-neoclaw/s04.md) records executed source
+hashes and test runs; the [contract decisions](../omega-adoption/mettaclaw-neoclaw/s04-contract-decisions.md)
+explain intentional legacy differences. From the repository root:
+
+```bash
+export S01_DETTA="$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+export PYTHONPATH="$PWD" PYTHONDONTWRITEBYTECODE=1 HF_HUB_OFFLINE=1
+mkdir -p artifacts/s04
+artifacts/s03/venv/bin/python -m integration.neoclaw.evidence_corpus --out artifacts/s04/corpus.json
+artifacts/s03/venv/bin/python -m integration.neoclaw.evidence_oracle --corpus artifacts/s04/corpus.json --evidence artifacts/s04/original.json
+artifacts/s03/venv/bin/python -m integration.neoclaw.evidence_run --corpus artifacts/s04/corpus.json --evidence artifacts/s04/native.json
+```
+
+`evidence_composition.configure` selects `/6`, a fresh local cognitive policy/root,
+explicit synthetic source ingress and authorized assumptions before startup. The
+supported launcher remains `python -m integration.neoclaw.native_loop APPLICATION.json`.
+Source capture runs at native `receive`; the original wrappers/parser/query and next
+model context remain in that actual loop. Scripted model/channel, unused history and
+comparison clocks are fixtures. No hosted model or public service is required.
+
+Resume the same configuration/journals after interruption. Do not change source
+aliases, reinterpret prior profiles, renew deadlines or refund native reservations.
+A committed C2 decision may be observed after expiry; missing calculations or
+presentation construction remain unavailable. Delete/rebuild only a derived local
+presentation through authorized owner reads, never an authoritative owner journal.

@@ -1,0 +1,154 @@
+{
+  "schema": "s04-source-state/1",
+  "starting_commit": "ecf5f48dec699a333853396e12141dc3a23720ac",
+  "current_parent_commit": "ecf5f48dec699a333853396e12141dc3a23720ac",
+  "branch": "master",
+  "tested_state": "Final uncommitted working tree identified by test-source.json; publication commit contains these bytes and reports. No retrospective replacement of historical test identities.",
+  "initial_status": [
+    "?? codex_neoclaw_s04_episodic_evidence_and_revision_adoption.md"
+  ],
+  "baseline_reconciliation": "baseline-source.json",
+  "brief_sha256": "6d431add8eeb40d3f795bd15716f6abc8711a0b519d862679f2eeef6b3c714c4",
+  "repositories": {
+    "mettaclaw": {
+      "path": "artifacts/s01/native-02/sources/mettaclaw",
+      "commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "tracked_changes": [],
+      "status": [
+        "?? src/__pycache__/"
+      ]
+    },
+    "petta": {
+      "path": "artifacts/s01/native-02/sources/PeTTa",
+      "commit": "fea83178af3722666d2948d074591d10a3134f56",
+      "tracked_changes": [],
+      "status": []
+    },
+    "swipl": {
+      "path": "artifacts/s01/native-02/sources/swipl",
+      "commit": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+      "tracked_changes": [],
+      "status": []
+    },
+    "chroma-helper": {
+      "path": "artifacts/omega-mapping-source/petta_lib_chromadb",
+      "commit": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+      "tracked_changes": [],
+      "status": []
+    },
+    "detta": {
+      "path": "artifacts/m5/reproduction-01/providers/native/sources/secured-contract-spaces",
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "tracked_changes": [],
+      "status": []
+    },
+    "fusion-reachability": {
+      "path": "artifacts/m3/providers/sources/reachability",
+      "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+      "tracked_changes": []
+    },
+    "fusion-pln": {
+      "path": "artifacts/m3/providers/sources/pln",
+      "commit": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+      "tracked_changes": []
+    },
+    "fusion-petta": {
+      "path": "artifacts/m3/providers/native/sources/PeTTa",
+      "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+      "tracked_changes": []
+    },
+    "fusion-swipl": {
+      "path": "artifacts/m3/providers/native/sources/swipl",
+      "commit": "69775434c8226897626b226aefcc8266499f1e2e",
+      "tracked_changes": []
+    }
+  },
+  "builds": "builds.json",
+  "builds_sha256": "9354e5bae8f578792a1dd351f428eaa150202c5cd7a7e7ace694a9af3f298592",
+  "test_source_manifest": "test-source.json",
+  "test_source_manifest_sha256": "ab4d2d37564f7219c65b8a08bdf783e546260cb8d52f7c10d165a2a6d8fa232e",
+  "source_reconciliation": [
+    {
+      "before": "test-source-candidate-01.json",
+      "after": "test-source-candidate-02.json",
+      "changed": [
+        "integration/neoclaw/evidence_run.py",
+        "integration/neoclaw/test_evidence_loop.py"
+      ]
+    },
+    {
+      "before": "test-source-candidate-02.json",
+      "after": "test-source-candidate-03.json",
+      "changed": [
+        "integration/neoclaw/test_evidence_loop.py",
+        "integration/neoclaw/test_evidence_owners.py",
+        "tests/test_neoclaw.py"
+      ]
+    },
+    {
+      "before": "test-source-candidate-03.json",
+      "after": "test-source-candidate-03b.json",
+      "changed": [
+        "integration/neoclaw/test_evidence_owners.py"
+      ]
+    },
+    {
+      "before": "test-source-candidate-03b.json",
+      "after": "test-source.json",
+      "changed": [
+        "fusion/nal_episodes.py"
+      ]
+    }
+  ],
+  "reconciliation_notes": [
+    "Candidate01->02: only S04 reporter and native tests, historical regression runtime dependencies unchanged.",
+    "Candidate02->03: historical source-lock exception and added S04 credential/assumption/privacy checks, no runtime edits.",
+    "Candidate03->03b: explicit wrong-claim/context/recycled-support/issued-occurrence negative checks; cross-key receipt replay failure retained.",
+    "Candidate03b->final: S04-only NalEpisodeOwner validates issued key before new append and committed replay. Entire 21-method S04 suite rerun. Shared historical defaults/numerical sources unchanged."
+  ],
+  "native_entrypoint": "python -m integration.neoclaw.native_loop APPLICATION.json; controlled-native-loop/6 with checked tvUpdate and receive seams",
+  "changed_non_evidence": {
+    "README.md": "7a7bcc94244dc64b2144730421a8173034eb27a12f0867c3c962d608f046d23a",
+    "codex_neoclaw_s04_episodic_evidence_and_revision_adoption.md": "6d431add8eeb40d3f795bd15716f6abc8711a0b519d862679f2eeef6b3c714c4",
+    "docs/module-interfaces/architecture.md": "314a4689e2e3254b7671bb358a2c4e70151630714b480bcbb63be30410245f26",
+    "docs/module-interfaces/contracts.md": "bdf7f9f18513e4e217fcefef1f99160a9c886545a2b13cd24f0e770d03ea882c",
+    "docs/module-interfaces/decisions.md": "8f7ddc7149f6d02c85bc3002f3263677174d70318f4902d8b9d43ad4f6b0e0d3",
+    "docs/module-interfaces/runbook.md": "4265d25da833b72911ce2383abfe02b9282fe5c8db1b0c630b9e89b50a0b0d27",
+    "docs/omega-adoption/mettaclaw-neoclaw/README.md": "1ff58a4e3c88c2f06a75fff0dcb3ed111152d7dccd78119881ffe018217f735c",
+    "docs/omega-adoption/mettaclaw-neoclaw/coverage.json": "c8d35e7c4251c6ee71f359ed81ed48ab72cc309dfa8e4bae224351b17c1ca85e",
+    "docs/omega-adoption/mettaclaw-neoclaw/mapping-ledger.json": "92bced57405e5e51bf5ef73003db4cae3a8c712328482adcf200216eff298ad6",
+    "docs/omega-adoption/mettaclaw-neoclaw/s04-contract-decisions.md": "7fd79f11959c450c424dd594c897e24563181ed8aa03f9dbdfda0124dec52666",
+    "docs/omega-adoption/mettaclaw-neoclaw/s04.md": "139f134157beaf3f332be43cb081a74fbd835807845e053f0b359e5484ba141c",
+    "fusion/adapters/neoclaw_belief_presentation.py": "07c8262952e1eca381285b4e0cc088197711bb82c3e6279d1d4bf7c0827ce5fa",
+    "fusion/adapters/neoclaw_revision.py": "497e37f1a821b48c36809fb06e6bcd7ce183bde4e25d89060d56016696260fd9",
+    "fusion/beliefs.py": "7ac533b523d01336a6dbcc79e7df0a308dba758d5833f31d0c9216df1295dbd1",
+    "fusion/episodes.py": "4e1375ca351572ec93c53c1b1b48570c9cef9995f2abead7a8f6c8dc1b4decec",
+    "fusion/evidence_relay.py": "4b35e3d32e7240dc381f9b7c45783cf0614c440b1c7fec36ca7e43e721743b3e",
+    "fusion/nal_beliefs.py": "5ba4d45074f0eaa30c2fdb825f7840b0a97a00d51997e838ddf9f6d080068108",
+    "fusion/nal_episodes.py": "d693e8f10958ae567ba8d2070c7635380f15918490e129b7fdd3919f4e917d3b",
+    "fusion/nal_memory_contracts.py": "3eeed4956a7557967735dc7f4a4f35ca2ace02b767c1c3a5044e2168af099725",
+    "fusion/nal_private.py": "ab50de96b049a905c7ccf9ffb9a55277138e7c94269d103670b94792b05b7425",
+    "fusion/nal_relay.py": "3509d8003c9e1ab54e3aa1c19ecbe120d049cc60775122b9becd87d9e511fa25",
+    "fusion/neoclaw_append.py": "437840b7c417d4d1b07c397497b5c1454d34d75e19a442cd3e1973ac38cd2aca",
+    "fusion/neoclaw_application.py": "4a8abf892a9af4f8d18102176c17051511460d0a1822d634391bdffeef54b371",
+    "fusion/neoclaw_evidence.py": "f588f193b18f1d4339f7623e12074ad4c0cbc83af0b1cd37a7978c350486a33d",
+    "fusion/neoclaw_memory.py": "686a1a258caa753ae1693463f99d3aaac0d2e1393ff58e5365c17b08c7423b02",
+    "integration/neoclaw/append_bootstrap.py": "d801b77dc7252b5c27660d9c1f2bba9387746c4d7eed1e69ec77490a51423bfd",
+    "integration/neoclaw/evidence_composition.py": "e2394f7e5f44e219e4ca0d649c264fad4ac5a44090580238563cd33bab8bac8b",
+    "integration/neoclaw/evidence_corpus.py": "81b96f90e251e6eceb525e8a6a2e3e3a6d62b2e3a698fdb9d988d4aa59d32763",
+    "integration/neoclaw/evidence_oracle.py": "dcabc98b9c16fd6c50fe6404a30ee433244b3a646d47c24cdef61de7f4c980fb",
+    "integration/neoclaw/evidence_run.py": "3b1f1982a90e2b9925b44369778eedb5e5e87d2279d7a35cc69f53726c2b262c",
+    "integration/neoclaw/evidence_startup.py": "66a7c9e73e90b4ea35ccae6d662f68d1625f3d21d6a8de7ffe0c6a76ffaec770",
+    "integration/neoclaw/evidence_worker.py": "23e023a67c4f91461baf1bedb47ebf4d35f1eddc64ad26e9cc6c338795b32e36",
+    "integration/neoclaw/loop_bridge.py": "a2c4b93fb3fc52874927eda15e6c348d0972c487b216e558e9f00e9fcb294387",
+    "integration/neoclaw/memory_bootstrap.py": "73d6af5902585a07984864f2c1ec07f3a73f0ad5bc0ae5a0994c1582b448e7fa",
+    "integration/neoclaw/memory_startup.py": "1d8c837da83fc458547ee034c4894c68dea7bc384943131e62e997b560438ba4",
+    "integration/neoclaw/native_loop.py": "4c5c5333f1be84ac09c2d66a1741ee5d57e71e725bcb5138393db72690d73290",
+    "integration/neoclaw/test_evidence_loop.py": "766f1451b203e548dadb732c1e6af557e3460ba0d00a3d6b247a6088c4430138",
+    "integration/neoclaw/test_evidence_owners.py": "d6d74706ad9462aa5fb49f2bd61d5ab754a377066c7a873fb953fd1213cfe2cb",
+    "integration/neoclaw/test_nal_revision.py": "8f72e00b4bd20e45502e607071f15d9e980157cf71e27eb66e31beb73f93ada1",
+    "tests/nal_support.py": "7e5156e88553ccbd4988144e9744aeb7dca6dac4ec86282971c7a473ec973c42",
+    "tests/test_neoclaw.py": "cff82e8548049669b603f678a515dddf884e78d3e17d738fb19eddd148d0ab8b"
+  },
+  "publication": "Git commit containing this report; exact full SHA supplied after commit and push."
+}

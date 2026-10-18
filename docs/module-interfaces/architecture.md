@@ -406,3 +406,15 @@ selection. These are separate commits; native success requires the coherent view
 Earlier query occurrences retain their own views. The extra purpose does not make
 Embedding an ingestion owner or adopt Relations, Attention or BeliefRevision.
 See the [S03.2 boundaries and evidence](../omega-adoption/mettaclaw-neoclaw/s03_2.md).
+
+## S04 bounded local native evidence path
+
+The `/6` controlled native application composes `remember → receive/source capture →
+support/contradict → query`. The shared `tvUpdate` seam uses the existing private C1,
+C2 and trusted relay, with a separately pinned pure NAL revision adapter. C1 captures
+what occurred; C2 distinguishes a compatibility prior, actual source assessments,
+contribution duplicates and alternatives. The application owns aliases, accepted
+occurrences and immutable presentation views. Belief updates retain the Search
+snapshot and payload/vector source head. This local-only adoption neither completes
+Relations/episodes/history nor changes the application-neutral DA boundary. See the
+[S04 ownership contract](../omega-adoption/mettaclaw-neoclaw/s04-contract-decisions.md).
