@@ -1,0 +1,132 @@
+{
+  "schema": "s05-verification/1",
+  "status": "PASS_BOUNDED_S05",
+  "starting_commit": "0d66b4b8f404450367a711de905f4a251f4b0255",
+  "gates": {
+    "BASELINE_SOURCE": {
+      "status": "PASS",
+      "evidence": [
+        "baseline-source.json",
+        "builds.json",
+        "baseline-s04.log",
+        "baseline-attention.log"
+      ]
+    },
+    "NATIVE_POLICY": {
+      "status": "PASS",
+      "evidence": [
+        "native-oracle.json",
+        "runtime-owner-recheck/native-policy.json",
+        "final/native-tie-orders.json"
+      ]
+    },
+    "ATTENTION_CONTRACT": {
+      "status": "PASS",
+      "evidence": [
+        "runtime-guards.log",
+        "runtime-owner-recheck.log",
+        "runtime-guards/owner-dependencies.json",
+        "runtime-guards/minimal-native-source.json"
+      ]
+    },
+    "ADJUST_REPLAY": {
+      "status": "PASS",
+      "evidence": [
+        "runtime-owner-recheck/owner-substitution.json",
+        "final/occurrences-aliases.json",
+        "final/owner-kills.json"
+      ]
+    },
+    "QUERY_ADOPTION": {
+      "status": "PASS",
+      "evidence": [
+        "runtime-native-recheck/three-paths.json",
+        "final/native-tie-orders.json"
+      ]
+    },
+    "GLOBAL_CONTEXT": {
+      "status": "PASS",
+      "evidence": [
+        "runtime-native-recheck/three-paths.json",
+        "final/real-scope-isolation.json",
+        "recovery-edges-final/native-owner-outage.json"
+      ]
+    },
+    "INDEPENDENT_PROVIDER": {
+      "status": "PASS",
+      "evidence": [
+        "runtime-owner-recheck/owner-substitution.json",
+        "runtime-native-recheck/three-paths.json"
+      ]
+    },
+    "VIEWS_RECOVERY": {
+      "status": "PASS",
+      "evidence": [
+        "final/native-kills.json",
+        "runtime-native-recheck/retained-views.json",
+        "final/expired-native-partial.json",
+        "recovery-edges-final/native-context-budget.json"
+      ]
+    },
+    "AUTH_PRIVACY": {
+      "status": "PASS",
+      "evidence": [
+        "final/privacy-authority.json",
+        "final/real-scope-isolation.json",
+        "guards.log",
+        "recovery-edges-final/native-owner-outage.json"
+      ]
+    },
+    "OWNER_COMPAT_REPRO": {
+      "status": "PASS",
+      "evidence": [
+        "runtime-native-recheck/belief-independence.json",
+        "regression-s04.log",
+        "regression-append.log",
+        "regression-s03-s03_1.log",
+        "shared-development.log",
+        "run-results.json"
+      ]
+    },
+    "SCOPE_LEDGER": {
+      "status": "PASS",
+      "evidence": [
+        "run-results.json",
+        "scenario-accounting.json",
+        "source-state.json"
+      ]
+    }
+  },
+  "real": [
+    "native MeTTaClaw/PeTTa/SWI",
+    "SQLite Attention",
+    "DeTTa",
+    "Chroma",
+    "E5",
+    "S04 owners and NAL where exercised"
+  ],
+  "fixtures": [
+    "atomic-file alternative persistence",
+    "scripted external model/channel",
+    "fixed comparison epoch and creation clocks",
+    "synthetic initial metadata",
+    "S02 recorded upstream responses"
+  ],
+  "blocked_prerequisites": [],
+  "failures_retained": "run-results.json",
+  "observation_timeouts": [],
+  "not_run": [
+    "live external search",
+    "live Omega/model/channel startup",
+    "remote private Attention/evidence",
+    "multi-host",
+    "migration",
+    "chain"
+  ],
+  "numerical_profile": "wall-clock-promotion/1",
+  "same_profile_substitution": true,
+  "whole_family_or_product_claim": false,
+  "final_new_unique_methods": 27,
+  "selected_regression_unique_methods": 159,
+  "final_source_manifest": "test-source.json"
+}

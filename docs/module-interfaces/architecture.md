@@ -418,3 +418,25 @@ occurrences and immutable presentation views. Belief updates retain the Search
 snapshot and payload/vector source head. This local-only adoption neither completes
 Relations/episodes/history nor changes the application-neutral DA boundary. See the
 [S04 ownership contract](../omega-adoption/mettaclaw-neoclaw/s04-contract-decisions.md).
+
+### S05 native priority consumers
+
+```mermaid
+flowchart LR
+  Loop[Native MeTTaClaw loop] --> App[Application occurrences and retained views]
+  App --> Att[Attention: wall-clock-promotion/1]
+  Att --> Math[Pure pinned promotion expressions]
+  App --> Feed[Authoritative enrollment feed]
+  Feed --> Atoms[AtomStorage / DeTTa]
+  Query[Native query] --> Search[Vector Search / Chroma]
+  Search --> Atoms
+  Query --> Att
+  Context[Native getContext] --> Att
+  Context --> Atoms
+  Query --> View[Selected S04 labels and STVs]
+  Context --> View
+  View --> C1[EpisodicMemory]
+  View --> C2[BeliefRevision]
+```
+
+Attention owns priority values, times, revisions and receipts; it never opens the feed, Chroma or cognitive journals. The application supplies authorized opaque eligibility and verifies payloads through existing AtomStorage ports. Candidate queries and global context have separate retained read identities. Only a new occurrence/iteration can select a new snapshot. Local context output is derived and private. See [S05 decisions](../omega-adoption/mettaclaw-neoclaw/s05-contract-decisions.md).

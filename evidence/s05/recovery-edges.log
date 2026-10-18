@@ -1,0 +1,19 @@
+test_context_budget_survives_three_native_kills (integration.neoclaw.test_promotion_recovery_edges.ContextRecovery.test_context_budget_survives_three_native_kills) ... FAIL
+test_unavailable_owner_stops_native_context_then_recovers_exact_capture (integration.neoclaw.test_promotion_recovery_edges.ContextRecovery.test_unavailable_owner_stops_native_context_then_recovers_exact_capture) ... ok
+
+======================================================================
+FAIL: test_context_budget_survives_three_native_kills (integration.neoclaw.test_promotion_recovery_edges.ContextRecovery.test_context_budget_survives_three_native_kills)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_recovery_edges.py", line 41, in test_context_budget_survives_three_native_kills
+    Path(run.app['failpoint_marker']).unlink();process=start(run);run.h.wait_file(run.app['failpoint_marker'],process,seconds=60)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 162, in wait_file
+    assert Path(path).exists(), ('missing failpoint/ready', path, None if process is None else process.poll())
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: ('missing failpoint/ready', '/tmp/fusion-s01-mo83t0_j/caller/pause.json', 2)
+
+----------------------------------------------------------------------
+Ran 2 tests in 115.151s
+
+FAILED (failures=1)

@@ -71,6 +71,7 @@ class MemoryRead:
         return result
 
     def authorize(self,row):
+        if getattr(self.app,'priority_enabled',False):self.app.priority.query_authorize(row)
         if getattr(self.app,'evidence_enabled',False):self.app.evidence.validate_view(self.app.write.view_for(row))
         if self.app.embedding_enabled:self.app.embedding.authorize(row)
         cfg,_=self.settings(row);intent=json.loads(row['premises'])

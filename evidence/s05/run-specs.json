@@ -1,0 +1,207 @@
+{
+  "schema": "s05-run-specifications/1",
+  "runs": [
+    {
+      "log": "baseline-s04.log",
+      "cwd": "repository root",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_nal_revision integration.neoclaw.test_evidence_owners integration.neoclaw.test_evidence_loop",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S04_EVIDENCE": "$PWD/evidence/s05/baseline-s04"
+      },
+      "source": "published 0d66b4b8f404450367a711de905f4a251f4b0255 unchanged shared/runtime files",
+      "classification": "real native NAL/loop/E5/Chroma/DeTTa; declared model/channel/clock and direct owner fixtures"
+    },
+    {
+      "log": "baseline-attention.log",
+      "cwd": "repository root",
+      "command": "uv run --python 3.11 --locked python -m unittest -v tests.test_m3_attention tests.test_m3_1_attention tests.test_m3_1_delivery tests.test_m3_1_compat",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+      },
+      "source": "published S04; no shared edits",
+      "classification": "historical STI/closure conformance and storage/numerical fixtures"
+    },
+    {
+      "log": "shared-development.log",
+      "cwd": "repository root",
+      "command": "uv run --python 3.11 --locked python -m unittest -v tests.test_neoclaw_application tests.test_neoclaw tests.test_m3_attention tests.test_m3_1_attention tests.test_m3_1_delivery tests.test_m3_1_compat",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+      },
+      "source": "six shared /7 branches; unchanged since candidate-02",
+      "classification": "selected historical owner/application/source guards; fixtures as declared in original tests"
+    },
+    {
+      "log": "regression-append.log",
+      "cwd": "repository root",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v tests.test_append_contracts integration.neoclaw.test_append",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S03_2_EVIDENCE": "$PWD/evidence/s05/regression-append"
+      },
+      "source": "test-source-candidate-02.json; historical executed runtime files unchanged through final",
+      "classification": "real E5/Chroma/DeTTa/native local and authenticated same-host HTTPS; declared model/channel fixtures"
+    },
+    {
+      "log": "regression-s03-s03_1.log",
+      "cwd": "repository root",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v tests.test_embedding_contracts integration.neoclaw.test_embedding tests.test_vector_contracts integration.neoclaw.test_memory integration.neoclaw.test_memory_edges.MemoryEdges",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S03_EVIDENCE": "$PWD/evidence/s05/regression-s03",
+        "S03_1_EVIDENCE": "$PWD/evidence/s05/regression-s03_1"
+      },
+      "source": "test-source-candidate-02.json; historical executed runtime files unchanged through final",
+      "classification": "real native E5, E5-free caller, DeTTa, Chroma, authenticated same-host HTTPS; explicit vector and external response fixtures in isolated cases"
+    },
+    {
+      "log": "regression-s04.log",
+      "cwd": "repository root",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_nal_revision integration.neoclaw.test_evidence_owners integration.neoclaw.test_evidence_loop",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S04_EVIDENCE": "$PWD/evidence/s05/regression-s04"
+      },
+      "source": "test-source-candidate-03.json",
+      "classification": "real native and local C1/C2 path; selected /6 runtime unaffected by S05-only guard changes"
+    },
+    {
+      "log": "regression-s01-s02.log",
+      "cwd": "repository root",
+      "command": "uv run --python 3.11 --locked python -m unittest -v integration.neoclaw.test_loop integration.neoclaw.test_search_loop integration.neoclaw.test_network tests.test_neoclaw_search",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+      },
+      "source": "test-source-candidate-03.json",
+      "classification": "real native NAL, DeTTa, HTTPS, actual search helper/SDK with recorded upstream responses; no live upstream search"
+    },
+    {
+      "log": "regression-s02-recheck.log",
+      "cwd": "repository root",
+      "command": "uv run --python 3.11 --locked python -m unittest -v integration.neoclaw.test_search_loop.SearchLoop.test_supervised_sdk_timeout_and_parent_death",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S02_EVIDENCE": "$PWD/evidence/s05/regression-s02-recheck"
+      },
+      "source": "final test-source.json; process-status test race correction only",
+      "classification": "actual SDK child timeout and parent SIGKILL; recorded upstream response fixture"
+    },
+    {
+      "log": "guards.log",
+      "cwd": "repository root",
+      "command": "uv run --python 3.11 --locked python -m unittest -v integration.neoclaw.test_promotion_guards",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S05_EVIDENCE": "$PWD/evidence/s05/guards",
+        "S05_REQUIRE_MINIMAL": "1"
+      },
+      "source": "test-source-candidate-03.json",
+      "classification": "real native math; independent owners on opaque targets; E5 libraries absent; no cognitive store"
+    },
+    {
+      "log": "final.log",
+      "cwd": "repository root",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_promotion_owner integration.neoclaw.test_promotion_loop integration.neoclaw.test_promotion_edges.PromotionEdges",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S05_EVIDENCE": "$PWD/evidence/s05/final"
+      },
+      "source": "test-source-candidate-03.json",
+      "classification": "complete new owner/native/edge suite; real native math/loop/E5/Chroma/DeTTa; independent persistence fixture and declared model/channel/clock fixtures"
+    },
+    {
+      "log": "recovery-edges-final.log",
+      "cwd": "repository root",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_promotion_recovery_edges.ContextRecovery",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S05_EVIDENCE": "$PWD/evidence/s05/recovery-edges-final"
+      },
+      "source": "candidate-03 production, final corrected context-retry test; before pure-runtime validator narrowing",
+      "classification": "actual native process kills and owner outage; original context deadline and reservations retained"
+    },
+    {
+      "log": "runtime-guards.log",
+      "cwd": "repository root",
+      "command": "uv run --python 3.11 --locked python -m unittest -v integration.neoclaw.test_promotion_guards",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S05_EVIDENCE": "$PWD/evidence/s05/runtime-guards",
+        "S05_REQUIRE_MINIMAL": "1"
+      },
+      "source": "test-source-runtime-final.json",
+      "classification": "real native promotion math; reduced interpreter/memory sources with NAL and PLN libraries absent, E5 packages absent; both owners and tamper refusal"
+    },
+    {
+      "log": "runtime-owner-recheck.log",
+      "cwd": "repository root",
+      "command": "uv run --python 3.11 --locked python -m unittest -v integration.neoclaw.test_promotion_owner",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S05_EVIDENCE": "$PWD/evidence/s05/runtime-owner-recheck"
+      },
+      "source": "test-source-runtime-final.json",
+      "classification": "both owners, real native arithmetic, authority/CAS/replay/budgets and twelve actual process kills"
+    },
+    {
+      "log": "runtime-native-recheck.log",
+      "cwd": "repository root",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_original_primary_independent_native_query_and_global_context integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_priority_and_belief_independent_same_session integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_retained_query_context_and_derived_file_repair",
+      "environment": {
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S05_EVIDENCE": "$PWD/evidence/s05/runtime-native-recheck"
+      },
+      "source": "test-source-runtime-final.json",
+      "classification": "final dependency validator; original versus both adapted native providers, mixed C1/C2 session and retained captures; real native/E5/Chroma/DeTTa"
+    }
+  ],
+  "preparation": [
+    "artifacts/s03/venv/bin/python -m integration.neoclaw.promotion_corpus --out artifacts/s05/corpus.json",
+    "artifacts/s03/venv/bin/python -m integration.neoclaw.promotion_oracle --corpus artifacts/s05/corpus.json --out evidence/s05/native-oracle.json"
+  ],
+  "development": "owner-development.log, primary-development.json/log, candidate-02.log, guard-development.log, edges.log and recovery-edges.log remain retained; final gate credit uses final/rechecked source identities",
+  "no_fresh_build_claim": true
+}

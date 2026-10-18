@@ -1,0 +1,78 @@
+{
+  "starting_commit": "0d66b4b8f404450367a711de905f4a251f4b0255",
+  "historical_test_identity": "ecf5f48dec699a333853396e12141dc3a23720ac",
+  "initial_status": [
+    "?? codex_neoclaw_s05_promotion_attention_adoption.md"
+  ],
+  "manifests": {
+    "tested": {
+      "files": 231,
+      "mismatches": []
+    },
+    "final": {
+      "files": 41,
+      "mismatches": []
+    },
+    "evidence": {
+      "files": 121,
+      "mismatches": []
+    }
+  },
+  "repositories": {
+    "mettaclaw": {
+      "path": "artifacts/s01/native-02/sources/mettaclaw",
+      "commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "status": [
+        "?? src/__pycache__/"
+      ]
+    },
+    "petta": {
+      "path": "artifacts/s01/native-02/sources/PeTTa",
+      "commit": "fea83178af3722666d2948d074591d10a3134f56",
+      "status": []
+    },
+    "swipl": {
+      "path": "artifacts/s01/native-02/sources/swipl",
+      "commit": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+      "status": []
+    },
+    "chroma-helper": {
+      "path": "artifacts/omega-mapping-source/petta_lib_chromadb",
+      "commit": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+      "status": []
+    },
+    "detta": {
+      "path": "artifacts/m5/reproduction-01/providers/native/sources/secured-contract-spaces",
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "status": []
+    },
+    "fusion-reachability": {
+      "path": "artifacts/m3/providers/sources/reachability",
+      "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+      "status": []
+    },
+    "fusion-pln": {
+      "path": "artifacts/m3/providers/sources/pln",
+      "commit": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+      "status": []
+    },
+    "fusion-petta": {
+      "path": "artifacts/m3/providers/native/sources/PeTTa",
+      "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+      "status": []
+    },
+    "fusion-swipl": {
+      "path": "artifacts/m3/providers/native/sources/swipl",
+      "commit": "69775434c8226897626b226aefcc8266499f1e2e",
+      "status": []
+    }
+  },
+  "review_findings": {
+    "sealed_promotion_fixture": true,
+    "empty_global_context_fixture": true,
+    "distinct_native_wall_clock_policy": true,
+    "native_alias_ambiguity_unchecked": true,
+    "native_promoted_file_is_derived": true
+  },
+  "pre_lifecycle_edit_check": "All 231 historical tested files still match; new sibling code has not changed baseline execution."
+}

@@ -1,0 +1,54 @@
+{
+  "candidate_02_to_final": [
+    "fusion/adapters/file_promotion.py",
+    "fusion/neoclaw_priority.py",
+    "fusion/promotion.py",
+    "fusion/promotion_composition.py"
+  ],
+  "new_test_modules": [
+    "integration/neoclaw/test_promotion_edges.py",
+    "integration/neoclaw/test_promotion_guards.py"
+  ],
+  "old_profile_runtime_paths_changed_since_regression_start": [],
+  "candidate_02_status": "interrupted during native kills after negative guard tests found missing restrictions; completed passing methods retained, remaining method is not a pass",
+  "recheck": "full S05 suite on final candidate; guards additionally run in E5-free uv Python 3.11 environment",
+  "regression_test_poll_correction": {
+    "file": "integration/neoclaw/test_search_loop.py",
+    "final_sha256": "36219d5fbec0e31c05afd8714db526f4ae6813ec24dd68b0ab7ea6a390debdfb",
+    "reason": "Actual SDK child exited between /proc existence check and status read. A missing status is now directly recognized as exited; timeout and parent-kill assertions unchanged.",
+    "failed_run": "regression-s01-s02.log",
+    "recheck": "regression-s02-recheck.log",
+    "rechecked_methods": 1
+  },
+  "context_restart_experiment_correction": {
+    "failed_run": "recovery-edges.log",
+    "source_preserved": "recovery-edges-development-source.py.txt",
+    "corrected_run": "recovery-edges-final.log",
+    "original_method": "test_context_budget_survives_three_native_kills",
+    "final_method": "test_native_context_restarts_keep_spent_budget_and_original_deadline",
+    "reason": "Real native/model readiness may use the original context deadline before all three attempts; final test records whichever original bound prevents more work. No timeout, budget, production code or clock was changed."
+  },
+  "pure_runtime_boundary_correction": {
+    "finding": "Promotion used the full NAL adapter validator although it executed no NAL. That unnecessarily required unrelated cognitive source files.",
+    "changed_production": [
+      "fusion/adapters/native_promotion.py"
+    ],
+    "unchanged": "All owner transitions, native startup, existing profile pins and arithmetic expressions; prior final.log ran candidate-03.",
+    "prior_source": "native-promotion-candidate-03.py.txt",
+    "new_requirement": "Exact existing SWI/Python/native-library hashes; pinned PeTTa src/*.pl and native memory source. No MeTTaClaw NAL or PeTTa cognitive libraries required.",
+    "rechecks": [
+      "runtime-guards.log",
+      "runtime-owner-recheck.log",
+      "runtime-native-recheck.log"
+    ],
+    "new_test": "test_pure_runtime_with_cognitive_sources_absent: both owners with only native memory and interpreter source, then policy/interpreter tamper refusal"
+  },
+  "candidate_03_to_final_differences": [
+    "fusion/adapters/native_promotion.py",
+    "integration/neoclaw/test_promotion_guards.py",
+    "integration/neoclaw/test_search_loop.py"
+  ],
+  "new_final_test_modules": [
+    "integration/neoclaw/test_promotion_recovery_edges.py"
+  ]
+}

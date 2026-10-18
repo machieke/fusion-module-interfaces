@@ -1,0 +1,9 @@
+{
+  "first_adapted_native": {
+    "feedback_parity": true,
+    "context_parity": true,
+    "derived_file_parity": false,
+    "cause": "Native append-file adds one newline per line; first derived writer omitted it",
+    "correction": "Native rendered lines now each followed by one newline; file and parent directory fsynced"
+  }
+}

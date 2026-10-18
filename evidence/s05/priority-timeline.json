@@ -1,0 +1,3876 @@
+[
+  {
+    "provider": "sqlite",
+    "adjustments": [
+      {
+        "occurrence": "c4f4f349-c916-567c-8153-52245ce84442",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:05",
+            "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45"
+          },
+          "operation": "promote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 0.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358663285,
+              "delta": 1,
+              "id": "c4f4f349-c916-567c-8153-52245ce84442",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "requested": 1,
+          "revision": 1,
+          "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+          "time": 2000000000.0,
+          "value": 1.0
+        },
+        "visible": 1
+      },
+      {
+        "occurrence": "4045a640-c076-5112-9eb6-da21066a3a17",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:11",
+            "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45"
+          },
+          "operation": "promote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 0.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358666106,
+              "delta": 1,
+              "id": "4045a640-c076-5112-9eb6-da21066a3a17",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "faebacf5-ec80-58e9-933b-ce72710964ed"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "requested": 1,
+          "revision": 2,
+          "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+          "time": 2000000000.0,
+          "value": 1.0
+        },
+        "visible": 1
+      },
+      {
+        "occurrence": "5ee2a32f-ddff-525f-880c-2be90f1f8555",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:11",
+            "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45"
+          },
+          "operation": "promote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 1.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358667316,
+              "delta": 1,
+              "id": "5ee2a32f-ddff-525f-880c-2be90f1f8555",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "faebacf5-ec80-58e9-933b-ce72710964ed"
+              ]
+            },
+            "revision": 2,
+            "time": 2000000000.0
+          },
+          "requested": 1,
+          "revision": 3,
+          "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+          "time": 2000000000.0,
+          "value": 2.0
+        },
+        "visible": 1
+      },
+      {
+        "occurrence": "30b5fec5-d31d-5160-a27d-6e3db40c1cc5",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:05",
+            "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45"
+          },
+          "operation": "demote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 1.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358670223,
+              "delta": -1,
+              "id": "30b5fec5-d31d-5160-a27d-6e3db40c1cc5",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "requested": -1,
+          "revision": 4,
+          "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+          "time": 2000000000.0,
+          "value": 0.0
+        },
+        "visible": 1
+      }
+    ],
+    "queries": [
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358661762,
+            "delta": 0,
+            "id": "query/a698b330-f058-5479-a89d-7331439cf7f9",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "id": "a698b330-f058-5479-a89d-7331439cf7f9",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358661762,
+              "delta": 0,
+              "id": "query/a698b330-f058-5479-a89d-7331439cf7f9",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "d64129ed-0c0e-4c22-a486-528746d9220f",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      },
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358664374,
+            "delta": 0,
+            "id": "query/a399b647-2bc6-54da-8aaf-43523f38c8b0",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 1,
+          "time": 2000000000.0
+        },
+        "id": "a399b647-2bc6-54da-8aaf-43523f38c8b0",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358664374,
+              "delta": 0,
+              "id": "query/a399b647-2bc6-54da-8aaf-43523f38c8b0",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "d64129ed-0c0e-4c22-a486-528746d9220f",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      },
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358668490,
+            "delta": 0,
+            "id": "query/643d630e-e5e8-5d5c-ad0e-07230542853a",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 3,
+          "time": 2000000000.0
+        },
+        "id": "643d630e-e5e8-5d5c-ad0e-07230542853a",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358668490,
+              "delta": 0,
+              "id": "query/643d630e-e5e8-5d5c-ad0e-07230542853a",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "d64129ed-0c0e-4c22-a486-528746d9220f",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      },
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358671342,
+            "delta": 0,
+            "id": "query/4eef395f-e902-54bf-b775-d3f8073d84f1",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 4,
+          "time": 2000000000.0
+        },
+        "id": "4eef395f-e902-54bf-b775-d3f8073d84f1",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358671342,
+              "delta": 0,
+              "id": "query/4eef395f-e902-54bf-b775-d3f8073d84f1",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 4,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "d64129ed-0c0e-4c22-a486-528746d9220f",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      }
+    ],
+    "contexts": [
+      {
+        "slot": 1,
+        "view": "6eed5f631ba5c4f3dc6f244f566b8568544682a64b67f3976bf7b44fe260e03d",
+        "deadline": 1792358653999,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358653999,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/1",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358653999,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/1",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 12
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": []
+        }
+      },
+      {
+        "slot": 2,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358660548,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358660548,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/2",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358660548,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/2",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": []
+        }
+      },
+      {
+        "slot": 3,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358662791,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358662791,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/3",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358662791,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/3",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": []
+        }
+      },
+      {
+        "slot": 4,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358663793,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358663793,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/4",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 1,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358663793,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/4",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 5,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358665490,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358665490,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/5",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 1,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358665490,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/5",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 6,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358666627,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358666627,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/6",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 2,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358666627,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/6",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 2,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 1.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "faebacf5-ec80-58e9-933b-ce72710964ed"
+          ]
+        }
+      },
+      {
+        "slot": 7,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358667877,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358667877,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/7",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 3,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358667877,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/7",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 8,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358669524,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358669524,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/8",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 3,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358669524,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/8",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 9,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358670744,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358670744,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/9",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 4,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358670744,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/9",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 4,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed"
+          ]
+        }
+      },
+      {
+        "slot": 10,
+        "view": "d53991473d50e75e8053ae6a4d1f1628396ec4aa744f41ec122364dc9c9fca45",
+        "deadline": 1792358672537,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358672537,
+            "delta": 0,
+            "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/10",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "d64129ed-0c0e-4c22-a486-528746d9220f",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 4,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358672537,
+              "delta": 0,
+              "id": "context/97592002-2c5b-4fcf-8acb-8b6ee9a42b0c/10",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "a67f045ddde4f4412c3308874f1dd9293105710eb4e3a5c6e0a5f0f45fd46199",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "d64129ed-0c0e-4c22-a486-528746d9220f",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 4,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "d64129ed-0c0e-4c22-a486-528746d9220f"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed"
+          ]
+        }
+      }
+    ],
+    "publication_count": 2,
+    "maintenance_count": 1,
+    "memory_vectors": 1,
+    "global_segments": [
+      "()",
+      "()",
+      "()",
+      "(((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.) ((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.) ((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.) ((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.))"
+    ]
+  },
+  {
+    "provider": "file-fixture",
+    "adjustments": [
+      {
+        "occurrence": "f0badc74-21b9-5ece-bb1a-033661eb5090",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:05",
+            "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c"
+          },
+          "operation": "promote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 0.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358710591,
+              "delta": 1,
+              "id": "f0badc74-21b9-5ece-bb1a-033661eb5090",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "requested": 1,
+          "revision": 1,
+          "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+          "time": 2000000000.0,
+          "value": 1.0
+        },
+        "visible": 1
+      },
+      {
+        "occurrence": "111e7df2-3621-5607-88a8-15cecbf59993",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:11",
+            "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c"
+          },
+          "operation": "promote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 0.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358713377,
+              "delta": 1,
+              "id": "111e7df2-3621-5607-88a8-15cecbf59993",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "faebacf5-ec80-58e9-933b-ce72710964ed"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "requested": 1,
+          "revision": 2,
+          "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+          "time": 2000000000.0,
+          "value": 1.0
+        },
+        "visible": 1
+      },
+      {
+        "occurrence": "820fb7ce-388e-5408-8491-eeef380703ff",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:11",
+            "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c"
+          },
+          "operation": "promote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 1.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358714569,
+              "delta": 1,
+              "id": "820fb7ce-388e-5408-8491-eeef380703ff",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "faebacf5-ec80-58e9-933b-ce72710964ed"
+              ]
+            },
+            "revision": 2,
+            "time": 2000000000.0
+          },
+          "requested": 1,
+          "revision": 3,
+          "target": "faebacf5-ec80-58e9-933b-ce72710964ed",
+          "time": 2000000000.0,
+          "value": 2.0
+        },
+        "visible": 1
+      },
+      {
+        "occurrence": "955281f6-cd7f-5b67-a276-fdee691ff897",
+        "intent": {
+          "arguments": {
+            "alias": "2031-05-01 00:00:05",
+            "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c"
+          },
+          "operation": "demote",
+          "profile": "wall-clock-promotion/1"
+        },
+        "receipt": {
+          "before": 1.0,
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358717571,
+              "delta": -1,
+              "id": "955281f6-cd7f-5b67-a276-fdee691ff897",
+              "kind": "adjust",
+              "limit": 1,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "requested": -1,
+          "revision": 4,
+          "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+          "time": 2000000000.0,
+          "value": 0.0
+        },
+        "visible": 1
+      }
+    ],
+    "queries": [
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358708955,
+            "delta": 0,
+            "id": "query/70fcf919-d8b6-515d-b58e-bc180af95cc9",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "id": "70fcf919-d8b6-515d-b58e-bc180af95cc9",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358708955,
+              "delta": 0,
+              "id": "query/70fcf919-d8b6-515d-b58e-bc180af95cc9",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "e14d14b9-5575-489d-a494-acaabccf313d",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      },
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358711674,
+            "delta": 0,
+            "id": "query/cf7f0775-67a4-5013-9d29-a218ac6fb6b8",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 1,
+          "time": 2000000000.0
+        },
+        "id": "cf7f0775-67a4-5013-9d29-a218ac6fb6b8",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358711674,
+              "delta": 0,
+              "id": "query/cf7f0775-67a4-5013-9d29-a218ac6fb6b8",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "e14d14b9-5575-489d-a494-acaabccf313d",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      },
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358715736,
+            "delta": 0,
+            "id": "query/cacda9f7-0ae0-5a1c-ad84-89f32751befd",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 3,
+          "time": 2000000000.0
+        },
+        "id": "cacda9f7-0ae0-5a1c-ad84-89f32751befd",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358715736,
+              "delta": 0,
+              "id": "query/cacda9f7-0ae0-5a1c-ad84-89f32751befd",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "e14d14b9-5575-489d-a494-acaabccf313d",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      },
+      {
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358718739,
+            "delta": 0,
+            "id": "query/2717a6d0-c0d5-5532-b7e0-e005527faa50",
+            "kind": "scores",
+            "limit": 8,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            ]
+          },
+          "revision": 4,
+          "time": 2000000000.0
+        },
+        "id": "2717a6d0-c0d5-5532-b7e0-e005527faa50",
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358718739,
+              "delta": 0,
+              "id": "query/2717a6d0-c0d5-5532-b7e0-e005527faa50",
+              "kind": "scores",
+              "limit": 8,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca"
+              ]
+            },
+            "revision": 4,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 8
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            }
+          ],
+          "selected": [
+            "e14d14b9-5575-489d-a494-acaabccf313d",
+            "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+            "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+            "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+            "fbdf40f5-6c16-5f06-898c-929dfb879580",
+            "c563f114-a398-5207-ab5e-05a77a6e32ca"
+          ]
+        }
+      }
+    ],
+    "contexts": [
+      {
+        "slot": 1,
+        "view": "bcff2ca76800ce44da44ed040d15e42ba876ffadc74afb0fda7342d5ff5b58e6",
+        "deadline": 1792358700323,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358700323,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/1",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358700323,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/1",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 12
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": []
+        }
+      },
+      {
+        "slot": 2,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358707612,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358707612,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/2",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358707612,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/2",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": []
+        }
+      },
+      {
+        "slot": 3,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358710094,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358710094,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/3",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 0,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358710094,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/3",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 0,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": []
+        }
+      },
+      {
+        "slot": 4,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358711108,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358711108,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/4",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 1,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358711108,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/4",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 5,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358712815,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358712815,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/5",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 1,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358712815,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/5",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 1,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 0.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 6,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358713881,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358713881,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/6",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 2,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358713881,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/6",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 2,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 1.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+            "faebacf5-ec80-58e9-933b-ce72710964ed"
+          ]
+        }
+      },
+      {
+        "slot": 7,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358715091,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358715091,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/7",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 3,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358715091,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/7",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 8,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358716847,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358716847,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/8",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 3,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358716847,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/8",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 3,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 1.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed",
+            "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+          ]
+        }
+      },
+      {
+        "slot": 9,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358718137,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358718137,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/9",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 4,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358718137,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/9",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 4,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed"
+          ]
+        }
+      },
+      {
+        "slot": 10,
+        "view": "fe98bb3b87cd45201217be2c60b31f843778ce3744ff3398882a9290cf371c9c",
+        "deadline": 1792358719911,
+        "calls": 1,
+        "binding": {
+          "clock": "trusted-local-epoch-seconds/1",
+          "request": {
+            "context": "synthetic-s05-global",
+            "deadline_ms": 1792358719911,
+            "delta": 0,
+            "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/10",
+            "kind": "rank",
+            "limit": 10,
+            "principal": "A",
+            "profile": "wall-clock-promotion/1",
+            "scope": "private-s05",
+            "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+            "targets": [
+              "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+              "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+              "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+              "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+              "6a32592c-559f-5b81-a69e-367708db0bd6",
+              "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+              "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+              "c563f114-a398-5207-ab5e-05a77a6e32ca",
+              "e14d14b9-5575-489d-a494-acaabccf313d",
+              "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+              "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+              "faebacf5-ec80-58e9-933b-ce72710964ed",
+              "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            ]
+          },
+          "revision": 4,
+          "time": 2000000000.0
+        },
+        "result": {
+          "binding": {
+            "clock": "trusted-local-epoch-seconds/1",
+            "request": {
+              "context": "synthetic-s05-global",
+              "deadline_ms": 1792358719911,
+              "delta": 0,
+              "id": "context/8be0795a-0332-4a31-9788-52f5b52a7f70/10",
+              "kind": "rank",
+              "limit": 10,
+              "principal": "A",
+              "profile": "wall-clock-promotion/1",
+              "scope": "private-s05",
+              "selection": "ad88070d794904c7e2a58a02c5515cc206788a13021c0a1d7880c0706aeeee01",
+              "targets": [
+                "11b57aa7-6beb-5107-a132-e5a9f6403e26",
+                "248977f3-5fa7-5fbb-9f56-adc02441d17d",
+                "3012a9c0-6ffc-5342-84e3-27fc4eb85732",
+                "50c5f3cf-926d-5a6d-8011-94d6e0b6704c",
+                "6a32592c-559f-5b81-a69e-367708db0bd6",
+                "836dbb5d-92fe-530f-9ee7-985bedd45fb9",
+                "b7a7e357-488a-5333-ae2c-9615cd9d7de0",
+                "c563f114-a398-5207-ab5e-05a77a6e32ca",
+                "e14d14b9-5575-489d-a494-acaabccf313d",
+                "ec044191-ea3c-5e6d-afb6-c00a7608f287",
+                "f663ea8f-54b3-5a26-8397-b62974cefc2b",
+                "faebacf5-ec80-58e9-933b-ce72710964ed",
+                "fbdf40f5-6c16-5f06-898c-929dfb879580"
+              ]
+            },
+            "revision": 4,
+            "time": 2000000000.0
+          },
+          "coverage": {
+            "complete": true,
+            "eligible": 13
+          },
+          "scores": [
+            {
+              "score": 0.0,
+              "target": "11b57aa7-6beb-5107-a132-e5a9f6403e26"
+            },
+            {
+              "score": 0.0,
+              "target": "248977f3-5fa7-5fbb-9f56-adc02441d17d"
+            },
+            {
+              "score": 0.0,
+              "target": "3012a9c0-6ffc-5342-84e3-27fc4eb85732"
+            },
+            {
+              "score": 0.0,
+              "target": "50c5f3cf-926d-5a6d-8011-94d6e0b6704c"
+            },
+            {
+              "score": 0.0,
+              "target": "6a32592c-559f-5b81-a69e-367708db0bd6"
+            },
+            {
+              "score": 0.0,
+              "target": "836dbb5d-92fe-530f-9ee7-985bedd45fb9"
+            },
+            {
+              "score": 0.0,
+              "target": "b7a7e357-488a-5333-ae2c-9615cd9d7de0"
+            },
+            {
+              "score": 0.0,
+              "target": "c563f114-a398-5207-ab5e-05a77a6e32ca"
+            },
+            {
+              "score": 0.0,
+              "target": "e14d14b9-5575-489d-a494-acaabccf313d"
+            },
+            {
+              "score": 0.0,
+              "target": "ec044191-ea3c-5e6d-afb6-c00a7608f287"
+            },
+            {
+              "score": 0.0,
+              "target": "f663ea8f-54b3-5a26-8397-b62974cefc2b"
+            },
+            {
+              "score": 2.0,
+              "target": "faebacf5-ec80-58e9-933b-ce72710964ed"
+            },
+            {
+              "score": 0.0,
+              "target": "fbdf40f5-6c16-5f06-898c-929dfb879580"
+            }
+          ],
+          "selected": [
+            "faebacf5-ec80-58e9-933b-ce72710964ed"
+          ]
+        }
+      }
+    ],
+    "publication_count": 2,
+    "maintenance_count": 1,
+    "memory_vectors": 1,
+    "global_segments": [
+      "()",
+      "()",
+      "()",
+      "(((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.) ((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.) ((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.) ((id: 2031-05-01 00:00:05) (linkedEpisodes: (2031-05-01 00:00:05)) (stv 0.7 0.5) Synthetic violet beacon stores 5 paper moons in a notebook.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.))",
+      "(((id: 2031-05-01 00:00:11) (linkedEpisodes: (2031-05-01 00:00:11)) (stv 0.82 0.5) Synthetic privacy canary S05_LOCAL_PRIORITY: the glacier has twelve wool socks.))"
+    ]
+  }
+]

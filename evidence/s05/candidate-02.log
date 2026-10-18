@@ -1,0 +1,64 @@
+test_capacity_without_silent_eviction (integration.neoclaw.test_promotion_owner.PromotionOwners.test_capacity_without_silent_eviction) ... ok
+test_concurrent_cas_exactly_one_commit (integration.neoclaw.test_promotion_owner.PromotionOwners.test_concurrent_cas_exactly_one_commit) ... ok
+test_expiry_observes_committed_refuses_new_and_missing_read (integration.neoclaw.test_promotion_owner.PromotionOwners.test_expiry_observes_committed_refuses_new_and_missing_read) ... ok
+test_global_ties_positive_filter_zero_and_candidate_correspondence (integration.neoclaw.test_promotion_owner.PromotionOwners.test_global_ties_positive_filter_zero_and_candidate_correspondence) ... ok
+test_historical_reads_clock_rollback_and_missing_binding (integration.neoclaw.test_promotion_owner.PromotionOwners.test_historical_reads_clock_rollback_and_missing_binding) ... ok
+test_live_authority_profile_scope_and_reply_validation (integration.neoclaw.test_promotion_owner.PromotionOwners.test_live_authority_profile_scope_and_reply_validation) ... ok
+test_native_policy_domain_caps_floor_decay_and_order (integration.neoclaw.test_promotion_owner.PromotionOwners.test_native_policy_domain_caps_floor_decay_and_order) ... ok
+test_real_process_kills_atomic_receipt_time_and_spent_budget (integration.neoclaw.test_promotion_owner.PromotionOwners.test_real_process_kills_atomic_receipt_time_and_spent_budget) ... ok
+test_revocation_after_real_native_evaluation_no_commit (integration.neoclaw.test_promotion_owner.PromotionOwners.test_revocation_after_real_native_evaluation_no_commit) ... ok
+test_same_policy_independent_replay_and_intent (integration.neoclaw.test_promotion_owner.PromotionOwners.test_same_policy_independent_replay_and_intent) ... ok
+test_current_authority_cached_release_no_fallback_and_missing_content (integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_current_authority_cached_release_no_fallback_and_missing_content) ... ok
+test_ordered_batch_new_occurrences_and_alias_refusals (integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_ordered_batch_new_occurrences_and_alias_refusals) ... ok
+test_original_primary_independent_native_query_and_global_context (integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_original_primary_independent_native_query_and_global_context) ... ok
+test_priority_and_belief_independent_same_session (integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_priority_and_belief_independent_same_session) ... ok
+test_real_kills_independent_commits_and_context_handoff (integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_real_kills_independent_commits_and_context_handoff) ... Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/main.py", line 105, in __init__
+    self.runTests()
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/main.py", line 281, in runTests
+    self.result = testRunner.run(self.test)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_loop.py", line 84, in test_real_kills_independent_commits_and_context_handoff
+    run.kill(p);self.assertEqual(p.returncode,-signal.SIGKILL);self.resume(run);value=report(run,cfg)
+                                                               ^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_loop.py", line 45, in resume
+    def resume(self,run):run.app.pop('pause_at',None);run.save();self.finish(run)
+                                                                 ^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_loop.py", line 34, in finish
+    p=start(run);p.wait(timeout=180);result=run.finish(p)
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 2047, in _wait
+    time.sleep(delay)
+KeyboardInterrupt

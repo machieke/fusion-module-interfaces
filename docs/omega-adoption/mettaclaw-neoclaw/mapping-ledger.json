@@ -3227,7 +3227,7 @@
         ]
       },
       "omega_role": "provider",
-      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
+      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
       "owned_state": [],
       "dependencies": [
         "datetime",
@@ -3246,7 +3246,7 @@
           "current_profile": null,
           "fusion_baseline_profile": "episode-delivery-completion/1",
           "candidate_profile": "Requires explicit compatibility design; not selected",
-          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
+          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
           "observed_semantic_responsibility": true
         }
       ],
@@ -8031,6 +8031,71 @@
       ],
       "executed_test_methods": 21,
       "regression_methods": 207
+    },
+    {
+      "slice": "S05",
+      "operation": "native promote/demote, owned query score reads and actual promoted global context",
+      "profile": "wall-clock-promotion/1",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "source_baseline": "0d66b4b8f404450367a711de905f4a251f4b0255",
+      "components": [
+        "memory.promote",
+        "memory.demote",
+        "memory.query",
+        "memory.promoted.ids",
+        "memory.promoted.render",
+        "memory.promotion.decay",
+        "loop.context"
+      ],
+      "exact_symbol": "src/memory.metta::promote/demote/get-promotion/best-promoted-memories; src/loop.metta::getContext",
+      "interfaces": [
+        "attention@3.0.0 / wall-clock-promotion/1",
+        "existing AtomStorage commit feed and payload reads",
+        "retained S04 local belief presentation"
+      ],
+      "providers": [
+        "real SQLite Attention",
+        "independent atomic-file storage fixture",
+        "real pinned native promotion arithmetic",
+        "real E5/Chroma/DeTTa; S04 owners where exercised"
+      ],
+      "placement": [
+        "controlled native local private Attention"
+      ],
+      "same_host": true,
+      "multi_host": "NOT_RUN",
+      "remote_private_attention": "UNSUPPORTED_PROFILE",
+      "fallback": false,
+      "private_omega_stores_accessed": false,
+      "application_composition": "controlled-native-loop/7",
+      "fresh_journals_only": true,
+      "coverage": {
+        "adopted_internal_boundaries": 3,
+        "additional_user_commands": 2,
+        "whole_families_promoted": 0,
+        "whole_omega_integrated": false
+      },
+      "evidence": "../../../evidence/s05/verification.json",
+      "report": "s05.md",
+      "status": "IMPLEMENTED_AND_EXECUTED_BOUNDED_LOCAL_ATTENTION",
+      "guarantees": [
+        "source-checked native wall-clock arithmetic",
+        "durable occurrence/time/revision/receipt and spent budgets",
+        "exact authorized historical score and context reads",
+        "actual global context via complete scoped eligibility and AtomStorage hydration",
+        "same-profile independent provider substitution through composition",
+        "priority, belief and Search commits remain separate"
+      ],
+      "qualifications": [
+        "model/channel/comparison clocks and initial metadata are fixtures",
+        "alternate persistence is a fixture, native arithmetic and consumer are real",
+        "missing/ambiguous aliases and backward/invalid clocks fail explicitly",
+        "fresh synthetic data; no migration or remote private state",
+        "intact-files/process-restart guarantee; no power-loss certification",
+        "native restart latency may exhaust original deadline before all work attempts"
+      ],
+      "executed_test_methods": 27,
+      "regression_methods": 159
     }
   ]
 }

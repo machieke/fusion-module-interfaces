@@ -59,6 +59,8 @@ Proposed typed errors: `INVALID_ARGUMENT`, `UNSUPPORTED_PROFILE`, `UNAUTHORIZED`
 
 ## S05 — promotion ranking and adjustment
 
+The historical draft below is preserved. S05 now selects this exact profile for bounded local adoption; see [executable contract decisions](s05-contract-decisions.md) and [executed evidence](s05.md). It does not approve remote private placement.
+
 - **Local:** `promote/demote(time)` resolve UUIDs, compute `value*(1+dt/86400)^(-.7)`, add/subtract one with caps, set time/value and commit SQLite. `get-promotion(current_time,uuid)` is read-time decay.
 - **Existing Fusion:** `Attention.submitStimulus(Stimulus)`, `readAttention(target,context)`, `select(scope,context,eligible,limit)`, `advance(Mutation,context,expected_step,steps)`; closure adds `submitFeedback`/`resolveFeedback`. Integer STI, logical steps/causes and deadlines do not match the wall clock policy.
 - **Proposed:** DRAFT `wall-clock-promotion/1`; `adjust(scope,target,cause_id,delta=+1|-1,expected_revision,clock_receipt)` and `rank(scope,eligible,as_of,limit)` with fixed caps/decay/ties/backward-clock behavior. These fields remain a design pending policy choice; no remote acceptance contract is approved.

@@ -517,3 +517,13 @@ read-only recovery path. Local presentation binds owner snapshots without re-emb
 or rebuilding Search. Historical application profiles and populated state are not
 reinterpreted. Cognitive state and provenance remain local. See the
 [S04 contract decisions](../omega-adoption/mettaclaw-neoclaw/s04-contract-decisions.md).
+
+## ADR-017: S05 independent wall-clock promotion and retained context
+
+Keep native promotion under `wall-clock-promotion/1`, Attention 3.0.0, and select it only in fresh `controlled-native-loop/7` journals. Preserve original numerical expressions with the pinned native runtime. Existing STI, PLN and NAL profiles keep their numerical meanings and state owners.
+
+Bind trusted epoch time and revision once, then atomically commit each intentional adjustment's value/time/receipt. An occurrence can replay; repeated command text can be a new occurrence. Newly bound backward samples and missing/ambiguous aliases fail. Existing read bindings remain historical. CAS conflicts are explicit; there is no retiming, refund, automatic retry or deadline extension.
+
+Global context has an application iteration identity before a command exists. Its rank receipt, ordered AtomStorage hydration, S04 presentation and native rendered segment are captured separately. Replays reauthorize and reproduce that segment. The compatibility output file is an atomic derived write, never authority. Query keeps its native candidate ordering/merge and freezes a separate Attention snapshot at enrichment. Neither consumer rebuilds Search or changes beliefs.
+
+Use the existing local owner/registry/policy and occurrence machinery. A second atomic-file provider implements the same transitions independently; sharing DTO checks and the pure native numerical dependency is allowed. This is bounded local adoption, not ECAN, cognitive research, scheduling, remote private placement or migration. Exact sources, limits and executed gates are in the S05 packet.

@@ -1,0 +1,273 @@
+test_bound_identity_changed_semantics_is_conflict (integration.neoclaw.test_promotion_guards.PromotionGuards.test_bound_identity_changed_semantics_is_conflict) ... FAIL
+test_invalid_clock_and_context_capacity (integration.neoclaw.test_promotion_guards.PromotionGuards.test_invalid_clock_and_context_capacity) ... ok
+test_legacy_sqlite_is_refused_without_modification (integration.neoclaw.test_promotion_guards.PromotionGuards.test_legacy_sqlite_is_refused_without_modification) ... FAIL
+test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) ... 
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='adjust') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='observe') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='scores') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='rank') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='adjust') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='observe') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='scores') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='rank') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='adjust') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='observe') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='scores') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='rank') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='adjust') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='observe') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='scores') ... ERROR
+  test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='rank') ... ERROR
+test_math_and_owner_do_not_load_cognitive_or_embedding_runtimes (integration.neoclaw.test_promotion_guards.PromotionGuards.test_math_and_owner_do_not_load_cognitive_or_embedding_runtimes) ... ok
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='adjust')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 99, in adjust
+    def adjust(self,b):return self.compute(b,'adjust')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 63, in compute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,kind);require(q['kind']==kind,'CONFLICT')
+                                 ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='observe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 55, in observe
+    self.check(b['request'],'observe')
+               ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='scores')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 100, in scores
+    def scores(self,b):return self.compute(b,'scores')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 63, in compute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,kind);require(q['kind']==kind,'CONFLICT')
+                                 ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='{}', operation='rank')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 101, in rank
+    def rank(self,b):return self.compute(b,'rank')
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 63, in compute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,kind);require(q['kind']==kind,'CONFLICT')
+                                 ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='adjust')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 99, in adjust
+    def adjust(self,b):return self.compute(b,'adjust')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 63, in compute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,kind);require(q['kind']==kind,'CONFLICT')
+                                 ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='observe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 55, in observe
+    self.check(b['request'],'observe')
+               ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='scores')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 100, in scores
+    def scores(self,b):return self.compute(b,'scores')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 63, in compute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,kind);require(q['kind']==kind,'CONFLICT')
+                                 ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='sqlite', value='None', operation='rank')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 101, in rank
+    def rank(self,b):return self.compute(b,'rank')
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/promotion.py", line 63, in compute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,kind);require(q['kind']==kind,'CONFLICT')
+                                 ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='adjust')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 94, in adjust
+    def adjust(self,b):return self.execute(b,'adjust')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 61, in execute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,method);require(q['kind']==method,'CONFLICT')
+                                 ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='observe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 57, in observe
+    self.check(b['request'],'observe')
+               ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='scores')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 95, in scores
+    def scores(self,b):return self.execute(b,'scores')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 61, in execute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,method);require(q['kind']==method,'CONFLICT')
+                                 ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='{}', operation='rank')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 96, in rank
+    def rank(self,b):return self.execute(b,'rank')
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 61, in execute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,method);require(q['kind']==method,'CONFLICT')
+                                 ~^^^^^^^^^^^
+KeyError: 'request'
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='adjust')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 94, in adjust
+    def adjust(self,b):return self.execute(b,'adjust')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 61, in execute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,method);require(q['kind']==method,'CONFLICT')
+                                 ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='observe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 57, in observe
+    self.check(b['request'],'observe')
+               ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='scores')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 95, in scores
+    def scores(self,b):return self.execute(b,'scores')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 61, in execute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,method);require(q['kind']==method,'CONFLICT')
+                                 ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) (provider='file-fixture', value='None', operation='rank')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 36, in test_malformed_bindings_are_contract_errors
+    with self.assertRaises(ContractError):getattr(o,op)(value)
+                                          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 96, in rank
+    def rank(self,b):return self.execute(b,'rank')
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/file_promotion.py", line 61, in execute
+    b=json.loads(canonical(b));q=b['request'];self.check(q,method);require(q['kind']==method,'CONFLICT')
+                                 ~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+FAIL: test_bound_identity_changed_semantics_is_conflict (integration.neoclaw.test_promotion_guards.PromotionGuards.test_bound_identity_changed_semantics_is_conflict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 26, in test_bound_identity_changed_semantics_is_conflict
+    self.assertEqual(failure.exception.code,'CONFLICT')
+AssertionError: 'NOT_AVAILABLE' != 'CONFLICT'
+- NOT_AVAILABLE
++ CONFLICT
+
+
+======================================================================
+FAIL: test_legacy_sqlite_is_refused_without_modification (integration.neoclaw.test_promotion_guards.PromotionGuards.test_legacy_sqlite_is_refused_without_modification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 41, in test_legacy_sqlite_is_refused_without_modification
+    with self.assertRaises(ContractError) as failure:PromotionOwner(path,h.access,h.math)
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 3.118s
+
+FAILED (failures=2, errors=16)

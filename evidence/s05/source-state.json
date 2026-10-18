@@ -1,0 +1,108 @@
+{
+  "schema": "s05-source-state/1",
+  "starting_commit": "0d66b4b8f404450367a711de905f4a251f4b0255",
+  "current_parent_commit": "0d66b4b8f404450367a711de905f4a251f4b0255",
+  "branch": "master",
+  "initial_status": [
+    "?? codex_neoclaw_s05_promotion_attention_adoption.md"
+  ],
+  "baseline_reconciliation": "baseline-source.json",
+  "brief_sha256": "b6d5fc1a6f1b564a4d3b76f8489728db634fd836ff1e6d465c0b79f5986ea8a4",
+  "repositories": {
+    "mettaclaw": {
+      "path": "artifacts/s01/native-02/sources/mettaclaw",
+      "commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "tracked_changes": [],
+      "status": [
+        "?? src/__pycache__/"
+      ]
+    },
+    "petta": {
+      "path": "artifacts/s01/native-02/sources/PeTTa",
+      "commit": "fea83178af3722666d2948d074591d10a3134f56",
+      "tracked_changes": [],
+      "status": []
+    },
+    "swipl": {
+      "path": "artifacts/s01/native-02/sources/swipl",
+      "commit": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+      "tracked_changes": [],
+      "status": []
+    },
+    "chroma-helper": {
+      "path": "artifacts/omega-mapping-source/petta_lib_chromadb",
+      "commit": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+      "tracked_changes": [],
+      "status": []
+    },
+    "detta": {
+      "path": "artifacts/m5/reproduction-01/providers/native/sources/secured-contract-spaces",
+      "commit": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "tracked_changes": [],
+      "status": []
+    },
+    "fusion-reachability": {
+      "path": "artifacts/m3/providers/sources/reachability",
+      "commit": "dd56f3f053ed90239de5377021a7d3b3fbf424ac",
+      "tracked_changes": []
+    },
+    "fusion-pln": {
+      "path": "artifacts/m3/providers/sources/pln",
+      "commit": "4405956947c4b53c7ff01bd565aa3b114bc970a1",
+      "tracked_changes": []
+    },
+    "fusion-petta": {
+      "path": "artifacts/m3/providers/native/sources/PeTTa",
+      "commit": "ae66fa8e41dcd5539d614706bd4e5cfb34f9608d",
+      "tracked_changes": []
+    },
+    "fusion-swipl": {
+      "path": "artifacts/m3/providers/native/sources/swipl",
+      "commit": "69775434c8226897626b226aefcc8266499f1e2e",
+      "tracked_changes": []
+    }
+  },
+  "builds": "builds.json",
+  "builds_sha256": "be101a709b0f1699f7ff806573c6b8da3e5979b2f2fe45f20fffc92e1f4ddf9b",
+  "test_source_manifest": "test-source.json",
+  "test_source_manifest_sha256": "a3f825e8c1f9b5982ee932765e9c090e0b9f922d9f34e1dee4ca2ff9cac24384",
+  "changed_non_evidence": {
+    "README.md": "d9336ce4b5552cdf9d633ab08e95d16e566a139c88858ffc3c9970b4b71c1585",
+    "codex_neoclaw_s05_promotion_attention_adoption.md": "b6d5fc1a6f1b564a4d3b76f8489728db634fd836ff1e6d465c0b79f5986ea8a4",
+    "docs/module-interfaces/architecture.md": "dfce0c5c841f025e61078ede35905c751ce401077af158588e0d15878ebd5097",
+    "docs/module-interfaces/contracts.md": "0a3f04d2dd583b784e442d385e5f0413b2ff005de2f1f5cea8da09131662ef2a",
+    "docs/module-interfaces/decisions.md": "f41f81cd2b9f59d4847b829742f805f17f91e16110b6b979d9c5315c38c40bf1",
+    "docs/module-interfaces/runbook.md": "122980dd8e239325fbebc91760f20a0a4cf533e67e7b6b397702e7512b387c39",
+    "docs/omega-adoption/mettaclaw-neoclaw/README.md": "b7c30bd43f6584521df07da0ea0ed845377a6469a76536d71cc2627248a40ecb",
+    "docs/omega-adoption/mettaclaw-neoclaw/coverage.json": "7ebada51af116a6906d1c1ee7c8a533ebc6f1d18e90fe62eab6589f9b6288987",
+    "docs/omega-adoption/mettaclaw-neoclaw/mapping-ledger.json": "de7044dbc5dd6fcbbb820cedddc4e83bc162ec6e21f3ceafd644d9bf1658607f",
+    "docs/omega-adoption/mettaclaw-neoclaw/s05-contract-decisions.md": "d4b10aa35bda66f957b22f885e23d7588182469952a7f2487b3cebc4dc584117",
+    "docs/omega-adoption/mettaclaw-neoclaw/s05.md": "ff8cc2408395ed6f0dabb64b01599086f1991b5ba2e9dcad47333391bd12c2b3",
+    "docs/omega-adoption/mettaclaw-neoclaw/seam-contracts.md": "dd0684f13b6f317aec67425db0369363b7b2bb774628f536cd677bf16d3137d6",
+    "fusion/adapters/file_promotion.py": "52b3f0e6af667eb9ca13dd060a7d2f0a44e0104d188b4c4e34f14c075ebceebe",
+    "fusion/adapters/native_promotion.py": "a835dab3978d942f906814bfc9dc7ddcf7d7f15821e8feb327b1ad98acce506b",
+    "fusion/neoclaw_application.py": "ea2b23c8d306f20b0c5189e35a0cf3f8258b52c982c3d4f2f726d94b864e0c52",
+    "fusion/neoclaw_memory.py": "3892bd5d862f0cb3b285712a4eed9861b3f65f87e824600590f887da9b5dc04d",
+    "fusion/neoclaw_priority.py": "be7f9dc55a75377eff9303b550a02b685f6693066777f2e0c6a6a4a303d4383f",
+    "fusion/promotion.py": "136a18890e1041326659b56bd479c8d7a46e438f0b687ce9aa3f72c09519f6ca",
+    "fusion/promotion_composition.py": "cc40720dc3cad3bed0271ca91929ea3603eb2998830159caaef344c82eb7fc57",
+    "fusion/promotion_contracts.py": "12d1b144686d4c517a4b13623896dff6f7f06dd327fefc24597fa2de87144b90",
+    "integration/neoclaw/loop_bridge.py": "c982b6bc47ff8cf9545f09b423ee81d031e0e3044db634af99dea66cfeb7b4fb",
+    "integration/neoclaw/memory_bootstrap.py": "296e743ff698e9853db13bc44c2a5440a9b830440452afe129806a1f054ecc4d",
+    "integration/neoclaw/memory_startup.py": "bb3a4652eddc621aa4ed4401ae211f8c3ce6e6d7d169ddeda31a435fd95613f2",
+    "integration/neoclaw/native_loop.py": "5134cfa5800d8422544df7907f66a6609372fd9a4f357990eae92c177cc050fa",
+    "integration/neoclaw/promotion_composition.py": "1446701cae3a9adc5e3590dc7c23fa68188d4000e659ecb1ddf3c565c6bcb827",
+    "integration/neoclaw/promotion_corpus.py": "12358d88b9aa4ca2c9b3e99d759e3eb6eecc2328e781452b4808b2f069f36a90",
+    "integration/neoclaw/promotion_oracle.py": "9a5502b849a20601aed8f2cbde278105c63bff4b3da494e2b835d512bb43b3ad",
+    "integration/neoclaw/promotion_run.py": "ceacef90accf2a770985e4acbdd39c490f51b8883fe2d565a36e2a01d08985ee",
+    "integration/neoclaw/promotion_startup.py": "e4538e9021cdd60d27c604a950507172788f9883358c0661e431d67970ae07b3",
+    "integration/neoclaw/test_promotion_edges.py": "ba8df27770f04406ed83e506d03b558666a3d48c4cdcd5f58113e2d32e86c921",
+    "integration/neoclaw/test_promotion_guards.py": "b5759144cb7adcd4eea30a9c56fdb8a504b5961ec7ad793b0105cd472b82923c",
+    "integration/neoclaw/test_promotion_loop.py": "7e977c56580434a3917141b60d54f15e4db91fffcde35acc35b2f53513c24846",
+    "integration/neoclaw/test_promotion_owner.py": "5acc7b490fd36be2f9b7816ab8f3938701a6e0fe5e0a60bf20c3ab127933b227",
+    "integration/neoclaw/test_promotion_recovery_edges.py": "c2bc39c6a3574e245816af247511d8ff78e6cc9ed9561ce6d031c6450d4fd6e5",
+    "integration/neoclaw/test_search_loop.py": "36219d5fbec0e31c05afd8714db526f4ae6813ec24dd68b0ab7ea6a390debdfb"
+  },
+  "source_reconciliation": "source-reconciliation.json",
+  "publication": "Git commit containing this report; final response reports exact pushed SHA. Historical test identities are not rewritten."
+}

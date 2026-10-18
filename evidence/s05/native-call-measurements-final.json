@@ -1,0 +1,59 @@
+{
+  "measurements": [
+    {
+      "rows": 1,
+      "samples_ms": [
+        326.16608031094074,
+        331.6504890099168,
+        330.51988296210766
+      ],
+      "median_ms": 330.51988296210766,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 2,
+      "samples_ms": [
+        322.0923710614443,
+        330.37992287427187,
+        335.6641558930278
+      ],
+      "median_ms": 330.37992287427187,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 8,
+      "samples_ms": [
+        324.493445456028,
+        342.5509436056018,
+        336.2606130540371
+      ],
+      "median_ms": 336.2606130540371,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 13,
+      "samples_ms": [
+        334.62464436888695,
+        341.8006021529436,
+        358.1638587638736
+      ],
+      "median_ms": 341.8006021529436,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 128,
+      "samples_ms": [
+        355.5243415758014,
+        351.4333264902234,
+        351.82514414191246
+      ],
+      "median_ms": 351.82514414191246,
+      "result": 3.0778610333622907
+    }
+  ],
+  "adapter_sha256": "a835dab3978d942f906814bfc9dc7ddcf7d7f15821e8feb327b1ad98acce506b",
+  "source": "test-source-runtime-final.json",
+  "scope": "pure adapter including source/binary validation and bounded native subprocess; excludes owner commit and context hydration",
+  "cache": "warm existing native binary/filesystem; owner and native rechecks running concurrently",
+  "not_an_slo": true
+}

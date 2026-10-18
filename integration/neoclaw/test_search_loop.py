@@ -205,7 +205,12 @@ class SearchLoop(unittest.TestCase):
         try:
             self.wait(lambda:any(x['event']=='sdk-start' for x in audit(other)))
             pid=next(x['pid'] for x in audit(other) if x['event']=='sdk-start');worker.kill();worker.wait(timeout=5)
-            self.wait(lambda:not Path('/proc',str(pid)).exists() or '\nState:\tZ' in Path('/proc',str(pid),'status').read_text())
+            def stopped():
+                # The child may exit between an existence check and status read.
+                try:status=Path('/proc',str(pid),'status').read_text()
+                except FileNotFoundError:return True
+                return '\nState:\tZ' in status
+            self.wait(stopped)
         finally:
             if worker.poll() is None:worker.kill();worker.wait()
             worker.stdout.close();worker.stderr.close()

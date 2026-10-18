@@ -21,6 +21,9 @@ def call(method, *args):
         if method=='begin' and _app.append_enabled and _app.is_memory():
             from integration.neoclaw.append_bootstrap import select_view
             select_view(_app)
+        if method=='context_ids':
+            from integration.neoclaw.promotion_startup import select_context
+            select_context(_app)
         return result
     except Exception as exc:
         # No Python exceptions/provider paths/credentials become native tool output.
@@ -85,3 +88,13 @@ def revise(target,source,sign):
     from fusion.contracts import require
     require(type(sign) is int and sign in (0,1),'INVALID_ARGUMENT')
     return call('revise',target,source,sign==1)
+
+# S05 local Attention and durable native global-context preparation.
+def priority_adjust(alias,delta):return call('priority_adjust',alias,delta)
+def priority_score(observed,target):return call('priority_score',observed,target)
+def context_captured():return call('context_captured')
+def context_ids():return call('context_ids')
+def context_payloads(targets):return call('context_payloads',targets)
+def promoted_line(value):return call('promoted_line',value)
+def context_capture(value):return call('context_capture',value)
+def context_replay():return call('context_replay')

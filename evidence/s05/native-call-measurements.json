@@ -1,0 +1,57 @@
+{
+  "measurements": [
+    {
+      "rows": 1,
+      "samples_ms": [
+        557.8126339241862,
+        551.530284807086,
+        539.6437859162688
+      ],
+      "median_ms": 551.530284807086,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 2,
+      "samples_ms": [
+        557.0169156417251,
+        468.682867474854,
+        423.59139677137136
+      ],
+      "median_ms": 468.682867474854,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 8,
+      "samples_ms": [
+        424.5322775095701,
+        480.22360634058714,
+        388.4384101256728
+      ],
+      "median_ms": 424.5322775095701,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 13,
+      "samples_ms": [
+        441.1224592477083,
+        501.2576598674059,
+        497.26025480777025
+      ],
+      "median_ms": 497.26025480777025,
+      "result": 3.0778610333622907
+    },
+    {
+      "rows": 128,
+      "samples_ms": [
+        435.85764430463314,
+        519.6889555081725,
+        499.5705606415868
+      ],
+      "median_ms": 499.5705606415868,
+      "result": 3.0778610333622907
+    }
+  ],
+  "scope": "pure adapter call includes source/binary revalidation and bounded native subprocess; excludes owner commits and context hydration",
+  "cache": "warm existing native binary and filesystem; other regression suites running concurrently",
+  "not_an_slo": true
+}

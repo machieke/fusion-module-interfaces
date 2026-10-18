@@ -567,3 +567,22 @@ aliases, reinterpret prior profiles, renew deadlines or refund native reservatio
 A committed C2 decision may be observed after expiry; missing calculations or
 presentation construction remain unavailable. Delete/rebuild only a derived local
 presentation through authorized owner reads, never an authoritative owner journal.
+
+## S05 fresh local promotion recipe
+
+Continue the S04 pinned builds; revalidate `integration/neoclaw/sources.json`, `memory-requirements.lock`, `memory-model.json` and the existing runtime manifests. S05 uses `artifacts/s01/native-02/runtime.json`, `artifacts/s03/memory-runtime.json`, the E5-free caller manifest at `artifacts/s03_1/caller/caller-runtime.json`, and the existing real DeTTa binary. The build commands remain those in the S01/S03/S03.1 runbooks; there is no new math/runtime pin. Warm builds and model caches are permitted and must be labelled.
+
+From the repository root, with `PYTHONPATH=$PWD`, `PYTHONDONTWRITEBYTECODE=1`, `HF_HUB_OFFLINE=1` and `S01_DETTA` pointing to the built `fusion-detta-adapter`:
+
+```bash
+artifacts/s03/venv/bin/python -m integration.neoclaw.promotion_corpus --out artifacts/s05/corpus.json
+artifacts/s03/venv/bin/python -m integration.neoclaw.promotion_oracle --corpus artifacts/s05/corpus.json --out artifacts/s05/original.json
+artifacts/s03/venv/bin/python -m integration.neoclaw.promotion_run --corpus artifacts/s05/corpus.json --out artifacts/s05/primary.json --provider sqlite
+artifacts/s03/venv/bin/python -m integration.neoclaw.promotion_run --corpus artifacts/s05/corpus.json --out artifacts/s05/alternate.json --provider file-fixture
+```
+
+Each command creates fresh synthetic state and stops only its own processes. The supported native launcher remains `python -m integration.neoclaw.native_loop APPLICATION.json`; the S05 composition helper selects `/7` and local Attention before startup. No operator edits are needed between commands. Original execution uses its real legacy helpers only as the oracle. Adapted startup forbids legacy promotion helpers and restores native global selection through the Attention/AtomStorage ports. Do not point this recipe at a user's existing memory or promotion journal.
+
+Run `integration.neoclaw.test_promotion_owner`, `integration.neoclaw.test_promotion_loop` and `integration.neoclaw.test_promotion_edges.PromotionEdges` for the selected S05 gates. The explicit class selector avoids importing helper tests twice. Keep synthetic model/channel/clock boundaries and alternate fixture storage distinct from real native math, DeTTa, Chroma and E5. Historical HTTPS memory gates are separate; no remote private Attention/evidence placement is configured.
+
+Also run `integration.neoclaw.test_promotion_recovery_edges.ContextRecovery` for owner outage and retained context budgets. Run `S05_REQUIRE_MINIMAL=1 uv run --python 3.11 --locked python -m unittest -v integration.neoclaw.test_promotion_guards` in the repository's E5-free core environment. Its reduced-source check copies only `src/memory.metta` and PeTTa's interpreter `src/`, reuses the exact pinned SWI libraries, and updates only the relocated runtime-manifest hash. It executes both Attention owners without NAL/PLN libraries and verifies policy/interpreter tamper refusal. Existing S01/S04 full-source validators remain unchanged. The [run specifications](../../evidence/s05/run-specs.json) list the executed commands, environment and source identities, including targeted final rechecks.

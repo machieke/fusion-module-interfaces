@@ -1,0 +1,48 @@
+"""Actual native unavailable-owner and context work-budget recovery gates."""
+import json
+from pathlib import Path
+import signal
+import sqlite3
+import unittest
+from fusion.contracts import canonical
+from .test_promotion_loop import NativePromotionLoop
+from .embedding_run import start
+
+class ContextRecovery(unittest.TestCase):
+    setUpClass=classmethod(NativePromotionLoop.setUpClass.__func__)
+    setup_run=NativePromotionLoop.setup_run
+    finish=NativePromotionLoop.finish
+    pause=NativePromotionLoop.pause
+    resume=NativePromotionLoop.resume
+    evidence=NativePromotionLoop.evidence
+
+    def test_unavailable_owner_stops_native_context_then_recovers_exact_capture(self):
+        target=self.corpus['records'][5]['time'];run,cfg=self.setup_run(['promote '+target,''])
+        process=self.pause(run,'after_global_capture',2);run.kill(process)
+        with sqlite3.connect(run.h.client['database']) as db:
+            before=db.execute('SELECT binding,rendered,deadline FROM app_priority_contexts WHERE slot=2').fetchone()
+        policy=cfg['attention_policy'];hidden=policy.with_suffix('.unavailable');policy.rename(hidden)
+        run.app.pop('pause_at');run.save();process=start(run);process.wait(timeout=90)
+        result=run.finish(process);self.assertEqual(result,(2,{'status':'PENDING_OR_FAILED','code':'NOT_AVAILABLE'}))
+        self.assertEqual(len(run.observations()),1) # missing owner did not send empty/cached context
+        hidden.rename(policy);self.finish(run)
+        with sqlite3.connect(run.h.client['database']) as db:
+            after=db.execute('SELECT binding,rendered,deadline FROM app_priority_contexts WHERE slot=2').fetchone()
+        self.assertEqual(before,after);self.assertIn(self.corpus['records'][5]['content'],run.observations()[1]['context'])
+        self.evidence('native-owner-outage',dict(result=result,binding=json.loads(before[0]),captured=before[1],deadline=before[2],fallback=False,observations=run.observations()))
+    def test_context_budget_survives_three_native_kills(self):
+        run,cfg=self.setup_run(['']);snapshots=[]
+        process=self.pause(run,'after_global_selection')
+        for attempt in range(3):
+            with sqlite3.connect(run.h.client['database']) as db:
+                row=db.execute('SELECT slot,view,deadline,calls,binding,result FROM app_priority_contexts').fetchone();snapshots.append(list(row))
+            run.kill(process);self.assertEqual(process.returncode,-signal.SIGKILL)
+            if attempt<2:
+                Path(run.app['failpoint_marker']).unlink();process=start(run);run.h.wait_file(run.app['failpoint_marker'],process,seconds=60)
+        run.app.pop('pause_at');run.save();process=start(run);process.wait(timeout=90)
+        result=run.finish(process);self.assertEqual(result,(2,{'status':'PENDING_OR_FAILED','code':'OVERLOADED'}))
+        self.assertEqual([r[3] for r in snapshots],[1,2,3]);self.assertEqual(len({tuple(r[:3]) for r in snapshots}),1)
+        self.assertEqual(len({r[4] for r in snapshots}),1);self.assertEqual(run.observations(),[])
+        self.evidence('native-context-budget',dict(snapshots=snapshots,result=result,refunded=False,new_contexts_created=1))
+
+if __name__=='__main__':unittest.main()
