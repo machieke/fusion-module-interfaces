@@ -549,3 +549,28 @@ requires explicit profiles, versions, operations, placement, guarantees and the
 configured role-schema feature. New feed stores are not populated legacy atom
 journals. [M5 profile decisions](m5-contracts.md) define corpus, exact matching,
 source/paging identities, snapshot completeness, independent commits and limits.
+
+## S03.2 optional append dependencies
+
+Fresh `controlled-native-loop/5` composes the named
+`neoclaw-append-only-memory/1` operation. AtomStorage 1.2 adds optional
+`AtomMutationObservation.observe(Mutation)` alongside the unchanged original
+AtomStorage port: `found`, original `write`, acceptance `through`, content type and
+size are returned under current principal-scoped authority. This observation
+neither creates a mutation nor promises Search publication.
+
+Search 3.1 adds `NamedVectorMaintenance.build_named(scope, through, key, deadline_ms)`
+and `published(scope, through, key)` under the existing vector numerical profile.
+Its separate read descriptor optionally exposes `ready(scope, snapshot)`, which
+checks a retained published index without another query or build. Old 3.0 descriptors
+and old AtomStorage providers are not silently upgraded. Exact descriptor tokens
+distinguish read readiness from maintenance selection.
+
+`neoclaw-e5-memory-text/1` is an explicit additional Embedding purpose, separately
+authorized from historical query encoding. Native preprocessing, model and vector
+semantics are unchanged. The closed append compatibility transport exposes only
+bound record roles and required validation reads; it does not make generic remote
+writes or arbitrary execution available. Application occurrence, storage accepts,
+publication, metadata readiness and result capture retain independent commits.
+See [S03.2 executable decisions](../omega-adoption/mettaclaw-neoclaw/s03_2-contract-decisions.md)
+and [executed evidence](../omega-adoption/mettaclaw-neoclaw/s03_2.md).

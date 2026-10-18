@@ -159,21 +159,26 @@
       "neoclaw-nal-truth-deduction/1",
       "external-web-search/1",
       "semantic-embedding-memory/1",
-      "neoclaw-e5-query-text/1"
+      "neoclaw-e5-query-text/1",
+      "neoclaw-append-only-memory/1"
     ],
-    "adopted_operations": 4,
+    "adopted_operations": 5,
     "whole_families_promoted": 0,
-    "explanation": "Historical 105-row classifications and 9/15 semantic resemblance remain unchanged. Four internal operation boundaries now have separate adoption entries: Truth_Deduction, external search, vector candidates, and query-time Local encoding. The fourth is the X02 extension outside the bounded family inventory; three native user commands, zero whole families promoted.",
+    "explanation": "Historical 105-row classifications and 9/15 semantic resemblance remain unchanged. Five adoption entries cover four native user commands: Truth_Deduction, external search, query retrieval, query encoding (X02 extension), and append-only remember. The fifth includes the separate memory-purpose Embedding dependency; no whole family is promoted.",
     "evidence": "../../../evidence/s01/verification.json",
     "application_evidence": "../../../evidence/s01_1/verification.json",
-    "application_scope": "controlled-native-loop/4 adds independently placed query-time Local embedding to the S03 query pipeline; native enrichment remains local. Earlier compositions and historical live S02 evidence remain distinct. Default full Omega is unrun.",
+    "application_scope": "controlled-native-loop/5 adds append-only remember and retained application read views to the existing controlled session. Query enrichment stays local; old profiles and historical live S02 evidence remain distinct. Default full Omega is unrun.",
     "s02_evidence": "../../../evidence/s02/verification.json",
     "s02_report": "s02.md",
     "s03_evidence": "../../../evidence/s03/verification.json",
     "s03_report": "s03.md",
     "whole_query_family_integrated": false,
     "s03_1_evidence": "../../../evidence/s03_1/verification.json",
-    "s03_1_report": "s03_1.md"
+    "s03_1_report": "s03_1.md",
+    "s03_2_evidence": "../../../evidence/s03_2/verification.json",
+    "s03_2_report": "s03_2.md",
+    "native_user_commands": 4,
+    "whole_memory_service_integrated": false
   },
   "extension_adoptions": {
     "historical_family_denominator_unchanged": 15,
@@ -183,6 +188,12 @@
         "interface": "embedding",
         "profile": "neoclaw-e5-query-text/1",
         "scope": "query-time Local helper only"
+      },
+      {
+        "mapping_gap": "X02",
+        "interface": "embedding",
+        "profile": "neoclaw-e5-memory-text/1",
+        "scope": "approved append-only native remember helper input; same pinned native E5 arithmetic"
       }
     ],
     "whole_product_claim": false

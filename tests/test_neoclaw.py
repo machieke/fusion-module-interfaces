@@ -1,5 +1,6 @@
 """S01 contracts and owner recovery tests. Kernel/files fixtures labelled explicitly."""
 from dataclasses import replace
+import ast
 import copy
 import hashlib
 import json
@@ -233,8 +234,26 @@ class S01Contracts(unittest.TestCase):
         for name, expected in c.PINS['fusion_pln_pins_unchanged'].items():
             self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), expected, name)
         manifest = json.loads((ROOT/'evidence/m5/final/verification.json').read_text())
+        # S03.2 permits only these optional acceptance-observation additions.
+        # Remove their exact AST spans and retain the historical byte-for-byte
+        # guard for every pre-existing M5 implementation, including DA/storage.
+        additions = {
+            'fusion/atom_feed.py': ('FeedAtomOwner', 'observe', 1),
+            'fusion/lookup_composition.py': ('AtomSession', 'observe', 0),
+            'fusion/ports.py': (None, 'AtomMutationObservation', 2),
+        }
         for name, expected in manifest['source']['files'].items():
-            self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), expected, name)
+            source = (ROOT/name).read_bytes()
+            if name in additions:
+                owner, symbol, trailing_blanks = additions[name]
+                tree = ast.parse(source)
+                parent = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == owner) if owner else tree
+                nodes = [n for n in parent.body if getattr(n, 'name', None) == symbol]
+                self.assertEqual(len(nodes), 1, name)
+                node = nodes[0]; lines = source.splitlines(keepends=True)
+                self.assertTrue(all(not line.strip() for line in lines[node.end_lineno:node.end_lineno+trailing_blanks]))
+                source = b''.join(lines[:node.lineno-1] + lines[node.end_lineno+trailing_blanks:])
+            self.assertEqual(hashlib.sha256(source).hexdigest(), expected, name)
 
 
 if __name__ == '__main__':unittest.main()

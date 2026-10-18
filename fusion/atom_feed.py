@@ -64,6 +64,19 @@ class FeedAtomOwner:
                 require(value['write']['ref']==ref,'CONFLICT');return value,payload
         raise ContractError('NOT_FOUND')
 
+    def observe(self,command):
+        """Optional 1.2 capability: observe acceptance, never create or retry it."""
+        c.mutation(command)
+        principal=self.access.authorize(command.scope_ref,'observe')
+        identity=canonical([principal,command.scope_ref,command.idempotency_key]).decode()
+        with closing(self.connect()) as db:
+            row=db.execute('SELECT sequence,value FROM feed_atoms WHERE identity=?',(identity,)).fetchone()
+        self.access.authorize(command.scope_ref,'observe')
+        if row is None:return dict(found=False,write=None,through=None,content_type=None,size=None)
+        sequence,encoded=row;value=json.loads(encoded)
+        return dict(found=True,write=value['write'],through=c.make_head(self.source,command.scope_ref,sequence),
+                    content_type=value['content_type'],size=value['size'])
+
     def get(self,ref):
         self.access.authorize(ref['scope_ref'],'get');value,payload=self.row(ref)
         try:data=self.storage.get(ref['scope_ref'],payload)

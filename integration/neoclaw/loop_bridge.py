@@ -17,12 +17,18 @@ def call(method, *args):
             path = os.environ['NEOCLAW_S01_APPLICATION']
             config = json.loads(Path(path).read_text())
             _app = Application(path, lambda stage: failpoint(config, stage))
-        return getattr(_app, method)(*args)
+        result=getattr(_app, method)(*args)
+        if method=='begin' and _app.append_enabled and _app.is_memory():
+            from integration.neoclaw.append_bootstrap import select_view
+            select_view(_app)
+        return result
     except Exception as exc:
         # No Python exceptions/provider paths/credentials become native tool output.
         code = exc.code if isinstance(exc, ContractError) else 'NOT_AVAILABLE'
         config = json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
         status = dict(status='PENDING_OR_FAILED', code=code)
+        if _app is not None and hasattr(_app,'write') and _app.is_append():
+            status['append']=_app.write.partial()
         from fusion.adapters.neoclaw_search import SearchFailure
         if isinstance(exc, SearchFailure): status['failure_reason'] = exc.reason
         Path(config['status_file']).write_text(json.dumps(status))
@@ -68,3 +74,6 @@ def read_candidates(vector, k): return call('read_candidates', vector, k)
 def read_clock(observed): return call('read_clock', observed)
 def capture_native(value): return call('capture_native', value)
 def encode_query(text): return call('encode_query', text)
+def remember_time(value): return call('remember_time',value)
+def append_memory(content,vector,timestamp):return call('append_memory',content,vector,timestamp)
+def creation_link(key,timestamp):return call('creation_link',key,timestamp)

@@ -9,6 +9,7 @@ from .registry import Descriptor, Requirement, resolve, selection_token
 INTERFACE = 'embedding'
 VERSION = '1.0.0'
 PROFILE = 'neoclaw-e5-query-text/1'
+MEMORY_PROFILE = 'neoclaw-e5-memory-text/1'
 PREPROCESSING = 'native-string-safe-once-utf8/1'
 APPLICATION = 'controlled-native-loop/4'
 MAX_INPUT_BYTES = 2048
@@ -26,15 +27,16 @@ def text(value):
     return value  # Empty, Unicode, quotes and control characters are data.
 
 
-def descriptor():
-    return Descriptor('neoclaw-native-e5', INTERFACE, VERSION, '0.1.0', frozenset({PROFILE}),
+def descriptor(profile=PROFILE):
+    require(profile in (PROFILE,MEMORY_PROFILE),'UNSUPPORTED_PROFILE')
+    return Descriptor('neoclaw-native-e5' if profile==PROFILE else 'neoclaw-native-e5-memory', INTERFACE, VERSION, '0.1.0', frozenset({profile}),
         frozenset({'encode', 'authorize-invoke', 'authorize-disclose'}), frozenset({'scoped', 'bounded-evaluations'}), MAX_WIRE_BYTES,
         privacy=v.PRIVACY, deterministic=False, features=frozenset({v.EMBEDDING, PREPROCESSING, 'f32le-1024-unit'}))
 
 
-def select(catalogue):
-    d = descriptor()
-    return resolve(catalogue, Requirement(INTERFACE, VERSION, '1.1.0', PROFILE, d.operations,
+def select(catalogue,profile=PROFILE):
+    d = descriptor(profile)
+    return resolve(catalogue, Requirement(INTERFACE, VERSION, '1.1.0', profile, d.operations,
         d.guarantees, privacy=v.PRIVACY, features=d.features, payload_bytes=MAX_WIRE_BYTES))
 
 
@@ -60,7 +62,7 @@ def intent(value):
     text(value['text'])
     require(value['input_sha256'] == digest(value['text'].encode()), 'CONFLICT')
     require(value['model'] == v.EMBEDDING and value['preprocessing'] == PREPROCESSING and
-            value['profile'] == PROFILE and value['max_input_bytes'] == MAX_INPUT_BYTES, 'UNSUPPORTED_PROFILE')
+            value['profile'] in (PROFILE,MEMORY_PROFILE) and value['max_input_bytes'] == MAX_INPUT_BYTES, 'UNSUPPORTED_PROFILE')
     a.integer(value['deadline_ms'], 1, 2**63-1)
     require(type(value['selection']) is str and len(value['selection']) == 64)
     return a.copy(value)
@@ -70,6 +72,7 @@ def request(value, chosen):
     v.fields(value, 'interface_ref operation intent attempt')
     require(value['interface_ref'] == {'id': INTERFACE, 'version': VERSION}, 'UNSUPPORTED_VERSION')
     intent(value['intent'])
+    require(value['intent']['profile'] in chosen.profiles,'UNSUPPORTED_PROFILE')
     require(value['intent']['selection'] == selection_token(chosen), 'UNSUPPORTED_PROFILE')
     require(value['operation'] in ('encode', 'authorize-invoke', 'authorize-disclose'), 'UNSUPPORTED_OPERATION')
     a.integer(value['attempt'], 1 if value['operation'] == 'encode' else 0,

@@ -21,7 +21,7 @@ def configure(run,corpus=None,embedding='vector-fixture'):
     runtime_path=Path(os.environ.get('S03_RUNTIME',SDK.parent/'memory-runtime.json'))
     runtime=json.loads(runtime_path.read_text())
     profile=c.EMBEDDING if embedding=='real' else c.FIXTURE
-    scope='generated-s03';corpus_id='synthetic-memory-2030'
+    scope='generated-s03';corpus_id=corpus.get('corpus_id','synthetic-memory-2030')
     config=dict(root=str(h.server_root/'memory'),scope=scope,corpus=corpus_id,embedding=profile,sharing=c.PRIVACY,
         readers=['A','worker'],queries=list(corpus['queries']),query_vectors=[digest(c.vector_bytes(v)) for v in corpus['queries'].values()],
         runtime=str(runtime_path),runtime_sha256=digest(runtime_path.read_bytes()),

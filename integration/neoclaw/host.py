@@ -36,7 +36,7 @@ def serve(config_path, port, ready):
         def do_POST(self):
             service = None
             try:
-                require(self.path in ('/s01', '/s03-read', '/s03-encode'), 'UNSUPPORTED_OPERATION')
+                require(self.path in ('/s01', '/s03-read', '/s03-encode','/s03-append'), 'UNSUPPORTED_OPERATION')
                 auth = self.headers.get_all('Authorization', [])
                 require(len(auth) == 1 and auth[0].startswith('Bearer '), 'UNAUTHORIZED')
                 require(self.headers.get('Content-Type') == 'application/json')
@@ -44,11 +44,15 @@ def serve(config_path, port, ready):
                 lengths = self.headers.get_all('Content-Length', [])
                 require(len(lengths) == 1 and lengths[0].isdigit())
                 length = int(lengths[0])
-                require(0 < length <= (98304 if self.path == '/s03-read' else 65536 if self.path == '/s03-encode' else 4096))
+                require(0 < length <= (98304 if self.path == '/s03-read' else 65536 if self.path in ('/s03-encode','/s03-append') else 4096))
                 raw = self.rfile.read(length)
                 require(len(raw) == length)
                 request = json_loads(raw)
-                if self.path == '/s03-encode':
+                if self.path=='/s03-append':
+                    require(config.get('memory_append') is not None,'UNSUPPORTED_OPERATION')
+                    from fusion.append_composition import AppendService
+                    reply=AppendService(config_path,auth[0][7:],lambda stage:failpoint(config,stage)).invoke(request)
+                elif self.path == '/s03-encode':
                     require(encoder_service is not None, 'UNSUPPORTED_OPERATION')
                     reply = encoder_service.invoke(auth[0][7:], request)
                 elif self.path == '/s03-read':

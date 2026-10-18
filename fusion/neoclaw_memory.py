@@ -22,10 +22,12 @@ def configuration(path):
     c.snapshot(cfg['snapshot'],cfg['scope']);require(cfg['snapshot']['embedding']==cfg['embedding'],'UNSUPPORTED_PROFILE')
     require(type(cfg['queries']) is list and 1<=len(cfg['queries'])<=32)
     for query in cfg['queries']:c.query_text(query)
-    chosen=select([descriptor_read(d) for d in cfg['catalogue']],cfg['embedding'])
+    require(type(cfg.get('require_ready',False)) is bool)
+    chosen=select([descriptor_read(d) for d in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False))
     frozen={k:cfg[k] for k in ('principal','scope','sharing','profile','embedding','snapshot','queries','metadata_seal','native_config')}
     require(cfg['native_config']=={'recall':2,'similarity':4,'inflation':4},'UNSUPPORTED_PROFILE')
     frozen['selections']={n:selection_token(d) for n,d in chosen.items()}
+    if cfg.get('require_ready'):frozen['require_ready']=True
     return cfg,chosen,frozen
 
 
@@ -43,13 +45,17 @@ class MemoryRead:
         require(row is not None and row['premises'] is not None,'CONFLICT')
         require(json.loads(row['premises'])['profile']==c.PROFILE,'UNSUPPORTED_PROFILE');return row
 
-    def settings(self):
+    def settings(self,row=None):
         cfg,chosen,frozen=configuration(self.app.config['memory_read_config'])
         require(frozen==self.app.binding['memory'],'CONFLICT')
+        if getattr(self.app,'append_enabled',False):
+            row=self.current() if row is None else row
+            view=self.app.write.view_for(row)
+            cfg={**cfg,'snapshot':view['snapshot'],'metadata_seal':view['metadata_seal']}
         return cfg,chosen
 
     def call(self,row,name,op,body,*,bounded=True):
-        cfg,chosen=self.settings();d=chosen[name]
+        cfg,chosen=self.settings(row);d=chosen[name]
         if bounded:require(time.time_ns()//1_000_000<=row['deadline'],'DEADLINE_EXCEEDED')
         with self.db:
             self.db.execute('BEGIN IMMEDIATE')
@@ -66,13 +72,13 @@ class MemoryRead:
 
     def authorize(self,row):
         if self.app.embedding_enabled:self.app.embedding.authorize(row)
-        cfg,_=self.settings();intent=json.loads(row['premises'])
+        cfg,_=self.settings(row);intent=json.loads(row['premises'])
         require(intent['arguments']['query'] in cfg['queries'],'UNAUTHORIZED')
-        result=self.call(row,'search','authorize',dict(query=intent['arguments']['query'],snapshot=cfg['snapshot']),bounded=False)
+        result=self.call(row,'search','authorize-ready' if cfg.get('require_ready') else 'authorize',dict(query=intent['arguments']['query'],snapshot=cfg['snapshot']),bounded=False)
         require(result=={'authorized':True},'NOT_AVAILABLE')
 
     def retrieve(self,vector,k):
-        row=self.current();cfg,_=self.settings()
+        row=self.current();cfg,_=self.settings(row)
         if self.app.embedding_enabled:
             require(vector==self.app.embedding.selected(row)['vector'],'CONFLICT')
         request=c.query(asdict(c.VectorQuery(row['id'],cfg['scope'],cfg['snapshot'],c.vector(vector),k,row['deadline'])))

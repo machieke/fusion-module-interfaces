@@ -14,6 +14,15 @@ def extend(config,omega,petta,directory,loop):
     source=query_source(omega)
     source=replace_once(source,'lib_chromadb.query_with_ids_and_dists','loop_bridge.read_candidates')
     source=replace_once(source,'($current_time (get_time))','($current_time (py-call (loop_bridge.read_clock (py-call (memory_bootstrap.clock)))))')
+    from fusion import append_contracts as w
+    if config['composition']==w.APPLICATION:
+        from .memory_oracle import creation_source
+        creation=creation_source(omega)
+        creation=replace_once(creation,'($current_time_str (get_time_as_string))',
+            '($current_time_str (py-call (loop_bridge.remember_time (py-call (memory_bootstrap.creation_clock (get_time_as_string))))))')
+        creation=replace_once(creation,'lib_chromadb.remember','loop_bridge.append_memory')
+        creation=replace_once(creation,'lib_chromadb.link_episode','loop_bridge.creation_link')
+        source+='\n'+creation
     memory=directory/'memory.metta'
     memory.write_text('''(= (maxFeedback) 50000)
 (= (maxRecallItems) 2)
@@ -36,4 +45,6 @@ def extend(config,omega,petta,directory,loop):
     loop.write_text(text)
     bootstrap=directory/'memory_bootstrap.py'
     bootstrap.write_text('from integration.neoclaw.memory_bootstrap import initialize, clock\ninitialize()\n')
+    if config['composition']==w.APPLICATION:
+        with bootstrap.open('a') as stream:stream.write('from integration.neoclaw.append_bootstrap import creation_clock\n')
     return bootstrap,memory

@@ -49,6 +49,16 @@ class AtomStorage(Protocol):
     def availability(self, ref: AtomRef) -> JSON: ...
 
 
+class AtomMutationObservation(Protocol):
+    """Optional immutable acceptance capability; not required by historical storage.
+
+    Principal-scoped mutation identity returns found/write/through/content_type/size.
+    An absent acceptance is distinct from a transport failure or orphaned bytes.
+    Observation neither retries the mutation nor claims downstream publication.
+    """
+    def observe(self, command: Mutation) -> JSON: ...
+
+
 @runtime_checkable
 class CompletionDelivery(Protocol):
     """Trusted execution-to-mailbox port, never public dispatch.

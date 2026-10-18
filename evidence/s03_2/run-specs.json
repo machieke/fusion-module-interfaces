@@ -1,0 +1,73 @@
+{
+  "runs": [
+    {
+      "id": "append-candidate-02",
+      "log": "tests-candidate-02.log",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v tests.test_append_contracts integration.neoclaw.test_append",
+      "environment": {
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "S03_2_EVIDENCE": "$PWD/evidence/s03_2/candidate-02"
+      },
+      "source": "test-source-candidate-02.json: candidate (32 files); other pre-existing source at starting commit",
+      "new_methods": 22
+    },
+    {
+      "id": "s01-s02-m5-candidate-02",
+      "log": "regression-s01-s02-m5-candidate-02.log",
+      "command": "uv run --python 3.11 --locked python -m unittest -v tests.test_neoclaw_application integration.neoclaw.test_loop tests.test_neoclaw integration.neoclaw.test_s01 integration.neoclaw.test_network integration.neoclaw.test_recovery tests.test_neoclaw_search integration.neoclaw.test_search_loop tests.test_m5 tests.test_m5_boundaries integration.test_m5_real",
+      "environment": {
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "M2_DETTA_BINARY": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+      },
+      "source": "32 candidate files; tests/test_neoclaw.py still at starting commit; one source-freeze failure retained"
+    },
+    {
+      "id": "scope-guard-recheck",
+      "log": "regression-s01-scope-guard.log",
+      "command": "uv run --python 3.11 --locked python -m unittest -v tests.test_neoclaw",
+      "environment": {
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "M2_DETTA_BINARY": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+      },
+      "source": "test-source.json; only intentional scope-guard adjustment relative to the 96-method run",
+      "repeat_not_additional": true
+    },
+    {
+      "id": "s03-s03_1-regressions",
+      "log": "regression-s03-s03_1-candidate-02.log",
+      "command": "artifacts/s03/venv/bin/python -m unittest -v tests.test_embedding_contracts integration.neoclaw.test_embedding tests.test_vector_contracts integration.neoclaw.test_memory integration.neoclaw.test_memory_edges.MemoryEdges",
+      "environment": {
+        "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "PYTHONPATH": "$PWD",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "HF_HUB_OFFLINE": "1",
+        "M2_DETTA_BINARY": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+        "S03_1_EVIDENCE": "$PWD/evidence/s03_2/regression-s03_1",
+        "S03_EVIDENCE": "$PWD/evidence/s03_2/regression-s03"
+      },
+      "source": "test-source.json; 32 candidate source files unchanged"
+    }
+  ],
+  "all_commands_from_repository_root": true,
+  "outputs_redirected_to_named_logs": true,
+  "status": "See final verification.json for completed outcomes; commands alone are not passes.",
+  "comparison": {
+    "command": "artifacts/s03/venv/bin/python -m integration.neoclaw.append_run --corpus artifacts/s03_2/corpus.json --caller-runtime artifacts/s03_2/reproduction/caller-runtime.json --evidence evidence/s03_2/same-memory-final.json",
+    "environment": {
+      "S01_DETTA": "$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter",
+      "PYTHONPATH": "$PWD",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "HF_HUB_OFFLINE": "1"
+    },
+    "source": "test-source.json",
+    "load": "Other correctness suites were active on the host; individual measurements are descriptive, not a controlled performance comparison."
+  }
+}

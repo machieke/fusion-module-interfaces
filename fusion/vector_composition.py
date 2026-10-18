@@ -13,16 +13,16 @@ from .lookup_composition import AtomSession
 OPERATIONS={'atom.storage':('create','get','getMany','availability','head','readCommits'),'search':('query','build')}
 
 
-def descriptors(embedding):
+def descriptors(embedding,ready=False):
     c.model(embedding)
-    return [Descriptor('s03-feed-detta' if name=='atom.storage' else 's03-chroma',name,'1.1.0' if name=='atom.storage' else '3.0.0','0.1.0',
-        frozenset({a.FEED if name=='atom.storage' else c.PROFILE}),frozenset(operations),
+    return [Descriptor('s03-feed-detta' if name=='atom.storage' else 's03.2-chroma-read' if ready else 's03-chroma',name,'1.1.0' if name=='atom.storage' else '3.1.0' if ready else '3.0.0','0.1.0',
+        frozenset({a.FEED if name=='atom.storage' else c.PROFILE}),frozenset((*operations,'ready') if ready and name=='search' else operations),
         frozenset({'process-restart','scoped'}),4096,privacy=c.PRIVACY,deterministic=name=='atom.storage',
         features=frozenset({c.EXTRACTION,embedding,c.INDEX}),receipt_providers=frozenset({'detta-local-rs/1'})) for name,operations in OPERATIONS.items()]
 
 
-def select(catalogue,embedding):
-    return {d.interface:resolve(catalogue,Requirement(d.interface,d.version,'1.2.0' if d.interface=='atom.storage' else '3.1.0',next(iter(d.profiles)),d.operations,d.guarantees,privacy=c.PRIVACY,features=d.features)) for d in descriptors(embedding)}
+def select(catalogue,embedding,ready=False):
+    return {d.interface:resolve(catalogue,Requirement(d.interface,d.version,'1.2.0' if d.interface=='atom.storage' else '3.2.0' if ready else '3.1.0',next(iter(d.profiles)),d.operations,d.guarantees,privacy=c.PRIVACY,features=d.features)) for d in descriptors(embedding,ready)}
 
 
 class Access:
@@ -34,7 +34,7 @@ class Access:
         require(self.policy.authenticate(self.credential)==self.principal,'UNAUTHORIZED')
         cfg=self.policy.current()['memory_read']
         require(cfg['sharing']==c.PRIVACY and cfg['scope']==scope and self.principal in cfg['readers'],'UNAUTHORIZED')
-        selected=select([descriptor_read(x) for x in cfg['catalogue']],self.embedding)
+        selected=select([descriptor_read(x) for x in cfg['catalogue']],self.embedding,cfg.get('require_ready',False))
         require(selection_token(selected[self.descriptor.interface])==selection_token(self.descriptor),'UNSUPPORTED_PROFILE')
         self.policy.check(self.principal,scope,self.descriptor.interface+'.'+operation)
         return self.principal
@@ -44,7 +44,7 @@ class ReadService:
     def __init__(self,config_path,credential,hook=lambda _:None):
         self.policy=Policy(config_path);self.config=self.policy.current()['memory_read']
         cfg=self.config;self.credential=credential
-        self.chosen=select([descriptor_read(x) for x in cfg['catalogue']],cfg['embedding'])
+        self.chosen=select([descriptor_read(x) for x in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False))
         self.access={n:Access(self.policy,credential,d,cfg['scope'],cfg['embedding']) for n,d in self.chosen.items()}
         from .atom_feed import FeedAtomOwner
         from .adapters.detta import DettaStorage
@@ -59,13 +59,16 @@ class ReadService:
         validate_request(request,self.chosen)
         require(request['scope']==self.config['scope'],'UNAUTHORIZED')
         name=request['interface_ref']['id'];op=request['operation'];body=request['body']
-        if op=='authorize':
+        if op=='ready':
+            c.fields(body,'snapshot');value=self.search().ready(request['scope'],body['snapshot'])
+        elif op in ('authorize','authorize-ready'):
             self.access['search'].authorize(request['scope'],'query')
             self.access['atom.storage'].authorize(request['scope'],'getMany')
             # Query disclosure also requires a currently approved synthetic query.
             c.fields(body,'query snapshot');c.snapshot(body['snapshot'],request['scope'])
             require(body['snapshot']['embedding']==self.config['embedding'] and body['snapshot']['corpus']==self.config['corpus'],'UNSUPPORTED_PROFILE')
             require(body['query'] in self.config['queries'],'UNAUTHORIZED');value={'authorized':True}
+            if op=='authorize-ready':self.search().ready(request['scope'],body['snapshot'])
         elif name=='search':
             require(body['request_id']==request['request_id'] and body['scope']==request['scope'],'CONFLICT')
             require(digest(c.vector_bytes(body['vector'])) in self.config['query_vectors'],'UNAUTHORIZED')
@@ -83,6 +86,8 @@ def validate_request(request,chosen):
     name=request['interface_ref']['id'];require(name in chosen,'UNSUPPORTED_OPERATION')
     d=chosen[name];require(request['interface_ref']['version']==d.version,'UNSUPPORTED_VERSION')
     require(request['profile'] in d.profiles and request['selection']==selection_token(d),'UNSUPPORTED_PROFILE')
-    require((name=='search' and request['operation'] in ('query','authorize')) or (name=='atom.storage' and request['operation']=='getMany'),'UNSUPPORTED_OPERATION')
+    require((name=='search' and request['operation'] in ('query','authorize')) or
+            (name=='search' and request['operation'] in ('authorize-ready','ready') and 'ready' in d.operations) or
+            (name=='atom.storage' and request['operation']=='getMany'),'UNSUPPORTED_OPERATION')
     if request['operation']=='query':c.query(request['body'])
     require(len(canonical(request))<=98304)

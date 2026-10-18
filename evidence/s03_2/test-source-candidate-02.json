@@ -1,0 +1,40 @@
+{
+  "candidate": {
+    "fusion/adapters/chroma_vector.py": "cb806c1872aacead3712b5510c0c4702f0f708adeae4e4b4e4da138959014eca",
+    "fusion/adapters/neoclaw_metadata.py": "bcbb2db349a6614366f2c070ebfd54cb461670a8e37cb2151ff7d01a525dc809",
+    "fusion/append_composition.py": "c6cb6c893baef2ef5ac5cb6ed23a560d122f71150f11785fec738e5d48433b69",
+    "fusion/append_contracts.py": "bcd0cbf6302c4b23651e84945244b29363db10ab8e0c4de0de3ea12a1f0c284a",
+    "fusion/append_transport.py": "768de4561553b288bbd8b1b0aa6747f05b7493902cd55bf34a9dfd36db514dd6",
+    "fusion/atom_feed.py": "f3f3100e64231c23dd4fed0c42baf2727facc0849c7f0a2a1280bb15fe656617",
+    "fusion/atom_observation.py": "b859909e54b76c23dabb55f899e86b83165634078163dfd4175ac60a39784fc1",
+    "fusion/embedding_composition.py": "1e1511a0eea272964aa849885ff90971c92000f4e1d05394a510a6f79acf65a3",
+    "fusion/embedding_contracts.py": "80e57296a6d1b790762bcce612da78f9887912d3eea7d26bf0598558f348bd03",
+    "fusion/embedding_service.py": "22458f6db8b596cc6bd4b36f8607dbfdc8682eb2bdeb066ef99339eddf7950e2",
+    "fusion/lookup_composition.py": "3cbc508e09efeed5a245959530f4fb1ed926ee3f990d2291c10ab8a46664c796",
+    "fusion/neoclaw_append.py": "3cdb53adc296df982739245cb9639f2db4e0125442c3887e52f271744e1b37c0",
+    "fusion/neoclaw_application.py": "c099520ac4323be005bcb1e3deac128958e5fca1d9c17cc05af3fb9212b532cb",
+    "fusion/neoclaw_embedding.py": "394bbd2cb60cc2f7cf80264db84fbd4fdd16510e489d0be2c1507f2ab1dc3fdf",
+    "fusion/neoclaw_memory.py": "6ad90d6272bc0d2982f0be4a92e65a970147a4a9ada9836ba5aa430780b9dab7",
+    "fusion/ports.py": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+    "fusion/vector_composition.py": "905ed5f54fbd738aab76f134df9a7acd09a82f52ffe8fc6247629ec199d58b58",
+    "fusion/vector_contracts.py": "e49d6063565a6694960ffa25bcc24cc86e9f2abe38cb4996aea98f566534af2e",
+    "fusion/vector_enrollment.py": "1cb6fde277338ce7cde21ac4f069e9e5358f56c707d233e2b3d9a6fb6a47c02e",
+    "integration/neoclaw/append_bootstrap.py": "7747e70cbb5f88f7cc212b22e23cabc1d72fd48b0b2ba68c55f8d78337382118",
+    "integration/neoclaw/append_composition.py": "f6b10a4baf672a85e29d23cb132f7adfcb965aef688d5d3b7f25ce5ca8632f8d",
+    "integration/neoclaw/append_oracle.py": "962e6ebb73795c47fac92656e7fc5fcd3ece75945af733fb90ab89d2b88a6032",
+    "integration/neoclaw/append_run.py": "2e85aca63221d5d49e7fcd08419b884a8d0de6e3622692ac2da22564df68cf91",
+    "integration/neoclaw/host.py": "17c0c0aa8a99f00c3d69687349b1818059a546cc3770040d281a3070c17a98d8",
+    "integration/neoclaw/loop_bridge.py": "48e9b53837546fdc93a7013bacee92c3a495dfc793d0c4a2598a90bd7e5a3f0a",
+    "integration/neoclaw/memory_bootstrap.py": "e4db6f535532e4d3bd91deb1653e099a1d9ac2288369500edd2353947a8feb72",
+    "integration/neoclaw/memory_composition.py": "3d5118fcff6b255848a08b4c6b347d0ecdf287262da4558bd898d17c741d9b12",
+    "integration/neoclaw/memory_oracle.py": "c8428757d748a99c00d96cb82732b2d8e08763804f048d5ec1c3a174448de3ac",
+    "integration/neoclaw/memory_startup.py": "c5ed18f32ebd04e41b9550cce63dd415ab7122ead3dd42cc74ba24d2aaccaa8b",
+    "integration/neoclaw/native_loop.py": "e946ce23187af04c5096a148b9f44de934935de32793863483b66622b4541c00",
+    "integration/neoclaw/test_append.py": "fe8544b80b2a72dad716b94e7a58c5a20c756d21558c1eb2abac65cf39b25ca2",
+    "tests/test_append_contracts.py": "5d5feed84411bac1cfda5ea864d51c212af3ccae7af213a16b669ac6e0de6769"
+  },
+  "later_test_only_delta": {
+    "tests/test_neoclaw.py": "23767112da3695ebd9a118cc654faa7b2ee35f09e364386cd97b2e74afdaeb59"
+  },
+  "reason": "Preserve historical M5 byte hash after removing only three explicitly allowed optional observation API AST spans; numerical source guard unchanged."
+}

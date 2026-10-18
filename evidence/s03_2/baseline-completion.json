@@ -1,0 +1,42 @@
+{
+  "starting_commit": "ba48d78b3f76fb134ed9b46de2df1063f6bb16a6",
+  "existing_implementation_unchanged_during_all_baseline_runs": true,
+  "passed": [
+    {
+      "log": "baseline-verification-tests.log",
+      "methods": 18,
+      "seconds": 770.331,
+      "python": "3.12.12 pinned S03 SDK"
+    },
+    {
+      "log": "baseline-s01-s02-python311.log",
+      "methods": 74,
+      "seconds": 305.805,
+      "python": "uv --python 3.11 --locked"
+    },
+    {
+      "log": "baseline-regression-s03.log",
+      "methods": 22,
+      "seconds": 559.334,
+      "python": "3.12.12 pinned S03 SDK"
+    },
+    {
+      "log": "baseline-m5.log",
+      "methods": 22,
+      "seconds": 49.793,
+      "python": "uv --python 3.11 --locked"
+    }
+  ],
+  "unique_methods": 136,
+  "original_s03_1_unique_methods": 114,
+  "additional_m5": 22,
+  "executed_extra_failure": {
+    "log": "baseline-regression-s01-s02.log",
+    "methods": 74,
+    "failures": 1,
+    "reason": "Initially ran the S01/S02 suite with the S03 Python 3.12 SDK, unlike its recorded Python 3.11 command; deep JSON parser recursion differs. No source changes were made to suppress this failure.",
+    "resolved_by": "Exact recorded Python 3.11 suite command: 74 pass; isolated affected test also passes"
+  },
+  "repeats_not_added_to_unique_count": true,
+  "recorded_at": "2026-10-18T16:01:07.326310+00:00"
+}

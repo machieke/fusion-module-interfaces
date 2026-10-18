@@ -1,0 +1,111 @@
+{
+  "schema": "s03.2-measurements/1",
+  "trace": "same-memory-final.json",
+  "units": {
+    "durations": "milliseconds",
+    "maximum_rss": "KiB"
+  },
+  "method": "One observation per placement; GNU time -v caller/native process tree and 20ms first-context observer; other correctness suites active. Provider startup and operator corpus preparation excluded. HTTPS provider RSS excluded. No performance or cognitive-quality comparison.",
+  "original": {
+    "total_ms": 10724.77557323873,
+    "maximum_rss_kib": 1704236
+  },
+  "placements": {
+    "local-encoder_local-retrieval": {
+      "timing": {
+        "cold_start_to_first_context_ms": 14047.587518580258,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1792341325778.8743,
+        "total_ms": 17523.81748892367
+      },
+      "maximum_rss_kib": 1635552,
+      "first_observed_stages_since_identity_ms": {
+        "binding-accepted": 483,
+        "enrollment-accepted": 1263,
+        "identity-and-time": 0,
+        "metadata-ready": 2212,
+        "native-success-captured": 2269,
+        "payload-accepted": 671,
+        "read-provider-ready": 2028,
+        "search-published": 2005,
+        "vector-accepted": 919,
+        "vector-captured": 243,
+        "view-selected": 2227
+      },
+      "enrollment_to_publication_observed_ms": 742,
+      "port_calls": 24,
+      "build_reservations": 1,
+      "memory_encode_attempts": 1,
+      "source_before": 6,
+      "source_after": 10,
+      "feedback_match": true,
+      "exact_memory_vector_match": true,
+      "candidate_order_match": true,
+      "configuration_unchanged": true
+    },
+    "network-encoder_local-retrieval": {
+      "timing": {
+        "cold_start_to_first_context_ms": 4037.745637819171,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1792341413587.9673,
+        "total_ms": 7657.05899707973
+      },
+      "maximum_rss_kib": 153716,
+      "first_observed_stages_since_identity_ms": {
+        "binding-accepted": 507,
+        "enrollment-accepted": 1367,
+        "identity-and-time": 0,
+        "metadata-ready": 2262,
+        "native-success-captured": 2338,
+        "payload-accepted": 726,
+        "read-provider-ready": 2111,
+        "search-published": 2096,
+        "vector-accepted": 970,
+        "vector-captured": 274,
+        "view-selected": 2283
+      },
+      "enrollment_to_publication_observed_ms": 729,
+      "port_calls": 24,
+      "build_reservations": 1,
+      "memory_encode_attempts": 1,
+      "source_before": 6,
+      "source_after": 10,
+      "feedback_match": true,
+      "exact_memory_vector_match": true,
+      "candidate_order_match": true,
+      "configuration_unchanged": true
+    },
+    "network-encoder_network-retrieval": {
+      "timing": {
+        "cold_start_to_first_context_ms": 4127.352667041123,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1792341376288.0422,
+        "total_ms": 7842.909563332796
+      },
+      "maximum_rss_kib": 147160,
+      "first_observed_stages_since_identity_ms": {
+        "binding-accepted": 508,
+        "enrollment-accepted": 1334,
+        "identity-and-time": 0,
+        "metadata-ready": 2157,
+        "native-success-captured": 2244,
+        "payload-accepted": 705,
+        "read-provider-ready": 1997,
+        "search-published": 1975,
+        "vector-accepted": 956,
+        "vector-captured": 265,
+        "view-selected": 2187
+      },
+      "enrollment_to_publication_observed_ms": 641,
+      "port_calls": 24,
+      "build_reservations": 1,
+      "memory_encode_attempts": 1,
+      "source_before": 6,
+      "source_after": 10,
+      "feedback_match": true,
+      "exact_memory_vector_match": true,
+      "candidate_order_match": true,
+      "configuration_unchanged": true
+    }
+  }
+}

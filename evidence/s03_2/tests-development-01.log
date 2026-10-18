@@ -1,0 +1,59 @@
+test_binding_envelopes_reject_changed_semantics (tests.test_append_contracts.AppendContracts.test_binding_envelopes_reject_changed_semantics) ... ok
+test_closed_append_and_historical_read_only_wire (tests.test_append_contracts.AppendContracts.test_closed_append_and_historical_read_only_wire) ... ok
+test_memory_encoding_purpose_does_not_reauthorize_query_profile (tests.test_append_contracts.AppendContracts.test_memory_encoding_purpose_does_not_reauthorize_query_profile) ... ok
+test_observations_are_explicit_and_receipts_validated (tests.test_append_contracts.AppendContracts.test_observations_are_explicit_and_receipts_validated) ... ok
+test_selected_scope_privacy_and_model_are_not_command_arguments (tests.test_append_contracts.AppendContracts.test_selected_scope_privacy_and_model_are_not_command_arguments) ... ok
+test_utf8_serialization_and_transformation_intersection (tests.test_append_contracts.AppendContracts.test_utf8_serialization_and_transformation_intersection) ... ok
+test_append_tls_authority_and_bound_semantics (integration.neoclaw.test_append.AppendIntegration.test_append_tls_authority_and_bound_semantics) ... ok
+test_current_write_disclosure_maintenance_and_principal_authority (integration.neoclaw.test_append.AppendIntegration.test_current_write_disclosure_maintenance_and_principal_authority) ... ok
+test_duplicate_occurrence_and_identical_new_occurrences (integration.neoclaw.test_append.AppendIntegration.test_duplicate_occurrence_and_identical_new_occurrences) ... ok
+test_existing_query_and_captured_result_keep_old_view (integration.neoclaw.test_append.AppendIntegration.test_existing_query_and_captured_result_keep_old_view) ... ok
+test_expired_partial_work_is_retained_without_new_effects (integration.neoclaw.test_append.AppendIntegration.test_expired_partial_work_is_retained_without_new_effects) ... Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/main.py", line 105, in __init__
+    self.runTests()
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/main.py", line 281, in runTests
+    self.result = testRunner.run(self.test)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_append.py", line 126, in test_expired_partial_work_is_retained_without_new_effects
+    run,cfg=self.setup_run(['remember '+TEXT,'']);run.app['invocation_timeout_ms']=4500
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_append.py", line 33, in setup_run
+    cfg=configure(run,self.corpus,encoder,inputs=inputs);return run,cfg
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/append_composition.py", line 56, in configure
+    if encoder=='network' or read['placement']=='network':h.stop_server();h.start_server()
+                                                                          ^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 115, in start_server
+    self.wait_file(ready, self.server, seconds=50 if self.config.get('embedding') else 12)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/neoclaw_support.py", line 161, in wait_file
+    time.sleep(.02)
+KeyboardInterrupt

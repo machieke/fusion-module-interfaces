@@ -1,0 +1,51 @@
+[
+  {
+    "log": "evidence/s03_2/baseline-verification-tests.log",
+    "command": [
+      "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/bin/python",
+      "-m",
+      "unittest",
+      "-v",
+      "tests.test_embedding_contracts",
+      "integration.neoclaw.test_embedding"
+    ],
+    "expected_methods": 18,
+    "exit_code": 0,
+    "seconds": 771.248871454969
+  },
+  {
+    "log": "evidence/s03_2/baseline-regression-s01-s02.log",
+    "command": [
+      "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/bin/python",
+      "-m",
+      "unittest",
+      "-v",
+      "tests.test_neoclaw_application",
+      "integration.neoclaw.test_loop",
+      "tests.test_neoclaw",
+      "integration.neoclaw.test_s01",
+      "integration.neoclaw.test_network",
+      "integration.neoclaw.test_recovery",
+      "tests.test_neoclaw_search",
+      "integration.neoclaw.test_search_loop"
+    ],
+    "expected_methods": 74,
+    "exit_code": 1,
+    "seconds": 307.8089100504294
+  },
+  {
+    "log": "evidence/s03_2/baseline-regression-s03.log",
+    "command": [
+      "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/bin/python",
+      "-m",
+      "unittest",
+      "-v",
+      "tests.test_vector_contracts",
+      "integration.neoclaw.test_memory",
+      "integration.neoclaw.test_memory_edges"
+    ],
+    "expected_methods": 22,
+    "exit_code": 0,
+    "seconds": 559.5983511898667
+  }
+]

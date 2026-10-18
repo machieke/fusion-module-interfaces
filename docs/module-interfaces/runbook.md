@@ -516,3 +516,25 @@ limit)` until the captured target is processed. Queries are unavailable during a
 partial rebuild. Old cursors and pending old-generation caller progress are not
 migrated; use a new command after rebuilding. Replaying a completed caller command
 returns its recorded historical result after current authorization checks.
+
+## Controlled native append/read reproduction (S03.2)
+
+Use the [S03.2 source/build/test recipe](../omega-adoption/mettaclaw-neoclaw/s03_2.md#reproduction-and-measurement-limits)
+for a new approved synthetic corpus and fresh `/5` journals. It reuses the pinned
+S01 native runtime, DeTTa adapter, S03 E5/Chroma provider SDK and S03.1 E5-free caller
+recipe. The supported native entrypoint remains
+`python -m integration.neoclaw.native_loop APPLICATION.json`; trusted composition
+selects encoder and retrieval placement independently before the session starts.
+
+Run the original oracle, then local, authenticated loopback HTTPS and mixed-placement
+comparisons. A successful native `remember` must be followed by `query` in the same
+session without an operator configuration change. Do not inject the answer reference
+or enroll the future memory outside the native command. Keep recorded model/channel
+responses and clocks labelled as fixtures; E5, Chroma, DeTTa and HTTPS are real gates.
+
+On interruption, reopen the same application journal and original configuration.
+Retain occurrence IDs, deadlines, reservations and captured vectors. Observe owner
+acceptance/publication before retrying effects. Stored-but-not-ready failures remain
+partial outcomes; do not return `REMEMBER-SUCCESS`, renew a deadline or replace a
+query's retained view to hide them. Do not use populated older journals or private
+Omega stores for this reproduction.

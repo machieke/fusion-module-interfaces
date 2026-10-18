@@ -1,0 +1,352 @@
+{
+  "schema": "s03.2-verification/1",
+  "status": "PASS",
+  "scope": "S03.2 append-only native remember and later-turn same-session read-your-writes only",
+  "starting_commit": "ba48d78b3f76fb134ed9b46de2df1063f6bb16a6",
+  "source_state": "source-state.json",
+  "commands": "run-specs.json",
+  "report": "../../docs/omega-adoption/mettaclaw-neoclaw/s03_2.md",
+  "gates": [
+    {
+      "gate": "BASELINE_SOURCE",
+      "status": "PASS",
+      "evidence": [
+        "baseline-source.json",
+        "baseline-completion.json",
+        "regression-results.json"
+      ],
+      "observed": "S03.1 tested/final manifests reconciled before editing; 136 baseline and affected regression methods."
+    },
+    {
+      "gate": "NATIVE_ORACLE",
+      "status": "PASS",
+      "evidence": [
+        "native-oracle.json",
+        "native-input-oracles.json",
+        "same-memory-final.json"
+      ],
+      "observed": "Real native remember/query, parser, helper, E5 and Chroma; metadata defaults and time point observed."
+    },
+    {
+      "gate": "CONTRACT_AUTHORITY",
+      "status": "PASS",
+      "evidence": [
+        "tests-candidate-02.log",
+        "candidate-02/append-tls.json",
+        "candidate-02/authority.json"
+      ],
+      "observed": "Closed purpose, role, scope, principal and descriptor contracts; six contract fixtures and real provider admission tests."
+    },
+    {
+      "gate": "APPEND_REPLAY",
+      "status": "PASS",
+      "evidence": [
+        "candidate-02/occurrences.json",
+        "candidate-02/caller-kills.json"
+      ],
+      "observed": "Original occurrence deduplicates; identical new occurrences have distinct UUIDs; four stable immutable accepts."
+    },
+    {
+      "gate": "READ_VISIBILITY",
+      "status": "PASS",
+      "evidence": [
+        "same-memory-final.json",
+        "candidate-02/freshness.json",
+        "candidate-02/frozen-query.json"
+      ],
+      "observed": "New turn sees published view; earlier query retains its own view; missing/lagging generations fail explicitly."
+    },
+    {
+      "gate": "NATIVE_LOCAL_HTTPS",
+      "status": "PASS",
+      "evidence": [
+        "same-memory-final.json",
+        "candidate-02/three-paths-and-mixed.json",
+        "candidate-02/privacy.json"
+      ],
+      "observed": "Actual native loop and next-context consumption with real E5/Chroma/DeTTa/TLS; one mixed placement; HTTPS caller E5-free."
+    },
+    {
+      "gate": "PUBLICATION_RECOVERY",
+      "status": "PASS",
+      "evidence": [
+        "candidate-02/caller-kills.json",
+        "candidate-02/provider-kills.json"
+      ],
+      "observed": "Nine caller and five real provider SIGKILL phases; named generation/checkpoint/publication reused."
+    },
+    {
+      "gate": "BUDGETS_PRIVACY",
+      "status": "PASS",
+      "evidence": [
+        "candidate-02/deadlines-partial.json",
+        "candidate-02/durable-caller-budgets.json",
+        "candidate-02/durable-owner-budget.json",
+        "candidate-02/generation-capacity.json",
+        "candidate-02/privacy.json",
+        "candidate-02/malformed-receipt.json"
+      ],
+      "observed": "Original deadlines/reservations; honest partial states; canaries and metadata isolation; injected fault fixtures labelled separately."
+    },
+    {
+      "gate": "COMPAT_REPRO",
+      "status": "PASS",
+      "evidence": [
+        "regression-results.json",
+        "builds.json",
+        "caller-build.log",
+        "same-memory-final.json"
+      ],
+      "observed": "136 selected regressions; fresh E5-free caller and fresh sessions, reused verified native/provider/model inputs; warm caches explicit."
+    },
+    {
+      "gate": "SCOPE_LEDGER",
+      "status": "PASS",
+      "evidence": [
+        "source-state.json"
+      ],
+      "observed": "105 mapping rows and four prior adoptions unchanged; one precise composite remember boundary; zero whole-family promotion."
+    }
+  ],
+  "tests": {
+    "unique_methods_with_passing_final_evidence": 158,
+    "new_methods": 22,
+    "new_contract_methods": 6,
+    "new_integration_methods": 16,
+    "new_method_ids": [
+      "tests.test_append_contracts.AppendContracts.test_binding_envelopes_reject_changed_semantics",
+      "tests.test_append_contracts.AppendContracts.test_closed_append_and_historical_read_only_wire",
+      "tests.test_append_contracts.AppendContracts.test_memory_encoding_purpose_does_not_reauthorize_query_profile",
+      "tests.test_append_contracts.AppendContracts.test_observations_are_explicit_and_receipts_validated",
+      "tests.test_append_contracts.AppendContracts.test_selected_scope_privacy_and_model_are_not_command_arguments",
+      "tests.test_append_contracts.AppendContracts.test_utf8_serialization_and_transformation_intersection",
+      "integration.neoclaw.test_append.AppendIntegration.test_append_tls_authority_and_bound_semantics",
+      "integration.neoclaw.test_append.AppendIntegration.test_current_write_disclosure_maintenance_and_principal_authority",
+      "integration.neoclaw.test_append.AppendIntegration.test_duplicate_occurrence_and_identical_new_occurrences",
+      "integration.neoclaw.test_append.AppendIntegration.test_existing_query_and_captured_result_keep_old_view",
+      "integration.neoclaw.test_append.AppendIntegration.test_expired_partial_work_is_retained_without_new_effects",
+      "integration.neoclaw.test_append.AppendIntegration.test_generation_capacity_failure_retains_accepted_append",
+      "integration.neoclaw.test_append.AppendIntegration.test_lagging_generation_cannot_claim_new_source_coverage",
+      "integration.neoclaw.test_append.AppendIntegration.test_lost_encode_and_build_reservations_stay_spent",
+      "integration.neoclaw.test_append.AppendIntegration.test_malformed_real_receipt_cannot_publish_native_success",
+      "integration.neoclaw.test_append.AppendIntegration.test_metadata_only_and_private_canaries",
+      "integration.neoclaw.test_append.AppendIntegration.test_named_owner_build_budget_and_identity",
+      "integration.neoclaw.test_append.AppendIntegration.test_native_caller_kills_separate_append_commits",
+      "integration.neoclaw.test_append.AppendIntegration.test_original_local_https_and_mixed_same_session",
+      "integration.neoclaw.test_append.AppendIntegration.test_real_provider_kills_lost_storage_and_publication_replies",
+      "integration.neoclaw.test_append.AppendIntegration.test_transformed_text_and_untrusted_content_match_native",
+      "integration.neoclaw.test_append.AppendIntegration.test_unsupported_commands_and_changed_profiles_never_fall_back"
+    ],
+    "new_log": "tests-candidate-02.log",
+    "new_seconds": 1918.313,
+    "regression_unique_methods": 136,
+    "regression_results": "regression-results.json",
+    "baseline_unique_methods": 136,
+    "baseline_added_to_final_count": false,
+    "repeated_guard_recheck_methods": 13,
+    "overlap_with_previous_passes": 12,
+    "current_method_executions_including_recheck": 171,
+    "note": "96-method run = 95 pass + intentional source-freeze failure; 13-method updated guard recheck passes. 40 other regressions and 22 new methods pass. Unique passing union = 158. This is not the full repository suite.",
+    "passing_method_executions_including_repeats": 170
+  },
+  "scenario_counts": {
+    "caller_sigkill_phases": 9,
+    "provider_sigkill_phases": 5,
+    "expiry_phases": 5,
+    "authority_cases": 7,
+    "main_adapted_placements": 3,
+    "required_additional_mixed_placements": 1
+  },
+  "real_providers": [
+    "source-checked native MeTTaClaw loop/parser/remember/createMemory/embed/query and next-context handoff",
+    "pinned native E5 CPU implementation",
+    "Chroma 1.5.5",
+    "DeTTa adapter at recorded binary hash",
+    "certificate-verified authenticated same-host HTTPS"
+  ],
+  "fixtures": [
+    "scripted external model and channel",
+    "unused history and global promoted context",
+    "creation/enrichment clocks for parity",
+    "six contract methods use contract fixtures",
+    "S03 regression vectors and S02 recorded responses",
+    "malformed receipt injected after real provider reply; typed-port case does not claim full native dispatch",
+    "owner budget exception after real Chroma add; distinct from SIGKILL evidence"
+  ],
+  "placement": {
+    "same_host": true,
+    "public_service": false,
+    "combinations": [
+      "original local",
+      "local encoder/local retrieval",
+      "HTTPS encoder/HTTPS retrieval",
+      "HTTPS encoder/local retrieval"
+    ],
+    "https_caller_e5_free": true,
+    "configuration_edits_between_remember_and_query": 0
+  },
+  "blocked_prerequisites": [],
+  "unresolved_executed_failures": [],
+  "unexpected_observation_timeouts": [],
+  "executed_failures_resolved": [
+    {
+      "logs": [
+        "baseline-regression-s01-s02.log"
+      ],
+      "reason": "Historical S01 deep-JSON assertion differs under accidental SDK Python 3.12 run.",
+      "resolution": "Exact recorded Python 3.11 suite passed 74; parser unchanged."
+    },
+    {
+      "logs": [
+        "native-input-oracles.log",
+        "native-control-oracle-development.log"
+      ],
+      "reason": "Oracle incorrectly equated raw model-response NUL with native accepted argument.",
+      "resolution": "Record real parser transformation to literal u0000 and compare accepted arguments; native source unchanged."
+    },
+    {
+      "logs": [
+        "regression-s01-s02-m5-candidate-02.log"
+      ],
+      "reason": "Historical M5 full-file hash guard rejects intentional optional observation additions.",
+      "resolution": "Explicit AST-span allowance preserves every pre-existing byte and all numerical pins; 13-method recheck passes."
+    }
+  ],
+  "interrupted_runs": [
+    {
+      "log": "tests-development-01.log",
+      "status": "INTERRUPTED",
+      "explanation": "development-01-interrupted.json; deliberately replaced by frozen-source verification after adding read readiness; not a gate pass"
+    }
+  ],
+  "not_run": [
+    "default full Omega startup",
+    "live hosted model/channel providers",
+    "live external search in this increment",
+    "private remote user memory",
+    "update/delete/general link/unlink/support/contradict/promotion adoption",
+    "existing-state migration",
+    "multi-host deployment",
+    "power-loss or filesystem-corruption proof",
+    "chain operations",
+    "entire repository regression suite",
+    "empty-global-cache compiler/provider reproduction",
+    "S03.2 local encoder/HTTPS retrieval combination"
+  ],
+  "measurements": "measurements.json",
+  "guarantee_limits": [
+    "single trusted application journal/corpus writer with existing exclusive lock",
+    "intact files and same-host process restart",
+    "separate owner commits; orphaned accepts/unused generations remain possible",
+    "no exactly-once E5 before capture; bounded repeat attempts, no encoding after capture",
+    "captured replay remains subject to current authority and retained view availability",
+    "success requires storage acceptance, publication, metadata/read readiness, selected view and native capture",
+    "creation label/default STV are compatibility metadata, not episode or belief evidence",
+    "no remote computation attestation or cross-hardware bitwise claim",
+    "mixed-operation batches refused; read-your-writes across successive turns"
+  ],
+  "recorded_at": "2026-10-18T16:51:49.898449+00:00",
+  "final_audit": "final-audit.json",
+  "evidence_files": {
+    "baseline-completion.json": "a0db3e9bdf9781ebe77e5db696434787c3b3a8649f7d426c2a02e3e15edb356b",
+    "baseline-embedding/authority.json": "4a6219a9c06daf542a71fcde58de591da52692efb3ffc3186d5b0ff7739e04bb",
+    "baseline-embedding/binding.json": "4aceea72c26ee91f0904df16674526ad1f4776416eacbdf2616d00eed292c79e",
+    "baseline-embedding/capture-kills.json": "f7c12c9687db9d7b078f165a9a18acf9b8b4a7f6fa69e3d58ffefe132bc8f519",
+    "baseline-embedding/deadlines.json": "e5856ad032d1962a8eb551a14123368dd36db35013b1a39ff96c35a2add95675",
+    "baseline-embedding/malformed-result.json": "1297e4dd21ebfca8df655fd24bd67e61f9f4f8ead37d086d572b81c2139f26e3",
+    "baseline-embedding/native-preprocessing.json": "22d72730d2bb6f1c7a9d3bfdbc11e01e78fdfd2fe62941e18d6cfb5dbdb0e92a",
+    "baseline-embedding/occurrences.json": "bb4ad33d09640b50b3df2095db8d7afc03101f3dd0811f1d1ff56232039dd464",
+    "baseline-embedding/provider-restart.json": "c4eda935893060691fb7a4db23d5ba7e435ce5c20cda5a4585696d1def91406a",
+    "baseline-embedding/real-input-domains.json": "10e9ce614272f887184b3898eee4cbe40a1180bb9a9b1875f5dce75b0c6bfff4",
+    "baseline-embedding/release-revocation.json": "d620847ecad6d3f80c5a2220b005629db83d5b16b2b8e0e90052392d0f9908c2",
+    "baseline-embedding/resident-bound.json": "d66f10eb1208d76360a665036958c2c3b18b118f10ec527275886feebff6ba00",
+    "baseline-embedding/spent-encode-budget.json": "35f96e6cd4bff0e5f95dc693eeed5ffcb92aaa74d29c5b8fe0f79b96da720d0b",
+    "baseline-embedding/tls-fail-closed.json": "a2f955050bd2edafc2feb039016af09b036d2ff800108ebd8e8cf7add089f156",
+    "baseline-json-python311.log": "189fc8d1caf90d83d0df5e10c6c6eb90e287c3d0a159a87bb737029c7ef1f2f6",
+    "baseline-m5.log": "dbbf2f89649fcb7cdf4b91ea6bd54fde86e87c9fa2f0170491f9867c90963f1e",
+    "baseline-regression-s01-s02.log": "1623e4627fdbcbe31d12709c7ec3e02f1e7e9dd92f0513001298b84f69ef63ca",
+    "baseline-regression-s03.log": "89e8b5f2a383499cfb394bef7b8bacaae8b49481e492c0a4a86fe4e3b0c143d2",
+    "baseline-s01-s02-python311.log": "c51e9510ac7d5e715643f0bf84407bb342c3b4d31abc6a0b4ee3abeb89895282",
+    "baseline-source.json": "66f2cf5d1fa9e7bf5b6214539e3877f7c4b0ac4aa25b1a69bba6923976085e0a",
+    "baseline-tests.json": "46468f1fe86c4e18359645d01eeb59512499e8a6f8a67d69b431315d451f32c3",
+    "baseline-verification-tests.log": "60301b5116f705afdf456a56531b821cfe5d70a9b78aa0f6febc955791b8e190",
+    "build-audit.log": "9345c07a243bab9bfbe45f3979dcde93dd93ec1462d626878aa5e5db29c85124",
+    "builds.json": "7cbd1c216d8660140aa717774c2342687607bfef2b5a2afaea615ad1b194beb4",
+    "caller-build.log": "23ef240b35d3ebe4110d9e091c65ad68ce111f6f885ad9fe3bf8493238afac74",
+    "candidate-02/append-tls.json": "a9e752d7dbf30e539846ea45398f8947dae96e5d5989b6b989e94f85afee44c1",
+    "candidate-02/authority.json": "b26d1a245b7536774c071afda892decf2b6a881419104ea20f44fd7969236e96",
+    "candidate-02/caller-kills.json": "568deab7f448cc3652110fe07fa3876710b4480ba8d10cf28860efc2c096104c",
+    "candidate-02/deadlines-partial.json": "c0f12f50a2c40b39c440da1e88b7d821c58a8854a5cbb6e56929a9da0747ace6",
+    "candidate-02/durable-caller-budgets.json": "c3e081e5ff143d117c614a2b176e85cfc866e48116b8872d5a8a7de1480bc2af",
+    "candidate-02/durable-owner-budget.json": "c37b766349a5eefa531ff0c1e0912a58b2d145b5f43fae0157efbd8a769d4734",
+    "candidate-02/freshness.json": "023ebf9ad46183f1ad65a88c5e9b56247ccf9e4d50b3e82c8a41b66f7792e7d4",
+    "candidate-02/frozen-query.json": "45d352e2b45f5387e943ac5d94126a301a653d766b7705533bc9489e4974c131",
+    "candidate-02/generation-capacity.json": "444bbc0ee62513053eea9f1cd69a6b7991d920b150621bedaedc06d3d4c8e908",
+    "candidate-02/malformed-receipt.json": "b33361edf9c9e6357f040ab0173c4ddf8e4ebc16afe54ccdef6da5919047fa1b",
+    "candidate-02/occurrences.json": "5839379c73161401ca20ac919b79408730064ccb0f451363db5bad378431f644",
+    "candidate-02/preprocessing.json": "3654b83cc09f6833b8a26bb8f6dfc825c258a0c23e534115a9b33a6db905778e",
+    "candidate-02/privacy.json": "312a99418f5967fc536b451c151e9214b4b848f75b6bad4fa7d5ec0ca1f40a1c",
+    "candidate-02/provider-kills.json": "124b462376467904e2497f4144fc03a023df084d9b2b74db25b93f61dda28ce0",
+    "candidate-02/scope.json": "7711721374b7cd988afe99348f428f08e2521011cdd1fa8967fdf1057a1ba904",
+    "candidate-02/three-paths-and-mixed.json": "0561a7a66da40ca2566a54712c22daa53497cf20f62f7f4e10c027ef6d8ce331",
+    "contracts-development-02.log": "004451703c344c1107beaf558697eafe5e1382ef8d8571875a49e5fd0ae26521",
+    "contracts-development.log": "fb46fa895698c998d926b96b621ec7e73c07e107840baa26cd08a4205f0ba861",
+    "development-01/append-tls.json": "a9e752d7dbf30e539846ea45398f8947dae96e5d5989b6b989e94f85afee44c1",
+    "development-01/authority.json": "ecb3fd118473a589934cb712d19e5b47703bb4a29e25ac6a35cbacb0409d268f",
+    "development-01/frozen-query.json": "9e276f8239f7669a22b99ca09e82216fd66688a507fa0037cbec6fa5561005fb",
+    "development-01/occurrences.json": "feb172e4cb80e1af3a49ce993edf993fa9deb8c84f2bf7d16d9f9c6d46c38f97",
+    "development-01-interrupted.json": "d2dc4936a57f925255c04d7ff6b13e63917920cdea320986f9102ac95e9106bd",
+    "final-audit.json": "2ce9befcb80ec9b6fc39f95e9d9dd1e8faa847b1d6a732a8fadea3c9a7044fdb",
+    "generated-corpus.json": "2373588edb170ee9eb4a7edaebdc73d7bfe0080b64f6b45eb6ad9d5f9fc78fa9",
+    "measurements.json": "971273a1a03e56a4c4aa902edcb1a16d8afc6a729e3b0b918c13bef07de38209",
+    "native-control-oracle-development.log": "0241d43a9a0676a2cabb7ca48877fedcb98a807986aa55b9b3bb0a6dbe00faa1",
+    "native-input-oracles-final.log": "d932d86a83caa56070b62d851f8a041271b88efe78fd5e25879f5b1406e8b985",
+    "native-input-oracles.json": "91e793c34424d5c5ddec160803d260357eb931b56d21e0d3b1739e119a1cef7b",
+    "native-input-oracles.log": "b87ea9c6d195cbcada44cb2604f4fc73c0103e5914b6e9af9ba52db76d57b1bf",
+    "native-oracle.json": "e2c6caf506638833b281a58f6cc4a54bbc0517b954ff61956bb8fc72674058db",
+    "native-oracle.log": "7ad57962f776fa23d7ae3ad80b4974dc540fee4f8a70d7ef9de452de496804e4",
+    "native-quote-oracle-development.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "regression-results.json": "e3e8600c31289d5951a802787bc3984d4cf34483a397b1eade1a2f57bb11d692",
+    "regression-s01-s02-m5-candidate-02.log": "414718cb08f0d9fb0db463fb864e99e486c4628f3cf18bae203f0ce2ebb770c2",
+    "regression-s01-scope-guard.log": "b5474623cf779ec3440f3040e351547470aa54447b793909cd048d1b1d28ebbc",
+    "regression-s03/caller-kills.json": "96e9189bd6673c72df1ec9f9c8c94b538193654b9fbc8761cd9ad2a974b6e9c0",
+    "regression-s03/fresh-enrollment-immutability.json": "bb0bfbaf0682a5ade050f79c822b595ffcf369c6c3ee71e153ec8dbaaa3fd605",
+    "regression-s03/index-kills.json": "3b7fe5daa2950f27c8859ec21de40dcb685f4a7171dea0947f2f4bd852e22a60",
+    "regression-s03/mixed-session.json": "9fa4f2eccceaab7496f3091882ad9c8d95b762c6248a85f6d700dd3b71af1637",
+    "regression-s03/native-binding-refusal.json": "b359788f426d933fad7c2ea87bd4bc6cf6537a81972fd540ede5e73c3fdc2bc8",
+    "regression-s03/original-deadline.json": "9b0d21c77585da15eb66eb51fc25040a3568f76638387428d6b9dff93496a07f",
+    "regression-s03/principal-binding.json": "13ff36728f704fb51920c6931e867fc733572bdd5142336428f5f6c9c4c60607",
+    "regression-s03/revoked-capture.json": "0eb35c66f8cd15b8b2a7508c73b0979a4a72c2dab598e660878ae91346ad1346",
+    "regression-s03/scope-isolation.json": "f9645e868ecef46c931802d0add7d83d9ae2fe3ef2005afeb4f35478d92fb335",
+    "regression-s03/source-rebuild.json": "ef24f626dcd742442c2d8e8a7728d0325169c1af6cea5f81a83e89b6c962aeda",
+    "regression-s03/spent-budget.json": "b0eac2c98ea1bb81b755446f786169685d7d0edf86190658d39ff32409ced82f",
+    "regression-s03/three-paths.json": "379ad907c846e32f4c01dbb43eabf1f27a0b6dd0a2f85645cbd697410633e9e7",
+    "regression-s03/ties-near-ties.json": "8e1d5a4d7dcc46c969f79f4e4019e4c834953ae0280b0480e9c810ab2319ee7d",
+    "regression-s03-s03_1-candidate-02.log": "605ea17e76191e93002edbc39a59d5467f2830377d1e3f92b8f0614903453688",
+    "regression-s03_1/authority.json": "29cc824f924ca06049ab0b69e5dd44e5b189dee6c7327b959be30406d56ca309",
+    "regression-s03_1/binding.json": "4aceea72c26ee91f0904df16674526ad1f4776416eacbdf2616d00eed292c79e",
+    "regression-s03_1/capture-kills.json": "6b8b161a87c78c2ad9130791c1776e2e416ec30ec37d806e8e7240102dc2c40e",
+    "regression-s03_1/deadlines.json": "b41ef948234172e551f9d497f427a0b97e666be40c5048aa479118456b5a3cf3",
+    "regression-s03_1/malformed-result.json": "1297e4dd21ebfca8df655fd24bd67e61f9f4f8ead37d086d572b81c2139f26e3",
+    "regression-s03_1/native-preprocessing.json": "5c858a32dc89e13a2e98790c3cd73ab470ae232d84ed9902f217ee9f566a55f0",
+    "regression-s03_1/occurrences.json": "fdf83d23d9f8c4923aff0754d9d58922612d9001466217e3c7779d839d629c6a",
+    "regression-s03_1/provider-restart.json": "3cb2eafb35522c00e44e4406618493eaeba824576bd8b522a95cc539e88b5ba8",
+    "regression-s03_1/real-input-domains.json": "10e9ce614272f887184b3898eee4cbe40a1180bb9a9b1875f5dce75b0c6bfff4",
+    "regression-s03_1/release-revocation.json": "377c13c76415196be365b3affbffdcf2c704027b057db123cd780126de9da44c",
+    "regression-s03_1/resident-bound.json": "c55f5b1544875257b59776de438e2c6b167a92d14fab090fdcbc66c0d2f9bfdc",
+    "regression-s03_1/spent-encode-budget.json": "427e41f4c424955ddfa2e5029313350bb8affe84db3b8e91077bebf4b61dd236",
+    "regression-s03_1/tls-fail-closed.json": "a2f955050bd2edafc2feb039016af09b036d2ff800108ebd8e8cf7add089f156",
+    "run-specs.json": "a488194ce5552142281c7918c62429c6c2eecf4cf9e111f38b77d72ee985b67a",
+    "same-memory-final.json": "fee629bb740cfbc55f4634725bbfc45e72115ccc03afdba51aa5954bffa69e4c",
+    "same-memory-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source-state.json": "f1795d0e048c9a699fdaddd4fa679b2cec376dba48c085789fb7dba8db9969bf",
+    "test-source-candidate-02.json": "d541b432ccfcb5d70d56acbf43b3634ef49d989e241571bbe82681995358b6ca",
+    "test-source.json": "3cc493d02243f45e018587e5dc2c347c28878ee2c345b836f7452dee2da39521",
+    "tests-candidate-02.log": "87e0853cd7994d9514f7d9d57570d53362ff59d6790b3bb47b3d9c64ef90eaf6",
+    "tests-development-01.log": "17df1d8be6085ca25d85e3c7b07d5473d07ea995dd30d0b8a74b020abd51a1ec",
+    "three-paths-development.json": "8b5925a931177857409a6645cf0cb2f0e5601fd9b8bdcf61a94c2e8b150a1d81",
+    "three-paths-development.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_state_sha256": "f1795d0e048c9a699fdaddd4fa679b2cec376dba48c085789fb7dba8db9969bf",
+  "completed_at": "2026-10-18T16:52:44.420925+00:00"
+}

@@ -1,4 +1,4 @@
-"""Operator-side immutable enrollment through AtomStorage ports only."""
+"""Immutable enrollment through AtomStorage ports only; no operator/database access."""
 import json
 from . import vector_contracts as c
 from .contracts import canonical, require

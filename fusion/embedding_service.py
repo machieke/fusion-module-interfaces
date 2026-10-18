@@ -19,6 +19,9 @@ class EmbeddingService:
         self.config = self.policy.current()['embedding']
         self.encoder, self.hook = encoder, hook
         self.chosen = c.select([descriptor_read(d) for d in self.config['catalogue']])
+        self.selections={c.PROFILE:self.chosen}
+        if 'memory_helper_inputs' in self.config:
+            self.selections[c.MEMORY_PROFILE]=c.select([descriptor_read(d) for d in self.config['catalogue']],c.MEMORY_PROFILE)
         self.db = sqlite3.connect(self.config['database'], timeout=.2)
         self.db.row_factory = sqlite3.Row
         self.db.execute('PRAGMA journal_mode=WAL')
@@ -38,14 +41,18 @@ class EmbeddingService:
         cfg = self.policy.current()['embedding']
         require(cfg['sharing'] == v.PRIVACY and cfg['scope'] == accepted['scope'], 'UNAUTHORIZED')
         require(cfg['model'] == accepted['model'] and cfg['preprocessing'] == accepted['preprocessing'], 'UNSUPPORTED_PROFILE')
-        chosen = c.select([descriptor_read(d) for d in cfg['catalogue']])
-        require(selection_token(chosen) == accepted['selection'] == selection_token(self.chosen), 'UNSUPPORTED_PROFILE')
+        require(accepted['profile'] in self.selections,'UNSUPPORTED_PROFILE')
+        chosen = c.select([descriptor_read(d) for d in cfg['catalogue']],accepted['profile'])
+        require(selection_token(chosen) == accepted['selection'] == selection_token(self.selections[accepted['profile']]), 'UNSUPPORTED_PROFILE')
         # Explicit separate consent for the exact post-native-transformation text.
-        require(accepted['text'] in cfg['approved_helper_inputs'], 'UNAUTHORIZED')
-        self.policy.check(principal, accepted['scope'], 'embedding.' + mode)
+        memory=accepted['profile']==c.MEMORY_PROFILE
+        require(accepted['text'] in cfg.get('memory_helper_inputs' if memory else 'approved_helper_inputs',[]), 'UNAUTHORIZED')
+        self.policy.check(principal, accepted['scope'], ('embedding.memory.' if memory else 'embedding.') + mode)
 
     def invoke(self, credential, request):
-        c.request(request, self.chosen)
+        require(type(request) is dict and type(request.get('intent')) is dict)
+        profile=request['intent'].get('profile');require(profile in self.selections,'UNSUPPORTED_PROFILE')
+        c.request(request, self.selections[profile])
         accepted, op = request['intent'], request['operation']
         self.authorize(credential, accepted, 'disclose' if op == 'authorize-disclose' else 'encode')
         if op != 'encode': value = {'authorized': True}

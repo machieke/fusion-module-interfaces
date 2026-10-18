@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/append_oracle.py", line 90, in original
+    require(remembers and all(e['content']==text and e['stv']==[1.,.5] and
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: CONFLICT

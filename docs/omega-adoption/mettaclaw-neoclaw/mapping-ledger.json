@@ -7881,6 +7881,83 @@
         "no exactly-once inference; pre-capture evaluations may repeat within original bounds",
         "physical library/asset removal is specific to the HTTPS caller; real Chroma metadata remains"
       ]
+    },
+    {
+      "slice": "S03.2",
+      "operation": "append-only native remember with same-session read-your-writes",
+      "profile": "neoclaw-append-only-memory/1",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "source_baseline": "ba48d78b3f76fb134ed9b46de2df1063f6bb16a6",
+      "components": [
+        "memory.create",
+        "memory.remember",
+        "chroma.remember"
+      ],
+      "exact_symbol": "src/memory.metta::remember -> createMemory -> lib_chromadb.remember; creation-link confirmation only",
+      "native_composition": "Original native parser/remember/createMemory/embed; selected append seam; later native query, local enrichment and next-context handoff",
+      "contract": "One approved synthetic accepted occurrence owns one UUID and original pre-embedding time, captured native E5 vector, four immutable accepts, named Search publication and coherent read-view selection before REMEMBER-SUCCESS",
+      "interfaces": [
+        "embedding@1.0.0 / neoclaw-e5-memory-text/1",
+        "atom.storage@1.2.0 / optional mutation acceptance observation and existing commit feed",
+        "search@3.1.0 / named maintenance and separate read readiness"
+      ],
+      "providers": [
+        "original pinned native E5 CPU implementation",
+        "real native MeTTaClaw/PeTTa/SWI",
+        "real Chroma",
+        "real DeTTa"
+      ],
+      "placement": [
+        "original native local",
+        "local encoder + local retrieval",
+        "HTTPS encoder + HTTPS retrieval",
+        "HTTPS encoder + local retrieval"
+      ],
+      "same_host": true,
+      "multi_host": "NOT_RUN",
+      "fallback": false,
+      "private_omega_stores_accessed": false,
+      "application_composition": "controlled-native-loop/5",
+      "fresh_journals_only": true,
+      "coverage": {
+        "adopted_internal_operations": 1,
+        "additional_user_commands": 1,
+        "whole_families_promoted": 0,
+        "whole_omega_integrated": false
+      },
+      "evidence": "../../../evidence/s03_2/verification.json",
+      "report": "s03_2.md",
+      "status": "IMPLEMENTED_AND_EXECUTED_APPEND_ONLY_REMEMBER_BOUNDARY",
+      "guarantees": [
+        "one stable UUID/time per accepted occurrence; identical new occurrences stay distinct",
+        "current independent encode/write/maintenance/disclosure authority and exact profiles",
+        "immutable acceptance observed through owner ports; no foreign database reads in the application",
+        "storage, publication, metadata readiness, selected view and native success remain separate",
+        "old query occurrences/results retain their views; new turns select the newly ready view",
+        "captured memory vector reused without another encoder call",
+        "original deadlines and spent application/provider budgets survive process interruption",
+        "real caller/provider process-kill recovery with intact journals",
+        "E5-free HTTPS caller; identical native business logic under placement changes"
+      ],
+      "local_unadopted": [
+        "general linked-label/Relations ownership; only creation metadata compatibility is handled",
+        "STV and belief ownership; defaults are not evidence",
+        "promotion/Attention",
+        "history and episode provenance",
+        "update/delete/forget/link/unlink/support/contradict/promote/demote",
+        "private user memory and migration",
+        "other callers and embedding modes"
+      ],
+      "qualifications": [
+        "generated corpus and explicitly approved future text; initial feed excludes the future memory",
+        "scripted external model/channel, unused context/history and parity clocks are fixtures",
+        "append-only synchronous ports reuse the existing application lifecycle; no general execution framework",
+        "mixed-operation batches remain rejected; read-your-writes is across successive turns",
+        "same-host TLS only; one mixed placement exercised",
+        "physical evaluations may repeat before capture within the accepted budget",
+        "single trusted application writer; no multiwriter or power-loss claim",
+        "receipt/digest validation is consistency checking, not computation attestation"
+      ]
     }
   ]
 }

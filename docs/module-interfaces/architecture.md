@@ -398,3 +398,11 @@ consumes that vector, AtomStorage returns authoritative payloads, and legacy loc
 enrichment retains its native state and semantics. Encoder and retrieval placement
 are independently selected. This extension adds no whole-family or whole-Omega
 completion claim. See the [S03.1 contract and evidence report](../omega-adoption/mettaclaw-neoclaw/s03_1.md).
+
+S03.2 adds the separately authorized memory-text purpose to this same Embedding
+port. Its append-only native compatibility path then composes immutable AtomStorage
+acceptance/feed, named Search publication and application-owned metadata/read-view
+selection. These are separate commits; native success requires the coherent view.
+Earlier query occurrences retain their own views. The extra purpose does not make
+Embedding an ingestion owner or adopt Relations, Attention or BeliefRevision.
+See the [S03.2 boundaries and evidence](../omega-adoption/mettaclaw-neoclaw/s03_2.md).

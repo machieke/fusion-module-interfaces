@@ -475,3 +475,24 @@ embeddings, numerical rule changes, migration or new chain workload is included.
 See [executable profile decisions](m5-contracts.md) and the
 [operation ledger](m5-capability-ledger.json); final results resolve through the
 M5 gate manifest rather than historical M4 passes.
+
+## ADR-015: S03.2 append acceptance and retained native read views
+
+The controlled native `remember` compatibility path uses existing Embedding,
+immutable AtomStorage/feed and Search owners. One accepted application occurrence
+owns UUID/time, captured encoding and bounded progress. An opaque binding record
+precedes payload/vector/enrollment and binds their accepted meaning; storage
+acceptance remains distinct from index publication and native acknowledgment.
+
+Named Search maintenance reuses one generation and durable attempt budget across
+uncertain replies. Current read-provider readiness and matching local metadata are
+required before the application selects a new view. Queries bind immutable views
+when accepted; later publication cannot retarget earlier queries or captures.
+Deadlines and reservations are not reset by recovery. No cross-owner atomicity,
+new evidence semantics, mutable memory or journal migration is implied.
+
+These are optional versioned capabilities and fresh application profile `/5`.
+Historical profiles retain their meanings. The exact contracts, partial states,
+privacy boundaries and same-host evidence are in the
+[S03.2 decisions](../omega-adoption/mettaclaw-neoclaw/s03_2-contract-decisions.md)
+and [report](../omega-adoption/mettaclaw-neoclaw/s03_2.md).

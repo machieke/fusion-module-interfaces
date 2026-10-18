@@ -64,6 +64,13 @@ class AtomSession:
         self.access.authorize(ref['scope_ref'],'availability');return c.copy(result)
     def head(self,scope):
         self.access.authorize(scope,'head');value=c.head(self.provider.head(scope),scope);self.access.authorize(scope,'head');return value
+    def observe(self,command):
+        # Optional descriptor capability; old sessions cannot invoke it implicitly.
+        c.mutation(command);self.access.authorize(command.scope_ref,'observe')
+        value=self.provider.observe(command)
+        from .atom_observation import observation
+        value=observation(value,command.scope_ref,self.access.descriptor)
+        self.access.authorize(command.scope_ref,'observe');return value
     def readCommits(self,scope,after,through,limit):
         self.access.authorize(scope,'readCommits');through=c.head(through,scope);c.integer(after,0,through['sequence']);c.integer(limit,1,c.PAGE)
         value=c.commits(self.provider.readCommits(scope,after,through,limit),scope,after,through,limit)

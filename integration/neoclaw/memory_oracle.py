@@ -24,6 +24,13 @@ def query_source(omega):
     return '\n'.join(text[text.index('(= ('+name+' '):text.index('\n(= (', text.index('(= ('+name+' ')+1)] for name in names)
 
 
+def creation_source(omega):
+    query_source(omega)  # Whole-file pin before selecting exact native bodies.
+    text=(omega/'src/memory.metta').read_text()
+    return '\n'.join(text[text.index('(= ('+name+' '):text.index('\n(= (',text.index('(= ('+name+' ')+1)]
+                     for name in ('createMemory','remember'))
+
+
 def prepare_original(app_path, corpus, site, *, vector_fixture=True, model=None):
     app_path = Path(app_path)
     args, env, work = prepare(app_path)
