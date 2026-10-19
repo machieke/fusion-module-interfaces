@@ -654,3 +654,72 @@ a timed-out real recipient observation is a timeout, not success. Tests stop onl
 their generated process groups. Raw local cognitive audit artifacts stay under
 ignored `artifacts/s06`; publish the reduced S06 channel traces and test outcomes.
 Do not resume old journals under this profile or resend an `unknown` reservation.
+
+## S07 selected local Ollama and explicit live budget
+
+The completed campaign spent all twelve authorized generation attempts. The
+commands below are execution records, not authorization for another campaign.
+Use fresh journals and a separately approved budget for any new experiment.
+Model/source/build pins are in `integration/neoclaw/model-sources.json`; selected
+native assets retain their earlier S01–S06 recipes and manifests. No model download,
+independent Ollama rebuild or existing-service reconfiguration occurred.
+
+Recorded-model checks (no generation):
+
+```bash
+uv run --python 3.11 --locked python -m unittest -v tests.test_model_oracle tests.test_model tests.test_model_network
+HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_model_preflight integration.neoclaw.test_model_loop
+```
+
+The tests retain explicit recorded SDK/model boundaries. Native loop, parser,
+original NAL, DeTTa, real isolated IRC and TLS are real where labelled. The
+standalone `model_fixture_host` is never selected by the supported live composition.
+Restore missing assets only at their pinned revisions; fixtures cannot pass live
+model gates.
+
+`evidence/s07/isolated-ollama-launch.py` records the exact successful task-owned
+runtime launch from a fresh artifact directory: pinned executable, existing model
+blob links, empty ephemeral home, cloud disabled, loopback port selected before
+admission. It creates no generation request. The executed listener was port 48173;
+`isolated-runtime/{launch,listener-proof,loaded-runner,cleanup}.json` records actual
+processes, loaded files and shutdown. The initial fixed-port attempt is retained
+separately. Reproduction requires fresh output paths rather than deleting journals
+or reusing the exhausted campaign.
+
+The final eight calls used this command, after four previous spent attempts:
+
+```bash
+HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m integration.neoclaw.model_run \
+  --approve-local-generation --approved-calls 12 \
+  --prior-campaign evidence/s07/live-01 \
+  --prior-campaign evidence/s07/live-04/1 \
+  --prior-campaign evidence/s07/live-05/1 \
+  --cpu-deadline --ollama-port 48173 \
+  --ollama-assets artifacts/s07/isolated-runtime-02/models \
+  --case-offset 1 --continue-independent-cases --out artifacts/s07/live-06
+```
+
+The `/2` profile sets five minutes once at fresh input acceptance, while existing
+commands/context preparation retain thirty seconds. A bounded load-only readiness
+step precedes admission. The peer sends the second real input after the native
+first command completes; the old ingress TTL is unchanged. Each fresh owner seals
+two calls, one reservation per occurrence and its expiration. The explicit
+continuation flag advances only the predeclared independent placement cases; it
+never retries a rejected or uncertain occurrence, changes a prompt, or fabricates
+an unused second call. All prior IDs must be distinct in budget accounting.
+
+`live-01` retains the old thirty-second timeout. `live-02` and `live-03` contain
+zero-generation readiness failures/interruption. `live-04` retains the
+adapter-validation failure; `live-05` the first captured unsupported command.
+`live-06` contains three successful workflows and a second unsupported reply,
+with two successful native capture recoveries. The exact source for each phase
+is identified in `evidence/s07/verification.json`; historical code variants remain
+archived. Read `live-summary.json` for all twelve IDs and measurements.
+
+Placement is composition, not native business logic. HTTPS uses real loopback TCP,
+certificate checks and generated bearer credentials. Model assets/raw backend
+access are denied to the HTTPS caller. Evidence distinguishes provider capture,
+command admission, durable mailbox acceptance, socket-write result and recipient
+observation. Only task-owned actors were stopped; the original Ollama service was
+left running. No public listener, multi-host placement, full-default Omega or
+private-memory transfer is claimed.

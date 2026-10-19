@@ -206,6 +206,22 @@
         "interface": "embedding",
         "profile": "neoclaw-e5-memory-text/1",
         "scope": "approved append-only native remember helper input; same pinned native E5 arithmetic"
+      },
+      {
+        "mapping_gap": "X01",
+        "interface": "ModelInference",
+        "profile": "neoclaw-ollama-qwen38-text/2",
+        "status": "BOUNDED_S07_COMPLETE_WITH_RECORDED_FAILURES",
+        "adopted": true,
+        "scope": "Bounded text completion in actual controlled native Omega: local and authenticated same-host HTTPS, real IRC, original NAL result in next model input, three approved peer-observed replies and two capture-recovery SIGKILLs. Twelve generation attempts, ten captures; two earlier uncaptured failures and two captured unsupported reply commands retained. No full Omega or general model-family claim.",
+        "evidence": "../../../evidence/s07/verification.json",
+        "selected_backend": "local Ollama qwen3.8:27b",
+        "application_composition": "controlled-native-loop/9",
+        "live_generation_requests": 12,
+        "live_completion_captures": 10,
+        "authorized_call_limit": 12,
+        "unused_authorized_calls": 0,
+        "historical_profile": "neoclaw-ollama-qwen38-text/1"
       }
     ],
     "whole_product_claim": false

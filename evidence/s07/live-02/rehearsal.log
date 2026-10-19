@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 127, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 114, in main
+    loaded=exchange('/api/chat',dict(model=c.MODEL,messages=[],stream=False,think=False,truncate=False,options=dict(c.OPTIONS)),timeout=120)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/adapters/ollama_completion.py", line 27, in exchange
+    raise ContractError('NOT_AVAILABLE') from None
+fusion.contracts.ContractError: NOT_AVAILABLE

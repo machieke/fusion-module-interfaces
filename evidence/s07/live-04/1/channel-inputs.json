@@ -1,0 +1,13 @@
+[
+  {
+    "ack": "{\"delivery\":\"acknowledged\",\"delivery_id\":\"9dd854a6-d5fa-5eb2-9738-74138e4d8513\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"persistence\":\"process-restart\",\"route\":\"in-A\",\"scope_ref\":\"synthetic-s06\"}",
+    "ack_calls": 1,
+    "deadline": 1792410185098,
+    "delivery": "{\"body\":{\"causation_id\":\"mail/7510c0c9-e20e-546c-aff0-485b36c262fb\",\"correlation_id\":\"7510c0c9-e20e-546c-aff0-485b36c262fb\",\"ref\":{\"digest\":\"af595afb4cb7dd33c0b60830eedd60e3352107784e104b0b996917af785edd73\",\"id\":\"316bcd84-da60-5af8-8667-429604d29004\",\"revision\":1,\"scope_ref\":\"synthetic-s06\"},\"reply_route\":\"out-bridge\"},\"delivery\":\"observed-unacknowledged\",\"delivery_id\":\"9dd854a6-d5fa-5eb2-9738-74138e4d8513\",\"order\":1,\"route\":\"in-A\",\"scope_ref\":\"synthetic-s06\"}",
+    "envelope": "{\"bridge\":\"73e592eb-3f1f-4922-8f37-d54b0a24e99b\",\"deadline_ms\":1792409988280,\"epoch\":\"379e0001-43cb-4f98-a249-32948ef3320d\",\"id\":\"7510c0c9-e20e-546c-aff0-485b36c262fb\",\"kind\":\"ingress\",\"nick\":\"peer\",\"observed_ms\":1792409868280,\"profile\":\"isolated-irc-mailbox/1\",\"route\":\"in-A\",\"scope\":\"synthetic-s06\",\"sequence\":1,\"session\":\"7abc6d2a-e78f-45ff-9924-ced53f5c0e3c\",\"target\":\"#s06-generated\",\"text\":\"Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).\"}",
+    "id": "7510c0c9-e20e-546c-aff0-485b36c262fb",
+    "polls": 1,
+    "slot": 1,
+    "wait_deadline": 1792409895051
+  }
+]

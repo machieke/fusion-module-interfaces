@@ -1,0 +1,31 @@
+{
+  "status": "PREREQUISITES_RESOLVED_LIVE_WORKFLOW_TIMEOUT",
+  "backend": "local Ollama qwen3.8:27b",
+  "selection_authority": "User explicitly selected local ollama qwen3.8:27b",
+  "generation_calls": 1,
+  "model_load_calls": 1,
+  "verified": [
+    "version metadata",
+    "model manifest",
+    "all model blobs",
+    "installed binary against local build record",
+    "source archive against extracted patched source",
+    "selected request semantics against source"
+  ],
+  "pending": [],
+  "approved_budget": {
+    "max_calls": 12,
+    "output_tokens_per_call": 6000,
+    "automatic_retries": 0,
+    "authority": "User: Do 12 calls"
+  },
+  "real_generation": "EXECUTED_NO_COMPLETE_CAPTURE",
+  "real_failure": null,
+  "real_observation_timeout": {
+    "native_input_deadline_ms": 30000,
+    "observed_wire_code": "NOT_AVAILABLE",
+    "backend_logged_cancellation": true,
+    "evidence": "live-01/result.json"
+  },
+  "existing_service_modified": false
+}

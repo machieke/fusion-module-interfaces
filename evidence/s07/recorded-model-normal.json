@@ -1,0 +1,132 @@
+{
+  "classification": "RECORDED_MODEL_RESPONSE_FIXTURE",
+  "live_generation": false,
+  "model_calls": [
+    {
+      "admission": "authorized",
+      "calls": 4,
+      "id": "709901b4-db09-53e0-a3fd-8939ded40e51",
+      "intent": "{\"deadline_ms\":1792406892622,\"id\":\"709901b4-db09-53e0-a3fd-8939ded40e51\",\"limits\":{\"backend_reservations\":1,\"context_tokens\":32768,\"output_tokens\":6000,\"prompt_bytes\":12288,\"result_bytes\":32768},\"messages\":[{\"content\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:42\",\"role\":\"system\"},{\"content\":\"['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']\",\"role\":\"user\"}],\"model\":\"qwen3.8:27b\",\"model_digest\":\"9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1\",\"native_prompt\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:42:-:-:-:['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']\",\"principal\":\"A\",\"profile\":\"neoclaw-ollama-qwen38-text/1\",\"scope\":\"synthetic-s07\",\"selection\":\"fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4\",\"session\":\"4fc1fd22-097f-42b9-bb85-fab2019395bd\",\"slot\":1,\"source_id\":\"ebd12afe-dad4-5b1a-96bf-b6d8cdbbe7c8\",\"transform\":\"neoclaw-chat-marker-split-clean/1\"}",
+      "normalized": "((metta \"(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\"))",
+      "parse_text": "((metta \"(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\"))",
+      "proposal": "[[\"metta\",\"(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\"]]",
+      "result": "{\"captured_ms\":1792406863626,\"failure_code\":null,\"id\":\"709901b4-db09-53e0-a3fd-8939ded40e51\",\"intent_sha256\":\"3c9f291008153af914e0f5c627112316d0a63f2f63c9d6f8fab701f976b1d479\",\"late\":false,\"principal\":\"A\",\"reserved\":1,\"response\":{\"durations_ns\":{\"generation\":null,\"load\":null,\"prompt\":null,\"total\":null},\"finish_reason\":\"stop\",\"native_text\":\"metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\",\"observed_model\":\"qwen3.8:27b\",\"outcome\":\"complete\",\"provider_request_id\":null,\"raw_text\":\"metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\",\"usage\":{\"input_tokens\":null,\"output_tokens\":null,\"reasoning_tokens\":null}},\"selection\":\"fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4\",\"state\":\"captured\"}",
+      "slot": 1
+    },
+    {
+      "admission": "authorized",
+      "calls": 4,
+      "id": "dda2702a-ba15-5b53-b545-79d3b6e95919",
+      "intent": "{\"deadline_ms\":1792406895250,\"id\":\"dda2702a-ba15-5b53-b545-79d3b6e95919\",\"limits\":{\"backend_reservations\":1,\"context_tokens\":32768,\"output_tokens\":6000,\"prompt_bytes\":12288,\"result_bytes\":32768},\"messages\":[{\"content\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS: (RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032))))) HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:45\",\"role\":\"system\"},{\"content\":\"['HUMAN-MSG:', 'peer: Synthetic S07 second request: inspect the actual tool result above, then send exactly Synthetic S07 reply: native calculation observed.']\",\"role\":\"user\"}],\"model\":\"qwen3.8:27b\",\"model_digest\":\"9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1\",\"native_prompt\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS: (RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032))))) HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:45:-:-:-:['HUMAN-MSG:', 'peer: Synthetic S07 second request: inspect the actual tool result above, then send exactly Synthetic S07 reply: native calculation observed.']\",\"principal\":\"A\",\"profile\":\"neoclaw-ollama-qwen38-text/1\",\"scope\":\"synthetic-s07\",\"selection\":\"fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4\",\"session\":\"4fc1fd22-097f-42b9-bb85-fab2019395bd\",\"slot\":2,\"source_id\":\"60d6b698-194a-52ea-b86b-a05db6365ee1\",\"transform\":\"neoclaw-chat-marker-split-clean/1\"}",
+      "normalized": "((send \"Synthetic S07 reply: native calculation observed.\"))",
+      "parse_text": "((send \"Synthetic S07 reply: native calculation observed.\"))",
+      "proposal": "[[\"send\",\"Synthetic S07 reply: native calculation observed.\"]]",
+      "result": "{\"captured_ms\":1792406866455,\"failure_code\":null,\"id\":\"dda2702a-ba15-5b53-b545-79d3b6e95919\",\"intent_sha256\":\"75365f440f0e75fad74dfacea4771504fff4df9e0b79a619c62449e7913bceea\",\"late\":false,\"principal\":\"A\",\"reserved\":1,\"response\":{\"durations_ns\":{\"generation\":null,\"load\":null,\"prompt\":null,\"total\":null},\"finish_reason\":\"stop\",\"native_text\":\"send Synthetic S07 reply: native calculation observed.\",\"observed_model\":\"qwen3.8:27b\",\"outcome\":\"complete\",\"provider_request_id\":null,\"raw_text\":\"send Synthetic S07 reply: native calculation observed.\",\"usage\":{\"input_tokens\":null,\"output_tokens\":null,\"reasoning_tokens\":null}},\"selection\":\"fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4\",\"state\":\"captured\"}",
+      "slot": 2
+    }
+  ],
+  "provider_calls": [
+    {
+      "captured_ms": 1792406863626,
+      "failure_code": null,
+      "id": "709901b4-db09-53e0-a3fd-8939ded40e51",
+      "intent": "{\"deadline_ms\":1792406892622,\"id\":\"709901b4-db09-53e0-a3fd-8939ded40e51\",\"limits\":{\"backend_reservations\":1,\"context_tokens\":32768,\"output_tokens\":6000,\"prompt_bytes\":12288,\"result_bytes\":32768},\"messages\":[{\"content\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:42\",\"role\":\"system\"},{\"content\":\"['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']\",\"role\":\"user\"}],\"model\":\"qwen3.8:27b\",\"model_digest\":\"9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1\",\"native_prompt\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:42:-:-:-:['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']\",\"principal\":\"A\",\"profile\":\"neoclaw-ollama-qwen38-text/1\",\"scope\":\"synthetic-s07\",\"selection\":\"fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4\",\"session\":\"4fc1fd22-097f-42b9-bb85-fab2019395bd\",\"slot\":1,\"source_id\":\"ebd12afe-dad4-5b1a-96bf-b6d8cdbbe7c8\",\"transform\":\"neoclaw-chat-marker-split-clean/1\"}",
+      "reserved": 1,
+      "response": "{\"durations_ns\":{\"generation\":null,\"load\":null,\"prompt\":null,\"total\":null},\"finish_reason\":\"stop\",\"native_text\":\"metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\",\"observed_model\":\"qwen3.8:27b\",\"outcome\":\"complete\",\"provider_request_id\":null,\"raw_text\":\"metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\",\"usage\":{\"input_tokens\":null,\"output_tokens\":null,\"reasoning_tokens\":null}}",
+      "session": "4fc1fd22-097f-42b9-bb85-fab2019395bd",
+      "slot": 1
+    },
+    {
+      "captured_ms": 1792406866455,
+      "failure_code": null,
+      "id": "dda2702a-ba15-5b53-b545-79d3b6e95919",
+      "intent": "{\"deadline_ms\":1792406895250,\"id\":\"dda2702a-ba15-5b53-b545-79d3b6e95919\",\"limits\":{\"backend_reservations\":1,\"context_tokens\":32768,\"output_tokens\":6000,\"prompt_bytes\":12288,\"result_bytes\":32768},\"messages\":[{\"content\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS: (RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032))))) HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:45\",\"role\":\"system\"},{\"content\":\"['HUMAN-MSG:', 'peer: Synthetic S07 second request: inspect the actual tool result above, then send exactly Synthetic S07 reply: native calculation observed.']\",\"role\":\"user\"}],\"model\":\"qwen3.8:27b\",\"model_digest\":\"9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1\",\"native_prompt\":\"PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS: (RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032))))) HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:47:45:-:-:-:['HUMAN-MSG:', 'peer: Synthetic S07 second request: inspect the actual tool result above, then send exactly Synthetic S07 reply: native calculation observed.']\",\"principal\":\"A\",\"profile\":\"neoclaw-ollama-qwen38-text/1\",\"scope\":\"synthetic-s07\",\"selection\":\"fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4\",\"session\":\"4fc1fd22-097f-42b9-bb85-fab2019395bd\",\"slot\":2,\"source_id\":\"60d6b698-194a-52ea-b86b-a05db6365ee1\",\"transform\":\"neoclaw-chat-marker-split-clean/1\"}",
+      "reserved": 1,
+      "response": "{\"durations_ns\":{\"generation\":null,\"load\":null,\"prompt\":null,\"total\":null},\"finish_reason\":\"stop\",\"native_text\":\"send Synthetic S07 reply: native calculation observed.\",\"observed_model\":\"qwen3.8:27b\",\"outcome\":\"complete\",\"provider_request_id\":null,\"raw_text\":\"send Synthetic S07 reply: native calculation observed.\",\"usage\":{\"input_tokens\":null,\"output_tokens\":null,\"reasoning_tokens\":null}}",
+      "session": "4fc1fd22-097f-42b9-bb85-fab2019395bd",
+      "slot": 2
+    }
+  ],
+  "real": [
+    "native Omega parser/loop",
+    "original NAL Truth_Deduction",
+    "DeTTa",
+    "ngIRCd",
+    "socket peer",
+    "same-host HTTPS"
+  ],
+  "stage": null,
+  "traffic": [
+    {
+      "received": ":s06.local 001 peer :Welcome to the Internet Relay Network peer!~peer@127.0.0.1"
+    },
+    {
+      "received": ":s06.local 002 peer :Your host is s06.local, running version ngircd-28 (x86_64/pc/linux-gnu)"
+    },
+    {
+      "received": ":s06.local 003 peer :This server has been started Mon Oct 19 2026 at 10:47:28 (UTC)"
+    },
+    {
+      "received": ":s06.local 004 peer s06.local ngircd-28 abBcCFiIoqrRswx abehiIklmMnoOPqQrRstvVz"
+    },
+    {
+      "received": ":s06.local 005 peer RFC2812 IRCD=ngIRCd CHARSET=UTF-8 CASEMAPPING=ascii PREFIX=(qaohv)~&@%+ CHANTYPES=#&+ CHANMODES=beI,k,l,imMnOPQRstVz CHANLIMIT=#&+:1 :are supported on this server"
+    },
+    {
+      "received": ":s06.local 005 peer CHANNELLEN=50 NICKLEN=9 TOPICLEN=399 AWAYLEN=127 KICKLEN=399 MODES=5 MAXLIST=beI:50 EXCEPTS=e INVEX=I PENALTY FNC :are supported on this server"
+    },
+    {
+      "received": ":s06.local 251 peer :There are 2 users and 0 services on 1 servers"
+    },
+    {
+      "received": ":s06.local 254 peer 2 :channels formed"
+    },
+    {
+      "received": ":s06.local 255 peer :I have 2 users, 0 services and 0 servers"
+    },
+    {
+      "received": ":s06.local 265 peer 2 2 :Current local users: 2, Max: 2"
+    },
+    {
+      "received": ":s06.local 266 peer 2 2 :Current global users: 2, Max: 2"
+    },
+    {
+      "received": ":s06.local 250 peer :Highest connection count: 2 (3 connections received)"
+    },
+    {
+      "received": ":s06.local 422 peer :MOTD file is missing"
+    },
+    {
+      "received": ":peer!~peer@127.0.0.1 JOIN :#s06-generated"
+    },
+    {
+      "received": ":s06.local 353 peer = #s06-generated :peer @omega"
+    },
+    {
+      "received": ":s06.local 366 peer #s06-generated :End of NAMES list"
+    },
+    {
+      "sent": "Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))."
+    },
+    {
+      "sent": "Synthetic S07 second request: inspect the actual tool result above, then send exactly Synthetic S07 reply: native calculation observed."
+    },
+    {
+      "received": ":omega!~omega@127.0.0.1 PRIVMSG #s06-generated :Synthetic S07 reply: native calculation observed."
+    }
+  ],
+  "turns": [
+    {
+      "commands": "[[\"metta\",\"(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\"]]",
+      "id": 1,
+      "projection": "(RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032)))))",
+      "response": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+    },
+    {
+      "commands": "[[\"send\",\"Synthetic S07 reply: native calculation observed.\"]]",
+      "id": 2,
+      "projection": "(RESULTS: ((COMMAND_RETURN: ((send Synthetic S07 reply: native calculation observed.) SEND-ACCEPTED))))",
+      "response": "send Synthetic S07 reply: native calculation observed."
+    }
+  ]
+}

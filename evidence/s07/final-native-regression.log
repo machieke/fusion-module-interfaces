@@ -1,0 +1,17 @@
+test_real_native_local_and_https_prompt_bound_before_generation (integration.neoclaw.test_model_preflight.ModelPreflight.test_real_native_local_and_https_prompt_bound_before_generation) ... ok
+test_native_kill_after_application_capture_with_recorded_model (integration.neoclaw.test_model_loop.ModelLoop.test_native_kill_after_application_capture_with_recorded_model) ... ok
+test_native_malformed_parser_result_is_retained_without_regeneration (integration.neoclaw.test_model_loop.ModelLoop.test_native_malformed_parser_result_is_retained_without_regeneration) ... ok
+test_native_next_context_and_approved_send_with_recorded_model (integration.neoclaw.test_model_loop.ModelLoop.test_native_next_context_and_approved_send_with_recorded_model) ... ok
+test_native_whole_batch_refuses_before_first_valid_command (integration.neoclaw.test_model_loop.ModelLoop.test_native_whole_batch_refuses_before_first_valid_command) ... ok
+test_local_and_https_native_consumption_equal_text_burst_and_send (integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send) ... ok
+NativePromotion (unittest.loader._FailedTest.NativePromotion) ... ERROR
+
+======================================================================
+ERROR: NativePromotion (unittest.loader._FailedTest.NativePromotion)
+----------------------------------------------------------------------
+AttributeError: module 'integration.neoclaw.test_promotion_loop' has no attribute 'NativePromotion'. Did you mean: 'NativePromotionLoop'?
+
+----------------------------------------------------------------------
+Ran 7 tests in 219.119s
+
+FAILED (errors=1)

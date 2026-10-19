@@ -16,7 +16,7 @@ def main():
     parser.add_argument('--ready', required=True)
     parser.add_argument('--seconds', type=int, default=60)
     args = parser.parse_args()
-    require(1 <= args.seconds <= 300)
+    require(1 <= args.seconds <= 900)
     deadline = time.monotonic()+args.seconds
     service = NalService(args.config)
     service.close()

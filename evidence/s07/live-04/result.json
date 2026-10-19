@@ -1,0 +1,14 @@
+{
+  "status": "EXECUTED_ADAPTER_VALIDATION_FAILURE",
+  "generation_calls": 1,
+  "provider_reservations": 1,
+  "validated_captures": 0,
+  "command_admissions": 0,
+  "api_post_status": 200,
+  "backend_prompt_seconds": 52.36738,
+  "backend_generation_seconds": 24.3615,
+  "backend_output_tokens": 30,
+  "remaining_authorized_calls": 10,
+  "source": "evidence/s07/isolated-test-source.json",
+  "finding": "Pinned API exposes prompt_eval_cached_count, omitted by adapter allowlist; source-compatible validation added afterward. Raw rejected response was not retained, so exact rejected field cannot be independently reconstructed."
+}

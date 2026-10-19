@@ -1,0 +1,51 @@
+{
+  "status": "RESOLVED_REAL_GATES_EXECUTED",
+  "backend": "local Ollama qwen3.8:27b",
+  "selection_authority": "User explicitly selected local ollama qwen3.8:27b",
+  "generation_calls": 12,
+  "model_load_calls": 4,
+  "verified": [
+    "version metadata",
+    "model manifest",
+    "all model blobs",
+    "installed binary against local build record",
+    "source archive against extracted patched source",
+    "selected request semantics against source"
+  ],
+  "pending": [],
+  "approved_budget": {
+    "max_calls": 12,
+    "output_tokens_per_call": 6000,
+    "automatic_retries": 0,
+    "authority": "User: Do 12 calls"
+  },
+  "real_generation": "10_CAPTURED_2_EARLIER_UNCAPTURED_SPENT",
+  "real_observation_timeout": {
+    "native_input_deadline_ms": 30000,
+    "observed_wire_code": "NOT_AVAILABLE",
+    "backend_logged_cancellation": true,
+    "evidence": "live-01/result.json"
+  },
+  "existing_service_modified": false,
+  "real_failures": [
+    {
+      "evidence": "live-04/result.json",
+      "kind": "adapter validation failure",
+      "inference": "Pinned optional cache counter was omitted by allowlist; rejected raw API response was not retained."
+    }
+  ],
+  "task_owned_runtime": "isolated-runtime/verification.json",
+  "temporary_runtime_stopped": true,
+  "command_rejections": [
+    {
+      "evidence": "live-05/1/application-calls.json",
+      "kind": "captured unsupported command",
+      "command": "Send"
+    },
+    {
+      "evidence": "live-06/4/application-calls.json",
+      "kind": "captured unsupported command",
+      "command": "send_message_to_user"
+    }
+  ]
+}

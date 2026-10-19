@@ -55,7 +55,7 @@ def start():
     return result
 def restore(): return call('restore')
 def pending(): return call('pending') is not None
-def response(): return call('pending')['response']
+def response(): return call('response')
 def accept(response, commands): return call('accept', response, commands)
 def begin(position, command): return call('begin', position, command) is None
 def end(position): return call('end', position) is None
@@ -103,3 +103,9 @@ def context_replay():return call('context_replay')
 def channel_new():return call('channel_new')
 def channel_send(text):return call('channel_send',text)
 def channel_lastsend():return call('channel_lastsend')
+
+# X01 capture precedes the native parser and command admission.
+def model_prompt(raw):return call('model_prompt',raw)
+def model_complete(raw):return call('model_complete',raw)
+def model_parsed(normalized,parsed):return call('model_parsed',normalized,parsed)
+def model_accept(response,normalized,commands):return call('accept',response,commands,normalized)

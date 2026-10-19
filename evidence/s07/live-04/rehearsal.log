@@ -1,0 +1,14 @@
+{"case": 1, "placement": "local", "mailbox": "local", "recover": false, "calls": 2}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 131, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 126, in main
+    case(corpus,root,placement,mailbox,recover,profile=profile,turns=turns,port=a.ollama_port,asset_root=a.ollama_assets)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 45, in case
+    require(p.poll() is None and completed and completed[0]['projection'] is not None,'NOT_AVAILABLE')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

@@ -1,0 +1,196 @@
+{
+  "schema": "s07-verification/2",
+  "status": "PARTIAL_EXECUTED_LIVE_TIMEOUT",
+  "starting_commit": "3fc1af31f2d64583fe4c873b6b656dad2d6b1275",
+  "tested_source": "test-source.json",
+  "tested_source_sha256": "272a67990e97b2f09e4d9f55ae865211aed42b65e502395356172ae6365e9585",
+  "source_changed_after_final_runs": [
+    "integration/neoclaw/model-sources.json"
+  ],
+  "live_generation_calls": 1,
+  "real_model_loads": 1,
+  "adopted": false,
+  "method_counts": {
+    "final_passing_union": 145,
+    "new_s07": 26,
+    "historical_regressions": 119,
+    "unit_run": 138,
+    "new_native": 5,
+    "historical_native": 2,
+    "not_one_uninterrupted_passing_run": true
+  },
+  "runs": [
+    {
+      "command": "uv run --python 3.11 --locked python -m unittest tests.test_model tests.test_model_oracle tests.test_model_network tests.test_contract tests.test_m11 tests.test_responses tests.test_neoclaw_application tests.test_neoclaw tests.test_channel -v",
+      "log": "final-unit-regression.log",
+      "passed": 138,
+      "seconds": 61.462
+    },
+    {
+      "command": "artifacts/s03/venv/bin/python -m unittest integration.neoclaw.test_model_preflight integration.neoclaw.test_model_loop integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send integration.neoclaw.test_promotion_loop.NativePromotion.test_priority_and_belief_independent_same_session -v",
+      "log": "final-native-regression.log",
+      "passed": 6,
+      "loader_errors": 1,
+      "seconds": 219.119,
+      "note": "Wrong NativePromotion class name; no execution failure among six loaded methods."
+    },
+    {
+      "command": "artifacts/s03/venv/bin/python -m unittest integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_priority_and_belief_independent_same_session -v",
+      "log": "final-promotion-regression.log",
+      "passed": 1,
+      "seconds": 62.926
+    }
+  ],
+  "logs": {
+    "final-unit-regression.log": {
+      "sha256": "bb91184d8e073972b83ba70a28ae03ec8790da011b4a7e15f3c52aa672aa16c5"
+    },
+    "final-native-regression.log": {
+      "sha256": "dc574e368e5cccb8653052fea0c91f63e0e4a9b85e3006afbfd84e8f90322f04"
+    },
+    "final-promotion-regression.log": {
+      "sha256": "5431fac228b621150683d578f44143a783d6716b5be4fcf2a6ea2cf8d9836df6"
+    }
+  },
+  "gates": {
+    "BASELINE_SOURCE": {
+      "status": "PASS",
+      "evidence": [
+        "baseline-source.json",
+        "test-source.json",
+        "source-state.json",
+        "ollama-source-verification.json",
+        "ollama-model-files.json",
+        "ollama-runner-files.json"
+      ]
+    },
+    "NATIVE_REQUEST": {
+      "status": "PASS_RECORDED_ORACLE_AND_SOURCE",
+      "limit": "Ollama generation request/response not exercised",
+      "actual_call": "One pinned nonstreaming /api/chat request reached the real llama.cpp runner; final response/usage not captured"
+    },
+    "MODEL_CONTRACT": {
+      "status": "PASS_RECORDED_BACKEND",
+      "tests": [
+        "tests.test_model",
+        "tests.test_model_network"
+      ]
+    },
+    "PROMPT_BINDING": {
+      "status": "PASS_REAL_NATIVE_PRE_GENERATION",
+      "evidence": "native-prompt-bind.json"
+    },
+    "REAL_MODEL": {
+      "status": "EXECUTED_TIMEOUT",
+      "prerequisite": "Budget approved; installed runtime loaded and inference began",
+      "limit": "No complete response captured; positive native workflow failed its original deadline"
+    },
+    "LOCAL_HTTPS": {
+      "status": "PARTIAL",
+      "passed": "Both native startup placements and actual TLS recorded-model completion",
+      "unrun": "Local live case timed out; subsequent HTTPS model cases were not started"
+    },
+    "CAPTURE_RECOVERY": {
+      "status": "PARTIAL",
+      "passed": "Provider SIGKILL and native application capture recovery with recorded model",
+      "unrun": "No real response capture occurred, so post-real-generation capture recovery was not reached"
+    },
+    "BUDGET_UNCERTAINTY": {
+      "status": "PASS_RECORDED_BACKEND_AND_REAL_TIMEOUT",
+      "unknown": "Interrupted actual generation/cost unrun; no exactly-once billing claim",
+      "real_observation": "One spent reservation and original deadline retained; no command admission or automatic retry; backend logged cancellation; final usage remains unknown"
+    },
+    "COMMAND_AUTHORITY": {
+      "status": "PASS_REAL_NATIVE_RECORDED_OUTPUT",
+      "evidence": [
+        "recorded-model-UNSUPPORTED_OPERATION.json",
+        "recorded-model-INVALID_ARGUMENT.json"
+      ]
+    },
+    "CHANNEL_LOOP": {
+      "status": "PARTIAL",
+      "passed": "Real IRC, actual NAL result in next prompt, approved reply with recorded model",
+      "unrun": "Real IRC reached the real model, but timeout prevented S01 dispatch, next prompt and approved reply"
+    },
+    "PRIVACY_ISOLATION": {
+      "status": "PASS_EXERCISED_BOUNDARIES",
+      "limit": "Trusted Python guards/filesystem masks, not hostile-host sandbox; positive promoted set empty"
+    },
+    "COMPAT_REPRO_LEDGER": {
+      "status": "PASS_SELECTED_REGRESSIONS",
+      "limit": "Full historical suites, default Omega, multi-host and chain not run"
+    }
+  },
+  "fixtures": [
+    "Recorded completion backend and SDK responses",
+    "Synthetic initial corpus and comparison clock",
+    "Unused history",
+    "Unused web responses"
+  ],
+  "real": [
+    "Native MeTTaClaw loop/parser/startup",
+    "Original NAL Truth_Deduction",
+    "PeTTa/SWI",
+    "DeTTa",
+    "Chroma metadata",
+    "Pinned E5 corpus construction",
+    "ngIRCd and separate socket peer",
+    "Local owner commits",
+    "Authenticated same-host HTTPS",
+    "Pinned Ollama model load and actual CPU inference attempt (no completed response)"
+  ],
+  "development_failures": [
+    {
+      "kind": "native baseline observation failure",
+      "details": "Initial S06 local subcase exited before peer observation; unchanged recheck passed. Cause not established."
+    },
+    {
+      "kind": "recorded-model fixture format failure",
+      "details": "Wrapped batch conflicted with native line normalizer; prompt/fixture corrected; parser retained."
+    },
+    {
+      "kind": "admission implementation failure",
+      "details": "First AST admission conflicted after separate normalized-text capture; independent null checks fixed."
+    },
+    {
+      "kind": "development in-flight source mismatch",
+      "details": "One batch fixture overlapped a receipt-schema edit; isolated recheck and frozen final test passed."
+    },
+    {
+      "kind": "test discovery error",
+      "details": "NativePromotion name typo; correct NativePromotionLoop target passed."
+    },
+    {
+      "kind": "interpreter recipe failure",
+      "details": "System python3 lacks required modern generic type support; pinned Python 3.11 readiness passed."
+    }
+  ],
+  "real_generation_failures": [],
+  "real_generation_observation_timeouts": [
+    {
+      "case": "local model/local mailbox, first input",
+      "deadline_ms": 30000,
+      "result": "NOT_AVAILABLE",
+      "complete_capture": false,
+      "backend_post_status": 500,
+      "backend_post_seconds": 28.924646847,
+      "backend_prompt_seconds": 26.42,
+      "cancel_observed": true
+    }
+  ],
+  "successful_completion_captures": 0,
+  "generation_authorization": "generation-authorization.json",
+  "post_test_source_change_reason": "Administrative budget/live-run metadata only; all runtime/contract/test code and all numerical/model pins unchanged. Exact tested manifest retained under pre-live/.",
+  "live_runs": [
+    {
+      "command": "HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m integration.neoclaw.model_run --approve-local-generation --approved-calls 12 --out artifacts/s07/live-01",
+      "result": "EXECUTED_TIMEOUT_NOT_COMPLETE",
+      "generation_requests": 1,
+      "spent_reservations": 1,
+      "approved_calls": 12,
+      "unused_calls": 11,
+      "captures": 0,
+      "evidence": "live-01/result.json"
+    }
+  ]
+}

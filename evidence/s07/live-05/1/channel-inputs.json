@@ -1,0 +1,24 @@
+[
+  {
+    "ack": "{\"delivery\":\"acknowledged\",\"delivery_id\":\"9ed3dbc7-7615-5902-a8c8-d38f661ca626\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"persistence\":\"process-restart\",\"route\":\"in-A\",\"scope_ref\":\"synthetic-s06\"}",
+    "ack_calls": 1,
+    "deadline": 1792410456609,
+    "delivery": "{\"body\":{\"causation_id\":\"mail/08e223b0-04a0-57c5-b76f-1a3e97f0ddb2\",\"correlation_id\":\"08e223b0-04a0-57c5-b76f-1a3e97f0ddb2\",\"ref\":{\"digest\":\"e99f9b72a63b1bd972f472c539521580cfbd099b27e199a1753f3c88035ba67b\",\"id\":\"1344c446-7065-5da2-b009-af56b9953d92\",\"revision\":1,\"scope_ref\":\"synthetic-s06\"},\"reply_route\":\"out-bridge\"},\"delivery\":\"observed-unacknowledged\",\"delivery_id\":\"9ed3dbc7-7615-5902-a8c8-d38f661ca626\",\"order\":1,\"route\":\"in-A\",\"scope_ref\":\"synthetic-s06\"}",
+    "envelope": "{\"bridge\":\"d3fac182-b1cb-4308-be91-0319c4259b9a\",\"deadline_ms\":1792410261330,\"epoch\":\"fdcc7ece-7b1a-4cd1-8ebc-5aab487d56af\",\"id\":\"08e223b0-04a0-57c5-b76f-1a3e97f0ddb2\",\"kind\":\"ingress\",\"nick\":\"peer\",\"observed_ms\":1792410141330,\"profile\":\"isolated-irc-mailbox/1\",\"route\":\"in-A\",\"scope\":\"synthetic-s06\",\"sequence\":1,\"session\":\"1751f593-e03f-4593-9793-1bcc543e00bb\",\"target\":\"#s06-generated\",\"text\":\"Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).\"}",
+    "id": "08e223b0-04a0-57c5-b76f-1a3e97f0ddb2",
+    "polls": 1,
+    "slot": 1,
+    "wait_deadline": 1792410166577
+  },
+  {
+    "ack": "{\"delivery\":\"acknowledged\",\"delivery_id\":\"878082f0-4c80-5d05-817f-19d6401ac20a\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"persistence\":\"process-restart\",\"route\":\"in-A\",\"scope_ref\":\"synthetic-s06\"}",
+    "ack_calls": 1,
+    "deadline": 1792410537878,
+    "delivery": "{\"body\":{\"causation_id\":\"mail/dc3950fb-a9cc-529c-8c3b-294a68f363eb\",\"correlation_id\":\"dc3950fb-a9cc-529c-8c3b-294a68f363eb\",\"ref\":{\"digest\":\"a23c3d7ce6d814ab47276c50601009cd45998b873e2c2d59fb4f5e635e9596fa\",\"id\":\"4faf2f1a-218c-5a2d-9388-b1942be54c01\",\"revision\":1,\"scope_ref\":\"synthetic-s06\"},\"reply_route\":\"out-bridge\"},\"delivery\":\"observed-unacknowledged\",\"delivery_id\":\"878082f0-4c80-5d05-817f-19d6401ac20a\",\"order\":2,\"route\":\"in-A\",\"scope_ref\":\"synthetic-s06\"}",
+    "envelope": "{\"bridge\":\"d3fac182-b1cb-4308-be91-0319c4259b9a\",\"deadline_ms\":1792410357169,\"epoch\":\"fdcc7ece-7b1a-4cd1-8ebc-5aab487d56af\",\"id\":\"dc3950fb-a9cc-529c-8c3b-294a68f363eb\",\"kind\":\"ingress\",\"nick\":\"peer\",\"observed_ms\":1792410237169,\"profile\":\"isolated-irc-mailbox/1\",\"route\":\"in-A\",\"scope\":\"synthetic-s06\",\"sequence\":2,\"session\":\"1751f593-e03f-4593-9793-1bcc543e00bb\",\"target\":\"#s06-generated\",\"text\":\"Synthetic S07 second request: inspect the actual tool result above, then send exactly Synthetic S07 reply: native calculation observed.\"}",
+    "id": "dc3950fb-a9cc-529c-8c3b-294a68f363eb",
+    "polls": 1,
+    "slot": 2,
+    "wait_deadline": 1792410247830
+  }
+]

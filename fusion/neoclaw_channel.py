@@ -47,7 +47,11 @@ class ChannelAdoption:
             if delivery is None:time.sleep(.05);row=self.input();continue
             value=self.client.get(delivery['body']['ref']);require(value['kind']=='ingress' and value['id']==delivery['body']['correlation_id'],'CONFLICT')
             require(self.db.execute('SELECT 1 FROM app_channel_inputs WHERE id=?',(value['id'],)).fetchone() is None,'CONFLICT')
-            deadline=time.time_ns()//1_000_000+self.app.config['invocation_timeout_ms']
+            timeout=self.app.config['invocation_timeout_ms']
+            if self.app.model_enabled:
+                from .model_contracts import deadline_limit
+                timeout=deadline_limit(self.app.model.client.cfg['profile'])
+            deadline=time.time_ns()//1_000_000+timeout
             with self.db:self.db.execute('UPDATE app_channel_inputs SET id=?,delivery=?,envelope=?,deadline=? WHERE slot=?',
                 (value['id'],canonical(delivery).decode(),canonical(value).decode(),deadline,slot))
             self.app.hook('after_application_input_commit');row=self.input()

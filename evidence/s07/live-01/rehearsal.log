@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 90, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 86, in main
+    case(corpus,root,placement,mailbox,recover)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/model_run.py", line 33, in case
+    require(run.finish(p)==(0,{'status':'BOUNDED_STOP'}),'NOT_AVAILABLE')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

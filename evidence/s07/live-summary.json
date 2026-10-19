@@ -1,0 +1,467 @@
+{
+  "status": "BOUNDED_S07_COMPLETE_WITH_RECORDED_FAILURES",
+  "adopted": true,
+  "approved_calls": 12,
+  "spent_generation_reservations": 12,
+  "unused_calls": 0,
+  "successful_captures": 10,
+  "authorized_batches": 8,
+  "rejected_batches": 2,
+  "unknown_or_uncaptured": 2,
+  "successful_workflows": 3,
+  "measured_capture_seconds": {
+    "min": 69.5826034,
+    "median": 74.8430559075,
+    "max": 85.694853684
+  },
+  "captured_usage": {
+    "input_tokens": 3220,
+    "output_tokens": 216,
+    "unknown_usage_calls": 2
+  },
+  "deadline_ms": 300000,
+  "historical_deadline_ms": 30000,
+  "automatic_regenerations": 0,
+  "model_or_prompt_changes_after_semantic_rejection": false,
+  "calls": [
+    {
+      "evidence": "live-01",
+      "id": "08e08a85-8373-555e-84db-c3fd051d2cc1",
+      "session": "80620954-f647-484b-9b7c-49b2b5eafb1c",
+      "slot": 1,
+      "profile": "neoclaw-ollama-qwen38-text/1",
+      "model_placement": "local",
+      "mailbox_placement": "local",
+      "deadline_ms": 1792407481051,
+      "reserved": 1,
+      "captured_ms": null,
+      "failure_code": "NOT_AVAILABLE",
+      "captured": false,
+      "admission": null,
+      "raw_text": null,
+      "usage": null,
+      "durations_ns": null,
+      "rpc_reservations": 2
+    },
+    {
+      "evidence": "live-04/1",
+      "id": "b292c510-43ff-506a-afc8-74db4682ad57",
+      "session": "7abc6d2a-e78f-45ff-9924-ced53f5c0e3c",
+      "slot": 1,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "local",
+      "mailbox_placement": "local",
+      "deadline_ms": 1792410185098,
+      "reserved": 1,
+      "captured_ms": null,
+      "failure_code": "NOT_AVAILABLE",
+      "captured": false,
+      "admission": null,
+      "raw_text": null,
+      "usage": null,
+      "durations_ns": null,
+      "rpc_reservations": 2
+    },
+    {
+      "evidence": "live-05/1",
+      "id": "53bfa75b-0b10-5975-992c-b549706e6653",
+      "session": "1751f593-e03f-4593-9793-1bcc543e00bb",
+      "slot": 1,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "local",
+      "mailbox_placement": "local",
+      "deadline_ms": 1792410456609,
+      "reserved": 1,
+      "captured_ms": 1792410235854,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 25504140000,
+        "load": 2246717,
+        "prompt": 52793138000,
+        "total": 78301957642
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-05/1",
+      "id": "e6ce7c2d-0635-5474-8e8e-64939efac772",
+      "session": "1751f593-e03f-4593-9793-1bcc543e00bb",
+      "slot": 2,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "local",
+      "mailbox_placement": "local",
+      "deadline_ms": 1792410537878,
+      "reserved": 1,
+      "captured_ms": 1792410311771,
+      "failure_code": null,
+      "captured": true,
+      "admission": "rejected:UNSUPPORTED_OPERATION",
+      "raw_text": "Send Message to User Synthetic S07 reply: native calculation observed.",
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 15,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 12543145000,
+        "load": 2920442,
+        "prompt": 60158348000,
+        "total": 72707519496
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/1",
+      "id": "5965a068-55a3-544f-b5bf-3cc03f803bca",
+      "session": "892c0215-1ae4-41e1-a91b-d4d6f62994b4",
+      "slot": 1,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "network",
+      "mailbox_placement": "local",
+      "deadline_ms": 1792410822829,
+      "reserved": 1,
+      "captured_ms": 1792410600325,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 23852080000,
+        "load": 1462828,
+        "prompt": 52681090000,
+        "total": 76537940821
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/1",
+      "id": "86db5eac-de30-59e8-826d-f17f70963f1c",
+      "session": "892c0215-1ae4-41e1-a91b-d4d6f62994b4",
+      "slot": 2,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "network",
+      "mailbox_placement": "local",
+      "deadline_ms": 1792410915641,
+      "reserved": 1,
+      "captured_ms": 1792410686386,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "send Synthetic S07 reply: native calculation observed.",
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 12,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 9097020000,
+        "load": 1292516,
+        "prompt": 60481501000,
+        "total": 69582603400
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/2",
+      "id": "4d463d69-e94b-5ffe-85f4-82373974e66b",
+      "session": "d8fbb89c-4859-4a07-ac11-e3f2b23f5b43",
+      "slot": 1,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "network",
+      "mailbox_placement": "network",
+      "deadline_ms": 1792411004699,
+      "reserved": 1,
+      "captured_ms": 1792410784744,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 24996286000,
+        "load": 1304122,
+        "prompt": 53973901000,
+        "total": 78975895639
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/2",
+      "id": "48c0c89b-56df-52c0-a18a-70e35c800a90",
+      "session": "d8fbb89c-4859-4a07-ac11-e3f2b23f5b43",
+      "slot": 2,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "network",
+      "mailbox_placement": "network",
+      "deadline_ms": 1792411086626,
+      "reserved": 1,
+      "captured_ms": 1792410858447,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "send Synthetic S07 reply: native calculation observed.",
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 12,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 8976584000,
+        "load": 1826446,
+        "prompt": 61577121000,
+        "total": 70558363458
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/3",
+      "id": "951ae6ca-806f-5406-8432-5b50f84905ad",
+      "session": "5cce9b75-c434-4f3e-8fbb-0465ac7a3d12",
+      "slot": 1,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "local",
+      "mailbox_placement": "network",
+      "deadline_ms": 1792411175892,
+      "reserved": 1,
+      "captured_ms": 1792410962667,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 29962745000,
+        "load": 2692528,
+        "prompt": 55727283000,
+        "total": 85694853684
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/3",
+      "id": "3fda71be-d5bc-5962-8058-792f52626dfb",
+      "session": "5cce9b75-c434-4f3e-8fbb-0465ac7a3d12",
+      "slot": 2,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "local",
+      "mailbox_placement": "network",
+      "deadline_ms": 1792411264714,
+      "reserved": 1,
+      "captured_ms": 1792411036458,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "send Synthetic S07 reply: native calculation observed.",
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 12,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 9247020000,
+        "load": 1264332,
+        "prompt": 61271542000,
+        "total": 70521961165
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/4",
+      "id": "d41c0ecc-d140-5930-94f6-20ef98380298",
+      "session": "ae9d9615-a13e-4fbe-a01b-2d72af01e163",
+      "slot": 1,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "network",
+      "mailbox_placement": "network",
+      "deadline_ms": 1792411354594,
+      "reserved": 1,
+      "captured_ms": 1792411133599,
+      "failure_code": null,
+      "captured": true,
+      "admission": "authorized",
+      "raw_text": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))",
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 25487952000,
+        "load": 2141788,
+        "prompt": 52428736000,
+        "total": 77924699784
+      },
+      "rpc_reservations": 4
+    },
+    {
+      "evidence": "live-06/4",
+      "id": "23872c99-7334-585d-91cb-2339c31023a5",
+      "session": "ae9d9615-a13e-4fbe-a01b-2d72af01e163",
+      "slot": 2,
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "model_placement": "network",
+      "mailbox_placement": "network",
+      "deadline_ms": 1792411449109,
+      "reserved": 1,
+      "captured_ms": 1792411223535,
+      "failure_code": null,
+      "captured": true,
+      "admission": "rejected:UNSUPPORTED_OPERATION",
+      "raw_text": "send_message_to_user Synthetic S07 reply: native calculation observed.",
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 15,
+        "reasoning_tokens": null
+      },
+      "durations_ns": {
+        "generation": 11748631000,
+        "load": 1924832,
+        "prompt": 61394562000,
+        "total": 73148170994
+      },
+      "rpc_reservations": 4
+    }
+  ],
+  "sessions": [
+    {
+      "evidence": "live-01",
+      "model": "local",
+      "mailbox": "local",
+      "calls": 1,
+      "pass_workflow": false,
+      "status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "NOT_AVAILABLE"
+      },
+      "native_deduction": false,
+      "native_feedback_in_next_model_input": false,
+      "recovered": false,
+      "approved_peer_reply": false
+    },
+    {
+      "evidence": "live-04/1",
+      "model": "local",
+      "mailbox": "local",
+      "calls": 1,
+      "pass_workflow": false,
+      "status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "NOT_AVAILABLE"
+      },
+      "native_deduction": false,
+      "native_feedback_in_next_model_input": false,
+      "recovered": false,
+      "approved_peer_reply": false
+    },
+    {
+      "evidence": "live-05/1",
+      "model": "local",
+      "mailbox": "local",
+      "calls": 2,
+      "pass_workflow": false,
+      "status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "UNSUPPORTED_OPERATION"
+      },
+      "native_deduction": true,
+      "native_feedback_in_next_model_input": true,
+      "recovered": false,
+      "approved_peer_reply": false
+    },
+    {
+      "evidence": "live-06/1",
+      "model": "network",
+      "mailbox": "local",
+      "calls": 2,
+      "pass_workflow": true,
+      "status": {
+        "status": "BOUNDED_STOP"
+      },
+      "native_deduction": true,
+      "native_feedback_in_next_model_input": true,
+      "recovered": true,
+      "approved_peer_reply": true,
+      "recovery": {
+        "captured_rows_retained": 1,
+        "exact_prompt_identity_deadline_result_retained": true,
+        "regenerations": 0,
+        "signal": "SIGKILL"
+      }
+    },
+    {
+      "evidence": "live-06/2",
+      "model": "network",
+      "mailbox": "network",
+      "calls": 2,
+      "pass_workflow": true,
+      "status": {
+        "status": "BOUNDED_STOP"
+      },
+      "native_deduction": true,
+      "native_feedback_in_next_model_input": true,
+      "recovered": false,
+      "approved_peer_reply": true
+    },
+    {
+      "evidence": "live-06/3",
+      "model": "local",
+      "mailbox": "network",
+      "calls": 2,
+      "pass_workflow": true,
+      "status": {
+        "status": "BOUNDED_STOP"
+      },
+      "native_deduction": true,
+      "native_feedback_in_next_model_input": true,
+      "recovered": false,
+      "approved_peer_reply": true
+    },
+    {
+      "evidence": "live-06/4",
+      "model": "network",
+      "mailbox": "network",
+      "calls": 2,
+      "pass_workflow": false,
+      "status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "UNSUPPORTED_OPERATION"
+      },
+      "native_deduction": true,
+      "native_feedback_in_next_model_input": true,
+      "recovered": true,
+      "approved_peer_reply": false,
+      "recovery": {
+        "captured_rows_retained": 1,
+        "exact_prompt_identity_deadline_result_retained": true,
+        "regenerations": 0,
+        "signal": "SIGKILL"
+      }
+    }
+  ],
+  "limits": [
+    "Ten successful captures would not erase any prior failure.",
+    "Latency sample is a shared CPU machine and narrow synthetic prompts, not a general model benchmark.",
+    "Failed adapter response was not retained; omitted cache-counter field is a source-verified gap, not a reconstructed raw response."
+  ]
+}

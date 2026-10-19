@@ -1,0 +1,113 @@
+{
+  "schema": "s07-verification/1",
+  "starting_commit": "3fc1af31f2d64583fe4c873b6b656dad2d6b1275",
+  "status": "BLOCKED_PARTIAL_S07",
+  "complete": false,
+  "gates": [
+    {
+      "gate": "BASELINE_SOURCE",
+      "status": "PARTIAL",
+      "observed": "S06 hashes/dependencies and 119 selected historical methods pass across runs. Selected new model inputs remain unresolved."
+    },
+    {
+      "gate": "NATIVE_REQUEST",
+      "status": "PARTIAL",
+      "observed": "Source-checked original/pure adapter request and render parity passes recorded-response fixtures; no selected live SDK/runtime mapping."
+    },
+    {
+      "gate": "MODEL_CONTRACT",
+      "status": "NOT_RUN",
+      "observed": "Owner/complete/observe contract requirements documented; typed provider and registration not implemented before backend selection."
+    },
+    {
+      "gate": "PROMPT_BINDING",
+      "status": "NOT_RUN",
+      "observed": "Pre-generation application occurrence/snapshot and capture lifecycle not implemented."
+    },
+    {
+      "gate": "REAL_MODEL",
+      "status": "BLOCKED",
+      "observed": "No selected authorized backend, configuration and finite approved test budget."
+    },
+    {
+      "gate": "LOCAL_HTTPS",
+      "status": "BLOCKED",
+      "observed": "No selected model provider; neither model placement executed. Existing S06 mailbox placements are baseline evidence only."
+    },
+    {
+      "gate": "CAPTURE_RECOVERY",
+      "status": "BLOCKED",
+      "observed": "No real model capture or post-capture native recovery; no fixture substitution."
+    },
+    {
+      "gate": "BUDGET_UNCERTAINTY",
+      "status": "NOT_RUN",
+      "observed": "One-reservation requirements documented, not implemented or tested."
+    },
+    {
+      "gate": "COMMAND_AUTHORITY",
+      "status": "NOT_RUN",
+      "observed": "Existing whole-batch path unchanged; live selected subset and adversarial generated proposals not exercised."
+    },
+    {
+      "gate": "CHANNEL_LOOP",
+      "status": "BLOCKED",
+      "observed": "S06 real IRC with scripted model passes baseline recheck; real-model end-to-end chain unrun."
+    },
+    {
+      "gate": "PRIVACY_ISOLATION",
+      "status": "NOT_RUN",
+      "observed": "No model prompt disclosed; selected provider process isolation and disclosure enforcement unimplemented."
+    },
+    {
+      "gate": "COMPAT_REPRO_LEDGER",
+      "status": "PARTIAL",
+      "observed": "Historical profiles/rows preserved, source oracle recipe and X01 blocked entry recorded. No runnable live startup recipe or selected provider pin."
+    }
+  ],
+  "independent_checks": [
+    {
+      "check": "S06_SOURCE_RECONCILIATION",
+      "status": "PASS",
+      "evidence": "baseline-source.json"
+    },
+    {
+      "check": "NATIVE_REQUEST_RENDER_FIXTURE",
+      "status": "PASS",
+      "evidence": "native-request-oracle.json"
+    },
+    {
+      "check": "SELECTED_BASELINE_RECHECK",
+      "status": "PASS_WITH_RECORDED_INITIAL_FAILURE",
+      "evidence": "run-results.json"
+    }
+  ],
+  "prerequisites": "provider-prerequisites.json",
+  "test_source": "test-source.json",
+  "tests": {
+    "new": 4,
+    "historical_selected": 119,
+    "passing_union": 123
+  },
+  "real": [
+    "Existing S06 baseline: ngIRCd, separate peer, DeTTa, actual native Omega and same-host mailbox HTTPS",
+    "Existing S05 native belief/priority baseline"
+  ],
+  "fixtures": [
+    "Recorded SDK response objects in new oracle; no SDK or generation",
+    "Historical S06 external-model script, generated corpus/clock and unused history"
+  ],
+  "live_generation_attempts": 0,
+  "failures": "run-results.json",
+  "observation_timeouts": [],
+  "not_run": [
+    "ModelInference generation/provider/HTTPS",
+    "Pre-generation durable prompt identity",
+    "Provider/application response capture and recovery",
+    "Live model command subset/admission and approved reply",
+    "Model privacy/credential isolation",
+    "New model SIGKILL tests",
+    "Full default Omega, vision, migration, private export, multi-host and chain"
+  ],
+  "stop": "S07 prerequisite boundary; no S08 or fallback"
+}

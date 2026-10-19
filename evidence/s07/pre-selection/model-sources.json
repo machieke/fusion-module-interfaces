@@ -1,0 +1,29 @@
+{
+  "schema": "neoclaw-s07-source-preparation/1",
+  "status": "BACKEND_SELECTION_PENDING",
+  "starting_fusion_commit": "3fc1af31f2d64583fe4c873b6b656dad2d6b1275",
+  "native": {
+    "repository": "https://github.com/patham9/mettaclaw.git",
+    "commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+    "file": "lib_llm_ext.py",
+    "sha256": "9c819f2d15aa36277548d0d9e7a146c07399cb17e6e7edee694284421b097f5d",
+    "functions": [
+      "_chat",
+      "_clean",
+      "useClaude",
+      "useMiniMax",
+      "useOpenRouter"
+    ]
+  },
+  "selected_backend": null,
+  "selected_model": null,
+  "selected_profile": null,
+  "selected_sdk": null,
+  "context_window": null,
+  "token_accounting": null,
+  "authorized_session_budget": null,
+  "live_calls": 0,
+  "source_of_authority": "Pending operator response; no authorization inferred from discovery.",
+  "historical_runtime_pins": "integration/neoclaw/sources.json",
+  "historical_runtime_manifest_sha256": "e32951aed90742d399ee3f02a336187fd441682f6abb18e42b76d41c1c3e0fec"
+}

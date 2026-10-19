@@ -548,3 +548,34 @@ channel storage/mailbox placement. Do not move cognitive owners or claim durable
 IRC history, exactly-once external delivery, live-model safety or a hostile-host
 sandbox. Bounds, intentional legacy differences and recovery are defined in the
 [S06 contract decisions](../omega-adoption/mettaclaw-neoclaw/s06-contract-decisions.md).
+
+## ADR-019: S07 selected local backend and independent completion capture
+
+Status: bounded real integration demonstrated; failures retained.
+The user selected local Ollama `qwen3.8:27b` and twelve generation calls. Pin the
+binary, source archive/CPU patch, complete model blobs and actual runtime files.
+Keep model invocation distinct from native logical rule execution and cognitive
+owners. Native `_chat`/`_clean`, parser, skill dispatch and feedback remain checked;
+only the selected S01 expression and S06 reply are authorized.
+
+Commit prompt/source/slot before generation, then independent provider acceptance,
+one reservation and result capture. Capture in the application before parsing or
+whole-batch admission. Recheck authority on replay. Unknown reservations remain
+spent; unsupported commands remain attached to the captured output.
+
+After the initial thirty-second timeout, the user requested a feasible deadline
+and all twelve calls. Fresh `/2` occurrences bind five minutes; `/1`, old failed
+occurrences and tool deadlines are preserved. A task-owned loopback instance used
+the same verified binary/model after the shared instance remained busy. This
+selection preceded admission and changed no model math. It was stopped afterward.
+An omitted source-declared cache-counter response field was validated without
+changing total usage or the closed receipt.
+
+Ten real responses were captured; three full local/HTTPS workflows passed and
+two real native SIGKILLs recovered capture. Two unsupported reply commands were
+refused. Twelve calls are spent, with no regeneration, prompt repair, fallback or
+additional authority inferred from model text. Preserve every source snapshot and
+failure. X01 is an exact extension adoption outside the fifteen-family denominator;
+eight prior operation adoptions and nine user commands remain unchanged.
+See [S07 decisions](../omega-adoption/mettaclaw-neoclaw/s07-contract-decisions.md)
+and the [executed report](../omega-adoption/mettaclaw-neoclaw/s07.md).

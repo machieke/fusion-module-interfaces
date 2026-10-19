@@ -51,10 +51,10 @@ class ControlledRun:
         self.processes.append(process)
         return process
 
-    def operator(self):
+    def operator(self, seconds=120):
         ready = self.h.server_root/'operator-ready.json'
         ready.unlink(missing_ok=True)  # A restarted operator must publish its own PID.
-        process = self.spawn('integration.neoclaw.operator', [self.h.config_path, '--ready', ready, '--seconds', '120'], 'operator')
+        process = self.spawn('integration.neoclaw.operator', [self.h.config_path, '--ready', ready, '--seconds', str(seconds)], 'operator')
         self.h.wait_file(ready, process)
         assert json.loads(ready.read_text())['pid'] == process.pid
         return process

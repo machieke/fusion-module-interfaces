@@ -1,0 +1,30 @@
+{
+  "status": "SELECTED_RUNTIME_VERIFIED_BUDGET_PENDING",
+  "backend": "local Ollama qwen3.8:27b",
+  "selection_authority": "User explicitly selected local ollama qwen3.8:27b",
+  "generation_calls": 0,
+  "model_load_calls": 0,
+  "verified": [
+    "version metadata",
+    "model manifest",
+    "all model blobs",
+    "installed binary against local build record",
+    "source archive against extracted patched source",
+    "selected request semantics against source"
+  ],
+  "pending": [
+    "finite operator-approved generation budget"
+  ],
+  "question": {
+    "max_calls": 12,
+    "alternative_max_calls": 6,
+    "max_output_tokens_per_call": 6000,
+    "automatic_retries": 0,
+    "accepted_input_deadline_ms": 30000
+  },
+  "approved_budget": null,
+  "real_generation": "NOT_RUN",
+  "real_failure": null,
+  "real_observation_timeout": null,
+  "existing_service_modified": false
+}

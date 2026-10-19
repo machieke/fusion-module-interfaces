@@ -1,0 +1,35 @@
+{
+  "pid": 997009,
+  "argv": [
+    "bwrap",
+    "--die-with-parent",
+    "--ro-bind",
+    "/",
+    "/",
+    "--tmpfs",
+    "/home/purplezky",
+    "--bind",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s07/isolated-runtime-02",
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s07/isolated-runtime-02",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--",
+    "/usr/local/bin/ollama",
+    "serve"
+  ],
+  "selected_environment": {
+    "OLLAMA_HOST": "127.0.0.1:48173",
+    "OLLAMA_MODELS": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s07/isolated-runtime-02/models",
+    "OLLAMA_NO_CLOUD": "true",
+    "OLLAMA_MAX_LOADED_MODELS": "1",
+    "OLLAMA_NUM_PARALLEL": "1",
+    "OLLAMA_KEEP_ALIVE": "10m",
+    "OLLAMA_CONTEXT_LENGTH": "32768"
+  },
+  "model_manifest": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+  "binary_sha256": "db8d6a16322494d762bf5394d5e5318d48f42e93f9dd44888d48d3a12099d43c",
+  "private_home_visible": false,
+  "scope": "task-owned local runtime; same pinned model and binary; no generation in launcher"
+}

@@ -1,0 +1,8 @@
+[GIN] 2026/10/19 - 10:57:32 | 200 |      33.404µs |       127.0.0.1 | GET      "/api/version"
+[GIN] 2026/10/19 - 10:57:32 | 200 |   33.239858ms |       127.0.0.1 | GET      "/api/tags"
+slot   operator(): id  0 | task 0 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 295
+slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    291, progress = 0.99, t =  26.42 s / 11.01 tokens per second
+[GIN] 2026/10/19 - 10:58:01 | 500 | 28.924646847s |       127.0.0.1 | POST     "/api/chat"
+srv          stop: cancel task, id_task = 0
+slot      release: id  0 | task 0 | stop processing: n_tokens = 300, truncated = 0
+srv  update_slots: all slots are idle

@@ -110,16 +110,16 @@ SyslogFacility = none
         require(listeners==[dict(table='tcp',address=f'0100007F:{port:04X}')],'UNSUPPORTED_PROFILE')
         self.isolation=dict(listeners=listeners,server_sha256=digest(SERVER.read_bytes()),config=cfg.read_text(),passive=True,irc_tls=False)
         return port
-    def start_bridge(self):
+    def start_bridge(self, seconds=180):
         if self.bridge_config is None:
             self.bridge_config=dict(client=str(self.clients['bridge']),database=str(self.bridge_root/'bridge.sqlite'),
-                server=dict(host='127.0.0.1',port=self.irc_port),nick='omega',seconds=180,test_failpoints=True,failpoint_marker=str(self.bridge_root/'pause.json'),
+                server=dict(host='127.0.0.1',port=self.irc_port),nick='omega',seconds=seconds,test_failpoints=True,failpoint_marker=str(self.bridge_root/'pause.json'),
                 denied_paths=self.denied+[str(self.caller),str(self.peer_root),str(self.server_root)])
         write(self.bridge_config_path,self.bridge_config);ready=self.bridge_root/'ready.json';ready.unlink(missing_ok=True)
         self.bridge=self.spawn([sys.executable,'-m','integration.neoclaw.channel_actor','bridge',str(self.bridge_config_path),'--ready',str(ready)],'bridge')
         self.wait(ready,self.bridge);return self.bridge
-    def start_peer(self):
-        write(self.peer_config_path,dict(port=self.irc_port,target=self.base['target'],log=str(self.peer_root/'traffic.jsonl'),seconds=180))
+    def start_peer(self, seconds=180):
+        write(self.peer_config_path,dict(port=self.irc_port,target=self.base['target'],log=str(self.peer_root/'traffic.jsonl'),seconds=seconds))
         ready=self.peer_root/'ready.json';ready.unlink(missing_ok=True)
         self.peer=self.spawn([sys.executable,'-m','integration.neoclaw.channel_actor','peer',str(self.peer_config_path),'--ready',str(ready)],'peer',True)
         self.wait(ready,self.peer);return self.peer

@@ -1,0 +1,42 @@
+{
+  "status": "BLOCKED",
+  "checked_at": "2026-10-19T10:04:27.626314+00:00",
+  "inspection_scope": "One bounded inspection of pinned native wrappers, their exact environment-variable names and loopback Ollama metadata. No keys or other-account files read; no generation or download.",
+  "native_environment_presence": {
+    "OPENROUTER_API_KEY": false,
+    "ASI_API_KEY": false,
+    "ANTHROPIC_API_KEY": false
+  },
+  "provider_sdk_environment": "artifacts/s03/venv",
+  "sdk_versions": {
+    "openai": null,
+    "anthropic": null,
+    "httpx": "0.28.1"
+  },
+  "local_candidate": {
+    "cli": "/usr/local/bin/ollama",
+    "binary_sha256": "db8d6a16322494d762bf5394d5e5318d48f42e93f9dd44888d48d3a12099d43c",
+    "observed_version": "0.40.0+mlx.cpu.1",
+    "inspection_endpoint": "127.0.0.1:11434",
+    "commands": [
+      "OLLAMA_HOST=127.0.0.1:11434 ollama --version",
+      "OLLAMA_HOST=127.0.0.1:11434 ollama list"
+    ],
+    "available_candidate_model": "llama3.1:8b",
+    "listed_digest_prefix": "46e0c10c039e",
+    "selected": false,
+    "authorized": false,
+    "full_model_tokenizer_runtime_source_verified": false,
+    "computation_location_verified": false
+  },
+  "missing": [
+    "Explicitly selected authorized backend/model and provider configuration",
+    "Finite operator-approved session invocation/output-token/time limits; spending cap if hosted",
+    "Selected SDK/runtime/model identity and verified context/finish/usage/retry behavior"
+  ],
+  "user_question_pending": true,
+  "real_generation_attempts": 0,
+  "hosted_requests": 0,
+  "cost_observation": "No model call made; no pricing or billing estimate asserted.",
+  "fallback": false
+}

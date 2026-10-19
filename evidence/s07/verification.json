@@ -1,0 +1,492 @@
+{
+  "schema": "s07-verification/3",
+  "status": "BOUNDED_S07_COMPLETE_WITH_RECORDED_FAILURES",
+  "starting_commit": "3fc1af31f2d64583fe4c873b6b656dad2d6b1275",
+  "tested_source": "remaining-live-source.json",
+  "tested_source_sha256": "afba51427be2d6765cd3c02234dd570fec980d88ecd5b5943dfa8ea9454fe2b4",
+  "source_changed_after_final_runs": [
+    "integration/neoclaw/model-sources.json"
+  ],
+  "live_generation_calls": 12,
+  "real_model_loads": 4,
+  "adopted": true,
+  "method_counts": {
+    "final_passing_union": 149,
+    "new_s07": 30,
+    "historical_regressions": 119,
+    "last_broad_unit_run": 140,
+    "latest_adapter_run": 24,
+    "not_one_uninterrupted_passing_run": true
+  },
+  "runs": [
+    {
+      "command": "uv run --python 3.11 --locked python -m unittest tests.test_model tests.test_model_oracle tests.test_model_network tests.test_contract tests.test_m11 tests.test_responses tests.test_neoclaw_application tests.test_neoclaw tests.test_channel -v",
+      "log": "final-unit-regression.log",
+      "passed": 138,
+      "seconds": 61.462
+    },
+    {
+      "command": "artifacts/s03/venv/bin/python -m unittest integration.neoclaw.test_model_preflight integration.neoclaw.test_model_loop integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send integration.neoclaw.test_promotion_loop.NativePromotion.test_priority_and_belief_independent_same_session -v",
+      "log": "final-native-regression.log",
+      "passed": 6,
+      "loader_errors": 1,
+      "seconds": 219.119,
+      "note": "Wrong NativePromotion class name; no execution failure among six loaded methods."
+    },
+    {
+      "command": "artifacts/s03/venv/bin/python -m unittest integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_priority_and_belief_independent_same_session -v",
+      "log": "final-promotion-regression.log",
+      "passed": 1,
+      "seconds": 62.926
+    },
+    {
+      "command": "uv run --python 3.11 --locked python -m unittest tests.test_model tests.test_model_network tests.test_model_oracle -v",
+      "log": "cpu-contract-tests.log",
+      "passed": 23,
+      "seconds": 1.837,
+      "source": "cpu-test-source.json"
+    },
+    {
+      "command": "HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m unittest integration.neoclaw.test_model_loop.ModelLoop.test_cpu_profile_kill_retains_input_and_tool_deadlines -v",
+      "log": "cpu-native-fixture.log",
+      "passed": 1,
+      "seconds": 33.553,
+      "source": "cpu-test-source.json"
+    },
+    {
+      "command": "uv run --python 3.11 --locked python -m unittest tests.test_model tests.test_model_network tests.test_model_oracle tests.test_contract tests.test_m11 tests.test_responses tests.test_neoclaw_application tests.test_neoclaw tests.test_channel -v",
+      "log": "cpu-unit-regression.log",
+      "passed": 140,
+      "seconds": 63.848,
+      "source": "cpu-test-source.json"
+    },
+    {
+      "command": "HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m unittest integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send -v",
+      "log": "cpu-channel-regression.log",
+      "passed": 1,
+      "seconds": 79.544,
+      "source": "cpu-test-source.json"
+    },
+    {
+      "command": "uv run --python 3.11 --locked python -m unittest tests.test_model tests.test_model_network tests.test_model_oracle -v",
+      "log": "isolated-contract-tests.log",
+      "passed": 23,
+      "seconds": 2.189,
+      "source": "isolated-test-source.json"
+    },
+    {
+      "command": "HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m unittest integration.neoclaw.test_model_loop.ModelLoop.test_cpu_profile_kill_retains_input_and_tool_deadlines -v",
+      "log": "isolated-native-fixture.log",
+      "passed": 1,
+      "seconds": 38.146,
+      "source": "isolated-test-source.json"
+    },
+    {
+      "command": "uv run --python 3.11 --locked python -m unittest tests.test_model tests.test_model_network tests.test_model_oracle -v",
+      "log": "cache-counter-contract-tests.log",
+      "passed": 24,
+      "seconds": 2.233,
+      "source": "cache-counter-test-source.json"
+    }
+  ],
+  "logs": {
+    "final-unit-regression.log": {
+      "sha256": "bb91184d8e073972b83ba70a28ae03ec8790da011b4a7e15f3c52aa672aa16c5"
+    },
+    "final-native-regression.log": {
+      "sha256": "dc574e368e5cccb8653052fea0c91f63e0e4a9b85e3006afbfd84e8f90322f04"
+    },
+    "final-promotion-regression.log": {
+      "sha256": "5431fac228b621150683d578f44143a783d6716b5be4fcf2a6ea2cf8d9836df6"
+    },
+    "cpu-contract-tests.log": {
+      "sha256": "b76f915d8ba73bb0b3b7553703b2f75371059b5678b8729f3ab74f40f7ce27c2"
+    },
+    "cpu-native-fixture.log": {
+      "sha256": "82d32e26550c0f9204c15dcfb9f26acc67a03a3564ffb2c5eaac960e732fb0c0"
+    },
+    "cpu-unit-regression.log": {
+      "sha256": "ea3a0f8b34b17349f7fb98cfcc454357898694be5740776ce8e0f996634d14fc"
+    },
+    "cpu-channel-regression.log": {
+      "sha256": "da550034f90557c7128c7cb582b0335e25a90bdef7ec6a2322ee1f1962eda61a"
+    },
+    "isolated-contract-tests.log": {
+      "sha256": "2d3aa214f1eb22a1fb699e115e468265c646f1e2e84c544e6896fa69c2ae1ffb"
+    },
+    "isolated-native-fixture.log": {
+      "sha256": "2ff16ca1b0cd9469b960073ad7356f2e79861893a320388ae89de36bae2999d2"
+    },
+    "cache-counter-contract-tests.log": {
+      "sha256": "372dde5a1833b2f6a043959c22e7e954065ba41e17f4c5787f618a77c3b16fcf"
+    }
+  },
+  "gates": {
+    "BASELINE_SOURCE": {
+      "status": "PASS",
+      "evidence": [
+        "baseline-source.json",
+        "source-state.json",
+        "cpu-compatibility.json"
+      ],
+      "limit": "Historical tested trees retained with their own hashes; no publication relabelling."
+    },
+    "NATIVE_REQUEST": {
+      "status": "PASS_NATIVE_ORACLE_AND_REAL_GENERATION",
+      "limit": "Native _chat/_clean transforms preserved; Ollama model/options intentionally differ from historical hosted wrappers."
+    },
+    "MODEL_CONTRACT": {
+      "status": "PASS_RECORDED_NEGATIVES_AND_REAL_POSITIVES",
+      "evidence": [
+        "cache-counter-contract-tests.log",
+        "live-summary.json"
+      ]
+    },
+    "PROMPT_BINDING": {
+      "status": "PASS_REAL_NATIVE",
+      "evidence": [
+        "native-prompt-bind.json",
+        "live-06/1/recovery.json",
+        "live-06/4/recovery.json"
+      ]
+    },
+    "REAL_MODEL": {
+      "status": "PASS_REAL",
+      "generation_requests": 12,
+      "captures": 10,
+      "uncaptured_spent": 2
+    },
+    "LOCAL_HTTPS": {
+      "status": "PASS_REAL",
+      "positive_workflows": [
+        "HTTPS model/local mailbox",
+        "HTTPS model/HTTPS mailbox",
+        "local model/HTTPS mailbox"
+      ],
+      "limit": "Local model/local mailbox exercised real generation/feedback but its reply command was rejected. No deterministic output equivalence or multi-host claim."
+    },
+    "CAPTURE_RECOVERY": {
+      "status": "PASS_REAL_AND_RECORDED",
+      "real_native_sigkills": 2,
+      "regenerations": 0,
+      "limit": "Final recovery trial replayed successfully but its subsequent new reply was rejected; provider crash stages use recorded backend tests."
+    },
+    "BUDGET_UNCERTAINTY": {
+      "status": "PASS_REAL_AND_RECORDED",
+      "spent": 12,
+      "unused": 0,
+      "original_failed_occurrences_unchanged": true,
+      "automatic_regenerations": 0,
+      "limit": "Unknown usage is not zero; no exactly-once upstream execution/cancellation/billing claim."
+    },
+    "COMMAND_AUTHORITY": {
+      "status": "PASS_REAL_AND_RECORDED",
+      "real_rejected_batches": 2,
+      "authorized_batches": 8,
+      "limit": "Two real completions proposed unsupported command names; captured unchanged, no output repair or resend."
+    },
+    "CHANNEL_LOOP": {
+      "status": "PASS_REAL",
+      "complete_workflows": 3,
+      "observed_approved_replies": 3,
+      "evidence": [
+        "live-06/1/result.json",
+        "live-06/2/result.json",
+        "live-06/3/result.json"
+      ]
+    },
+    "PRIVACY_ISOLATION": {
+      "status": "PASS_EXERCISED_BOUNDARIES",
+      "limit": "Approved synthetic prompts, empty promoted set, local cognition; filesystem masks and trusted Python socket guards, not hostile-host isolation."
+    },
+    "COMPAT_REPRO_LEDGER": {
+      "status": "PASS_SELECTED_REGRESSIONS",
+      "evidence": [
+        "cpu-compatibility.json",
+        "isolated-runtime/verification.json"
+      ],
+      "limit": "Full historical suites, default Omega, live public channels, multi-host, paid/hosted/vision and chain not run."
+    }
+  },
+  "fixtures": [
+    "Recorded completion backend and SDK responses",
+    "Synthetic initial corpus and comparison clock",
+    "Unused history",
+    "Unused web responses"
+  ],
+  "real": [
+    "Native MeTTaClaw loop/parser/startup",
+    "Original NAL Truth_Deduction",
+    "PeTTa/SWI",
+    "DeTTa",
+    "Chroma metadata",
+    "Pinned E5 corpus construction",
+    "ngIRCd and separate socket peer",
+    "Local owner commits",
+    "Authenticated same-host HTTPS",
+    "Pinned Ollama CPU generation: 10 durably captured responses; 2 earlier uncaptured spent attempts"
+  ],
+  "development_failures": [
+    {
+      "kind": "native baseline observation failure",
+      "details": "Initial S06 local subcase exited before peer observation; unchanged recheck passed. Cause not established."
+    },
+    {
+      "kind": "recorded-model fixture format failure",
+      "details": "Wrapped batch conflicted with native line normalizer; prompt/fixture corrected; parser retained."
+    },
+    {
+      "kind": "admission implementation failure",
+      "details": "First AST admission conflicted after separate normalized-text capture; independent null checks fixed."
+    },
+    {
+      "kind": "development in-flight source mismatch",
+      "details": "One batch fixture overlapped a receipt-schema edit; isolated recheck and frozen final test passed."
+    },
+    {
+      "kind": "test discovery error",
+      "details": "NativePromotion name typo; correct NativePromotionLoop target passed."
+    },
+    {
+      "kind": "interpreter recipe failure",
+      "details": "System python3 lacks required modern generic type support; pinned Python 3.11 readiness passed."
+    }
+  ],
+  "real_generation_failures": [
+    {
+      "evidence": "live-04/result.json",
+      "kind": "adapter validation failure",
+      "inference": "Pinned optional cache counter was omitted by allowlist; rejected raw API response was not retained."
+    }
+  ],
+  "real_generation_observation_timeouts": [
+    {
+      "case": "local model/local mailbox, first input",
+      "deadline_ms": 30000,
+      "result": "NOT_AVAILABLE",
+      "complete_capture": false,
+      "backend_post_status": 500,
+      "backend_post_seconds": 28.924646847,
+      "backend_prompt_seconds": 26.42,
+      "cancel_observed": true
+    }
+  ],
+  "successful_completion_captures": 10,
+  "generation_authorization": "cpu-generation-authorization.json",
+  "post_test_source_change_reason": "Remaining live recipe explicitly continues predeclared independent cases after user instruction to use all twelve calls. Runtime/contract changes are tied to CPU, isolated endpoint and cache-counter test manifests; metadata updates occur after live execution.",
+  "live_runs": [
+    {
+      "command": "HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m integration.neoclaw.model_run --approve-local-generation --approved-calls 12 --out artifacts/s07/live-01",
+      "result": "EXECUTED_TIMEOUT_NOT_COMPLETE",
+      "generation_requests": 1,
+      "spent_reservations": 1,
+      "approved_calls": 12,
+      "unused_calls": 11,
+      "captures": 0,
+      "evidence": "live-01/result.json"
+    },
+    {
+      "evidence": "live-02/result.json",
+      "result": "LOAD_ONLY_TIMEOUT",
+      "generation_requests": 0
+    },
+    {
+      "evidence": "live-03/result.json",
+      "result": "READINESS_WAIT_INTERRUPTED",
+      "generation_requests": 0
+    },
+    {
+      "evidence": "live-04/result.json",
+      "result": "ADAPTER_VALIDATION_FAILURE",
+      "generation_requests": 1
+    },
+    {
+      "evidence": "live-05/result.json",
+      "result": "CAPTURED_UNSUPPORTED_REPLY_COMMAND",
+      "generation_requests": 2
+    },
+    {
+      "evidence": "live-06/complete.json",
+      "result": "3_PASS_1_REJECTED_REPLY_RECOVERY_PRESERVED",
+      "generation_requests": 8
+    }
+  ],
+  "historical_test_source": "test-source.json",
+  "live_summary": "live-summary.json",
+  "passing_methods": [
+    "integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send",
+    "integration.neoclaw.test_model_loop.ModelLoop.test_cpu_profile_kill_retains_input_and_tool_deadlines",
+    "integration.neoclaw.test_model_loop.ModelLoop.test_native_kill_after_application_capture_with_recorded_model",
+    "integration.neoclaw.test_model_loop.ModelLoop.test_native_malformed_parser_result_is_retained_without_regeneration",
+    "integration.neoclaw.test_model_loop.ModelLoop.test_native_next_context_and_approved_send_with_recorded_model",
+    "integration.neoclaw.test_model_loop.ModelLoop.test_native_whole_batch_refuses_before_first_valid_command",
+    "integration.neoclaw.test_model_preflight.ModelPreflight.test_real_native_local_and_https_prompt_bound_before_generation",
+    "integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_priority_and_belief_independent_same_session",
+    "tests.test_channel.ChannelContract.test_capacity_drain_and_reuse",
+    "tests.test_channel.ChannelContract.test_conflicting_replay_and_deadline",
+    "tests.test_channel.ChannelContract.test_current_authority_role_and_credential_rotation",
+    "tests.test_channel.ChannelContract.test_filter_notices_echo_and_target_changed_nick",
+    "tests.test_channel.ChannelContract.test_frame_and_text_refusals",
+    "tests.test_channel.ChannelContract.test_https_bad_certificate_no_fallback_and_binding",
+    "tests.test_channel.ChannelContract.test_malformed_replies_bound_to_exact_request",
+    "tests.test_channel.ChannelContract.test_output_domain_private_refusal",
+    "tests.test_channel.ChannelContract.test_replay_equal_text_distinct_occurrences_and_ack",
+    "tests.test_channel.ChannelContract.test_selection_changed_endpoint_and_unsealed_state",
+    "tests.test_channel.ChannelContract.test_split_utf8_coalesced_frames_and_crlf",
+    "tests.test_channel.ChannelContract.test_wrong_role_route_scope_and_identity",
+    "tests.test_contract.Compatibility.test_contract_imports_no_backends_or_cognition",
+    "tests.test_contract.Compatibility.test_same_major_positive_and_negative_fixtures",
+    "tests.test_contract.FixtureInProcessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+    "tests.test_contract.FixtureInProcessContract.test_durable_acceptance_survives_sigkill_before_ack",
+    "tests.test_contract.FixtureInProcessContract.test_idempotency_conflict_and_occurrence_identity",
+    "tests.test_contract.FixtureInProcessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+    "tests.test_contract.FixtureInProcessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+    "tests.test_contract.FixtureInProcessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+    "tests.test_contract.FixtureInProcessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+    "tests.test_contract.FixtureInProcessContract.test_slice_and_delayed_restart_completion",
+    "tests.test_contract.FixtureInProcessContract.test_wire_validation_versions_features_deadlines",
+    "tests.test_contract.FixtureSubprocessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+    "tests.test_contract.FixtureSubprocessContract.test_durable_acceptance_survives_sigkill_before_ack",
+    "tests.test_contract.FixtureSubprocessContract.test_idempotency_conflict_and_occurrence_identity",
+    "tests.test_contract.FixtureSubprocessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+    "tests.test_contract.FixtureSubprocessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+    "tests.test_contract.FixtureSubprocessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+    "tests.test_contract.FixtureSubprocessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+    "tests.test_contract.FixtureSubprocessContract.test_slice_and_delayed_restart_completion",
+    "tests.test_contract.FixtureSubprocessContract.test_wire_validation_versions_features_deadlines",
+    "tests.test_contract.InProcessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+    "tests.test_contract.InProcessContract.test_durable_acceptance_survives_sigkill_before_ack",
+    "tests.test_contract.InProcessContract.test_idempotency_conflict_and_occurrence_identity",
+    "tests.test_contract.InProcessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+    "tests.test_contract.InProcessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+    "tests.test_contract.InProcessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+    "tests.test_contract.InProcessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+    "tests.test_contract.InProcessContract.test_slice_and_delayed_restart_completion",
+    "tests.test_contract.InProcessContract.test_wire_validation_versions_features_deadlines",
+    "tests.test_contract.SubprocessContract.test_backpressure_keeps_outbox_until_consumer_ack",
+    "tests.test_contract.SubprocessContract.test_durable_acceptance_survives_sigkill_before_ack",
+    "tests.test_contract.SubprocessContract.test_idempotency_conflict_and_occurrence_identity",
+    "tests.test_contract.SubprocessContract.test_lost_ack_can_replay_after_deadline_but_worker_will_not_start",
+    "tests.test_contract.SubprocessContract.test_reference_integrity_missing_and_unavailable_are_distinct",
+    "tests.test_contract.SubprocessContract.test_result_da_write_replay_and_completion_outbox_crashes",
+    "tests.test_contract.SubprocessContract.test_scope_routes_authentication_revocation_and_state_ownership",
+    "tests.test_contract.SubprocessContract.test_slice_and_delayed_restart_completion",
+    "tests.test_contract.SubprocessContract.test_wire_validation_versions_features_deadlines",
+    "tests.test_m11.DettaInProcessRecovery.test_ack_replay_rechecks_current_route_ownership",
+    "tests.test_m11.DettaInProcessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+    "tests.test_m11.DettaInProcessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+    "tests.test_m11.DettaInProcessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+    "tests.test_m11.DettaInProcessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+    "tests.test_m11.DettaInProcessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+    "tests.test_m11.DettaInProcessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+    "tests.test_m11.DettaInProcessRecovery.test_worker_revocation_is_effective_at_restart",
+    "tests.test_m11.DettaSubprocessRecovery.test_ack_replay_rechecks_current_route_ownership",
+    "tests.test_m11.DettaSubprocessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+    "tests.test_m11.DettaSubprocessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+    "tests.test_m11.DettaSubprocessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+    "tests.test_m11.DettaSubprocessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+    "tests.test_m11.DettaSubprocessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+    "tests.test_m11.DettaSubprocessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+    "tests.test_m11.DettaSubprocessRecovery.test_worker_revocation_is_effective_at_restart",
+    "tests.test_m11.FixtureInProcessRecovery.test_ack_replay_rechecks_current_route_ownership",
+    "tests.test_m11.FixtureInProcessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+    "tests.test_m11.FixtureInProcessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+    "tests.test_m11.FixtureInProcessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+    "tests.test_m11.FixtureInProcessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+    "tests.test_m11.FixtureInProcessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+    "tests.test_m11.FixtureInProcessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+    "tests.test_m11.FixtureInProcessRecovery.test_worker_revocation_is_effective_at_restart",
+    "tests.test_m11.FixtureSubprocessRecovery.test_ack_replay_rechecks_current_route_ownership",
+    "tests.test_m11.FixtureSubprocessRecovery.test_atom_persistence_before_admission_commit_retains_full_intent",
+    "tests.test_m11.FixtureSubprocessRecovery.test_legacy_profiles_remain_explicit_and_neutral_profiles_are_distinct",
+    "tests.test_m11.FixtureSubprocessRecovery.test_mailbox_acceptance_survives_outbox_marking_crash",
+    "tests.test_m11.FixtureSubprocessRecovery.test_result_commits_before_job_and_public_port_replay_is_stable",
+    "tests.test_m11.FixtureSubprocessRecovery.test_revoked_reply_route_retains_outbox_until_restored",
+    "tests.test_m11.FixtureSubprocessRecovery.test_unavailable_input_keeps_accepted_job_for_recovery",
+    "tests.test_m11.FixtureSubprocessRecovery.test_worker_revocation_is_effective_at_restart",
+    "tests.test_m11.PortStructure.test_combined_legacy_journal_is_rejected_without_dropping_it",
+    "tests.test_m11.PortStructure.test_execution_uses_only_declared_foreign_ports_and_own_sql",
+    "tests.test_m11.PortStructure.test_fixture_opaque_id_never_resolves_as_a_filesystem_path",
+    "tests.test_m11.PortStructure.test_hostile_port_denies_every_undeclared_attribute_at_runtime",
+    "tests.test_m11.PortStructure.test_published_signatures_match_exercised_providers",
+    "tests.test_m11.PortStructure.test_weaker_guarantees_and_changed_selected_provider_are_rejected",
+    "tests.test_model.ModelTests.test_authorization_rechecked_on_cached_capture",
+    "tests.test_model.ModelTests.test_capture_and_duplicate_exact_bytes_no_regeneration",
+    "tests.test_model.ModelTests.test_changed_input_deadline_profile_and_descriptor_refused",
+    "tests.test_model.ModelTests.test_context_private_sections_refused_before_backend",
+    "tests.test_model.ModelTests.test_cpu_deadline_requires_distinct_profile_and_keeps_spent_identity",
+    "tests.test_model.ModelTests.test_deadline_not_reset_on_resume",
+    "tests.test_model.ModelTests.test_empty_truncated_invalid_tool_media_and_usage",
+    "tests.test_model.ModelTests.test_equal_prompt_new_occurrence_and_slot_conflict",
+    "tests.test_model.ModelTests.test_failure_after_reservation_remains_spent",
+    "tests.test_model.ModelTests.test_late_capture_is_observable_and_labelled",
+    "tests.test_model.ModelTests.test_malformed_receipt_bindings_and_state",
+    "tests.test_model.ModelTests.test_pinned_cache_usage_metadata_is_validated_without_rewriting_total",
+    "tests.test_model.ModelTests.test_process_kill_independent_commits_and_recovery",
+    "tests.test_model.ModelTests.test_session_budget_no_refund_and_no_configuration_reset",
+    "tests.test_model.ModelTests.test_text_cleaning_and_unknown_usage",
+    "tests.test_model.ModelTests.test_unsealed_journal_rejected_without_mutation",
+    "tests.test_model_network.ModelNetwork.test_network_cpu_profile_selection_and_capture",
+    "tests.test_model_network.ModelNetwork.test_network_replay_and_revocation",
+    "tests.test_model_network.ModelNetwork.test_network_untrusted_certificate_no_fallback",
+    "tests.test_model_network.ModelNetwork.test_network_wrong_credential_and_deadline_no_fallback",
+    "tests.test_model_oracle.NativeModelOracle.test_actual_effective_wrappers_and_transforms",
+    "tests.test_model_oracle.NativeModelOracle.test_native_empty_input_and_helper_null_retries_are_visible",
+    "tests.test_model_oracle.NativeModelOracle.test_no_eager_clients_or_unchecked_source_or_function",
+    "tests.test_model_oracle.NativeModelOracle.test_unicode_placeholders_and_first_separator_match_native",
+    "tests.test_neoclaw.S01Contracts.test_acceptance_completion_and_payload_receipts_reject_malformed_data",
+    "tests.test_neoclaw.S01Contracts.test_authority_method_scope_route_and_replay_revocation",
+    "tests.test_neoclaw.S01Contracts.test_caller_budget_is_durable_and_cannot_be_reset",
+    "tests.test_neoclaw.S01Contracts.test_capacity_recovery_and_independent_owner_databases",
+    "tests.test_neoclaw.S01Contracts.test_closed_two_stv_contract_rejects_code_and_invalid_values",
+    "tests.test_neoclaw.S01Contracts.test_current_authority_on_result_poll_ack_and_worker",
+    "tests.test_neoclaw.S01Contracts.test_deadline_prevents_new_computation_but_not_completed_replay",
+    "tests.test_neoclaw.S01Contracts.test_descriptor_version_profile_runtime_and_operation_binding",
+    "tests.test_neoclaw.S01Contracts.test_existing_numerical_sources_unchanged",
+    "tests.test_neoclaw.S01Contracts.test_native_attempt_budget_survives_owner_restart_and_bad_kernel",
+    "tests.test_neoclaw.S01Contracts.test_no_fallback_and_duplicate_json_keys_rejected",
+    "tests.test_neoclaw.S01Contracts.test_replay_identity_conflict_and_deadline_not_renewed",
+    "tests.test_neoclaw.S01Contracts.test_result_binding_and_representation_validation",
+    "tests.test_neoclaw_application.ApplicationContracts.test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn",
+    "tests.test_neoclaw_application.ApplicationContracts.test_exclusive_application_route_and_finite_admission",
+    "tests.test_neoclaw_application.ApplicationContracts.test_invalid_selected_batch_is_rejected_before_any_execution",
+    "tests.test_neoclaw_application.ApplicationContracts.test_mixed_pending_batch_cannot_be_replayed",
+    "tests.test_neoclaw_application.ApplicationContracts.test_new_identical_turn_is_not_replay_and_no_config_rewrite",
+    "tests.test_neoclaw_application.ApplicationContracts.test_ordered_identity_and_exact_pending_replay_conflict",
+    "tests.test_neoclaw_application.ApplicationContracts.test_restore_requires_current_authority_and_preserves_projection",
+    "tests.test_neoclaw_application.ApplicationContracts.test_startup_overlay_refuses_unknown_source",
+    "tests.test_neoclaw_application.ApplicationContracts.test_unfinished_unrelated_caller_request_blocks_new_turn",
+    "tests.test_responses.ResponseConformance.test_all_error_responses_and_retryability_are_closed",
+    "tests.test_responses.ResponseConformance.test_all_operations_and_profiles_validate_real_fixture_replies",
+    "tests.test_responses.ResponseConformance.test_both_bindings_apply_response_checks_before_returning_success",
+    "tests.test_responses.ResponseConformance.test_every_operation_rejects_missing_malformed_and_unselected_replies",
+    "tests.test_responses.ResponseConformance.test_generated_schemas_match_checked_in_contracts",
+    "tests.test_responses.ResponseConformance.test_invalid_completion_acceptance_does_not_mark_outbox_sent",
+    "tests.test_responses.ResponseConformance.test_request_scope_reference_order_correlation_and_guarantees_are_checked"
+  ],
+  "blocked_prerequisites": [],
+  "load_only_failures": [
+    "live-02/result.json",
+    "live-03/result.json"
+  ],
+  "runtime_launch_failures": [
+    {
+      "kind": "fixed local port occupied",
+      "port": 11435,
+      "generation_requests": 0,
+      "evidence": "isolated-ollama-fixed-port-attempt.py"
+    }
+  ],
+  "command_rejections": [
+    {
+      "evidence": "live-05/1/application-calls.json",
+      "kind": "captured unsupported command",
+      "command": "Send"
+    },
+    {
+      "evidence": "live-06/4/application-calls.json",
+      "kind": "captured unsupported command",
+      "command": "send_message_to_user"
+    }
+  ]
+}

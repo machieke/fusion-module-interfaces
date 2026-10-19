@@ -1,0 +1,8 @@
+{"case": 1, "placement": "network", "mailbox": "local", "recover": true, "calls": 2}
+{"case": 1, "status": "PASS"}
+{"case": 2, "placement": "network", "mailbox": "network", "recover": false, "calls": 2}
+{"case": 2, "status": "PASS"}
+{"case": 3, "placement": "local", "mailbox": "network", "recover": false, "calls": 2}
+{"case": 3, "status": "PASS"}
+{"case": 4, "placement": "network", "mailbox": "network", "recover": true, "calls": 2}
+{"case": 4, "status": "FAIL", "code": "NOT_AVAILABLE"}

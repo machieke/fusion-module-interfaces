@@ -94,3 +94,12 @@ fixture. [Contracts](s06-contract-decisions.md) preserve separate owner commits,
 occurrence identity, private local cognition and honest one-attempt socket outcomes.
 The ledger now has eight bounded adoption entries and nine native user commands;
 the historical 105 rows and fifteen-family denominator remain unchanged.
+
+S07: [bounded native ModelInference adoption](s07.md) — twelve real generation attempts, ten captures, three full local/HTTPS IRC workflows and two capture recoveries. Two unsupported reply commands and two earlier uncaptured failures remain recorded; no full Omega claim.
+
+[Report](s07.md) and [contract decisions](s07-contract-decisions.md): local Ollama
+`qwen3.8:27b` is pinned. Fresh CPU-profile occurrences use five minutes; old
+deadlines and the historical profile remain unchanged. All twelve calls are spent,
+with failures and recorded-model fixtures kept separate from real successes.
+Only the bounded X01 text-completion boundary is adopted. Historical families,
+mapping rows, eight prior operation adoptions and nine user commands are unchanged.

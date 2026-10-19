@@ -1,0 +1,204 @@
+[
+  {
+    "boundary": {
+      "loaded_facade": "/tmp/fusion-s01-esra9n_g/caller/native/s07_model.py",
+      "model_placement": "local",
+      "raw_ollama_connect_refused": false,
+      "scripted_model_imported": false,
+      "selected_model_asset_probes": {}
+    },
+    "model_generation": "UNRUN: stopped before provider RPC",
+    "placement": "local",
+    "pre_submission_recovery": {
+      "exact_prompt_and_deadline_retained": true,
+      "provider_calls": 0,
+      "rpc_reservations": 1,
+      "signal": "SIGKILL"
+    },
+    "prompt": {
+      "deadline_ms": 1792406786095,
+      "id": "f7b82a68-3448-548d-9240-7ac3aa0c3aa8",
+      "limits": {
+        "backend_reservations": 1,
+        "context_tokens": 32768,
+        "output_tokens": 6000,
+        "prompt_bytes": 12288,
+        "result_bytes": 32768
+      },
+      "messages": [
+        {
+          "content": "PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:45:56",
+          "role": "system"
+        },
+        {
+          "content": "['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']",
+          "role": "user"
+        }
+      ],
+      "model": "qwen3.8:27b",
+      "model_digest": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+      "native_prompt": "PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:45:56:-:-:-:['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']",
+      "principal": "A",
+      "profile": "neoclaw-ollama-qwen38-text/1",
+      "scope": "synthetic-s07",
+      "selection": "fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4",
+      "session": "16277f21-df4e-4b3f-b96b-e55b39978ec7",
+      "slot": 1,
+      "source_id": "cec33189-fe30-53d3-bb88-ca1d6d34a503",
+      "transform": "neoclaw-chat-marker-split-clean/1"
+    },
+    "real": [
+      "native loop",
+      "IRC",
+      "DeTTa",
+      "Chroma metadata",
+      "Attention context read"
+    ],
+    "startup": {
+      "bounded_turns": 2,
+      "composition": "controlled-native-loop/9",
+      "entrypoint": "mettaclaw",
+      "fixture_hashes": {
+        "memory.metta": "166936f4c1aa30b7319d0cd82e1d040de28ae8ebb525e408ba612430cb7fae3f"
+      },
+      "native_memory_libraries": {
+        "lib_combinatorics.metta": "70c86219346d6bab79decc4d291ee830035e10f044b614f82259c4c1ed1f40ad",
+        "lib_vector.metta": "7fedc76b1fefe1bf92a70db6e0c0961f9c51cc507631497d77f9fbb41afa8982"
+      },
+      "overlay_hashes": {
+        "channels.metta": "a9064ddd25f2a58ed10500a7e70c833ea53981b3d443d7793feebe7ef0047d06",
+        "lib_llm.metta": "7bdd31792c25cb221676d5d3e71aabe6af9bf5cc5b671e51482c6c949d7eb4f8",
+        "loop.metta": "63f4b48a743ba553a1f44f66cac155c834f7e1d95c97fcf7e42bad1c593129f9",
+        "memory.metta": "e586af0b271722819f4c558de36d99fca10be8220a0016fd9ea9bcb9a48ab4fc",
+        "memory_bootstrap.py": "caab6ca74c4a7ac0ab23f38a9e48a0301b5fd9917b4d7bc51eb7ef8ff7b9e7d9",
+        "s07_model.py": "6cf3e9cf0e0f9315f7a4ae86c1cb7960a5ccef268c5178218fcc9f155d2090d6",
+        "skills.metta": "5260c16d002dc27553a6b775e0d583c59e49dd6aa78ea0836850c2343266ee94",
+        "start.metta": "2e4d24efd3720e6eabd40b8c1c70065eec6edcce25f2238934e0ad31693479b7"
+      },
+      "source_commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "source_hashes": {
+        "lib_mettaclaw.metta": "c2d102139890f3af2b577f0bb5674b79d1d1e8aeb89b8e623b375ee4c1983722",
+        "lib_nal.metta": "604e2608a5938e36e428bce257fc3806dd9ef6be99102c5e973909e0a8f9c10e",
+        "run.metta": "7e6872d9101e8c447ee591b773d462994e5c73c5aef4734256dc2043ea1f85ec",
+        "src/channels.metta": "cc354e3a428176d90d87953adf72e31ee9be642406ac6b96109fa567ba7db449",
+        "src/helper.py": "9c16d7aff1d788a0c5dc44483301ce4723325b3c37beb0ebc55c7bca287857b1",
+        "src/loop.metta": "5702710d6e5e8bc0e36464eb42e9330801cde30f5f4193055ca366c363217924",
+        "src/memory.metta": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4",
+        "src/skills.metta": "cdad88d96a6d5c38a2ae256fc874b6ff15e3ac46db75370e4edc572d7b1e5a2d",
+        "src/skills.pl": "293405e03adf2e227af87a42e09dccdd9bafe06a9647fc5366f06748f21ff9d4",
+        "src/utils.metta": "916be356d4ba416b675fb91dc383e81eebf2fc53481063ff6bd1cfc5980b8f72"
+      },
+      "substitutions": [
+        "PeTTa lib_llm native string helpers retained; hosted OpenAI client initialization suppressed",
+        "X01 selected Ollama qwen3.8:27b; real generation, one reservation; no scripted model import",
+        "real isolated IRC and owned mailbox; model completion separately selected",
+        "native remember/support/contradict/promote/demote/query/getContext; local separately owned wall-clock Attention; verified AtomStorage hydration; S04 views retained; unused history fixture",
+        "typed independently placed real E5; caller SDK excludes E5 libraries; real Chroma metadata and Search; S01/S02 retained",
+        "generated empty persistent space exported by native loop; no user store import"
+      ]
+    }
+  },
+  {
+    "boundary": {
+      "loaded_facade": "/tmp/fusion-s01-_xua1fo7/caller/native/s07_model.py",
+      "model_placement": "network",
+      "raw_ollama_connect_refused": true,
+      "scripted_model_imported": false,
+      "selected_model_asset_probes": {
+        "/tmp/fusion-s01-_xua1fo7/completion/server.key": "inaccessible",
+        "/usr/share/ollama/.ollama/models/blobs/sha256-f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d": "inaccessible",
+        "/usr/share/ollama/.ollama/models/manifests/registry.ollama.ai/library/qwen3.8/27b": "inaccessible"
+      }
+    },
+    "model_generation": "UNRUN: stopped before provider RPC",
+    "placement": "network",
+    "pre_submission_recovery": {
+      "exact_prompt_and_deadline_retained": true,
+      "provider_calls": 0,
+      "rpc_reservations": 1,
+      "signal": "SIGKILL"
+    },
+    "prompt": {
+      "deadline_ms": 1792406814095,
+      "id": "636f6de2-2f20-52d8-81b0-6090ad59de49",
+      "limits": {
+        "backend_reservations": 1,
+        "context_tokens": 32768,
+        "output_tokens": 6000,
+        "prompt_bytes": 12288,
+        "result_bytes": 32768
+      },
+      "messages": [
+        {
+          "content": "PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:46:24",
+          "role": "system"
+        },
+        {
+          "content": "['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']",
+          "role": "user"
+        }
+      ],
+      "model": "qwen3.8:27b",
+      "model_digest": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+      "native_prompt": "PROMPT: Generated shareable S07 test. Use only the two listed skills. Reply only with one command per line in the shown output format, without outer parentheses or argument quotes. For the first request call exactly the requested Truth_Deduction expression. After its actual COMMAND_RETURN appears, obey the second request by sending the approved reply. Do not calculate a substitute answer, add another command, explain, or use a code fence. SKILLS: [_apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES: () TIME: 2026-10-19 10:46:24:-:-:-:['HUMAN-MSG:', 'peer: Synthetic S07 first request: call metta with (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8)).']",
+      "principal": "A",
+      "profile": "neoclaw-ollama-qwen38-text/1",
+      "scope": "synthetic-s07",
+      "selection": "fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4",
+      "session": "a975110b-9c7c-4b9e-ad52-28f0e2672565",
+      "slot": 1,
+      "source_id": "8bf8eae2-3bb6-5700-9595-c51ac4131b56",
+      "transform": "neoclaw-chat-marker-split-clean/1"
+    },
+    "real": [
+      "native loop",
+      "IRC",
+      "DeTTa",
+      "Chroma metadata",
+      "Attention context read"
+    ],
+    "startup": {
+      "bounded_turns": 2,
+      "composition": "controlled-native-loop/9",
+      "entrypoint": "mettaclaw",
+      "fixture_hashes": {
+        "memory.metta": "166936f4c1aa30b7319d0cd82e1d040de28ae8ebb525e408ba612430cb7fae3f"
+      },
+      "native_memory_libraries": {
+        "lib_combinatorics.metta": "70c86219346d6bab79decc4d291ee830035e10f044b614f82259c4c1ed1f40ad",
+        "lib_vector.metta": "7fedc76b1fefe1bf92a70db6e0c0961f9c51cc507631497d77f9fbb41afa8982"
+      },
+      "overlay_hashes": {
+        "channels.metta": "a9064ddd25f2a58ed10500a7e70c833ea53981b3d443d7793feebe7ef0047d06",
+        "lib_llm.metta": "7bdd31792c25cb221676d5d3e71aabe6af9bf5cc5b671e51482c6c949d7eb4f8",
+        "loop.metta": "63f4b48a743ba553a1f44f66cac155c834f7e1d95c97fcf7e42bad1c593129f9",
+        "memory.metta": "e586af0b271722819f4c558de36d99fca10be8220a0016fd9ea9bcb9a48ab4fc",
+        "memory_bootstrap.py": "caab6ca74c4a7ac0ab23f38a9e48a0301b5fd9917b4d7bc51eb7ef8ff7b9e7d9",
+        "s07_model.py": "6cf3e9cf0e0f9315f7a4ae86c1cb7960a5ccef268c5178218fcc9f155d2090d6",
+        "skills.metta": "5260c16d002dc27553a6b775e0d583c59e49dd6aa78ea0836850c2343266ee94",
+        "start.metta": "d1909a2e55ccde02f2a61b9e671fc294ae4bea7c9279c961fd0697b9a14a663b"
+      },
+      "source_commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "source_hashes": {
+        "lib_mettaclaw.metta": "c2d102139890f3af2b577f0bb5674b79d1d1e8aeb89b8e623b375ee4c1983722",
+        "lib_nal.metta": "604e2608a5938e36e428bce257fc3806dd9ef6be99102c5e973909e0a8f9c10e",
+        "run.metta": "7e6872d9101e8c447ee591b773d462994e5c73c5aef4734256dc2043ea1f85ec",
+        "src/channels.metta": "cc354e3a428176d90d87953adf72e31ee9be642406ac6b96109fa567ba7db449",
+        "src/helper.py": "9c16d7aff1d788a0c5dc44483301ce4723325b3c37beb0ebc55c7bca287857b1",
+        "src/loop.metta": "5702710d6e5e8bc0e36464eb42e9330801cde30f5f4193055ca366c363217924",
+        "src/memory.metta": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4",
+        "src/skills.metta": "cdad88d96a6d5c38a2ae256fc874b6ff15e3ac46db75370e4edc572d7b1e5a2d",
+        "src/skills.pl": "293405e03adf2e227af87a42e09dccdd9bafe06a9647fc5366f06748f21ff9d4",
+        "src/utils.metta": "916be356d4ba416b675fb91dc383e81eebf2fc53481063ff6bd1cfc5980b8f72"
+      },
+      "substitutions": [
+        "PeTTa lib_llm native string helpers retained; hosted OpenAI client initialization suppressed",
+        "X01 selected Ollama qwen3.8:27b; real generation, one reservation; no scripted model import",
+        "real isolated IRC and owned mailbox; model completion separately selected",
+        "native remember/support/contradict/promote/demote/query/getContext; local separately owned wall-clock Attention; verified AtomStorage hydration; S04 views retained; unused history fixture",
+        "typed independently placed real E5; caller SDK excludes E5 libraries; real Chroma metadata and Search; S01/S02 retained",
+        "generated empty persistent space exported by native loop; no user store import"
+      ]
+    }
+  }
+]

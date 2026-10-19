@@ -18,7 +18,7 @@ from . import vector_contracts as v
 from . import embedding_contracts as e
 from . import append_contracts as w
 from . import nal_memory_contracts as n
-from . import promotion_contracts as p, channel_contracts as ch
+from . import promotion_contracts as p, channel_contracts as ch, model_contracts as m
 from .registry import selection_token
 
 
@@ -39,14 +39,15 @@ class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION), 'UNSUPPORTED_PROFILE')
-        self.channel_enabled = self.config['composition'] == ch.APPLICATION
-        self.priority_enabled = self.config['composition'] in (p.APPLICATION,ch.APPLICATION)
-        self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION)
-        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
-        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
-        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
-        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION, m.APPLICATION), 'UNSUPPORTED_PROFILE')
+        self.model_enabled = self.config['composition'] == m.APPLICATION
+        self.channel_enabled = self.config['composition'] in (ch.APPLICATION,m.APPLICATION)
+        self.priority_enabled = self.config['composition'] in (p.APPLICATION,ch.APPLICATION,m.APPLICATION)
+        self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION)
+        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION)
+        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION)
+        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION)
+        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION)
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
@@ -91,6 +92,10 @@ class Application:
                 from .neoclaw_channel import settings as channel_settings
                 self.binding=binding
                 binding.update(composition=ch.APPLICATION,channel=channel_settings(self)[1])
+            if self.model_enabled:
+                from .neoclaw_model import settings as model_settings
+                self.binding=binding
+                binding.update(composition=m.APPLICATION,model=model_settings(self)[2])
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -145,6 +150,9 @@ class Application:
             if self.channel_enabled:
                 from .neoclaw_channel import ChannelAdoption
                 self.channel=ChannelAdoption(self)
+            if self.model_enabled:
+                from .neoclaw_model import ModelAdoption
+                self.model=ModelAdoption(self)
             pending = self.pending()
             if pending:
                 # No replay of arbitrary local effects, even if their old result exists.
@@ -213,7 +221,8 @@ class Application:
         finally: caller.close()
         return self.db.execute('SELECT count(*) FROM app_turns').fetchone()[0] < self.config['turn_limit']
 
-    def accept(self, response, commands):
+    def accept(self, response, commands, normalized=None):
+        if self.model_enabled:self.model.admit(response,normalized,commands)
         require(type(response) is str and len(response.encode()) <= 20000)
         require(type(commands) is list and len(commands) <= 5)
         if self.channel_enabled:self.channel.accept_turn()
@@ -403,3 +412,8 @@ class Application:
     def channel_new(self):return self.channel.new_input()
     def channel_send(self,text):return self.channel.send(text)
     def channel_lastsend(self):return self.channel.lastsend()
+
+    def model_prompt(self,raw):return self.model.prompt(raw)
+    def model_complete(self,raw):return self.model.complete(raw)
+    def model_parsed(self,normalized,parsed):return self.model.parsed(normalized,parsed)
+    def response(self):return self.model.replay() if self.model_enabled else self.pending()['response']

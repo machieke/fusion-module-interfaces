@@ -1,0 +1,12 @@
+[
+  {
+    "ack": "{\"delivery\":\"acknowledged\",\"delivery_id\":\"e6060663-c2ca-5882-9459-0ef6d56e43e7\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"persistence\":\"process-restart\",\"route\":\"out-bridge\",\"scope_ref\":\"synthetic-s06\"}",
+    "ack_calls": 1,
+    "delivery": "{\"body\":{\"causation_id\":\"mail/67c302de-1f67-5134-92c6-ee9e1547d9ad\",\"correlation_id\":\"67c302de-1f67-5134-92c6-ee9e1547d9ad\",\"ref\":{\"digest\":\"9457b90610a0cea38ede45a264eec0f0addbd422896916a281efdddafb04a340\",\"id\":\"6101336b-9a44-50fe-b672-214c07adf3a8\",\"revision\":1,\"scope_ref\":\"synthetic-s06\"},\"reply_route\":\"in-A\"},\"delivery\":\"observed-unacknowledged\",\"delivery_id\":\"e6060663-c2ca-5882-9459-0ef6d56e43e7\",\"order\":3,\"route\":\"out-bridge\",\"scope_ref\":\"synthetic-s06\"}",
+    "effect_epoch": "37d3bccb-8a6f-44ee-a794-9f058b288474",
+    "envelope": "{\"bridge\":\"23908359-1948-4072-b5ff-0d730c713d9b\",\"deadline_ms\":1792410716810,\"epoch\":null,\"id\":\"67c302de-1f67-5134-92c6-ee9e1547d9ad\",\"kind\":\"egress\",\"nick\":null,\"observed_ms\":1792410686810,\"profile\":\"isolated-irc-mailbox/1\",\"route\":\"out-bridge\",\"scope\":\"synthetic-s06\",\"sequence\":6,\"session\":\"892c0215-1ae4-41e1-a91b-d4d6f62994b4\",\"target\":\"#s06-generated\",\"text\":\"Synthetic S07 reply: native calculation observed.\"}",
+    "id": "67c302de-1f67-5134-92c6-ee9e1547d9ad",
+    "outcome": "socket-write-returned",
+    "reserved": 1
+  }
+]

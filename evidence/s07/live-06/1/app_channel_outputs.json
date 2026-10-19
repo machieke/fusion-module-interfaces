@@ -1,0 +1,10 @@
+[
+  {
+    "acceptance": "{\"acceptance\":\"process-restart\",\"correlation_id\":\"67c302de-1f67-5134-92c6-ee9e1547d9ad\",\"delivery\":\"not-observed\",\"delivery_id\":\"e6060663-c2ca-5882-9459-0ef6d56e43e7\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"route\":\"out-bridge\",\"scope_ref\":\"synthetic-s06\"}",
+    "envelope": "{\"bridge\":\"23908359-1948-4072-b5ff-0d730c713d9b\",\"deadline_ms\":1792410716810,\"epoch\":null,\"id\":\"67c302de-1f67-5134-92c6-ee9e1547d9ad\",\"kind\":\"egress\",\"nick\":null,\"observed_ms\":1792410686810,\"profile\":\"isolated-irc-mailbox/1\",\"route\":\"out-bridge\",\"scope\":\"synthetic-s06\",\"sequence\":6,\"session\":\"892c0215-1ae4-41e1-a91b-d4d6f62994b4\",\"target\":\"#s06-generated\",\"text\":\"Synthetic S07 reply: native calculation observed.\"}",
+    "id": "67c302de-1f67-5134-92c6-ee9e1547d9ad",
+    "payload": "{\"receipt\":{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"7e59a76eed73bcc4814c500a7f7165db9d091b02cdf931582cf71f13bc4adf21\",\"payload_bytes\":2230,\"payload_hash\":\"3dbe3b5d8bf52fe7fdf8cafc3a0f41b359508d93c8cdd57ffc923a4c37867548\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"},\"ref\":{\"digest\":\"9457b90610a0cea38ede45a264eec0f0addbd422896916a281efdddafb04a340\",\"id\":\"6101336b-9a44-50fe-b672-214c07adf3a8\",\"revision\":1,\"scope_ref\":\"synthetic-s06\"}}",
+    "put_calls": 1,
+    "send_calls": 1
+  }
+]

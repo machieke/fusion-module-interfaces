@@ -1,0 +1,83 @@
+{
+  "schema": "s07-live-rehearsal/1",
+  "status": "EXECUTED_TIMEOUT_NOT_COMPLETE",
+  "authority": "generation-authorization.json",
+  "approved_call_limit": 12,
+  "actual_generation_requests": 1,
+  "spent_reservations": 1,
+  "unused_authorized_calls": 11,
+  "successful_completion_captures": 0,
+  "load_only_requests": 1,
+  "actual_backend_execution_observed": true,
+  "live_response_text_observed": false,
+  "usage": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "reasoning_tokens": null,
+    "cost": null
+  },
+  "inference_location": "same host, Ollama llama.cpp runner; API reports size_vram=0 (CPU inference)",
+  "request": {
+    "id": "08e08a85-8373-555e-84db-c3fd051d2cc1",
+    "session": "80620954-f647-484b-9b7c-49b2b5eafb1c",
+    "source_id": "87519fab-54e7-5e0b-9ad6-cec0c9fe6199",
+    "selection": "fcfaf51e5aec39cc19215db126fe0dda09df5ef71971befc0eee670c197c00f4",
+    "profile": "neoclaw-ollama-qwen38-text/1",
+    "model": "qwen3.8:27b",
+    "model_digest": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+    "deadline_ms": 1792407481051,
+    "deadline_utc": "2026-10-19T10:58:01.051000+00:00",
+    "accepted_intent_sha256": "1fc74711f8229769bd23157c205217a208e7b64faca2b46b0644af118e3151a3"
+  },
+  "observations": {
+    "application_status": {
+      "status": "PENDING_OR_FAILED",
+      "code": "NOT_AVAILABLE"
+    },
+    "provider_failure_code": "NOT_AVAILABLE",
+    "provider_response": null,
+    "application_response": null,
+    "command_admission": null,
+    "backend_log": {
+      "prompt_tokens": 295,
+      "reported_prompt_processing_tokens": 291,
+      "prompt_processing_seconds": 26.42,
+      "prompt_processing_tokens_per_second": 11.01,
+      "api_request_seconds": 28.924646847,
+      "api_status": 500,
+      "cancel_task_observed": true,
+      "slot_release_tokens": 300,
+      "truncated": 0,
+      "slots_idle_after_cancellation": true
+    },
+    "explanation": "At the original accepted-input deadline, the application had no complete response; the backend logged request cancellation and slot release. NOT_AVAILABLE is the adapter wire error. No final usage or response was captured; slot token counters are not substituted for final usage."
+  },
+  "guarantees_observed": [
+    "Native prompt/identity persisted before submission",
+    "Independent provider acceptance and single reservation persisted",
+    "Two application RPC reservations (observe, complete)",
+    "Original thirty-second deadline retained",
+    "No response means no parser/command admission",
+    "No fallback, automatic retry, refund, replacement model or re-timing"
+  ],
+  "outcome": "Local model/local mailbox first call did not complete within its original deadline. Rehearsal terminated; later cases deliberately not started.",
+  "later_gates_not_run": [
+    "First S01 command/tool result",
+    "Second model input with actual tool result",
+    "Approved model-produced IRC reply",
+    "HTTPS model comparison",
+    "Real post-capture native recovery",
+    "Combined HTTPS model/mailbox"
+  ],
+  "stop_basis": "Brief section 9: If the chosen backend cannot satisfy that bounded workflow, report the unsatisfied gate and stop.",
+  "source_identity": "pre-live/test-source.json",
+  "code_changes_during_rehearsal": false,
+  "synthetic_only": true,
+  "temporary_journals": "Disposable rehearsal roots were cleaned by the existing harness; exact intent/reservation rows are retained in this packet. No live journal recovery is claimed.",
+  "fixtures": [
+    "New synthetic corpus and comparison clock",
+    "Unused history",
+    "Unused web responses"
+  ],
+  "model_fixture": false
+}

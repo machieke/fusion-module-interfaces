@@ -48,6 +48,9 @@ def install_guard():
     app=json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
     cfg=json.loads(Path(app['channel_config']).read_text())
     allowed={cfg['endpoint']['port']} if cfg['placement']=='network' else set()
+    if app['composition']=='controlled-native-loop/9':
+        model=json.loads(Path(app['model_config']).read_text())
+        allowed.add(model['endpoint']['port'] if model['placement']=='network' else model.get('backend_port',11434))
     def guard(event,args):
         if event=='socket.connect':
             sock,address=args
@@ -62,6 +65,24 @@ def install_guard():
         with socket.create_connection(('127.0.0.1',app['channel_irc_probe_port']),timeout=.2):pass
     except PermissionError:blocked=True
     require(blocked,'UNSUPPORTED_PROFILE')
+    if app['composition']=='controlled-native-loop/9':
+        refused=False
+        probes={}
+        if model['placement']=='network':
+            try:
+                with socket.create_connection(('127.0.0.1',model.get('backend_port',11434)),timeout=.2):pass
+            except PermissionError:refused=True
+            require(refused,'UNSUPPORTED_PROFILE')
+            for path in app['model_denied_files']:
+                try:
+                    with open(path,'rb') as stream:stream.read(1)
+                except OSError:probes[path]='inaccessible'
+                else:require(False,'UNAUTHORIZED')
+        require('integration.neoclaw.controlled.lib_llm_ext' not in sys.modules,'UNSUPPORTED_PROFILE')
+        Path(app['workdir'],'model-boundary.json').write_text(json.dumps(dict(
+            raw_ollama_connect_refused=refused,model_placement=model['placement'],
+            selected_model_asset_probes=probes,
+            loaded_facade=sys.modules['lib_llm_ext'].__file__,scripted_model_imported=False)))
     Path(app['workdir'],'channel-boundary.json').write_text(json.dumps(dict(
         direct_irc_connect_refused=blocked,mechanism='Python audit hook in source-checked native runtime; not an OS syscall sandbox',
         legacy_channel_buffer_imported=False,allowed_tcp_ports=sorted(allowed),

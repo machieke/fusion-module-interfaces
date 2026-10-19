@@ -1,0 +1,20 @@
+test_local_and_https_native_consumption_equal_text_burst_and_send (integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send) ... 
+  test_local_and_https_native_consumption_equal_text_burst_and_send (integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send) (placement='local') ... FAIL
+test_priority_and_belief_independent_same_session (integration.neoclaw.test_promotion_loop.NativePromotionLoop.test_priority_and_belief_independent_same_session) ... ok
+
+======================================================================
+FAIL: test_local_and_https_native_consumption_equal_text_burst_and_send (integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send) (placement='local')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_loop.py", line 67, in test_local_and_https_native_consumption_equal_text_burst_and_send
+    self.traffic_until(ch,1,run,p);ch.send(INPUTS[4]);self.finish(run,p);value=report(run,cfg)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_loop.py", line 57, in traffic_until
+    self.fail('native exited before peer observation: '+(run.h.root/'native.log').read_text()[-18000:])
+AssertionError: native exited before peer observation: (---------iteration 1)
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 130.129s
+
+FAILED (failures=1)

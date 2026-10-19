@@ -617,3 +617,23 @@ native result capture and external socket outcome are separate commits. C1/C2 an
 Attention remain private and local. The
 [S06 decisions](../omega-adoption/mettaclaw-neoclaw/s06-contract-decisions.md)
 specify limits, errors, original deadlines, one-attempt sends and uncertainty.
+
+## S07 X01 — bounded native text completion
+
+`model.inference/1.0.0` exposes `complete`, retained `observe` and current
+`authorize`. Fresh application `/9` selects the historical thirty-second
+`neoclaw-ollama-qwen38-text/1` or the explicit five-minute CPU `/2` profile.
+Model/options and historical descriptor semantics remain unchanged. The application
+owns prompt/occurrence/capture/command admission; the provider owns independent
+acceptance, one generation reservation and response capture. All tool/context
+preparation deadlines remain thirty seconds; accepted occurrences never retime.
+
+Real local and authenticated same-host HTTPS model workflows passed with real IRC,
+original native NAL and actual next-model feedback. Twelve attempts produced ten
+captures and three approved peer-observed replies. Two captured unsupported
+commands were refused; two earlier uncaptured attempts remain spent. Two native
+SIGKILLs recovered exact captured work without regeneration. Only this bounded
+X01 text operation is adopted, with no new user command or family-denominator
+change. [Contract decisions](../omega-adoption/mettaclaw-neoclaw/s07-contract-decisions.md)
+and [executed report](../omega-adoption/mettaclaw-neoclaw/s07.md) distinguish
+real providers, fixtures, failures and limits.

@@ -1,0 +1,17 @@
+{
+  "authority": [
+    "User: Extend deadline to what is feasible on this machine",
+    "User: Do all 12"
+  ],
+  "approved_total_calls": 12,
+  "previously_spent": 1,
+  "remaining_calls": 11,
+  "prior_evidence": "evidence/s07/live-01/provider-calls.json",
+  "selected_profile": "neoclaw-ollama-qwen38-text/2",
+  "fresh_input_deadline_ms": 300000,
+  "tool_deadline_ms": 30000,
+  "output_tokens_per_call": 6000,
+  "automatic_retries": 0,
+  "prior_occurrences_unchanged": true,
+  "justification": "Measured first-call prompt evaluation alone 26.42 seconds on CPU. Five minutes permits bounded short native-command generation without assuming the full 6000-token ceiling will finish."
+}

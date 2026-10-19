@@ -1,0 +1,39 @@
+{
+  "schema": "s07-final-audit/4",
+  "starting_commit": "3fc1af31f2d64583fe4c873b6b656dad2d6b1275",
+  "source_state_sha256": "111effe181bf84a223aca34d1756c42fac37e0d4b42b5e1b03ceb5dff0f37ee7",
+  "latest_live_source_sha256": "afba51427be2d6765cd3c02234dd570fec980d88ecd5b5943dfa8ea9454fe2b4",
+  "historical_test_sources_resolved": {
+    "test-source.json": 251,
+    "cpu-test-source.json": 251,
+    "cpu-live-source.json": 251,
+    "isolated-test-source.json": 252,
+    "cache-counter-test-source.json": 252,
+    "remaining-live-source.json": 252
+  },
+  "runtime_contract_test_code_changed_after_last_execution": false,
+  "post_execution_metadata_changes": {
+    "integration/neoclaw/model-sources.json": {
+      "executed": "8573cecd3de6c55404c1d7d1c0ea93585b6c4ddc4b3900c7a50ed646d8c31fe3",
+      "current": "097bd6e839a369c8f89540b6b3d36bb74be90d69d9842997b4b1c3f36f6cf072"
+    }
+  },
+  "changed_files_recorded": 270,
+  "historical_packet_hashes_preserved": true,
+  "mapping_rows_unchanged": true,
+  "prior_operation_adoptions_unchanged": true,
+  "authorized_live_call_limit": 12,
+  "live_calls": 12,
+  "spent_reservations": 12,
+  "unused_calls": 0,
+  "successful_live_captures": 10,
+  "authorized_batches": 8,
+  "rejected_batches": 2,
+  "successful_workflows": 3,
+  "native_capture_recoveries": 2,
+  "automatic_regenerations": 0,
+  "passing_test_union": 149,
+  "temporary_runtime_stopped": true,
+  "status": "BOUNDED_S07_COMPLETE_WITH_RECORDED_FAILURES",
+  "adopted": true
+}
