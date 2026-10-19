@@ -1,5 +1,14 @@
 # Remote-placement scorecard
 
+**Historical mapping scorecard; current-state addendum:** the rankings and
+“not implemented” statements below describe the original mapping snapshot, not
+the S07 publication. Consult the [current native-boundary evidence matrix](s07-closeout.md#current-native-boundary--module--profile--placement-matrix)
+for delivered scope and placements. S08 was the Embedding candidate; bounded X02
+query and append encoding already shipped in S03.1/S03.2. No new Embedding work is
+triggered by closing S07. The proposed next work is a [retrieval-grounded evaluation](s07-next-workload.md),
+with no implementation or live-generation authorization in this review. Scores
+and original candidate identities remain unchanged.
+
 Scores are reasoned design assessments, **not benchmarks**. Scale: 0 = missing/unfavorable, 1 = weak, 2 = workable after bounded adaptation, 3 = favorable; higher is always better, maximum 36. Privacy and missing-interface gates override totals. Scores refer to the stated candidate scope, not a hypothetical completed platform.
 
 | Key | Criterion |

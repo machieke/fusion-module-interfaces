@@ -723,3 +723,36 @@ command admission, durable mailbox acceptance, socket-write result and recipient
 observation. Only task-owned actors were stopped; the original Ollama service was
 left running. No public listener, multi-host placement, full-default Omega or
 private-memory transfer is claimed.
+
+### S07 closeout: zero-generation review recipe
+
+The [closeout packet](../omega-adoption/mettaclaw-neoclaw/s07-closeout.md) records
+publication `4981788b4d8069a2b2264e65197f9886b74f1f5f` separately from the versioned
+working-tree tests. During this closeout, **ADDITIONAL_LIVE_GENERATIONS=0**.
+Do not run the live campaign, runtime launcher, corpus builder or full native
+test stack. The following selected checks use only public source/evidence and
+recorded responses; no server or model runtime is started:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 artifacts/s03/venv/bin/python evidence/s07-closeout/audit.py
+S07_REVIEW_PARENT_NET=$(readlink /proc/self/ns/net) bwrap --unshare-net \
+  --ro-bind / / --dev /dev --proc /proc --tmpfs /tmp \
+  --setenv PYTHONDONTWRITEBYTECODE 1 --setenv HF_HUB_OFFLINE 1 \
+  --chdir "$PWD" artifacts/s03/venv/bin/python evidence/s07-closeout/offline_checks.py
+```
+
+The recorded runner verifies a separate network namespace and rejects socket
+connections/binds and executable launches before loading the selected test
+modules. The only forked children are recorded-backend fault fixtures. Missing
+the pinned interpreter/source or network isolation is a blocker; do not replace
+these checks with real runtime startup. Keep any subsequent check output separate
+from the retained closeout logs.
+
+`integration/neoclaw/model-sources.json` is the descriptive source/reproduction
+ledger. Executable validation consumes a separate generated `ollama-runtime.json`:
+its hash is checked and sealed; the adapter checks binary, model/native source,
+version and selected loopback port/asset path. The final source-ledger update was
+reviewed field by field against these actual locks and recorded running-process
+observations. It did not change executable request semantics. Its historical
+11434 API entry does not describe the later task-owned 48173 endpoint. Neither
+endpoint is contacted by the closeout checks.

@@ -1,0 +1,547 @@
+{
+  "publication": "4981788b4d8069a2b2264e65197f9886b74f1f5f",
+  "units": "Reservations, captures, batches, methods, scenarios and workflows are separate units.",
+  "totals": {
+    "spent_reservations": 12,
+    "captures": 10,
+    "uncaptured": 2,
+    "authorized_batches": 8,
+    "rejected_batches": 2,
+    "native_deductions": 5,
+    "peer_observed_replies": 3,
+    "complete_workflows": 3,
+    "captured_result_sigkill_recoveries": 2
+  },
+  "approved_calls": 12,
+  "remaining_calls": 0,
+  "additional_live_generations": 0,
+  "calls": [
+    {
+      "number": 1,
+      "source": "evidence/s07/live-01/",
+      "id": "08e08a85-8373-555e-84db-c3fd051d2cc1",
+      "session": "80620954-f647-484b-9b7c-49b2b5eafb1c",
+      "slot": 1,
+      "source_id": "87519fab-54e7-5e0b-9ad6-cec0c9fe6199",
+      "intent_sha256": "1fc74711f8229769bd23157c205217a208e7b64faca2b46b0644af118e3151a3",
+      "profile": "neoclaw-ollama-qwen38-text/1",
+      "deadline_ms": 1792407481051,
+      "reserved": 1,
+      "capture": false,
+      "admission": null,
+      "failure_code": "NOT_AVAILABLE",
+      "proposal": null,
+      "application_rpc_reservations": 2,
+      "durations_ns": null,
+      "usage": null
+    },
+    {
+      "number": 2,
+      "source": "evidence/s07/live-04/1/",
+      "id": "b292c510-43ff-506a-afc8-74db4682ad57",
+      "session": "7abc6d2a-e78f-45ff-9924-ced53f5c0e3c",
+      "slot": 1,
+      "source_id": "7510c0c9-e20e-546c-aff0-485b36c262fb",
+      "intent_sha256": "609d6ef4e7841d21eb777fe0b90043d4dd4500eff85c10e26c5c5fb654a02e9c",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792410185098,
+      "reserved": 1,
+      "capture": false,
+      "admission": null,
+      "failure_code": "NOT_AVAILABLE",
+      "proposal": null,
+      "application_rpc_reservations": 2,
+      "durations_ns": null,
+      "usage": null
+    },
+    {
+      "number": 3,
+      "source": "evidence/s07/live-05/1/",
+      "id": "53bfa75b-0b10-5975-992c-b549706e6653",
+      "session": "1751f593-e03f-4593-9793-1bcc543e00bb",
+      "slot": 1,
+      "source_id": "08e223b0-04a0-57c5-b76f-1a3e97f0ddb2",
+      "intent_sha256": "38db6d99ad5da7dc4a6ac62f9edfa8efa6fdb0ae1990b0aa9905b4ccda6369dc",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792410456609,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "metta",
+          "(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 25504140000,
+        "load": 2246717,
+        "prompt": 52793138000,
+        "total": 78301957642
+      },
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 4,
+      "source": "evidence/s07/live-05/1/",
+      "id": "e6ce7c2d-0635-5474-8e8e-64939efac772",
+      "session": "1751f593-e03f-4593-9793-1bcc543e00bb",
+      "slot": 2,
+      "source_id": "dc3950fb-a9cc-529c-8c3b-294a68f363eb",
+      "intent_sha256": "639bd349b318a27927247fb483e5c06832bc89463d69cafc2bb879b04f80829e",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792410537878,
+      "reserved": 1,
+      "capture": true,
+      "admission": "rejected:UNSUPPORTED_OPERATION",
+      "failure_code": null,
+      "proposal": [
+        [
+          "Send",
+          "Message to User Synthetic S07 reply: native calculation observed."
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 12543145000,
+        "load": 2920442,
+        "prompt": 60158348000,
+        "total": 72707519496
+      },
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 15,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 5,
+      "source": "evidence/s07/live-06/1/",
+      "id": "5965a068-55a3-544f-b5bf-3cc03f803bca",
+      "session": "892c0215-1ae4-41e1-a91b-d4d6f62994b4",
+      "slot": 1,
+      "source_id": "eb4e0bf3-5d01-5304-a851-a313691766ec",
+      "intent_sha256": "4c08c09595ee7d47c22d9674209b561946f26b8034143f7c08a35d6aee595b16",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792410822829,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "metta",
+          "(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 23852080000,
+        "load": 1462828,
+        "prompt": 52681090000,
+        "total": 76537940821
+      },
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 6,
+      "source": "evidence/s07/live-06/1/",
+      "id": "86db5eac-de30-59e8-826d-f17f70963f1c",
+      "session": "892c0215-1ae4-41e1-a91b-d4d6f62994b4",
+      "slot": 2,
+      "source_id": "8da0cba9-a754-54a1-89a5-c3204b33e0ae",
+      "intent_sha256": "4267d27574e8fb56aec956d4126c930d33eb1e80f44c774ec7469fc849fd2c9e",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792410915641,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "send",
+          "Synthetic S07 reply: native calculation observed."
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 9097020000,
+        "load": 1292516,
+        "prompt": 60481501000,
+        "total": 69582603400
+      },
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 12,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 7,
+      "source": "evidence/s07/live-06/2/",
+      "id": "4d463d69-e94b-5ffe-85f4-82373974e66b",
+      "session": "d8fbb89c-4859-4a07-ac11-e3f2b23f5b43",
+      "slot": 1,
+      "source_id": "c3cfb49d-f224-545d-8356-fef5bc9fea83",
+      "intent_sha256": "05afbbe4caa54a4a722d03733623a2060a3a2f5184a4651b12da533edb80a730",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792411004699,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "metta",
+          "(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 24996286000,
+        "load": 1304122,
+        "prompt": 53973901000,
+        "total": 78975895639
+      },
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 8,
+      "source": "evidence/s07/live-06/2/",
+      "id": "48c0c89b-56df-52c0-a18a-70e35c800a90",
+      "session": "d8fbb89c-4859-4a07-ac11-e3f2b23f5b43",
+      "slot": 2,
+      "source_id": "7d2a7893-9454-5e20-918c-34c362929797",
+      "intent_sha256": "76838cf862917d2649e6ba73884375f0fc7578ce191d1928aa70b8da407344c5",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792411086626,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "send",
+          "Synthetic S07 reply: native calculation observed."
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 8976584000,
+        "load": 1826446,
+        "prompt": 61577121000,
+        "total": 70558363458
+      },
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 12,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 9,
+      "source": "evidence/s07/live-06/3/",
+      "id": "951ae6ca-806f-5406-8432-5b50f84905ad",
+      "session": "5cce9b75-c434-4f3e-8fbb-0465ac7a3d12",
+      "slot": 1,
+      "source_id": "d70ddaca-0776-5017-be1e-e35bd9b56c0c",
+      "intent_sha256": "e4213f7e5a1108e97dc0019c3ff92fa23d40bea89ed56d0633f45a0c3b345df3",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792411175892,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "metta",
+          "(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 29962745000,
+        "load": 2692528,
+        "prompt": 55727283000,
+        "total": 85694853684
+      },
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 10,
+      "source": "evidence/s07/live-06/3/",
+      "id": "3fda71be-d5bc-5962-8058-792f52626dfb",
+      "session": "5cce9b75-c434-4f3e-8fbb-0465ac7a3d12",
+      "slot": 2,
+      "source_id": "4b6eaf0c-081b-5bb4-bc65-80a7869c3e0a",
+      "intent_sha256": "0ad76e5925b33c421947d329fe61f1cebc734b9cb7c2297baea59484951bc9dc",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792411264714,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "send",
+          "Synthetic S07 reply: native calculation observed."
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 9247020000,
+        "load": 1264332,
+        "prompt": 61271542000,
+        "total": 70521961165
+      },
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 12,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 11,
+      "source": "evidence/s07/live-06/4/",
+      "id": "d41c0ecc-d140-5930-94f6-20ef98380298",
+      "session": "ae9d9615-a13e-4fbe-a01b-2d72af01e163",
+      "slot": 1,
+      "source_id": "e19c3bc4-2a7c-52a2-b382-6f07804bd9fc",
+      "intent_sha256": "dc80acfd6db5339c3a44ae621650ce2bf4d2b3f5f1a3759841baf112232d63dc",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792411354594,
+      "reserved": 1,
+      "capture": true,
+      "admission": "authorized",
+      "failure_code": null,
+      "proposal": [
+        [
+          "metta",
+          "(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 25487952000,
+        "load": 2141788,
+        "prompt": 52428736000,
+        "total": 77924699784
+      },
+      "usage": {
+        "input_tokens": 295,
+        "output_tokens": 30,
+        "reasoning_tokens": null
+      }
+    },
+    {
+      "number": 12,
+      "source": "evidence/s07/live-06/4/",
+      "id": "23872c99-7334-585d-91cb-2339c31023a5",
+      "session": "ae9d9615-a13e-4fbe-a01b-2d72af01e163",
+      "slot": 2,
+      "source_id": "514cead1-6aba-5b71-ab2f-d0552dc34070",
+      "intent_sha256": "3be78d819f614703b351d5e1102a77e40c83474a33a5f9d019583e2d34e6ad4e",
+      "profile": "neoclaw-ollama-qwen38-text/2",
+      "deadline_ms": 1792411449109,
+      "reserved": 1,
+      "capture": true,
+      "admission": "rejected:UNSUPPORTED_OPERATION",
+      "failure_code": null,
+      "proposal": [
+        [
+          "send_message_to_user",
+          "Synthetic S07 reply: native calculation observed."
+        ]
+      ],
+      "application_rpc_reservations": 4,
+      "durations_ns": {
+        "generation": 11748631000,
+        "load": 1924832,
+        "prompt": 61394562000,
+        "total": 73148170994
+      },
+      "usage": {
+        "input_tokens": 349,
+        "output_tokens": 15,
+        "reasoning_tokens": null
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "source": "evidence/s07/live-01/",
+      "model_placement": "local",
+      "mailbox_placement": "local",
+      "calls": 1,
+      "captures": 0,
+      "complete_workflow": false,
+      "peer_observed": false,
+      "native_deduction": false,
+      "feedback_in_next_prompt": false,
+      "recovery": null,
+      "native_status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "NOT_AVAILABLE"
+      }
+    },
+    {
+      "source": "evidence/s07/live-04/1/",
+      "model_placement": "local",
+      "mailbox_placement": "local",
+      "calls": 1,
+      "captures": 0,
+      "complete_workflow": false,
+      "peer_observed": false,
+      "native_deduction": false,
+      "feedback_in_next_prompt": false,
+      "recovery": null,
+      "native_status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "NOT_AVAILABLE"
+      }
+    },
+    {
+      "source": "evidence/s07/live-05/1/",
+      "model_placement": "local",
+      "mailbox_placement": "local",
+      "calls": 2,
+      "captures": 2,
+      "complete_workflow": false,
+      "peer_observed": false,
+      "native_deduction": true,
+      "feedback_in_next_prompt": true,
+      "recovery": null,
+      "native_status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "UNSUPPORTED_OPERATION"
+      }
+    },
+    {
+      "source": "evidence/s07/live-06/1/",
+      "model_placement": "network",
+      "mailbox_placement": "local",
+      "calls": 2,
+      "captures": 2,
+      "complete_workflow": true,
+      "peer_observed": true,
+      "native_deduction": true,
+      "feedback_in_next_prompt": true,
+      "recovery": {
+        "captured_rows_retained": 1,
+        "exact_prompt_identity_deadline_result_retained": true,
+        "regenerations": 0,
+        "signal": "SIGKILL"
+      },
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      }
+    },
+    {
+      "source": "evidence/s07/live-06/2/",
+      "model_placement": "network",
+      "mailbox_placement": "network",
+      "calls": 2,
+      "captures": 2,
+      "complete_workflow": true,
+      "peer_observed": true,
+      "native_deduction": true,
+      "feedback_in_next_prompt": true,
+      "recovery": null,
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      }
+    },
+    {
+      "source": "evidence/s07/live-06/3/",
+      "model_placement": "local",
+      "mailbox_placement": "network",
+      "calls": 2,
+      "captures": 2,
+      "complete_workflow": true,
+      "peer_observed": true,
+      "native_deduction": true,
+      "feedback_in_next_prompt": true,
+      "recovery": null,
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      }
+    },
+    {
+      "source": "evidence/s07/live-06/4/",
+      "model_placement": "network",
+      "mailbox_placement": "network",
+      "calls": 2,
+      "captures": 2,
+      "complete_workflow": false,
+      "peer_observed": false,
+      "native_deduction": true,
+      "feedback_in_next_prompt": true,
+      "recovery": {
+        "captured_rows_retained": 1,
+        "exact_prompt_identity_deadline_result_retained": true,
+        "regenerations": 0,
+        "signal": "SIGKILL"
+      },
+      "native_status": {
+        "status": "PENDING_OR_FAILED",
+        "code": "UNSUPPORTED_OPERATION"
+      }
+    }
+  ],
+  "durations": {
+    "total": {
+      "n": 10,
+      "min_seconds": 69.5826034,
+      "median_seconds": 74.8430559075,
+      "max_seconds": 85.694853684
+    },
+    "load": {
+      "n": 10,
+      "min_seconds": 0.001264332,
+      "median_seconds": 0.0018756390000000001,
+      "max_seconds": 0.002920442
+    },
+    "prompt": {
+      "n": 10,
+      "min_seconds": 52.428736,
+      "median_seconds": 57.942815499999995,
+      "max_seconds": 61.577121
+    },
+    "generation": {
+      "n": 10,
+      "min_seconds": 8.976584,
+      "median_seconds": 18.1976125,
+      "max_seconds": 29.962745
+    }
+  },
+  "captured_usage": {
+    "input_tokens": 3220,
+    "output_tokens": 216
+  },
+  "unknown_usage_calls": 2,
+  "application_channel_time": "Not independently measured end-to-end; backend total is not application or channel latency.",
+  "zero_generation_phases": [
+    "live-02 load-only timeout",
+    "live-03 interrupted readiness wait"
+  ],
+  "failure_identity_limit": "live-04 rejected raw payload was not retained; cache-counter attribution remains inference.",
+  "recovery_limit": "Public exports omit context_view; runtime assertion and recovery.json attest it, while id/intent/result bytes can be independently compared here."
+}

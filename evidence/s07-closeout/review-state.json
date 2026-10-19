@@ -1,0 +1,141 @@
+{
+  "schema": "s07-closeout-review/1",
+  "status": "READY_FOR_REVIEW",
+  "starting_head": "4981788b4d8069a2b2264e65197f9886b74f1f5f",
+  "current_head": "4981788b4d8069a2b2264e65197f9886b74f1f5f",
+  "parent": "3fc1af31f2d64583fe4c873b6b656dad2d6b1275",
+  "branch": "master",
+  "starting_worktree": [
+    "?? codex_neoclaw_s07_closeout_and_coverage_review.md"
+  ],
+  "publication": "S07 was already published; this review remains uncommitted and unstaged",
+  "commit_performed": false,
+  "push_performed": false,
+  "live_generation_authorization": 0,
+  "ADDITIONAL_LIVE_GENERATIONS": 0,
+  "gates": {
+    "SOURCE_CLOSURE": "PASS",
+    "CAMPAIGN_ACCOUNTING": "PASS",
+    "EVIDENCE_UNITS": "PASS",
+    "COVERAGE_CURRENT": "PASS",
+    "NEXT_WORKLOAD_READY": "PASS",
+    "NO_NEW_GENERATION": "PASS"
+  },
+  "next_workload_gate_meaning": "Specification ready with explicit pending decisions; NOT_IMPLEMENTED / NOT_RUN / LIVE_AUTHORIZATION_ZERO",
+  "executed_checks": [
+    "PYTHONDONTWRITEBYTECODE=1 artifacts/s03/venv/bin/python evidence/s07-closeout/audit.py",
+    "S07_REVIEW_PARENT_NET=$(readlink /proc/self/ns/net) bwrap --unshare-net --ro-bind / / --dev /dev --proc /proc --tmpfs /tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv HF_HUB_OFFLINE 1 --chdir /home/purplezky/work/takopi/fusion-module-interfaces artifacts/s03/venv/bin/python evidence/s07-closeout/offline_checks.py > evidence/s07-closeout/offline-checks.json 2> evidence/s07-closeout/offline-checks.log",
+    "git diff --check"
+  ],
+  "checks": "evidence/s07-closeout/checks.json",
+  "exact_commit_ready_change_list": [
+    "codex_neoclaw_s07_closeout_and_coverage_review.md",
+    "docs/module-interfaces/runbook.md",
+    "docs/omega-adoption/mettaclaw-neoclaw/README.md",
+    "docs/omega-adoption/mettaclaw-neoclaw/coverage.json",
+    "docs/omega-adoption/mettaclaw-neoclaw/mapping-ledger.json",
+    "docs/omega-adoption/mettaclaw-neoclaw/remote-placement.md",
+    "docs/omega-adoption/mettaclaw-neoclaw/s07-closeout.md",
+    "docs/omega-adoption/mettaclaw-neoclaw/s07-next-workload.md",
+    "evidence/s07-closeout/accounting.json",
+    "evidence/s07-closeout/audit.py",
+    "evidence/s07-closeout/checks.json",
+    "evidence/s07-closeout/offline-checks.json",
+    "evidence/s07-closeout/offline-checks.log",
+    "evidence/s07-closeout/offline_checks.py",
+    "evidence/s07-closeout/review-state.json",
+    "evidence/s07-closeout/source-review.json",
+    "evidence/s07-closeout/test-map.json"
+  ],
+  "files": {
+    "codex_neoclaw_s07_closeout_and_coverage_review.md": {
+      "sha256": "0268c732ebc98d7a3af4f7371bfe1fcc20ad31e0cc20ea73b7d92b12cfd67b54",
+      "bytes": 14569,
+      "kind": "new"
+    },
+    "docs/module-interfaces/runbook.md": {
+      "sha256": "724092dd27047c5acf6905518a79e62b9fe425cfd4b48a18aa2446c72ccf9448",
+      "bytes": 47172,
+      "kind": "modified"
+    },
+    "docs/omega-adoption/mettaclaw-neoclaw/README.md": {
+      "sha256": "c09f8900972d6c0ab422e1963ccd61ac784b070ae0511cccd61a335bce70ea1e",
+      "bytes": 14387,
+      "kind": "modified"
+    },
+    "docs/omega-adoption/mettaclaw-neoclaw/coverage.json": {
+      "sha256": "3d738b66e5743fdf6f7edabcea52dc0938f62e3b5c53a75ed5db84bc7ff89afd",
+      "bytes": 8506,
+      "kind": "modified"
+    },
+    "docs/omega-adoption/mettaclaw-neoclaw/mapping-ledger.json": {
+      "sha256": "56d86d262359bb8045ca57946864b69a2d4af1ee8faf2af3c9cf19a1068f1fd4",
+      "bytes": 284309,
+      "kind": "modified"
+    },
+    "docs/omega-adoption/mettaclaw-neoclaw/remote-placement.md": {
+      "sha256": "2cb7ac4bd439b6d9149602393a9ff9d608b4d47ef0b0442b61b18c4f0ab0b8e8",
+      "bytes": 8031,
+      "kind": "modified"
+    },
+    "docs/omega-adoption/mettaclaw-neoclaw/s07-closeout.md": {
+      "sha256": "81674f349447a9f578ddcb3c2d086af6c19067682e64f13b30c76be2413f915f",
+      "bytes": 25849,
+      "kind": "new"
+    },
+    "docs/omega-adoption/mettaclaw-neoclaw/s07-next-workload.md": {
+      "sha256": "c345e6e2f1ce20dd12a54e686cc7bdd0c67aa8630512ec3d000eda74a578da87",
+      "bytes": 10612,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/accounting.json": {
+      "sha256": "e88447bcdedc81dca8fe23cfdf892b78f1aabf857a43efc07e6a5a2c5a25e0cf",
+      "bytes": 16196,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/audit.py": {
+      "sha256": "558d64fc036a4069a47520d66ce483874682d386322fd40856b98fa3b191adbc",
+      "bytes": 24653,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/checks.json": {
+      "sha256": "c3274507f8e302d203ed5bdd8fe254ab6ab3c06594195e7a0c3bf10854b4443a",
+      "bytes": 840,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/offline-checks.json": {
+      "sha256": "fc7294314f810639aadb36cfdaa71632694aa41461bf38087eac23f270b690f7",
+      "bytes": 29332,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/offline-checks.log": {
+      "sha256": "e5b60f625931d3be6ed560a5205ff654a8288c7c53e926e06925cbfc939f1fd7",
+      "bytes": 2959,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/offline_checks.py": {
+      "sha256": "795d4da6d7173f8cf21de572d8f522139f6d2018bc40472c45a67852ccb124af",
+      "bytes": 2583,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/source-review.json": {
+      "sha256": "d5e24aac958cfddc3f0b996b3be02a3a25ad19974e0814371341e20ae8d7145a",
+      "bytes": 618225,
+      "kind": "new"
+    },
+    "evidence/s07-closeout/test-map.json": {
+      "sha256": "86f268545e701fce272aaa92cfa6b12fa884899b5368c938bcb9554cef38e850",
+      "bytes": 41682,
+      "kind": "new"
+    }
+  },
+  "manifest_self_exclusion": "review-state.json is listed but excluded from its own hash map; all other review delivery bytes are hashed.",
+  "unresolved_facts": [
+    "Exact rejected live-04 API field: raw response not retained; cache-counter cause remains inference.",
+    "Public before/after exports omit context_view; executed assertion/recovery record, not independent exported-field comparison.",
+    "Original S06 baseline peer-observation failure cause was not established.",
+    "Uncaptured final token usage and independent end-to-end channel timing are unknown.",
+    "No independent runtime rebuild or cold clean-cache reproduction.",
+    "No combined populated-memory real-model workflow; next workload needs separate authority and disclosure/output decisions."
+  ]
+}

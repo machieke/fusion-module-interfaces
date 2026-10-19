@@ -1,5 +1,12 @@
 # MeTTaClaw neoclaw → Fusion mapping review
 
+**Current review:** [S07 closeout and native-boundary coverage matrix](s07-closeout.md)
+reconciles publication `4981788b4d8069a2b2264e65197f9886b74f1f5f` with the historical
+working-tree tests and all twelve live attempts. The reports below retain their
+delivery-time identities. The [next retrieval-grounded workload](s07-next-workload.md)
+is a proposal only; additional authorized live generations remain **ZERO**.
+Historical S08 Embedding already has bounded X02 coverage through S03.1/S03.2.
+
 **S04 local evidence update:** native `support` and `contradict` now share one bounded assessment seam through local C1, C2 and the trusted relay. The original pinned NAL revision runs under a distinct profile. Fresh defaults are nonempirical priors; repeats, contrary assessments and authorized aggregation remain distinct. Later native query reads an immutable owner-bound view without rebuilding Search. See [S04 report and gate evidence](s04.md). This is the sixth precise adoption entry, adds two user commands, and promotes no whole family. Full Omega, remote private evidence and historical memory migration remain outside this slice.
 
 **Historical S03.2 append-only update:** native `remember` now composes memory-purpose Embedding, immutable AtomStorage/feed and named Search publication. A later `query` in the same controlled session selects the ready view without configuration edits; prior query occurrences keep their own views. Original, local, authenticated same-host HTTPS and mixed-placement evidence uses a new synthetic corpus. See [S03.2 report, partial states and limits](s03_2.md). Creation labels/default STVs remain local compatibility metadata; update/delete, episode provenance, belief revision and promotion are unadopted. The five adoption entries cover four user commands and promote zero whole families.
