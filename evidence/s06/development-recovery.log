@@ -1,0 +1,84 @@
+test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) ... 
+  test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_bridge_egress_commit') ... ERROR
+  test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_socket_reservation') ... ERROR
+  test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_socket_write') ... ERROR
+  test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_socket_outcome') ... ERROR
+test_ingress_kills_capture_payload_and_mailbox_commits (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_ingress_kills_capture_payload_and_mailbox_commits) ... ok
+test_real_burst_capacity_disconnect_and_reuse (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_real_burst_capacity_disconnect_and_reuse) ... FAIL
+test_revocation_after_reservation_and_server_discontinuity (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_revocation_after_reservation_and_server_discontinuity) ... ok
+test_spent_rpc_budget_and_expired_effect_remain_spent (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_spent_rpc_budget_and_expired_effect_remain_spent) ... ERROR
+
+======================================================================
+ERROR: test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_bridge_egress_commit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_recovery.py", line 63, in test_egress_handoff_and_ambiguous_socket_kills_never_resend
+    r.kill(r.bridge);owner=Bridge(r.bridge_config_path)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/irc_bridge.py", line 23, in __init__
+    except BlockingIOError:self.lock.close();raise ContractError('OVERLOADED') from None
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+fusion.contracts.ContractError: OVERLOADED
+
+======================================================================
+ERROR: test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_socket_reservation')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_recovery.py", line 63, in test_egress_handoff_and_ambiguous_socket_kills_never_resend
+    r.kill(r.bridge);owner=Bridge(r.bridge_config_path)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/irc_bridge.py", line 23, in __init__
+    except BlockingIOError:self.lock.close();raise ContractError('OVERLOADED') from None
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+fusion.contracts.ContractError: OVERLOADED
+
+======================================================================
+ERROR: test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_socket_write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_recovery.py", line 63, in test_egress_handoff_and_ambiguous_socket_kills_never_resend
+    r.kill(r.bridge);owner=Bridge(r.bridge_config_path)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/irc_bridge.py", line 23, in __init__
+    except BlockingIOError:self.lock.close();raise ContractError('OVERLOADED') from None
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+fusion.contracts.ContractError: OVERLOADED
+
+======================================================================
+ERROR: test_egress_handoff_and_ambiguous_socket_kills_never_resend (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_egress_handoff_and_ambiguous_socket_kills_never_resend) (stage='after_socket_outcome')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_recovery.py", line 63, in test_egress_handoff_and_ambiguous_socket_kills_never_resend
+    r.kill(r.bridge);owner=Bridge(r.bridge_config_path)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/irc_bridge.py", line 23, in __init__
+    except BlockingIOError:self.lock.close();raise ContractError('OVERLOADED') from None
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+fusion.contracts.ContractError: OVERLOADED
+
+======================================================================
+ERROR: test_spent_rpc_budget_and_expired_effect_remain_spent (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_spent_rpc_budget_and_expired_effect_remain_spent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_recovery.py", line 84, in test_spent_rpc_budget_and_expired_effect_remain_spent
+    owner=Bridge(r.bridge_config_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/irc_bridge.py", line 23, in __init__
+    except BlockingIOError:self.lock.close();raise ContractError('OVERLOADED') from None
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+fusion.contracts.ContractError: OVERLOADED
+
+======================================================================
+FAIL: test_real_burst_capacity_disconnect_and_reuse (integration.neoclaw.test_channel_recovery.BridgeRecovery.test_real_burst_capacity_disconnect_and_reuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_recovery.py", line 71, in test_real_burst_capacity_disconnect_and_reuse
+    self.until(lambda:any(x['reason']=='capacity' for x in self.rows(r,'channel_epochs')))
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_recovery.py", line 29, in until
+    self.fail('real-server/owner observation timeout')
+AssertionError: real-server/owner observation timeout
+
+----------------------------------------------------------------------
+Ran 5 tests in 36.566s
+
+FAILED (failures=1, errors=5)

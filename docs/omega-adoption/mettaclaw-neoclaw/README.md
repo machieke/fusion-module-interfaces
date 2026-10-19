@@ -86,3 +86,11 @@ Full Omega startup, installed Chroma SDK behavior, live channels/model/media pro
 All thirteen **mapping review** gates pass with those explicit limits; they are not implementation gates. See [gate evidence](gates.json). **READY_FOR_MAPPING_REVIEW**.
 
 [S05](s05.md) adopts only native promotion/demotion, query score reads and promoted global context under a separately owned local wall-clock Attention profile. [Contract decisions](s05-contract-decisions.md) describe clock/replay semantics, preserved native ordering, AtomStorage hydration, private placement and retained context captures. The historical mapping classifications and fifteen-family denominator are unchanged; execution evidence belongs to the precise new adoption entry.
+
+[S06](s06.md) adds one real isolated IRC receive/handoff and bounded native `send`
+through AtomStorage and durable Messaging, under local or authenticated same-host
+HTTPS placement. The actual native loop and context run; the external model is a
+fixture. [Contracts](s06-contract-decisions.md) preserve separate owner commits,
+occurrence identity, private local cognition and honest one-attempt socket outcomes.
+The ledger now has eight bounded adoption entries and nine native user commands;
+the historical 105 rows and fifteen-family denominator remain unchanged.

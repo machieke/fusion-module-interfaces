@@ -1,0 +1,36 @@
+{
+  "starting_commit": "c9c6e7985c8214feeedc78686f475efb3ad40625",
+  "historical_test_identity": "0d66b4b8f404450367a711de905f4a251f4b0255",
+  "initial_status": [
+    "?? codex_neoclaw_s06_durable_channel_adoption.md"
+  ],
+  "recorded_at": "2026-10-19T05:20:08.191284+00:00",
+  "manifests": {
+    "tested": {
+      "files": 247,
+      "mismatches": []
+    },
+    "final": {
+      "files": 35,
+      "mismatches": []
+    },
+    "evidence": {
+      "files": 141,
+      "mismatches": []
+    }
+  },
+  "review_findings": {
+    "legacy_channel": "volatile concatenate-and-clear text buffer; recv-local CRLF splitting and lossy decode",
+    "native_loop": "text equality newness; global context precedes receive",
+    "native_send": "unconditional SEND-SUCCESS; lastsend changes before failure",
+    "current_controlled_channel": "fixture; no real socket",
+    "mailbox": "separate existing ref-based send/poll/ack owner; completion port remains trusted"
+  },
+  "regression_impact": [
+    "M1/M1.1 Messaging, AtomStorage, current authorization, receipts and replay",
+    "shared native startup/application/profile guards and S01/S02",
+    "S04 source capture and duplicate identity",
+    "S05 actual context, score/provider boundaries and process recovery",
+    "S03/S03.1/S03.2 HTTPS read/embedding/append"
+  ]
+}

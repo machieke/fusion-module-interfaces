@@ -1,0 +1,16 @@
+{
+  "kind": "summary of retained tool observations, not a reconstructed raw log",
+  "source": "unfrozen development",
+  "observations": [
+    {
+      "action": "first real listener inspection",
+      "error": "FileNotFoundError reading /proc/407234/fd/9 after the readiness probe connection closed",
+      "resolution": "Ignore descriptors that close while inspecting; verify the actual remaining listener set."
+    },
+    {
+      "action": "native quote diagnostic",
+      "error": "Expected quote removal; native context contained _quote_ tokens",
+      "resolution": "Assert original native string-safe representation; raw context retained only under local private-audits."
+    }
+  ]
+}

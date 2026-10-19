@@ -601,3 +601,19 @@ and [gate report](../omega-adoption/mettaclaw-neoclaw/s04.md).
 `attention` 3.0.0 / `wall-clock-promotion/1` is a sibling of the historical integer STI profiles. Its declared ports are `bind`, `adjust`, `scores`, `rank`, `observe` and `authorize`; exact input/response validators and protocols live in `fusion/promotion_contracts.py`. Bindings contain the trusted principal, descriptor selection, scope/context, occurrence, exact owner revision, original epoch time and deadline. Adjustments are ±1 with native decay/caps, independently committed value/time/revision/receipt and durable numerical reservations. Read bindings retain history; ranking is complete over a bounded authorized eligible set. It is not a global conserved budget, inference policy or evidence weight.
 
 The local S05 composition selects this profile separately from C1/C2, Search and AtomStorage. A scoped SQLite owner and an independently implemented atomic-file fixture demonstrate substitution through the same ports. No remote private Attention endpoint, migration or numerical conversion exists. See the [selected contract decisions](../omega-adoption/mettaclaw-neoclaw/s05-contract-decisions.md) and [S05 evidence report](../omega-adoption/mettaclaw-neoclaw/s05.md).
+
+## S06 isolated IRC composition
+
+`isolated-irc-mailbox/1` is a bounded adapter/composition profile over the existing
+`atom.storage` 1.0.0 (`immutable-bytes/1`) and `agent.messaging` 1.0.0
+(`durable-mailbox/2`) ports. It adds no family and does not widen those profiles.
+Its exact closed admission rules live in `fusion/channel_contracts.py`; local and
+HTTPS implementations share the same validated operation-specific replies.
+
+`controlled-native-loop/8` binds channel scope/routes/roles, approved text,
+selection, session and placement before accepting work. Bridge capture, immutable
+payload, mailbox acceptance, application input acceptance, mailbox acknowledgment,
+native result capture and external socket outcome are separate commits. C1/C2 and
+Attention remain private and local. The
+[S06 decisions](../omega-adoption/mettaclaw-neoclaw/s06-contract-decisions.md)
+specify limits, errors, original deadlines, one-attempt sends and uncertainty.

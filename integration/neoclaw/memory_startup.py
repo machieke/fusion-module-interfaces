@@ -14,8 +14,8 @@ def extend(config,omega,petta,directory,loop):
     source=query_source(omega)
     source=replace_once(source,'lib_chromadb.query_with_ids_and_dists','loop_bridge.read_candidates')
     source=replace_once(source,'($current_time (get_time))','($current_time (py-call (loop_bridge.read_clock (py-call (memory_bootstrap.clock)))))')
-    from fusion import append_contracts as w, nal_memory_contracts as n, promotion_contracts as p
-    if config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION):
+    from fusion import append_contracts as w, nal_memory_contracts as n, promotion_contracts as p, channel_contracts as ch
+    if config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION):
         from .memory_oracle import creation_source
         creation=creation_source(omega)
         creation=replace_once(creation,'($current_time_str (get_time_as_string))',
@@ -23,7 +23,7 @@ def extend(config,omega,petta,directory,loop):
         creation=replace_once(creation,'lib_chromadb.remember','loop_bridge.append_memory')
         creation=replace_once(creation,'lib_chromadb.link_episode','loop_bridge.creation_link')
         source+='\n'+creation
-    if config['composition'] in (n.APPLICATION,p.APPLICATION):
+    if config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION):
         from .evidence_startup import revision_wrappers
         source+='\n'+revision_wrappers(omega)
     memory=directory/'memory.metta'
@@ -38,7 +38,7 @@ def extend(config,omega,petta,directory,loop):
 (= (best-promoted-memories) "")
 (= (addToHistory $a $b $c $d) True)
 '''+source)
-    if config['composition']==p.APPLICATION:
+    if config['composition'] in (p.APPLICATION,ch.APPLICATION):
         from .promotion_startup import extend as priority_extend
         memory.write_text(priority_extend(memory.read_text(),omega))
     text=loop.read_text()
@@ -48,12 +48,12 @@ def extend(config,omega,petta,directory,loop):
     text=replace_once(text,
         '($_ (py-call (loop_bridge.end $position)))) (py-call (helper.normalize_string $R)))',
         '($_ (py-call (loop_bridge.end $position)))) (py-call (helper.normalize_string $captured)))')
-    if config['composition'] in (n.APPLICATION,p.APPLICATION):
+    if config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION):
         text=replace_once(text,'(receive)','(py-call (loop_bridge.source (receive)))')
     loop.write_text(text)
     bootstrap=directory/'memory_bootstrap.py'
     bootstrap.write_text('from integration.neoclaw.memory_bootstrap import initialize, clock\ninitialize()\n')
-    if config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION):
+    if config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION):
         with bootstrap.open('a') as stream:stream.write('from integration.neoclaw.append_bootstrap import creation_clock\n')
     if config['composition'] in (n.APPLICATION,p.APPLICATION):
         with bootstrap.open('a') as stream:stream.write('from integration.neoclaw.evidence_startup import initialize_sources\ninitialize_sources()\n')

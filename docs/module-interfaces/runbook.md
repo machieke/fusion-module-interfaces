@@ -586,3 +586,71 @@ Each command creates fresh synthetic state and stops only its own processes. The
 Run `integration.neoclaw.test_promotion_owner`, `integration.neoclaw.test_promotion_loop` and `integration.neoclaw.test_promotion_edges.PromotionEdges` for the selected S05 gates. The explicit class selector avoids importing helper tests twice. Keep synthetic model/channel/clock boundaries and alternate fixture storage distinct from real native math, DeTTa, Chroma and E5. Historical HTTPS memory gates are separate; no remote private Attention/evidence placement is configured.
 
 Also run `integration.neoclaw.test_promotion_recovery_edges.ContextRecovery` for owner outage and retained context budgets. Run `S05_REQUIRE_MINIMAL=1 uv run --python 3.11 --locked python -m unittest -v integration.neoclaw.test_promotion_guards` in the repository's E5-free core environment. Its reduced-source check copies only `src/memory.metta` and PeTTa's interpreter `src/`, reuses the exact pinned SWI libraries, and updates only the relocated runtime-manifest hash. It executes both Attention owners without NAL/PLN libraries and verifies policy/interpreter tamper refusal. Existing S01/S04 full-source validators remain unchanged. The [run specifications](../../evidence/s05/run-specs.json) list the executed commands, environment and source identities, including targeted final rechecks.
+
+## S06 fresh isolated IRC recipe
+
+Continue from `c9c6e7985c8214feeedc78686f475efb3ad40625`. Reuse the pinned S01
+native runtime, real DeTTa, S03 SDK/E5/Chroma and S03.1 caller SDK described above.
+The C1/C2/Attention owners remain local. All commands below use fresh temporary
+journals and generated inputs; no private Omega tree or default live startup is
+loaded. `bwrap`, OpenSSL (for generated HTTPS certificates), a C compiler, make,
+and the existing Python environments are prerequisites.
+
+Build the independently pinned real IRC server from its official generated
+release distribution (autoconf is unnecessary):
+
+```bash
+curl --fail --location https://ngircd.barton.de/pub/ngircd/ngircd-28.tar.xz --output artifacts/s06/ngircd-28.tar.xz
+sha256sum artifacts/s06/ngircd-28.tar.xz
+# Required: b48ba320a931d445ae335c47f88a9406a20f5c71c623bee5f7755d0522d435ee
+# Extract only after this digest matches, into a fresh artifacts/s06 directory.
+tar -xf artifacts/s06/ngircd-28.tar.xz -C artifacts/s06
+git clone --no-checkout https://github.com/ngircd/ngircd artifacts/s06/ngircd-src
+git -C artifacts/s06/ngircd-src checkout --detach 6ae13bf89e934d167f6ead8bb9ee39f57a0935c0
+```
+
+From the repository root, select the absolute install prefix and build:
+
+```bash
+S06_PREFIX="$PWD/artifacts/s06/ngircd"
+cd artifacts/s06/ngircd-28
+./configure --prefix="$S06_PREFIX" --without-openssl --without-gnutls --without-pam --without-ident --without-tcp-wrappers --without-zlib --disable-ipv6
+make -j2
+make install
+```
+
+The exact source comparison, generated configure input and local binary hash are
+in `evidence/s06/server-source.json` and `builds.json`. The recipe starts ngIRCd
+with `-n -p`, no server links, `Listen=127.0.0.1`, an ephemeral port, DNS/Ident/PAM
+disabled, eight connection slots and one configured channel. It inspects the
+running server's socket descriptors and `/proc/net/tcp`, not just configuration.
+The IRC leg is isolated TCP; only the separate module leg is TLS.
+
+From the repository root, run the original native oracle and real bridge tests:
+
+```bash
+export S01_DETTA="$PWD/artifacts/m5/reproduction-01/providers/detta/target/debug/fusion-detta-adapter"
+export PYTHONPATH="$PWD"
+export PYTHONDONTWRITEBYTECODE=1
+export S06_EVIDENCE="$PWD/artifacts/s06/reproduction"
+uv run --python 3.11 --locked python -m integration.neoclaw.channel_oracle --out artifacts/s06/original-channel.json
+uv run --python 3.11 --locked python -m unittest -v tests.test_channel integration.neoclaw.test_channel_recovery
+HF_HUB_OFFLINE=1 artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_channel_loop
+```
+
+`ChannelRun` creates a real isolated server, independent socket peer and distinct
+bridge/provider credentials. The tests select `local` and `network` using the
+same application. The existing supported launcher remains
+`python -m integration.neoclaw.native_loop APPLICATION.json`; the small bridge
+entrypoint is `python -m integration.neoclaw.channel_actor bridge BRIDGE.json
+--ready READY.json`. The composition helper supplies trusted configuration before
+starting either actor. Model arguments cannot choose channel, server, credentials,
+provider or arbitrary message references. No operator configuration changes are
+made between messages.
+
+Use only newly generated allowlisted inputs and replies. Missing runtime/source,
+unsafe listeners or denied startup are blockers; incorrect native results fail;
+a timed-out real recipient observation is a timeout, not success. Tests stop only
+their generated process groups. Raw local cognitive audit artifacts stay under
+ignored `artifacts/s06`; publish the reduced S06 channel traces and test outcomes.
+Do not resume old journals under this profile or resend an `unknown` reservation.

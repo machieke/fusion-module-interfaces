@@ -527,3 +527,24 @@ Bind trusted epoch time and revision once, then atomically commit each intention
 Global context has an application iteration identity before a command exists. Its rank receipt, ordered AtomStorage hydration, S04 presentation and native rendered segment are captured separately. Replays reauthorize and reproduce that segment. The compatibility output file is an atomic derived write, never authority. Query keeps its native candidate ordering/merge and freezes a separate Attention snapshot at enrichment. Neither consumer rebuilds Search or changes beliefs.
 
 Use the existing local owner/registry/policy and occurrence machinery. A second atomic-file provider implements the same transitions independently; sharing DTO checks and the pure native numerical dependency is allowed. This is bounded local adoption, not ECAN, cognitive research, scheduling, remote private placement or migration. Exact sources, limits and executed gates are in the S05 packet.
+
+## ADR-018: S06 durable channel handoff and conservative external effects
+
+Select `isolated-irc-mailbox/1` only in fresh `controlled-native-loop/8` journals.
+Reuse immutable AtomStorage and durable Messaging; the bridge owns IRC epochs,
+capture/relay progress and socket reservations, while the application owns input
+assignment and native command/context handoff. External nicknames grant no Fusion
+authority. Equal-text frames are distinct occurrences; replay retains identity.
+
+Commit input ownership before mailbox acknowledgment. Keep S04 transport-source
+observations local and independent of belief admission. Preserve S05 retained
+context and original deadlines. Change native send presentation to `SEND-ACCEPTED`
+once payload/mailbox acceptance is durable, with one approved body per occurrence.
+Reserve the external attempt before writing. An interrupted reservation stays
+spent and may remain unknown; recipient observation is separate evidence.
+
+Use identical native application code with local or authenticated same-host HTTPS
+channel storage/mailbox placement. Do not move cognitive owners or claim durable
+IRC history, exactly-once external delivery, live-model safety or a hostile-host
+sandbox. Bounds, intentional legacy differences and recovery are defined in the
+[S06 contract decisions](../omega-adoption/mettaclaw-neoclaw/s06-contract-decisions.md).

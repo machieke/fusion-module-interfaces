@@ -1,0 +1,34 @@
+{
+  "schema": "s06-private-audit-publication/1",
+  "withheld": [
+    "raw local cognitive journal snapshots",
+    "full native model contexts containing generated private memory",
+    "identifying derivatives of the private canary"
+  ],
+  "public": [
+    "generated channel envelope/ref/delivery traces",
+    "native result-consumption booleans",
+    "local cognitive audit counts and source-to-channel occurrence correspondence",
+    "normal typed failure outcomes"
+  ],
+  "local_only": "ignored artifacts/s06, including private-audits, final and regression-*",
+  "historical_s05_evidence": "unchanged",
+  "baseline_s05": {
+    "methods": 3,
+    "result": "PASS",
+    "log": "baseline-s05.log",
+    "raw_audits": "kept locally; not republished"
+  },
+  "development_diagnostics": [
+    {
+      "run": "development-native-debug-02",
+      "result": "NOT_AVAILABLE before input assignment; the historical IRC fixture was selected by a Python import-name collision",
+      "raw": "retained locally"
+    },
+    {
+      "run": "development-native-05",
+      "result": "assertion mismatch: expected stripped quotes, native string-safe preserved _quote_ tokens; actual channel/command/reply path completed",
+      "raw": "retained locally"
+    }
+  ]
+}

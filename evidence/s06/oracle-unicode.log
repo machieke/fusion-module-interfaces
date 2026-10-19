@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/channel_oracle.py", line 66, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',required=True);a=p.parse_args();Path(a.out).write_bytes(canonical(original()))
+                                                                                                                         ^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/channel_oracle.py", line 59, in original
+    seen=[x for x in r.traffic() if ' PRIVMSG '+r.base['target']+' :'+OUTPUT in x.get('received','')];require(len(seen)==1,'NOT_AVAILABLE')
+                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

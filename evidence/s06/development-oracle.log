@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/channel_oracle.py", line 64, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',required=True);a=p.parse_args();Path(a.out).write_bytes(canonical(original()))
+                                                                                                                         ^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/channel_oracle.py", line 48, in original
+    else:raise TimeoutError('original IRC join')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: original IRC join

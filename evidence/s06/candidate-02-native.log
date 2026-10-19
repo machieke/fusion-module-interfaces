@@ -1,0 +1,34 @@
+test_local_and_https_native_consumption_equal_text_burst_and_send (integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send) ... 
+  test_local_and_https_native_consumption_equal_text_burst_and_send (integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send) (placement='local') ... ERROR
+test_revocation_after_acceptance_blocks_native_capture_then_recovers (integration.neoclaw.test_channel_loop.NativeChannel.test_revocation_after_acceptance_blocks_native_capture_then_recovers) ... FAIL
+
+======================================================================
+ERROR: test_local_and_https_native_consumption_equal_text_burst_and_send (integration.neoclaw.test_channel_loop.NativeChannel.test_local_and_https_native_consumption_equal_text_burst_and_send) (placement='local')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_loop.py", line 71, in test_local_and_https_native_consumption_equal_text_burst_and_send
+    oracle=json.loads((ROOT/'evidence/s06/native-oracle-unicode.json').read_text())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/purplezky/work/takopi/fusion-module-interfaces/evidence/s06/native-oracle-unicode.json'
+
+======================================================================
+FAIL: test_revocation_after_acceptance_blocks_native_capture_then_recovers (integration.neoclaw.test_channel_loop.NativeChannel.test_revocation_after_acceptance_blocks_native_capture_then_recovers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_loop.py", line 154, in test_revocation_after_acceptance_blocks_native_capture_then_recovers
+    run.app.pop('pause_at');run.save();p=start(run);self.finish(run,p);self.traffic_until(ch,1)
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_channel_loop.py", line 59, in traffic_until
+    self.fail('real IRC recipient observation timeout')
+AssertionError: real IRC recipient observation timeout
+
+----------------------------------------------------------------------
+Ran 2 tests in 206.930s
+
+FAILED (failures=1, errors=1)

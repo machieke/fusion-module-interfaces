@@ -1,0 +1,40 @@
+test_authority_after_formula_cas_and_expired_committed_observation (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_authority_after_formula_cas_and_expired_committed_observation) ... ok
+test_bounds_authority_model_prior_and_exact_replay (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_bounds_authority_model_prior_and_exact_replay) ... ok
+test_credential_substitution_and_assumption_revocation (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_credential_substitution_and_assumption_revocation) ... ok
+test_formula_expiry_retry_budget_and_post_commit_observation (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_formula_expiry_retry_budget_and_post_commit_observation) ... ok
+test_identical_text_distinct_occurrences_copy_and_unknown (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_identical_text_distinct_occurrences_copy_and_unknown) ... ok
+test_malformed_relay_response_never_acknowledges (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_malformed_relay_response_never_acknowledges) ... ok
+test_prior_native_revision_duplicate_and_contrary (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_prior_native_revision_duplicate_and_contrary) ... ok
+test_pure_c1_without_nal_and_hostile_owner_ports (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_pure_c1_without_nal_and_hostile_owner_ports) ... ok
+test_queue_capacity_backpressure_draining_and_reuse_same_episode (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_queue_capacity_backpressure_draining_and_reuse_same_episode) ... ok
+test_real_cas_conflict_is_a_new_bounded_attempt (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_real_cas_conflict_is_a_new_bounded_attempt) ... ok
+test_real_killed_evaluations_remain_spent_across_restart (integration.neoclaw.test_evidence_owners.EvidenceOwners.test_real_killed_evaluations_remain_spent_across_restart) ... ok
+test_capacity_without_silent_eviction (integration.neoclaw.test_promotion_owner.PromotionOwners.test_capacity_without_silent_eviction) ... ok
+test_concurrent_cas_exactly_one_commit (integration.neoclaw.test_promotion_owner.PromotionOwners.test_concurrent_cas_exactly_one_commit) ... ok
+test_expiry_observes_committed_refuses_new_and_missing_read (integration.neoclaw.test_promotion_owner.PromotionOwners.test_expiry_observes_committed_refuses_new_and_missing_read) ... ok
+test_global_ties_positive_filter_zero_and_candidate_correspondence (integration.neoclaw.test_promotion_owner.PromotionOwners.test_global_ties_positive_filter_zero_and_candidate_correspondence) ... ok
+test_historical_reads_clock_rollback_and_missing_binding (integration.neoclaw.test_promotion_owner.PromotionOwners.test_historical_reads_clock_rollback_and_missing_binding) ... ok
+test_live_authority_profile_scope_and_reply_validation (integration.neoclaw.test_promotion_owner.PromotionOwners.test_live_authority_profile_scope_and_reply_validation) ... ok
+test_native_policy_domain_caps_floor_decay_and_order (integration.neoclaw.test_promotion_owner.PromotionOwners.test_native_policy_domain_caps_floor_decay_and_order) ... ok
+test_real_process_kills_atomic_receipt_time_and_spent_budget (integration.neoclaw.test_promotion_owner.PromotionOwners.test_real_process_kills_atomic_receipt_time_and_spent_budget) ... ok
+test_revocation_after_real_native_evaluation_no_commit (integration.neoclaw.test_promotion_owner.PromotionOwners.test_revocation_after_real_native_evaluation_no_commit) ... ok
+test_same_policy_independent_replay_and_intent (integration.neoclaw.test_promotion_owner.PromotionOwners.test_same_policy_independent_replay_and_intent) ... ok
+test_bound_identity_changed_semantics_is_conflict (integration.neoclaw.test_promotion_guards.PromotionGuards.test_bound_identity_changed_semantics_is_conflict) ... ok
+test_invalid_clock_and_context_capacity (integration.neoclaw.test_promotion_guards.PromotionGuards.test_invalid_clock_and_context_capacity) ... ok
+test_legacy_sqlite_is_refused_without_modification (integration.neoclaw.test_promotion_guards.PromotionGuards.test_legacy_sqlite_is_refused_without_modification) ... ok
+test_malformed_bindings_are_contract_errors (integration.neoclaw.test_promotion_guards.PromotionGuards.test_malformed_bindings_are_contract_errors) ... ok
+test_math_and_owner_do_not_load_cognitive_or_embedding_runtimes (integration.neoclaw.test_promotion_guards.PromotionGuards.test_math_and_owner_do_not_load_cognitive_or_embedding_runtimes) ... FAIL
+test_pure_runtime_with_cognitive_sources_absent (integration.neoclaw.test_promotion_guards.PromotionGuards.test_pure_runtime_with_cognitive_sources_absent) ... ok
+
+======================================================================
+FAIL: test_math_and_owner_do_not_load_cognitive_or_embedding_runtimes (integration.neoclaw.test_promotion_guards.PromotionGuards.test_math_and_owner_do_not_load_cognitive_or_embedding_runtimes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_promotion_guards.py", line 63, in test_math_and_owner_do_not_load_cognitive_or_embedding_runtimes
+    self.assertFalse({'fusion.nal_beliefs','fusion.nal_episodes','fusion.inference'} & set(sys.modules))
+AssertionError: {'fusion.nal_beliefs', 'fusion.nal_episodes'} is not false
+
+----------------------------------------------------------------------
+Ran 27 tests in 200.318s
+
+FAILED (failures=1)

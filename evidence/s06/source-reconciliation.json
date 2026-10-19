@@ -1,0 +1,54 @@
+{
+  "schema": "s06-source-reconciliation/1",
+  "starting_commit": "c9c6e7985c8214feeedc78686f475efb3ad40625",
+  "final_test_source": "test-source.json",
+  "verified_final_source_files": 192,
+  "deltas": {
+    "candidate-01-source.json": {
+      "changed": [
+        "fusion/channel_service.py",
+        "fusion/irc_bridge.py",
+        "fusion/neoclaw_channel.py",
+        "integration/neoclaw/channel_composition.py",
+        "integration/neoclaw/channel_oracle.py",
+        "integration/neoclaw/test_channel_loop.py",
+        "integration/neoclaw/test_channel_recovery.py",
+        "tests/test_channel.py"
+      ],
+      "added": [
+        "integration/neoclaw/channel_evidence.py"
+      ],
+      "removed": []
+    },
+    "candidate-02-source.json": {
+      "changed": [
+        "fusion/channel_service.py",
+        "integration/neoclaw/channel_composition.py",
+        "integration/neoclaw/channel_oracle.py",
+        "integration/neoclaw/test_channel_loop.py",
+        "tests/test_channel.py"
+      ],
+      "added": [],
+      "removed": []
+    },
+    "candidate-03-source.json": {
+      "changed": [
+        "integration/neoclaw/channel_composition.py",
+        "integration/neoclaw/test_channel_loop.py"
+      ],
+      "added": [],
+      "removed": []
+    },
+    "candidate-04-source.json": {
+      "changed": [
+        "integration/neoclaw/channel_composition.py"
+      ],
+      "added": [],
+      "removed": []
+    }
+  },
+  "runtime_statement": "Final production owner/transport/native-hook bytes match candidate-03. Candidate-04 adds only a test; final delta from candidate-04 is atomic operator config replacement, separately rechecked.",
+  "historical_statement": "S05 manifests and evidence remain unchanged. The baseline verified their historical identities before edits. Long historical regression run exercised unchanged old-profile and shared source; new S06-only source evolved independently.",
+  "development": "Pre-candidate experiments are unfrozen development diagnostics, not passing gate source identities.",
+  "publication": "Raw private local cognitive audit snapshots are not published; reduced channel traces retain occurrence/ref/delivery correspondence."
+}

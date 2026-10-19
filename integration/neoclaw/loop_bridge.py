@@ -98,3 +98,8 @@ def context_payloads(targets):return call('context_payloads',targets)
 def promoted_line(value):return call('promoted_line',value)
 def context_capture(value):return call('context_capture',value)
 def context_replay():return call('context_replay')
+
+# S06 real channel envelope handoff; socket ownership remains at the bridge.
+def channel_new():return call('channel_new')
+def channel_send(text):return call('channel_send',text)
+def channel_lastsend():return call('channel_lastsend')

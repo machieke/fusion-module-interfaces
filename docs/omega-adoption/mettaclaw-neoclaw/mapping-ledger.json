@@ -3227,7 +3227,7 @@
         ]
       },
       "omega_role": "provider",
-      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
+      "current_behavior": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
       "owned_state": [],
       "dependencies": [
         "datetime",
@@ -3246,7 +3246,7 @@
           "current_profile": null,
           "fusion_baseline_profile": "episode-delivery-completion/1",
           "candidate_profile": "Requires explicit compatibility design; not selected",
-          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default ±20 lines.",
+          "reason": "Scans hardcoded history file and returns physical lines around closest parsed datetime, with default \u00b120 lines.",
           "observed_semantic_responsibility": true
         }
       ],
@@ -8096,6 +8096,71 @@
       ],
       "executed_test_methods": 27,
       "regression_methods": 159
+    },
+    {
+      "slice": "S06",
+      "operation": "one real isolated IRC receive/handoff and bounded native send",
+      "profile": "isolated-irc-mailbox/1",
+      "mapping_baseline": "c305a66fe1eda17a47134ec56d4fefdf55354147",
+      "source_baseline": "c9c6e7985c8214feeedc78686f475efb3ad40625",
+      "components": [
+        "channel.receive",
+        "channel.send",
+        "irc.buffer",
+        "irc.transport",
+        "loop.context"
+      ],
+      "exact_symbol": "src/channels.metta::receive/send; src/loop.metta::mettaclaw/getContext; replacement of channels/irc.py volatile buffer at selected startup seam",
+      "interfaces": [
+        "atom.storage@1.0.0 / immutable-bytes/1",
+        "agent.messaging@1.0.0 / durable-mailbox/2",
+        "existing local EpisodicMemory source hook and Attention context"
+      ],
+      "providers": [
+        "real pinned ngIRCd 28",
+        "independent real socket peer (scripted actor)",
+        "real DeTTa",
+        "existing durable MessageOwner",
+        "actual native Omega loop/parser/context",
+        "real local C1/C2/Attention owners"
+      ],
+      "placement": [
+        "local channel AtomStorage/Messaging",
+        "authenticated same-host HTTPS channel AtomStorage/Messaging"
+      ],
+      "same_host": true,
+      "multi_host": "NOT_RUN",
+      "remote_private_cognition": "UNSUPPORTED_PROFILE",
+      "fallback": false,
+      "private_omega_stores_accessed": false,
+      "application_composition": "controlled-native-loop/8",
+      "fresh_journals_only": true,
+      "coverage": {
+        "additional_user_commands": 1,
+        "receive_is_internal_boundary": true,
+        "whole_families_promoted": 0,
+        "whole_omega_integrated": false
+      },
+      "evidence": "../../../evidence/s06/verification.json",
+      "report": "s06.md",
+      "status": "IMPLEMENTED_AND_EXECUTED_BOUNDED_ISOLATED_IRC",
+      "guarantees": [
+        "durable capture/slot/source identities independent of text equality",
+        "separate payload, mailbox, application acceptance and acknowledgment commits",
+        "one reserved socket attempt with no automatic resend after ambiguity",
+        "actual native result and next-context handoff under both placements",
+        "current route/principal/descriptor authority and explicit output consent"
+      ],
+      "qualifications": [
+        "scripted external model, generated initial local memory/clock and unused history fixtures",
+        "IRC leg is isolated TCP; module leg uses real TLS",
+        "pre-capture traffic may be lost; reconnect is not history replay",
+        "socket return is not recipient acknowledgment; unknown outcomes remain spent",
+        "trusted-runtime Python socket guard and filesystem masks; not a hostile-host OS network sandbox",
+        "fresh synthetic state; no migration, second channel, full Omega or chain"
+      ],
+      "executed_test_methods": 25,
+      "regression_methods": 151
     }
   ]
 }

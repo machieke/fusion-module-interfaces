@@ -440,3 +440,36 @@ flowchart LR
 ```
 
 Attention owns priority values, times, revisions and receipts; it never opens the feed, Chroma or cognitive journals. The application supplies authorized opaque eligibility and verifies payloads through existing AtomStorage ports. Candidate queries and global context have separate retained read identities. Only a new occurrence/iteration can select a new snapshot. Local context output is derived and private. See [S05 decisions](../omega-adoption/mettaclaw-neoclaw/s05-contract-decisions.md).
+
+## S06: actual IRC at the controlled native boundary
+
+```mermaid
+flowchart LR
+  Peer[Separate synthetic socket peer] <--> IRC[Real loopback ngIRCd]
+  IRC <--> Bridge[IRC bridge: capture, relay, socket reservation]
+  subgraph Placement[Local or authenticated same-host HTTPS]
+    Atoms[AtomStorage: immutable channel envelopes]
+    Mail[Messaging: durable handoff and acknowledgment]
+  end
+  Bridge <--> Atoms
+  Bridge <--> Mail
+  App[Application: input assignment and command occurrences] <--> Atoms
+  App <--> Mail
+  Native[Actual native receive, parser, loop and next context] <--> App
+  Native <--> Model[Explicit local model fixture]
+  subgraph Private[Private local owners]
+    C1[C1 EpisodicMemory: transport observation]
+    C2[C2 BeliefRevision: retained belief views]
+    Attention[S05 Attention: priorities and context]
+  end
+  App --> C1
+  App --> C2
+  App --> Attention
+```
+
+The bridge never interprets beliefs or owns native turns. Messaging acknowledgment
+transfers durable responsibility; it does not certify tool completion or IRC
+recipient receipt. S06 preserves separate accepted, write-returned, unknown and
+peer-observed facts. Its trusted runtime checks and filesystem masks are described
+in the [S06 report](../omega-adoption/mettaclaw-neoclaw/s06.md); no public network,
+remote private cognition, scheduler, second channel or chain operation is added.

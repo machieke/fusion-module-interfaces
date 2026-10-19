@@ -1,0 +1,260 @@
+{
+  "schema": "s06-verification/1",
+  "scope": "One isolated IRC channel, controlled native Omega, fresh synthetic journals, local or same-host authenticated HTTPS mailbox placement",
+  "starting_commit": "c9c6e7985c8214feeedc78686f475efb3ad40625",
+  "status": "PASS_BOUNDED_S06",
+  "gates": [
+    {
+      "gate": "BASELINE_SOURCE",
+      "status": "PASS",
+      "evidence": [
+        "baseline-source.json",
+        "baseline-core.log",
+        "baseline-s05.log",
+        "builds.json",
+        "sdk-verification.json",
+        "run-results.json"
+      ],
+      "observed": "Exact c9c6e79 baseline and historical S05 bytes reconciled; pinned real server built; selected regressions passed."
+    },
+    {
+      "gate": "REAL_CHANNEL",
+      "status": "PASS",
+      "evidence": [
+        "native-oracle-unicode.json",
+        "final/native-paths.json"
+      ],
+      "observed": "Real ngIRCd, separate peer sockets and actual loopback listeners; no public server/default channel."
+    },
+    {
+      "gate": "CONTRACT_IDENTITY",
+      "status": "PASS",
+      "evidence": [
+        "final-core.log",
+        "final/native-paths.json",
+        "test-source.json"
+      ],
+      "observed": "Closed envelope/request/receipt validation; occurrence identity, route/principal/selection binding and stable ack keys."
+    },
+    {
+      "gate": "INGRESS_DURABILITY",
+      "status": "PASS",
+      "evidence": [
+        "final/bridge-ingress-kills.json",
+        "final/provider-kills.json",
+        "final/capacity-discontinuity.json",
+        "final/pre-capture-loss.json"
+      ],
+      "observed": "Independent durable capture, payload, mailbox, application and acknowledgment recovery; accepted work retained across capacity/disconnect."
+    },
+    {
+      "gate": "NATIVE_CONSUMPTION",
+      "status": "PASS",
+      "evidence": [
+        "final/native-paths.json",
+        "candidate-01/native-kills.json",
+        "final/intentional-sends.json"
+      ],
+      "observed": "Actual native receive/newness/parser/commands/result-to-context; equal-text frames consumed independently."
+    },
+    {
+      "gate": "EGRESS_SEMANTICS",
+      "status": "PASS",
+      "evidence": [
+        "final/native-paths.json",
+        "final/bridge-egress-kills.json",
+        "final/intentional-sends.json"
+      ],
+      "observed": "Healthy peer receipt is distinct from acceptance and write outcome; spent unknown reservations never automatically resend."
+    },
+    {
+      "gate": "LOCAL_HTTPS",
+      "status": "PASS",
+      "evidence": [
+        "final/native-paths.json",
+        "final-core.log"
+      ],
+      "observed": "Same native logic with local or authenticated same-host HTTPS mailbox/payload ports; real TLS and runtime/file access probes."
+    },
+    {
+      "gate": "RECOVERY_BUDGETS",
+      "status": "PASS",
+      "evidence": [
+        "candidate-01/native-kills.json",
+        "candidate-01/native-empty-budget.json",
+        "final/spent-budgets.json",
+        "final/provider-kills.json",
+        "final/intentional-sends.json"
+      ],
+      "observed": "Real kills retain input/source/command identities, original deadlines, counted RPCs and one socket reservation."
+    },
+    {
+      "gate": "AUTH_PRIVACY",
+      "status": "PASS",
+      "evidence": [
+        "candidate-01/private-refusal.json",
+        "final/capture-revocation.json",
+        "final/reservation-revocation.json",
+        "final-config.log",
+        "publication-policy.json"
+      ],
+      "observed": "Current authority at all releases, explicit output consent, malformed/bad-CA/role cases; private audit journals not published."
+    },
+    {
+      "gate": "COMPAT_REPRO",
+      "status": "PASS",
+      "evidence": [
+        "run-results.json",
+        "source-reconciliation.json",
+        "builds.json",
+        "native-oracle-unicode.json"
+      ],
+      "observed": "Pinned fresh-journal recipe; old profiles and affected native/HTTPS consumers preserved; exact source/test distinctions retained."
+    },
+    {
+      "gate": "SCOPE_LEDGER",
+      "status": "PASS",
+      "evidence": [
+        "scope-audit.json"
+      ],
+      "observed": "One bounded IRC adoption; 105 historical mapping rows and 15 families unchanged; eight entries/nine commands; no whole-family claim."
+    }
+  ],
+  "methods": {
+    "new_s06": 25,
+    "historical_selected": 151,
+    "distinct_passing_union": 176
+  },
+  "prerequisite_blockers": [],
+  "unresolved_executed_failures": [],
+  "resolved_executed_failures": [
+    {
+      "log": "server-configure-cwd-failure.log",
+      "kind": "executed-build-failure",
+      "resolution": "Correct source working directory; actual configure/make/install succeeded."
+    },
+    {
+      "log": "development-recovery.log",
+      "kind": "executed-failures-and-observation-timeout",
+      "resolution": "Independent peer now uses unbuffered pipe reads; kill helper waits for child lock release. Full real bridge matrix rerun."
+    },
+    {
+      "log": "development-native.log",
+      "kind": "observation-timeouts",
+      "resolution": "Subsequent diagnostics separated startup and import collision; unique checked s06_channel module replaces the fixture path."
+    },
+    {
+      "log": "development-native-02.log",
+      "kind": "executed-native-failure",
+      "resolution": "Selected module import collision identified; source-checked unique name and absence guard added."
+    },
+    {
+      "log": "development-native-03.log",
+      "kind": "executed-native-failure",
+      "resolution": "Diagnostic traceback retained; development-only traceback printing removed before candidate-01."
+    },
+    {
+      "log": "development-native-04.log",
+      "kind": "executed-native-failure",
+      "resolution": "PeTTa appends import paths; facade basename fixed instead of relying on aliasing."
+    },
+    {
+      "log": "publication-policy.json",
+      "kind": "local-only-diagnostics",
+      "resolution": "Native quote assertion corrected to original _quote_ semantics; raw cognitive audit/context retained only locally."
+    },
+    {
+      "log": "development-oracle.log",
+      "kind": "real-server-observation-timeout",
+      "resolution": "Original randomized nick prefix shortened to fit server nickname bound."
+    },
+    {
+      "log": "oracle-unicode.log",
+      "kind": "executed-oracle-mismatch",
+      "resolution": "Follow-up captured actual incorrect wire text; not classified as a positive delivery."
+    },
+    {
+      "log": "oracle-unicode-observed-failure.log",
+      "kind": "executed-incorrect-observation",
+      "resolution": "Driver JSON escape yielded literal u03a9; literal UTF-8 driver rerun matches exact native/peer bytes."
+    },
+    {
+      "log": "candidate-02-native.log",
+      "kind": "test-prerequisite-ordering-and-observation-timeout",
+      "resolution": "Waited for real Unicode oracle artifact; scoped caller read revocation without removing the bridge destination poll prerequisite. Final native recheck passed."
+    },
+    {
+      "log": "regression-owners.log",
+      "kind": "test-isolation-failure",
+      "resolution": "Import-boundary guard requires fresh interpreter. Isolated six-method suite passed without changing historical tests."
+    }
+  ],
+  "observation_timeouts": [
+    {
+      "log": "development-recovery.log",
+      "resolved": true,
+      "resolution": "Independent peer now uses unbuffered pipe reads; kill helper waits for child lock release. Full real bridge matrix rerun."
+    },
+    {
+      "log": "development-native.log",
+      "resolved": true,
+      "resolution": "Subsequent diagnostics separated startup and import collision; unique checked s06_channel module replaces the fixture path."
+    },
+    {
+      "log": "development-oracle.log",
+      "resolved": true,
+      "resolution": "Original randomized nick prefix shortened to fit server nickname bound."
+    },
+    {
+      "log": "candidate-02-native.log",
+      "resolved": true,
+      "resolution": "Waited for real Unicode oracle artifact; scoped caller read revocation without removing the bridge destination poll prerequisite. Final native recheck passed."
+    }
+  ],
+  "unavailable_optional_mechanisms": [
+    {
+      "name": "Landlock OS network controls",
+      "observation": "Linux 5.4 syscall ENOSYS",
+      "impact": "No OS network sandbox claimed; actual source-checked Python socket guard plus filesystem masks are tested.",
+      "required_gate_blocked": false
+    },
+    {
+      "name": "autoconf/automake",
+      "impact": "Official pinned release provides generated configure; real source build completed.",
+      "required_gate_blocked": false
+    }
+  ],
+  "fixtures": [
+    "external model responses",
+    "synthetic initial local memory and comparison clock",
+    "unused history and recorded web-response regressions",
+    "file-AtomStorage provider in 12 contract methods"
+  ],
+  "real": [
+    "pinned ngIRCd and independent socket peer",
+    "native Omega receive/parser/loop/context",
+    "real native NAL and local C1/Attention owners",
+    "DeTTa",
+    "certificate-verified same-host HTTPS",
+    "historical real Chroma/E5 regression consumers"
+  ],
+  "not_run": [
+    "full live/default Omega startup",
+    "live external models and live web search in S06",
+    "Mattermost/second channel",
+    "public/organizational channels",
+    "multi-host deployment",
+    "chain operations",
+    "populated-state migration",
+    "power-loss or malicious-host certification"
+  ],
+  "limitations": [
+    "IRC pre-capture loss and reconnect discontinuity; no history recovery",
+    "one external reservation can remain unknown or expired with no eventual-delivery guarantee",
+    "no recipient ACK protocol or exactly-once upstream delivery claim",
+    "original deadlines can expire during restart",
+    "readiness/isolation is trusted-runtime and same-host only",
+    "whole Messaging family and whole Omega are not integrated"
+  ],
+  "stop": "S06 only; no further adoption or chain work"
+}

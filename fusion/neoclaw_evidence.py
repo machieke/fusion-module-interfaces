@@ -14,6 +14,7 @@ def settings(app):
     cfg=json.loads(Path(app.config['evidence_config']).read_text())
     provider,_,frozen=configuration(cfg['policy'],cfg['credential'],cfg['scope'])
     require(cfg['placement']=='local','UNSUPPORTED_PROFILE')
+    if app.channel_enabled:require(cfg['sources']=={},'UNSUPPORTED_PROFILE')
     # No cognitive projection, label, hash or source is an argument to remote
     # memory providers. Combined HTTPS-memory/private-evidence is not this profile.
     for key in ('memory_read_config','memory_append_config','embedding_config','memory_embedding_config'):
@@ -59,13 +60,15 @@ class EvidenceAdoption:
             require(row is not None and row['calls']<c.MAX_APP_ATTEMPTS,'OVERLOADED')
             self.db.execute('UPDATE app_sources SET calls=calls+1 WHERE slot=?',(slot,))
     def source(self,text):
-        cfg=self.authorize();slot=self.slot();spec=cfg['sources'].get(str(slot))
+        cfg=self.authorize();slot=self.slot()
+        spec=self.app.channel.source_spec() if self.app.channel_enabled else cfg['sources'].get(str(slot))
         if spec is None:require(text=='','CONFLICT');return text
         require(text==spec['text'] and type(text) is str and 0<len(text.encode())<=4096,'CONFLICT')
         old=self.db.execute('SELECT * FROM app_sources WHERE slot=?',(slot,)).fetchone()
         if old is None:
             accepted=dict(spec=spec,raw=text,observed_time=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
-                deadline_ms=time.time_ns()//1_000_000+self.app.config['invocation_timeout_ms'])
+                deadline_ms=spec['deadline_ms'] if self.app.channel_enabled else time.time_ns()//1_000_000+self.app.config['invocation_timeout_ms'])
+            if self.app.channel_enabled:accepted['observed_time']=spec['observed_time']
             with self.db:self.db.execute('INSERT INTO app_sources(slot,accepted) VALUES(?,?)',(slot,canonical(accepted).decode()))
             self.app.hook('after_source_identity')
         row=self.db.execute('SELECT * FROM app_sources WHERE slot=?',(slot,)).fetchone();accepted=json.loads(row['accepted'])
@@ -77,7 +80,7 @@ class EvidenceAdoption:
                 episode=self.modules.episodes.recordEpisode(Mutation(cfg['scope'],'session/'+self.app.session),'controlled-native-input')['ref']
                 with self.db:self.db.execute('UPDATE app_sources SET episode=? WHERE slot=?',(canonical(episode).decode(),slot))
             else:episode=json.loads(row['episode'])
-            command=Mutation(cfg['scope'],f'source/{self.app.session}/{slot}')
+            command=Mutation(cfg['scope'],'channel-source/'+spec['message_id'] if self.app.channel_enabled else f'source/{self.app.session}/{slot}')
             occurrence=self.modules.episodes.occurrenceIdentity(command,episode)
             existing=c.occurrence_reply(self.modules.episodes.readOccurrence(episode,occurrence),episode,occurrence)
             if existing is None:

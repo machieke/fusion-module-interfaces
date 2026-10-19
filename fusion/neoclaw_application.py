@@ -18,7 +18,7 @@ from . import vector_contracts as v
 from . import embedding_contracts as e
 from . import append_contracts as w
 from . import nal_memory_contracts as n
-from . import promotion_contracts as p
+from . import promotion_contracts as p, channel_contracts as ch
 from .registry import selection_token
 
 
@@ -39,13 +39,14 @@ class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION), 'UNSUPPORTED_PROFILE')
-        self.priority_enabled = self.config['composition'] == p.APPLICATION
-        self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION)
-        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION)
-        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION)
-        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION)
-        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION)
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION), 'UNSUPPORTED_PROFILE')
+        self.channel_enabled = self.config['composition'] == ch.APPLICATION
+        self.priority_enabled = self.config['composition'] in (p.APPLICATION,ch.APPLICATION)
+        self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION)
+        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
+        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
+        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
+        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION)
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
@@ -86,6 +87,10 @@ class Application:
                 from .neoclaw_priority import settings as priority_settings
                 self.binding=binding
                 binding.update(composition=p.APPLICATION,attention=priority_settings(self)[1])
+            if self.channel_enabled:
+                from .neoclaw_channel import settings as channel_settings
+                self.binding=binding
+                binding.update(composition=ch.APPLICATION,channel=channel_settings(self)[1])
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -137,6 +142,9 @@ class Application:
             if self.priority_enabled:
                 from .neoclaw_priority import PriorityAdoption
                 self.priority=PriorityAdoption(self)
+            if self.channel_enabled:
+                from .neoclaw_channel import ChannelAdoption
+                self.channel=ChannelAdoption(self)
             pending = self.pending()
             if pending:
                 # No replay of arbitrary local effects, even if their old result exists.
@@ -158,6 +166,8 @@ class Application:
         return self.db.execute('SELECT * FROM app_turns WHERE projection IS NULL ORDER BY id LIMIT 1').fetchone()
 
     def intent(self, command):
+        if self.channel_enabled and isinstance(command,list) and command and command[0]=='send':
+            return self.channel.intent(command)
         if self.priority_enabled and isinstance(command,list) and command and command[0] in ('promote','demote'):
             return self.priority.intent(command)
         if self.evidence_enabled and isinstance(command,list) and command and command[0] in ('support','contradict'):
@@ -206,6 +216,7 @@ class Application:
     def accept(self, response, commands):
         require(type(response) is str and len(response.encode()) <= 20000)
         require(type(commands) is list and len(commands) <= 5)
+        if self.channel_enabled:self.channel.accept_turn()
         # Validate the whole selected batch before any command execution/effect.
         intents = []
         for command in commands:
@@ -235,6 +246,7 @@ class Application:
                     if self.append_enabled and premises is not None:self.write.admit(key,premises)
                     if self.evidence_enabled and premises is not None:self.evidence.admit(key,premises)
                     if self.priority_enabled and premises is not None:self.priority.admit(key,premises)
+                    if self.channel_enabled and premises is not None:self.channel.admit(key,premises,turn,position,deadline)
         self.hook('after_occurrence_bind')
         if self.priority_enabled and any(x and x['profile']==p.PROFILE for x in intents):self.hook('after_priority_acceptance')
         return [[i, command] for i, command in enumerate(commands)]
@@ -251,6 +263,7 @@ class Application:
 
     def _run(self, row):
         intent = json.loads(row['premises'])
+        if self.channel_enabled and intent['profile']==ch.PROFILE:return self.channel.replay(row)
         if self.priority_enabled and intent['profile']==p.PROFILE:return self.priority.replay(row)
         if self.evidence_enabled and intent['profile']==n.PROFILE:return self.evidence.replay(row)
         if self.append_enabled and intent['profile']==w.PROFILE:return self.write.replay(row)
@@ -304,8 +317,8 @@ class Application:
         if not self.evidence_enabled or self.current is None:return False
         row=self.db.execute('SELECT premises FROM app_occurrences WHERE turn=? AND position=?',self.current).fetchone()
         return row is not None and row['premises'] is not None and json.loads(row['premises'])['profile']==n.PROFILE
-    def input_message(self):return self.evidence.input_message()
-    def source(self,text):return self.evidence.source(text)
+    def input_message(self):return self.channel.receive() if self.channel_enabled else self.evidence.input_message()
+    def source(self,text):return self.channel.source(text) if self.channel_enabled else self.evidence.source(text)
     def revise(self,target,source,sign):return self.evidence.revise(target,source,sign)
 
     def is_priority(self):
@@ -313,11 +326,18 @@ class Application:
         row=self.db.execute('SELECT premises FROM app_occurrences WHERE turn=? AND position=?',self.current).fetchone()
         return row is not None and row[0] is not None and json.loads(row[0])['profile']==p.PROFILE
 
+    def is_channel_send(self):
+        if not self.channel_enabled or self.current is None:return False
+        row=self.db.execute('SELECT premises FROM app_occurrences WHERE turn=? AND position=?',self.current).fetchone()
+        return row is not None and row[0] is not None and json.loads(row[0])['profile']==ch.PROFILE
+
     def read_captured(self):
+        if self.is_channel_send():return self.channel.occurrence()['result'] is not None
         if self.is_priority():return self.priority.current()['result'] is not None
         if self.is_evidence():return self.evidence.current()['result'] is not None
         return self.write.current()['result'] is not None if self.is_append() else self.is_memory() and self.memory.captured()
     def read_replay(self):
+        if self.is_channel_send():return self.channel.replay(self.channel.occurrence())
         if self.is_priority():return self.priority.replay()
         if self.is_evidence():return self.evidence.replay()
         return self.write.replay() if self.is_append() else self.memory.replay()
@@ -334,6 +354,7 @@ class Application:
         return self.write.embedding.encode(text) if self.is_append() else self.embedding.encode(text)
     def read_clock(self, observed): return self.priority.query_clock() if self.priority_enabled else self.memory.clock(observed)
     def capture_native(self, value):
+        if self.is_channel_send():return self.channel.capture(value)
         if self.is_priority():return self.priority.capture(value)
         if self.is_evidence():return self.evidence.capture(value)
         if self.is_append():return self.write.capture(value)
@@ -378,3 +399,7 @@ class Application:
     def promoted_line(self,value):return self.priority.promoted_line(value)
     def context_capture(self,value):return self.priority.context_capture(value)
     def context_replay(self):return self.priority.context_replay()
+
+    def channel_new(self):return self.channel.new_input()
+    def channel_send(self,text):return self.channel.send(text)
+    def channel_lastsend(self):return self.channel.lastsend()
