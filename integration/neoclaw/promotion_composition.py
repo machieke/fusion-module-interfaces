@@ -8,8 +8,8 @@ from fusion.registry import descriptor_wire
 from .evidence_composition import configure as evidence_configure
 
 
-def configure(run,corpus,provider='sqlite',*,sources=None):
-    value=evidence_configure(run,corpus,sources={} if sources is None else sources)
+def configure(run,corpus,provider='sqlite',*,sources=None,inputs=None):
+    value=evidence_configure(run,corpus,sources={} if sources is None else sources,inputs=inputs)
     root=run.h.caller_root/'private-attention';credential='private-'+secrets.token_hex(24);scope='private-s05'
     policy=dict(profile=c.PROFILE,placement='local',privacy='private-local-only',root=str(root),runtime=run.app['runtime'],
         scopes={scope:'A'},catalogue=[descriptor_wire(descriptor(provider))],clock_fixture=corpus['clock'],

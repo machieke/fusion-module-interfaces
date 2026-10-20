@@ -53,6 +53,9 @@ class MemoryAppend:
         memory=app.binding['memory'];require(digest(canonical(initial))==memory['metadata_seal'],'CONFLICT')
         view=dict(snapshot=memory['snapshot'],metadata_seal=memory['metadata_seal'],metadata=initial)
         if getattr(self.app,'evidence_enabled',False):view['defaults']={r['uuid']:'fixture-metadata-not-a-belief' for r in initial['records']}
+        from .neoclaw_retrieval_disclosure import APPLICATION
+        if app.config['composition'] == APPLICATION:
+            view=app.binding['retrieval']['initial_view']
         key=digest(canonical(view))
         with self.db:
             self.db.execute('INSERT OR IGNORE INTO app_read_views VALUES(?,?)',(key,canonical(view).decode()))

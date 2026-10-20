@@ -1,0 +1,53 @@
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 4576.07it/s]
+test_changed_target_and_inconclusive_native_results (integration.neoclaw.test_retrieval_preparation.RetrievalPreparation.test_changed_target_and_inconclusive_native_results) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 4763.61it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 5229.52it/s]
+ok
+test_native_batch_stage_private_and_malformed_refusals (integration.neoclaw.test_retrieval_preparation.RetrievalPreparation.test_native_batch_stage_private_and_malformed_refusals) ... ok
+test_next_prompt_and_application_capture_process_kills (integration.neoclaw.test_retrieval_preparation.RetrievalPreparation.test_next_prompt_and_application_capture_process_kills) ... ok
+test_original_and_https_native_remember_query_parity (integration.neoclaw.test_retrieval_preparation.RetrievalPreparation.test_original_and_https_native_remember_query_parity) ... ok
+test_provider_capture_recovered_without_fixture_regeneration (integration.neoclaw.test_retrieval_preparation.RetrievalPreparation.test_provider_capture_recovered_without_fixture_regeneration) ... ERROR
+test_query_process_kills_retained_capture_stages (integration.neoclaw.test_retrieval_preparation.RetrievalPreparation.test_query_process_kills_retained_capture_stages) ... 
+  test_query_process_kills_retained_capture_stages (integration.neoclaw.test_retrieval_preparation.RetrievalPreparation.test_query_process_kills_retained_capture_stages) (stage='after_occurrence_bind') ... ERROR
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/main.py", line 105, in __init__
+    self.runTests()
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/main.py", line 281, in runTests
+    self.result = testRunner.run(self.test)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_retrieval_preparation.py", line 204, in test_query_process_kills_retained_capture_stages
+    with self.subTest(stage=stage): self.case('kill-'+stage, stage=stage)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/test_retrieval_preparation.py", line 73, in case
+    p.wait_for(lambda:any(x['projection'] is not None for x in p.rows(run.h.client['database'], 'app_turns')),
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/neoclaw/retrieval_preparation.py", line 190, in wait_for
+    time.sleep(.03)
+KeyboardInterrupt

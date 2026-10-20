@@ -1,0 +1,47 @@
+{
+  "audit_reads": "Test-only owner audit exports do not serve application retrieval or recovery.",
+  "classification": "APPROVED_SYNTHETIC_EXPORT",
+  "early_failure_artifacts": {
+    "earlier-failures/integration-01-kill-second-after_model_prompt_bind-failure.log": "64fa33ef0fae5e99e81713beb737cd5948cad02286a71a90b01976cde45e6fec",
+    "earlier-failures/integration-02-kill-after_occurrence_bind-failure.log": "b852598fac3e75df3890597e4cc23e985c79340d7da7a4b3fc2cdf48c280007d",
+    "earlier-failures/integration-02-kill-after_occurrence_bind-status.json": "c240539ae51783a0a2c57771696b3174b5f9c8b6fd387d9bc48d3cd6e85f164e",
+    "earlier-failures/integration-02-kill-after_vector_capture-failure.log": "f8ab81ce517473f58422bf7a9852f8ca774bd8d6a4658c0c7766fa6a781c16ec",
+    "earlier-failures/integration-02-kill-provider-capture-failure.log": "d8fe6e1bdb7f27ff325b33a411e7fdb1c13a3e95e2fbce716f6536c7a94176b2",
+    "earlier-failures/integration-02-kill-provider-capture-status.json": "a25ac180d5ffb65725e083e59145a9f1a2c45f04f478ab664d3fe6010fc86c54"
+  },
+  "files": {
+    "cases/batch-refusal.json": "5c35974794aae8d4788f44c650d78fcf222fa3feac5a6c749ce9d9c39711a608",
+    "cases/captured-query-revoked.json": "70ed16b45ae419fda7d1435f3840a1f2b15189851477bbb4f452d46c802ff827",
+    "cases/corpus.json": "eab1aedd63a2106a745faab3dd6ba4f69977cd3b95d721f5c6302a1a62940cb8",
+    "cases/failed-hydration.json": "958c89671f4734f5b85b3b0a683159252b38affd8f2c394cca69805e2daff8e1",
+    "cases/kill-after_candidate_capture.json": "f98d3db44191e1f2f9c2c1d9d32bbe1fd27a981911e6b2a7649c0c4382652cab",
+    "cases/kill-after_native_result_capture.json": "3a5ae4a10bdc9d8bdbee020bc5e89cef053bd99a3ba0b24dc1ca96672cf80f4d",
+    "cases/kill-after_occurrence_bind.json": "ccd45fd418feb43667fe0ca54f165b6e123f9f3e2ddeed9bf318adce8f0da37f",
+    "cases/kill-after_vector_capture.json": "fafc41ea25cff8e9b681149cd8ccaf0ade74af139cf914b6e506b2d1db3a7556",
+    "cases/kill-provider-capture.json": "79ce036118175f9493b2d1fcb2b4366d3d37b5590207b923aaaad8c663a6a0de",
+    "cases/kill-second-after_model_application_capture.json": "a31530de1895aab7a0c84d9e82f9f0d6610dc530402b70461c521f025d70bd9e",
+    "cases/kill-second-after_model_prompt_bind.json": "4c2ccb7875b94d4f0bd49195cbc56ccddfe101d12403cc1028ba92f701d5d941",
+    "cases/kill-second-after_occurrence_bind.json": "add66283259ee7d16f28d74d1efabf3b87f70a1fcc042911abc1db2a6d9645a5",
+    "cases/kill-socket-reservation.json": "e774e81ef8f1362cbf4c2ac45b319dc716c2897cc5ae3ba6bbef86e3b4f44bde",
+    "cases/original-local-https-parity.json": "09756f6353eda24bdb252e366bad2b2bee290fb214f9b1ff871ef2ec765e2162",
+    "cases/parser-refusal.json": "1b626133ff6178c6c9a3b5c112c3461d1d6e66b13899fd915ae56a4ec3ba3ed2",
+    "cases/private-refusal.json": "6302965d447018164c54ad72d862f2c68f4b44254cda90b2678a4ead0ccfb602",
+    "cases/stage-refusal.json": "2993c714da0122a9d6ba78ee37dec8220019dc0aa07221389b529f22a1537fd6",
+    "cases/unavailable-generation.json": "f19d60418940f336a386d3899f99a3af354a257e3296ed817227cf10f635cfb8",
+    "cases/unnecessary-refusal.json": "2cb4e96075c16bcd06ec4130f6bcd2772e11bd8d61f71e1977692b7bdaee4e4b",
+    "cases/variant-changed.json": "372b883df9dec4e73ae18d33fae3a957865ec033878c242912c00ae3ac0cf809",
+    "cases/variant-target-absent.json": "2f4d8cc907208fb2436f8b783cf7a14066abcf334905d92b57b804393ca43460",
+    "cases/workflow-local.json": "ec931a38630ab4994bb92f0ab343089bd0cdc7f1a50053d3a73afbe0f5539a1d",
+    "cases/workflow-network.json": "c27d48066dfd7e9368508b9efcbe0ba69122ebc1f3edd4e320198d05a3e08b3f",
+    "cases/wrong-permitted.json": "b998f4dd4994ed4d50ef80bb3173827508ee63abafc6a038db20276e282a73e1"
+  },
+  "not_exported": [
+    "evaluator truth.json",
+    "operator/provider configuration files",
+    "credentials and TLS private keys",
+    "owner SQLite databases",
+    "unrelated private stores"
+  ],
+  "raw_case_exports": "Unmodified complete exporter JSON, including full context/read views, exact raw/transformed prompts, receipts, native capture, parse/admission and peer trace where produced.",
+  "sensitive_field_scan": []
+}

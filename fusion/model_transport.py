@@ -15,12 +15,16 @@ def configuration(path):
     c.deadline_limit(cfg['profile'])
     require(cfg['sharing'] == c.PRIVACY and cfg['fallback'] is False, 'UNSUPPORTED_PROFILE')
     chosen = c.select([descriptor_read(d) for d in cfg['catalogue']], cfg['profile'])
-    require(type(cfg['commands']) is list and 1 <= len(cfg['commands']) <= 3)
-    from .neoclaw_contracts import parse_expression
-    for command in cfg['commands']:
-        require(type(command) is list and len(command) == 2 and command[0] in ('metta','send'), 'UNSUPPORTED_OPERATION')
-        if command[0] == 'metta': parse_expression(command[1])
-        else: require(type(command[1]) is str and 1 <= len(command[1].encode()) <= 400)
+    if 'policy' in cfg['disclosure']:
+        from .neoclaw_retrieval_disclosure import configuration as retrieval_configuration
+        retrieval_configuration(cfg)
+    else:
+        require(type(cfg['commands']) is list and 1 <= len(cfg['commands']) <= 3)
+        from .neoclaw_contracts import parse_expression
+        for command in cfg['commands']:
+            require(type(command) is list and len(command) == 2 and command[0] in ('metta','send'), 'UNSUPPORTED_OPERATION')
+            if command[0] == 'metta': parse_expression(command[1])
+            else: require(type(command[1]) is str and 1 <= len(command[1].encode()) <= 400)
     frozen = {k:cfg[k] for k in ('profile','sharing','principal','scope','session','placement','disclosure','commands')}
     frozen['selection'] = selection_token(chosen)
     if 'backend_port' in cfg:
@@ -61,7 +65,10 @@ class Client:
         require(accepted['selection'] == selection_token(self.chosen), 'UNSUPPORTED_PROFILE')
         require((accepted['principal'],accepted['scope'],accepted['session']) ==
                 (cfg['principal'],cfg['scope'],cfg['session']), 'UNAUTHORIZED')
-        disclose(accepted['native_prompt'], cfg['disclosure'])
+        if 'policy' in cfg['disclosure']:
+            from .neoclaw_retrieval_disclosure import preflight
+            preflight(cfg, accepted, operation)
+        disclose(accepted['native_prompt'], cfg['disclosure'], accepted)
         if cfg['placement'] == 'local':
             from .model_service import ModelService
             from .adapters.ollama_completion import OllamaCompletion

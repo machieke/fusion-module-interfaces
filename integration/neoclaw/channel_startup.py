@@ -48,7 +48,7 @@ def install_guard():
     app=json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
     cfg=json.loads(Path(app['channel_config']).read_text())
     allowed={cfg['endpoint']['port']} if cfg['placement']=='network' else set()
-    if app['composition']=='controlled-native-loop/9':
+    if app['composition'] in ('controlled-native-loop/9','controlled-native-loop/10'):
         model=json.loads(Path(app['model_config']).read_text())
         allowed.add(model['endpoint']['port'] if model['placement']=='network' else model.get('backend_port',11434))
     def guard(event,args):
@@ -65,7 +65,7 @@ def install_guard():
         with socket.create_connection(('127.0.0.1',app['channel_irc_probe_port']),timeout=.2):pass
     except PermissionError:blocked=True
     require(blocked,'UNSUPPORTED_PROFILE')
-    if app['composition']=='controlled-native-loop/9':
+    if app['composition'] in ('controlled-native-loop/9','controlled-native-loop/10'):
         refused=False
         probes={}
         if model['placement']=='network':

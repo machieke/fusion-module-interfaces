@@ -110,3 +110,12 @@ deadlines and the historical profile remain unchanged. All twelve calls are spen
 with failures and recorded-model fixtures kept separate from real successes.
 Only the bounded X01 text-completion boundary is adopted. Historical families,
 mapping rows, eight prior operation adoptions and nine user commands are unchanged.
+
+[Retrieval-grounded workload preparation](retrieval-preparation.md) composes the
+existing native remember/query/send boundaries under `controlled-native-loop/10`.
+Model responses are authored fixtures; retrieval, the native loop, isolated IRC
+and authenticated same-host HTTPS are real. [Decisions](retrieval-preparation-decisions.md)
+keep exact query-result consent separate from output eligibility and factual
+correctness. This adds no module or command adoption. The live memory workflow
+remains **NOT_RUN**, with **zero additional live generations** and a disabled
+future authorization plan.

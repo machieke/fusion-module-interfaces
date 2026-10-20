@@ -16,7 +16,17 @@ def call(method, *args):
         if _app is None:
             path = os.environ['NEOCLAW_S01_APPLICATION']
             config = json.loads(Path(path).read_text())
-            _app = Application(path, lambda stage: failpoint(config, stage))
+            if 'preparation_fixture_lock' in config:
+                from fusion.neoclaw_retrieval_disclosure import APPLICATION
+                from fusion.contracts import require
+                require(config['composition'] == APPLICATION, 'UNSUPPORTED_PROFILE')
+                from integration.neoclaw.retrieval_fixture import install
+                install(config['preparation_fixture_lock'])
+            def pause(stage):
+                slot = config.get('pause_slot')
+                if slot is None or (_app is not None and _app.evidence.slot() == slot):
+                    failpoint(config, stage)
+            _app = Application(path, pause)
         result=getattr(_app, method)(*args)
         if method=='begin' and _app.append_enabled and _app.is_memory():
             from integration.neoclaw.append_bootstrap import select_view
@@ -29,6 +39,9 @@ def call(method, *args):
         # No Python exceptions/provider paths/credentials become native tool output.
         code = exc.code if isinstance(exc, ContractError) else 'NOT_AVAILABLE'
         config = json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
+        if config.get('preparation_diagnostics'):
+            import traceback
+            traceback.print_exc()
         status = dict(status='PENDING_OR_FAILED', code=code)
         if _app is not None and hasattr(_app,'write') and _app.is_append():
             status['append']=_app.write.partial()

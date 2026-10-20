@@ -1,0 +1,137 @@
+{
+  "earlier_runs": [
+    {
+      "completed_method_summary": [],
+      "log": "failure-01-guard.log",
+      "note": "Root-owned path preflight denied; no runtime/test started. No complete source freeze recorded.",
+      "printed_method_starts": 0,
+      "run": "failure-01-guard",
+      "sha256": "ffc9edfcea3753c8af3e7b16e11b704eb324b04adac3b613fb7575d31926c0b2",
+      "source": null,
+      "state": "FAILED_BEFORE_TESTS"
+    },
+    {
+      "completed_method_summary": [],
+      "log": "failure-02-initial-context.log",
+      "note": "Initial native context/receipt check failed; exact source snapshot retained.",
+      "printed_method_starts": 0,
+      "run": "failure-02-initial-context",
+      "sha256": "d35b1372df05468b5a8923f551c765f8661a5ede77f14ebc354c0e9ab7ee5520",
+      "source": "smoke-source-02.json",
+      "state": "FAILED_DEVELOPMENT"
+    },
+    {
+      "completed_method_summary": [],
+      "log": "failure-03-scaffold.log",
+      "note": "Native scaffold mismatch; corrected exact trailing placeholder.",
+      "printed_method_starts": 0,
+      "run": "failure-03-scaffold",
+      "sha256": "dea3ddab97498b4ccc3097bceb685f0e8d1809ba0396302143519ea43b1d670a",
+      "source": "source-03.json",
+      "state": "FAILED_DEVELOPMENT"
+    },
+    {
+      "completed_method_summary": [],
+      "log": "failure-04-native-projection.log",
+      "note": "Native query result reached projection check; apostrophe transform mismatch corrected.",
+      "printed_method_starts": 0,
+      "run": "failure-04-native-projection",
+      "sha256": "6713c80ff3e3df27141a4ccda95d885b5bd1c4f51d93ac759cf2c13fe679a411",
+      "source": "source-04.json",
+      "state": "FAILED_DEVELOPMENT"
+    },
+    {
+      "completed_method_summary": [],
+      "log": "smoke.log",
+      "note": "First complete local authored workflow exported in smoke.json. Not final qualified bytes; no single complete corresponding source freeze claimed.",
+      "printed_method_starts": 0,
+      "run": "smoke",
+      "sha256": "99a18aa50aebff2f53286e493befaf8b9f94c3ffe242267c287bf5b1e99ca611",
+      "source": null,
+      "state": "DEVELOPMENT_ONLY"
+    },
+    {
+      "completed_method_summary": [
+        [
+          "34",
+          "2.107"
+        ]
+      ],
+      "log": "contracts-01.log",
+      "note": "34 early methods; no exact complete corresponding source freeze claimed. Superseded for qualification by final run.",
+      "printed_method_starts": 34,
+      "run": "contracts-01",
+      "sha256": "c34e5aa5d1bc49a8476007a5589980a4c53768b7b4dc53a8af9991b733bd5aa5",
+      "source": null,
+      "state": "PASS_OLDER_BYTES"
+    },
+    {
+      "completed_method_summary": [],
+      "log": "contracts-02.log",
+      "note": "Test authoring SyntaxError; zero methods executed.",
+      "printed_method_starts": 0,
+      "run": "contracts-02",
+      "sha256": "def27c6bfe21db1aa93b8157df5c3dd8dbf9c98c9c2db0f3b9529aeb1713a088",
+      "source": "contracts-02-source.json",
+      "state": "FAILED_BEFORE_TESTS"
+    },
+    {
+      "completed_method_summary": [
+        [
+          "40",
+          "1.882"
+        ]
+      ],
+      "log": "contracts-03.log",
+      "note": "40 methods; later pending-query recovery fix requires final recheck.",
+      "printed_method_starts": 40,
+      "run": "contracts-03",
+      "sha256": "878a22587f300de9615c151210b1c32048bc54cda97dddea4efc0d3b9db270d8",
+      "source": "contracts-03-source.json",
+      "state": "PASS_OLDER_BYTES"
+    },
+    {
+      "completed_method_summary": [
+        [
+          "32",
+          "3.538"
+        ]
+      ],
+      "log": "regression-unit.log",
+      "note": "32 historical methods; all covered by final contract run.",
+      "printed_method_starts": 32,
+      "run": "regression-unit",
+      "sha256": "56f13f93cfb76b67e1cb6df8428b74275a0344380ae5bdd9b2ffb51a510d0733",
+      "source": "regression-unit-source.json",
+      "state": "PASS_OLDER_BYTES"
+    },
+    {
+      "completed_method_summary": [],
+      "log": "integration-01.log",
+      "note": "SIGINT after inspection found sender pre-HTTP authorization gap. Manifest identifies starting bytes, not a completed clean-commit pass.",
+      "printed_method_starts": 3,
+      "run": "integration-01",
+      "sha256": "1779be27e4ea39dfde6f9cc38b4a986ac82e01201ab3000a866a043dff63b73c",
+      "source": "integration-01-source.json",
+      "state": "INTERRUPTED_DIAGNOSTIC"
+    },
+    {
+      "completed_method_summary": [],
+      "log": "integration-02.log",
+      "note": "Provider fault-hook orchestration and pending-query recovery failures retained; SIGINT stopped known failing run. Both rechecked by integration-03.",
+      "printed_method_starts": 6,
+      "run": "integration-02",
+      "sha256": "3361a5018cf4aba59d934c18c1a4da52350e7925819db340790c1633fbe2f323",
+      "source": "integration-02-source.json",
+      "state": "FAILED_AND_INTERRUPTED_DIAGNOSTIC"
+    }
+  ],
+  "failure_identity": "Earlier failures and source snapshots are immutable records of their own attempts, not retroactive passes.",
+  "no_live_model_calls": true,
+  "qualified_runs": [
+    "contracts-final",
+    "integration-03",
+    "regression-light",
+    "regression-native"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "interpretation": "Two qualification observations only, not a throughput, ANN quality, reliability or generative competence benchmark. Existing profiles/deadlines unchanged. Setup and measured process measurements exclude some test orchestration.",
+  "observations": [
+    {
+      "first_prompt_chars": 1077,
+      "fixture_evaluations": 2,
+      "live_generations": 0,
+      "measured_native_wall_time": "0:19.39",
+      "model_rpc_reservations": [
+        4,
+        4
+      ],
+      "peak_resident_kib": 1635692,
+      "scenario": "workflow-local",
+      "second_prompt_chars": 2035,
+      "setup_ms": {
+        "cold_start_to_first_context_ms": 14232.028516940773,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1792486706922.9656,
+        "total_ms": 23516.462120227516
+      }
+    },
+    {
+      "first_prompt_chars": 1077,
+      "fixture_evaluations": 2,
+      "live_generations": 0,
+      "measured_native_wall_time": "0:20.09",
+      "model_rpc_reservations": [
+        4,
+        4
+      ],
+      "peak_resident_kib": 1635664,
+      "scenario": "workflow-network",
+      "second_prompt_chars": 2035,
+      "setup_ms": {
+        "cold_start_to_first_context_ms": 14494.714545086026,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1792486761854.5593,
+        "total_ms": 23710.370280779898
+      }
+    }
+  ]
+}

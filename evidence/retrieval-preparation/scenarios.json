@@ -1,0 +1,335 @@
+{
+  "additional_live_generations": 0,
+  "combined_scenario_count": 22,
+  "combined_scenarios": [
+    {
+      "evidence": "cases/batch-refusal.json",
+      "expected_refusal": "UNSUPPORTED_OPERATION",
+      "scenario": "batch-refusal",
+      "sha256": "5c35974794aae8d4788f44c650d78fcf222fa3feac5a6c749ce9d9c39711a608",
+      "test_outcome": "PASS"
+    },
+    {
+      "evidence": "cases/captured-query-revoked.json",
+      "expected_refusal": "UNAUTHORIZED",
+      "scenario": "captured-query-revoked",
+      "sha256": "70ed16b45ae419fda7d1435f3840a1f2b15189851477bbb4f452d46c802ff827",
+      "test_outcome": "PASS"
+    },
+    {
+      "evidence": "cases/failed-hydration.json",
+      "expected_refusal": "NOT_AVAILABLE",
+      "scenario": "failed-hydration",
+      "sha256": "958c89671f4734f5b85b3b0a683159252b38affd8f2c394cca69805e2daff8e1",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-after_candidate_capture.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_candidate_capture",
+      "model_placement": "local",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-after_candidate_capture",
+      "sha256": "f98d3db44191e1f2f9c2c1d9d32bbe1fd27a981911e6b2a7649c0c4382652cab",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-after_native_result_capture.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_native_result_capture",
+      "model_placement": "local",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-after_native_result_capture",
+      "sha256": "3a5ae4a10bdc9d8bdbee020bc5e89cef053bd99a3ba0b24dc1ca96672cf80f4d",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-after_occurrence_bind.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_occurrence_bind",
+      "model_placement": "local",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-after_occurrence_bind",
+      "sha256": "ccd45fd418feb43667fe0ca54f165b6e123f9f3e2ddeed9bf318adce8f0da37f",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-after_vector_capture.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_vector_capture",
+      "model_placement": "local",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-after_vector_capture",
+      "sha256": "fafc41ea25cff8e9b681149cd8ccaf0ade74af139cf914b6e506b2d1db3a7556",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-provider-capture.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_model_provider_capture",
+      "model_placement": "network",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-provider-capture",
+      "sha256": "79ce036118175f9493b2d1fcb2b4366d3d37b5590207b923aaaad8c663a6a0de",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-second-after_model_application_capture.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_model_application_capture",
+      "model_placement": "local",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-second-after_model_application_capture",
+      "sha256": "a31530de1895aab7a0c84d9e82f9f0d6610dc530402b70461c521f025d70bd9e",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-second-after_model_prompt_bind.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_model_prompt_bind",
+      "model_placement": "local",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-second-after_model_prompt_bind",
+      "sha256": "4c2ccb7875b94d4f0bd49195cbc56ccddfe101d12403cc1028ba92f701d5d941",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/kill-second-after_occurrence_bind.json",
+      "fixture_evaluations": 2,
+      "kill_stage": "after_occurrence_bind",
+      "model_placement": "local",
+      "recovery": "identities/views/captures/deadlines retained; reservations never refunded; captured evaluation stages not repeated",
+      "scenario": "kill-second-after_occurrence_bind",
+      "sha256": "add66283259ee7d16f28d74d1efabf3b87f70a1fcc042911abc1db2a6d9645a5",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": false,
+        "retrieval_decisive": true,
+        "task": "FAIL"
+      },
+      "evidence": "cases/kill-socket-reservation.json",
+      "fixture_evaluations": 2,
+      "kill_stage": null,
+      "model_placement": "local",
+      "recovery": null,
+      "scenario": "kill-socket-reservation",
+      "sha256": "e774e81ef8f1362cbf4c2ac45b319dc716c2897cc5ae3ba6bbef86e3b4f44bde",
+      "test_outcome": "PASS"
+    },
+    {
+      "evidence": "cases/parser-refusal.json",
+      "expected_refusal": "INVALID_ARGUMENT",
+      "scenario": "parser-refusal",
+      "sha256": "1b626133ff6178c6c9a3b5c112c3461d1d6e66b13899fd915ae56a4ec3ba3ed2",
+      "test_outcome": "PASS"
+    },
+    {
+      "evidence": "cases/private-refusal.json",
+      "expected_refusal": "UNSUPPORTED_OPERATION",
+      "scenario": "private-refusal",
+      "sha256": "6302965d447018164c54ad72d862f2c68f4b44254cda90b2678a4ead0ccfb602",
+      "test_outcome": "PASS"
+    },
+    {
+      "evidence": "cases/stage-refusal.json",
+      "expected_refusal": "UNSUPPORTED_OPERATION",
+      "scenario": "stage-refusal",
+      "sha256": "2993c714da0122a9d6ba78ee37dec8220019dc0aa07221389b529f22a1537fd6",
+      "test_outcome": "PASS"
+    },
+    {
+      "evidence": "cases/unavailable-generation.json",
+      "expected_refusal": "NOT_AVAILABLE",
+      "scenario": "unavailable-generation",
+      "sha256": "f19d60418940f336a386d3899f99a3af354a257e3296ed817227cf10f635cfb8",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": false,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "FAIL"
+      },
+      "evidence": "cases/unnecessary-refusal.json",
+      "fixture_evaluations": 2,
+      "kill_stage": null,
+      "model_placement": "local",
+      "recovery": null,
+      "scenario": "unnecessary-refusal",
+      "sha256": "2cb4e96075c16bcd06ec4130f6bcd2772e11bd8d61f71e1977692b7bdaee4e4b",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/variant-changed.json",
+      "fixture_evaluations": 2,
+      "kill_stage": null,
+      "model_placement": "local",
+      "recovery": null,
+      "scenario": "variant-changed",
+      "sha256": "372b883df9dec4e73ae18d33fae3a957865ec033878c242912c00ae3ac0cf809",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": false,
+        "task": "PASS"
+      },
+      "evidence": "cases/variant-target-absent.json",
+      "fixture_evaluations": 2,
+      "kill_stage": null,
+      "model_placement": "local",
+      "recovery": null,
+      "scenario": "variant-target-absent",
+      "sha256": "2f4d8cc907208fb2436f8b783cf7a14066abcf334905d92b57b804393ca43460",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/workflow-local.json",
+      "fixture_evaluations": 2,
+      "kill_stage": null,
+      "model_placement": "local",
+      "recovery": null,
+      "scenario": "workflow-local",
+      "sha256": "ec931a38630ab4994bb92f0ab343089bd0cdc7f1a50053d3a73afbe0f5539a1d",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": true,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "PASS"
+      },
+      "evidence": "cases/workflow-network.json",
+      "fixture_evaluations": 2,
+      "kill_stage": null,
+      "model_placement": "network",
+      "recovery": null,
+      "scenario": "workflow-network",
+      "sha256": "c27d48066dfd7e9368508b9efcbe0ba69122ebc1f3edd4e320198d05a3e08b3f",
+      "test_outcome": "PASS"
+    },
+    {
+      "evaluation": {
+        "answer_correct": false,
+        "model_usefulness": "NOT_RUN",
+        "output_permitted": true,
+        "peer_observed": true,
+        "retrieval_decisive": true,
+        "task": "FAIL"
+      },
+      "evidence": "cases/wrong-permitted.json",
+      "fixture_evaluations": 2,
+      "kill_stage": null,
+      "model_placement": "local",
+      "recovery": null,
+      "scenario": "wrong-permitted",
+      "sha256": "b998f4dd4994ed4d50ef80bb3173827508ee63abafc6a038db20276e282a73e1",
+      "test_outcome": "PASS"
+    }
+  ],
+  "counting": "22 scenarios in nine combined-workflow methods; one additional parity method covers three native paths. Scenario outcomes are not a live workflow count.",
+  "live_memory_workflow": "NOT_RUN",
+  "parity": {
+    "evidence": "cases/original-local-https-parity.json",
+    "paths": [
+      "original-native",
+      "adapted-local",
+      "adapted-HTTPS"
+    ]
+  }
+}

@@ -63,7 +63,7 @@ class ModelService:
         require(cfg['sharing'] == c.PRIVACY and accepted['session'] in cfg['sessions'], 'UNAUTHORIZED')
         require(accepted['selection'] == selection_token(self.chosen), 'UNSUPPORTED_PROFILE')
         from .neoclaw_model_disclosure import disclose
-        disclose(accepted['native_prompt'], cfg['disclosure'])
+        disclose(accepted['native_prompt'], cfg['disclosure'], accepted)
         for method in ('disclose', operation): self.policy.check(principal, accepted['scope'], 'model.'+method)
 
     def row(self, accepted):

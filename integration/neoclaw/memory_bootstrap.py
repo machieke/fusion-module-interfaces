@@ -62,8 +62,8 @@ def initialize():
     def forbidden(*args,**kwargs):raise RuntimeError('LEGACY_RETRIEVAL_FORBIDDEN')
     for name in ('query','query_with_ids','query_with_ids_and_dists','query_by_ids','query_by_id','remember','forget_ids','set_stv','link_episode','unlink_episode'):
         setattr(lib_chromadb,name,forbidden)
-    from fusion import promotion_contracts as p, channel_contracts as ch, model_contracts as m
-    if app['composition'] in (p.APPLICATION,ch.APPLICATION,m.APPLICATION):
+    from fusion import promotion_contracts as p, channel_contracts as ch, model_contracts as m, neoclaw_retrieval_disclosure as r
+    if app['composition'] in (p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION):
         # Historical helpers are forbidden, not silently replaced with zero defaults.
         for name in dir(helper):
             if name.startswith('promotion_'):setattr(helper,name,forbidden)
@@ -76,7 +76,7 @@ def initialize():
     if cfg['embedding_boundary']=='port':
         from fusion import embedding_contracts as e
         from fusion import append_contracts as w, nal_memory_contracts as n
-        require(app['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION),'UNSUPPORTED_PROFILE')
+        require(app['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION),'UNSUPPORTED_PROFILE')
         import importlib.util
         absent={name:importlib.util.find_spec(name) is None and name not in sys.modules for name in ('torch','sentence_transformers','transformers')}
         require(all(absent.values()),'UNSUPPORTED_PROFILE')

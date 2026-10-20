@@ -1,0 +1,105 @@
+{
+  "repositories": {
+    "mettaclaw": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/mettaclaw",
+      "repository_root": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/mettaclaw",
+      "head": "2af37c3fec18613de54ca42fde2382a9087d4524",
+      "status": [
+        "?? src/__pycache__/"
+      ],
+      "selected_source_hashes_match": {
+        "LICENSE": true,
+        "README.md": true,
+        "channels/irc.py": true,
+        "channels/mattermost.py": true,
+        "channels/websearch.py": true,
+        "lib_llm_ext.py": true,
+        "lib_mettaclaw.metta": true,
+        "lib_nal.metta": true,
+        "lib_nal7.metta": true,
+        "run.metta": true,
+        "src/channels.metta": true,
+        "src/helper.py": true,
+        "src/loop.metta": true,
+        "src/memory.metta": true,
+        "src/skills.metta": true,
+        "src/skills.pl": true,
+        "src/utils.metta": true
+      }
+    },
+    "PeTTa": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/PeTTa",
+      "repository_root": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/PeTTa",
+      "head": "fea83178af3722666d2948d074591d10a3134f56",
+      "status": []
+    },
+    "swipl": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/swipl",
+      "repository_root": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s01/native-02/sources/swipl",
+      "head": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+      "status": []
+    },
+    "DeTTa": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m4/reproduction-01/providers/native/sources/secured-contract-spaces",
+      "repository_root": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/m4/reproduction-01/providers/native/sources/secured-contract-spaces",
+      "head": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+      "status": []
+    },
+    "ngircd": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s06/ngircd-src",
+      "repository_root": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s06/ngircd-src",
+      "head": "6ae13bf89e934d167f6ead8bb9ee39f57a0935c0",
+      "status": []
+    },
+    "chroma_helper": {
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/omega-mapping-source/petta_lib_chromadb",
+      "repository_root": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/omega-mapping-source/petta_lib_chromadb",
+      "head": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+      "status": []
+    }
+  },
+  "files": {
+    "artifacts/s01/native-02/runtime.json": "24d90a976350f24f1d1c2414f6db12d140db269c6682225b4fce14e2a22b941f",
+    "artifacts/s03/memory-runtime.json": "7b5cdc5023f3eb1bb6002ed592e3fe7adba36bd17b265b9e3c4ecfccf4c715ae",
+    "artifacts/s03_1/caller/caller-runtime.json": "e800ba2f71ac3a4df05c09d0396bfc8ed0cd6d15107aff0869611eececc71425",
+    "integration/neoclaw/sources.json": "e32951aed90742d399ee3f02a336187fd441682f6abb18e42b76d41c1c3e0fec",
+    "integration/neoclaw/memory-model.json": "d1f8f7934c664567ab6dde28aef90564ab7519d373d391f2bc6cd2e9c4dc17c0",
+    "integration/neoclaw/model-sources.json": "097bd6e839a369c8f89540b6b3d36bb74be90d69d9842997b4b1c3f36f6cf072",
+    "integration/neoclaw/memory-requirements.lock": "e72c3a46bf120c54f289c8277224661bbb64b142020c9053d2d83283ef4e96d6",
+    "integration/neoclaw/embedding-caller-requirements.lock": "3d39868b05206645810961155cb4cf311a7a2eefbace12d88762b17a292eff9a",
+    "artifacts/detta-build/Cargo.toml": "437f0271398a89bee8cbd8797fd3c91db6325ac63168a27024cfda1e600612ef",
+    "artifacts/detta-build/Cargo.lock": "20f0dcecdec068b5bce8eeb9a84d0c4f980f5d8d81b57d6afafc2fd0285fe6b8",
+    "artifacts/detta-build/src/main.rs": "0effb78769432658295a31137133b8e2d052328f6313f52316a08e88225415e4",
+    "artifacts/detta-build/target/debug/fusion-detta-adapter": "cb7ed1a27e10e2869ca7357c6c249861623b9849c49fcbf7ef300aa19831f756",
+    "artifacts/s06/ngircd/sbin/ngircd": "b29b4c31e8f515062f2ed814b01c1774da2b6a1f3e099d6e316e8d3489ff3f74",
+    "artifacts/s01/native-02/swipl/bin/swipl": "59f5ded02b1b378b41154778cff72b9a921d131ffb27f1036181a4f7f2429541"
+  },
+  "embedding_model": {
+    "model": "intfloat/e5-large-v2",
+    "revision": "f169b11e22de13617baa190a028a32f3493550b6",
+    "files": {
+      "1_Pooling/config.json": "56c469dba9e31869bb7dfceb9b3d76ac06549d1ba869509d8eb4e8aeb31d62d1",
+      "config.json": "2394ce5c9ffac96c88496de5d7a92f5d3fec1015b9d25f9f85545f13dfd7a269",
+      "model.safetensors": "d741c1a688a6169af0ecb5a047c44645cd992c31e1bf431269f98bba9ae2911a",
+      "modules.json": "c6e29747481e8b5dd2b58401966aeac910de39092f90cda9a704b1545f902b04",
+      "sentence_bert_config.json": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529",
+      "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+      "tokenizer_config.json": "ae83fa6ca0333117ff12606020af925d648667ef70d92ff7f27d781ba0ca4544",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  },
+  "model_asset_matches": {
+    "1_Pooling/config.json": true,
+    "config.json": true,
+    "model.safetensors": true,
+    "modules.json": true,
+    "sentence_bert_config.json": true,
+    "special_tokens_map.json": true,
+    "tokenizer.json": true,
+    "tokenizer_config.json": true,
+    "vocab.txt": true
+  },
+  "runtime_rebuild": "NOT_RUN: existing source-checked installed runtimes reused",
+  "generative_runtime": "NOT_STARTED_OR_CONTACTED; historical pins retained only"
+}

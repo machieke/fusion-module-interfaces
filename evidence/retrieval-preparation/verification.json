@@ -1,0 +1,195 @@
+{
+  "ADDITIONAL_LIVE_GENERATIONS": 0,
+  "LIVE_MEMORY_WORKFLOW": "NOT_RUN",
+  "PREPARATION_STATUS": "READY_FOR_LIVE_AUTHORIZATION",
+  "earlier_corrected_failures": "run-ledger.json; no historical failure relabelled",
+  "fixtures": [
+    "all model responses in preparation",
+    "empty flat history and controlled creation/attention clocks",
+    "fault injection",
+    "deterministic vectors in selected historical metric regression",
+    "recorded external-search SDK responses in S02 regression",
+    "owner unit-test fixtures"
+  ],
+  "gates": [
+    {
+      "evidence": [
+        "baseline.json",
+        "inputs.json",
+        "final-source.json",
+        "impact.json",
+        "checks.json"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "BASELINE",
+      "observed": "S07 publication and the exact published 17-file closeout delta reconciled before editing; four final test source manifests match 214 current executable/test files.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "contracts-final.log",
+        "test-map.json",
+        "cases/stage-refusal.json",
+        "cases/batch-refusal.json",
+        "cases/parser-refusal.json"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "CONTRACT_SELECTION",
+      "observed": "Closed /10 query/send stages and synthetic-retrieval-query-send/1 disclosure; old /9 and numerical profiles remain unchanged. Whole native batch must pass before effects.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "zero-live.json",
+        "integration-03-guard.json",
+        "regression-native-guard.json",
+        "contracts-final.log"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "ZERO_LIVE",
+      "observed": "Fresh network namespace, owned host-sentinel denial and masked runtime executable tests; explicit authored fixture selection. No real generative runtime started or contacted.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "cases/original-local-https-parity.json",
+        "cases/workflow-local.json",
+        "cases/unavailable-generation.json",
+        "cases/failed-hydration.json",
+        "regression-native.log"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "SETUP_RETRIEVAL",
+      "observed": "Actual native remember creates the authoritative source; real E5/Chroma/DeTTa and native query hydration. Original/local/HTTPS parity; freshness/rebuild and failed hydration remain distinct.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "cases/workflow-network.json",
+        "cases/captured-query-revoked.json",
+        "contracts-final.log"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "CONTEXT_BINDING",
+      "observed": "Actual captured native projection and complete retained context/read view bind the next prompt. Exact component consent and current sender/owner permission precede release; captured-result revocation refuses.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "cases/variant-changed.json",
+        "cases/variant-target-absent.json",
+        "cases/wrong-permitted.json",
+        "cases/unnecessary-refusal.json",
+        "cases/private-refusal.json"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "NO_ANSWER_ORACLE",
+      "observed": "Initial measured prompt/history/promoted context exclude all candidate locations; actual query supplies next feedback. Model actor cannot open evaluator/corpus/journal paths. Wrong equally permitted reply and unnecessary refusal fail task scoring; valid target absence is separate.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "cases/workflow-local.json",
+        "cases/workflow-network.json"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "CHANNEL_PLACEMENT",
+      "observed": "Real isolated IRC server/peer/native loop; local versus authenticated same-host HTTPS authored model owner with fixed HTTPS mailbox and local retrieval/encoder/cognition.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "scenarios.json",
+        "cases/kill-provider-capture.json",
+        "cases/kill-socket-reservation.json",
+        "contracts-final.log",
+        "regression-native.log"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "RECOVERY",
+      "observed": "Actual SIGKILL at query/vector/candidate/result, next prompt, provider capture, application capture and outbound stages. IDs/views/intents/deadlines retained; captured evaluation not repeated; reservations stay spent; ambiguous socket attempt never resent.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "test-map.json",
+        "impact.json",
+        "checks.json",
+        "regression-native-results.json"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "COMPATIBILITY",
+      "observed": "72 existing methods reexecuted across applicable S01\u2013S07/native and owner/transport boundaries. Historical family/adoption counters, private placement, numerical profiles and S07 evidence unchanged.",
+      "status": "PASS"
+    },
+    {
+      "evidence": [
+        "live-plan.disabled.json"
+      ],
+      "evidence_class": "PREPARATION_ONLY",
+      "gate": "LIVE_PLAN_DISABLED",
+      "observed": "Proposed two-session/four-call plan remains disabled: effective allowance zero, authorization null, no executable entrypoint. Live workflow and generative usefulness NOT_RUN.",
+      "status": "PASS"
+    }
+  ],
+  "historical_counts": {
+    "extensions": [
+      "X01",
+      "X02"
+    ],
+    "families": 15,
+    "mapping_rows": 105,
+    "native_user_commands": 9,
+    "operation_entries": 8,
+    "s07_admissions": 8,
+    "s07_attempts": 12,
+    "s07_captured_result_recoveries": 2,
+    "s07_captures": 10,
+    "s07_complete_workflows": 3,
+    "s07_distinct_methods": 149
+  },
+  "limits": [
+    "Generated three-record domain only; not a retrieval-quality benchmark",
+    "Trusted local receipt issuer and read-only current Policy; not a signature scheme or malicious-host defense",
+    "Concurrent revocation may race an in-flight transport; owner rechecks",
+    "IRC can lose input before durable capture",
+    "Socket reservation/write/peer observation differ; unknown delivery is not retried",
+    "Historical S07 unknown API/usage/context-export/channel facts unchanged"
+  ],
+  "live_prerequisites": [
+    "New explicit user authorization bound to a frozen plan",
+    "Current generative runtime availability remains unchecked; no readiness calls performed"
+  ],
+  "preparation_blockers": [],
+  "qualification_method_counts": {
+    "existing_reexecuted": 72,
+    "new": 27,
+    "total": 99
+  },
+  "real": [
+    "native MeTTaClaw/PeTTa/SWI dispatch, parser, remember/query/getContext",
+    "pinned E5",
+    "Chroma",
+    "DeTTa",
+    "isolated ngIRCd and independent socket peer",
+    "authenticated same-host HTTPS",
+    "process kills"
+  ],
+  "s07_publication": "4981788b4d8069a2b2264e65197f9886b74f1f5f",
+  "scenarios": "22 combined authored-model scenarios; separate original/local/HTTPS parity method",
+  "source_state": "Qualified working-tree bytes, reconciled to final-source.json; publication is the commit containing this manifest. Not retroactively labelled a clean-commit test run.",
+  "starting_head": "367c9b583eb85d6cf99ca93827c9f40b9c681bc6",
+  "unrun": [
+    "real-model retrieval-grounded workflow and usefulness",
+    "real generative runtime startup/availability probes",
+    "live external search",
+    "independent cold dependency rebuild",
+    "full repository regression suite",
+    "default full Omega",
+    "multi-host",
+    "chain"
+  ],
+  "unsupported": [
+    "Existing S04/S05 private cognition profiles with remote memory placement remain refused; separate /5 HTTPS parity does not remove this limit"
+  ]
+}

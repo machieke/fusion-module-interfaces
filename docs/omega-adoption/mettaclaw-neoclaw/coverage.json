@@ -245,5 +245,41 @@
     "historical_s08_embedding": "Bounded X02 adoption already delivered in S03.1/S03.2; no automatic next implementation",
     "additional_live_generations": 0,
     "live_generation_authorization": 0
+  },
+  "retrieval_preparation": {
+    "application_composition": "controlled-native-loop/10",
+    "disclosure_policy": "synthetic-retrieval-query-send/1",
+    "scope": "Composition of existing native remember/query/send and ModelInference; no new module or operation adoption",
+    "model_boundary": "AUTHORED_MODEL_RESPONSE_FIXTURE",
+    "real_boundaries": [
+      "native remember/query/getContext/parser",
+      "pinned E5",
+      "Chroma",
+      "DeTTa",
+      "isolated IRC and separate socket peer",
+      "authenticated same-host HTTPS"
+    ],
+    "model_placement_comparison": [
+      "local",
+      "authenticated-same-host-HTTPS"
+    ],
+    "fixed_combined_placement": {
+      "retrieval": "local",
+      "encoder": "local",
+      "cognition": "local",
+      "mailbox": "authenticated-same-host-HTTPS"
+    },
+    "separate_parity": "Original/local/HTTPS native remember/query with E5-free caller under existing /5; not remote private S04/S05 state",
+    "new_family_adoptions": 0,
+    "new_native_commands": 0,
+    "report": "retrieval-preparation.md",
+    "decisions": "retrieval-preparation-decisions.md",
+    "evidence": "../../../evidence/retrieval-preparation/verification.json",
+    "live_plan": "../../../evidence/retrieval-preparation/live-plan.disabled.json",
+    "additional_live_generations": 0,
+    "live_generation_authorization": 0,
+    "combined_live_memory_workflow": "NOT_RUN",
+    "historical_evidence_unchanged": true,
+    "status": "READY_FOR_LIVE_AUTHORIZATION"
   }
 }

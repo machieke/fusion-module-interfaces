@@ -1,0 +1,36 @@
+{
+  "additional_live_generations": 0,
+  "coverage_historical_object": "UNCHANGED; one additive preparation field",
+  "disabled_plan": "PASS: authorization null, effective zero, no entrypoint or spent ledger",
+  "generation_deny_guards": "PASS",
+  "git_diff_check": "PASS for all staged files except one deliberately unmodified raw interrupted log",
+  "historical_numerical_profiles_and_locks": "UNCHANGED",
+  "historical_s07_evidence": "UNCHANGED",
+  "new_report_links": "PASS",
+  "raw_log_whitespace_exception": {
+    "disposition": "retain exact failure log bytes; all other staged files pass git diff --cached --check",
+    "finding": "trailing space on unfinished unittest progress line",
+    "line": 9,
+    "path": "evidence/retrieval-preparation/integration-02.log"
+  },
+  "source_ast_parse": "PASS: all 214 frozen Python files, without executing imports",
+  "source_reconciliation": {
+    "contracts-final": {
+      "drift": [],
+      "files_checked": 214
+    },
+    "integration-03": {
+      "drift": [],
+      "files_checked": 214
+    },
+    "regression-light": {
+      "drift": [],
+      "files_checked": 214
+    },
+    "regression-native": {
+      "drift": [],
+      "files_checked": 214
+    }
+  },
+  "utc": "2026-10-20T09:17:22.208181+00:00"
+}

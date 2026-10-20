@@ -1,0 +1,106 @@
+{
+  "schema": "retrieval-grounded-live-plan/1",
+  "state": "DISABLED_REQUIRES_NEW_USER_AUTHORIZATION_AND_FREEZE",
+  "effective_live_allowance": 0,
+  "authorization": null,
+  "executable_entrypoint": null,
+  "historical_s07_allowance_remaining": 0,
+  "application": "controlled-native-loop/10",
+  "disclosure": "synthetic-retrieval-query-send/1",
+  "model_profile": "neoclaw-ollama-qwen38-text/2",
+  "proposed_backend": "local Ollama qwen3.8:27b at the historical pinned build; availability NOT_CHECKED in preparation",
+  "source_freeze": "Bind final-source.json and publication SHA before requesting new authorization",
+  "corpus": "New approved synthetic native-remember corpus, retained ready view, complete recipient consent; freeze exact IDs/bytes before any calls",
+  "sessions": [
+    {
+      "name": "model-local",
+      "model": "local",
+      "mailbox": "authenticated-same-host-HTTPS",
+      "retrieval": "local",
+      "encoder": "local",
+      "cognition": "private-local",
+      "calls": 2
+    },
+    {
+      "name": "model-https",
+      "model": "authenticated-same-host-HTTPS",
+      "mailbox": "authenticated-same-host-HTTPS",
+      "retrieval": "local",
+      "encoder": "local",
+      "cognition": "private-local",
+      "calls": 2
+    }
+  ],
+  "proposed_limits": {
+    "generations": 4,
+    "output_tokens_per_call": 6000,
+    "maximum_reserved_output_tokens": 24000,
+    "input_model_deadline_ms": 300000,
+    "tool_context_deadline_ms": 30000,
+    "model_rpc_reservations_per_occurrence": 8,
+    "backend_reservations_per_occurrence": 1
+  },
+  "commands": {
+    "slot_1": "Exactly the frozen native query",
+    "slot_2": "Exactly one native send from all approved harmless candidate bodies plus insufficient-information response"
+  },
+  "prompt_disclosure": "Bound recipient and full retained native result/view; empty initial feedback/history/promoted context; actual feedback only in the next input",
+  "fixture_policy": "No model fixtures or model fallback in a future live campaign; preparation authored responses establish integration only",
+  "diagnostics": "Retain approved synthetic raw request/response fields, transformed prompt, complete context/query views, evaluation and failed/unknown usage separately; no unapproved raw logging",
+  "ledger": [],
+  "stop_conditions": [
+    "First rejection/error/timeout/ambiguous effect ends that session",
+    "Second session runs only if included in new authorization",
+    "No prompt tuning, command repair, replacement attempts, deadline extension, refund or automatic socket resend",
+    "Stop after four total reservations even without success"
+  ],
+  "task_evaluation": "Publication eligibility, retrieval grounding and independent peer observation are separate; a wrong permitted reply fails",
+  "LIVE_MEMORY_WORKFLOW": "NOT_RUN",
+  "ADDITIONAL_LIVE_GENERATIONS": 0,
+  "source_pins": {
+    "mettaclaw": "2af37c3fec18613de54ca42fde2382a9087d4524",
+    "PeTTa": "fea83178af3722666d2948d074591d10a3134f56",
+    "swipl": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+    "DeTTa": "272888f264dd2dde18b574cabb53c266b0dac2ec",
+    "ngircd": "6ae13bf89e934d167f6ead8bb9ee39f57a0935c0",
+    "chroma_helper": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+    "E5": "f169b11e22de13617baa190a028a32f3493550b6",
+    "model_lock": "integration/neoclaw/model-sources.json at 4981788b4d8069a2b2264e65197f9886b74f1f5f"
+  },
+  "historical_candidate_model_runtime": {
+    "version": "0.40.0+mlx.cpu.1",
+    "binary_sha256": "db8d6a16322494d762bf5394d5e5318d48f42e93f9dd44888d48d3a12099d43c",
+    "upstream_commit": "0d0720e51fb2fd9aa58781c3d720c06d720c2e7b",
+    "archive_sha256": "9fe3b69d3e539bd0168dfc1cbb7af9f15bac654d31744f96560f13f69672516f",
+    "runtime_availability": "NOT_CHECKED; no contact or startup in preparation"
+  },
+  "model_identity": {
+    "name": "qwen3.8:27b",
+    "digest": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+    "profile": "neoclaw-ollama-qwen38-text/2",
+    "availability": "NOT_CHECKED"
+  },
+  "proposed_recipients": [
+    {
+      "recipient_id": "synthetic-retrieval-model-owner",
+      "owner": "user-owned ModelInference process on the same host",
+      "placement": "local",
+      "prompt_scope": "only the newly frozen synthetic inputs and exact captured native result"
+    },
+    {
+      "recipient_id": "synthetic-retrieval-model-owner",
+      "owner": "user-owned ModelInference HTTPS service on the same host",
+      "placement": "authenticated-same-host-HTTPS",
+      "prompt_scope": "same approved synthetic fields; endpoint/certificate/credential binding must be frozen before activation"
+    }
+  ],
+  "freeze_before_new_authorization": [
+    "publication SHA and final-source.json digest",
+    "fresh corpus IDs and authoritative enrollment/view hashes",
+    "exact query and two peer inputs",
+    "all equally eligible output bodies",
+    "recipient, endpoint/certificate and current principal/scope bindings",
+    "diagnostic retention consent",
+    "four named new reservations with unchanged bounds and stop conditions"
+  ]
+}

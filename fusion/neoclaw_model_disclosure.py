@@ -20,7 +20,11 @@ def dissect(raw):
     return dict(zip(('scaffold','feedback','history','memories','time','user'), [*pieces,user]))
 
 
-def disclose(raw, approved):
+def disclose(raw, approved, intent=None):
+    if 'policy' in approved:
+        from .neoclaw_retrieval_disclosure import POLICY, validate_receipt
+        require(approved['policy'] == POLICY, 'UNSUPPORTED_PROFILE')
+        return validate_receipt(raw, approved, intent)
     value = dissect(raw)
     require(value['scaffold'] == approved['scaffold'] and value['history'] == '', 'UNAUTHORIZED')
     require(value['memories'] in approved['memories'] and value['user'] in approved['users'], 'UNAUTHORIZED')
@@ -31,6 +35,11 @@ def disclose(raw, approved):
         allowed = [r'\(RESULTS: \(\(COMMAND_RETURN: \(\(metta '+re.escape(expression)+
                    r'\) \(stv '+number+' '+number+r'\)\)\)\)\)' for expression in approved['feedback_expressions']]
         require(any(re.fullmatch(pattern, feedback) for pattern in allowed), 'UNAUTHORIZED')
+    check_time_and_transform(raw, value)
+    return value
+
+
+def check_time_and_transform(raw, value):
     try: parsed = datetime.strptime(value['time'], '%Y-%m-%d %H:%M:%S')
     except ValueError: require(False, 'UNAUTHORIZED')
     require(parsed.strftime('%Y-%m-%d %H:%M:%S') == value['time'], 'UNAUTHORIZED')

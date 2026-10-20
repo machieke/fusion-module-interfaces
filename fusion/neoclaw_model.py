@@ -15,6 +15,8 @@ def settings(app):
     require(cfg['principal'] == app.binding['memory']['principal'] and cfg['session'] == app.config['session_id'], 'UNAUTHORIZED')
     require(1 <= app.config['turn_limit'] <= c.MAX_SESSION_CALLS, 'OVERLOADED')
     require('model_fixture' not in app.config, 'UNSUPPORTED_PROFILE')
+    from .neoclaw_retrieval_disclosure import APPLICATION, POLICY
+    require((app.config['composition'] == APPLICATION) == (cfg['disclosure'].get('policy') == POLICY), 'UNSUPPORTED_PROFILE')
     return cfg, chosen, frozen
 
 
@@ -37,7 +39,10 @@ class ModelAdoption:
 
     def local_authority(self, intent):
         cfg, _ = self.current()
-        parts = disclose(intent['native_prompt'], cfg['disclosure'])
+        from .neoclaw_retrieval_disclosure import APPLICATION, issue
+        if self.app.config['composition'] == APPLICATION:
+            issue(self.app, intent)
+        parts = disclose(intent['native_prompt'], cfg['disclosure'], intent)
         source = self.app.channel.source_spec()
         require(intent['source_id'] == source['message_id'] and intent['deadline_ms'] == source['deadline_ms'], 'CONFLICT')
         require(parts['feedback'] == self.app.restore() and parts['memories'] == self.app.priority.context_replay(), 'CONFLICT')
@@ -46,7 +51,10 @@ class ModelAdoption:
     def prompt(self, raw):
         cfg, chosen = self.current(); row = self.row()
         if row is None:
-            parts = disclose(raw, cfg['disclosure'])
+            if 'policy' in cfg['disclosure']:
+                from .neoclaw_retrieval_disclosure import structural
+                parts = structural(raw, cfg['disclosure'])
+            else: parts = disclose(raw, cfg['disclosure'])
             source = self.app.channel.source_spec(); slot = self.app.evidence.slot()
             require(time.time_ns()//1_000_000 < source['deadline_ms'], 'DEADLINE_EXCEEDED')
             require(parts['user'] == str(['HUMAN-MSG:', source['text'].replace('"','_quote_').replace("'",'_apostrophe_')]), 'CONFLICT')
@@ -105,9 +113,13 @@ class ModelAdoption:
         # Prompt instructions never grant command authority. Match the entire
         # native parsed batch before the original application can execute it.
         try:
-            require(type(commands) is list and 1 <= len(commands) <= 5, 'UNSUPPORTED_OPERATION')
-            for command in commands: require(command in cfg['commands'], 'UNSUPPORTED_OPERATION')
-            require(len({command[0] for command in commands}) == 1, 'UNSUPPORTED_PROFILE')
+            if 'policy' in cfg['disclosure']:
+                from .neoclaw_retrieval_disclosure import admit
+                admit(cfg, row['slot'], commands)
+            else:
+                require(type(commands) is list and 1 <= len(commands) <= 5, 'UNSUPPORTED_OPERATION')
+                for command in commands: require(command in cfg['commands'], 'UNSUPPORTED_OPERATION')
+                require(len({command[0] for command in commands}) == 1, 'UNSUPPORTED_PROFILE')
             self.app.channel.accept_turn()
         except ContractError as exc:
             with self.db: self.db.execute('UPDATE app_model_calls SET admission=? WHERE slot=?',

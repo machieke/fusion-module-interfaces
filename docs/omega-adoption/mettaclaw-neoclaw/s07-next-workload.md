@@ -1,6 +1,9 @@
 # Proposed evaluation: retrieve a synthetic fact, then reply over IRC
 
-**Definition ready for review; implementation and live execution are not authorized.**
+**Generation-disabled preparation is qualified; live execution is not authorized.**
+The original specification below is retained. The preparation implementation and
+its qualification are tracked in [the preparation decisions](retrieval-preparation-decisions.md)
+and [the preparation report](retrieval-preparation.md).
 Effective additional live-generation allowance: **ZERO**. This is a workload
 proposal, not the historical S08 Embedding candidate. Existing X02 query and
 append encoding are sufficient; no new embedding module is proposed.
@@ -61,15 +64,17 @@ parser stays in use. A successful parse still requires the entire batch to match
 the operator's exact command allowlist. No `metta`, `search`, `remember`, shell,
 support/contradict or promote/demote is authorized in the measured model session.
 
-**Current S07 cannot express this workflow by configuration alone.**
+**Historical S07 `/9` cannot express this workflow by configuration alone.**
 `model_transport.configuration` permits only `metta` and `send`;
 `model_startup` advertises those skills with a deduction-specific prompt;
 `neoclaw_model_disclosure.disclose` accepts only the narrow numerical
 `COMMAND_RETURN` feedback grammar. The existing application can dispatch `query`
 under other adopted compositions, but that does not authorize it through S07.
-Proposed future work must define a distinct, source-checked application/disclosure
-selection and an exact query-result consent rule, preserving historical `/9`,
-model profiles and parser behavior. These are pending decisions, not closeout edits.
+Those decisions were pending at closeout. The assigned preparation now selects
+`controlled-native-loop/10` and `synthetic-retrieval-query-send/1`, with exact
+component consent and a trusted retained-view receipt. The [decision record](retrieval-preparation-decisions.md)
+describes this new implementation; historical `/9`, model profiles and parser
+behavior remain unchanged.
 
 Keep promoted context empty for the first workload so the target fact can reach
 the model only through query. The query result is the required **nonempty**
@@ -85,9 +90,8 @@ hold this set; do not show the target-specific approved answer to the model or
 embed it in the task prompt as S07 did. A general response-format instruction may
 specify “Synthetic answer: LOCATION.” Include all candidate bodies, rather than
 only the correct one, so approval cannot serve as an answer oracle. The evaluator
-scores factual correctness separately from publication authorization. This policy
-must be reviewed explicitly; unrestricted generated-output publication is not an
-alternative silently enabled by the experiment.
+scores factual correctness separately from publication authorization. The preparation implements this finite policy under its explicit selection; it
+does not authorize a live campaign or unrestricted generated-output publication.
 
 ## Definition of ready and evaluation
 
@@ -138,4 +142,6 @@ four-call ceiling even when no complete workflow succeeds. Report retrieval,
 admission, answer grounding and peer observation as separate outcomes; no general
 reliability estimate follows from this small workload.
 
-Current status: **NOT_IMPLEMENTED / NOT_RUN / LIVE_AUTHORIZATION_ZERO**.
+Historical closeout status: **NOT_IMPLEMENTED / NOT_RUN / LIVE_AUTHORIZATION_ZERO**.
+The assigned preparation adds a distinct `/10` composition; its final preparation
+gates are reported separately. **LIVE_MEMORY_WORKFLOW=NOT_RUN** remains unchanged.
