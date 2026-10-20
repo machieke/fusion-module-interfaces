@@ -8,6 +8,11 @@ Effective additional live-generation allowance: **ZERO**. This is a workload
 proposal, not the historical S08 Embedding candidate. Existing X02 query and
 append encoding are sufficient; no new embedding module is proposed.
 
+The conditional live-evaluation brief has now been reviewed against preparation
+publication `01d0b023e6990670eae65e14ed5910e64e72f929`. Current status is
+**AWAITING_LIVE_AUTHORIZATION**; see the [static authorization review](../../../evidence/retrieval-live/authorization-review.json)
+and the live-evaluation status below. The disabled proposal remains unchanged.
+
 The question is whether the real model can select the adopted native `query`,
 use its actual returned memory in the next model input, and propose a correct,
 approved reply that the independent IRC peer observes. S07 demonstrated this
@@ -145,3 +150,60 @@ reliability estimate follows from this small workload.
 Historical closeout status: **NOT_IMPLEMENTED / NOT_RUN / LIVE_AUTHORIZATION_ZERO**.
 The assigned preparation adds a distinct `/10` composition; its final preparation
 gates are reported separately. **LIVE_MEMORY_WORKFLOW=NOT_RUN** remains unchanged.
+
+## Live evaluation authorization status
+
+The conditional brief does not grant generation authority. No new user
+authorization has been bound to a frozen campaign. The existing proposal still
+has `authorization=null`, zero effective allowance, an empty ledger and
+`executable_entrypoint=null`. Its four-call ceiling describes two proposed
+sessions, not four authorized calls. No active campaign or measured journal was
+created during this review.
+
+The focused static check matched 102 delivery hashes and the 214-file
+executable/test source set to both the preparation publication and starting
+checkout: 297 unique paths including the manifest itself. All four final
+preparation run manifests retain their original working-tree source identity.
+The historical 99-method qualification and earlier S07 results were not rerun or
+relabelled. Runtime/model availability remains unchecked.
+
+Source inspection confirmed the narrow future runner work: read the actual
+parsed/admitted send body and observe that exact body from the selected peer
+route/sender; use observers bounded by accepted deadlines; export actual live
+records separately from fixture evaluation fields. Preparation's `workflow`
+waits for `BODIES[0]`, its test helper selects a body from authored commands, and
+its exporter labels fixture evaluations and `NOT_RUN`. Those remain correct for
+preparation and remain unchanged. The real backend is the existing
+`OllamaCompletion.complete`; the historical numerical S07 runner's 6/12-call
+campaign and load path were inspected as source only.
+
+A future frozen campaign must identify the tested runner bytes, fresh native
+remember setup/view, exact synthetic disclosure and outputs, recipient/provider
+and TLS bindings, four unique possible slots, and explicit user authorization.
+The current proposal is not that frozen executable campaign. This review adds
+no runner or runtime changes and performs no setup, fixture replay, readiness
+probe, model load or generation. Its changes are this status entry, the supplied
+brief and the static review record.
+
+| Dimension | Proposed `model-local` | Proposed `model-https` |
+|---|---|---|
+| Runtime readiness | NOT_CHECKED | NOT_CHECKED |
+| Generation slots | UNATTEMPTED | UNATTEMPTED |
+| Captured responses | 0 | 0 |
+| Command admission | NOT_REACHED | NOT_REACHED |
+| Retrieval | NOT_REACHED | NOT_REACHED |
+| Second-input binding | NOT_REACHED | NOT_REACHED |
+| Correctness | NOT_REACHED | NOT_REACHED |
+| External delivery | NOT_SENT | NOT_SENT |
+| Task | NOT_RUN | NOT_RUN |
+
+```text
+PREPARATION_STATUS=READY_FOR_LIVE_AUTHORIZATION
+CAMPAIGN_STATE=AWAITING_LIVE_AUTHORIZATION
+PLANNED_GENERATION_SLOTS=4
+AUTHORIZED_GENERATIONS=0
+RESERVED_GENERATIONS=0
+CAPTURED_RESPONSES=0
+ADDITIONAL_LIVE_GENERATIONS=0
+LIVE_MEMORY_WORKFLOW=NOT_RUN
+```

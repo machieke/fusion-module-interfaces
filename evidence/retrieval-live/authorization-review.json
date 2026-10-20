@@ -1,0 +1,197 @@
+{
+  "ADDITIONAL_LIVE_GENERATIONS": 0,
+  "AUTHORIZED_GENERATIONS": 0,
+  "CAMPAIGN_STATE": "AWAITING_LIVE_AUTHORIZATION",
+  "CAPTURED_RESPONSES": 0,
+  "LIVE_MEMORY_WORKFLOW": "NOT_RUN",
+  "OBSERVED_BACKEND_CALLS": 0,
+  "PLANNED_GENERATION_SLOTS": 4,
+  "PREPARATION_STATUS": "READY_FOR_LIVE_AUTHORIZATION",
+  "RESERVED_GENERATIONS": 0,
+  "authorization_note": "This user task authorizes static review and commit/push; it explicitly withholds live generation. No broad confirmation is inferred or requested for an unfrozen campaign.",
+  "baseline": "01d0b023e6990670eae65e14ed5910e64e72f929",
+  "brief": {
+    "path": "codex_neoclaw_retrieval_grounded_live_evaluation.md",
+    "sha256": "fdc49e6343e1d6c11e171920576f4966a2e9eca776981c82ecf034738fa59e8a"
+  },
+  "executed_checks": [
+    "Read-only manifest hash comparison against pinned Git blobs and starting checkout",
+    "Four historical run-manifest source-set comparisons",
+    "Disabled proposal and exhausted S07 budget assertions",
+    "Historical candidate model/runtime identity comparison between versioned locks; availability not checked",
+    "Static source inspection of preparation/body/export/observer and existing live-backend seams"
+  ],
+  "generation_readiness_probes": 0,
+  "historical_evidence": "Ten preparation gates, 99 methods (27 new/72 reexecuted), 22 fixture scenarios and all S07 source/failure/usage facts remain historical and unchanged",
+  "model_runtime_contacts": 0,
+  "new_fixture_evaluations": 0,
+  "new_runtime_test_methods": 0,
+  "pending_before_activation": [
+    "A newly authorized minimal live-runner connection, with generation-disabled delta checks and exact source freeze",
+    "Fresh native-remember setup identities and committed view; exact prompts/body set and approved diagnostic fields",
+    "Two session/recipient/provider/TLS bindings and four unique possible generation slots",
+    "Verified obtainable runtime/model bytes and an explicit new user authorization bound to the frozen campaign"
+  ],
+  "placements": [
+    {
+      "answer": "NOT_REACHED",
+      "captures": 0,
+      "command_admission": "NOT_REACHED",
+      "external_delivery": "NOT_SENT",
+      "generation_slots": "UNATTEMPTED",
+      "model_placement": "local",
+      "name": "model-local",
+      "reason": "No new campaign-bound user authorization; no active campaign or session created",
+      "retrieval": "NOT_REACHED",
+      "runtime_readiness": "NOT_CHECKED",
+      "second_input_binding": "NOT_REACHED",
+      "task": "NOT_RUN"
+    },
+    {
+      "answer": "NOT_REACHED",
+      "captures": 0,
+      "command_admission": "NOT_REACHED",
+      "external_delivery": "NOT_SENT",
+      "generation_slots": "UNATTEMPTED",
+      "model_placement": "authenticated-same-host-HTTPS",
+      "name": "model-https",
+      "reason": "No new campaign-bound user authorization; no active campaign or session created",
+      "retrieval": "NOT_REACHED",
+      "runtime_readiness": "NOT_CHECKED",
+      "second_input_binding": "NOT_REACHED",
+      "task": "NOT_RUN"
+    }
+  ],
+  "post_review_validation": {
+    "changed_files": [
+      "codex_neoclaw_retrieval_grounded_live_evaluation.md",
+      "docs/omega-adoption/mettaclaw-neoclaw/s07-next-workload.md",
+      "evidence/retrieval-live/authorization-review.json"
+    ],
+    "git_diff_check": "PASS",
+    "historical_evidence_and_disabled_proposal_unchanged": true,
+    "new_status_json_and_workload_links": "PASS",
+    "nonself_delivery_sha256": {
+      "codex_neoclaw_retrieval_grounded_live_evaluation.md": "fdc49e6343e1d6c11e171920576f4966a2e9eca776981c82ecf034738fa59e8a",
+      "docs/omega-adoption/mettaclaw-neoclaw/s07-next-workload.md": "65ae9809fb957edf21a2176aa5e71e63838f4a2940d94694fe9c6a94df0c90b1"
+    },
+    "runtime_and_tests_unchanged": true,
+    "status": "PASS",
+    "test_scope": "Static checks only; no runtime, fixture, model or integration methods executed in this review"
+  },
+  "proposal": {
+    "active_campaign_created": false,
+    "authorization": null,
+    "executable_entrypoint": null,
+    "freeze_status": "PROPOSAL_ONLY_NOT_AN_ACTIVATABLE_FROZEN_CAMPAIGN",
+    "new_authorization_bound_to_plan": false,
+    "path": "evidence/retrieval-preparation/live-plan.disabled.json",
+    "proposed_generation_ceiling": 4,
+    "session_names": [
+      "model-local",
+      "model-https"
+    ],
+    "sha256": "acf6ca8ace8fa402d027e267c3e94829617b14af3a1196bdc282f6a4534f9f60",
+    "state": "DISABLED_REQUIRES_NEW_USER_AUTHORIZATION_AND_FREEZE"
+  },
+  "reconciliation": {
+    "delivery_hashes_matched": 102,
+    "frozen_executable_test_hashes_matched": 214,
+    "historical_test_identity": "Working-tree runs on 367c9b583eb85d6cf99ca93827c9f40b9c681bc6; not clean-commit executions of the publication",
+    "manifest_sha256": "54927338e74393517017cf9b25e7541b2804aa0e3877755a55119a7ad5bece10",
+    "preparation_manifest": "evidence/retrieval-preparation/final-source.json",
+    "publication_and_starting_checkout_match": true,
+    "qualified_run_manifests": {
+      "contracts-final": {
+        "manifest_sha256": "2f3ad959fa1c2bd3c585cdc5d159d2d539dcfc7de561a78b10700d3b6d3c81b5",
+        "recorded_starting_head": "367c9b583eb85d6cf99ca93827c9f40b9c681bc6",
+        "same_214_file_set": true
+      },
+      "integration-03": {
+        "manifest_sha256": "2f3ad959fa1c2bd3c585cdc5d159d2d539dcfc7de561a78b10700d3b6d3c81b5",
+        "recorded_starting_head": "367c9b583eb85d6cf99ca93827c9f40b9c681bc6",
+        "same_214_file_set": true
+      },
+      "regression-light": {
+        "manifest_sha256": "2f3ad959fa1c2bd3c585cdc5d159d2d539dcfc7de561a78b10700d3b6d3c81b5",
+        "recorded_starting_head": "367c9b583eb85d6cf99ca93827c9f40b9c681bc6",
+        "same_214_file_set": true
+      },
+      "regression-native": {
+        "manifest_sha256": "72dfd6bd33166324384973781c2a8b14e39a904119875be6e82313cd3ece39c9",
+        "recorded_starting_head": "367c9b583eb85d6cf99ca93827c9f40b9c681bc6",
+        "same_214_file_set": true
+      }
+    },
+    "unique_paths_including_manifest": 297
+  },
+  "review_kind": "STATIC_AUTHORIZATION_STATUS_ONLY",
+  "reviewed_utc": "2026-10-20T10:49:18.081596+00:00",
+  "runner_requirements_retained": [
+    "Evaluate actual native parsed/admitted send body and exact route/sender peer observation; never BODIES[0] or fixture commands",
+    "Observers follow accepted model/tool/handoff bounds; no deadline extension or resubmission on observer timeout",
+    "Fixed non-model placements/corpus/prompts/options/policy; no hidden warm-up generation, fallback, repair or replacement sessions",
+    "Separate captures, admission, retrieval, context binding, correctness and peer observation; retain every unsuccessful attempt",
+    "Current authority, owner commits, retained capture recovery and uncertain-send no-resend remain unchanged"
+  ],
+  "runtime_code_changes": [],
+  "runtime_processes_started": 0,
+  "starting_head": "01d0b023e6990670eae65e14ed5910e64e72f929",
+  "starting_worktree": [
+    "?? codex_neoclaw_retrieval_grounded_live_evaluation.md"
+  ],
+  "static_findings": [
+    {
+      "finding": "Explicit authored fixture selection; workflow observes BODIES[0]; exporter records fixture_evaluations and NOT_RUN; default query observer is 30 seconds. Preserve this preparation path.",
+      "sha256": "f2fbd9b1fbd52ed7fe9fc220e205fd70968026dc7d09cc35fc2771a95718be67",
+      "source": "integration/neoclaw/retrieval_preparation.py",
+      "symbols": [
+        "measured",
+        "workflow",
+        "export",
+        "wait_for"
+      ]
+    },
+    {
+      "finding": "Body is selected from fixture commands; 35/40-second test observers are not the future live outcome/deadline source.",
+      "sha256": "dc3e842cf1ef7393ca7fdf7d2e06f130017fd070ac4404e80de13c78bd554243",
+      "source": "integration/neoclaw/test_retrieval_preparation.py",
+      "symbols": [
+        "RetrievalPreparation.case"
+      ]
+    },
+    {
+      "finding": "Existing real backend checks selected runtime and makes one pinned request within remaining accepted deadline. Read as source only; no construction/readiness/contact occurred.",
+      "sha256": "ec93a67ddbaa4d249f45673a8c1559f734a3a26ee4c0a2452bb79473e30ca66b",
+      "source": "fusion/adapters/ollama_completion.py",
+      "symbols": [
+        "OllamaCompletion.complete",
+        "OllamaCompletion.readiness"
+      ]
+    },
+    {
+      "finding": "Historical S07 runner is numerical-workload-specific, accepts 6/12 calls, uses fixed OUTPUT and contains a load request. It is not activated or reused as the four-slot retrieval campaign.",
+      "sha256": "90df498fd2e1a028eec396f37eb997b5dfb91eda325cc1dc237dd4b44252df1f",
+      "source": "integration/neoclaw/model_run.py",
+      "symbols": [
+        "main",
+        "case"
+      ]
+    },
+    {
+      "finding": "Retained query/result/view receipt and current sender permission remain unchanged; future live connection must retain them.",
+      "sha256": "23229504a094b6afd0d7398afc59c0fe289970e207d6997155ad0240e18669e4",
+      "source": "fusion/neoclaw_retrieval_disclosure.py",
+      "symbols": [
+        "preflight",
+        "issue"
+      ]
+    }
+  ],
+  "unrun": [
+    "Minimal retrieval live-runner implementation and tests",
+    "Fresh setup and frozen active campaign",
+    "Current runtime/model availability",
+    "Both live placement sessions"
+  ]
+}
