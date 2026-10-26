@@ -15,6 +15,16 @@ def now(): return time.time_ns() // 1_000_000
 
 
 class ModelService:
+    @staticmethod
+    def inspect(path):
+        """Read-only owner observations for the trusted operator, never replay input."""
+        cfg=json.loads(Path(path).read_text())['model_completion']; database=Path(cfg['database'])
+        if not database.exists():return []
+        with sqlite3.connect(database.as_uri()+'?mode=ro',uri=True) as db:
+            db.row_factory=sqlite3.Row
+            if not db.execute("SELECT 1 FROM sqlite_master WHERE name='model_calls'").fetchone():return []
+            return [dict(r) for r in db.execute('SELECT * FROM model_calls ORDER BY rowid')]
+
     def __init__(self, path, backend, hook=lambda _: None):
         self.policy, self.backend, self.hook = Policy(path), backend, hook
         self.cfg = self.policy.current()['model_completion']

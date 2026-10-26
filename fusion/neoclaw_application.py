@@ -36,6 +36,28 @@ def caller_binding(caller):
 
 
 class Application:
+    @staticmethod
+    def inspect(path):
+        """Operator observation of this owner's committed state; no effect authority.
+
+        May run while the native loop owns its exclusive writer lock. Never
+        retrieves another owner's data and never supplies a native tool result.
+        """
+        config = json.loads(Path(path).read_text())
+        caller = json.loads(Path(config['caller_config']).read_text())
+        database = Path(caller['database'])
+        if not database.exists(): return {}
+        tables = ('app_session', 'app_turns', 'app_occurrences', 'app_model_calls',
+                  'app_memory_reads', 'app_query_vectors', 'app_query_views',
+                  'app_read_views', 'app_priority_contexts', 'app_channel_inputs',
+                  'app_channel_outputs')
+        with sqlite3.connect(database.as_uri()+'?mode=ro', uri=True) as db:
+            db.row_factory = sqlite3.Row
+            db.execute('BEGIN')
+            available = {r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+            return {name: [dict(r) for r in db.execute('SELECT * FROM '+name+' ORDER BY rowid')]
+                    for name in tables if name in available}
+
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None

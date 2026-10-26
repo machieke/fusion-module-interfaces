@@ -52,12 +52,12 @@ def start(run, caller_runtime=CALLER_RUNTIME):
     run.processes.append(process); return process
 
 
-def observed_finish(run, caller_runtime=CALLER_RUNTIME):
+def observed_finish(run, caller_runtime=CALLER_RUNTIME, *, observer_seconds=45):
     wall=time.time()*1000;begun=time.monotonic();process=start(run,caller_runtime)
     first=None
     while process.poll() is None:
         if first is None and Path(run.model['log']).exists():first=(time.monotonic()-begun)*1000
-        if time.monotonic()-begun>45:
+        if time.monotonic()-begun>observer_seconds:
             run.kill(process);raise TimeoutError('native observer; original application deadline unchanged')
         time.sleep(.02)
     code,status=run.finish(process)

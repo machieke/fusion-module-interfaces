@@ -1,0 +1,56 @@
+{
+  "unique_methods": 72,
+  "unit_methods": 65,
+  "native_methods": 7,
+  "latest_complete_native_suite": "native-03.log: 7 PASS, 14 scenarios",
+  "latest_unit_suite": "unit-03.log: 65 PASS",
+  "final_recipe_requalification": [
+    {
+      "file": "evidence/retrieval-runner/native-actual-bodies-c216e156.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_correct_and_wrong_permitted_actual_bodies",
+      "sessions": [
+        {
+          "id": "d15adc32-258c-41aa-904f-55f8fa9d5437",
+          "placement": "local",
+          "outcome": "PASS"
+        },
+        {
+          "id": "0d747437-8134-4462-8d1c-7edc13262231",
+          "placement": "network",
+          "outcome": "FAIL"
+        }
+      ]
+    }
+  ],
+  "post_suite_source_delta": {
+    "integration/neoclaw/retrieval_freeze.py": {
+      "native_03": "f00ec9f73f00fd600c4dc89f1b4e9332353a4c2d8b69ab6e2f8ceb08ec0a9d92",
+      "final": "2722ddbdab8fb83dcc01f2e00e02cf700451c85e2db06048d9527f6cfc8ad897"
+    }
+  },
+  "delta_reason": "Added immutable shared executable/runtime/helper byte bindings; no runner, consumer, provider, profile, budget or observer behavior changed.",
+  "qualified_native_method_runs": 8,
+  "qualified_native_scenarios": 16,
+  "qualified_recorded_model_reservations": 23,
+  "qualified_recorded_model_captures": 22,
+  "qualified_peer_observed_two_turn_workflows": 8,
+  "qualified_factually_correct_workflows": 6,
+  "qualified_wrong_but_permitted_workflows": 2,
+  "qualified_real_E5_captured_memory_operations": 24,
+  "qualified_real_E5_captured_query_operations": 11,
+  "qualified_real_E5_corpus_preparation_encodes": 8,
+  "final_campaign_setup_real_E5_memory_operations": 3,
+  "final_campaign_corpus_preparation_encode": 1,
+  "initial_guard": "guard.log: PASS before integrations",
+  "additional_live_generations": 0,
+  "live_memory_workflow": "NOT_RUN",
+  "exploratory_runs": [
+    "unit-01: 61 PASS / 1 test error; corrected ledger assertion",
+    "unit-02: 62 PASS",
+    "qualification-01: two spent fixture attempts, no capture; corrected masked-file PermissionError check",
+    "qualification-02: bounded 45s setup observer expiry; persistent setup observer now 120s, accepted deadlines unchanged",
+    "native-01: 1 PASS / 2 scenarios",
+    "native-02: 6 PASS / 1 FAIL / 14 scenarios; isolated revocation test fault corrected",
+    "campaign-01: unactivated, superseded by added external executable bindings"
+  ]
+}

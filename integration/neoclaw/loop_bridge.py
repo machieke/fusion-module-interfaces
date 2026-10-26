@@ -16,6 +16,9 @@ def call(method, *args):
         if _app is None:
             path = os.environ['NEOCLAW_S01_APPLICATION']
             config = json.loads(Path(path).read_text())
+            if 'campaign_backend' in config:
+                from integration.neoclaw.retrieval_backend import install
+                install(config['campaign_backend'])
             if 'preparation_fixture_lock' in config:
                 from fusion.neoclaw_retrieval_disclosure import APPLICATION
                 from fusion.contracts import require

@@ -52,6 +52,7 @@ def bridge(path,ready):
     denied=cfg.get('denied_paths',[])
     if denied and os.environ.get('S06_BRIDGE_ISOLATED')!='1':
         command=['bwrap','--die-with-parent','--ro-bind','/','/','--bind','/tmp','/tmp','--proc','/proc','--dev','/dev',
+                 *[v for p in cfg.get('writable_paths',[]) for v in ('--bind',str(Path(p).resolve()),str(Path(p).resolve()))],
                  *[v for p in denied for v in ('--tmpfs',str(Path(p).resolve()))],'--',sys.executable,'-m','integration.neoclaw.channel_actor',*sys.argv[1:]]
         os.execvpe(command[0],command,dict(os.environ,S06_BRIDGE_ISOLATED='1'))
     owner=Bridge(path,lambda stage:failpoint(cfg,stage));until=time.monotonic()+cfg.get('seconds',120)

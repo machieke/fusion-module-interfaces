@@ -36,9 +36,12 @@ class AuthoredBackend:
                '--bind', self.cfg['root'], self.cfg['root'], '--dev', '/dev', '--proc', '/proc']
         for path in self.cfg['denied_paths']:
             cmd += ['--tmpfs', path]
+        for path in self.cfg.get('denied_files', []):
+            cmd += ['--ro-bind', '/dev/null', path]
         # No inherited file descriptors other than serialized input/output.
         result = subprocess.run([*cmd, '--', self.cfg['python'], '-m', 'integration.neoclaw.retrieval_fixture', 'evaluate', self.lock['path']],
                                 input=canonical(asdict(accepted)), capture_output=True, timeout=5)
+        if result.returncode != 0: print(result.stderr.decode(errors='replace'), file=sys.stderr)
         require(result.returncode == 0, 'NOT_AVAILABLE')
         return json.loads(result.stdout)
 
@@ -55,6 +58,10 @@ def main():
         verify(cfg['parent_namespace'])
         for path in cfg['denied_paths']:
             require(not Path(path).exists() or not any(Path(path).iterdir()), 'UNAUTHORIZED')
+        for path in cfg.get('denied_files', []):
+            try: contents = Path(path).read_bytes()
+            except PermissionError: contents = b''
+            require(not contents, 'UNAUTHORIZED')
         accepted = json.loads(sys.stdin.buffer.read())
         require(accepted['slot'] in (1, 2), 'INVALID_ARGUMENT')
         text = cfg['responses'][accepted['slot'] - 1]

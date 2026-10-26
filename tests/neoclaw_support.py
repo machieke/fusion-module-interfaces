@@ -33,9 +33,10 @@ class FixtureKernel:
 
 
 class Harness:
-    def __init__(self, real=False, capacity=8):
-        self.temp = tempfile.TemporaryDirectory(prefix='fusion-s01-')
-        self.root = Path(self.temp.name)
+    def __init__(self, real=False, capacity=8, root=None):
+        self.temp = tempfile.TemporaryDirectory(prefix='fusion-s01-') if root is None else None
+        self.root = Path(self.temp.name) if self.temp else Path(root)
+        self.root.mkdir(mode=0o700, parents=True, exist_ok=True)
         self.server_root, self.caller_root = self.root/'provider', self.root/'caller'
         self.server_root.mkdir(mode=0o700)
         self.caller_root.mkdir(mode=0o700)
@@ -203,4 +204,4 @@ class Harness:
 
     def close(self):
         self.stop_server()
-        self.temp.cleanup()
+        if self.temp: self.temp.cleanup()

@@ -1,0 +1,110 @@
+{
+  "method": "filesystem reads only; no runtime executable, endpoint, model loading or generation",
+  "files": [
+    {
+      "path": "/usr/local/bin/ollama",
+      "required_sha256": "db8d6a16322494d762bf5394d5e5318d48f42e93f9dd44888d48d3a12099d43c",
+      "bytes": 26960264,
+      "observed_sha256": "db8d6a16322494d762bf5394d5e5318d48f42e93f9dd44888d48d3a12099d43c",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/share/ollama/.ollama/models/manifests/registry.ollama.ai/library/qwen3.8/27b",
+      "required_sha256": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+      "bytes": 1032,
+      "observed_sha256": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/share/ollama/.ollama/models/blobs/sha256-492b2922d38e553cabc2d319345644ed482874fbf5e5c9e4495cbf8e17b0cf5f",
+      "required_sha256": "492b2922d38e553cabc2d319345644ed482874fbf5e5c9e4495cbf8e17b0cf5f",
+      "bytes": 215,
+      "observed_sha256": "492b2922d38e553cabc2d319345644ed482874fbf5e5c9e4495cbf8e17b0cf5f",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/share/ollama/.ollama/models/blobs/sha256-ac3714bfdddeca31351f2752bf1a63f266f4df87c0b68c895e44945ca704448e",
+      "required_sha256": "ac3714bfdddeca31351f2752bf1a63f266f4df87c0b68c895e44945ca704448e",
+      "bytes": 931146016,
+      "status": "READABLE_REQUIRED_HASH_NOT_RECOMPUTED_THIS_PASS"
+    },
+    {
+      "path": "/usr/share/ollama/.ollama/models/blobs/sha256-f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d",
+      "required_sha256": "f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d",
+      "bytes": 16810714464,
+      "status": "READABLE_REQUIRED_HASH_NOT_RECOMPUTED_THIS_PASS"
+    },
+    {
+      "path": "/usr/share/ollama/.ollama/models/blobs/sha256-4c6a8e842ef0d8504549facfb03f1273a8d0022991519bc1888522cc1a5517d1",
+      "required_sha256": "4c6a8e842ef0d8504549facfb03f1273a8d0022991519bc1888522cc1a5517d1",
+      "bytes": 11345,
+      "observed_sha256": "4c6a8e842ef0d8504549facfb03f1273a8d0022991519bc1888522cc1a5517d1",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/share/ollama/.ollama/models/blobs/sha256-906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
+      "required_sha256": "906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
+      "bytes": 114,
+      "observed_sha256": "906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/libggml-base.so.0.25.3",
+      "required_sha256": "bdac3fa5e62d1c44b948f74f679b82e779ece48bf43f780479739aa35bd0c58e",
+      "bytes": 834288,
+      "observed_sha256": "bdac3fa5e62d1c44b948f74f679b82e779ece48bf43f780479739aa35bd0c58e",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/libggml-cpu-cascadelake.so",
+      "required_sha256": "bbee34f6f946d655bd9a5048492d6a9a1d1067b081e062a49e8b0170036de4dd",
+      "bytes": 1558792,
+      "observed_sha256": "bbee34f6f946d655bd9a5048492d6a9a1d1067b081e062a49e8b0170036de4dd",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/libggml.so.0.25.3",
+      "required_sha256": "df4dd67bbb902ca01149bb8330b9e2d76b6de7f9bbb99e503294a5f07649b7f6",
+      "bytes": 220840,
+      "observed_sha256": "df4dd67bbb902ca01149bb8330b9e2d76b6de7f9bbb99e503294a5f07649b7f6",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/libllama-common.so.0.5.0",
+      "required_sha256": "11aeb7d6b6479e29bb3d192890e92849929d8c9e22eb8e8a0f194dc5fdde1956",
+      "bytes": 4499056,
+      "observed_sha256": "11aeb7d6b6479e29bb3d192890e92849929d8c9e22eb8e8a0f194dc5fdde1956",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/libllama-server-impl.so",
+      "required_sha256": "c5992ff7f94435ed34fac7746cfdca66877ad709189dbfeb09401c6bb0506c71",
+      "bytes": 2861232,
+      "observed_sha256": "c5992ff7f94435ed34fac7746cfdca66877ad709189dbfeb09401c6bb0506c71",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/libllama.so.0.5.0",
+      "required_sha256": "73b89cc3cfd638b9175974fc9337ce6ad5a80272562bd933056948327188f723",
+      "bytes": 4120240,
+      "observed_sha256": "73b89cc3cfd638b9175974fc9337ce6ad5a80272562bd933056948327188f723",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/libmtmd.so.0.5.0",
+      "required_sha256": "44943f62f8327c7d73a3abcde5c51be7f5e059033d45cf7049e71478a3c3020f",
+      "bytes": 1691568,
+      "observed_sha256": "44943f62f8327c7d73a3abcde5c51be7f5e059033d45cf7049e71478a3c3020f",
+      "status": "VERIFIED_OFFLINE"
+    },
+    {
+      "path": "/usr/local/lib/ollama/llama-server",
+      "required_sha256": "234b05b2138264f8fb263c3205e85f4c290e8afe5067e280a4f6f90cdac5696b",
+      "bytes": 15096,
+      "observed_sha256": "234b05b2138264f8fb263c3205e85f4c290e8afe5067e280a4f6f90cdac5696b",
+      "status": "VERIFIED_OFFLINE"
+    }
+  ],
+  "generative_runtime_availability": "NOT_CHECKED",
+  "additional_live_generations": 0
+}

@@ -17,8 +17,8 @@ from tests.neoclaw_support import Harness, ROOT, RUNTIME, COMMAND, GOLDEN
 
 
 class ControlledRun:
-    def __init__(self, placement='network', responses=None, expected=None, capacity=8, search=None):
-        self.h = Harness(real=True, capacity=capacity)  # Generated credentials/state only.
+    def __init__(self, placement='network', responses=None, expected=None, capacity=8, search=None, *, root=None):
+        self.h = Harness(real=True, capacity=capacity, root=root)  # Generated credentials/state only.
         self.processes = []
         self.logs = []
         if placement == 'network': self.h.network()

@@ -25,7 +25,7 @@ def write(path,value):
 
 
 class ChannelRun:
-    def __init__(self,placement='local',real=True,*,root=None,session=None,inputs=None,outputs=None,denied=None):
+    def __init__(self,placement='local',real=True,*,root=None,session=None,inputs=None,outputs=None,denied=None,defer=False):
         self.temp=tempfile.TemporaryDirectory(prefix='fusion-s06-') if root is None else None
         self.root=Path(self.temp.name) if self.temp else Path(root);self.root.mkdir(exist_ok=True)
         self.processes=[];self.logs=[];self.placement=placement;self.denied=denied or []
@@ -42,7 +42,11 @@ class ChannelRun:
             principals={p:dict(credential=secrets.token_hex(24),scopes={self.base['scope']:methods+['channel.'+r]}) for p,r in (('A','application'),('bridge','bridge'))},
             test_failpoints=True,failpoint_marker=str(self.provider/'pause.json'))
         self.config_path=self.provider/'config.json';write(self.config_path,self.config);self.port=None;self.host=None
-        if placement=='network':self.start_host()
+        if placement=='network':
+            if defer:
+                self.prepare_host()
+                with socket.socket() as s:s.bind(('127.0.0.1',0));self.port=s.getsockname()[1]
+            else:self.start_host()
         self.clients={}
         for role,name,path in [('application','A',self.caller/'client.json'),('bridge','bridge',self.bridge_root/'client.json')]:
             cfg=dict(self.base,role=role,principal=name,placement=placement,fallback=False,credential=self.config['principals'][name]['credential'])
@@ -60,18 +64,22 @@ class ChannelRun:
         until=time.monotonic()+seconds
         while not Path(path).exists() and time.monotonic()<until and p.poll() is None:time.sleep(.02)
         if not Path(path).exists():raise RuntimeError('actor readiness failed '+str(path)+' '+str(p.poll())+'\n'+'\n'.join(x.read_text()[-3000:] for x in self.root.glob('*.log')))
-    def start_host(self):
+    def prepare_host(self):
         if not (self.provider/'server.pem').exists():
             subprocess.run(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-keyout',str(self.provider/'server.key'),'-out',str(self.provider/'server.pem'),
-                '-days','1','-subj','/CN=127.0.0.1','-addext','subjectAltName=IP:127.0.0.1'],capture_output=True,check=True)
+                '-days','365','-subj','/CN=127.0.0.1','-addext','subjectAltName=IP:127.0.0.1'],capture_output=True,check=True)
             (self.provider/'server.key').chmod(0o600)
         self.config.update(tls_certificate=str(self.provider/'server.pem'),tls_key=str(self.provider/'server.key'),
             memory_read=dict(denied_paths=self.denied+[str(self.bridge_root),str(self.caller)]))
-        write(self.config_path,self.config);ready=self.provider/'ready.json';ready.unlink(missing_ok=True)
+        write(self.config_path,self.config)
+    def start_host(self):
+        self.prepare_host();ready=self.provider/'ready.json';ready.unlink(missing_ok=True)
         self.host=self.spawn([sys.executable,'-m','integration.neoclaw.host','serve',str(self.config_path),'--port',str(self.port or 0),'--ready',str(ready)],'https')
         self.wait(ready,self.host);self.port=json.loads(ready.read_text())['port']
     def start_server(self):
-        with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
+        if hasattr(self,'irc_port'):port=self.irc_port
+        else:
+            with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
         cfg=self.server_root/'ngircd.conf';cfg.write_text(f'''[Global]
 Name = s06.local
 Info = isolated generated S06

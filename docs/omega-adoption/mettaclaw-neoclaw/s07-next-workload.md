@@ -207,3 +207,7 @@ CAPTURED_RESPONSES=0
 ADDITIONAL_LIVE_GENERATIONS=0
 LIVE_MEMORY_WORKFLOW=NOT_RUN
 ```
+
+### 2026-10-26 runner preparation
+
+The missing runner is now implemented and qualified with generation denied. See the [preparation report](retrieval-runner-preparation-report.md) and [runnable commands](retrieval-live-runner.md). Campaign `retrieval-grounded-20261026-02` is frozen and awaits separate live authorization. No additional live generation occurred, and `LIVE_MEMORY_WORKFLOW=NOT_RUN`. Earlier preparation and authorization-review records remain historical evidence.

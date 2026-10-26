@@ -125,6 +125,7 @@ def prepare(config_file):
     if config.get('denied_paths') or config.get('readonly_paths'):
         args = ['bwrap', '--die-with-parent', '--ro-bind', '/', '/', '--bind', '/tmp', '/tmp',
                 '--proc', '/proc', '--dev', '/dev',
+                *[v for p in config.get('writable_paths', []) for v in ('--bind', str(Path(p).resolve()), str(Path(p).resolve()))],
                 *[v for p in config.get('denied_paths', []) for v in ('--tmpfs', str(Path(p).resolve()))],
                 *[v for p in config.get('readonly_paths', []) for v in ('--ro-bind', str(Path(p).resolve()), str(Path(p).resolve()))],
                 '--', *args]

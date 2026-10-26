@@ -50,16 +50,17 @@ def rows(path, table):
         return [dict(row) for row in db.execute('SELECT * FROM '+table+' ORDER BY rowid')]
 
 
-def setup(corpus):
+def setup(corpus, *, root=None):
     from .promotion_composition import configure
     from .append_run import report
     from fusion.neoclaw_application import Application
     texts = corpus['approved_append_inputs']
-    run = ControlledRun('local', ['remember '+x for x in texts]+[''], search={'boundary':'recorded-response'})
+    run = ControlledRun('local', ['remember '+x for x in texts]+[''], search={'boundary':'recorded-response'}, root=root)
     try:
+        if root is not None: run.app['writable_paths'] = [str(run.h.root)]
         run.model['expected_feedback'] = {}; run.save()
         cfg = configure(run, corpus, inputs={text:text for text in texts})
-        timing = observed_finish(run)
+        timing = observed_finish(run, observer_seconds=120 if root is not None else 45)
         evidence = report(run, cfg)
         evidence['timing'] = timing
         app = Application(run.app_path)

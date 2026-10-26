@@ -128,6 +128,7 @@ def main():
         if denied and os.environ.get('NEOCLAW_READ_ISOLATED') != '1':
             env = dict(os.environ, NEOCLAW_READ_ISOLATED='1')
             command = ['bwrap', '--die-with-parent', '--ro-bind', '/', '/', '--bind', '/tmp', '/tmp', '--proc', '/proc', '--dev', '/dev',
+                       *[v for p in config.get('writable_paths', []) for v in ('--bind', str(Path(p).resolve()), str(Path(p).resolve()))],
                        *[v for p in denied for v in ('--tmpfs', str(Path(p).resolve()))], '--', sys.executable, '-m', 'integration.neoclaw.host', *sys.argv[1:]]
             os.execvpe(command[0], command, env)
         if config.get('memory_read',{}).get('runtime'):

@@ -1,0 +1,219 @@
+{
+  "source_identity": "Exact native-03 source hash set, also used by superseded unactivated campaign-01; final freeze-recipe delta is recorded in preparation-summary.json. Unpublished worktree at baseline 9816873d5bb605c9c03be5f65baef7410c8cce0f.",
+  "methods": [
+    {
+      "file": "evidence/retrieval-runner/native-reject-or-no-target-8914939b.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_unsupported_command_and_missing_target_stop",
+      "reports": [
+        {
+          "session": "bdb95976-6db0-4f48-95b4-38bf9af92260",
+          "placement": "local",
+          "outcome": "FAILED",
+          "failure": "NATIVE_PROCESS_EXITED",
+          "captures": 1,
+          "reserved": 1,
+          "real_e5_query_captures": 0,
+          "peer_observed": false,
+          "elapsed_ms": 15610
+        },
+        {
+          "session": "60d87471-39c4-4595-a965-94cb3b5ccf54",
+          "placement": "network",
+          "outcome": "FAILED",
+          "failure": "RETRIEVAL_NOT_DECISIVE",
+          "captures": 1,
+          "reserved": 1,
+          "real_e5_query_captures": 1,
+          "peer_observed": false,
+          "elapsed_ms": 16925
+        }
+      ]
+    },
+    {
+      "file": "evidence/retrieval-runner/native-reject-stage-a36ee93d.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_early_send_and_mixed_batch_rejected",
+      "reports": [
+        {
+          "session": "3a8ded2f-c4f5-41a0-87c5-2746db69c964",
+          "placement": "local",
+          "outcome": "FAILED",
+          "failure": "NATIVE_PROCESS_EXITED",
+          "captures": 1,
+          "reserved": 1,
+          "real_e5_query_captures": 0,
+          "peer_observed": false,
+          "elapsed_ms": 15748
+        },
+        {
+          "session": "17fee848-e19f-46ee-b122-8d33108135f6",
+          "placement": "network",
+          "outcome": "FAILED",
+          "failure": "NATIVE_PROCESS_EXITED",
+          "captures": 1,
+          "reserved": 1,
+          "real_e5_query_captures": 0,
+          "peer_observed": false,
+          "elapsed_ms": 16059
+        }
+      ]
+    },
+    {
+      "file": "evidence/retrieval-runner/native-retrieval-spent-1d9a450d.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_retrieval_revocation_and_uncaptured_reservation_process_kill",
+      "reports": [
+        {
+          "session": "32f0b563-1d20-413f-9289-0a43f9477b1a",
+          "placement": "local",
+          "outcome": "FAILED",
+          "failure": "NATIVE_PROCESS_EXITED",
+          "captures": 0,
+          "reserved": 0,
+          "real_e5_query_captures": 0,
+          "peer_observed": false,
+          "elapsed_ms": 13340
+        },
+        {
+          "session": "e9c1e47f-7d8c-4d0e-91a7-7c00de6baf82",
+          "placement": "network",
+          "outcome": "FAILED",
+          "failure": "NATIVE_PROCESS_EXITED",
+          "captures": 0,
+          "reserved": 1,
+          "real_e5_query_captures": 0,
+          "peer_observed": false,
+          "elapsed_ms": 28702
+        }
+      ]
+    },
+    {
+      "file": "evidence/retrieval-runner/native-actual-bodies-94034ada.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_correct_and_wrong_permitted_actual_bodies",
+      "reports": [
+        {
+          "session": "891243a0-83db-4118-a60f-0ac8dea0a44b",
+          "placement": "local",
+          "outcome": "PASS",
+          "failure": null,
+          "captures": 2,
+          "reserved": 2,
+          "real_e5_query_captures": 1,
+          "peer_observed": true,
+          "elapsed_ms": 19775
+        },
+        {
+          "session": "e819eb8b-c686-4ddf-8d0a-4ccb489a7286",
+          "placement": "network",
+          "outcome": "FAIL",
+          "failure": null,
+          "captures": 2,
+          "reserved": 2,
+          "real_e5_query_captures": 1,
+          "peer_observed": true,
+          "elapsed_ms": 20524
+        }
+      ]
+    },
+    {
+      "file": "evidence/retrieval-runner/native-revoke-timeout-f5833ba3.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_current_revocation_and_observer_expiry",
+      "reports": [
+        {
+          "session": "5ba3e4db-2337-485a-9855-9e2dd3285259",
+          "placement": "local",
+          "outcome": "FAILED",
+          "failure": "NATIVE_PROCESS_EXITED",
+          "captures": 1,
+          "reserved": 1,
+          "real_e5_query_captures": 1,
+          "peer_observed": false,
+          "elapsed_ms": 18343
+        },
+        {
+          "session": "55cafd88-74d6-4b62-8c3d-16b60aefdeb1",
+          "placement": "network",
+          "outcome": "OBSERVER_TIMEOUT",
+          "failure": "TEST_BOUNDED_OBSERVER_EXPIRED",
+          "captures": 1,
+          "reserved": 1,
+          "real_e5_query_captures": 1,
+          "peer_observed": false,
+          "elapsed_ms": 17142
+        }
+      ]
+    },
+    {
+      "file": "evidence/retrieval-runner/native-uncertain-send-1da6a3db.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_uncertain_send_is_never_automatically_resent",
+      "reports": [
+        {
+          "session": "2c306e21-2161-4f57-b1b4-ac3e6de1da26",
+          "placement": "local",
+          "outcome": "PASS",
+          "failure": null,
+          "captures": 2,
+          "reserved": 2,
+          "real_e5_query_captures": 1,
+          "peer_observed": true,
+          "elapsed_ms": 20289
+        },
+        {
+          "session": "dbdb3953-ec38-44b0-8d68-4ef814dc9191",
+          "placement": "network",
+          "outcome": "PASS",
+          "failure": null,
+          "captures": 2,
+          "reserved": 2,
+          "real_e5_query_captures": 1,
+          "peer_observed": true,
+          "elapsed_ms": 20702
+        }
+      ]
+    },
+    {
+      "file": "evidence/retrieval-runner/native-capture-recovery-984831cb.json",
+      "method": "tests.test_retrieval_runner_native.NativeRunner.test_capture_and_query_process_kill_recovery",
+      "reports": [
+        {
+          "session": "c3347b64-fc50-4da2-97e8-3f31cd0372ac",
+          "placement": "local",
+          "outcome": "PASS",
+          "failure": null,
+          "captures": 2,
+          "reserved": 2,
+          "real_e5_query_captures": 1,
+          "peer_observed": true,
+          "elapsed_ms": 32860
+        },
+        {
+          "session": "d9ed5a68-e9af-4afd-a395-c37029b0d0d7",
+          "placement": "network",
+          "outcome": "PASS",
+          "failure": null,
+          "captures": 2,
+          "reserved": 2,
+          "real_e5_query_captures": 1,
+          "peer_observed": true,
+          "elapsed_ms": 33852
+        }
+      ]
+    }
+  ],
+  "unique_native_methods": 7,
+  "native_scenarios": 14,
+  "fixture_model_captures": 18,
+  "fixture_model_reservations": 19,
+  "measured_real_E5_query_captures": 9,
+  "native_setup_memories": 21,
+  "setup_model_fixture_responses": 28,
+  "corpus_preparation_real_E5_encodings": 7,
+  "native_setup_real_E5_memory_captures": 21,
+  "peer_observed_two_turn_workflows": 6,
+  "expected_outcomes": {
+    "FAILED": 7,
+    "PASS": 5,
+    "FAIL": 1,
+    "OBSERVER_TIMEOUT": 1
+  },
+  "generations": 0,
+  "live_memory_workflow": "NOT_RUN"
+}

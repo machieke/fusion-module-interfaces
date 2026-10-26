@@ -15,6 +15,16 @@ def milliseconds():return time.time_ns()//1_000_000
 
 
 class Bridge:
+    @staticmethod
+    def inspect(path):
+        """Owner-authoritative read-only diagnostics, without reconnect/resend."""
+        cfg=json.loads(Path(path).read_text()); database=Path(cfg['database'])
+        if not database.exists():return []
+        with sqlite3.connect(database.as_uri()+'?mode=ro',uri=True) as db:
+            db.row_factory=sqlite3.Row
+            if not db.execute("SELECT 1 FROM sqlite_master WHERE name='channel_egress'").fetchone():return []
+            return [dict(r) for r in db.execute('SELECT id,reserved,outcome,effect_epoch FROM channel_egress ORDER BY rowid')]
+
     def __init__(self,path,hook=lambda _:None):
         self.path=Path(path);self.cfg=json.loads(self.path.read_text());self.hook=hook
         self.client=Client(self.cfg['client']);require(self.client.cfg['role']=='bridge','UNAUTHORIZED')

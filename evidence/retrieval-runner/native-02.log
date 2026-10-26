@@ -1,0 +1,28 @@
+test_capture_and_query_process_kill_recovery (tests.test_retrieval_runner_native.NativeRunner.test_capture_and_query_process_kill_recovery) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  85%|████████▍ | 332/391 [00:00<00:00, 3306.51it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3480.82it/s]
+ok
+test_correct_and_wrong_permitted_actual_bodies (tests.test_retrieval_runner_native.NativeRunner.test_correct_and_wrong_permitted_actual_bodies) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 14650.86it/s]
+ok
+test_current_revocation_and_observer_expiry (tests.test_retrieval_runner_native.NativeRunner.test_current_revocation_and_observer_expiry) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 4008.40it/s]
+ok
+test_early_send_and_mixed_batch_rejected (tests.test_retrieval_runner_native.NativeRunner.test_early_send_and_mixed_batch_rejected) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 13647.79it/s]
+ok
+test_retrieval_revocation_and_uncaptured_reservation_process_kill (tests.test_retrieval_runner_native.NativeRunner.test_retrieval_revocation_and_uncaptured_reservation_process_kill) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  87%|████████▋ | 339/391 [00:00<00:00, 3387.10it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3736.57it/s]
+FAIL
+test_uncertain_send_is_never_automatically_resent (tests.test_retrieval_runner_native.NativeRunner.test_uncertain_send_is_never_automatically_resent) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  91%|█████████▏| 357/391 [00:00<00:00, 3568.22it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3787.61it/s]
+ok
+test_unsupported_command_and_missing_target_stop (tests.test_retrieval_runner_native.NativeRunner.test_unsupported_command_and_missing_target_stop) ... Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 15062.62it/s]
+ok
+
+======================================================================
+FAIL: test_retrieval_revocation_and_uncaptured_reservation_process_kill (tests.test_retrieval_runner_native.NativeRunner.test_retrieval_revocation_and_uncaptured_reservation_process_kill)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_retrieval_runner_native.py", line 108, in test_retrieval_revocation_and_uncaptured_reservation_process_kill
+    self.assertEqual(len(killed),1);self.assertLess(killed[0],0)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 7 tests in 564.651s
+
+FAILED (failures=1)
