@@ -1,0 +1,344 @@
+{
+  "schema": "single-node-gates/1",
+  "SINGLE_NODE_SERVICE_INTEGRATION": "PASS",
+  "scope": "existing S01 native operation; four real pods on one k3s node",
+  "gates": [
+    {
+      "gate": "baseline",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-baseline.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 14,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": []
+    },
+    {
+      "gate": "health",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-health.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": null,
+      "jobs": 0,
+      "attempts": 0,
+      "calls": 0,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 0,
+      "caller_acks": 0,
+      "atoms": 0,
+      "mailbox_messages": 0,
+      "mailbox_acks": 0,
+      "native_contexts": 0,
+      "pod_replacements": []
+    },
+    {
+      "gate": "lost-submit",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-lost-submit.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 14,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": []
+    },
+    {
+      "gate": "lost-storage",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-lost-storage.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 16,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": []
+    },
+    {
+      "gate": "lost-completion",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-lost-completion.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 14,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": []
+    },
+    {
+      "gate": "caller-replacement",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-r2-caller-replacement.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 19,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": [
+        {
+          "action": "pod-replacement",
+          "role": "omega-agent",
+          "old_uid": "64b5750c-9dd0-4ba9-9524-ccb14736d9d2",
+          "new_uid": "db05072a-89e0-4c93-ae37-740f38845236"
+        }
+      ]
+    },
+    {
+      "gate": "provider-replacement",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-r2-provider-replacement.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 7,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": [
+        {
+          "action": "pod-replacement",
+          "role": "fusion-execution",
+          "old_uid": "392ff39d-82ee-4e6b-9fa2-a04d4412174f",
+          "new_uid": "ce5793b0-5676-4baa-aad9-0e64ccf2187e"
+        },
+        {
+          "action": "pod-replacement",
+          "role": "omega-agent",
+          "old_uid": "312b96e7-1f69-4555-a3de-1ce37b46c036",
+          "new_uid": "16ce8bdc-1893-41ef-8492-eef4cbf183b0"
+        }
+      ]
+    },
+    {
+      "gate": "storage-outage",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-storage-outage.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 7,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": [
+        {
+          "action": "pod-replacement",
+          "role": "fusion-execution",
+          "old_uid": "7d4679b6-e346-4db8-985f-e8b4661dcefd",
+          "new_uid": "6b05c906-a050-469a-a9b3-2feed42ee74d"
+        },
+        {
+          "action": "pod-replacement",
+          "role": "omega-agent",
+          "old_uid": "aa694edd-515d-4d9f-a843-1aca1ef67977",
+          "new_uid": "03c45503-0276-45a1-83f6-1e0657b4cf28"
+        }
+      ]
+    },
+    {
+      "gate": "service-outage",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-service-outage.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "code": "NOT_AVAILABLE",
+        "status": "PENDING_OR_FAILED"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 64,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 0,
+      "caller_acks": 0,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 0,
+      "native_contexts": 1,
+      "pod_replacements": [
+        {
+          "action": "pod-replacement",
+          "role": "omega-agent",
+          "old_uid": "f9c45cd2-d447-40cc-8395-f3a83139f45f",
+          "new_uid": "04fac915-c999-43c7-b649-05a5b849ee68"
+        }
+      ]
+    },
+    {
+      "gate": "wrong-credential",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-wrong-credential.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "code": "UNAUTHORIZED",
+        "status": "PENDING_OR_FAILED"
+      },
+      "jobs": 0,
+      "attempts": 0,
+      "calls": 1,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 0,
+      "caller_acks": 0,
+      "atoms": 0,
+      "mailbox_messages": 0,
+      "mailbox_acks": 0,
+      "native_contexts": 1,
+      "pod_replacements": []
+    },
+    {
+      "gate": "config-restart",
+      "result": "PASS",
+      "evidence": "evidence/single-node/final/tests-final-config-restart.json",
+      "runtime_profile": "neoclaw-nal-truth-deduction/1",
+      "native_status": {
+        "status": "BOUNDED_STOP"
+      },
+      "jobs": 1,
+      "attempts": 1,
+      "calls": 15,
+      "call_limit": 64,
+      "attempt_limit": 3,
+      "caller_receipts": 1,
+      "caller_acks": 1,
+      "atoms": 1,
+      "mailbox_messages": 1,
+      "mailbox_acks": 1,
+      "native_contexts": 2,
+      "pod_replacements": [
+        {
+          "action": "config-checksum-rollout",
+          "role": "omega-agent",
+          "old_uid": "974e4511-ebb3-4bba-b978-22f5f6cb0956",
+          "new_uid": "dceb487e-d99a-4460-b4dc-e5d3bb69e277"
+        },
+        {
+          "action": "config-checksum-rollout",
+          "role": "fusion-execution",
+          "old_uid": "2a771239-feab-4730-9543-89bf28bbd1d1",
+          "new_uid": "36bfefbc-0e48-4149-a736-b18b2fca57e1"
+        },
+        {
+          "action": "config-checksum-rollout",
+          "role": "fusion-storage",
+          "old_uid": "e7d5c207-c399-4a5b-80fd-39be4a6aa8d2",
+          "new_uid": "b9087261-8500-477a-8a02-20a7c5d1031a"
+        },
+        {
+          "action": "config-checksum-rollout",
+          "role": "fusion-messaging",
+          "old_uid": "3332e8d0-8883-4c16-b0e9-1d27c53a67fd",
+          "new_uid": "a6e3a30e-08b9-4eac-a901-4cdd76760e10"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "unit_and_contract_regression": {
+      "methods": 84,
+      "result": "PASS",
+      "evidence": "regressions.log"
+    },
+    "historical_native_local_https": {
+      "methods": 22,
+      "result": "PASS",
+      "evidence": "native-regressions.log"
+    },
+    "digest_pinned_demo": {
+      "result": "PASS",
+      "evidence": "final/digest-install.json"
+    },
+    "helm_uninstall_retention": {
+      "retained_claims": 4,
+      "result": "PASS",
+      "evidence": "uninstall-retention.json"
+    }
+  },
+  "runtime": {
+    "real": [
+      "pinned native Omega loop/parser/skill",
+      "original native NAL deduction",
+      "DeTTa",
+      "TLS",
+      "Kubernetes DNS and pod networking"
+    ],
+    "fixtures": [
+      "authored external model responses",
+      "unused channel ingress",
+      "unused memory facade"
+    ]
+  },
+  "additional_live_generations": 0,
+  "multi_node": "NOT_RUN",
+  "production_readiness": "NOT_ESTABLISHED",
+  "chain": "UNCHANGED_SEPARATE_HISTORICAL_EVIDENCE; NOT_RUN",
+  "historical_family_counts": "UNCHANGED",
+  "failures": "run-index.json retains all initial failures and invalid test assumptions; final selected gates do not erase earlier reports"
+}

@@ -7,6 +7,13 @@ captures. Historical fixture preparation and the separately demonstrated M4
 chain integration remain distinct. This adds workflow evidence, with no change
 to module-family or adopted-command counts.
 
+**Single-node deployment:** [the k3s/Helm report](docs/deployment/single-node.md)
+and [installation runbook](deploy/single-node/README.md) separate the native agent,
+execution, DeTTa storage and mailbox into four pods with authenticated HTTPS and
+dedicated PVCs. The existing deterministic NAL operation passes delegation,
+completion and recovery gates. External model/channel fixtures remain explicit;
+this deployment performs no additional live generation or chain work.
+
 A backend-neutral contract package and bounded storage, mailbox and delegated
 execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
 pinned native Hive Programs caller through the existing validated interfaces;

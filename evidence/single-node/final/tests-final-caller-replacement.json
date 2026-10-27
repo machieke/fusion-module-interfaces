@@ -1,0 +1,24 @@
+{
+  "case": "caller-replacement",
+  "namespace": "omega-final-caller-replacement",
+  "status": "FAIL",
+  "started": "2026-10-27T14:09:05.706859+00:00",
+  "placements": "four distinct pods; one k3s node; ClusterIP DNS; authenticated HTTPS",
+  "real": [
+    "native Omega loop/parser/skill",
+    "pinned NAL deduction",
+    "DeTTa",
+    "TLS/TCP",
+    "k3s/Helm/PVCs"
+  ],
+  "fixtures": [
+    "external model responses",
+    "unused IRC ingress",
+    "unused memory enrichment"
+  ],
+  "observations": {},
+  "actions": [],
+  "failure": "['/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/bin/python', '/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py', '--kubeconfig'] Traceback (most recent call last):\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py\", line 48, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py\", line 31, in main\n    openssl('req','-newkey','rsa:2048','-nodes','-keyout',role+'.key','-out',role+'.csr','-subj','/CN='+dns)\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py\", line 23, in openssl\n    def openssl(*args):subprocess.run(['openssl',*map(str,args)],cwd=root,check=True,capture_output=True)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['openssl', 'req', '-newkey', 'rsa:2048', '-nodes', '-keyout', 'fusion-execution.key', '-out', 'fusion-execution.csr', '-subj', '/CN=fusion-execution.omega-final-caller-replacement.svc.cluster.local']' returned non-zero exit status 1.\n",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py\", line 230, in main\n    try:test.run()\n        ^^^^^^^^^^\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py\", line 117, in run\n    self.install(wrong=case=='wrong-credential')\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py\", line 52, in install\n    self.command([sys.executable,str(ROOT/'deploy/single-node/create_secrets.py'),'--kubeconfig',self.args.kubeconfig,\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py\", line 36, in command\n    if result.returncode:raise RuntimeError(str(args[:3])+' '+result.stderr[-2000:])\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ['/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/bin/python', '/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py', '--kubeconfig'] Traceback (most recent call last):\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py\", line 48, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py\", line 31, in main\n    openssl('req','-newkey','rsa:2048','-nodes','-keyout',role+'.key','-out',role+'.csr','-subj','/CN='+dns)\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py\", line 23, in openssl\n    def openssl(*args):subprocess.run(['openssl',*map(str,args)],cwd=root,check=True,capture_output=True)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['openssl', 'req', '-newkey', 'rsa:2048', '-nodes', '-keyout', 'fusion-execution.key', '-out', 'fusion-execution.csr', '-subj', '/CN=fusion-execution.omega-final-caller-replacement.svc.cluster.local']' returned non-zero exit status 1.\n\n",
+  "finished": "2026-10-27T14:09:06.737576+00:00"
+}

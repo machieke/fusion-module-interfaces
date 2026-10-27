@@ -81,7 +81,13 @@ export KUBECONFIG="$PWD/artifacts/single-node/kubeconfig"
 kubectl wait --for=condition=Ready node/omega-fusion-k3s --timeout=60s
 docker exec -i omega-fusion-k3s ctr --address /run/k3s/containerd/containerd.sock \
   --namespace k8s.io images import - < artifacts/single-node/image.tar
+# Explicit digest alias for the delivered image in the offline containerd store:
+docker exec omega-fusion-k3s ctr --address /run/k3s/containerd/containerd.sock \
+  --namespace k8s.io images tag docker.io/library/fusion-single-node:single-node-v1 \
+  docker.io/library/fusion-single-node@sha256:e248411f55865b65525eabf788c322756719fbcaac3b42903d3da004d015029c
 ```
+
+`deploy/single-node/values.yaml` pins that delivered manifest digest. For a fresh rebuild, read its actual digest from `ctr images ls`, create the matching alias, and select it in your values; never label different bytes with this evidence identity. The Docker image configuration ID and the OCI manifest digest are different hashes, both recorded in the evidence.
 
 On an already provisioned dedicated k3s node, import the same archive into that node's containerd and use its explicitly selected kubeconfig. The Docker-hosted node is the executed single-node recipe; no multi-node claim follows from it. [k3s documents image import](https://docs.k3s.io/installation/airgap).
 

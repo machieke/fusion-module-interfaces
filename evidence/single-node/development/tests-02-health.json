@@ -1,0 +1,23 @@
+{
+  "case": "health",
+  "namespace": "omega-t2-health",
+  "status": "FAIL",
+  "started": "2026-10-27T13:51:27.052856+00:00",
+  "placements": "four distinct pods; one k3s node; ClusterIP DNS; authenticated HTTPS",
+  "real": [
+    "native Omega loop/parser/skill",
+    "pinned NAL deduction",
+    "DeTTa",
+    "TLS/TCP",
+    "k3s/Helm/PVCs"
+  ],
+  "fixtures": [
+    "external model responses",
+    "unused IRC ingress",
+    "unused memory enrichment"
+  ],
+  "observations": {},
+  "actions": [],
+  "failure": "['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] Error from server (BadRequest): pod fusion-execution-0 does not have a host assigned\n",
+  "finished": "2026-10-27T13:51:35.242590+00:00"
+}

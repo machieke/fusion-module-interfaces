@@ -1,0 +1,2000 @@
+{
+  "case": "provider-replacement",
+  "namespace": "omega-t3-provider-replacement",
+  "status": "PASS",
+  "started": "2026-10-27T13:59:27.176067+00:00",
+  "placements": "four distinct pods; one k3s node; ClusterIP DNS; authenticated HTTPS",
+  "real": [
+    "native Omega loop/parser/skill",
+    "pinned NAL deduction",
+    "DeTTa",
+    "TLS/TCP",
+    "k3s/Helm/PVCs"
+  ],
+  "fixtures": [
+    "external model responses",
+    "unused IRC ingress",
+    "unused memory enrichment"
+  ],
+  "observations": {
+    "before-replacement": {
+      "omega-agent": {
+        "app_occurrences": [
+          {
+            "deadline": 1793109650049,
+            "done": 0,
+            "id": "4dc72b18-e875-5f79-824b-910c8bec8c1e",
+            "position": 0,
+            "premises": "[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}]",
+            "result": null,
+            "turn": 1
+          }
+        ],
+        "app_session": [
+          {
+            "binding": "{\"database\":\"/state/caller.sqlite\",\"invocation_timeout_ms\":30000,\"max_attempts\":3,\"max_calls\":64,\"principal\":\"A\",\"reply_route\":\"reply-A\",\"scope\":\"generated-s01\",\"selections\":{\"agent.messaging\":\"e470b21801a662c28951d7846877523af41a65e9ffa594db845e928fa3946acb\",\"atom.storage\":\"a3080c1f5cd21ebe09493d3447fba8bb5f1bca5f1264dce0cb4a6755d7732345\",\"execution\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\",\"pln.kernel\":\"e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd\"},\"sharing\":\"generated-shareable\",\"turn_limit\":2}",
+            "id": "24f876fc-4b7c-4919-8f48-3b37a2e289d6"
+          }
+        ],
+        "app_turns": [
+          {
+            "commands": "[[\"metta\",\"(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\"]]",
+            "id": 1,
+            "projection": null,
+            "response": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+          }
+        ],
+        "caller_requests": [
+          {
+            "acknowledged": 0,
+            "calls": 1,
+            "id": "4dc72b18-e875-5f79-824b-910c8bec8c1e",
+            "max_calls": 64,
+            "receipt": null,
+            "request": "{\"body\":{\"max_attempts\":3,\"operation\":\"nal_truth_deduction\",\"premises\":[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}],\"sharing\":\"generated-shareable\"},\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"deadline_ms\":1793109650049,\"idempotency_key\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"interface_ref\":{\"id\":\"execution\",\"version\":\"1.1.0\"},\"message_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"operation\":\"submit\",\"profile\":\"neoclaw-nal-truth-deduction/1\",\"reply_route\":\"reply-A\",\"scope_ref\":\"generated-s01\",\"selection\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\"}",
+            "selections": "{\"agent.messaging\":\"e470b21801a662c28951d7846877523af41a65e9ffa594db845e928fa3946acb\",\"atom.storage\":\"a3080c1f5cd21ebe09493d3447fba8bb5f1bca5f1264dce0cb4a6755d7732345\",\"execution\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\",\"pln.kernel\":\"e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd\"}"
+          }
+        ],
+        "model_contexts": [
+          {
+            "context": "PROMPT: Generated S01.1 controlled demonstration SKILLS: [_apostrophe_- Remember a particular string such as skills and memories: remember string_apostrophe_, _apostrophe_- Forget a particular LTM item via its timestamp: forget %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Query long-term embedding memory for skills and memories with short phrases only: query string_apostrophe_, _apostrophe_- Episodes searches history for episodes around a time stamp, time format is same as in TIME: episodes %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Pin a certain string as short-term working memory item to keep track of task state: pin string_apostrophe_, _apostrophe_- Promote a useful memory, making the memory easier to retrieve in similar contexts: promote %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Demote a memory, making the memory harder to retrieve in similar contexts: demote %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Update the label and embedding of a memory, linked episodes and promotion will transfer over, here with underline: update %Y-%m-%d_%H:%M:%S new_memory_string_apostrophe_, _apostrophe_- Link episode to LTM item, has no promotion effect, both times with %Y-%m-%d_%H:%M:%S format: link $ltm_time $episode_time_apostrophe_, _apostrophe_- Unlink episode from LTM, both times with %Y-%m-%d_%H:%M:%S format: unlink $ltm_time $episode_time_apostrophe_, _apostrophe_- When an episode supports LTM item, linking it to the episode time, and positively updating its truth value, bot times in %Y-%m-%d_%H:%M:%S format: support $ltm_time $episode_time_apostrophe_, _apostrophe_- When an episode contradicts LTM item, linking it to the episode time, and negatively updating its truth value, both times in %Y-%m-%d_%H:%M:%S format: contradict $ltm_time $$episode_time_apostrophe_, _apostrophe_- Execute shell command without apostrophe in string, it returns the command output to you: shell string_apostrophe_, _apostrophe_- Read file to string: read-file filename_apostrophe_, _apostrophe_- Write string to file: write-file filename string_apostrophe_, _apostrophe_- Append line to file: append-file filename string_apostrophe_, _apostrophe_,_apostrophe_, _apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Search the web: search string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_, _apostrophe_- Example to invoke Non-Axiomatic Logic via MeTTa: _apostrophe_, _apostrophe_ metta (|- ((--> (\u00d7 sam garfield) friend) (stv 1.0 0.9))_apostrophe_, _apostrophe_           ((--> garfield animal) (stv 1.0 0.9)))_apostrophe_, _apostrophe_ metta (|- ((==> (--> (\u00d7 $1 elephant) eat) (--> $1 ([] dangerous))) (stv 1.0 0.9))_apostrophe_, _apostrophe_           ((--> (\u00d7 tiger elephant) eat) (stv 1.0 0.9)))_apostrophe_, _apostrophe_- Also: note the $1 for independent variables, and for negated knowledge use (stv 0.0 0.9)_apostrophe_, _apostrophe_- Additionally |- also works for revision, to merge evidence even when the term of both premises is the same._apostrophe_, _apostrophe_- Also, you can use |-t for temporal inference (sequence formation &/, induction of =/>, deduction, syllogistic inference on =/> etc.)_apostrophe_, _apostrophe_- You can use: metta (add-atom &persistent sexpression) to add expressions to the persistent atomspace up to a configured maximum size._apostrophe_, _apostrophe_- Functions added there are also persisted and can be called directly via the metta command, and check for current content with: metta (get-atoms &persistent)_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES:  TIME: 2026-10-27 14:00:20:-:-:-:",
+            "feedback": "",
+            "index": 0
+          }
+        ],
+        "native_startup": {
+          "bounded_turns": 2,
+          "composition": "controlled-native-loop/1",
+          "entrypoint": "mettaclaw",
+          "fixture_hashes": {
+            "irc.py": "c36776f14bdd994ec6d97f4a4fae04282930c9be255f1d6278baabe4bc444759",
+            "lib_llm_ext.py": "0d0cca9ffafc4ab43e99cfde1063b7cac0765d004dae9c882b6071867ef338df",
+            "memory.metta": "166936f4c1aa30b7319d0cd82e1d040de28ae8ebb525e408ba612430cb7fae3f"
+          },
+          "overlay_hashes": {
+            "lib_llm.metta": "7bdd31792c25cb221676d5d3e71aabe6af9bf5cc5b671e51482c6c949d7eb4f8",
+            "loop.metta": "7c679409be556beb9891acce13f0ff8f8ab4e20efcda80ce983e957d2514e654",
+            "skills.metta": "0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6",
+            "start.metta": "c1f37ec4d4bc35a4f4e91d4c6d535d0bbf6897ea6cfc204336168a66ec54149f"
+          },
+          "source_commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+          "source_hashes": {
+            "lib_mettaclaw.metta": "c2d102139890f3af2b577f0bb5674b79d1d1e8aeb89b8e623b375ee4c1983722",
+            "lib_nal.metta": "604e2608a5938e36e428bce257fc3806dd9ef6be99102c5e973909e0a8f9c10e",
+            "run.metta": "7e6872d9101e8c447ee591b773d462994e5c73c5aef4734256dc2043ea1f85ec",
+            "src/channels.metta": "cc354e3a428176d90d87953adf72e31ee9be642406ac6b96109fa567ba7db449",
+            "src/helper.py": "9c16d7aff1d788a0c5dc44483301ce4723325b3c37beb0ebc55c7bca287857b1",
+            "src/loop.metta": "5702710d6e5e8bc0e36464eb42e9330801cde30f5f4193055ca366c363217924",
+            "src/memory.metta": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4",
+            "src/skills.metta": "cdad88d96a6d5c38a2ae256fc874b6ff15e3ac46db75370e4edc572d7b1e5a2d",
+            "src/skills.pl": "293405e03adf2e227af87a42e09dccdd9bafe06a9647fc5366f06748f21ff9d4",
+            "src/utils.metta": "916be356d4ba416b675fb91dc383e81eebf2fc53481063ff6bd1cfc5980b8f72"
+          },
+          "substitutions": [
+            "PeTTa lib_llm native string helpers retained; hosted OpenAI client initialization suppressed",
+            "external model: scripted responses, observed context assertions",
+            "IRC Python boundary: no sockets, empty ingress, send rejects",
+            "memory facade: init maxFeedback=50000, empty recall/history, no-op history append",
+            "media/embeddings/Chroma/Mattermost/web search: not imported or initialized",
+            "generated empty persistent space exported by native loop; no user store import"
+          ]
+        },
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "omega-agent",
+          "scope": "generated-s01"
+        },
+        "pause.json": {
+          "pid": 407,
+          "stage": "after_submit_reply"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": 407,
+          "pid": 1,
+          "role": "omega-agent"
+        }
+      },
+      "fusion-execution": {
+        "jobs": [
+          {
+            "error": null,
+            "id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "owner": "A",
+            "request": "{\"body\":{\"max_attempts\":3,\"operation\":\"nal_truth_deduction\",\"premises\":[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}],\"sharing\":\"generated-shareable\"},\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"deadline_ms\":1793109650049,\"idempotency_key\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"interface_ref\":{\"id\":\"execution\",\"version\":\"1.1.0\"},\"message_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"operation\":\"submit\",\"profile\":\"neoclaw-nal-truth-deduction/1\",\"reply_route\":\"reply-A\",\"scope_ref\":\"generated-s01\",\"selection\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\"}",
+            "result": "{\"receipt\":{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"},\"ref\":{\"digest\":\"9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf\",\"id\":\"73c2f036-0067-5710-9ee4-aa88ae621114\",\"revision\":1,\"scope_ref\":\"generated-s01\"}}",
+            "scope": "generated-s01",
+            "seq": 1,
+            "state": "succeeded"
+          }
+        ],
+        "mutations": [
+          {
+            "fingerprint": "1ef41b86370711a06a82c247b5db150c359f94fd58ac95be1e4bdf2ff3ee8f49",
+            "identity": "[\"A\",\"generated-s01\",\"execution\",\"submit\",\"4dc72b18-e875-5f79-824b-910c8bec8c1e\"]",
+            "response": "{\"acceptance\":\"process-restart\",\"chain\":null,\"completion_delivery\":\"not-observed\",\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"execution\":\"queued\",\"job_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"reply_route\":\"reply-A\",\"scope_ref\":\"generated-s01\"}"
+          }
+        ],
+        "outbox": [
+          {
+            "body": "{\"causation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"error\":null,\"job_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"result\":{\"receipt\":{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"},\"ref\":{\"digest\":\"9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf\",\"id\":\"73c2f036-0067-5710-9ee4-aa88ae621114\",\"revision\":1,\"scope_ref\":\"generated-s01\"}}}",
+            "id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "route": "reply-A",
+            "scope": "generated-s01",
+            "sent": 1
+          }
+        ],
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "fusion-execution",
+          "scope": "generated-s01"
+        },
+        "pause.json": {
+          "pid": 1,
+          "stage": "after_output_commit"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-execution"
+        },
+        "s01_work": [
+          {
+            "attempts": 1,
+            "failure_reason": null,
+            "job_id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "output": "{\"operation\":\"nal_truth_deduction\",\"premises\":[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}],\"profile\":\"neoclaw-nal-truth-deduction/1\",\"representation\":\"(stv 0.5599999999999999 0.4032)\",\"request_digest\":\"1ef41b86370711a06a82c247b5db150c359f94fd58ac95be1e4bdf2ff3ee8f49\",\"runtime\":\"neoclaw-petta-swi-10.0.1/1\",\"selection\":\"e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd\",\"truth\":{\"confidence\":\"0.4032\",\"strength\":\"0.5599999999999999\"}}"
+          }
+        ],
+        "shutdown.json": {
+          "graceful": true,
+          "role": "fusion-execution"
+        }
+      },
+      "fusion-storage": {
+        "atoms": [
+          {
+            "content_type": "application/neoclaw-nal-result",
+            "digest": "9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf",
+            "fingerprint": "c5d4f1fbde1b3c7f28cf7651433aeafb39911519e185a3f8371d782602e5885b",
+            "id": "73c2f036-0067-5710-9ee4-aa88ae621114",
+            "identity": "[\"generated-s01\",\"7a7fb6e022bcc8beb3ed8a8cfa6d7772270beb94ed66ecafc496b717ec63ad11\"]",
+            "payload_id": "20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035",
+            "receipt": "{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"}",
+            "scope": "generated-s01"
+          }
+        ],
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "fusion-storage",
+          "scope": "generated-s01"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-storage"
+        }
+      },
+      "fusion-messaging": {
+        "acknowledgements": [],
+        "messages": [
+          {
+            "acknowledged": 0,
+            "body": "{\"causation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"error\":null,\"job_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"result\":{\"receipt\":{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"},\"ref\":{\"digest\":\"9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf\",\"id\":\"73c2f036-0067-5710-9ee4-aa88ae621114\",\"revision\":1,\"scope_ref\":\"generated-s01\"}}}",
+            "fingerprint": "4554a833a9acd9176172d9980b42b49d233576dfd95906ef63099a254083cafe",
+            "id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "route": "reply-A",
+            "scope": "generated-s01",
+            "seq": 1
+          }
+        ],
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "fusion-messaging",
+          "scope": "generated-s01"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-messaging"
+        }
+      }
+    },
+    "after-replacement": {
+      "omega-agent": {
+        "app_occurrences": [
+          {
+            "deadline": 1793109650049,
+            "done": 1,
+            "id": "4dc72b18-e875-5f79-824b-910c8bec8c1e",
+            "position": 0,
+            "premises": "[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}]",
+            "result": "(stv 0.5599999999999999 0.4032)",
+            "turn": 1
+          }
+        ],
+        "app_session": [
+          {
+            "binding": "{\"database\":\"/state/caller.sqlite\",\"invocation_timeout_ms\":30000,\"max_attempts\":3,\"max_calls\":64,\"principal\":\"A\",\"reply_route\":\"reply-A\",\"scope\":\"generated-s01\",\"selections\":{\"agent.messaging\":\"e470b21801a662c28951d7846877523af41a65e9ffa594db845e928fa3946acb\",\"atom.storage\":\"a3080c1f5cd21ebe09493d3447fba8bb5f1bca5f1264dce0cb4a6755d7732345\",\"execution\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\",\"pln.kernel\":\"e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd\"},\"sharing\":\"generated-shareable\",\"turn_limit\":2}",
+            "id": "24f876fc-4b7c-4919-8f48-3b37a2e289d6"
+          }
+        ],
+        "app_turns": [
+          {
+            "commands": "[[\"metta\",\"(Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))\"]]",
+            "id": 1,
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032)))))",
+            "response": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+          },
+          {
+            "commands": "[]",
+            "id": 2,
+            "projection": "(RESULTS: ())",
+            "response": ""
+          }
+        ],
+        "caller_requests": [
+          {
+            "acknowledged": 1,
+            "calls": 7,
+            "id": "4dc72b18-e875-5f79-824b-910c8bec8c1e",
+            "max_calls": 64,
+            "receipt": "{\"delivery_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"error\":null,\"job_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"result\":{\"operation\":\"nal_truth_deduction\",\"premises\":[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}],\"profile\":\"neoclaw-nal-truth-deduction/1\",\"representation\":\"(stv 0.5599999999999999 0.4032)\",\"request_digest\":\"1ef41b86370711a06a82c247b5db150c359f94fd58ac95be1e4bdf2ff3ee8f49\",\"runtime\":\"neoclaw-petta-swi-10.0.1/1\",\"selection\":\"e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd\",\"truth\":{\"confidence\":\"0.4032\",\"strength\":\"0.5599999999999999\"}}}",
+            "request": "{\"body\":{\"max_attempts\":3,\"operation\":\"nal_truth_deduction\",\"premises\":[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}],\"sharing\":\"generated-shareable\"},\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"deadline_ms\":1793109650049,\"idempotency_key\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"interface_ref\":{\"id\":\"execution\",\"version\":\"1.1.0\"},\"message_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"operation\":\"submit\",\"profile\":\"neoclaw-nal-truth-deduction/1\",\"reply_route\":\"reply-A\",\"scope_ref\":\"generated-s01\",\"selection\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\"}",
+            "selections": "{\"agent.messaging\":\"e470b21801a662c28951d7846877523af41a65e9ffa594db845e928fa3946acb\",\"atom.storage\":\"a3080c1f5cd21ebe09493d3447fba8bb5f1bca5f1264dce0cb4a6755d7732345\",\"execution\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\",\"pln.kernel\":\"e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd\"}"
+          }
+        ],
+        "model_contexts": [
+          {
+            "context": "PROMPT: Generated S01.1 controlled demonstration SKILLS: [_apostrophe_- Remember a particular string such as skills and memories: remember string_apostrophe_, _apostrophe_- Forget a particular LTM item via its timestamp: forget %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Query long-term embedding memory for skills and memories with short phrases only: query string_apostrophe_, _apostrophe_- Episodes searches history for episodes around a time stamp, time format is same as in TIME: episodes %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Pin a certain string as short-term working memory item to keep track of task state: pin string_apostrophe_, _apostrophe_- Promote a useful memory, making the memory easier to retrieve in similar contexts: promote %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Demote a memory, making the memory harder to retrieve in similar contexts: demote %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Update the label and embedding of a memory, linked episodes and promotion will transfer over, here with underline: update %Y-%m-%d_%H:%M:%S new_memory_string_apostrophe_, _apostrophe_- Link episode to LTM item, has no promotion effect, both times with %Y-%m-%d_%H:%M:%S format: link $ltm_time $episode_time_apostrophe_, _apostrophe_- Unlink episode from LTM, both times with %Y-%m-%d_%H:%M:%S format: unlink $ltm_time $episode_time_apostrophe_, _apostrophe_- When an episode supports LTM item, linking it to the episode time, and positively updating its truth value, bot times in %Y-%m-%d_%H:%M:%S format: support $ltm_time $episode_time_apostrophe_, _apostrophe_- When an episode contradicts LTM item, linking it to the episode time, and negatively updating its truth value, both times in %Y-%m-%d_%H:%M:%S format: contradict $ltm_time $$episode_time_apostrophe_, _apostrophe_- Execute shell command without apostrophe in string, it returns the command output to you: shell string_apostrophe_, _apostrophe_- Read file to string: read-file filename_apostrophe_, _apostrophe_- Write string to file: write-file filename string_apostrophe_, _apostrophe_- Append line to file: append-file filename string_apostrophe_, _apostrophe_,_apostrophe_, _apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Search the web: search string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_, _apostrophe_- Example to invoke Non-Axiomatic Logic via MeTTa: _apostrophe_, _apostrophe_ metta (|- ((--> (\u00d7 sam garfield) friend) (stv 1.0 0.9))_apostrophe_, _apostrophe_           ((--> garfield animal) (stv 1.0 0.9)))_apostrophe_, _apostrophe_ metta (|- ((==> (--> (\u00d7 $1 elephant) eat) (--> $1 ([] dangerous))) (stv 1.0 0.9))_apostrophe_, _apostrophe_           ((--> (\u00d7 tiger elephant) eat) (stv 1.0 0.9)))_apostrophe_, _apostrophe_- Also: note the $1 for independent variables, and for negated knowledge use (stv 0.0 0.9)_apostrophe_, _apostrophe_- Additionally |- also works for revision, to merge evidence even when the term of both premises is the same._apostrophe_, _apostrophe_- Also, you can use |-t for temporal inference (sequence formation &/, induction of =/>, deduction, syllogistic inference on =/> etc.)_apostrophe_, _apostrophe_- You can use: metta (add-atom &persistent sexpression) to add expressions to the persistent atomspace up to a configured maximum size._apostrophe_, _apostrophe_- Functions added there are also persisted and can be called directly via the metta command, and check for current content with: metta (get-atoms &persistent)_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS:  HISTORY:  MOST_PROMOTED_MEMORIES:  TIME: 2026-10-27 14:00:20:-:-:-:",
+            "feedback": "",
+            "index": 0
+          },
+          {
+            "context": "PROMPT: Generated S01.1 controlled demonstration SKILLS: [_apostrophe_- Remember a particular string such as skills and memories: remember string_apostrophe_, _apostrophe_- Forget a particular LTM item via its timestamp: forget %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Query long-term embedding memory for skills and memories with short phrases only: query string_apostrophe_, _apostrophe_- Episodes searches history for episodes around a time stamp, time format is same as in TIME: episodes %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Pin a certain string as short-term working memory item to keep track of task state: pin string_apostrophe_, _apostrophe_- Promote a useful memory, making the memory easier to retrieve in similar contexts: promote %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Demote a memory, making the memory harder to retrieve in similar contexts: demote %Y-%m-%d %H:%M:%S_apostrophe_, _apostrophe_- Update the label and embedding of a memory, linked episodes and promotion will transfer over, here with underline: update %Y-%m-%d_%H:%M:%S new_memory_string_apostrophe_, _apostrophe_- Link episode to LTM item, has no promotion effect, both times with %Y-%m-%d_%H:%M:%S format: link $ltm_time $episode_time_apostrophe_, _apostrophe_- Unlink episode from LTM, both times with %Y-%m-%d_%H:%M:%S format: unlink $ltm_time $episode_time_apostrophe_, _apostrophe_- When an episode supports LTM item, linking it to the episode time, and positively updating its truth value, bot times in %Y-%m-%d_%H:%M:%S format: support $ltm_time $episode_time_apostrophe_, _apostrophe_- When an episode contradicts LTM item, linking it to the episode time, and negatively updating its truth value, both times in %Y-%m-%d_%H:%M:%S format: contradict $ltm_time $$episode_time_apostrophe_, _apostrophe_- Execute shell command without apostrophe in string, it returns the command output to you: shell string_apostrophe_, _apostrophe_- Read file to string: read-file filename_apostrophe_, _apostrophe_- Write string to file: write-file filename string_apostrophe_, _apostrophe_- Append line to file: append-file filename string_apostrophe_, _apostrophe_,_apostrophe_, _apostrophe_- Send message to user: send string_apostrophe_, _apostrophe_- Search the web: search string_apostrophe_, _apostrophe_- Execute MeTTa expression: metta sexpression_apostrophe_, _apostrophe_- Example to invoke Non-Axiomatic Logic via MeTTa: _apostrophe_, _apostrophe_ metta (|- ((--> (\u00d7 sam garfield) friend) (stv 1.0 0.9))_apostrophe_, _apostrophe_           ((--> garfield animal) (stv 1.0 0.9)))_apostrophe_, _apostrophe_ metta (|- ((==> (--> (\u00d7 $1 elephant) eat) (--> $1 ([] dangerous))) (stv 1.0 0.9))_apostrophe_, _apostrophe_           ((--> (\u00d7 tiger elephant) eat) (stv 1.0 0.9)))_apostrophe_, _apostrophe_- Also: note the $1 for independent variables, and for negated knowledge use (stv 0.0 0.9)_apostrophe_, _apostrophe_- Additionally |- also works for revision, to merge evidence even when the term of both premises is the same._apostrophe_, _apostrophe_- Also, you can use |-t for temporal inference (sequence formation &/, induction of =/>, deduction, syllogistic inference on =/> etc.)_apostrophe_, _apostrophe_- You can use: metta (add-atom &persistent sexpression) to add expressions to the persistent atomspace up to a configured maximum size._apostrophe_, _apostrophe_- Functions added there are also persisted and can be called directly via the metta command, and check for current content with: metta (get-atoms &persistent)_apostrophe_] OUTPUT_FORMAT: Up to 5 lines, do not wrap quotes around args, do not use variables:_newline_ toolName1 arg1_newline_ toolName2 arg2_newline_ toolName3 arg3_newline_ toolName4 arg4_newline_ toolName5 arg5_newline_ LAST_SKILL_USE_RESULTS: (RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032))))) HISTORY:  MOST_PROMOTED_MEMORIES:  TIME: 2026-10-27 14:00:39:-:-:-:",
+            "feedback": "(RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032)))))",
+            "index": 1
+          }
+        ],
+        "native-exit.json": {
+          "pid": 11,
+          "returncode": 0
+        },
+        "native-status.json": {
+          "status": "BOUNDED_STOP"
+        },
+        "native_startup": {
+          "bounded_turns": 2,
+          "composition": "controlled-native-loop/1",
+          "entrypoint": "mettaclaw",
+          "fixture_hashes": {
+            "irc.py": "c36776f14bdd994ec6d97f4a4fae04282930c9be255f1d6278baabe4bc444759",
+            "lib_llm_ext.py": "0d0cca9ffafc4ab43e99cfde1063b7cac0765d004dae9c882b6071867ef338df",
+            "memory.metta": "166936f4c1aa30b7319d0cd82e1d040de28ae8ebb525e408ba612430cb7fae3f"
+          },
+          "overlay_hashes": {
+            "lib_llm.metta": "7bdd31792c25cb221676d5d3e71aabe6af9bf5cc5b671e51482c6c949d7eb4f8",
+            "loop.metta": "7c679409be556beb9891acce13f0ff8f8ab4e20efcda80ce983e957d2514e654",
+            "skills.metta": "0d5a317802562600210bd68b9de5180cabaff303fdba704744293b7dac8315c6",
+            "start.metta": "c1f37ec4d4bc35a4f4e91d4c6d535d0bbf6897ea6cfc204336168a66ec54149f"
+          },
+          "source_commit": "2af37c3fec18613de54ca42fde2382a9087d4524",
+          "source_hashes": {
+            "lib_mettaclaw.metta": "c2d102139890f3af2b577f0bb5674b79d1d1e8aeb89b8e623b375ee4c1983722",
+            "lib_nal.metta": "604e2608a5938e36e428bce257fc3806dd9ef6be99102c5e973909e0a8f9c10e",
+            "run.metta": "7e6872d9101e8c447ee591b773d462994e5c73c5aef4734256dc2043ea1f85ec",
+            "src/channels.metta": "cc354e3a428176d90d87953adf72e31ee9be642406ac6b96109fa567ba7db449",
+            "src/helper.py": "9c16d7aff1d788a0c5dc44483301ce4723325b3c37beb0ebc55c7bca287857b1",
+            "src/loop.metta": "5702710d6e5e8bc0e36464eb42e9330801cde30f5f4193055ca366c363217924",
+            "src/memory.metta": "8b896b28853958cf724e5dc6f12201e79107b2a82976798e2f0ebe45268a76e4",
+            "src/skills.metta": "cdad88d96a6d5c38a2ae256fc874b6ff15e3ac46db75370e4edc572d7b1e5a2d",
+            "src/skills.pl": "293405e03adf2e227af87a42e09dccdd9bafe06a9647fc5366f06748f21ff9d4",
+            "src/utils.metta": "916be356d4ba416b675fb91dc383e81eebf2fc53481063ff6bd1cfc5980b8f72"
+          },
+          "substitutions": [
+            "PeTTa lib_llm native string helpers retained; hosted OpenAI client initialization suppressed",
+            "external model: scripted responses, observed context assertions",
+            "IRC Python boundary: no sockets, empty ingress, send rejects",
+            "memory facade: init maxFeedback=50000, empty recall/history, no-op history append",
+            "media/embeddings/Chroma/Mattermost/web search: not imported or initialized",
+            "generated empty persistent space exported by native loop; no user store import"
+          ]
+        },
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "omega-agent",
+          "scope": "generated-s01"
+        },
+        "pause.json": {
+          "pid": 407,
+          "stage": "after_submit_reply"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": 11,
+          "pid": 1,
+          "role": "omega-agent"
+        }
+      },
+      "fusion-execution": {
+        "jobs": [
+          {
+            "error": null,
+            "id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "owner": "A",
+            "request": "{\"body\":{\"max_attempts\":3,\"operation\":\"nal_truth_deduction\",\"premises\":[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}],\"sharing\":\"generated-shareable\"},\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"deadline_ms\":1793109650049,\"idempotency_key\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"interface_ref\":{\"id\":\"execution\",\"version\":\"1.1.0\"},\"message_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"operation\":\"submit\",\"profile\":\"neoclaw-nal-truth-deduction/1\",\"reply_route\":\"reply-A\",\"scope_ref\":\"generated-s01\",\"selection\":\"679e86cdcb2778bb77624d6e8f95e92ad1dc73a06eea0ee4dab9ee335498ab13\"}",
+            "result": "{\"receipt\":{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"},\"ref\":{\"digest\":\"9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf\",\"id\":\"73c2f036-0067-5710-9ee4-aa88ae621114\",\"revision\":1,\"scope_ref\":\"generated-s01\"}}",
+            "scope": "generated-s01",
+            "seq": 1,
+            "state": "succeeded"
+          }
+        ],
+        "mutations": [
+          {
+            "fingerprint": "1ef41b86370711a06a82c247b5db150c359f94fd58ac95be1e4bdf2ff3ee8f49",
+            "identity": "[\"A\",\"generated-s01\",\"execution\",\"submit\",\"4dc72b18-e875-5f79-824b-910c8bec8c1e\"]",
+            "response": "{\"acceptance\":\"process-restart\",\"chain\":null,\"completion_delivery\":\"not-observed\",\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"execution\":\"queued\",\"job_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"reply_route\":\"reply-A\",\"scope_ref\":\"generated-s01\"}"
+          }
+        ],
+        "outbox": [
+          {
+            "body": "{\"causation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"error\":null,\"job_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"result\":{\"receipt\":{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"},\"ref\":{\"digest\":\"9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf\",\"id\":\"73c2f036-0067-5710-9ee4-aa88ae621114\",\"revision\":1,\"scope_ref\":\"generated-s01\"}}}",
+            "id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "route": "reply-A",
+            "scope": "generated-s01",
+            "sent": 1
+          }
+        ],
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "fusion-execution",
+          "scope": "generated-s01"
+        },
+        "pause.json": {
+          "pid": 1,
+          "stage": "after_output_commit"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-execution"
+        },
+        "s01_work": [
+          {
+            "attempts": 1,
+            "failure_reason": null,
+            "job_id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "output": "{\"operation\":\"nal_truth_deduction\",\"premises\":[{\"confidence\":\"0.9\",\"strength\":\"0.8\"},{\"confidence\":\"0.8\",\"strength\":\"0.7\"}],\"profile\":\"neoclaw-nal-truth-deduction/1\",\"representation\":\"(stv 0.5599999999999999 0.4032)\",\"request_digest\":\"1ef41b86370711a06a82c247b5db150c359f94fd58ac95be1e4bdf2ff3ee8f49\",\"runtime\":\"neoclaw-petta-swi-10.0.1/1\",\"selection\":\"e133aa0af69d49a8e5aba29c25c6045847eab273f9263f4e7ac3a77ffa3f4bfd\",\"truth\":{\"confidence\":\"0.4032\",\"strength\":\"0.5599999999999999\"}}"
+          }
+        ],
+        "shutdown.json": {
+          "graceful": true,
+          "role": "fusion-execution"
+        }
+      },
+      "fusion-storage": {
+        "atoms": [
+          {
+            "content_type": "application/neoclaw-nal-result",
+            "digest": "9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf",
+            "fingerprint": "c5d4f1fbde1b3c7f28cf7651433aeafb39911519e185a3f8371d782602e5885b",
+            "id": "73c2f036-0067-5710-9ee4-aa88ae621114",
+            "identity": "[\"generated-s01\",\"7a7fb6e022bcc8beb3ed8a8cfa6d7772270beb94ed66ecafc496b717ec63ad11\"]",
+            "payload_id": "20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035",
+            "receipt": "{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"}",
+            "scope": "generated-s01"
+          }
+        ],
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "fusion-storage",
+          "scope": "generated-s01"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-storage"
+        }
+      },
+      "fusion-messaging": {
+        "acknowledgements": [
+          {
+            "fingerprint": "4a7aed2093829a089d3865970d129ce5d2b91b2f1ce91a1627c9043c4532c0db",
+            "identity": "[\"A\",\"generated-s01\",\"ack/4dc72b18-e875-5f79-824b-910c8bec8c1e\"]",
+            "response": "{\"delivery\":\"acknowledged\",\"delivery_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"persistence\":\"process-restart\",\"route\":\"reply-A\",\"scope_ref\":\"generated-s01\"}"
+          }
+        ],
+        "messages": [
+          {
+            "acknowledged": 1,
+            "body": "{\"causation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"correlation_id\":\"4dc72b18-e875-5f79-824b-910c8bec8c1e\",\"error\":null,\"job_id\":\"0ee6d8d0-7a72-573e-a269-9b7f00d610bd\",\"result\":{\"receipt\":{\"durability\":\"local-files-process-restart\",\"evidence\":{\"chain\":null,\"custody_certificate\":null,\"manifest\":\"20496ba7c50e4de09e2ec62e73fc545e945497f751d7640b3bae3d16271b3035\",\"payload_bytes\":2452,\"payload_hash\":\"5abdafdde6805df5df60206c9758a03349bd585b741394150bba9eff71598d05\",\"profile\":\"2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223\",\"shares\":6,\"threshold\":4},\"provider\":\"detta-local-rs/1\"},\"ref\":{\"digest\":\"9125f7f311769d18eef2c84a9a7dc48104bf9488020e422fc503fa255e7d38bf\",\"id\":\"73c2f036-0067-5710-9ee4-aa88ae621114\",\"revision\":1,\"scope_ref\":\"generated-s01\"}}}",
+            "fingerprint": "4554a833a9acd9176172d9980b42b49d233576dfd95906ef63099a254083cafe",
+            "id": "0ee6d8d0-7a72-573e-a269-9b7f00d610bd",
+            "route": "reply-A",
+            "scope": "generated-s01",
+            "seq": 1
+          }
+        ],
+        "owner-seal.json": {
+          "composition": "neoclaw-separated-services/1",
+          "role": "fusion-messaging",
+          "scope": "generated-s01"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-messaging"
+        }
+      }
+    }
+  },
+  "actions": [
+    {
+      "action": "pod-replacement",
+      "role": "fusion-execution",
+      "old_uid": "7367f840-6a83-4656-816e-ea3c7e4d7ac2",
+      "new_uid": "ff7a005d-89a4-4342-8c6a-b177d2506f23"
+    },
+    {
+      "action": "pod-replacement",
+      "role": "omega-agent",
+      "old_uid": "ddc343f0-c178-40f0-a58e-d5bfb509bdbc",
+      "new_uid": "edfa3845-d327-4c23-86f9-87e5a8d8f096"
+    }
+  ],
+  "pods": {
+    "apiVersion": "v1",
+    "items": [
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "60a5faaef6a7c90d82d331df1b1543e3b08cd85727fe0e5a062e78b237f32622"
+          },
+          "creationTimestamp": "2026-10-27T14:00:31Z",
+          "generateName": "fusion-execution-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-execution",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-execution-8dd74b8f5",
+            "statefulset.kubernetes.io/pod-name": "fusion-execution-0"
+          },
+          "name": "fusion-execution-0",
+          "namespace": "omega-t3-provider-replacement",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-execution",
+              "uid": "caa7e562-e52f-460e-b19d-fc3ee5779795"
+            }
+          ],
+          "resourceVersion": "11237",
+          "uid": "ff7a005d-89a4-4342-8c6a-b177d2506f23"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "fusion-single-node:dev-04",
+              "imagePullPolicy": "IfNotPresent",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-execution",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-execution-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-execution-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-execution-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-execution"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-execution-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:32Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:31Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:34Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:34Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:31Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "containerID": "containerd://d5af7bebbb4aad255dc7a506050636af5087ab1336869cb14d25fb90b7c4dc44",
+              "image": "docker.io/library/fusion-single-node:dev-04",
+              "imageID": "sha256:00411e6a5435bc2d1895dd3debd2ba1f55fd937992d35d769fad07aa7c33598c",
+              "lastState": {},
+              "name": "fusion-execution",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-10-27T14:00:32Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.239",
+          "podIPs": [
+            {
+              "ip": "10.42.0.239"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-10-27T14:00:31Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "7edb4ced9b4d236689bf690ba450604d6a738f60683484bb766e5b27f8278c20"
+          },
+          "creationTimestamp": "2026-10-27T13:59:29Z",
+          "generateName": "fusion-messaging-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-messaging",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-messaging-75c97dd679",
+            "statefulset.kubernetes.io/pod-name": "fusion-messaging-0"
+          },
+          "name": "fusion-messaging-0",
+          "namespace": "omega-t3-provider-replacement",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-messaging",
+              "uid": "0d019c66-4e79-48ab-9320-c351fd634a1d"
+            }
+          ],
+          "resourceVersion": "7435",
+          "uid": "70dbc834-d20e-4636-9594-7f7c66b5b6ca"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "fusion-single-node:dev-04",
+              "imagePullPolicy": "IfNotPresent",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-messaging",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-messaging-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-messaging-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-messaging-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-messaging"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-messaging-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T13:59:34Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T13:59:33Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T13:59:36Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T13:59:36Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T13:59:33Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://3b024b990024bd5fbdb152c43f0302d1980ed3828229f7e5b1919f9e2fba344d",
+              "image": "docker.io/library/fusion-single-node:dev-04",
+              "imageID": "sha256:00411e6a5435bc2d1895dd3debd2ba1f55fd937992d35d769fad07aa7c33598c",
+              "lastState": {},
+              "name": "fusion-messaging",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-10-27T13:59:34Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.213",
+          "podIPs": [
+            {
+              "ip": "10.42.0.213"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-10-27T13:59:33Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "bb0ff6a8189cd349fc7ec0a602258dc8861702beffcc565df2d9adc61fcd8281"
+          },
+          "creationTimestamp": "2026-10-27T13:59:29Z",
+          "generateName": "fusion-storage-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-storage",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-storage-6f7b487bc8",
+            "statefulset.kubernetes.io/pod-name": "fusion-storage-0"
+          },
+          "name": "fusion-storage-0",
+          "namespace": "omega-t3-provider-replacement",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-storage",
+              "uid": "7453557f-a69e-4d1d-9d81-36d12c4d3774"
+            }
+          ],
+          "resourceVersion": "9812",
+          "uid": "0cbf5b9d-66da-4e1b-a2d0-9a7b3224a5c2"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "fusion-single-node:dev-04",
+              "imagePullPolicy": "IfNotPresent",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-storage",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-storage-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-storage-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-storage-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-storage"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-storage-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:15Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:14Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:16Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:16Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:14Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "100m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://f7eb2fbbf309a1cedbdbda54048bbf2825cdc6e923a81d7912fab531e138bb85",
+              "image": "docker.io/library/fusion-single-node:dev-04",
+              "imageID": "sha256:00411e6a5435bc2d1895dd3debd2ba1f55fd937992d35d769fad07aa7c33598c",
+              "lastState": {},
+              "name": "fusion-storage",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-10-27T14:00:14Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.224",
+          "podIPs": [
+            {
+              "ip": "10.42.0.224"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-10-27T14:00:14Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "7bc191187818a7d0ec1d4fe329a54d0afe4e90d31b25501c55deb81d47eb8267"
+          },
+          "creationTimestamp": "2026-10-27T14:00:36Z",
+          "generateName": "omega-agent-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "omega-agent",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "omega-agent-6fbd9f5f5f",
+            "statefulset.kubernetes.io/pod-name": "omega-agent-0"
+          },
+          "name": "omega-agent-0",
+          "namespace": "omega-t3-provider-replacement",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "omega-agent",
+              "uid": "e68d347c-0e67-4dd7-a3a4-d74762c73834"
+            }
+          ],
+          "resourceVersion": "11296",
+          "uid": "edfa3845-d327-4c23-86f9-87e5a8d8f096"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "fusion-single-node:dev-04",
+              "imagePullPolicy": "IfNotPresent",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "omega-agent",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "omega-agent-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "omega-agent-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-omega-agent-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "omega-agent"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "omega-agent-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:36Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:36Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:38Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:38Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-10-27T14:00:36Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "containerID": "containerd://f662c0bb1cbc76da91b85bbc28153f75220067db9dde41d83baa7faaa3b7a152",
+              "image": "docker.io/library/fusion-single-node:dev-04",
+              "imageID": "sha256:00411e6a5435bc2d1895dd3debd2ba1f55fd937992d35d769fad07aa7c33598c",
+              "lastState": {},
+              "name": "omega-agent",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-10-27T14:00:36Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.243",
+          "podIPs": [
+            {
+              "ip": "10.42.0.243"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-10-27T14:00:36Z"
+        }
+      }
+    ],
+    "kind": "List",
+    "metadata": {
+      "resourceVersion": "",
+      "selfLink": ""
+    }
+  },
+  "pvcs": {
+    "apiVersion": "v1",
+    "items": [
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-10-27T13:59:29Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-execution"
+          },
+          "name": "state-fusion-execution-0",
+          "namespace": "omega-t3-provider-replacement",
+          "resourceVersion": "8720",
+          "uid": "4bb0ab75-ce5a-456a-85ed-ecc4c5a3dcbb"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-4bb0ab75-ce5a-456a-85ed-ecc4c5a3dcbb"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-10-27T13:59:29Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-messaging"
+          },
+          "name": "state-fusion-messaging-0",
+          "namespace": "omega-t3-provider-replacement",
+          "resourceVersion": "7405",
+          "uid": "601658c4-85c2-4722-b365-0ecbe8022536"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-601658c4-85c2-4722-b365-0ecbe8022536"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-10-27T13:59:29Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-storage"
+          },
+          "name": "state-fusion-storage-0",
+          "namespace": "omega-t3-provider-replacement",
+          "resourceVersion": "9738",
+          "uid": "e5b4b77f-b436-4827-9741-b4bdb1102a78"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "512Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-e5b4b77f-b436-4827-9741-b4bdb1102a78"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "512Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-10-27T13:59:29Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "omega-agent"
+          },
+          "name": "state-omega-agent-0",
+          "namespace": "omega-t3-provider-replacement",
+          "resourceVersion": "7410",
+          "uid": "cb6ab74d-b0a8-411e-961f-8fd13dc79ea7"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-cb6ab74d-b0a8-411e-961f-8fd13dc79ea7"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      }
+    ],
+    "kind": "List",
+    "metadata": {
+      "resourceVersion": "",
+      "selfLink": ""
+    }
+  },
+  "finished": "2026-10-27T14:00:42.225122+00:00"
+}

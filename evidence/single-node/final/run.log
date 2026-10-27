@@ -1,0 +1,35 @@
+baseline: PASS 
+health: PASS 
+lost-submit: PASS 
+lost-storage: PASS 
+lost-completion: PASS 
+caller-replacement: FAIL ['/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/bin/python', '/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py', '--kubeconfig'] Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py", line 48, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py", line 31, in main
+    openssl('req','-newkey','rsa:2048','-nodes','-keyout',role+'.key','-out',role+'.csr','-subj','/CN='+dns)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py", line 23, in openssl
+    def openssl(*args):subprocess.run(['openssl',*map(str,args)],cwd=root,check=True,capture_output=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['openssl', 'req', '-newkey', 'rsa:2048', '-nodes', '-keyout', 'fusion-execution.key', '-out', 'fusion-execution.csr', '-subj', '/CN=fusion-execution.omega-final-caller-replacement.svc.cluster.local']' returned non-zero exit status 1.
+
+provider-replacement: FAIL ['/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/s03/venv/bin/python', '/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py', '--kubeconfig'] Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py", line 48, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py", line 31, in main
+    openssl('req','-newkey','rsa:2048','-nodes','-keyout',role+'.key','-out',role+'.csr','-subj','/CN='+dns)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/deploy/single-node/create_secrets.py", line 23, in openssl
+    def openssl(*args):subprocess.run(['openssl',*map(str,args)],cwd=root,check=True,capture_output=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['openssl', 'req', '-newkey', 'rsa:2048', '-nodes', '-keyout', 'fusion-execution.key', '-out', 'fusion-execution.csr', '-subj', '/CN=fusion-execution.omega-final-provider-replacement.svc.cluster.local']' returned non-zero exit status 1.
+
+storage-outage: PASS 
+service-outage: PASS 
+wrong-credential: PASS 
+config-restart: PASS 

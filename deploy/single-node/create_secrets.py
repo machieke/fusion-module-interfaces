@@ -28,7 +28,9 @@ def main():
     worker={r:secrets.token_hex(32) for r in ROLES[1:]}
     for role in ROLES:
         dns=f'{role}.{a.namespace}.svc.cluster.local'
-        openssl('req','-newkey','rsa:2048','-nodes','-keyout',role+'.key','-out',role+'.csr','-subj','/CN='+dns)
+        # X.509 CN has a 64-byte limit; hostname verification uses the complete
+        # DNS SAN below, including long but valid Kubernetes namespaces.
+        openssl('req','-newkey','rsa:2048','-nodes','-keyout',role+'.key','-out',role+'.csr','-subj','/CN='+role)
         (root/'extensions').write_text(f'subjectAltName=DNS:{dns}\nextendedKeyUsage=serverAuth\nbasicConstraints=critical,CA:FALSE\n')
         openssl('x509','-req','-in',role+'.csr','-CA','ca.crt','-CAkey','ca.key','-CAcreateserial',
                 '-out',role+'.crt','-days','7','-extfile','extensions')
