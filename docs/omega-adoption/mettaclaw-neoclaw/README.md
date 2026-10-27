@@ -1,11 +1,25 @@
 # MeTTaClaw neoclaw → Fusion mapping review
 
-**Current review:** [S07 closeout and native-boundary coverage matrix](s07-closeout.md)
-reconciles publication `4981788b4d8069a2b2264e65197f9886b74f1f5f` with the historical
-working-tree tests and all twelve live attempts. The reports below retain their
-delivery-time identities. The [next retrieval-grounded workload](s07-next-workload.md)
-is a proposal only; additional authorized live generations remain **ZERO**.
-Historical S08 Embedding already has bounded X02 coverage through S03.1/S03.2.
+**Current review:** [completed retrieval-grounded campaign publication](retrieval-live-publication.md)
+links the separate approval, frozen inputs, four spent generation slots, four
+captures, two passing native query/reply workflows and recorded cleanup.
+The measured model placements were local and authenticated same-host HTTPS;
+retrieval, encoding and cognitive state stayed local. Native `remember` populated
+the frozen corpus during setup; live-model-directed memory writes were not tested.
+
+| Evidence scope | Current interpretation |
+|---|---|
+| [Historical fixture preparation](retrieval-runner-preparation-report.md) | Authored model responses; real native memory, E5, Chroma, DeTTa, IRC and HTTPS qualification. Its `NOT_RUN` live labels remain historical. |
+| [Completed real-model campaign](retrieval-live-publication.md) | Four real calls/captures; both query → actual next-prompt context → admitted correct send → independent peer workflows passed. All slots remain spent. |
+| [Separate M4 chain integration](../../module-interfaces/m4-evidence.md) | Previously demonstrated isolated F1R3node effect/finality and readback. Unchanged and not rerun or combined with this memory workflow. |
+
+The [S07 closeout and native-boundary matrix](s07-closeout.md) retains its
+delivery-time source identities, twelve attempts, ten captures and unrun memory
+labels. Later workflow evidence is additive in [coverage.json](coverage.json),
+under `current_workflow_evidence`. Counts remain 15 historical families, 105
+mapping rows, eight bounded adoption entries and nine native user commands;
+X01/X02 remain existing extensions. No new generation is authorized. Historical
+S08 Embedding already has bounded X02 coverage through S03.1/S03.2.
 
 **S04 local evidence update:** native `support` and `contradict` now share one bounded assessment seam through local C1, C2 and the trusted relay. The original pinned NAL revision runs under a distinct profile. Fresh defaults are nonempirical priors; repeats, contrary assessments and authorized aggregation remain distinct. Later native query reads an immutable owner-bound view without rebuilding Search. See [S04 report and gate evidence](s04.md). This is the sixth precise adoption entry, adds two user commands, and promotes no whole family. Full Omega, remote private evidence and historical memory migration remain outside this slice.
 
@@ -111,11 +125,13 @@ with failures and recorded-model fixtures kept separate from real successes.
 Only the bounded X01 text-completion boundary is adopted. Historical families,
 mapping rows, eight prior operation adoptions and nine user commands are unchanged.
 
-[Retrieval-grounded workload preparation](retrieval-preparation.md) composes the
+Historical [retrieval-grounded workload preparation](retrieval-preparation.md) composes the
 existing native remember/query/send boundaries under `controlled-native-loop/10`.
 Model responses are authored fixtures; retrieval, the native loop, isolated IRC
 and authenticated same-host HTTPS are real. [Decisions](retrieval-preparation-decisions.md)
 keep exact query-result consent separate from output eligibility and factual
-correctness. This adds no module or command adoption. The live memory workflow
-remains **NOT_RUN**, with **zero additional live generations** and a disabled
-future authorization plan.
+correctness. At that preparation delivery, the live memory workflow was
+**NOT_RUN**, with **zero additional live generations** and a disabled future
+authorization plan. Those records are preserved. The separately approved,
+completed campaign is linked in the current review above; it adds workflow
+evidence without another module or command adoption.

@@ -281,5 +281,142 @@
     "combined_live_memory_workflow": "NOT_RUN",
     "historical_evidence_unchanged": true,
     "status": "READY_FOR_LIVE_AUTHORIZATION"
+  },
+  "current_workflow_evidence": {
+    "scope": "Workflow evidence only; existing sections retain their historical delivery-time meanings.",
+    "review_entry_point": "retrieval-live-publication.md",
+    "evidence_publication_commit": "dba62caf72f9577349cc868edd29fd8b949172d7",
+    "historical_fixture_preparation": {
+      "model_boundary": "AUTHORED_MODEL_RESPONSE_FIXTURE",
+      "report": "retrieval-runner-preparation-report.md",
+      "accounting": "../../../evidence/retrieval-runner/preparation-summary.json",
+      "live_memory_workflow_at_preparation": "NOT_RUN",
+      "live_generations_during_preparation": 0,
+      "native_remember_setup": "Real native remember/E5/Chroma/DeTTa populated the frozen generated corpus; setup model/channel/clock fixtures remain explicit."
+    },
+    "completed_real_model_memory_workflow": {
+      "campaign_id": "retrieval-grounded-20261026-02",
+      "state": "COMPLETED_ALL_FOUR_SLOTS_SPENT",
+      "result": "PASS_2_OF_2",
+      "executed_implementation": "66366cb4ed262ab8a87b96540d5c17fc8f0977ea",
+      "manifest_sha256": "0b75644c3b0e198fc606bb3b781087a2048a40f21b67b36bd7a5a1000465adb1",
+      "manifest": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/manifest.json",
+      "manifest_digest": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/manifest.sha256",
+      "approval": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/approval.json",
+      "approval_sha256": "b8b5e1b295efd7e6b89ab7bfdbe1f785081cdee0696cbbe3833b6b12f0c08103",
+      "application_composition": "controlled-native-loop/10",
+      "disclosure_policy": "synthetic-retrieval-query-send/1",
+      "model_profile": "neoclaw-ollama-qwen38-text/2",
+      "measured_native_commands": [
+        "query",
+        "send"
+      ],
+      "live_model_directed_remember": "NOT_RUN",
+      "model_boundary": "REAL_MODEL",
+      "model_placements": [
+        "local",
+        "authenticated-same-host-HTTPS"
+      ],
+      "fixed_non_model_placements": {
+        "mailbox": "authenticated-same-host-HTTPS",
+        "encoder": "local",
+        "retrieval": "local",
+        "cognition": "local"
+      },
+      "reservations": 4,
+      "backend_entries": 4,
+      "observed_successful_chat_posts": 4,
+      "captures": 4,
+      "command_admissions": 4,
+      "completed_sessions": 2,
+      "passing_sessions": 2,
+      "remaining_slots": 0,
+      "remaining_generation_authority": 0,
+      "sessions": [
+        {
+          "id": "e4a391e8-14a2-4aa9-b4c6-0d5640d2e233",
+          "placement": "local",
+          "outcome": "PASS",
+          "response_captures": 2,
+          "command_admissions": 2,
+          "retrieval": true,
+          "captured_query_in_next_prompt": true,
+          "factual_correctness": true,
+          "independent_peer_observed": true
+        },
+        {
+          "id": "655f80ce-7d5e-453f-94fc-bdb1fb26f15f",
+          "placement": "network",
+          "outcome": "PASS",
+          "response_captures": 2,
+          "command_admissions": 2,
+          "retrieval": true,
+          "captured_query_in_next_prompt": true,
+          "factual_correctness": true,
+          "independent_peer_observed": true
+        }
+      ],
+      "ledger": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/execution/ledger.json",
+      "slot_accounting": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/execution/reconciliation.json",
+      "raw_reports": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/execution-report.json",
+      "runtime_requests": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/runtime-requests.log",
+      "cleanup": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/execution/cleanup.json",
+      "recorded_temporary_processes": "STOPPED",
+      "reported_usage": {
+        "reasoning_tokens": null,
+        "reported_input_tokens": 1788,
+        "reported_output_tokens": 32,
+        "unavailable_usage_policy": "unknown, not zero"
+      },
+      "legacy_model_usefulness": {
+        "raw_value": "NOT_RUN",
+        "preserved": true,
+        "meaning": "Shared preparation evaluator hardcodes this field. It is not a generation counter or a general usefulness assessment; actual captures and HTTP observations establish the two bounded live task passes."
+      },
+      "supplementary_libraries": {
+        "observations": "../../../evidence/retrieval-live/retrieval-grounded-20261026-02/execution/supplementary-runtime-libraries.json",
+        "count": 4,
+        "within_explicit_runtime_required_files": false,
+        "historical_comparison_hashes_available": false,
+        "qualification": "Observed hashes only; not retroactively frozen pins. All fifteen explicitly frozen runtime assets passed recorded validation."
+      },
+      "live_process_kill_recovery": "NOT_RUN; qualification recovery evidence remains separate",
+      "general_model_usefulness": "NOT_ESTABLISHED"
+    },
+    "separately_demonstrated_chain_integration": {
+      "milestone": "M4",
+      "result": "PREVIOUSLY_DEMONSTRATED_REAL_CHAIN_PASS",
+      "tested_implementation": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955",
+      "report": "../../module-interfaces/m4-evidence.md",
+      "manifest": "../../../evidence/m4/manifest.json",
+      "same_artifact": "../../../evidence/m4/final/same-artifact.json",
+      "readback": "../../../evidence/m4/final/readback.json",
+      "scope": "Isolated native Hive/DeTTa generated-result commitment, actual F1R3node effect/finality, recovery and readback.",
+      "rerun_in_memory_campaign": false,
+      "rerun_in_publication": false,
+      "combined_model_memory_chain_workflow": "NOT_RUN",
+      "evidence_unchanged": true
+    },
+    "counts_unchanged": {
+      "bounded_family_denominator": 15,
+      "historical_mapping_rows": 105,
+      "operation_adoption_entries": 8,
+      "native_user_commands": 9,
+      "whole_families_promoted": 0,
+      "new_module_families": 0,
+      "new_operation_adoptions": 0,
+      "new_native_commands": 0,
+      "existing_extensions": [
+        "X01 ModelInference",
+        "X02 Embedding query and append profiles"
+      ]
+    },
+    "publication_only": {
+      "additional_live_generations": 0,
+      "runtime_activity": false,
+      "private_journals_opened": false,
+      "runtime_contract_profile_prompt_permission_changes": false,
+      "historical_labels_preserved": true
+    }
   }
 }

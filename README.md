@@ -1,5 +1,12 @@
 # Omega ↔ ASI module interfaces: through M5
 
+**Current workflow evidence:** the [retrieval-grounded campaign review](docs/omega-adoption/mettaclaw-neoclaw/retrieval-live-publication.md)
+links the completed real-model memory query/reply workflows: both local and
+authenticated same-host HTTPS sessions passed, with four spent slots and four
+captures. Historical fixture preparation and the separately demonstrated M4
+chain integration remain distinct. This adds workflow evidence, with no change
+to module-family or adopted-command counts.
+
 A backend-neutral contract package and bounded storage, mailbox and delegated
 execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
 pinned native Hive Programs caller through the existing validated interfaces;

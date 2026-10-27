@@ -1,0 +1,219 @@
+{
+  "schema": "retrieval-live-evidence-publication-review/1",
+  "status": "READY_FOR_REVIEW",
+  "reviewed_at_utc": "2026-10-26T13:56:40.309950+00:00",
+  "publication_base": "dba62caf72f9577349cc868edd29fd8b949172d7",
+  "review_entry_point": "docs/omega-adoption/mettaclaw-neoclaw/retrieval-live-publication.md",
+  "campaign_id": "retrieval-grounded-20261026-02",
+  "campaign_state": "COMPLETED_ALL_FOUR_SLOTS_SPENT",
+  "live_memory_workflow": "PASS_2_OF_2",
+  "activity_this_review": {
+    "runtime_starts": 0,
+    "runtime_contacts": 0,
+    "live_generations": 0,
+    "call_reservations": 0,
+    "campaign_reruns": 0,
+    "chain_runs": 0,
+    "private_journals_opened": 0,
+    "commits": 0,
+    "pushes": 0
+  },
+  "validation_mode": "Static reads of versioned evidence and source files only; no integration modules imported or test/campaign entrypoints invoked.",
+  "checks": [
+    {
+      "check": "approval-and-frozen-source-identity",
+      "status": "PASS",
+      "manifest_sha256": "0b75644c3b0e198fc606bb3b781087a2048a40f21b67b36bd7a5a1000465adb1",
+      "approval_sha256": "b8b5e1b295efd7e6b89ab7bfdbe1f785081cdee0696cbbe3833b6b12f0c08103",
+      "executed_implementation": "66366cb4ed262ab8a87b96540d5c17fc8f0977ea"
+    },
+    {
+      "check": "raw-packet-preserved",
+      "status": "PASS",
+      "files": 20,
+      "recorded_checksums_verified": 19
+    },
+    {
+      "check": "execution-source-bytes-preserved",
+      "status": "PASS",
+      "files": 189,
+      "runtime_code_imported": false
+    },
+    {
+      "check": "recorded-pre-runtime-verification",
+      "status": "PASS",
+      "sources": 189,
+      "bindings": 212,
+      "runtime_assets": 15,
+      "full_model_projector_hashes_recorded": true,
+      "assets_reopened_during_publication": false
+    },
+    {
+      "check": "per-slot-and-session-reconciliation",
+      "status": "PASS",
+      "slots": [
+        {
+          "slot": "local-query",
+          "id": "231c314b-5c67-5d1f-8e5e-674ae43105b4",
+          "reserved": 1,
+          "backend_claims": 1,
+          "captures": 1,
+          "admission": "authorized",
+          "reported_usage": {
+            "input_tokens": 257,
+            "output_tokens": 8,
+            "reasoning_tokens": null
+          }
+        },
+        {
+          "slot": "local-reply",
+          "id": "4b3ed1d5-0765-5d8b-a339-e973536c164d",
+          "reserved": 1,
+          "backend_claims": 1,
+          "captures": 1,
+          "admission": "authorized",
+          "reported_usage": {
+            "input_tokens": 637,
+            "output_tokens": 8,
+            "reasoning_tokens": null
+          }
+        },
+        {
+          "slot": "network-query",
+          "id": "b0f11fa9-6f9f-5d4d-9200-d31835ae01fb",
+          "reserved": 1,
+          "backend_claims": 1,
+          "captures": 1,
+          "admission": "authorized",
+          "reported_usage": {
+            "input_tokens": 257,
+            "output_tokens": 8,
+            "reasoning_tokens": null
+          }
+        },
+        {
+          "slot": "network-reply",
+          "id": "9d01b433-e9a8-51b6-b4fb-42f3b803473d",
+          "reserved": 1,
+          "backend_claims": 1,
+          "captures": 1,
+          "admission": "authorized",
+          "reported_usage": {
+            "input_tokens": 637,
+            "output_tokens": 8,
+            "reasoning_tokens": null
+          }
+        }
+      ],
+      "successful_chat_requests": 4,
+      "non_generating_gets": 8,
+      "passing_sessions": 2,
+      "reasoning_usage": "UNKNOWN",
+      "provider_request_ids": "UNKNOWN"
+    },
+    {
+      "check": "legacy-label-explained-without-rewriting",
+      "status": "PASS",
+      "raw_model_usefulness": "NOT_RUN",
+      "source_function": "integration/neoclaw/retrieval_preparation.py:evaluate"
+    },
+    {
+      "check": "supplementary-library-limit-preserved",
+      "status": "PASS",
+      "count": 4,
+      "retroactive_pins_added": 0
+    },
+    {
+      "check": "recorded-cleanup",
+      "status": "PASS",
+      "temporary_processes": "STOPPED",
+      "listener_ports": 6,
+      "fresh_runtime_probe": false
+    },
+    {
+      "check": "historical-coverage-and-chain-preserved",
+      "status": "PASS",
+      "old_coverage_sections_unchanged": 17,
+      "families": 15,
+      "mapping_rows": 105,
+      "adoptions": 8,
+      "native_commands": 9,
+      "whole_families_promoted": 0,
+      "chain_result": "HISTORICAL_M4_PASS",
+      "chain_rerun": false
+    },
+    {
+      "check": "sanitized-publication-scope",
+      "status": "PASS",
+      "reviewed_files": 25,
+      "file_allowlist": [
+        "README.md",
+        "docs/omega-adoption/mettaclaw-neoclaw/README.md",
+        "docs/omega-adoption/mettaclaw-neoclaw/coverage.json",
+        "docs/omega-adoption/mettaclaw-neoclaw/retrieval-live-publication.md",
+        "evidence/retrieval-live/publication-review/changed-files.txt",
+        "evidence/retrieval-live/publication-review/review.json"
+      ],
+      "secret_pattern_matches": 0,
+      "pattern_classes": [
+        "private-key-block",
+        "github-token",
+        "bearer-credential",
+        "aws-access-key"
+      ],
+      "private_journals_or_credentials_opened": false,
+      "limits": "Static patterns supplement review of the allowlisted documents and already-published synthetic diagnostic evidence; no universal secret-detection claim."
+    },
+    {
+      "check": "review-entry-links",
+      "status": "PASS",
+      "markdown_local_links_checked": 96,
+      "coverage_evidence_links_checked": 16,
+      "external_source_links_resolved_via_local_git": true
+    },
+    {
+      "check": "whitespace-and-json",
+      "status": "PASS",
+      "result": "PASS"
+    }
+  ],
+  "preserved_raw_packet_sha256": {
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/approval.json": "b8b5e1b295efd7e6b89ab7bfdbe1f785081cdee0696cbbe3833b6b12f0c08103",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/checksums.json": "865f0cfdba6f6d9d4d226dd1986a928d2b5bf82d63a435c6f951e411f6b4338e",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/claims/231c314b-5c67-5d1f-8e5e-674ae43105b4.json": "53958ccb2b6ff59ca72920bd50b11897e313de7775d972d192fddbfd6a0dbd69",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/claims/4b3ed1d5-0765-5d8b-a339-e973536c164d.json": "62267e08eea000d90d9aea423b496a40adef9cf5017be8f9e256be5e3de61fc0",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/claims/9d01b433-e9a8-51b6-b4fb-42f3b803473d.json": "f50b12cb96f7365ec3f974b20ea9b718cd6790273cce47d0e8d11c74884d6e0b",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/claims/b0f11fa9-6f9f-5d4d-9200-d31835ae01fb.json": "e1c79288945fbab837c3fbad9470b14f63e43f1282f9a07f30c96b6b10d7e4a4",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/cleanup.json": "2a86e68bac61d0c5f3fd137c83e07ec3ad131e1cd929c1af978b7435703a9425",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/launch-preflight.json": "2cd887791b1fa9d63b5dcc7ddea61067bafe1410246a67b62223b08d8be1b86a",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/ledger.json": "2c2469df05780200ede38c4e246aeb099003583422750f27a12f27da9dcd5704",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/loaded-runtime-observation.json": "c651c458cf668f699d9df4172b2bbb26fcfb4e7c8e0acc7fc422337246b15f6b",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/operator-execution.json": "e4d0ffd785b6dead3ee728e015e3cc9e2fc03b8d6d41398b2d60577bf94e8be0",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/preflight.json": "0050d140821a740ca6dc13681441edfd2589ab35cc82ddbb6d89233c6348caa7",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/reconciliation.json": "06e9937a234e9a81f5084beb86ea0e388c5035508826a0cfb7c1ff244c480033",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/runner.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution/supplementary-runtime-libraries.json": "ab5f45c02078ffc5613031d3652ee141c6da383af37fe27aa1acd67ad93bbf7d",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/execution-report.json": "f23810b27c7527685d72bd4c60689fb6d2ae7896e5c54aa4caae28afb016a827",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/manifest.json": "0b75644c3b0e198fc606bb3b781087a2048a40f21b67b36bd7a5a1000465adb1",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/manifest.sha256": "3c089a2e00dff370ae825ad82c03f637f94c82ed3d361a9f0cd78a976ed855db",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/report.md": "bc3657290cbf839abcf506f20bec1dec806b228f527b2a4f4f597ac99f782fd7",
+    "evidence/retrieval-live/retrieval-grounded-20261026-02/runtime-requests.log": "c1c44b349740028b5f9a213727fb3cbeb87c719c514dd1cd09a92be4824c6b45"
+  },
+  "changed_files": [
+    "README.md",
+    "docs/omega-adoption/mettaclaw-neoclaw/README.md",
+    "docs/omega-adoption/mettaclaw-neoclaw/coverage.json",
+    "docs/omega-adoption/mettaclaw-neoclaw/retrieval-live-publication.md",
+    "evidence/retrieval-live/publication-review/changed-files.txt",
+    "evidence/retrieval-live/publication-review/review.json"
+  ],
+  "review_content_sha256": {
+    "README.md": "5531b18157a1a1173e2180506e4c2c63b65832afb4fd0218f8034197495e308f",
+    "docs/omega-adoption/mettaclaw-neoclaw/README.md": "85b29c9fbcda470769018edd3dddc21331ad522852e6c579cbd4a165a16aaba0",
+    "docs/omega-adoption/mettaclaw-neoclaw/coverage.json": "d1d233436ac1e13133af42c00cf83c35d0d8f208db6ce8c41d7e4fa3113cb7c7",
+    "docs/omega-adoption/mettaclaw-neoclaw/retrieval-live-publication.md": "a3a61691158e5ab85c79b928e047f27b798f37f4b2f563ac4df0347aa4a96921",
+    "evidence/retrieval-live/publication-review/changed-files.txt": "15a237e8d8065eaa39b37335db6f1718172094f2f2b9d01c96e0e86b83ce8cf8"
+  },
+  "hash_scope": "Review record excludes itself. Frozen inputs and raw packet are preserved; only current documentation/coverage and this audit are new.",
+  "commit_push_state": "NOT_PERFORMED; prepared for review under the current request"
+}
