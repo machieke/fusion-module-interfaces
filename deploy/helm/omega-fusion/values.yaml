@@ -1,0 +1,36 @@
+image:
+  repository: fusion-single-node
+  tag: single-node-v1
+  digest: ""
+  pullPolicy: IfNotPresent
+httpsPort: 8443
+testFaultsEnabled: false
+components:
+  omega-agent:
+    existingSecret: omega-agent-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 100m, memory: 128Mi}
+      limits: {cpu: "1", memory: 512Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: true, workerEnabled: false, test: {}}
+  fusion-execution:
+    existingSecret: fusion-execution-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 100m, memory: 128Mi}
+      limits: {cpu: "1", memory: 512Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: true, test: {}}
+  fusion-storage:
+    existingSecret: fusion-storage-tls-auth
+    persistence: {storageClass: local-path, size: 512Mi}
+    resources:
+      requests: {cpu: 100m, memory: 64Mi}
+      limits: {cpu: "1", memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+  fusion-messaging:
+    existingSecret: fusion-messaging-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}

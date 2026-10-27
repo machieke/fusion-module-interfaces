@@ -1,4 +1,4 @@
-"""S01 composition bindings: in-process or authenticated loopback HTTPS. No fallback."""
+"""S01 composition bindings: local, loopback or explicit service DNS. No fallback."""
 import http.client
 import json
 from pathlib import Path
@@ -20,7 +20,16 @@ def json_loads(raw):
             result[key] = value
         return result
     try:
-        return json.loads(raw, object_pairs_hook=pairs, parse_constant=lambda _: (_ for _ in ()).throw(ContractError('INVALID_ARGUMENT')))
+        value = json.loads(raw, object_pairs_hook=pairs, parse_constant=lambda _: (_ for _ in ()).throw(ContractError('INVALID_ARGUMENT')))
+        # Python 3.12's decoder no longer necessarily raises at the old recursion
+        # limit. Keep untrusted receipt nesting bounded across packaged runtimes.
+        pending = [(value, 0)]
+        while pending:
+            item, depth = pending.pop()
+            require(depth <= 256)
+            if type(item) in (dict, list):
+                pending.extend((v, depth+1) for v in (item.values() if type(item) is dict else item))
+        return value
     except (ValueError, RecursionError):
         raise ContractError('INVALID_ARGUMENT') from None
 
@@ -64,10 +73,14 @@ class Local:
 
 
 class Network:
-    """Real TLS/TCP, certificate verified. Deliberately loopback-only in S01."""
-    def __init__(self, endpoint, credential, chosen, timeout=1.0):
+    """Real TLS/TCP, verified certificates; historical placement stays loopback-only."""
+    def __init__(self, endpoint, credential, chosen, timeout=1.0, *, service_dns=False):
         require(type(endpoint) is dict and set(endpoint) == {'host', 'port', 'ca_file'})
-        require(endpoint['host'] == '127.0.0.1', 'UNSUPPORTED_PROFILE')
+        if service_dns:
+            from .neoclaw_services import service_hostname
+            service_hostname(endpoint['host'])
+        else:
+            require(endpoint['host'] == '127.0.0.1', 'UNSUPPORTED_PROFILE')
         require(type(endpoint['port']) is int and 1 <= endpoint['port'] <= 65535)
         self.endpoint, self.credential, self.chosen = endpoint, credential, chosen
         self.timeout = min(max(timeout, .05), 1.0)
@@ -97,6 +110,9 @@ class Network:
 
 def binding(config, chosen):
     require(config.get('fallback') is False, 'UNSUPPORTED_PROFILE')
+    if config['placement'] == 'service-network':
+        from .neoclaw_services import RoutedNetwork
+        return RoutedNetwork(config, chosen)
     if config['placement'] == 'local':
         return Local(config['provider_config'], config['credential'], chosen)
     require(config['placement'] == 'network', 'UNSUPPORTED_PROFILE')

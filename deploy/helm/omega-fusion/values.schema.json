@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "image",
+    "httpsPort",
+    "testFaultsEnabled",
+    "components"
+  ],
+  "properties": {
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "tag",
+        "pullPolicy"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pullPolicy": {
+          "enum": [
+            "IfNotPresent",
+            "Never"
+          ]
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^(|sha256:[a-f0-9]{64})$"
+        }
+      }
+    },
+    "httpsPort": {
+      "type": "integer",
+      "minimum": 1024,
+      "maximum": 65535
+    },
+    "testFaultsEnabled": {
+      "type": "boolean"
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "omega-agent",
+        "fusion-execution",
+        "fusion-storage",
+        "fusion-messaging"
+      ],
+      "properties": {
+        "omega-agent": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-execution": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-storage": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-messaging": {
+          "$ref": "#/definitions/component"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "existingSecret",
+        "persistence",
+        "resources",
+        "config"
+      ],
+      "properties": {
+        "existingSecret": {
+          "type": "string",
+          "minLength": 1
+        },
+        "persistence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "storageClass",
+            "size"
+          ],
+          "properties": {
+            "storageClass": {
+              "type": "string",
+              "minLength": 1
+            },
+            "size": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "resources": {
+          "type": "object",
+          "required": [
+            "limits",
+            "requests"
+          ],
+          "properties": {
+            "limits": {
+              "type": "object",
+              "required": [
+                "cpu",
+                "memory"
+              ]
+            },
+            "requests": {
+              "type": "object",
+              "required": [
+                "cpu",
+                "memory"
+              ]
+            }
+          }
+        },
+        "config": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "revision",
+            "capacity",
+            "nativeEnabled",
+            "workerEnabled",
+            "test"
+          ],
+          "properties": {
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            },
+            "capacity": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 128
+            },
+            "nativeEnabled": {
+              "type": "boolean"
+            },
+            "workerEnabled": {
+              "type": "boolean"
+            },
+            "test": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pause_at": {
+                  "enum": [
+                    "after_call_reservation",
+                    "after_submit_reply",
+                    "after_caller_receipt",
+                    "after_output_commit",
+                    "after_result_persist",
+                    "after_delivery_accept"
+                  ]
+                },
+                "drop_response_operation": {
+                  "enum": [
+                    "submit",
+                    "/ports/atom-create",
+                    "/ports/completion"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

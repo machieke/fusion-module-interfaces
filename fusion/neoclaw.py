@@ -65,12 +65,19 @@ class NalExecutionOwner(ExecutionOwner):
 
 
 class NalService:
-    def __init__(self, config_path, hook=lambda _: None, kernel=None):
+    def __init__(self, config_path, hook=lambda _: None, kernel=None, *, atoms_for=None, mailbox=None):
         self.path = Path(config_path)
         self.config = json.loads(self.path.read_text())
         require(self.config['profile'] in (c.PROFILE, ops.COMPOSITION) and self.config['sharing'] == 'generated-shareable', 'UNSUPPORTED_PROFILE')
-        paths = [Path(self.config[k]).resolve() for k in ('database', 'atoms_database', 'messages_database')]
-        require(len(set(paths)) == 3, 'UNSUPPORTED_PROFILE')
+        self.separate_owners = atoms_for is not None or mailbox is not None
+        if self.separate_owners:
+            require(atoms_for is not None and mailbox is not None and self.config['profile'] == c.PROFILE,
+                    'UNSUPPORTED_PROFILE')
+            require(not any(k in self.config for k in ('atoms_database', 'messages_database', 'da_root', 'atom_records')),
+                    'UNSUPPORTED_PROFILE')
+        else:
+            paths = [Path(self.config[k]).resolve() for k in ('database', 'atoms_database', 'messages_database')]
+            require(len(set(paths)) == 3, 'UNSUPPORTED_PROFILE')
         self.policy = Policy(config_path)
         self.chosen = c.selected(c.catalogue(self.config.get('atom_provider', 'detta'), self.config.get('provider', 'neoclaw-native')))
         self.profiles = {c.PROFILE: self.chosen}
@@ -79,14 +86,17 @@ class NalService:
             require(type(self.config['search_queries']) is list, 'UNSUPPORTED_PROFILE')
             for query in self.config['search_queries']: s.arguments(dict(query=query, max_results=10))
         self.hook, self.kernel = hook, kernel
-        if self.config.get('atom_provider', 'detta') == 'detta':
+        if self.separate_owners:
+            self.atoms_for, self.mailbox = atoms_for, mailbox
+        elif self.config.get('atom_provider', 'detta') == 'detta':
             raw_atoms = AtomOwner(self.config['atoms_database'], DettaStorage(self.config['detta_binary'], self.config['da_root']))
         else:
             require(self.config['atom_provider'] == 'fixture-files', 'UNSUPPORTED_PROFILE')
             raw_atoms = FileAtomFixture(self.config['atom_records'], self.config['da_root'])
-        self.atoms_for = lambda principal, chosen=None: AuthorizedAtoms(raw_atoms, self.policy, principal,
-                                                                      (chosen or self.chosen)['atom.storage'])
-        self.mailbox = MessageOwner(self.config['messages_database'], self.policy, self.config.get('capacity', 8))
+        if not self.separate_owners:
+            self.atoms_for = lambda principal, chosen=None: AuthorizedAtoms(raw_atoms, self.policy, principal,
+                                                                          (chosen or self.chosen)['atom.storage'])
+            self.mailbox = MessageOwner(self.config['messages_database'], self.policy, self.config.get('capacity', 8))
         self.db = connect(self.config['database'])
         # No migration: only an empty or already S01-owned journal is admitted.
         tables = {r[0] for r in self.db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
@@ -136,6 +146,8 @@ class NalService:
         principal = self.policy.authenticate(credential)
         module, chosen = self.selected(request)
         name, op = module.validate(request, chosen)
+        if self.separate_owners:
+            require(name == 'execution', 'UNSUPPORTED_OPERATION')
         scope, body = request['scope_ref'], request['body']
         self.policy.check(principal, scope, name + '.' + op)
         if module is s: self.authorize_search(principal, scope)

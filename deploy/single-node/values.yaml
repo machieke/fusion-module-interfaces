@@ -1,0 +1,7 @@
+# One node, one replica per owner. No hostPath, shared PVC or public ingress.
+# Supply the four existing Secrets before installation; see the runbook.
+image:
+  repository: fusion-single-node
+  tag: single-node-v1
+  pullPolicy: IfNotPresent
+testFaultsEnabled: false
