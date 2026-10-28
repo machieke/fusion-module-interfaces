@@ -1,0 +1,27 @@
+{
+  "case": "lost-publication",
+  "namespace": "omega-memory-q05-lost-publication",
+  "status": "FAIL",
+  "started": "2026-10-28T12:40:26.308815+00:00",
+  "placements": "separate agent/storage/search/embedding pods; same-node authenticated HTTPS",
+  "real": [
+    "native remember/query/parser/loop",
+    "E5 CPU",
+    "Chroma 1.5.5",
+    "DeTTa",
+    "HTTPS/DNS",
+    "k3s/Helm/PVCs"
+  ],
+  "fixtures": [
+    "model commands",
+    "empty channel input",
+    "unused global context/history",
+    "declared creation/enrichment clocks"
+  ],
+  "observations": {},
+  "actions": [],
+  "failure": "'config'",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py\", line 185, in main\n    try:test.run()\n        ^^^^^^^^^^\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py\", line 83, in run\n    if case=='lost-publication':self.config('fusion-search',test=dict(drop_response_operation='build'))\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py\", line 42, in config\n    def config(self,role,**cfg):self.values['components'].setdefault(role,dict(config={} ))['config'].update(cfg)\n                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\nKeyError: 'config'\n",
+  "observation_error": "['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] Error from server (NotFound): namespaces \"omega-memory-q05-lost-publication\" not found\n",
+  "finished": "2026-10-28T12:40:28.093502+00:00"
+}

@@ -41,16 +41,18 @@ class Access:
 
 
 class ReadService:
-    def __init__(self,config_path,credential,hook=lambda _:None):
+    def __init__(self,config_path,credential,hook=lambda _:None,*,atoms=None):
         self.policy=Policy(config_path);self.config=self.policy.current()['memory_read']
         cfg=self.config;self.credential=credential
         self.chosen=select([descriptor_read(x) for x in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False))
         self.access={n:Access(self.policy,credential,d,cfg['scope'],cfg['embedding']) for n,d in self.chosen.items()}
-        from .atom_feed import FeedAtomOwner
-        from .adapters.detta import DettaStorage
-        root=Path(cfg['root'])
-        owner=FeedAtomOwner(root/'feed.sqlite',DettaStorage(cfg['detta_binary'],str(root/'payloads')),self.access['atom.storage'],hook)
-        self.atoms=AtomSession(owner,self.access['atom.storage']);self.hook=hook
+        if atoms is None:
+            from .atom_feed import FeedAtomOwner
+            from .adapters.detta import DettaStorage
+            root=Path(cfg['root'])
+            owner=FeedAtomOwner(root/'feed.sqlite',DettaStorage(cfg['detta_binary'],str(root/'payloads')),self.access['atom.storage'],hook)
+            atoms=AtomSession(owner,self.access['atom.storage'])
+        self.atoms=atoms;self.hook=hook
     def search(self):
         from .adapters.chroma_vector import ChromaVector
         cfg=self.config

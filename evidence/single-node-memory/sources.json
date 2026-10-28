@@ -1,0 +1,68 @@
+{
+  "archive": {
+    "local_only": true,
+    "path": "artifacts/single-node-memory/images-v6.tar",
+    "sha256": "ecd4aa618f81697c8cc8184ee0ac3a101455eeccd9b1cd71a70549a393bb7c61"
+  },
+  "asset_validation": "Every recorded SDK file checked (caller 6414, provider 26871), original helper, Python/native source hashes and complete E5 model files checked before packaging; prefixes and launch paths relocated with new runtime identities.",
+  "baseline_relationship": "d39->369 relevant deployment diff: report/runbook, values digest and certificate helper; no Fusion or native host runtime changes. Prior 84/22/11 counts remain historical.",
+  "caller_runtime_manifest_sha256": "e800ba2f71ac3a4df05c09d0396bfc8ed0cd6d15107aff0869611eececc71425",
+  "chroma": "1.5.5",
+  "current_head": "369483360b51baf968ad41b19d6776ac66fe085f",
+  "detta": {
+    "binary_sha256": "cb7ed1a27e10e2869ca7357c6c249861623b9849c49fcbf7ef300aa19831f756",
+    "source_commit": "272888f264dd2dde18b574cabb53c266b0dac2ec"
+  },
+  "helper": {
+    "commit": "218484875d5d1bfb217a9a03d3983dc1ed9d406c",
+    "file": "lib_chromadb.py",
+    "sha256": "461b78f92234b58e1090e66c332d627a063e201751d8247459d82a18e7afd36d"
+  },
+  "images": "images.json",
+  "k3s": {
+    "image": "rancher/k3s@sha256:5e0707cfd1239b358ef73f3254bc3eadc027dd30cd5ec6ca41e29e47652a1b8c",
+    "nodes": 1,
+    "version": "v1.34.1+k3s1"
+  },
+  "model": {
+    "files": {
+      "1_Pooling/config.json": "56c469dba9e31869bb7dfceb9b3d76ac06549d1ba869509d8eb4e8aeb31d62d1",
+      "config.json": "2394ce5c9ffac96c88496de5d7a92f5d3fec1015b9d25f9f85545f13dfd7a269",
+      "model.safetensors": "d741c1a688a6169af0ecb5a047c44645cd992c31e1bf431269f98bba9ae2911a",
+      "modules.json": "c6e29747481e8b5dd2b58401966aeac910de39092f90cda9a704b1545f902b04",
+      "sentence_bert_config.json": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529",
+      "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+      "tokenizer_config.json": "ae83fa6ca0333117ff12606020af925d648667ef70d92ff7f27d781ba0ca4544",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    },
+    "model": "intfloat/e5-large-v2",
+    "revision": "f169b11e22de13617baa190a028a32f3493550b6"
+  },
+  "model_runtime_manifest_sha256": "7b5cdc5023f3eb1bb6002ed592e3fe7adba36bd17b265b9e3c4ecfccf4c715ae",
+  "native_pins": {
+    "PeTTa": "fea83178af3722666d2948d074591d10a3134f56",
+    "mettaclaw": "2af37c3fec18613de54ca42fde2382a9087d4524",
+    "swipl": "e58621a91ab7dd530e1e8185ed518f63d851c414"
+  },
+  "native_runtime_manifest_sha256": "24d90a976350f24f1d1c2414f6db12d140db269c6682225b4fce14e2a22b941f",
+  "packages": [
+    "packages/base-v6.json",
+    "packages/caller-v6.json",
+    "packages/embedding-v6.json"
+  ],
+  "previous_runtime_implementation": "d39d0aa87dd793196afe10daa4288aa6d6a5015c",
+  "python": "3.12.12",
+  "recipes": [
+    "deploy/single-node/package_image.py",
+    "deploy/single-node/package_memory.py",
+    "scripts/build_s01.py",
+    "scripts/build_detta.py",
+    "integration/neoclaw/memory_build.py",
+    "integration/neoclaw/embedding_caller_build.py"
+  ],
+  "reproducibility": "Pinned source/asset recipe and measured products; no bit-identical compiler/container rebuild claim.",
+  "source_state": "Uncommitted bounded working-tree increment; hashes in final-source-manifest.json and changes.json",
+  "starting_commit": "369483360b51baf968ad41b19d6776ac66fe085f",
+  "swipl": "10.0.1"
+}

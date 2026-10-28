@@ -1,0 +1,18 @@
+lost-storage: FAIL {'append': {'coherent_view': 'not-yet-observed', 'creation_time': '2031-04-05 06:07:08', 'memory_uuid': '8726ab93-79b9-4b44-a004-d7c7c8b3d258', 'metadata': 'not-yet-observed', 'native_success': False, 'publication': 'not-yet-observed', 'storage': 'not-yet-observed'}, 'code': 'NOT_AVAILABLE', 'status': 'PENDING_OR_FAILED'}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py", line 200, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py", line 196, in main
+    test.k('delete','namespace',test.name,'--wait=false')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py", line 39, in k
+    def k(self,*args,**kw):return self.command(['kubectl','--kubeconfig',self.args.kubeconfig,'-n',self.name,*args],**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py", line 36, in command
+    if result.returncode:raise RuntimeError(str(args[:3])+' '+result.stderr[-2000:])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: ['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] warning: deleting cluster-scoped resources, not scoped to the provided namespace
+Error from server (NotFound): namespaces "omega-memory-q05-lost-publication" not found
+

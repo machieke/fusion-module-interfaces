@@ -35,6 +35,25 @@ class Chart(unittest.TestCase):
         changed=sums(self.render('--set','components.omega-agent.config.revision=changed').stdout)
         self.assertEqual(len(first),4);self.assertEqual(sum(a!=b for a,b in zip(first,changed)),1)
 
+    def test_memory_overlay_has_six_owners_and_distinct_encoder_image(self):
+        result=self.render('-f',str(ROOT/'deploy/single-node/memory-values.yaml'))
+        self.assertEqual(result.returncode,0,result.stderr);text=result.stdout
+        self.assertEqual(text.count('kind: StatefulSet'),6)
+        self.assertEqual(text.count('volumeClaimTemplates:'),6)
+        self.assertEqual(text.count('readOnlyRootFilesystem: true'),6)
+        self.assertIn('fusion-memory-embedding',text);self.assertIn('fusion-memory-caller',text)
+        self.assertIn('neoclaw-memory-services/1',text)
+        self.assertEqual(text.count('scheme: HTTP,'),3)
+        self.assertEqual(text.count('scheme: HTTPS,'),15)
+        self.assertNotIn('key: tls.key',text)
+        self.assertIn('key: fusion-embedding-token',text)
+        for forbidden in ('hostPath:','127.0.0.1','/home/','kind: Secret','model.safetensors'):
+            self.assertNotIn(forbidden,text)
+        for role in ('fusion-search','fusion-embedding'):
+            self.assertIn('secretName: '+role+'-tls-auth',text)
+        invalid=self.render('--set','memory.enabled=true')
+        self.assertNotEqual(invalid.returncode,0)
+
     def test_schema_rejects_replica_changes_inline_secrets_and_unknown_components(self):
         for override in ['components.fusion-storage.replicas=2','components.omega-agent.credential=secret',
                          'components.another.config.capacity=1','components.omega-agent.config.test.pause_at=unknown']:

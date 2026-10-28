@@ -1,0 +1,78 @@
+image:
+  repository: fusion-single-node
+  tag: memory-base-v6
+  digest: sha256:0fabdea2eb745bca5ee5e737bf453ea9980d5dfb40896f37ded3db45b703cb48
+  pullPolicy: Never
+memory:
+  enabled: true
+  scope: generated-k3s-memory
+  session: 32766014-fc0c-597b-8674-4a6307b5aa56
+  corpus: k3s-synthetic-memory-20261028
+  model: neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1
+  inputs:
+    Generated copper kettle boils water for imaginary tea.: Generated copper kettle
+      boils water for imaginary tea.
+    Synthetic violet beacon Ω stores seven paper moons.: Synthetic violet beacon Ω
+      stores seven paper moons.
+  queries:
+  - Which synthetic beacon stores seven paper moons?
+  query_vector_hashes:
+  - 9df85ee296bcd9309f76f89ecde1d743c92b641ffec2ea9352c71ae0d9765a3f
+  responses:
+  - remember Generated copper kettle boils water for imaginary tea.
+  - query Which synthetic beacon stores seven paper moons?
+  - remember Synthetic violet beacon Ω stores seven paper moons.
+  - query Which synthetic beacon stores seven paper moons?
+  - remember Synthetic violet beacon Ω stores seven paper moons.
+  - query Which synthetic beacon stores seven paper moons?
+  - ''
+  expected_feedback:
+    '1':
+    - - REMEMBER-SUCCESS
+      - 1
+    '2':
+    - - Synthetic violet beacon Ω stores seven paper moons.
+      - 0
+    '3':
+    - - REMEMBER-SUCCESS
+      - 1
+    '4':
+    - - Synthetic violet beacon Ω stores seven paper moons.
+      - 1
+    '5':
+    - - REMEMBER-SUCCESS
+      - 1
+    '6':
+    - - Synthetic violet beacon Ω stores seven paper moons.
+      - 1
+  invocation_timeout_ms: 30000
+  clock_fixture: 2000000000.0
+  creation_clock_fixture: '2031-04-05 06:07:08'
+components:
+  omega-agent:
+    image:
+      repository: fusion-memory-caller
+      tag: memory-v6
+      digest: sha256:abf2891c238c948207bbc31857c902a40a20c2bec434c57bfd98a2b74fd8768f
+      pullPolicy: Never
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+      limits:
+        cpu: '2'
+        memory: 1Gi
+  fusion-search:
+    enabled: true
+    image:
+      repository: fusion-memory-caller
+      tag: memory-v6
+      digest: sha256:abf2891c238c948207bbc31857c902a40a20c2bec434c57bfd98a2b74fd8768f
+      pullPolicy: Never
+  fusion-embedding:
+    enabled: true
+    image:
+      repository: fusion-memory-embedding
+      tag: memory-v6
+      digest: sha256:dad26194616f6607ab38eb8fc5c7c011775bd88d50b4193edfb7c613f082939d
+      pullPolicy: Never

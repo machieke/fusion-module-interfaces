@@ -40,13 +40,14 @@ def main():
     settings, config, state, run = configure(config_path)
     # This envelope selects the owner, not its current secrets/test knobs. It
     # refuses accidentally mounting a different service's or legacy journal PVC.
-    seal = dict(composition=settings['service_composition'],role=settings['role'],scope=c.SCOPE)
+    seal = dict(composition=settings['service_composition'],role=settings['role'],scope=settings.get('memory',{}).get('scope',c.SCOPE))
     if (state/'owner-seal.json').exists():
         require(json.loads((state/'owner-seal.json').read_text())==seal,'UNSUPPORTED_PROFILE')
     else:
         require(set(p.name for p in state.iterdir()) <= {'owner.lock','lost+found'}, 'UNSUPPORTED_PROFILE')
         write(state/'owner-seal.json',seal)
     stop = threading.Event(); fatal = threading.Event(); role = settings['role']; child = None; worker = None
+    memory=settings['service_composition']=='neoclaw-memory-services/1'
     chosen = c.selected(c.catalogue('detta')); owner = None; kernel = None
     def hook(stage):
         if config.get('test_failpoints') and config.get('pause_at')==stage:
@@ -61,7 +62,17 @@ def main():
         def atoms_for(principal, selected=None):
             require(principal=='worker','UNAUTHORIZED'); return atoms
         return NalService(run/'owner.json',hook,kernel,atoms_for=atoms_for,mailbox=mailbox)
-    if role == 'fusion-execution':
+    if memory and role=='fusion-embedding':
+        from fusion.adapters.native_e5 import NativeE5
+        kernel=NativeE5(run/'owner.json')
+        write(state/'encoder-readiness.json',kernel.readiness)
+    elif memory and role=='fusion-search':
+        from .memory_host import SearchHost
+        owner=SearchHost(run/'owner.json',hook)
+    elif memory and role=='fusion-storage':
+        from fusion.memory_services import StoragePorts
+        owner=StoragePorts(run/'owner.json',hook)
+    elif role == 'fusion-execution':
         kernel = NativeTruthDeduction(config['runtime'])  # Hash checks; no numerical evaluation.
         service=execution(); service.close()
     elif role in ('fusion-storage','fusion-messaging'):
@@ -100,9 +111,18 @@ def main():
                 require(len(auth)==1 and auth[0].startswith('Bearer '),'UNAUTHORIZED')
                 require(self.headers.get('Content-Type')=='application/json' and not self.headers.get('Transfer-Encoding'))
                 sizes=self.headers.get_all('Content-Length',[])
-                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=8192)
+                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(98304 if memory else 8192))
                 raw=self.rfile.read(int(sizes[0]));require(len(raw)==int(sizes[0]));request=json_loads(raw)
-                if role=='fusion-execution':
+                if memory:
+                    if role=='fusion-embedding':
+                        from fusion.embedding_service import EmbeddingService
+                        require(self.path=='/s03-encode','UNSUPPORTED_OPERATION')
+                        service=EmbeddingService(run/'owner.json',kernel,hook)
+                        with encode_lock:result=service.invoke(auth[0][7:],request)
+                    else:
+                        require(owner is not None,'UNSUPPORTED_OPERATION')
+                        result=owner.invoke(self.path,auth[0][7:],request)
+                elif role=='fusion-execution':
                     require(self.path=='/s01','UNSUPPORTED_OPERATION')
                     service=execution(); result=dict(ok=service.invoke(auth[0][7:],request),provider=request['selection'])
                 else:
@@ -124,13 +144,18 @@ def main():
             finally:
                 if service is not None:service.close()
             self.reply(result)
-    context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);context.minimum_version=ssl.TLSVersion.TLSv1_2
-    context.load_cert_chain(config['tls_certificate'],config['tls_key'])
+    encode_lock=threading.Lock()
+    # The memory caller is outbound-only: it mounts no server private key.
+    # Its HTTP listener serves only inert kubelet probes; module RPCs stay TLS.
+    context=None
+    if not (memory and role=='omega-agent'):
+        context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);context.minimum_version=ssl.TLSVersion.TLSv1_2
+        context.load_cert_chain(config['tls_certificate'],config['tls_key'])
     class Server(ThreadingHTTPServer):
         allow_reuse_address=True
         def get_request(self):
             sock,address=super().get_request();sock.settimeout(2)
-            try:return context.wrap_socket(sock,server_side=True),address
+            try:return (context.wrap_socket(sock,server_side=True) if context else sock),address
             except BaseException:sock.close();raise
     def terminate(*_):
         stop.set()
@@ -142,12 +167,13 @@ def main():
         server.timeout=.2
         if role=='fusion-execution' and settings['worker_enabled']:
             worker=threading.Thread(target=pump);worker.start()
-        if role=='omega-agent' and settings['native_enabled']:
+        if (role=='omega-agent' and settings['native_enabled']) or (memory and role=='fusion-search'):
             # Startup dependency observation only: no invocation identity,
             # occurrence deadline, reservation or POST exists yet. After a
             # bounded failure the process exits; it never substitutes providers.
-            until=time.monotonic()+60
-            for name in ('fusion-execution','fusion-storage','fusion-messaging'):
+            until=time.monotonic()+(120 if memory else 60)
+            dependencies=(('fusion-storage',) if role=='fusion-search' else ('fusion-storage','fusion-search','fusion-embedding')) if memory else ('fusion-execution','fusion-storage','fusion-messaging')
+            for name in dependencies:
                 while True:
                     conn=http.client.HTTPSConnection(settings['peers'][name],settings['https_port'],timeout=1,
                         context=ssl.create_default_context(cafile='/secrets/ca.crt'))
@@ -157,6 +183,11 @@ def main():
                     except (OSError,http.client.HTTPException):pass
                     finally:conn.close()
                     if stop.wait(.2) or time.monotonic()>=until:raise SystemExit('DEPENDENCY_NOT_READY')
+            if memory and role=='fusion-search':owner.initialize(state)
+        if role=='omega-agent' and settings['native_enabled']:
+            if memory:
+                from .memory_host import prepare_agent
+                prepare_agent(settings,state,run)
             log=open(state/'native.log','ab')
             child=subprocess.Popen([sys.executable,'-m','integration.neoclaw.native_loop',str(run/'application.json')],
                                    stdout=log,stderr=log,start_new_session=True)
@@ -174,6 +205,7 @@ def main():
         except subprocess.TimeoutExpired:os.killpg(child.pid,signal.SIGKILL);child.wait()
         log.close()
     write(state/'shutdown.json',dict(graceful=worker is None or not worker.is_alive(),role=role))
+    if memory and role=='fusion-embedding':kernel.close()
     lock.close()
 
 

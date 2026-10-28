@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/fusion/integration/single_node/server.py", line 208, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/opt/fusion/integration/single_node/server.py", line 67, in main
+    kernel=NativeE5(run/'owner.json')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/adapters/native_e5.py", line 38, in __init__
+    self.readiness = self.read(45.)
+                     ^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/adapters/native_e5.py", line 50, in read
+    require(chunk, 'NOT_AVAILABLE'); data += chunk
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

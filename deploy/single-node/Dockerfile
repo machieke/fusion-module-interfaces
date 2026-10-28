@@ -1,4 +1,5 @@
 FROM debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8
+RUN useradd --uid 1000 --user-group --home-dir /tmp --no-create-home --shell /usr/sbin/nologin fusion
 COPY native /opt/native
 COPY source /opt/fusion
 ENV PATH=/opt/native/python/bin:/usr/bin:/bin \

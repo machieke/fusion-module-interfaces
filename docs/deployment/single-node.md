@@ -95,3 +95,8 @@ Only the task-owned `omega-demo` namespace is retained for inspection, with four
 `MULTI_NODE=NOT_RUN`  
 `PRODUCTION_READINESS=NOT_ESTABLISHED`  
 `ADDITIONAL_LIVE_GENERATIONS=0`
+
+The subsequent [single-node memory service deployment](single-node-memory.md)
+qualifies native `remember → query` with separate Embedding, Search and storage
+owners on fresh synthetic state. It is additional deployment evidence; the S01
+results and source identities on this page remain historical, unchanged results.

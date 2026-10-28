@@ -1,0 +1,41 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 743B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM docker.io/library/debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8
+#4 CACHED
+
+#5 [internal] load build context
+#5 ...
+
+#6 [2/5] RUN useradd --uid 1000 --user-group --home-dir /tmp --no-create-home --shell /usr/sbin/nologin fusion
+#6 DONE 0.8s
+
+#5 [internal] load build context
+#5 transferring context: 178.54MB 2.5s done
+#5 DONE 2.5s
+
+#7 [3/5] COPY native /opt/native
+#7 DONE 0.6s
+
+#8 [4/5] COPY source /opt/fusion
+#8 DONE 0.1s
+
+#9 [5/5] WORKDIR /opt/fusion
+#9 DONE 0.1s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 1.6s done
+#10 writing image sha256:a1e5b8b29bd78bd76b2d38bd936c2ce530326cff109994327c9514e11a6a3f46 done
+#10 naming to docker.io/library/fusion-single-node:memory-base-v4 done
+#10 DONE 1.6s

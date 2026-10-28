@@ -1,0 +1,21 @@
+encoder-capture: PASS 
+storage-outage: FAIL {'append': {'coherent_view': 'not-yet-observed', 'creation_time': '2031-04-05 06:07:08', 'memory_uuid': 'f280306c-f2ff-426a-8fac-888f4f47d912', 'metadata': 'not-yet-observed', 'native_success': False, 'publication': 'observed', 'storage': 'accepted'}, 'code': 'DEADLINE_EXCEEDED', 'status': 'PENDING_OR_FAILED'}
+search-outage: PASS 
+budget-outage: FAIL ['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] Traceback (most recent call last):
+  File "<string>", line 8, in <module>
+  File "/opt/fusion/fusion/neoclaw_append.py", line 117, in call
+    self.reserve(row,op=='build')
+  File "/opt/fusion/fusion/neoclaw_append.py", line 125, in reserve
+    self.db.execute('BEGIN IMMEDIATE');state=self.state(row)
+                                             ^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/neoclaw_append.py", line 72, in state
+    result=self.db.execute('SELECT * FROM app_memory_writes WHERE id=?',(row['id'],)).fetchone()
+                                                                         ~~~^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+command terminated with exit code 1
+
+wrong-credential: PASS 
+revocation: PASS 
+auth: PASS 
+rebuild: PASS 
+config-restart: PASS 

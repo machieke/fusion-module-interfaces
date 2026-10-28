@@ -1,0 +1,39 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 253B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/fusion-single-node:memory-base-v5
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 ...
+
+#5 [1/4] FROM docker.io/library/fusion-single-node:memory-base-v5
+#5 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 330.51MB 3.8s done
+#4 DONE 3.9s
+
+#6 [2/4] COPY sdk /opt/sdk
+#6 DONE 1.0s
+
+#7 [3/4] COPY helper /opt/helper
+#7 DONE 0.1s
+
+#8 [4/4] COPY runtime.json /opt/memory-runtime.json
+#8 DONE 0.1s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 2.4s done
+#9 writing image sha256:7abb367090f95b3fd1abd89a388294aad98305166d938e7ad8ef82592e8d4b70 done
+#9 naming to docker.io/library/fusion-memory-caller:memory-v5 done
+#9 DONE 2.4s

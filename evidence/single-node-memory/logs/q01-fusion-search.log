@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/fusion/integration/single_node/server.py", line 208, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/opt/fusion/integration/single_node/server.py", line 182, in main
+    if memory and role=='fusion-search':owner.initialize(state)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/integration/single_node/memory_host.py", line 33, in initialize
+    self.initial=service.search().build_named(self.scope,intent['head'],'initial-empty',intent['deadline_ms'])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/adapters/chroma_vector.py", line 157, in build_named
+    done=self.published(scope,through,key)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/adapters/chroma_vector.py", line 134, in published
+    require(scope==self.scope,'UNAUTHORIZED');principal=self.access.authorize(scope,'published')
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/vector_composition.py", line 33, in authorize
+    require(scope==self.scope,'UNAUTHORIZED');require(operation in self.descriptor.operations,'UNSUPPORTED_OPERATION')
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: UNSUPPORTED_OPERATION

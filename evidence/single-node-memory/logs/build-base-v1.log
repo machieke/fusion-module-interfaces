@@ -1,0 +1,38 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 641B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8
+#5 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 178.01MB 2.2s done
+#4 DONE 2.2s
+
+#6 [2/4] COPY native /opt/native
+#6 CACHED
+
+#7 [3/4] COPY source /opt/fusion
+#7 DONE 0.2s
+
+#8 [4/4] WORKDIR /opt/fusion
+#8 DONE 0.1s
+
+#9 exporting to image
+#9 exporting layers 0.1s done
+#9 writing image sha256:aa49d54595a3235d3194590893fa0825d0ce6239c24eb345080c4bfb13cdaf3f
+#9 writing image sha256:aa49d54595a3235d3194590893fa0825d0ce6239c24eb345080c4bfb13cdaf3f done
+#9 naming to docker.io/library/fusion-single-node:memory-base-v1 done
+#9 DONE 0.1s

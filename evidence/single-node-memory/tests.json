@@ -1,0 +1,111 @@
+{
+  "additional_live_generations": 0,
+  "cluster": {
+    "commands": [
+      "PYTHONPATH=. artifacts/s03/venv/bin/python -m integration.single_node.test_memory_cluster --kubeconfig artifacts/single-node/kubeconfig --prefix omem-final-a --output artifacts/single-node-memory/final-a --cleanup baseline lost-storage lost-publication caller-vector caller-publication caller-result enrollment storage-acceptance search-before-publication search-after-publication",
+      "PYTHONPATH=. artifacts/s03/venv/bin/python -m integration.single_node.test_memory_cluster --kubeconfig artifacts/single-node/kubeconfig --prefix omem-final-b --output artifacts/single-node-memory/final-b --cleanup encoder-capture storage-outage search-outage budget-outage wrong-credential revocation auth rebuild config-restart",
+      "PYTHONPATH=. artifacts/s03/venv/bin/python -m integration.single_node.test_memory_cluster --kubeconfig artifacts/single-node/kubeconfig --prefix omem-closeout --output artifacts/single-node-memory/closeout --cleanup budget-outage storage-outage enrollment expired-enrollment health"
+    ],
+    "distinct_final_memory_scenarios": 21,
+    "executions": 24,
+    "failed_executions": 3,
+    "frozen_batches": [
+      "final-a",
+      "final-b",
+      "closeout"
+    ],
+    "passed_executions": 21,
+    "runner": "integration.single_node.test_memory_cluster",
+    "s01": {
+      "distinct_scenarios": 2,
+      "executions": 6,
+      "passed": 6,
+      "qualification": "baseline and health repeated across development/final images; original-smoke uses literal unchanged original values/digest with new chart."
+    }
+  },
+  "impact_map": {
+    "chart/host/package": "chart tests, original S01 values, final-base S01, all final memory scenarios",
+    "native compatibility": "unchanged original native oracle and adapted-local/HTTPS parity; no numerical source changes",
+    "owner/transport injection": "selected unit/contracts; append/vector/embedding native suites; pod auth/recovery/rebuild",
+    "unselected": "No full M1-M5 suite, live web, chain, IRC or generative-model execution in this increment."
+  },
+  "invocation_errors": [
+    {
+      "detail": "Invalid module names tests.test_lookup/tests.test_atom_feed; two unittest loader errors, no behavioral methods executed.",
+      "log": "logs/owner-regression-01.log"
+    }
+  ],
+  "native": {
+    "command": "PYTHONPATH=. S03_2_EVIDENCE=artifacts/single-node-memory/historical-append S03_1_EVIDENCE=artifacts/single-node-memory/historical-embedding S03_EVIDENCE=artifacts/single-node-memory/historical-vector artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_append integration.neoclaw.test_embedding integration.neoclaw.test_memory",
+    "failure_detail": "Both ten-second failpoint observers expired with process still running (poll() is None), during concurrent qualification. Both unchanged methods passed in isolation; raw failures retained.",
+    "failures": [
+      "test_lost_replies_spend_original_budget",
+      "test_native_process_kills_and_frozen_handoff (after_native_result_capture subtest)"
+    ],
+    "fixtures": [
+      "external model/channel",
+      "vector fixtures in test_memory",
+      "declared fault injection and clocks"
+    ],
+    "groups": {
+      "integration.neoclaw.test_append": {
+        "encoder": "REAL_E5",
+        "initial_passed": 16,
+        "methods": 16
+      },
+      "integration.neoclaw.test_embedding": {
+        "encoder": "REAL_E5",
+        "initial_passed": 13,
+        "methods": 13
+      },
+      "integration.neoclaw.test_memory": {
+        "encoder": "VECTOR_FIXTURE",
+        "initial_passed": 11,
+        "methods": 13
+      }
+    },
+    "initial": {
+      "failed": 2,
+      "log": "logs/native-regressions-01.log",
+      "passed": 40,
+      "seconds": 4122.512
+    },
+    "real": [
+      "native parser/loop/skills",
+      "Chroma",
+      "DeTTa",
+      "TLS",
+      "E5 only in append/embedding groups"
+    ],
+    "recheck_command": "PYTHONPATH=. S03_2_EVIDENCE=artifacts/single-node-memory/final-append S03_1_EVIDENCE=artifacts/single-node-memory/final-embedding S03_EVIDENCE=artifacts/single-node-memory/final-vector artifacts/s03/venv/bin/python -m unittest -v integration.neoclaw.test_memory.MemoryIntegration.test_lost_replies_spend_original_budget integration.neoclaw.test_memory.MemoryIntegration.test_native_process_kills_and_frozen_handoff integration.neoclaw.test_append.AppendIntegration.test_original_local_https_and_mixed_same_session integration.neoclaw.test_embedding.EmbeddingIntegration.test_deadline_before_encode_and_after_capture",
+    "rechecks": {
+      "log": "logs/native-final-rechecks.log",
+      "method_runs": 4,
+      "new_unique_methods": 0,
+      "passed": 4,
+      "seconds": 425.911
+    },
+    "source_qualification": "Full suite ran while additive service-network/hosting code evolved (initial image source in packages/base-v3.json, later branch in packages/base-v5.json); historical local/loopback branches and historical test files unchanged. Not claimed one frozen source snapshot for all 42. Final four method rechecks use final-check-source.json, final served source.",
+    "unique_methods": 42
+  },
+  "owner_regression": {
+    "baseline_log": "logs/baseline-python312.log",
+    "command": "PYTHONPATH=. artifacts/s03/venv/bin/python -m unittest -v tests.test_m5 tests.test_m5_boundaries tests.test_neoclaw tests.test_neoclaw_application tests.test_responses",
+    "errors": 1,
+    "log": "logs/owner-regression-02.log",
+    "passed": 46,
+    "preexisting_error": "tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation: Python 3.12 runtime isinstance(provider, AtomStorage) refuses fixture proxy in unchanged fusion/private.py; reproduced at exact starting commit.",
+    "unique_methods": 47,
+    "working_recheck_log": "logs/working-python312-recheck.log"
+  },
+  "source_checks": [
+    "image-source-reconciliation.json",
+    "final-source-manifest.json"
+  ],
+  "unit": {
+    "command": "PYTHONPATH=. artifacts/s03/venv/bin/python -m unittest -v tests.test_memory_services tests.test_append_contracts tests.test_embedding_contracts tests.test_vector_contracts tests.test_single_node tests.test_single_node_chart",
+    "log": "logs/selected-unit-final.log",
+    "passed": 31,
+    "unique_methods": 31
+  }
+}

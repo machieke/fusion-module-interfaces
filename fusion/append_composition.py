@@ -21,6 +21,10 @@ def configuration(path):
     chosen=c.select([descriptor_read(d) for d in cfg['catalogue']])
     frozen={k:cfg[k] for k in ('profile','sharing','principal','scope','corpus','session','model','inputs','placement','metadata_root')}
     frozen['selections']={n:selection_token(d) for n,d in chosen.items()}
+    if cfg['placement']=='service-network':
+        from .memory_services import freeze_placement
+        frozen.update(freeze_placement(cfg, ('atom.storage', 'search')))
+        return cfg,chosen,frozen
     if cfg['placement']=='network':
         require('provider_config' not in cfg,'UNSUPPORTED_PROFILE')
         frozen['endpoint']={**cfg['endpoint'],'ca_sha256':digest(Path(cfg['endpoint']['ca_file']).read_bytes())}
@@ -46,15 +50,17 @@ class Access:
 
 
 class AppendService:
-    def __init__(self,path,credential,hook=lambda _:None):
-        self.policy=Policy(path);self.config=self.policy.current()['memory_append'];self.credential=credential;self.hook=hook
+    def __init__(self,path,credential,hook=lambda _:None,*,atoms=None,policy=None):
+        self.policy=policy or Policy(path);self.config=self.policy.current()['memory_append'];self.credential=credential;self.hook=hook
         self.chosen=c.select([descriptor_read(d) for d in self.config['catalogue']])
         self.access={n:Access(self.policy,credential,d) for n,d in self.chosen.items()}
-        from .atom_feed import FeedAtomOwner
-        from .adapters.detta import DettaStorage
-        cfg=self.config;root=Path(cfg['root'])
-        owner=FeedAtomOwner(root/'feed.sqlite',DettaStorage(cfg['detta_binary'],str(root/'payloads')),self.access['atom.storage'],hook)
-        self.atoms=AtomSession(owner,self.access['atom.storage'])
+        if atoms is None:
+            from .atom_feed import FeedAtomOwner
+            from .adapters.detta import DettaStorage
+            cfg=self.config;root=Path(cfg['root'])
+            owner=FeedAtomOwner(root/'feed.sqlite',DettaStorage(cfg['detta_binary'],str(root/'payloads')),self.access['atom.storage'],hook)
+            atoms=AtomSession(owner,self.access['atom.storage'])
+        self.atoms=atoms
 
     def authorize(self,accepted,mode):
         cfg=self.policy.current()['memory_append'];principal=self.policy.authenticate(self.credential)

@@ -17,6 +17,13 @@ def configuration(path,profile=c.PROFILE):
     chosen = c.select([descriptor_read(d) for d in cfg['catalogue']],profile)
     frozen = {k:cfg[k] for k in ('principal', 'scope', 'sharing', 'profile', 'model', 'preprocessing', 'inputs', 'placement')}
     frozen['selection'] = selection_token(chosen)
+    if cfg['placement']=='service-network':
+        # Preserve the existing caller's credential-rotation contract through
+        # composition; it does not branch on provider placement.
+        cfg['credential']=cfg['service_credentials']['embedding']
+        from .memory_services import freeze_placement
+        frozen.update(freeze_placement(cfg, ('embedding',)))
+        return cfg,chosen,frozen
     if cfg['placement'] == 'network':
         require('provider_config' not in cfg, 'UNSUPPORTED_PROFILE')
         endpoint = cfg['endpoint']
@@ -28,6 +35,9 @@ def configuration(path,profile=c.PROFILE):
 
 
 def binding(cfg, chosen):
+    if cfg['placement']=='service-network':
+        from .memory_services import encoder_binding
+        return encoder_binding(cfg,chosen)
     if cfg['placement'] == 'network':
         return EmbeddingNetwork(cfg['endpoint'], cfg['credential'], chosen)
     from .adapters.native_e5 import NativeE5

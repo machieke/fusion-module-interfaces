@@ -1,0 +1,29 @@
+test_lookup (unittest.loader._FailedTest.test_lookup) ... ERROR
+test_atom_feed (unittest.loader._FailedTest.test_atom_feed) ... ERROR
+
+======================================================================
+ERROR: test_lookup (unittest.loader._FailedTest.test_lookup)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_lookup
+Traceback (most recent call last):
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'tests.test_lookup'
+
+
+======================================================================
+ERROR: test_atom_feed (unittest.loader._FailedTest.test_atom_feed)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_atom_feed
+Traceback (most recent call last):
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'tests.test_atom_feed'
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)

@@ -17,16 +17,18 @@ ROLES=('omega-agent','fusion-execution','fusion-storage','fusion-messaging')
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--kubeconfig',required=True)
-    p.add_argument('--namespace',required=True);p.add_argument('--directory',required=True);a=p.parse_args()
+    p.add_argument('--memory',action='store_true');p.add_argument('--namespace',required=True);p.add_argument('--directory',required=True);a=p.parse_args()
     root=Path(a.directory).resolve();root.mkdir(mode=0o700,parents=True,exist_ok=False)
     os.umask(0o077)
     def openssl(*args):subprocess.run(['openssl',*map(str,args)],cwd=root,check=True,capture_output=True)
     (root/'ca.cnf').write_text('[req]\ndistinguished_name=dn\nx509_extensions=ca\n[dn]\n[ca]\nbasicConstraints=critical,CA:TRUE\nkeyUsage=critical,keyCertSign,cRLSign\nsubjectKeyIdentifier=hash\n')
     openssl('req','-x509','-newkey','rsa:2048','-nodes','-keyout','ca.key','-out','ca.crt','-days','7',
             '-subj','/CN=synthetic-single-node-ca','-config','ca.cnf')
-    client={r:secrets.token_hex(32) for r in ROLES[1:]}
-    worker={r:secrets.token_hex(32) for r in ROLES[1:]}
-    for role in ROLES:
+    roles=ROLES+(('fusion-search','fusion-embedding') if a.memory else ())
+    source_token=secrets.token_hex(32)
+    client={r:secrets.token_hex(32) for r in roles[1:]}
+    worker={r:secrets.token_hex(32) for r in roles[1:]}
+    for role in roles:
         dns=f'{role}.{a.namespace}.svc.cluster.local'
         # X.509 CN has a 64-byte limit; hostname verification uses the complete
         # DNS SAN below, including long but valid Kubernetes namespaces.
@@ -40,11 +42,14 @@ def main():
         else:
             data.update({'caller-token':client[role].encode(),'worker-token':worker[role].encode()})
             if role=='fusion-execution':data.update({r+'-token':worker[r].encode() for r in ROLES[2:]})
+        if a.memory and role in ('fusion-storage','fusion-search'):
+            data['indexer-token']=(source_token if role=='fusion-storage' else secrets.token_hex(32)).encode()
+            if role=='fusion-search':data['storage-source-token']=source_token.encode()
         value=dict(apiVersion='v1',kind='Secret',metadata=dict(name=role+'-tls-auth',namespace=a.namespace),
                    type='Opaque',data={k:base64.b64encode(v).decode() for k,v in data.items()})
         (root/(role+'.secret.json')).write_text(json.dumps(value))
         subprocess.run(['kubectl','--kubeconfig',a.kubeconfig,'create','-f','-'],input=json.dumps(value),text=True,check=True)
-    print('Created four existing Secret references; private material remains in '+str(root))
+    print('Created '+str(len(roles))+' existing Secret references; private material remains in '+str(root))
 
 
 if __name__=='__main__':main()

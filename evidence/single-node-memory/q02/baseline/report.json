@@ -1,0 +1,182 @@
+{
+  "case": "baseline",
+  "namespace": "omega-memory-q02-baseline",
+  "status": "FAIL",
+  "started": "2026-10-28T12:14:35.911411+00:00",
+  "placements": "separate agent/storage/search/embedding pods; same-node authenticated HTTPS",
+  "real": [
+    "native remember/query/parser/loop",
+    "E5 CPU",
+    "Chroma 1.5.5",
+    "DeTTa",
+    "HTTPS/DNS",
+    "k3s/Helm/PVCs"
+  ],
+  "fixtures": [
+    "model commands",
+    "empty channel input",
+    "unused global context/history",
+    "declared creation/enrichment clocks"
+  ],
+  "observations": {
+    "failure": {
+      "omega-agent": {
+        "owner-seal.json": {
+          "composition": "neoclaw-memory-services/1",
+          "role": "omega-agent",
+          "scope": "generated-k3s-memory"
+        },
+        "root_files": [
+          "owner-seal.json",
+          "owner.lock"
+        ]
+      },
+      "fusion-storage": {
+        "feed_atoms": [],
+        "feed_meta": [
+          {
+            "value": "{\"profile\":\"immutable-commit-feed/1\",\"source\":\"1c5bead8-49f2-4adb-bae5-fffb7f5db685\"}"
+          }
+        ],
+        "owner-seal.json": {
+          "composition": "neoclaw-memory-services/1",
+          "role": "fusion-storage",
+          "scope": "generated-k3s-memory"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-storage"
+        },
+        "root_files": [
+          "memory",
+          "owner-seal.json",
+          "process.json",
+          "owner.lock"
+        ]
+      },
+      "fusion-search": {
+        "initial-intent.json": {
+          "deadline_ms": 1793189720044,
+          "head": {
+            "profile": "immutable-commit-feed/1",
+            "scope_ref": "generated-k3s-memory",
+            "sequence": 0,
+            "source": "1c5bead8-49f2-4adb-bae5-fffb7f5db685"
+          }
+        },
+        "initial-view.json": {
+          "corpus": "k3s-synthetic-memory-20261028",
+          "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+          "generation": "21399dea-7065-55e2-be40-243a6a36facd",
+          "head": {
+            "profile": "immutable-commit-feed/1",
+            "scope_ref": "generated-k3s-memory",
+            "sequence": 0,
+            "source": "1c5bead8-49f2-4adb-bae5-fffb7f5db685"
+          },
+          "index": "chroma-1.5.5-hnsw-l2-default/1",
+          "logical": "25bebf79bbaad604d58210d6def4e5a2c7c0ac66ee05130521c6552e21698256",
+          "profile": "semantic-embedding-memory/1"
+        },
+        "maintenance": {
+          "21399dea-7065-55e2-be40-243a6a36facd": {
+            "attempts": 1,
+            "intent": {
+              "corpus": "k3s-synthetic-memory-20261028",
+              "deadline_ms": 1793189720044,
+              "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+              "index": "chroma-1.5.5-hnsw-l2-default/1",
+              "key": "initial-empty",
+              "principal": "A",
+              "profile": "semantic-embedding-memory/1",
+              "scope": "generated-k3s-memory",
+              "through": {
+                "profile": "immutable-commit-feed/1",
+                "scope_ref": "generated-k3s-memory",
+                "sequence": 0,
+                "source": "1c5bead8-49f2-4adb-bae5-fffb7f5db685"
+              }
+            }
+          }
+        },
+        "owner-seal.json": {
+          "composition": "neoclaw-memory-services/1",
+          "role": "fusion-search",
+          "scope": "generated-k3s-memory"
+        },
+        "process.json": {
+          "configuration_revision": "initial",
+          "native_pid": null,
+          "pid": 1,
+          "role": "fusion-search"
+        },
+        "publications": {
+          "current": {
+            "corpus": "k3s-synthetic-memory-20261028",
+            "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+            "generation": "21399dea-7065-55e2-be40-243a6a36facd",
+            "head": {
+              "profile": "immutable-commit-feed/1",
+              "scope_ref": "generated-k3s-memory",
+              "sequence": 0,
+              "source": "1c5bead8-49f2-4adb-bae5-fffb7f5db685"
+            },
+            "index": "chroma-1.5.5-hnsw-l2-default/1",
+            "logical": "25bebf79bbaad604d58210d6def4e5a2c7c0ac66ee05130521c6552e21698256",
+            "profile": "semantic-embedding-memory/1"
+          },
+          "generations": {
+            "21399dea-7065-55e2-be40-243a6a36facd": {
+              "corpus": "k3s-synthetic-memory-20261028",
+              "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+              "generation": "21399dea-7065-55e2-be40-243a6a36facd",
+              "head": {
+                "profile": "immutable-commit-feed/1",
+                "scope_ref": "generated-k3s-memory",
+                "sequence": 0,
+                "source": "1c5bead8-49f2-4adb-bae5-fffb7f5db685"
+              },
+              "index": "chroma-1.5.5-hnsw-l2-default/1",
+              "logical": "25bebf79bbaad604d58210d6def4e5a2c7c0ac66ee05130521c6552e21698256",
+              "profile": "semantic-embedding-memory/1"
+            }
+          }
+        },
+        "root_files": [
+          "memory",
+          "initial-intent.json",
+          "owner-seal.json",
+          "initial-view.json",
+          "process.json",
+          "owner.lock"
+        ],
+        "search_files": [
+          "published.json",
+          "maintenance.lock",
+          "21399dea-7065-55e2-be40-243a6a36facd/maintenance.json",
+          "21399dea-7065-55e2-be40-243a6a36facd/manifest.json",
+          "21399dea-7065-55e2-be40-243a6a36facd/index/chroma.sqlite3"
+        ]
+      },
+      "fusion-embedding": {
+        "owner-seal.json": {
+          "composition": "neoclaw-memory-services/1",
+          "role": "fusion-embedding",
+          "scope": "generated-k3s-memory"
+        },
+        "root_files": [
+          "encoder.diagnostics.log",
+          "owner-seal.json",
+          "encoder.sqlite.resident.lock",
+          "owner.lock"
+        ]
+      }
+    }
+  },
+  "actions": [],
+  "failure": "bounded observer expired: ['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] error: unable to upgrade connection: container not found (\"omega-agent\")\n",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py\", line 67, in main\n    try:test.run()\n        ^^^^^^^^^^\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py\", line 55, in run\n    for role in ROLES:self.wait(lambda:self.file(role,'process.json'),150)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py\", line 67, in wait\n    raise AssertionError('bounded observer expired: '+str(last))\nAssertionError: bounded observer expired: ['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] error: unable to upgrade connection: container not found (\"omega-agent\")\n\n",
+  "finished": "2026-10-28T12:17:15.219395+00:00"
+}

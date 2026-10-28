@@ -62,7 +62,7 @@ def package(destination,runtime,detta):
     source=destination/'source';sources={}
     for folder in ('fusion','integration'):
         for file in sorted((ROOT/folder).rglob('*')):
-            if not file.is_file() or file.suffix not in ('.py','.json','.metta','.pl') or '__pycache__' in file.parts:continue
+            if not file.is_file() or file.suffix not in ('.py','.json','.metta','.pl','.lock') or '__pycache__' in file.parts:continue
             rel=file.relative_to(ROOT);target=source/rel;target.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(file,target);sources[str(rel)]=sha(file)
     shutil.copyfile(ROOT/'deploy/single-node/Dockerfile',destination/'Dockerfile')

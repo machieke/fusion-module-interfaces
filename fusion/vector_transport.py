@@ -9,8 +9,8 @@ from .responses import error
 
 
 class ReadNetwork(Network):
-    def __init__(self,endpoint,credential,chosen,principal):
-        super().__init__(endpoint,credential,chosen,timeout=1.)
+    def __init__(self,endpoint,credential,chosen,principal,*,service_dns=False):
+        super().__init__(endpoint,credential,chosen,timeout=1.,service_dns=service_dns)
         self.principal=principal
 
     def invoke(self,request):
@@ -44,5 +44,8 @@ class ReadLocal:
 def binding(config,chosen):
     require(config['fallback'] is False,'UNSUPPORTED_PROFILE')
     if config['placement']=='local':return ReadLocal(config['provider_config'],config['credential'],chosen,config['principal'])
+    if config['placement']=='service-network':
+        from .memory_services import RoutedMemory
+        return RoutedMemory(config,chosen,ReadNetwork)
     require(config['placement']=='network' and 'provider_config' not in config,'UNSUPPORTED_PROFILE')
     return ReadNetwork(config['endpoint'],config['credential'],chosen,config['principal'])

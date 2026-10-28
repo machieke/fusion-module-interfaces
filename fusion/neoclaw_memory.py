@@ -28,6 +28,9 @@ def configuration(path):
     require(cfg['native_config']=={'recall':2,'similarity':4,'inflation':4},'UNSUPPORTED_PROFILE')
     frozen['selections']={n:selection_token(d) for n,d in chosen.items()}
     if cfg.get('require_ready'):frozen['require_ready']=True
+    if cfg.get('placement')=='service-network':
+        from .memory_services import freeze_placement
+        frozen.update(freeze_placement(cfg,('atom.storage','search')))
     return cfg,chosen,frozen
 
 

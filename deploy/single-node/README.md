@@ -171,3 +171,11 @@ docker volume rm omega-fusion-k3s-data
 ```
 
 Apply equivalent cleanup explicitly to each test namespace listed in its report; never wildcard unrelated namespaces. Keep artifact directories containing credentials private, or delete those specific directories after cluster destruction. Images are delivered locally with content identities; no public registry upload or production deployment is implied.
+
+## Optional memory-service qualification
+
+The S03.2 memory composition adds separate E5 and vector Search workloads with
+an authenticated authoritative-storage feed. Use fresh state and the separate
+[memory deployment runbook](../../docs/deployment/single-node-memory.md).
+**Do not apply the memory overlay to the retained `omega-demo` S01 PVCs.**
+The historical S01 values, numerical profile and evidence above remain intact.

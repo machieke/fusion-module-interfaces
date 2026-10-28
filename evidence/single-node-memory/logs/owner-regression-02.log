@@ -1,0 +1,78 @@
+test_all_relation_roles_directions_identity_and_replay (tests.test_m5.LookupContracts.test_all_relation_roles_directions_identity_and_replay) ... ok
+test_exact_query_lag_rebuild_and_independent_search_substitution (tests.test_m5.LookupContracts.test_exact_query_lag_rebuild_and_independent_search_substitution) ... ok
+test_feed_snapshot_replay_and_source_binding (tests.test_m5.LookupContracts.test_feed_snapshot_replay_and_source_binding) ... ok
+test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint (tests.test_m5.LookupContracts.test_malformed_enrolled_record_and_revocation_do_not_advance_checkpoint) ... ok
+test_query_exact_unicode_missing_field_and_bounded_parser (tests.test_m5.LookupContracts.test_query_exact_unicode_missing_field_and_bounded_parser) ... ok
+test_relation_boundary_validation_unaccepted_payload_and_revocation (tests.test_m5.LookupContracts.test_relation_boundary_validation_unaccepted_payload_and_revocation) ... ok
+test_relation_pagination_fixed_head_cursor_binding (tests.test_m5.LookupContracts.test_relation_pagination_fixed_head_cursor_binding) ... ok
+test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor (tests.test_m5.LookupContracts.test_source_duplicate_gap_changed_metadata_and_checkpoint_anchor) ... ok
+test_atom_response_budget_is_checked_at_session_boundary (tests.test_m5_boundaries.Boundaries.test_atom_response_budget_is_checked_at_session_boundary) ... ok
+test_authority_revocation_between_reads_and_commit (tests.test_m5_boundaries.Boundaries.test_authority_revocation_between_reads_and_commit) ... ok
+test_bad_shape_bounds_profile_and_private_placement (tests.test_m5_boundaries.Boundaries.test_bad_shape_bounds_profile_and_private_placement) ... ok
+test_capacity_refusal_retains_complete_prefix (tests.test_m5_boundaries.Boundaries.test_capacity_refusal_retains_complete_prefix) ... ok
+test_consumer_rejects_forged_search_relation_and_payload (tests.test_m5_boundaries.Boundaries.test_consumer_rejects_forged_search_relation_and_payload) ... ok
+test_each_advertised_operation_checks_live_authority (tests.test_m5_boundaries.Boundaries.test_each_advertised_operation_checks_live_authority) ... ok
+test_feed_rejects_legacy_store_and_missing_incarnation (tests.test_m5_boundaries.Boundaries.test_feed_rejects_legacy_store_and_missing_incarnation) ... ok
+test_lookup_has_no_cognitive_runtime_dependency_or_mutation (tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation) ... ERROR
+test_query_cursor_rebinding_auth_and_generation (tests.test_m5_boundaries.Boundaries.test_query_cursor_rebinding_auth_and_generation) ... /home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/tempfile.py:940: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/fusion-private-m2-poskq858'>
+  _warnings.warn(warn_message, ResourceWarning)
+ok
+test_search_fixture_evaluates_predicates_independently (tests.test_m5_boundaries.Boundaries.test_search_fixture_evaluates_predicates_independently) ... ok
+test_acceptance_completion_and_payload_receipts_reject_malformed_data (tests.test_neoclaw.S01Contracts.test_acceptance_completion_and_payload_receipts_reject_malformed_data) ... ok
+test_authority_method_scope_route_and_replay_revocation (tests.test_neoclaw.S01Contracts.test_authority_method_scope_route_and_replay_revocation) ... ok
+test_caller_budget_is_durable_and_cannot_be_reset (tests.test_neoclaw.S01Contracts.test_caller_budget_is_durable_and_cannot_be_reset) ... ok
+test_capacity_recovery_and_independent_owner_databases (tests.test_neoclaw.S01Contracts.test_capacity_recovery_and_independent_owner_databases) ... ok
+test_closed_two_stv_contract_rejects_code_and_invalid_values (tests.test_neoclaw.S01Contracts.test_closed_two_stv_contract_rejects_code_and_invalid_values) ... ok
+test_current_authority_on_result_poll_ack_and_worker (tests.test_neoclaw.S01Contracts.test_current_authority_on_result_poll_ack_and_worker) ... ok
+test_deadline_prevents_new_computation_but_not_completed_replay (tests.test_neoclaw.S01Contracts.test_deadline_prevents_new_computation_but_not_completed_replay) ... ok
+test_descriptor_version_profile_runtime_and_operation_binding (tests.test_neoclaw.S01Contracts.test_descriptor_version_profile_runtime_and_operation_binding) ... ok
+test_existing_numerical_sources_unchanged (tests.test_neoclaw.S01Contracts.test_existing_numerical_sources_unchanged) ... ok
+test_native_attempt_budget_survives_owner_restart_and_bad_kernel (tests.test_neoclaw.S01Contracts.test_native_attempt_budget_survives_owner_restart_and_bad_kernel) ... ok
+test_no_fallback_and_duplicate_json_keys_rejected (tests.test_neoclaw.S01Contracts.test_no_fallback_and_duplicate_json_keys_rejected) ... ok
+test_replay_identity_conflict_and_deadline_not_renewed (tests.test_neoclaw.S01Contracts.test_replay_identity_conflict_and_deadline_not_renewed) ... ok
+test_result_binding_and_representation_validation (tests.test_neoclaw.S01Contracts.test_result_binding_and_representation_validation) ... ok
+test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn (tests.test_neoclaw_application.ApplicationContracts.test_binding_and_limits_cannot_be_changed_on_restart_or_mid_turn) ... ok
+test_exclusive_application_route_and_finite_admission (tests.test_neoclaw_application.ApplicationContracts.test_exclusive_application_route_and_finite_admission) ... ok
+test_invalid_selected_batch_is_rejected_before_any_execution (tests.test_neoclaw_application.ApplicationContracts.test_invalid_selected_batch_is_rejected_before_any_execution) ... ok
+test_mixed_pending_batch_cannot_be_replayed (tests.test_neoclaw_application.ApplicationContracts.test_mixed_pending_batch_cannot_be_replayed) ... ok
+test_new_identical_turn_is_not_replay_and_no_config_rewrite (tests.test_neoclaw_application.ApplicationContracts.test_new_identical_turn_is_not_replay_and_no_config_rewrite) ... ok
+test_ordered_identity_and_exact_pending_replay_conflict (tests.test_neoclaw_application.ApplicationContracts.test_ordered_identity_and_exact_pending_replay_conflict) ... ok
+test_restore_requires_current_authority_and_preserves_projection (tests.test_neoclaw_application.ApplicationContracts.test_restore_requires_current_authority_and_preserves_projection) ... ok
+test_startup_overlay_refuses_unknown_source (tests.test_neoclaw_application.ApplicationContracts.test_startup_overlay_refuses_unknown_source) ... ok
+test_unfinished_unrelated_caller_request_blocks_new_turn (tests.test_neoclaw_application.ApplicationContracts.test_unfinished_unrelated_caller_request_blocks_new_turn) ... ok
+test_all_error_responses_and_retryability_are_closed (tests.test_responses.ResponseConformance.test_all_error_responses_and_retryability_are_closed) ... ok
+test_all_operations_and_profiles_validate_real_fixture_replies (tests.test_responses.ResponseConformance.test_all_operations_and_profiles_validate_real_fixture_replies) ... ok
+test_both_bindings_apply_response_checks_before_returning_success (tests.test_responses.ResponseConformance.test_both_bindings_apply_response_checks_before_returning_success) ... ok
+test_every_operation_rejects_missing_malformed_and_unselected_replies (tests.test_responses.ResponseConformance.test_every_operation_rejects_missing_malformed_and_unselected_replies) ... ok
+test_generated_schemas_match_checked_in_contracts (tests.test_responses.ResponseConformance.test_generated_schemas_match_checked_in_contracts) ... ok
+test_invalid_completion_acceptance_does_not_mark_outbox_sent (tests.test_responses.ResponseConformance.test_invalid_completion_acceptance_does_not_mark_outbox_sent) ... ok
+test_request_scope_reference_order_correlation_and_guarantees_are_checked (tests.test_responses.ResponseConformance.test_request_scope_reference_order_correlation_and_guarantees_are_checked) ... ok
+
+======================================================================
+ERROR: test_lookup_has_no_cognitive_runtime_dependency_or_mutation (tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_m5_boundaries.py", line 112, in test_lookup_has_no_cognitive_runtime_dependency_or_mutation
+    old=CognitionHarness();self.addCleanup(old.close)
+        ^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/m3_support.py", line 26, in __init__
+    super().__init__(root,real=real,with_revision=False,hook=hook)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/m2_support.py", line 63, in __init__
+    self.save(); self.reopen()
+                 ^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/m3_support.py", line 35, in reopen
+    if not hasattr(self,'kernel_fixture'):return super().reopen()
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/m2_support.py", line 71, in reopen
+    self.modules = open_private(self.path, self.credential, SCOPE, with_revision=self.with_revision,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/private.py", line 150, in open_private
+    require(isinstance(provider, AtomStorage), 'UNSUPPORTED_PROFILE')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: UNSUPPORTED_PROFILE
+
+----------------------------------------------------------------------
+Ran 47 tests in 29.036s
+
+FAILED (errors=1)

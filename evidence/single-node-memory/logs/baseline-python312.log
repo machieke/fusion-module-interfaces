@@ -1,0 +1,30 @@
+test_lookup_has_no_cognitive_runtime_dependency_or_mutation (tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation) ... ERROR
+
+======================================================================
+ERROR: test_lookup_has_no_cognitive_runtime_dependency_or_mutation (tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node-memory/baseline-check/tests/test_m5_boundaries.py", line 112, in test_lookup_has_no_cognitive_runtime_dependency_or_mutation
+    old=CognitionHarness();self.addCleanup(old.close)
+        ^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node-memory/baseline-check/tests/m3_support.py", line 26, in __init__
+    super().__init__(root,real=real,with_revision=False,hook=hook)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node-memory/baseline-check/tests/m2_support.py", line 63, in __init__
+    self.save(); self.reopen()
+                 ^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node-memory/baseline-check/tests/m3_support.py", line 35, in reopen
+    if not hasattr(self,'kernel_fixture'):return super().reopen()
+                                                 ^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node-memory/baseline-check/tests/m2_support.py", line 71, in reopen
+    self.modules = open_private(self.path, self.credential, SCOPE, with_revision=self.with_revision,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node-memory/baseline-check/fusion/private.py", line 150, in open_private
+    require(isinstance(provider, AtomStorage), 'UNSUPPORTED_PROFILE')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node-memory/baseline-check/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: UNSUPPORTED_PROFILE
+
+----------------------------------------------------------------------
+Ran 1 test in 0.012s
+
+FAILED (errors=1)

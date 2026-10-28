@@ -1,0 +1,16 @@
+{
+  "all_served_native_owner_implementations_match": true,
+  "differences": {
+    "integration/single_node/memory_probe.py": {
+      "image": "bee0c56df6aabd41f9a0569b3094312f91ec690c5bd5744ac8c7e8e865600060",
+      "working_tree": "81090d18c979b11a1703e963216a8078a9fd83167e8bd6a7381138919ae523fc"
+    },
+    "integration/single_node/test_memory_cluster.py": {
+      "image": "4ddfa98c926933823330ba4552d28952b3bef2725556c114a9768b43b81791dd",
+      "working_tree": "6db63fb1d739c7f94c2387ac4b9f52862db20d7e196d6c67abd77060c3f9fc56"
+    }
+  },
+  "explanation": "Only unused image copies of operator qualification code differ. Driver freezes host-side observer/probe bytes, chart, values and source-manifest; operator executes those bytes in the relevant owner pod. No tested served implementation changed after image build.",
+  "final_check_manifest": "final-check-source.json",
+  "image_package": "packages/base-v6.json"
+}

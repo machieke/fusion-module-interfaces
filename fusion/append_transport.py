@@ -9,8 +9,8 @@ from .append_composition import AppendService
 
 
 class AppendNetwork(Network):
-    def __init__(self,endpoint,credential,chosen,principal):
-        super().__init__(endpoint,credential,chosen);self.principal=principal
+    def __init__(self,endpoint,credential,chosen,principal,*,service_dns=False):
+        super().__init__(endpoint,credential,chosen,service_dns=service_dns);self.principal=principal
     def invoke(self,request):
         c.request(request,self.chosen)
         # Observation may disclose already committed work after the work deadline.
@@ -38,5 +38,8 @@ class AppendLocal:
 def binding(cfg,chosen):
     require(cfg['fallback'] is False,'UNSUPPORTED_PROFILE')
     if cfg['placement']=='local':return AppendLocal(cfg,chosen)
+    if cfg['placement']=='service-network':
+        from .memory_services import RoutedMemory
+        return RoutedMemory(cfg,chosen,AppendNetwork)
     require(cfg['placement']=='network' and 'provider_config' not in cfg,'UNSUPPORTED_PROFILE')
     return AppendNetwork(cfg['endpoint'],cfg['credential'],chosen,cfg['principal'])

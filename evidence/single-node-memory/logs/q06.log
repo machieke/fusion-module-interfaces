@@ -1,0 +1,21 @@
+lost-storage: PASS 
+lost-publication: PASS 
+caller-vector: PASS 
+caller-publication: PASS 
+caller-result: PASS 
+enrollment: PASS 
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py", line 210, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py", line 195, in main
+    try:test.run()
+        ^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_memory_cluster.py", line 95, in run
+    for role in ROLES:self.wait(lambda:self.file(role,'process.json'),150)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py", line 66, in wait
+    time.sleep(.15)
+KeyboardInterrupt

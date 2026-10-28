@@ -27,7 +27,9 @@ def write(path, value):
 
 def configure(path='/config/component.json'):
     settings = json.loads(Path(path).read_text()); role = settings['role']
-    require(role in ROLES and settings['service_composition'] == COMPOSITION, 'UNSUPPORTED_PROFILE')
+    memory=settings['service_composition']=='neoclaw-memory-services/1'
+    require((memory and role in ('omega-agent','fusion-storage','fusion-search','fusion-embedding')) or
+            (role in ROLES and settings['service_composition']==COMPOSITION),'UNSUPPORTED_PROFILE')
     state = Path(settings.get('state', '/state')); run = Path(settings.get('run', '/run/fusion'))
     state.mkdir(parents=True, exist_ok=True); run.mkdir(parents=True, exist_ok=True)
     secret = Path(settings.get('secret_directory', '/secrets'))
@@ -37,6 +39,9 @@ def configure(path='/config/component.json'):
         return value
     def endpoint(name):
         return dict(host=settings['peers'][name], port=settings['https_port'], ca_file=str(secret/'ca.crt'))
+    if memory and role!='omega-agent':
+        from .memory_configure import configure as memory_configure
+        return memory_configure(settings,state,run,secret,token,endpoint)
     routes = {'reply-A': dict(scope=c.SCOPE, owner='A')}
     # Each owner authenticates its own distinct Secret credentials; peer tokens
     # exist only in the calling pod. No global administrator bearer token.
@@ -84,4 +89,7 @@ def configure(path='/config/component.json'):
             principals={'A':principal('caller-token',['agent.messaging.poll','agent.messaging.ack']),
                         'worker':principal('worker-token',['execution.completion'])})
     write(run/'owner.json', config)
+    if memory:
+        from .memory_configure import configure as memory_configure
+        return memory_configure(settings,state,run,secret,token,endpoint)
     return settings, config, state, run

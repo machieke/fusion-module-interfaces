@@ -1,0 +1,24 @@
+{
+  "case": "search-before-publication",
+  "namespace": "omega-memory-q06-search-before-publication",
+  "status": "RUNNING",
+  "started": "2026-10-28T12:51:30.311432+00:00",
+  "placements": "separate agent/storage/search/embedding pods; same-node authenticated HTTPS",
+  "real": [
+    "native remember/query/parser/loop",
+    "E5 CPU",
+    "Chroma 1.5.5",
+    "DeTTa",
+    "HTTPS/DNS",
+    "k3s/Helm/PVCs"
+  ],
+  "fixtures": [
+    "model commands",
+    "empty channel input",
+    "unused global context/history",
+    "declared creation/enrichment clocks"
+  ],
+  "observations": {},
+  "actions": [],
+  "finished": "2026-10-28T12:52:05.771256+00:00"
+}

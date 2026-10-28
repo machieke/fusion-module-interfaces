@@ -1,0 +1,19 @@
+{
+  "cluster": "final-a/baseline/report.json",
+  "exact_candidate_order": true,
+  "exact_distances": true,
+  "exact_native_feedback": true,
+  "exact_vectors": true,
+  "fixtures": [
+    "external model/channel",
+    "unused history/global promoted context",
+    "creation and enrichment clocks"
+  ],
+  "oracle": "workflow-original-native.json",
+  "tolerance": "none; only three random UUIDs mapped by write order",
+  "uuid_correspondence": {
+    "cf298b65-7b5c-4d08-ae82-114314d0080d": "f00a34a8-cf40-48dc-ab6d-b5bd2efd7b6d",
+    "dd18ba3e-f62d-45db-a80f-57a425dc7b55": "9b46d2db-7b8f-450b-a8d1-a536b5398cf6",
+    "deaef26d-56b7-4d84-b8f6-d8169b942869": "f943ac03-6003-4c9f-a445-bc4eb9c9d7e9"
+  }
+}

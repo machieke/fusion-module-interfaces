@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "check": "Helm lint memory values",
+      "result": {
+        "chunk_id": "bafb5a",
+        "wall_time_seconds": 0.192880868,
+        "exit_code": 0,
+        "original_token_count": 29,
+        "output": "==> Linting deploy/helm/omega-fusion\n[INFO] Chart.yaml: icon is recommended\n\n1 chart(s) linted, 0 chart(s) failed\n"
+      }
+    },
+    {
+      "check": "Helm lint original S01 values",
+      "result": {
+        "chunk_id": "34a018",
+        "wall_time_seconds": 0.139611292,
+        "exit_code": 0,
+        "original_token_count": 29,
+        "output": "==> Linting deploy/helm/omega-fusion\n[INFO] Chart.yaml: icon is recommended\n\n1 chart(s) linted, 0 chart(s) failed\n"
+      }
+    },
+    {
+      "check": "AST parse 117 Python sources",
+      "result": {
+        "chunk_id": "e6f12d",
+        "wall_time_seconds": 0.143414501,
+        "exit_code": 0,
+        "original_token_count": 19,
+        "output": "AST parse PASS: 117 Python sources; no modules imported or runtime invoked\n"
+      }
+    },
+    {
+      "check": "git diff --check",
+      "result": {
+        "chunk_id": "def691",
+        "wall_time_seconds": 0.00001761,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  ],
+  "additional_live_generations": 0
+}
