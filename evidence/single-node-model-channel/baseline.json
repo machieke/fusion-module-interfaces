@@ -1,0 +1,22 @@
+{
+  "head": "1af14c48d33a2976d954fa715bb5c2e1bdcf9483",
+  "starting_status": "?? codex_single_node_model_channel_services.md\n",
+  "manifest_checks": {
+    "final-source-manifest.json": 319,
+    "changes.json": 29
+  },
+  "image_differences": {
+    "integration/single_node/memory_probe.py": {
+      "image": "bee0c56df6aabd41f9a0569b3094312f91ec690c5bd5744ac8c7e8e865600060",
+      "working_tree": "81090d18c979b11a1703e963216a8078a9fd83167e8bd6a7381138919ae523fc"
+    },
+    "integration/single_node/test_memory_cluster.py": {
+      "image": "4ddfa98c926933823330ba4552d28952b3bef2725556c114a9768b43b81791dd",
+      "working_tree": "6db63fb1d739c7f94c2387ac4b9f52862db20d7e196d6c67abd77060c3f9fc56"
+    }
+  },
+  "prior_sources_sha256": "65a4cc22f631be9e59d0b2bf0d3db4f039adf7ee69307c9dba0ec4ba75c66a15",
+  "prior_packet_index_sha256": "e8d85455daea33fd66d41536f29428e0b25fa96e93690783c061e3ed86d0b99a",
+  "audit_correction": "First comparison used key source instead of historical working_tree; all file hash comparisons passed. Corrected ledger shape only.",
+  "additional_live_generations": 0
+}

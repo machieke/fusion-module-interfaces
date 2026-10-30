@@ -34,8 +34,13 @@ def message(line,target,own_nick):
 
 
 class IRC:
-    def __init__(self,host,port,target,nick):
-        require(host=='127.0.0.1' and type(port) is int and 1<=port<=65535,'UNSUPPORTED_PROFILE')
+    def __init__(self,host,port,target,nick,*,deployment=None):
+        if deployment is not None:
+            from ..channel_services import COMPOSITION
+            from ..neoclaw_services import service_hostname
+            require(deployment==COMPOSITION,'UNSUPPORTED_PROFILE');service_hostname(host)
+        else:require(host=='127.0.0.1','UNSUPPORTED_PROFILE')
+        require(type(port) is int and 1<=port<=65535,'UNSUPPORTED_PROFILE')
         require(re.fullmatch(r'#[a-z0-9-]{1,30}',target) and re.fullmatch(r'[A-Za-z][A-Za-z0-9-]{0,29}',nick))
         self.socket=socket.create_connection((host,port),timeout=2);self.socket.settimeout(.05)
         self.target,self.nick,self.frames=target,nick,Frames();self.ready=False

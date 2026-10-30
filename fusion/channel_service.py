@@ -11,11 +11,15 @@ from .neoclaw_transport import json_loads
 
 
 class ChannelService:
-    def __init__(self, path, hook=lambda _:None):
+    def __init__(self, path, hook=lambda _:None, *, owner=None, policy=None):
         self.path=Path(path);self.cfg=json.loads(self.path.read_text())
-        c.route_config(self.cfg['channel_store']);self.policy=Policy(path)
+        c.route_config(self.cfg['channel_store']);self.policy=policy or Policy(path)
         self.chosen=c.selected([descriptor_read(x) for x in self.cfg['channel_store']['catalogue']])
         require(self.chosen == c.selected(descriptors(atom_provider=self.cfg.get('atom_provider','detta'))),'UNSUPPORTED_PROFILE')
+        if owner is not None:
+            from .channel_services import COMPOSITION
+            require(self.cfg.get('service_composition')==COMPOSITION and self.cfg.get('channel_role') in ('storage','messaging'),'UNSUPPORTED_PROFILE')
+            self.owner,self.hook=owner,hook;return
         binding=canonical(dict(channel=self.cfg['channel_store'],paths={k:self.cfg.get(k) for k in
             ('database','atoms_database','messages_database','da_root','atom_provider','atom_records','detta_binary')})).decode()
         # Seal before constructing owners. A partially constructed fresh service
@@ -36,6 +40,8 @@ class ChannelService:
 
     def invoke(self, credential, request):
         name,op=c.wire(request,self.chosen);q=request['invocation'];body=q['body']
+        if self.cfg.get('channel_role'):
+            require(name==('atom.storage' if self.cfg['channel_role']=='storage' else 'agent.messaging'),'UNSUPPORTED_OPERATION')
         cfg=c.route_config(self.policy.current()['channel_store'])
         require(c.selection(self.chosen)==c.selection(c.selected([descriptor_read(x) for x in cfg['catalogue']])),'UNSUPPORTED_PROFILE')
         principal=self.policy.authenticate(credential)

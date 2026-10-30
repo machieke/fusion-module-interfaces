@@ -15,8 +15,10 @@ def settings(app):
     require(cfg['principal'] == app.binding['memory']['principal'] and cfg['session'] == app.config['session_id'], 'UNAUTHORIZED')
     require(1 <= app.config['turn_limit'] <= c.MAX_SESSION_CALLS, 'OVERLOADED')
     require('model_fixture' not in app.config, 'UNSUPPORTED_PROFILE')
-    from .neoclaw_retrieval_disclosure import APPLICATION, POLICY
-    require((app.config['composition'] == APPLICATION) == (cfg['disclosure'].get('policy') == POLICY), 'UNSUPPORTED_PROFILE')
+    from .neoclaw_retrieval_disclosure import APPLICATION, SERVICE_APPLICATION, POLICY
+    from .retrieval_services import POLICY as SERVICE_POLICY
+    expected={APPLICATION:POLICY,SERVICE_APPLICATION:SERVICE_POLICY}
+    require(cfg['disclosure'].get('policy')==expected.get(app.config['composition']), 'UNSUPPORTED_PROFILE')
     return cfg, chosen, frozen
 
 
@@ -35,17 +37,21 @@ class ModelAdoption:
         return cfg, chosen
 
     def row(self):
-        return self.db.execute('SELECT * FROM app_model_calls WHERE slot=?', (self.app.evidence.slot(),)).fetchone()
+        return self.db.execute('SELECT * FROM app_model_calls WHERE slot=?', (self.app.processing_slot(),)).fetchone()
 
     def local_authority(self, intent):
         cfg, _ = self.current()
         from .neoclaw_retrieval_disclosure import APPLICATION, issue
-        if self.app.config['composition'] == APPLICATION:
+        from .neoclaw_retrieval_disclosure import SERVICE_APPLICATION
+        if self.app.config['composition'] == SERVICE_APPLICATION:
+            from .retrieval_services import issue as issue_service
+            issue_service(self.app,intent)
+        elif self.app.config['composition'] == APPLICATION:
             issue(self.app, intent)
         parts = disclose(intent['native_prompt'], cfg['disclosure'], intent)
         source = self.app.channel.source_spec()
         require(intent['source_id'] == source['message_id'] and intent['deadline_ms'] == source['deadline_ms'], 'CONFLICT')
-        require(parts['feedback'] == self.app.restore() and parts['memories'] == self.app.priority.context_replay(), 'CONFLICT')
+        require(parts['feedback'] == self.app.restore() and parts['memories'] == self.app.model_context_text(), 'CONFLICT')
         return cfg
 
     def prompt(self, raw):
@@ -55,7 +61,7 @@ class ModelAdoption:
                 from .neoclaw_retrieval_disclosure import structural
                 parts = structural(raw, cfg['disclosure'])
             else: parts = disclose(raw, cfg['disclosure'])
-            source = self.app.channel.source_spec(); slot = self.app.evidence.slot()
+            source = self.app.channel.source_spec(); slot = self.app.processing_slot()
             require(time.time_ns()//1_000_000 < source['deadline_ms'], 'DEADLINE_EXCEEDED')
             require(parts['user'] == str(['HUMAN-MSG:', source['text'].replace('"','_quote_').replace("'",'_apostrophe_')]), 'CONFLICT')
             key = str(uuid.uuid5(uuid.UUID(self.app.session), 'model/'+str(slot)))
@@ -63,12 +69,12 @@ class ModelAdoption:
                 principal=cfg['principal'],scope=cfg['scope'],selection=selection_token(chosen),native_prompt=raw,
                 messages=c.messages(raw),deadline_ms=source['deadline_ms'],profile=cfg['profile'],limits=c.limits(cfg['profile'])))
             c.intent(accepted); self.local_authority(accepted)
-            view = self.app.priority.context()['view']
+            view = self.app.model_context_view()
             with self.db: self.db.execute('INSERT INTO app_model_calls(slot,id,intent,context_view) VALUES(?,?,?,?)',
                 (slot,key,canonical(accepted).decode(),view))
             self.app.hook('after_model_prompt_bind'); row = self.row()
         accepted = json.loads(row['intent']); self.local_authority(accepted)
-        require(row['context_view'] == self.app.priority.context()['view'], 'CONFLICT')
+        require(row['context_view'] == self.app.model_context_view(), 'CONFLICT')
         # First binding is authoritative, including native TIME. Restart may
         # assemble a new time, but it never substitutes it into this occurrence.
         return accepted['native_prompt']

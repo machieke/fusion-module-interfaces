@@ -1,0 +1,31 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 158B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/fusion-single-node:memory-base-v6
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B 0.0s done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/fusion-single-node:memory-base-v6
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 2.64MB 0.1s done
+#5 DONE 0.2s
+
+#6 [2/3] COPY source /opt/fusion
+#6 DONE 0.1s
+
+#7 [3/3] COPY ngircd /opt/irc/sbin/ngircd
+#7 DONE 0.1s
+
+#8 exporting to image
+#8 exporting layers 0.1s done
+#8 writing image sha256:6294f862bdd877be5bdaea789db643aeba2c1bd1a7850752be73f09ebc6cac23 done
+#8 naming to docker.io/library/fusion-single-node:workflow-v1 done
+#8 DONE 0.2s

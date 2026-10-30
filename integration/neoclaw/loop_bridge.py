@@ -27,7 +27,7 @@ def call(method, *args):
                 install(config['preparation_fixture_lock'])
             def pause(stage):
                 slot = config.get('pause_slot')
-                if slot is None or (_app is not None and _app.evidence.slot() == slot):
+                if slot is None or (_app is not None and _app.processing_slot() == slot):
                     failpoint(config, stage)
             _app = Application(path, pause)
         result=getattr(_app, method)(*args)

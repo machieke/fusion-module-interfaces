@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import select
+import signal
 import socket
 import sys
 import time
@@ -14,7 +15,12 @@ from .host import failpoint
 
 def peer(cfg,ready):
     # Independent test actor: uses only its own socket and observation log.
-    sock=socket.create_connection(('127.0.0.1',cfg['port']),timeout=2)
+    host=cfg.get('host','127.0.0.1')
+    if host!='127.0.0.1':
+        from fusion.channel_services import COMPOSITION
+        from fusion.neoclaw_services import service_hostname
+        require(cfg.get('deployment')==COMPOSITION,'UNSUPPORTED_PROFILE');service_hostname(host)
+    sock=socket.create_connection((host,cfg['port']),timeout=2)
     sock.sendall(('NICK peer\r\nUSER peer 0 * :synthetic peer\r\n').encode())
     buffer=b'';commands=b'';until=time.monotonic()+cfg.get('seconds',120)
     with open(cfg['log'],'a',buffering=1) as log:
@@ -81,6 +87,8 @@ def bridge(path,ready):
 
 
 def main():
+    def terminate(*_):raise SystemExit(0)
+    signal.signal(signal.SIGTERM,terminate)
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('role',choices=['peer','bridge']);p.add_argument('config');p.add_argument('--ready',required=True);a=p.parse_args()
     if a.role=='peer':peer(json.loads(Path(a.config).read_text()),a.ready)
     else:bridge(a.config,a.ready)

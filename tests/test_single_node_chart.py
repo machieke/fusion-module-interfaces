@@ -54,6 +54,24 @@ class Chart(unittest.TestCase):
         invalid=self.render('--set','memory.enabled=true')
         self.assertNotEqual(invalid.returncode,0)
 
+    def test_recorded_workflow_has_nine_isolated_owners_and_denies_live_selection(self):
+        import yaml
+        result=self.render('-f',str(ROOT/'deploy/single-node/workflow-values.yaml'))
+        self.assertEqual(result.returncode,0,result.stderr)
+        docs=list(yaml.safe_load_all(result.stdout));pods=[d for d in docs if d and d['kind']=='StatefulSet']
+        self.assertEqual(len(pods),9)
+        for pod in pods:
+            self.assertEqual(pod['spec']['replicas'],1)
+            self.assertEqual(pod['spec']['persistentVolumeClaimRetentionPolicy']['whenDeleted'],'Retain')
+            spec=pod['spec']['template']['spec'];self.assertFalse(spec['automountServiceAccountToken'])
+            self.assertTrue(all('hostPath' not in v and 'persistentVolumeClaim' not in v for v in spec['volumes']))
+        configs={d['metadata']['name']:json.loads(d['data']['component.json']) for d in docs if d and d['kind']=='ConfigMap'}
+        self.assertNotIn('memory',configs['fusion-model']);self.assertNotIn('responses',configs['omega-agent']['workflow'])
+        self.assertEqual(configs['fusion-model']['workflow']['mode'],'recorded')
+        self.assertNotIn('receipt_root',str(configs['fusion-model']))
+        for setting in ('workflow.mode=live','workflow.liveEnabled=true'):
+            self.assertNotEqual(self.render('-f',str(ROOT/'deploy/single-node/workflow-values.yaml'),'--set',setting).returncode,0)
+
     def test_schema_rejects_replica_changes_inline_secrets_and_unknown_components(self):
         for override in ['components.fusion-storage.replicas=2','components.omega-agent.credential=secret',
                          'components.another.config.capacity=1','components.omega-agent.config.test.pause_at=unknown']:

@@ -28,7 +28,7 @@ from fusion.neoclaw_transport import json_loads
 from .configure import configure, write
 
 
-def main():
+def main(*, config_resolver=configure, model_factory=None):
     config_path = sys.argv[1] if len(sys.argv)>1 else '/config/component.json'
     initial = json.loads(Path(config_path).read_text())
     require(os.environ.get('POD_NAME') == initial['role']+'-0', 'UNSUPPORTED_PROFILE')
@@ -37,7 +37,7 @@ def main():
     lock = open(state/'owner.lock','a')
     try: fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError: raise SystemExit('OWNER_ALREADY_RUNNING') from None
-    settings, config, state, run = configure(config_path)
+    settings=initial
     # This envelope selects the owner, not its current secrets/test knobs. It
     # refuses accidentally mounting a different service's or legacy journal PVC.
     seal = dict(composition=settings['service_composition'],role=settings['role'],scope=settings.get('memory',{}).get('scope',c.SCOPE))
@@ -46,8 +46,11 @@ def main():
     else:
         require(set(p.name for p in state.iterdir()) <= {'owner.lock','lost+found'}, 'UNSUPPORTED_PROFILE')
         write(state/'owner-seal.json',seal)
+    settings, config, state, run = config_resolver(config_path)
+    workflow=settings.get('workflow',{}).get('enabled',False)
+    channel_owner=None
     stop = threading.Event(); fatal = threading.Event(); role = settings['role']; child = None; worker = None
-    memory=settings['service_composition']=='neoclaw-memory-services/1'
+    memory=settings['service_composition']=='neoclaw-memory-services/1' or (workflow and role in ('omega-agent','fusion-storage','fusion-search','fusion-embedding'))
     chosen = c.selected(c.catalogue('detta')); owner = None; kernel = None
     def hook(stage):
         if config.get('test_failpoints') and config.get('pause_at')==stage:
@@ -62,7 +65,17 @@ def main():
         def atoms_for(principal, selected=None):
             require(principal=='worker','UNAUTHORIZED'); return atoms
         return NalService(run/'owner.json',hook,kernel,atoms_for=atoms_for,mailbox=mailbox)
-    if memory and role=='fusion-embedding':
+    if workflow and role=='fusion-model':
+        from .recorded_model import deny_live,RecordedBackend
+        from fusion.retrieval_services import ModelPorts
+        if model_factory is None:
+            deny_live(settings['workflow']['mode'])
+            owner=ModelPorts(run/'owner.json',RecordedBackend(config['model_completion']['runtime_lock']),hook)
+        else:owner=model_factory(run/'owner.json',hook)
+    elif workflow and role=='fusion-messaging':
+        from fusion.channel_services import ChannelPorts
+        owner=ChannelPorts(run/'channel-owner.json',hook)
+    elif memory and role=='fusion-embedding':
         from fusion.adapters.native_e5 import NativeE5
         kernel=NativeE5(run/'owner.json')
         write(state/'encoder-readiness.json',kernel.readiness)
@@ -72,6 +85,9 @@ def main():
     elif memory and role=='fusion-storage':
         from fusion.memory_services import StoragePorts
         owner=StoragePorts(run/'owner.json',hook)
+        if workflow:
+            from fusion.channel_services import ChannelPorts
+            channel_owner=ChannelPorts(run/'channel-owner.json',hook)
     elif role == 'fusion-execution':
         kernel = NativeTruthDeduction(config['runtime'])  # Hash checks; no numerical evaluation.
         service=execution(); service.close()
@@ -102,6 +118,10 @@ def main():
             if self.path not in ('/health/startup','/health/ready','/health/live'):
                 self.reply(dict(error='NOT_FOUND'),404);return
             healthy=not stop.is_set() and not fatal.is_set()
+            if workflow and role in ('fusion-channel-bridge','irc-peer') and self.path!='/health/live':
+                healthy=healthy and (state/'channel-ready.json').exists() and child is not None and child.poll() is None
+            if workflow and role=='irc-server' and self.path!='/health/live':
+                healthy=healthy and child is not None and child.poll() is None and any(line.split()[1].endswith(':1A0B') and line.split()[3]=='0A' for line in Path('/proc/net/tcp').read_text().splitlines()[1:])
             self.reply(dict(role=role,ready=healthy),200 if healthy else 503)
         def do_POST(self):
             service=None
@@ -111,9 +131,12 @@ def main():
                 require(len(auth)==1 and auth[0].startswith('Bearer '),'UNAUTHORIZED')
                 require(self.headers.get('Content-Type')=='application/json' and not self.headers.get('Transfer-Encoding'))
                 sizes=self.headers.get_all('Content-Length',[])
-                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(98304 if memory else 8192))
+                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(98304 if memory or workflow else 8192))
                 raw=self.rfile.read(int(sizes[0]));require(len(raw)==int(sizes[0]));request=json_loads(raw)
-                if memory:
+                if workflow and (role in ('fusion-model','fusion-messaging') or self.path=='/s06-mailbox'):
+                    selected=channel_owner if role=='fusion-storage' else owner
+                    require(selected is not None,'UNSUPPORTED_OPERATION');result=selected.invoke(self.path,auth[0][7:],request)
+                elif memory:
                     if role=='fusion-embedding':
                         from fusion.embedding_service import EmbeddingService
                         require(self.path=='/s03-encode','UNSUPPORTED_OPERATION')
@@ -131,7 +154,7 @@ def main():
                 # Explicit deployment-test fault: after owner commit, before reply.
                 # Exclusive creation makes this one drop per fresh fault identity.
                 fault=settings.get('test',{}).get('drop_response_operation')
-                if fault and fault == request.get('operation',self.path):
+                if fault and fault == request.get('operation',request.get('request',request.get('invocation',{})).get('operation',self.path)):
                     try:
                         with open(state/'response-dropped.json','x') as f:
                             f.write(canonical(dict(operation=fault,message_id=request.get('message_id'))).decode());f.flush();os.fsync(f.fileno())
@@ -148,7 +171,7 @@ def main():
     # The memory caller is outbound-only: it mounts no server private key.
     # Its HTTP listener serves only inert kubelet probes; module RPCs stay TLS.
     context=None
-    if not (memory and role=='omega-agent'):
+    if not ((memory and role=='omega-agent') or (workflow and role in ('fusion-channel-bridge','irc-server','irc-peer'))):
         context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);context.minimum_version=ssl.TLSVersion.TLSv1_2
         context.load_cert_chain(config['tls_certificate'],config['tls_key'])
     class Server(ThreadingHTTPServer):
@@ -185,12 +208,38 @@ def main():
                     if stop.wait(.2) or time.monotonic()>=until:raise SystemExit('DEPENDENCY_NOT_READY')
             if memory and role=='fusion-search':owner.initialize(state)
         if role=='omega-agent' and settings['native_enabled']:
-            if memory:
+            if workflow:
+                from .workflow_host import prepare
+                prepare(settings,state,run)
+            elif memory:
                 from .memory_host import prepare_agent
                 prepare_agent(settings,state,run)
             log=open(state/'native.log','ab')
             child=subprocess.Popen([sys.executable,'-m','integration.neoclaw.native_loop',str(run/'application.json')],
                                    stdout=log,stderr=log,start_new_session=True)
+        if workflow and role in ('fusion-channel-bridge','irc-server','irc-peer'):
+            (state/'channel-ready.json').unlink(missing_ok=True)
+            if role!='irc-server':
+                until=time.monotonic()+60
+                while True:
+                    conn=http.client.HTTPConnection(settings['peers']['irc-server'],settings['https_port'],timeout=1)
+                    try:
+                        conn.request('GET','/health/ready');response=conn.getresponse();response.read(4096)
+                        if response.status==200:break
+                    except (OSError,http.client.HTTPException):pass
+                    finally:conn.close()
+                    if stop.wait(.2) or time.monotonic()>=until:raise SystemExit('IRC_DEPENDENCY_NOT_READY')
+            log=open(state/'native.log','ab')
+            if role=='irc-server':command=['/opt/irc/sbin/ngircd','-n','-f',str(run/'ngircd.conf')]
+            else:
+                kind='bridge' if role=='fusion-channel-bridge' else 'peer'
+                command=[sys.executable,'-m','integration.neoclaw.channel_actor',kind,str(run/(kind+'.json')),'--ready',str(state/'channel-ready.json')]
+            if role=='irc-peer':
+                fifo=state/'peer-input'
+                if not fifo.exists():os.mkfifo(fifo,0o600)
+                peer_input=os.open(fifo,os.O_RDWR)
+            else:peer_input=None
+            child=subprocess.Popen(command,stdin=peer_input,stdout=log,stderr=log,start_new_session=True)
         write(state/'process.json',dict(pid=os.getpid(),role=role,configuration_revision=settings['revision'],
                                       native_pid=child.pid if child else None))
         child_observed=False
@@ -199,6 +248,10 @@ def main():
             if child is not None and not child_observed and child.poll() is not None:
                 write(state/'native-exit.json',dict(pid=child.pid,returncode=child.returncode))
                 child_observed=True
+                if workflow and role=='omega-agent' and settings['workflow']['phase']=='setup' and child.returncode==0:
+                    from .workflow_host import seal_setup
+                    seal_setup(settings,state)
+                if workflow and role in ('fusion-channel-bridge','irc-server','irc-peer'):fatal.set()
     if worker is not None:worker.join(timeout=16)
     if child is not None:
         try:child.wait(timeout=6)

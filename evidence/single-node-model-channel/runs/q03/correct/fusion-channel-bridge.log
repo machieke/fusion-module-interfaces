@@ -1,0 +1,24 @@
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/fusion/integration/neoclaw/channel_actor.py", line 96, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/opt/fusion/integration/neoclaw/channel_actor.py", line 94, in main
+    else:bridge(a.config,a.ready)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/integration/neoclaw/channel_actor.py", line 66, in bridge
+    owner.connect()
+  File "/opt/fusion/fusion/irc_bridge.py", line 65, in connect
+    self.irc=IRC(**self.cfg['server'],target=self.client.cfg['target'],nick=self.cfg['nick'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/adapters/irc_socket.py", line 45, in __init__
+    self.socket=socket.create_connection((host,port),timeout=2);self.socket.settimeout(.05)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/native/python/lib/python3.12/socket.py", line 865, in create_connection
+    raise exceptions[0]
+  File "/opt/native/python/lib/python3.12/socket.py", line 850, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+

@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_workflow_cluster.py", line 106, in main
+    try:run.run()
+        ^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_workflow_cluster.py", line 67, in run
+    self.wait(queried,60)
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py", line 63, in wait
+    value=fn()
+          ^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_workflow_cluster.py", line 65, in queried
+    if (s:=self.measured()) and s['status']!='BOUNDED_STOP':raise AssertionError(s)
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'status': 'PENDING_OR_FAILED', 'code': 'UNAUTHORIZED'}
+
+correct: FAIL

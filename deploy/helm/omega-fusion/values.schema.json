@@ -73,6 +73,18 @@
         },
         "fusion-embedding": {
           "$ref": "#/definitions/component"
+        },
+        "fusion-model": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-channel-bridge": {
+          "$ref": "#/definitions/component"
+        },
+        "irc-server": {
+          "$ref": "#/definitions/component"
+        },
+        "irc-peer": {
+          "$ref": "#/definitions/component"
         }
       }
     },
@@ -168,6 +180,113 @@
               "query_vector_hashes",
               "responses",
               "invocation_timeout_ms"
+            ]
+          }
+        }
+      ]
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "mode": {
+          "const": "recorded"
+        },
+        "liveEnabled": {
+          "const": false
+        },
+        "phase": {
+          "enum": [
+            "setup",
+            "measured"
+          ]
+        },
+        "session": {
+          "type": "string",
+          "minLength": 1
+        },
+        "modelScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "channelScope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bridge": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "followup": {
+          "type": "string",
+          "minLength": 1
+        },
+        "query": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recipient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bodies": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "responses": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "enabled",
+              "mode",
+              "liveEnabled",
+              "phase",
+              "session",
+              "modelScope",
+              "channelScope",
+              "bridge",
+              "target",
+              "question",
+              "followup",
+              "query",
+              "recipient",
+              "bodies",
+              "responses"
             ]
           }
         }
@@ -283,7 +402,24 @@
                     "after_append_publication",
                     "after_append_metadata",
                     "after_append_enrollment",
-                    "after_append_view_selection"
+                    "after_append_view_selection",
+                    "after_model_reservation",
+                    "after_model_capture",
+                    "after_model_prompt_bind",
+                    "after_model_provider_reply",
+                    "after_model_application_capture",
+                    "after_channel_input_commit",
+                    "after_channel_ack_reply",
+                    "after_bridge_capture",
+                    "after_bridge_egress_commit",
+                    "after_socket_reservation",
+                    "after_socket_write",
+                    "after_turn_commit",
+                    "after_model_provider_capture",
+                    "after_application_input_commit",
+                    "after_application_input_ack_reply",
+                    "after_occurrence_bind",
+                    "after_model_rpc_reservation"
                   ]
                 },
                 "drop_response_operation": {
@@ -297,8 +433,16 @@
                     "published",
                     "encode",
                     "query",
-                    "getMany"
+                    "getMany",
+                    "complete",
+                    "send",
+                    "ack"
                   ]
+                },
+                "pause_slot": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2
                 }
               }
             }

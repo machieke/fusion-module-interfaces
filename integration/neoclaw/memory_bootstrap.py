@@ -76,7 +76,7 @@ def initialize():
     if cfg['embedding_boundary']=='port':
         from fusion import embedding_contracts as e
         from fusion import append_contracts as w, nal_memory_contracts as n
-        require(app['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION),'UNSUPPORTED_PROFILE')
+        require(app['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION),'UNSUPPORTED_PROFILE')
         import importlib.util
         absent={name:importlib.util.find_spec(name) is None and name not in sys.modules for name in ('torch','sentence_transformers','transformers')}
         require(all(absent.values()),'UNSUPPORTED_PROFILE')

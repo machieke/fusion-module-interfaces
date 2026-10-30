@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_workflow_cluster.py", line 175, in main
+    try:run.run()
+        ^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_workflow_cluster.py", line 69, in run
+    for role in ROLES:self.wait(lambda:self.file(role,'process.json'),180)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py", line 67, in wait
+    raise AssertionError('bounded observer expired: '+str(last))
+AssertionError: bounded observer expired: ['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] error: unable to upgrade connection: container not found ("omega-agent")
+
+
+auth-probes: FAIL
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_workflow_cluster.py", line 175, in main
+    try:run.run()
+        ^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_workflow_cluster.py", line 69, in run
+    for role in ROLES:self.wait(lambda:self.file(role,'process.json'),180)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/test_cluster.py", line 67, in wait
+    raise AssertionError('bounded observer expired: '+str(last))
+AssertionError: bounded observer expired: ['kubectl', '--kubeconfig', 'artifacts/single-node/kubeconfig'] error: unable to upgrade connection: container not found ("omega-agent")
+
+
+model-capture: FAIL
+config-restart: PASS

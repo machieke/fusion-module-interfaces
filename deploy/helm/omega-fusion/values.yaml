@@ -6,6 +6,7 @@ image:
 httpsPort: 8443
 testFaultsEnabled: false
 memory: {enabled: false}
+workflow: {enabled: false}
 components:
   omega-agent:
     existingSecret: omega-agent-tls-auth
@@ -50,4 +51,40 @@ components:
     resources:
       requests: {cpu: "2", memory: 3Gi}
       limits: {cpu: "3", memory: 5Gi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  fusion-model:
+    enabled: false
+    existingSecret: fusion-model-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  fusion-channel-bridge:
+    enabled: false
+    existingSecret: fusion-channel-bridge-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  irc-server:
+    enabled: false
+    existingSecret: irc-server-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  irc-peer:
+    enabled: false
+    existingSecret: irc-peer-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
     config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}

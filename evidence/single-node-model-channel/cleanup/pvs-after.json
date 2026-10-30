@@ -1,0 +1,250 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolume",
+            "metadata": {
+                "annotations": {
+                    "local.path.provisioner/selected-node": "omega-fusion-k3s",
+                    "pv.kubernetes.io/provisioned-by": "rancher.io/local-path"
+                },
+                "creationTimestamp": "2026-10-27T14:10:05Z",
+                "finalizers": [
+                    "kubernetes.io/pv-protection"
+                ],
+                "name": "pvc-451dbd3d-8f64-40cd-b828-f16acb806b10",
+                "resourceVersion": "17089",
+                "uid": "c01dd9ec-96ee-475d-83e0-1bdc98839d4e"
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "capacity": {
+                    "storage": "512Mi"
+                },
+                "claimRef": {
+                    "apiVersion": "v1",
+                    "kind": "PersistentVolumeClaim",
+                    "name": "state-fusion-storage-0",
+                    "namespace": "omega-demo",
+                    "resourceVersion": "16995",
+                    "uid": "451dbd3d-8f64-40cd-b828-f16acb806b10"
+                },
+                "local": {
+                    "path": "/var/lib/rancher/k3s/storage/pvc-451dbd3d-8f64-40cd-b828-f16acb806b10_omega-demo_state-fusion-storage-0"
+                },
+                "nodeAffinity": {
+                    "required": {
+                        "nodeSelectorTerms": [
+                            {
+                                "matchExpressions": [
+                                    {
+                                        "key": "kubernetes.io/hostname",
+                                        "operator": "In",
+                                        "values": [
+                                            "omega-fusion-k3s"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "persistentVolumeReclaimPolicy": "Delete",
+                "storageClassName": "local-path",
+                "volumeMode": "Filesystem"
+            },
+            "status": {
+                "lastPhaseTransitionTime": "2026-10-27T14:10:05Z",
+                "phase": "Bound"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolume",
+            "metadata": {
+                "annotations": {
+                    "local.path.provisioner/selected-node": "omega-fusion-k3s",
+                    "pv.kubernetes.io/provisioned-by": "rancher.io/local-path"
+                },
+                "creationTimestamp": "2026-10-27T14:10:04Z",
+                "finalizers": [
+                    "kubernetes.io/pv-protection"
+                ],
+                "name": "pvc-8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0",
+                "resourceVersion": "17083",
+                "uid": "00186b05-6b30-4733-b28c-74dc8e9be687"
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "capacity": {
+                    "storage": "256Mi"
+                },
+                "claimRef": {
+                    "apiVersion": "v1",
+                    "kind": "PersistentVolumeClaim",
+                    "name": "state-fusion-execution-0",
+                    "namespace": "omega-demo",
+                    "resourceVersion": "16989",
+                    "uid": "8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0"
+                },
+                "local": {
+                    "path": "/var/lib/rancher/k3s/storage/pvc-8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0_omega-demo_state-fusion-execution-0"
+                },
+                "nodeAffinity": {
+                    "required": {
+                        "nodeSelectorTerms": [
+                            {
+                                "matchExpressions": [
+                                    {
+                                        "key": "kubernetes.io/hostname",
+                                        "operator": "In",
+                                        "values": [
+                                            "omega-fusion-k3s"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "persistentVolumeReclaimPolicy": "Delete",
+                "storageClassName": "local-path",
+                "volumeMode": "Filesystem"
+            },
+            "status": {
+                "lastPhaseTransitionTime": "2026-10-27T14:10:04Z",
+                "phase": "Bound"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolume",
+            "metadata": {
+                "annotations": {
+                    "local.path.provisioner/selected-node": "omega-fusion-k3s",
+                    "pv.kubernetes.io/provisioned-by": "rancher.io/local-path"
+                },
+                "creationTimestamp": "2026-10-27T14:10:04Z",
+                "finalizers": [
+                    "kubernetes.io/pv-protection"
+                ],
+                "name": "pvc-961b892e-8a54-4236-8abf-7dc3d3d08204",
+                "resourceVersion": "17065",
+                "uid": "85136d0e-84bb-4582-afea-ddcaaa025068"
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "capacity": {
+                    "storage": "256Mi"
+                },
+                "claimRef": {
+                    "apiVersion": "v1",
+                    "kind": "PersistentVolumeClaim",
+                    "name": "state-omega-agent-0",
+                    "namespace": "omega-demo",
+                    "resourceVersion": "16992",
+                    "uid": "961b892e-8a54-4236-8abf-7dc3d3d08204"
+                },
+                "local": {
+                    "path": "/var/lib/rancher/k3s/storage/pvc-961b892e-8a54-4236-8abf-7dc3d3d08204_omega-demo_state-omega-agent-0"
+                },
+                "nodeAffinity": {
+                    "required": {
+                        "nodeSelectorTerms": [
+                            {
+                                "matchExpressions": [
+                                    {
+                                        "key": "kubernetes.io/hostname",
+                                        "operator": "In",
+                                        "values": [
+                                            "omega-fusion-k3s"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "persistentVolumeReclaimPolicy": "Delete",
+                "storageClassName": "local-path",
+                "volumeMode": "Filesystem"
+            },
+            "status": {
+                "lastPhaseTransitionTime": "2026-10-27T14:10:04Z",
+                "phase": "Bound"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolume",
+            "metadata": {
+                "annotations": {
+                    "local.path.provisioner/selected-node": "omega-fusion-k3s",
+                    "pv.kubernetes.io/provisioned-by": "rancher.io/local-path"
+                },
+                "creationTimestamp": "2026-10-27T14:10:02Z",
+                "finalizers": [
+                    "kubernetes.io/pv-protection"
+                ],
+                "name": "pvc-e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2",
+                "resourceVersion": "17048",
+                "uid": "e3a44659-acd2-46b2-86ee-9c4c51295271"
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "capacity": {
+                    "storage": "256Mi"
+                },
+                "claimRef": {
+                    "apiVersion": "v1",
+                    "kind": "PersistentVolumeClaim",
+                    "name": "state-fusion-messaging-0",
+                    "namespace": "omega-demo",
+                    "resourceVersion": "16991",
+                    "uid": "e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2"
+                },
+                "local": {
+                    "path": "/var/lib/rancher/k3s/storage/pvc-e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2_omega-demo_state-fusion-messaging-0"
+                },
+                "nodeAffinity": {
+                    "required": {
+                        "nodeSelectorTerms": [
+                            {
+                                "matchExpressions": [
+                                    {
+                                        "key": "kubernetes.io/hostname",
+                                        "operator": "In",
+                                        "values": [
+                                            "omega-fusion-k3s"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "persistentVolumeReclaimPolicy": "Delete",
+                "storageClassName": "local-path",
+                "volumeMode": "Filesystem"
+            },
+            "status": {
+                "lastPhaseTransitionTime": "2026-10-27T14:10:02Z",
+                "phase": "Bound"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

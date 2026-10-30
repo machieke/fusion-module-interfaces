@@ -17,7 +17,8 @@ def configuration(path):
     chosen = c.select([descriptor_read(d) for d in cfg['catalogue']], cfg['profile'])
     if 'policy' in cfg['disclosure']:
         from .neoclaw_retrieval_disclosure import configuration as retrieval_configuration
-        retrieval_configuration(cfg)
+        from .retrieval_services import POLICY as SERVICE_POLICY, configuration as service_configuration
+        (service_configuration if cfg['disclosure']['policy']==SERVICE_POLICY else retrieval_configuration)(cfg)
     else:
         require(type(cfg['commands']) is list and 1 <= len(cfg['commands']) <= 3)
         from .neoclaw_contracts import parse_expression
@@ -30,11 +31,16 @@ def configuration(path):
     if 'backend_port' in cfg:
         require(cfg['profile']==c.CPU_PROFILE,'UNSUPPORTED_PROFILE')
         frozen['backend_port']=c.integer(cfg['backend_port'],1,65535)
-    require(cfg['placement'] in ('local','network'), 'UNSUPPORTED_PROFILE')
+    require(cfg['placement'] in ('local','network','service-network'), 'UNSUPPORTED_PROFILE')
     if cfg['placement'] == 'local': frozen['provider_config'] = cfg['provider_config']
     else:
         require('provider_config' not in cfg, 'UNSUPPORTED_PROFILE')
         frozen['endpoint'] = {**cfg['endpoint'], 'ca_sha256':digest(Path(cfg['endpoint']['ca_file']).read_bytes())}
+    if cfg['placement']=='service-network':
+        from .retrieval_services import COMPOSITION
+        from .neoclaw_services import service_hostname
+        require(cfg.get('service_composition')==COMPOSITION,'UNSUPPORTED_PROFILE')
+        service_hostname(cfg['endpoint']['host']);frozen['service_composition']=COMPOSITION
     return cfg, chosen, frozen
 
 
@@ -67,7 +73,8 @@ class Client:
                 (cfg['principal'],cfg['scope'],cfg['session']), 'UNAUTHORIZED')
         if 'policy' in cfg['disclosure']:
             from .neoclaw_retrieval_disclosure import preflight
-            preflight(cfg, accepted, operation)
+            from .retrieval_services import POLICY as SERVICE_POLICY, preflight as service_preflight
+            (service_preflight if cfg['disclosure']['policy']==SERVICE_POLICY else preflight)(cfg, accepted, operation)
         disclose(accepted['native_prompt'], cfg['disclosure'], accepted)
         if cfg['placement'] == 'local':
             from .model_service import ModelService
@@ -79,6 +86,9 @@ class Client:
             try: reply = service.invoke(cfg['credential'], request)
             finally: service.close()
         else:
+            if cfg['placement']=='service-network':
+                from .retrieval_services import invoke
+                return checked(request,invoke(cfg,request))
             network = Network(cfg['endpoint'], cfg['credential'], {})
             timeout = 2 if operation != 'complete' else max(.05, min(c.deadline_limit(accepted['profile'])/1000, (accepted['deadline_ms']-time.time_ns()//1_000_000)/1000))
             connection = http.client.HTTPSConnection(network.endpoint['host'], network.endpoint['port'], timeout=timeout, context=network.context)

@@ -14,6 +14,7 @@ from . import model_contracts as m
 from .contracts import canonical, digest, require
 
 APPLICATION = 'controlled-native-loop/10'
+SERVICE_APPLICATION = 'controlled-native-loop/11'
 POLICY = 'synthetic-retrieval-query-send/1'
 PRIOR = 'neoclaw-fresh-memory-compatibility-prior/1:not-registered'
 MAX_BODIES = 8

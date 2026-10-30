@@ -1,0 +1,316 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "alpha.kubernetes.io/provided-node-ip": "172.17.0.3",
+                    "flannel.alpha.coreos.com/backend-data": "{\"VNI\":1,\"VtepMAC\":\"b2:82:66:ed:a3:68\"}",
+                    "flannel.alpha.coreos.com/backend-type": "vxlan",
+                    "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+                    "flannel.alpha.coreos.com/public-ip": "172.17.0.3",
+                    "k3s.io/hostname": "omega-fusion-k3s",
+                    "k3s.io/internal-ip": "172.17.0.3",
+                    "k3s.io/node-args": "[\"server\",\"--disable\",\"traefik\",\"--disable\",\"servicelb\",\"--disable\",\"metrics-server\",\"--tls-san\",\"127.0.0.1\",\"--node-name\",\"omega-fusion-k3s\"]",
+                    "k3s.io/node-config-hash": "6F2MPW4DA6XAEBYMRUZE5FSW6QOV3RAWGFK6DPO7RFYCPGRJFZBQ====",
+                    "k3s.io/node-env": "{}",
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2026-10-27T13:19:54Z",
+                "finalizers": [
+                    "wrangler.cattle.io/node"
+                ],
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/instance-type": "k3s",
+                    "beta.kubernetes.io/os": "linux",
+                    "kubernetes.io/arch": "amd64",
+                    "kubernetes.io/hostname": "omega-fusion-k3s",
+                    "kubernetes.io/os": "linux",
+                    "node-role.kubernetes.io/control-plane": "true",
+                    "node.kubernetes.io/instance-type": "k3s"
+                },
+                "name": "omega-fusion-k3s",
+                "resourceVersion": "129477",
+                "uid": "27a7fbcb-2e55-4067-961e-288e311d9cb1"
+            },
+            "spec": {
+                "podCIDR": "10.42.0.0/24",
+                "podCIDRs": [
+                    "10.42.0.0/24"
+                ],
+                "providerID": "k3s://omega-fusion-k3s"
+            },
+            "status": {
+                "addresses": [
+                    {
+                        "address": "172.17.0.3",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "omega-fusion-k3s",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "cpu": "8",
+                    "ephemeral-storage": "1647551830363",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "82091776Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "cpu": "8",
+                    "ephemeral-storage": "1693618248Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "82091776Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2026-10-30T13:02:55Z",
+                        "lastTransitionTime": "2026-10-27T13:19:53Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2026-10-30T13:02:55Z",
+                        "lastTransitionTime": "2026-10-27T13:19:53Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2026-10-30T13:02:55Z",
+                        "lastTransitionTime": "2026-10-27T13:19:53Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2026-10-30T13:02:55Z",
+                        "lastTransitionTime": "2026-10-27T13:19:54Z",
+                        "message": "kubelet is posting ready status",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "features": {
+                    "supplementalGroupsPolicy": true
+                },
+                "images": [
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-embedding@sha256:dad26194616f6607ab38eb8fc5c7c011775bd88d50b4193edfb7c613f082939d",
+                            "docker.io/library/fusion-memory-embedding:memory-v6"
+                        ],
+                        "sizeBytes": 2897677034
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-embedding:memory-v5"
+                        ],
+                        "sizeBytes": 2897664745
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-embedding:memory-v4"
+                        ],
+                        "sizeBytes": 2897659114
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-embedding:memory-v3"
+                        ],
+                        "sizeBytes": 2897644329
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-embedding:memory-v2"
+                        ],
+                        "sizeBytes": 2897108270
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-caller@sha256:abf2891c238c948207bbc31857c902a40a20c2bec434c57bfd98a2b74fd8768f",
+                            "docker.io/library/fusion-memory-caller:memory-v6"
+                        ],
+                        "sizeBytes": 596001154
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-caller:memory-v5"
+                        ],
+                        "sizeBytes": 595988866
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-caller:memory-v4"
+                        ],
+                        "sizeBytes": 595983234
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-caller:memory-v3"
+                        ],
+                        "sizeBytes": 595968450
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-memory-caller:memory-v2"
+                        ],
+                        "sizeBytes": 595432388
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node@sha256:0fabdea2eb745bca5ee5e737bf453ea9980d5dfb40896f37ded3db45b703cb48",
+                            "docker.io/library/fusion-single-node:memory-base-v6"
+                        ],
+                        "sizeBytes": 260886897
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:memory-base-v5"
+                        ],
+                        "sizeBytes": 260874609
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:memory-base-v4"
+                        ],
+                        "sizeBytes": 260868977
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:memory-base-v3"
+                        ],
+                        "sizeBytes": 260854192
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:memory-base-v2"
+                        ],
+                        "sizeBytes": 260318133
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:dev-05"
+                        ],
+                        "sizeBytes": 260290485
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node@sha256:e248411f55865b65525eabf788c322756719fbcaac3b42903d3da004d015029c",
+                            "docker.io/library/fusion-single-node:single-node-v1"
+                        ],
+                        "sizeBytes": 260290485
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:dev-04"
+                        ],
+                        "sizeBytes": 260288437
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:dev-03"
+                        ],
+                        "sizeBytes": 260273561
+                    },
+                    {
+                        "names": [
+                            "docker.io/library/fusion-single-node:dev-02"
+                        ],
+                        "sizeBytes": 260272532
+                    },
+                    {
+                        "names": [
+                            "docker.io/rancher/mirrored-coredns-coredns@sha256:1391544c978029fcddc65068f6ad67f396e55585b664ecccd7fefba029b9b706",
+                            "docker.io/rancher/mirrored-coredns-coredns:1.12.3"
+                        ],
+                        "sizeBytes": 22376752
+                    },
+                    {
+                        "names": [
+                            "docker.io/rancher/local-path-provisioner@sha256:9289da488b07912cb4128eb96928a331a5f3e60c28c5cfc5790f354a4ad0cc68",
+                            "docker.io/rancher/local-path-provisioner:v0.0.32"
+                        ],
+                        "sizeBytes": 21144828
+                    },
+                    {
+                        "names": [
+                            "docker.io/rancher/mirrored-library-busybox@sha256:8a45424ddf949bbe9bb3231b05f9032a45da5cd036eb4867b511b00734756d6f",
+                            "docker.io/rancher/mirrored-library-busybox:1.36.1"
+                        ],
+                        "sizeBytes": 2147340
+                    },
+                    {
+                        "names": [
+                            "docker.io/rancher/mirrored-pause@sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893",
+                            "docker.io/rancher/mirrored-pause:3.6"
+                        ],
+                        "sizeBytes": 301463
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "01bd26fb-41a1-4627-a5f8-3acc49588610",
+                    "containerRuntimeVersion": "containerd://2.1.4-k3s2",
+                    "kernelVersion": "5.4.0-216-generic",
+                    "kubeProxyVersion": "",
+                    "kubeletVersion": "v1.34.1+k3s1",
+                    "machineID": "",
+                    "operatingSystem": "linux",
+                    "osImage": "K3s v1.34.1+k3s1",
+                    "swap": {
+                        "capacity": 8589930496
+                    },
+                    "systemUUID": "64a972ea-c973-a6b2-fce3-ec7aef022b8d"
+                },
+                "runtimeHandlers": [
+                    {
+                        "features": {
+                            "recursiveReadOnlyMounts": false,
+                            "userNamespaces": true
+                        },
+                        "name": ""
+                    },
+                    {
+                        "features": {
+                            "recursiveReadOnlyMounts": false,
+                            "userNamespaces": true
+                        },
+                        "name": "runc"
+                    },
+                    {
+                        "features": {
+                            "recursiveReadOnlyMounts": false,
+                            "userNamespaces": false
+                        },
+                        "name": "runhcs-wcow-process"
+                    }
+                ]
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

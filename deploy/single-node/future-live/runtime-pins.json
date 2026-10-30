@@ -1,0 +1,161 @@
+{
+  "runtime": {
+    "version": "0.40.0+mlx.cpu.1",
+    "binary": "/usr/local/bin/ollama",
+    "binary_sha256": "db8d6a16322494d762bf5394d5e5318d48f42e93f9dd44888d48d3a12099d43c",
+    "upstream_commit": "0d0720e51fb2fd9aa58781c3d720c06d720c2e7b",
+    "archive_sha256": "9fe3b69d3e539bd0168dfc1cbb7af9f15bac654d31744f96560f13f69672516f",
+    "matched_archive_files": 1429,
+    "changed_archive_files": [
+      "mlx/io.go",
+      "mlx/io_test.go"
+    ],
+    "source_directory": "/home/purplezky/work/takopi/ollama/mlx-cpu/0.40.0/src/ollama",
+    "source_files": {
+      "api/types.go": "75369e029dcfc815013243b1e728fcff32514a3b38b26f3288eb1ee2b7fa4d1b",
+      "server/routes.go": "94829abc324d6116e2efe500795843f71ffb0a88c5d03315be4a690e3b1b1878",
+      "server/prompt.go": "79411c4e15ff27fb8bac4dcd96076407e035ec407c0ab1a1840035f9668b4654",
+      "llm/llama_server.go": "8ce37fcd02f921ebd90ab51244e5f0a7f3ec52e3db1f9902a7c5be4853c034c1",
+      "model/renderers/qwen35.go": "69bca99b53a3db8d599bb9ec8eadf65ce9a72868566a89bfac44d31fe3b565e0",
+      "model/parsers/qwen35.go": "c369a5220e11c89f32ed6efce659c7c735f7b10490606015b23a89b77cc54405",
+      "go.mod": "c8330ba5f762c4bded1401cc8ecadbe85ebe8e5d159fd81da122da986b26cda5",
+      "go.sum": "d9a0e2f1149951068ff200abac695a8fc6d6711b7cbf59c5aefb5e0a0340caae",
+      "mlx/io.go": "d8456e263b2cf3ba97c741fcb83fc1ce1585206ce539ef81f6cc9c117d73cf31",
+      "mlx/io_test.go": "c081fade0bcfe90d9d7e17d2725b4723f36ad7ebece531b024c6c80757d5d484"
+    },
+    "build_info": {
+      "base_version": "0.40.0",
+      "version": "0.40.0+mlx.cpu.1",
+      "patch": "Use a CPU stream when loading safetensors without a GPU",
+      "binary_sha256": "db8d6a16322494d762bf5394d5e5318d48f42e93f9dd44888d48d3a12099d43c"
+    },
+    "build_recipe": "/home/purplezky/work/takopi/ollama/mlx-cpu/0.40.0/build_runtime.py",
+    "build_record_sha256": {
+      "build-info.json": "97551484cc3439df235a04c0e25c5f7b563335b56abf4315b951920ecd0113bb",
+      "build-command.json": "ff86ceea9d6831360f773030f121f82d9b72d90104b342a848b9a5042e401935",
+      "build_runtime.py": "f58052bd947059d69a36399777e80c5f0b02d25b8c5f9e0c817916bf774c2529",
+      "build-ollama.log": "c2762d12b5e8b95f43ac2d8657c87a19f3cd9a12929ad3b028be3e5e07081459"
+    },
+    "sdk": "none: Python stdlib http.client; no SDK retries",
+    "api": "http://127.0.0.1:11434/api/chat",
+    "source_identity_limit": "Archive comparison and local build records; installed executable is not independently rebuilt here. Root service executable cannot be read through /proc."
+  },
+  "model": {
+    "manifest_digest": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+    "files": {
+      "manifest_path": "/usr/share/ollama/.ollama/models/manifests/registry.ollama.ai/library/qwen3.8/27b",
+      "manifest_sha256": "9a8921f5b297f01451509b60e4a7e754674fe40d4a64dd9f89fc4a56c4fc5ee1",
+      "manifest": {
+        "schemaVersion": 2,
+        "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+        "config": {
+          "mediaType": "application/vnd.docker.container.image.v1+json",
+          "digest": "sha256:492b2922d38e553cabc2d319345644ed482874fbf5e5c9e4495cbf8e17b0cf5f",
+          "size": 215
+        },
+        "layers": [
+          {
+            "mediaType": "application/vnd.ollama.image.projector",
+            "digest": "sha256:ac3714bfdddeca31351f2752bf1a63f266f4df87c0b68c895e44945ca704448e",
+            "size": 931146016,
+            "from": "qwen3.8:27b-q4_K_M"
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.model",
+            "digest": "sha256:f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d",
+            "size": 16810714464,
+            "from": "qwen3.8:27b-q4_K_M"
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.license",
+            "digest": "sha256:4c6a8e842ef0d8504549facfb03f1273a8d0022991519bc1888522cc1a5517d1",
+            "size": 11345,
+            "from": "qwen3.8:27b-q4_K_M"
+          },
+          {
+            "mediaType": "application/vnd.ollama.image.params",
+            "digest": "sha256:906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
+            "size": 114
+          }
+        ],
+        "runner": "llamacpp",
+        "format": "gguf"
+      },
+      "files": [
+        {
+          "path": "/usr/share/ollama/.ollama/models/blobs/sha256-492b2922d38e553cabc2d319345644ed482874fbf5e5c9e4495cbf8e17b0cf5f",
+          "digest": "sha256:492b2922d38e553cabc2d319345644ed482874fbf5e5c9e4495cbf8e17b0cf5f",
+          "bytes": 215,
+          "media_type": "application/vnd.docker.container.image.v1+json",
+          "verification_seconds": 6.692670285701752e-05
+        },
+        {
+          "path": "/usr/share/ollama/.ollama/models/blobs/sha256-ac3714bfdddeca31351f2752bf1a63f266f4df87c0b68c895e44945ca704448e",
+          "digest": "sha256:ac3714bfdddeca31351f2752bf1a63f266f4df87c0b68c895e44945ca704448e",
+          "bytes": 931146016,
+          "media_type": "application/vnd.ollama.image.projector",
+          "verification_seconds": 1.7559938253834844
+        },
+        {
+          "path": "/usr/share/ollama/.ollama/models/blobs/sha256-f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d",
+          "digest": "sha256:f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d",
+          "bytes": 16810714464,
+          "media_type": "application/vnd.ollama.image.model",
+          "verification_seconds": 33.362145164981484
+        },
+        {
+          "path": "/usr/share/ollama/.ollama/models/blobs/sha256-4c6a8e842ef0d8504549facfb03f1273a8d0022991519bc1888522cc1a5517d1",
+          "digest": "sha256:4c6a8e842ef0d8504549facfb03f1273a8d0022991519bc1888522cc1a5517d1",
+          "bytes": 11345,
+          "media_type": "application/vnd.ollama.image.license",
+          "verification_seconds": 0.0010422859340906143
+        },
+        {
+          "path": "/usr/share/ollama/.ollama/models/blobs/sha256-906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
+          "digest": "sha256:906ee87bde6cff7bf3c3b1550f55cbbec261e027187fbb9f511f908ffc418334",
+          "bytes": 114,
+          "media_type": "application/vnd.ollama.image.params",
+          "verification_seconds": 3.9490871131420135e-05
+        }
+      ]
+    },
+    "details": {
+      "parent_model": "qwen3.8:27b-q4_K_M",
+      "format": "gguf",
+      "family": "qwen35",
+      "families": [
+        "qwen35"
+      ],
+      "parameter_size": "27.3B",
+      "quantization_level": "Q4_K_M",
+      "runner": "llamacpp"
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "tools",
+      "thinking"
+    ],
+    "template": "{{ .Prompt }}",
+    "parameters": "draft_num_predict              4\nmin_p                          0\npresence_penalty               0\nrepeat_penalty                 1\ntemperature                    1\ntop_k                          20\ntop_p                          0.95",
+    "tokenizer": {
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 248044,
+      "tokenizer.ggml.eos_token_id": 248046,
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 248044,
+      "tokenizer.ggml.pre": "qwen35"
+    },
+    "context_max": 262144,
+    "selected_context": 32768,
+    "selected_request": {
+      "stream": false,
+      "think": false,
+      "truncate": false,
+      "num_predict": 6000,
+      "draft_num_predict": 0
+    },
+    "thinking": "Explicitly disabled for this distinct local profile; separate hidden text is never retained."
+  },
+  "classification": "historical pins; NOT_REVERIFIED in this task"
+}

@@ -29,7 +29,7 @@ class ChannelAdoption:
         ''')
     def current(self):
         cfg,frozen=settings(self.app);require(frozen==self.app.binding['channel'],'CONFLICT');return cfg
-    def slot(self):return self.app.evidence.slot()
+    def slot(self):return self.app.processing_slot()
     def input(self):return self.db.execute('SELECT * FROM app_channel_inputs WHERE slot=?',(self.slot(),)).fetchone()
     def receive(self):
         cfg=self.current();slot=self.slot();row=self.input()
@@ -74,6 +74,8 @@ class ChannelAdoption:
                     message_id=value['id'],observed_time=datetime.fromtimestamp(value['observed_ms']/1000,timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
                     deadline_ms=row['deadline'])
     def source(self,text):
+        if not self.app.evidence_enabled:
+            require(text==self.source_spec()['text'],'CONFLICT');return text
         value=self.app.evidence.source(text);spec=self.source_spec()
         require(value==text+' RECORDED_SOURCE: '+spec['label'],'NOT_AVAILABLE')
         return text # Keep the native human rendering; source identity stays local.

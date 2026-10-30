@@ -1,0 +1,102 @@
+{
+  "cleanup": "cleanup.json",
+  "fixtures": [
+    "recorded model responses",
+    "empty history/promoted context",
+    "declared metadata timestamps"
+  ],
+  "future_generations_authorized": 0,
+  "future_manifest_sha256": "9abf42a08c2a1a0653a754b84742c24c4b3659571e81cd41a96b956f2522c3b5",
+  "future_plan": "../../deploy/single-node/future-live/plan.json",
+  "gates": {
+    "BASELINE_SOURCE": {
+      "evidence": "baseline.json; sources.json; known error retained separately",
+      "status": "PASS"
+    },
+    "CHANNEL_OWNER_SPLIT": {
+      "evidence": "Real ngIRCd/bridge/peer; storage and mailbox through independently authorized ports",
+      "status": "PASS"
+    },
+    "CHART_IMAGES": {
+      "evidence": "Final v5 digest-pinned runs; independent PVCs, service DNS/TLS; no foreign mounts",
+      "status": "PASS"
+    },
+    "COMPATIBILITY": {
+      "evidence": "84 selected methods pass/1 skipped; four cluster regression executions pass; separate known M5 error OPEN",
+      "status": "PASS_WITH_OPEN_BASELINE"
+    },
+    "CROSS_POD_DISCLOSURE": {
+      "evidence": "Trusted-issuer receipt plus provider metadata preflight/current authority; no foreign policy/receipt files",
+      "status": "PASS"
+    },
+    "FUTURE_LIVE": {
+      "evidence": "Fresh corpus/state, runtime image/assets, TLS/config/source/image bindings and new approval not frozen; runtime not contacted",
+      "status": "INCOMPLETE_DISABLED"
+    },
+    "MODEL_OWNER": {
+      "evidence": "37 recorded reservations/36 evaluations/36 provider captures/35 caller captures across all scenarios",
+      "status": "PASS_RECORDED"
+    },
+    "NATIVE_RETRIEVAL_REPLY": {
+      "evidence": "12 complete correct workflow executions; same-workflow-trace.json",
+      "status": "PASS_RECORDED"
+    },
+    "NO_ANSWER_ORACLE": {
+      "evidence": "Initial leakage assertions, exact next prompt, wrong-permitted/altered/absent scenarios independently score incorrect",
+      "status": "PASS"
+    },
+    "OPERATIONS_CLEANUP": {
+      "evidence": "12 protected demo resource identities/specs unchanged, four Ready pods; no task namespaces/PV claims. Metrics API unavailable",
+      "status": "PASS_WITH_MEASUREMENT_LIMIT"
+    },
+    "POD_RECOVERY": {
+      "evidence": "q06 interruptions plus final-v5 model-capture/config-restart; original inputs, views, counters and PVCs retained",
+      "status": "PASS"
+    },
+    "ZERO_LIVE": {
+      "evidence": "denial-before-tests; explicit recorded selection; no real generative runtime container; zero live counters",
+      "status": "PASS"
+    }
+  },
+  "images": "images.json",
+  "real": [
+    "native remember/query/send parser and loop",
+    "E5 CPU pinned implementation",
+    "Chroma 1.5.5",
+    "DeTTa",
+    "Messaging and ModelService owner lifecycle",
+    "ngIRCd and independent socket peer",
+    "pod-to-pod authenticated HTTPS"
+  ],
+  "review_entrypoint": "../../docs/deployment/single-node-model-channel.md",
+  "scope": "Deployment/composition evidence for existing operations. Historical fifteen-family denominator, X01/X02, adopted-command counts, live campaign and chain results unchanged.",
+  "sources": "sources.json",
+  "status": {
+    "ADDITIONAL_LIVE_GENERATIONS": 0,
+    "AUTHORIZED_LIVE_GENERATIONS": 0,
+    "CAMPAIGN_STATE": "DISABLED_PENDING_NEW_AUTHORIZATION",
+    "CAPTURED_LIVE_RESPONSES": 0,
+    "CHAIN_IN_K3S": "NOT_RUN",
+    "GENERATION_DENIAL_TESTED": "PASS",
+    "GENERATIVE_RUNTIME_AVAILABILITY": "NOT_CHECKED",
+    "GENERATIVE_RUNTIME_IMAGE": "NOT_VERIFIED",
+    "K3S_LIVE_CAMPAIGN_FREEZE": "INCOMPLETE",
+    "LIVE_MEMORY_MODEL_WORKFLOW_IN_K3S": "NOT_RUN",
+    "MODEL_RESPONSES": "RECORDED_FIXTURE",
+    "MULTI_NODE": "NOT_RUN",
+    "OBSERVED_GENERATIVE_BACKEND_CALLS": 0,
+    "PRODUCTION_READINESS": "NOT_ESTABLISHED",
+    "RECORDED_RETRIEVAL_WORKFLOW_IN_K3S": "PASS",
+    "RESERVED_LIVE_GENERATIONS": 0,
+    "SINGLE_NODE_MODEL_CHANNEL_PREPARATION": "PASS"
+  },
+  "tests": "tests.json",
+  "trace": "same-workflow-trace.json",
+  "trust_limits": [
+    "Trusted application receipt does not cryptographically prove retrieval to an untrusted provider.",
+    "Static test credentials/PKI and trusted pods; no production identity or hostile-code network isolation claim.",
+    "IRC before capture/disconnected loss windows remain; ambiguous spent sends never automatically resent.",
+    "Single-node retained local PVCs are not HA or multi-node recovery.",
+    "Controlled composition does not deploy S04/S05 private cognition or full-default Omega."
+  ]
+}

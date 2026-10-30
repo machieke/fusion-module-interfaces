@@ -27,6 +27,9 @@ def write(path, value):
 
 def configure(path='/config/component.json'):
     settings = json.loads(Path(path).read_text()); role = settings['role']
+    if settings.get('workflow',{}).get('enabled'):
+        from .workflow_configure import configure as workflow
+        return workflow(settings)
     memory=settings['service_composition']=='neoclaw-memory-services/1'
     require((memory and role in ('omega-agent','fusion-storage','fusion-search','fusion-embedding')) or
             (role in ROLES and settings['service_composition']==COMPOSITION),'UNSUPPORTED_PROFILE')

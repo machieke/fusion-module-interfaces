@@ -61,15 +61,15 @@ class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION, m.APPLICATION,r.APPLICATION), 'UNSUPPORTED_PROFILE')
-        self.model_enabled = self.config['composition'] in (m.APPLICATION,r.APPLICATION)
-        self.channel_enabled = self.config['composition'] in (ch.APPLICATION,m.APPLICATION,r.APPLICATION)
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION, m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION), 'UNSUPPORTED_PROFILE')
+        self.model_enabled = self.config['composition'] in (m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
+        self.channel_enabled = self.config['composition'] in (ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
         self.priority_enabled = self.config['composition'] in (p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
         self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
-        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
-        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
-        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
-        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
+        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
+        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
+        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
+        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
@@ -121,6 +121,10 @@ class Application:
                 if self.config['composition'] == r.APPLICATION:
                     self.binding=binding
                     binding['retrieval']=r.binding(self)
+                elif self.config['composition'] == r.SERVICE_APPLICATION:
+                    from .retrieval_services import binding as retrieval_binding
+                    self.binding=binding
+                    binding['retrieval']=retrieval_binding(self)
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -194,6 +198,20 @@ class Application:
         if hasattr(self, 'embedding'): self.embedding.close()
         self.db.close()
         self.lock.close()
+
+    def processing_slot(self):
+        pending=self.pending()
+        return pending['id'] if pending else self.db.execute('SELECT coalesce(max(id),0)+1 FROM app_turns').fetchone()[0]
+
+    def model_context_view(self):
+        if self.config['composition']==r.SERVICE_APPLICATION:
+            from .contracts import digest
+            return digest(canonical(self.binding['retrieval']['initial_view']))
+        return self.priority.context()['view']
+
+    def model_context_text(self):
+        if self.config['composition']==r.SERVICE_APPLICATION:return '()'
+        return self.priority.context_replay()
 
     def pending(self):
         return self.db.execute('SELECT * FROM app_turns WHERE projection IS NULL ORDER BY id LIMIT 1').fetchone()

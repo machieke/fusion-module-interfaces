@@ -32,8 +32,8 @@ def scaffold():
 
 
 def extend(config,omega,directory,loop,skills,memory):
-    from fusion.neoclaw_retrieval_disclosure import APPLICATION
-    retrieval=config['composition']==APPLICATION
+    from fusion.neoclaw_retrieval_disclosure import APPLICATION,SERVICE_APPLICATION
+    retrieval=config['composition'] in (APPLICATION,SERVICE_APPLICATION)
     descriptions=RETRIEVAL_SKILLS if retrieval else SKILLS
     prompt=RETRIEVAL_PROMPT if retrieval else PROMPT
     source=loop.read_text()

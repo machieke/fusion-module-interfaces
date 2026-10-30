@@ -14,6 +14,12 @@ dedicated PVCs. The existing deterministic NAL operation passes delegation,
 completion and recovery gates. External model/channel fixtures remain explicit;
 this deployment performs no additional live generation or chain work.
 
+The [memory-service extension](docs/deployment/single-node-memory.md) adds independent
+E5 and Chroma workloads. The [model/channel deployment report](docs/deployment/single-node-model-channel.md)
+adds real isolated IRC and a separate ModelInference owner: recorded responses drive
+native retrieval, context binding and an independently observed reply across pod HTTPS.
+Live generation remains disabled; the known M5 baseline regression remains open.
+
 A backend-neutral contract package and bounded storage, mailbox and delegated
 execution conformance slice. M1/M1.1 peers are **protocol fixtures**. M1.2 adds a
 pinned native Hive Programs caller through the existing validated interfaces;

@@ -1,0 +1,36 @@
+{
+  "archive": "artifacts/single-node-model-channel/images-v5.tar",
+  "archive_sha256": "8358d890d7f1ee0b48f865ccb66dbc485f4b66483c2a72a965ff4c0c249f51b6",
+  "images": [
+    {
+      "kind": "base",
+      "repository": "docker.io/library/fusion-single-node",
+      "local_tag": "docker.io/library/fusion-single-node:workflow-v5",
+      "manifest_digest": "sha256:929aa1b8c72f921413b3c75642cc46f99fde5767003920227d087fb517248239",
+      "configuration_digest": "sha256:0488b5ea9ed9f0f3c51b1c103d9d6a0819df4125907f1001a5de04efa9a7938a",
+      "size_bytes": 255506361,
+      "package_manifest": "packages/base-v5.json",
+      "original_local_package_manifest": "image-base-v5/package.json"
+    },
+    {
+      "kind": "caller",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:workflow-v5",
+      "manifest_digest": "sha256:82aa548395c3445e3702ba99721393b59e1251b9709f730ce347c1252f14b354",
+      "configuration_digest": "sha256:00731b7ceb66d424fbc905d6d5f6b32ee19871f629038ddfd42d7f71be73dff3",
+      "size_bytes": 585201562,
+      "package_manifest": "packages/caller-v5.json",
+      "original_local_package_manifest": "image-caller-v5/package.json"
+    },
+    {
+      "kind": "embedding",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:workflow-v5",
+      "manifest_digest": "sha256:d2d491a59e054267340a71ecf1b3e5a99f486f556abec9dd23fb1f87937a035b",
+      "configuration_digest": "sha256:ccafd574fb109d36a80bf2dc239677da87adb1d62820b5bf96fab6ef8cdbb662",
+      "size_bytes": 2870275869,
+      "package_manifest": "packages/embedding-v5.json",
+      "original_local_package_manifest": "image-embedding-v5/package.json"
+    }
+  ]
+}

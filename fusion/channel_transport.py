@@ -12,13 +12,16 @@ from .responses import validate_reply,error
 
 def configuration(path):
     cfg=json.loads(Path(path).read_text());c.route_config(cfg)
-    require(cfg['fallback'] is False and cfg['placement'] in ('local','network'),'UNSUPPORTED_PROFILE')
+    require(cfg['fallback'] is False and cfg['placement'] in ('local','network','service-network'),'UNSUPPORTED_PROFILE')
     chosen=c.selected([descriptor_read(x) for x in cfg['catalogue']])
-    require('provider_config' not in cfg if cfg['placement']=='network' else 'endpoint' not in cfg,'UNSUPPORTED_PROFILE')
+    require('provider_config' not in cfg if cfg['placement'] in ('network','service-network') else 'endpoint' not in cfg,'UNSUPPORTED_PROFILE')
     frozen={k:cfg[k] for k in ('profile','scope','session','bridge','target','ingress_route','egress_route','principal',
                                'role','approved_inputs','approved_outputs','placement')}
     frozen.update(selections=c.selection(chosen))
-    if cfg['placement']=='network':
+    if cfg['placement']=='service-network':
+        from .channel_services import placement
+        frozen.update(placement(cfg))
+    elif cfg['placement']=='network':
         frozen.update(endpoint=cfg['endpoint'],ca_sha256=digest(Path(cfg['endpoint']['ca_file']).read_bytes()))
     else:frozen.update(provider_config=str(Path(cfg['provider_config']).resolve()))
     return cfg,chosen,frozen
@@ -62,6 +65,8 @@ class Client:
         if operation=='send':q.update(correlation_id=correlation,reply_route=self.receive_route())
         request=dict(channel_profile=c.PROFILE,selections=c.selection(self.chosen),principal=cfg['principal'],invocation=q)
         c.wire(request,self.chosen)
+        if cfg['placement']=='service-network':
+            return ChannelNetwork(cfg['endpoints'][family],cfg['service_credentials'][family],self.chosen,service_dns=True).invoke(request)
         if cfg['placement']=='network':return ChannelNetwork(cfg['endpoint'],cfg['credential'],self.chosen).invoke(request)
         from .channel_service import ChannelService
         owner=ChannelService(cfg['provider_config'])

@@ -1,0 +1,868 @@
+{
+  "counting": "Methods, scenarios, executions, rechecks, completed workflows and accounting counters are separate. The 20 scenario passes include eight negative safety cases, not successful workflows. Accounting sums latest observed projection once per run, including unsuccessful runs. No inferred capture from missing status.",
+  "development_method_logs": [
+    {
+      "log": "logs/compatibility-01.log",
+      "methods": 35,
+      "result": "PASS",
+      "seconds": 6.156,
+      "skipped": 0
+    },
+    {
+      "log": "logs/contracts-final-01.log",
+      "methods": 84,
+      "result": "PASS_WITH_SKIP",
+      "seconds": 8.925,
+      "skipped": 1
+    },
+    {
+      "log": "logs/contracts-final-02.log",
+      "methods": 85,
+      "result": "PASS_WITH_SKIP",
+      "seconds": 9.199,
+      "skipped": 1
+    },
+    {
+      "log": "logs/core-tests-01.log",
+      "methods": null,
+      "result": "ERROR",
+      "seconds": null,
+      "skipped": 0
+    },
+    {
+      "log": "logs/core-tests-02.log",
+      "methods": 44,
+      "result": "PASS_WITH_SKIP",
+      "seconds": 3.35,
+      "skipped": 1
+    },
+    {
+      "log": "logs/core-tests-03.log",
+      "methods": 44,
+      "result": "PASS_WITH_SKIP",
+      "seconds": 5.687,
+      "skipped": 1
+    },
+    {
+      "log": "logs/core-tests-04.log",
+      "methods": 47,
+      "result": "PASS_WITH_SKIP",
+      "seconds": 5.842,
+      "skipped": 1
+    },
+    {
+      "log": "logs/core-tests-05.log",
+      "methods": 48,
+      "result": "PASS_WITH_SKIP",
+      "seconds": 5.747,
+      "skipped": 1
+    },
+    {
+      "log": "logs/denial-before-tests.log",
+      "methods": 1,
+      "result": "PASS",
+      "seconds": 0.161,
+      "skipped": 0
+    },
+    {
+      "log": "logs/future-denial-02.log",
+      "methods": 10,
+      "result": "PASS",
+      "seconds": 0.59,
+      "skipped": 0
+    },
+    {
+      "log": "logs/known-baseline.log",
+      "methods": 1,
+      "result": "ERROR",
+      "seconds": 0.009,
+      "skipped": 0
+    },
+    {
+      "log": "logs/new-tests-01.log",
+      "methods": null,
+      "result": "ERROR",
+      "seconds": null,
+      "skipped": 0
+    },
+    {
+      "log": "logs/new-tests-02.log",
+      "methods": 9,
+      "result": "PASS",
+      "seconds": 0.82,
+      "skipped": 0
+    },
+    {
+      "log": "logs/new-tests-03.log",
+      "methods": 10,
+      "result": "PASS",
+      "seconds": 0.601,
+      "skipped": 0
+    }
+  ],
+  "distinct_scenario_names": 18,
+  "extra_live_generations": 0,
+  "final_image_regressions": [
+    {
+      "report": "runs/memory-v5/baseline/report.json",
+      "run": "memory-v5/baseline",
+      "sha256": "6de6281043ff125b2838f9f720a053fd872bf34f1dd566cb1417eef9cdf11b84",
+      "status": "PASS"
+    },
+    {
+      "report": "runs/memory-v5/health/report.json",
+      "run": "memory-v5/health",
+      "sha256": "4f0829b39718d4b43770eb53339e96ca33ef4da74641433b96032d1f4c7f7a03",
+      "status": "PASS"
+    },
+    {
+      "report": "runs/s01-v5/baseline/report.json",
+      "run": "s01-v5/baseline",
+      "sha256": "3b28d00536a2339f9a79d6afaaca8c062c0d83e200c11d5a42eb165c04e71b54",
+      "status": "PASS"
+    },
+    {
+      "report": "runs/s01-v5/health/report.json",
+      "run": "s01-v5/health",
+      "sha256": "335e42a92339e4e418a3bfb76be56714bbae5930c965e14133d50814395edf55",
+      "status": "PASS"
+    }
+  ],
+  "final_selected_methods": {
+    "command": "artifacts/s03/venv/bin/python -m unittest -v tests.test_model_channel_services tests.test_model tests.test_retrieval_disclosure tests.test_channel tests.test_memory_services tests.test_single_node tests.test_single_node_chart tests.test_neoclaw_application tests.test_append_contracts tests.test_embedding_contracts",
+    "log": "logs/contracts-final-02.log",
+    "passed": 84,
+    "ran": 85,
+    "seconds": 9.199,
+    "skip": "test_guard_blocks_execution_and_host_network_before_tests requires explicitly isolated historical preparation launcher",
+    "skipped": 1
+  },
+  "generation_denial_first": "logs/denial-before-tests.log",
+  "known_baseline": {
+    "command": "artifacts/s03/venv/bin/python -m unittest -v tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation",
+    "impact": "Python3.12 runtime protocol/fixture check at fusion/private.py:150; ownership guard unchanged. No fully-green baseline claim; independently exercised real storage path passes.",
+    "log": "logs/known-baseline.log",
+    "status": "OPEN_ERROR"
+  },
+  "metrics": "Metrics API unavailable; no peak CPU/memory measurement",
+  "operator_checks": [
+    {
+      "check": "Final chart/values lint",
+      "log": "logs/helm-final.log",
+      "result": "PASS"
+    },
+    {
+      "check": "Actual immutable image registration, config and tag digest verification",
+      "log": "logs/import-verified.log",
+      "result": "PASS"
+    },
+    {
+      "check": "Wrong tag digest denied before mutation with mocked inventory; not a cluster scenario",
+      "log": "logs/import-negative.log",
+      "result": "PASS_FIXTURE"
+    }
+  ],
+  "recorded_accounting": {
+    "caller_captures": 35,
+    "provider_captures": 36,
+    "recorded_evaluations": 36,
+    "reservations": 37
+  },
+  "workflow_counts": {
+    "FAIL": 5,
+    "PASS": 20,
+    "completed_correct_workflows": 12,
+    "executions": 25,
+    "negative_safety_passes": 8
+  },
+  "workflow_executions": [
+    {
+      "case": "correct",
+      "failure_explanation": "Measured-session promotion metadata mismatch; observer expired. Corrected before v2.",
+      "image_epoch": "v1",
+      "recorded_accounting": {
+        "caller_captures": 0,
+        "provider_captures": 0,
+        "recorded_evaluations": 0,
+        "reservations": 0
+      },
+      "report": "runs/q01/correct/report.json",
+      "report_sha256": "328ecf14d20491530311e7b03ba02dbc9b0b77018b8ab5dfc85f06d3832fa5f0",
+      "run": "q01/correct",
+      "started": "2026-10-30T13:24:10.208013+00:00",
+      "status": "FAIL"
+    },
+    {
+      "case": "correct",
+      "failure_explanation": "Model query captured/admitted; read-only search.ready lacked M grant. Corrected before v3.",
+      "image_epoch": "v2",
+      "recorded_accounting": {
+        "caller_captures": 1,
+        "provider_captures": 1,
+        "recorded_evaluations": 1,
+        "reservations": 1
+      },
+      "report": "runs/q02/correct/report.json",
+      "report_sha256": "3746ded1e927aca1723dca69134c589765afc34132c44d457efc74b20507514d",
+      "run": "q02/correct",
+      "started": "2026-10-30T13:29:50.048496+00:00",
+      "status": "FAIL"
+    },
+    {
+      "case": "correct",
+      "failure_explanation": "Bridge/peer IRC connection refused during startup race; observer expired. Passive bounded readiness added before v4.",
+      "image_epoch": "v3",
+      "recorded_accounting": {
+        "caller_captures": 0,
+        "provider_captures": 0,
+        "recorded_evaluations": 0,
+        "reservations": 0
+      },
+      "report": "runs/q03/correct/report.json",
+      "report_sha256": "d0b4c820b85315f8fc23a38c2e3b7bf0b046dfc969395003e2309524dcbd3619",
+      "run": "q03/correct",
+      "started": "2026-10-30T13:34:47.891376+00:00",
+      "status": "FAIL"
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "correct",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "report": "runs/q04/correct/report.json",
+      "report_sha256": "a5e4e7b9d0d9b67af63ab24578e37baee48285a8c97c782715d8250347a5997c",
+      "retrieval": true,
+      "run": "q04/correct",
+      "started": "2026-10-30T13:40:12.705144+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "absent-corpus",
+      "factual_correctness": false,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q05/absent-corpus/report.json",
+      "report_sha256": "b1779bfea27caea64d76bb3f1c40dc610204702ddd48ae102c0a9637a8b5b1c7",
+      "retrieval": true,
+      "run": "q05/absent-corpus",
+      "started": "2026-10-30T13:45:15.159027+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "altered-corpus",
+      "factual_correctness": false,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q05/altered-corpus/report.json",
+      "report_sha256": "d513b8b35f0b4933b72225a10a085a5adfe7e653b1f7b3f734e3e27d00fd19cc",
+      "retrieval": true,
+      "run": "q05/altered-corpus",
+      "started": "2026-10-30T13:43:47.028949+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "admissions": [
+        "authorized",
+        "rejected:UNSUPPORTED_OPERATION"
+      ],
+      "admitted_send_bodies": [],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "rejected",
+      "factual_correctness": false,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [],
+      "peer_observation": false,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q05/rejected/report.json",
+      "report_sha256": "444b3de98bcfa36f26d29d986a4e513e6dadc748cc42923f7dc23cf39690500e",
+      "retrieval": true,
+      "run": "q05/rejected",
+      "started": "2026-10-30T13:47:04.609169+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: copper kettle."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "wrong-permitted",
+      "factual_correctness": false,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: copper kettle."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q05/wrong-permitted/report.json",
+      "report_sha256": "a75dd8e18cb44a946d6be2b62d03bcc3ccaa58cd4c63f5fdf40b8e8284a98847",
+      "retrieval": true,
+      "run": "q05/wrong-permitted",
+      "started": "2026-10-30T13:42:21.689340+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "bridge-capture",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/bridge-capture/report.json",
+      "report_sha256": "8c69439527d8e57a58c0ab9439408c94b1937f3ed7a077afe7eaac118c3e3eb8",
+      "retrieval": true,
+      "run": "q06/bridge-capture",
+      "started": "2026-10-30T13:46:13.062801+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "config-restart",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/config-restart/report.json",
+      "report_sha256": "9f1f7738e49d779587fd2dc1b80b276659fb1ebeeb37f5aa5f6063682b411439",
+      "retrieval": true,
+      "run": "q06/config-restart",
+      "started": "2026-10-30T13:59:19.729649+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "input-acceptance",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/input-acceptance/report.json",
+      "report_sha256": "eec9cca434bf4984c3d31ea027ae1aa0ef5a7750e61bd3a40c9e3ebcc32f3d92",
+      "retrieval": true,
+      "run": "q06/input-acceptance",
+      "started": "2026-10-30T13:48:16.895219+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "lost-model",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/lost-model/report.json",
+      "report_sha256": "f10a63f80b5f6068107686654488e1ed024e4f1026c5d289b5b3a3068646f3c6",
+      "retrieval": true,
+      "run": "q06/lost-model",
+      "started": "2026-10-30T14:01:02.129377+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "model-capture",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/model-capture/report.json",
+      "report_sha256": "6f6a21218cde44e7b667e64b42aab34a58084d92b24fa13bbd09ee23b3c82b7d",
+      "retrieval": true,
+      "run": "q06/model-capture",
+      "started": "2026-10-30T13:51:53.130087+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "case": "model-unknown",
+      "image_epoch": "v4",
+      "negative_safety": "unknown reservation was not re-evaluated",
+      "recorded_accounting": {
+        "caller_captures": 0,
+        "provider_captures": 0,
+        "recorded_evaluations": 0,
+        "reservations": 1
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/model-unknown/report.json",
+      "report_sha256": "310de25e68c9be0612f332c1983821ac8ac3327fc148d8f3cdef0a5317a3558a",
+      "run": "q06/model-unknown",
+      "started": "2026-10-30T13:50:17.852488+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "query-capture",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/query-capture/report.json",
+      "report_sha256": "341bce8a02cb16ab807bd8bea043f2b89817b5b21c46d201a3cab20fe44f16da",
+      "retrieval": true,
+      "run": "q06/query-capture",
+      "started": "2026-10-30T13:53:55.411729+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "case": "revocation",
+      "image_epoch": "v4",
+      "negative_safety": "captured response retained; revoked disclosure blocked caller recovery",
+      "recorded_accounting": {
+        "caller_captures": 0,
+        "provider_captures": 1,
+        "recorded_evaluations": 1,
+        "reservations": 1
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/revocation/report.json",
+      "report_sha256": "c9822e7533c541d2c93f89554fb3f886c2f4d69bb5434be87087384f08319bb7",
+      "run": "q06/revocation",
+      "started": "2026-10-30T14:04:43.113703+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "send-accepted",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/send-accepted/report.json",
+      "report_sha256": "f34315c97e6d0a77af60e6890b9b7251b2b5b4285fffe7421dc0e93af3fb82c5",
+      "retrieval": true,
+      "run": "q06/send-accepted",
+      "started": "2026-10-30T13:55:51.466059+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "service-outage",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/service-outage/report.json",
+      "report_sha256": "3cabacb311f5b7a2a1c41eb9f82a4a0844f0fde32d3dc050c9fad131ec0bdf04",
+      "retrieval": true,
+      "run": "q06/service-outage",
+      "started": "2026-10-30T14:06:53.542019+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "uncertain-send",
+      "factual_correctness": true,
+      "image_epoch": "v4",
+      "next_prompt_binding": true,
+      "peer_bodies": [],
+      "peer_observation": false,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/uncertain-send/report.json",
+      "report_sha256": "fb4e9a8e8480f42cf0ec2a15b911cea37e5e9d3d19f68446a792743df07e51a5",
+      "retrieval": true,
+      "run": "q06/uncertain-send",
+      "started": "2026-10-30T13:57:42.611136+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "case": "wrong-credential",
+      "image_epoch": "v4",
+      "negative_safety": "wrong provider credential refused before prompt disclosure and model acceptance",
+      "recorded_accounting": {
+        "caller_captures": 0,
+        "provider_captures": 0,
+        "recorded_evaluations": 0,
+        "reservations": 0
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q06/wrong-credential/report.json",
+      "report_sha256": "4055610a9edb42f8e27b5fcc094604c3531067d9e7015a05617565b551500037",
+      "run": "q06/wrong-credential",
+      "started": "2026-10-30T14:03:02.852308+00:00",
+      "status": "PASS",
+      "workflow_pass": false
+    },
+    {
+      "case": "auth-probes",
+      "failure_explanation": "ErrImageNeverPull: imported tags lacked pinned digest aliases. No workflow started. Corrected by immutable registration.",
+      "image_epoch": "v5",
+      "recorded_accounting": {
+        "caller_captures": 0,
+        "provider_captures": 0,
+        "recorded_evaluations": 0,
+        "reservations": 0
+      },
+      "report": "runs/q07/auth-probes/report.json",
+      "report_sha256": "f3b8a8db1bc045d521b7d436170deef771fe26f80017010fc0334461e9c8feae",
+      "run": "q07/auth-probes",
+      "started": "2026-10-30T14:03:23.892064+00:00",
+      "status": "FAIL"
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "config-restart",
+      "factual_correctness": true,
+      "image_epoch": "v5",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q07/config-restart/report.json",
+      "report_sha256": "1b27274af862c67870092c3ecb9d1a05573f2573fef6130c75484d549608ac65",
+      "retrieval": true,
+      "run": "q07/config-restart",
+      "started": "2026-10-30T14:09:53.006026+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "case": "model-capture",
+      "failure_explanation": "ErrImageNeverPull: imported tags lacked pinned digest aliases. No workflow started. Corrected by immutable registration.",
+      "image_epoch": "v5",
+      "recorded_accounting": {
+        "caller_captures": 0,
+        "provider_captures": 0,
+        "recorded_evaluations": 0,
+        "reservations": 0
+      },
+      "report": "runs/q07/model-capture/report.json",
+      "report_sha256": "19eab1f0f9a65c902daf65ca013474d28f82be8273b90a347b8d67b034f7c2e9",
+      "run": "q07/model-capture",
+      "started": "2026-10-30T14:06:40.016227+00:00",
+      "status": "FAIL"
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "auth-probes",
+      "factual_correctness": true,
+      "image_epoch": "v5",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q08/auth-probes/report.json",
+      "report_sha256": "39694a29f3cf6ef599a8df6dc7ccc881ab4e87b03b3260a1de9403e5c592c105",
+      "retrieval": true,
+      "run": "q08/auth-probes",
+      "started": "2026-10-30T14:11:42.866481+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    },
+    {
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "admitted_send_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "answer_absent_initial": true,
+      "capture_count": 2,
+      "case": "model-capture",
+      "factual_correctness": true,
+      "image_epoch": "v5",
+      "next_prompt_binding": true,
+      "peer_bodies": [
+        "Synthetic answer: violet beacon."
+      ],
+      "peer_observation": true,
+      "recorded_accounting": {
+        "caller_captures": 2,
+        "provider_captures": 2,
+        "recorded_evaluations": 2,
+        "reservations": 2
+      },
+      "recovery_invariants": "PASS: retained PVCs, exact existing identities/inputs/views/captures/deadlines; monotonic spent counters",
+      "report": "runs/q08/model-capture/report.json",
+      "report_sha256": "426c7eb149b96aa41ef76b50d538c4e00b4f53af57fd57b6c4e831eb33cc5f80",
+      "retrieval": true,
+      "run": "q08/model-capture",
+      "started": "2026-10-30T14:13:37.417784+00:00",
+      "status": "PASS",
+      "workflow_pass": true
+    }
+  ]
+}

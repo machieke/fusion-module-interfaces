@@ -2,13 +2,25 @@
 {{- if (not (hasKey $component "enabled")) | or $component.enabled }}
 {{- $memoryRole := and $.Values.memory.enabled (has $name (list "omega-agent" "fusion-storage" "fusion-search" "fusion-embedding")) }}
 {{- $memoryAgent := and $memoryRole (eq $name "omega-agent") }}
-{{- $portName := ternary "health" "https" $memoryAgent }}
+{{- $workflow := $.Values.workflow.enabled }}
+{{- $plain := or $memoryAgent (and $workflow (has $name (list "fusion-channel-bridge" "irc-server" "irc-peer"))) }}
+{{- $portName := ternary "health" "https" $plain }}
 {{- $composition := ternary "neoclaw-memory-services/1" "neoclaw-separated-services/1" $memoryRole }}
+{{- if $workflow }}{{- $composition = "neoclaw-model-channel-services/1" }}{{- end }}
 {{- $image := default $.Values.image $component.image }}
 {{- $config := dict "role" $name "service_composition" $composition "state" "/state" "run" "/run/fusion" "secret_directory" "/secrets" "https_port" $.Values.httpsPort "capacity" $component.config.capacity "revision" $component.config.revision "native_enabled" $component.config.nativeEnabled "worker_enabled" $component.config.workerEnabled "enable_test_faults" $.Values.testFaultsEnabled "test" $component.config.test "peers" (dict "fusion-execution" (printf "fusion-execution.%s.svc.cluster.local" $.Release.Namespace) "fusion-storage" (printf "fusion-storage.%s.svc.cluster.local" $.Release.Namespace) "fusion-messaging" (printf "fusion-messaging.%s.svc.cluster.local" $.Release.Namespace) "fusion-search" (printf "fusion-search.%s.svc.cluster.local" $.Release.Namespace) "fusion-embedding" (printf "fusion-embedding.%s.svc.cluster.local" $.Release.Namespace)) }}
 {{- if not $.Values.memory.enabled }}
 {{- $_ := unset $config.peers "fusion-search" }}
 {{- $_ := unset $config.peers "fusion-embedding" }}
+{{- end }}
+{{- if $workflow }}
+{{- range $peer := list "fusion-model" "fusion-channel-bridge" "irc-server" "irc-peer" }}
+{{- $_ := set $config.peers $peer (printf "%s.%s.svc.cluster.local" $peer $.Release.Namespace) }}
+{{- end }}
+{{- $w := deepCopy (omit $.Values.workflow "phase") }}
+{{- if eq $name "omega-agent" }}{{- $_ := set $w "phase" $.Values.workflow.phase }}{{- end }}
+{{- if ne $name "fusion-model" }}{{- $_ := unset $w "responses" }}{{- end }}
+{{- $_ := set $config "workflow" $w }}
 {{- end }}
 {{- if $memoryRole }}
 {{- $_ := set $config "memory" (omit $.Values.memory "enabled") }}
@@ -30,6 +42,9 @@ spec:
   type: ClusterIP
   selector: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $name }}}
   ports:
+    {{- if eq $name "irc-server" }}
+    - {name: irc, port: 6667, targetPort: irc}
+    {{- end }}
     - {name: {{ $portName }}, port: {{ $.Values.httpsPort }}, targetPort: {{ $portName }}}
 ---
 apiVersion: v1
@@ -40,6 +55,9 @@ spec:
   clusterIP: None
   selector: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $name }}}
   ports:
+    {{- if eq $name "irc-server" }}
+    - {name: irc, port: 6667, targetPort: irc}
+    {{- end }}
     - {name: {{ $portName }}, port: {{ $.Values.httpsPort }}, targetPort: {{ $portName }}}
 ---
 apiVersion: apps/v1
@@ -78,20 +96,23 @@ spec:
             capabilities: {drop: [ALL]}
             seccompProfile: {type: RuntimeDefault}
           ports:
+            {{- if eq $name "irc-server" }}
+            - {name: irc, containerPort: 6667}
+            {{- end }}
             - {name: {{ $portName }}, containerPort: {{ $.Values.httpsPort }}}
           resources: {{ toYaml $component.resources | nindent 12 }}
           startupProbe:
-            httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $memoryAgent }}, path: /health/startup, port: {{ $portName }}}
+            httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $plain }}, path: /health/startup, port: {{ $portName }}}
             periodSeconds: 2
             timeoutSeconds: 2
             failureThreshold: 45
           readinessProbe:
-            httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $memoryAgent }}, path: /health/ready, port: {{ $portName }}}
+            httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $plain }}, path: /health/ready, port: {{ $portName }}}
             periodSeconds: 2
             timeoutSeconds: 2
             failureThreshold: 3
           livenessProbe:
-            httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $memoryAgent }}, path: /health/live, port: {{ $portName }}}
+            httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $plain }}, path: /health/live, port: {{ $portName }}}
             periodSeconds: 10
             timeoutSeconds: 2
             failureThreshold: 3
@@ -115,6 +136,11 @@ spec:
             items:
               {{- range $key := list "ca.crt" "fusion-execution-token" "fusion-storage-token" "fusion-messaging-token" "fusion-search-token" "fusion-embedding-token" }}
               - {key: {{ $key }}, path: {{ $key }}}
+              {{- end }}
+              {{- if $workflow }}
+              {{- range $key := list "channel-storage-token" "channel-messaging-token" "fusion-model-token" "measured-fusion-storage-token" "measured-fusion-search-token" "measured-fusion-embedding-token" }}
+              - {key: {{ $key }}, path: {{ $key }}}
+              {{- end }}
               {{- end }}
             {{- end }}
   volumeClaimTemplates:

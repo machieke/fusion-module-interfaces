@@ -25,8 +25,9 @@ class ModelService:
             if not db.execute("SELECT 1 FROM sqlite_master WHERE name='model_calls'").fetchone():return []
             return [dict(r) for r in db.execute('SELECT * FROM model_calls ORDER BY rowid')]
 
-    def __init__(self, path, backend, hook=lambda _: None):
+    def __init__(self, path, backend, hook=lambda _: None, *, disclosure=None):
         self.policy, self.backend, self.hook = Policy(path), backend, hook
+        self.disclosure=disclosure
         self.cfg = self.policy.current()['model_completion']
         cfg = self.cfg
         c.integer(cfg['max_calls'], 1, c.MAX_CALLS)
@@ -73,7 +74,8 @@ class ModelService:
         require(cfg['sharing'] == c.PRIVACY and accepted['session'] in cfg['sessions'], 'UNAUTHORIZED')
         require(accepted['selection'] == selection_token(self.chosen), 'UNSUPPORTED_PROFILE')
         from .neoclaw_model_disclosure import disclose
-        disclose(accepted['native_prompt'], cfg['disclosure'], accepted)
+        if self.disclosure is None:disclose(accepted['native_prompt'], cfg['disclosure'], accepted)
+        else:self.disclosure(accepted,cfg['disclosure'])
         for method in ('disclose', operation): self.policy.check(principal, accepted['scope'], 'model.'+method)
 
     def row(self, accepted):

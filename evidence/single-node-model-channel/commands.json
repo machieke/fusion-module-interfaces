@@ -1,0 +1,115 @@
+{
+  "baseline": "artifacts/s03/venv/bin/python -m unittest -v tests.test_m5_boundaries.Boundaries.test_lookup_has_no_cognitive_runtime_dependency_or_mutation",
+  "cleanup": "kubectl --kubeconfig artifacts/single-node/kubeconfig delete namespace <exact omega-mc-* namespace from report>; see cleanup.json",
+  "cwd": "/home/purplezky/work/takopi/fusion-module-interfaces",
+  "final_regressions": [
+    "artifacts/s03/venv/bin/python -m integration.single_node.test_cluster --kubeconfig artifacts/single-node/kubeconfig --prefix omega-mc-s01 --output artifacts/single-node-model-channel/s01-v5 --image-tag workflow-v5 baseline health",
+    "artifacts/s03/venv/bin/python -m integration.single_node.test_memory_cluster --kubeconfig artifacts/single-node/kubeconfig --prefix omega-mc-memory --output artifacts/single-node-model-channel/memory-v5 --values artifacts/single-node-model-channel/memory-v5-values.yaml --cleanup baseline health"
+  ],
+  "import": "artifacts/s03/venv/bin/python deploy/single-node/import_workflow_images.py --container omega-fusion-k3s --manifest artifacts/single-node-model-channel/images.json --register-only",
+  "note": "Run grouping reconstructed from retained reports/logs; original full shell transcripts were not recorded. Default final runner invocation and exact per-case configurations are executable from runbook. No runtime/model invocation is needed for offline future inspection.",
+  "runner_base": "artifacts/s03/venv/bin/python -m integration.single_node.test_workflow_cluster --kubeconfig artifacts/single-node/kubeconfig",
+  "unit_final": "artifacts/s03/venv/bin/python -m unittest -v tests.test_model_channel_services tests.test_model tests.test_retrieval_disclosure tests.test_channel tests.test_memory_services tests.test_single_node tests.test_single_node_chart tests.test_neoclaw_application tests.test_append_contracts tests.test_embedding_contracts",
+  "workflow_batches": [
+    {
+      "batch": "q01",
+      "cases": [
+        "correct"
+      ],
+      "output": "artifacts/single-node-model-channel/q01",
+      "prefix": "omega-mc-q01",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "deploy/single-node/workflow-values.yaml at its recorded image epoch"
+    },
+    {
+      "batch": "q02",
+      "cases": [
+        "correct"
+      ],
+      "output": "artifacts/single-node-model-channel/q02",
+      "prefix": "omega-mc-q02",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "deploy/single-node/workflow-values.yaml at its recorded image epoch"
+    },
+    {
+      "batch": "q03",
+      "cases": [
+        "correct"
+      ],
+      "output": "artifacts/single-node-model-channel/q03",
+      "prefix": "omega-mc-q03",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "deploy/single-node/workflow-values.yaml at its recorded image epoch"
+    },
+    {
+      "batch": "q04",
+      "cases": [
+        "correct"
+      ],
+      "output": "artifacts/single-node-model-channel/q04",
+      "prefix": "omega-mc-q04",
+      "retention": "--keep; completed namespaces subsequently removed by operator, not reused",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "deploy/single-node/workflow-values.yaml at its recorded image epoch"
+    },
+    {
+      "batch": "q05",
+      "cases": [
+        "wrong-permitted",
+        "altered-corpus",
+        "absent-corpus",
+        "rejected"
+      ],
+      "output": "artifacts/single-node-model-channel/q05",
+      "prefix": "omega-mc-q05",
+      "retention": "--keep; completed namespaces subsequently removed by operator, not reused",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "deploy/single-node/workflow-values.yaml at its recorded image epoch"
+    },
+    {
+      "batch": "q06",
+      "cases": [
+        "bridge-capture",
+        "input-acceptance",
+        "model-unknown",
+        "model-capture",
+        "query-capture",
+        "send-accepted",
+        "uncertain-send",
+        "config-restart",
+        "lost-model",
+        "wrong-credential",
+        "revocation",
+        "service-outage"
+      ],
+      "output": "artifacts/single-node-model-channel/q06",
+      "prefix": "omega-mc-q06",
+      "retention": "--keep; completed namespaces subsequently removed by operator, not reused",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "deploy/single-node/workflow-values.yaml at its recorded image epoch"
+    },
+    {
+      "batch": "q07",
+      "cases": [
+        "auth-probes",
+        "model-capture",
+        "config-restart"
+      ],
+      "output": "artifacts/single-node-model-channel/q07",
+      "prefix": "omega-mc-q07",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "artifacts/single-node-model-channel/final-v5-values.yaml"
+    },
+    {
+      "batch": "q08",
+      "cases": [
+        "auth-probes",
+        "model-capture"
+      ],
+      "output": "artifacts/single-node-model-channel/q08",
+      "prefix": "omega-mc-q08",
+      "values": "frozen-values.yaml when present, otherwise each case values.json; these capture actual selection",
+      "values_override": "artifacts/single-node-model-channel/final-v5-values.yaml"
+    }
+  ]
+}

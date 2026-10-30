@@ -23,6 +23,8 @@ def dissect(raw):
 def disclose(raw, approved, intent=None):
     if 'policy' in approved:
         from .neoclaw_retrieval_disclosure import POLICY, validate_receipt
+        from .retrieval_services import POLICY as SERVICE_POLICY, validate_local
+        if approved['policy']==SERVICE_POLICY:return validate_local(raw,approved,intent)
         require(approved['policy'] == POLICY, 'UNSUPPORTED_PROFILE')
         return validate_receipt(raw, approved, intent)
     value = dissect(raw)

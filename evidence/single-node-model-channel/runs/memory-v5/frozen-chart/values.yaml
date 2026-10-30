@@ -1,0 +1,90 @@
+image:
+  repository: fusion-single-node
+  tag: single-node-v1
+  digest: ""
+  pullPolicy: IfNotPresent
+httpsPort: 8443
+testFaultsEnabled: false
+memory: {enabled: false}
+workflow: {enabled: false}
+components:
+  omega-agent:
+    existingSecret: omega-agent-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 100m, memory: 128Mi}
+      limits: {cpu: "1", memory: 512Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: true, workerEnabled: false, test: {}}
+  fusion-execution:
+    existingSecret: fusion-execution-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 100m, memory: 128Mi}
+      limits: {cpu: "1", memory: 512Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: true, test: {}}
+  fusion-storage:
+    existingSecret: fusion-storage-tls-auth
+    persistence: {storageClass: local-path, size: 512Mi}
+    resources:
+      requests: {cpu: 100m, memory: 64Mi}
+      limits: {cpu: "1", memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+  fusion-messaging:
+    existingSecret: fusion-messaging-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+  fusion-search:
+    enabled: false
+    existingSecret: fusion-search-tls-auth
+    persistence: {storageClass: local-path, size: 1Gi}
+    resources:
+      requests: {cpu: 200m, memory: 256Mi}
+      limits: {cpu: "2", memory: 1Gi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+  fusion-embedding:
+    enabled: false
+    existingSecret: fusion-embedding-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: "2", memory: 3Gi}
+      limits: {cpu: "3", memory: 5Gi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  fusion-model:
+    enabled: false
+    existingSecret: fusion-model-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  fusion-channel-bridge:
+    enabled: false
+    existingSecret: fusion-channel-bridge-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  irc-server:
+    enabled: false
+    existingSecret: irc-server-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
+
+  irc-peer:
+    enabled: false
+    existingSecret: irc-peer-tls-auth
+    persistence: {storageClass: local-path, size: 256Mi}
+    resources:
+      requests: {cpu: 50m, memory: 64Mi}
+      limits: {cpu: 500m, memory: 256Mi}
+    config: {revision: initial, capacity: 8, nativeEnabled: false, workerEnabled: false, test: {}}
