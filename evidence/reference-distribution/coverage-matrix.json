@@ -1,0 +1,137 @@
+{
+  "schema": "reference-module-placement-evidence/1",
+  "historical": {
+    "families": 15,
+    "mapping_rows": 105,
+    "adoption_entries": 8,
+    "native_user_commands": 9
+  },
+  "new_family_adoptions": 0,
+  "new_command_adoptions": 0,
+  "modules": [
+    {
+      "family": "DA storage",
+      "placement": "Storage-owned real DeTTa backend",
+      "boundary": "application-neutral opaque-byte boundary; no new DA-specific application API",
+      "provider_class": "real deterministic backend",
+      "evidence_selector": "storage"
+    },
+    {
+      "family": "AtomStorage",
+      "placement": "fusion-storage HTTPS",
+      "boundary": "immutable append/read/hydration and authoritative commit feed; owner PVC",
+      "provider_class": "real DeTTa",
+      "evidence_selector": "memory/recorded/cognitive/chain"
+    },
+    {
+      "family": "Relations",
+      "placement": "fusion-relations HTTPS",
+      "boundary": "assertRelation/getRelation/outgoing/incoming; source-owned typed traversal; no native link/unlink adoption",
+      "provider_class": "real Relations owner + DeTTa",
+      "evidence_selector": "cognition-relations"
+    },
+    {
+      "family": "Search projection",
+      "placement": "fusion-search + fusion-exact-search HTTPS",
+      "boundary": "native vector refs/distances and exact-attribute projection; authenticated storage source, rebuildable generations",
+      "provider_class": "real Chroma / exact projection",
+      "evidence_selector": "memory/recorded/cognition-relations"
+    },
+    {
+      "family": "EpisodicMemory",
+      "placement": "fusion-episodes HTTPS, generated-shareable composition only",
+      "boundary": "native support/contradict occurrences, retained provenance and pending/acknowledged delivery; local-private historical profile unchanged",
+      "provider_class": "real C1 owner",
+      "evidence_selector": "cognition-relations"
+    },
+    {
+      "family": "BeliefRevision",
+      "placement": "fusion-beliefs HTTPS, generated-shareable composition only",
+      "boundary": "labelled compatibility prior, contrary evidence and pinned original NAL Truth_Revision; trusted C1 completion relay",
+      "provider_class": "real C2 + native NAL",
+      "evidence_selector": "cognition-relations"
+    },
+    {
+      "family": "PLNKernel",
+      "placement": "consumer-owned numerical library; no mandatory separate pod",
+      "boundary": "historical guarded PLN unchanged; native NAL deduction/revision retain their distinct named profiles",
+      "provider_class": "real original native NAL in tested operations; historical PLN not a new deployment gate",
+      "evidence_selector": "s01/cognition-relations"
+    },
+    {
+      "family": "Attention",
+      "placement": "fusion-attention HTTPS, generated-shareable composition only",
+      "boundary": "original wall-clock promote/demote policy, owned score/context reads; no evidence weighting or vector rebuild",
+      "provider_class": "real SQLite owner; file fixture separately labelled substitution",
+      "evidence_selector": "cognition-relations/attention-substitution"
+    },
+    {
+      "family": "InferenceControl",
+      "placement": "existing bounded controller library",
+      "boundary": "no new cognition, scheduler or independent deployment; historical implementation retained",
+      "provider_class": "historical unchanged; no new whole-family claim",
+      "evidence_selector": "NOT_RUN_NEW_DEPLOYMENT"
+    },
+    {
+      "family": "Messaging",
+      "placement": "fusion-messaging HTTPS",
+      "boundary": "durable mailbox identity/order/ack; separate channel bridge owns socket reservations and outcomes",
+      "provider_class": "real Messaging + ngIRCd + socket peer",
+      "evidence_selector": "s01/recorded/chain"
+    },
+    {
+      "family": "DelegatedExecution",
+      "placement": "fusion-execution HTTPS",
+      "boundary": "named deterministic NAL command or separate inspect_atom profile; acceptance/result/outbox/caller ack independently committed",
+      "provider_class": "real original native NAL / original Hive inspect",
+      "evidence_selector": "s01/chain"
+    },
+    {
+      "family": "Registry",
+      "placement": "typed shared library/configuration",
+      "boundary": "advertised descriptors and exact supported operation sets; no registry server claimed",
+      "provider_class": "real contract machinery",
+      "evidence_selector": "all supported profiles"
+    },
+    {
+      "family": "CompatibilityResolver",
+      "placement": "typed shared library/configuration",
+      "boundary": "explicit profile/selection bindings; unsupported composition refused",
+      "provider_class": "real contract machinery",
+      "evidence_selector": "all supported profiles"
+    },
+    {
+      "family": "ConsensusFinality",
+      "placement": "fusion-commitment HTTPS + isolated f1r3node HTTP",
+      "boundary": "exact approved persisted result, durable signed intent, same deploy effect/finality and independent readback",
+      "provider_class": "real isolated F1R3node; generated unfunded keys",
+      "evidence_selector": "chain"
+    },
+    {
+      "family": "Authorization",
+      "placement": "per-owner policy + scoped HTTPS credentials and TLS",
+      "boundary": "caller disclosure consent separate from provider execution authority; current authorization on replay; policy is not a model command",
+      "provider_class": "real policy/TLS + enforced namespace NetworkPolicy",
+      "evidence_selector": "security-upgrade/disclosure/all supported profiles"
+    }
+  ],
+  "extensions": [
+    {
+      "id": "X02",
+      "interface": "Embedding",
+      "placement": "independent E5 provider HTTPS; caller inference-library/asset free",
+      "provider_class": "real pinned native E5 CPU",
+      "evidence_selector": "memory/recorded/cognition-relations"
+    },
+    {
+      "id": "X01",
+      "interface": "ModelInference",
+      "placement": "independent owner HTTPS; recorded provider explicitly selected; future generative runtime pod-loopback only",
+      "provider_class": "real owner lifecycle + recorded responses; real-generation NOT_RUN in this programme",
+      "evidence_selector": "recorded/model recovery; offline freeze"
+    }
+  ],
+  "historical_live_workflow": "Completed retrieval-grounded-20261026-02 remains separate and exhausted; not rerun",
+  "historical_chain": "M4 remains unchanged historical evidence; new isolated in-cluster chain run is separately reported",
+  "additional_live_generations": 0
+}

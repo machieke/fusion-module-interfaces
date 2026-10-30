@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "source_archive_sha256": "267ad6553f253ddf7d119d8d8f780811f166448d337752629f06b60a19ba8407",
+  "chart_archive_sha256": "4b24b20eccedef2e8fbde23e5edb5ce08a577841b148a002a76a4a0e6db3ca94",
+  "distribution_initial_sha256": "33429bed27bd13021292259f27b0730af442da177ecd86156c8c607952ae02c0",
+  "runtime_source_manifest": "048c5bdf45bbffa0f3155da7806e112bfcd529462dffa8031f642e3e04dbf778",
+  "source": "fresh extraction, no unlisted working-tree files",
+  "operator_report": {
+    "status": "PASS",
+    "namespace": "omega-ref-operator16",
+    "source": "declared extracted source.tar.gz",
+    "chart": "distribution-v2/omega-fusion-0.4.0.tgz",
+    "commands": [
+      {
+        "action": "preflight",
+        "returncode": 0
+      },
+      {
+        "action": "install",
+        "returncode": 0
+      },
+      {
+        "action": "status",
+        "returncode": 0
+      },
+      {
+        "action": "diagnose",
+        "returncode": 0
+      },
+      {
+        "action": "observe",
+        "returncode": 0
+      },
+      {
+        "action": "upgrade",
+        "returncode": 0
+      },
+      {
+        "action": "stop",
+        "returncode": 0
+      },
+      {
+        "action": "cleanup",
+        "returncode": 0
+      },
+      {
+        "action": "cleanup",
+        "returncode": 0
+      }
+    ],
+    "additional_live_generations": 0,
+    "native_result_and_consumption": "PASS",
+    "compatible_configuration_restart": "PASS",
+    "original_identity_deadline_spent_budget": "PRESERVED"
+  },
+  "recorded_archive_rehearsal": "artifacts/reference-distribution/artifact-rehearsal-13/correct/report.json (v11; only operator stop helper changed in v12)",
+  "additional_live_generations": 0
+}

@@ -30,7 +30,13 @@ class GuardOnlyFixture:
 class PortOnly:
     """A consumer cannot inspect a wrapped provider's owner/database attributes."""
     def __init__(self, target, names):
-        object.__setattr__(self, '_methods', {name: getattr(target, name) for name in names})
+        methods = {name: getattr(target, name) for name in names}
+        object.__setattr__(self, '_methods', methods)
+        # Python 3.12 runtime Protocol checks use getattr_static. Expose exactly
+        # the admitted ports as real attributes while preserving the hostile
+        # private-access guard below; dynamic __getattribute__ alone is invisible.
+        for name, method in methods.items():
+            object.__setattr__(self, name, method)
     def __getattribute__(self, name):
         if name.startswith('__'): return object.__getattribute__(self, name)
         methods = object.__getattribute__(self, '_methods')

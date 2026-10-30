@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "stable_after_completed_test": true,
+  "owners": {
+    "f1r3node": {
+      "composition": "isolated-f1r3node/1",
+      "limits": {
+        "max_database_files": 20,
+        "max_tables": 51
+      },
+      "live_generation_activity": "NOT_INFERRED_FROM_DIAGNOSTICS",
+      "owner": "f1r3node",
+      "process_rss_bytes": 18960384,
+      "restore_fenced": false,
+      "status": {
+        "shutdown.json": {}
+      },
+      "tables": {}
+    },
+    "fusion-commitment": {
+      "composition": "generated-inspect-services/1",
+      "limits": {
+        "max_database_files": 20,
+        "max_tables": 51
+      },
+      "live_generation_activity": "NOT_INFERRED_FROM_DIAGNOSTICS",
+      "owner": "fusion-commitment",
+      "process_rss_bytes": 19451904,
+      "restore_fenced": false,
+      "status": {
+        "shutdown.json": {}
+      },
+      "tables": {
+        "commitments.sqlite:m4_intent": {
+          "receipt_captured": 1,
+          "rows": 1,
+          "signed_captured": 1
+        },
+        "commitments.sqlite:m4_observations": {
+          "rows": 10
+        }
+      }
+    },
+    "fusion-execution": {
+      "composition": "generated-inspect-services/1",
+      "limits": {
+        "max_database_files": 20,
+        "max_tables": 51
+      },
+      "live_generation_activity": "NOT_INFERRED_FROM_DIAGNOSTICS",
+      "owner": "fusion-execution",
+      "process_rss_bytes": 19521536,
+      "restore_fenced": false,
+      "status": {
+        "shutdown.json": {}
+      },
+      "tables": {
+        "execution.sqlite:jobs": {
+          "result_captured": 1,
+          "rows": 1
+        },
+        "execution.sqlite:outbox": {
+          "rows": 1,
+          "sent_sum": 1
+        }
+      }
+    },
+    "fusion-messaging": {
+      "composition": "generated-inspect-services/1",
+      "limits": {
+        "max_database_files": 20,
+        "max_tables": 51
+      },
+      "live_generation_activity": "NOT_INFERRED_FROM_DIAGNOSTICS",
+      "owner": "fusion-messaging",
+      "process_rss_bytes": 19570688,
+      "restore_fenced": false,
+      "status": {
+        "shutdown.json": {}
+      },
+      "tables": {
+        "messages.sqlite:acknowledgements": {
+          "response_captured": 1,
+          "rows": 1
+        },
+        "messages.sqlite:messages": {
+          "acknowledged_sum": 1,
+          "rows": 2
+        }
+      }
+    },
+    "fusion-storage": {
+      "composition": "generated-inspect-services/1",
+      "limits": {
+        "max_database_files": 20,
+        "max_tables": 51
+      },
+      "live_generation_activity": "NOT_INFERRED_FROM_DIAGNOSTICS",
+      "owner": "fusion-storage",
+      "process_rss_bytes": 19501056,
+      "restore_fenced": false,
+      "status": {
+        "shutdown.json": {}
+      },
+      "tables": {
+        "atoms.sqlite:atoms": {
+          "receipt_captured": 2,
+          "rows": 2
+        }
+      }
+    },
+    "omega-agent": {
+      "chain": {
+        "effect_finality": "finalized"
+      },
+      "composition": "generated-inspect-services/1",
+      "limits": {
+        "max_database_files": 20,
+        "max_tables": 51
+      },
+      "live_generation_activity": "NOT_INFERRED_FROM_DIAGNOSTICS",
+      "owner": "omega-agent",
+      "process_rss_bytes": 18391040,
+      "restore_fenced": false,
+      "status": {
+        "native-status.json": {
+          "status": "FINALIZED"
+        },
+        "shutdown.json": {}
+      },
+      "tables": {
+        "chain-progress.sqlite:progress": {
+          "rows": 1
+        }
+      }
+    }
+  },
+  "prior_failed_probe": "artifacts/reference-distribution/diagnostics-race-failure.json",
+  "additional_live_generations": 0
+}

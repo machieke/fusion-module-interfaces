@@ -7,7 +7,7 @@ import json
 import os
 from pathlib import Path
 import sqlite3
-from fusion.bindings import Subprocess
+from fusion.bindings import configured_binding
 from fusion.client import Peer
 from fusion.contracts import canonical, digest, require
 from fusion.registry import descriptor_read, select, selection_token
@@ -24,13 +24,14 @@ def caller_binding(ctx, key):
     require(len(grants) == 1, "UNAUTHORIZED")
     grant = grants[0]
     selected = select([descriptor_read(d) for d in config["descriptors"]])
-    binding = Subprocess(config["service_config"], grant["credential"], selected=selected)
+    binding = configured_binding(config["service_config"], grant["credential"], selected)
     peer = Peer(binding, grant["scope"], grant["reply_route"])
     identity = digest(canonical([actor["principal"], ctx.swarm_id, key]))
     context = {"principal": actor["principal"], "swarm": ctx.swarm_id, "scope": grant["scope"],
                "reply_route": grant["reply_route"], "counterparty": grant["counterparty"],
                "service_config": config["service_config"],
                "selection": {k: selection_token(v) for k, v in selected.items()}}
+    if hasattr(binding, "placement_binding"):context["placement"] = binding.placement_binding
     return config, grant, peer, identity, context
 
 

@@ -24,6 +24,8 @@ GOLDEN='(stv 0.5599999999999999 0.4032)'
 class Cluster:
     def __init__(self,args,name):
         self.args=args;self.name=args.prefix+'-'+name;self.case=name
+        assert args.prefix.startswith('omega-') and self.name!='omega-demo'
+        self.created_namespace_uid=None
         self.root=Path(args.output)/name;self.root.mkdir(parents=True,exist_ok=False)
         self.values=dict(image=dict(tag=args.image_tag),testFaultsEnabled=True,components={})
         self.report=dict(case=name,namespace=self.name,status='RUNNING',started=datetime.now(timezone.utc).isoformat(),
@@ -36,7 +38,20 @@ class Cluster:
         if result.returncode:raise RuntimeError(str(args[:3])+' '+result.stderr[-2000:])
         return result.stdout
 
-    def k(self,*args,**kw):return self.command(['kubectl','--kubeconfig',self.args.kubeconfig,'-n',self.name,*args],**kw)
+    def k(self,*args,**kw):
+        command=['kubectl','--kubeconfig',self.args.kubeconfig,'-n',self.name]
+        if args[:2]==('create','namespace'):
+            assert len(args)==3 and args[2]==self.name and self.created_namespace_uid is None
+            out=self.command([*command,*args],**kw)
+            self.created_namespace_uid=self.command([*command,'get','namespace',self.name,'-o','jsonpath={.metadata.uid}']).strip()
+            self.command([*command,'label','namespace',self.name,'omega.reference/owner=omega-asi-single-node-reference-1'])
+            return out
+        assert self.created_namespace_uid is not None,'Namespace not created by this test; refusing access/cleanup'
+        if args[:2]==('delete','namespace'):
+            assert args[2]==self.name
+            actual=self.command([*command,'get','namespace',self.name,'-o','jsonpath={.metadata.uid}']).strip()
+            assert actual==self.created_namespace_uid,'Namespace was replaced; refusing cleanup'
+        return self.command([*command,*args],**kw)
     def exec(self,role,code):return self.k('exec',role+'-0','--',PYTHON,'-c',code)
     def observe(self,role):return json.loads(self.k('exec',role+'-0','--',PYTHON,'-m','integration.single_node.observe'))
     def config(self,role,**cfg):self.values['components'].setdefault(role,dict(config={} ))['config'].update(cfg)

@@ -1,0 +1,202 @@
+{
+  "status": "PASS",
+  "protected": {
+    "status": "PASS",
+    "namespace": "omega-demo",
+    "objects": [
+      {
+        "kind": "Pod",
+        "name": "fusion-execution-0",
+        "before_uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+        "after_uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "Pod",
+        "name": "fusion-messaging-0",
+        "before_uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+        "after_uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "Pod",
+        "name": "fusion-storage-0",
+        "before_uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+        "after_uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "Pod",
+        "name": "omega-agent-0",
+        "before_uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+        "after_uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "PersistentVolumeClaim",
+        "name": "state-fusion-execution-0",
+        "before_uid": "8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0",
+        "after_uid": "8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "PersistentVolumeClaim",
+        "name": "state-fusion-messaging-0",
+        "before_uid": "e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2",
+        "after_uid": "e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "PersistentVolumeClaim",
+        "name": "state-fusion-storage-0",
+        "before_uid": "451dbd3d-8f64-40cd-b828-f16acb806b10",
+        "after_uid": "451dbd3d-8f64-40cd-b828-f16acb806b10",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "PersistentVolumeClaim",
+        "name": "state-omega-agent-0",
+        "before_uid": "961b892e-8a54-4236-8abf-7dc3d3d08204",
+        "after_uid": "961b892e-8a54-4236-8abf-7dc3d3d08204",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "StatefulSet",
+        "name": "fusion-execution",
+        "before_uid": "a9c5280d-e29b-47cf-b059-65a92b0e4009",
+        "after_uid": "a9c5280d-e29b-47cf-b059-65a92b0e4009",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "StatefulSet",
+        "name": "fusion-messaging",
+        "before_uid": "d73538d1-6875-41b0-83e1-b177a63edc36",
+        "after_uid": "d73538d1-6875-41b0-83e1-b177a63edc36",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "StatefulSet",
+        "name": "fusion-storage",
+        "before_uid": "c2e4b963-d8c6-472b-8507-396059fc88c9",
+        "after_uid": "c2e4b963-d8c6-472b-8507-396059fc88c9",
+        "spec_unchanged": true
+      },
+      {
+        "kind": "StatefulSet",
+        "name": "omega-agent",
+        "before_uid": "7d7dcef0-60c0-4096-b4ef-5e7fe9911c86",
+        "after_uid": "7d7dcef0-60c0-4096-b4ef-5e7fe9911c86",
+        "spec_unchanged": true
+      }
+    ],
+    "observation": "UID and full spec comparison; status/resourceVersion are naturally mutable and not treated as specification"
+  },
+  "remaining_programme_namespaces": [
+    "omega-ref-live01"
+  ],
+  "retained_namespace_uid": "c1932fb5-aff9-4e4c-b8a0-9f7b7f3aec37",
+  "workloads": {
+    "fusion-channel-bridge": {
+      "uid": "78f15942-02c2-4c89-a5a9-31454158d3a7",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-single-node@sha256:f830b5b1fe4d188da959e0e93a6675095194ef943985c878e860cc7b2e8473d6"
+    },
+    "fusion-embedding": {
+      "uid": "707b1f34-484b-4029-9957-7cb5e62a9883",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-memory-embedding@sha256:d3d299531c0c5f93ee2fbd431bd4b3f61ac09b1e67af99dc8603ddda9e4e8c99"
+    },
+    "fusion-messaging": {
+      "uid": "4580f51a-719b-42b7-a710-9fd80618c98c",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-single-node@sha256:f830b5b1fe4d188da959e0e93a6675095194ef943985c878e860cc7b2e8473d6"
+    },
+    "fusion-model": {
+      "uid": "ca7cf1d8-3ccb-48fd-bad2-c69739aa63a5",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-reference-generative@sha256:fc455185128e77d65a8e13031e822512e9bf9242147f8e161c096de85e922a83"
+    },
+    "fusion-search": {
+      "uid": "b798ea2b-36ef-47d4-b9bd-eca271283d9d",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-memory-caller@sha256:cfc62c93a5a734d8126a0fe2c758266b8e2abe64953cc25bcf11331515747477"
+    },
+    "fusion-storage": {
+      "uid": "05c34822-81af-475e-97bc-faa7e36ea42c",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-single-node@sha256:f830b5b1fe4d188da959e0e93a6675095194ef943985c878e860cc7b2e8473d6"
+    },
+    "irc-peer": {
+      "uid": "ea0780f4-4389-4f66-b902-12119a2ef252",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-single-node@sha256:f830b5b1fe4d188da959e0e93a6675095194ef943985c878e860cc7b2e8473d6"
+    },
+    "irc-server": {
+      "uid": "de2d6bfa-ca48-47d2-b809-f81784b01d00",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-single-node@sha256:f830b5b1fe4d188da959e0e93a6675095194ef943985c878e860cc7b2e8473d6"
+    },
+    "omega-agent": {
+      "uid": "e93e6962-3777-43a7-af7c-0e127f1b05a2",
+      "replicas": 0,
+      "image": "docker.io/library/fusion-memory-caller@sha256:cfc62c93a5a734d8126a0fe2c758266b8e2abe64953cc25bcf11331515747477"
+    }
+  },
+  "retained_pvcs": {
+    "reference-generative-assets": {
+      "uid": "64eb99e5-302b-427e-860b-8d1294f24bfe",
+      "volume": "pvc-64eb99e5-302b-427e-860b-8d1294f24bfe",
+      "status": "Bound"
+    },
+    "state-fusion-channel-bridge-0": {
+      "uid": "0b181b6a-6894-427a-86d4-b56b943dcbba",
+      "volume": "pvc-0b181b6a-6894-427a-86d4-b56b943dcbba",
+      "status": "Bound"
+    },
+    "state-fusion-embedding-0": {
+      "uid": "22b50f79-c3e5-4682-a05a-6bb8590c3737",
+      "volume": "pvc-22b50f79-c3e5-4682-a05a-6bb8590c3737",
+      "status": "Bound"
+    },
+    "state-fusion-messaging-0": {
+      "uid": "27582e81-7ffa-4493-a0e7-7e9b1b703a25",
+      "volume": "pvc-27582e81-7ffa-4493-a0e7-7e9b1b703a25",
+      "status": "Bound"
+    },
+    "state-fusion-model-0": {
+      "uid": "e921b9ac-ac44-4022-acd9-a8029d9ead84",
+      "volume": "pvc-e921b9ac-ac44-4022-acd9-a8029d9ead84",
+      "status": "Bound"
+    },
+    "state-fusion-search-0": {
+      "uid": "3768b271-69bf-4f68-86ef-a887fa62b264",
+      "volume": "pvc-3768b271-69bf-4f68-86ef-a887fa62b264",
+      "status": "Bound"
+    },
+    "state-fusion-storage-0": {
+      "uid": "3823c150-0823-494a-8900-f2c26a8cd461",
+      "volume": "pvc-3823c150-0823-494a-8900-f2c26a8cd461",
+      "status": "Bound"
+    },
+    "state-irc-peer-0": {
+      "uid": "0a3c7e4a-8ef7-4d6a-8764-c35ecc6d2538",
+      "volume": "pvc-0a3c7e4a-8ef7-4d6a-8764-c35ecc6d2538",
+      "status": "Bound"
+    },
+    "state-irc-server-0": {
+      "uid": "dcc570fd-6a1c-4dfa-addf-54353ed4ec8a",
+      "volume": "pvc-dcc570fd-6a1c-4dfa-addf-54353ed4ec8a",
+      "status": "Bound"
+    },
+    "state-omega-agent-0": {
+      "uid": "bc9e0b19-431b-4f81-84c5-11356d675219",
+      "volume": "pvc-bc9e0b19-431b-4f81-84c5-11356d675219",
+      "status": "Bound"
+    }
+  },
+  "pods": 0,
+  "temporary_namespaces": "All other namespaces bearing programme owner label absent",
+  "approval_present": false,
+  "additional_live_generations": 0,
+  "final_stop_source": "reference-v13; all owners zero; all effect PVCs verified empty before freeze"
+}

@@ -27,6 +27,12 @@ def write(path, value):
 
 def configure(path='/config/component.json'):
     settings = json.loads(Path(path).read_text()); role = settings['role']
+    if settings.get('reference',{}).get('enabled') and settings['reference']['profile']=='chain':
+        from .chain_configure import configure as chain
+        return chain(settings)
+    if settings.get('reference',{}).get('enabled'):
+        from .cognitive_configure import configure as cognitive
+        return cognitive(settings)
     if settings.get('workflow',{}).get('enabled'):
         from .workflow_configure import configure as workflow
         return workflow(settings)

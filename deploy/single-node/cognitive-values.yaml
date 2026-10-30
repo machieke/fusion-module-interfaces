@@ -1,0 +1,131 @@
+image:
+  repository: fusion-single-node
+  tag: reference-v1
+  digest: ''
+  pullPolicy: Never
+memory:
+  enabled: true
+  scope: generated-reference-memory
+  session: 1e62bac1-016d-5d63-9248-44c4c5f4a147
+  corpus: reference-cognitive-corpus
+  model: neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1
+  inputs:
+    Synthetic violet beacon Ω stores seven paper moons.: Synthetic violet beacon Ω
+      stores seven paper moons.
+  queries:
+  - Which synthetic beacon stores seven paper moons?
+  query_vector_hashes:
+  - 9df85ee296bcd9309f76f89ecde1d743c92b641ffec2ea9352c71ae0d9765a3f
+  responses:
+  - remember Synthetic violet beacon Ω stores seven paper moons.
+  - support 2031-04-05_06:07:08 2031-04-05_06:08:09
+  - query Which synthetic beacon stores seven paper moons?
+  - support 2031-04-05_06:07:08 2031-04-05_06:08:09
+  - contradict 2031-04-05_06:07:08 2031-04-05_06:09:10
+  - query Which synthetic beacon stores seven paper moons?
+  - promote 2031-04-05 06:07:08
+  - query Which synthetic beacon stores seven paper moons?
+  - demote 2031-04-05 06:07:08
+  - query Which synthetic beacon stores seven paper moons?
+  - ''
+  expected_feedback: {}
+  invocation_timeout_ms: 30000
+  clock_fixture: 2000000000.0
+  creation_clock_fixture: '2031-04-05 06:07:08'
+components:
+  omega-agent:
+    image:
+      repository: fusion-memory-caller
+      tag: reference-v1
+      digest: ''
+      pullPolicy: Never
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+      limits:
+        cpu: '2'
+        memory: 1Gi
+  fusion-search:
+    enabled: true
+    image:
+      repository: fusion-memory-caller
+      tag: reference-v1
+      digest: ''
+      pullPolicy: Never
+  fusion-embedding:
+    enabled: true
+    image:
+      repository: fusion-memory-embedding
+      tag: reference-v1
+      digest: ''
+      pullPolicy: Never
+  fusion-execution:
+    enabled: false
+  fusion-messaging:
+    enabled: false
+  fusion-episodes:
+    enabled: true
+  fusion-beliefs:
+    enabled: true
+  fusion-attention:
+    enabled: true
+  fusion-relations:
+    enabled: true
+  fusion-exact-search:
+    enabled: true
+reference:
+  enabled: true
+  profile: cognitive
+  synthetic: true
+  scope: generated-reference-cognition
+  attentionProvider: sqlite
+  clockFixture: 2000000000.0
+  origins:
+    controlled-source-a: generated-source-a
+    controlled-source-b: generated-source-b
+  sources:
+    '2':
+      text: Generated synthetic confirmation of beacon memory.
+      label: '2031-04-05 06:08:09'
+      source: controlled-source-a
+    '5':
+      text: Generated synthetic contrary assessment of beacon memory.
+      label: '2031-04-05 06:09:10'
+      source: controlled-source-b
+  delegations:
+    fusion-storage:
+      fusion-episodes:
+      - atom.storage.get
+      - atom.storage.getMany
+      - atom.storage.availability
+      - atom.storage.head
+      - atom.storage.readCommits
+      - atom.storage.create
+      fusion-beliefs:
+      - atom.storage.get
+      - atom.storage.getMany
+      - atom.storage.availability
+      - atom.storage.head
+      - atom.storage.readCommits
+      fusion-relations:
+      - atom.storage.get
+      - atom.storage.getMany
+      - atom.storage.availability
+      - atom.storage.head
+      - atom.storage.readCommits
+      - atom.storage.create
+      fusion-exact-search:
+      - atom.storage.get
+      - atom.storage.getMany
+      - atom.storage.availability
+      - atom.storage.head
+      - atom.storage.readCommits
+    fusion-episodes:
+      completion-relay:
+      - episodic.memory.readEvidence
+      - episodic.memory.readEpisode
+      - episodic.memory.pendingEvidence
+      - episodic.memory.acknowledgeDelivery
+networkPolicy:
+  enabled: false

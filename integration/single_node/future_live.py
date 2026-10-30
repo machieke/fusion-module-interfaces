@@ -12,7 +12,8 @@ from integration.neoclaw import retrieval_campaign as historical
 SCHEMA='single-node-model-channel-live-plan/1'
 
 
-def approve(path,approval,*,assets=True):
+def authority(path,approval):
+    require(not Path('/state/restore-fence.json').exists(),'UNAUTHORIZED')
     raw=Path(path).read_bytes();value=json.loads(raw)
     require(raw==canonical(value) and value['schema']==SCHEMA,'UNSUPPORTED_PROFILE')
     checksum=digest(raw);require(Path(path).with_suffix('.sha256').read_text().strip()==checksum,'CONFLICT')
@@ -27,8 +28,21 @@ def approve(path,approval,*,assets=True):
     require(len(value['slots'])==2 and [s['slot'] for s in value['slots']]==[1,2],'UNSUPPORTED_PROFILE')
     require(value['provider_state']=='/state/live-campaign' and value['runtime_lock']['path'].startswith('/opt/generative/'),'UNSUPPORTED_PROFILE')
     require(value['campaign_id']!='retrieval-grounded-20261026-02','UNAUTHORIZED')
+    return value,checksum
+
+
+def approve(path,approval,*,assets=True):
+    value,checksum=authority(path,approval)
     for item in value['sources']+value['bindings']+(value['runtime_required_files'] if assets else []):
-        require(Path(item['path']).is_file() and historical.sha(item['path'])==item['sha256'],'CONFLICT')
+        file=Path(item['path'])
+        if item.get('directory') is True:
+            require(file.is_dir() and not file.is_symlink(),'CONFLICT')
+        elif 'symlink' in item:
+            require(file.is_symlink() and str(file.readlink())==item['symlink'] and file.is_file(),'CONFLICT')
+        else:
+            # Projected Kubernetes ConfigMap bindings are symlinks through
+            # ..data. Their resolved exact bytes are the approved binding.
+            require(file.is_file() and historical.sha(file)==item['sha256'],'CONFLICT')
     return value,checksum
 
 
@@ -61,7 +75,8 @@ class Backend:
 
 def inspect(path):
     value=json.loads(Path(path).read_bytes())
-    return dict(campaign_id=value['campaign_id'],freeze=value['freeze'],state='DISABLED_PENDING_NEW_AUTHORIZATION',runtime_availability='NOT_CHECKED',live_allowance=0,slots=[dict(name=s['name'],state='UNRESERVED') for s in value['slots']])
+    ledger=Path(path).parent/'execution-ledger.json'
+    return dict(campaign_id=value['campaign_id'],freeze=value['freeze'],runtime_availability='NOT_CHECKED',authority='immutable plan grants no live allowance',planned_slots=[s['name'] for s in value['slots']],execution=json.loads(ledger.read_bytes()) if ledger.is_file() else 'UNKNOWN: execution ledger not provided')
 
 
 
@@ -88,7 +103,9 @@ def projection(manifest,owner_config):
         if row['id'] in claims:require(claims[row['id']]['intent_sha256']==digest(row['intent'].encode()),'CONFLICT')
     reserved={r['id'] for r in rows if r['reserved']}
     require(set(claims)<=reserved,'CONFLICT')
-    return dict(spent=sorted(reserved),claim_records=sorted(claims),reservation_without_claim=sorted(reserved-set(claims)),captured=[r['id'] for r in rows if r['response'] is not None],backend_calls='UNKNOWN_WITHOUT_BACKEND_OBSERVATION',refunded=0)
+    captured=[r['id'] for r in rows if r['response'] is not None]
+    usage={r['id']:json.loads(r['response'])['usage'] for r in rows if r['response'] is not None}
+    return dict(spent=sorted(reserved),claim_records=sorted(claims),reservation_without_claim=sorted(reserved-set(claims)),captured=captured,provider_usage=usage,backend_calls=len(captured) if set(captured)==reserved else 'UNKNOWN_WITHOUT_BACKEND_OBSERVATION',refunded=0)
 
 
 def serve(manifest,approval,component):
@@ -100,15 +117,9 @@ def serve(manifest,approval,component):
         value,_=approve(manifest,approval,assets=False)
         settings=json.loads(Path(path).read_bytes())
         require(settings['role']=='fusion-model' and settings['workflow']['mode']=='live','UNSUPPORTED_PROFILE')
-        require(settings['service_composition']=='neoclaw-model-channel-services/1' and settings['state']=='/state','UNSUPPORTED_PROFILE')
-        cfg=json.loads(Path(value['owner_configuration']).read_bytes())
-        require(cfg['model_completion']['database']=='/state/model.sqlite','UNSUPPORTED_PROFILE')
-        require(set(cfg['principals'])=={'M'} and cfg['principals']['M']['credential_secret']=='caller-token','UNAUTHORIZED')
-        cfg['principals']['M'].pop('credential_secret')
-        cfg['principals']['M']['credential']=Path('/secrets/caller-token').read_text().strip()
-        state=Path('/state');run=Path('/run/fusion');run.mkdir(exist_ok=True)
-        historical.atomic(run/'owner.json',cfg)
-        return settings,cfg,state,run
+        require(settings['workflow']['liveEnabled'] is True,'UNAUTHORIZED')
+        from .workflow_configure import configure as selected
+        return selected(settings,live_authority=(value,json.loads(Path(approval).read_bytes())))
     import sys
     from .server import main
     sys.argv=[sys.argv[0],component]
@@ -125,16 +136,46 @@ def runtime(manifest,approval):
     from fusion.adapters.ollama_completion import BINARY_SHA256
     require(runtime['binary']=='/opt/generative/bin/ollama' and historical.sha(runtime['binary'])==BINARY_SHA256,'CONFLICT')
     import os
-    env=dict(PATH='/usr/bin:/bin',HOME='/tmp',OLLAMA_HOST='127.0.0.1:48173',OLLAMA_MODELS=runtime['asset_root'],OLLAMA_NO_CLOUD='true',OLLAMA_MAX_LOADED_MODELS='1',OLLAMA_NUM_PARALLEL='1',OLLAMA_KEEP_ALIVE='10m',OLLAMA_CONTEXT_LENGTH='32768')
+    env=dict(PATH='/usr/bin:/bin',HOME='/tmp',OLLAMA_HOST='127.0.0.1:48173',OLLAMA_MODELS=runtime['asset_root'],OLLAMA_NO_CLOUD='true',OLLAMA_NOPRUNE='true',OLLAMA_MAX_LOADED_MODELS='1',OLLAMA_NUM_PARALLEL='1',OLLAMA_KEEP_ALIVE='10m',OLLAMA_CONTEXT_LENGTH='32768')
     os.execve(runtime['binary'],[runtime['binary'],'serve'],env)
+
+
+
+def supervised(manifest,approval,component):
+    """Approval-first process tree; no child or socket exists before validation.
+
+    One provider owns the PVC. The runtime child has no journal protocol and
+    listens only on pod loopback. Expiry, parent termination or either child exit
+    stops both children. Restart can observe captures but cannot refund claims.
+    """
+    value,_=approve(manifest,approval)
+    require(str(Path(component))==value['component_configuration'],'CONFLICT')
+    import os,signal,subprocess,sys,threading
+    stop=threading.Event();children=[]
+    signal.signal(signal.SIGTERM,lambda *_:stop.set());signal.signal(signal.SIGINT,lambda *_:stop.set())
+    expiry=json.loads(Path(approval).read_bytes())['expires_ms']
+    try:
+        base=[sys.executable,'-m','integration.single_node.future_live',manifest,'--approval',approval]
+        children.append(subprocess.Popen(base+['--runtime'],start_new_session=True))
+        children.append(subprocess.Popen(base+['--serve','--component',component],start_new_session=True))
+        while not stop.wait(.2):
+            if time.time_ns()//1000000>=expiry or any(p.poll() is not None for p in children):break
+    finally:
+        for p in children:
+            if p.poll() is None:os.killpg(p.pid,signal.SIGTERM)
+        until=time.monotonic()+5
+        for p in children:
+            try:p.wait(timeout=max(.1,until-time.monotonic()))
+            except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);p.wait()
 
 
 def main():
     import argparse
     p=argparse.ArgumentParser(description='Offline inspection or independently approved future connection.')
     p.add_argument('plan');p.add_argument('--approval');p.add_argument('--component')
-    group=p.add_mutually_exclusive_group();group.add_argument('--serve',action='store_true');group.add_argument('--runtime',action='store_true');a=p.parse_args()
-    if a.serve:serve(a.plan,a.approval,a.component)
+    group=p.add_mutually_exclusive_group();group.add_argument('--serve',action='store_true');group.add_argument('--runtime',action='store_true');group.add_argument('--supervise',action='store_true');a=p.parse_args()
+    if a.supervise:supervised(a.plan,a.approval,a.component)
+    elif a.serve:serve(a.plan,a.approval,a.component)
     elif a.runtime:runtime(a.plan,a.approval)
     else:print(json.dumps(inspect(a.plan),indent=2))
 if __name__=='__main__':main()

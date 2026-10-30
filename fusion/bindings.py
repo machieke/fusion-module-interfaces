@@ -74,3 +74,13 @@ class Subprocess:
         self.bytes_sent += len(data)
         self.calls += 1
         return validate_reply(request, self._run("rpc", data), descriptor, self.correlations)
+
+
+def configured_binding(config, credential, selected):
+    """Trusted composition only; historical local transports stay unchanged."""
+    from pathlib import Path
+    settings=json.loads(Path(config).read_text())
+    if settings.get('service_composition')=='generated-inspect-services/1':
+        from .inspect_services import Network
+        return Network(settings,selected)
+    return Subprocess(config,credential,selected=selected)

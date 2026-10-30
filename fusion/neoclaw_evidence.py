@@ -12,6 +12,14 @@ from .nal_private import configuration,open_local
 
 def settings(app):
     cfg=json.loads(Path(app.config['evidence_config']).read_text())
+    if cfg.get('placement')=='service-network':
+        from . import cognitive_services as cs
+        require(app.config['composition']==cs.APPLICATION,'UNSUPPORTED_PROFILE')
+        cfg,frozen=cs.client_configuration(app.config['evidence_config'])
+        for name in ('memory_read_config','memory_append_config','embedding_config','memory_embedding_config'):
+            require(json.loads(Path(app.config[name]).read_text())['placement']=='service-network','UNSUPPORTED_PROFILE')
+        require(frozen['principal']==app.binding['memory']['principal'],'UNAUTHORIZED')
+        return cfg,frozen
     provider,_,frozen=configuration(cfg['policy'],cfg['credential'],cfg['scope'])
     require(cfg['placement']=='local','UNSUPPORTED_PROFILE')
     if app.channel_enabled:require(cfg['sources']=={},'UNSUPPORTED_PROFILE')
@@ -28,7 +36,11 @@ class EvidenceAdoption:
     def __init__(self,app):
         self.app,self.db=app,app.db
         cfg,frozen=settings(app);require(frozen==app.binding['evidence'],'CONFLICT')
-        self.modules=open_local(cfg['policy'],cfg['credential'],cfg['scope'],hook=app.hook)
+        if cfg['placement']=='service-network':
+            from .cognitive_services import modules
+            root=Path(app.config['workdir'])/'evidence-presentation';root.mkdir(parents=True,exist_ok=True)
+            self.modules=modules(app.config['evidence_config'],root)
+        else:self.modules=open_local(cfg['policy'],cfg['credential'],cfg['scope'],hook=app.hook)
         self.db.executescript('''
           CREATE TABLE IF NOT EXISTS app_sources(slot INTEGER PRIMARY KEY, accepted TEXT NOT NULL, episode TEXT,
             occurrence TEXT, receipt TEXT, exposed INTEGER NOT NULL DEFAULT 0, calls INTEGER NOT NULL DEFAULT 0);

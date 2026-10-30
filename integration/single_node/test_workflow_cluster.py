@@ -54,7 +54,7 @@ ready=p.exists() and e.exists() and s.exists() and e.stat().st_mtime>=p.stat().s
 print(s.read_text() if ready else 'null')"""))
  def rows(self):return self.observe('omega-agent').get('measured.sqlite',{})
  def run(self):
-  case=self.case
+  started=time.monotonic();case=self.case
   if case=='wrong-permitted':self.values['workflow']['responses'][1]='send '+self.values['workflow']['bodies'][1]
   if case in ('altered-corpus','absent-corpus'):
    old='Synthetic violet beacon Ω stores seven paper moons.'
@@ -63,13 +63,17 @@ print(s.read_text() if ready else 'null')"""))
    self.values['memory']['responses']=['remember '+x for x in self.values['memory']['inputs']]+['']
   if case=='rejected':self.values['workflow']['responses'][1]='metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))'
   pauses={'bridge-capture':('fusion-channel-bridge','after_bridge_capture',None),'input-acceptance':('omega-agent','after_application_input_commit',1),'model-unknown':('fusion-model','after_model_reservation',None),'model-capture':('fusion-model','after_model_provider_capture',None),'revocation':('omega-agent','after_model_provider_reply',1),'service-outage':('omega-agent','after_model_rpc_reservation',1),'query-capture':('omega-agent','after_native_result_capture',1),'send-accepted':('omega-agent','after_occurrence_bind',2),'uncertain-send':('fusion-channel-bridge','after_socket_reservation',None)}
+  if case=='missing-payload':pauses[case]=('omega-agent','after_candidate_capture',1)
+  if case=='application-model-capture':pauses[case]=('omega-agent','after_model_application_capture',1)
   if case in pauses and pauses[case][0]!='omega-agent':self.config(pauses[case][0],test=dict(pause_at=pauses[case][1]))
   if case=='lost-model':self.config('fusion-model',test=dict(drop_response_operation='complete'))
   self.install()
   for role in ROLES:self.wait(lambda:self.file(role,'process.json'),180)
   self.wait(lambda:self.file('omega-agent','setup-view.json'),120)
   self.wait(lambda:self.file('fusion-channel-bridge','channel-ready.json'),30);self.wait(lambda:self.file('irc-peer','channel-ready.json'),30)
-  self.snapshot('setup')
+  self.snapshot('setup');self.report['cold_setup_seconds']=time.monotonic()-started
+  if case=='unready-search':
+   self.exec('fusion-search',"import json;from pathlib import Path;p=Path('/state/memory/search/published.json');assert p.exists();p.rename(p.with_name('quarantined-published.json'))")
   if case=='bridge-capture':
    self.peer(self.values['workflow']['question']);self.pause('fusion-channel-bridge');self.snapshot('at-boundary');self.replace('fusion-channel-bridge');self.wait(lambda:self.file('fusion-channel-bridge','channel-ready.json'),30)
   before=self.uid('omega-agent');self.values['workflow']['phase']='measured'
@@ -80,6 +84,15 @@ print(s.read_text() if ready else 'null')"""))
   if case=='wrong-credential':
    self.exec('omega-agent',"import json;from pathlib import Path;p=Path('/run/fusion/model-client.json');v=json.loads(p.read_text());v['credential']='wrong-credential-'*4;p.write_text(json.dumps(v))")
   if case!='bridge-capture':self.peer(self.values['workflow']['question'])
+  if case=='missing-payload':
+   self.pause('omega-agent');self.report['candidate_capture']=self.observe('omega-agent')
+   self.exec('fusion-storage',"from pathlib import Path;p=Path('/state/memory/payloads');assert p.is_dir();p.rename(p.with_name('quarantined-payloads'))");self.replace('omega-agent')
+  if case in ('missing-payload','unready-search'):
+   self.wait(self.measured,40);data=self.snapshot('missing-dependency');status=data['omega-agent']['measured-status.json'];assert status['code']=='NOT_AVAILABLE',status
+   app=data['omega-agent']['measured.sqlite'];assert len(app['app_model_calls'])==1 and len(data['fusion-model']['model.sqlite']['model_calls'])==1
+   assert all(r['result'] is None and r['done']==0 for r in app['app_occurrences'])
+   assert not [r for r in data['irc-peer'].get('peer-traffic.jsonl',[]) if ':omega!' in r.get('received','') and ' PRIVMSG ' in r['received']]
+   self.report.update(status='PASS',workflow_pass=False,negative_safety=case+' refuses captured query completion and emits no reply',full_workflow_seconds=time.monotonic()-started);return
   if case=='wrong-credential':
    self.wait(self.measured,30);data=self.snapshot('refused');assert data['omega-agent']['measured-status.json']['code']=='UNAUTHORIZED'
    assert not data['fusion-model'].get('model.sqlite',{}).get('model_calls',[])
@@ -97,7 +110,7 @@ print(s.read_text() if ready else 'null')"""))
     self.report.update(status='PASS',workflow_pass=False,negative_safety='captured response retained; revoked disclosure blocked caller recovery');return
    assert failed['omega-agent']['measured-status.json']['code']=='NOT_AVAILABLE'
    self.k('patch','service','fusion-model','--type=merge','--patch',json.dumps(dict(spec=dict(ports=[dict(name='https',port=8443,targetPort='https',protocol='TCP')]))));self.replace('omega-agent')
-  if case in ('input-acceptance','model-unknown','model-capture','query-capture'):
+  if case in ('input-acceptance','model-unknown','model-capture','application-model-capture','query-capture'):
    role=pauses[case][0];self.pause(role);before=self.snapshot('at-boundary');self.replace(role)
    if role=='fusion-model':
     self.wait(lambda:self.measured(),15);self.replace('omega-agent')
@@ -158,11 +171,15 @@ print(s.read_text() if ready else 'null')"""))
    self.snapshot('after-negative-probes')
   provider=data['fusion-model']['model.sqlite']['model_calls'];assert len(provider)==2 and all(r['reserved']==1 for r in provider)
   assert len(data['fusion-model']['recorded-evaluations.jsonl'])==2
-  self.report['status']='PASS'
+  self.report['status']='PASS';self.report['full_workflow_seconds']=time.monotonic()-started
+  if case=='correct':
+   from .measure_cluster import measure
+   from .reference_ops import Operator
+   self.report['resources']=measure(Operator(self.args.kubeconfig,'default',self.name))
 
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--kubeconfig',required=True);p.add_argument('--prefix',required=True);p.add_argument('--output',required=True);p.add_argument('--values',default=str(ROOT/'deploy/single-node/workflow-values.yaml'));p.add_argument('--chart',default=str(ROOT/'deploy/helm/omega-fusion'));p.add_argument('--cases',nargs='+',default=['correct','wrong-permitted','rejected']);p.add_argument('--keep',action='store_true');a=p.parse_args();a.image_tag='workflow-v1';a.observer_source=(ROOT/'integration/single_node/workflow_observe.py').read_text().replace('from .memory_observe import memory_observe','from integration.single_node.memory_observe import memory_observe')
- assert a.prefix.startswith('omega-mc-') and 'omega-demo' not in a.prefix
+ assert a.prefix.startswith(('omega-mc-','omega-ref-')) and 'omega-demo' not in a.prefix
  import hashlib,shutil
  root=Path(a.output);root.mkdir(parents=True,exist_ok=False)
  chart=root/'frozen-chart';shutil.copytree(a.chart,chart);a.chart=str(chart)

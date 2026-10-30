@@ -9,10 +9,21 @@ from integration.neoclaw.model_startup import retrieval_scaffold
 from .configure import write
 
 
-def configure(settings):
+def configure(settings,*,live_authority=None):
     role=settings['role'];w=settings['workflow'];state=Path(settings.get('state','/state'));run=Path(settings.get('run','/run/fusion'))
     state.mkdir(parents=True,exist_ok=True);run.mkdir(parents=True,exist_ok=True);secret=Path('/secrets')
-    require(w['enabled'] and w['mode']=='recorded' and w['liveEnabled'] is False,'UNAUTHORIZED')
+    require(w['enabled'] and w['mode'] in ('recorded','live'),'UNAUTHORIZED')
+    live=w['mode']=='live'
+    require(live or w['liveEnabled'] is False,'UNAUTHORIZED')
+    if live and role=='fusion-model':require(live_authority is not None and w['liveEnabled'] is True,'UNAUTHORIZED')
+    if live and role=='omega-agent' and w['phase']=='measured':
+        from .future_live import authority
+        plan,_=authority('/campaign/plan.json','/approval/approval.json')
+        require(w['liveEnabled'] is True and w['session']==plan['slots'][0]['session'],'UNAUTHORIZED')
+        # The staged caller may remain disabled while the approved provider
+        # validates its assets. Every other setting is the exact frozen input.
+        bound=dict(settings,native_enabled=True)
+        require(digest(canonical(bound))==plan['caller_configuration_sha256'],'CONFLICT')
     def token(name):
         value=(secret/name).read_text().strip();require(32<=len(value)<=256 and value.isascii(),'UNAUTHORIZED');return value
     def endpoint(name):return dict(host=settings['peers'][name],port=settings['https_port'],ca_file='/secrets/ca.crt')
@@ -51,13 +62,19 @@ def configure(settings):
         if bridge:
             write(run/'bridge.json',dict(client=str(run/'channel-client.json'),database=str(state/'bridge.sqlite'),server=dict(host=settings['peers']['irc-server'],port=6667,deployment=cs.COMPOSITION),nick='omega',seconds=900,test_failpoints=cfg.get('test_failpoints',False),pause_at=cfg.get('pause_at'),failpoint_marker=str(state/'pause.json')))
     if role=='fusion-model':
-        from .recorded_model import BOUNDARY
-        fixture=dict(boundary=BOUNDARY,mode='recorded',session=w['session'],responses=w['responses'],log=str(state/'recorded-evaluations.jsonl'))
-        write(run/'recorded.json',fixture)
-        lifetime=state/'authority-lifetime.json'
-        if not lifetime.exists():write(lifetime,dict(expires_ms=time.time_ns()//1000000+900000))
+        if live:
+            plan,approval=live_authority
+            require(w['session']==plan['slots'][0]['session'] and w['recipient']==plan['recipient'],'CONFLICT')
+            runtime_lock=plan['runtime_lock'];expires=approval['expires_ms']
+        else:
+            from .recorded_model import BOUNDARY
+            fixture=dict(boundary=BOUNDARY,mode='recorded',session=w['session'],responses=w['responses'],log=str(state/'recorded-evaluations.jsonl'))
+            write(run/'recorded.json',fixture)
+            lifetime=state/'authority-lifetime.json'
+            if not lifetime.exists():write(lifetime,dict(expires_ms=time.time_ns()//1000000+900000))
+            expires=json.loads(lifetime.read_text())['expires_ms'];runtime_lock=dict(path=str(run/'recorded.json'),sha256=digest(canonical(fixture)))
         disclosure=dict(policy=rs.POLICY,scaffold=retrieval_scaffold(),memories=['()'],users=[str(['HUMAN-MSG:','peer: '+x]) for x in (w['question'],w['followup'])],query=w['query'],recipient=w['recipient'])
-        cfg.update(model_completion=dict(database=str(state/'model.sqlite'),scope=w['modelScope'],sharing=m.PRIVACY,sessions=[w['session']],max_calls=2,expires_ms=json.loads(lifetime.read_text())['expires_ms'],catalogue=[descriptor_wire(m.descriptor(m.CPU_PROFILE))],disclosure=disclosure,disclosure_issuers=['M'],runtime_lock=dict(path=str(run/'recorded.json'),sha256=digest(canonical(fixture)))),
+        cfg.update(model_completion=dict(database=str(state/'model.sqlite'),scope=w['modelScope'],sharing=m.PRIVACY,sessions=[w['session']],max_calls=2,expires_ms=expires,catalogue=[descriptor_wire(m.descriptor(m.CPU_PROFILE))],disclosure=disclosure,disclosure_issuers=['M'],runtime_lock=runtime_lock),
             principals={p:dict(credential=token(key),scopes={w['modelScope']:['model.'+op for op in ('complete','observe','authorize','disclose','issue')]}) for p,key in [('M','caller-token'),('other','other-token')]})
     if role=='omega-agent':
         # Setup uses the old native memory entrypoint. Measured gets a NEW DB and
@@ -65,6 +82,7 @@ def configure(settings):
         app=json.loads((run/'application.json').read_text())
         if w['phase']=='measured':
             app.pop('model_fixture');app.update(composition='controlled-native-loop/11',turn_limit=2,session_id=w['session'],workdir=str(state/'measured-native'),status_file=str(state/'measured-status.json'),channel_config=str(run/'channel-client.json'),channel_wait_ms=10000,channel_poll_limit=128,channel_irc_probe_port=6667,model_config=str(run/'model-client.json'),preparation_fixture_boundary='RECORDED_MODEL_RESPONSE_FIXTURE',model_denied_files=['/secrets/tls.key','/opt/model/model.safetensors','/opt/generative/ollama','/run/fusion/recorded.json'])
+            if live:app.pop('preparation_fixture_boundary')
             caller=json.loads((run/'caller.json').read_text());caller['database']=str(state/'measured.sqlite');write(run/'caller.json',caller)
             for name in ('memory-read-template.json','memory-append.json','embedding.json','memory-embedding.json'):
                 v=json.loads((run/name).read_text());v['principal']='M'

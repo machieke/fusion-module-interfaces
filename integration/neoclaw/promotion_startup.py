@@ -1,5 +1,5 @@
 """S05 only checked native state seams. Native sorting/uniqueness/rendering retained."""
-from .promotion_oracle import function
+from .memory_oracle import function
 from .startup_overlay import replace_once
 
 

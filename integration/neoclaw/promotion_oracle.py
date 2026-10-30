@@ -10,10 +10,7 @@ from .memory_composition import ROOT,SDK,MODEL
 from .append_oracle import TEXT,QUERY,CREATED
 
 
-def function(omega,name):
-    query_source(omega)
-    source=(omega/'src/memory.metta').read_text();begin=source.index('(= ('+name)
-    return source[begin:source.index('\n(= (',begin+1)]
+from .memory_oracle import function
 
 def commands(corpus):
     candidate=corpus['records'][5]['time'];outside=corpus['records'][-1]['time']

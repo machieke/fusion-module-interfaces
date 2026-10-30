@@ -24,6 +24,11 @@ def query_source(omega):
     return '\n'.join(text[text.index('(= ('+name+' '):text.index('\n(= (', text.index('(= ('+name+' ')+1)] for name in names)
 
 
+def function(omega,name):
+    query_source(omega)
+    source=(omega/'src/memory.metta').read_text();begin=source.index('(= ('+name)
+    return source[begin:source.index('\n(= (',begin+1)]
+
 def creation_source(omega):
     query_source(omega)  # Whole-file pin before selecting exact native bodies.
     text=(omega/'src/memory.metta').read_text()

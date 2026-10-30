@@ -1,0 +1,98 @@
+{
+  "status": "PASS_BOUNDED_FENCED",
+  "report": "artifacts/reference-distribution/restore-final15/report.json",
+  "report_sha256": "dcf36edca759c764958514353854e19d15e070209db5f11ccd9113a7f3196c9e",
+  "durations": {
+    "total_seconds": 276.83439247868955,
+    "measurements": [
+      {
+        "operation": "quiesce",
+        "namespace": "omega-ref-restore15-correct",
+        "seconds": 6.52598381973803,
+        "status": "PASS"
+      },
+      {
+        "operation": "backup",
+        "namespace": "omega-ref-restore15-correct",
+        "seconds": 42.34193638525903,
+        "status": "PASS"
+      },
+      {
+        "operation": "restore",
+        "namespace": "omega-ref-restore15-restored",
+        "seconds": 74.19138774648309,
+        "status": "PASS"
+      }
+    ],
+    "measurement": "monotonic observer wrappers; unchanged owner calls and test assertions",
+    "additional_live_generations": 0
+  },
+  "consistency_cut": "all selected StatefulSet pods terminated; each owner locked/checkpointed independently; not a distributed transaction",
+  "loss_window": "No accepted changes after all writers quiesced; no claim for in-flight or unacknowledged external input",
+  "owner_images": {
+    "fusion-channel-bridge": "docker.io/library/fusion-single-node@sha256:20ce2ce122e74f96bebb6f50574f1ff8f56c44411370897361c87a1ae8c6f158",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:f0ed068836e2a5d54ec3b7192932122ef30418b6ddb2536dd8ad2edd4afb03db",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:20ce2ce122e74f96bebb6f50574f1ff8f56c44411370897361c87a1ae8c6f158",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:20ce2ce122e74f96bebb6f50574f1ff8f56c44411370897361c87a1ae8c6f158",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:95a98f63c47667874cfa73e35c75c7777c05c716f363e40e549e8559587edebc",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:20ce2ce122e74f96bebb6f50574f1ff8f56c44411370897361c87a1ae8c6f158",
+    "irc-peer": "docker.io/library/fusion-single-node@sha256:20ce2ce122e74f96bebb6f50574f1ff8f56c44411370897361c87a1ae8c6f158",
+    "irc-server": "docker.io/library/fusion-single-node@sha256:20ce2ce122e74f96bebb6f50574f1ff8f56c44411370897361c87a1ae8c6f158",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:95a98f63c47667874cfa73e35c75c7777c05c716f363e40e549e8559587edebc"
+  },
+  "owner_archives": {
+    "fusion-channel-bridge": {
+      "sha256": "5a06dc2deb3db3974706cdec293ff3211e276b70e1702a0d3230665c1e7be422",
+      "bytes": 3716
+    },
+    "fusion-embedding": {
+      "sha256": "381be878950ffa0e7b78967d5342a4ce1af6fe3c2faa44070fd7f7c99f59b83d",
+      "bytes": 2437
+    },
+    "fusion-messaging": {
+      "sha256": "6027c98a16189fdccfd5ebd006a3f3c9568b1dcf4564b9a6a8cf9cd8752abfc9",
+      "bytes": 4772
+    },
+    "fusion-model": {
+      "sha256": "af4b915d0144fec6e1073ef92e7001e2bd5211fe1bc1bae78bd486a7aabc053f",
+      "bytes": 3808
+    },
+    "fusion-search": {
+      "sha256": "83cb7819bc31f5d5b85fc62e8be5ed5ceb8ffd8907948ccaa834c6b56add0106",
+      "bytes": 50093
+    },
+    "fusion-storage": {
+      "sha256": "50a546baf5de17442efe499ebcf3a38bd813c74c10e61c75a8b64cb25cb044e8",
+      "bytes": 108492
+    },
+    "irc-peer": {
+      "sha256": "fa9c12a415539e56e64470441b7cd178e0e56439914ef0a7e48cdfd71f8755a7",
+      "bytes": 830
+    },
+    "irc-server": {
+      "sha256": "2158469ef8438744f1a71932813c95fcd34b34f146fd42c58428a7f4da02f197",
+      "bytes": 699
+    },
+    "omega-agent": {
+      "sha256": "67f51af752326cd0158201732c21814320b856d2ee15a1070391c246727499c6",
+      "bytes": 128579
+    }
+  },
+  "readback": "PASS retained view then fresh source-driven generation",
+  "effect_refusals": {
+    "fusion-model": "UNAUTHORIZED",
+    "fusion-messaging": "UNAUTHORIZED",
+    "fusion-storage": "UNAUTHORIZED",
+    "fusion-search": "UNAUTHORIZED"
+  },
+  "chain_and_external_send_fence": "Unit-tested selected restore dispatch; in-cluster drill directly rejects model/mailbox/storage/search effect routes; no chain deployment restored in this drill",
+  "preserved_captures_and_spent_accounting": true,
+  "application_old_views_unchanged": true,
+  "new_authority": false,
+  "limitations": [
+    "quiesced synthetic reference state only",
+    "not atomic across owners",
+    "observation-only restored clone; no failover authority"
+  ],
+  "additional_live_generations": 0
+}

@@ -1,0 +1,1449 @@
+{
+  "schema": "reference-resource-baseline/1",
+  "samples": 3,
+  "concurrency": 1,
+  "memories_per_session": 2,
+  "percentiles": "NOT_ESTIMATED: deliberately small sample",
+  "cache": "new PVCs and processes; cached images/native/model files on same node",
+  "cold_setup_seconds": {
+    "n": 3,
+    "minimum": 61.7119759125635,
+    "median": 64.41394810564816,
+    "maximum": 68.36340991128236
+  },
+  "full_workflow_seconds": {
+    "n": 3,
+    "minimum": 82.20749567635357,
+    "median": 85.40657281223685,
+    "maximum": 87.49518210440874
+  },
+  "operations": {
+    "storage_acceptance_observed_ms": {
+      "n": 6,
+      "minimum": 1048,
+      "median": 1195.5,
+      "maximum": 1343
+    },
+    "index_publication_observed_ms": {
+      "n": 6,
+      "minimum": 666,
+      "median": 915.0,
+      "maximum": 1113
+    },
+    "local_readiness_observed_ms": {
+      "n": 6,
+      "minimum": 175,
+      "median": 233.0,
+      "maximum": 265
+    },
+    "remember_observed_ms": {
+      "n": 6,
+      "minimum": 2630,
+      "median": 3016.5,
+      "maximum": 3243
+    },
+    "native_e5_ms": {
+      "n": 9,
+      "minimum": 280.8360690250993,
+      "median": 297.9697259142995,
+      "maximum": 439.5458213984966
+    },
+    "embedding_rpc_elapsed_ms": {
+      "n": 9,
+      "minimum": 308.92976466566324,
+      "median": 324.05100483447313,
+      "maximum": 473.43982569873333
+    },
+    "embedding_rpc_request_body_bytes": {
+      "n": 9,
+      "minimum": 628,
+      "median": 633,
+      "maximum": 635
+    },
+    "embedding_rpc_response_body_bytes": {
+      "n": 9,
+      "minimum": 22152,
+      "median": 22179,
+      "maximum": 22216
+    },
+    "query_retrieval_ms": {
+      "n": 3,
+      "minimum": 208.0028774216771,
+      "median": 210.61974484473467,
+      "maximum": 223.45891315490007
+    }
+  },
+  "runs": [
+    {
+      "report": "artifacts/reference-distribution/qualification-08/recorded/correct/report.json",
+      "sha256": "9f1928a27703e05d5bf95f320a4d64a33b30cd6471f0973d640b7e862882fe7c",
+      "namespace": "omega-ref-g08-2-correct",
+      "images": {
+        "fusion-channel-bridge-0": [
+          "docker.io/library/fusion-single-node@sha256:ac31dd2e78114598a669301e6c974d38c076e02fc0b4956889ef98579328a9f3"
+        ],
+        "fusion-embedding-0": [
+          "docker.io/library/fusion-memory-embedding@sha256:b6b365efee0d256673892c7991761cb293d732135a3ab5901574e90ce48e02e5"
+        ],
+        "fusion-messaging-0": [
+          "docker.io/library/fusion-single-node@sha256:ac31dd2e78114598a669301e6c974d38c076e02fc0b4956889ef98579328a9f3"
+        ],
+        "fusion-model-0": [
+          "docker.io/library/fusion-single-node@sha256:ac31dd2e78114598a669301e6c974d38c076e02fc0b4956889ef98579328a9f3"
+        ],
+        "fusion-search-0": [
+          "docker.io/library/fusion-memory-caller@sha256:2a01ab3e899c15e60582b00a773ae149a3e135091f5446567aaee1173c4442c3"
+        ],
+        "fusion-storage-0": [
+          "docker.io/library/fusion-single-node@sha256:ac31dd2e78114598a669301e6c974d38c076e02fc0b4956889ef98579328a9f3"
+        ],
+        "irc-peer-0": [
+          "docker.io/library/fusion-single-node@sha256:ac31dd2e78114598a669301e6c974d38c076e02fc0b4956889ef98579328a9f3"
+        ],
+        "irc-server-0": [
+          "docker.io/library/fusion-single-node@sha256:ac31dd2e78114598a669301e6c974d38c076e02fc0b4956889ef98579328a9f3"
+        ],
+        "omega-agent-0": [
+          "docker.io/library/fusion-memory-caller@sha256:2a01ab3e899c15e60582b00a773ae149a3e135091f5446567aaee1173c4442c3"
+        ]
+      },
+      "cold_setup_seconds": 64.41394810564816,
+      "full_workflow_seconds": 85.40657281223685,
+      "operation_observations": {
+        "storage_acceptance_observed_ms": [
+          1070,
+          1264
+        ],
+        "index_publication_observed_ms": [
+          666,
+          950
+        ],
+        "local_readiness_observed_ms": [
+          182,
+          230
+        ],
+        "remember_observed_ms": [
+          2630,
+          3013
+        ],
+        "native_e5_ms": [
+          439.5458213984966,
+          296.3020633906126,
+          280.8360690250993
+        ],
+        "embedding_rpc_elapsed_ms": [
+          473.43982569873333,
+          320.4240892082453,
+          308.92976466566324
+        ],
+        "embedding_rpc_request_body_bytes": [
+          635,
+          633,
+          628
+        ],
+        "embedding_rpc_response_body_bytes": [
+          22179,
+          22152,
+          22216
+        ],
+        "query_retrieval_ms": [
+          223.45891315490007
+        ]
+      },
+      "roles": {
+        "fusion-channel-bridge": {
+          "rss_bytes": 78487552,
+          "process_cpu_seconds": 4.49,
+          "state_bytes": 169018,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "fusion-embedding": {
+          "rss_bytes": 1725726720,
+          "process_cpu_seconds": 26.57,
+          "state_bytes": 53782,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "fusion-messaging": {
+          "rss_bytes": 51916800,
+          "process_cpu_seconds": 6.24,
+          "state_bytes": 61628,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "fusion-model": {
+          "rss_bytes": 52121600,
+          "process_cpu_seconds": 0.99,
+          "state_bytes": 62279,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "fusion-search": {
+          "rss_bytes": 131072000,
+          "process_cpu_seconds": 4.11,
+          "state_bytes": 1433073,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "fusion-storage": {
+          "rss_bytes": 51916800,
+          "process_cpu_seconds": 2.2,
+          "state_bytes": 519156,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "irc-peer": {
+          "rss_bytes": 76189696,
+          "process_cpu_seconds": 1.59,
+          "state_bytes": 2082,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "irc-server": {
+          "rss_bytes": 49348608,
+          "process_cpu_seconds": 1.09,
+          "state_bytes": 1842,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        },
+        "omega-agent": {
+          "rss_bytes": 52977664,
+          "process_cpu_seconds": 0.81,
+          "state_bytes": 1585193,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE"
+          }
+        }
+      },
+      "health_rtt": {
+        "fusion-channel-bridge": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-embedding": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-messaging": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-model": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-search": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-storage": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "irc-peer": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "irc-server": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "omega-agent": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        }
+      },
+      "model": "two explicitly recorded responses; no live generation"
+    },
+    {
+      "report": "artifacts/reference-distribution/qualification-11/recorded/correct/report.json",
+      "sha256": "d612f0c9e9a59c57ba38a1d4c37c05f3010c8e1e180cc6a98f0cf7753b69eb30",
+      "namespace": "omega-ref-final11-0-correct",
+      "images": {
+        "fusion-channel-bridge-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "fusion-embedding-0": [
+          "docker.io/library/fusion-memory-embedding@sha256:3f7f77c47ff05e1678d458b9f87b1037f0b6f3cb16f7e4993125c652987bda66"
+        ],
+        "fusion-messaging-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "fusion-model-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "fusion-search-0": [
+          "docker.io/library/fusion-memory-caller@sha256:52cbbc69423905388aff70456c97f6a6bed2a4270c5c20c8a4c76c7ae7577aa5"
+        ],
+        "fusion-storage-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "irc-peer-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "irc-server-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "omega-agent-0": [
+          "docker.io/library/fusion-memory-caller@sha256:52cbbc69423905388aff70456c97f6a6bed2a4270c5c20c8a4c76c7ae7577aa5"
+        ]
+      },
+      "cold_setup_seconds": 61.7119759125635,
+      "full_workflow_seconds": 82.20749567635357,
+      "operation_observations": {
+        "storage_acceptance_observed_ms": [
+          1130,
+          1261
+        ],
+        "index_publication_observed_ms": [
+          880,
+          1113
+        ],
+        "local_readiness_observed_ms": [
+          265,
+          246
+        ],
+        "remember_observed_ms": [
+          3063,
+          3243
+        ],
+        "native_e5_ms": [
+          335.8693653717637,
+          297.9697259142995,
+          283.44336338341236
+        ],
+        "embedding_rpc_elapsed_ms": [
+          359.4023725017905,
+          332.0629373192787,
+          322.0156468451023
+        ],
+        "embedding_rpc_request_body_bytes": [
+          635,
+          633,
+          628
+        ],
+        "embedding_rpc_response_body_bytes": [
+          22179,
+          22152,
+          22216
+        ],
+        "query_retrieval_ms": [
+          208.0028774216771
+        ]
+      },
+      "roles": {
+        "fusion-channel-bridge": {
+          "rss_bytes": 78573568,
+          "process_cpu_seconds": 4.74,
+          "state_bytes": 169018,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "5413936834",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "52064256",
+            "v1.memory.max_usage_in_bytes": "52064256",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-embedding": {
+          "rss_bytes": 1726738432,
+          "process_cpu_seconds": 26.49,
+          "state_bytes": 53782,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "27036669286",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "399089664",
+            "v1.memory.max_usage_in_bytes": "1461067776",
+            "v1.memory.limit_in_bytes": "5368709120",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-messaging": {
+          "rss_bytes": 52473856,
+          "process_cpu_seconds": 6.53,
+          "state_bytes": 61628,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "7089452430",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "32628736",
+            "v1.memory.max_usage_in_bytes": "32702464",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-model": {
+          "rss_bytes": 52596736,
+          "process_cpu_seconds": 0.99,
+          "state_bytes": 62279,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "1528101297",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "32374784",
+            "v1.memory.max_usage_in_bytes": "32374784",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-search": {
+          "rss_bytes": 130686976,
+          "process_cpu_seconds": 3.95,
+          "state_bytes": 1433073,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "4484898519",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "86867968",
+            "v1.memory.max_usage_in_bytes": "87638016",
+            "v1.memory.limit_in_bytes": "1073741824",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-storage": {
+          "rss_bytes": 52256768,
+          "process_cpu_seconds": 2.25,
+          "state_bytes": 519258,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "4906659646",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "36327424",
+            "v1.memory.max_usage_in_bytes": "36470784",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "irc-peer": {
+          "rss_bytes": 75685888,
+          "process_cpu_seconds": 1.45,
+          "state_bytes": 2035,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "2419186823",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "51662848",
+            "v1.memory.max_usage_in_bytes": "51847168",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "irc-server": {
+          "rss_bytes": 49541120,
+          "process_cpu_seconds": 1.09,
+          "state_bytes": 1848,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "1654134476",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "33890304",
+            "v1.memory.max_usage_in_bytes": "47538176",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "omega-agent": {
+          "rss_bytes": 52858880,
+          "process_cpu_seconds": 0.95,
+          "state_bytes": 1585190,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "11235067295",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "42807296",
+            "v1.memory.max_usage_in_bytes": "146980864",
+            "v1.memory.limit_in_bytes": "1073741824",
+            "v1.memory.failcnt": "0"
+          }
+        }
+      },
+      "health_rtt": {
+        "fusion-channel-bridge": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-embedding": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-messaging": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-model": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-search": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-storage": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "irc-peer": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "irc-server": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "omega-agent": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        }
+      },
+      "model": "two explicitly recorded responses; no live generation"
+    },
+    {
+      "report": "artifacts/reference-distribution/artifact-rehearsal-13/correct/report.json",
+      "sha256": "28ee44e0cb2d0629d80e543f7573c60534822c8a262ddcf99ec997f330c022b6",
+      "namespace": "omega-ref-artifact13-correct",
+      "images": {
+        "fusion-channel-bridge-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "fusion-embedding-0": [
+          "docker.io/library/fusion-memory-embedding@sha256:3f7f77c47ff05e1678d458b9f87b1037f0b6f3cb16f7e4993125c652987bda66"
+        ],
+        "fusion-messaging-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "fusion-model-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "fusion-search-0": [
+          "docker.io/library/fusion-memory-caller@sha256:52cbbc69423905388aff70456c97f6a6bed2a4270c5c20c8a4c76c7ae7577aa5"
+        ],
+        "fusion-storage-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "irc-peer-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "irc-server-0": [
+          "docker.io/library/fusion-single-node@sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+        ],
+        "omega-agent-0": [
+          "docker.io/library/fusion-memory-caller@sha256:52cbbc69423905388aff70456c97f6a6bed2a4270c5c20c8a4c76c7ae7577aa5"
+        ]
+      },
+      "cold_setup_seconds": 68.36340991128236,
+      "full_workflow_seconds": 87.49518210440874,
+      "operation_observations": {
+        "storage_acceptance_observed_ms": [
+          1048,
+          1343
+        ],
+        "index_publication_observed_ms": [
+          754,
+          981
+        ],
+        "local_readiness_observed_ms": [
+          236,
+          175
+        ],
+        "remember_observed_ms": [
+          2872,
+          3020
+        ],
+        "native_e5_ms": [
+          335.05021315068007,
+          298.9814504981041,
+          295.6689475104213
+        ],
+        "embedding_rpc_elapsed_ms": [
+          359.82900485396385,
+          324.05100483447313,
+          319.50618699193
+        ],
+        "embedding_rpc_request_body_bytes": [
+          635,
+          633,
+          628
+        ],
+        "embedding_rpc_response_body_bytes": [
+          22179,
+          22152,
+          22216
+        ],
+        "query_retrieval_ms": [
+          210.61974484473467
+        ]
+      },
+      "roles": {
+        "fusion-channel-bridge": {
+          "rss_bytes": 78675968,
+          "process_cpu_seconds": 4.79,
+          "state_bytes": 169018,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "5470299910",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "52166656",
+            "v1.memory.max_usage_in_bytes": "52166656",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-embedding": {
+          "rss_bytes": 1723105280,
+          "process_cpu_seconds": 25.8,
+          "state_bytes": 53782,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "26309913373",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "398405632",
+            "v1.memory.max_usage_in_bytes": "1460109312",
+            "v1.memory.limit_in_bytes": "5368709120",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-messaging": {
+          "rss_bytes": 52224000,
+          "process_cpu_seconds": 6.63,
+          "state_bytes": 61628,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "7166790598",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "32325632",
+            "v1.memory.max_usage_in_bytes": "32448512",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-model": {
+          "rss_bytes": 52482048,
+          "process_cpu_seconds": 1.03,
+          "state_bytes": 62279,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "1535855527",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "32477184",
+            "v1.memory.max_usage_in_bytes": "32477184",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-search": {
+          "rss_bytes": 129871872,
+          "process_cpu_seconds": 4.02,
+          "state_bytes": 1433073,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "4501521960",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "84774912",
+            "v1.memory.max_usage_in_bytes": "85561344",
+            "v1.memory.limit_in_bytes": "1073741824",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "fusion-storage": {
+          "rss_bytes": 52228096,
+          "process_cpu_seconds": 2.14,
+          "state_bytes": 519161,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "4794979045",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "35282944",
+            "v1.memory.max_usage_in_bytes": "35323904",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "irc-peer": {
+          "rss_bytes": 76464128,
+          "process_cpu_seconds": 1.62,
+          "state_bytes": 2035,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "2552192839",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "51630080",
+            "v1.memory.max_usage_in_bytes": "51630080",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "irc-server": {
+          "rss_bytes": 49422336,
+          "process_cpu_seconds": 1.07,
+          "state_bytes": 1848,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "1618116360",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "33120256",
+            "v1.memory.max_usage_in_bytes": "47345664",
+            "v1.memory.limit_in_bytes": "268435456",
+            "v1.memory.failcnt": "0"
+          }
+        },
+        "omega-agent": {
+          "rss_bytes": 52973568,
+          "process_cpu_seconds": 0.89,
+          "state_bytes": 1585189,
+          "cgroup": {
+            "cpu.stat": "UNAVAILABLE",
+            "memory.current": "UNAVAILABLE",
+            "memory.peak": "UNAVAILABLE",
+            "memory.events": "UNAVAILABLE",
+            "cpu.max": "UNAVAILABLE",
+            "memory.max": "UNAVAILABLE",
+            "v1.cpuacct.usage": "10914933644",
+            "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+            "v1.cpu.cfs_quota_us": "-1",
+            "v1.cpu.cfs_period_us": "100000",
+            "v1.memory.usage_in_bytes": "42999808",
+            "v1.memory.max_usage_in_bytes": "146460672",
+            "v1.memory.limit_in_bytes": "1073741824",
+            "v1.memory.failcnt": "0"
+          }
+        }
+      },
+      "health_rtt": {
+        "fusion-channel-bridge": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-embedding": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-messaging": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-model": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-search": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "fusion-storage": {
+          "successes": 0,
+          "errors": [
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError",
+            "SSLCertVerificationError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "irc-peer": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "irc-server": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        },
+        "omega-agent": {
+          "successes": 0,
+          "errors": [
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError",
+            "ConnectionRefusedError"
+          ],
+          "milliseconds": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          },
+          "response_bytes": {
+            "n": 0,
+            "status": "UNAVAILABLE"
+          }
+        }
+      },
+      "model": "two explicitly recorded responses; no live generation"
+    }
+  ],
+  "limits": [
+    "observer process included in CPU/RSS",
+    "cgroup peak includes page cache and native children",
+    "health RTT does not submit accepted work",
+    "application observation intervals are end-to-end stage bounds, not engine benchmarks",
+    "no concurrent or live-model throughput claim",
+    "denied non-dependency health edges are retained errors"
+  ],
+  "additional_live_generations": 0
+}

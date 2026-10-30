@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "namespace": "omega-demo",
+  "objects": [
+    {
+      "kind": "Pod",
+      "name": "fusion-execution-0",
+      "before_uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+      "after_uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "Pod",
+      "name": "fusion-messaging-0",
+      "before_uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+      "after_uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "Pod",
+      "name": "fusion-storage-0",
+      "before_uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+      "after_uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "Pod",
+      "name": "omega-agent-0",
+      "before_uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+      "after_uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "PersistentVolumeClaim",
+      "name": "state-fusion-execution-0",
+      "before_uid": "8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0",
+      "after_uid": "8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "PersistentVolumeClaim",
+      "name": "state-fusion-messaging-0",
+      "before_uid": "e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2",
+      "after_uid": "e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "PersistentVolumeClaim",
+      "name": "state-fusion-storage-0",
+      "before_uid": "451dbd3d-8f64-40cd-b828-f16acb806b10",
+      "after_uid": "451dbd3d-8f64-40cd-b828-f16acb806b10",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "PersistentVolumeClaim",
+      "name": "state-omega-agent-0",
+      "before_uid": "961b892e-8a54-4236-8abf-7dc3d3d08204",
+      "after_uid": "961b892e-8a54-4236-8abf-7dc3d3d08204",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "StatefulSet",
+      "name": "fusion-execution",
+      "before_uid": "a9c5280d-e29b-47cf-b059-65a92b0e4009",
+      "after_uid": "a9c5280d-e29b-47cf-b059-65a92b0e4009",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "StatefulSet",
+      "name": "fusion-messaging",
+      "before_uid": "d73538d1-6875-41b0-83e1-b177a63edc36",
+      "after_uid": "d73538d1-6875-41b0-83e1-b177a63edc36",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "StatefulSet",
+      "name": "fusion-storage",
+      "before_uid": "c2e4b963-d8c6-472b-8507-396059fc88c9",
+      "after_uid": "c2e4b963-d8c6-472b-8507-396059fc88c9",
+      "spec_unchanged": true
+    },
+    {
+      "kind": "StatefulSet",
+      "name": "omega-agent",
+      "before_uid": "7d7dcef0-60c0-4096-b4ef-5e7fe9911c86",
+      "after_uid": "7d7dcef0-60c0-4096-b4ef-5e7fe9911c86",
+      "spec_unchanged": true
+    }
+  ],
+  "observation": "UID and full spec comparison; status/resourceVersion are naturally mutable and not treated as specification"
+}

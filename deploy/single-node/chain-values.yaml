@@ -1,0 +1,42 @@
+image:
+  repository: fusion-reference-chain
+  tag: reference-v1
+  digest: ''
+  pullPolicy: IfNotPresent
+networkPolicy:
+  enabled: true
+memory:
+  enabled: false
+workflow:
+  enabled: false
+reference:
+  enabled: true
+  profile: chain
+  synthetic: true
+  scope: shared-test
+  chain:
+    nodeEnabled: false
+    isolationVerified: false
+    public_key: '0400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
+    wallet_address: generated-before-install
+    command: reference-generated-inspection
+    seed: 12
+    registration: null
+components:
+  omega-agent:
+    image:
+      repository: fusion-reference-hive
+      tag: reference-v1
+      digest: ''
+      pullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+      limits:
+        cpu: '2'
+        memory: 1Gi
+  fusion-commitment:
+    enabled: true
+  f1r3node:
+    enabled: true

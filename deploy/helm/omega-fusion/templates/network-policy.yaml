@@ -1,0 +1,72 @@
+{{- if .Values.networkPolicy.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: reference-default-deny
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+{{- $edges := dict "omega-agent" (list "fusion-execution" "fusion-storage" "fusion-messaging" "fusion-search" "fusion-embedding" "fusion-episodes" "fusion-beliefs" "fusion-attention" "fusion-relations" "fusion-exact-search" "fusion-model" "fusion-commitment") "fusion-commitment" (list "fusion-execution" "fusion-storage") "fusion-execution" (list "fusion-storage" "fusion-messaging") "fusion-search" (list "fusion-storage") "fusion-beliefs" (list "fusion-storage" "fusion-episodes") "fusion-episodes" (list "fusion-storage") "fusion-relations" (list "fusion-storage") "fusion-exact-search" (list "fusion-storage") "fusion-channel-bridge" (list "fusion-storage" "fusion-messaging" "irc-server") "irc-peer" (list "irc-server") "fusion-messaging" (list "fusion-storage") "fusion-model" (list "fusion-storage") }}
+{{- range $name, $component := .Values.components }}
+{{- if (not (hasKey $component "enabled")) | or $component.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ $name }}-ports
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $name }}}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    {{- range $caller, $targets := $edges }}
+    {{- if has $name $targets }}
+    - from:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $caller }}}
+      ports: [{protocol: TCP, port: {{ $.Values.httpsPort }}}]
+    {{- end }}
+    {{- end }}
+    {{- if eq $name "irc-server" }}
+    - from:
+        {{- range $peer := list "fusion-channel-bridge" "irc-peer" }}
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $peer }}}
+        {{- end }}
+      ports: [{protocol: TCP, port: 6667}]
+    {{- end }}
+    {{- if eq $name "f1r3node" }}
+    - from:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: fusion-commitment}
+      ports: [{protocol: TCP, port: 40403}]
+    {{- end }}
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: kube-system}
+          podSelector:
+            matchLabels: {k8s-app: kube-dns}
+      ports: [{protocol: UDP, port: 53}, {protocol: TCP, port: 53}]
+    {{- range $target := (get $edges $name | default list) }}
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $target }}}
+      ports: [{protocol: TCP, port: {{ $.Values.httpsPort }}}]
+    {{- end }}
+    {{- if eq $name "fusion-commitment" }}
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: f1r3node}
+      ports: [{protocol: TCP, port: 40403}]
+    {{- end }}
+    {{- if has $name (list "fusion-channel-bridge" "irc-peer") }}
+    - to:
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: irc-server}
+      ports: [{protocol: TCP, port: 6667}]
+    {{- end }}
+{{- end }}
+{{- end }}
+{{- end }}

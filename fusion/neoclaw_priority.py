@@ -11,7 +11,13 @@ from .responses import envelope
 
 
 def settings(app):
-    cfg,_,frozen=configuration(app.config['attention_config'])
+    raw=json.loads(Path(app.config['attention_config']).read_text())
+    if raw.get('placement')=='service-network':
+        from . import cognitive_services as cs
+        require(app.config['composition']==cs.APPLICATION,'UNSUPPORTED_PROFILE')
+        cfg,frozen=cs.client_configuration(app.config['attention_config'])
+        frozen.update(selection=frozen['selections']['attention'],output=cfg['output'],profile=c.PROFILE)
+    else:cfg,_,frozen=configuration(app.config['attention_config'])
     require(frozen['principal']==app.binding['memory']['principal'],'UNAUTHORIZED')
     require(app.evidence_enabled,'UNSUPPORTED_PROFILE');app.evidence.authorize() if hasattr(app,'evidence') else None
     return cfg,frozen
@@ -20,12 +26,21 @@ def settings(app):
 class PriorityAdoption:
     def __init__(self,app):
         self.app,self.db=app,app.db;cfg,frozen=settings(app);require(frozen==app.binding['attention'],'CONFLICT')
-        self.owner=open_local(app.config['attention_config'],app.hook)
+        if cfg['placement']=='service-network':
+            from .cognitive_services import Remote
+            self.owner=Remote(cfg,'attention')
+        else:self.owner=open_local(app.config['attention_config'],app.hook)
         # Local composition obtains only existing AtomStorage ports. No Search or foreign DB access.
         from .vector_composition import ReadService
         from .neoclaw_memory import configuration as memory_configuration
-        rc,_,_=memory_configuration(app.config['memory_read_config']);require(rc['placement']=='local','UNSUPPORTED_PROFILE')
-        self.atoms=ReadService(rc['provider_config'],rc['credential']).atoms;self.scope=rc['scope']
+        rc,chosen,_=memory_configuration(app.config['memory_read_config']);self.scope=rc['scope']
+        if cfg['placement']=='service-network':
+            from .memory_services import RemoteSource,SourceConnection
+            require(rc['placement']=='service-network','UNSUPPORTED_PROFILE')
+            self.atoms=RemoteSource(SourceConnection(rc['endpoints']['atom.storage'],rc['service_credentials']['atom.storage'],principal='A'),rc['scope'],chosen['atom.storage'],None)
+        else:
+            require(rc['placement']=='local','UNSUPPORTED_PROFILE')
+            self.atoms=ReadService(rc['provider_config'],rc['credential']).atoms
         self.db.executescript('''CREATE TABLE IF NOT EXISTS app_priority(id TEXT PRIMARY KEY,request TEXT,binding TEXT,receipt TEXT,visible INTEGER DEFAULT 0);
             CREATE TABLE IF NOT EXISTS app_priority_queries(id TEXT PRIMARY KEY,binding TEXT,result TEXT);
             CREATE TABLE IF NOT EXISTS app_priority_contexts(slot INTEGER PRIMARY KEY,view TEXT,deadline INTEGER,calls INTEGER DEFAULT 0,binding TEXT,result TEXT,payloads TEXT,rendered TEXT,lines TEXT);

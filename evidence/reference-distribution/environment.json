@@ -1,0 +1,24 @@
+{
+  "logical_cpus": 8,
+  "architecture": "x86_64",
+  "kernel": "5.4.0-216-generic",
+  "memory_kib": {
+    "MemTotal": "82091776 kB",
+    "MemAvailable": "30375320 kB"
+  },
+  "python": "3.12.12",
+  "node": {
+    "architecture": "amd64",
+    "containerRuntimeVersion": "containerd://2.1.4-k3s2",
+    "kernelVersion": "5.4.0-216-generic",
+    "kubeProxyVersion": "",
+    "kubeletVersion": "v1.34.1+k3s1",
+    "operatingSystem": "linux",
+    "osImage": "K3s v1.34.1+k3s1"
+  },
+  "limitations": [
+    "one existing node; sequential task workloads",
+    "cgroup v1 sample observed CPU quota -1; chart CPU limits are declared but this sample does not prove kernel CPU quota enforcement",
+    "no live text-generation runtime contacted"
+  ]
+}

@@ -20,6 +20,7 @@ from . import append_contracts as w
 from . import nal_memory_contracts as n
 from . import promotion_contracts as p, channel_contracts as ch, model_contracts as m, neoclaw_retrieval_disclosure as r
 from .registry import selection_token
+from . import cognitive_services as cs
 
 
 def selected_expression(command):
@@ -61,15 +62,15 @@ class Application:
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
         self.hook, self.current = hook, None
-        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION, m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION), 'UNSUPPORTED_PROFILE')
+        require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION, m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION), 'UNSUPPORTED_PROFILE')
         self.model_enabled = self.config['composition'] in (m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
         self.channel_enabled = self.config['composition'] in (ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
-        self.priority_enabled = self.config['composition'] in (p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
-        self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION)
-        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
-        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
-        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
-        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
+        self.priority_enabled = self.config['composition'] in (p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,cs.APPLICATION)
+        self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,cs.APPLICATION)
+        self.append_enabled = self.config['composition'] in (w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION)
+        self.embedding_enabled = self.config['composition'] in (e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION)
+        self.memory_enabled = self.config['composition'] in (v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION)
+        self.two_operations = self.config['composition'] in (ops.APPLICATION, v.APPLICATION, e.APPLICATION,w.APPLICATION,n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION)
         require(type(self.config['turn_limit']) is int and 1 <= self.config['turn_limit'] <= c.MAX_REQUESTS)
         require(type(self.config['invocation_timeout_ms']) is int and 1 <= self.config['invocation_timeout_ms'] <= 30000)
         caller = Caller(self.config['caller_config'])
@@ -125,6 +126,7 @@ class Application:
                     from .retrieval_services import binding as retrieval_binding
                     self.binding=binding
                     binding['retrieval']=retrieval_binding(self)
+            if self.config['composition']==cs.APPLICATION:binding['composition']=cs.APPLICATION
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)

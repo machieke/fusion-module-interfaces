@@ -1,0 +1,35 @@
+{
+  "manifest": "deploy/single-node/native-asset-manifest.json",
+  "sha256": "e300394ec78ce49e21c0fe0daa2723b1f5fc68d3f95a2f2be9d6525150e38d5f",
+  "image_archive": "505f104e71baa43860de56c6749b0043ebfbaa3b35f655edf802229c9391e49f",
+  "native_sources": {
+    "mettaclaw": "2af37c3fec18613de54ca42fde2382a9087d4524",
+    "PeTTa": "fea83178af3722666d2948d074591d10a3134f56",
+    "swipl": "e58621a91ab7dd530e1e8185ed518f63d851c414"
+  },
+  "roles": {
+    "base": {
+      "manifest": "sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8",
+      "configuration": "sha256:07fcc7e95545bda6e16b611aa08b4525253bbf4b818a8b91a8093f873ab55283",
+      "verified_files": 23,
+      "caller_absence": "not applicable",
+      "licence_files": 49
+    },
+    "caller": {
+      "manifest": "sha256:52cbbc69423905388aff70456c97f6a6bed2a4270c5c20c8a4c76c7ae7577aa5",
+      "configuration": "sha256:9e5d66c1422006ac9fec4947c942be59e2ce21ac5f654caf0b80c8cb81e2ab32",
+      "verified_files": 6439,
+      "caller_absence": "PASS: no E5 model/torch/transformers/sentence_transformers paths in any layer",
+      "licence_files": 161
+    },
+    "embedding": {
+      "manifest": "sha256:3f7f77c47ff05e1678d458b9f87b1037f0b6f3cb16f7e4993125c652987bda66",
+      "configuration": "sha256:4dd9714894a17337e3c1457100490f0d9e69798e8a13b5eac1392593a00b08a2",
+      "verified_files": 26905,
+      "caller_absence": "not applicable",
+      "licence_files": 210
+    }
+  },
+  "initial_offline_verifier_failure": "launcher was a symlink; complete second check verifies exact link and target, initial log preserved",
+  "image_executions": 0
+}

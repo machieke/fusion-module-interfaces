@@ -54,7 +54,8 @@ def encoder_binding(cfg,chosen):
 
 
 class SourceConnection(Network):
-    def __init__(self,endpoint,credential):
+    def __init__(self,endpoint,credential,principal='indexer'):
+        self.principal=principal
         super().__init__(endpoint,credential,None,timeout=1.,service_dns=True)
     def invoke(self,request):
         require(len(canonical(request))<=MAX_BYTES)
@@ -64,7 +65,7 @@ class SourceConnection(Network):
                          {'Authorization':'Bearer '+self.credential,'Content-Type':'application/json'})
             response=conn.getresponse();require(response.status==200,'NOT_AVAILABLE')
             raw=response.read(MAX_BYTES+1);require(len(raw)<=MAX_BYTES,'NOT_AVAILABLE')
-            return checked(request,json_loads(raw),'indexer')
+            return checked(request,json_loads(raw),self.principal)
         except (OSError,ValueError,http.client.HTTPException):raise ContractError('NOT_AVAILABLE') from None
         finally:conn.close()
 
@@ -135,10 +136,12 @@ class StoragePorts:
         require(path=='/memory-source','UNSUPPORTED_OPERATION')
         v.fields(request,'request_id profile scope selection operation body');a.identity(request['request_id'])
         require(request['profile']==SOURCE_PROFILE,'UNSUPPORTED_PROFILE');require(len(canonical(request))<=MAX_BYTES)
-        policy=Policy(self.path);require(policy.authenticate(credential)=='indexer','UNAUTHORIZED')
-        cfg=policy.current();scope=cfg['memory_read']['scope'];require(request['scope']==scope,'UNAUTHORIZED')
+        policy=Policy(self.path);principal=policy.authenticate(credential)
+        cfg=policy.current();require(principal=='indexer' or principal in cfg.get('read_source_principals',[]),'UNAUTHORIZED')
+        scope=cfg['memory_read']['scope'];require(request['scope']==scope,'UNAUTHORIZED')
         op=request['operation'];body=request['body']
         if op=='observe':
+            require(principal=='indexer','UNAUTHORIZED')
             v.fields(body,'intent role');accepted=w.intent(body['intent']);require(body['role'] in w.ROLES)
             service=AppendService(self.path,credential,self.hook,policy=ReceiptAuthority(policy,credential))
             require(request['selection']==selection_token(service.chosen['atom.storage']),'UNSUPPORTED_PROFILE')
@@ -158,7 +161,7 @@ class StoragePorts:
             else:
                 require(op=='readCommits','UNSUPPORTED_OPERATION');v.fields(body,'after through limit')
                 value=service.atoms.readCommits(scope,body['after'],body['through'],body['limit'])
-        return dict(request_id=request['request_id'],request_digest=digest(canonical(request)),selection=request['selection'],principal='indexer',value=value)
+        return dict(request_id=request['request_id'],request_digest=digest(canonical(request)),selection=request['selection'],principal=principal,value=value)
 
 
 class SearchPorts:

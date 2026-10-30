@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "source_files": 273,
+  "source_manifest_sha256": "048c5bdf45bbffa0f3155da7806e112bfcd529462dffa8031f642e3e04dbf778",
+  "source_archive_sha256": "267ad6553f253ddf7d119d8d8f780811f166448d337752629f06b60a19ba8407",
+  "context": "Clean declared v12 source extraction, separate operator environment, warm verified pinned parent images; network-disabled builds",
+  "image_comparison": [
+    {
+      "role": "base",
+      "manifest_equal": true,
+      "configuration_equal": true
+    },
+    {
+      "role": "caller",
+      "manifest_equal": true,
+      "configuration_equal": true
+    },
+    {
+      "role": "embedding",
+      "manifest_equal": true,
+      "configuration_equal": true
+    },
+    {
+      "role": "chain",
+      "manifest_equal": true,
+      "configuration_equal": true
+    },
+    {
+      "role": "hive",
+      "manifest_equal": true,
+      "configuration_equal": true
+    },
+    {
+      "role": "generative",
+      "manifest_equal": true,
+      "configuration_equal": true
+    }
+  ],
+  "image_executions": 0,
+  "additional_live_generations": 0
+}

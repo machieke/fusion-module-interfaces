@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "source_files": 273,
+  "source_manifest_sha256": "ab288776ace15241b344bcd9de8b9b15cd724dd02a8fb0beb03f743533d7effc",
+  "source_archive_sha256": "f379834a90f837c5d360bb86609847e803c1b7a76ae179c5b59b78f0b0fd1556",
+  "context": "clean declared source extraction, fresh operator venv, cached verified pinned parent images, network-disabled image builds",
+  "image_comparison": [
+    {
+      "role": "base",
+      "manifest_equal": true,
+      "configuration_equal": true,
+      "original_manifest": "sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8",
+      "reproduced_manifest": "sha256:27f5a1d1c5f294ac0fc33604a2f7337ca4fe8001269058fcba58f0313c8fe7d8"
+    },
+    {
+      "role": "caller",
+      "manifest_equal": true,
+      "configuration_equal": true,
+      "original_manifest": "sha256:52cbbc69423905388aff70456c97f6a6bed2a4270c5c20c8a4c76c7ae7577aa5",
+      "reproduced_manifest": "sha256:52cbbc69423905388aff70456c97f6a6bed2a4270c5c20c8a4c76c7ae7577aa5"
+    },
+    {
+      "role": "embedding",
+      "manifest_equal": true,
+      "configuration_equal": true,
+      "original_manifest": "sha256:3f7f77c47ff05e1678d458b9f87b1037f0b6f3cb16f7e4993125c652987bda66",
+      "reproduced_manifest": "sha256:3f7f77c47ff05e1678d458b9f87b1037f0b6f3cb16f7e4993125c652987bda66"
+    },
+    {
+      "role": "chain",
+      "manifest_equal": true,
+      "configuration_equal": true,
+      "original_manifest": "sha256:51fca16f5e0707fa95cfc9409a1d923193ffe69ee1d2ea24895bffb0930c79d1",
+      "reproduced_manifest": "sha256:51fca16f5e0707fa95cfc9409a1d923193ffe69ee1d2ea24895bffb0930c79d1"
+    },
+    {
+      "role": "hive",
+      "manifest_equal": true,
+      "configuration_equal": true,
+      "original_manifest": "sha256:d7d5d22fa69874e230a1d996eca33d16b8bcb75d0b0baffddf5231b1ccc2d967",
+      "reproduced_manifest": "sha256:d7d5d22fa69874e230a1d996eca33d16b8bcb75d0b0baffddf5231b1ccc2d967"
+    },
+    {
+      "role": "generative",
+      "manifest_equal": true,
+      "configuration_equal": true,
+      "original_manifest": "sha256:69825428945f14874b0f163cbd84b0ca81f241a0a9b4a1fda2fb3da58ad0917a",
+      "reproduced_manifest": "sha256:69825428945f14874b0f163cbd84b0ca81f241a0a9b4a1fda2fb3da58ad0917a"
+    }
+  ],
+  "image_executions": 0,
+  "additional_live_generations": 0
+}

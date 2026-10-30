@@ -1,0 +1,611 @@
+{
+  "programme": "omega-asi-single-node-reference/1",
+  "assignment": "codex_omega_asi_end_to_end_delivery_programme.md",
+  "baseline": "fd54e61289ecf8e729f28d501d974aa662517f90",
+  "baseline_source_entries_checked": 329,
+  "baseline_drift": [],
+  "initial_worktree": "?? codex_omega_asi_end_to_end_delivery_programme.md\n",
+  "cluster": {
+    "kubeconfig": "artifacts/single-node/kubeconfig",
+    "context": "default",
+    "node": "omega-fusion-k3s",
+    "uid": "27a7fbcb-2e55-4067-961e-288e311d9cb1",
+    "protected_namespace": "omega-demo",
+    "owned_prefix": "omega-ref-",
+    "live_runtime_contact": "FORBIDDEN"
+  },
+  "packages": {
+    "A": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "python -m integration.neoclaw.preparation_guard --guard-evidence artifacts/reference-distribution/a-isolation.json -- python -m unittest -v tests.test_reference_boundaries tests.test_m5_boundaries tests.test_retrieval_disclosure",
+          "result": "21 PASS; no skips",
+          "log": "artifacts/reference-distribution/a-isolated-tests.log"
+        },
+        {
+          "command": "guarded shared contract/chart/regression suite",
+          "result": "49 PASS no skips, 22.538s",
+          "log": "artifacts/reference-distribution/shared-tests-02.log"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "B": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "reference build from clean extracted source and fresh operator environment",
+          "result": "PASS: all six manifest/configuration digests exactly equal v11, 273 source hashes match; warm verified parent cache; zero image executions",
+          "log": "evidence/reference-distribution/rebuild.json"
+        },
+        {
+          "command": "verify_inherited_assets.py (offline image-layer scan)",
+          "result": "PASS base23/caller6439/embedding26905 declared files; source pins, native binary hashes, all SDK and E5 hashes; 49/161/210 licence files; no E5 assets/libraries in caller. First verifier rejected symlink launcher; second verified exact launcher link plus target.",
+          "log": "artifacts/reference-distribution/inherited-assets-verification-02.log"
+        },
+        {
+          "command": "clean archive source-overlay rebuild v12",
+          "result": "All six configuration and OCI manifest digests exactly reproduced; no image entrypoint execution",
+          "log": "evidence/reference-distribution/rebuild.json"
+        },
+        {
+          "command": "clean v13 source-overlay rebuild",
+          "result": "All six manifest/config digests reproduced exactly; no image execution",
+          "log": "evidence/reference-distribution/rebuild.json"
+        }
+      ],
+      "artifacts": [
+        "artifacts/reference-distribution/offline-model",
+        "artifacts/reference-distribution/chain-image",
+        "artifacts/reference-distribution/hive-image",
+        "artifacts/reference-distribution/build-v8/images.json",
+        "artifacts/reference-distribution/build-v11/images.json"
+      ],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations",
+      "offline_assets": "Generative image/all model blobs/ELF closure and chain image OFFLINE_VERIFIED; runtime availability NOT_CHECKED"
+    },
+    "C": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "final chart ci-chart-03 + qualification11 + archive operator walkthrough",
+          "result": "7 chart methods PASS; actual five profiles PASS; inactive live setup on v11 PASS",
+          "log": "artifacts/reference-distribution/operator-walkthrough-14/report.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "D": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "security-01 reference-v7",
+          "result": "FAIL after TLS negative passes: stale process marker let probe precede new TLS readiness; harness now waits Ready on replaced pod",
+          "log": "artifacts/reference-distribution/security-01/security/report.json"
+        },
+        {
+          "command": "security-02 reference-v7",
+          "result": "PASS actual TLS expired/wrong-host, same-principal leaf+credential rotation, old/wrong-principal refusal, compatible upgrade/rollback, incompatible seal refusal",
+          "log": "artifacts/reference-distribution/security-02/security/report.json"
+        },
+        {
+          "command": "qualification09 disclosure",
+          "result": "FAIL final owner-local distinct-principal probe: default-deny blocked model->own Service before application auth. Other disclosure negatives and actual recorded task passed. Probe now keeps verified hostname but connects loopback within same owner; no token transfer or expanded NetworkPolicy. Fresh recheck pending.",
+          "log": "artifacts/reference-distribution/qualification-09/disclosure/auth-probes/report.json"
+        },
+        {
+          "command": "qualification17 revocation, final v12 images",
+          "result": "PASS captured provider response retained, revoked disclosure denies caller recovery before command admission",
+          "log": "artifacts/reference-distribution/qualification-17/revocation/revocation/report.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "E": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "cognitive cluster baseline v1",
+          "result": "FAIL before native startup: production promotion imported test harness; extractor shared via memory_oracle; v2 recheck pending",
+          "log": "artifacts/reference-distribution/cognitive-01/native-failure.log"
+        },
+        {
+          "command": "python -m unittest tests.test_cognitive_services",
+          "result": "5 PASS",
+          "log": "artifacts/reference-distribution/cognitive-unit-02.log"
+        },
+        {
+          "command": "cognitive baseline reference-v2",
+          "result": "FAIL: Attention wrongly instantiated AtomStorage dependency; fixed and negative unit added",
+          "log": "artifacts/reference-distribution/cognitive-02/native-failure.log"
+        },
+        {
+          "command": "cognitive baselines reference-v3/v4",
+          "result": "FAIL: inherited S01 one-second transport clamp lost completed C2 response; C2 and relay committed. Fixed only new synchronous transport wait, no deadline changes",
+          "log": "artifacts/reference-distribution/cognitive-04/native-failure.log"
+        },
+        {
+          "command": "cognitive baseline reference-v5",
+          "result": "PASS native full sequence + C1/C2 duplicate/contrary/prior + native Attention + Relations all operations/freshness/rebuild + enforced NetworkPolicy",
+          "log": "artifacts/reference-distribution/cognitive-05.log"
+        },
+        {
+          "command": "python -m unittest tests.test_cognitive_services",
+          "result": "7 PASS",
+          "log": "artifacts/reference-distribution/cognitive-unit-04.log"
+        },
+        {
+          "command": "cognitive-06 attention-file/source/belief/priority recovery",
+          "result": "Independent Attention PASS; three cases schema-rejected before runtime; schema fixed",
+          "log": "artifacts/reference-distribution/cognitive-06.log"
+        },
+        {
+          "command": "cognitive-07 recovery",
+          "result": "Source PASS; C2 and Attention preserve commits but caller exceeded original 30s deadline during full diagnostic/serial restart. Failures retained; faster bounded fault driver recheck pending.",
+          "log": "artifacts/reference-distribution/cognitive-07.log"
+        },
+        {
+          "command": "cognitive-08 belief-recovery priority-recovery",
+          "result": "2 PASS full native workflows + owner/consumer pod replacements; original 30s deadlines, identity and committed views unchanged. C2 evaluations not repeated; Attention not doubled.",
+          "log": "artifacts/reference-distribution/cognitive-08.log"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "F": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "python -m unittest tests.test_reference_chain_services tests.test_m4_chain",
+          "result": "15 PASS; fixture contracts; no node start",
+          "log": "artifacts/reference-distribution/chain-unit-01.log"
+        },
+        {
+          "command": "chain-01 reference-v2",
+          "result": "FAIL before chain activation: retryable SQLite OVERLOADED stopped native driver; source fixed with bounded retry under same persisted window and 2s local lock wait",
+          "log": "artifacts/reference-distribution/chain-01/chain/report.json"
+        },
+        {
+          "command": "chain-02 reference-v3",
+          "result": "PASS real native Hive inspect + DeTTa + exact approval + real isolated F1R3node post-state effect/finality + caller/adapter/node replacements + key-free separate-process readback; actual isolation enforced before activation",
+          "log": "artifacts/reference-distribution/chain-02/chain/report.json"
+        },
+        {
+          "command": "chain-03 reference-v4 signed-recovery",
+          "result": "Native result + signed-intent crash/finality + independent reader PASS; outage readback checked too early after HTTP readiness; FAIL retained",
+          "log": "artifacts/reference-distribution/chain-03/chain/report.json"
+        },
+        {
+          "command": "chain-04 reference-v4 uncertain-submission",
+          "result": "Native result + uncertain-submit crash/finality PASS; independent reader terminated with empty log; FAIL retained, bounded read-only observations added",
+          "log": "artifacts/reference-distribution/chain-04/chain/report.json"
+        },
+        {
+          "command": "chain-05 reference-v4 uncertain-submission",
+          "result": "PASS actual native Hive/DeTTa/same-artifact finality, adapter/caller/node replacement, independent key-free PVC-free reader pod, outage and bounded recovery readback",
+          "log": "artifacts/reference-distribution/chain-05/chain/report.json"
+        },
+        {
+          "command": "qualification11 chain-signed and chain-observation, v11",
+          "result": "2 PASS real native Hive/result, signed/caller recovery, same-artifact effect finality, independent reader, node outage/recovery",
+          "log": "artifacts/reference-distribution/qualification-11/qualification.json"
+        }
+      ],
+      "artifacts": [
+        "fusion/inspect_services.py",
+        "fusion/chain_services.py",
+        "artifacts/reference-distribution/chain-image",
+        "artifacts/reference-distribution/hive-image"
+      ],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "G": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "test_restore_cluster restore-02 setup/recorded workflow",
+          "result": "workflow PASS: actual native/E5/Chroma/DeTTa/IRC/HTTPS with recorded model lifecycle. Following backup failed before quiescing on old Helm metadata selector.",
+          "log": "artifacts/reference-distribution/restore-02/correct/report.json"
+        },
+        {
+          "command": "reference_qualification qualification-08",
+          "result": "4 PASS: S01, native memory, recorded retrieval-to-reply, cognition+Relations; actual reference-v8 image set",
+          "log": "artifacts/reference-distribution/qualification-08/qualification.json"
+        },
+        {
+          "command": "qualification09 missing-payload",
+          "result": "FAIL audit KeyError after actual NOT_AVAILABLE refusal: app_memory_reads has no result column; corrected to application occurrence result/done. Recheck pending.",
+          "log": "artifacts/reference-distribution/qualification-09/missing-payload/missing-payload/report.json"
+        },
+        {
+          "command": "qualification09 unready-search",
+          "result": "FAIL same old bytecode wrong-table audit; runtime refused with NOT_AVAILABLE, app occurrence result null/done0. Fresh recheck required.",
+          "log": "artifacts/reference-distribution/qualification-09/unready-search/unready-search/report.json"
+        },
+        {
+          "command": "qualification10 missing-payload and unready-search rechecks",
+          "result": "2 PASS expected safety refusals, no second model capture or reply; positive task intentionally incomplete",
+          "log": "artifacts/reference-distribution/qualification-10/qualification.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "H": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "qualification10 intermediate",
+          "result": [
+            {
+              "name": "missing-payload",
+              "returncode": 0
+            },
+            {
+              "name": "unready-search",
+              "returncode": 0
+            },
+            {
+              "name": "model-spent",
+              "returncode": 0
+            },
+            {
+              "name": "model-capture",
+              "returncode": 0
+            },
+            {
+              "name": "application-model-capture",
+              "returncode": 0
+            },
+            {
+              "name": "query-capture",
+              "returncode": 0
+            },
+            {
+              "name": "input-acceptance",
+              "returncode": 0
+            },
+            {
+              "name": "bridge-capture",
+              "returncode": 0
+            },
+            {
+              "name": "uncertain-send",
+              "returncode": 0
+            }
+          ],
+          "log": "artifacts/reference-distribution/qualification-10/qualification.json"
+        },
+        {
+          "command": "reference qualify qualification10, profiles build-v9/profiles",
+          "result": "15/15 PASS, distinct failures/rechecks from qualification09 retained",
+          "scenarios": [
+            "missing-payload",
+            "unready-search",
+            "model-spent",
+            "model-capture",
+            "application-model-capture",
+            "query-capture",
+            "input-acceptance",
+            "bridge-capture",
+            "uncertain-send",
+            "lost-model",
+            "memory-storage",
+            "memory-publication",
+            "memory-vector",
+            "memory-enrollment",
+            "memory-rebuild"
+          ],
+          "log": "artifacts/reference-distribution/qualification-10/qualification.json"
+        },
+        {
+          "command": "qualification17 model-outage, final v12 images",
+          "result": "PASS unavailable service fails honestly, recovery retains original identities/deadlines/spent budget; actual recorded workflow completes",
+          "log": "artifacts/reference-distribution/qualification-17/model-outage/service-outage/report.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "I": {
+      "state": "PASS_BOUNDED_FENCED",
+      "tests": [
+        {
+          "command": "restore-01",
+          "result": "FAIL before workflow: NetworkPolicy omitted IRC health port; narrow edge fixed",
+          "log": "artifacts/reference-distribution/restore-01/report.json"
+        },
+        {
+          "command": "restore-02",
+          "result": "Recorded workflow PASS; backup selector NOT_FOUND before state mutation; fixed compatible Helm annotation/template selection",
+          "log": "artifacts/reference-distribution/restore-02/report.json"
+        },
+        {
+          "command": "restore-03",
+          "result": "FAIL after four exports: helper used old Search image lacking module",
+          "log": "artifacts/reference-distribution/restore-03/report.json"
+        },
+        {
+          "command": "restore-04",
+          "result": "FAIL idempotent quiesce wait on empty selector",
+          "log": "artifacts/reference-distribution/restore-04/report.json"
+        },
+        {
+          "command": "restore-05",
+          "result": "FAIL confirms missing helper module",
+          "log": "artifacts/reference-distribution/restore-05/report.json"
+        },
+        {
+          "command": "restore-06",
+          "result": "Full backup and fresh fenced extraction PASS; harness config KeyError",
+          "log": "artifacts/reference-distribution/restore-06/report.json"
+        },
+        {
+          "command": "restore-07",
+          "result": "FAIL cold Search exceeded inherited 1s audit transport",
+          "log": "artifacts/reference-distribution/restore-07/report.json"
+        },
+        {
+          "command": "restore-08",
+          "result": "Readback PASS; assertion compared raw record envelope to text; corrected content extraction",
+          "log": "artifacts/reference-distribution/restore-08/report.json"
+        },
+        {
+          "command": "restore-09",
+          "result": "PASS_BOUNDED_FENCED: actual retained-view query, effect refusal, source-driven Search rebuild, unchanged old views/captures/spent budgets",
+          "log": "artifacts/reference-distribution/restore-09/report.json"
+        },
+        {
+          "command": "Fresh final-image recorded workflow and timed backup/restore drill",
+          "result": "PASS_BOUNDED_FENCED; stop6.526s, backup42.342s including stop, extract74.191s, full276.834s; both namespaces removed",
+          "log": "evidence/reference-distribution/restore.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "J": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "python -m unittest tests.test_reference_diagnostics",
+          "result": "2 PASS",
+          "log": "artifacts/reference-distribution/diagnostics-unit-01.log"
+        },
+        {
+          "command": "concurrent final-chain diagnostic probe",
+          "result": "FAIL probe KeyError chain during pod replacement; diagnostic result not retained by that probe, cause not established. Stable retained deployment recheck scheduled; no runtime implementation change.",
+          "log": "session57848"
+        },
+        {
+          "command": "reference diagnose omega-ref-diag12-chain after completed retained test",
+          "result": "PASS actual finalized chain and persisted signed intent; namespace then deleted",
+          "log": "evidence/reference-distribution/diagnostics.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "K": {
+      "state": "PASS_BOUNDED_OBSERVATION",
+      "tests": [
+        {
+          "command": "reference_measurements three recorded workflow reports",
+          "result": "3 samples PASS; sequential fresh state; no live throughput or reliability estimate",
+          "log": "evidence/reference-distribution/resources.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "L": {
+      "state": "PASS_LOCAL",
+      "tests": [
+        {
+          "command": "reference_ci fast ci-fast-03",
+          "result": "42 PASS, 25.894s; no skips",
+          "log": "artifacts/reference-distribution/ci-fast-03/fast.log"
+        },
+        {
+          "command": "reference_ci chart ci-chart-01",
+          "result": "7 PASS; schema alias warning retained, explicit Draft7 validator correction pending",
+          "log": "artifacts/reference-distribution/ci-chart-01/chart.log"
+        },
+        {
+          "command": "reference_ci native ci-native-01",
+          "result": "8 PASS 11.738s, no skips; actual original NAL deduction local/HTTPS/DeTTa and native revision; original request helpers with explicit SDK fixtures under real generation-denied namespace",
+          "log": "artifacts/reference-distribution/ci-native-01/native.log"
+        },
+        {
+          "command": "reference_ci fast ci-fast-05",
+          "result": "44 PASS 25.619s; added offline symlink inventory test",
+          "log": "artifacts/reference-distribution/ci-fast-05/fast.log"
+        },
+        {
+          "command": "reference_ci chart ci-chart-02",
+          "result": "7 PASS 1.590s",
+          "log": "artifacts/reference-distribution/ci-chart-02/chart.log"
+        },
+        {
+          "command": "reference_ci fast ci-fast-06",
+          "result": "45 PASS 28.257s final source",
+          "log": "artifacts/reference-distribution/ci-fast-06/fast.log"
+        },
+        {
+          "command": "reference_ci chart ci-chart-03",
+          "result": "7 PASS 2.566s final chart",
+          "log": "artifacts/reference-distribution/ci-chart-03/chart.log"
+        },
+        {
+          "command": "reference_ci artifacts ci-artifacts-01",
+          "result": "PASS all declared file hashes, OCI/config identities, exact source maps and profile digest bindings",
+          "log": "artifacts/reference-distribution/ci-artifacts-01/artifacts.log"
+        },
+        {
+          "command": "reference_ci fast from clean source and fresh operator venv",
+          "result": "45 PASS 31.442s",
+          "log": "artifacts/reference-distribution/ci-clean-fast/fast.log"
+        },
+        {
+          "command": "reference_ci fast after stop-race fix",
+          "result": "47 PASS 24.919s; clean extracted source independently 47 PASS 19.655s",
+          "log": "artifacts/reference-distribution/ci-clean-v12/fast.log"
+        },
+        {
+          "command": "final v12 artifact verification",
+          "result": "Integrity checks PASS; returned manifest digest incorrectly equals last OCI descriptor. Independent sidecar digest correct. Regression test and reporting fix PASS; v13 recheck pending",
+          "log": "artifacts/reference-distribution/verifier-v12-historical-report.json"
+        },
+        {
+          "command": "v13 reporting correction fast/chart lanes",
+          "result": "48 fast PASS20.300s and 8 chart-lane PASS1.506s; artifact digest and corruption regression included",
+          "log": "artifacts/reference-distribution/ci-fast-08/fast.log"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "Remote hosted CI is not observed; all required local lanes and clean artifact reproduction are recorded"
+    },
+    "M": {
+      "state": "PASS",
+      "tests": [
+        {
+          "command": "operator walkthrough from declared archive",
+          "result": "PASS preflight/install/status/diagnose/observe/compatible upgrade/stop/cleanup; native consumption and identities preserved",
+          "log": "artifacts/reference-distribution/operator-walkthrough-14/report.json"
+        },
+        {
+          "command": "test_workflow_cluster from clean extracted source and chart, fresh operator environment",
+          "result": "PASS actual recorded retrieval-to-reply, source/archive bound",
+          "log": "artifacts/reference-distribution/artifact-rehearsal-13/correct/report.json"
+        },
+        {
+          "command": "reference stop retained campaign",
+          "result": "FAIL last pod disappeared between list and wait; actual replicas and pods zero. Narrow authoritative recheck fix; 3 ownership tests PASS including remaining-writer negative",
+          "log": "artifacts/reference-distribution/stop-race-tests.log"
+        },
+        {
+          "command": "Clean archive v12 operator walkthrough",
+          "result": "PASS native completion/next context plus preflight/install/status/diagnose/observe/compatible upgrade/stop/cleanup",
+          "log": "artifacts/reference-distribution/operator-walkthrough-16/report.json"
+        }
+      ],
+      "artifacts": [
+        "docs/reference-distribution/README.md",
+        "docs/reference-distribution/programme-report.md",
+        "artifacts/reference-distribution/distribution-v3/distribution.json"
+      ],
+      "blocker": null,
+      "next_action": "None within authorized engineering scope; see final report for bounded limitations"
+    },
+    "N": {
+      "state": "COMPLETE_DISABLED",
+      "tests": [
+        {
+          "command": "reference prepare-corpus omega-ref-live01",
+          "result": "NATIVE_SETUP_READY_LIVE_DISABLED; six asset files fully hashed, model/bridge/IRC always zero replicas; subsequently all owners quiesced",
+          "log": "artifacts/reference-distribution/campaign/setup.json"
+        },
+        {
+          "command": "reference freeze-campaign + run-live without approval",
+          "result": "COMPLETE immutable two-slot freeze; missing approval refused before runtime activity; no deadlines started",
+          "log": "evidence/reference-distribution/campaign/plan.json"
+        },
+        {
+          "command": "v12 final native preparation -> freeze02 -> missing approval denial -> stop",
+          "result": "PASS full offline assets, same retained corpus/view; complete freeze; no approval/reservations/calls/captures; all workloads zero",
+          "log": "evidence/reference-distribution/campaign/plan.json"
+        },
+        {
+          "command": "v13 final native preparation -> freeze03 -> missing approval denial -> stop",
+          "result": "PASS full offline assets, same retained corpus/view; complete freeze; no approval/reservations/calls/captures; all workloads zero",
+          "log": "evidence/reference-distribution/campaign/plan.json"
+        }
+      ],
+      "artifacts": [],
+      "blocker": null,
+      "next_action": "Separate future campaign-bound user approval is required for any live activity"
+    }
+  },
+  "counters": {
+    "authorized_live_generations": 0,
+    "reserved_live_generations": 0,
+    "observed_generative_backend_calls": 0,
+    "captured_live_responses": 0,
+    "additional_live_generations": 0
+  },
+  "publications": "Task-only local commits/push follow existing authorization; no new registry/release destination",
+  "resources": {
+    "logical_cpus": 8,
+    "free_disk_bytes": 81405440000,
+    "qualification": "Sequential heavy cases only; no protected-resource changes"
+  },
+  "load_plan": {
+    "status": "PREDECLARED",
+    "model": "recorded only",
+    "workflow_samples": 3,
+    "concurrency": 1,
+    "synthetic_memories_per_session": 2,
+    "read_only_rtt_samples_per_service": 10,
+    "max_additional_fault_runs": 30,
+    "no_protocol_cap_changes": true,
+    "revisions": [
+      {
+        "previous_max_additional_fault_runs": 24,
+        "maximum": 26,
+        "reason": "Prospective room for two fresh negative harness rechecks after wrong-table assertion; original failed runs retained. No invocation budget, deadline, runtime cap or live allowance changes."
+      },
+      {
+        "previous_max_additional_fault_runs": 26,
+        "maximum": 27,
+        "reason": "One retained baseline chain deployment for stable owner diagnostics after an unretained concurrent probe; same authorized fixed synthetic operation, no model calls or protocol changes."
+      },
+      {
+        "previous_max_additional_fault_runs": 27,
+        "maximum": 28,
+        "reason": "One final-image bounded restore drill to measure previously unrecorded restore duration and bind the fence evidence to final images. No invocation deadline, budget or live allowance changes."
+      },
+      {
+        "previous_max_additional_fault_runs": 28,
+        "maximum": 30,
+        "reason": "Two final-image checks for explicit current revocation and model-service outage coverage; recorded backend only. Existing bounded scenarios reused with unchanged deadlines/caps."
+      }
+    ]
+  },
+  "checkpoint": {
+    "state": "AUTHORIZED_ENGINEERING_COMPLETE",
+    "next": "Await separately authorized live campaign; do not start/contact a generative runtime",
+    "retained": [
+      "omega-ref-live01 with nine zero-replica StatefulSets and ten PVCs"
+    ],
+    "protected": "omega-demo 12 UIDs and full specs unchanged",
+    "source": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+    "campaign_id": "omega-reference-k3s-20261030-03",
+    "campaign_sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47"
+  },
+  "status": "READY_WITH_EXPLICIT_EXCEPTION",
+  "exceptions": [
+    {
+      "gate": "CPU_QUOTA_ENFORCEMENT",
+      "status": "NOT_ESTABLISHED",
+      "observation": "cgroup-v1 cpu.cfs_quota_us=-1 despite chart limits",
+      "boundary": "Host-wide cgroup changes are outside authorization; memory limits observed. No production resource-isolation claim"
+    }
+  ]
+}

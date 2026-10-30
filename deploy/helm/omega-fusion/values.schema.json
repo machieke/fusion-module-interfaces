@@ -85,6 +85,27 @@
         },
         "irc-peer": {
           "$ref": "#/definitions/component"
+        },
+        "fusion-episodes": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-beliefs": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-attention": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-relations": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-exact-search": {
+          "$ref": "#/definitions/component"
+        },
+        "fusion-commitment": {
+          "$ref": "#/definitions/component"
+        },
+        "f1r3node": {
+          "$ref": "#/definitions/component"
         }
       }
     },
@@ -196,10 +217,13 @@
           "type": "boolean"
         },
         "mode": {
-          "const": "recorded"
+          "enum": [
+            "recorded",
+            "live"
+          ]
         },
         "liveEnabled": {
-          "const": false
+          "type": "boolean"
         },
         "phase": {
           "enum": [
@@ -254,7 +278,7 @@
         },
         "responses": {
           "type": "array",
-          "minItems": 2,
+          "minItems": 0,
           "maxItems": 2,
           "items": {
             "type": "string"
@@ -289,8 +313,220 @@
               "responses"
             ]
           }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "recorded"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "responses": {
+                "minItems": 2
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "live"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "responses": {
+                "maxItems": 0
+              }
+            }
+          }
         }
       ]
+    },
+    "reference": {
+      "type": "object",
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "profile": {
+          "enum": [
+            "cognitive",
+            "relations",
+            "chain",
+            "live"
+          ]
+        },
+        "synthetic": {
+          "const": true
+        },
+        "scope": {
+          "type": "string"
+        },
+        "attentionProvider": {
+          "enum": [
+            "sqlite",
+            "file-fixture"
+          ]
+        },
+        "clockFixture": {
+          "type": "number"
+        },
+        "origins": {
+          "type": "object"
+        },
+        "sources": {
+          "type": "object"
+        },
+        "delegations": {
+          "type": "object"
+        },
+        "chain": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "nodeEnabled",
+            "isolationVerified",
+            "public_key",
+            "wallet_address",
+            "command",
+            "seed",
+            "registration"
+          ],
+          "properties": {
+            "nodeEnabled": {
+              "type": "boolean"
+            },
+            "isolationVerified": {
+              "type": "boolean"
+            },
+            "public_key": {
+              "type": "string",
+              "pattern": "^04[0-9a-f]{128}$"
+            },
+            "wallet_address": {
+              "type": "string"
+            },
+            "command": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "seed": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4294967295
+            },
+            "registration": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "descriptor": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "profile",
+              "synthetic",
+              "scope"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "profile": {
+                "const": "chain"
+              }
+            },
+            "required": [
+              "profile"
+            ]
+          },
+          "then": {
+            "required": [
+              "chain"
+            ],
+            "properties": {
+              "scope": {
+                "const": "shared-test"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "networkPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "futureLive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "activated",
+        "planConfigMap",
+        "approvalSecret",
+        "assetClaim"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "activated": {
+          "type": "boolean"
+        },
+        "planConfigMap": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approvalSecret": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assetClaim": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   },
   "definitions": {
@@ -419,7 +655,15 @@
                     "after_application_input_commit",
                     "after_application_input_ack_reply",
                     "after_occurrence_bind",
-                    "after_model_rpc_reservation"
+                    "after_model_rpc_reservation",
+                    "after_source_acceptance",
+                    "after_evidence_decision_commit",
+                    "after_priority_commit",
+                    "after_signed_intent_commit",
+                    "after_submit_before_response",
+                    "after_signed_intent",
+                    "after_node_submission",
+                    "after_observation_before_progress"
                   ]
                 },
                 "drop_response_operation": {
@@ -456,5 +700,192 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reference": {
+            "properties": {
+              "enabled": {
+                "const": true
+              },
+              "profile": {
+                "const": "chain"
+              }
+            },
+            "required": [
+              "profile"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "networkPolicy": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "workflow": {
+            "properties": {
+              "mode": {
+                "const": "live"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "futureLive": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          }
+        },
+        "required": [
+          "futureLive"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "futureLive": {
+            "properties": {
+              "enabled": {
+                "const": false
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "workflow": {
+            "properties": {
+              "mode": {
+                "const": "recorded"
+              },
+              "liveEnabled": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "futureLive": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "workflow": {
+            "properties": {
+              "enabled": {
+                "const": true
+              },
+              "mode": {
+                "const": "live"
+              }
+            }
+          },
+          "reference": {
+            "properties": {
+              "enabled": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "futureLive": {
+            "properties": {
+              "activated": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "futureLive": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "workflow": {
+            "properties": {
+              "liveEnabled": {
+                "const": true
+              },
+              "phase": {
+                "const": "measured"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "futureLive": {
+            "properties": {
+              "enabled": {
+                "const": true
+              },
+              "activated": {
+                "const": false
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "workflow": {
+            "properties": {
+              "liveEnabled": {
+                "const": false
+              },
+              "phase": {
+                "const": "setup"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

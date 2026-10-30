@@ -31,7 +31,13 @@ from .configure import configure, write
 def main(*, config_resolver=configure, model_factory=None):
     config_path = sys.argv[1] if len(sys.argv)>1 else '/config/component.json'
     initial = json.loads(Path(config_path).read_text())
+    if Path('/state/restore-fence.json').exists():
+        from .restore_host import main as restored
+        return restored(config_path)
     require(os.environ.get('POD_NAME') == initial['role']+'-0', 'UNSUPPORTED_PROFILE')
+    if initial.get('reference',{}).get('profile')=='chain' and initial['role']=='f1r3node':
+        from .chain_node import main as node
+        return node(initial)
     state = Path(initial.get('state','/state'))
     state.mkdir(parents=True,exist_ok=True)
     lock = open(state/'owner.lock','a')
@@ -40,7 +46,7 @@ def main(*, config_resolver=configure, model_factory=None):
     settings=initial
     # This envelope selects the owner, not its current secrets/test knobs. It
     # refuses accidentally mounting a different service's or legacy journal PVC.
-    seal = dict(composition=settings['service_composition'],role=settings['role'],scope=settings.get('memory',{}).get('scope',c.SCOPE))
+    seal = dict(composition=settings['service_composition'],role=settings['role'],scope=settings.get('reference',{}).get('scope',settings.get('memory',{}).get('scope',c.SCOPE)))
     if (state/'owner-seal.json').exists():
         require(json.loads((state/'owner-seal.json').read_text())==seal,'UNSUPPORTED_PROFILE')
     else:
@@ -48,9 +54,11 @@ def main(*, config_resolver=configure, model_factory=None):
         write(state/'owner-seal.json',seal)
     settings, config, state, run = config_resolver(config_path)
     workflow=settings.get('workflow',{}).get('enabled',False)
-    channel_owner=None
+    channel_owner=None;cognitive_owner=None
+    cognitive=settings.get('reference',{}).get('enabled',False) and settings['reference']['profile'] in ('cognitive','relations')
+    chain=settings.get('reference',{}).get('enabled',False) and settings['reference']['profile']=='chain'
     stop = threading.Event(); fatal = threading.Event(); role = settings['role']; child = None; worker = None
-    memory=settings['service_composition']=='neoclaw-memory-services/1' or (workflow and role in ('omega-agent','fusion-storage','fusion-search','fusion-embedding'))
+    memory=settings['service_composition']=='neoclaw-memory-services/1' or ((workflow or cognitive) and role in ('omega-agent','fusion-storage','fusion-search','fusion-embedding'))
     chosen = c.selected(c.catalogue('detta')); owner = None; kernel = None
     def hook(stage):
         if config.get('test_failpoints') and config.get('pause_at')==stage:
@@ -60,12 +68,27 @@ def main(*, config_resolver=configure, model_factory=None):
             write(state/'pause.json',dict(stage=stage,pid=os.getpid()))
             threading.Event().wait()
     def execution():
+        if chain:
+            from fusion.inspect_services import Ports
+            return Ports(run/'owner.json',role,hook).service()
         atoms = RemoteAtoms(PortConnection(**config['peers']['fusion-storage']),chosen['atom.storage'])
         mailbox = RemoteCompletion(PortConnection(**config['peers']['fusion-messaging']),chosen['agent.messaging'])
         def atoms_for(principal, selected=None):
             require(principal=='worker','UNAUTHORIZED'); return atoms
         return NalService(run/'owner.json',hook,kernel,atoms_for=atoms_for,mailbox=mailbox)
-    if workflow and role=='fusion-model':
+    if cognitive and role in ('fusion-storage','fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search'):
+        from fusion.cognitive_services import Ports
+        cognitive_owner=Ports(run/'cognitive-owner.json',role,hook)
+    if chain and role in ('fusion-execution','fusion-storage','fusion-messaging'):
+        from fusion.inspect_services import Ports
+        owner=Ports(run/'owner.json',role,hook)
+    elif chain and role=='fusion-commitment':
+        from fusion.chain_services import Ports
+        owner=Ports(run/'owner.json',hook)
+    elif chain:pass
+    elif cognitive and role in ('fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search'):
+        owner=cognitive_owner
+    elif workflow and role=='fusion-model':
         from .recorded_model import deny_live,RecordedBackend
         from fusion.retrieval_services import ModelPorts
         if model_factory is None:
@@ -131,9 +154,13 @@ def main(*, config_resolver=configure, model_factory=None):
                 require(len(auth)==1 and auth[0].startswith('Bearer '),'UNAUTHORIZED')
                 require(self.headers.get('Content-Type')=='application/json' and not self.headers.get('Transfer-Encoding'))
                 sizes=self.headers.get_all('Content-Length',[])
-                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(98304 if memory or workflow else 8192))
+                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(131072 if cognitive or chain else 98304 if memory or workflow else 8192))
                 raw=self.rfile.read(int(sizes[0]));require(len(raw)==int(sizes[0]));request=json_loads(raw)
-                if workflow and (role in ('fusion-model','fusion-messaging') or self.path=='/s06-mailbox'):
+                if chain:
+                    require(owner is not None,'UNSUPPORTED_OPERATION');result=owner.invoke(self.path,auth[0][7:],request)
+                elif cognitive and self.path=='/reference-cognition':
+                    require(cognitive_owner is not None,'UNSUPPORTED_OPERATION');result=cognitive_owner.invoke(self.path,auth[0][7:],request)
+                elif workflow and (role in ('fusion-model','fusion-messaging') or self.path=='/s06-mailbox'):
                     selected=channel_owner if role=='fusion-storage' else owner
                     require(selected is not None,'UNSUPPORTED_OPERATION');result=selected.invoke(self.path,auth[0][7:],request)
                 elif memory:
@@ -171,13 +198,14 @@ def main(*, config_resolver=configure, model_factory=None):
     # The memory caller is outbound-only: it mounts no server private key.
     # Its HTTP listener serves only inert kubelet probes; module RPCs stay TLS.
     context=None
-    if not ((memory and role=='omega-agent') or (workflow and role in ('fusion-channel-bridge','irc-server','irc-peer'))):
+    if not ((memory and role=='omega-agent') or ((workflow or cognitive) and role in ('fusion-channel-bridge','irc-server','irc-peer'))):
         context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);context.minimum_version=ssl.TLSVersion.TLSv1_2
         context.load_cert_chain(config['tls_certificate'],config['tls_key'])
     class Server(ThreadingHTTPServer):
         allow_reuse_address=True
         def get_request(self):
             sock,address=super().get_request();sock.settimeout(2)
+            if cognitive or chain:sock.setsockopt(socket.IPPROTO_TCP,socket.TCP_NODELAY,1)
             try:return (context.wrap_socket(sock,server_side=True) if context else sock),address
             except BaseException:sock.close();raise
     def terminate(*_):
@@ -196,6 +224,7 @@ def main(*, config_resolver=configure, model_factory=None):
             # bounded failure the process exits; it never substitutes providers.
             until=time.monotonic()+(120 if memory else 60)
             dependencies=(('fusion-storage',) if role=='fusion-search' else ('fusion-storage','fusion-search','fusion-embedding')) if memory else ('fusion-execution','fusion-storage','fusion-messaging')
+            if cognitive and role=='omega-agent':dependencies=(*dependencies,'fusion-episodes','fusion-beliefs','fusion-attention')
             for name in dependencies:
                 while True:
                     conn=http.client.HTTPSConnection(settings['peers'][name],settings['https_port'],timeout=1,
@@ -208,14 +237,17 @@ def main(*, config_resolver=configure, model_factory=None):
                     if stop.wait(.2) or time.monotonic()>=until:raise SystemExit('DEPENDENCY_NOT_READY')
             if memory and role=='fusion-search':owner.initialize(state)
         if role=='omega-agent' and settings['native_enabled']:
-            if workflow:
+            if chain:
+                pass # Native Hive startup owns its caller configuration and receipts.
+            elif workflow:
                 from .workflow_host import prepare
                 prepare(settings,state,run)
             elif memory:
                 from .memory_host import prepare_agent
                 prepare_agent(settings,state,run)
             log=open(state/'native.log','ab')
-            child=subprocess.Popen([sys.executable,'-m','integration.neoclaw.native_loop',str(run/'application.json')],
+            command=[sys.executable,'-m','integration.single_node.hive_actor'] if chain else [sys.executable,'-m','integration.neoclaw.native_loop',str(run/'application.json')]
+            child=subprocess.Popen(command,
                                    stdout=log,stderr=log,start_new_session=True)
         if workflow and role in ('fusion-channel-bridge','irc-server','irc-peer'):
             (state/'channel-ready.json').unlink(missing_ok=True)

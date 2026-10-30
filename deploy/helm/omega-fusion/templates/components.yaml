@@ -3,15 +3,25 @@
 {{- $memoryRole := and $.Values.memory.enabled (has $name (list "omega-agent" "fusion-storage" "fusion-search" "fusion-embedding")) }}
 {{- $memoryAgent := and $memoryRole (eq $name "omega-agent") }}
 {{- $workflow := $.Values.workflow.enabled }}
-{{- $plain := or $memoryAgent (and $workflow (has $name (list "fusion-channel-bridge" "irc-server" "irc-peer"))) }}
+{{- $reference := $.Values.reference.enabled }}
+{{- $chain := and $reference (eq $.Values.reference.profile "chain") }}
+{{- $plain := or (eq $name "f1r3node") $memoryAgent (and $workflow (has $name (list "fusion-channel-bridge" "irc-server" "irc-peer"))) }}
 {{- $portName := ternary "health" "https" $plain }}
 {{- $composition := ternary "neoclaw-memory-services/1" "neoclaw-separated-services/1" $memoryRole }}
 {{- if $workflow }}{{- $composition = "neoclaw-model-channel-services/1" }}{{- end }}
+{{- if $reference }}{{- $composition = "synthetic-cognitive-services/1" }}{{- end }}
+{{- if $chain }}{{- $composition = "generated-inspect-services/1" }}{{- end }}
 {{- $image := default $.Values.image $component.image }}
 {{- $config := dict "role" $name "service_composition" $composition "state" "/state" "run" "/run/fusion" "secret_directory" "/secrets" "https_port" $.Values.httpsPort "capacity" $component.config.capacity "revision" $component.config.revision "native_enabled" $component.config.nativeEnabled "worker_enabled" $component.config.workerEnabled "enable_test_faults" $.Values.testFaultsEnabled "test" $component.config.test "peers" (dict "fusion-execution" (printf "fusion-execution.%s.svc.cluster.local" $.Release.Namespace) "fusion-storage" (printf "fusion-storage.%s.svc.cluster.local" $.Release.Namespace) "fusion-messaging" (printf "fusion-messaging.%s.svc.cluster.local" $.Release.Namespace) "fusion-search" (printf "fusion-search.%s.svc.cluster.local" $.Release.Namespace) "fusion-embedding" (printf "fusion-embedding.%s.svc.cluster.local" $.Release.Namespace)) }}
 {{- if not $.Values.memory.enabled }}
 {{- $_ := unset $config.peers "fusion-search" }}
 {{- $_ := unset $config.peers "fusion-embedding" }}
+{{- end }}
+{{- if $reference }}
+{{- range $peer := list "fusion-episodes" "fusion-beliefs" "fusion-attention" "fusion-relations" "fusion-exact-search" "fusion-commitment" "f1r3node" }}
+{{- $_ := set $config.peers $peer (printf "%s.%s.svc.cluster.local" $peer $.Release.Namespace) }}
+{{- end }}
+{{- $_ := set $config "reference" $.Values.reference }}
 {{- end }}
 {{- if $workflow }}
 {{- range $peer := list "fusion-model" "fusion-channel-bridge" "irc-server" "irc-peer" }}
@@ -45,6 +55,9 @@ spec:
     {{- if eq $name "irc-server" }}
     - {name: irc, port: 6667, targetPort: irc}
     {{- end }}
+    {{- if eq $name "f1r3node" }}
+    - {name: chain-read, port: 40403, targetPort: 40403}
+    {{- end }}
     - {name: {{ $portName }}, port: {{ $.Values.httpsPort }}, targetPort: {{ $portName }}}
 ---
 apiVersion: v1
@@ -58,16 +71,20 @@ spec:
     {{- if eq $name "irc-server" }}
     - {name: irc, port: 6667, targetPort: irc}
     {{- end }}
+    {{- if eq $name "f1r3node" }}
+    - {name: chain-read, port: 40403, targetPort: 40403}
+    {{- end }}
     - {name: {{ $portName }}, port: {{ $.Values.httpsPort }}, targetPort: {{ $portName }}}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: {{ $name }}
+  labels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $name }}}
 spec:
   # Journal owners are not horizontally scalable. StatefulSet replaces an
   # ordinal after terminating its predecessor; the PVC flock is the final guard.
-  replicas: 1
+  replicas: {{ ternary 0 1 (and $.Values.futureLive.enabled (not $.Values.futureLive.activated) (has $name (list "fusion-model" "fusion-channel-bridge" "irc-server" "irc-peer"))) }}
   serviceName: {{ $name }}-pods
   podManagementPolicy: OrderedReady
   updateStrategy: {type: RollingUpdate}
@@ -87,7 +104,12 @@ spec:
         - name: {{ $name }}
           image: "{{ $image.repository }}{{ if $image.digest }}@{{ $image.digest }}{{ else }}:{{ $image.tag }}{{ end }}"
           imagePullPolicy: {{ $image.pullPolicy }}
+          {{- if and $.Values.futureLive.enabled (eq $name "fusion-model") }}
+          command: ["/opt/native/python/bin/python3.12", "-m", "integration.single_node.future_live", "/campaign/plan.json", "--approval", "/approval/approval.json", "--component", "/config/component.json", "--supervise"]
+          {{- end }}
           env:
+            - name: POD_NAMESPACE
+              valueFrom: {fieldRef: {fieldPath: metadata.namespace}}
             - name: POD_NAME
               valueFrom: {fieldRef: {fieldPath: metadata.name}}
           securityContext:
@@ -105,7 +127,7 @@ spec:
             httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $plain }}, path: /health/startup, port: {{ $portName }}}
             periodSeconds: 2
             timeoutSeconds: 2
-            failureThreshold: 45
+            failureThreshold: {{ ternary 300 45 (and $.Values.futureLive.enabled (eq $name "fusion-model")) }}
           readinessProbe:
             httpGet: {scheme: {{ ternary "HTTP" "HTTPS" $plain }}, path: /health/ready, port: {{ $portName }}}
             periodSeconds: 2
@@ -117,12 +139,29 @@ spec:
             timeoutSeconds: 2
             failureThreshold: 3
           volumeMounts:
+            {{- if and $.Values.futureLive.enabled (has $name (list "fusion-model" "omega-agent")) }}
+            - {name: campaign, mountPath: /campaign, readOnly: true}
+            - {name: approval, mountPath: /approval, readOnly: true}
+            {{- end }}
+            {{- if and $.Values.futureLive.enabled (eq $name "fusion-model") }}
+            - {name: generative-assets, mountPath: /opt/generative/models, subPath: models, readOnly: true}
+            {{- end }}
             - {name: state, mountPath: /state}
             - {name: runtime, mountPath: /run/fusion}
             - {name: tmp, mountPath: /tmp}
             - {name: config, mountPath: /config, readOnly: true}
             - {name: secrets, mountPath: /secrets, readOnly: true}
       volumes:
+        {{- if and $.Values.futureLive.enabled (has $name (list "fusion-model" "omega-agent")) }}
+        - name: campaign
+          configMap: {name: {{ $.Values.futureLive.planConfigMap }}, optional: true}
+        - name: approval
+          secret: {secretName: {{ $.Values.futureLive.approvalSecret }}, optional: true, defaultMode: 0440}
+        {{- end }}
+        {{- if and $.Values.futureLive.enabled (eq $name "fusion-model") }}
+        - name: generative-assets
+          persistentVolumeClaim: {claimName: {{ $.Values.futureLive.assetClaim }}, readOnly: true}
+        {{- end }}
         - {name: runtime, emptyDir: {medium: Memory, sizeLimit: 16Mi}}
         - {name: tmp, emptyDir: {sizeLimit: 128Mi}}
         - name: config
@@ -136,6 +175,11 @@ spec:
             items:
               {{- range $key := list "ca.crt" "fusion-execution-token" "fusion-storage-token" "fusion-messaging-token" "fusion-search-token" "fusion-embedding-token" }}
               - {key: {{ $key }}, path: {{ $key }}}
+              {{- end }}
+              {{- if $reference }}
+              {{- range $role := list "fusion-storage" "fusion-episodes" "fusion-beliefs" "fusion-attention" "fusion-relations" "fusion-exact-search" }}
+              - {key: {{ printf "cog-%s-token" $role }}, path: {{ printf "cog-%s-token" $role }}}
+              {{- end }}
               {{- end }}
               {{- if $workflow }}
               {{- range $key := list "channel-storage-token" "channel-messaging-token" "fusion-model-token" "measured-fusion-storage-token" "measured-fusion-search-token" "measured-fusion-embedding-token" }}

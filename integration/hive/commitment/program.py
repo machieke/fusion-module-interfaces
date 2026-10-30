@@ -70,9 +70,13 @@ def invoke(ctx, action, params):
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         return signer(registered["signer_file"], registered["signer"], module.DeployDataProto)(plan)
-    api = F1R3HTTP(registered["endpoint"])
-    owner: ConsensusFinality = GeneratedCommitments(api, signing, registered["journal"], approved, binding,
-        authorize, lambda stage: pause(config.get("chain_test", {}), stage))
+    if registered.get("placement")=="service-network":
+        from fusion.chain_services import Remote
+        owner: ConsensusFinality = Remote(registered, approved, binding, authorize)
+    else:
+        api = F1R3HTTP(registered["endpoint"])
+        owner: ConsensusFinality = GeneratedCommitments(api, signing, registered["journal"], approved, binding,
+            authorize, lambda stage: pause(config.get("chain_test", {}), stage))
     path = Path(registered["progress"])
     path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
     with open(str(path) + ".lock", "a") as lock:

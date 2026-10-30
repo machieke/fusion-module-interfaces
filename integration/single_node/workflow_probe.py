@@ -45,7 +45,17 @@ def other_principal():
     from fusion.model_service import ModelService
     cfg=json.loads(Path('/run/fusion/owner.json').read_bytes());settings=json.loads(Path('/config/component.json').read_bytes());intent=json.loads(ModelService.inspect('/run/fusion/owner.json')[0]['intent'])
     policy=cfg['model_completion']['disclosure'];client=dict(principal='M',credential=cfg['principals']['other']['credential'],endpoint=dict(host=settings['peers']['fusion-model'],port=settings['https_port'],ca_file='/secrets/ca.crt'),disclosure=dict(policy,consent_sha256='a'*64,view_sha256='b'*64))
-    try:s.rpc(client,'/model-disclosure',s.metadata(client,intent,'observe'))
+    # NetworkPolicy deliberately has no model->model Service edge. This
+    # owner-local diagnostic keeps HTTPS hostname/certificate verification but
+    # connects to its own listener; no credential leaves its owning pod.
+    import socket
+    from unittest.mock import patch
+    connect=socket.create_connection
+    def loopback(address,*args,**kwargs):
+        assert address==(settings['peers']['fusion-model'],settings['https_port'])
+        return connect(('127.0.0.1',address[1]),*args,**kwargs)
+    try:
+        with patch('socket.create_connection',side_effect=loopback):s.rpc(client,'/model-disclosure',s.metadata(client,intent,'observe'))
     except ContractError as e:
         assert e.code=='UNAUTHORIZED';return dict(another_authorized_principal=e.code)
     raise AssertionError('another principal impersonated M')
