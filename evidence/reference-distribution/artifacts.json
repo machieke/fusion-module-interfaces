@@ -1,0 +1,128 @@
+{
+  "schema": "reference-publication/1",
+  "baseline": "fd54e61289ecf8e729f28d501d974aa662517f90",
+  "implementation_commit": "77047bb7e3d4d37a3499b512d2c263257ddf2468",
+  "runtime_source_manifest_sha256": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+  "runtime_source_files": 273,
+  "distribution": {
+    "path": "artifacts/reference-distribution/distribution-v3/distribution.json",
+    "sha256": "f0252262071e453ee9ac7c6f9c22bdfa36d03f184dbf0daa9f7b29e75d7d2679",
+    "source_archive": {
+      "path": "artifacts/reference-distribution/distribution-v3/source.tar.gz",
+      "sha256": "05c0605321aa83c59187de93bd75dae04bbe99fe6f15918d0adb955cf8e94c8f"
+    },
+    "chart": {
+      "path": "artifacts/reference-distribution/distribution-v3/omega-fusion-0.4.0.tgz",
+      "sha256": "4b24b20eccedef2e8fbde23e5edb5ce08a577841b148a002a76a4a0e6db3ca94"
+    },
+    "images_archive": {
+      "path": "artifacts/reference-distribution/distribution-v3/images.tar",
+      "sha256": "d253184216416d3cffd7831dcdc148b26c17f81c77bdb646167dcabdaaf29402"
+    },
+    "model_archive": {
+      "path": "artifacts/reference-distribution/distribution-v3/model-assets.tar",
+      "sha256": "fac3b6bd4a711310d7b32b10a63d59b3788329811950d58c9a00c39ee506a986"
+    },
+    "profile_directory": "artifacts/reference-distribution/distribution-v3/profiles",
+    "local_only": true
+  },
+  "verification": {
+    "status": "OFFLINE_VERIFIED",
+    "reported_manifest_sha256": "f0252262071e453ee9ac7c6f9c22bdfa36d03f184dbf0daa9f7b29e75d7d2679",
+    "independent_checksum_equal": true,
+    "declared_files": 45,
+    "raw_report": "artifacts/reference-distribution/final-v13-verification.json",
+    "raw_report_sha256": "114e707efd160ab55b587602f68d85d1062c2ee11a6802dae4148dfdf2acee87",
+    "exported_source_archive_273_hashes": "PASS",
+    "generative_runtime_availability": "NOT_CHECKED"
+  },
+  "exact_images": {
+    "base": {
+      "configuration": "sha256:3cf305b32e47ea5b655ba8da516dc908eb969479580fbd1fd3bce09c4c0229df",
+      "manifest": "sha256:f830b5b1fe4d188da959e0e93a6675095194ef943985c878e860cc7b2e8473d6",
+      "repository": "docker.io/library/fusion-single-node",
+      "source_manifest_sha256": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+      "source_package": "base-source.json",
+      "tag": "reference-v13"
+    },
+    "caller": {
+      "configuration": "sha256:b6d677a8272f235a1f5f275cb9d6b0bd05629e5d6712c838c54e662a5093e8db",
+      "manifest": "sha256:cfc62c93a5a734d8126a0fe2c758266b8e2abe64953cc25bcf11331515747477",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "source_manifest_sha256": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+      "source_package": "caller-source.json",
+      "tag": "reference-v13"
+    },
+    "chain": {
+      "configuration": "sha256:13af4ba4157e6419839f6fd86372c627265559161566a7df5cdc5152a71e88e2",
+      "manifest": "sha256:61e2193e6afa14387634369e466423bf6408fa6daba60f111554619fdbaef4aa",
+      "repository": "docker.io/library/fusion-reference-chain",
+      "source_manifest_sha256": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+      "source_package": "chain-source.json",
+      "tag": "reference-v13"
+    },
+    "embedding": {
+      "configuration": "sha256:beff552683cd28b619234a760984f3912bd04300fad4de69191db68765dc1dd8",
+      "manifest": "sha256:d3d299531c0c5f93ee2fbd431bd4b3f61ac09b1e67af99dc8603ddda9e4e8c99",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "source_manifest_sha256": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+      "source_package": "embedding-source.json",
+      "tag": "reference-v13"
+    },
+    "generative": {
+      "configuration": "sha256:d8efaf16632d6920796437410502e8936158e8031717bf1385550f9aa514b0a4",
+      "manifest": "sha256:fc455185128e77d65a8e13031e822512e9bf9242147f8e161c096de85e922a83",
+      "repository": "docker.io/library/fusion-reference-generative",
+      "source_manifest_sha256": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+      "source_package": "generative-source.json",
+      "tag": "reference-v13"
+    },
+    "hive": {
+      "configuration": "sha256:9f005f3631d17efc70a349bee391844ed77cc52519849a142015d22dfb3c70b2",
+      "manifest": "sha256:02a46ce8cfd92c5b638f12df26c84666de371ac39bfa8df694e4b23aa7c0b828",
+      "repository": "docker.io/library/fusion-reference-hive",
+      "source_manifest_sha256": "43850b00368c7f02b7262ec5a1ddba028cdc8c0f6065a885ee0a3da14bf066da",
+      "source_package": "hive-source.json",
+      "tag": "reference-v13"
+    }
+  },
+  "history": {
+    "v11_initial_distribution": "fae9874cfedbde131c9612259af0f25df77f197277f0cc7a121f5364ec2a704d",
+    "v12_initial_distribution": "33429bed27bd13021292259f27b0730af442da177ecd86156c8c607952ae02c0",
+    "v12_final_distribution": "bb48c5784310e452cbaacbc16cf84e837a947c521058007f6e536872e7c5e213",
+    "v12_verifier_reported_digest": "8156d1677d283a58ac4041385fcd019d32d56469244b9caea0446cc24ee0e59a",
+    "v12_verifier_result": "Integrity checks passed; checksum reporting field wrong and corrected in v13, original report preserved",
+    "v13_rehearsal": {
+      "manifest": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/distribution-v3/distribution.json",
+      "sha256": "83cb2cbd1cd2ca19967373705847d0c52c0867c240cad41986b67492d8813541",
+      "source_archive_sha256": "6dcc6ea1b507a6d3d009af9a52f8e8f3b5ed73ba21da99420691383132585859"
+    }
+  },
+  "tests": {
+    "final_fast_methods": 48,
+    "chart_lane_methods": 8,
+    "native_guarded_methods": 8,
+    "baseline_guarded_methods": 21,
+    "affected_shared_methods": 49,
+    "method_counts_overlap": true,
+    "integration_reports": "executions.json preserves each run, image and failure separately; no aggregate unique-test claim",
+    "remote_hosted_ci": "NOT_OBSERVED"
+  },
+  "style_check": {
+    "status": "COSMETIC_WARNINGS_RETAINED",
+    "files": [
+      "codex_omega_asi_end_to_end_delivery_programme.md: intentional Markdown hard breaks supplied by user",
+      "integration/single_node/test_cognitive_cluster.py:67: one trailing space in frozen tested harness; no behavioral change"
+    ],
+    "not_a_required_runtime_gate": true
+  },
+  "campaign": {
+    "campaign_id": "omega-reference-k3s-20261030-03",
+    "manifest_sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+    "state": "AWAITING_LIVE_AUTHORIZATION"
+  },
+  "source_archive_exclusion": "This digest-bearing artifacts.json is an external versioned sidecar to avoid circular hashes",
+  "image_build_counter_note": "container_starts=0 in build manifests refers only to build/export verification; actual native pod executions are recorded separately. The real generative runtime was never started/contacted.",
+  "publication": "existing origin/master only; no external image registry or release",
+  "additional_live_generations": 0
+}
