@@ -1,0 +1,40 @@
+test_changed_wheel_inventory_and_existing_output_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_changed_wheel_inventory_and_existing_output_refuse) ... ok
+test_extra_wheel_and_unlisted_chart_file_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_extra_wheel_and_unlisted_chart_file_refuse) ... ok
+test_fixture_packet_is_offline_verified_and_positive_listed (sdk.test_distribution.DistributionAssemblyFixtures.test_fixture_packet_is_offline_verified_and_positive_listed) ... ok
+test_profiles_use_existing_generator_with_disabled_native_consumers (sdk.test_distribution.DistributionAssemblyFixtures.test_profiles_use_existing_generator_with_disabled_native_consumers) ... ok
+test_source_drift_refuses_before_output_or_helm (sdk.test_distribution.DistributionAssemblyFixtures.test_source_drift_refuses_before_output_or_helm) ... ok
+test_symbolic_public_source_refuses (sdk.test_distribution.DistributionAssemblyFixtures.test_symbolic_public_source_refuses) ... ok
+test_runbook_python_entrypoints_are_image_sources_or_explicit_public_files (sdk.test_distribution.PublicRunbookInputs.test_runbook_python_entrypoints_are_image_sources_or_explicit_public_files) ... ok
+test_selected_example_tests_retain_their_direct_test_dependencies (sdk.test_distribution.PublicRunbookInputs.test_selected_example_tests_retain_their_direct_test_dependencies) ... ok
+test_shipped_fast_ci_lanes_keep_their_test_and_profile_source_inputs (sdk.test_distribution.PublicRunbookInputs.test_shipped_fast_ci_lanes_keep_their_test_and_profile_source_inputs) ... ok
+test_files_are_unique_contained_and_digest_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_files_are_unique_contained_and_digest_bound) ... ok
+test_inventory_duplicate_or_changed_wheel_digest_refuses (sdk.test_preview_distribution.PreviewDistributionFixtures.test_inventory_duplicate_or_changed_wheel_digest_refuses) ... ok
+test_legacy_schema_still_verifies_its_historical_profile_layout (sdk.test_preview_distribution.PreviewDistributionFixtures.test_legacy_schema_still_verifies_its_historical_profile_layout) ... ok
+test_manifest_canonical_bytes_and_external_digest_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_manifest_canonical_bytes_and_external_digest_are_bound) ... ok
+test_oci_configuration_link_and_bytes_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_oci_configuration_link_and_bytes_are_bound) ... ok
+test_preview_accepts_declared_fixtures_without_generative_artifacts (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_accepts_declared_fixtures_without_generative_artifacts) ... ok
+test_preview_image_import_repository_must_match_selection (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_image_import_repository_must_match_selection) ... ok
+test_preview_schema_profile_and_authority_are_closed (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_schema_profile_and_authority_are_closed) ... ok
+test_profile_files_and_image_selections_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_profile_files_and_image_selections_are_bound) ... ok
+test_secondary_artifact_references_must_be_registered (sdk.test_preview_distribution.PreviewDistributionFixtures.test_secondary_artifact_references_must_be_registered) ... ok
+test_source_package_binding_is_not_an_unchecked_label (sdk.test_preview_distribution.PreviewDistributionFixtures.test_source_package_binding_is_not_an_unchecked_label) ... ok
+test_wheel_payload_and_tested_source_are_independently_checked (sdk.test_preview_distribution.PreviewDistributionFixtures.test_wheel_payload_and_tested_source_are_independently_checked) ... ok
+test_reference_schema (unittest.loader._FailedTest.test_reference_schema) ... ERROR
+
+======================================================================
+ERROR: test_reference_schema (unittest.loader._FailedTest.test_reference_schema)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_reference_schema
+Traceback (most recent call last):
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_reference_schema.py", line 4, in <module>
+    import jsonschema,yaml
+ModuleNotFoundError: No module named 'jsonschema'
+
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.784s
+
+FAILED (errors=1)

@@ -37,7 +37,7 @@ class PriorityAdoption:
         if cfg['placement']=='service-network':
             from .memory_services import RemoteSource,SourceConnection
             require(rc['placement']=='service-network','UNSUPPORTED_PROFILE')
-            self.atoms=RemoteSource(SourceConnection(rc['endpoints']['atom.storage'],rc['service_credentials']['atom.storage'],principal='A'),rc['scope'],chosen['atom.storage'],None)
+            self.atoms=RemoteSource(SourceConnection(rc['endpoints']['atom.storage'],rc['service_credentials']['atom.storage'],principal=rc.get('principal','A')),rc['scope'],chosen['atom.storage'],None)
         else:
             require(rc['placement']=='local','UNSUPPORTED_PROFILE')
             self.atoms=ReadService(rc['provider_config'],rc['credential']).atoms
@@ -164,9 +164,10 @@ class PriorityAdoption:
         if row is None:
             require(type(slot) is int and 1<=slot<=self.app.config['turn_limit'],'OVERLOADED')
             require(self.db.execute('SELECT count(*) FROM app_priority_contexts').fetchone()[0]<self.app.config['turn_limit'],'OVERLOADED')
-            key,_=self.active_view();deadline=int(time.time()*1000)+self.app.config['invocation_timeout_ms']
+            key,_=self.active_view();deadline=self.context_deadline()
             with self.db:self.db.execute('INSERT INTO app_priority_contexts(slot,view,deadline) VALUES(?,?,?)',(slot,key,deadline))
         return self.db.execute('SELECT * FROM app_priority_contexts WHERE slot=?',(slot,)).fetchone()
+    def context_deadline(self):return int(time.time()*1000)+self.app.config['invocation_timeout_ms']
     def context_captured(self):
         row=self.context();self.lines=[];self.view(row['view'])
         return row['rendered'] is not None

@@ -1,0 +1,56 @@
+{
+  "additional_live_generations": 0,
+  "changed_during_run": [],
+  "command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/operator-venv/bin/python",
+    "-m",
+    "unittest",
+    "sdk.test_distribution",
+    "tests.test_phase2_single_agent_values",
+    "tests.test_phase2_restore_qualification",
+    "tests.test_phase2_shared_source_qualification",
+    "-v"
+  ],
+  "elapsed_seconds": 3.904,
+  "gates": {
+    "actual_distribution_assembly": "NOT_RUN",
+    "assembly": "TINY_AUTHORED_IMAGE_CHART_WHEEL_SOURCE_FIXTURES",
+    "assembly_helm": "EXPLICIT_SUBPROCESS_STUB",
+    "cluster_contact": "NONE",
+    "restore": "REAL_LOCAL_SQLITE_EXPORT_FENCE_DIAGNOSTICS_WITH_OPERATOR_HTTP_FIXTURES",
+    "runtime_contact": "NONE",
+    "shared_source": "REAL_CONCURRENT_FILE_FIXTURE_COMMITS_WITH_OPERATOR_HTTP_FIXTURES",
+    "single_agent_values": "REAL_GENERATOR_CONFIGURATION_AND_OFFLINE_HELM_WITH_IMAGE_TLS_LOCK_FIXTURES"
+  },
+  "returncode": 0,
+  "schema": "fusion-preview-distribution-assembly-qualification/1",
+  "sources_after": {
+    ".gitignore": "7e4e53cc0a8dba919431bfe94134d154501a0a633954824db28648d6cb4e1abb",
+    "examples/preview_restore_qualification.py": "bc83bd3f5940b8f4614c29426e464801cabc6a4b88a51c806f62fe9743c4c20a",
+    "examples/preview_shared_source_qualification.py": "7a7b776bf7ee37e003a0ff99187d25e21cd3087493f48a1c35c04e4113341027",
+    "examples/preview_single_agent_values.py": "cd85639d93bc9369b8c95dd4987e6714a911d9471064e4befc429226379e6c8a",
+    "sdk/DISTRIBUTION.md": "99033d78d7fd6ee5e4f8069182efec7b8655c0d4b52aed3ee31852be2a9f9003",
+    "sdk/distribution.py": "932065457c365a717e690cbfe50ad8d3589fc55342ea92904749886b51dfe06b",
+    "sdk/test_distribution.py": "037ccad3deca7f76d5e269f5bbc4c59728455849e7094389414894a177c93e0b",
+    "tests/test_phase2_operator_values.py": "f4fe7a8cc708567b3d8f1de0556dc7e40c6d768eade308c7b99238a8466d86f1",
+    "tests/test_phase2_restore_qualification.py": "bdbd36831d6b6a1f8e5971fbea9cb64b95804c2d960e2fabd094dd31245c4092",
+    "tests/test_phase2_shared_source_qualification.py": "9858cdfb5fbf769258307ae368b40655d304d6f7dcf94ce96ad23f745d839f93",
+    "tests/test_phase2_single_agent_values.py": "cba057e953f42337d0896eb7dc8e11ff7f9d122ae27353833eb84ef68285ed6c"
+  },
+  "sources_before": {
+    ".gitignore": "7e4e53cc0a8dba919431bfe94134d154501a0a633954824db28648d6cb4e1abb",
+    "examples/preview_restore_qualification.py": "bc83bd3f5940b8f4614c29426e464801cabc6a4b88a51c806f62fe9743c4c20a",
+    "examples/preview_shared_source_qualification.py": "7a7b776bf7ee37e003a0ff99187d25e21cd3087493f48a1c35c04e4113341027",
+    "examples/preview_single_agent_values.py": "cd85639d93bc9369b8c95dd4987e6714a911d9471064e4befc429226379e6c8a",
+    "sdk/DISTRIBUTION.md": "99033d78d7fd6ee5e4f8069182efec7b8655c0d4b52aed3ee31852be2a9f9003",
+    "sdk/distribution.py": "932065457c365a717e690cbfe50ad8d3589fc55342ea92904749886b51dfe06b",
+    "sdk/test_distribution.py": "037ccad3deca7f76d5e269f5bbc4c59728455849e7094389414894a177c93e0b",
+    "tests/test_phase2_operator_values.py": "f4fe7a8cc708567b3d8f1de0556dc7e40c6d768eade308c7b99238a8466d86f1",
+    "tests/test_phase2_restore_qualification.py": "bdbd36831d6b6a1f8e5971fbea9cb64b95804c2d960e2fabd094dd31245c4092",
+    "tests/test_phase2_shared_source_qualification.py": "9858cdfb5fbf769258307ae368b40655d304d6f7dcf94ce96ad23f745d839f93",
+    "tests/test_phase2_single_agent_values.py": "cba057e953f42337d0896eb7dc8e11ff7f9d122ae27353833eb84ef68285ed6c"
+  },
+  "started_utc": "2026-11-02T18:43:43.314697+00:00",
+  "stderr": "test_changed_wheel_inventory_and_existing_output_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_changed_wheel_inventory_and_existing_output_refuse) ... ok\ntest_extra_wheel_and_unlisted_chart_file_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_extra_wheel_and_unlisted_chart_file_refuse) ... ok\ntest_fixture_packet_is_offline_verified_and_positive_listed (sdk.test_distribution.DistributionAssemblyFixtures.test_fixture_packet_is_offline_verified_and_positive_listed) ... ok\ntest_profiles_use_existing_generator_with_disabled_native_consumers (sdk.test_distribution.DistributionAssemblyFixtures.test_profiles_use_existing_generator_with_disabled_native_consumers) ... ok\ntest_source_drift_refuses_before_output_or_helm (sdk.test_distribution.DistributionAssemblyFixtures.test_source_drift_refuses_before_output_or_helm) ... ok\ntest_symbolic_public_source_refuses (sdk.test_distribution.DistributionAssemblyFixtures.test_symbolic_public_source_refuses) ... ok\ntest_runbook_python_entrypoints_are_image_sources_or_explicit_public_files (sdk.test_distribution.PublicRunbookInputs.test_runbook_python_entrypoints_are_image_sources_or_explicit_public_files) ... ok\ntest_selected_example_tests_retain_their_direct_test_dependencies (sdk.test_distribution.PublicRunbookInputs.test_selected_example_tests_retain_their_direct_test_dependencies) ... ok\ntest_actual_configuration_and_catalogue_admit_a_without_b_task_or_inspection_dependencies (tests.test_phase2_single_agent_values.SingleAgentValues.test_actual_configuration_and_catalogue_admit_a_without_b_task_or_inspection_dependencies) ... ok\ntest_all_modes_keep_existing_profiles_limits_pins_and_only_a_occurrences (tests.test_phase2_single_agent_values.SingleAgentValues.test_all_modes_keep_existing_profiles_limits_pins_and_only_a_occurrences) ... ok\ntest_bad_source_scope_or_mode_refuses_without_output (tests.test_phase2_single_agent_values.SingleAgentValues.test_bad_source_scope_or_mode_refuses_without_output) ... ok\ntest_cli_writes_fresh_values_and_refuses_existing_or_unknown_chain_option (tests.test_phase2_single_agent_values.SingleAgentValues.test_cli_writes_fresh_values_and_refuses_existing_or_unknown_chain_option) ... ok\ntest_example_does_not_change_manifest_or_existing_two_agent_generator (tests.test_phase2_single_agent_values.SingleAgentValues.test_example_does_not_change_manifest_or_existing_two_agent_generator) ... ok\ntest_helm_renders_only_a_with_existing_owner_services_and_single_writer_retention (tests.test_phase2_single_agent_values.SingleAgentValues.test_helm_renders_only_a_with_existing_owner_services_and_single_writer_retention) ... ok\ntest_helm_failure_still_quiesces_both_and_suppresses_raw_diagnostics (tests.test_phase2_restore_qualification.OrchestrationFixtureTests.test_helm_failure_still_quiesces_both_and_suppresses_raw_diagnostics) ... ok\ntest_order_fresh_secrets_final_quiescence_and_scratch_cleanup (tests.test_phase2_restore_qualification.OrchestrationFixtureTests.test_order_fresh_secrets_final_quiescence_and_scratch_cleanup) ... ok\ntest_actual_archives_bind_owner_scope_images_and_excluded_chain (tests.test_phase2_restore_qualification.RestoreExampleTests.test_actual_archives_bind_owner_scope_images_and_excluded_chain) ... ok\ntest_actual_checkpoint_restore_hashes_counters_and_views_match_without_new_files (tests.test_phase2_restore_qualification.RestoreExampleTests.test_actual_checkpoint_restore_hashes_counters_and_views_match_without_new_files) ... ok\ntest_changed_checkpoint_counters_or_retained_views_are_refused (tests.test_phase2_restore_qualification.RestoreExampleTests.test_changed_checkpoint_counters_or_retained_views_are_refused) ... ok\ntest_changed_restored_database_or_new_journal_is_refused (tests.test_phase2_restore_qualification.RestoreExampleTests.test_changed_restored_database_or_new_journal_is_refused) ... ok\ntest_clone_values_disable_execution_and_signing_without_mutating_source (tests.test_phase2_restore_qualification.RestoreExampleTests.test_clone_values_disable_execution_and_signing_without_mutating_source) ... ok\ntest_coverage_requires_populated_new_native_and_owner_tables (tests.test_phase2_restore_qualification.RestoreExampleTests.test_coverage_requires_populated_new_native_and_owner_tables) ... ok\ntest_live_profile_private_scope_and_unpinned_image_are_refused (tests.test_phase2_restore_qualification.RestoreExampleTests.test_live_profile_private_scope_and_unpinned_image_are_refused) ... ok\ntest_nonempty_checkpoint_wal_is_refused_even_with_consistent_hash (tests.test_phase2_restore_qualification.RestoreExampleTests.test_nonempty_checkpoint_wal_is_refused_even_with_consistent_hash) ... ok\ntest_only_known_restore_process_extras_are_permitted (tests.test_phase2_restore_qualification.RestoreExampleTests.test_only_known_restore_process_extras_are_permitted) ... ok\ntest_tls_probe_authored_replies_require_all_health_and_denials (tests.test_phase2_restore_qualification.RestoreExampleTests.test_tls_probe_authored_replies_require_all_health_and_denials) ... ok\ntest_wrong_fence_namespace_and_symlink_are_refused (tests.test_phase2_restore_qualification.RestoreExampleTests.test_wrong_fence_namespace_and_symlink_are_refused) ... ok\ntest_changed_prior_snapshot_is_a_failure (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_changed_prior_snapshot_is_a_failure) ... ok\ntest_embedded_scope_binding_expiry_and_operation_limits (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_embedded_scope_binding_expiry_and_operation_limits) ... ok\ntest_model_accounting_change_fails_without_retry (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_model_accounting_change_fails_without_retry) ... ok\ntest_pending_input_refuses_before_any_write (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_pending_input_refuses_before_any_write) ... ok\ntest_running_native_worker_refuses_even_if_input_rows_complete (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_running_native_worker_refuses_even_if_input_rows_complete) ... ok\ntest_two_concurrent_one_shot_writes_preserve_retained_snapshot (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_two_concurrent_one_shot_writes_preserve_retained_snapshot) ... ok\ntest_unknown_committed_response_never_resubmits_and_retains_both_outcomes (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_unknown_committed_response_never_resubmits_and_retains_both_outcomes) ... ok\ntest_wrong_hydrated_payload_is_a_failure (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_wrong_hydrated_payload_is_a_failure) ... ok\ntest_wrong_scope_head_is_rejected_before_mutation (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_wrong_scope_head_is_rejected_before_mutation) ... ok\ntest_wrong_source_image_refuses_before_submission (tests.test_phase2_shared_source_qualification.SharedSourceQualificationTests.test_wrong_source_image_refuses_before_submission) ... ok\n\n----------------------------------------------------------------------\nRan 37 tests in 3.725s\n\nOK\n",
+  "stdout": ""
+}

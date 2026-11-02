@@ -23,9 +23,10 @@ def settings(app):
 
 
 class ModelAdoption:
-    def __init__(self, app):
+    def __init__(self, app, *, contracts=c, client=None):
+        self.c = contracts
         self.app, self.db = app, app.db
-        self.client = Client(app.config['model_config'])
+        self.client = client if client is not None else Client(app.config['model_config'])
         self.db.executescript('''CREATE TABLE IF NOT EXISTS app_model_calls(
           slot INTEGER PRIMARY KEY,id TEXT UNIQUE NOT NULL,intent TEXT NOT NULL,context_view TEXT NOT NULL,
           calls INTEGER NOT NULL DEFAULT 0,result TEXT,normalized TEXT,parse_text TEXT,proposal TEXT,admission TEXT);
@@ -38,6 +39,29 @@ class ModelAdoption:
 
     def row(self):
         return self.db.execute('SELECT * FROM app_model_calls WHERE slot=?', (self.app.processing_slot(),)).fetchone()
+
+    def source(self): return self.app.channel.source_spec()
+
+    def context_view(self): return self.app.model_context_view()
+
+    def parts(self, raw, cfg):
+        if 'policy' in cfg['disclosure']:
+            from .neoclaw_retrieval_disclosure import structural
+            return structural(raw, cfg['disclosure'])
+        return disclose(raw, cfg['disclosure'])
+
+    def model_identity(self, cfg):
+        return dict(profile=cfg['profile'], limits=c.limits(cfg['profile']))
+
+    def authorize_commands(self, cfg, slot, commands):
+        if 'policy' in cfg['disclosure']:
+            from .neoclaw_retrieval_disclosure import admit
+            admit(cfg, slot, commands)
+        else:
+            require(type(commands) is list and 1 <= len(commands) <= 5, 'UNSUPPORTED_OPERATION')
+            for command in commands: require(command in cfg['commands'], 'UNSUPPORTED_OPERATION')
+            require(len({command[0] for command in commands}) == 1, 'UNSUPPORTED_PROFILE')
+        self.app.channel.accept_turn()
 
     def local_authority(self, intent):
         cfg, _ = self.current()
@@ -57,30 +81,27 @@ class ModelAdoption:
     def prompt(self, raw):
         cfg, chosen = self.current(); row = self.row()
         if row is None:
-            if 'policy' in cfg['disclosure']:
-                from .neoclaw_retrieval_disclosure import structural
-                parts = structural(raw, cfg['disclosure'])
-            else: parts = disclose(raw, cfg['disclosure'])
-            source = self.app.channel.source_spec(); slot = self.app.processing_slot()
+            parts = self.parts(raw, cfg)
+            source = self.source(); slot = self.app.processing_slot()
             require(time.time_ns()//1_000_000 < source['deadline_ms'], 'DEADLINE_EXCEEDED')
             require(parts['user'] == str(['HUMAN-MSG:', source['text'].replace('"','_quote_').replace("'",'_apostrophe_')]), 'CONFLICT')
             key = str(uuid.uuid5(uuid.UUID(self.app.session), 'model/'+str(slot)))
-            accepted = asdict(c.CompletionInput(id=key,session=self.app.session,slot=slot,source_id=source['message_id'],
+            accepted = asdict(self.c.CompletionInput(id=key,session=self.app.session,slot=slot,source_id=source['message_id'],
                 principal=cfg['principal'],scope=cfg['scope'],selection=selection_token(chosen),native_prompt=raw,
-                messages=c.messages(raw),deadline_ms=source['deadline_ms'],profile=cfg['profile'],limits=c.limits(cfg['profile'])))
-            c.intent(accepted); self.local_authority(accepted)
-            view = self.app.model_context_view()
+                messages=self.c.messages(raw),deadline_ms=source['deadline_ms'],**self.model_identity(cfg)))
+            self.c.intent(accepted); self.local_authority(accepted)
+            view = self.context_view()
             with self.db: self.db.execute('INSERT INTO app_model_calls(slot,id,intent,context_view) VALUES(?,?,?,?)',
                 (slot,key,canonical(accepted).decode(),view))
             self.app.hook('after_model_prompt_bind'); row = self.row()
         accepted = json.loads(row['intent']); self.local_authority(accepted)
-        require(row['context_view'] == self.app.model_context_view(), 'CONFLICT')
+        require(row['context_view'] == self.context_view(), 'CONFLICT')
         # First binding is authoritative, including native TIME. Restart may
         # assemble a new time, but it never substitutes it into this occurrence.
         return accepted['native_prompt']
 
     def invoke(self, operation, accepted):
-        row = self.row(); require(row['calls'] < c.MAX_RPC, 'OVERLOADED')
+        row = self.row(); require(row['calls'] < self.c.MAX_RPC, 'OVERLOADED')
         with self.db: self.db.execute('UPDATE app_model_calls SET calls=calls+1 WHERE slot=?', (row['slot'],))
         self.app.hook('after_model_rpc_reservation')
         return self.client.invoke(operation, accepted)
@@ -99,7 +120,7 @@ class ModelAdoption:
             with self.db: self.db.execute('UPDATE app_model_calls SET result=? WHERE slot=?',
                 (canonical(result).decode(), row['slot']))
             self.app.hook('after_model_application_capture')
-        else: result = c.observation(json.loads(row['result']), accepted)
+        else: result = self.c.observation(json.loads(row['result']), accepted)
         self.invoke('authorize', accepted)
         require(not result['late'] and result['response']['outcome'] == 'complete', 'NOT_AVAILABLE')
         return result['response']['native_text']
@@ -107,7 +128,7 @@ class ModelAdoption:
     def admit(self, response, normalized, commands):
         row = self.row(); require(row is not None and row['result'] is not None, 'CONFLICT')
         accepted = json.loads(row['intent']); cfg = self.local_authority(accepted)
-        result = c.observation(json.loads(row['result']), accepted)
+        result = self.c.observation(json.loads(row['result']), accepted)
         require(response == result['response']['native_text'] and result['response']['outcome'] == 'complete' and not result['late'], 'CONFLICT')
         self.invoke('authorize', accepted)
         c.text(normalized, c.MAX_TEXT)
@@ -119,14 +140,7 @@ class ModelAdoption:
         # Prompt instructions never grant command authority. Match the entire
         # native parsed batch before the original application can execute it.
         try:
-            if 'policy' in cfg['disclosure']:
-                from .neoclaw_retrieval_disclosure import admit
-                admit(cfg, row['slot'], commands)
-            else:
-                require(type(commands) is list and 1 <= len(commands) <= 5, 'UNSUPPORTED_OPERATION')
-                for command in commands: require(command in cfg['commands'], 'UNSUPPORTED_OPERATION')
-                require(len({command[0] for command in commands}) == 1, 'UNSUPPORTED_PROFILE')
-            self.app.channel.accept_turn()
+            self.authorize_commands(cfg, row['slot'], commands)
         except ContractError as exc:
             with self.db: self.db.execute('UPDATE app_model_calls SET admission=? WHERE slot=?',
                 ('rejected:'+exc.code,row['slot']))

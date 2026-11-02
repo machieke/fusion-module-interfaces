@@ -1,0 +1,298 @@
+{
+  "classification": "READ_ONLY_POST_FAILURE_OBSERVER_QUALIFICATION",
+  "original_report_sha256": "83e07132f45a9ea7375aae2849b47a0fb3d211e93a9ae1a166861121680f5b8b",
+  "observer_sha256": "9d5762f47cb82491dfef8c92a343b9d921062585bc8337dbf796957382977bc3",
+  "status": "PASS",
+  "application_restarted": false,
+  "original_failed_report_unchanged": true,
+  "additional_live_generations": 0,
+  "observation": {
+    "session": "10f1d248-78ce-47ad-afad-6665dc8412e9",
+    "outboxes": [
+      {
+        "id": "task/daeef2f6-a6d9-52a0-ac76-b0577a584712",
+        "record": {
+          "deadline": 1793652422062,
+          "id": "daeef2f6-a6d9-52a0-ac76-b0577a584712",
+          "kind": "task",
+          "limits": {
+            "queries": 1,
+            "recursive_delegation": false,
+            "relay_calls": 24
+          },
+          "minimum": {
+            "active_digest": "1e80d8dd41cd038d256f04914a776d35a35080a26f4db60e162201b787451cf0",
+            "corpus": "generated-phase2-h19",
+            "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+            "generation": "61cb75d8-2142-5f2a-b074-14b6825773e8",
+            "head": {
+              "profile": "immutable-commit-feed/1",
+              "scope_ref": "synthetic-phase2-h19",
+              "sequence": 18,
+              "source": "6ef13e2a-6d6c-43bc-a9a7-6c4fddb2c9e8"
+            },
+            "index": "chroma-1.5.5-hnsw-l2-default/1",
+            "lifecycle": {
+              "profile": "immutable-memory-lifecycle/1",
+              "scope_ref": "synthetic-phase2-h19",
+              "sequence": 1,
+              "source": "e69d2add-a01e-4b4e-8a3c-4e61226ef7ea"
+            },
+            "logical": "0ceaa61395034384fdb26e9cc3c4f4f97b57d97e90a8c68e95e74531d012c60b",
+            "profile": "semantic-active-memory-view/1"
+          },
+          "parent": "b3dff9a8-97a8-50cb-9975-1e1d29e23854",
+          "profile": "native-retrieval-task/1",
+          "query": "synthetic silver prism storage",
+          "recipient": "B",
+          "scope": "synthetic-phase2-h19",
+          "sender": "A",
+          "session": "10f1d248-78ce-47ad-afad-6665dc8412e9"
+        },
+        "calls": 4,
+        "ref": {
+          "digest": "fd89091af104e1c736c8ac39e1c2bbb33f0d0fd623813f8b1df4beb184861ef9",
+          "id": "2fc0a273-28ba-51a8-8489-68bd6886eae3",
+          "revision": 1,
+          "scope_ref": "synthetic-phase2-h19"
+        },
+        "receipt": {
+          "acceptance": "process-restart",
+          "correlation_id": "daeef2f6-a6d9-52a0-ac76-b0577a584712",
+          "delivery": "not-observed",
+          "delivery_id": "5c2c4cf4-6474-52ed-a69c-e228dd77d19d",
+          "evidence": {
+            "backend": "sqlite",
+            "journal_mode": "WAL",
+            "synchronous": "FULL"
+          },
+          "route": "task-B",
+          "scope_ref": "synthetic-phase2-h19"
+        },
+        "wake": {
+          "id": "daeef2f6-a6d9-52a0-ac76-b0577a584712",
+          "principal": "B",
+          "profile": "native-retrieval-task/1",
+          "status": "accepted"
+        }
+      }
+    ],
+    "inputs": [
+      {
+        "turn": 6,
+        "identity": "mailbox/309bb247-d816-5cba-beab-07387e0bc2df",
+        "acknowledged": 0,
+        "source": {
+          "accepted": 1793652351766,
+          "assignment": "delegated-result",
+          "deadline": 1793652422062,
+          "id": "mailbox/309bb247-d816-5cba-beab-07387e0bc2df",
+          "occurrence": "e8057375-cbc4-5afe-a0a6-390583b9dc41",
+          "payload": {
+            "assignment": "delegated-result",
+            "text": "task-context"
+          },
+          "sequence": 6,
+          "session": "10f1d248-78ce-47ad-afad-6665dc8412e9",
+          "session_binding": {
+            "catalogue": "629c8406d3b4dfc7879402646640c7da4f9090f79cdc083cf92ec3590802e62e",
+            "limits": {
+              "inputs": 24,
+              "pending": 4,
+              "timeout_ms": 120000
+            },
+            "model_boundary": "RECORDED_FIXTURE",
+            "policy": "preview-1a27cde7-267f-46a2-bab3-52ef373eb4e7"
+          },
+          "state": "accepted",
+          "task_origin": {
+            "delivery": "309bb247-d816-5cba-beab-07387e0bc2df",
+            "profile": "native-retrieval-task/1",
+            "record": {
+              "deadline": 1793652422062,
+              "id": "daeef2f6-a6d9-52a0-ac76-b0577a584712",
+              "kind": "result",
+              "limits": {
+                "queries": 1,
+                "recursive_delegation": false,
+                "relay_calls": 24
+              },
+              "parent": "b3dff9a8-97a8-50cb-9975-1e1d29e23854",
+              "payloads": [
+                {
+                  "digest": "91ad50c95e3aa639c4b54b5dca21e92ab5af126bbf62a55d24f5d1bfc14a5acd",
+                  "id": "9a5f77a3-df9a-5ae1-a180-54abc188a185",
+                  "revision": 1,
+                  "scope_ref": "synthetic-phase2-h19"
+                }
+              ],
+              "profile": "native-retrieval-task/1",
+              "projection": "[[['id:', '2026-11-02 20:42:36'], ['linkedEpisodes:', ['2026-11-02 20:42:36']], ['stv', 1.0, 0.5], 'The synthetic silver prism is stored in crate orchid']]\nPREVIEW_MEMORY_HANDLES: {\"79dd8b0c-2371-4f8c-bea8-1e544ff5d313\":{\"handle\":\"oh1:memory:61ce468b-c9f8-589d-88ad-28dcf8cdbcb6\",\"kind\":\"memory\",\"principal\":\"B\",\"profile\":\"omega-preview-handles/1\",\"scope\":\"synthetic-phase2-h19\",\"target\":{\"enrollment\":{\"digest\":\"f7553eb5436edab59effab1cd39990d8fc6ce1d66b5a54f149994089097f4556\",\"id\":\"d5c116b1-9c78-556d-9b62-7ff227d4a7a0\",\"revision\":1,\"scope_ref\":\"synthetic-phase2-h19\"},\"payload\":{\"digest\":\"91ad50c95e3aa639c4b54b5dca21e92ab5af126bbf62a55d24f5d1bfc14a5acd\",\"id\":\"9a5f77a3-df9a-5ae1-a180-54abc188a185\",\"revision\":1,\"scope_ref\":\"synthetic-phase2-h19\"}}}}",
+              "recipient": "A",
+              "scope": "synthetic-phase2-h19",
+              "sender": "B",
+              "session": "af8dfa59-2412-4322-b751-ca1b94fb7ce3",
+              "status": "captured-native-query",
+              "task": {
+                "digest": "fd89091af104e1c736c8ac39e1c2bbb33f0d0fd623813f8b1df4beb184861ef9",
+                "id": "2fc0a273-28ba-51a8-8489-68bd6886eae3",
+                "revision": 1,
+                "scope_ref": "synthetic-phase2-h19"
+              },
+              "view": {
+                "active_digest": "1e80d8dd41cd038d256f04914a776d35a35080a26f4db60e162201b787451cf0",
+                "corpus": "generated-phase2-h19",
+                "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+                "generation": "61cb75d8-2142-5f2a-b074-14b6825773e8",
+                "head": {
+                  "profile": "immutable-commit-feed/1",
+                  "scope_ref": "synthetic-phase2-h19",
+                  "sequence": 18,
+                  "source": "6ef13e2a-6d6c-43bc-a9a7-6c4fddb2c9e8"
+                },
+                "index": "chroma-1.5.5-hnsw-l2-default/1",
+                "lifecycle": {
+                  "profile": "immutable-memory-lifecycle/1",
+                  "scope_ref": "synthetic-phase2-h19",
+                  "sequence": 1,
+                  "source": "e69d2add-a01e-4b4e-8a3c-4e61226ef7ea"
+                },
+                "logical": "0ceaa61395034384fdb26e9cc3c4f4f97b57d97e90a8c68e95e74531d012c60b",
+                "profile": "semantic-active-memory-view/1"
+              }
+            },
+            "ref": {
+              "digest": "3ba88374955d3006370c3e7cbfc10a327408cff7b205cc7f6c2ff7c82e2a1123",
+              "id": "befae733-57f8-5961-929e-121b0a57c923",
+              "revision": 1,
+              "scope_ref": "synthetic-phase2-h19"
+            }
+          }
+        },
+        "projection_sha256": null
+      }
+    ],
+    "occurrences": [
+      {
+        "turn": 6,
+        "position": 0,
+        "id": "3cd434c5-783c-593b-a31f-4f2aa98884de",
+        "premises": {
+          "arguments": {
+            "arguments": {},
+            "policy": "preview-1a27cde7-267f-46a2-bab3-52ef373eb4e7",
+            "profile": "working-task-context/1",
+            "scope": "synthetic-phase2-h19",
+            "selection": "629c8406d3b4dfc7879402646640c7da4f9090f79cdc083cf92ec3590802e62e",
+            "tool_id": "application.context.inspect"
+          },
+          "operation": "task-context",
+          "profile": "omega-developer-native-session/1"
+        },
+        "deadline": 1793652394547,
+        "result": "{\"digest\":\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\",\"interpretation\":\"unverified-task-notes\",\"items\":{},\"profile\":\"working-task-context/1\",\"revision\":0}",
+        "done": 1,
+        "attempts": 1
+      }
+    ],
+    "reads": [],
+    "views": [],
+    "models": [
+      {
+        "slot": 6,
+        "id": "51809fda-9b69-534c-99cd-104f48da7a29",
+        "context_view": "9032038852c59a16b6962e7ab41ee191225e0fc5fd01d9f9488204d1fe162c8c",
+        "calls": 4,
+        "intent_sha256": "010c8677af80bb4776bc31eaefd8e01279b44f4dc530e2b4f3ecb18e129ed20b",
+        "source_id": "e8057375-cbc4-5afe-a0a6-390583b9dc41",
+        "deadline_ms": 1793652422062,
+        "native_prompt_sha256": "9590031fa82b43d02dcd14b11c34272ed6cc99ab9d1b0df37228795a6ec69c9c",
+        "feedback": {
+          "native": "(RESULTS: ((COMMAND_RETURN: ((delegate B synthetic silver prism storage) {_quote_acceptance_quote_:{_quote_acceptance_quote_:_quote_process-restart_quote_,_quote_correlation_id_quote_:_quote_daeef2f6-a6d9-52a0-ac76-b0577a584712_quote_,_quote_delivery_quote_:_quote_not-observed_quote_,_quote_delivery_id_quote_:_quote_5c2c4cf4-6474-52ed-a69c-e228dd77d19d_quote_,_quote_evidence_quote_:{_quote_backend_quote_:_quote_sqlite_quote_,_quote_journal_mode_quote_:_quote_WAL_quote_,_quote_synchronous_quote_:_quote_FULL_quote_},_quote_route_quote_:_quote_task-B_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-h19_quote_},_quote_deadline_quote_:1793652422062,_quote_independent_corroboration_quote_:false,_quote_recipient_observation_quote_:{_quote_id_quote_:_quote_daeef2f6-a6d9-52a0-ac76-b0577a584712_quote_,_quote_principal_quote_:_quote_B_quote_,_quote_profile_quote_:_quote_native-retrieval-task/1_quote_,_quote_status_quote_:_quote_accepted_quote_},_quote_ref_quote_:{_quote_digest_quote_:_quote_fd89091af104e1c736c8ac39e1c2bbb33f0d0fd623813f8b1df4beb184861ef9_quote_,_quote_id_quote_:_quote_2fc0a273-28ba-51a8-8489-68bd6886eae3_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-h19_quote_},_quote_status_quote_:_quote_TASK_PUBLISHED_quote_,_quote_task_quote_:_quote_daeef2f6-a6d9-52a0-ac76-b0577a584712_quote_}))))",
+          "delegated_report": {
+            "delivery": "309bb247-d816-5cba-beab-07387e0bc2df",
+            "profile": "native-retrieval-task/1",
+            "record": {
+              "deadline": 1793652422062,
+              "id": "daeef2f6-a6d9-52a0-ac76-b0577a584712",
+              "kind": "result",
+              "limits": {
+                "queries": 1,
+                "recursive_delegation": false,
+                "relay_calls": 24
+              },
+              "parent": "b3dff9a8-97a8-50cb-9975-1e1d29e23854",
+              "payloads": [
+                {
+                  "digest": "91ad50c95e3aa639c4b54b5dca21e92ab5af126bbf62a55d24f5d1bfc14a5acd",
+                  "id": "9a5f77a3-df9a-5ae1-a180-54abc188a185",
+                  "revision": 1,
+                  "scope_ref": "synthetic-phase2-h19"
+                }
+              ],
+              "profile": "native-retrieval-task/1",
+              "projection": "[[['id:', '2026-11-02 20:42:36'], ['linkedEpisodes:', ['2026-11-02 20:42:36']], ['stv', 1.0, 0.5], 'The synthetic silver prism is stored in crate orchid']]\nPREVIEW_MEMORY_HANDLES: {\"79dd8b0c-2371-4f8c-bea8-1e544ff5d313\":{\"handle\":\"oh1:memory:61ce468b-c9f8-589d-88ad-28dcf8cdbcb6\",\"kind\":\"memory\",\"principal\":\"B\",\"profile\":\"omega-preview-handles/1\",\"scope\":\"synthetic-phase2-h19\",\"target\":{\"enrollment\":{\"digest\":\"f7553eb5436edab59effab1cd39990d8fc6ce1d66b5a54f149994089097f4556\",\"id\":\"d5c116b1-9c78-556d-9b62-7ff227d4a7a0\",\"revision\":1,\"scope_ref\":\"synthetic-phase2-h19\"},\"payload\":{\"digest\":\"91ad50c95e3aa639c4b54b5dca21e92ab5af126bbf62a55d24f5d1bfc14a5acd\",\"id\":\"9a5f77a3-df9a-5ae1-a180-54abc188a185\",\"revision\":1,\"scope_ref\":\"synthetic-phase2-h19\"}}}}",
+              "recipient": "A",
+              "scope": "synthetic-phase2-h19",
+              "sender": "B",
+              "session": "af8dfa59-2412-4322-b751-ca1b94fb7ce3",
+              "status": "captured-native-query",
+              "task": {
+                "digest": "fd89091af104e1c736c8ac39e1c2bbb33f0d0fd623813f8b1df4beb184861ef9",
+                "id": "2fc0a273-28ba-51a8-8489-68bd6886eae3",
+                "revision": 1,
+                "scope_ref": "synthetic-phase2-h19"
+              },
+              "view": {
+                "active_digest": "1e80d8dd41cd038d256f04914a776d35a35080a26f4db60e162201b787451cf0",
+                "corpus": "generated-phase2-h19",
+                "embedding": "neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1",
+                "generation": "61cb75d8-2142-5f2a-b074-14b6825773e8",
+                "head": {
+                  "profile": "immutable-commit-feed/1",
+                  "scope_ref": "synthetic-phase2-h19",
+                  "sequence": 18,
+                  "source": "6ef13e2a-6d6c-43bc-a9a7-6c4fddb2c9e8"
+                },
+                "index": "chroma-1.5.5-hnsw-l2-default/1",
+                "lifecycle": {
+                  "profile": "immutable-memory-lifecycle/1",
+                  "scope_ref": "synthetic-phase2-h19",
+                  "sequence": 1,
+                  "source": "e69d2add-a01e-4b4e-8a3c-4e61226ef7ea"
+                },
+                "logical": "0ceaa61395034384fdb26e9cc3c4f4f97b57d97e90a8c68e95e74531d012c60b",
+                "profile": "semantic-active-memory-view/1"
+              }
+            },
+            "ref": {
+              "digest": "3ba88374955d3006370c3e7cbfc10a327408cff7b205cc7f6c2ff7c82e2a1123",
+              "id": "befae733-57f8-5961-929e-121b0a57c923",
+              "revision": 1,
+              "scope_ref": "synthetic-phase2-h19"
+            }
+          },
+          "interpretation": "agent-report-not-independent-corroboration"
+        },
+        "feedback_observation": {
+          "normalization": {
+            "name": "native-string-safe-after-preview-delimiter-escape",
+            "source_boundary": "PINNED_NATIVE_SOURCE",
+            "source_sha256": "916be356d4ba416b675fb91dc383e81eebf2fc53481063ff6bd1cfc5980b8f72",
+            "commit": "2af37c3fec18613de54ca42fde2382a9087d4524"
+          },
+          "encoded_sha256": "48a5564e113f190d7adcf9370c551eebe40287aa92b678baef2474a845fac9e1",
+          "exact_forward_match": true,
+          "prior_turn": 5,
+          "prior_projection_sha256": "f526198bf961178ee608958d5153c91a385a836765d4fa7fd0adcba4a62eaf7a"
+        },
+        "result_sha256": "2f795007eb0126b13ad1a58d51dcbfc8f437d42717947f9ec4fee939b2a8b58b",
+        "normalized_sha256": "a284f2755415e02f775525829cac29a43a08862577826cd01664b12c78274f03",
+        "parse_text_sha256": "a284f2755415e02f775525829cac29a43a08862577826cd01664b12c78274f03",
+        "proposal_sha256": "ef132ae45209a1c9a56e537388e5bea9c334bdeac93362b1515ce74ff4e60a15",
+        "admission_sha256": "04dd9c7e9464019a848b69db2ed9a9b2a7def45b169e44627e7e613d67ff18ce"
+      }
+    ],
+    "task_id": "daeef2f6-a6d9-52a0-ac76-b0577a584712"
+  }
+}

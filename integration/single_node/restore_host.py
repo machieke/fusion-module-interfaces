@@ -26,16 +26,20 @@ def main(path):
  initial=json.loads(Path(path).read_text());state=Path('/state');fence=json.loads((state/'restore-fence.json').read_text());role=initial['role']
  require(fence['mode']=='READ_ONLY_RECONCILIATION' and fence['role']==role and fence['namespace']==os.environ['POD_NAMESPACE'],'UNAUTHORIZED')
  require(os.environ['POD_NAME']==role+'-0','UNSUPPORTED_PROFILE');lock=open(state/'owner.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
- expected=dict(composition=initial['service_composition'],role=role,scope=initial.get('reference',{}).get('scope',initial.get('memory',{}).get('scope',c.SCOPE)))
+ preview=initial.get('preview',{}).get('enabled',False)
+ expected=dict(composition=initial['service_composition'],role=role,scope=initial.get('preview',{}).get('scope',initial.get('reference',{}).get('scope',initial.get('memory',{}).get('scope',c.SCOPE))))
+ if preview and role=='fusion-storage':
+  from fusion.adapters.detta_layout import LAYOUT
+  expected['backend_layout']=LAYOUT
  # A restored seal is not rewritten. Chart/config mismatches refuse startup.
  actual=json.loads((state/'owner-seal.json').read_text());require(actual==expected and actual['scope']==fence['original_scope'],'UNSUPPORTED_PROFILE')
  owner=None;cfg={};run=Path('/run/fusion');run.mkdir(exist_ok=True)
- if role in ('fusion-storage','fusion-search'):
+ if role in ('fusion-storage','fusion-search') and not preview:
   settings,cfg,_,_=configure(path)
   from fusion.memory_services import StoragePorts,SearchPorts
   owner=StoragePorts(run/'owner.json') if role=='fusion-storage' else SearchPorts(run/'owner.json')
  stop=threading.Event();signal.signal(signal.SIGTERM,lambda *_:stop.set());signal.signal(signal.SIGINT,lambda *_:stop.set())
- plain=role in ('omega-agent','fusion-channel-bridge','irc-server','irc-peer','f1r3node')
+ plain=role in ('omega-agent','fusion-channel-bridge','irc-server','irc-peer','f1r3node') and not preview
  class Handler(BaseHTTPRequestHandler):
   def log_message(self,*_):pass
   def reply(self,value,status=200):

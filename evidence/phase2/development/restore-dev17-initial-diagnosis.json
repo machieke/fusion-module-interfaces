@@ -1,0 +1,10 @@
+{
+  "report_sha256": "f74bd047e2297089952ce1dab4debe7c2a818e1c06280c5df107a0301141a500",
+  "status": "FAILED_QUALIFIER_RENDER",
+  "backup_and_restore": "13 owner PVCs exported/imported fenced; both original/clone quiesced",
+  "before_helm_install": true,
+  "diagnosis": "Qualifier removed non-secret public_key and wallet_address required by chart schema even under disabled chain",
+  "runtime_changes": false,
+  "live_generations": 0,
+  "failed_diagnostic_secret_repeat": "Existing Secret refused; no overwrite; diagnostic private material excluded"
+}

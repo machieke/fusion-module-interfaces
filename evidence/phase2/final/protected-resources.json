@@ -1,0 +1,79 @@
+{
+  "at": "2026-11-02T21:51:07.471046+00:00",
+  "baseline": "evidence/phase2/baseline.json",
+  "namespaces": {
+    "omega-demo": {
+      "status": "UNCHANGED",
+      "objects": 30,
+      "changes": [],
+      "pods": [
+        {
+          "name": "fusion-execution-0",
+          "uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+          "phase": "Running"
+        },
+        {
+          "name": "fusion-messaging-0",
+          "uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+          "phase": "Running"
+        },
+        {
+          "name": "fusion-storage-0",
+          "uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+          "phase": "Running"
+        },
+        {
+          "name": "omega-agent-0",
+          "uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+          "phase": "Running"
+        }
+      ]
+    },
+    "omega-ref-live01": {
+      "status": "UNCHANGED",
+      "objects": 63,
+      "changes": [],
+      "pods": []
+    }
+  },
+  "additional_live_generations": 0,
+  "campaign": {
+    "evidence/reference-distribution/campaign/plan.json": {
+      "sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47"
+    },
+    "evidence/reference-distribution/campaign/execution-ledger.json": {
+      "sha256": "2f41702c51597688f0d72b87d0ea2df59ee39835de324b75239b9a0327f7588c",
+      "backend_calls": 0,
+      "campaign_id": "omega-reference-k3s-20261030-03",
+      "captures": 0,
+      "live_generations": 0,
+      "manifest_sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+      "reservations": 0,
+      "slots": {
+        "https-query": "UNRESERVED",
+        "https-reply": "UNRESERVED"
+      },
+      "state": "AWAITING_LIVE_AUTHORIZATION"
+    },
+    "artifacts/reference-distribution/campaign/plan.json": {
+      "sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47"
+    },
+    "artifacts/reference-distribution/campaign/execution-ledger.json": {
+      "sha256": "2f41702c51597688f0d72b87d0ea2df59ee39835de324b75239b9a0327f7588c",
+      "backend_calls": 0,
+      "campaign_id": "omega-reference-k3s-20261030-03",
+      "captures": 0,
+      "live_generations": 0,
+      "manifest_sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+      "reservations": 0,
+      "slots": {
+        "https-query": "UNRESERVED",
+        "https-reply": "UNRESERVED"
+      },
+      "state": "AWAITING_LIVE_AUTHORIZATION"
+    }
+  },
+  "hash_serialization": "json.dumps(value, sort_keys=True), matching baseline; prior compact-serialization comparison is retained as an observer failure",
+  "prior_observer_failure": "evidence/phase2/development/protected-comparison-compact-serialization.json",
+  "status": "PASS"
+}

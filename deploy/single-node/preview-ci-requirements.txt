@@ -1,0 +1,4 @@
+-r ci-requirements.txt
+# Real local vector-index tests use explicit vectors, never an encoder download.
+chromadb==1.5.5
+cryptography==50.0.2

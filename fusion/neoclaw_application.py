@@ -61,9 +61,17 @@ class Application:
 
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
+        self.preview_config = None
+        from .preview_application import APPLICATION as PREVIEW, configuration as preview_configuration
+        if self.config['composition'] == PREVIEW:
+            self.preview_config = self.config['preview']
+            preview_configuration(self.preview_config)
+            self.config['composition'] = self.preview_config['base']
         self.hook, self.current = hook, None
         require(self.config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION, m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION), 'UNSUPPORTED_PROFILE')
         self.model_enabled = self.config['composition'] in (m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
+        self.preview_model_enabled = self.preview_config is not None and 'session_config' in self.config
+        if self.preview_model_enabled: self.model_enabled = True
         self.channel_enabled = self.config['composition'] in (ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION)
         self.priority_enabled = self.config['composition'] in (p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,cs.APPLICATION)
         self.evidence_enabled = self.config['composition'] in (n.APPLICATION,p.APPLICATION,ch.APPLICATION,m.APPLICATION,r.APPLICATION,cs.APPLICATION)
@@ -90,6 +98,7 @@ class Application:
                 require(encoder_cfg['principal'] == binding['memory']['principal'] and encoder_cfg['scope'] == binding['memory']['scope'], 'UNAUTHORIZED')
                 require(binding['memory']['embedding'] == encoder_cfg['model'] == v.EMBEDDING, 'UNSUPPORTED_PROFILE')
                 require(set(encoder_cfg['inputs']) == set(binding['memory']['queries']), 'UNSUPPORTED_PROFILE')
+                require(encoder_cfg.get('text_policy') == binding['memory'].get('text_policy'), 'UNSUPPORTED_PROFILE')
                 binding.update(composition=e.APPLICATION, query_embedding=selected)
             if self.append_enabled:
                 from .append_composition import configuration as append_configuration
@@ -101,6 +110,7 @@ class Application:
                 require(write_cfg['corpus']==binding['memory']['snapshot']['corpus'] and
                         write_cfg['model']==memory_encoder['model']==binding['memory']['embedding'],'UNSUPPORTED_PROFILE')
                 require(write_cfg['inputs']==memory_encoder['inputs'],'UNSUPPORTED_PROFILE')
+                require(write_cfg.get('text_policy') == memory_encoder.get('text_policy') == binding['memory'].get('text_policy'), 'UNSUPPORTED_PROFILE')
                 require(binding['memory'].get('require_ready') is True,'UNSUPPORTED_PROFILE')
                 binding.update(composition=w.APPLICATION,memory_append=write_binding,memory_embedding=encoder_binding)
             if self.evidence_enabled:
@@ -117,6 +127,8 @@ class Application:
                 binding.update(composition=ch.APPLICATION,channel=channel_settings(self)[1])
             if self.model_enabled:
                 from .neoclaw_model import settings as model_settings
+                if self.preview_model_enabled:
+                    from .preview_model import settings as model_settings
                 self.binding=binding
                 binding.update(composition=self.config['composition'],model=model_settings(self)[2])
                 if self.config['composition'] == r.APPLICATION:
@@ -128,6 +140,28 @@ class Application:
                     binding['retrieval']=retrieval_binding(self)
             if self.config['composition']==cs.APPLICATION:binding['composition']=cs.APPLICATION
             binding.update({k: self.config[k] for k in ('turn_limit', 'invocation_timeout_ms')})
+            if self.preview_config:
+                binding['preview'] = self.preview_config
+                binding['preview_catalogue'] = preview_configuration(self.preview_config).binding()
+                from .preview_ports import Client as FacetClient
+                binding['preview_facets']={name:FacetClient(path,name).frozen for name,path in self.config.get('facet_configs',{}).items()}
+                if 'active_memory_configs' in self.config:
+                    from .preview_native_memory import bindings
+                    binding['active_memory']=bindings(self.config)
+                    atoms=json.loads(Path(self.config['memory_atoms_config']).read_text())
+                    binding['memory_atoms']={k:v0 for k,v0 in atoms.items() if k!='credential'}
+                if 'task_config' in self.config:
+                    from .preview_tasks import Client as TaskClient
+                    binding['tasks']=TaskClient(self.config['task_config']).frozen
+                if 'inspect_config' in self.config:
+                    from .preview_inspect import Client as InspectionClient
+                    binding['inspection']=InspectionClient(self.config['inspect_config']).frozen
+                if 'history_atoms_config' in self.config:
+                    atoms=json.loads(Path(self.config['history_atoms_config']).read_text())
+                    binding['history_atoms']={k:v for k,v in atoms.items() if k!='credential'}
+                if self.preview_model_enabled:
+                    from .preview_session_client import Client as SessionClient
+                    binding['session_port'] = SessionClient(self.config['session_config']).binding
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
@@ -161,28 +195,41 @@ class Application:
                     require(old['binding'] == canonical(binding).decode(), 'CONFLICT')
                     self.session = old['id']
                 else:
-                    self.session = self.config['session_id'] if self.append_enabled else str(uuid.uuid4())
+                    self.session = self.config['session_id'] if self.append_enabled or self.preview_config else str(uuid.uuid4())
                     self.db.execute('INSERT INTO app_session VALUES(?,?)', (self.session, canonical(binding).decode()))
             if self.memory_enabled:
                 from .neoclaw_memory import MemoryRead
+                if 'active_memory_configs' in self.config:
+                    from .preview_native_memory import PreviewRead as MemoryRead
                 self.memory = MemoryRead(self)
             if self.embedding_enabled:
                 from .neoclaw_embedding import QueryEmbedding
                 self.embedding = QueryEmbedding(self)
             if self.append_enabled:
                 from .neoclaw_append import MemoryAppend
+                if 'active_memory_configs' in self.config:
+                    from .preview_native_memory import PreviewAppend as MemoryAppend
                 self.write=MemoryAppend(self)
             if self.evidence_enabled:
                 from .neoclaw_evidence import EvidenceAdoption
+                if self.preview_config:
+                    from .preview_native_cognition import PreviewEvidence as EvidenceAdoption
                 self.evidence=EvidenceAdoption(self)
             if self.priority_enabled:
                 from .neoclaw_priority import PriorityAdoption
+                if self.preview_config:
+                    from .preview_native_cognition import PreviewPriority as PriorityAdoption
                 self.priority=PriorityAdoption(self)
             if self.channel_enabled:
                 from .neoclaw_channel import ChannelAdoption
                 self.channel=ChannelAdoption(self)
+            if self.preview_config:
+                from .preview_application import PreviewAdoption
+                self.preview = PreviewAdoption(self)
             if self.model_enabled:
                 from .neoclaw_model import ModelAdoption
+                if self.preview_model_enabled:
+                    from .preview_model import PreviewModel as ModelAdoption
                 self.model=ModelAdoption(self)
             pending = self.pending()
             if pending:
@@ -219,6 +266,9 @@ class Application:
         return self.db.execute('SELECT * FROM app_turns WHERE projection IS NULL ORDER BY id LIMIT 1').fetchone()
 
     def intent(self, command):
+        if self.preview_config:
+            preview_intent = self.preview.intent(command)
+            if preview_intent is not None: return preview_intent
         if self.channel_enabled and isinstance(command,list) and command and command[0]=='send':
             return self.channel.intent(command)
         if self.priority_enabled and isinstance(command,list) and command and command[0] in ('promote','demote'):
@@ -239,15 +289,16 @@ class Application:
             from .neoclaw_memory import configuration
             cfg, _, frozen = configuration(self.config['memory_read_config'])
             require(frozen == self.binding['memory'], 'CONFLICT')
-            require(command[1] in cfg['queries'], 'UNAUTHORIZED')
-            return dict(profile=v.PROFILE, operation='query_with_ids_and_dists', arguments=dict(query=command[1]))
+            from .preview_text import query
+            query(cfg,command[1])
+            return dict(profile=self.memory.c.PROFILE, operation='query_with_ids_and_dists', arguments=dict(query=command[1]))
         elif self.append_enabled and isinstance(command,list) and command and command[0]=='remember':
             require(len(command)==2 and type(command[1]) is str)
             from .append_composition import configuration
             cfg,_,frozen=configuration(self.config['memory_append_config'])
             require(frozen==self.binding['memory_append'],'CONFLICT')
-            require(command[1] in cfg['inputs'],'UNAUTHORIZED')
-            w.text(command[1],cfg['inputs'][command[1]],cfg['scope'],cfg['corpus'])
+            from .preview_text import helper
+            w.text(command[1],helper(cfg,command[1],'remember'),cfg['scope'],cfg['corpus'])
             return dict(profile=w.PROFILE,operation='remember',arguments=dict(content=command[1]))
         if self.memory_enabled:
             # The generated read-only installation admits only these three named operations.
@@ -256,9 +307,14 @@ class Application:
         if arguments is None: return None
         # The legacy column name remains "premises"; /2 fresh journals explicitly
         # store a tagged intent there. Version 1 rows are never reinterpreted.
-        return dict(profile=module.PROFILE, operation=module.OPERATION, arguments=arguments) if self.two_operations else arguments
+        return dict(profile=module.PROFILE, operation=module.OPERATION, arguments=arguments) if self.two_operations or self.preview_config else arguments
 
     def more(self):
+        if self.preview_model_enabled:
+            if self.db.execute('SELECT count(*) FROM app_turns WHERE projection IS NOT NULL').fetchone()[0] >= self.config['turn_limit']:
+                self.preview.input.reconcile()
+                return False
+            return self.preview.input.available()
         if self.pending() is not None:
             return True
         caller = Caller(self.config['caller_config'])
@@ -276,7 +332,7 @@ class Application:
         for command in commands:
             require(type(command) is list and command and type(command[0]) is str)
             intents.append(self.intent(command))
-        if self.two_operations:
+        if self.two_operations and not self.preview_config:
             require(len({x['profile'] for x in intents if x is not None}) <= 1, 'UNSUPPORTED_PROFILE')
             require(sum(x is not None and x['profile'] == s.PROFILE for x in intents) <= 2, 'OVERLOADED')
         encoded = canonical(commands).decode()
@@ -287,21 +343,32 @@ class Application:
                 require(pending['response'] == response and pending['commands'] == encoded, 'CONFLICT')
                 turn = pending['id']
             else:
-                require(self.more(), 'OVERLOADED')
+                if self.preview_model_enabled:
+                    require(self.db.execute('SELECT count(*) FROM app_turns').fetchone()[0] < self.config['turn_limit'], 'OVERLOADED')
+                    require(time.time_ns()//1_000_000 < self.preview.input.source()['deadline'], 'DEADLINE_EXCEEDED')
+                else:require(self.more(), 'OVERLOADED')
                 count = self.db.execute('SELECT count(*) FROM app_occurrences WHERE premises IS NOT NULL').fetchone()[0]
                 require(count + sum(x is not None for x in intents) <= c.MAX_REQUESTS, 'OVERLOADED')
                 turn = self.db.execute('SELECT coalesce(max(id),0)+1 FROM app_turns').fetchone()[0]
                 self.db.execute('INSERT INTO app_turns VALUES(?,?,?,NULL)', (turn, response, encoded))
                 deadline = int(time.time()*1000) + self.config['invocation_timeout_ms']
+                if self.preview_model_enabled:
+                    deadline = min(deadline, self.preview.input.source()['deadline'])
                 for position, premises in enumerate(intents):
+                    occurrence_deadline=deadline
+                    if self.preview_model_enabled:
+                        tool=self.preview.catalogue.tools[commands[position][0]]
+                        occurrence_deadline=min(int(time.time()*1000)+tool.timeout_ms,self.preview.input.source()['deadline'])
                     key = str(uuid.uuid5(uuid.UUID(self.session), f'{turn}/{position}'))
                     self.db.execute('INSERT INTO app_occurrences VALUES(?,?,?,?,?,NULL,0)',
-                        (turn, position, key, canonical(premises).decode() if premises is not None else None, deadline))
+                        (turn, position, key, canonical(premises).decode() if premises is not None else None, occurrence_deadline))
                     if self.append_enabled and premises is not None:self.write.admit(key,premises)
                     if self.evidence_enabled and premises is not None:self.evidence.admit(key,premises)
                     if self.priority_enabled and premises is not None:self.priority.admit(key,premises)
                     if self.channel_enabled and premises is not None:self.channel.admit(key,premises,turn,position,deadline)
+                    if self.preview_config and premises is not None:self.preview.admit(key,premises)
         self.hook('after_occurrence_bind')
+        if self.preview_config and self.preview.history:self.preview.history.commands(turn)
         if self.priority_enabled and any(x and x['profile']==p.PROFILE for x in intents):self.hook('after_priority_acceptance')
         return [[i, command] for i, command in enumerate(commands)]
 
@@ -313,18 +380,23 @@ class Application:
         require(self.db.execute('SELECT count(*) FROM app_occurrences WHERE turn=? AND position<? AND done=0',
                                 (pending['id'], position)).fetchone()[0] == 0, 'CONFLICT')
         self.current = (pending['id'], position)
+        if self.preview_config:
+            row=self.db.execute('SELECT * FROM app_occurrences WHERE turn=? AND position=?',self.current).fetchone()
+            self.preview.reserve_dispatch(row,command[0])
         if self.is_evidence():self.evidence.begin()
 
     def _run(self, row):
         intent = json.loads(row['premises'])
+        if self.preview_config and intent['profile'] == self.preview_config['profile']:
+            return self.preview.replay(row)
         if self.channel_enabled and intent['profile']==ch.PROFILE:return self.channel.replay(row)
         if self.priority_enabled and intent['profile']==p.PROFILE:return self.priority.replay(row)
         if self.evidence_enabled and intent['profile']==n.PROFILE:return self.evidence.replay(row)
         if self.append_enabled and intent['profile']==w.PROFILE:return self.write.replay(row)
-        if self.memory_enabled and intent['profile'] == v.PROFILE:
+        if self.memory_enabled and intent['profile'] == self.memory.c.PROFILE:
             return self.memory.replay(row)
         module = ops.contract(intent['profile']) if self.two_operations else c
-        if self.two_operations:
+        if self.two_operations or self.preview_config:
             c.fields(intent, 'profile operation arguments')
             require(intent['operation'] == module.OPERATION, 'CONFLICT')
             if module is s:
@@ -336,7 +408,7 @@ class Application:
             current = caller_binding(caller)
             expected = self.binding['search'] if module is s else self.binding
             require(all(expected[k] == value for k, value in current.items()), 'CONFLICT')
-            return caller.run(intent['arguments'] if self.two_operations else intent)
+            return caller.run(intent['arguments'] if self.two_operations or self.preview_config else intent)
         finally: caller.close()
 
     def invoke(self, expression):
@@ -360,7 +432,7 @@ class Application:
     def is_memory(self):
         if not self.memory_enabled or self.current is None: return False
         row = self.db.execute('SELECT premises FROM app_occurrences WHERE turn=? AND position=?', self.current).fetchone()
-        return row is not None and row['premises'] is not None and json.loads(row['premises'])['profile'] == v.PROFILE
+        return row is not None and row['premises'] is not None and json.loads(row['premises'])['profile'] == self.memory.c.PROFILE
 
     def is_append(self):
         if not self.append_enabled or self.current is None:return False
@@ -433,9 +505,11 @@ class Application:
         if self.two_operations:
             for occurrence in self.db.execute('SELECT * FROM app_occurrences WHERE turn=? AND premises IS NOT NULL ORDER BY position', (row['id'],)).fetchall():
                 require(self._run(occurrence) == occurrence['result'], 'NOT_AVAILABLE')
+        if self.preview_config and self.preview.history:self.preview.history.commands(row['id'],results=True)
         with self.db:
             self.db.execute('UPDATE app_turns SET projection=? WHERE id=?', (projection, row['id']))
         self.hook('after_application_projection')
+        if self.preview_model_enabled: self.preview.input.reconcile()
 
     def restore(self):
         last = self.db.execute('SELECT * FROM app_turns WHERE projection IS NOT NULL ORDER BY id DESC LIMIT 1').fetchone()
@@ -462,3 +536,10 @@ class Application:
     def model_complete(self,raw):return self.model.complete(raw)
     def model_parsed(self,normalized,parsed):return self.model.parsed(normalized,parsed)
     def response(self):return self.model.replay() if self.model_enabled else self.pending()['response']
+
+    def preview_skills(self): return self.preview.skills()
+    def preview_execute(self, command): return self.preview.execute(command)
+    def preview_context(self): return self.preview.context_text()
+    def preview_input(self): return self.preview.input.model_source()['text']
+    def preview_history(self): return self.preview.history.context()
+    def preview_render_context(self,*args): return self.preview.render_context(*args)

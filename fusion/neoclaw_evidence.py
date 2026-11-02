@@ -71,16 +71,21 @@ class EvidenceAdoption:
             row=self.db.execute('SELECT calls FROM app_sources WHERE slot=?',(slot,)).fetchone()
             require(row is not None and row['calls']<c.MAX_APP_ATTEMPTS,'OVERLOADED')
             self.db.execute('UPDATE app_sources SET calls=calls+1 WHERE slot=?',(slot,))
+    def source_spec(self,cfg,slot):
+        return self.app.channel.source_spec() if self.app.channel_enabled else cfg['sources'].get(str(slot))
+    def source_observation(self,spec,text):
+        return dict(spec=spec,raw=text,observed_time=spec['observed_time'] if self.app.channel_enabled else datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
+            deadline_ms=spec['deadline_ms'] if self.app.channel_enabled else time.time_ns()//1_000_000+self.app.config['invocation_timeout_ms'])
+    def source_result(self,text,spec,receipt):
+        return text+' RECORDED_SOURCE: '+spec['label'].replace(' ','_')
     def source(self,text):
         cfg=self.authorize();slot=self.slot()
-        spec=self.app.channel.source_spec() if self.app.channel_enabled else cfg['sources'].get(str(slot))
+        spec=self.source_spec(cfg,slot)
         if spec is None:require(text=='','CONFLICT');return text
         require(text==spec['text'] and type(text) is str and 0<len(text.encode())<=4096,'CONFLICT')
         old=self.db.execute('SELECT * FROM app_sources WHERE slot=?',(slot,)).fetchone()
         if old is None:
-            accepted=dict(spec=spec,raw=text,observed_time=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
-                deadline_ms=spec['deadline_ms'] if self.app.channel_enabled else time.time_ns()//1_000_000+self.app.config['invocation_timeout_ms'])
-            if self.app.channel_enabled:accepted['observed_time']=spec['observed_time']
+            accepted=self.source_observation(spec,text)
             with self.db:self.db.execute('INSERT INTO app_sources(slot,accepted) VALUES(?,?)',(slot,canonical(accepted).decode()))
             self.app.hook('after_source_identity')
         row=self.db.execute('SELECT * FROM app_sources WHERE slot=?',(slot,)).fetchone();accepted=json.loads(row['accepted'])
@@ -116,7 +121,7 @@ class EvidenceAdoption:
         require(payload.content_type=='application/neoclaw-source' and json.loads(payload.bytes)==dict(
             text=text,label=spec['label'],source=spec['source'],observed_time=accepted['observed_time']),'NOT_AVAILABLE')
         with self.db:self.db.execute('UPDATE app_sources SET exposed=1 WHERE slot=?',(slot,))
-        return text+' RECORDED_SOURCE: '+spec['label'].replace(' ','_')
+        return self.source_result(text,spec,receipt)
 
     def intent(self,command):
         require(len(command)==3 and all(type(x) is str for x in command),'INVALID_ARGUMENT')
@@ -247,7 +252,7 @@ class EvidenceAdoption:
         bindings.append(dict(uuid=args['uuid'],claim=snapshot['claim'],context=snapshot['context'],revision=snapshot['revision'],
             snapshot_digest=digest(canonical(snapshot)),sources=sources,creation_time=creation_time))
         defaults={k:v for k,v in base.get('defaults',{}).items() if k!=args['uuid']}
-        view=dict(snapshot=base['snapshot'],metadata=metadata,metadata_seal=digest(canonical(metadata)),beliefs=bindings,defaults=defaults)
+        view=dict(base,snapshot=base['snapshot'],metadata=metadata,metadata_seal=digest(canonical(metadata)),beliefs=bindings,defaults=defaults)
         self.validate_view(view);key=digest(canonical(view));self.materialize(view,row['deadline'])
         self.app.hook('after_belief_presentation')
         with self.db:

@@ -1,0 +1,2859 @@
+{
+  "schema": "phase2-final-cleanup/1",
+  "at": "2026-11-02T21:52:11.827483+00:00",
+  "status": "PASS",
+  "task_namespaces": {
+    "omega-ref-phase2-attention18": {
+      "namespace_uid": "e85d4c58-32eb-4304-83d7-4cf72841858d",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "2b213c78-105b-401c-8505-367d6062e10c"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "f217275a-0840-43b0-b225-d700ca984d66"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "e1686932-7049-45f8-9cfd-885db57294ef"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "1c6f5ef3-590c-4a1d-8364-e38fa70b3919"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "a527285b-f66f-4d13-9e30-ec3f1e5de3a5"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "182a8bc9-ac9a-4718-a2c5-b5045706bf6e"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "d0473e1b-2b9a-4959-86ec-f768385cbc6e"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "089d3111-2cda-400b-ac4f-2343638c2a04"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "fcb04987-2691-443f-bad8-c00d647ca43e"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "df39eab9-d4c1-4986-b87a-cf4621353e45"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "27120344-82e2-4a83-b650-08c6b058c86c"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "6c916852-d6ad-4dbc-ab0f-5c7fd048b1f8"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-attention19": {
+      "namespace_uid": "30fae307-3fee-4c85-ba6d-86947ee48a70",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "a962870b-d048-45f2-b460-ab1734a58ee0"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "733731b5-7d33-4f0e-ba92-08e182476cee"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "d6017fa0-e73c-4ae4-a528-db90e45d505f"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "cf2d2a19-562b-488a-a663-13d10f5f0db6"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "c8415c75-a8ef-4509-8318-b782ae14123a"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "12ff1eae-f223-4a4f-b434-3bc1f197ea28"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "e9f6db04-b4ca-4bd2-9c0c-cec7dafe8578"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "b201bd51-1631-4b36-b2ea-91559aeccc0f"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "59cf6157-0f64-40ba-ba8f-fab96005738a"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "4222291c-0d67-4c74-9c19-d77dd1967721"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "c5719a0e-acfb-41f8-8dd5-4dddcb879591"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "ca7774f3-55ee-4faa-84d8-5cb55de664d5"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-attention19sql": {
+      "namespace_uid": "b8d75571-525b-4047-a252-6662095dced8",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "755a7dfb-7b6a-4abe-80ca-8cf081e0b4c0"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "ba200f23-cb89-47cd-9dee-408a77c637a4"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "3e44cc4f-2010-48c5-b160-44105bf41b72"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "41174006-4df9-4718-b03e-fa0fd538dc15"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "c3cc9d4f-3b79-40dc-b1c6-1c09094395f4"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "ba77f43f-b1b2-4ef2-8ad9-fa05d141ae25"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "edfe2266-068a-4bee-bfbd-78e3c77ceee5"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "d4efd191-4b19-49da-8e95-12ee493552bd"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "e889bbbc-58c2-4546-8765-bee3eef1e52b"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "2b278b24-d1f0-4001-adbf-0e99ad9c74af"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "8b52db3e-9a57-4863-9993-e1be1a822811"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "98337818-d7a4-4115-a783-9163793053e9"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev01": {
+      "namespace_uid": "b5b320ad-eefb-4fc3-92f8-c47b798829c1",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "3e4ad0b8-bff7-48d9-900c-aafb6fa4c7fc"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "6333c83e-ed08-40b0-86d7-e52883ca7b1f"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "cd7c55f0-d526-41e6-9a2d-c075c70f0191"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "6a572b94-e8c2-42ef-8239-41234a60a4c7"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "890d3f59-8655-4eb3-bdd1-d27da12d5cb9"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "08a7aa54-c159-4687-94ca-2c43acf5b3d2"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "f275fdd7-354c-46e2-8906-b29b2b756d97"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "2bd909b6-e701-414a-838c-eb5bc9e478a7"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev02": {
+      "namespace_uid": "4ead3cfb-6277-4e2a-88ec-15c536ea1453",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "74376849-ca4a-4b6a-aed4-16e572e1947c"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "1de4e1c0-56bb-4276-9e0e-19426295e1f1"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "2ebbd7fe-7774-4268-8d60-02b46373d42e"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "0dcf4e33-342e-4b7c-a36b-119ef9978584"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "4e138148-2cef-480e-bd7c-a6e7125e8aa7"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "5ca33014-6239-455e-9be5-b3daf1b1a3d2"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "0bed742b-c644-40a1-9b79-692c3fe395f2"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "15dcb39b-4f9a-43b9-9736-d695a3b25068"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "d14d0b9e-23b6-4105-86e0-cf984c56e88b"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "65e4bd24-ff39-4498-bb48-ac9d9de88cb2"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev05": {
+      "namespace_uid": "a5e83924-4372-49c6-bd67-9e44f88cfa9e",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "7c9daa09-9a85-4e1d-a5e2-13f5ffac6ad7"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "745cfb0d-7b02-406a-ab0e-285dc1ca9a21"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "19fe174a-5142-4569-9a33-d2076a056786"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "e398e443-d789-4aa7-a2f4-44fe4656155b"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "d6630e3b-fc60-452c-9003-a380f1f54805"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "afa5d13e-bde1-42ea-b8bc-260b4b492f6f"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "795e8f5c-db25-49e7-a333-d8762bf1d464"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "93f4be0b-4e35-492a-8e22-7d1696133f92"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "6e7f6a6d-6e35-4bec-af77-47afa164646e"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "93c42678-b368-4079-8aaa-aaf87d918241"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "89c73953-1379-4b74-8e72-e0ddcf3be101"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "f8d26375-df4c-428b-a7c7-d5b2e2b5d4ec"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev07": {
+      "namespace_uid": "2bfe592b-03ed-474b-bb57-d28dd32a63c6",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "fae92a07-0d9f-4cf6-be39-2b2d1b52a4b9"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "af506ab7-5c97-4bb6-9533-d9c6bddab4a7"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "f9731767-eb13-48dc-b686-c009db0a9cce"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "17ed3520-0e61-47c5-b153-3584df71854f"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "cead2c3f-1c01-490f-ad80-be115eb86a41"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "fef2f69c-578e-41c9-a7ea-b93a79428cbc"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "103e926d-ca31-4ba0-af18-d4fe21661d1e"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "7cd0eee4-d87e-480e-a681-e4890aff3247"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "773cfc13-2ef0-45f5-a253-2b80b24e6c6f"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "f56d0503-c379-4d34-85f0-73299fc887a6"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "d90747e7-1eaa-4681-8c2d-da1c1078c254"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "512e69e1-0ff4-45e9-b233-bec2a65a141b"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev08": {
+      "namespace_uid": "13314742-a103-4f2d-a9d6-0c281a5a37b2",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "d41e0f82-26bb-4787-b577-5d680c0f0899"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "5b882d04-360b-4157-aa8a-e3ccf8fd4dac"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "d2bc1ffa-d190-40ef-adba-83db20e728d2"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "dc8af57d-b778-4d80-8dfe-0ae6ac621fdf"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "7caae4d3-d291-4e34-9780-3e825f7db6ab"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "6490f049-6ff3-4dcc-9add-e30b9256ad73"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "8f17355e-cceb-480c-9ebe-a5735b213d7f"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "43706569-f0e4-4fce-ace0-7c77b5d34853"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "d18e99d0-d6aa-485d-ac69-3e0a433b1b35"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "fc360b88-f1db-46d2-9671-8f0b7f319d09"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "971fa935-5634-426b-b77e-065e5e7321e1"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "fe35421c-5890-40a5-a102-03980ab53d6b"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev09": {
+      "namespace_uid": "abf2d99d-02ab-4f7b-b840-8a93fd948c44",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "ec401a92-3174-4aa8-a51b-abde926e5109"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "cf4098e7-459d-45ce-a17d-816f629a1b4d"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "0eab43e6-c77d-407c-9bec-8599ac018424"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "16766a12-428f-40e7-baa8-a76e6541299c"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "2b43f460-352c-4567-9b4a-f7c7d92ea031"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "06003c39-3868-412c-9088-b10b1ba161cf"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "9ef180fe-3824-44e6-b5db-866c4f8462c3"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "e25fe76a-2afe-4975-84a2-6985f939e1cc"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "e71c0d6b-96ab-4222-b7e2-5002c7167a25"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "6997e7a3-713d-4369-9b4b-890c3153999a"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "9defcb93-d5dc-43ae-9c63-018dbd481062"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "ba86ff63-0352-4e6d-af54-73202dff7fc8"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev10": {
+      "namespace_uid": "6a25655a-0506-4e89-a84a-9f30cc5131d9",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "dd75a830-96a2-48e2-bff3-21eb6bff5030"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "780873e1-0ffa-4d4f-afad-ae9dd965aa59"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "a013e184-5d6e-4866-a5fd-a7c6570830ff"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "c275f956-56d1-4b22-84c9-bffa5660354a"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "09e5a788-d73d-4908-9888-4907097d8ffe"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "ecae1a66-9099-4a28-9dcd-61274575e4fd"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "253feb7c-0b84-4d08-a9ae-36b8c163a525"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "cbd35a92-d65f-464c-9201-61c68df9a9bc"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "2a2d6a72-adf1-4a07-a9cf-63dedea315b4"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "ef2de1b9-bca1-4972-a097-427f746920ba"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "c5a1bb96-0081-41e7-9e97-b19876ad753f"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "30fc618b-aadd-451e-ab26-9a607607a6af"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "d5b80b26-5d12-4796-a5da-f8f74ddc77f0"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "4f4a101b-0b5a-4136-a07e-688b3c88fe24"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev11": {
+      "namespace_uid": "241cd90c-b204-464d-af37-a76b756b803a",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "10f13eb2-dc26-4a98-988b-abeb99da3ded"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "d8778b9f-e8f3-4fc4-bd99-b0179b80a0d2"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "c169331f-1eb8-4f83-9b63-95abc7159f97"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "50998418-1792-4ede-bc82-d5bd1f860467"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "d1dcadf9-c230-461f-8a98-aaeb17acfe7b"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "44af898c-fe00-4b7c-bb4f-ed6a719cb3a8"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "61c03a25-65c9-44f9-8af2-430386773207"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "83635944-c7a1-4ab8-9470-89e907d1faa6"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "70ae0360-e402-4753-a0b5-250180eac8f9"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "227914aa-572a-4864-b10d-0e96b263573a"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "f99bd618-5834-4155-92e2-349acba699ce"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "e61d133d-a102-4703-b1ab-7a5a049ac760"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "d6a4ee21-2172-4008-aaf3-ae27e3923324"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "38dc2aa3-abae-4061-a3bd-c51a766efbcf"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev12": {
+      "namespace_uid": "c0382497-89a5-42a6-bb53-fa663ccc53ca",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "d01d03b8-d1b5-499f-9d06-674ad4c148a6"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "1e279943-ad60-42cc-92cf-a53918cd9b4d"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "792df51e-fd80-463c-a7d1-e0c4b5a7867a"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "592883a6-fa3e-403f-aee1-7968d8ee8948"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "8b1b5703-50f0-4a9b-85fe-bffc2f4ee5ba"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "38fc2d9e-dcc2-4795-abd6-6e27328d41dd"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "b7565330-ce57-4378-aebf-ee15c7b845b9"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "e5136e2a-9d86-4ff0-a3ff-82f5c5ea29e1"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "cbceeafc-bc4e-4ba3-aca7-67cf5e286d57"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "36dc2760-af7e-4f20-b986-681db6768618"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "e2d92148-c244-4e76-9892-2e67185cc8e3"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "dabd74eb-01cd-4044-ab2e-315307198c40"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "ce7d9063-0139-4e14-8f19-b6978a06bb69"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "b71ece7c-a59b-4a2b-ae9c-4cf2923842c1"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev14": {
+      "namespace_uid": "d580c1c4-af2f-4080-9023-c71e1f6fcf65",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "8eb05f73-5a2d-421e-98d3-827ace20782d"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "7bff67b4-9aea-4a2a-beaf-75a0fdf0a6fc"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "0713a1f6-bfb7-4209-9c63-a8e659540c67"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "57ab7527-4dd1-4d84-a6cc-5d6fbaa4a7eb"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "7033fcde-8a1f-43d6-9d85-dbee2bb25d34"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "1c628b3c-da38-4dac-9b44-78c4ecc9f548"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "a7aa711c-989c-4bba-ac6a-e9a62c5c4cb3"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "f4921d1b-de3b-4ec2-b22d-46146838949c"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "b86b3263-12f1-404f-af08-3eec6b1824fd"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "cff424bb-67f5-4169-bea9-c8c3d62935aa"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "cb684669-fd9b-4bdc-aa9f-fd0eac6d951c"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "75bcc5a3-b7fe-4312-92c9-32b9569bf9a4"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "31898ad0-76cc-4b63-bb5f-aead71060a34"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "0373b255-2f6e-4b84-86f4-d8a490c5b1b4"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev15": {
+      "namespace_uid": "4d83b30b-2b56-4fa9-8f9c-cabef7178cf1",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "619d7a20-e9b3-443c-befd-3e3cc812e2fd"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "b9647d50-4919-4ecb-8bbe-c676c8bda0f1"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "e95b6689-e702-46d4-b682-57c42c82d03e"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "efb631f7-cf0f-49d8-b5af-d8c463e184ae"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "6827e1a0-fc9c-49d1-be1b-7cbbf1999b4e"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "6c5e26ae-07f6-4d63-82df-864a270e174f"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "7d14091d-bfd4-4765-8ce1-a627c078495d"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "750751c4-d815-4d90-8dd7-fe5ad81f2b29"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "ca629fb8-b1c3-4ca3-b520-5d4b9707b3db"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "0ffb77c5-474d-4684-900b-4aa55053ea61"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "20ba4f38-28fc-4688-93e8-d7fa867ea950"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "3d3827e3-a430-4c3c-af0a-3a77727ab40e"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "83e3dd71-b278-4d4b-8b23-32c8e4988945"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "a824cede-c043-40a5-ab1e-3d7008abd7ec"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev16": {
+      "namespace_uid": "2afe5210-11a4-45dd-969e-7f2d4e40d2c0",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "06b61b35-3334-4fc7-88c8-a6fa7c33ee9c"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "028cf4a3-82f8-45da-870c-2b6f4c83bb6b"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "9cb8c081-59b8-4b9e-adf2-33d8806e1fba"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "9514b0f5-8b26-40b6-9332-62dd926c41bf"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "483d77bc-cac0-4125-985e-6685109da1c1"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "d04b576f-089d-45f2-b9fd-93afaa54b82e"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "2e6a0747-0a43-4c5f-9a9f-c30f4f46be8d"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "fbe7ab61-9597-4a50-853d-e93b9b86e05b"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "ea4f6a34-9335-4990-8175-9a61047d2875"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "3f527ef9-059a-484d-84e4-469acdc18b01"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "23c1a5f3-7ed7-4074-8253-bcfb999c2670"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "11c4d1f6-f7da-4d44-bd73-ec6da4a4ead9"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "a797aa1c-7918-438a-87b4-52b556b92107"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "333930d7-1196-484d-9f3f-8ac2cb150ad1"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-dev17": {
+      "namespace_uid": "65b2c326-f3ae-43d3-83e1-1dab50c9085d",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "66cdb07c-995a-4352-b75b-4f6f8bc9ca32"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "6b4cb15c-9868-40b6-9501-d34f35ac4358"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "05aa194a-d55d-4b5f-bb6a-b85e2c1abc47"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "6d44298e-0337-4de6-a935-eb4adac595d7"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "b29e2599-5962-4450-bc49-b7baa00858b6"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "3fc4bd2e-e5d0-4c78-88e1-301ceff7b45e"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "4a440263-7306-43fb-b294-72921a8e49d6"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "5c26f51f-b1de-47e7-8681-d48b944f3327"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "988f77e9-13b2-47a5-afd0-fc469410f906"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "59893226-bc7c-4a82-95bf-3cd347b407b7"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "a2b1fe9b-d41d-461d-8058-182c259fbc22"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "e7bcddf9-d55d-448c-9ca1-1403e288db8c"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "1e7e7045-f150-4f61-9593-0b0d8c37bd95"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "75e1e990-878a-485d-9d7b-42e5e571769b"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-h18": {
+      "namespace_uid": "951acceb-288b-4a46-96bd-355d6c096313",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "4e2170e1-b4a7-47a2-96cc-14c9bca1f301"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "d5a2f7f0-2187-44a1-8a29-6424cbd837bc"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "0572164b-f3e7-444d-b37d-33f0f9230983"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "518a9521-5483-43b7-ba83-c403ee143146"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "a3cbb8db-3ee2-41cd-8829-b0f6b68cc8d9"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "3b6acedc-ce71-42a1-9557-cf91518f7005"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "d8c57b8c-85a1-46e6-8d41-95e24130eac1"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "6f88a2d8-c53a-4c59-a315-ffbb030e37ff"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "fe35d3a8-0445-42d4-bf9d-ead8fd0db0da"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "f089ac99-bba8-4047-9fd2-c10dee6fcd6b"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "e7dd5a2d-74f9-472c-a389-d884bd5eb596"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "a556d7dc-9a3b-4054-ae52-1d77ba764306"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-h19": {
+      "namespace_uid": "4e0e4da9-add8-4d17-a23f-999098f826f5",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "5b4d9370-3d71-498d-b0d5-c66418f1e1d9"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "82a71914-611c-4bb0-930e-009494b75f32"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "e11980cd-b4af-4309-a060-4f74d29c89f9"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "5c524a54-1c26-400c-8852-07e13e57be4e"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "481cecc3-d71b-4146-9ff0-a0a34625836c"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "1a0df756-a9d3-4e0f-a1a4-1386372e94a3"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "fb81e3d7-ddea-4481-a7d4-fbf315599ea8"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "822631cf-3c76-40a6-88cb-52a65b44e67a"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "f3a7865f-a650-4d82-b5ee-4c499d6e6175"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "8fe155c8-d4dd-4c3e-a35f-22926236886d"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "064fdd29-b615-4d62-b8aa-4c6ad6df316c"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "8e6166af-5e02-42c1-a4f8-3ef73c008196"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-h19b": {
+      "namespace_uid": "8cce2d8e-7834-4270-94a5-b9e0a3510e89",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "33cb3f60-370d-41e4-8924-411ee1805527"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "72cf9366-de21-41a2-b7f2-fe90f608aa82"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "8b03e24c-026c-46c1-af52-6f9e5e9c48c1"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "4212103d-abed-472d-9de0-b357be807e4f"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "70d1625d-c0a8-4fe3-90db-fdd458399d35"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "cae2c7b6-e847-48e5-b567-aa4b301ba92a"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "cffec4cd-4cca-426f-b503-7e1ffe61d4d5"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "0b302fc5-b3c0-4a36-831e-65fec1ad428c"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "48719a80-edea-4f86-a753-a14c2617f442"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "a46b6470-8181-4f66-bda2-d8c16a9bdd8d"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "0db67029-280d-433c-913a-067e6796bb10"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "80e4b55b-181a-4d51-8d1a-43253e511ee5"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-main19": {
+      "namespace_uid": "0c6ea9ac-46a2-4f21-ba7e-b130a8aaf6a8",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "f1r3node",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-f1r3node-0",
+          "uid": "b91da149-8d0e-41a8-ad83-3285882f5b21"
+        },
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "e61f11a1-a24b-4793-ad1d-5b2e8adb193b"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "b9d0869e-a45f-496b-b6b7-c28da3bfcbf0"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "0712dbaf-118c-418c-af32-f10d5d9a2c43"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "7a2db5f1-5ef4-49b7-b3e3-6f7bc8f69c74"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "c2fd1ab4-1f26-47bc-a742-44ad561ff2cc"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "5f004f02-7402-40bf-9ff9-f1482e65bc60"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "8f08690f-a4cd-4dcb-8e1e-84029b77ec0a"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "66e88c20-e099-49b0-b21b-6af4cf114bfe"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "f36949a0-9fc0-4c8e-a18f-9f6aecfb678b"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "ccad3a9c-bd74-4250-90d5-ed86ba2fe3c4"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "0664d5c4-0c2f-4a50-857e-2501f883a318"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "d0d0bd9c-4830-4cc8-8e94-9bb79a424e00"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "ff803bad-a8da-4911-a084-91994d86715c"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-r17": {
+      "namespace_uid": "87b96383-8133-4d21-9b35-c850994b6108",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "e0661f80-1d7a-4c64-8ea4-777d03a101f1"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "edaa1b2a-b9f0-4c7e-8411-dab5a3bdfb1b"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "26c03b86-edc7-4166-877f-018613e980f9"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "5f243599-8b3a-4bce-b08e-66500c691e7c"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "f52d8167-4ebd-4c90-ac06-66161e22db77"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "866527ab-746e-438f-9497-fcb00bc751c5"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "aeb42f1d-402a-4d60-9352-5590da0a4fb6"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "a10e295b-87ba-4283-aea2-688f098cc184"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "aa358c69-9562-495a-b43e-bca45ef7ca0b"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "b749e806-401f-4836-80aa-e9e8a1c42ba3"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "166246a1-1f51-4ee0-85dc-e0459f775466"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "219d929a-18bc-4e53-8152-d93d91559ae7"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-r17b": {
+      "namespace_uid": "9fc11aa7-80a2-45aa-9ce1-9ea2c0d7b3f9",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "5d2fe420-a9b9-40a3-b5a7-86a8adbeeb84"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "7455d746-e654-40e4-a6a4-31e0324ca3d2"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "eda59973-601e-4536-8f12-ad3f3c907335"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "58bb0ac0-c869-4739-ae97-ebab515dbdd0"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "e26defef-d0d9-46ea-aff0-4020181b4d64"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "a9cd0dc8-f66f-46a8-a34c-943a22c386d2"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "4d615b6f-8aa4-440c-86f3-35a28f0cdaa7"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "876c9924-fc72-4bd6-9954-e0f1e37af5b1"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "8f4e669b-820d-4de5-87bb-0b544443ad85"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "5c0b3dcb-b268-4f1d-b00d-0f0f638737bb"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "b41a5eb4-5108-407d-ad8f-46fd44e7346b"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "cfc83a8c-dfb6-4384-8689-c8e048d60567"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-r18": {
+      "namespace_uid": "070e6a46-80b4-4fe2-9c20-81fe7ed8cd30",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "26d84e54-e3f0-4449-8bc4-2d4ffc455353"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "9c561e06-2887-452b-b721-417970e477be"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "38e25e2e-c1fc-4a44-9153-8bcaa9d2a315"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "0789d189-d5c6-47a0-a241-8b2c1e696239"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "af1c7be8-0b96-43bd-88e4-fbc2edf65132"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "02dd50f7-a0ff-4590-9e75-bcd9fb645420"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "7e6a4803-0994-402c-8db3-1d6d3c545db1"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "7193c9a1-31e4-4491-9e0e-42416b9cadcf"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "947a3e9f-32f5-4a9e-9bdd-254238828a75"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "b4319a67-3cd2-4007-9e26-9a026d888593"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "15c252f0-1584-49ed-8f97-0f3cf579b711"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "e4f3f5b5-8bb5-4fd2-820c-14547212e865"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-r19": {
+      "namespace_uid": "4a2a9e58-1f66-4ca5-89c8-1598fe619f89",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "dd36046b-e70e-4cb1-8958-e13a8fc2448e"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "45be6876-9f5f-4510-9b73-c3fc339124e5"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "e6afc7d7-a0f8-4940-bf1a-e2722786b928"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "dcaea72a-4208-4027-a567-36f3cfa7f9fe"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "9647d5f7-44bf-49a3-8604-bbce31750322"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "f7c8ff86-9ed1-4060-b6e9-f6eefaf62d40"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "2da5b98d-acfc-4421-b517-883883e85f7a"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "82a8c3de-cdce-44d9-8286-383f5f972ab1"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "5f0d2aa5-f3cc-4103-8684-457e9f77cc15"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "7674d662-2c4e-49de-951a-a9852e64afa2"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "df092873-1712-45fc-96bc-eeca35fc196f"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "aad04486-14bb-415c-8a0b-18c8cf211275"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-restore17": {
+      "namespace_uid": "3e858007-bbcc-48dc-afc3-06de0a1d2432",
+      "pods": [],
+      "workloads": [],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "17cd7cb4-db36-41e7-8e40-6a7fb4ca2545"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "c3754399-d859-4711-bf8d-2738735869d0"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "5fdb4306-2a0f-4e30-b0d7-9c0123a5775c"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "f8f8dade-4152-4957-9b10-bad37370769b"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "eaa85011-01f5-43e0-be67-358a2fb9de3f"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "5333daeb-ede1-4913-9d09-52a3c993afed"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "3c403caf-5640-4280-95d7-d0267ad662c8"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "a2cb36b8-6949-408e-a12f-32a356ab1245"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "8cba80f5-51c0-41f4-8b94-698f58ab4e92"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "97401355-f6ab-43a9-aeaf-8b64ae3f71b2"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "3f3b388c-c290-483e-b5f9-a325ea20bbc2"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "06c7fb5e-f6a4-4486-892b-198e2e896039"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "d0d45493-0c5a-4f39-a8ac-dd874f31289a"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-restore19": {
+      "namespace_uid": "d40bfa9b-7d3d-480f-93fa-04dd57af4bbd",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-attention",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-beliefs",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-commitment",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-embedding",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-relations",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-search",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent-b",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-attention-0",
+          "uid": "4407028c-4541-4839-bf3e-3f530c64cdd1"
+        },
+        {
+          "name": "state-fusion-beliefs-0",
+          "uid": "f5109f86-e966-4bca-b886-6e48cb0b3a91"
+        },
+        {
+          "name": "state-fusion-commitment-0",
+          "uid": "3a18ee6b-c411-49a3-94e6-daa0fdf530f8"
+        },
+        {
+          "name": "state-fusion-embedding-0",
+          "uid": "7d8e4876-91a4-4ba1-b32f-3bbae8480a05"
+        },
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "3e1e2d4c-8502-41f0-94e7-27178a01866a"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "bfe1dd4b-56a6-4d6d-ae77-7251a9983ef0"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "5ebd98e0-8d43-4070-a6d2-4bdad0eaa505"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "e69ee580-d9c0-4158-b57f-11fcb8c8d22c"
+        },
+        {
+          "name": "state-fusion-relations-0",
+          "uid": "084312d0-89ef-4f56-aa74-537bc5d5e537"
+        },
+        {
+          "name": "state-fusion-search-0",
+          "uid": "543823f4-2632-4509-8c00-82caef122431"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "1ea34b1e-2743-4fe0-9694-1d401edb81b5"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "ae26928b-f67a-4f22-a90a-0af0298f2b89"
+        },
+        {
+          "name": "state-omega-agent-b-0",
+          "uid": "a8bd93cc-bb19-47df-9dfd-39aa8cf11c4a"
+        }
+      ],
+      "quiesced": true
+    },
+    "omega-ref-phase2-solo19": {
+      "namespace_uid": "aba113cd-7820-4aaf-84e0-14e76f7c54f1",
+      "pods": [],
+      "workloads": [
+        {
+          "name": "fusion-episodes",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-execution",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-messaging",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-model",
+          "replicas": 0
+        },
+        {
+          "name": "fusion-storage",
+          "replicas": 0
+        },
+        {
+          "name": "omega-agent",
+          "replicas": 0
+        }
+      ],
+      "retained_pvcs": [
+        {
+          "name": "state-fusion-episodes-0",
+          "uid": "3cfda9fb-467b-43f7-b40d-4c0b9b6072f7"
+        },
+        {
+          "name": "state-fusion-execution-0",
+          "uid": "908026e1-c964-449d-9d98-09a2f03679cb"
+        },
+        {
+          "name": "state-fusion-messaging-0",
+          "uid": "4d51e201-9ca7-4780-b28d-d817696bf8b4"
+        },
+        {
+          "name": "state-fusion-model-0",
+          "uid": "95f7af8c-6ef7-41b2-9bbb-6cc91c15b31e"
+        },
+        {
+          "name": "state-fusion-storage-0",
+          "uid": "4d297e22-3397-4a37-bede-09e6e36feb1d"
+        },
+        {
+          "name": "state-omega-agent-0",
+          "uid": "09259e05-f3b3-4c46-a90a-796876ff304b"
+        }
+      ],
+      "quiesced": true
+    }
+  },
+  "irc_namespaces_deleted": [
+    "omega-ref-p2irc19-01-0-correct",
+    "omega-ref-p2irc19-01-1-uncertain-send",
+    "omega-ref-p2irc19-01-2-wrong-permitted",
+    "omega-ref-p2irc19-01-3-absent-corpus",
+    "omega-ref-p2irc19-01-4-unready-search",
+    "omega-ref-p2irc19-01-5-missing-payload"
+  ],
+  "workbench_loopback_ports_closed": {
+    "8781": true,
+    "8782": true
+  },
+  "retention": "Task namespace PVCs and failed/incomplete journals retained; no rollback, reset, or resumed expired work. Fenced clone remains observation-only. Private host restore scratch removed in restore report.",
+  "protected_comparison": "evidence/phase2/final/protected-resources.json",
+  "additional_live_generations": 0,
+  "after_final_stage_observer": {
+    "at": "2026-11-02T21:54:34.429263+00:00",
+    "task_pods": [],
+    "helpers_deleted": true,
+    "owners_quiesced": true,
+    "read_only_pvc_check": true
+  }
+}

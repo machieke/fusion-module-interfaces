@@ -1,0 +1,258 @@
+{
+  "additional_live_generations": 0,
+  "artifact_verifier_help": "EXECUTED_INSTALLED_CONSOLE_SCRIPT",
+  "baseline_commit": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "changed_during_run": [],
+  "deployed_workbench": "UNRUN_BY_THIS_SUITE",
+  "elapsed_seconds": 18.669,
+  "executed_command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/operator-venv/bin/python",
+    "-m",
+    "unittest",
+    "tests.test_phase2_sdk",
+    "tests.test_phase2_sdk_contracts",
+    "tests.test_phase2_sdk_compatibility",
+    "sdk.test_operator_package",
+    "-v"
+  ],
+  "fresh_namespace_artifact_install": "UNRUN_BY_THIS_SUITE",
+  "full_artifact_verification": "UNRUN_OPTIONAL_PYYAML_NOT_INSTALLED_BY_CORE_TEST",
+  "generative_runtime_contact": "NONE",
+  "hosted_ci": "NOT_OBSERVED",
+  "inventory_path": "sdk/dist/operator-development-01/dependency-inventory.json",
+  "inventory_sha256": "40f94360c39f5a38842fa9904b121ff4e0194502e0f8c9f42dcedf2b5944c09a",
+  "license_metadata": "NOASSERTION_RETAINED",
+  "limitations": [
+    "Development source only; final freeze remains owned by primary programme.",
+    "Broad reference CLI/install/upgrade/campaign closure not included; source-root deploy paths remain a primary implementation gap.",
+    "Operator host package calls preview_operator in the selected deployed image; that owner/runtime module is intentionally not in the host wheel.",
+    "Actual HTTPS SDK tests use independent atomic-file contract fixtures; no DeTTa/native/cluster provider claim.",
+    "No service or runtime started by operator tests; command transport was explicitly mocked."
+  ],
+  "operator_installation": "FRESH_CLIENT_AND_OPERATOR_ONLY_VENV_NO_REPO_PYTHONPATH",
+  "operator_methods": 3,
+  "operator_subprocess_boundary": "MOCKED_NO_CLUSTER_CONTACT",
+  "qualification": "DEVELOPMENT_RUN_NOT_FINAL_PUBLICATION",
+  "returncode": 0,
+  "schema": "fusion-phase2-operator-package-qualification/1",
+  "sdk_regression_methods": 17,
+  "sources_after": {
+    "docs/phase2/sdk-compatibility.md": "af743ae3f52509a47886a0481a48cad1d4445b27ce23ce44559b3c2bb1096a62",
+    "examples/phase2_provider/__init__.py": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+    "examples/phase2_provider/caller.py": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+    "examples/phase2_provider/conformance.py": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+    "examples/phase2_provider/server.py": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+    "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+    "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+    "fusion/adapters/fixture_feed.py": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+    "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+    "fusion/lookup_contracts.py": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+    "fusion/memory_contracts.py": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+    "fusion/memory_types.py": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+    "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+    "fusion/ports.py": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+    "fusion/preview_client.py": "230131eaf4752f22bb934ab84f4f560b427834127370ec19905838db95226ece",
+    "fusion/preview_handles.py": "d180a1a62bdc842a31c92705edfec7e0e020786c1bd17eb87e9581d84490f2d0",
+    "fusion/preview_tools.py": "9ec0399916da54e130efcb1f7e8eb75b5d887af7968cd715d26d916b4b824991",
+    "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+    "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+    "integration/single_node/__init__.py": "e781ae865021224eca8bb1e6860895c9220509ddbf11823b0da11aa19e609ba1",
+    "integration/single_node/preview_workbench.py": "35d35b5c402fcc7d81813a3c0dde425dc6a7e8336da96e5864a7ad03ea26bd5b",
+    "integration/single_node/reference_artifacts.py": "92788dc78813f35bee95562c2c02eeb14ff6a6d257e5fad61639491f7829466c",
+    "integration/single_node/reference_ops.py": "ac6184ed22198c525abf4db7e3a33e628ed04166f5ad4e6d42bb3f9d91ae9db5",
+    "sdk/OPERATOR.md": "3ec6208b1d07fc626581e28938261c18bd15869286c98d4b29973a2269c56fe2",
+    "sdk/README.md": "ade30f415a49969c94a40cf5ee73b1a7aa51a292f17fa75acbbbd1b808905e9c",
+    "sdk/build.py": "ae7b08378127fd330e3cb8d231d4e3be64f7bea0fea9d42f4ff20c040aea738a",
+    "sdk/exports.py": "c268a360449c27226e815a249b71a41d3bc17f0a262c45e2bbbb3fb7d545d594",
+    "sdk/inventory.py": "4dcb3e781a1473882891a1c6ff8f260b017c2fc50e50b072c32acefbec540a14",
+    "sdk/public-api.json": "2d4dc29525b465969d8bfe9a0b8a456677c6e9adb8927d1fcb0fdab2c4307993",
+    "sdk/test_operator_package.py": "57f71787ddf7db3b6976d50ecd3300d5a83cf225b203cf20c2587b4c0c457523",
+    "tests/test_phase2_sdk.py": "2f286427b8304a1f360210e26647a9f8ddc5c4939cb901fbd4ec504a728ebe2e",
+    "tests/test_phase2_sdk_compatibility.py": "890c751ce89bed9d6e4e17a8d7cc9f423e60aa7f6a5f5fc2898f3a24dc6ce65d",
+    "tests/test_phase2_sdk_contracts.py": "d15fe8f9de5357d6ba23e53ab9053322e129ac68096df84709ce16fb94ae7b32"
+  },
+  "sources_before": {
+    "docs/phase2/sdk-compatibility.md": "af743ae3f52509a47886a0481a48cad1d4445b27ce23ce44559b3c2bb1096a62",
+    "examples/phase2_provider/__init__.py": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+    "examples/phase2_provider/caller.py": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+    "examples/phase2_provider/conformance.py": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+    "examples/phase2_provider/server.py": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+    "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+    "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+    "fusion/adapters/fixture_feed.py": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+    "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+    "fusion/lookup_contracts.py": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+    "fusion/memory_contracts.py": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+    "fusion/memory_types.py": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+    "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+    "fusion/ports.py": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+    "fusion/preview_client.py": "230131eaf4752f22bb934ab84f4f560b427834127370ec19905838db95226ece",
+    "fusion/preview_handles.py": "d180a1a62bdc842a31c92705edfec7e0e020786c1bd17eb87e9581d84490f2d0",
+    "fusion/preview_tools.py": "9ec0399916da54e130efcb1f7e8eb75b5d887af7968cd715d26d916b4b824991",
+    "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+    "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+    "integration/single_node/__init__.py": "e781ae865021224eca8bb1e6860895c9220509ddbf11823b0da11aa19e609ba1",
+    "integration/single_node/preview_workbench.py": "35d35b5c402fcc7d81813a3c0dde425dc6a7e8336da96e5864a7ad03ea26bd5b",
+    "integration/single_node/reference_artifacts.py": "92788dc78813f35bee95562c2c02eeb14ff6a6d257e5fad61639491f7829466c",
+    "integration/single_node/reference_ops.py": "ac6184ed22198c525abf4db7e3a33e628ed04166f5ad4e6d42bb3f9d91ae9db5",
+    "sdk/OPERATOR.md": "3ec6208b1d07fc626581e28938261c18bd15869286c98d4b29973a2269c56fe2",
+    "sdk/README.md": "ade30f415a49969c94a40cf5ee73b1a7aa51a292f17fa75acbbbd1b808905e9c",
+    "sdk/build.py": "ae7b08378127fd330e3cb8d231d4e3be64f7bea0fea9d42f4ff20c040aea738a",
+    "sdk/exports.py": "c268a360449c27226e815a249b71a41d3bc17f0a262c45e2bbbb3fb7d545d594",
+    "sdk/inventory.py": "4dcb3e781a1473882891a1c6ff8f260b017c2fc50e50b072c32acefbec540a14",
+    "sdk/public-api.json": "2d4dc29525b465969d8bfe9a0b8a456677c6e9adb8927d1fcb0fdab2c4307993",
+    "sdk/test_operator_package.py": "57f71787ddf7db3b6976d50ecd3300d5a83cf225b203cf20c2587b4c0c457523",
+    "tests/test_phase2_sdk.py": "2f286427b8304a1f360210e26647a9f8ddc5c4939cb901fbd4ec504a728ebe2e",
+    "tests/test_phase2_sdk_compatibility.py": "890c751ce89bed9d6e4e17a8d7cc9f423e60aa7f6a5f5fc2898f3a24dc6ce65d",
+    "tests/test_phase2_sdk_contracts.py": "d15fe8f9de5357d6ba23e53ab9053322e129ac68096df84709ce16fb94ae7b32"
+  },
+  "started_utc": "2026-11-02T16:52:02.065051+00:00",
+  "status": "PASS",
+  "stderr": "test_descriptor_profile_version_and_guarantee_refusals (tests.test_phase2_sdk.HTTPSBoundaries.test_descriptor_profile_version_and_guarantee_refusals) ... ok\ntest_identical_adapted_caller_under_local_and_https_composition (tests.test_phase2_sdk.HTTPSBoundaries.test_identical_adapted_caller_under_local_and_https_composition) ... ok\ntest_live_revocation_and_wrong_credentials (tests.test_phase2_sdk.HTTPSBoundaries.test_live_revocation_and_wrong_credentials) ... ok\ntest_lost_write_response_is_unknown_and_same_identity_replays (tests.test_phase2_sdk.HTTPSBoundaries.test_lost_write_response_is_unknown_and_same_identity_replays) ... ok\ntest_original_deadline_and_no_implicit_retry (tests.test_phase2_sdk.HTTPSBoundaries.test_original_deadline_and_no_implicit_retry) ... ok\ntest_reply_principal_request_selection_and_payload_binding (tests.test_phase2_sdk.HTTPSBoundaries.test_reply_principal_request_selection_and_payload_binding) ... ok\ntest_shared_conformance_cases (tests.test_phase2_sdk.HTTPSBoundaries.test_shared_conformance_cases) ... ok\ntest_strict_input_and_bounded_batch (tests.test_phase2_sdk.HTTPSBoundaries.test_strict_input_and_bounded_batch) ... ok\ntest_untrusted_certificate_is_refused (tests.test_phase2_sdk.HTTPSBoundaries.test_untrusted_certificate_is_refused) ... ok\ntest_extracted_https_provider_consumer_and_process_kill_recovery (tests.test_phase2_sdk.InstalledKit.test_extracted_https_provider_consumer_and_process_kill_recovery) ... ok\ntest_installed_imports_are_independent_and_sources_exact (tests.test_phase2_sdk.InstalledKit.test_installed_imports_are_independent_and_sources_exact) ... ok\ntest_wheel_build_is_reproducible_and_has_no_secret_inputs (tests.test_phase2_sdk.InstalledKit.test_wheel_build_is_reproducible_and_has_no_secret_inputs) ... ok\ntest_client_only_install_exports_exact_pure_contracts (tests.test_phase2_sdk_contracts.InstalledPureContracts.test_client_only_install_exports_exact_pure_contracts) ... ok\ntest_handle_kinds_and_typed_batch_admission_execute_when_installed (tests.test_phase2_sdk_contracts.InstalledPureContracts.test_handle_kinds_and_typed_batch_admission_execute_when_installed) ... ok\ntest_accepted_identity_and_descriptor_survive_compatible_package_restart (tests.test_phase2_sdk_compatibility.InstalledWireCompatibility.test_accepted_identity_and_descriptor_survive_compatible_package_restart) ... ok\ntest_four_actual_client_provider_package_combinations (tests.test_phase2_sdk_compatibility.InstalledWireCompatibility.test_four_actual_client_provider_package_combinations) ... ok\ntest_refusals_separate_client_preflight_from_actual_wire_binding (tests.test_phase2_sdk_compatibility.InstalledWireCompatibility.test_refusals_separate_client_preflight_from_actual_wire_binding) ... ok\ntest_installed_entrypoints_and_sources_without_checkout_or_provider (sdk.test_operator_package.OperatorPackage.test_installed_entrypoints_and_sources_without_checkout_or_provider) ... ok\ntest_inventory_uses_actual_wheels_and_retains_unknown_licenses (sdk.test_operator_package.OperatorPackage.test_inventory_uses_actual_wheels_and_retains_unknown_licenses) ... ok\ntest_operator_keeps_explicit_selection_and_remote_pod_boundary (sdk.test_operator_package.OperatorPackage.test_operator_keeps_explicit_selection_and_remote_pod_boundary) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 18.547s\n\nOK\n",
+  "stdout": "",
+  "unittest_methods": 20,
+  "vulnerability_scan": "NOT_RUN",
+  "wheel_build": {
+    "client": {
+      "file": "fusion_module_client-0.2.0-py3-none-any.whl",
+      "sha256": "022e75a11fee19c62f6ee54af7813a1cf84f5f65e020eae254c8ddc99c799957",
+      "sources": {
+        "fusion/__init__.py": {
+          "bytes": 73,
+          "sha256": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+          "source": "fusion/__init__.py"
+        },
+        "fusion/contracts.py": {
+          "bytes": 8746,
+          "sha256": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+          "source": "fusion/contracts.py"
+        },
+        "fusion/lookup_contracts.py": {
+          "bytes": 12359,
+          "sha256": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+          "source": "fusion/lookup_contracts.py"
+        },
+        "fusion/memory_contracts.py": {
+          "bytes": 14579,
+          "sha256": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+          "source": "fusion/memory_contracts.py"
+        },
+        "fusion/memory_types.py": {
+          "bytes": 2565,
+          "sha256": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+          "source": "fusion/memory_types.py"
+        },
+        "fusion/ports.py": {
+          "bytes": 11306,
+          "sha256": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+          "source": "fusion/ports.py"
+        },
+        "fusion/preview_client.py": {
+          "bytes": 9748,
+          "sha256": "230131eaf4752f22bb934ab84f4f560b427834127370ec19905838db95226ece",
+          "source": "fusion/preview_client.py"
+        },
+        "fusion/preview_handles.py": {
+          "bytes": 6209,
+          "sha256": "d180a1a62bdc842a31c92705edfec7e0e020786c1bd17eb87e9581d84490f2d0",
+          "source": "fusion/preview_handles.py"
+        },
+        "fusion/preview_tools.py": {
+          "bytes": 16147,
+          "sha256": "9ec0399916da54e130efcb1f7e8eb75b5d887af7968cd715d26d916b4b824991",
+          "source": "fusion/preview_tools.py"
+        },
+        "fusion/registry.py": {
+          "bytes": 4548,
+          "sha256": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+          "source": "fusion/registry.py"
+        },
+        "fusion/responses.py": {
+          "bytes": 9828,
+          "sha256": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+          "source": "fusion/responses.py"
+        },
+        "fusion_sdk/__init__.py": {
+          "bytes": 1482,
+          "sha256": "c268a360449c27226e815a249b71a41d3bc17f0a262c45e2bbbb3fb7d545d594",
+          "source": "sdk/exports.py"
+        },
+        "fusion_sdk/public-api.json": {
+          "bytes": 1597,
+          "sha256": "2d4dc29525b465969d8bfe9a0b8a456677c6e9adb8927d1fcb0fdab2c4307993",
+          "source": "sdk/public-api.json"
+        }
+      }
+    },
+    "live_generations": 0,
+    "operator": {
+      "file": "fusion_preview_operator-0.2.0-py3-none-any.whl",
+      "sha256": "7de1a7372a058813efd762f817efb7022639825dceaf56f02f1879ce85ea7a37",
+      "sources": {
+        "integration/single_node/__init__.py": {
+          "bytes": 76,
+          "sha256": "e781ae865021224eca8bb1e6860895c9220509ddbf11823b0da11aa19e609ba1",
+          "source": "integration/single_node/__init__.py"
+        },
+        "integration/single_node/preview_workbench.py": {
+          "bytes": 14947,
+          "sha256": "35d35b5c402fcc7d81813a3c0dde425dc6a7e8336da96e5864a7ad03ea26bd5b",
+          "source": "integration/single_node/preview_workbench.py"
+        },
+        "integration/single_node/reference_artifacts.py": {
+          "bytes": 3432,
+          "sha256": "92788dc78813f35bee95562c2c02eeb14ff6a6d257e5fad61639491f7829466c",
+          "source": "integration/single_node/reference_artifacts.py"
+        },
+        "integration/single_node/reference_ops.py": {
+          "bytes": 9011,
+          "sha256": "ac6184ed22198c525abf4db7e3a33e628ed04166f5ad4e6d42bb3f9d91ae9db5",
+          "source": "integration/single_node/reference_ops.py"
+        }
+      }
+    },
+    "provider": {
+      "file": "fusion_file_feed_example-0.2.0-py3-none-any.whl",
+      "sha256": "92361d6be2a18868c711c34ed621df629e905d105797664cc382256b373237a8",
+      "sources": {
+        "fusion/adapters/__init__.py": {
+          "bytes": 64,
+          "sha256": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+          "source": "fusion/adapters/__init__.py"
+        },
+        "fusion/adapters/fixture_feed.py": {
+          "bytes": 5282,
+          "sha256": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+          "source": "fusion/adapters/fixture_feed.py"
+        },
+        "fusion/policy.py": {
+          "bytes": 1398,
+          "sha256": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+          "source": "fusion/policy.py"
+        },
+        "phase2_provider/__init__.py": {
+          "bytes": 78,
+          "sha256": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+          "source": "examples/phase2_provider/__init__.py"
+        },
+        "phase2_provider/caller.py": {
+          "bytes": 533,
+          "sha256": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+          "source": "examples/phase2_provider/caller.py"
+        },
+        "phase2_provider/conformance.py": {
+          "bytes": 2757,
+          "sha256": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+          "source": "examples/phase2_provider/conformance.py"
+        },
+        "phase2_provider/server.py": {
+          "bytes": 8553,
+          "sha256": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+          "source": "examples/phase2_provider/server.py"
+        }
+      }
+    },
+    "schema": "fusion-preview-sdk-build/1"
+  },
+  "workbench_help": "EXECUTED_INSTALLED_CONSOLE_SCRIPT"
+}

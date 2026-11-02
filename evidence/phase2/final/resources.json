@@ -1,0 +1,734 @@
+{
+  "namespace": "omega-ref-phase2-main19",
+  "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "classification": "BOUNDED_OWNER_LOCAL_OBSERVATION_NOT_SLA",
+  "owners": {
+    "f1r3node": {
+      "image": "docker.io/library/fusion-reference-chain@sha256:cc9c3fbeb167c8ced37638a9308ab83620863e8b1403fe5a96d3ad1df98b446a",
+      "configured_resources": {
+        "limits": {
+          "cpu": "3",
+          "memory": "4Gi"
+        },
+        "requests": {
+          "cpu": "1",
+          "memory": "1Gi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654986610072766,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 93,
+            "rss_bytes": 29384704
+          },
+          {
+            "pid": 7,
+            "ppid": 1,
+            "cpu_ticks": 511,
+            "rss_bytes": 112148480
+          },
+          {
+            "pid": 32,
+            "ppid": 0,
+            "cpu_ticks": 10,
+            "rss_bytes": 17047552
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 4610824,
+        "state_files": 27,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "6290224135",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "77541376",
+          "v1.memory.max_usage_in_bytes": "184504320",
+          "v1.memory.limit_in_bytes": "4294967296",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-attention": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654987094989508,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 89,
+            "rss_bytes": 33120256
+          },
+          {
+            "pid": 32,
+            "ppid": 0,
+            "cpu_ticks": 11,
+            "rss_bytes": 17027072
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 82166,
+        "state_files": 5,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "1031061093",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "32292864",
+          "v1.memory.max_usage_in_bytes": "47489024",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-beliefs": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654987575928370,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 93,
+            "rss_bytes": 33202176
+          },
+          {
+            "pid": 31,
+            "ppid": 0,
+            "cpu_ticks": 12,
+            "rss_bytes": 16998400
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 123120,
+        "state_files": 7,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "1082333783",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "32464896",
+          "v1.memory.max_usage_in_bytes": "47890432",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-commitment": {
+      "image": "docker.io/library/fusion-reference-chain@sha256:cc9c3fbeb167c8ced37638a9308ab83620863e8b1403fe5a96d3ad1df98b446a",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654987983782587,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 74,
+            "rss_bytes": 32370688
+          },
+          {
+            "pid": 17,
+            "ppid": 0,
+            "cpu_ticks": 14,
+            "rss_bytes": 17092608
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 24865,
+        "state_files": 6,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "889503854",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "32342016",
+          "v1.memory.max_usage_in_bytes": "32948224",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-embedding": {
+      "image": "docker.io/library/fusion-memory-embedding@sha256:d5ce4e6e3ca9218d12784d5fa0ab3cb7bbc37201193951f642ab2abdad94b6ec",
+      "configured_resources": {
+        "limits": {
+          "cpu": "3",
+          "memory": "5Gi"
+        },
+        "requests": {
+          "cpu": "2",
+          "memory": "3Gi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654988432447113,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 80,
+            "rss_bytes": 35962880
+          },
+          {
+            "pid": 7,
+            "ppid": 1,
+            "cpu_ticks": 1751,
+            "rss_bytes": 459354112
+          },
+          {
+            "pid": 46,
+            "ppid": 0,
+            "cpu_ticks": 11,
+            "rss_bytes": 17043456
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 29705,
+        "state_files": 8,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "18446007268",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "394240000",
+          "v1.memory.max_usage_in_bytes": "1461219328",
+          "v1.memory.limit_in_bytes": "5368709120",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-episodes": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654988874433400,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 92,
+            "rss_bytes": 33230848
+          },
+          {
+            "pid": 34,
+            "ppid": 0,
+            "cpu_ticks": 11,
+            "rss_bytes": 17031168
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 631027,
+        "state_files": 8,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "1049375679",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "32628736",
+          "v1.memory.max_usage_in_bytes": "47878144",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-execution": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654989315205401,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 557,
+            "rss_bytes": 36147200
+          },
+          {
+            "pid": 90,
+            "ppid": 0,
+            "cpu_ticks": 10,
+            "rss_bytes": 16932864
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 98593,
+        "state_files": 10,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "5690014748",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "33898496",
+          "v1.memory.max_usage_in_bytes": "47988736",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-messaging": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "500m",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654989773870396,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 79,
+            "rss_bytes": 33316864
+          },
+          {
+            "pid": 35,
+            "ppid": 0,
+            "cpu_ticks": 14,
+            "rss_bytes": 17014784
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 37110,
+        "state_files": 6,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "961323473",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "29949952",
+          "v1.memory.max_usage_in_bytes": "30576640",
+          "v1.memory.limit_in_bytes": "268435456",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-model": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "500m",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654990186456077,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 76,
+            "rss_bytes": 32505856
+          },
+          {
+            "pid": 35,
+            "ppid": 0,
+            "cpu_ticks": 13,
+            "rss_bytes": 16973824
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 835818,
+        "state_files": 6,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "905876269",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "29646848",
+          "v1.memory.max_usage_in_bytes": "30273536",
+          "v1.memory.limit_in_bytes": "268435456",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-relations": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654990623099800,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 90,
+            "rss_bytes": 33361920
+          },
+          {
+            "pid": 34,
+            "ppid": 0,
+            "cpu_ticks": 13,
+            "rss_bytes": 17010688
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 28918,
+        "state_files": 5,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "1054600431",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "32362496",
+          "v1.memory.max_usage_in_bytes": "47652864",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-search": {
+      "image": "docker.io/library/fusion-memory-caller@sha256:e3982b8cbb7283530df8563047b8a0b9c9316b1da49e7ba33f3074474876587b",
+      "configured_resources": {
+        "limits": {
+          "cpu": "2",
+          "memory": "1Gi"
+        },
+        "requests": {
+          "cpu": "200m",
+          "memory": "256Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654991074314171,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 263,
+            "rss_bytes": 101228544
+          },
+          {
+            "pid": 54,
+            "ppid": 0,
+            "cpu_ticks": 11,
+            "rss_bytes": 17031168
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 2868901,
+        "state_files": 44,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "2765910695",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "70451200",
+          "v1.memory.max_usage_in_bytes": "71118848",
+          "v1.memory.limit_in_bytes": "1073741824",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "fusion-storage": {
+      "image": "docker.io/library/fusion-single-node@sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "64Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654991997413564,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 253,
+            "rss_bytes": 35180544
+          },
+          {
+            "pid": 152,
+            "ppid": 0,
+            "cpu_ticks": 12,
+            "rss_bytes": 16986112
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 13205436,
+        "state_files": 9509,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "4718556127",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "34373632",
+          "v1.memory.max_usage_in_bytes": "34897920",
+          "v1.memory.limit_in_bytes": "268435456",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "omega-agent": {
+      "image": "docker.io/library/fusion-memory-caller@sha256:e3982b8cbb7283530df8563047b8a0b9c9316b1da49e7ba33f3074474876587b",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654992467454013,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 77,
+            "rss_bytes": 37953536
+          },
+          {
+            "pid": 32,
+            "ppid": 0,
+            "cpu_ticks": 13,
+            "rss_bytes": 17072128
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 5409962,
+        "state_files": 121,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "1726299878",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "35708928",
+          "v1.memory.max_usage_in_bytes": "50274304",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    },
+    "omega-agent-b": {
+      "image": "docker.io/library/fusion-memory-caller@sha256:e3982b8cbb7283530df8563047b8a0b9c9316b1da49e7ba33f3074474876587b",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "sample": {
+        "observed_unix_ns": 1793654992957406808,
+        "processes": [
+          {
+            "pid": 1,
+            "ppid": 0,
+            "cpu_ticks": 104,
+            "rss_bytes": 37318656
+          },
+          {
+            "pid": 36,
+            "ppid": 0,
+            "cpu_ticks": 12,
+            "rss_bytes": 16977920
+          }
+        ],
+        "cpu_ticks_per_second": 100,
+        "state_bytes": 2621001,
+        "state_files": 81,
+        "cgroup": {
+          "cpu.stat": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.peak": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "cpu.max": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "v1.cpuacct.usage": "1180309098",
+          "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+          "v1.cpu.cfs_quota_us": "-1",
+          "v1.cpu.cfs_period_us": "100000",
+          "v1.memory.usage_in_bytes": "35278848",
+          "v1.memory.max_usage_in_bytes": "50405376",
+          "v1.memory.limit_in_bytes": "536870912",
+          "v1.memory.failcnt": "0"
+        },
+        "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+        "live_model_throughput": "NOT_RUN"
+      }
+    }
+  },
+  "additional_live_generations": 0
+}

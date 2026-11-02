@@ -1,0 +1,579 @@
+{
+  "classification": "REAL_BROWSER_INSTALLED_OPERATOR_REAL_NATIVE_RECORDED_MODEL",
+  "namespace": "omega-ref-phase2-solo19",
+  "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+  "inputs": [
+    {
+      "identity": "workbench-4ef1567d-9e2d-4220-97ee-37f9c5b848d8",
+      "command": "pin task Synthetic workbench note from native dispatch",
+      "clicked_ms": 1793653842864,
+      "accepted": {
+        "id": "workbench-4ef1567d-9e2d-4220-97ee-37f9c5b848d8",
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "sequence": 1,
+        "assignment": "synthetic-task",
+        "accepted": 1793653844634,
+        "deadline": 1793653964634
+      },
+      "observed": {
+        "accepted": 1793653844634,
+        "assignment": "synthetic-task",
+        "deadline": 1793653964634,
+        "id": "workbench-4ef1567d-9e2d-4220-97ee-37f9c5b848d8",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "pin task Synthetic workbench note from native dispatch"
+        },
+        "result": {
+          "occurrences": [
+            "e2c10b86-5494-54a7-85c7-16d190b760b4"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((pin task Synthetic workbench note from native dispatch) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+          "turn": 1
+        },
+        "sequence": 1,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      },
+      "native_context": {
+        "digest": "6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb",
+        "interpretation": "unverified-task-notes",
+        "items": {
+          "task": "Synthetic workbench note from native dispatch"
+        },
+        "profile": "working-task-context/1",
+        "revision": 1
+      },
+      "finished_ms": 1793653855076
+    },
+    {
+      "identity": "workbench-d7830e3f-ba49-4c5f-a9ce-21d78b4195db",
+      "command": "task-context",
+      "clicked_ms": 1793653855079,
+      "accepted": {
+        "id": "workbench-d7830e3f-ba49-4c5f-a9ce-21d78b4195db",
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "sequence": 2,
+        "assignment": "synthetic-task",
+        "accepted": 1793653856882,
+        "deadline": 1793653976882
+      },
+      "observed": {
+        "accepted": 1793653856882,
+        "assignment": "synthetic-task",
+        "deadline": 1793653976882,
+        "id": "workbench-d7830e3f-ba49-4c5f-a9ce-21d78b4195db",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "task-context"
+        },
+        "result": {
+          "occurrences": [
+            "7a9b3df0-e2e3-5171-8ce1-bcd2bbaa4ad0"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+          "turn": 2
+        },
+        "sequence": 2,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      },
+      "native_context": {
+        "digest": "6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb",
+        "interpretation": "unverified-task-notes",
+        "items": {
+          "task": "Synthetic workbench note from native dispatch"
+        },
+        "profile": "working-task-context/1",
+        "revision": 1
+      },
+      "finished_ms": 1793653867200
+    },
+    {
+      "identity": "workbench-bd52922e-d53c-4d50-87e1-4253b00d9a17",
+      "command": "unpin task",
+      "clicked_ms": 1793653867978,
+      "accepted": {
+        "id": "workbench-bd52922e-d53c-4d50-87e1-4253b00d9a17",
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "sequence": 3,
+        "assignment": "synthetic-task",
+        "accepted": 1793653869724,
+        "deadline": 1793653989724
+      },
+      "observed": {
+        "accepted": 1793653869724,
+        "assignment": "synthetic-task",
+        "deadline": 1793653989724,
+        "id": "workbench-bd52922e-d53c-4d50-87e1-4253b00d9a17",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "unpin task"
+        },
+        "result": {
+          "occurrences": [
+            "f451600b-55d0-5c3a-b09b-5b3378311883"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((unpin task) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+          "turn": 3
+        },
+        "sequence": 3,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      },
+      "native_context": {
+        "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "interpretation": "unverified-task-notes",
+        "items": {},
+        "profile": "working-task-context/1",
+        "revision": 2
+      },
+      "finished_ms": 1793653880129
+    },
+    {
+      "identity": "workbench-884fd9b2-d255-49a3-a567-cd58cd7df205",
+      "command": "task-context",
+      "clicked_ms": 1793653880131,
+      "accepted": {
+        "id": "workbench-884fd9b2-d255-49a3-a567-cd58cd7df205",
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "sequence": 4,
+        "assignment": "synthetic-task",
+        "accepted": 1793653881887,
+        "deadline": 1793654001887
+      },
+      "observed": {
+        "accepted": 1793653881887,
+        "assignment": "synthetic-task",
+        "deadline": 1793654001887,
+        "id": "workbench-884fd9b2-d255-49a3-a567-cd58cd7df205",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "task-context"
+        },
+        "result": {
+          "occurrences": [
+            "58486e3b-6887-5073-bd19-5bb49ad9ec60"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+          "turn": 4
+        },
+        "sequence": 4,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      },
+      "native_context": {
+        "digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "interpretation": "unverified-task-notes",
+        "items": {},
+        "profile": "working-task-context/1",
+        "revision": 2
+      },
+      "finished_ms": 1793653892377
+    }
+  ],
+  "controls": [
+    {
+      "action": "pause",
+      "state": {
+        "state": "paused",
+        "accepted": "4",
+        "completed": "4",
+        "pending": "0",
+        "token_empty": true,
+        "notice": "Read committed session state. Deadlines and receipts are unchanged.",
+        "inputs": [
+          {
+            "accepted": 1793653844634,
+            "assignment": "synthetic-task",
+            "deadline": 1793653964634,
+            "id": "workbench-4ef1567d-9e2d-4220-97ee-37f9c5b848d8",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "pin task Synthetic workbench note from native dispatch"
+            },
+            "result": {
+              "occurrences": [
+                "e2c10b86-5494-54a7-85c7-16d190b760b4"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((pin task Synthetic workbench note from native dispatch) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+              "turn": 1
+            },
+            "sequence": 1,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653856882,
+            "assignment": "synthetic-task",
+            "deadline": 1793653976882,
+            "id": "workbench-d7830e3f-ba49-4c5f-a9ce-21d78b4195db",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "task-context"
+            },
+            "result": {
+              "occurrences": [
+                "7a9b3df0-e2e3-5171-8ce1-bcd2bbaa4ad0"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+              "turn": 2
+            },
+            "sequence": 2,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653869724,
+            "assignment": "synthetic-task",
+            "deadline": 1793653989724,
+            "id": "workbench-bd52922e-d53c-4d50-87e1-4253b00d9a17",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "unpin task"
+            },
+            "result": {
+              "occurrences": [
+                "f451600b-55d0-5c3a-b09b-5b3378311883"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((unpin task) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+              "turn": 3
+            },
+            "sequence": 3,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653881887,
+            "assignment": "synthetic-task",
+            "deadline": 1793654001887,
+            "id": "workbench-884fd9b2-d255-49a3-a567-cd58cd7df205",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "task-context"
+            },
+            "result": {
+              "occurrences": [
+                "58486e3b-6887-5073-bd19-5bb49ad9ec60"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+              "turn": 4
+            },
+            "sequence": 4,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          }
+        ]
+      }
+    },
+    {
+      "action": "resume",
+      "state": {
+        "state": "active",
+        "accepted": "4",
+        "completed": "4",
+        "pending": "0",
+        "token_empty": true,
+        "notice": "Read committed session state. Deadlines and receipts are unchanged.",
+        "inputs": [
+          {
+            "accepted": 1793653844634,
+            "assignment": "synthetic-task",
+            "deadline": 1793653964634,
+            "id": "workbench-4ef1567d-9e2d-4220-97ee-37f9c5b848d8",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "pin task Synthetic workbench note from native dispatch"
+            },
+            "result": {
+              "occurrences": [
+                "e2c10b86-5494-54a7-85c7-16d190b760b4"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((pin task Synthetic workbench note from native dispatch) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+              "turn": 1
+            },
+            "sequence": 1,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653856882,
+            "assignment": "synthetic-task",
+            "deadline": 1793653976882,
+            "id": "workbench-d7830e3f-ba49-4c5f-a9ce-21d78b4195db",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "task-context"
+            },
+            "result": {
+              "occurrences": [
+                "7a9b3df0-e2e3-5171-8ce1-bcd2bbaa4ad0"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+              "turn": 2
+            },
+            "sequence": 2,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653869724,
+            "assignment": "synthetic-task",
+            "deadline": 1793653989724,
+            "id": "workbench-bd52922e-d53c-4d50-87e1-4253b00d9a17",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "unpin task"
+            },
+            "result": {
+              "occurrences": [
+                "f451600b-55d0-5c3a-b09b-5b3378311883"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((unpin task) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+              "turn": 3
+            },
+            "sequence": 3,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653881887,
+            "assignment": "synthetic-task",
+            "deadline": 1793654001887,
+            "id": "workbench-884fd9b2-d255-49a3-a567-cd58cd7df205",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "task-context"
+            },
+            "result": {
+              "occurrences": [
+                "58486e3b-6887-5073-bd19-5bb49ad9ec60"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+              "turn": 4
+            },
+            "sequence": 4,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          }
+        ]
+      }
+    },
+    {
+      "action": "close",
+      "state": {
+        "state": "closed",
+        "accepted": "4",
+        "completed": "4",
+        "pending": "0",
+        "token_empty": true,
+        "notice": "Read committed session state. Deadlines and receipts are unchanged.",
+        "inputs": [
+          {
+            "accepted": 1793653844634,
+            "assignment": "synthetic-task",
+            "deadline": 1793653964634,
+            "id": "workbench-4ef1567d-9e2d-4220-97ee-37f9c5b848d8",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "pin task Synthetic workbench note from native dispatch"
+            },
+            "result": {
+              "occurrences": [
+                "e2c10b86-5494-54a7-85c7-16d190b760b4"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((pin task Synthetic workbench note from native dispatch) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+              "turn": 1
+            },
+            "sequence": 1,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653856882,
+            "assignment": "synthetic-task",
+            "deadline": 1793653976882,
+            "id": "workbench-d7830e3f-ba49-4c5f-a9ce-21d78b4195db",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "task-context"
+            },
+            "result": {
+              "occurrences": [
+                "7a9b3df0-e2e3-5171-8ce1-bcd2bbaa4ad0"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+              "turn": 2
+            },
+            "sequence": 2,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653869724,
+            "assignment": "synthetic-task",
+            "deadline": 1793653989724,
+            "id": "workbench-bd52922e-d53c-4d50-87e1-4253b00d9a17",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "unpin task"
+            },
+            "result": {
+              "occurrences": [
+                "f451600b-55d0-5c3a-b09b-5b3378311883"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((unpin task) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+              "turn": 3
+            },
+            "sequence": 3,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          },
+          {
+            "accepted": 1793653881887,
+            "assignment": "synthetic-task",
+            "deadline": 1793654001887,
+            "id": "workbench-884fd9b2-d255-49a3-a567-cd58cd7df205",
+            "payload": {
+              "assignment": "synthetic-task",
+              "text": "task-context"
+            },
+            "result": {
+              "occurrences": [
+                "58486e3b-6887-5073-bd19-5bb49ad9ec60"
+              ],
+              "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+              "turn": 4
+            },
+            "sequence": 4,
+            "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+            "state": "complete"
+          }
+        ]
+      }
+    }
+  ],
+  "additional_live_generations": 0,
+  "initial_observation": "Selecting unopened session produced NOT_FOUND surfaced as NOT_AVAILABLE; initial automation clicks emitted no POST. Explicit DOM Open control dispatched create and returned200. No command occurrence existed at that point.",
+  "status": "PASS",
+  "initial": {
+    "state": "active",
+    "accepted": "0",
+    "completed": "0",
+    "pending": "0",
+    "token_empty": true,
+    "notice": "Read committed session state. Deadlines and receipts are unchanged.",
+    "inputs": []
+  },
+  "final": {
+    "state": "closed",
+    "accepted": "4",
+    "completed": "4",
+    "pending": "0",
+    "token_empty": true,
+    "notice": "Read committed session state. Deadlines and receipts are unchanged.",
+    "inputs": [
+      {
+        "accepted": 1793653844634,
+        "assignment": "synthetic-task",
+        "deadline": 1793653964634,
+        "id": "workbench-4ef1567d-9e2d-4220-97ee-37f9c5b848d8",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "pin task Synthetic workbench note from native dispatch"
+        },
+        "result": {
+          "occurrences": [
+            "e2c10b86-5494-54a7-85c7-16d190b760b4"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((pin task Synthetic workbench note from native dispatch) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+          "turn": 1
+        },
+        "sequence": 1,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      },
+      {
+        "accepted": 1793653856882,
+        "assignment": "synthetic-task",
+        "deadline": 1793653976882,
+        "id": "workbench-d7830e3f-ba49-4c5f-a9ce-21d78b4195db",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "task-context"
+        },
+        "result": {
+          "occurrences": [
+            "7a9b3df0-e2e3-5171-8ce1-bcd2bbaa4ad0"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_6734c8f657d1dca7623b7ae87a29509ea41d9b0ef2c6b0098b254919e70109fb_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Synthetic workbench note from native dispatch_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+          "turn": 2
+        },
+        "sequence": 2,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      },
+      {
+        "accepted": 1793653869724,
+        "assignment": "synthetic-task",
+        "deadline": 1793653989724,
+        "id": "workbench-bd52922e-d53c-4d50-87e1-4253b00d9a17",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "unpin task"
+        },
+        "result": {
+          "occurrences": [
+            "f451600b-55d0-5c3a-b09b-5b3378311883"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((unpin task) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+          "turn": 3
+        },
+        "sequence": 3,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      },
+      {
+        "accepted": 1793653881887,
+        "assignment": "synthetic-task",
+        "deadline": 1793654001887,
+        "id": "workbench-884fd9b2-d255-49a3-a567-cd58cd7df205",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "task-context"
+        },
+        "result": {
+          "occurrences": [
+            "58486e3b-6887-5073-bd19-5bb49ad9ec60"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:2}))))",
+          "turn": 4
+        },
+        "sequence": 4,
+        "session": "10b4a0b9-7dba-4de3-adc2-5a99ac86508e",
+        "state": "complete"
+      }
+    ]
+  },
+  "screenshot_retention": {
+    "original_requested_paths": {
+      "before_screenshot": "artifacts/phase2/deploy-solo19/workbench/01-empty-session.png",
+      "context_screenshot": "artifacts/phase2/deploy-solo19/workbench/02-native-context.png",
+      "after_screenshot": "artifacts/phase2/deploy-solo19/workbench/03-closed-complete.png"
+    },
+    "observation": "CLI treated trailing --full as output filename; requested intermediate images were not retained. Reviewed final screenshots below are actual files. Functional initial/context observations are retained in JSON."
+  },
+  "screenshots": [
+    {
+      "path": "evidence/phase2/final/workbench/04-closed-summary.png",
+      "sha256": "b0b2fa245f868d5e1b5ec0507991c3d8734958c3bbfad4c6c344b690480ad138",
+      "review": "No credentials; token input empty; approved synthetic content only"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/05-retained-native-results.png",
+      "sha256": "674c6dd2e67ba9e825336e6e16a808b42c60e10d08204bbd78bcb7309f7bde93",
+      "review": "No credentials; token input empty; approved synthetic content only"
+    }
+  ]
+}

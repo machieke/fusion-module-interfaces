@@ -1,0 +1,135 @@
+{
+  "additional_live_generations": 0,
+  "at": "2026-11-02T20:19:30.706434+00:00",
+  "counts": "methods overlap; do not sum as unique cases",
+  "historical_native": {
+    "classification": "prior dev17 real native source unchanged in final18; only reference_ops helper changed between image source maps; not a new final18 execution",
+    "methods": 7,
+    "path": "artifacts/phase2/ci-native-34/preview-native.log",
+    "published_log": "evidence/phase2/final/checks/historical-native-34.log",
+    "sha256": "3d11cf5da8a0127f5c5a4b6bfde77daaec773e54eaf66652c04f9e59601e5357"
+  },
+  "reports": [
+    {
+      "classification": "contract/fixture and real local components as named; not a deployed native workflow",
+      "lane": "preview-fast",
+      "methods": 508,
+      "path": "artifacts/phase2/ci-preview-fast-43/preview-fast.log",
+      "published_log": "evidence/phase2/final/checks/preview-fast.log",
+      "sha256": "d1fcb83f379f7eabfa19c558cbab1a6a6dfcd30055d9e551367bc297f7ec5b27",
+      "tail": [
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 508 tests in 59.744s",
+        "",
+        "OK"
+      ],
+      "test_sources": {
+        "tests/test_phase2_active_memory_ports.py": "23ff56b8a319db09b911fda5d32bfe2ea5cb6ed742f0f38ace1cae4affb37e69",
+        "tests/test_phase2_artifact_contracts.py": "c4ee067c69116121fbe565bed77723018d40d196e263738050713d40aa3d05aa",
+        "tests/test_phase2_backup.py": "20964ec6fc7c5cf3147a9de961c9a7198fb665ecd79af9fa8cde564e3d6a35ed",
+        "tests/test_phase2_backup_boundary.py": "dba71dbaf932fa89b5d085ff27917d3f1e2353cf1320f4966780b668d67cbcaf",
+        "tests/test_phase2_bridge_timing.py": "7ca5dd165d98880feb55a2143fee7d92e90fbb83927ba938e301d50fcd58edb3",
+        "tests/test_phase2_catalogue_adversarial.py": "126ac16839421ead15901a087fa08a9effdb41adc15d2e463506d5ebf1a20d60",
+        "tests/test_phase2_chain.py": "6490d66e2b8c81863ff82f71334278c9b2e907a30f4f2766cca3921480262c16",
+        "tests/test_phase2_chain_observer.py": "9b8684f83629e3ee894149709e7ad1d78f0933166a662cf9ddf3d934ca137e1b",
+        "tests/test_phase2_cognitive_wiring.py": "771cd1e525f878faffb1dc27d2fe7dddc272c3a6b0d6e629ff77e6d545ba511e",
+        "tests/test_phase2_combined_observations.py": "47a44a7f5faf858376a4c366906e876db80ddcea24983230797eb1b567d29112",
+        "tests/test_phase2_context_rendering.py": "3c7b324adc5a3da27abdb49000cf908fa3ab0e4c10936511824f8a5a8d4471d2",
+        "tests/test_phase2_cross_feature_edges.py": "8ae15b5ea193c5225e9ab822abd68ddc7d74ccd92bab39b331f987bb1bd5085d",
+        "tests/test_phase2_deploy.py": "533fa81ecce15399232d4c7a1f971693dd470104603a19439eaaf46b9581af1f",
+        "tests/test_phase2_detta_layout.py": "e69e3f9ba4a7f05648cb1e728b514dda31d0b372dd930e2968c2cb1010f655f4",
+        "tests/test_phase2_facet_ports.py": "827c14458884602a9aad1d41c6d19df45834ebb383757c9f6a6e059ae9a068d9",
+        "tests/test_phase2_fault_configuration.py": "dca88bf307ea6441ea081634ce965f134d0d62397af995c237b52ac29843b8ef",
+        "tests/test_phase2_foundations.py": "e560137b21263a388ee764860e9becbcf79f9cfd40dc4702bbc4bd4b180de83f",
+        "tests/test_phase2_handles.py": "a4d0c9d3846f10458b74d4f093cad69582a16eac4f2b2b857ea87c459ae481a8",
+        "tests/test_phase2_handoff_recovery.py": "caa28a5d0f7ce83541f61e979bce046d861376c9b93aab2fbfc548d61d540cbc",
+        "tests/test_phase2_history_deadlines.py": "dbebceaa7aff5ed3f28c96c0b364559f48cb1d179d04b79b75d3e6e5324d22ad",
+        "tests/test_phase2_history_relations.py": "8eff1435d27cd23fe59f132d9acdb9476844b2e1f5cd7949e3c57783a832b9bb",
+        "tests/test_phase2_inspect_ports.py": "6d642b1fe012d8c1204fe11538bfe2bad4325fa916307faf216d6df160601ad0",
+        "tests/test_phase2_lifecycle.py": "24d45c33a58744eef390722da57b36fdc5bceb18853c58742c25cdfa37cb62c6",
+        "tests/test_phase2_memory_policy.py": "e874b695ba9a59a3dd538998473ef018b5123ee2c973fb41e9e2d7919ed51d0a",
+        "tests/test_phase2_model.py": "11789ad135574af82fe67bdbf8cee2b962d9e89801bcc16fdc99ed1f7eda0340",
+        "tests/test_phase2_native_inspect.py": "f48cb1e52e5be00b0f0862ef9b0b64ddd7cab9430da9741c01076ce710e028f7",
+        "tests/test_phase2_native_relations.py": "b71c1979adbcce68ee501d2428ebd760903f3fe5337fba1ade3f048b83d17b97",
+        "tests/test_phase2_operator_values.py": "f4fe7a8cc708567b3d8f1de0556dc7e40c6d768eade308c7b99238a8466d86f1",
+        "tests/test_phase2_preview_diagnostics.py": "3f1331ad606a69b25a79b22c54b4a28c8f79292fe6f4e8743c2e463516271d59",
+        "tests/test_phase2_preview_wiring.py": "9ab0cca12df7f01f2c5ef0adbd2cdf6d8ee6e15a9e3839ce81cd639515999bb2",
+        "tests/test_phase2_private_scopes.py": "aadb79459b12e413081176f2e9a565b70a408753a7dcfe97762486023d3fc20f",
+        "tests/test_phase2_recorded_proposals.py": "0653fb78154e684d2d6b4373692bd70ab361949b86ac5804fa4634ef0ed3d184",
+        "tests/test_phase2_restore_qualification.py": "5a541a586eaa5535e9a28e128d7f0f9af34c7b232a1a88c4f1ab302cc3c6690b",
+        "tests/test_phase2_scope_qualification.py": "e772a1dc28f28e40983b23a7746f7379e01dc111b267f70bc75a5fe354c68714",
+        "tests/test_phase2_sdk.py": "2f286427b8304a1f360210e26647a9f8ddc5c4939cb901fbd4ec504a728ebe2e",
+        "tests/test_phase2_sdk_compatibility.py": "890c751ce89bed9d6e4e17a8d7cc9f423e60aa7f6a5f5fc2898f3a24dc6ce65d",
+        "tests/test_phase2_sdk_contracts.py": "d15fe8f9de5357d6ba23e53ab9053322e129ac68096df84709ce16fb94ae7b32",
+        "tests/test_phase2_session_bounds.py": "6a897dafaa1e08099cfe52f6e7faa9903032743abf9a14a38d1c35623d50a984",
+        "tests/test_phase2_session_service.py": "94708c98001abfae9f3bb2f00cbd3de6e4c2e54956d0c22d1f74b65d0e7c05bd",
+        "tests/test_phase2_shared_source_qualification.py": "9858cdfb5fbf769258307ae368b40655d304d6f7dcf94ce96ad23f745d839f93",
+        "tests/test_phase2_single_agent_qualification.py": "3291b20d0f60220054559bcdc5c660e46ad07e93111204acab7fd941ae790ced",
+        "tests/test_phase2_single_agent_values.py": "c9740d7de404c179a8e7acaefbd723ce970704c7add0b78e1848ad7208ba7969",
+        "tests/test_phase2_storage_gate.py": "c5b51266d93169fce7eacc6d91fc1c065bf65f70f04eb2a05ba8f3c78557a196",
+        "tests/test_phase2_supersession_cognition.py": "d05811914911db8cdaee4bc57df3c24ca6fc296f8345bf6a4f007c859d4b8180",
+        "tests/test_phase2_tasks.py": "aac3b167e55119b81ff0b93baf33f06d7aecf1d851845257099456d4e26e276e",
+        "tests/test_phase2_text_policy.py": "eaee15778f4dc2c45ce05849285c45ad9c17af36871189f66c867360796498cd",
+        "tests/test_phase2_work_budgets.py": "a85c26ddddf1fd9d6438743c410be1dc18f23eeac7c2b952f4457056112cf576",
+        "tests/test_phase2_workbench.py": "131af463cc690a89f2ca3d085b27110d448d23cd742d9e9aefad7113def28d0b",
+        "tests/test_phase2_workspace.py": "d26382ada23d28f9a1e5b6ecf0d7b3f0d4f05e83850d1c03031a0ae1aa762c66"
+      }
+    },
+    {
+      "classification": "contract/fixture and real local components as named; not a deployed native workflow",
+      "lane": "baseline-fast",
+      "methods": 48,
+      "path": "artifacts/phase2/baseline-fast-44/fast.log",
+      "published_log": "evidence/phase2/final/checks/baseline-fast.log",
+      "sha256": "24dbbfb447d8292d615a4b3fa164ff5913f68596f898d64e7c0370d75a8e29e5",
+      "tail": [
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 48 tests in 18.942s",
+        "",
+        "OK"
+      ],
+      "test_sources": {}
+    },
+    {
+      "classification": "contract/fixture and real local components as named; not a deployed native workflow",
+      "lane": "ownership-policy-focused",
+      "methods": 41,
+      "path": "artifacts/phase2/ownership-policy-tests-41.log",
+      "published_log": "evidence/phase2/final/checks/ownership-policy-focused.log",
+      "sha256": "0c14c07588c6913cd474849ffacf8474ca7008a7a1e69854ad1bd0863799fa12",
+      "tail": [
+        ".........................................",
+        "----------------------------------------------------------------------",
+        "Ran 41 tests in 2.173s",
+        "",
+        "OK"
+      ],
+      "test_sources": {}
+    },
+    {
+      "classification": "contract/fixture and real local components as named; not a deployed native workflow",
+      "lane": "operator-artifact",
+      "methods": 16,
+      "path": "artifacts/phase2/sdk-final-42.log",
+      "published_log": "evidence/phase2/final/checks/operator-artifact.log",
+      "sha256": "4eca6b4e520d3ac0e3a5a3131f323dba4d0312652a1d3c07459762323165e757",
+      "tail": [
+        "................",
+        "----------------------------------------------------------------------",
+        "Ran 16 tests in 3.161s",
+        "",
+        "OK"
+      ],
+      "test_sources": {}
+    }
+  ],
+  "sdk": {
+    "methods": 26,
+    "path": "sdk/operator-final-candidate-qualification-04.json",
+    "sha256": "f37bbf9e45473ef007c54f578cdb5a5026e742365ee289da31ffa4b206224329",
+    "skips": 0
+  },
+  "source_manifest_sha256": "9da85a0f24725b35ce3e7a75a72cab77c42cbe86a1c896b25ea499842acaabcd"
+}

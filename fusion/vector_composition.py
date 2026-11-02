@@ -48,9 +48,9 @@ class ReadService:
         self.access={n:Access(self.policy,credential,d,cfg['scope'],cfg['embedding']) for n,d in self.chosen.items()}
         if atoms is None:
             from .atom_feed import FeedAtomOwner
-            from .adapters.detta import DettaStorage
+            from .adapters.detta_layout import storage
             root=Path(cfg['root'])
-            owner=FeedAtomOwner(root/'feed.sqlite',DettaStorage(cfg['detta_binary'],str(root/'payloads')),self.access['atom.storage'],hook)
+            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook)
             atoms=AtomSession(owner,self.access['atom.storage'])
         self.atoms=atoms;self.hook=hook
     def search(self):
@@ -59,6 +59,8 @@ class ReadService:
         return ChromaVector(Path(cfg['root'])/'search',self.atoms,self.atoms,self.access['search'],cfg['scope'],cfg['corpus'],cfg['embedding'],self.hook)
     def invoke(self,request):
         validate_request(request,self.chosen)
+        current=self.policy.current()['memory_read']
+        require(all(current.get(k)==self.config.get(k) for k in ('root','scope','embedding','corpus','catalogue','require_ready','backend_layout')), 'CONFLICT')
         require(request['scope']==self.config['scope'],'UNAUTHORIZED')
         name=request['interface_ref']['id'];op=request['operation'];body=request['body']
         if op=='ready':
@@ -69,11 +71,16 @@ class ReadService:
             # Query disclosure also requires a currently approved synthetic query.
             c.fields(body,'query snapshot');c.snapshot(body['snapshot'],request['scope'])
             require(body['snapshot']['embedding']==self.config['embedding'] and body['snapshot']['corpus']==self.config['corpus'],'UNSUPPORTED_PROFILE')
-            require(body['query'] in self.config['queries'],'UNAUTHORIZED');value={'authorized':True}
+            from .preview_text import query
+            query(current,body['query'],self.access['search'].principal);value={'authorized':True}
             if op=='authorize-ready':self.search().ready(request['scope'],body['snapshot'])
         elif name=='search':
             require(body['request_id']==request['request_id'] and body['scope']==request['scope'],'CONFLICT')
-            require(digest(c.vector_bytes(body['vector'])) in self.config['query_vectors'],'UNAUTHORIZED')
+            if 'text_policy' in current:
+                from .preview_text import policy
+                require(self.access['search'].principal in policy(current)['principals'],'UNAUTHORIZED')
+                require('query' in policy(current)['purposes'],'UNAUTHORIZED')
+            else:require(digest(c.vector_bytes(body['vector'])) in current['query_vectors'],'UNAUTHORIZED')
             value=self.search().query(body)
         else:
             c.fields(body,'refs');require(type(body['refs']) is list and 1<=len(body['refs'])<=8)

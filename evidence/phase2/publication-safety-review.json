@@ -1,0 +1,169 @@
+{
+  "additional_live_generations": 0,
+  "archive_checks": [
+    {
+      "member_count": 11,
+      "path": "sdk/compatibility/0.1.0/fusion_file_feed_example-0.1.0-py3-none-any.whl",
+      "pattern_findings": [],
+      "unsafe_member_paths": []
+    },
+    {
+      "member_count": 12,
+      "path": "sdk/compatibility/0.1.0/fusion_module_client-0.1.0-py3-none-any.whl",
+      "pattern_findings": [],
+      "unsafe_member_paths": []
+    }
+  ],
+  "classification": "STATIC_CANDIDATE_SCAN_NOT_FINAL_STAGED_PUBLICATION_APPROVAL",
+  "findings": [
+    {
+      "category": "protected_secret_inventory_metadata",
+      "disposition": "REFERENCE_ONLY_NO_SECRET_DATA_FIELDS",
+      "observation": "Protected Secret entries contain identity and digest metadata only; no Secret.data or stringData payload.",
+      "paths": [
+        "evidence/phase2/baseline.json"
+      ],
+      "verified_closed_metadata_shape": true
+    },
+    {
+      "category": "chain_publication_capability_and_secret_name_references",
+      "disposition": "FINAL_RAW_REPORT_APPROVAL_REVIEW_REQUIRED",
+      "observation": "Generated synthetic chain read-name identifiers, public signer and Kubernetes Secret-name references are present. No private-key material found. This scan does not independently approve their disclosure.",
+      "paths": [
+        "evidence/phase2/development/final-dev17/same-workflow-chain.json",
+        "evidence/phase2/final/same-workflow-chain.json"
+      ]
+    },
+    {
+      "category": "explicit_test_and_qualification_credential_literals",
+      "disposition": "DECLARED_SYNTHETIC_FIXTURE_SOURCE",
+      "observation": "Literal credentials are in test/controlled qualification setup; no values emitted. They are not evidence of deployed credential exposure.",
+      "paths": [
+        "integration/neoclaw/preview_history_qualification.py",
+        "integration/neoclaw/test_preview_session.py",
+        "tests/test_phase2_active_memory_ports.py",
+        "tests/test_phase2_chain.py",
+        "tests/test_phase2_chain_observer.py",
+        "tests/test_phase2_cross_feature_edges.py",
+        "tests/test_phase2_facet_ports.py",
+        "tests/test_phase2_history_deadlines.py",
+        "tests/test_phase2_history_relations.py",
+        "tests/test_phase2_memory_policy.py",
+        "tests/test_phase2_model.py",
+        "tests/test_phase2_native_relations.py",
+        "tests/test_phase2_operator_values.py",
+        "tests/test_phase2_private_scopes.py",
+        "tests/test_phase2_restore_qualification.py",
+        "tests/test_phase2_sdk.py",
+        "tests/test_phase2_sdk_compatibility.py",
+        "tests/test_phase2_session_service.py",
+        "tests/test_phase2_supersession_cognition.py",
+        "tests/test_phase2_tasks.py",
+        "tests/test_phase2_workbench.py"
+      ]
+    },
+    {
+      "category": "source_secret_path_or_entrypoint_literals",
+      "disposition": "REFERENCE_ONLY",
+      "observation": "Detected literal assignments name a credential-file path or package entrypoint, not credential bytes.",
+      "paths": [
+        "integration/single_node/preview_chain_qualification.py",
+        "sdk/build.py"
+      ]
+    },
+    {
+      "category": "screenshots",
+      "disposition": "FINAL_VISUAL_REVIEW_REQUIRED",
+      "observation": "PNG containers have no text/EXIF chunks; embedded pixels were not reviewed by this scan.",
+      "paths": [
+        "evidence/phase2/development/final-dev17/workbench/actual-chain-observation.png",
+        "evidence/phase2/development/final-dev17/workbench/native-context-consumed.png",
+        "evidence/phase2/final/workbench/actual-chain-observation.png",
+        "evidence/phase2/final/workbench/native-context-consumed.png"
+      ]
+    }
+  ],
+  "git_head": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "high_confidence_pattern_findings": [],
+  "limitations": [
+    "The workspace remains under active implementation; additions or changed files after this scan are not covered.",
+    "No exact staged allowlist was supplied. This is not commit authorization or final publication approval.",
+    "Token-pattern detection does not prove absence of arbitrary secrets, encoded credentials, private text, or synthetic identifiers with capability value.",
+    "Raw report provenance/disclosure authority and screenshot pixels require the primary agent final review.",
+    "No private owner journals, backup archives, Secrets directories, actual credentials, restricted model/native assets or ignored build artifacts were inspected.",
+    "No external secret-scanning service, runtime, cluster, model or application was contacted or started.",
+    "Machine-local paths, public digests and synthetic fixture strings can remain in source/evidence; these are not automatically secret-free merely because regex checks pass."
+  ],
+  "method": [
+    "Read only repository publication candidates; never inspect home, ignored runtime stores or private assets.",
+    "Check candidate filenames, symlinks, SQLite header, private-key/certificate PEM and selected common secret-token patterns without printing values.",
+    "Parse JSON sensitive field shapes, Kubernetes Secret metadata shape and Python literal-assignment locations; classify references versus explicit test fixtures.",
+    "Inspect archived wheel member paths and scan unpacked bytes in memory; no package execution.",
+    "Inspect PNG chunk metadata only; no OCR/pixel approval.",
+    "Hash selected file bytes and recheck for concurrent changes; root must repeat against final staged allowlist."
+  ],
+  "ownership_types": {
+    "archived_independent_fixture_or_client_distribution": 2,
+    "contract_package_or_provider_example_source": 48,
+    "deployment_schema_or_secret_creation_source_not_secret_material": 7,
+    "documentation_or_assignment": 12,
+    "owner_application_adapter_or_qualification_source": 88,
+    "repository_build_or_ci_configuration": 3,
+    "synthetic_qualification_or_source_evidence_not_owner_state": 60,
+    "synthetic_ui_screenshot_pending_visual_review": 4,
+    "test_fixture_and_assertions": 51
+  },
+  "parse_or_regular_file_errors": [],
+  "recorded_at": "2026-11-02T20:16:10.752229+00:00",
+  "schema": "phase2-publication-safety-review/1",
+  "scope": {
+    "candidate_changes_during_scan": {
+      "content_changed": [],
+      "new_paths": [],
+      "removed_paths": []
+    },
+    "candidate_count": 275,
+    "candidate_path_set_sha256": "d0c599548ac8a3d9f45c078bd28f3f39873ca10a2c389f05c77f02ccb10c43ad",
+    "excluded_paths": [],
+    "excluded_roots": [
+      "ignored artifacts/",
+      ".git/",
+      "secrets/",
+      "private-assets/",
+      "journals/",
+      "raw-runtime/",
+      "all paths outside this repository"
+    ],
+    "path_content_map_sha256": "776d97cba4948b52f4c106a75f976108bbc23e95e89cd3be919a5b508418b4f5",
+    "scanned_bytes": 10539567,
+    "scanned_regular_file_count": 275,
+    "selection": "Union of git diff, cached diff and nonignored untracked paths; review output excluded from its own input set."
+  },
+  "screenshot_checks": [
+    {
+      "embedded_text_or_exif_chunks": 0,
+      "path": "evidence/phase2/development/final-dev17/workbench/actual-chain-observation.png",
+      "pixel_review": "NOT_PERFORMED"
+    },
+    {
+      "embedded_text_or_exif_chunks": 0,
+      "path": "evidence/phase2/development/final-dev17/workbench/native-context-consumed.png",
+      "pixel_review": "NOT_PERFORMED"
+    },
+    {
+      "embedded_text_or_exif_chunks": 0,
+      "path": "evidence/phase2/final/workbench/actual-chain-observation.png",
+      "pixel_review": "NOT_PERFORMED"
+    },
+    {
+      "embedded_text_or_exif_chunks": 0,
+      "path": "evidence/phase2/final/workbench/native-context-consumed.png",
+      "pixel_review": "NOT_PERFORMED"
+    }
+  ],
+  "status": "NO_HIGH_CONFIDENCE_SECRET_FINDING_WITH_EXPLICIT_REVIEW_LIMITS",
+  "structured_sensitive_field_paths": [
+    "evidence/phase2/development/final-dev17/same-workflow-chain.json",
+    "evidence/phase2/final/same-workflow-chain.json"
+  ]
+}

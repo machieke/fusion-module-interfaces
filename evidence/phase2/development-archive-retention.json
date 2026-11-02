@@ -1,0 +1,107 @@
+{
+  "at": 1793636738.912905,
+  "archives": [
+    {
+      "path": "artifacts/phase2/build-dev02/images.tar",
+      "sha256": "15575f1e2360e48efcec2c57013d8312c3b871ea77b0399c86522cd1b5fa713d",
+      "bytes": 3242824192,
+      "disposition": "removed exported development archive only; package manifests, build logs, Docker and k3s images retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev03/images.tar",
+      "sha256": "c88e014c9b9ed58056799e51984833474c7492fa334af00b7ae2666d6c63abb8",
+      "bytes": 3242839552,
+      "disposition": "removed exported development archive only; package manifests, build logs, Docker and k3s images retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev06/images.tar",
+      "sha256": "2aaeb7d516fc0cf62bbf22f271cb443c9ce64ca0d2035c1e2dc0cc2c1c41bda3",
+      "bytes": 3243120640,
+      "disposition": "removed unused development export after verified source archive; package manifests, Docker images and build logs retained; not installed or qualified"
+    },
+    {
+      "path": "artifacts/phase2/build-dev07/images.tar",
+      "sha256": "27901af5cc64d2035042914c79e71afdc81a792531e902be656619af9927474d",
+      "bytes": 3243137536,
+      "disposition": "removed verified development export only; manifests, Docker/k3s images, failed and completed dev07 journals retained"
+    }
+  ],
+  "additional_exports": [
+    {
+      "path": "artifacts/phase2/build-dev08/images.tar",
+      "sha256": "524e337e855bf297b810656d1115e1a9e49efe2de10caca944c3e7cc520989a7",
+      "bytes": 3243145216,
+      "action": "verified redundant export removed; images/manifests/PVCs retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev05/images.tar",
+      "sha256": "a2e21eef9ba34d7d08386a968abf7ad8742a95454672d7a8a7df24ce7ad67f8a",
+      "bytes": 3242953216,
+      "action": "verified redundant development export removed; images/manifests/PVCs retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev09/images.tar",
+      "sha256": "705dbe0c00c398316cc0e4d9b350e490bae86ca9c2ecbac0206c5f19b8dacafd",
+      "bytes": 3243171328,
+      "action": "verified redundant development export removed; images/manifests/PVCs retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev10/images.tar",
+      "sha256": "8246d5b2068582b4ac8b82bd68aab9262e4eaa8371a12d7b69c54751be2f40b6",
+      "bytes": 3472687616,
+      "action": "verified redundant development export removed; Docker/k3s images, manifests, failed deadlines and PVCs retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev13/images.tar",
+      "sha256": "9ca97607fda4e134cbbd6ebda5dab27a7b2875161c7856bf54da7619f4e73e0a",
+      "bytes": 3472863744,
+      "action": "verified unused development export removed; Docker images and manifests retained; not imported, installed or qualified; superseded by original-history-deadline correction"
+    },
+    {
+      "path": "artifacts/phase2/build-dev11/images.tar",
+      "sha256": "6f24871e645d392d2f6c51148db2b02581ec167b522f0caae0ef25b7a8b93170",
+      "bytes": 3472716288,
+      "action": "verified redundant development export removed; Docker/k3s images, manifests, failure reports and PVCs retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev12/images.tar",
+      "hardlink": "/tmp/omega-phase2-artifacts-dev12/images.tar",
+      "sha256": "0232a79ded48bc3d49d56e1c827e7831882c65545c8b1af2c4bbd6f2d2382044",
+      "bytes": 3472802304,
+      "action": "verified redundant development export and its temporary operator hardlink removed; Docker/k3s images, manifests, failed journals/PVCs retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev14/images.tar",
+      "hardlink": "/tmp/omega-phase2-artifacts-dev14/images.tar",
+      "sha256": "84262811fe73715adc9bde5dfd41645936153be5d983463a04c1cf9efcb4e736",
+      "bytes": 3472880128,
+      "action": "verified redundant development export and temporary operator hardlink removed; Docker/k3s images, manifests, failed journals and PVCs retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev04/images.tar",
+      "sha256": "37c64fc9f4bf423c129c755e8f6430c2a17d81136d7e96f8706a40497d0999c3",
+      "bytes": 3241882112,
+      "action": "verified redundant development export removed; source/manifests, Docker/k3s images, journals and reports retained; current dev16/dev17 artifact archives retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev16/images.tar",
+      "hardlinks": [
+        "artifacts/phase2/distribution-candidate-03/images.tar"
+      ],
+      "sha256": "badb3e4c6307447646da6b29cdc91eea044e6c0069426828fac05972165c84a5",
+      "bytes": 3472978432,
+      "action": "verified redundant dev16 export and candidate hardlinks removed; manifests, source, Docker/k3s images and PVCs retained; dev17 exports retained"
+    },
+    {
+      "path": "artifacts/phase2/build-dev17/images.tar",
+      "hardlinks": [
+        "artifacts/phase2/distribution-candidate-05/images.tar",
+        "artifacts/phase2/distribution-candidate-06/images.tar",
+        "artifacts/phase2/distribution-candidate-04/images.tar"
+      ],
+      "sha256": "c3bc706725ea01296673a9da5b75003e570ba9782b449e588f4b1619ad5ce5c6",
+      "bytes": 3472984576,
+      "action": "verified redundant dev17 export hardlinks removed; Docker/k3s images, source/manifests, all journals/PVCs and failure reports retained; dev18 export retained"
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 import json
 import os
 from pathlib import Path
+import time
 
 from fusion.contracts import ContractError
 from fusion.neoclaw_application import Application
@@ -10,8 +11,27 @@ from integration.neoclaw.neoclaw_bridge import failpoint
 _app = None
 
 
+def _timing(method, started, code=None):
+    # Opt-in synthetic diagnostics contain neither arguments nor results. A
+    # bounded observation log never supplies tool data or renews work budgets.
+    if _app is None or not _app.preview_config or not _app.config.get('preparation_diagnostics'):
+        return
+    path = Path(_app.config['workdir'])/'bridge-timing.jsonl'
+    try:
+        record=json.dumps(dict(method=method, pid=os.getpid(),
+            finished_ms=time.time_ns()//1000000,
+            elapsed_ms=round((time.monotonic()-started)*1000,3), code=code))+'\n'
+        if (path.stat().st_size if path.exists() else 0)+len(record.encode())>1048576:
+            return
+        with path.open('a') as stream:
+            stream.write(record)
+    except OSError:
+        pass  # Diagnostic availability cannot alter the application outcome.
+
+
 def call(method, *args):
     global _app
+    started = time.monotonic()
     try:
         if _app is None:
             path = os.environ['NEOCLAW_S01_APPLICATION']
@@ -37,6 +57,7 @@ def call(method, *args):
         if method=='context_ids':
             from integration.neoclaw.promotion_startup import select_context
             select_context(_app)
+        _timing(method, started)
         return result
     except Exception as exc:
         # No Python exceptions/provider paths/credentials become native tool output.
@@ -51,6 +72,7 @@ def call(method, *args):
         from fusion.adapters.neoclaw_search import SearchFailure
         if isinstance(exc, SearchFailure): status['failure_reason'] = exc.reason
         Path(config['status_file']).write_text(json.dumps(status))
+        _timing(method, started, code)
         os._exit(2)
 
 
@@ -125,3 +147,24 @@ def model_prompt(raw):return call('model_prompt',raw)
 def model_complete(raw):return call('model_complete',raw)
 def model_parsed(normalized,parsed):return call('model_parsed',normalized,parsed)
 def model_accept(response,normalized,commands):return call('accept',response,commands,normalized)
+
+# Explicit preview vocabulary; historical startup never imports these wrappers.
+def preview_skills(): return call('preview_skills')
+def preview_execute(command): return call('preview_execute', command)
+def preview_context(): return call('preview_context')
+def preview_pin(item, note): return preview_execute(['pin', item, note])
+def preview_unpin(item): return preview_execute(['unpin', item])
+def preview_inspect(): return preview_execute(['task-context'])
+def preview_input(): return call('preview_input')
+def preview_read_file(path): return preview_execute(['read-file',path])
+def preview_write_file(path,text): return preview_execute(['write-file',path,text])
+def preview_append_file(path,text): return preview_execute(['append-file',path,text])
+def preview_episodes(selector): return preview_execute(['episodes',selector])
+def preview_forget(handle): return preview_execute(['forget',handle])
+def preview_history(): return call('preview_history')
+def preview_link(memory,history): return preview_execute(['link',memory,history])
+def preview_unlink(relation): return preview_execute(['unlink',relation])
+def preview_render_context(*args): return call('preview_render_context',*args)
+
+def preview_delegate(recipient,query): return preview_execute(['delegate',recipient,query])
+def preview_inspect_atom(task): return preview_execute(['inspect-atom',task])

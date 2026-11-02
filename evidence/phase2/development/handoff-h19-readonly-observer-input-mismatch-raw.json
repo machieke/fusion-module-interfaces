@@ -1,0 +1,91 @@
+{
+  "classification": "READ_ONLY_POST_FAILURE_OBSERVER_QUALIFICATION",
+  "original_report_sha256": "83e07132f45a9ea7375aae2849b47a0fb3d211e93a9ae1a166861121680f5b8b",
+  "observer_sha256": "9d5762f47cb82491dfef8c92a343b9d921062585bc8337dbf796957382977bc3",
+  "status": "PASS",
+  "application_restarted": false,
+  "original_failed_report_unchanged": true,
+  "additional_live_generations": 0,
+  "observation": {
+    "session": "10f1d248-78ce-47ad-afad-6665dc8412e9",
+    "outboxes": [],
+    "inputs": [
+      {
+        "turn": 5,
+        "identity": "handoff-recovery-8345c5b2-d40d-447b-8db9-bff8c467ce30",
+        "acknowledged": 1,
+        "source": {
+          "accepted": 1793652302062,
+          "assignment": "synthetic-task",
+          "deadline": 1793652422062,
+          "id": "handoff-recovery-8345c5b2-d40d-447b-8db9-bff8c467ce30",
+          "occurrence": "b3dff9a8-97a8-50cb-9975-1e1d29e23854",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "delegate B synthetic silver prism storage"
+          },
+          "sequence": 5,
+          "session": "10f1d248-78ce-47ad-afad-6665dc8412e9",
+          "session_binding": {
+            "catalogue": "629c8406d3b4dfc7879402646640c7da4f9090f79cdc083cf92ec3590802e62e",
+            "limits": {
+              "inputs": 24,
+              "pending": 4,
+              "timeout_ms": 120000
+            },
+            "model_boundary": "RECORDED_FIXTURE",
+            "policy": "preview-1a27cde7-267f-46a2-bab3-52ef373eb4e7"
+          },
+          "state": "accepted"
+        },
+        "projection_sha256": "f526198bf961178ee608958d5153c91a385a836765d4fa7fd0adcba4a62eaf7a"
+      }
+    ],
+    "occurrences": [
+      {
+        "turn": 5,
+        "position": 0,
+        "id": "daeef2f6-a6d9-52a0-ac76-b0577a584712",
+        "premises": {
+          "arguments": {
+            "arguments": {
+              "query": "synthetic silver prism storage",
+              "recipient": "B"
+            },
+            "policy": "preview-1a27cde7-267f-46a2-bab3-52ef373eb4e7",
+            "profile": "native-retrieval-task/1",
+            "scope": "synthetic-phase2-h19",
+            "selection": "629c8406d3b4dfc7879402646640c7da4f9090f79cdc083cf92ec3590802e62e",
+            "tool_id": "native.task.delegate"
+          },
+          "operation": "delegate",
+          "profile": "omega-developer-native-session/1"
+        },
+        "deadline": 1793652422062,
+        "result": "{\"acceptance\":{\"acceptance\":\"process-restart\",\"correlation_id\":\"daeef2f6-a6d9-52a0-ac76-b0577a584712\",\"delivery\":\"not-observed\",\"delivery_id\":\"5c2c4cf4-6474-52ed-a69c-e228dd77d19d\",\"evidence\":{\"backend\":\"sqlite\",\"journal_mode\":\"WAL\",\"synchronous\":\"FULL\"},\"route\":\"task-B\",\"scope_ref\":\"synthetic-phase2-h19\"},\"deadline\":1793652422062,\"independent_corroboration\":false,\"recipient_observation\":{\"id\":\"daeef2f6-a6d9-52a0-ac76-b0577a584712\",\"principal\":\"B\",\"profile\":\"native-retrieval-task/1\",\"status\":\"accepted\"},\"ref\":{\"digest\":\"fd89091af104e1c736c8ac39e1c2bbb33f0d0fd623813f8b1df4beb184861ef9\",\"id\":\"2fc0a273-28ba-51a8-8489-68bd6886eae3\",\"revision\":1,\"scope_ref\":\"synthetic-phase2-h19\"},\"status\":\"TASK_PUBLISHED\",\"task\":\"daeef2f6-a6d9-52a0-ac76-b0577a584712\"}",
+        "done": 1,
+        "attempts": 1
+      }
+    ],
+    "reads": [],
+    "views": [],
+    "models": [
+      {
+        "slot": 5,
+        "id": "cd155c17-300a-5f8a-87f5-d484cfe1a158",
+        "context_view": "ecc0dd6d93ccbabf32ced42e014f563615c5c3b22819685858740a078adae56c",
+        "calls": 4,
+        "intent_sha256": "aff2bfa5984a95ee46adcbe0e07db9e664fc4962ad98add081d6e05a1d81b8cc",
+        "source_id": "b3dff9a8-97a8-50cb-9975-1e1d29e23854",
+        "deadline_ms": 1793652422062,
+        "native_prompt_sha256": "f1657d8bd3cd2c62892707ab6b12c555b8c6964d305840e6fe437810a8c63e19",
+        "result_sha256": "f48afad95f8137e5c4d3eb0defe0bc40ae21f028a4ff42bcdaf527fa6eb5fa84",
+        "normalized_sha256": "c4dd1ec893812280466dd69407986f7883625efcfff1ec055f487c6d1c8bb2e8",
+        "parse_text_sha256": "c4dd1ec893812280466dd69407986f7883625efcfff1ec055f487c6d1c8bb2e8",
+        "proposal_sha256": "d8531711b524ee1f60db7d415f8215b68e237a9e6a4602e923768de8af410ed8",
+        "admission_sha256": "04dd9c7e9464019a848b69db2ed9a9b2a7def45b169e44627e7e613d67ff18ce"
+      }
+    ],
+    "task_id": "task/daeef2f6-a6d9-52a0-ac76-b0577a584712"
+  }
+}

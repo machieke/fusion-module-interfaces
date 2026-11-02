@@ -1,0 +1,1437 @@
+{
+  "schema": "phase2-publication-changed-files/1",
+  "baseline": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "scope": "Task-only changes plus the supplied programme brief; starting tree had only that brief untracked. Exact paths, no self-referential file hashes.",
+  "count": 357,
+  "files": [
+    {
+      "path": ".github/workflows/reference.yml",
+      "status": "modified"
+    },
+    {
+      "path": ".gitignore",
+      "status": "modified"
+    },
+    {
+      "path": "codex_omega_phase2_multi_agent_developer_preview.md",
+      "status": "added"
+    },
+    {
+      "path": "deploy/helm/omega-fusion/Chart.yaml",
+      "status": "modified"
+    },
+    {
+      "path": "deploy/helm/omega-fusion/templates/components.yaml",
+      "status": "modified"
+    },
+    {
+      "path": "deploy/helm/omega-fusion/templates/network-policy.yaml",
+      "status": "modified"
+    },
+    {
+      "path": "deploy/helm/omega-fusion/values.schema.json",
+      "status": "modified"
+    },
+    {
+      "path": "deploy/helm/omega-fusion/values.yaml",
+      "status": "modified"
+    },
+    {
+      "path": "deploy/single-node/create_secrets.py",
+      "status": "modified"
+    },
+    {
+      "path": "deploy/single-node/preview-ci-requirements.txt",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/cross-feature-evidence-review.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/final-review-notes.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/irc-regression-recipe.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/latency-diagnosis.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/native-capability-matrix.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/private-scopes.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/programme-report.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/runbook.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/scenario-matrix.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/sdk-compatibility.md",
+      "status": "added"
+    },
+    {
+      "path": "docs/phase2/storage-layout.md",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/artifacts.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/baseline.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/capabilities.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/changed-files.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-02.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-03.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-04.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-05.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-06.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-07.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-08.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-09.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-10.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-11.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-12.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-13.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/checkpoint-14.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development-archive-retention.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/attention18-selection-failure.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/capabilities-before-final-attachment.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/capabilities-initial-snapshot.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/checks-before-final-helper.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/context-rendering-initial-failure.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/context-rendering-initial-report.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev05-sessions-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev07-observations.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev07-sessions-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev08-sessions-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev09-sessions-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev10-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev11-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev12-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev14-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev15-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/dev16-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/bounded-workload.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/chart-equivalence.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/combined-native.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/combined-observations.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/resources.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/same-workflow-chain.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/workbench.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/workbench/actual-chain-observation.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev17/workbench/native-context-consumed.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/checks.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/checks/baseline-fast.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/checks/historical-native-34.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/checks/historical-native-denial-34.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/checks/operator-artifact.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/checks/ownership-policy-focused.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/checks/preview-fast.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/recovery-setup.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/recovery.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/source-images.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/final-dev18/workspace-mount-recovery.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/handoff-h18-observer-failure.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/handoff-h19-observer-failure.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/handoff-h19-readonly-observer-input-mismatch-raw.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/handoff-h19-readonly-observer-input-mismatch.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/handoff-h19-readonly-observer.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/native-memory.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/programme-notes-through-dev14.md",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/protected-comparison-compact-serialization.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/recovery-dev17-initial.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/recovery-r17b-summary.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/restore-dev17-initial-diagnosis.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/restore-dev17-initial.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/sessions-02.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/sessions-03.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/sessions-04.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/stage-observations-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/stage-observations-01.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/storage-layout-real-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/storage-layout-real-02.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/storage-layout-source-01.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/development/storage-layout-source-02.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/attention-comparison.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/attention-file.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/attention-sqlite.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/bounded-workload.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/capability-binding.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/chart-equivalence.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/baseline-fast.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/cognitive-selection.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/distribution-allowlist-operator.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/distribution-allowlist-report.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/distribution-allowlist-schema.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/handoff-observer.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/historical-native-34.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/historical-native-denial-34.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/operator-artifact.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/owner-races.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/ownership-policy-focused.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/preview-fast.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/checks/stage-observations.log",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/cleanup.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/combined-native.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/combined-observations.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/handoff-recovery.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/handoff-setup.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc-regressions.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc/absent-fact.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc/missing-payload.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc/qualification.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc/recorded.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc/uncertain-send.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc/unready-search.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/irc/wrong-answer.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/private-scopes-rotation.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/protected-resources.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/publication-safety.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/recovery-setup.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/recovery.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/resources.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/restore.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/same-workflow-chain.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/shared-source.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/single-agent.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/source-images.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/stage-observations.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/04-closed-summary.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/05-retained-native-results.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/06-main-ready.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/07-registered-artifact.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/actual-chain-observation.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/main-cleanup.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/main-process-stop.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/main-report.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/native-context-consumed.png",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/solo-cleanup.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workbench/solo-report.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/final/workspace-mount-recovery.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/image-dependencies-dev14.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/image-dependencies-dev17.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/image-dependencies-dev18.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/image-dependencies-dev19.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/progress.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/publication-safety-review-02.json",
+      "status": "added"
+    },
+    {
+      "path": "evidence/phase2/publication-safety-review.json",
+      "status": "added"
+    },
+    {
+      "path": "examples/phase2_provider/README.md",
+      "status": "added"
+    },
+    {
+      "path": "examples/phase2_provider/__init__.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/phase2_provider/caller.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/phase2_provider/conformance.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/phase2_provider/server.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_chain_observer.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_combined_observations.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_handoff_recovery.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_restore_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_shared_source_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_single_agent_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_single_agent_values.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_stage_observations.py",
+      "status": "added"
+    },
+    {
+      "path": "examples/preview_storage_layout_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/adapters/active_chroma.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/adapters/chroma_vector.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/adapters/detta.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/adapters/detta_layout.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/adapters/f1r3_m4.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/append_composition.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/cognitive_services.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/embedding_composition.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/embedding_service.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/memory_services.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/model_contracts.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/model_service.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/model_transport.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/neoclaw_append.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/neoclaw_application.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/neoclaw_embedding.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/neoclaw_evidence.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/neoclaw_memory.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/neoclaw_model.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/neoclaw_priority.py",
+      "status": "modified"
+    },
+    {
+      "path": "fusion/preview_application.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_artifact_contracts.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_atoms.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_capabilities.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_chain.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_client.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_context.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_deployment_contracts.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_handles.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_history.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_input.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_inspect.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_lifecycle.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_memory_services.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_model.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_model_contracts.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_native_cognition.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_native_history.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_native_inspect.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_native_memory.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_native_relations.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_native_tasks.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_ports.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_recorded_model.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_relations.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_session_client.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_session_service.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_sessions.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_tasks.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_text.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_tools.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_transport.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_vector_contracts.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/preview_workspace.py",
+      "status": "added"
+    },
+    {
+      "path": "fusion/vector_composition.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/neoclaw/loop_bridge.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/neoclaw/memory_bootstrap.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/neoclaw/native_loop.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/neoclaw/preview_history_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/neoclaw/preview_startup.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/neoclaw/test_preview_context.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/neoclaw/test_preview_session.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/backup_payload.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/chain_address.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/chain_node.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/configure.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/diagnostics.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/memory_host.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/preview_chain_configure.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_chain_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_cognitive_configure.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_configure.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_host.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_inspect_configure.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_memory_configure.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_operator.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_recovery_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_scope_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_secrets.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_task_configure.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_task_ingress.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_values.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/preview_workbench.py",
+      "status": "added"
+    },
+    {
+      "path": "integration/single_node/reference_artifacts.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/reference_build.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/reference_ci.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/reference_ops.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/restore_host.py",
+      "status": "modified"
+    },
+    {
+      "path": "integration/single_node/server.py",
+      "status": "modified"
+    },
+    {
+      "path": "scripts/chain_demo.py",
+      "status": "modified"
+    },
+    {
+      "path": "sdk/.gitignore",
+      "status": "added"
+    },
+    {
+      "path": "sdk/DISTRIBUTION.md",
+      "status": "added"
+    },
+    {
+      "path": "sdk/DISTRIBUTION_REVIEW.md",
+      "status": "added"
+    },
+    {
+      "path": "sdk/OPERATOR.md",
+      "status": "added"
+    },
+    {
+      "path": "sdk/README.md",
+      "status": "added"
+    },
+    {
+      "path": "sdk/build.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/compatibility/0.1.0/fusion_file_feed_example-0.1.0-py3-none-any.whl",
+      "status": "added"
+    },
+    {
+      "path": "sdk/compatibility/0.1.0/fusion_module_client-0.1.0-py3-none-any.whl",
+      "status": "added"
+    },
+    {
+      "path": "sdk/compatibility/README.md",
+      "status": "added"
+    },
+    {
+      "path": "sdk/distribution-assembly-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/distribution-assembly-qualification-02.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/distribution-assembly-qualification-03.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/distribution-assembly-qualification-04.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/distribution-verifier-development-01.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/distribution-verifier-development-02.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/distribution.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/exports.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/image_inventory.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/inventory.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-final-candidate-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-final-candidate-qualification-02.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-final-candidate-qualification-03.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-final-candidate-qualification-04.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-install-development-failure-01.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-install-development-failure-02.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-install-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-qualification-01.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator-wheel-inputs.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/operator_cli.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/public-api.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/qualification-02.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/qualification.json",
+      "status": "added"
+    },
+    {
+      "path": "sdk/test_distribution.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/test_image_inventory.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/test_operator_install.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/test_operator_package.py",
+      "status": "added"
+    },
+    {
+      "path": "sdk/test_preview_distribution.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_active_memory_ports.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_artifact_contracts.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_backup.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_backup_boundary.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_bridge_timing.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_catalogue_adversarial.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_chain.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_chain_observer.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_cognitive_wiring.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_combined_observations.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_context_rendering.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_cross_feature_edges.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_deploy.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_detta_layout.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_facet_ports.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_fault_configuration.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_foundations.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_handles.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_handoff_recovery.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_history_deadlines.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_history_projection.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_history_relations.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_inspect_ports.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_lifecycle.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_memory_policy.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_model.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_native_inspect.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_native_relations.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_operator_values.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_owner_races.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_preview_diagnostics.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_preview_wiring.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_private_scopes.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_recorded_proposals.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_restore_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_scope_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_sdk.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_sdk_compatibility.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_sdk_contracts.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_session_bounds.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_session_service.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_shared_source_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_single_agent_qualification.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_single_agent_values.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_stage_observations.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_storage_gate.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_supersession_cognition.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_tasks.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_text_policy.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_work_budgets.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_workbench.py",
+      "status": "added"
+    },
+    {
+      "path": "tests/test_phase2_workspace.py",
+      "status": "added"
+    }
+  ],
+  "excluded": "Ignored runtime journals, credentials, image archives, local wheels and private browser artifacts; local distribution artifacts separately bound in artifacts.json"
+}

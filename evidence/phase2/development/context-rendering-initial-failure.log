@@ -1,0 +1,7 @@
+Preserved initial observed unittest failure; original tool output was not redirected to disk.
+Ran 8 tests in 0.538s
+FAILED (failures=1)
+FAIL: test_required_content_and_delimiter_expansion_fail_closed_at_actual_render_bound
+tests/test_phase2_context_rendering.py:190: self.error('OVERLOADED', self.render, feedback=':-:-:-:' * 3600)
+tests/test_phase2_context_rendering.py:67: with self.assertRaises(ContractError) as got:
+AssertionError: ContractError not raised

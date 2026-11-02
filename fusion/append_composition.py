@@ -16,11 +16,13 @@ def configuration(path):
     cfg=json.loads(Path(path).read_text())
     require(cfg['profile']==c.PROFILE and cfg['sharing']==v.PRIVACY and cfg['fallback'] is False,'UNSUPPORTED_PROFILE')
     c.a.identity(cfg['session']);require(cfg['model']==v.EMBEDDING,'UNSUPPORTED_PROFILE')
-    require(type(cfg['inputs']) is dict and 1<=len(cfg['inputs'])<=16)
+    require(type(cfg['inputs']) is dict and (0 if 'text_policy' in cfg else 1)<=len(cfg['inputs'])<=16)
     for raw,helper in cfg['inputs'].items():c.text(raw,helper,cfg['scope'],cfg['corpus'])
     chosen=c.select([descriptor_read(d) for d in cfg['catalogue']])
     frozen={k:cfg[k] for k in ('profile','sharing','principal','scope','corpus','session','model','inputs','placement','metadata_root')}
     frozen['selections']={n:selection_token(d) for n,d in chosen.items()}
+    from .preview_text import freeze
+    freeze(cfg,frozen)
     if cfg['placement']=='service-network':
         from .memory_services import freeze_placement
         frozen.update(freeze_placement(cfg, ('atom.storage', 'search')))
@@ -41,7 +43,10 @@ class Access:
         cfg=self.policy.current()['memory_append']
         require(scope==cfg['scope'] and operation in self.descriptor.operations,'UNAUTHORIZED')
         require(self.policy.authenticate(self.credential)==self.principal and self.principal in cfg['writers'],'UNAUTHORIZED')
-        require(self.principal==cfg['session_principal'],'UNAUTHORIZED')
+        if 'text_policy' in cfg:
+            from .preview_text import policy
+            require(self.principal in policy(cfg)['principals'],'UNAUTHORIZED')
+        else:require(self.principal==cfg['session_principal'],'UNAUTHORIZED')
         chosen=c.select([descriptor_read(d) for d in cfg['catalogue']])
         require(selection_token(chosen[self.descriptor.interface])==selection_token(self.descriptor),'UNSUPPORTED_PROFILE')
         self.policy.check(self.principal,scope,'memory.append.'+('write' if operation in ('create','build') else 'disclose'))
@@ -56,19 +61,24 @@ class AppendService:
         self.access={n:Access(self.policy,credential,d) for n,d in self.chosen.items()}
         if atoms is None:
             from .atom_feed import FeedAtomOwner
-            from .adapters.detta import DettaStorage
+            from .adapters.detta_layout import storage
             cfg=self.config;root=Path(cfg['root'])
-            owner=FeedAtomOwner(root/'feed.sqlite',DettaStorage(cfg['detta_binary'],str(root/'payloads')),self.access['atom.storage'],hook)
+            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook)
             atoms=AtomSession(owner,self.access['atom.storage'])
         self.atoms=atoms
 
     def authorize(self,accepted,mode):
         cfg=self.policy.current()['memory_append'];principal=self.policy.authenticate(self.credential)
         require(principal==accepted['principal'] and principal in cfg['writers'],'UNAUTHORIZED')
-        require(principal==cfg['session_principal'],'UNAUTHORIZED')
-        require(cfg['scope']==accepted['scope'] and cfg['session']==accepted['session'],'UNAUTHORIZED')
+        if 'text_policy' in cfg:
+            from .preview_text import policy
+            require(principal in policy(cfg)['principals'],'UNAUTHORIZED')
+        else:
+            require(principal==cfg['session_principal'] and cfg['session']==accepted['session'],'UNAUTHORIZED')
+        require(cfg['scope']==accepted['scope'],'UNAUTHORIZED')
         require(cfg['sharing']==v.PRIVACY and cfg['corpus']==accepted['corpus'] and cfg['model']==accepted['model'],'UNSUPPORTED_PROFILE')
-        require(accepted['content'] in cfg['inputs'] and cfg['inputs'][accepted['content']]==accepted['helper_input'],'UNAUTHORIZED')
+        from .preview_text import helper
+        require(helper(cfg,accepted['content'],'remember',principal)==accepted['helper_input'],'UNAUTHORIZED')
         selected=c.select([descriptor_read(d) for d in cfg['catalogue']])
         require(all(accepted['selections'][n]==selection_token(d) for n,d in selected.items()),'UNSUPPORTED_PROFILE')
         require(accepted['selections']['embedding']==cfg['embedding_selection'],'UNSUPPORTED_PROFILE')

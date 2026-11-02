@@ -26,6 +26,11 @@ ROOT = Path(__file__).resolve().parents[2]
 def prepare(config_file):
     config_file = Path(config_file).resolve()
     config = json.loads(config_file.read_text())
+    from fusion.preview_application import APPLICATION as PREVIEW, configuration as preview_configuration
+    preview = config.get('composition') == PREVIEW
+    if preview:
+        preview_configuration(config['preview'])
+        config['composition'] = config['preview']['base']
     require(config['composition'] in ('controlled-native-loop/1', ops.APPLICATION, v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION), 'UNSUPPORTED_PROFILE')
     runtime = NativeTruthDeduction(config['runtime']).runtime
     omega, petta = Path(runtime['mettaclaw']), Path(runtime['petta'])
@@ -63,6 +68,23 @@ def prepare(config_file):
         from .model_startup import extend as model_extend
         facade=model_extend(config,omega,directory,loop,skills,memory)
         imports[imports.index(fixtures/'lib_llm_ext.py')]=facade
+    if preview:
+        from .preview_startup import extend as preview_extend
+        helper, preview_catalogue = preview_extend(config, omega, directory, skills, loop)
+        imports[imports.index(omega/'src/helper.py')] = helper
+        if 'history_atoms_config' in config:
+            original_memory=memory if config['composition']!='controlled-native-loop/1' else fixtures/'memory.metta'
+            preview_memory=directory/'preview_memory.metta'
+            preview_memory.write_text(replace_once(original_memory.read_text(),'(= (getHistory) "")',
+                '(= (getHistory) (py-call (loop_bridge.preview_history)))'))
+            if 'active_memory_configs' in config:
+                with preview_memory.open('a') as stream:stream.write('\n(= (update $handle $text) (remember $text))\n')
+            imports[imports.index(original_memory)]=preview_memory
+        if 'session_config' in config:
+            from .preview_startup import model_session
+            session_channels, session_model = model_session(config, directory, loop)
+            imports[imports.index(channels)] = session_channels
+            imports[imports.index(fixtures/'lib_llm_ext.py')] = session_model
     lines = ['!(import! &self (library lib_import))', '!(import! &self (library lib_patrick))']
     if config['composition'] in (v.APPLICATION, e.APPLICATION, w.APPLICATION, n.APPLICATION, p.APPLICATION, ch.APPLICATION,m.APPLICATION,r.APPLICATION,r.SERVICE_APPLICATION,cs.APPLICATION):
         lines += ['!(import! &self (library lib_combinatorics))', '!(import! &self (library lib_vector))']
@@ -119,6 +141,20 @@ def prepare(config_file):
         (directory/'startup.json').write_bytes(canonical(manifest))
     if config['composition']==cs.APPLICATION:
         manifest['substitutions'][3]='native remember/support/contradict/promote/demote/query/getContext; independently owned synthetic C1/C2/Attention services; remote payload/feed reads; unchanged native mathematics; empty history fixture'
+        (directory/'startup.json').write_bytes(canonical(manifest))
+    if preview:
+        manifest.update(composition=PREVIEW, base_composition=config['composition'], preview_catalogue=preview_catalogue)
+        manifest['overlay_hashes'].update({p.name:digest(p.read_bytes()) for p in (skills,loop,helper)})
+        manifest['substitutions'].append('Preview vocabulary extends original parser command set only; durable task notes are application state, not evidence.')
+        if 'session_config' in config:
+            manifest['model_boundary'] = 'RECORDED_PROPOSALS_THROUGH_MODEL_OWNER'
+            manifest['substitutions'][1] = 'Recorded authored proposals through independent X01 acceptance/reservation/capture; no generative runtime'
+            manifest['substitutions'][2] = 'Authenticated durable native session input API; IRC not selected for this ingress'
+            manifest['fixture_hashes'].pop('lib_llm_ext.py', None)
+            manifest['overlay_hashes'].update({p.name:digest(p.read_bytes()) for p in (session_channels, session_model)})
+        if 'history_atoms_config' in config:
+            manifest['overlay_hashes'][preview_memory.name]=digest(preview_memory.read_bytes())
+            manifest['substitutions'].append('Native getHistory/episodes consume committed C1 administrative events through selected ports; no legacy flat-file history.')
         (directory/'startup.json').write_bytes(canonical(manifest))
     env = {k:v for k,v in os.environ.items() if k in ('PATH','LANG','LC_ALL','TMPDIR')}
     env.update(runtime['environment'])

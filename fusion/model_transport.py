@@ -44,7 +44,7 @@ def configuration(path):
     return cfg, chosen, frozen
 
 
-def checked(request, reply):
+def checked(request, reply, *, contracts=c):
     require(type(reply) is dict, 'NOT_AVAILABLE')
     if 'error' in reply:
         require(set(reply) == {'error'}, 'NOT_AVAILABLE')
@@ -56,7 +56,7 @@ def checked(request, reply):
     require(reply['request_sha256'] == digest(canonical(request)), 'NOT_AVAILABLE')
     require(reply['principal'] == request['intent']['principal'], 'UNAUTHORIZED')
     if request['operation'] == 'authorize': require(reply['value'] == {'authorized':True}, 'UNAUTHORIZED')
-    else: c.observation(reply['value'], request['intent'])
+    else: contracts.observation(reply['value'], request['intent'])
     return reply['value']
 
 

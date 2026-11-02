@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/tmp/omega-phase2-source-dev19-candidate11/examples/preview_stage_observations.py", line 222, in <module>
+    main()
+  File "/tmp/omega-phase2-source-dev19-candidate11/examples/preview_stage_observations.py", line 218, in main
+    run(Operator(args.kubeconfig, args.context, args.namespace), args.output)
+  File "/tmp/omega-phase2-source-dev19-candidate11/examples/preview_stage_observations.py", line 194, in run
+    observed = json.loads(op.k('exec', '-i', helper, '--', PYTHON, '-', data=source, timeout=30))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/omega-phase2-source-dev19-candidate11/integration/single_node/reference_ops.py", line 25, in k
+    def k(self,*args,**kw):return self.command(['kubectl','--kubeconfig',self.kubeconfig,'--context',self.context,'-n',self.namespace,*args],**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/omega-phase2-source-dev19-candidate11/integration/single_node/reference_ops.py", line 23, in command
+    raise RuntimeError(str(args[:3])+' '+diagnostic)
+RuntimeError: ['kubectl', '--kubeconfig', '/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node/kubeconfig'] Traceback (most recent call last):
+  File "<stdin>", line 116, in <module>
+  File "<stdin>", line 84, in owned_timings
+AssertionError
+command terminated with exit code 1
+

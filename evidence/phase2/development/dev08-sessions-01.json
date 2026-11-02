@@ -1,0 +1,437 @@
+[
+  {
+    "role": "omega-agent",
+    "create": {
+      "binding": {
+        "catalogue": "0a6b698993cfe2effd530306bf3c773a16dc0c29144c9a401ebc85967af60cbe",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-fa3189aa-4489-4f19-8761-7b359974485a"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev08",
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent-b",
+    "create": {
+      "binding": {
+        "catalogue": "0a6b698993cfe2effd530306bf3c773a16dc0c29144c9a401ebc85967af60cbe",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-fa3189aa-4489-4f19-8761-7b359974485a"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "B",
+      "scope": "synthetic-phase2-dev08",
+      "session": "d712e8c9-1be3-4e36-a307-838acc3012e5",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent-b",
+    "input": 1,
+    "command": "pin role Ready for one bounded shared retrieval",
+    "accepted": {
+      "accepted": 1793636231520,
+      "assignment": "synthetic-task",
+      "deadline": 1793636261520,
+      "id": "source-dev08-1",
+      "sequence": 1,
+      "session": "d712e8c9-1be3-4e36-a307-838acc3012e5",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "0a6b698993cfe2effd530306bf3c773a16dc0c29144c9a401ebc85967af60cbe",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-fa3189aa-4489-4f19-8761-7b359974485a"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793636231520,
+          "assignment": "synthetic-task",
+          "deadline": 1793636261520,
+          "id": "source-dev08-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "pin role Ready for one bounded shared retrieval"
+          },
+          "result": {
+            "occurrences": [
+              "f9db6146-696b-5c55-b2cd-4888a25edce8"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((pin role Ready for one bounded shared retrieval) {_quote_digest_quote_:_quote_26c8d1e9947a420b9dd08d0cf47b48e5a962e48833b667700dd18a5b2baf0bc6_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_role_quote_:_quote_Ready for one bounded shared retrieval_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "d712e8c9-1be3-4e36-a307-838acc3012e5",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "B",
+      "scope": "synthetic-phase2-dev08",
+      "session": "d712e8c9-1be3-4e36-a307-838acc3012e5",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 2,
+    "command": "remember The synthetic silver prism is stored in crate orchid",
+    "accepted": {
+      "accepted": 1793636248828,
+      "assignment": "synthetic-task",
+      "deadline": 1793636278828,
+      "id": "source-dev08-2",
+      "sequence": 1,
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "0a6b698993cfe2effd530306bf3c773a16dc0c29144c9a401ebc85967af60cbe",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-fa3189aa-4489-4f19-8761-7b359974485a"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793636248828,
+          "assignment": "synthetic-task",
+          "deadline": 1793636278828,
+          "id": "source-dev08-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic silver prism is stored in crate orchid"
+          },
+          "result": {
+            "occurrences": [
+              "c0eb664a-422d-5694-94ea-20afab4cc1ec"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic silver prism is stored in crate orchid) {_quote_logical_id_quote_:_quote_66f45feb-3672-5db7-92ff-c7bfa832ac08_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_36c1291712e0495c764abd3c7a9e91653ccf8dfda35a167de1012d8b8042b82c_quote_,_quote_id_quote_:_quote_db8b714c-7c27-58f4-ba88-d5e40509aa39_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f2dda04fd95ff6bb8714435fa94049903081b7f650655a4cb6b9148215508bb6_quote_,_quote_id_quote_:_quote_014891f8-16ed-52a3-b1fd-fdead1a2cc4b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_8e9fdfefbf6f016210585b062f6a741a6ea1e90d72118fd72be51bf6d304d9b4_quote_,_quote_corpus_quote_:_quote_generated-phase2-dev08_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_f5e88497-62c4-504e-b8d2-6daea665c1db_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_d2481538-766b-44b7-8b4c-9a19989ea42c_quote_},_quote_logical_quote_:_quote_982b61695cbb9b1b8ab59799e56e4dff22ca94456d4fdbf43e64b0ab580c011a_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev08",
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 3,
+    "command": "episodes current",
+    "accepted": {
+      "accepted": 1793636272944,
+      "assignment": "synthetic-task",
+      "deadline": 1793636302944,
+      "id": "source-dev08-3",
+      "sequence": 2,
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "0a6b698993cfe2effd530306bf3c773a16dc0c29144c9a401ebc85967af60cbe",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-fa3189aa-4489-4f19-8761-7b359974485a"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793636248828,
+          "assignment": "synthetic-task",
+          "deadline": 1793636278828,
+          "id": "source-dev08-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic silver prism is stored in crate orchid"
+          },
+          "result": {
+            "occurrences": [
+              "c0eb664a-422d-5694-94ea-20afab4cc1ec"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic silver prism is stored in crate orchid) {_quote_logical_id_quote_:_quote_66f45feb-3672-5db7-92ff-c7bfa832ac08_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_36c1291712e0495c764abd3c7a9e91653ccf8dfda35a167de1012d8b8042b82c_quote_,_quote_id_quote_:_quote_db8b714c-7c27-58f4-ba88-d5e40509aa39_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f2dda04fd95ff6bb8714435fa94049903081b7f650655a4cb6b9148215508bb6_quote_,_quote_id_quote_:_quote_014891f8-16ed-52a3-b1fd-fdead1a2cc4b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_8e9fdfefbf6f016210585b062f6a741a6ea1e90d72118fd72be51bf6d304d9b4_quote_,_quote_corpus_quote_:_quote_generated-phase2-dev08_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_f5e88497-62c4-504e-b8d2-6daea665c1db_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_d2481538-766b-44b7-8b4c-9a19989ea42c_quote_},_quote_logical_quote_:_quote_982b61695cbb9b1b8ab59799e56e4dff22ca94456d4fdbf43e64b0ab580c011a_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793636272944,
+          "assignment": "synthetic-task",
+          "deadline": 1793636302944,
+          "id": "source-dev08-3",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "episodes current"
+          },
+          "result": {
+            "occurrences": [
+              "ab7a4d30-bb5f-5bd1-941c-49099d5ffe8c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((episodes current) {_quote_complete_quote_:false,_quote_episode_quote_:_quote_oh1:episode:21d5eb89-a4c0-5391-ace6-ec64a1018c09_quote_,_quote_events_quote_:[{_quote_body_quote_:{_quote_assignment_quote_:_quote_synthetic-task_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_,_quote_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_},_quote_body_bytes_quote_:181,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_0906a805319096fe94d4a8433d9a26151afcb751d3ad2be23b147437523ef849_quote_,_quote_event_handle_quote_:_quote_oh1:event:4abbfb6e-9688-59c8-ac82-dc01150af7a8_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_f66eab571edee47259bd2bab564e67c7aa55313e065c7cc3d9ba4d44cd540e6a_quote_,_quote_id_quote_:_quote_4f226cb6-f7d2-5aae-9f5d-c31092c18737_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f/input_quote_,_quote_sequence_quote_:1},_quote_kind_quote_:_quote_input-receipt_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_f97fead28fa8e9ab59c476fd1a8bc36acb96c3bd69619bdeb731c95cfbdbed7e_quote_,_quote_id_quote_:_quote_13dea220-4dc6-5009-849e-0bd3344f738c_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:1},{_quote_body_quote_:{_quote_classification_quote_:_quote_authenticated-synthetic-input-not-independent-of-its-copies_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_quote_:{_quote_handle_quote_:_quote_oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93_quote_,_quote_kind_quote_:_quote_event_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_6a6a78c47c60fdbafd3ba65f97f95a34e5ad3790bcb250e3169f76259e528cfa_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2bd322d5a364e640769084f136be1784c68878caa60ccaaa315ac25abed13b9d_quote_,_quote_id_quote_:_quote_80ad0b17-d49d-5116-b52f-10f11c8f0fab_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_source-occurrence/0df5866b75930cf28debcb4751d661c7eb06fb9c74ecde84da809544588f80cc_quote_,_quote_sequence_quote_:1}}},_quote_body_bytes_quote_:707,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_07034a27e22d2a405b64ce2c65d1a8261af20f7efac3f45f89840085ffb433ad_quote_,_quote_event_handle_quote_:_quote_oh1:event:69632930-dbd2-5ae3-a3bb-3b53c343ae56_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_5be3b9a50e371ba47cc8ca39c2d99f2a1f129d9316900390f6f79213f78763c8_quote_,_quote_id_quote_:_quote_312bfbe9-89c5-5449-a957-b1384c8891e6_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f/source_quote_,_quote_sequence_quote_:2},_quote_kind_quote_:_quote_external-observation_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_2a2acdc310415ba44e239c094444576ca1b258a2e9a9205d2ee3a5830ef7d903_quote_,_quote_id_quote_:_quote_50c26189-cc73-5644-a5ea-63c76a28e4c6_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:2},{_quote_body_quote_:{_quote_capture_quote_:{_quote_captured_ms_quote_:1793636261799,_quote_failure_code_quote_:null,_quote_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1_quote_,_quote_intent_sha256_quote_:_quote_6be439820c823a0ae1d371070410951f4cd55a01480b0ec1c67f0076d54ab982_quote_,_quote_late_quote_:false,_quote_principal_quote_:_quote_A_quote_,_quote_reserved_quote_:1,_quote_response_quote_:{_quote_durations_ns_quote_:{_quote_generation_quote_:null,_quote_load_quote_:null,_quote_prompt_quote_:null,_quote_total_quote_:null},_quote_finish_reason_quote_:_quote_stop_quote_,_quote_native_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_,_quote_observed_model_quote_:_quote_authored-native-command-proposals_quote_,_quote_outcome_quote_:_quote_complete_quote_,_quote_provider_request_id_quote_:null,_quote_raw_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_,_quote_usage_quote_:{_quote_input_tokens_quote_:null,_quote_output_tokens_quote_:null,_quote_reasoning_tokens_quote_:null}},_quote_selection_quote_:_quote_f48182343cc757f82d88d91e75d81760895d716677cacec9b9b0885c7d63ece2_quote_,_quote_state_quote_:_quote_captured_quote_},_quote_model_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_},_quote_body_bytes_quote_:896,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_d4be8344501a1e18b8ae9f99dc511afa37bdb5ccbdad06b817119a70783eb7d7_quote_,_quote_event_handle_quote_:_quote_oh1:event:0eba449c-9ff5-54df-b6d9-2327fe91e8b6_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_d421e50230a58ede572201ae904aaf1337b584b7666f8b45b9957e4977994456_quote_,_quote_id_quote_:_quote_ee695d3d-941e-5ab0-9010-270bfc4791fa_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1/proposal_quote_,_quote_sequence_quote_:3},_quote_kind_quote_:_quote_model-proposal_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_4f81084259d40d488df9f893e22a7194a1b5a7d4732e71f59d3cb30ea447abdd_quote_,_quote_id_quote_:_quote_50c99c26-1e8d-5542-a5f0-df3f976b3fc2_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:3},{_quote_body_quote_:{_quote_intent_quote_:{_quote_arguments_quote_:{_quote_content_quote_:_quote_The synthetic silver prism is stored in crate orchid_quote_},_quote_operation_quote_:_quote_remember_quote_,_quote_profile_quote_:_quote_neoclaw-append-only-memory/1_quote_},_quote_observed_ms_quote_:1793636248828,_quote_occurrence_quote_:_quote_c0eb664a-422d-5694-94ea-20afab4cc1ec_quote_,_quote_position_quote_:0,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_},_quote_body_bytes_quote_:299,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_7567b681b7316ab66334c78c2dbbf44c455874483315733c986e98d048095f09_quote_,_quote_event_handle_quote_:_quote_oh1:event:2feac78a-270b-53c1-9235-1fb408eaaea6_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_25ceaf9871dbe1ae7d3039bdc0fb9865b7b79932479dca9fd4bc9cb414810770_quote_,_quote_id_quote_:_quote_2a2c96ca-1fdd-525d-8908-8e69f3eee853_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_c0eb664a-422d-5694-94ea-20afab4cc1ec/admission_quote_,_quote_sequence_quote_:4},_quote_kind_quote_:_quote_command-admitted_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_500eab76fbbeec9f8114b5d6a7295ff6779daa3f502f4673d8afea1d198418c7_quote_,_quote_id_quote_:_quote_338b0e5a-9c4d-5677-b970-ea2fb9540cd3_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:4}],_quote_interpretation_quote_:_quote_administrative-history-not-empirical-evidence_quote_,_quote_next_selector_quote_:_quote_oh1:episode:21d5eb89-a4c0-5391-ace6-ec64a1018c09@9:5_quote_,_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_ref_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_snapshot_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_selection_quote_:_quote_69184fdedf12c90240862c587475a38e8cf2965dcab980dfd19fa5f3d11de98e_quote_,_quote_through_quote_:9}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev08",
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 4,
+    "command": "link oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93",
+    "accepted": {
+      "accepted": 1793636299259,
+      "assignment": "synthetic-task",
+      "deadline": 1793636329259,
+      "id": "source-dev08-4",
+      "sequence": 3,
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "0a6b698993cfe2effd530306bf3c773a16dc0c29144c9a401ebc85967af60cbe",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-fa3189aa-4489-4f19-8761-7b359974485a"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793636248828,
+          "assignment": "synthetic-task",
+          "deadline": 1793636278828,
+          "id": "source-dev08-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic silver prism is stored in crate orchid"
+          },
+          "result": {
+            "occurrences": [
+              "c0eb664a-422d-5694-94ea-20afab4cc1ec"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic silver prism is stored in crate orchid) {_quote_logical_id_quote_:_quote_66f45feb-3672-5db7-92ff-c7bfa832ac08_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_36c1291712e0495c764abd3c7a9e91653ccf8dfda35a167de1012d8b8042b82c_quote_,_quote_id_quote_:_quote_db8b714c-7c27-58f4-ba88-d5e40509aa39_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f2dda04fd95ff6bb8714435fa94049903081b7f650655a4cb6b9148215508bb6_quote_,_quote_id_quote_:_quote_014891f8-16ed-52a3-b1fd-fdead1a2cc4b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_8e9fdfefbf6f016210585b062f6a741a6ea1e90d72118fd72be51bf6d304d9b4_quote_,_quote_corpus_quote_:_quote_generated-phase2-dev08_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_f5e88497-62c4-504e-b8d2-6daea665c1db_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_d2481538-766b-44b7-8b4c-9a19989ea42c_quote_},_quote_logical_quote_:_quote_982b61695cbb9b1b8ab59799e56e4dff22ca94456d4fdbf43e64b0ab580c011a_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793636272944,
+          "assignment": "synthetic-task",
+          "deadline": 1793636302944,
+          "id": "source-dev08-3",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "episodes current"
+          },
+          "result": {
+            "occurrences": [
+              "ab7a4d30-bb5f-5bd1-941c-49099d5ffe8c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((episodes current) {_quote_complete_quote_:false,_quote_episode_quote_:_quote_oh1:episode:21d5eb89-a4c0-5391-ace6-ec64a1018c09_quote_,_quote_events_quote_:[{_quote_body_quote_:{_quote_assignment_quote_:_quote_synthetic-task_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_,_quote_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_},_quote_body_bytes_quote_:181,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_0906a805319096fe94d4a8433d9a26151afcb751d3ad2be23b147437523ef849_quote_,_quote_event_handle_quote_:_quote_oh1:event:4abbfb6e-9688-59c8-ac82-dc01150af7a8_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_f66eab571edee47259bd2bab564e67c7aa55313e065c7cc3d9ba4d44cd540e6a_quote_,_quote_id_quote_:_quote_4f226cb6-f7d2-5aae-9f5d-c31092c18737_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f/input_quote_,_quote_sequence_quote_:1},_quote_kind_quote_:_quote_input-receipt_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_f97fead28fa8e9ab59c476fd1a8bc36acb96c3bd69619bdeb731c95cfbdbed7e_quote_,_quote_id_quote_:_quote_13dea220-4dc6-5009-849e-0bd3344f738c_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:1},{_quote_body_quote_:{_quote_classification_quote_:_quote_authenticated-synthetic-input-not-independent-of-its-copies_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_quote_:{_quote_handle_quote_:_quote_oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93_quote_,_quote_kind_quote_:_quote_event_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_6a6a78c47c60fdbafd3ba65f97f95a34e5ad3790bcb250e3169f76259e528cfa_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2bd322d5a364e640769084f136be1784c68878caa60ccaaa315ac25abed13b9d_quote_,_quote_id_quote_:_quote_80ad0b17-d49d-5116-b52f-10f11c8f0fab_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_source-occurrence/0df5866b75930cf28debcb4751d661c7eb06fb9c74ecde84da809544588f80cc_quote_,_quote_sequence_quote_:1}}},_quote_body_bytes_quote_:707,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_07034a27e22d2a405b64ce2c65d1a8261af20f7efac3f45f89840085ffb433ad_quote_,_quote_event_handle_quote_:_quote_oh1:event:69632930-dbd2-5ae3-a3bb-3b53c343ae56_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_5be3b9a50e371ba47cc8ca39c2d99f2a1f129d9316900390f6f79213f78763c8_quote_,_quote_id_quote_:_quote_312bfbe9-89c5-5449-a957-b1384c8891e6_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f/source_quote_,_quote_sequence_quote_:2},_quote_kind_quote_:_quote_external-observation_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_2a2acdc310415ba44e239c094444576ca1b258a2e9a9205d2ee3a5830ef7d903_quote_,_quote_id_quote_:_quote_50c26189-cc73-5644-a5ea-63c76a28e4c6_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:2},{_quote_body_quote_:{_quote_capture_quote_:{_quote_captured_ms_quote_:1793636261799,_quote_failure_code_quote_:null,_quote_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1_quote_,_quote_intent_sha256_quote_:_quote_6be439820c823a0ae1d371070410951f4cd55a01480b0ec1c67f0076d54ab982_quote_,_quote_late_quote_:false,_quote_principal_quote_:_quote_A_quote_,_quote_reserved_quote_:1,_quote_response_quote_:{_quote_durations_ns_quote_:{_quote_generation_quote_:null,_quote_load_quote_:null,_quote_prompt_quote_:null,_quote_total_quote_:null},_quote_finish_reason_quote_:_quote_stop_quote_,_quote_native_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_,_quote_observed_model_quote_:_quote_authored-native-command-proposals_quote_,_quote_outcome_quote_:_quote_complete_quote_,_quote_provider_request_id_quote_:null,_quote_raw_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_,_quote_usage_quote_:{_quote_input_tokens_quote_:null,_quote_output_tokens_quote_:null,_quote_reasoning_tokens_quote_:null}},_quote_selection_quote_:_quote_f48182343cc757f82d88d91e75d81760895d716677cacec9b9b0885c7d63ece2_quote_,_quote_state_quote_:_quote_captured_quote_},_quote_model_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_},_quote_body_bytes_quote_:896,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_d4be8344501a1e18b8ae9f99dc511afa37bdb5ccbdad06b817119a70783eb7d7_quote_,_quote_event_handle_quote_:_quote_oh1:event:0eba449c-9ff5-54df-b6d9-2327fe91e8b6_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_d421e50230a58ede572201ae904aaf1337b584b7666f8b45b9957e4977994456_quote_,_quote_id_quote_:_quote_ee695d3d-941e-5ab0-9010-270bfc4791fa_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1/proposal_quote_,_quote_sequence_quote_:3},_quote_kind_quote_:_quote_model-proposal_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_4f81084259d40d488df9f893e22a7194a1b5a7d4732e71f59d3cb30ea447abdd_quote_,_quote_id_quote_:_quote_50c99c26-1e8d-5542-a5f0-df3f976b3fc2_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:3},{_quote_body_quote_:{_quote_intent_quote_:{_quote_arguments_quote_:{_quote_content_quote_:_quote_The synthetic silver prism is stored in crate orchid_quote_},_quote_operation_quote_:_quote_remember_quote_,_quote_profile_quote_:_quote_neoclaw-append-only-memory/1_quote_},_quote_observed_ms_quote_:1793636248828,_quote_occurrence_quote_:_quote_c0eb664a-422d-5694-94ea-20afab4cc1ec_quote_,_quote_position_quote_:0,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_},_quote_body_bytes_quote_:299,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_7567b681b7316ab66334c78c2dbbf44c455874483315733c986e98d048095f09_quote_,_quote_event_handle_quote_:_quote_oh1:event:2feac78a-270b-53c1-9235-1fb408eaaea6_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_25ceaf9871dbe1ae7d3039bdc0fb9865b7b79932479dca9fd4bc9cb414810770_quote_,_quote_id_quote_:_quote_2a2c96ca-1fdd-525d-8908-8e69f3eee853_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_c0eb664a-422d-5694-94ea-20afab4cc1ec/admission_quote_,_quote_sequence_quote_:4},_quote_kind_quote_:_quote_command-admitted_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_500eab76fbbeec9f8114b5d6a7295ff6779daa3f502f4673d8afea1d198418c7_quote_,_quote_id_quote_:_quote_338b0e5a-9c4d-5677-b970-ea2fb9540cd3_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:4}],_quote_interpretation_quote_:_quote_administrative-history-not-empirical-evidence_quote_,_quote_next_selector_quote_:_quote_oh1:episode:21d5eb89-a4c0-5391-ace6-ec64a1018c09@9:5_quote_,_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_ref_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_snapshot_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_selection_quote_:_quote_69184fdedf12c90240862c587475a38e8cf2965dcab980dfd19fa5f3d11de98e_quote_,_quote_through_quote_:9}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793636299259,
+          "assignment": "synthetic-task",
+          "deadline": 1793636329259,
+          "id": "source-dev08-4",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "link oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93"
+          },
+          "result": {
+            "occurrences": [
+              "1bfc3b75-100c-5796-bb4a-7d296dfbc7f6"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((link oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93) {_quote_asserted_at_quote_:{_quote_profile_quote_:_quote_schema-ordered-retractable-relations/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_2b20400d-6df7-4181-81eb-8edcca369096_quote_},_quote_evidence_changed_quote_:false,_quote_history_quote_:{_quote_handle_quote_:_quote_oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93_quote_,_quote_kind_quote_:_quote_event_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_6a6a78c47c60fdbafd3ba65f97f95a34e5ad3790bcb250e3169f76259e528cfa_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2bd322d5a364e640769084f136be1784c68878caa60ccaaa315ac25abed13b9d_quote_,_quote_id_quote_:_quote_80ad0b17-d49d-5116-b52f-10f11c8f0fab_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_source-occurrence/0df5866b75930cf28debcb4751d661c7eb06fb9c74ecde84da809544588f80cc_quote_,_quote_sequence_quote_:1}},_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_36c1291712e0495c764abd3c7a9e91653ccf8dfda35a167de1012d8b8042b82c_quote_,_quote_id_quote_:_quote_db8b714c-7c27-58f4-ba88-d5e40509aa39_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f2dda04fd95ff6bb8714435fa94049903081b7f650655a4cb6b9148215508bb6_quote_,_quote_id_quote_:_quote_014891f8-16ed-52a3-b1fd-fdead1a2cc4b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}}},_quote_relation_quote_:{_quote_handle_quote_:_quote_oh1:relation:0de77c46-0736-54c7-b33e-f2962c8e2b40_quote_,_quote_kind_quote_:_quote_relation_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_digest_quote_:_quote_ad89b291eb94b8860f4cd53bb757a29591f621c561c9cee4fb9738c1511e091b_quote_,_quote_id_quote_:_quote_a4b3f240-6e3e-5179-b20a-872193bae2b0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}},_quote_status_quote_:_quote_LINKED_quote_}))))",
+            "turn": 3
+          },
+          "sequence": 3,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev08",
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 5,
+    "command": "support oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93",
+    "accepted": {
+      "accepted": 1793636329083,
+      "assignment": "synthetic-task",
+      "deadline": 1793636359083,
+      "id": "source-dev08-5",
+      "sequence": 4,
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "0a6b698993cfe2effd530306bf3c773a16dc0c29144c9a401ebc85967af60cbe",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-fa3189aa-4489-4f19-8761-7b359974485a"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793636248828,
+          "assignment": "synthetic-task",
+          "deadline": 1793636278828,
+          "id": "source-dev08-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic silver prism is stored in crate orchid"
+          },
+          "result": {
+            "occurrences": [
+              "c0eb664a-422d-5694-94ea-20afab4cc1ec"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic silver prism is stored in crate orchid) {_quote_logical_id_quote_:_quote_66f45feb-3672-5db7-92ff-c7bfa832ac08_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_36c1291712e0495c764abd3c7a9e91653ccf8dfda35a167de1012d8b8042b82c_quote_,_quote_id_quote_:_quote_db8b714c-7c27-58f4-ba88-d5e40509aa39_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f2dda04fd95ff6bb8714435fa94049903081b7f650655a4cb6b9148215508bb6_quote_,_quote_id_quote_:_quote_014891f8-16ed-52a3-b1fd-fdead1a2cc4b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_8e9fdfefbf6f016210585b062f6a741a6ea1e90d72118fd72be51bf6d304d9b4_quote_,_quote_corpus_quote_:_quote_generated-phase2-dev08_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_f5e88497-62c4-504e-b8d2-6daea665c1db_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_d2481538-766b-44b7-8b4c-9a19989ea42c_quote_},_quote_logical_quote_:_quote_982b61695cbb9b1b8ab59799e56e4dff22ca94456d4fdbf43e64b0ab580c011a_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:35,_quote_source_quote_:_quote_4659f88d-a941-469b-b137-aa2fa0274eb9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793636272944,
+          "assignment": "synthetic-task",
+          "deadline": 1793636302944,
+          "id": "source-dev08-3",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "episodes current"
+          },
+          "result": {
+            "occurrences": [
+              "ab7a4d30-bb5f-5bd1-941c-49099d5ffe8c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((episodes current) {_quote_complete_quote_:false,_quote_episode_quote_:_quote_oh1:episode:21d5eb89-a4c0-5391-ace6-ec64a1018c09_quote_,_quote_events_quote_:[{_quote_body_quote_:{_quote_assignment_quote_:_quote_synthetic-task_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_,_quote_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_},_quote_body_bytes_quote_:181,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_0906a805319096fe94d4a8433d9a26151afcb751d3ad2be23b147437523ef849_quote_,_quote_event_handle_quote_:_quote_oh1:event:4abbfb6e-9688-59c8-ac82-dc01150af7a8_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_f66eab571edee47259bd2bab564e67c7aa55313e065c7cc3d9ba4d44cd540e6a_quote_,_quote_id_quote_:_quote_4f226cb6-f7d2-5aae-9f5d-c31092c18737_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f/input_quote_,_quote_sequence_quote_:1},_quote_kind_quote_:_quote_input-receipt_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_f97fead28fa8e9ab59c476fd1a8bc36acb96c3bd69619bdeb731c95cfbdbed7e_quote_,_quote_id_quote_:_quote_13dea220-4dc6-5009-849e-0bd3344f738c_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:1},{_quote_body_quote_:{_quote_classification_quote_:_quote_authenticated-synthetic-input-not-independent-of-its-copies_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_quote_:{_quote_handle_quote_:_quote_oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93_quote_,_quote_kind_quote_:_quote_event_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_6a6a78c47c60fdbafd3ba65f97f95a34e5ad3790bcb250e3169f76259e528cfa_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2bd322d5a364e640769084f136be1784c68878caa60ccaaa315ac25abed13b9d_quote_,_quote_id_quote_:_quote_80ad0b17-d49d-5116-b52f-10f11c8f0fab_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_source-occurrence/0df5866b75930cf28debcb4751d661c7eb06fb9c74ecde84da809544588f80cc_quote_,_quote_sequence_quote_:1}}},_quote_body_bytes_quote_:707,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_07034a27e22d2a405b64ce2c65d1a8261af20f7efac3f45f89840085ffb433ad_quote_,_quote_event_handle_quote_:_quote_oh1:event:69632930-dbd2-5ae3-a3bb-3b53c343ae56_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_5be3b9a50e371ba47cc8ca39c2d99f2a1f129d9316900390f6f79213f78763c8_quote_,_quote_id_quote_:_quote_312bfbe9-89c5-5449-a957-b1384c8891e6_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f/source_quote_,_quote_sequence_quote_:2},_quote_kind_quote_:_quote_external-observation_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_2a2acdc310415ba44e239c094444576ca1b258a2e9a9205d2ee3a5830ef7d903_quote_,_quote_id_quote_:_quote_50c26189-cc73-5644-a5ea-63c76a28e4c6_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:2},{_quote_body_quote_:{_quote_capture_quote_:{_quote_captured_ms_quote_:1793636261799,_quote_failure_code_quote_:null,_quote_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1_quote_,_quote_intent_sha256_quote_:_quote_6be439820c823a0ae1d371070410951f4cd55a01480b0ec1c67f0076d54ab982_quote_,_quote_late_quote_:false,_quote_principal_quote_:_quote_A_quote_,_quote_reserved_quote_:1,_quote_response_quote_:{_quote_durations_ns_quote_:{_quote_generation_quote_:null,_quote_load_quote_:null,_quote_prompt_quote_:null,_quote_total_quote_:null},_quote_finish_reason_quote_:_quote_stop_quote_,_quote_native_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_,_quote_observed_model_quote_:_quote_authored-native-command-proposals_quote_,_quote_outcome_quote_:_quote_complete_quote_,_quote_provider_request_id_quote_:null,_quote_raw_text_quote_:_quote_remember The synthetic silver prism is stored in crate orchid_quote_,_quote_usage_quote_:{_quote_input_tokens_quote_:null,_quote_output_tokens_quote_:null,_quote_reasoning_tokens_quote_:null}},_quote_selection_quote_:_quote_f48182343cc757f82d88d91e75d81760895d716677cacec9b9b0885c7d63ece2_quote_,_quote_state_quote_:_quote_captured_quote_},_quote_model_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1_quote_,_quote_observed_ms_quote_:1793636248828,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_},_quote_body_bytes_quote_:896,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_d4be8344501a1e18b8ae9f99dc511afa37bdb5ccbdad06b817119a70783eb7d7_quote_,_quote_event_handle_quote_:_quote_oh1:event:0eba449c-9ff5-54df-b6d9-2327fe91e8b6_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_d421e50230a58ede572201ae904aaf1337b584b7666f8b45b9957e4977994456_quote_,_quote_id_quote_:_quote_ee695d3d-941e-5ab0-9010-270bfc4791fa_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_376ec384-b638-5150-b7ef-917c760182f1/proposal_quote_,_quote_sequence_quote_:3},_quote_kind_quote_:_quote_model-proposal_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_4f81084259d40d488df9f893e22a7194a1b5a7d4732e71f59d3cb30ea447abdd_quote_,_quote_id_quote_:_quote_50c99c26-1e8d-5542-a5f0-df3f976b3fc2_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:3},{_quote_body_quote_:{_quote_intent_quote_:{_quote_arguments_quote_:{_quote_content_quote_:_quote_The synthetic silver prism is stored in crate orchid_quote_},_quote_operation_quote_:_quote_remember_quote_,_quote_profile_quote_:_quote_neoclaw-append-only-memory/1_quote_},_quote_observed_ms_quote_:1793636248828,_quote_occurrence_quote_:_quote_c0eb664a-422d-5694-94ea-20afab4cc1ec_quote_,_quote_position_quote_:0,_quote_source_id_quote_:_quote_8967b580-38a7-5a9e-8aca-30b0a314f79f_quote_},_quote_body_bytes_quote_:299,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_7567b681b7316ab66334c78c2dbbf44c455874483315733c986e98d048095f09_quote_,_quote_event_handle_quote_:_quote_oh1:event:2feac78a-270b-53c1-9235-1fb408eaaea6_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_25ceaf9871dbe1ae7d3039bdc0fb9865b7b79932479dca9fd4bc9cb414810770_quote_,_quote_id_quote_:_quote_2a2c96ca-1fdd-525d-8908-8e69f3eee853_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_c0eb664a-422d-5694-94ea-20afab4cc1ec/admission_quote_,_quote_sequence_quote_:4},_quote_kind_quote_:_quote_command-admitted_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_500eab76fbbeec9f8114b5d6a7295ff6779daa3f502f4673d8afea1d198418c7_quote_,_quote_id_quote_:_quote_338b0e5a-9c4d-5677-b970-ea2fb9540cd3_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_sequence_quote_:4}],_quote_interpretation_quote_:_quote_administrative-history-not-empirical-evidence_quote_,_quote_next_selector_quote_:_quote_oh1:episode:21d5eb89-a4c0-5391-ace6-ec64a1018c09@9:5_quote_,_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_ref_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_snapshot_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_e7f12bcdf212dc6315d335ca6beb251bd03aebe60ad7bce7fa1c38594b64b62d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_selection_quote_:_quote_69184fdedf12c90240862c587475a38e8cf2965dcab980dfd19fa5f3d11de98e_quote_,_quote_through_quote_:9}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793636299259,
+          "assignment": "synthetic-task",
+          "deadline": 1793636329259,
+          "id": "source-dev08-4",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "link oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93"
+          },
+          "result": {
+            "occurrences": [
+              "1bfc3b75-100c-5796-bb4a-7d296dfbc7f6"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((link oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93) {_quote_asserted_at_quote_:{_quote_profile_quote_:_quote_schema-ordered-retractable-relations/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_2b20400d-6df7-4181-81eb-8edcca369096_quote_},_quote_evidence_changed_quote_:false,_quote_history_quote_:{_quote_handle_quote_:_quote_oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93_quote_,_quote_kind_quote_:_quote_event_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_6a6a78c47c60fdbafd3ba65f97f95a34e5ad3790bcb250e3169f76259e528cfa_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2bd322d5a364e640769084f136be1784c68878caa60ccaaa315ac25abed13b9d_quote_,_quote_id_quote_:_quote_80ad0b17-d49d-5116-b52f-10f11c8f0fab_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_occurrence_id_quote_:_quote_source-occurrence/0df5866b75930cf28debcb4751d661c7eb06fb9c74ecde84da809544588f80cc_quote_,_quote_sequence_quote_:1}},_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_36c1291712e0495c764abd3c7a9e91653ccf8dfda35a167de1012d8b8042b82c_quote_,_quote_id_quote_:_quote_db8b714c-7c27-58f4-ba88-d5e40509aa39_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f2dda04fd95ff6bb8714435fa94049903081b7f650655a4cb6b9148215508bb6_quote_,_quote_id_quote_:_quote_014891f8-16ed-52a3-b1fd-fdead1a2cc4b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}}},_quote_relation_quote_:{_quote_handle_quote_:_quote_oh1:relation:0de77c46-0736-54c7-b33e-f2962c8e2b40_quote_,_quote_kind_quote_:_quote_relation_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev08_quote_,_quote_target_quote_:{_quote_digest_quote_:_quote_ad89b291eb94b8860f4cd53bb757a29591f621c561c9cee4fb9738c1511e091b_quote_,_quote_id_quote_:_quote_a4b3f240-6e3e-5179-b20a-872193bae2b0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev08_quote_}},_quote_status_quote_:_quote_LINKED_quote_}))))",
+            "turn": 3
+          },
+          "sequence": 3,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793636329083,
+          "assignment": "synthetic-task",
+          "deadline": 1793636359083,
+          "id": "source-dev08-5",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "support oh1:memory:487b40ab-92dd-5097-8f79-bd4f2e0bdefb oh1:event:55ff6319-c5ca-5526-bb0c-ac22b9f19d93"
+          },
+          "result": null,
+          "sequence": 4,
+          "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+          "state": "accepted"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev08",
+      "session": "76450cdd-2aa3-4313-ae55-982f3ad5bd8d",
+      "state": "active"
+    }
+  }
+]

@@ -1,0 +1,115 @@
+{
+  "schema": "omega-phase2-final-artifact-publication/1",
+  "at": "2026-11-02T21:57:40.984888+00:00",
+  "status": "OFFLINE_VERIFIED_WITH_SEPARATE_EXECUTED_DEPLOYMENTS",
+  "baseline": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "distribution": {
+    "path": "artifacts/phase2/distribution-final-01",
+    "manifest": "distribution.json",
+    "manifest_sha256": "668f4d8a15afc2560dba51fedceba0b32c4b49f3cb83e328a6a1fc0f992636a2",
+    "files": 303,
+    "source_archive_sha256": "68f7972ce44413a1c41855549b7250f75c0bf28eff547e3f3d8edb9f2412f449",
+    "source_members_exact_checkout_match": 612,
+    "chart_version": "0.5.1",
+    "archive_sha256": "a474cc36fbea26a099d871d05baff1f483d554965a62f36c524e5b4a1e451ebd"
+  },
+  "runtime_source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "images": {
+    "archive_bytes": 3472984576,
+    "archive_sha256": "a474cc36fbea26a099d871d05baff1f483d554965a62f36c524e5b4a1e451ebd",
+    "container_starts": 0,
+    "generative_runtime_availability": "NOT_CHECKED",
+    "images": [
+      {
+        "configuration_digest": "sha256:5c24da0fc1cd9352330cf54ad959c92ccd0552f71513b4eec76d94ea39b7d544",
+        "kind": "base",
+        "local_tag": "docker.io/library/fusion-single-node:reference-phase2-dev19",
+        "manifest_digest": "sha256:8471ca9dbb119d11111861fd22a14e7a5c0115f47e9f6591b3b5c12fe38a7b35",
+        "repository": "docker.io/library/fusion-single-node",
+        "source_package": "image-base/package.json"
+      },
+      {
+        "configuration_digest": "sha256:87518498565959e04839f49a1ba581da9440b4277ad939fd36a1f9277a175d15",
+        "kind": "caller",
+        "local_tag": "docker.io/library/fusion-memory-caller:reference-phase2-dev19",
+        "manifest_digest": "sha256:e3982b8cbb7283530df8563047b8a0b9c9316b1da49e7ba33f3074474876587b",
+        "repository": "docker.io/library/fusion-memory-caller",
+        "source_package": "image-caller/package.json"
+      },
+      {
+        "configuration_digest": "sha256:bd29242616e73c3666e47db67fe76d4efbb5e61eda1c190f15e8ef6fee208292",
+        "kind": "embedding",
+        "local_tag": "docker.io/library/fusion-memory-embedding:reference-phase2-dev19",
+        "manifest_digest": "sha256:d5ce4e6e3ca9218d12784d5fa0ab3cb7bbc37201193951f642ab2abdad94b6ec",
+        "repository": "docker.io/library/fusion-memory-embedding",
+        "source_package": "image-embedding/package.json"
+      },
+      {
+        "configuration_digest": "sha256:3e2094d761e9249b3409600cdb275b7d0ba15a625a6d13991d556eff8abb003b",
+        "kind": "chain",
+        "local_tag": "docker.io/library/fusion-reference-chain:reference-phase2-dev19",
+        "manifest_digest": "sha256:cc9c3fbeb167c8ced37638a9308ab83620863e8b1403fe5a96d3ad1df98b446a",
+        "repository": "docker.io/library/fusion-reference-chain",
+        "source_package": "image-chain/package.json"
+      }
+    ],
+    "source_export_verification": "PASS",
+    "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d"
+  },
+  "sdk": {
+    "artifacts": {
+      "client": {
+        "file": "fusion_module_client-0.2.0-py3-none-any.whl",
+        "sha256": "b7ff0eb206dd554922b70e9e8d9087f717d851b16c7b59b5592a06906651ed50"
+      },
+      "operator": {
+        "file": "fusion_preview_operator-0.2.0-py3-none-any.whl",
+        "sha256": "48f23731bb814c15bd88833940598b3848ee37efc144f59414062ce9db69573d"
+      },
+      "provider": {
+        "file": "fusion_file_feed_example-0.2.0-py3-none-any.whl",
+        "sha256": "92361d6be2a18868c711c34ed621df629e905d105797664cc382256b373237a8"
+      }
+    },
+    "build_manifest_sha256": "a21143d3f1b9a2895c08e4e280237e9918044ea24def68884b1bd0f7279c3f10",
+    "qualification": "sdk/operator-final-candidate-qualification-04.json"
+  },
+  "image_inventory": {
+    "path": "evidence/phase2/image-dependencies-dev19.json",
+    "sha256": "45a5379bac327fe3c7ada74abd3545f6105c6da3773ab0e09bcd2dfc13e883db"
+  },
+  "installed_verification": {
+    "command": "cd /tmp && env -u PYTHONPATH /tmp/omega-phase2-operator-dev18/bin/fusion-verify-artifacts /home/purplezky/work/takopi/fusion-module-interfaces/artifacts/phase2/distribution-final-01/distribution.json",
+    "status": "OFFLINE_VERIFIED",
+    "report_sha256": "815f5473d75130be7be945c4ec6144869cc3945cbf6a0802c1b1f16758addc8c",
+    "classification": "Installed offline-wheel operator; no developer checkout import, cluster or runtime activity"
+  },
+  "executed_evidence": "docs/phase2/programme-report.md",
+  "changed_files": "evidence/phase2/changed-files.json",
+  "publication_rule": "This detached record and its final Git commit are outside the packet hash. Runtime/source/image identities bind exact tested bytes; final archive adds reviewed evidence and public observer helpers only.",
+  "distribution_scope": "Local immutable OCI archive, source packet, chart and wheelhouse; no public-registry publication or empty-cache rebuild claim",
+  "restrictions": [
+    "cached parent image and pinned E5 inputs required for rebuild",
+    "Fusion license NOASSERTION where undeclared",
+    "no credentials, owner journals, private browser records or generative-model assets distributed",
+    "hosted CI NOT_OBSERVED; vulnerability scan NOT_RUN",
+    "CPU quota enforcement NOT_ESTABLISHED; native method timing NOT_OBSERVED"
+  ],
+  "additional_live_generations": 0,
+  "staged_review": {
+    "paths": 357,
+    "baseline_verified": "c4fb744edbddd003d09db408bed44a59d2df3823",
+    "whitespace_check": {
+      "exit_code": 2,
+      "status": "WARNINGS_RETAINED_FOR_EXACT_SOURCE_AND_RAW_EVIDENCE",
+      "paths": [
+        "codex_omega_phase2_multi_agent_developer_preview.md",
+        "evidence/phase2/development/stage-observations-01.log",
+        "integration/single_node/chain_address.py",
+        "tests/test_phase2_workbench.py"
+      ],
+      "explanation": "Six Markdown hard breaks in the supplied brief, one final blank line in the raw failure log, one final blank line in source-locked chain_address.py, and one trailing space in the historically tested workbench fixture. Bytes retained; no executable behavior changed."
+    },
+    "secret_review": "evidence/phase2/final/publication-safety.json"
+  }
+}

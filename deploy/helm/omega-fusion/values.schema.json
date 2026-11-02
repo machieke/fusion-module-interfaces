@@ -106,6 +106,9 @@
         },
         "f1r3node": {
           "$ref": "#/definitions/component"
+        },
+        "omega-agent-b": {
+          "$ref": "#/definitions/component"
         }
       }
     },
@@ -527,6 +530,320 @@
           "minLength": 1
         }
       }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "profile": {
+          "const": "omega-single-node-developer-preview/1"
+        },
+        "scope": {
+          "type": "string",
+          "pattern": "^synthetic-[A-Za-z0-9_.-]+$"
+        },
+        "model_boundary": {
+          "const": "RECORDED_FIXTURE"
+        },
+        "authority_expires_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "policy_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agents": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "omega-agent": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "principal": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Za-z0-9_-]{0,30}$"
+                },
+                "sessions": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 8,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                },
+                "tools": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 32,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]{0,63}$"
+                  }
+                },
+                "facets": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "enum": [
+                      "episodic.memory",
+                      "relations",
+                      "execution.workspace"
+                    ]
+                  }
+                },
+                "private_scope": {
+                  "type": "string",
+                  "pattern": "^synthetic-[A-Za-z0-9_.-]+$"
+                }
+              },
+              "required": [
+                "principal",
+                "sessions",
+                "tools",
+                "facets"
+              ]
+            },
+            "omega-agent-b": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "principal": {
+                  "type": "string",
+                  "pattern": "^[A-Z][A-Za-z0-9_-]{0,30}$"
+                },
+                "sessions": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 8,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                },
+                "tools": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 32,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]{0,63}$"
+                  }
+                },
+                "facets": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "enum": [
+                      "episodic.memory",
+                      "relations",
+                      "execution.workspace"
+                    ]
+                  }
+                },
+                "private_scope": {
+                  "type": "string",
+                  "pattern": "^synthetic-[A-Za-z0-9_.-]+$"
+                }
+              },
+              "required": [
+                "principal",
+                "sessions",
+                "tools",
+                "facets"
+              ]
+            }
+          },
+          "required": [
+            "omega-agent"
+          ]
+        },
+        "limits": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "inputs": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 32
+            },
+            "pending": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "timeout_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 120000
+            }
+          },
+          "required": [
+            "inputs",
+            "pending",
+            "timeout_ms"
+          ]
+        },
+        "assignments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "responses": {
+          "type": "object",
+          "maxProperties": 128,
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "const": {
+                  "proposal": "input-command"
+                }
+              }
+            ]
+          }
+        },
+        "memory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "corpus"
+          ],
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "corpus": {
+              "type": "string",
+              "pattern": "^generated-[a-z0-9-]+$"
+            }
+          }
+        },
+        "cognition": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "attention_provider": {
+              "enum": [
+                "sqlite",
+                "file-fixture"
+              ]
+            }
+          },
+          "required": [
+            "enabled",
+            "attention_provider"
+          ]
+        },
+        "tasks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        },
+        "inspection": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "enabled"
+          ]
+        },
+        "chain": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "nodeEnabled": {
+              "type": "boolean"
+            },
+            "isolationVerified": {
+              "type": "boolean"
+            },
+            "public_key": {
+              "type": "string",
+              "pattern": "^04[0-9a-f]{128}$"
+            },
+            "wallet_address": {
+              "type": "string"
+            },
+            "registration": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "nodeEnabled",
+            "isolationVerified",
+            "public_key",
+            "wallet_address",
+            "registration",
+            "enabled"
+          ]
+        }
+      },
+      "required": [
+        "enabled"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "profile",
+              "scope",
+              "model_boundary",
+              "authority_expires_ms",
+              "policy_revision",
+              "agents",
+              "limits",
+              "assignments",
+              "responses"
+            ]
+          }
+        }
+      ]
     }
   },
   "definitions": {
@@ -663,7 +980,11 @@
                     "after_submit_before_response",
                     "after_signed_intent",
                     "after_node_submission",
-                    "after_observation_before_progress"
+                    "after_observation_before_progress",
+                    "after_session_input_capture",
+                    "after_workspace_effect",
+                    "after_lifecycle_commit",
+                    "after_task_payload_capture"
                   ]
                 },
                 "drop_response_operation": {
@@ -680,7 +1001,8 @@
                     "getMany",
                     "complete",
                     "send",
-                    "ack"
+                    "ack",
+                    "assertRelation"
                   ]
                 },
                 "pause_slot": {
@@ -881,6 +1203,39 @@
               },
               "phase": {
                 "const": "setup"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "preview": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            },
+            "required": [
+              "enabled"
+            ]
+          }
+        },
+        "required": [
+          "preview"
+        ]
+      },
+      "then": {
+        "properties": {
+          "futureLive": {
+            "properties": {
+              "enabled": {
+                "const": false
+              },
+              "activated": {
+                "const": false
               }
             }
           }

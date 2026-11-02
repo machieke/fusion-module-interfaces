@@ -41,10 +41,10 @@ class Operator:
   # Stop external admission/egress and the caller first. No forced timeout
   # changes or repeat submissions; unresolved states stay in owner journals.
   roles=[x['metadata']['name'] for x in items]
-  for role in ('omega-agent','fusion-channel-bridge','irc-peer'):
+  for role in ('omega-agent','omega-agent-b','fusion-channel-bridge','irc-peer'):
    if role in roles:self.k('scale','statefulset',role,'--replicas=0')
   for role in roles:
-   if role not in ('omega-agent','fusion-channel-bridge','irc-peer'):self.k('scale','statefulset',role,'--replicas=0')
+   if role not in ('omega-agent','omega-agent-b','fusion-channel-bridge','irc-peer'):self.k('scale','statefulset',role,'--replicas=0')
   if json.loads(self.k('get','pods','-l','app.kubernetes.io/instance='+self.release,'-o','json'))['items']:
    try:self.k('wait','--for=delete','pod','-l','app.kubernetes.io/instance='+self.release,'--timeout=90s',timeout=100)
    except RuntimeError:
@@ -56,7 +56,7 @@ class Operator:
   return before
  def helper(self,role,image,pvc,readonly=False):
   self.owned();name='reference-copy-'+role
-  value=dict(apiVersion='v1',kind='Pod',metadata=dict(name=name,namespace=self.namespace,labels={LABEL:OWNER}),spec=dict(restartPolicy='Never',terminationGracePeriodSeconds=2,automountServiceAccountToken=False,securityContext=dict(runAsUser=1000,runAsGroup=1000,runAsNonRoot=True,fsGroup=1000),containers=[dict(name='copy',image=image,imagePullPolicy='Never',command=[PYTHON,'-c','import signal,sys,time;signal.signal(signal.SIGTERM,lambda *_:sys.exit(0));time.sleep(600)'],resources=dict(requests=dict(cpu='25m',memory='32Mi'),limits=dict(cpu='500m',memory='256Mi')),securityContext=dict(allowPrivilegeEscalation=False,readOnlyRootFilesystem=True,capabilities=dict(drop=['ALL'])),volumeMounts=[dict(name='state',mountPath='/state',readOnly=readonly)])],volumes=[dict(name='state',persistentVolumeClaim=dict(claimName=pvc,readOnly=readonly))]))
+  value=dict(apiVersion='v1',kind='Pod',metadata=dict(name=name,namespace=self.namespace,labels={LABEL:OWNER}),spec=dict(restartPolicy='Never',terminationGracePeriodSeconds=2,automountServiceAccountToken=False,securityContext=dict(runAsUser=1000,runAsGroup=1000,runAsNonRoot=True,fsGroup=1000,fsGroupChangePolicy='OnRootMismatch'),containers=[dict(name='copy',image=image,imagePullPolicy='Never',command=[PYTHON,'-c','import signal,sys,time;signal.signal(signal.SIGTERM,lambda *_:sys.exit(0));time.sleep(600)'],resources=dict(requests=dict(cpu='25m',memory='32Mi'),limits=dict(cpu='500m',memory='256Mi')),securityContext=dict(allowPrivilegeEscalation=False,readOnlyRootFilesystem=True,capabilities=dict(drop=['ALL'])),volumeMounts=[dict(name='state',mountPath='/state',readOnly=readonly)])],volumes=[dict(name='state',persistentVolumeClaim=dict(claimName=pvc,readOnly=readonly))]))
   self.apply(value);self.k('wait','--for=condition=Ready','pod/'+name,'--timeout=60s');return name
  def backup(self,destination):
   root=Path(destination).resolve();root.mkdir(mode=0o700,parents=True,exist_ok=False);os.chmod(root,0o700)
@@ -66,7 +66,16 @@ class Operator:
   # original owner image separately as part of the consistency cut.
   maintenance_image=before['workloads']['omega-agent']['image']
   manifest['maintenance_image']=maintenance_image
+  manifest['excluded_owners']={}
   for role,entry in before['workloads'].items():
+   if role=='f1r3node':
+    # Node-local key material is outside the authority-free owner archive.
+    # Keep its original PVC stopped and retained; this clone is never a node
+    # restore or failover. Application/commitment receipts remain exportable.
+    manifest['excluded_owners'][role]=dict(image=entry['image'],pvc='state-'+role+'-0',
+     reason='node-local cryptographic state excluded; no node restore or failover claim',
+     original_retained=True,original_quiesced=True)
+    continue
    name=self.helper(role,maintenance_image,'state-'+role+'-0')
    try:
     raw=self.k('exec',name,'--',PYTHON,'-m','integration.single_node.backup_payload','export','--role',role,binary=True)

@@ -1,0 +1,89 @@
+{
+  "schema": "omega-phase2-checkpoint-evidence/1",
+  "recorded_at": "2026-11-02T13:34:50.093729+00:00",
+  "baseline": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "source_hashes": {
+    "examples/phase2_provider/__init__.py": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+    "examples/phase2_provider/caller.py": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+    "examples/phase2_provider/conformance.py": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+    "examples/phase2_provider/server.py": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+    "fusion/adapters/active_chroma.py": "9325330a2b6fde6858ae5069c68afd2f7ab3ac80ead9059ca82f45ab25684b47",
+    "fusion/adapters/chroma_vector.py": "81f020922a116fc148536f01627cd177c7a047de6411a89cfffda46a969e0ec1",
+    "fusion/append_composition.py": "8e37c9193cbe7d5a49517d8cc29d080cbdd06cc988f6376df6ab5bf6775da55b",
+    "fusion/embedding_composition.py": "60b7190447e0ab457e687599768e283a52ae46ad69adaebfd4a01390bab10ab5",
+    "fusion/embedding_service.py": "1aee273d97eb54fe5d4057c145ecf7373bb118f82d960ea5ab0bd0bbced9a7b9",
+    "fusion/memory_services.py": "3df8b6dd035c0b274d740ffce85d7d0dd27f5a8773cf5127643715e092475f55",
+    "fusion/neoclaw_append.py": "a80e53445615e9700b7d5c674d67bbb5a2ce0743d98aeabcfd6e740794b12bf8",
+    "fusion/neoclaw_application.py": "7c80d2cb52c53d80b1a363b1e142fdd62c18914cfec26b34852fbb5403e6ba21",
+    "fusion/neoclaw_embedding.py": "a837502905c34eaf15e5297c07c58e3fd5d95aab7fa3bdc3d451029e61413af1",
+    "fusion/neoclaw_memory.py": "95d3b1cd959ece133506467d65cd7264e4af06214a6be26a7d5f5f51db5cee57",
+    "fusion/preview_application.py": "6fd93ff057a0afd180a523a0e3bb4ee2dd68b6f2dda4a561d5c4e95f59da0eb9",
+    "fusion/preview_capabilities.py": "49df97772625e59d26ea5540e7fcd36d228f44211a388527ec593c5cdfb834d7",
+    "fusion/preview_client.py": "d7d9922efe03b128179687f7ef3285955d4b80d78dec7d2dbfe15fe44b56df5f",
+    "fusion/preview_context.py": "f7d5953fe451729b2004375c6404b09c007cde880b1691bc2a296aa6e6133e48",
+    "fusion/preview_history.py": "2e0a24eb2bdd880a5545098c4f8aace3bd9cb32b186e8df26678b8c2102a2e51",
+    "fusion/preview_lifecycle.py": "295168d8b08e9f3cb1d964e753d8a8a3011464627457ca6e3f167d5050e0a82c",
+    "fusion/preview_relations.py": "b32758c7b76788af3792a2a189f233fb0c649c2e610d050c734901892388f704",
+    "fusion/preview_sessions.py": "6265ef7594228992f1c5eb9bed73cdd65398f2f3eec0a26172e1a1f5df6775aa",
+    "fusion/preview_text.py": "6eb0e33a185c7e4db63aed4eaeb6b8d8a09534dcf2c91cb65c9222997b0c7d16",
+    "fusion/preview_tools.py": "1fae1816a804ca7895d98dfe5c4f6aca650eaa0f626867b0623861f01865eca8",
+    "fusion/preview_vector_contracts.py": "4c8ab511935624c262e6b4f0f6023c11524cd735e5fe37ea985ef0f152de7403",
+    "fusion/preview_workspace.py": "a64c95f214d2d75ac1af6859451da3396203d62d30609077c313fb5b014053c3",
+    "fusion/vector_composition.py": "c2ed6dc27088a4a920af7019e81eb7e1eb653a4d2c2e06a869aa2c2cf4c0778b",
+    "integration/neoclaw/loop_bridge.py": "b75ba432de9ccd574135fd596763ac0134513858b8cd408978306e9289108c50",
+    "integration/neoclaw/native_loop.py": "7d1f1357855e8db35e77e20196ffe0890853d076d688a41e10058022af355560",
+    "integration/neoclaw/preview_startup.py": "88ba08fa8a8a53c847512fde926ca9c517ee008a73347db06849f1e4589c81fd",
+    "integration/neoclaw/test_preview_context.py": "61eabc6ec5ce17d37219b178f29e870e582b7a16ba4bd2d8cfe48531d2681586",
+    "sdk/build.py": "e1d9f7e7b026a14a3f99766309db59753328c044b122efdb2d4b70bf15454e0d",
+    "tests/test_phase2_foundations.py": "e560137b21263a388ee764860e9becbcf79f9cfd40dc4702bbc4bd4b180de83f",
+    "tests/test_phase2_history_relations.py": "8eff1435d27cd23fe59f132d9acdb9476844b2e1f5cd7949e3c57783a832b9bb",
+    "tests/test_phase2_lifecycle.py": "fdffe81e413e1af4d0217cc876c4d8e23542d26fda098fb9f162f49162cf17fb",
+    "tests/test_phase2_sdk.py": "2f286427b8304a1f360210e26647a9f8ddc5c4939cb901fbd4ec504a728ebe2e",
+    "tests/test_phase2_text_policy.py": "eaee15778f4dc2c45ce05849285c45ad9c17af36871189f66c867360796498cd",
+    "tests/test_phase2_workspace.py": "d26382ada23d28f9a1e5b6ecf0d7b3f0d4f05e83850d1c03031a0ae1aa762c66"
+  },
+  "checks": [
+    {
+      "log": "artifacts/phase2/native-context-04.log",
+      "sha256": "69a6c37ec4646363016b891ad8744c21693b21ef42d7d28036de63df0ca4e058",
+      "methods": 3,
+      "status": "PASS",
+      "classification": "REAL_NATIVE_LOOP; CONTROLLED_MODEL_CHANNEL_FIXTURES"
+    },
+    {
+      "log": "artifacts/phase2/owner-foundations-03.log",
+      "sha256": "71fdd8dd359e8a9258638e37e94d8f1fb99303bc900ce69a730c4179c0f68dc0",
+      "methods": 35,
+      "status": "PASS",
+      "classification": "FIXTURE_STORAGE; DURABLE_OWNER_TESTS"
+    },
+    {
+      "log": "artifacts/phase2/lifecycle-chroma-01.log",
+      "sha256": "7f034e9789dc94d36b0c364ed0af8d4bdd8bb02a8f746d2831ffb9083f14ce11",
+      "methods": 3,
+      "status": "PASS",
+      "classification": "REAL_CHROMA; FIXTURE_STORAGE_VECTORS"
+    },
+    {
+      "log": "artifacts/phase2/text-policy-01.log",
+      "sha256": "cb8a86faa953695ff9f08d8a4a6705657091a8673bda0e3357302ee3f35ae6cd",
+      "methods": 3,
+      "status": "PASS",
+      "classification": "CONTRACT_UNIT"
+    }
+  ],
+  "failures": [
+    {
+      "log": "artifacts/phase2/native-context-01.log",
+      "reason": "recursive native tuple argument in initial preview wrapper; corrected to scalar trusted bridge arguments"
+    },
+    {
+      "log": "artifacts/phase2/native-context-02.log",
+      "reason": "relative test output root failed after native working-directory change; corrected to resolved root"
+    }
+  ],
+  "same_source_union_claim": false,
+  "cluster_runs": "NOT_RUN",
+  "generative_runtime": "NOT_CONTACTED",
+  "additional_live_generations": 0
+}

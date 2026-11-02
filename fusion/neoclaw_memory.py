@@ -20,13 +20,15 @@ def configuration(path):
     require(cfg['sharing']==c.PRIVACY and cfg['profile']==c.PROFILE,'UNSUPPORTED_PROFILE')
     require(type(cfg['principal']) is str and 1<=len(cfg['principal'])<=80)
     c.snapshot(cfg['snapshot'],cfg['scope']);require(cfg['snapshot']['embedding']==cfg['embedding'],'UNSUPPORTED_PROFILE')
-    require(type(cfg['queries']) is list and 1<=len(cfg['queries'])<=32)
+    require(type(cfg['queries']) is list and (0 if 'text_policy' in cfg else 1)<=len(cfg['queries'])<=32)
     for query in cfg['queries']:c.query_text(query)
     require(type(cfg.get('require_ready',False)) is bool)
     chosen=select([descriptor_read(d) for d in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False))
     frozen={k:cfg[k] for k in ('principal','scope','sharing','profile','embedding','snapshot','queries','metadata_seal','native_config')}
     require(cfg['native_config']=={'recall':2,'similarity':4,'inflation':4},'UNSUPPORTED_PROFILE')
     frozen['selections']={n:selection_token(d) for n,d in chosen.items()}
+    from .preview_text import freeze
+    freeze(cfg,frozen)
     if cfg.get('require_ready'):frozen['require_ready']=True
     if cfg.get('placement')=='service-network':
         from .memory_services import freeze_placement
@@ -35,7 +37,8 @@ def configuration(path):
 
 
 class MemoryRead:
-    def __init__(self,application):
+    def __init__(self,application,*,contracts=c):
+        self.c=contracts
         self.app=application;self.db=application.db
         self.db.execute('''CREATE TABLE IF NOT EXISTS app_memory_reads (
             id TEXT PRIMARY KEY, request TEXT NOT NULL, calls INTEGER NOT NULL DEFAULT 0,
@@ -46,7 +49,7 @@ class MemoryRead:
         require(self.app.current is not None,'CONFLICT')
         row=self.db.execute('SELECT * FROM app_occurrences WHERE turn=? AND position=?',self.app.current).fetchone()
         require(row is not None and row['premises'] is not None,'CONFLICT')
-        require(json.loads(row['premises'])['profile']==c.PROFILE,'UNSUPPORTED_PROFILE');return row
+        require(json.loads(row['premises'])['profile']==self.c.PROFILE,'UNSUPPORTED_PROFILE');return row
 
     def settings(self,row=None):
         cfg,chosen,frozen=configuration(self.app.config['memory_read_config'])
@@ -56,6 +59,8 @@ class MemoryRead:
             view=self.app.write.view_for(row)
             cfg={**cfg,'snapshot':view['snapshot'],'metadata_seal':view['metadata_seal']}
         return cfg,chosen
+
+    def transport(self,cfg,chosen):return binding(cfg,chosen)
 
     def call(self,row,name,op,body,*,bounded=True):
         cfg,chosen=self.settings(row);d=chosen[name]
@@ -69,7 +74,7 @@ class MemoryRead:
         self.app.hook('after_read_reservation')
         req=dict(request_id=row['id'],scope=cfg['scope'],interface_ref=dict(id=name,version=d.version),operation=op,
                  profile=next(iter(d.profiles)),selection=selection_token(d),body=body)
-        result=binding(cfg,chosen).invoke(req)
+        result=self.transport(cfg,chosen).invoke(req)
         if bounded:require(time.time_ns()//1_000_000<=row['deadline'],'DEADLINE_EXCEEDED')
         return result
 
@@ -78,7 +83,8 @@ class MemoryRead:
         if getattr(self.app,'evidence_enabled',False):self.app.evidence.validate_view(self.app.write.view_for(row))
         if self.app.embedding_enabled:self.app.embedding.authorize(row)
         cfg,_=self.settings(row);intent=json.loads(row['premises'])
-        require(intent['arguments']['query'] in cfg['queries'],'UNAUTHORIZED')
+        from .preview_text import query
+        query(cfg,intent['arguments']['query'])
         result=self.call(row,'search','authorize-ready' if cfg.get('require_ready') else 'authorize',dict(query=intent['arguments']['query'],snapshot=cfg['snapshot']),bounded=False)
         require(result=={'authorized':True},'NOT_AVAILABLE')
 
@@ -86,7 +92,7 @@ class MemoryRead:
         row=self.current();cfg,_=self.settings(row)
         if self.app.embedding_enabled:
             require(vector==self.app.embedding.selected(row)['vector'],'CONFLICT')
-        request=c.query(asdict(c.VectorQuery(row['id'],cfg['scope'],cfg['snapshot'],c.vector(vector),k,row['deadline'])))
+        request=self.c.query(asdict(self.c.VectorQuery(row['id'],cfg['scope'],cfg['snapshot'],self.c.vector(vector),k,row['deadline'])))
         encoded=canonical(request).decode()
         with self.db:
             old=self.db.execute('SELECT * FROM app_memory_reads WHERE id=?',(row['id'],)).fetchone()
@@ -95,11 +101,11 @@ class MemoryRead:
         self.app.hook('after_read_bind');self.authorize(row)
         state=self.db.execute('SELECT * FROM app_memory_reads WHERE id=?',(row['id'],)).fetchone()
         if state['candidates'] is None:
-            candidates=c.result(self.call(row,'search','query',request),request)
+            candidates=self.c.result(self.call(row,'search','query',request),request)
             self.app.hook('after_read_reply')
             with self.db:self.db.execute('UPDATE app_memory_reads SET candidates=? WHERE id=?',(canonical(candidates).decode(),row['id']))
             self.app.hook('after_candidate_capture')
-        else:candidates=c.result(json.loads(state['candidates']),request)
+        else:candidates=self.c.result(json.loads(state['candidates']),request)
         if state['payloads'] is None:
             rows=[]
             for offset in range(0,len(candidates['hits']),8):
@@ -107,10 +113,10 @@ class MemoryRead:
                 values=self.call(row,'atom.storage','getMany',dict(refs=[x['ref'] for x in hits]))
                 require(type(values) is list and len(values)==len(hits),'NOT_AVAILABLE')
                 for hit,value in zip(hits,values):
-                    c.fields(value,'ref content_type data')
+                    self.c.fields(value,'ref content_type data')
                     item=AtomEnvelope(value['ref'],value['content_type'],decode(value['data']))
-                    envelope(item,hit['ref']);require(item.content_type==c.PAYLOAD,'NOT_AVAILABLE')
-                    p=c.payload(json.loads(item.bytes),cfg['scope'],cfg['snapshot']['corpus'])
+                    envelope(item,hit['ref']);require(item.content_type==self.c.PAYLOAD,'NOT_AVAILABLE')
+                    p=self.c.payload(json.loads(item.bytes),cfg['scope'],cfg['snapshot']['corpus'])
                     require(canonical(p)==item.bytes and p['uuid']==hit['uuid'],'NOT_AVAILABLE')
                     rows.append([p['uuid'],p['time'],p['content'],hit['distance']])
             self.authorize(row)

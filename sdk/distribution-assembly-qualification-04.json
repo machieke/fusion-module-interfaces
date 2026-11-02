@@ -1,0 +1,48 @@
+{
+  "additional_live_generations": 0,
+  "changed_during_run": [],
+  "command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/operator-venv/bin/python",
+    "-m",
+    "unittest",
+    "sdk.test_distribution",
+    "-v"
+  ],
+  "elapsed_seconds": 0.593,
+  "gates": {
+    "actual_distribution_assembly": "NOT_RUN",
+    "assembly": "TINY_AUTHORED_IMAGE_CHART_WHEEL_SOURCE_FIXTURES",
+    "cluster_contact": "NONE",
+    "helm": "EXPLICIT_SUBPROCESS_STUB",
+    "hosted_ci": "NOT_OBSERVED",
+    "runbook_ci_source_closure": "STATIC_FILE_AND_IMPORT_SELECTION_CHECK",
+    "runtime_contact": "NONE"
+  },
+  "retained_failure": "sdk/distribution-assembly-qualification-03.json",
+  "returncode": 0,
+  "schema": "fusion-preview-distribution-assembly-qualification/1",
+  "sources_after": {
+    ".gitignore": "7e4e53cc0a8dba919431bfe94134d154501a0a633954824db28648d6cb4e1abb",
+    "docs/phase2/runbook.md": "47dfa48aa88e8ebbc22a9d1c355f7131b7c4ea327295ac4cf3b87c42157d249b",
+    "examples/preview_single_agent_qualification.py": "f8deb6677812f8b06670db988d00a17d8c752a5c671ff64ef82cc6b29ee57f96",
+    "integration/single_node/reference_ci.py": "4dae7810538e28ec89738c8eb9f795db0a2e4787b642aecc45f243c772e390f0",
+    "sdk/DISTRIBUTION.md": "f55ca45751c879d6eacbd557934255947a87a817bcaba925449e785621807715",
+    "sdk/distribution.py": "ed8ff04733474c74ad9c7c3ee2948efe84ae5600551c44c36d555cb58d688035",
+    "sdk/test_distribution.py": "6106f2773b0b8b091ce42b144789a5c0e4e135469ddde2da0f0d1bcdeaacf787",
+    "tests/test_phase2_single_agent_qualification.py": "3291b20d0f60220054559bcdc5c660e46ad07e93111204acab7fd941ae790ced"
+  },
+  "sources_before": {
+    ".gitignore": "7e4e53cc0a8dba919431bfe94134d154501a0a633954824db28648d6cb4e1abb",
+    "docs/phase2/runbook.md": "47dfa48aa88e8ebbc22a9d1c355f7131b7c4ea327295ac4cf3b87c42157d249b",
+    "examples/preview_single_agent_qualification.py": "f8deb6677812f8b06670db988d00a17d8c752a5c671ff64ef82cc6b29ee57f96",
+    "integration/single_node/reference_ci.py": "4dae7810538e28ec89738c8eb9f795db0a2e4787b642aecc45f243c772e390f0",
+    "sdk/DISTRIBUTION.md": "f55ca45751c879d6eacbd557934255947a87a817bcaba925449e785621807715",
+    "sdk/distribution.py": "ed8ff04733474c74ad9c7c3ee2948efe84ae5600551c44c36d555cb58d688035",
+    "sdk/test_distribution.py": "6106f2773b0b8b091ce42b144789a5c0e4e135469ddde2da0f0d1bcdeaacf787",
+    "tests/test_phase2_single_agent_qualification.py": "3291b20d0f60220054559bcdc5c660e46ad07e93111204acab7fd941ae790ced"
+  },
+  "started_utc": "2026-11-02T18:47:33.417482+00:00",
+  "stderr": "test_changed_wheel_inventory_and_existing_output_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_changed_wheel_inventory_and_existing_output_refuse) ... ok\ntest_extra_wheel_and_unlisted_chart_file_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_extra_wheel_and_unlisted_chart_file_refuse) ... ok\ntest_fixture_packet_is_offline_verified_and_positive_listed (sdk.test_distribution.DistributionAssemblyFixtures.test_fixture_packet_is_offline_verified_and_positive_listed) ... ok\ntest_profiles_use_existing_generator_with_disabled_native_consumers (sdk.test_distribution.DistributionAssemblyFixtures.test_profiles_use_existing_generator_with_disabled_native_consumers) ... ok\ntest_source_drift_refuses_before_output_or_helm (sdk.test_distribution.DistributionAssemblyFixtures.test_source_drift_refuses_before_output_or_helm) ... ok\ntest_symbolic_public_source_refuses (sdk.test_distribution.DistributionAssemblyFixtures.test_symbolic_public_source_refuses) ... ok\ntest_runbook_python_entrypoints_are_image_sources_or_explicit_public_files (sdk.test_distribution.PublicRunbookInputs.test_runbook_python_entrypoints_are_image_sources_or_explicit_public_files) ... ok\ntest_selected_example_tests_retain_their_direct_test_dependencies (sdk.test_distribution.PublicRunbookInputs.test_selected_example_tests_retain_their_direct_test_dependencies) ... ok\ntest_shipped_fast_ci_lanes_keep_their_test_and_profile_source_inputs (sdk.test_distribution.PublicRunbookInputs.test_shipped_fast_ci_lanes_keep_their_test_and_profile_source_inputs) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.484s\n\nOK\n",
+  "stdout": "",
+  "test_methods": 9
+}

@@ -48,10 +48,10 @@ def hash_value(value):
     require(type(value) is str and re.fullmatch('[0-9a-f]{64}', value) is not None)
 
 
-def messages(raw):
+def messages(raw, *, max_bytes=MAX_PROMPT):
     # Definition of the checked native transformation; parity is executed against
     # the original source and the independently extracted native adapter.
-    text(raw)
+    text(raw,max_bytes)
     require(':-:-:-:' in raw)
     transformed = raw.replace('<tool_call>', '').replace('<arg_value>', ' ').replace('</tool_call>', ' ').replace('</arg_value>', '')
     system, user = transformed.split(':-:-:-:', 1)

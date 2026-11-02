@@ -1,0 +1,92 @@
+{
+  "active": {
+    "chain": "disabled native process; generated public key bound before install",
+    "log": "artifacts/phase2/deploy-dev17/qualification-01.log",
+    "namespace": "omega-ref-phase2-dev17",
+    "operator_venv": "/tmp/omega-phase2-operator-dev17",
+    "report": "artifacts/phase2/deploy-dev17/qualification-01/report.json",
+    "runner_session": 35068,
+    "source": "/tmp/omega-phase2-source-dev17",
+    "state": "COMBINED_NATIVE_RUNNING"
+  },
+  "additional_live_generations": 0,
+  "assignment": "All P01-P18; continue same programme; final commit and push authorized",
+  "at": "2026-11-02T19:20:39.220132+00:00",
+  "baseline": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "build": "artifacts/phase2/build-dev17",
+  "development_failures": {
+    "dev15": "quiesced after second memory readiness DEADLINE_EXCEEDED; original acceptance and 30s tool budget retained; native inspection/workspace completed; chain unactivated",
+    "dev16": "Combined PASS, 23 operator + 4 task/result inputs; quiesced PVCs retained; chain never activated. Superseded for final freeze by P06 external-effect history and post-escape render bound corrections."
+  },
+  "distribution": {
+    "path": "artifacts/phase2/distribution-candidate-05/distribution.json",
+    "sha256": "24a03d0c3e7450d2a05e680f9c368f2c3fd7f38e8aa41b943211682a42a543f2",
+    "state": "OFFLINE_VERIFIED; exact chart/source used in dev17; installed candidate04 wheel bytes identical; final packet must add final evidence and supersession-cognition test"
+  },
+  "images": [
+    {
+      "configuration_digest": "sha256:c71f8324f7fe3fe3381f4d311bfb2fb51af468896081aff4b386fa11833dadd2",
+      "kind": "base",
+      "local_tag": "docker.io/library/fusion-single-node:reference-phase2-dev17",
+      "manifest_digest": "sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76",
+      "repository": "docker.io/library/fusion-single-node",
+      "source_package": "image-base/package.json"
+    },
+    {
+      "configuration_digest": "sha256:298728cad8b1e4ef7fec46070011ed91d15516c7cbad31fd7861106a0e0661dc",
+      "kind": "caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:reference-phase2-dev17",
+      "manifest_digest": "sha256:cced52824e2037016736e746d78eaa0cd37e78b88cc067cdabcfece827d7743c",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "source_package": "image-caller/package.json"
+    },
+    {
+      "configuration_digest": "sha256:2d08cf33ee0c142f703a4aebb91f1fb7aa81b8cd9aaaf74ef9c8af9728a686f0",
+      "kind": "embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:reference-phase2-dev17",
+      "manifest_digest": "sha256:1273cfb71f87888b5a5015301f0db8644cb672e8af9968a87a2ea7cedef4d0c2",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "source_package": "image-embedding/package.json"
+    },
+    {
+      "configuration_digest": "sha256:7c4575aa79d19afdf33f9d01075f8b799cdfd846481f0447e5cb70e5319f5a19",
+      "kind": "chain",
+      "local_tag": "docker.io/library/fusion-reference-chain:reference-phase2-dev17",
+      "manifest_digest": "sha256:a502e276a55c67d7eefc5d9cc79ffbc51b6975876f10e07c689a97be40e646e2",
+      "repository": "docker.io/library/fusion-reference-chain",
+      "source_package": "image-chain/package.json"
+    }
+  ],
+  "private_material": "artifacts/phase2/deploy-dev17/private-secrets; EXCLUDE",
+  "protected": [
+    "omega-demo",
+    "omega-ref-live01",
+    "omega-reference-k3s-20261030-03"
+  ],
+  "remaining": [
+    "Finish dev17 combined and lifecycle",
+    "Read-only examples/preview_combined_observations against final captured context/truth/relation and external-effect histories",
+    "Same workflow real isolated chain via preview_chain_qualification + extracted examples/preview_chain_observer.py",
+    "Private scopes/credential/TLS rotation + examples/preview_shared_source_qualification",
+    "Current workbench ProofShot",
+    "Fenced restore with extracted chart DIRECTORY; example handles new layout seal",
+    "Fresh recovery-setup + 5faults/2reads; separate fresh handoff recovery example",
+    "Fresh independent attention provider; single-agent minimal example",
+    "Current-image historical isolated IRC recorded+uncertain-send+wrong-answer+absent-fact+unready-search+missing-payload; rebind recipe from dev17 to dev17 exact source",
+    "Current image SBOM and resource/protected inventory",
+    "Final artifact publication/evidence/capabilities/progress/report/hygiene; commit and push"
+  ],
+  "source_drift": [],
+  "source_manifest_sha256": "6a3707706bb4369011846e493990441625cf1fedfea0460c6f13aceb9402ad92",
+  "tests": {
+    "generation_denial": "PASS; additional live generation zero",
+    "layout_final28": "47 PASS 1.766s",
+    "preview_ci30": "478 PASS 51.862s",
+    "real_layout02": "48 records per layout; actual DeTTa reopen/hydration/native-put SIGKILL PASS",
+    "preview_ci36": "500 PASS 56.078s; generation denial PASS",
+    "native_ci34": "7 PASS 35.781s under generation-denial namespace",
+    "preview_ci35": "499 methods, 2 missing-Chroma errors in operator-only venv; preserved",
+    "context_history33": "19 PASS 1.852s",
+    "image_inventory17": "4 image archives/23 unique layers; evidence/phase2/image-dependencies-dev17.json SHA a13da8c0c242b40a508faae71406ca1baebc20962496b69bbe2abb8720851e6d"
+  }
+}

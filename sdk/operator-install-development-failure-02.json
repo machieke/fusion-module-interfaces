@@ -1,0 +1,17 @@
+{
+  "additional_live_generations": 0,
+  "cause": "Test scope did not select the documented preview-install extra for the values generator",
+  "cluster_contact": "NONE",
+  "diagnostic": "fusion-preview-values --help exited 1 in core-only venv: exact preview_values.main imports optional yaml before parsing help",
+  "elapsed_seconds": 10.212,
+  "failed_method": "sdk.test_operator_package.OperatorPackage.test_installed_entrypoints_and_sources_without_checkout_or_provider",
+  "qualification": "DEVELOPMENT_FAILURE_RETAINED",
+  "returncode": 1,
+  "schema": "fusion-operator-install-development-failure/1",
+  "sources": {
+    "integration/single_node/preview_values.py": "4ef868c74d8575aa295542b4b336f362b238d5b917b3108fa96ef709a21c6c4b",
+    "sdk/build.py": "9216d000a21306fd8660aebd73b407f350315ea3abc4897315666577e712739d",
+    "sdk/test_operator_package.py": "5c63c21b54accb26e45c61c15e5481e97634544288b140cc486dbcd92e564ecb"
+  },
+  "unittest_methods": 8
+}

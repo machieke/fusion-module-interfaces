@@ -12,11 +12,13 @@ def configuration(path,profile=c.PROFILE):
     cfg = json.loads(Path(path).read_text())
     require(cfg['sharing'] == v.PRIVACY and cfg['profile'] == profile and cfg['fallback'] is False, 'UNSUPPORTED_PROFILE')
     require(cfg['model'] == v.EMBEDDING and cfg['preprocessing'] == c.PREPROCESSING, 'UNSUPPORTED_PROFILE')
-    require(type(cfg['inputs']) is dict and 1 <= len(cfg['inputs']) <= 32)
+    require(type(cfg['inputs']) is dict and (0 if 'text_policy' in cfg else 1) <= len(cfg['inputs']) <= 32)
     for command, helper in cfg['inputs'].items(): v.query_text(command); c.text(helper)
     chosen = c.select([descriptor_read(d) for d in cfg['catalogue']],profile)
     frozen = {k:cfg[k] for k in ('principal', 'scope', 'sharing', 'profile', 'model', 'preprocessing', 'inputs', 'placement')}
     frozen['selection'] = selection_token(chosen)
+    from .preview_text import freeze
+    freeze(cfg,frozen)
     if cfg['placement']=='service-network':
         # Preserve the existing caller's credential-rotation contract through
         # composition; it does not branch on provider placement.

@@ -40,9 +40,10 @@ class SearchHost(SearchPorts):
         require(request['profile']=='neoclaw-memory-initial-view/1' and request['operation']=='initial' and request['body']=={},'UNSUPPORTED_PROFILE')
         require(request['selection']==selection_token(self.read['search']) and request['scope']==self.scope,'UNSUPPORTED_PROFILE')
         service=ReadService(self.path,credential,self.hook,atoms=self.atoms())
-        require(service.access['search'].principal=='A','UNAUTHORIZED');service.access['search'].authorize(self.scope,'query')
+        principal=service.access['search'].principal
+        require(principal=='A' or 'text_policy' in service.config,'UNAUTHORIZED');service.access['search'].authorize(self.scope,'query')
         service.search().ready(self.scope,self.initial)
-        return dict(request_id=request['request_id'],request_digest=digest(canonical(request)),selection=request['selection'],principal='A',value=self.initial)
+        return dict(request_id=request['request_id'],request_digest=digest(canonical(request)),selection=request['selection'],principal=principal,value=self.initial)
 
 
 def prepare_agent(settings,state,run):
@@ -58,7 +59,7 @@ def prepare_agent(settings,state,run):
     try:
         conn.request('POST','/memory-initial',canonical(request),{'Authorization':'Bearer '+port.credential,'Content-Type':'application/json'})
         response=conn.getresponse();require(response.status==200,'NOT_AVAILABLE');raw=response.read(98305);require(len(raw)<=98304,'NOT_AVAILABLE')
-        snapshot=v.snapshot(checked(request,json_loads(raw),'A'),read['scope'])
+        snapshot=v.snapshot(checked(request,json_loads(raw),read['principal']),read['scope'])
     finally:conn.close()
     require(snapshot['head']['sequence']==0,'CONFLICT')
     initial=state/'initial-view.json'

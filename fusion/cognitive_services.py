@@ -5,7 +5,7 @@ C2 alone holds the trusted C1 completion credential. No numerical implementation
 or general execution surface lives here.
 """
 from dataclasses import asdict,replace,is_dataclass
-import http.client,json,uuid
+import http.client,json,uuid,re
 from pathlib import Path
 from types import SimpleNamespace
 from .contracts import ContractError,canonical,digest,encode,decode,require
@@ -40,6 +40,19 @@ def catalogue(cfg):
  require({selection_token(x) for x in actual}=={selection_token(x) for x in expected},'UNSUPPORTED_PROFILE')
  return {x.interface:x for x in actual}
 
+def scoped_configuration(cfg,name,scope):
+ """Closed storage scope selection; all other historical ports stay single-scope.
+
+ The allowlist is trusted configuration, never authority by itself. Both the
+ authenticated actor and represented principal still need current method grants.
+ """
+ scopes=cfg.get('allowed_scopes',[cfg['scope']]) if name=='atom.storage' else [cfg['scope']]
+ require(type(scopes) is list and 1<=len(scopes)<=3 and all(type(x) is str for x in scopes)
+         and len(set(scopes))==len(scopes) and cfg['scope'] in scopes,'UNSUPPORTED_PROFILE')
+ if 'allowed_scopes' in cfg:
+  require(name=='atom.storage' and all(re.fullmatch(r'synthetic-[A-Za-z0-9_.-]+',x) for x in scopes),'UNSUPPORTED_PROFILE')
+ require(scope in scopes,'UNSUPPORTED_PROFILE')
+
 class Access:
  def __init__(self,path,credential,name):
   self.policy=Policy(path);self.credential=credential;self.name=name
@@ -47,26 +60,29 @@ class Access:
   self.identity=self.policy.authenticate(credential);self.principal=cfg['actors'][self.identity]
  def selection(self):return selection_token(self.descriptor)
  def authorize(self,scope,operation):
-  cfg=self.policy.current();require(cfg['composition']==COMPOSITION and cfg['privacy']==PRIVACY and cfg['scope']==scope,'UNSUPPORTED_PROFILE')
+  cfg=self.policy.current();require(cfg['composition']==COMPOSITION and cfg['privacy']==PRIVACY,'UNSUPPORTED_PROFILE')
+  scoped_configuration(cfg,self.name,scope)
   require(self.policy.authenticate(self.credential)==self.identity and cfg['actors'][self.identity]==self.principal,'UNAUTHORIZED')
   require(operation in OPERATIONS[self.name] or (self.name=='belief.revision' and operation=='assume'),'UNSUPPORTED_OPERATION')
   require(selection_token(catalogue(cfg)[self.name])==self.selection(),'UNSUPPORTED_PROFILE')
   self.policy.check(self.identity,scope,self.name+'.'+operation)
   self.policy.check(self.principal,scope,self.name+'.'+operation)
-  if operation=='acknowledgeDelivery':require(self.identity=='completion-relay','UNAUTHORIZED')
+  if operation=='acknowledgeDelivery':
+   require(self.identity=='completion-relay' or cfg.get('completion_relays',{}).get(self.identity)==self.principal,'UNAUTHORIZED')
   return self.principal
  def origin(self,scope,source):self.authorize(scope,'appendEvent');return self.policy.current()['origins'].get(source)
  def assumption(self,scope,value):
   self.authorize(scope,'assume');n.independence(value);require(value['model_id'] in self.policy.current()['assumptions'],'UNAUTHORIZED')
  def completionConsumer(self,scope):
-  self.authorize(scope,'acknowledgeDelivery');return consumer(self.policy.current())
+  self.authorize(scope,'acknowledgeDelivery');return consumer(self.policy.current(),self.principal)
 
-def consumer(cfg):
- return dict(principal='A',provider=catalogue(cfg)['belief.revision'].provider,profile=n.BELIEF_PROFILE,selection=selection_token(catalogue(cfg)['belief.revision']))
+def consumer(cfg,principal=None):
+ return dict(principal=principal or cfg.get('principal','A'),provider=catalogue(cfg)['belief.revision'].provider,profile=n.BELIEF_PROFILE,selection=selection_token(catalogue(cfg)['belief.revision']))
 
 class Connection(Network):
- def __init__(self,endpoint,credential):
+ def __init__(self,endpoint,credential,principal='A'):
   super().__init__(endpoint,credential,None,service_dns=True)
+  self.principal=principal
   self.timeout=25 # S01's one-second clamp is unsuitable for bounded synchronous native revision.
  def call(self,request):
   require(len(canonical(request))<=MAX_BYTES,'INVALID_ARGUMENT')
@@ -77,11 +93,11 @@ class Connection(Network):
   except (OSError,ValueError,http.client.HTTPException):raise ContractError('NOT_AVAILABLE') from None
   finally:conn.close()
   if set(value)=={'error'}:error(value['error']);raise ContractError(value['error']['code'])
-  require(set(value)=={'id','request_digest','selection','principal','value'} and value['id']==request['id'] and value['request_digest']==digest(canonical(request)) and value['selection']==request['selection'] and value['principal']=='A','NOT_AVAILABLE')
+  require(set(value)=={'id','request_digest','selection','principal','value'} and value['id']==request['id'] and value['request_digest']==digest(canonical(request)) and value['selection']==request['selection'] and value['principal']==self.principal,'NOT_AVAILABLE')
   return value['value']
 
 class Remote:
- def __init__(self,cfg,name):self.cfg,self.name=cfg,name;self.descriptor=catalogue(cfg)[name];self.connection=Connection(**cfg['ports'][name])
+ def __init__(self,cfg,name):self.cfg,self.name=cfg,name;self.descriptor=catalogue(cfg)[name];self.connection=Connection(**cfg['ports'][name],principal=cfg.get('principal','A'))
  def call(self,op,*args):
   require(op in OPERATIONS[self.name] or op=='authorize','UNSUPPORTED_OPERATION')
   wire=[]
@@ -144,7 +160,11 @@ class Ports:
   require(path==ROUTE and type(q) is dict and set(q)=={'id','composition','scope','interface','selection','operation','args'},'UNSUPPORTED_OPERATION')
   l.identity(q['id']);require(q['composition']==COMPOSITION and len(canonical(q))<=MAX_BYTES,'UNSUPPORTED_PROFILE')
   name=q['interface'];require(name in ROLES and ROLES[name]==self.role,'UNSUPPORTED_OPERATION')
-  access=Access(self.path,credential,name);cfg=access.policy.current();require(q['selection']==access.selection() and q['scope']==cfg['scope'],'UNSUPPORTED_PROFILE')
+  access=Access(self.path,credential,name);cfg=access.policy.current();require(q['selection']==access.selection(),'UNSUPPORTED_PROFILE')
+  scoped_configuration(cfg,name,q['scope'])
+  if 'ports_by_principal' in cfg:
+   require(access.principal in cfg['ports_by_principal'],'UNAUTHORIZED')
+   cfg=dict(cfg,principal=access.principal,ports=cfg['ports_by_principal'][access.principal])
   op=q['operation'];args=q['args'];require(op in OPERATIONS[name] or op=='authorize','UNSUPPORTED_OPERATION');arity=ARITY[op];require(type(args) is list and len(args) in (arity if isinstance(arity,tuple) else (arity,)))
   if op=='authorize':value=access.authorize(q['scope'],args[0])
   else:
@@ -156,10 +176,15 @@ class Ports:
    if op=='create':require(type(args[2]) is dict and set(args[2])=={'bytes'});args[2]=decode(args[2]['bytes'])
    if op=='assertRelation':args[2]=tuple(tuple(r) for r in args[2])
    if op=='getMany':args[0]=tuple(args[0])
+   if name=='atom.storage':
+    if op in ('get','availability'):l.ref(args[0],q['scope'])
+    if op=='getMany':
+     for ref in args[0]:l.ref(ref,q['scope'])
+    if op in ('head','readCommits'):require(args[0]==q['scope'],'UNAUTHORIZED')
    owner=self.owner(cfg,access,name)
    if op in ('drainEvidence','readDecisions'):
     from .nal_relay import NalEvidenceRelay
-    remote=Remote(cfg,'episodic.memory');relay=NalEvidenceRelay(Path(cfg['root'])/'relay.sqlite',remote,owner,hook=self.hook,consumer=consumer(cfg),access=access,acknowledger=remote)
+    remote=Remote(cfg,'episodic.memory');relay=NalEvidenceRelay(Path(cfg['root'])/('relay-'+access.principal+'.sqlite' if 'ports_by_principal' in cfg else 'relay.sqlite'),remote,owner,hook=self.hook,consumer=consumer(cfg),access=access,acknowledger=remote)
     value=relay.drain(*args) if op=='drainEvidence' else relay.decisions(*args)
    else:value=getattr(owner,op)(*args)
    access.authorize(q['scope'],op)
@@ -172,6 +197,10 @@ class Ports:
    from .atom_feed import FeedAtomOwner
    from .lookup_composition import AtomSession
    from .adapters.detta import DettaStorage
+   if 'storage_layout' in cfg:
+    require(cfg['storage_layout']=='preview-shared-feed/1','UNSUPPORTED_PROFILE')
+    from .adapters.detta_layout import storage
+    return AtomSession(FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),access,self.hook),access)
    return AtomSession(FeedAtomOwner(root/'cognitive-atoms.sqlite',DettaStorage(cfg['detta_binary'],str(root/'cognitive-payloads')),access,self.hook),access)
   atoms=Remote(cfg,'atom.storage') if name!='attention' else None
   if name=='episodic.memory':
@@ -198,11 +227,14 @@ class Ports:
 
 def client_configuration(path):
  cfg=json.loads(Path(path).read_text());require(cfg['composition']==COMPOSITION and cfg['placement']=='service-network' and cfg['privacy']==PRIVACY and cfg['fallback'] is False,'UNSUPPORTED_PROFILE');chosen=catalogue(cfg)
- require(set(cfg['ports'])==set(OPERATIONS),'UNSUPPORTED_PROFILE')
+ selected=cfg.get('selected_interfaces',list(OPERATIONS))
+ require(type(selected) is list and set(selected)<=set(OPERATIONS) and {'atom.storage','episodic.memory','belief.revision','attention'}<=set(selected),'UNSUPPORTED_PROFILE')
+ require(set(cfg['ports'])==set(selected),'UNSUPPORTED_PROFILE')
  frozen={k:cfg[k] for k in ('composition','placement','privacy','scope','context','session','sources','assumption') if k in cfg}
- frozen.update(principal='A',selections={k:selection_token(v) for k,v in chosen.items()},ports={k:{**v['endpoint'],'ca_sha256':digest(Path(v['endpoint']['ca_file']).read_bytes())} for k,v in cfg['ports'].items()})
+ if 'selected_interfaces' in cfg:frozen['selected_interfaces']=selected
+ frozen.update(principal=cfg.get('principal','A'),selections={k:selection_token(v) for k,v in chosen.items()},ports={k:{**v['endpoint'],'ca_sha256':digest(Path(v['endpoint']['ca_file']).read_bytes())} for k,v in cfg['ports'].items()})
  return cfg,frozen
 
 def modules(path,root):
- cfg,_=client_configuration(path);ports={name:Remote(cfg,name) for name in OPERATIONS}
+ cfg,_=client_configuration(path);ports={name:Remote(cfg,name) for name in cfg['ports']}
  return SimpleNamespace(atoms=ports['atom.storage'],episodes=ports['episodic.memory'],beliefs=ports['belief.revision'],relay=ports['belief.revision'],access=ports,root=Path(root))

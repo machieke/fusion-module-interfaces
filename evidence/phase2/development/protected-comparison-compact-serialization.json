@@ -1,0 +1,1753 @@
+{
+  "at": "2026-11-02T21:50:47.450159+00:00",
+  "baseline": "evidence/phase2/baseline.json",
+  "namespaces": {
+    "omega-demo": {
+      "status": "CHANGED",
+      "objects": 30,
+      "changes": [
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-execution",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-execution",
+            "uid": "9a2c26eb-c243-4071-a0e2-aed996dd14f0",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "0d3e8adf8f487b8999329c53f768154df40dd736b3ed110afc7085d4d21b0f61"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-execution",
+            "uid": "9a2c26eb-c243-4071-a0e2-aed996dd14f0",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "c63ae05f6a6a9752b9b2afba88f1ebe8c8cc9bf5b58c4bf59c85efff67e832ae"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-messaging",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-messaging",
+            "uid": "048cfa38-22af-4cfa-bc69-bd7d5a050a6d",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "da9a5fb5d2472e3d056eda1f12cc454d0c379ec67544d6804f22cc18c9d4622f"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-messaging",
+            "uid": "048cfa38-22af-4cfa-bc69-bd7d5a050a6d",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "d1f0618be92b8d629af8dca0b5234c1aace1b83155089c0b1cd3d0d17300ed8d"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-storage",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-storage",
+            "uid": "a3ca0c66-1265-452d-93c2-4d1ae13a076e",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "a5809b7c395dbeb0537f3f7fcf53204133dbef370f5d845ea4e63ce573c27f26"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-storage",
+            "uid": "a3ca0c66-1265-452d-93c2-4d1ae13a076e",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "3745688b54e57ac20f701ba71ffa2e2f4681e3d596f8f6a9448e35850db43f02"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "kube-root-ca.crt",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "kube-root-ca.crt",
+            "uid": "64993909-85ef-4fa9-ad3b-163368a1f1a6",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "5a9fd8a37ecd37968958c8ccc37f59edc4061837a4d18c3ab480605e947c3825"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "kube-root-ca.crt",
+            "uid": "64993909-85ef-4fa9-ad3b-163368a1f1a6",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "f0ff7bf5e182e89b0380b4273d9a7d106fc85c27d3029d44768a528e57354f84"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "omega-agent",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "omega-agent",
+            "uid": "464da2f2-d4a6-4d66-a6be-1a39751c6e55",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "403a02dc889778af583ae905c268aeb12c8de07ee17e1ea07a1fe0eb6286c0c1"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "omega-agent",
+            "uid": "464da2f2-d4a6-4d66-a6be-1a39751c6e55",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "fee69ee871c133f29bff30ac1597b1debc4da666454604a2166763ee6d4c474a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-execution-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-execution-0",
+            "uid": "8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0",
+            "spec_sha256": "a73e4eab3304cba4b6eff2769e20d022b16273eb11b53376f93a5b2ab291a839",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-execution-0",
+            "uid": "8e0b74cd-4018-40b1-bbf7-b1a0d1cb06a0",
+            "spec_sha256": "f60826c61f976af8ecad2b2777495d278ab3401c22557e297a19ee7c4dfb721a",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-messaging-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-messaging-0",
+            "uid": "e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2",
+            "spec_sha256": "9d8adb1de6571ba04b3f3ba34e31ebb29747b74a109c4d6a87c78154e3030dac",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-messaging-0",
+            "uid": "e0f81e55-0eb6-47f9-a8ae-bd70fd341ea2",
+            "spec_sha256": "4e87eded59dc354cb1fe950ef60b04ad2ea4caf9e4940ad031824a26bfca7b56",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-storage-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-storage-0",
+            "uid": "451dbd3d-8f64-40cd-b828-f16acb806b10",
+            "spec_sha256": "be5457f1f8faab3fe2b9e804a1c336358bd90be3da186d2cbb7ac5d5cf639871",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-storage-0",
+            "uid": "451dbd3d-8f64-40cd-b828-f16acb806b10",
+            "spec_sha256": "75585c7818719f41df0c9ca23d954db066cc342a0be3dac361f686c7fc06b144",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-omega-agent-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-omega-agent-0",
+            "uid": "961b892e-8a54-4236-8abf-7dc3d3d08204",
+            "spec_sha256": "0e48f59db7498a29ebc3981c717be3ba42b01b6c345dd5de9615a54ce5d4bddf",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-omega-agent-0",
+            "uid": "961b892e-8a54-4236-8abf-7dc3d3d08204",
+            "spec_sha256": "1fa8d113f6b83a259bc0f88458c555ce8e2972db81f43618c570370dd6a0ecb6",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Pod",
+          "name": "fusion-execution-0",
+          "before": {
+            "kind": "Pod",
+            "name": "fusion-execution-0",
+            "uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+            "spec_sha256": "6ec7c6d7da75288f86afb65a2b9e7f694a09f069d387a9248959df102ff3fb74",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Pod",
+            "name": "fusion-execution-0",
+            "uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+            "spec_sha256": "7e19aec4fed74d26fef3e69f5e80e236b77e83143472231b384cec4d834f1076",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Pod",
+          "name": "fusion-messaging-0",
+          "before": {
+            "kind": "Pod",
+            "name": "fusion-messaging-0",
+            "uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+            "spec_sha256": "c646181cbfd5ec32fb50da412fcd5624ca5208c7b35f45df28e2af2ae99be602",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Pod",
+            "name": "fusion-messaging-0",
+            "uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+            "spec_sha256": "50f417ecb195346d0086d827ee65e24a77f43b249a439c4df3e76e0693e8d1f5",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Pod",
+          "name": "fusion-storage-0",
+          "before": {
+            "kind": "Pod",
+            "name": "fusion-storage-0",
+            "uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+            "spec_sha256": "8b5b2bcb7563798004d03f853052ebaee4237defac41b757dc3e78d4dd62b1a6",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Pod",
+            "name": "fusion-storage-0",
+            "uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+            "spec_sha256": "78a2b60348478c09b316af42b061bad9f65c3bdaec1b55d53cd263bca469ee43",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Pod",
+          "name": "omega-agent-0",
+          "before": {
+            "kind": "Pod",
+            "name": "omega-agent-0",
+            "uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+            "spec_sha256": "312e8250210dce97d0788871527191539ceadb1e42ca628b050791c1b3d5a703",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Pod",
+            "name": "omega-agent-0",
+            "uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+            "spec_sha256": "970bcebfd49b2172de7f17245a002dba953f8f9f657e344aa490e4865b8d49cb",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-execution-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-execution-tls-auth",
+            "uid": "13cb7326-d3fb-4c84-b405-a24200d2e56e",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "3b593d039a4f16884131079b4859a3d9b42f4865c8f9c6f8b535da38a9a680fc"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-execution-tls-auth",
+            "uid": "13cb7326-d3fb-4c84-b405-a24200d2e56e",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "7514262618cd81a7854ed7b435c03510cebca283c7d9f3f55570335bf079ceb7"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-messaging-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-messaging-tls-auth",
+            "uid": "2b5fd3d0-dee6-4d70-b795-6c197164738f",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "7cb17b1d4fd5b7bdded14048e4f3f37912cd2e880264fc77fff118709b5bee90"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-messaging-tls-auth",
+            "uid": "2b5fd3d0-dee6-4d70-b795-6c197164738f",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "5ef0d7daa80ab8cc680155549e241f6dad2a85b1eafd7bd81b17f2013c319d11"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-storage-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-storage-tls-auth",
+            "uid": "4a9e94a4-e0f6-47f3-9676-b46caa455961",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "47acfab6701cd024b03ef6cf52f1686fddf6aaf9b8afce178ba4d8cf8f6b0238"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-storage-tls-auth",
+            "uid": "4a9e94a4-e0f6-47f3-9676-b46caa455961",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "73dc1c2bc1417076055cb18d98d2af8ef531dac755f200056e0bcf38a6ee13ac"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "omega-agent-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "omega-agent-tls-auth",
+            "uid": "281fafd0-afdc-4684-a0da-8902c96c1ed1",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "f9d4f948a82b8852c08169f22dba863f15c80f91ff778dd864239e39d427cba9"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "omega-agent-tls-auth",
+            "uid": "281fafd0-afdc-4684-a0da-8902c96c1ed1",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "3f7d59c28d3b776cb3fa98359fb77188f25e460440795378bc6af4f4ceb1f965"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "sh.helm.release.v1.omega.v1",
+          "before": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v1",
+            "uid": "647fb497-4935-47cc-ac86-b06252e3e9fc",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "29579d4b2a96432b95f72bcfc2e9b5a45b7f0cc38f7b94787635d43b5c26cc61"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v1",
+            "uid": "647fb497-4935-47cc-ac86-b06252e3e9fc",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "607c8bc8260b803cb18709148c5b60dc73a0ec8d73f179dbef8af27b0cb34717"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-execution",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-execution",
+            "uid": "eb5582b1-5bf5-4f9f-8f85-b8e16f99b06b",
+            "spec_sha256": "59dc6fc6e0f7c09ad4d34563ea22e2f1d79fd2f8c0f7684bcf79cebbeb260641",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-execution",
+            "uid": "eb5582b1-5bf5-4f9f-8f85-b8e16f99b06b",
+            "spec_sha256": "05d90b22d658872b61ff7c95b979c23814ab97b14df162011f7ef17bc2d268d8",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-execution-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-execution-pods",
+            "uid": "5e8378bd-f8b9-48df-aa7d-3095996a54ce",
+            "spec_sha256": "0829fde573b659d1bb24e74e515d0fa5d907e7df6e0aeb050f77cb086aa9c436",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-execution-pods",
+            "uid": "5e8378bd-f8b9-48df-aa7d-3095996a54ce",
+            "spec_sha256": "7c19ce1234408dbe1cdc04ccb65f754e5b7055afa663e63d02b89c7b28096b0a",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-messaging",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-messaging",
+            "uid": "69c40685-3a2e-41d9-bf5e-501df0c62419",
+            "spec_sha256": "b6fabea9eb29dbae29d5f740e372a079653c207b6e48fccc46037c732e12ceb5",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-messaging",
+            "uid": "69c40685-3a2e-41d9-bf5e-501df0c62419",
+            "spec_sha256": "a221659c21b038940edd507530b016142a301c336d3d0c8b2ff9f182aeb7ede7",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-messaging-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-messaging-pods",
+            "uid": "eb219ac5-c0eb-4ea0-8484-6413471cdb99",
+            "spec_sha256": "6aca2493b90ebb706773a2dd8e7c003081b9f36b97f56ee9be605649f377e0c7",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-messaging-pods",
+            "uid": "eb219ac5-c0eb-4ea0-8484-6413471cdb99",
+            "spec_sha256": "38d85bbf3facdb2013bf730a707c66a9578fdd7e3b200ac4a721c1c43ee21c47",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-storage",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-storage",
+            "uid": "92ca1f3f-bd83-4b12-956f-4a05d3e9fe21",
+            "spec_sha256": "0f908ece842831a61eda76438f6387858870e203a770b952a130db40538c93e8",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-storage",
+            "uid": "92ca1f3f-bd83-4b12-956f-4a05d3e9fe21",
+            "spec_sha256": "d7e0b423b65a0c6cc4ff2c41c6f0c38a6d3629b98b311808a5b6396afeeb5d22",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-storage-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-storage-pods",
+            "uid": "24953be5-3f76-4df5-b547-0fc47893102b",
+            "spec_sha256": "3ab06da9c6de469825d4fc32735ad627f11c0ec31ff10edff8de92e84457c602",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-storage-pods",
+            "uid": "24953be5-3f76-4df5-b547-0fc47893102b",
+            "spec_sha256": "1a6a59d7332004a2b616457bbc5cadf3f70e5657f3bc29c540f9369e0fce994d",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "omega-agent",
+          "before": {
+            "kind": "Service",
+            "name": "omega-agent",
+            "uid": "17482f67-8fad-41fe-9b96-42ef423b2771",
+            "spec_sha256": "2c4153893b7d8f8b80f1512a2a1c2fa67da3dff6f0db23f4d8c274bfb144b111",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "omega-agent",
+            "uid": "17482f67-8fad-41fe-9b96-42ef423b2771",
+            "spec_sha256": "591da0fdbab466996e0d9c45828a7325e9ad08bf6952893810c444f6b49b28ad",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "omega-agent-pods",
+          "before": {
+            "kind": "Service",
+            "name": "omega-agent-pods",
+            "uid": "e667ef79-00d5-47a6-bb8c-0f06d98c3d64",
+            "spec_sha256": "53efa32ba73f98ab15392a056620594c7a16ebab825b27ebcd97e8c28953db50",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "omega-agent-pods",
+            "uid": "e667ef79-00d5-47a6-bb8c-0f06d98c3d64",
+            "spec_sha256": "d4544879ea71de4c04eba030ecbe3e097a02a47b88c7141accca24590675793e",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-execution",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-execution",
+            "uid": "a9c5280d-e29b-47cf-b059-65a92b0e4009",
+            "spec_sha256": "68f570052304564e6048e1fbf46af4d1e466624877ba01364b795f34e11a8a59",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-execution",
+            "uid": "a9c5280d-e29b-47cf-b059-65a92b0e4009",
+            "spec_sha256": "f4bdde11cb911f1e036f308482e45711b2581d0114d1cf862247687e83aca0db",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-messaging",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-messaging",
+            "uid": "d73538d1-6875-41b0-83e1-b177a63edc36",
+            "spec_sha256": "2c113a8e3b3529cc40e2a86961b7e420fb2f02b5eec58f23430101ff1aeae38e",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-messaging",
+            "uid": "d73538d1-6875-41b0-83e1-b177a63edc36",
+            "spec_sha256": "8e93be28f2bef331390ba95bd8c98c8da0e5f1f1de56945faebff79dbbd5b0a0",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-storage",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-storage",
+            "uid": "c2e4b963-d8c6-472b-8507-396059fc88c9",
+            "spec_sha256": "fb63fcb995ec87f23806e930e29dbd3fc5b0dfd123a1ee584c4581ffe0beacf2",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-storage",
+            "uid": "c2e4b963-d8c6-472b-8507-396059fc88c9",
+            "spec_sha256": "3efd63d2c06907fa1b7b0f0182c16cc21b7667646e91df08b32bf8986be624fe",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "omega-agent",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "omega-agent",
+            "uid": "7d7dcef0-60c0-4096-b4ef-5e7fe9911c86",
+            "spec_sha256": "0b098996b4095d107704688a19ae4861d7f3ff6808824d624b35e82073bf5224",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "omega-agent",
+            "uid": "7d7dcef0-60c0-4096-b4ef-5e7fe9911c86",
+            "spec_sha256": "98fcbb5a654ae96a77b0bd3aefe6c6bd8a839cac7819e4604a58b0753d31bfe0",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        }
+      ],
+      "pods": [
+        {
+          "name": "fusion-execution-0",
+          "uid": "43ad6c92-315a-4f14-bd3f-dfecd5ec1ca7",
+          "phase": "Running"
+        },
+        {
+          "name": "fusion-messaging-0",
+          "uid": "95f72f93-b36c-47ed-8852-ecfd95af9c7c",
+          "phase": "Running"
+        },
+        {
+          "name": "fusion-storage-0",
+          "uid": "c00c11c3-57f6-4e4e-a1e0-2e47ca2993c8",
+          "phase": "Running"
+        },
+        {
+          "name": "omega-agent-0",
+          "uid": "e7c1fc3c-e916-480f-bd24-38634381dce8",
+          "phase": "Running"
+        }
+      ]
+    },
+    "omega-ref-live01": {
+      "status": "CHANGED",
+      "objects": 63,
+      "changes": [
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-channel-bridge",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-channel-bridge",
+            "uid": "ef66cbd0-4d18-4326-9610-c0344c7ee49c",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "455fa906310dc6f4ed9993cb86416b6143850e8f51f70c3d30048915a544eac2"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-channel-bridge",
+            "uid": "ef66cbd0-4d18-4326-9610-c0344c7ee49c",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "b1d94199dfbb160c2ca7f7108c1735c30c4fc211d3ecc0025415c7f72581ba20"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-embedding",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-embedding",
+            "uid": "9765f9c1-34fc-454d-9ee4-a4723f57909b",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "9b0e1b842d13202793e01771ed2035366f6eede4e851fa8a7e72cd5b183b0b16"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-embedding",
+            "uid": "9765f9c1-34fc-454d-9ee4-a4723f57909b",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "06392f0e8df6385a38327ae9eea780b3e0968c82eb209a40aaf6b9c503ba47ca"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-messaging",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-messaging",
+            "uid": "864f628f-cea6-4dc5-b394-0ab075ae8232",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "a2a8dd8de77bc254504be4e6b27898d716ed3a35ddcdae706df17ab78c4ae872"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-messaging",
+            "uid": "864f628f-cea6-4dc5-b394-0ab075ae8232",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "fc9910376191cc63773d252b6e3c17ced86d12c1915df61ec92c2210d2e8c73d"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-model",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-model",
+            "uid": "f6822f91-a919-4224-a188-3372a621d6de",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "4c7537c77a5694c01c09dc2d0c33ff9b9d907f2b36aecd7ba4d0518d9d7f7d32"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-model",
+            "uid": "f6822f91-a919-4224-a188-3372a621d6de",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "a9b6ee08e19af0e20a0c30fa1531b2ed76981d588df90b25fd8956a116593208"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-search",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-search",
+            "uid": "75625990-c132-4b1a-a23d-8c2a0d324fcf",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "8db19953e420fc73f6f0c3635965fd7c2c456134dc7e564130ab220c16b4615a"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-search",
+            "uid": "75625990-c132-4b1a-a23d-8c2a0d324fcf",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "de4df83f474e860825a82ce73aee4b187bba3fc18227dd1b0607794f2c59faef"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "fusion-storage",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "fusion-storage",
+            "uid": "2a57b947-b51b-4abf-980d-ac9dd7ff1624",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "30e537dc333da8e1d602775e630ef4704666c5a3aed9d243e820a09927964a84"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "fusion-storage",
+            "uid": "2a57b947-b51b-4abf-980d-ac9dd7ff1624",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "5147e25562ab8157a768a05055cab9fc431ad74a9ed2c8d7ff4079937f08e49d"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "irc-peer",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "irc-peer",
+            "uid": "31237934-3873-4315-8f35-6100c00fdbff",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "e75988276fb909456e4560b59678c31f2dcd6fedd5b2be792d9888a0889b9d7d"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "irc-peer",
+            "uid": "31237934-3873-4315-8f35-6100c00fdbff",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "cb2136cfd566f35cf4a4a25b36b236efb15d5ce00ffdde87840e6c463f854868"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "irc-server",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "irc-server",
+            "uid": "241e3330-7879-4ab7-8316-525fbb6dd0ae",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "730b99c61c9cae864278d270136613febc42ef174f9843e7587c5f25a67622cc"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "irc-server",
+            "uid": "241e3330-7879-4ab7-8316-525fbb6dd0ae",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "8b1a2264e4c4278eb86a013e0435a712fb3b2486261a2c985aef9daec1e83bc1"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "kube-root-ca.crt",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "kube-root-ca.crt",
+            "uid": "3e5e79f6-736e-424f-b39a-11124a9dd91c",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "5a9fd8a37ecd37968958c8ccc37f59edc4061837a4d18c3ab480605e947c3825"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "kube-root-ca.crt",
+            "uid": "3e5e79f6-736e-424f-b39a-11124a9dd91c",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "f0ff7bf5e182e89b0380b4273d9a7d106fc85c27d3029d44768a528e57354f84"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "omega-agent",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "omega-agent",
+            "uid": "fbc4e0cb-2754-4f01-9116-4d38dbc9027c",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "842f8a6290a8d2e03c2f1fab071a06af8542cc280086ee3b8498df23502f175e"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "omega-agent",
+            "uid": "fbc4e0cb-2754-4f01-9116-4d38dbc9027c",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "802eb195533a00f30a2f42c3b297a49c0701d85732bf4e8e15e078645c1d88ce"
+          }
+        },
+        {
+          "kind": "ConfigMap",
+          "name": "reference-live-plan",
+          "before": {
+            "kind": "ConfigMap",
+            "name": "reference-live-plan",
+            "uid": "0469d8f6-9723-41fe-bc09-b1aa7a9f96bf",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "82d1c25e27ad6b497543dd8ba1d1c3795932ed8ae1cee356dc758692e36cb353"
+          },
+          "after": {
+            "kind": "ConfigMap",
+            "name": "reference-live-plan",
+            "uid": "0469d8f6-9723-41fe-bc09-b1aa7a9f96bf",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "f66d54c5f48e8d7b4eac869bcc862e5a8bd1dd4597076821b26fef552680c3c5"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "reference-generative-assets",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "reference-generative-assets",
+            "uid": "64eb99e5-302b-427e-860b-8d1294f24bfe",
+            "spec_sha256": "91e50b9993ec993f7385122651225b06d25ade2d16b88291c9c04a4dd70b810e",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "reference-generative-assets",
+            "uid": "64eb99e5-302b-427e-860b-8d1294f24bfe",
+            "spec_sha256": "d2c6b8b47589f31c17a9dc82b388edec2348864b40923a63c6ba2873d5b529f9",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-channel-bridge-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-channel-bridge-0",
+            "uid": "0b181b6a-6894-427a-86d4-b56b943dcbba",
+            "spec_sha256": "056897b656acdaf35c7bde56135fc0d894cd2a8fbb2a42a62fa13495497e0df8",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-channel-bridge-0",
+            "uid": "0b181b6a-6894-427a-86d4-b56b943dcbba",
+            "spec_sha256": "50ba12189e483954358e16e915151495ef343e82d55b1acc3697bad2b3f82417",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-embedding-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-embedding-0",
+            "uid": "22b50f79-c3e5-4682-a05a-6bb8590c3737",
+            "spec_sha256": "592f77024a701b92d6e2ae42eb7f5751119ec17d6a0b1ebfe48612da69e1f2c3",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-embedding-0",
+            "uid": "22b50f79-c3e5-4682-a05a-6bb8590c3737",
+            "spec_sha256": "2cb00244f4c1c8a8a8d06c2c147a62117b91db9b6e845016fd14f80f045952c0",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-messaging-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-messaging-0",
+            "uid": "27582e81-7ffa-4493-a0e7-7e9b1b703a25",
+            "spec_sha256": "c8b94e1ebcdbe0106ff8b2dccf097896b55668e1c2ff25aa431383d6c793b9f7",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-messaging-0",
+            "uid": "27582e81-7ffa-4493-a0e7-7e9b1b703a25",
+            "spec_sha256": "6c869f2d5aecf319c640de1cb64cfb1159eb6645d5dd9e994d27e75c2228ba1e",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-model-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-model-0",
+            "uid": "e921b9ac-ac44-4022-acd9-a8029d9ead84",
+            "spec_sha256": "e63910c4ecf0b839e25499e7ed3e7b3da6ff850e1e196f032112a052cfbfb232",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-model-0",
+            "uid": "e921b9ac-ac44-4022-acd9-a8029d9ead84",
+            "spec_sha256": "102f1157837411ad978daa57dda93df92cd38ddd9841a2dd02af10093e9f077d",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-search-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-search-0",
+            "uid": "3768b271-69bf-4f68-86ef-a887fa62b264",
+            "spec_sha256": "35cae5d1242d77ca3cee1871a207b83f6188f8536e3651d894dea3f3add9ab38",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-search-0",
+            "uid": "3768b271-69bf-4f68-86ef-a887fa62b264",
+            "spec_sha256": "c20fffa0a5c0bb4b5e1ef7562f4889de15bbf377456d8131b18bbaf0464d42e5",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-fusion-storage-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-storage-0",
+            "uid": "3823c150-0823-494a-8900-f2c26a8cd461",
+            "spec_sha256": "ae01897dc78c6f62b3d251c39b8a276e85c19a1439c0e96a8f4cebec855bed08",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-fusion-storage-0",
+            "uid": "3823c150-0823-494a-8900-f2c26a8cd461",
+            "spec_sha256": "cb0e1a0660c09b43a018db0421c680264dc06417c0fd9a76a41c5abd8ad9869a",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-irc-peer-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-irc-peer-0",
+            "uid": "0a3c7e4a-8ef7-4d6a-8764-c35ecc6d2538",
+            "spec_sha256": "7dc2c6bcb754633b8a2593448b9e4b9950d57a49bf89c9be546b46185b40b7eb",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-irc-peer-0",
+            "uid": "0a3c7e4a-8ef7-4d6a-8764-c35ecc6d2538",
+            "spec_sha256": "3462ca336b2b860aeba48b27d5d447d10894325cc61364b2d188d8670bf49772",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-irc-server-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-irc-server-0",
+            "uid": "dcc570fd-6a1c-4dfa-addf-54353ed4ec8a",
+            "spec_sha256": "122f321532e91eba511d1d5c9d5de98eba7d737bffb225ef9f359c7f78bc05b0",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-irc-server-0",
+            "uid": "dcc570fd-6a1c-4dfa-addf-54353ed4ec8a",
+            "spec_sha256": "66219c9b03cccd5e882cde94c89f85be281f165126d3294772faf2c37402651d",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "PersistentVolumeClaim",
+          "name": "state-omega-agent-0",
+          "before": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-omega-agent-0",
+            "uid": "bc9e0b19-431b-4f81-84c5-11356d675219",
+            "spec_sha256": "0d91f61851a6fc1d6f415978b4b509841048a4a69e925c9102d29233579d19dc",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "PersistentVolumeClaim",
+            "name": "state-omega-agent-0",
+            "uid": "bc9e0b19-431b-4f81-84c5-11356d675219",
+            "spec_sha256": "079663dbae5c67d3ed3bfe82c82c242c3c3ce6d404a8e2a861bb02903ec47466",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-channel-bridge-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-channel-bridge-tls-auth",
+            "uid": "e19331ac-7340-433f-9987-5f754e04ec3a",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "e8996d7b07166914c4f74c2b9a71accbacd6c5d413dcb5a95f100b5710c18699"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-channel-bridge-tls-auth",
+            "uid": "e19331ac-7340-433f-9987-5f754e04ec3a",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "b641fc6cfa8d8e6c16cc211a01b049afed95c2f1233e90969fecf959e94f26bd"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-embedding-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-embedding-tls-auth",
+            "uid": "7e7c2424-7e7a-4ebf-b16a-00612888e878",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "c6e15b56e8e0cc0c3ed1cfddd0deb1a7488cb451a1593920fca8e149330562cb"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-embedding-tls-auth",
+            "uid": "7e7c2424-7e7a-4ebf-b16a-00612888e878",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "8a314c6edf99d8c9fb9e3e27c52926713ea6956fe5450217193e82f711e52b6a"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-execution-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-execution-tls-auth",
+            "uid": "b455172b-4540-4c4e-93a5-353688486599",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "b35e38c79a569c9ba037936df4a2caa03e4224bea77b78bd86ca7db399c3d8ab"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-execution-tls-auth",
+            "uid": "b455172b-4540-4c4e-93a5-353688486599",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "0ab419bcc1414a009443e89f90df95400087594c2db7984f5a8f31796b0d8f59"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-messaging-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-messaging-tls-auth",
+            "uid": "a786b8eb-5577-4cf7-903a-117c3498e508",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "d680482d85fcfd3837ca97e5a4e1803292a34403ef6a7b515054799024868e06"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-messaging-tls-auth",
+            "uid": "a786b8eb-5577-4cf7-903a-117c3498e508",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "2bd83fe714320e7c9582cb71724ffa8800e50f56ec7f1f00f2368b1984a41070"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-model-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-model-tls-auth",
+            "uid": "9f0f58ce-3134-4679-8085-9bcd1cb9fab1",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "59f844030c4d8c65dda1c5b2f566df9ea42b99ab106696241a57d11ecbe153e1"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-model-tls-auth",
+            "uid": "9f0f58ce-3134-4679-8085-9bcd1cb9fab1",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "a26159cdf58000a6d4ccee7a7dfc32d34e1eb58730b150dc830ebb543eaa2015"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-search-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-search-tls-auth",
+            "uid": "93014e37-cac4-4412-bacd-9248637229ef",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "22a890eede481e94d95ee1d586bd2a2c29ea1b880d970d0e480ad4dbd8127496"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-search-tls-auth",
+            "uid": "93014e37-cac4-4412-bacd-9248637229ef",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "c83205a0aed7262fe49fdb660840931bdbf75b7979ee05bfaef9fbbc52366cb3"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "fusion-storage-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "fusion-storage-tls-auth",
+            "uid": "7deb97c6-bdd9-47b5-a530-8c78c899230f",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "8a39934d9cda5e047518a76993169cb83e472b7e01d32f93c2b751b5abdfc9f8"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "fusion-storage-tls-auth",
+            "uid": "7deb97c6-bdd9-47b5-a530-8c78c899230f",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "8bc8bd202f0c77f04e3ac73f288adcef0a19221dd1c72fc7a93e05c2da2f93e6"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "irc-peer-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "irc-peer-tls-auth",
+            "uid": "97d875d3-292c-4d32-b13d-bf0464602350",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "51c81861cf671905e82debd9ddc930595b2fe5050f7443817c3b9013f23f09d8"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "irc-peer-tls-auth",
+            "uid": "97d875d3-292c-4d32-b13d-bf0464602350",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "9240bb20e6ba5fa88e55a45ee60f3b26079c919298a4438646c36856292c2aa2"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "irc-server-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "irc-server-tls-auth",
+            "uid": "4e2c5f89-be67-487e-a1f4-bd4c184a79ae",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "a9d885f7a09fcb6a2d80ed9a2781c69718887a8e3b29dd342b6c5be14ad52526"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "irc-server-tls-auth",
+            "uid": "4e2c5f89-be67-487e-a1f4-bd4c184a79ae",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "96fc9ec0b7c71f988ed26ed6feff93844ad140e0a799d8499a66294fda54e60e"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "omega-agent-tls-auth",
+          "before": {
+            "kind": "Secret",
+            "name": "omega-agent-tls-auth",
+            "uid": "04f45d12-26a6-4f5c-a851-9086e607cf06",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "af016fb0211bc774402a7336c624a066b6a2f68e51aff02eeae1add036521f39"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "omega-agent-tls-auth",
+            "uid": "04f45d12-26a6-4f5c-a851-9086e607cf06",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "4e03265de806f06de328497722af4ffa1bcbc98206530b08260b92a2e3bcd50b"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "sh.helm.release.v1.omega.v1",
+          "before": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v1",
+            "uid": "f8b21b20-e1e6-44c0-a720-09eaa76d9e5a",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "4eb3c4073fe4eca8d9ede28a8dc0227ed8b5ba701bd315b37e3d7a2024f8db47"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v1",
+            "uid": "f8b21b20-e1e6-44c0-a720-09eaa76d9e5a",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "5eab5fa2b8667175f4a5bd3a092b285f74c48722776abd15e3fff4c0e773ff90"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "sh.helm.release.v1.omega.v2",
+          "before": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v2",
+            "uid": "89822be5-0b86-495f-8d0b-f644e3dd10eb",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "d286221244994878050e9b6fd7667e7ece646b92699796c707ae5730781a5049"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v2",
+            "uid": "89822be5-0b86-495f-8d0b-f644e3dd10eb",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "f34e298642a30cdcd29463b317e9b311841fb638a55834e2d36777ed4f3c4364"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "sh.helm.release.v1.omega.v3",
+          "before": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v3",
+            "uid": "2bc82377-76a9-45d3-80a4-5b6a86bc1246",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "d110b3f0c288fb2747409027ef8661d0c66c847ea9f41d8ab579d5f079d7e158"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v3",
+            "uid": "2bc82377-76a9-45d3-80a4-5b6a86bc1246",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "48e00d8ac8af2ac4e456c9153ba2c2311efca365420e357d805f7599159b8fc0"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "sh.helm.release.v1.omega.v4",
+          "before": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v4",
+            "uid": "7674aff2-35f5-48b4-864d-9d407415b837",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "a790f832c48c60538b3cc1e695623ac807f5e08dbecd7bc7c1b0b963dc27ec1e"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v4",
+            "uid": "7674aff2-35f5-48b4-864d-9d407415b837",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "2fdee6a09217dc8a997c2e4e4ba333859bb8086c255f4a625207f65ac0ac8ac6"
+          }
+        },
+        {
+          "kind": "Secret",
+          "name": "sh.helm.release.v1.omega.v5",
+          "before": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v5",
+            "uid": "c3dc4980-f7bc-4bf9-9460-2e68ffa43b1f",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "7cc1ad719a8e343212ec5bf7f6521f1c890b054028357bf65c37b05599d2c314"
+          },
+          "after": {
+            "kind": "Secret",
+            "name": "sh.helm.release.v1.omega.v5",
+            "uid": "c3dc4980-f7bc-4bf9-9460-2e68ffa43b1f",
+            "spec_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+            "data_sha256": "2fe70a0806d45c2a6396fbce40b4c1fd6d77f4ca341f193591923791fd61ba8e"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-channel-bridge",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-channel-bridge",
+            "uid": "6b3b5045-b369-429e-9b17-3affdd62b8e6",
+            "spec_sha256": "57422e042879aa0f4f1207fad298d403e056b7e9dd4a1d1e52c226966d4df503",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-channel-bridge",
+            "uid": "6b3b5045-b369-429e-9b17-3affdd62b8e6",
+            "spec_sha256": "945672b67ac0fa74e639c541a7f5b090148277b95171981e082d6de1f3928af3",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-channel-bridge-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-channel-bridge-pods",
+            "uid": "de419795-be3a-4186-9b0d-877cd2b18c43",
+            "spec_sha256": "da5ac9ba5283e1ad9be216a5427186972b46fb31368e19e70de0a7f58b16d7d3",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-channel-bridge-pods",
+            "uid": "de419795-be3a-4186-9b0d-877cd2b18c43",
+            "spec_sha256": "dd88e1a8d2ccace534dfaec940e0c815b961f719fd7f7752b6c9cd0120fa71ae",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-embedding",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-embedding",
+            "uid": "57311387-11c3-4f29-8d8c-55b8b67ab0d1",
+            "spec_sha256": "5b76d64213083e6bb7e6d1c0f8281dd37ce8a81250acc48ab76baeff90982fbb",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-embedding",
+            "uid": "57311387-11c3-4f29-8d8c-55b8b67ab0d1",
+            "spec_sha256": "19b1d59ec5441537bc5c7e54cff33f223d1f7da925cc25270eff6aad81b3d1c8",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-embedding-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-embedding-pods",
+            "uid": "34ec18c9-1d42-4ede-a1df-0f552078f803",
+            "spec_sha256": "fc5566c677d5802d626fb9c2bc150183a41ab8b4b71a2262e0010bffe123c02d",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-embedding-pods",
+            "uid": "34ec18c9-1d42-4ede-a1df-0f552078f803",
+            "spec_sha256": "7b1feaae214d7c7453c8387b5e209e6ca4839697d4e1eed85a24449722034a20",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-messaging",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-messaging",
+            "uid": "321df005-fe8a-47c0-8369-0c5413fe2634",
+            "spec_sha256": "e3713b676e5b964664ea78ec8fd4428014b6e9e710626d2ce4cdae00f5ff9840",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-messaging",
+            "uid": "321df005-fe8a-47c0-8369-0c5413fe2634",
+            "spec_sha256": "271ac93f8a1fef1a8b58414f9f65ecde96ae974cbe9f18c7900ba76762db9d75",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-messaging-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-messaging-pods",
+            "uid": "14bb01e3-3563-406f-bdb6-6e202004d8c9",
+            "spec_sha256": "6aca2493b90ebb706773a2dd8e7c003081b9f36b97f56ee9be605649f377e0c7",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-messaging-pods",
+            "uid": "14bb01e3-3563-406f-bdb6-6e202004d8c9",
+            "spec_sha256": "38d85bbf3facdb2013bf730a707c66a9578fdd7e3b200ac4a721c1c43ee21c47",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-model",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-model",
+            "uid": "1a6d7e26-c44e-4d9a-a0c6-ac24ee911041",
+            "spec_sha256": "b10fe7249f011f8a4f53be4d4a9105c2012c523967eaad8031dacf3144f58aeb",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-model",
+            "uid": "1a6d7e26-c44e-4d9a-a0c6-ac24ee911041",
+            "spec_sha256": "950cc6b4fe54e042443df0adfe9da47f2e2501f4387bd65c60d54cc3e3ce81b4",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-model-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-model-pods",
+            "uid": "c331ba83-8c74-45c2-8990-d748759031e8",
+            "spec_sha256": "ad38dc2fd4b977ba3bee0ff27a4ad9cdc57281865d618a2113039a61927a25ee",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-model-pods",
+            "uid": "c331ba83-8c74-45c2-8990-d748759031e8",
+            "spec_sha256": "b4cca5f8e82928c4b423831acf8c82278826fdaf5d3624a38c6924a8ddcbd417",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-search",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-search",
+            "uid": "f2cfd32d-65c7-4f18-bf24-067f53249b00",
+            "spec_sha256": "37a1ed573b6d08ff3ce1d4672df5fa6bc3a4113fceadee8bdc881bef2e6e5542",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-search",
+            "uid": "f2cfd32d-65c7-4f18-bf24-067f53249b00",
+            "spec_sha256": "1ecc46549205b47a490f40d7a36eb108001b973fed9fa20d53823bcd81c2f857",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-search-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-search-pods",
+            "uid": "0173b945-e636-4c16-9f0d-2cb056969997",
+            "spec_sha256": "f7aa51879a7dcd0d6978911321de77bef656142981d3b3c05217df8c4234bba6",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-search-pods",
+            "uid": "0173b945-e636-4c16-9f0d-2cb056969997",
+            "spec_sha256": "9726a323d53cc8b65659ed75e48055aee3a66c5b0bb55d00ba76217f59d28206",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-storage",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-storage",
+            "uid": "73d3b596-cb21-4620-aff2-41a3aaaa8477",
+            "spec_sha256": "46fb786e3eee54b3345d5640f20d3eaff1f1b4abdfca24a495ba691b2bd5c091",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-storage",
+            "uid": "73d3b596-cb21-4620-aff2-41a3aaaa8477",
+            "spec_sha256": "046fb8ad7b93169d60c2d9580b78666e466d48522e26709530cc6a1fd096032a",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "fusion-storage-pods",
+          "before": {
+            "kind": "Service",
+            "name": "fusion-storage-pods",
+            "uid": "e0e4eaeb-d5d9-4cb9-b87e-158d1997612a",
+            "spec_sha256": "3ab06da9c6de469825d4fc32735ad627f11c0ec31ff10edff8de92e84457c602",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "fusion-storage-pods",
+            "uid": "e0e4eaeb-d5d9-4cb9-b87e-158d1997612a",
+            "spec_sha256": "1a6a59d7332004a2b616457bbc5cadf3f70e5657f3bc29c540f9369e0fce994d",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "irc-peer",
+          "before": {
+            "kind": "Service",
+            "name": "irc-peer",
+            "uid": "5c8d40c3-eb6d-4f1a-b51d-4ab992a5a4bd",
+            "spec_sha256": "a6345afe5c2c67352ea403f29cc6d4c8dfe2ba76c3748f6431b6269b449d58bc",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "irc-peer",
+            "uid": "5c8d40c3-eb6d-4f1a-b51d-4ab992a5a4bd",
+            "spec_sha256": "fb7ef35268b6ebd49bd1377602fd66940a4c43a308eb280a7a74a88df45d4a91",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "irc-peer-pods",
+          "before": {
+            "kind": "Service",
+            "name": "irc-peer-pods",
+            "uid": "06ed1886-217b-4f46-aa03-80f8a11a16f4",
+            "spec_sha256": "1b8f509302459a017afb6c5770246a6add33cf2648575fb74ea8d42f8eab1d20",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "irc-peer-pods",
+            "uid": "06ed1886-217b-4f46-aa03-80f8a11a16f4",
+            "spec_sha256": "2345eb07daf1279b208703f183dc92c07c801a13e7cc0631b10c0040a780a9bf",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "irc-server",
+          "before": {
+            "kind": "Service",
+            "name": "irc-server",
+            "uid": "0219b043-60b6-44d8-8671-b9f5c3e06626",
+            "spec_sha256": "e8bd4d65779202c28c8807996e9bf35dacb56257742c197494c54d82bf25306c",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "irc-server",
+            "uid": "0219b043-60b6-44d8-8671-b9f5c3e06626",
+            "spec_sha256": "c41eaccf9a0ed9079cf4cec04dd8ae20b69c650225c384348a062802c3839e06",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "irc-server-pods",
+          "before": {
+            "kind": "Service",
+            "name": "irc-server-pods",
+            "uid": "a9a19bc3-7abe-4462-8304-cfbc6a076fde",
+            "spec_sha256": "8313fd4a154587cc2403159b9811d7cf7c273e18bf045020ac931aa0a8bafad6",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "irc-server-pods",
+            "uid": "a9a19bc3-7abe-4462-8304-cfbc6a076fde",
+            "spec_sha256": "3ed763f3638579b7a9306a5e27b30af222d2148bc61fec8377952c0b8eff17a9",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "omega-agent",
+          "before": {
+            "kind": "Service",
+            "name": "omega-agent",
+            "uid": "4c49f099-b89b-4ed7-a5c7-79d5a1bd0122",
+            "spec_sha256": "971b4d3d4e4f0f1b68b116bd9a98b6772e9516147dc535195f5f581f5e86e285",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "omega-agent",
+            "uid": "4c49f099-b89b-4ed7-a5c7-79d5a1bd0122",
+            "spec_sha256": "0e21a824ff49fa8e806b7143068f1e31bd9e323e8db4191652d9fba0a323e7c2",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "Service",
+          "name": "omega-agent-pods",
+          "before": {
+            "kind": "Service",
+            "name": "omega-agent-pods",
+            "uid": "ca8f5868-86ad-4ef9-93a0-e4ea0e65e7cc",
+            "spec_sha256": "693a350f5bf37f0a2e970da2d8335012a5d69d66164e817824204b9c2b69e0bf",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "Service",
+            "name": "omega-agent-pods",
+            "uid": "ca8f5868-86ad-4ef9-93a0-e4ea0e65e7cc",
+            "spec_sha256": "ff9385550d88764505ce219168e1f72214635888a1583c7ce53d16be5d495ee3",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-channel-bridge",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-channel-bridge",
+            "uid": "78f15942-02c2-4c89-a5a9-31454158d3a7",
+            "spec_sha256": "a08c990b2e50963328c5c6d307505d5d0a153f23f3b98601355a3fd09bf6978d",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-channel-bridge",
+            "uid": "78f15942-02c2-4c89-a5a9-31454158d3a7",
+            "spec_sha256": "2e80d727a6edb963b72431eabe70b8da345a4d6d3160d4042284a7114bc2e545",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-embedding",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-embedding",
+            "uid": "707b1f34-484b-4029-9957-7cb5e62a9883",
+            "spec_sha256": "fa12ee84c7d659544a4fcbe164deacef64bb911caf5d10fd934d06826a2f0e31",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-embedding",
+            "uid": "707b1f34-484b-4029-9957-7cb5e62a9883",
+            "spec_sha256": "032782a431a2c2ed0782e3a25d58055106de0acd07fae0ad22d14067e4ece5eb",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-messaging",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-messaging",
+            "uid": "4580f51a-719b-42b7-a710-9fd80618c98c",
+            "spec_sha256": "4c6be8e036ae477648d04d5028e251fe4d6a0731bac04d48ee71e295d4477e76",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-messaging",
+            "uid": "4580f51a-719b-42b7-a710-9fd80618c98c",
+            "spec_sha256": "abbfbed79927a6dc52c7814f90e3cdbe48367e1a5fe0cabc919b3566dd4a4555",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-model",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-model",
+            "uid": "ca7cf1d8-3ccb-48fd-bad2-c69739aa63a5",
+            "spec_sha256": "f7da1d6b48c273d839e087a0bd6989f5d6f863b641c4a3437c32ef52792115d8",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-model",
+            "uid": "ca7cf1d8-3ccb-48fd-bad2-c69739aa63a5",
+            "spec_sha256": "954b30acb00104beee59456fde46c891eda7999871a71aa5876ebbcfcac330bc",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-search",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-search",
+            "uid": "b798ea2b-36ef-47d4-b9bd-eca271283d9d",
+            "spec_sha256": "f4baf5a5aba0dcf9c9a4c7447ae44f8a1f3c6f6e58a39ddde3ca6e85381270c5",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-search",
+            "uid": "b798ea2b-36ef-47d4-b9bd-eca271283d9d",
+            "spec_sha256": "e4087eae798ccee85355ba8596c003ff8199ede2bf0904151603dbc6b9cf3103",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "fusion-storage",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "fusion-storage",
+            "uid": "05c34822-81af-475e-97bc-faa7e36ea42c",
+            "spec_sha256": "6a7764722d247c755378f493cd95841b4c13e74f22dfa6b6bc30e0f17f8a2416",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "fusion-storage",
+            "uid": "05c34822-81af-475e-97bc-faa7e36ea42c",
+            "spec_sha256": "530bac3318a6b717ae609883b6632135df3dce052b7ae9d528cdc91d096da748",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "irc-peer",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "irc-peer",
+            "uid": "ea0780f4-4389-4f66-b902-12119a2ef252",
+            "spec_sha256": "a588e7439a1f04cf22db96a674b414fe117be28a125d873d3378b205e61b4371",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "irc-peer",
+            "uid": "ea0780f4-4389-4f66-b902-12119a2ef252",
+            "spec_sha256": "3187c0da123e1abc76c71dc2b11f59d9a63367b4a83b3843056283b66fe7f0aa",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "irc-server",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "irc-server",
+            "uid": "de2d6bfa-ca48-47d2-b809-f81784b01d00",
+            "spec_sha256": "3dcf3ccc49114e9aa1c1172bda065807781de6d1e06da75730fcbd60a8fd8be6",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "irc-server",
+            "uid": "de2d6bfa-ca48-47d2-b809-f81784b01d00",
+            "spec_sha256": "3fa10547a2c0c60f98e94010960466671b730c3cd63e12c61a5294bf6f7cc137",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        {
+          "kind": "StatefulSet",
+          "name": "omega-agent",
+          "before": {
+            "kind": "StatefulSet",
+            "name": "omega-agent",
+            "uid": "e93e6962-3777-43a7-af7c-0e127f1b05a2",
+            "spec_sha256": "d6aa3475662efa08c9da3b64356645287d9e741ccf97e9a08bf220c5c44a423c",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "after": {
+            "kind": "StatefulSet",
+            "name": "omega-agent",
+            "uid": "e93e6962-3777-43a7-af7c-0e127f1b05a2",
+            "spec_sha256": "4729d58b0a6652ef62a45257e419c9bd6c99f3b52fa4775f7cf858fb240217ff",
+            "data_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        }
+      ],
+      "pods": []
+    }
+  },
+  "additional_live_generations": 0,
+  "campaign": {
+    "evidence/reference-distribution/campaign/plan.json": {
+      "sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47"
+    },
+    "evidence/reference-distribution/campaign/execution-ledger.json": {
+      "sha256": "2f41702c51597688f0d72b87d0ea2df59ee39835de324b75239b9a0327f7588c",
+      "backend_calls": 0,
+      "campaign_id": "omega-reference-k3s-20261030-03",
+      "captures": 0,
+      "live_generations": 0,
+      "manifest_sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+      "reservations": 0,
+      "slots": {
+        "https-query": "UNRESERVED",
+        "https-reply": "UNRESERVED"
+      },
+      "state": "AWAITING_LIVE_AUTHORIZATION"
+    },
+    "artifacts/reference-distribution/campaign/plan.json": {
+      "sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47"
+    },
+    "artifacts/reference-distribution/campaign/execution-ledger.json": {
+      "sha256": "2f41702c51597688f0d72b87d0ea2df59ee39835de324b75239b9a0327f7588c",
+      "backend_calls": 0,
+      "campaign_id": "omega-reference-k3s-20261030-03",
+      "captures": 0,
+      "live_generations": 0,
+      "manifest_sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+      "reservations": 0,
+      "slots": {
+        "https-query": "UNRESERVED",
+        "https-reply": "UNRESERVED"
+      },
+      "state": "AWAITING_LIVE_AUTHORIZATION"
+    }
+  },
+  "status": "FAILED"
+}

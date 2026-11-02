@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "classification": "READ_ONLY_POST_WORKSPACE_POD_REPLACEMENT_MODE_OBSERVATION",
+  "namespace": "omega-ref-phase2-r19",
+  "at": "2026-11-02T20:54:13.555433+00:00",
+  "pod_uid": "a932a6ee-f91c-4cbc-bff3-45ab6cc3a310",
+  "security_context": {
+    "fsGroup": 1000,
+    "fsGroupChangePolicy": "OnRootMismatch",
+    "runAsGroup": 1000,
+    "runAsNonRoot": true,
+    "runAsUser": 1000
+  },
+  "path": "/state/preview-facets/workspace",
+  "observed": {
+    "mode": "0o2700",
+    "uid": 1000,
+    "gid": 1000
+  },
+  "before_mode": "NOT_SAMPLED_IN_THIS_RUN",
+  "historical_direct_before_after": "evidence/phase2/development/final-dev18/workspace-mount-recovery.json",
+  "current_recovery_report": "evidence/phase2/final/recovery.json",
+  "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "additional_live_generations": 0
+}

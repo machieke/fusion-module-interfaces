@@ -1,0 +1,38 @@
+{
+  "schema": "omega-phase2-final-workbench/1",
+  "status": "PASS",
+  "classification": "REAL_BROWSER_REAL_NATIVE_TOOLS_RECORDED_MODEL; separate minimal mutation and combined read-only deployments",
+  "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "reports": {
+    "solo-report": {
+      "path": "evidence/phase2/final/workbench/solo-report.json",
+      "sha256": "a747717dfd457a488602f8829e9accc3babfc4a8758cda89c8fab9ea2e05b44f"
+    },
+    "solo-cleanup": {
+      "path": "evidence/phase2/final/workbench/solo-cleanup.json",
+      "sha256": "8ad064ae371757f6a541d158d2dbe0b897721bdce647fb542a7d20511c288e6d"
+    },
+    "main-report": {
+      "path": "evidence/phase2/final/workbench/main-report.json",
+      "sha256": "59717409f4416dbfd523a9b17fc5bca12e2749f519617b16c9ee36dfc06ef694"
+    },
+    "main-cleanup": {
+      "path": "evidence/phase2/final/workbench/main-cleanup.json",
+      "sha256": "d2196c123a71779105ebce5b6923d7226465b5fb7a1f9b2461aa96022d562f85"
+    }
+  },
+  "native_inputs_submitted": 4,
+  "native_inputs_complete": 4,
+  "minimal_controls": [
+    "pause",
+    "resume",
+    "close"
+  ],
+  "main_inputs_submitted": 0,
+  "main_selected_session_complete": 19,
+  "main_selected_session_pending": 0,
+  "chain_effect": "finalized actual registered deploy; observe only; submission NOT_REQUESTED",
+  "panels": "Selected retained result page, not refreshed cognitive-owner heads",
+  "historical_capacity_failure": "evidence/phase2/development/final-dev17/workbench.json",
+  "additional_live_generations": 0
+}

@@ -28,6 +28,23 @@ from fusion.neoclaw_transport import json_loads
 from .configure import configure, write
 
 
+class StorageGate:
+    """One bounded queue for all ports of the preview's single storage owner.
+
+    The backend retains its independent cross-process flock. This gate avoids
+    normal same-process reads colliding with a committed write in that backend.
+    It grants no authority and performs no retry or deadline transformation.
+    """
+    def __init__(self):
+        self.slots=threading.BoundedSemaphore(4);self.writer=threading.Lock()
+    def enter(self):
+        require(self.slots.acquire(blocking=False),'OVERLOADED')
+        if not self.writer.acquire(timeout=2):
+            self.slots.release();raise ContractError('OVERLOADED')
+    def leave(self):
+        self.writer.release();self.slots.release()
+
+
 def main(*, config_resolver=configure, model_factory=None):
     config_path = sys.argv[1] if len(sys.argv)>1 else '/config/component.json'
     initial = json.loads(Path(config_path).read_text())
@@ -35,7 +52,7 @@ def main(*, config_resolver=configure, model_factory=None):
         from .restore_host import main as restored
         return restored(config_path)
     require(os.environ.get('POD_NAME') == initial['role']+'-0', 'UNSUPPORTED_PROFILE')
-    if initial.get('reference',{}).get('profile')=='chain' and initial['role']=='f1r3node':
+    if initial['role']=='f1r3node' and (initial.get('reference',{}).get('profile')=='chain' or initial.get('preview',{}).get('chain',{}).get('enabled')):
         from .chain_node import main as node
         return node(initial)
     state = Path(initial.get('state','/state'))
@@ -46,19 +63,30 @@ def main(*, config_resolver=configure, model_factory=None):
     settings=initial
     # This envelope selects the owner, not its current secrets/test knobs. It
     # refuses accidentally mounting a different service's or legacy journal PVC.
-    seal = dict(composition=settings['service_composition'],role=settings['role'],scope=settings.get('reference',{}).get('scope',settings.get('memory',{}).get('scope',c.SCOPE)))
+    seal = dict(composition=settings['service_composition'],role=settings['role'],scope=settings.get('preview',{}).get('scope',settings.get('reference',{}).get('scope',settings.get('memory',{}).get('scope',c.SCOPE))))
+    if settings.get('preview',{}).get('enabled') and settings['role']=='fusion-storage':
+        # Physical-layout adoption is fresh-state-only. Older server images
+        # compute the historical three-field seal and refuse this PVC before
+        # configuring owners or starting workers. No journal is converted.
+        from fusion.adapters.detta_layout import LAYOUT
+        seal['backend_layout']=LAYOUT
     if (state/'owner-seal.json').exists():
         require(json.loads((state/'owner-seal.json').read_text())==seal,'UNSUPPORTED_PROFILE')
     else:
         require(set(p.name for p in state.iterdir()) <= {'owner.lock','lost+found'}, 'UNSUPPORTED_PROFILE')
         write(state/'owner-seal.json',seal)
     settings, config, state, run = config_resolver(config_path)
+    preview=settings.get('preview',{}).get('enabled',False)
+    native_agent=settings['role'] in settings.get('preview',{}).get('agents',{}) if preview else settings['role']=='omega-agent'
+    supervisor=None;facet_owner=None;active_owner=None;memory_owner=None;inspection_owner=None
     workflow=settings.get('workflow',{}).get('enabled',False)
     channel_owner=None;cognitive_owner=None
     cognitive=settings.get('reference',{}).get('enabled',False) and settings['reference']['profile'] in ('cognitive','relations')
     chain=settings.get('reference',{}).get('enabled',False) and settings['reference']['profile']=='chain'
     stop = threading.Event(); fatal = threading.Event(); role = settings['role']; child = None; worker = None
     memory=settings['service_composition']=='neoclaw-memory-services/1' or ((workflow or cognitive) and role in ('omega-agent','fusion-storage','fusion-search','fusion-embedding'))
+    preview_memory=preview and settings['preview'].get('memory',{}).get('enabled',False)
+    if preview_memory and role in ('fusion-storage','fusion-search','fusion-embedding'):memory=True
     chosen = c.selected(c.catalogue('detta')); owner = None; kernel = None
     def hook(stage):
         if config.get('test_failpoints') and config.get('pause_at')==stage:
@@ -76,10 +104,32 @@ def main(*, config_resolver=configure, model_factory=None):
         def atoms_for(principal, selected=None):
             require(principal=='worker','UNAUTHORIZED'); return atoms
         return NalService(run/'owner.json',hook,kernel,atoms_for=atoms_for,mailbox=mailbox)
+    if preview:
+        if (run/'inspect-owner.json').exists():
+            from fusion.preview_inspect import Ports as InspectionPorts
+            inspection_owner=InspectionPorts(run/'inspect-owner.json',role,hook)
+        if preview_memory and role in ('fusion-storage','fusion-search'):
+            from fusion.preview_memory_services import Ports as ActivePorts
+            active_owner=ActivePorts(run/'owner.json',role,hook)
+            if role=='fusion-storage':
+                from fusion.memory_services import StoragePorts
+                memory_owner=StoragePorts(run/'owner.json',hook)
+        if (run/'cognitive-owner.json').exists():
+            from fusion.cognitive_services import Ports
+            cognitive_owner=Ports(run/'cognitive-owner.json',role,hook)
+        if (run/'facet-owner.json').exists():
+            from fusion.preview_ports import Ports
+            facet_owner=Ports(run/'facet-owner.json',role,hook)
+        if native_agent:
+            from .preview_host import NativeSupervisor
+            supervisor=NativeSupervisor(run/'owner.json',state,run)
     if cognitive and role in ('fusion-storage','fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search'):
         from fusion.cognitive_services import Ports
         cognitive_owner=Ports(run/'cognitive-owner.json',role,hook)
-    if chain and role in ('fusion-execution','fusion-storage','fusion-messaging'):
+    if preview and role=='fusion-commitment':
+        from fusion.preview_chain import Ports
+        owner=Ports(run/'owner.json',hook)
+    elif chain and role in ('fusion-execution','fusion-storage','fusion-messaging'):
         from fusion.inspect_services import Ports
         owner=Ports(run/'owner.json',role,hook)
     elif chain and role=='fusion-commitment':
@@ -88,6 +138,9 @@ def main(*, config_resolver=configure, model_factory=None):
     elif chain:pass
     elif cognitive and role in ('fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search'):
         owner=cognitive_owner
+    elif preview and role=='fusion-model':
+        from fusion.preview_recorded_model import RecordedProposals
+        RecordedProposals(run/'owner.json') # Configuration/source check only.
     elif workflow and role=='fusion-model':
         from .recorded_model import deny_live,RecordedBackend
         from fusion.retrieval_services import ModelPorts
@@ -107,7 +160,7 @@ def main(*, config_resolver=configure, model_factory=None):
         owner=SearchHost(run/'owner.json',hook)
     elif memory and role=='fusion-storage':
         from fusion.memory_services import StoragePorts
-        owner=StoragePorts(run/'owner.json',hook)
+        owner=OwnerService(run/'owner.json',role) if preview else StoragePorts(run/'owner.json',hook)
         if workflow:
             from fusion.channel_services import ChannelPorts
             channel_owner=ChannelPorts(run/'channel-owner.json',hook)
@@ -125,6 +178,10 @@ def main(*, config_resolver=configure, model_factory=None):
                 try:
                     service.work(); service.flush()
                 finally: service.close()
+                if inspection_owner is not None:
+                    inspect_service=inspection_owner.service()
+                    try:inspect_service.work();inspect_service.flush()
+                    finally:inspect_service.close()
                 stop.wait(.05)
         except Exception as exc:
             write(state/'worker-status.json',dict(status='STOPPED',code=exc.code if isinstance(exc,ContractError) else 'NOT_AVAILABLE'))
@@ -147,31 +204,68 @@ def main(*, config_resolver=configure, model_factory=None):
                 healthy=healthy and child is not None and child.poll() is None and any(line.split()[1].endswith(':1A0B') and line.split()[3]=='0A' for line in Path('/proc/net/tcp').read_text().splitlines()[1:])
             self.reply(dict(role=role,ready=healthy),200 if healthy else 503)
         def do_POST(self):
-            service=None
+            service=None;storage_entered=False
             try:
                 require(not stop.is_set(),'NOT_AVAILABLE')
                 auth=self.headers.get_all('Authorization',[])
                 require(len(auth)==1 and auth[0].startswith('Bearer '),'UNAUTHORIZED')
                 require(self.headers.get('Content-Type')=='application/json' and not self.headers.get('Transfer-Encoding'))
                 sizes=self.headers.get_all('Content-Length',[])
-                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(131072 if cognitive or chain else 98304 if memory or workflow else 8192))
+                require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(131072 if preview or cognitive or chain else 98304 if memory or workflow else 8192))
                 raw=self.rfile.read(int(sizes[0]));require(len(raw)==int(sizes[0]));request=json_loads(raw)
-                if chain:
+                if preview and role=='fusion-storage':
+                    storage_gate.enter();storage_entered=True
+                if preview and self.path=='/preview/session':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from fusion.preview_session_service import SessionPorts
+                    result=SessionPorts(run/'owner.json',supervisor.wake).invoke(auth[0][7:],request)
+                elif preview and self.path=='/preview/tasks':
+                    require(role=='fusion-messaging' and (run/'task-owner.json').exists(),'UNSUPPORTED_OPERATION')
+                    from fusion.preview_tasks import Ports as TaskPorts
+                    result=TaskPorts(run/'task-owner.json',hook).invoke(auth[0][7:],request)
+                elif preview and self.path=='/preview/task-ingress':
+                    require(supervisor is not None and 'task_ingress' in config,'UNSUPPORTED_OPERATION')
+                    from .preview_task_ingress import Ingress
+                    result=Ingress(run/'owner.json',supervisor.wake,hook).invoke(auth[0][7:],request)
+                elif preview and self.path in ('/preview/inspection','/preview/inspection-completion'):
+                    require(inspection_owner is not None,'UNSUPPORTED_OPERATION')
+                    result=inspection_owner.invoke(self.path,auth[0][7:],request)
+                elif preview and self.path=='/preview/commitment':
+                    require(role=='fusion-commitment','UNSUPPORTED_OPERATION')
+                    result=owner.invoke(self.path,auth[0][7:],request)
+                elif preview and self.path=='/preview/model':
+                    require(role=='fusion-model','UNSUPPORTED_OPERATION')
+                    from fusion.preview_recorded_model import service as recorded_service
+                    with encode_lock:
+                        service=recorded_service(run/'owner.json',hook)
+                        try:result=service.invoke(auth[0][7:],request)
+                        finally:service.close();service=None
+                elif preview and self.path=='/preview/facets':
+                    require(facet_owner is not None,'UNSUPPORTED_OPERATION')
+                    with encode_lock:result=facet_owner.invoke(auth[0][7:],request)
+                elif preview and self.path=='/reference-cognition':
+                    require(cognitive_owner is not None,'UNSUPPORTED_OPERATION')
+                    result=cognitive_owner.invoke(self.path,auth[0][7:],request)
+                elif preview and self.path=='/preview/memory':
+                    require(active_owner is not None,'UNSUPPORTED_OPERATION')
+                    with encode_lock:result=active_owner.invoke(auth[0][7:],request)
+                elif chain:
                     require(owner is not None,'UNSUPPORTED_OPERATION');result=owner.invoke(self.path,auth[0][7:],request)
                 elif cognitive and self.path=='/reference-cognition':
                     require(cognitive_owner is not None,'UNSUPPORTED_OPERATION');result=cognitive_owner.invoke(self.path,auth[0][7:],request)
                 elif workflow and (role in ('fusion-model','fusion-messaging') or self.path=='/s06-mailbox'):
                     selected=channel_owner if role=='fusion-storage' else owner
                     require(selected is not None,'UNSUPPORTED_OPERATION');result=selected.invoke(self.path,auth[0][7:],request)
-                elif memory:
+                elif memory and (not preview or self.path in ('/s03-append','/s03-read','/memory-source','/memory-initial','/s03-encode')):
                     if role=='fusion-embedding':
                         from fusion.embedding_service import EmbeddingService
                         require(self.path=='/s03-encode','UNSUPPORTED_OPERATION')
                         service=EmbeddingService(run/'owner.json',kernel,hook)
                         with encode_lock:result=service.invoke(auth[0][7:],request)
                     else:
-                        require(owner is not None,'UNSUPPORTED_OPERATION')
-                        result=owner.invoke(self.path,auth[0][7:],request)
+                        selected=memory_owner or owner
+                        require(selected is not None,'UNSUPPORTED_OPERATION')
+                        result=selected.invoke(self.path,auth[0][7:],request)
                 elif role=='fusion-execution':
                     require(self.path=='/s01','UNSUPPORTED_OPERATION')
                     service=execution(); result=dict(ok=service.invoke(auth[0][7:],request),provider=request['selection'])
@@ -193,19 +287,21 @@ def main(*, config_resolver=configure, model_factory=None):
             except (OSError,sqlite3.Error):result=dict(error=ContractError('NOT_AVAILABLE').wire())
             finally:
                 if service is not None:service.close()
+                if storage_entered:storage_gate.leave()
             self.reply(result)
     encode_lock=threading.Lock()
+    storage_gate=StorageGate()
     # The memory caller is outbound-only: it mounts no server private key.
     # Its HTTP listener serves only inert kubelet probes; module RPCs stay TLS.
     context=None
-    if not ((memory and role=='omega-agent') or ((workflow or cognitive) and role in ('fusion-channel-bridge','irc-server','irc-peer'))):
+    if preview or not ((memory and role=='omega-agent') or ((workflow or cognitive) and role in ('fusion-channel-bridge','irc-server','irc-peer'))):
         context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER);context.minimum_version=ssl.TLSVersion.TLSv1_2
         context.load_cert_chain(config['tls_certificate'],config['tls_key'])
     class Server(ThreadingHTTPServer):
         allow_reuse_address=True
         def get_request(self):
             sock,address=super().get_request();sock.settimeout(2)
-            if cognitive or chain:sock.setsockopt(socket.IPPROTO_TCP,socket.TCP_NODELAY,1)
+            if cognitive or chain or preview:sock.setsockopt(socket.IPPROTO_TCP,socket.TCP_NODELAY,1)
             try:return (context.wrap_socket(sock,server_side=True) if context else sock),address
             except BaseException:sock.close();raise
     def terminate(*_):
@@ -218,7 +314,7 @@ def main(*, config_resolver=configure, model_factory=None):
         server.timeout=.2
         if role=='fusion-execution' and settings['worker_enabled']:
             worker=threading.Thread(target=pump);worker.start()
-        if (role=='omega-agent' and settings['native_enabled']) or (memory and role=='fusion-search'):
+        if (not preview and role=='omega-agent' and settings['native_enabled']) or (memory and role=='fusion-search'):
             # Startup dependency observation only: no invocation identity,
             # occurrence deadline, reservation or POST exists yet. After a
             # bounded failure the process exits; it never substitutes providers.
@@ -236,7 +332,7 @@ def main(*, config_resolver=configure, model_factory=None):
                     finally:conn.close()
                     if stop.wait(.2) or time.monotonic()>=until:raise SystemExit('DEPENDENCY_NOT_READY')
             if memory and role=='fusion-search':owner.initialize(state)
-        if role=='omega-agent' and settings['native_enabled']:
+        if not preview and role=='omega-agent' and settings['native_enabled']:
             if chain:
                 pass # Native Hive startup owns its caller configuration and receipts.
             elif workflow:
@@ -275,8 +371,10 @@ def main(*, config_resolver=configure, model_factory=None):
         write(state/'process.json',dict(pid=os.getpid(),role=role,configuration_revision=settings['revision'],
                                       native_pid=child.pid if child else None))
         child_observed=False
+        if supervisor is not None:supervisor.recover()
         while not stop.is_set():
             server.handle_request()
+            if supervisor is not None:supervisor.tick()
             if child is not None and not child_observed and child.poll() is not None:
                 write(state/'native-exit.json',dict(pid=child.pid,returncode=child.returncode))
                 child_observed=True
@@ -285,6 +383,7 @@ def main(*, config_resolver=configure, model_factory=None):
                     seal_setup(settings,state)
                 if workflow and role in ('fusion-channel-bridge','irc-server','irc-peer'):fatal.set()
     if worker is not None:worker.join(timeout=16)
+    if supervisor is not None:supervisor.stop()
     if child is not None:
         try:child.wait(timeout=6)
         except subprocess.TimeoutExpired:os.killpg(child.pid,signal.SIGKILL);child.wait()

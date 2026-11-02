@@ -1,0 +1,270 @@
+{
+  "schema": "omega-phase2-progress/1",
+  "baseline": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "packages": {
+    "P01": {
+      "name": "Baseline and capability manifest",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "evidence/phase2/capabilities.json",
+        "evidence/phase2/final/capability-binding.json"
+      ]
+    },
+    "P02": {
+      "name": "Typed tool catalogue",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/foundations-01.log",
+        "artifacts/phase2/native-context-04.log",
+        "evidence/phase2/capabilities.json",
+        "evidence/phase2/final/capability-binding.json",
+        "evidence/phase2/final/checks.json"
+      ]
+    },
+    "P03": {
+      "name": "Contracts/client kit",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "sdk/qualification.json",
+        "sdk/qualification-02.json",
+        "sdk/operator-qualification-01.json",
+        "sdk/operator-final-candidate-qualification-02.json",
+        "sdk/operator-final-candidate-qualification-04.json"
+      ]
+    },
+    "P04": {
+      "name": "Reusable native session service",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/native-session-01.log",
+        "artifacts/phase2/native-session-02.log",
+        "artifacts/phase2/deploy-dev01/sessions-01.json",
+        "artifacts/phase2/session-regression-05.log",
+        "evidence/phase2/development/native-memory.json",
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "P05": {
+      "name": "Stable handles and shared views",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "evidence/phase2/development/native-memory.json",
+        "evidence/phase2/final/combined-native.json",
+        "evidence/phase2/final/private-scopes-rotation.json",
+        "evidence/phase2/final/shared-source.json"
+      ]
+    },
+    "P06": {
+      "name": "History and episodes",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/owner-foundations-03.log",
+        "artifacts/phase2/native-history-02.log",
+        "evidence/phase2/development/native-memory.json",
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "P07": {
+      "name": "Typed link/unlink",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/owner-foundations-03.log",
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "P08": {
+      "name": "Working task context",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "evidence/phase2/final/single-agent.json",
+        "evidence/phase2/final/combined-observations.json"
+      ]
+    },
+    "P09": {
+      "name": "Memory lifecycle",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/lifecycle-chroma-01.log",
+        "artifacts/phase2/active-memory-ports-02.log",
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "P10": {
+      "name": "Workspace tools",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/foundations-regression-02.log",
+        "artifacts/phase2/native-session-02.log",
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "P11": {
+      "name": "Two native agents",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "evidence/phase2/development/native-memory.json",
+        "artifacts/phase2/tasks-04.log",
+        "evidence/phase2/final/combined-native.json",
+        "evidence/phase2/final/handoff-recovery.json"
+      ]
+    },
+    "P12": {
+      "name": "Combined cognition",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "evidence/phase2/development/dev05-sessions-01.json",
+        "evidence/phase2/development/dev09-sessions-01.json",
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "P13": {
+      "name": "Same-workflow chain",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/window-budgets-02.log",
+        "artifacts/phase2/inspection-wiring-01.log",
+        "artifacts/phase2/chain-wiring-01.log",
+        "evidence/phase2/final/same-workflow-chain.json"
+      ]
+    },
+    "P14": {
+      "name": "Provider compatibility",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "sdk/operator-final-candidate-qualification-04.json",
+        "evidence/phase2/final/attention-comparison.json",
+        "evidence/phase2/final/private-scopes-rotation.json"
+      ]
+    },
+    "P15": {
+      "name": "Workbench",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "evidence/phase2/final/workbench.json"
+      ]
+    },
+    "P16": {
+      "name": "Recovery/evaluation",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "artifacts/phase2/ports-regression-03.log",
+        "artifacts/phase2/model-regression-02.log",
+        "artifacts/phase2/cognitive-old-regression-01.log",
+        "artifacts/phase2/native-context-07.log",
+        "artifacts/phase2/backup-02.log",
+        "artifacts/phase2/work-budgets-01.log",
+        "artifacts/phase2/native-session-08.log",
+        "artifacts/phase2/contracts-10.log",
+        "artifacts/phase2/contracts-11.log",
+        "evidence/phase2/final/recovery.json",
+        "evidence/phase2/final/handoff-recovery.json",
+        "evidence/phase2/final/restore.json",
+        "evidence/phase2/final/private-scopes-rotation.json",
+        "evidence/phase2/final/irc-regressions.json"
+      ]
+    },
+    "P17": {
+      "name": "Distribution/CI",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "evidence/phase2/final/source-images.json",
+        "evidence/phase2/image-dependencies-dev19.json",
+        "evidence/phase2/final/checks.json"
+      ]
+    },
+    "P18": {
+      "name": "Integrated delivery",
+      "status": "DELIVERED_WITH_DOCUMENTED_LIMITS",
+      "evidence": [
+        "docs/phase2/programme-report.md",
+        "evidence/phase2/final/cleanup.json",
+        "evidence/phase2/final/protected-resources.json",
+        "evidence/phase2/changed-files.json"
+      ]
+    }
+  },
+  "additional_live_generations": 0,
+  "next": "finish6IRC, dev19imageinventory, finalsource/evidence/positiveallowlist/artifactverification, protection/cleanup, commitpush",
+  "checkpoint_at": "2026-11-02T21:40:22.175353+00:00",
+  "external_blockers": [],
+  "resources": {
+    "omega-ref-phase2-dev01": "QUIESCED; PVCs and failure report retained",
+    "protected": [
+      "omega-demo",
+      "omega-ref-live01"
+    ],
+    "development_build": "Final dev19 immutable four-image source map qualified; local artifact distribution with exact SDK wheels",
+    "omega-ref-phase2-dev02": "QUIESCED; dev04 native passes and earlier failures retained",
+    "omega-ref-phase2-dev05": "QUIESCED; 3 native inputs complete, additional remember occurrence expired during active index publication; retained",
+    "omega-ref-phase2-dev07": "QUIESCED; native remember/episodes/link/pin/delegate acceptance retained; support authorization failure and B task timeout retained",
+    "omega-ref-phase2-dev08": "QUIESCED; B pin/A remember/episodes/link complete; support append deadline failure retained",
+    "omega-ref-phase2-dev09": "QUIESCED; cognition/query pass, first task report captured by B and accepted by A, A prior-delegate restore UNAUTHORIZED; failed deadline retained",
+    "omega-ref-phase2-dev10": "QUIESCED; failed deadline retained",
+    "omega-ref-phase2-dev11": "QUIESCED; successful both-direction handoffs and concurrent-storage overload retained",
+    "omega-ref-phase2-dev12": "QUIESCED; PVCs and failed original input deadline retained",
+    "omega-ref-phase2-dev14": "QUIESCED; failed inspection status read preserved",
+    "dev15": "QUIESCED; all PVCs retained; second memory readiness deadline failure; chain never activated",
+    "dev16": "QUIESCED; earlier complete native workflow; never chain activated",
+    "dev17": "QUIESCED; complete native/chain evidence plus retained capacity-limited UI input; all PVCs retained",
+    "r17": "QUIESCED; fault configuration rejected by old chart schema; failed readbacks and PVCs retained",
+    "r17b": "QUIESCED; five passed and two failed workspace recovery cases retained",
+    "r18": "QUIESCED; final18 seven recovery cases PASS; PVCs retained",
+    "h18": "QUIESCED; native setup PASS; handoff observer selected wrong configured B session. Corrected qualifier; no production defect or resumed expired task",
+    "attention18": "QUIESCED; storage catalogue discriminator mismatch; rejected before native work; root fix+11tests PASS",
+    "attention19": "QUIESCED;6nativeinputsPASS; independent file provider explicitly fixture; real E5/Chroma/DeTTa/native/HTTPS",
+    "attention19sql": "QUIESCED;6nativeinputsPASS; sameconsumer/profile asfilefixture",
+    "h19": "QUIESCED;7native setupPASS; B captured/replaced; A prompt observerJSONdecodefailure retained",
+    "r19": "QUIESCED;7nativefault/recoverycasesPASS; rootmode02700observed afterreplacement",
+    "h19b": "QUIESCED; nativehandoffrecoveryPASS,28scope/credential/TLS casesPASS, concurrentauthoritative feedPASS",
+    "solo19": "QUIESCED;6minimal native inputs and4native UI inputs+pause/resume/close PASS; PVCs retained; browser/workbench stopped",
+    "main19": "QUIESCED;23operator+4internalinputs combinedPASS, read-onlyobservationsPASS, chainPASS,14owner resource sample, read-onlyUI PASS;14PVCs retained",
+    "restore19": "QUIESCED;13owner fencedrestorePASS;13PVCsretained; privatehostscratchremoved",
+    "irc19": "Six fresh namespaces deleted after positive/negative assertions; raw reports retained",
+    "final_cleanup": "27 task namespaces quiesced;330PVCs retained; workbench processes stopped"
+  },
+  "latest_development_execution": {
+    "namespace": "omega-ref-phase2-dev17",
+    "source_manifest_sha256": "6a3707706bb4369011846e493990441625cf1fedfea0460c6f13aceb9402ad92",
+    "report": "artifacts/phase2/deploy-dev17/qualification-01/report.json",
+    "status": "PASS",
+    "classification": "RECORDED_MODEL_REAL_NATIVE_TOOLS"
+  },
+  "next_development_build": null,
+  "current_checkpoint": "docs/phase2/programme-report.md",
+  "current_source_manifest": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "active_namespace": null,
+  "latest_tests": {
+    "preview-fast": "514PASS61.458s; denialPASS; four additional owner-race tests PASS0.345s",
+    "baseline-fast": "48 PASS 18.942s",
+    "SDK": "26 PASS 24.504s against rebuilt candidate03 wheels; qualification04",
+    "historical-native": "7 PASS35.781s dev17 source unchanged; separate prior execution",
+    "IRC": "6 expected assertions PASS; only correct scenario workflow_pass=true",
+    "stage-observer": "17 fixture methods PASS; actual read-only ownership PASS, method timing NOT_OBSERVED"
+  },
+  "latest_chain_execution": {
+    "report": "evidence/phase2/final/same-workflow-chain.json",
+    "status": "PASS",
+    "submissions": 1,
+    "automatic_resubmissions": 0
+  },
+  "latest_chart": {
+    "version": "0.5.1",
+    "candidate": "final local artifact publication; exact digest detached",
+    "manifest_sha256": "33c9d519977efaa6b2c90cf83b6d2cbf85d7f4abcb19131efc2876c1408953b9",
+    "change": "OnRootMismatch for runtime and maintenance PVC mounts"
+  },
+  "current_runtime_source_manifest": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "active": null,
+  "status": "READY_WITH_EXPLICIT_LIMITS",
+  "updated_at": "2026-11-02T21:55:24.916483+00:00",
+  "next_actions": [],
+  "publication": "Exact final packet digest is detached in evidence/phase2/artifacts.json; outside its hashed archive",
+  "remaining_limits": [
+    "CPU quota enforcement NOT_ESTABLISHED",
+    "Native method timing NOT_OBSERVED; per-input and IRC stages measured",
+    "Finite512 aggregate source-record bound; failed capacity input retained",
+    "Hosted CI NOT_OBSERVED; unavailable vulnerability scan NOT_RUN",
+    "Recorded model only; live preview workflow NOT_RUN",
+    "Single-node synthetic fresh-state preview; no HA, migration or production certification"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "additional_live_generations": 0,
+  "classification": "AUTHORED_OCI_CHART_WHEEL_AND_PROFILE_FIXTURES_ONLY",
+  "cluster_calls": 0,
+  "command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/operator-venv/bin/python",
+    "-m",
+    "unittest",
+    "sdk.test_preview_distribution",
+    "tests.test_reference_schema.ArtifactIdentity",
+    "-v"
+  ],
+  "returncode": 0,
+  "runtime_calls": 0,
+  "schema": "fusion-preview-distribution-verifier-check/1",
+  "seconds": 0.238,
+  "sources_after": {
+    "integration/single_node/reference_artifacts.py": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+    "sdk/test_preview_distribution.py": "502b2409c2fa662f269cb0975c2f1cbbb9b05bec2007d74d0620803b5fb44ba2"
+  },
+  "sources_before": {
+    "integration/single_node/reference_artifacts.py": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+    "sdk/test_preview_distribution.py": "502b2409c2fa662f269cb0975c2f1cbbb9b05bec2007d74d0620803b5fb44ba2"
+  },
+  "started_utc": "2026-11-02T17:48:32.731977+00:00",
+  "stderr": "test_files_are_unique_contained_and_digest_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_files_are_unique_contained_and_digest_bound) ... ok\ntest_inventory_duplicate_or_changed_wheel_digest_refuses (sdk.test_preview_distribution.PreviewDistributionFixtures.test_inventory_duplicate_or_changed_wheel_digest_refuses) ... ok\ntest_legacy_schema_still_verifies_its_historical_profile_layout (sdk.test_preview_distribution.PreviewDistributionFixtures.test_legacy_schema_still_verifies_its_historical_profile_layout) ... ok\ntest_manifest_canonical_bytes_and_external_digest_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_manifest_canonical_bytes_and_external_digest_are_bound) ... ok\ntest_oci_configuration_link_and_bytes_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_oci_configuration_link_and_bytes_are_bound) ... ok\ntest_preview_accepts_declared_fixtures_without_generative_artifacts (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_accepts_declared_fixtures_without_generative_artifacts) ... ok\ntest_preview_image_import_repository_must_match_selection (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_image_import_repository_must_match_selection) ... ok\ntest_preview_schema_profile_and_authority_are_closed (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_schema_profile_and_authority_are_closed) ... ok\ntest_profile_files_and_image_selections_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_profile_files_and_image_selections_are_bound) ... ok\ntest_secondary_artifact_references_must_be_registered (sdk.test_preview_distribution.PreviewDistributionFixtures.test_secondary_artifact_references_must_be_registered) ... ok\ntest_source_package_binding_is_not_an_unchecked_label (sdk.test_preview_distribution.PreviewDistributionFixtures.test_source_package_binding_is_not_an_unchecked_label) ... ok\ntest_wheel_payload_and_tested_source_are_independently_checked (sdk.test_preview_distribution.PreviewDistributionFixtures.test_wheel_payload_and_tested_source_are_independently_checked) ... ok\ntest_distribution_digest_is_not_the_last_oci_descriptor (tests.test_reference_schema.ArtifactIdentity.test_distribution_digest_is_not_the_last_oci_descriptor) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.131s\n\nOK\n",
+  "stdout": ""
+}

@@ -7,8 +7,9 @@ from ..contracts import ContractError, digest
 
 
 class DettaStorage:
-    def __init__(self, binary: str, root: str):
+    def __init__(self, binary: str, root: str, *, owner_fds=()):
         self.binary, self.root = binary, root
+        self.owner_fds = tuple(owner_fds)
 
     def _call(self, operation: str, **body):
         try:
@@ -20,7 +21,7 @@ class DettaStorage:
                     raise ContractError("OVERLOADED") from None
                 run = subprocess.run([self.binary], input=json.dumps({"root": self.root,
                                      "operation": operation, **body}), capture_output=True,
-                                     text=True, timeout=15, check=True, pass_fds=(lock.fileno(),))
+                                     text=True, timeout=15, check=True, pass_fds=(lock.fileno(), *self.owner_fds))
             reply = json.loads(run.stdout)
         except (OSError, subprocess.SubprocessError, ValueError):
             raise ContractError("NOT_AVAILABLE") from None

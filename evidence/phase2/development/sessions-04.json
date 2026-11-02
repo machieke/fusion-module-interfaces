@@ -1,0 +1,398 @@
+[
+  {
+    "role": "omega-agent",
+    "create": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev02",
+      "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent-b",
+    "create": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "B",
+      "scope": "synthetic-phase2-dev02",
+      "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 1,
+    "accepted": {
+      "accepted": 1793632038786,
+      "assignment": "synthetic-task",
+      "deadline": 1793632068786,
+      "id": "source-dev04b-1",
+      "sequence": 1,
+      "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793632038786,
+          "assignment": "synthetic-task",
+          "deadline": 1793632068786,
+          "id": "source-dev04b-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic prism sample is stored in crate amber"
+          },
+          "result": {
+            "occurrences": [
+              "b4ff1fd7-e377-53f6-b865-281606554a35"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic prism sample is stored in crate amber) {_quote_logical_id_quote_:_quote_e8f08161-fc59-53fa-83df-118238043931_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:9918f991-ccea-520e-b90a-293b7a2955dc_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_182623518b8ac053c7e866c4cfd84bfa9096a327c59e600452d768e9285a3de8_quote_,_quote_id_quote_:_quote_48dbe3bc-4c87-51a2-b343-8ac9abe83e73_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_6c610a094d1c29b897d04481517f2c24d548230febfeadd6c23f55f5b3c39aa4_quote_,_quote_id_quote_:_quote_757000a0-d7be-5609-b4d8-d570bb322ddf_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_91d2b8bd00ff1b3d66c135479f4510d4fb57d685c7da857121522d90c176412b_quote_,_quote_corpus_quote_:_quote_generated-phase2-shared_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_960cdd1f-d6f5-5243-897a-442327ac645f_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:56,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:2,_quote_source_quote_:_quote_a2b785bd-438a-4bd1-af65-129695f7f696_quote_},_quote_logical_quote_:_quote_83a58e79aba24d8774164f7ce7437851e40dfe289824b0c96ac18bf9a62a9cfe_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:56,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev02",
+      "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 2,
+    "accepted": {
+      "accepted": 1793632068149,
+      "assignment": "synthetic-task",
+      "deadline": 1793632098149,
+      "id": "source-dev04b-2",
+      "sequence": 2,
+      "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793632038786,
+          "assignment": "synthetic-task",
+          "deadline": 1793632068786,
+          "id": "source-dev04b-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic prism sample is stored in crate amber"
+          },
+          "result": {
+            "occurrences": [
+              "b4ff1fd7-e377-53f6-b865-281606554a35"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic prism sample is stored in crate amber) {_quote_logical_id_quote_:_quote_e8f08161-fc59-53fa-83df-118238043931_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:9918f991-ccea-520e-b90a-293b7a2955dc_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_182623518b8ac053c7e866c4cfd84bfa9096a327c59e600452d768e9285a3de8_quote_,_quote_id_quote_:_quote_48dbe3bc-4c87-51a2-b343-8ac9abe83e73_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_6c610a094d1c29b897d04481517f2c24d548230febfeadd6c23f55f5b3c39aa4_quote_,_quote_id_quote_:_quote_757000a0-d7be-5609-b4d8-d570bb322ddf_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_91d2b8bd00ff1b3d66c135479f4510d4fb57d685c7da857121522d90c176412b_quote_,_quote_corpus_quote_:_quote_generated-phase2-shared_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_960cdd1f-d6f5-5243-897a-442327ac645f_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:56,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:2,_quote_source_quote_:_quote_a2b785bd-438a-4bd1-af65-129695f7f696_quote_},_quote_logical_quote_:_quote_83a58e79aba24d8774164f7ce7437851e40dfe289824b0c96ac18bf9a62a9cfe_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:56,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793632068149,
+          "assignment": "synthetic-task",
+          "deadline": 1793632098149,
+          "id": "source-dev04b-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic prism sample storage"
+          },
+          "result": {
+            "occurrences": [
+              "c4fe96fc-01d0-5380-b974-253f6205f06c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((query synthetic prism sample storage) [[[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 15:07:33_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 15:07:33_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic prism sample is stored in crate amber_apostrophe_], [[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 14:50:17_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 14:50:17_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic lantern shipment is in bay cobalt_apostrophe_]]_newline_PREVIEW_MEMORY_HANDLES: {_quote_12c8dee3-8afb-4f3d-9b8d-d05e6600b196_quote_:{_quote_handle_quote_:_quote_oh1:memory:9918f991-ccea-520e-b90a-293b7a2955dc_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_182623518b8ac053c7e866c4cfd84bfa9096a327c59e600452d768e9285a3de8_quote_,_quote_id_quote_:_quote_48dbe3bc-4c87-51a2-b343-8ac9abe83e73_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_6c610a094d1c29b897d04481517f2c24d548230febfeadd6c23f55f5b3c39aa4_quote_,_quote_id_quote_:_quote_757000a0-d7be-5609-b4d8-d570bb322ddf_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_7ffffb48-01c6-40be-8dd7-7660410d0f87_quote_:{_quote_handle_quote_:_quote_oh1:memory:6504dc2a-0d03-5d83-8d7c-5e7b99dbd0aa_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_f4554c7b3eb3f97d7c3fbe9cdc2d9a7427fd58b048c1ff1ccbfd72bfad1d4005_quote_,_quote_id_quote_:_quote_ddd5fe25-7c81-54d6-9fb0-9f517a150371_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f1d0c53013e26de9c98ff995135a212351826528db7ee97270adf768f253bfd0_quote_,_quote_id_quote_:_quote_5aaafce5-2850-58ef-8e62-100f90b8ac33_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev02",
+      "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent-b",
+    "input": 3,
+    "accepted": {
+      "accepted": 1793632089821,
+      "assignment": "synthetic-task",
+      "deadline": 1793632119821,
+      "id": "source-dev04b-3",
+      "sequence": 1,
+      "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793632089821,
+          "assignment": "synthetic-task",
+          "deadline": 1793632119821,
+          "id": "source-dev04b-3",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic prism sample storage"
+          },
+          "result": {
+            "occurrences": [
+              "20c86cf0-baf9-5fa1-9cb6-113b6657aac3"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((query synthetic prism sample storage) [[[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 15:07:33_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 15:07:33_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic prism sample is stored in crate amber_apostrophe_], [[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 14:50:17_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 14:50:17_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic lantern shipment is in bay cobalt_apostrophe_]]_newline_PREVIEW_MEMORY_HANDLES: {_quote_12c8dee3-8afb-4f3d-9b8d-d05e6600b196_quote_:{_quote_handle_quote_:_quote_oh1:memory:9918f991-ccea-520e-b90a-293b7a2955dc_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_B_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_182623518b8ac053c7e866c4cfd84bfa9096a327c59e600452d768e9285a3de8_quote_,_quote_id_quote_:_quote_48dbe3bc-4c87-51a2-b343-8ac9abe83e73_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_6c610a094d1c29b897d04481517f2c24d548230febfeadd6c23f55f5b3c39aa4_quote_,_quote_id_quote_:_quote_757000a0-d7be-5609-b4d8-d570bb322ddf_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_7ffffb48-01c6-40be-8dd7-7660410d0f87_quote_:{_quote_handle_quote_:_quote_oh1:memory:6504dc2a-0d03-5d83-8d7c-5e7b99dbd0aa_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_B_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_f4554c7b3eb3f97d7c3fbe9cdc2d9a7427fd58b048c1ff1ccbfd72bfad1d4005_quote_,_quote_id_quote_:_quote_ddd5fe25-7c81-54d6-9fb0-9f517a150371_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f1d0c53013e26de9c98ff995135a212351826528db7ee97270adf768f253bfd0_quote_,_quote_id_quote_:_quote_5aaafce5-2850-58ef-8e62-100f90b8ac33_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}}}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "B",
+      "scope": "synthetic-phase2-dev02",
+      "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 4,
+    "accepted": {
+      "accepted": 1793632111117,
+      "assignment": "synthetic-task",
+      "deadline": 1793632141117,
+      "id": "source-dev04b-4",
+      "sequence": 3,
+      "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793632038786,
+          "assignment": "synthetic-task",
+          "deadline": 1793632068786,
+          "id": "source-dev04b-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic prism sample is stored in crate amber"
+          },
+          "result": {
+            "occurrences": [
+              "b4ff1fd7-e377-53f6-b865-281606554a35"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic prism sample is stored in crate amber) {_quote_logical_id_quote_:_quote_e8f08161-fc59-53fa-83df-118238043931_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:9918f991-ccea-520e-b90a-293b7a2955dc_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_182623518b8ac053c7e866c4cfd84bfa9096a327c59e600452d768e9285a3de8_quote_,_quote_id_quote_:_quote_48dbe3bc-4c87-51a2-b343-8ac9abe83e73_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_6c610a094d1c29b897d04481517f2c24d548230febfeadd6c23f55f5b3c39aa4_quote_,_quote_id_quote_:_quote_757000a0-d7be-5609-b4d8-d570bb322ddf_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_91d2b8bd00ff1b3d66c135479f4510d4fb57d685c7da857121522d90c176412b_quote_,_quote_corpus_quote_:_quote_generated-phase2-shared_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_960cdd1f-d6f5-5243-897a-442327ac645f_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:56,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:2,_quote_source_quote_:_quote_a2b785bd-438a-4bd1-af65-129695f7f696_quote_},_quote_logical_quote_:_quote_83a58e79aba24d8774164f7ce7437851e40dfe289824b0c96ac18bf9a62a9cfe_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:56,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793632068149,
+          "assignment": "synthetic-task",
+          "deadline": 1793632098149,
+          "id": "source-dev04b-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic prism sample storage"
+          },
+          "result": {
+            "occurrences": [
+              "c4fe96fc-01d0-5380-b974-253f6205f06c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((query synthetic prism sample storage) [[[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 15:07:33_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 15:07:33_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic prism sample is stored in crate amber_apostrophe_], [[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 14:50:17_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 14:50:17_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic lantern shipment is in bay cobalt_apostrophe_]]_newline_PREVIEW_MEMORY_HANDLES: {_quote_12c8dee3-8afb-4f3d-9b8d-d05e6600b196_quote_:{_quote_handle_quote_:_quote_oh1:memory:9918f991-ccea-520e-b90a-293b7a2955dc_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_182623518b8ac053c7e866c4cfd84bfa9096a327c59e600452d768e9285a3de8_quote_,_quote_id_quote_:_quote_48dbe3bc-4c87-51a2-b343-8ac9abe83e73_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_6c610a094d1c29b897d04481517f2c24d548230febfeadd6c23f55f5b3c39aa4_quote_,_quote_id_quote_:_quote_757000a0-d7be-5609-b4d8-d570bb322ddf_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_7ffffb48-01c6-40be-8dd7-7660410d0f87_quote_:{_quote_handle_quote_:_quote_oh1:memory:6504dc2a-0d03-5d83-8d7c-5e7b99dbd0aa_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_f4554c7b3eb3f97d7c3fbe9cdc2d9a7427fd58b048c1ff1ccbfd72bfad1d4005_quote_,_quote_id_quote_:_quote_ddd5fe25-7c81-54d6-9fb0-9f517a150371_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f1d0c53013e26de9c98ff995135a212351826528db7ee97270adf768f253bfd0_quote_,_quote_id_quote_:_quote_5aaafce5-2850-58ef-8e62-100f90b8ac33_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793632111117,
+          "assignment": "synthetic-task",
+          "deadline": 1793632141117,
+          "id": "source-dev04b-4",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "episodes current"
+          },
+          "result": {
+            "occurrences": [
+              "6bc486e3-abcb-59a6-9b69-3ae165ae3070"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((episodes current) {_quote_complete_quote_:false,_quote_episode_quote_:_quote_oh1:episode:181bc9ae-e936-5344-8c59-cfe4db96a6f9_quote_,_quote_events_quote_:[{_quote_body_quote_:{_quote_assignment_quote_:_quote_synthetic-task_quote_,_quote_observed_ms_quote_:1793632038786,_quote_source_id_quote_:_quote_cd3ee0ea-a88a-527c-b589-a539b811c396_quote_,_quote_text_quote_:_quote_remember The synthetic prism sample is stored in crate amber_quote_},_quote_body_bytes_quote_:180,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_97bda5396b0b6aceae3ecdd12cf9627d6d42481a1282081e9783b5f745ba3ca2_quote_,_quote_event_handle_quote_:_quote_oh1:event:518bef29-a63b-58b9-8da8-18b18ca18649_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_4e14b08fa939eb9a7ecac3df9d7858198d49cc1296c7e09e6e611cb84c4c599d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_cc749536b28692a32d40d1e0fdcbe85bc62c777859885ffbc5133f18418ff909_quote_,_quote_id_quote_:_quote_ced53255-afe7-56ec-bd7e-08e8435ba13a_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_occurrence_id_quote_:_quote_cd3ee0ea-a88a-527c-b589-a539b811c396/input_quote_,_quote_sequence_quote_:1},_quote_kind_quote_:_quote_input-receipt_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_1e0b35c7c667e6ef3dceabbad2b9c1e76a6cb3304062f80dffb4643a6cdd2743_quote_,_quote_id_quote_:_quote_95691d52-430f-5252-a399-bacb9ea06ce4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_sequence_quote_:1},{_quote_body_quote_:{_quote_capture_quote_:{_quote_captured_ms_quote_:1793632048464,_quote_failure_code_quote_:null,_quote_id_quote_:_quote_5a2d1923-8ae2-54fb-b9d0-9e5d04d26e7e_quote_,_quote_intent_sha256_quote_:_quote_0195c37ffff874ef75e50dc318d71a6d1d10bbb7d6ba934cb04f19da7a505509_quote_,_quote_late_quote_:false,_quote_principal_quote_:_quote_A_quote_,_quote_reserved_quote_:1,_quote_response_quote_:{_quote_durations_ns_quote_:{_quote_generation_quote_:null,_quote_load_quote_:null,_quote_prompt_quote_:null,_quote_total_quote_:null},_quote_finish_reason_quote_:_quote_stop_quote_,_quote_native_text_quote_:_quote_remember The synthetic prism sample is stored in crate amber_quote_,_quote_observed_model_quote_:_quote_authored-native-command-proposals_quote_,_quote_outcome_quote_:_quote_complete_quote_,_quote_provider_request_id_quote_:null,_quote_raw_text_quote_:_quote_remember The synthetic prism sample is stored in crate amber_quote_,_quote_usage_quote_:{_quote_input_tokens_quote_:null,_quote_output_tokens_quote_:null,_quote_reasoning_tokens_quote_:null}},_quote_selection_quote_:_quote_f48182343cc757f82d88d91e75d81760895d716677cacec9b9b0885c7d63ece2_quote_,_quote_state_quote_:_quote_captured_quote_},_quote_model_id_quote_:_quote_5a2d1923-8ae2-54fb-b9d0-9e5d04d26e7e_quote_,_quote_observed_ms_quote_:1793632038786,_quote_source_id_quote_:_quote_cd3ee0ea-a88a-527c-b589-a539b811c396_quote_},_quote_body_bytes_quote_:894,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_c271b292c7c681e0199062e4e9dc3a204a03e8230d1cdebd476ff4ad2f3e90ef_quote_,_quote_event_handle_quote_:_quote_oh1:event:102ae67c-52dd-5eb8-aa5f-5d6f13d1104b_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_4e14b08fa939eb9a7ecac3df9d7858198d49cc1296c7e09e6e611cb84c4c599d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_bdb4c6aee776594f9c03c561c127ba0bf206a04f9df17b9becffe7b864912f93_quote_,_quote_id_quote_:_quote_a167bfcb-0b68-5870-a304-1a6cec098ffa_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_occurrence_id_quote_:_quote_5a2d1923-8ae2-54fb-b9d0-9e5d04d26e7e/proposal_quote_,_quote_sequence_quote_:2},_quote_kind_quote_:_quote_model-proposal_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_3e63afa2e558679ad12b0a6ed31bfe9c1482b31741c6dd9f458ebb3113ab8736_quote_,_quote_id_quote_:_quote_45eeb388-e07c-59fe-ba27-889dd38bcabe_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_sequence_quote_:2},{_quote_body_quote_:{_quote_intent_quote_:{_quote_arguments_quote_:{_quote_content_quote_:_quote_The synthetic prism sample is stored in crate amber_quote_},_quote_operation_quote_:_quote_remember_quote_,_quote_profile_quote_:_quote_neoclaw-append-only-memory/1_quote_},_quote_observed_ms_quote_:1793632038786,_quote_occurrence_quote_:_quote_b4ff1fd7-e377-53f6-b865-281606554a35_quote_,_quote_position_quote_:0,_quote_source_id_quote_:_quote_cd3ee0ea-a88a-527c-b589-a539b811c396_quote_},_quote_body_bytes_quote_:298,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_7b70e5d9cc62b4a3fbc779aa623fcb41b536fdbd7a452d12cad2a935224184a4_quote_,_quote_event_handle_quote_:_quote_oh1:event:e734da2e-0ab0-5a35-aae8-6bffd87a5876_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_4e14b08fa939eb9a7ecac3df9d7858198d49cc1296c7e09e6e611cb84c4c599d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_e9f979bb721f61cf12fec5cce9aaabfefcd7bb34880db631f333887f59c7f9c9_quote_,_quote_id_quote_:_quote_8ab5eaf9-a939-5a1b-86c4-0154ab8073b9_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_occurrence_id_quote_:_quote_b4ff1fd7-e377-53f6-b865-281606554a35/admission_quote_,_quote_sequence_quote_:3},_quote_kind_quote_:_quote_command-admitted_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_621e715a10fdaec594dc55d4b7d09e03b781ed4ac462aa3d2c2218516cf787c5_quote_,_quote_id_quote_:_quote_cae862cd-7e7f-58e6-ac55-169d319c5975_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_sequence_quote_:3},{_quote_body_quote_:null,_quote_body_bytes_quote_:1903,_quote_body_omitted_quote_:true,_quote_body_sha256_quote_:_quote_443d096dcbfebfa671bd5d53dcb7b7f89850a0c9cfb8ec59ef130bdd2a95527b_quote_,_quote_event_handle_quote_:_quote_oh1:event:5614a79f-22cd-5f1c-8d3d-49fc44445959_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_4e14b08fa939eb9a7ecac3df9d7858198d49cc1296c7e09e6e611cb84c4c599d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_c47c506ed3f7d27e7f7457c4bf5a60591b685d64a57dec57cf5b52555a245983_quote_,_quote_id_quote_:_quote_21b89292-b881-5455-a7b8-7053e24fe80a_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_occurrence_id_quote_:_quote_b4ff1fd7-e377-53f6-b865-281606554a35/result_quote_,_quote_sequence_quote_:4},_quote_kind_quote_:_quote_tool-result_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_9761a10d55fc419984a48e0ec0694a9c78894f93dda163f39cffa0037d47bfc5_quote_,_quote_id_quote_:_quote_b2582210-38e9-51b1-ae2e-bb87f8561837_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_sequence_quote_:4}],_quote_interpretation_quote_:_quote_administrative-history-not-empirical-evidence_quote_,_quote_next_selector_quote_:_quote_oh1:episode:181bc9ae-e936-5344-8c59-cfe4db96a6f9@11:5_quote_,_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_ref_quote_:{_quote_id_quote_:_quote_4e14b08fa939eb9a7ecac3df9d7858198d49cc1296c7e09e6e611cb84c4c599d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_snapshot_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_4e14b08fa939eb9a7ecac3df9d7858198d49cc1296c7e09e6e611cb84c4c599d_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_selection_quote_:_quote_69184fdedf12c90240862c587475a38e8cf2965dcab980dfd19fa5f3d11de98e_quote_,_quote_through_quote_:11}}))))",
+            "turn": 3
+          },
+          "sequence": 3,
+          "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev02",
+      "session": "0426b9b9-8998-412e-ac36-85acc4813419",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent-b",
+    "input": 5,
+    "accepted": {
+      "accepted": 1793632137607,
+      "assignment": "synthetic-task",
+      "deadline": 1793632167607,
+      "id": "source-dev04b-5",
+      "sequence": 2,
+      "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793632089821,
+          "assignment": "synthetic-task",
+          "deadline": 1793632119821,
+          "id": "source-dev04b-3",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic prism sample storage"
+          },
+          "result": {
+            "occurrences": [
+              "20c86cf0-baf9-5fa1-9cb6-113b6657aac3"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((query synthetic prism sample storage) [[[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 15:07:33_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 15:07:33_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic prism sample is stored in crate amber_apostrophe_], [[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 14:50:17_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 14:50:17_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic lantern shipment is in bay cobalt_apostrophe_]]_newline_PREVIEW_MEMORY_HANDLES: {_quote_12c8dee3-8afb-4f3d-9b8d-d05e6600b196_quote_:{_quote_handle_quote_:_quote_oh1:memory:9918f991-ccea-520e-b90a-293b7a2955dc_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_B_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_182623518b8ac053c7e866c4cfd84bfa9096a327c59e600452d768e9285a3de8_quote_,_quote_id_quote_:_quote_48dbe3bc-4c87-51a2-b343-8ac9abe83e73_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_6c610a094d1c29b897d04481517f2c24d548230febfeadd6c23f55f5b3c39aa4_quote_,_quote_id_quote_:_quote_757000a0-d7be-5609-b4d8-d570bb322ddf_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_7ffffb48-01c6-40be-8dd7-7660410d0f87_quote_:{_quote_handle_quote_:_quote_oh1:memory:6504dc2a-0d03-5d83-8d7c-5e7b99dbd0aa_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_B_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_f4554c7b3eb3f97d7c3fbe9cdc2d9a7427fd58b048c1ff1ccbfd72bfad1d4005_quote_,_quote_id_quote_:_quote_ddd5fe25-7c81-54d6-9fb0-9f517a150371_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f1d0c53013e26de9c98ff995135a212351826528db7ee97270adf768f253bfd0_quote_,_quote_id_quote_:_quote_5aaafce5-2850-58ef-8e62-100f90b8ac33_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}}}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793632137607,
+          "assignment": "synthetic-task",
+          "deadline": 1793632167607,
+          "id": "source-dev04b-5",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))"
+          },
+          "result": {
+            "occurrences": [
+              "c4add34a-0b22-54d1-8f50-1401d815d004"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032)))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "B",
+      "scope": "synthetic-phase2-dev02",
+      "session": "f39a40f1-6633-4d96-8bde-b9fc7521df17",
+      "state": "active"
+    }
+  }
+]

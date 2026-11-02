@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-02T19:42:27.915395+00:00",
+  "assignment": "P01-P18 continue; final commit/push authorized",
+  "source_manifest_sha256": "6a3707706bb4369011846e493990441625cf1fedfea0460c6f13aceb9402ad92",
+  "additional_live_generations": 0,
+  "completed": [
+    "dev17 combined native",
+    "dev17 same-workflow real isolated chain",
+    "dev17 read-only contexts/effects observation"
+  ],
+  "workbench": {
+    "namespace": "omega-ref-phase2-dev17",
+    "positive": [
+      "pin",
+      "task-context",
+      "pause",
+      "resume",
+      "close",
+      "chain-read-only-finality"
+    ],
+    "capacity_failure": "Third UI input unpin task accepted but AtomStorage feed capacity512 OVERLOADED; original receipt retained, closed session contains2complete1pending; no refund or replay"
+  },
+  "next": [
+    "Stop and inspect ProofShot",
+    "Fenced restore dev17 preserving pending capacity case",
+    "Run artifacts/phase2/qualify-fresh-dev17.py: recovery,handoff,scope/sharedsource,attention,singleagent",
+    "six recorded IRC regressions",
+    "final artifacts/evidence/report/commit/push"
+  ],
+  "pending_script": "artifacts/phase2/qualify-fresh-dev17.py",
+  "protected": [
+    "omega-demo",
+    "omega-ref-live01",
+    "omega-reference-k3s-20261030-03"
+  ]
+}

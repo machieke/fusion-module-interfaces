@@ -1,0 +1,379 @@
+{
+  "at_ms": 1793647351051,
+  "namespace": "omega-ref-phase2-dev17",
+  "classification": "READ_ONLY_ACTIVE_WORKLOAD_SAMPLE_NOT_BENCHMARK",
+  "additional_live_generations": 0,
+  "pods": [
+    {
+      "name": "f1r3node-0",
+      "uid": "38b5e5c1-b816-49cf-9156-cde0cdd930c5",
+      "resources": {
+        "limits": {
+          "cpu": "3",
+          "memory": "4Gi"
+        },
+        "requests": {
+          "cpu": "1",
+          "memory": "1Gi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-reference-chain@sha256:a502e276a55c67d7eefc5d9cc79ffbc51b6975876f10e07c689a97be40e646e2"
+      ]
+    },
+    {
+      "name": "fusion-attention-0",
+      "uid": "25222415-1f01-4f1f-a465-3db9c910aee5",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "fusion-beliefs-0",
+      "uid": "640f7ceb-90f3-4517-b522-1bbf21e4718f",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "fusion-commitment-0",
+      "uid": "1dd0fc3a-d768-4ef7-93d6-6adb804c63d7",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-reference-chain@sha256:a502e276a55c67d7eefc5d9cc79ffbc51b6975876f10e07c689a97be40e646e2"
+      ]
+    },
+    {
+      "name": "fusion-embedding-0",
+      "uid": "98bbdc7f-7f3f-4f04-9325-0dca49aafccf",
+      "resources": {
+        "limits": {
+          "cpu": "3",
+          "memory": "5Gi"
+        },
+        "requests": {
+          "cpu": "2",
+          "memory": "3Gi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-memory-embedding@sha256:1273cfb71f87888b5a5015301f0db8644cb672e8af9968a87a2ea7cedef4d0c2"
+      ]
+    },
+    {
+      "name": "fusion-episodes-0",
+      "uid": "1bd4a3c0-807a-40f5-ac84-89d69eca8b18",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "fusion-execution-0",
+      "uid": "2685a53a-628b-4f89-b406-df414446616f",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "fusion-messaging-0",
+      "uid": "4f42ea09-ab85-4da1-afa1-064367e6e8f9",
+      "resources": {
+        "limits": {
+          "cpu": "500m",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "fusion-model-0",
+      "uid": "755f3af4-70ab-45ff-84bc-6e71dbcdcbd5",
+      "resources": {
+        "limits": {
+          "cpu": "500m",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "fusion-relations-0",
+      "uid": "a672326a-d686-424d-b7b6-a048f7dad8ce",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "fusion-search-0",
+      "uid": "646931ca-ed22-4f80-89b1-f4bb491ac6f0",
+      "resources": {
+        "limits": {
+          "cpu": "2",
+          "memory": "1Gi"
+        },
+        "requests": {
+          "cpu": "200m",
+          "memory": "256Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-memory-caller@sha256:cced52824e2037016736e746d78eaa0cd37e78b88cc067cdabcfece827d7743c"
+      ]
+    },
+    {
+      "name": "fusion-storage-0",
+      "uid": "5d4a3f1b-c025-4937-9db2-fd796eda1e1b",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "64Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+      ]
+    },
+    {
+      "name": "omega-agent-0",
+      "uid": "25d4b706-834c-4f59-9610-50fe2e951f48",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-memory-caller@sha256:cced52824e2037016736e746d78eaa0cd37e78b88cc067cdabcfece827d7743c"
+      ]
+    },
+    {
+      "name": "omega-agent-b-0",
+      "uid": "aa177514-814d-49ed-8d65-988626c32483",
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "images": [
+        "docker.io/library/fusion-memory-caller@sha256:cced52824e2037016736e746d78eaa0cd37e78b88cc067cdabcfece827d7743c"
+      ]
+    }
+  ],
+  "samples": {
+    "omega-agent": {
+      "observed_unix_ns": 1793647351887496072,
+      "processes": [
+        {
+          "pid": 1,
+          "ppid": 0,
+          "cpu_ticks": 356,
+          "rss_bytes": 111919104
+        },
+        {
+          "pid": 722,
+          "ppid": 1,
+          "cpu_ticks": 422,
+          "rss_bytes": 143880192
+        },
+        {
+          "pid": 769,
+          "ppid": 0,
+          "cpu_ticks": 12,
+          "rss_bytes": 17092608
+        }
+      ],
+      "cpu_ticks_per_second": 100,
+      "state_bytes": 2686736,
+      "state_files": 81,
+      "cgroup": {
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "cpu.max": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "v1.cpuacct.usage": "53665504758",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.memory.usage_in_bytes": "186077184",
+        "v1.memory.max_usage_in_bytes": "200540160",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.failcnt": "0"
+      },
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "live_model_throughput": "NOT_RUN"
+    },
+    "fusion-storage": {
+      "observed_unix_ns": 1793647352420553904,
+      "processes": [
+        {
+          "pid": 1,
+          "ppid": 0,
+          "cpu_ticks": 2516,
+          "rss_bytes": 36708352
+        },
+        {
+          "pid": 1893,
+          "ppid": 0,
+          "cpu_ticks": 11,
+          "rss_bytes": 16973824
+        }
+      ],
+      "cpu_ticks_per_second": 100,
+      "state_bytes": 3705598,
+      "state_files": 2648,
+      "cgroup": {
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "cpu.max": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "v1.cpuacct.usage": "50832554516",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.memory.usage_in_bytes": "91987968",
+        "v1.memory.max_usage_in_bytes": "92909568",
+        "v1.memory.limit_in_bytes": "268435456",
+        "v1.memory.failcnt": "0"
+      },
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "live_model_throughput": "NOT_RUN"
+    },
+    "fusion-embedding": {
+      "observed_unix_ns": 1793647352822673594,
+      "processes": [
+        {
+          "pid": 1,
+          "ppid": 0,
+          "cpu_ticks": 127,
+          "rss_bytes": 34131968
+        },
+        {
+          "pid": 6,
+          "ppid": 1,
+          "cpu_ticks": 1954,
+          "rss_bytes": 1671614464
+        },
+        {
+          "pid": 158,
+          "ppid": 0,
+          "cpu_ticks": 13,
+          "rss_bytes": 16990208
+        }
+      ],
+      "cpu_ticks_per_second": 100,
+      "state_bytes": 21093,
+      "state_files": 7,
+      "cgroup": {
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "cpu.max": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "v1.cpuacct.usage": "21114938913",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.memory.usage_in_bytes": "399417344",
+        "v1.memory.max_usage_in_bytes": "1462714368",
+        "v1.memory.limit_in_bytes": "5368709120",
+        "v1.memory.failcnt": "0"
+      },
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "live_model_throughput": "NOT_RUN"
+    }
+  },
+  "top": {
+    "status": "NOT_AVAILABLE",
+    "detail": "['kubectl', '--kubeconfig', '/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/single-node/kubeconfig'] W1102 19:22:33.037533 1216097 top_pod.go:140] Using json format to get metrics. Next release will switch to protocol-buffers, switch early by passing --use-protocol-buffers flag\nerror: Metrics API not available\n"
+  },
+  "CPU_QUOTA_ENFORCEMENT": "NOT_ESTABLISHED"
+}

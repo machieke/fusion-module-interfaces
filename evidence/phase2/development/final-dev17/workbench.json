@@ -1,0 +1,124 @@
+{
+  "schema": "phase2-workbench-qualification/1",
+  "namespace": "omega-ref-phase2-dev17",
+  "source_manifest_sha256": "6a3707706bb4369011846e493990441625cf1fedfea0460c6f13aceb9402ad92",
+  "classification": "ACTUAL_BROWSER_INSTALLED_OPERATOR_NATIVE_TOOLS_RECORDED_MODEL",
+  "status": "PASS_WITH_RETAINED_CAPACITY_FAILURE",
+  "positive_actions": [
+    "selected service readiness/catalogue",
+    "native pin",
+    "native task-context read",
+    "pause",
+    "resume",
+    "close",
+    "read-only exact registered chain finality"
+  ],
+  "session": {
+    "binding": {
+      "catalogue": "629c8406d3b4dfc7879402646640c7da4f9090f79cdc083cf92ec3590802e62e",
+      "limits": {
+        "inputs": 24,
+        "pending": 4,
+        "timeout_ms": 120000
+      },
+      "model_boundary": "RECORDED_FIXTURE",
+      "policy": "preview-837d2cc2-de2b-41e0-a3f3-b0df4a0c2d6f"
+    },
+    "capacity": {
+      "accepted": 3,
+      "completed": 2,
+      "pending": 1,
+      "remaining_inputs": 21,
+      "remaining_pending": 3
+    },
+    "complete": true,
+    "inputs": [
+      {
+        "accepted": 1793648300770,
+        "assignment": "synthetic-task",
+        "deadline": 1793648420770,
+        "id": "6f99d136-96e3-4bea-bdc7-107ba896d056",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "pin task Inspect only synthetic preview results"
+        },
+        "result": {
+          "occurrences": [
+            "7fceaf5c-c727-5606-81d5-03a3adf77886"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((pin task Inspect only synthetic preview results) {_quote_digest_quote_:_quote_a2aca7264f85213f7a7463d94ed7a8240ba7d7b82cd65a0653388e7885d1454b_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Inspect only synthetic preview results_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+          "turn": 1
+        },
+        "sequence": 1,
+        "session": "80b44c8e-62d8-48c4-bd4c-94d29730399b",
+        "state": "complete"
+      },
+      {
+        "accepted": 1793648335295,
+        "assignment": "synthetic-task",
+        "deadline": 1793648455295,
+        "id": "dff9907d-c258-412b-adec-f6543e7ebf26",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "task-context"
+        },
+        "result": {
+          "occurrences": [
+            "6705977a-382c-5764-b7e3-097fcbfb1ac3"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((task-context) {_quote_digest_quote_:_quote_a2aca7264f85213f7a7463d94ed7a8240ba7d7b82cd65a0653388e7885d1454b_quote_,_quote_interpretation_quote_:_quote_unverified-task-notes_quote_,_quote_items_quote_:{_quote_task_quote_:_quote_Inspect only synthetic preview results_quote_},_quote_profile_quote_:_quote_working-task-context/1_quote_,_quote_revision_quote_:1}))))",
+          "turn": 2
+        },
+        "sequence": 2,
+        "session": "80b44c8e-62d8-48c4-bd4c-94d29730399b",
+        "state": "complete"
+      },
+      {
+        "accepted": 1793648375905,
+        "assignment": "synthetic-task",
+        "deadline": 1793648495905,
+        "id": "6290c7bb-a8c1-4e53-84cf-27ebc77cc809",
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "unpin task"
+        },
+        "result": null,
+        "sequence": 3,
+        "session": "80b44c8e-62d8-48c4-bd4c-94d29730399b",
+        "state": "accepted"
+      }
+    ],
+    "live_generations": 0,
+    "next_after": null,
+    "principal": "B",
+    "scope": "synthetic-phase2-dev17",
+    "session": "80b44c8e-62d8-48c4-bd4c-94d29730399b",
+    "state": "closed"
+  },
+  "capacity_failure": {
+    "command": "unpin task",
+    "storage_feed_atoms": 512,
+    "limit": 512,
+    "error": "OVERLOADED",
+    "native_result": "NOT_CAPTURED",
+    "deadline_renewals": 0,
+    "automatic_resubmissions": 0
+  },
+  "chain": {
+    "state": "finalized",
+    "submission": "NOT_REQUESTED"
+  },
+  "screenshots": [
+    "native-context-consumed.png",
+    "actual-chain-observation.png"
+  ],
+  "browser_console_errors": 0,
+  "server_errors": 0,
+  "ui_observation": "Retained session results; panels do not refresh owner belief/priority heads",
+  "limitations": [
+    "Third command did not complete; unpin positive qualification remains separate",
+    "One early screenshot captured stale page state; later refresh observed committed results",
+    "First chain UI evaluator ran before asynchronous observation arrived; bounded subsequent observation was finalized"
+  ],
+  "additional_live_generations": 0
+}

@@ -107,16 +107,25 @@ class ReceiptAuthority:
 Feed identities belong to the initiating principal. This facade permits only
 observing them after validating current indexer AND initiator permissions.
 """
-    def __init__(self,policy,credential):self.policy,self.credential=policy,credential
+    def __init__(self,policy,credential,accepted=None):self.policy,self.credential,self.accepted=policy,credential,accepted
     def current(self):return self.policy.current()
     def authenticate(self,credential):
         require(credential==self.credential and self.policy.authenticate(credential)=='indexer','UNAUTHORIZED')
         cfg=self.current();delegation=cfg['source_delegation'];append=cfg['memory_append']
-        require(delegation==dict(principal=append['session_principal'],session=append['session'],scope=append['scope']),'UNAUTHORIZED')
+        if 'text_policy' in append:
+            from .preview_text import policy
+            accepted=w.intent(self.accepted)
+            require(delegation==dict(profile='preview-receipt-delegation/1',principals=policy(append)['principals'],scope=append['scope']),'UNAUTHORIZED')
+            require(accepted['principal'] in delegation['principals'] and accepted['scope']==delegation['scope'],'UNAUTHORIZED')
+            principal=accepted['principal']
+        else:
+            require(delegation==dict(principal=append['session_principal'],session=append['session'],scope=append['scope']),'UNAUTHORIZED')
+            principal=delegation['principal']
         self.policy.check('indexer',append['scope'],'memory.source.observe')
-        return delegation['principal']
+        return principal
     def check(self,principal,scope,operation):
         require(principal==self.authenticate(self.credential),'UNAUTHORIZED')
+        require(scope==self.current()['source_delegation']['scope'],'UNAUTHORIZED')
         require(operation in ('memory.append.disclose','atom.storage.observe'),'UNAUTHORIZED')
         self.policy.check(principal,scope,operation)
         self.policy.check('indexer',scope,'memory.source.observe')
@@ -143,7 +152,7 @@ class StoragePorts:
         if op=='observe':
             require(principal=='indexer','UNAUTHORIZED')
             v.fields(body,'intent role');accepted=w.intent(body['intent']);require(body['role'] in w.ROLES)
-            service=AppendService(self.path,credential,self.hook,policy=ReceiptAuthority(policy,credential))
+            service=AppendService(self.path,credential,self.hook,policy=ReceiptAuthority(policy,credential,accepted))
             require(request['selection']==selection_token(service.chosen['atom.storage']),'UNSUPPORTED_PROFILE')
             service.authorize(accepted,'disclose')
             if body['role']!='binding':service.bound(accepted)

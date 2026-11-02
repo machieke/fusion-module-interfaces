@@ -59,7 +59,8 @@ class QueryEmbedding:
     def encode(self, helper_input):
         row = self.current(); cfg, _ = self.settings()
         query = json.loads(row['premises'])['arguments']['content' if self.profile==c.MEMORY_PROFILE else 'query']
-        require(query in cfg['inputs'] and helper_input == cfg['inputs'][query], 'UNAUTHORIZED')
+        from .preview_text import helper
+        require(helper_input == helper(cfg,query,'remember' if self.profile==c.MEMORY_PROFILE else 'query'), 'UNAUTHORIZED')
         accepted = c.intent(asdict(c.EncodeInput(row['id'], cfg['principal'], cfg['scope'], c.text(helper_input),
             digest(helper_input.encode()), row['deadline'], self.app.binding[self.binding_key]['selection'],profile=self.profile)))
         serialized = canonical(accepted).decode()

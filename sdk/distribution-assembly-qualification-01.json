@@ -1,0 +1,48 @@
+{
+  "additional_live_generations": 0,
+  "assembly_fixture_methods": 6,
+  "changed_during_run": [],
+  "command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/operator-venv/bin/python",
+    "-m",
+    "unittest",
+    "sdk.test_distribution",
+    "sdk.test_preview_distribution",
+    "tests.test_reference_schema.ArtifactIdentity",
+    "-v"
+  ],
+  "elapsed_seconds": 0.511,
+  "gates": {
+    "actual_distribution_assembly": "NOT_RUN",
+    "archive_verifier": "REAL_IMPLEMENTATION_ON_AUTHORED_INPUTS",
+    "assembly": "TINY_AUTHORED_IMAGE_CHART_WHEEL_SOURCE_FIXTURES",
+    "cluster_contact": "NONE",
+    "helm": "EXPLICIT_SUBPROCESS_STUB",
+    "runtime_contact": "NONE"
+  },
+  "returncode": 0,
+  "schema": "fusion-preview-distribution-assembly-qualification/1",
+  "sources_after": {
+    "integration/single_node/preview_values.py": "4ef868c74d8575aa295542b4b336f362b238d5b917b3108fa96ef709a21c6c4b",
+    "integration/single_node/reference_artifacts.py": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+    "sdk/DISTRIBUTION.md": "8a10d3521b4fd1ad9441cf8f10f3d941155803831d126e0149b801decfbc7bfe",
+    "sdk/distribution.py": "620b02070f827f6aea52a0de2545f3ce54803dc3b1d152108c4013eeb7261c2a",
+    "sdk/inventory.py": "4dcb3e781a1473882891a1c6ff8f260b017c2fc50e50b072c32acefbec540a14",
+    "sdk/test_distribution.py": "56d655fcd393659052f2fde4b9d6d835fd20046dd1bc1fc9e860282c2f3a22f1",
+    "sdk/test_preview_distribution.py": "502b2409c2fa662f269cb0975c2f1cbbb9b05bec2007d74d0620803b5fb44ba2"
+  },
+  "sources_before": {
+    "integration/single_node/preview_values.py": "4ef868c74d8575aa295542b4b336f362b238d5b917b3108fa96ef709a21c6c4b",
+    "integration/single_node/reference_artifacts.py": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+    "sdk/DISTRIBUTION.md": "8a10d3521b4fd1ad9441cf8f10f3d941155803831d126e0149b801decfbc7bfe",
+    "sdk/distribution.py": "620b02070f827f6aea52a0de2545f3ce54803dc3b1d152108c4013eeb7261c2a",
+    "sdk/inventory.py": "4dcb3e781a1473882891a1c6ff8f260b017c2fc50e50b072c32acefbec540a14",
+    "sdk/test_distribution.py": "56d655fcd393659052f2fde4b9d6d835fd20046dd1bc1fc9e860282c2f3a22f1",
+    "sdk/test_preview_distribution.py": "502b2409c2fa662f269cb0975c2f1cbbb9b05bec2007d74d0620803b5fb44ba2"
+  },
+  "started_utc": "2026-11-02T18:03:24.146880+00:00",
+  "stderr": "test_changed_wheel_inventory_and_existing_output_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_changed_wheel_inventory_and_existing_output_refuse) ... ok\ntest_extra_wheel_and_unlisted_chart_file_refuse (sdk.test_distribution.DistributionAssemblyFixtures.test_extra_wheel_and_unlisted_chart_file_refuse) ... ok\ntest_fixture_packet_is_offline_verified_and_positive_listed (sdk.test_distribution.DistributionAssemblyFixtures.test_fixture_packet_is_offline_verified_and_positive_listed) ... ok\ntest_profiles_use_existing_generator_with_disabled_native_consumers (sdk.test_distribution.DistributionAssemblyFixtures.test_profiles_use_existing_generator_with_disabled_native_consumers) ... ok\ntest_source_drift_refuses_before_output_or_helm (sdk.test_distribution.DistributionAssemblyFixtures.test_source_drift_refuses_before_output_or_helm) ... ok\ntest_symbolic_public_source_refuses (sdk.test_distribution.DistributionAssemblyFixtures.test_symbolic_public_source_refuses) ... ok\ntest_files_are_unique_contained_and_digest_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_files_are_unique_contained_and_digest_bound) ... ok\ntest_inventory_duplicate_or_changed_wheel_digest_refuses (sdk.test_preview_distribution.PreviewDistributionFixtures.test_inventory_duplicate_or_changed_wheel_digest_refuses) ... ok\ntest_legacy_schema_still_verifies_its_historical_profile_layout (sdk.test_preview_distribution.PreviewDistributionFixtures.test_legacy_schema_still_verifies_its_historical_profile_layout) ... ok\ntest_manifest_canonical_bytes_and_external_digest_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_manifest_canonical_bytes_and_external_digest_are_bound) ... ok\ntest_oci_configuration_link_and_bytes_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_oci_configuration_link_and_bytes_are_bound) ... ok\ntest_preview_accepts_declared_fixtures_without_generative_artifacts (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_accepts_declared_fixtures_without_generative_artifacts) ... ok\ntest_preview_image_import_repository_must_match_selection (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_image_import_repository_must_match_selection) ... ok\ntest_preview_schema_profile_and_authority_are_closed (sdk.test_preview_distribution.PreviewDistributionFixtures.test_preview_schema_profile_and_authority_are_closed) ... ok\ntest_profile_files_and_image_selections_are_bound (sdk.test_preview_distribution.PreviewDistributionFixtures.test_profile_files_and_image_selections_are_bound) ... ok\ntest_secondary_artifact_references_must_be_registered (sdk.test_preview_distribution.PreviewDistributionFixtures.test_secondary_artifact_references_must_be_registered) ... ok\ntest_source_package_binding_is_not_an_unchecked_label (sdk.test_preview_distribution.PreviewDistributionFixtures.test_source_package_binding_is_not_an_unchecked_label) ... ok\ntest_wheel_payload_and_tested_source_are_independently_checked (sdk.test_preview_distribution.PreviewDistributionFixtures.test_wheel_payload_and_tested_source_are_independently_checked) ... ok\ntest_distribution_digest_is_not_the_last_oci_descriptor (tests.test_reference_schema.ArtifactIdentity.test_distribution_digest_is_not_the_last_oci_descriptor) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.374s\n\nOK\n",
+  "stdout": "",
+  "test_methods": 19,
+  "verifier_and_legacy_methods": 13
+}

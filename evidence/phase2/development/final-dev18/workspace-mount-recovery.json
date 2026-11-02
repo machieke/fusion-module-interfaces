@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "before": {
+    "at": "2026-11-02T20:14:22.565839+00:00",
+    "namespace": "omega-ref-phase2-r18",
+    "pod_uid": "afb436c9-ff6f-43a2-8da7-fa73375e9587",
+    "security_context": {
+      "fsGroup": 1000,
+      "fsGroupChangePolicy": "OnRootMismatch",
+      "runAsGroup": 1000,
+      "runAsNonRoot": true,
+      "runAsUser": 1000
+    },
+    "workspace_modes": [
+      {
+        "path": "/state/preview-facets/workspace",
+        "mode": "0o2700",
+        "uid": 1000,
+        "gid": 1000
+      }
+    ],
+    "additional_live_generations": 0
+  },
+  "after": {
+    "at": "2026-11-02T20:16:08.837297+00:00",
+    "namespace": "omega-ref-phase2-r18",
+    "pod_uid": "9d768a5e-bddb-4d12-89e5-f304b2a6aca9",
+    "security_context": {
+      "fsGroup": 1000,
+      "fsGroupChangePolicy": "OnRootMismatch",
+      "runAsGroup": 1000,
+      "runAsNonRoot": true,
+      "runAsUser": 1000
+    },
+    "workspace_mode": {
+      "path": "/state/preview-facets/workspace",
+      "mode": "0o2700",
+      "uid": 1000,
+      "gid": 1000
+    },
+    "additional_live_generations": 0
+  },
+  "recovery_report_sha256": "50c7bdefd1bf327f79479bbe99f747b3c451536c119a066ea4c46c8f6c38c0e7",
+  "read_only_observer_initial_attempt": "container unavailable during replacement; no mutation or operation submitted",
+  "historical_failure": "evidence/phase2/development/recovery-r17b-summary.json"
+}

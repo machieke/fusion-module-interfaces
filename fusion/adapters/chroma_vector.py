@@ -26,12 +26,24 @@ def publish(path,value):
 
 
 class ChromaVector:
-    def __init__(self,root,atoms,source,access,scope,corpus,embedding,hook=lambda _:None):
+    def __init__(self,root,atoms,source,access,scope,corpus,embedding,hook=lambda _:None,*,contracts=c):
+        self.c=contracts
         import chromadb
         require(chromadb.__version__=='1.5.5','UNSUPPORTED_PROFILE')
         self.sdk=chromadb;self.root=Path(root);self.root.mkdir(parents=True,exist_ok=True)
         self.atoms,self.source,self.access=atoms,source,access
-        self.scope,self.corpus,self.embedding,self.hook=scope,corpus,c.model(embedding),hook
+        self.scope,self.corpus,self.embedding,self.hook=scope,corpus,self.c.model(embedding),hook
+
+    def _eligible(self,enrolled,enrollment_ref):return True
+
+    def _hydrate_commit(self,entry):return True
+
+    def _complete_membership(self,records):pass
+
+    def _snapshot_extension(self):return {}
+
+    def _select_current(self,current,snapshot):
+        return current is None or snapshot['head']['sequence']>=current['head']['sequence']
 
     @staticmethod
     def _deadline(deadline):
@@ -67,17 +79,19 @@ class ChromaVector:
             self._deadline(deadline)
             page=a.commits(self.source.readCommits(scope,after,through,8),scope,after,through,8)
             for entry in page['records']:
+                if not self._hydrate_commit(entry):continue
                 item=self.atoms.get(entry['ref']);envelope(item,entry['ref'])
                 require(item.content_type==entry['content_type'] and len(item.bytes)==entry['size'],'NOT_AVAILABLE')
-                if item.content_type!=c.ENROLLMENT:continue
+                if item.content_type!=self.c.ENROLLMENT:continue
                 enrolled=json.loads(item.bytes)
                 # Corpus is a scope-local operator selection; other corpus records do not enter this index.
                 require(enrolled.get('scope')==scope,'UNAUTHORIZED')
                 if enrolled.get('corpus')!=self.corpus:continue
-                enrolled=c.enrollment(enrolled,scope,self.corpus,self.embedding)
+                enrolled=self.c.enrollment(enrolled,scope,self.corpus,self.embedding)
                 require(canonical(enrolled)==item.bytes,'NOT_AVAILABLE')
                 require(enrolled['uuid'] not in seen,'CONFLICT');seen.add(enrolled['uuid'])
-                require(len(records)<c.MAX_RECORDS,'OVERLOADED')
+                if not self._eligible(enrolled,entry['ref']):continue
+                require(len(records)<self.c.MAX_RECORDS,'OVERLOADED')
                 _,vector=validate_inputs(self.atoms,enrolled)
                 self._deadline(deadline)
                 collection.add(ids=[enrolled['uuid']],embeddings=[vector],metadatas=[{'ref':canonical(enrolled['payload']).decode()}])
@@ -86,11 +100,13 @@ class ChromaVector:
             after=page['next_after']
         # Verify full reconstructible collection contents before publishing any source claim.
         got=collection.get(include=['embeddings','metadatas'])
-        actual={u:(m['ref'],digest(c.vector_bytes([float(x) for x in v]))) for u,m,v in zip(got['ids'],got['metadatas'],got['embeddings'])}
+        actual={u:(m['ref'],digest(self.c.vector_bytes([float(x) for x in v]))) for u,m,v in zip(got['ids'],got['metadatas'],got['embeddings'])}
         require(actual=={x['uuid']:(canonical(x['ref']).decode(),x['vector_digest']) for x in records},'NOT_AVAILABLE')
-        snap=dict(generation=generation,head=through,corpus=self.corpus,embedding=self.embedding,index=c.INDEX,profile=c.PROFILE)
+        snap=dict(generation=generation,head=through,corpus=self.corpus,embedding=self.embedding,index=self.c.INDEX,profile=self.c.PROFILE)
+        self._complete_membership(records)
+        snap.update(self._snapshot_extension())
         snap['logical']=digest(canonical({k:v for k,v in snap.items() if k!='generation'}))
-        manifest=dict(snapshot=c.snapshot(snap,scope),records=records,configuration=collection.configuration)
+        manifest=dict(snapshot=self.c.snapshot(snap,scope),records=records,configuration=collection.configuration)
         self._deadline(deadline);self.hook('before_checkpoint')
         publish(directory/'manifest.json',manifest);self.hook('after_checkpoint')
         return self._publish(scope,manifest,deadline)
@@ -101,7 +117,15 @@ class ChromaVector:
         try:published=json.loads((self.root/'published.json').read_text())
         except FileNotFoundError:published={'current':None,'generations':{}}
         require(generation in published['generations'] or len(published['generations'])<32,'OVERLOADED')
-        published['current']=snap;published['generations'][generation]=snap
+        current=published['current']
+        if current is not None:
+            require(current['head']['source']==snap['head']['source'] and
+                    current['corpus']==snap['corpus'] and current['embedding']==snap['embedding'],'CONFLICT')
+        # An older accepted build can finish late. Retain its explicit generation
+        # for the accepted reader, but never regress the shared ready source head.
+        if self._select_current(current,snap):
+            published['current']=snap
+        published['generations'][generation]=snap
         publish(self.root/'published.json',published)
         self.hook('after_publication');return snap
 
@@ -110,21 +134,22 @@ class ChromaVector:
         require(label(key));a.head(through,scope)
         generation=str(uuid.uuid5(uuid.UUID(through['source']),canonical([principal,scope,key]).decode()))
         expected=dict(principal=principal,scope=scope,key=key,through=through,corpus=self.corpus,
-                      embedding=self.embedding,index=c.INDEX,profile=c.PROFILE)
+                      embedding=self.embedding,index=self.c.INDEX,profile=self.c.PROFILE)
+        expected.update(self._snapshot_extension())
         return generation,expected
 
     def _verified(self,generation,through):
         directory=self.root/generation
         try:manifest=json.loads((directory/'manifest.json').read_text())
         except (OSError,ValueError):raise ContractError('NOT_AVAILABLE') from None
-        snap=c.snapshot(manifest['snapshot'],self.scope)
+        snap=self.c.snapshot(manifest['snapshot'],self.scope)
         require(snap['generation']==generation and snap['head']==through and snap['corpus']==self.corpus and
                 snap['embedding']==self.embedding,'CONFLICT')
         require((directory/'index/chroma.sqlite3').is_file(),'NOT_AVAILABLE')
         try:
             collection=self.sdk.PersistentClient(path=str(directory/'index')).get_collection('memories',embedding_function=None)
             got=collection.get(include=['embeddings','metadatas'])
-            actual={u:(m['ref'],digest(c.vector_bytes([float(x) for x in v]))) for u,m,v in zip(got['ids'],got['metadatas'],got['embeddings'])}
+            actual={u:(m['ref'],digest(self.c.vector_bytes([float(x) for x in v]))) for u,m,v in zip(got['ids'],got['metadatas'],got['embeddings'])}
             require(actual=={x['uuid']:(canonical(x['ref']).decode(),x['vector_digest']) for x in manifest['records']},'NOT_AVAILABLE')
         except ContractError:raise
         except Exception:raise ContractError('NOT_AVAILABLE') from None
@@ -171,13 +196,13 @@ class ChromaVector:
 
     def current(self):
         self.access.authorize(self.scope,'query')
-        try:return c.snapshot(json.loads((self.root/'published.json').read_text())['current'],self.scope)
+        try:return self.c.snapshot(json.loads((self.root/'published.json').read_text())['current'],self.scope)
         except FileNotFoundError:raise ContractError('NOT_AVAILABLE') from None
 
     def ready(self,scope,snapshot):
         """Observe a retained generation without querying or starting maintenance."""
         require(scope==self.scope,'UNAUTHORIZED');self.access.authorize(scope,'ready')
-        snapshot=c.snapshot(snapshot,scope)
+        snapshot=self.c.snapshot(snapshot,scope)
         try:published=json.loads((self.root/'published.json').read_text())['generations']
         except (OSError,ValueError):raise ContractError('NOT_AVAILABLE') from None
         require(published.get(snapshot['generation'])==snapshot,'NOT_AVAILABLE')
@@ -185,7 +210,7 @@ class ChromaVector:
         self.access.authorize(scope,'ready');return {'ready':True}
 
     def query(self,request):
-        request=c.query(asdict(request) if isinstance(request,c.VectorQuery) else request)
+        request=self.c.query(asdict(request) if isinstance(request,self.c.VectorQuery) else request)
         require(request['scope']==self.scope,'UNAUTHORIZED');self.access.authorize(self.scope,'query')
         snap=request['snapshot'];require(snap['corpus']==self.corpus and snap['embedding']==self.embedding,'UNSUPPORTED_PROFILE')
         require(time.time_ns()//1_000_000<=request['deadline_ms'],'DEADLINE_EXCEEDED')
@@ -213,4 +238,4 @@ class ChromaVector:
         except Exception:raise ContractError('NOT_AVAILABLE') from None
         self.access.authorize(self.scope,'query')
         require(time.time_ns()//1_000_000<=request['deadline_ms'],'DEADLINE_EXCEEDED')
-        return c.result(dict(request_id=request['request_id'],request_digest=digest(canonical(request)),snapshot=snap,hits=hits,top_k=request['k'],exhaustive=False),request)
+        return self.c.result(dict(request_id=request['request_id'],request_digest=digest(canonical(request)),snapshot=snap,hits=hits,top_k=request['k'],exhaustive=False),request)

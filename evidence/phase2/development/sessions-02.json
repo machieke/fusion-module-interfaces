@@ -1,0 +1,170 @@
+[
+  {
+    "role": "omega-agent",
+    "create": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev02",
+      "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent-b",
+    "create": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "B",
+      "scope": "synthetic-phase2-dev02",
+      "session": "c9a6afdd-504d-4687-8bc4-20419eca712c",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 1,
+    "accepted": {
+      "accepted": 1793631007740,
+      "assignment": "synthetic-task",
+      "deadline": 1793631037740,
+      "id": "source-dev03-1",
+      "sequence": 1,
+      "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793631007740,
+          "assignment": "synthetic-task",
+          "deadline": 1793631037740,
+          "id": "source-dev03-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic lantern shipment is in bay cobalt"
+          },
+          "result": {
+            "occurrences": [
+              "f3ca2013-9cf4-5839-8f4e-cc580984126a"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic lantern shipment is in bay cobalt) {_quote_logical_id_quote_:_quote_3c756d4b-cf54-5303-b994-7f7901b2fe5b_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:6504dc2a-0d03-5d83-8d7c-5e7b99dbd0aa_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_f4554c7b3eb3f97d7c3fbe9cdc2d9a7427fd58b048c1ff1ccbfd72bfad1d4005_quote_,_quote_id_quote_:_quote_ddd5fe25-7c81-54d6-9fb0-9f517a150371_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f1d0c53013e26de9c98ff995135a212351826528db7ee97270adf768f253bfd0_quote_,_quote_id_quote_:_quote_5aaafce5-2850-58ef-8e62-100f90b8ac33_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_bbbd556a5967b531c0db296c2d8e707ce5b55272bb40572ff13c7458d0eb0b17_quote_,_quote_corpus_quote_:_quote_generated-phase2-shared_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_e5ae2b3c-81aa-53a5-ba06-2e7d5a6923d5_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:13,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_a2b785bd-438a-4bd1-af65-129695f7f696_quote_},_quote_logical_quote_:_quote_080bb7a0557df17ceacf7234ebc1d7c1d8bb212620c63ab57c294de1f04627af_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:13,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev02",
+      "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 2,
+    "accepted": {
+      "accepted": 1793631024454,
+      "assignment": "synthetic-task",
+      "deadline": 1793631054454,
+      "id": "source-dev03-2",
+      "sequence": 2,
+      "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "4a6a5f94f160646f998d551ffba1c59d601238e9c1fbffac2561c776d1716d5b",
+        "limits": {
+          "inputs": 16,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev02"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793631007740,
+          "assignment": "synthetic-task",
+          "deadline": 1793631037740,
+          "id": "source-dev03-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic lantern shipment is in bay cobalt"
+          },
+          "result": {
+            "occurrences": [
+              "f3ca2013-9cf4-5839-8f4e-cc580984126a"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic lantern shipment is in bay cobalt) {_quote_logical_id_quote_:_quote_3c756d4b-cf54-5303-b994-7f7901b2fe5b_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:6504dc2a-0d03-5d83-8d7c-5e7b99dbd0aa_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_f4554c7b3eb3f97d7c3fbe9cdc2d9a7427fd58b048c1ff1ccbfd72bfad1d4005_quote_,_quote_id_quote_:_quote_ddd5fe25-7c81-54d6-9fb0-9f517a150371_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_f1d0c53013e26de9c98ff995135a212351826528db7ee97270adf768f253bfd0_quote_,_quote_id_quote_:_quote_5aaafce5-2850-58ef-8e62-100f90b8ac33_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_bbbd556a5967b531c0db296c2d8e707ce5b55272bb40572ff13c7458d0eb0b17_quote_,_quote_corpus_quote_:_quote_generated-phase2-shared_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_e5ae2b3c-81aa-53a5-ba06-2e7d5a6923d5_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:13,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_a2b785bd-438a-4bd1-af65-129695f7f696_quote_},_quote_logical_quote_:_quote_080bb7a0557df17ceacf7234ebc1d7c1d8bb212620c63ab57c294de1f04627af_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev02_quote_,_quote_sequence_quote_:13,_quote_source_quote_:_quote_a4d00559-057f-4bcc-bade-549fa70b3ef9_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793631024454,
+          "assignment": "synthetic-task",
+          "deadline": 1793631054454,
+          "id": "source-dev03-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic lantern shipment location"
+          },
+          "result": null,
+          "sequence": 2,
+          "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+          "state": "accepted"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev02",
+      "session": "c8ab8c86-1c82-4abb-b04b-b5fa0baf11c3",
+      "state": "active"
+    }
+  }
+]

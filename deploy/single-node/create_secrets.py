@@ -22,7 +22,8 @@ ROLES=('omega-agent','fusion-execution','fusion-storage','fusion-messaging')
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--kubeconfig',required=True);p.add_argument('--context',default='default')
-    p.add_argument('--chain',action='store_true');p.add_argument('--reference',action='store_true');p.add_argument('--workflow',action='store_true');p.add_argument('--memory',action='store_true');p.add_argument('--namespace',required=True);p.add_argument('--directory',required=True);a=p.parse_args()
+    p.add_argument('--preview-values');p.add_argument('--chain',action='store_true');p.add_argument('--reference',action='store_true');p.add_argument('--workflow',action='store_true');p.add_argument('--memory',action='store_true');p.add_argument('--namespace',required=True);p.add_argument('--directory',required=True);a=p.parse_args()
+    assert not a.preview_values or not (a.chain or a.reference or a.workflow or a.memory)
     assert not a.chain or not (a.reference or a.workflow or a.memory)
     a.memory=a.memory or a.workflow or a.reference
     root=Path(a.directory).resolve();root.mkdir(mode=0o700,parents=True,exist_ok=False)
@@ -35,6 +36,9 @@ def main():
     if a.workflow:roles+=('fusion-model','fusion-channel-bridge','irc-server','irc-peer')
     if a.chain:roles+=('fusion-commitment','f1r3node')
     if a.reference:roles+=('fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search')
+    if a.preview_values:
+        from integration.single_node.preview_secrets import selection,material
+        preview,roles=selection(a.preview_values)
     cognitive={r:secrets.token_hex(32) for r in ('fusion-storage','fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search')}
     delegated_cognitive={r:secrets.token_hex(32) for r in ('fusion-episodes','fusion-beliefs','fusion-relations','fusion-exact-search')}
     completion=secrets.token_hex(32)
@@ -43,13 +47,14 @@ def main():
     channel={r:{p:secrets.token_hex(32) for p in ('M','bridge')} for r in ('storage','messaging')}
     delegated={p:secrets.token_hex(32) for p in ('M','bridge')}
     client={r:secrets.token_hex(32) for r in roles[1:]}
+    preview_material=material(preview,roles,client) if a.preview_values else {}
     worker={r:secrets.token_hex(32) for r in roles[1:]}
     observer={r:secrets.token_hex(32) for r in ROLES[1:]}
     mailbox=secrets.token_hex(32)
-    if a.chain:
+    if a.chain or (a.preview_values and preview.get('chain',{}).get('enabled')):
         from cryptography.hazmat.primitives.asymmetric import ec
         from cryptography.hazmat.primitives import serialization
-        from scripts.chain_demo import address
+        from integration.single_node.chain_address import address
         key=ec.generate_private_key(ec.SECP256K1())
         secret=key.private_numbers().private_value.to_bytes(32,'big').hex()
         public=key.public_key().public_bytes(serialization.Encoding.X962,serialization.PublicFormat.UncompressedPoint).hex()
@@ -100,6 +105,10 @@ def main():
             if role in delegated_cognitive:data['cog-out-fusion-storage']=delegated_cognitive[role].encode()
             if role=='fusion-episodes':data['cog-in-completion-relay']=completion.encode()
             if role=='fusion-beliefs':data['cog-out-fusion-episodes']=completion.encode()
+        if a.preview_values:data.update(preview_material[role])
+        if a.preview_values and preview.get('chain',{}).get('enabled'):
+            if role=='fusion-commitment':data['signer.hex']=secret.encode()
+            if role=='f1r3node':data['validator.hex']=secret.encode()
         value=dict(apiVersion='v1',kind='Secret',metadata=dict(name=role+'-tls-auth',namespace=a.namespace),
                    type='Opaque',data={k:base64.b64encode(v).decode() for k,v in data.items()})
         (root/(role+'.secret.json')).write_text(json.dumps(value))

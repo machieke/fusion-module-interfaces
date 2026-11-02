@@ -17,15 +17,17 @@ def profiles(manifest,destination):
   (out/(profile+'.yaml')).write_text(yaml.safe_dump(value,sort_keys=False))
  (out/'deterministic.json').write_bytes(canonical(dict(tag=images['base']['tag'])))
  (out/'generative-image.json').write_bytes(canonical(images['generative']))
-def build(destination,tag):
+def build(destination,tag,*,kinds=None):
  require(tag.startswith('reference-') and '/' not in tag,'INVALID_ARGUMENT');root=Path(destination).resolve();root.mkdir(parents=True,exist_ok=False);packages={}
- for kind,repo in REPOS.items():
+ selected=REPOS if kinds is None else {kind:REPOS[kind] for kind in kinds}
+ require('base' in selected and len(selected)==len(kinds or selected),'INVALID_ARGUMENT')
+ for kind,repo in selected.items():
   context=root/('image-'+kind);script='package_workflow.py' if kind in ('base','caller','embedding') else 'package_reference.py'
   subprocess.run([sys.executable,str(ROOT/'deploy/single-node'/script),str(context),'--kind',kind],check=True)
   with (root/(kind+'-build.log')).open('w') as log:subprocess.run(['docker','build','--network=none','-t',repo+':'+tag,str(context)],stdout=log,stderr=subprocess.STDOUT,check=True)
   packages[kind]=json.loads((context/'package.json').read_text())
  require(all(x['source']==packages['base']['source'] for x in packages.values()),'CONFLICT')
- archive=root/'images.tar';subprocess.run(['docker','save','-o',str(archive),*[repo+':'+tag for repo in REPOS.values()]],check=True)
+ archive=root/'images.tar';subprocess.run(['docker','save','-o',str(archive),*[repo+':'+tag for repo in selected.values()]],check=True)
  images=[]
  with tarfile.open(archive) as tar:
   index=json.load(tar.extractfile('index.json'))
@@ -45,6 +47,8 @@ def build(destination,tag):
    require(seen==packages[kind]['source'],'CONFLICT')
    images.append(dict(kind=kind,local_tag=local,repository=repo,manifest_digest=entry['digest'],configuration_digest=manifest['config']['digest'],source_package='image-'+kind+'/package.json'))
  result=dict(archive_sha256=sha(archive),archive_bytes=archive.stat().st_size,images=images,source_manifest_sha256=digest(canonical(packages['base']['source'])),source_export_verification='PASS',container_starts=0,generative_runtime_availability='NOT_CHECKED')
- (root/'images.json').write_bytes(canonical(result));profiles(result,root/'profiles');return result
+ (root/'images.json').write_bytes(canonical(result))
+ if kinds is None:profiles(result,root/'profiles')
+ return result
 if __name__=='__main__':
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('destination');p.add_argument('--tag',required=True);a=p.parse_args();print(json.dumps(build(a.destination,a.tag),indent=2))
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('destination');p.add_argument('--tag',required=True);p.add_argument('--kinds',nargs='+',choices=REPOS);a=p.parse_args();print(json.dumps(build(a.destination,a.tag,kinds=a.kinds),indent=2))

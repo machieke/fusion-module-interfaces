@@ -1,0 +1,50 @@
+{
+  "dependency": "Pinned preview-install / artifact-verification / chain-key-setup closure",
+  "files": [
+    {
+      "bytes": 221822,
+      "file": "cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf"
+    },
+    {
+      "bytes": 4753050,
+      "file": "cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl",
+      "sha256": "4061c0079120205fb760c58acab6443e217307dcf05e3702cf970e0689972856"
+    },
+    {
+      "bytes": 62600,
+      "file": "pycparser-3.12-py3-none-any.whl",
+      "sha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e"
+    },
+    {
+      "bytes": 2520237,
+      "file": "pycryptodome-4.0.0-cp39-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "73767e06cf75fb8ff86fd3cf77eba8e7614914d0c970fe1d41c216bf7b4b89c1"
+    },
+    {
+      "bytes": 807870,
+      "file": "pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+      "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc"
+    }
+  ],
+  "limitations": [
+    "This pin qualifies this platform only; other platform wheels require their own exact artifact identities."
+  ],
+  "obtained_by": [
+    "python",
+    "-m",
+    "pip",
+    "download",
+    "--only-binary=:all:",
+    "--no-deps",
+    "PyYAML==6.0.3",
+    "cryptography==50.0.2",
+    "pycryptodome==4.0.0",
+    "cffi==2.1.1",
+    "pycparser==3.12"
+  ],
+  "origin": "Configured Python package index; original download URL was not retained",
+  "platform": "CPython 3.12 Linux x86_64 manylinux",
+  "purpose": "Fresh preview values/TLS/isolated chain key provisioning; no runtime or node startup",
+  "schema": "fusion-operator-optional-wheel-input/1"
+}

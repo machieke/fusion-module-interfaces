@@ -1,0 +1,141 @@
+{
+  "schema": "phase2-operation-evidence-binding/1",
+  "status": "PASS",
+  "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "capability_manifest_sha256": "3b742a5cd6f34396172e77dbd48a1946ce85a2c3184d87980bfbc427bf7c02d1",
+  "native_descriptor_count": 20,
+  "combined_operator_descriptor_names": 16,
+  "historical_family_denominator": 15,
+  "historical_adopted_boundaries": 8,
+  "historical_adopted_commands": 9,
+  "mapping": {
+    "application.context.pin": {
+      "command": "pin",
+      "reports": [
+        "evidence/phase2/final/combined-native.json",
+        "evidence/phase2/final/single-agent.json"
+      ]
+    },
+    "application.context.unpin": {
+      "command": "unpin",
+      "reports": [
+        "evidence/phase2/final/single-agent.json"
+      ]
+    },
+    "application.context.inspect": {
+      "command": "task-context",
+      "reports": [
+        "evidence/phase2/final/single-agent.json"
+      ]
+    },
+    "native.memory.remember": {
+      "command": "remember",
+      "reports": [
+        "evidence/phase2/final/combined-native.json",
+        "evidence/phase2/final/attention-sqlite.json"
+      ]
+    },
+    "native.memory.query": {
+      "command": "query",
+      "reports": [
+        "evidence/phase2/final/combined-native.json",
+        "evidence/phase2/final/attention-sqlite.json"
+      ]
+    },
+    "workspace.read": {
+      "command": "read-file",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "workspace.write": {
+      "command": "write-file",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "workspace.append": {
+      "command": "append-file",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.history.episodes": {
+      "command": "episodes",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.nal.truth-deduction": {
+      "command": "metta",
+      "reports": [
+        "evidence/phase2/final/single-agent.json"
+      ]
+    },
+    "native.memory.supersede": {
+      "command": "update",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.memory.withdraw": {
+      "command": "forget",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.structure.link": {
+      "command": "link",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.structure.unlink": {
+      "command": "unlink",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.assessment.support": {
+      "command": "support",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.assessment.contradict": {
+      "command": "contradict",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.priority.promote": {
+      "command": "promote",
+      "reports": [
+        "evidence/phase2/final/combined-native.json",
+        "evidence/phase2/final/attention-sqlite.json",
+        "evidence/phase2/final/attention-file.json"
+      ]
+    },
+    "native.priority.demote": {
+      "command": "demote",
+      "reports": [
+        "evidence/phase2/final/attention-sqlite.json",
+        "evidence/phase2/final/attention-file.json"
+      ]
+    },
+    "native.task.delegate": {
+      "command": "delegate",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    },
+    "native.execution.inspect-artifact": {
+      "command": "inspect-atom",
+      "reports": [
+        "evidence/phase2/final/combined-native.json"
+      ]
+    }
+  },
+  "interpretation": "Positive native/deployed flags follow actual completed command names in passing current19 reports. All model proposals are recorded. The fixture flag identifies independent file Attention qualification; application context has no separate provider. No live/chain/whole-Omega claim follows from these flags.",
+  "additional_live_generations": 0
+}

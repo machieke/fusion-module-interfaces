@@ -1,0 +1,94 @@
+{
+  "schema": "phase2-development-native-memory/1",
+  "status": "DEVELOPMENT_NOT_FINAL_IMAGE_SET",
+  "source_image_manifest": "artifacts/phase2/build-dev04/images.json",
+  "image_source_sha256": "cba04e4fb6ef41c041ebb92fa95701e245f011bd6c6d7e487ea5dfa9d3ee566e",
+  "namespace": "omega-ref-phase2-dev02",
+  "real": [
+    "two native callers",
+    "DeTTa",
+    "E5",
+    "Chroma",
+    "C1 history",
+    "ModelInference lifecycle with recorded proposals",
+    "authenticated pod HTTPS",
+    "original NAL Truth_Deduction"
+  ],
+  "fixtures": [
+    "authored input-command model proposals",
+    "no IRC selected"
+  ],
+  "runs": [
+    {
+      "raw": "evidence/phase2/development/sessions-02.json",
+      "sha256": "0f148442e2f66eb225b545cc2a1c9b03f5c2fcd481fdf3c48ab67c56d3e9c265",
+      "observations": [
+        {
+          "role": "omega-agent",
+          "sequence": 1,
+          "state": "complete"
+        },
+        {
+          "role": "omega-agent",
+          "sequence": 2,
+          "state": "accepted"
+        }
+      ]
+    },
+    {
+      "raw": "evidence/phase2/development/sessions-03.json",
+      "sha256": "06800c3afbcf86398caed378980c34087ac9841ab8f99f075a3c6d45ba030a89",
+      "observations": [
+        {
+          "role": "omega-agent-b",
+          "sequence": 1,
+          "state": "complete"
+        },
+        {
+          "role": "omega-agent-b",
+          "sequence": 2,
+          "state": "accepted"
+        }
+      ]
+    },
+    {
+      "raw": "evidence/phase2/development/sessions-04.json",
+      "sha256": "df11c28319984691be396c7779ebf8b5fd6cb134e096dbf40a1b0cd25d524e4d",
+      "observations": [
+        {
+          "role": "omega-agent",
+          "sequence": 1,
+          "state": "complete"
+        },
+        {
+          "role": "omega-agent",
+          "sequence": 2,
+          "state": "complete"
+        },
+        {
+          "role": "omega-agent-b",
+          "sequence": 3,
+          "state": "complete"
+        },
+        {
+          "role": "omega-agent",
+          "sequence": 4,
+          "state": "complete"
+        },
+        {
+          "role": "omega-agent-b",
+          "sequence": 5,
+          "state": "complete"
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    "task/result exchange",
+    "combined cognition",
+    "native lifecycle and Relations",
+    "same-workflow chain",
+    "final recovery and distribution"
+  ],
+  "additional_live_generations": 0
+}

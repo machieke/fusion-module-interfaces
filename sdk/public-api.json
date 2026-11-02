@@ -1,0 +1,57 @@
+{
+  "schema": "fusion-sdk-public-api/1",
+  "package_version": "0.2.0",
+  "facade": "fusion_sdk",
+  "profiles": {
+    "AtomFeedClient": "immutable-commit-feed/1",
+    "handles": "omega-preview-handles/1",
+    "tools": "omega-developer-tools/1",
+    "vocabulary": "omega-developer-native/1"
+  },
+  "argument_kinds": [
+    "text",
+    "label",
+    "path",
+    "handle",
+    "memory-handle",
+    "relation-handle",
+    "history-handle"
+  ],
+  "handle_kinds": [
+    "memory",
+    "episode",
+    "event",
+    "relation",
+    "task",
+    "result"
+  ],
+  "operations": [
+    "create",
+    "get",
+    "getMany",
+    "availability",
+    "head",
+    "readCommits"
+  ],
+  "unsupported_application_conveniences": [
+    "deduction_tools",
+    "memory_tools",
+    "workspace_tools",
+    "history_tools",
+    "lifecycle_tools",
+    "relation_tools",
+    "cognitive_tools",
+    "task_tools",
+    "inspection_tools",
+    "Argument(kind=deduction)"
+  ],
+  "limitations": [
+    "Handle DTOs prove structural correlation only: no existence, authority, owner acceptance or lifecycle state.",
+    "ToolDescriptor and Catalogue validate/admit whole batches; they do not implement or dispatch tools.",
+    "context_tools returns only pure descriptions; context storage and implementation remain application owned.",
+    "Raw fusion.preview_tools application convenience builders are not exported by fusion_sdk and require dependencies absent from this wheel.",
+    "memory_contracts imports only stdlib and shared contracts; importing it opens no SQLite database.",
+    "Transport deadlines and retry advice do not grant provider work budgets, retries or cancellation.",
+    "No owner, native runtime, model, embedding, storage backend, database or fixture provider is installed by the client wheel."
+  ]
+}

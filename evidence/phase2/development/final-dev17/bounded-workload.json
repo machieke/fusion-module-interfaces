@@ -1,0 +1,136 @@
+{
+  "classification": "BOUNDED_REPEATED_NATIVE_WORKFLOW_NOT_SLA",
+  "namespace": "omega-ref-phase2-dev17",
+  "operator_inputs": 23,
+  "task_result_inputs": 4,
+  "logical_memories": 2,
+  "immutable_revisions": 3,
+  "withdrawals": 1,
+  "operator_observed_seconds": {
+    "min": 17.477,
+    "max": 33.607,
+    "mean": 25.674086956521737,
+    "median": 26.527
+  },
+  "per_input": [
+    {
+      "command": "pin",
+      "role": "omega-agent-b",
+      "seconds": 17.477
+    },
+    {
+      "command": "remember",
+      "role": "omega-agent",
+      "seconds": 19.216
+    },
+    {
+      "command": "delegate",
+      "role": "omega-agent",
+      "seconds": 19.769
+    },
+    {
+      "command": "delegate",
+      "role": "omega-agent-b",
+      "seconds": 19.737
+    },
+    {
+      "command": "episodes",
+      "role": "omega-agent",
+      "seconds": 19.99
+    },
+    {
+      "command": "link",
+      "role": "omega-agent",
+      "seconds": 19.861
+    },
+    {
+      "command": "support",
+      "role": "omega-agent",
+      "seconds": 24.955
+    },
+    {
+      "command": "support",
+      "role": "omega-agent",
+      "seconds": 30.06
+    },
+    {
+      "command": "contradict",
+      "role": "omega-agent",
+      "seconds": 29.979
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 32.987
+    },
+    {
+      "command": "promote",
+      "role": "omega-agent",
+      "seconds": 31.469
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 33.607
+    },
+    {
+      "command": "pin",
+      "role": "omega-agent",
+      "seconds": 26.424
+    },
+    {
+      "command": "inspect-atom",
+      "role": "omega-agent",
+      "seconds": 26.527
+    },
+    {
+      "command": "unlink",
+      "role": "omega-agent",
+      "seconds": 26.662
+    },
+    {
+      "command": "write-file",
+      "role": "omega-agent",
+      "seconds": 18.295
+    },
+    {
+      "command": "append-file",
+      "role": "omega-agent",
+      "seconds": 18.084
+    },
+    {
+      "command": "read-file",
+      "role": "omega-agent",
+      "seconds": 18.381
+    },
+    {
+      "command": "remember",
+      "role": "omega-agent",
+      "seconds": 31.738
+    },
+    {
+      "command": "update",
+      "role": "omega-agent",
+      "seconds": 33.419
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 32.03
+    },
+    {
+      "command": "forget",
+      "role": "omega-agent",
+      "seconds": 29.949
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 29.888
+    }
+  ],
+  "cpu_quota_enforcement": "NOT_ESTABLISHED",
+  "metrics_api": "NOT_AVAILABLE",
+  "cache_conditions": "Pinned images and E5 assets already cached; fresh journals/native processes; model inference warms within workload; no text-generation runtime",
+  "additional_live_generations": 0
+}

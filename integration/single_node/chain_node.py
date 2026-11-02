@@ -25,8 +25,10 @@ casper.genesis-block-data {
 '''
 
 def main(settings):
- chain=settings['reference']['chain'];state=Path('/state');run=Path('/run/fusion');run.mkdir(exist_ok=True)
- require(settings['reference']['synthetic'] is True and settings['role']=='f1r3node' and os.environ['POD_NAME']=='f1r3node-0','UNSUPPORTED_PROFILE')
+ preview=settings.get('preview',{}).get('enabled',False)
+ chain=settings['preview']['chain'] if preview else settings['reference']['chain'];state=Path('/state');run=Path('/run/fusion');run.mkdir(exist_ok=True)
+ synthetic=settings['preview']['scope'].startswith('synthetic-') if preview else settings['reference']['synthetic'] is True
+ require(synthetic and settings['role']=='f1r3node' and os.environ['POD_NAME']=='f1r3node-0','UNSUPPORTED_PROFILE')
  lock=open(state/'owner.lock','a')
  try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  except BlockingIOError:raise SystemExit('OWNER_ALREADY_RUNNING') from None

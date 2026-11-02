@@ -1,0 +1,33 @@
+{
+  "at": "2026-11-02T21:21:42.831130+00:00",
+  "assignment": "P01-P18 same programme; commit/push authorized after completion",
+  "head": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "runtime_source_manifest": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "images": "artifacts/phase2/build-dev19/images.json",
+  "candidate10": "33c9d519977efaa6b2c90cf83b6d2cbf85d7f4abcb19131efc2876c1408953b9",
+  "operator": "/tmp/omega-phase2-operator-dev18 exact candidate03 wheel",
+  "active": "exec71580 runs artifacts/phase2/qualify-final-dev19-main-ui.py main19; output artifacts/phase2/qualify-main19.log; native inputs progressing; leaves main ready for UI",
+  "completed19": [
+    "both Attention providers+comparison",
+    "seven-case recovery",
+    "native handoff recovery",
+    "28scope/rotationcases",
+    "shared source",
+    "single-agent6nativeinputs",
+    "solo workbench4nativeinputs andcontrols; stopped"
+  ],
+  "remaining": "finishmain19+chain/resources, read-onlymainUI, restore19,6IRC19, SBOM/finalartifact/evidence/protection/cleanup/commitpush",
+  "next_commands": [
+    "Read-only UI artifacts/phase2/workbench-main19-readonly.py after ProofShot startup port8782",
+    "examples.preview_restore_qualification source main19 clone restore19 from candidate10",
+    "IRC19 reference_qualification sixcases per docs/phase2/irc-regression-recipe.md",
+    "sdk.image_inventory dev19",
+    "final public allowlist proposal artifacts/phase2/publication-allowlist-candidate.json"
+  ],
+  "additional_live_generations": 0,
+  "protected": [
+    "omega-demo",
+    "omega-ref-live01",
+    "omega-reference-k3s-20261030-03"
+  ]
+}

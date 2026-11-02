@@ -1,0 +1,31 @@
+{
+  "additional_live_generations": 0,
+  "classification": "REAL_RENDERER_SQLITE_AUTHORITY_WITH_APPLICATION_INPUT_PARSED_COMMAND_FIXTURES",
+  "cluster": "NOT_RUN",
+  "command": "artifacts/reference-distribution/operator-venv/bin/python -m unittest tests.test_phase2_context_rendering -v",
+  "diagnosis": "Final byte check ran before delimiter escaping; returned expanded text was unchecked.",
+  "historical_result": "FAILURE_RETAINED_NOT_RELABELED_AFTER_ROOT_FIX",
+  "initial_result": {
+    "fail": 1,
+    "failed_method": "ContextRenderingTests.test_required_content_and_delimiter_expansion_fail_closed_at_actual_render_bound",
+    "failure": "AssertionError: ContractError not raised",
+    "methods": 8,
+    "pass": 7,
+    "seconds_reported": 0.538
+  },
+  "native_parser": "NOT_RUN",
+  "production_edited_by_subagent": false,
+  "recording": "Preserved from the initial executed tool output; not a rerun against changed production sources.",
+  "reproducer": {
+    "declared_native_envelope_bound": 32768,
+    "feedback_expression": "':-:-:-:' * 3600",
+    "raw_delimiter_count_after_render": 0,
+    "rendered_utf8_bytes": 97905,
+    "reserved_input_envelope_bytes": 304
+  },
+  "schema": "preview-context-rendering-fixture-failure/1",
+  "source_sha256": {
+    "fusion/preview_application.py": "6d1290b2ad369bd7b3680bbc222bf1636d4f258349b80db264fcc3f131551920",
+    "tests/test_phase2_context_rendering.py": "3c7b324adc5a3da27abdb49000cf908fa3ab0e4c10936511824f8a5a8d4471d2"
+  }
+}

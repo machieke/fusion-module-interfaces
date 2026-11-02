@@ -21,6 +21,8 @@ def clock():
 def initialize():
     global _config
     app=json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
+    from fusion.preview_application import APPLICATION
+    if app['composition']==APPLICATION:app['composition']=app['preview']['base']
     _config=json.loads(Path(app['memory_native_config']).read_text())
     cfg=_config
     from fusion import vector_contracts as c

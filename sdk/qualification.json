@@ -1,0 +1,129 @@
+{
+  "additional_live_generations": 0,
+  "baseline_commit": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "deployed_cluster_substitution": "UNRUN",
+  "detta": "NOT_CLAIMED",
+  "executed_command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/operator-venv/bin/python",
+    "-m",
+    "unittest",
+    "tests.test_phase2_sdk",
+    "-v"
+  ],
+  "generative_runtime_contact": "NONE",
+  "limitations": [
+    "No optional mutation-observation capability; lost create response remains unknown until identical replay or known-reference read.",
+    "Transport deadline only; no new provider work budget/cancellation guarantee.",
+    "Historical versions are not declared network-compatible solely from descriptors."
+  ],
+  "native_consumer": "UNRUN",
+  "placement": "same-host-authenticated-HTTPS",
+  "provider": "independent-atomic-file-contract-fixture",
+  "python": "3.12.12 (main, Feb 12 2026, 00:42:14) [Clang 21.1.4 ]",
+  "returncode": 0,
+  "schema": "fusion-phase2-sdk-qualification/1",
+  "sources": {
+    "examples/phase2_provider/__init__.py": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+    "examples/phase2_provider/caller.py": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+    "examples/phase2_provider/conformance.py": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+    "examples/phase2_provider/server.py": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+    "fusion/preview_client.py": "d7d9922efe03b128179687f7ef3285955d4b80d78dec7d2dbfe15fe44b56df5f",
+    "sdk/build.py": "e1d9f7e7b026a14a3f99766309db59753328c044b122efdb2d4b70bf15454e0d",
+    "tests/test_phase2_sdk.py": "2f286427b8304a1f360210e26647a9f8ddc5c4939cb901fbd4ec504a728ebe2e"
+  },
+  "started_utc": "2026-11-02T13:19:40Z",
+  "stderr": "test_descriptor_profile_version_and_guarantee_refusals (tests.test_phase2_sdk.HTTPSBoundaries.test_descriptor_profile_version_and_guarantee_refusals) ... ok\ntest_identical_adapted_caller_under_local_and_https_composition (tests.test_phase2_sdk.HTTPSBoundaries.test_identical_adapted_caller_under_local_and_https_composition) ... ok\ntest_live_revocation_and_wrong_credentials (tests.test_phase2_sdk.HTTPSBoundaries.test_live_revocation_and_wrong_credentials) ... ok\ntest_lost_write_response_is_unknown_and_same_identity_replays (tests.test_phase2_sdk.HTTPSBoundaries.test_lost_write_response_is_unknown_and_same_identity_replays) ... ok\ntest_original_deadline_and_no_implicit_retry (tests.test_phase2_sdk.HTTPSBoundaries.test_original_deadline_and_no_implicit_retry) ... ok\ntest_reply_principal_request_selection_and_payload_binding (tests.test_phase2_sdk.HTTPSBoundaries.test_reply_principal_request_selection_and_payload_binding) ... ok\ntest_shared_conformance_cases (tests.test_phase2_sdk.HTTPSBoundaries.test_shared_conformance_cases) ... ok\ntest_strict_input_and_bounded_batch (tests.test_phase2_sdk.HTTPSBoundaries.test_strict_input_and_bounded_batch) ... ok\ntest_untrusted_certificate_is_refused (tests.test_phase2_sdk.HTTPSBoundaries.test_untrusted_certificate_is_refused) ... ok\ntest_extracted_https_provider_consumer_and_process_kill_recovery (tests.test_phase2_sdk.InstalledKit.test_extracted_https_provider_consumer_and_process_kill_recovery) ... ok\ntest_installed_imports_are_independent_and_sources_exact (tests.test_phase2_sdk.InstalledKit.test_installed_imports_are_independent_and_sources_exact) ... ok\ntest_wheel_build_is_reproducible_and_has_no_secret_inputs (tests.test_phase2_sdk.InstalledKit.test_wheel_build_is_reproducible_and_has_no_secret_inputs) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 4.904s\n\nOK\n",
+  "stdout": "",
+  "temporary_process_cleanup": "test teardown completed",
+  "wheel_build": {
+    "client": {
+      "file": "fusion_module_client-0.1.0-py3-none-any.whl",
+      "sha256": "3db7d4c879634c92c0cdf5bef22fe9fab6f47c4bc0f0e8033e961be580b57938",
+      "sources": {
+        "fusion/__init__.py": {
+          "bytes": 73,
+          "sha256": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+          "source": "fusion/__init__.py"
+        },
+        "fusion/contracts.py": {
+          "bytes": 8746,
+          "sha256": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+          "source": "fusion/contracts.py"
+        },
+        "fusion/lookup_contracts.py": {
+          "bytes": 12359,
+          "sha256": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+          "source": "fusion/lookup_contracts.py"
+        },
+        "fusion/memory_types.py": {
+          "bytes": 2565,
+          "sha256": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+          "source": "fusion/memory_types.py"
+        },
+        "fusion/ports.py": {
+          "bytes": 11306,
+          "sha256": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+          "source": "fusion/ports.py"
+        },
+        "fusion/preview_client.py": {
+          "bytes": 9622,
+          "sha256": "d7d9922efe03b128179687f7ef3285955d4b80d78dec7d2dbfe15fe44b56df5f",
+          "source": "fusion/preview_client.py"
+        },
+        "fusion/registry.py": {
+          "bytes": 4548,
+          "sha256": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+          "source": "fusion/registry.py"
+        },
+        "fusion/responses.py": {
+          "bytes": 9828,
+          "sha256": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+          "source": "fusion/responses.py"
+        }
+      }
+    },
+    "live_generations": 0,
+    "provider": {
+      "file": "fusion_file_feed_example-0.1.0-py3-none-any.whl",
+      "sha256": "53290c6f5dc98f7cd468c1974239897c5ba3e35e2986f44de75f27d2e061bb3c",
+      "sources": {
+        "fusion/adapters/__init__.py": {
+          "bytes": 64,
+          "sha256": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+          "source": "fusion/adapters/__init__.py"
+        },
+        "fusion/adapters/fixture_feed.py": {
+          "bytes": 5282,
+          "sha256": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+          "source": "fusion/adapters/fixture_feed.py"
+        },
+        "fusion/policy.py": {
+          "bytes": 1398,
+          "sha256": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+          "source": "fusion/policy.py"
+        },
+        "phase2_provider/__init__.py": {
+          "bytes": 78,
+          "sha256": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+          "source": "examples/phase2_provider/__init__.py"
+        },
+        "phase2_provider/caller.py": {
+          "bytes": 533,
+          "sha256": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+          "source": "examples/phase2_provider/caller.py"
+        },
+        "phase2_provider/conformance.py": {
+          "bytes": 2757,
+          "sha256": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+          "source": "examples/phase2_provider/conformance.py"
+        },
+        "phase2_provider/server.py": {
+          "bytes": 8553,
+          "sha256": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+          "source": "examples/phase2_provider/server.py"
+        }
+      }
+    },
+    "schema": "fusion-preview-sdk-build/1"
+  }
+}

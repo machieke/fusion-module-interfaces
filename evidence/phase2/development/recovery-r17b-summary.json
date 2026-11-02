@@ -1,0 +1,507 @@
+{
+  "additional_live_generations": 0,
+  "case_counts": {
+    "FAILED": 2,
+    "PASS": 5
+  },
+  "cases": [
+    {
+      "accepted": {
+        "accepted": 1793649448541,
+        "assignment": "synthetic-task",
+        "deadline": 1793649568541,
+        "id": "recovery-82d3ffa0-9933-4353-bf13-dc8388fe1972",
+        "sequence": 1,
+        "session": "81c363f6-62f8-4fe1-bd46-0013e2d0e477",
+        "state": "accepted"
+      },
+      "caller": "omega-agent-b",
+      "deadline_renewals": 0,
+      "dispatch_after_replacement": [
+        {
+          "attempts": 1,
+          "deadline": 1793649505272,
+          "done": 1,
+          "id": "7f4235d8-b089-5936-871b-8119251849c4",
+          "position": 0,
+          "turn": 1
+        }
+      ],
+      "dispatch_before_replacement": [],
+      "duplicate_receipt": {
+        "accepted": 1793649448541,
+        "assignment": "synthetic-task",
+        "deadline": 1793649568541,
+        "id": "recovery-82d3ffa0-9933-4353-bf13-dc8388fe1972",
+        "sequence": 1,
+        "session": "81c363f6-62f8-4fe1-bd46-0013e2d0e477",
+        "state": "complete"
+      },
+      "fault_marker": {
+        "stage": "after_session_input_capture"
+      },
+      "name": "native-input-capture",
+      "native_projection_sha256": "ce9920f1085515d456fe7f52b8d5ced9a08ea08acc0fea14125b5a5cf2816e93",
+      "observed_state": "complete",
+      "owner": "omega-agent-b",
+      "recorded_model_capture_observation": {
+        "after": [
+          {
+            "captured_ms": 1793649474243,
+            "failure_code": null,
+            "id": "2176480c-dbb4-56ac-af42-119aeb8e829b",
+            "reserved": 1,
+            "response_sha256": "4da92dfcc61843582ff596491c4c897505a40a13def07ab8040ee57da94fe787",
+            "slot": 1
+          }
+        ],
+        "basis": "Cumulative selected-session rows at this case boundary; not an additive campaign call count.",
+        "before": []
+      },
+      "replaced_roles": [
+        {
+          "images_unchanged": true,
+          "pod_uid_changed": true,
+          "pvc_names_unchanged": true,
+          "role": "omega-agent-b"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "accepted": {
+        "accepted": 1793649489687,
+        "assignment": "synthetic-task",
+        "deadline": 1793649609687,
+        "id": "recovery-8901f01e-9b61-4075-80d6-f35f87f463f7",
+        "sequence": 4,
+        "session": "8bd7f597-7785-47c4-af2f-adbc8889d9a2",
+        "state": "accepted"
+      },
+      "caller": "omega-agent",
+      "failure": {
+        "code": "NOT_AVAILABLE",
+        "type": "ContractError"
+      },
+      "fault_marker": null,
+      "name": "workspace-effect",
+      "native_projection_sha256": null,
+      "observed_state": null,
+      "owner": "fusion-execution",
+      "replaced_roles": [],
+      "status": "FAILED"
+    },
+    {
+      "accepted": {
+        "accepted": 1793649627256,
+        "assignment": "synthetic-task",
+        "deadline": 1793649747256,
+        "id": "recovery-3a587703-043d-4cbd-a746-4a460ef5170d",
+        "sequence": 5,
+        "session": "54ea9911-4dcf-46d7-b9a2-b51e2a61f157",
+        "state": "accepted"
+      },
+      "caller": "omega-agent",
+      "deadline_renewals": 0,
+      "dispatch_after_replacement": [
+        {
+          "attempts": 2,
+          "deadline": 1793649672101,
+          "done": 1,
+          "id": "0fad3b68-a154-5a45-bebe-6c81a0a6b69c",
+          "position": 0,
+          "turn": 5
+        }
+      ],
+      "dispatch_before_replacement": [
+        {
+          "attempts": 1,
+          "deadline": 1793649672101,
+          "done": 0,
+          "id": "0fad3b68-a154-5a45-bebe-6c81a0a6b69c",
+          "position": 0,
+          "turn": 5
+        }
+      ],
+      "duplicate_receipt": {
+        "accepted": 1793649627256,
+        "assignment": "synthetic-task",
+        "deadline": 1793649747256,
+        "id": "recovery-3a587703-043d-4cbd-a746-4a460ef5170d",
+        "sequence": 5,
+        "session": "54ea9911-4dcf-46d7-b9a2-b51e2a61f157",
+        "state": "complete"
+      },
+      "fault_marker": {
+        "message_id": null,
+        "operation": "assertRelation"
+      },
+      "name": "relation-reply-loss",
+      "native_projection_sha256": "98147160b3baecaa594bfd903af5205fc78967e8b97d4624a7df60bfd6c8cfa5",
+      "observed_state": "complete",
+      "owner": "fusion-relations",
+      "recorded_model_capture_observation": {
+        "after": [
+          {
+            "captured_ms": 1793649322154,
+            "failure_code": null,
+            "id": "be9c02ba-3956-5cf7-a8a9-ba884fc19d66",
+            "reserved": 1,
+            "response_sha256": "e79f8f9fe34ba76240e1cb6aba4e8b94b145c3bdf3557481aff5f2f11838db76",
+            "slot": 1
+          },
+          {
+            "captured_ms": 1793649342112,
+            "failure_code": null,
+            "id": "cd54331c-682a-536b-92da-fbddcd3a81e2",
+            "reserved": 1,
+            "response_sha256": "dc1ff93f3132ece5ad4f156a0ff0f170ba1e65316c5373394d783c71c8ef831f",
+            "slot": 2
+          },
+          {
+            "captured_ms": 1793649362551,
+            "failure_code": null,
+            "id": "1a12a310-a0b1-546b-aeb9-119706680d4c",
+            "reserved": 1,
+            "response_sha256": "02f7e02c925d553f53edb751b254f3830ded93f5ef179e1abfe11860ec45b44f",
+            "slot": 3
+          },
+          {
+            "captured_ms": 1793649382255,
+            "failure_code": null,
+            "id": "ac305862-cf50-566a-9faf-44aca2ebb3d0",
+            "reserved": 1,
+            "response_sha256": "774429d95675a2589d2e8416c0d2b9b4d7d7a588b92f5096be05b03e4c768e8f",
+            "slot": 4
+          },
+          {
+            "captured_ms": 1793649641148,
+            "failure_code": null,
+            "id": "ce2853a5-78f1-535c-b236-198578287b7e",
+            "reserved": 1,
+            "response_sha256": "02f7e02c925d553f53edb751b254f3830ded93f5ef179e1abfe11860ec45b44f",
+            "slot": 5
+          }
+        ],
+        "basis": "Cumulative selected-session rows at this case boundary; not an additive campaign call count.",
+        "before": [
+          {
+            "captured_ms": 1793649322154,
+            "failure_code": null,
+            "id": "be9c02ba-3956-5cf7-a8a9-ba884fc19d66",
+            "reserved": 1,
+            "response_sha256": "e79f8f9fe34ba76240e1cb6aba4e8b94b145c3bdf3557481aff5f2f11838db76",
+            "slot": 1
+          },
+          {
+            "captured_ms": 1793649342112,
+            "failure_code": null,
+            "id": "cd54331c-682a-536b-92da-fbddcd3a81e2",
+            "reserved": 1,
+            "response_sha256": "dc1ff93f3132ece5ad4f156a0ff0f170ba1e65316c5373394d783c71c8ef831f",
+            "slot": 2
+          },
+          {
+            "captured_ms": 1793649362551,
+            "failure_code": null,
+            "id": "1a12a310-a0b1-546b-aeb9-119706680d4c",
+            "reserved": 1,
+            "response_sha256": "02f7e02c925d553f53edb751b254f3830ded93f5ef179e1abfe11860ec45b44f",
+            "slot": 3
+          },
+          {
+            "captured_ms": 1793649382255,
+            "failure_code": null,
+            "id": "ac305862-cf50-566a-9faf-44aca2ebb3d0",
+            "reserved": 1,
+            "response_sha256": "774429d95675a2589d2e8416c0d2b9b4d7d7a588b92f5096be05b03e4c768e8f",
+            "slot": 4
+          },
+          {
+            "captured_ms": 1793649641148,
+            "failure_code": null,
+            "id": "ce2853a5-78f1-535c-b236-198578287b7e",
+            "reserved": 1,
+            "response_sha256": "02f7e02c925d553f53edb751b254f3830ded93f5ef179e1abfe11860ec45b44f",
+            "slot": 5
+          }
+        ]
+      },
+      "replaced_roles": [
+        {
+          "images_unchanged": true,
+          "pod_uid_changed": true,
+          "pvc_names_unchanged": true,
+          "role": "fusion-relations"
+        },
+        {
+          "images_unchanged": true,
+          "pod_uid_changed": true,
+          "pvc_names_unchanged": true,
+          "role": "omega-agent"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "accepted": {
+        "accepted": 1793649671312,
+        "assignment": "synthetic-task",
+        "deadline": 1793649791312,
+        "id": "recovery-95765815-5ca6-44d4-84c2-f13b1b84bf24",
+        "sequence": 2,
+        "session": "81c363f6-62f8-4fe1-bd46-0013e2d0e477",
+        "state": "accepted"
+      },
+      "caller": "omega-agent-b",
+      "deadline_renewals": 0,
+      "dispatch_after_replacement": [
+        {
+          "attempts": 1,
+          "deadline": 1793649731093,
+          "done": 1,
+          "id": "053689f8-c00d-5a01-b07f-d172e038e158",
+          "position": 0,
+          "turn": 2
+        }
+      ],
+      "dispatch_before_replacement": [],
+      "duplicate_receipt": {
+        "accepted": 1793649671312,
+        "assignment": "synthetic-task",
+        "deadline": 1793649791312,
+        "id": "recovery-95765815-5ca6-44d4-84c2-f13b1b84bf24",
+        "sequence": 2,
+        "session": "81c363f6-62f8-4fe1-bd46-0013e2d0e477",
+        "state": "complete"
+      },
+      "fault_marker": {
+        "stage": "after_model_provider_capture"
+      },
+      "name": "model-captured-response",
+      "native_projection_sha256": "b4066469867d075c5e3b18f6b9231f7dbac239dea2ab83902e62127e17eea04e",
+      "observed_state": "complete",
+      "owner": "fusion-model",
+      "recorded_model_capture_observation": {
+        "after": [
+          {
+            "captured_ms": 1793649474243,
+            "failure_code": null,
+            "id": "2176480c-dbb4-56ac-af42-119aeb8e829b",
+            "reserved": 1,
+            "response_sha256": "4da92dfcc61843582ff596491c4c897505a40a13def07ab8040ee57da94fe787",
+            "slot": 1
+          },
+          {
+            "captured_ms": 1793649685086,
+            "failure_code": null,
+            "id": "ac9df2e4-4eba-521d-bfb9-050b75c58541",
+            "reserved": 1,
+            "response_sha256": "5f6098fa340dacd567a23f076b7f9dfbdca549d9a412c4ebbd45af335bb355c8",
+            "slot": 2
+          }
+        ],
+        "basis": "Cumulative selected-session rows at this case boundary; not an additive campaign call count.",
+        "before": [
+          {
+            "captured_ms": 1793649474243,
+            "failure_code": null,
+            "id": "2176480c-dbb4-56ac-af42-119aeb8e829b",
+            "reserved": 1,
+            "response_sha256": "4da92dfcc61843582ff596491c4c897505a40a13def07ab8040ee57da94fe787",
+            "slot": 1
+          },
+          {
+            "captured_ms": 1793649685086,
+            "failure_code": null,
+            "id": "ac9df2e4-4eba-521d-bfb9-050b75c58541",
+            "reserved": 1,
+            "response_sha256": "5f6098fa340dacd567a23f076b7f9dfbdca549d9a412c4ebbd45af335bb355c8",
+            "slot": 2
+          }
+        ]
+      },
+      "replaced_roles": [
+        {
+          "images_unchanged": true,
+          "pod_uid_changed": true,
+          "pvc_names_unchanged": true,
+          "role": "fusion-model"
+        },
+        {
+          "images_unchanged": true,
+          "pod_uid_changed": true,
+          "pvc_names_unchanged": true,
+          "role": "omega-agent-b"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "accepted": {
+        "accepted": 1793649714486,
+        "assignment": "synthetic-task",
+        "deadline": 1793649834486,
+        "id": "recovery-d86de1c1-4567-45d4-98a6-7e4d4a20c7a7",
+        "sequence": 1,
+        "session": "c23ac425-d11c-4167-8b3b-2294072f9e72",
+        "state": "accepted"
+      },
+      "caller": "omega-agent-b",
+      "deadline_renewals": 0,
+      "dispatch_after_replacement": [
+        {
+          "attempts": 2,
+          "deadline": 1793649757187,
+          "done": 1,
+          "id": "cd9fd8a8-4ec0-5d44-b768-329307275874",
+          "position": 0,
+          "turn": 1
+        }
+      ],
+      "dispatch_before_replacement": [
+        {
+          "attempts": 1,
+          "deadline": 1793649757187,
+          "done": 0,
+          "id": "cd9fd8a8-4ec0-5d44-b768-329307275874",
+          "position": 0,
+          "turn": 1
+        }
+      ],
+      "duplicate_receipt": {
+        "accepted": 1793649714486,
+        "assignment": "synthetic-task",
+        "deadline": 1793649834486,
+        "id": "recovery-d86de1c1-4567-45d4-98a6-7e4d4a20c7a7",
+        "sequence": 1,
+        "session": "c23ac425-d11c-4167-8b3b-2294072f9e72",
+        "state": "complete"
+      },
+      "fault_marker": {
+        "stage": "after_lifecycle_commit"
+      },
+      "name": "lifecycle-before-publication",
+      "native_projection_sha256": "b98bec354a7afdd449265ffd3cc73fdf0c32bec443bdd1410e461f6e5da64169",
+      "observed_state": "complete",
+      "owner": "fusion-storage",
+      "recorded_model_capture_observation": {
+        "after": [
+          {
+            "captured_ms": 1793649726148,
+            "failure_code": null,
+            "id": "31eea296-408b-5453-a800-979af70ca059",
+            "reserved": 1,
+            "response_sha256": "3da984a44331912629ad12bbcb2e6a186ff4bb2d70937f5ce964e6275dde9087",
+            "slot": 1
+          }
+        ],
+        "basis": "Cumulative selected-session rows at this case boundary; not an additive campaign call count.",
+        "before": [
+          {
+            "captured_ms": 1793649726148,
+            "failure_code": null,
+            "id": "31eea296-408b-5453-a800-979af70ca059",
+            "reserved": 1,
+            "response_sha256": "3da984a44331912629ad12bbcb2e6a186ff4bb2d70937f5ce964e6275dde9087",
+            "slot": 1
+          }
+        ]
+      },
+      "replaced_roles": [
+        {
+          "images_unchanged": true,
+          "pod_uid_changed": true,
+          "pvc_names_unchanged": true,
+          "role": "fusion-storage"
+        },
+        {
+          "images_unchanged": true,
+          "pod_uid_changed": true,
+          "pvc_names_unchanged": true,
+          "role": "omega-agent-b"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "accepted": {
+        "accepted": 1793649750994,
+        "assignment": "synthetic-task",
+        "deadline": 1793649870994,
+        "id": "readback-d1369b92-82fc-4c60-9f13-5f3c3fdfb054",
+        "sequence": 5,
+        "session": "8bd7f597-7785-47c4-af2f-adbc8889d9a2",
+        "state": "accepted"
+      },
+      "caller": "omega-agent",
+      "failure": {
+        "code": "NOT_AVAILABLE",
+        "type": "ContractError"
+      },
+      "fault_marker": null,
+      "name": "workspace-single-append",
+      "native_projection_sha256": null,
+      "observed_state": "accepted",
+      "replaced_roles": [],
+      "status": "FAILED"
+    },
+    {
+      "accepted": {
+        "accepted": 1793649881098,
+        "assignment": "synthetic-task",
+        "deadline": 1793650001098,
+        "id": "readback-38f64e19-f119-45a0-aeac-d01a90957aaa",
+        "sequence": 2,
+        "session": "c23ac425-d11c-4167-8b3b-2294072f9e72",
+        "state": "accepted"
+      },
+      "caller": "omega-agent-b",
+      "fault_marker": null,
+      "name": "lifecycle-native-read",
+      "native_projection_sha256": "af7f7baf7a02cf904954612653f81fe4e1355002debc80cc50e6070cf2ee9c32",
+      "observed_state": "complete",
+      "replaced_roles": [],
+      "status": "PASS"
+    }
+  ],
+  "classification": "REAL_DEPLOYED_NATIVE_WITH_RECORDED_MODEL",
+  "cleanup": {
+    "basis": "stopped.json after.items is empty",
+    "observed_pods": 0,
+    "pvcs_retained": true
+  },
+  "namespace": "omega-ref-phase2-r17b",
+  "publication": "No prompt bodies, commands, returned payloads, credentials, private journals or raw worker logs are included. Original reports remain unchanged.",
+  "runtime_images": [
+    "docker.io/library/fusion-memory-caller@sha256:cced52824e2037016736e746d78eaa0cd37e78b88cc067cdabcfece827d7743c",
+    "docker.io/library/fusion-single-node@sha256:cf7a38eaf8970ec95b3702e90bb054ec12cfc90c5bd55204868b9ba75d579d76"
+  ],
+  "schema": "preview-development-recovery-summary/1",
+  "sources": {
+    "cleanup": {
+      "path": "artifacts/phase2/deploy-r17b/stopped.json",
+      "sha256": "661d9d7266ef5f545b74a03cd7bdbc0e2e8f7508e8c6355ff2a05c6913c42fb1"
+    },
+    "kubernetes_field_description": {
+      "path": "artifacts/phase2/fs-group-openapi.txt",
+      "sha256": "a538af8f6ed1784bf1d3f33d45fadfb4150255a3b21586a0d0197676543c8720"
+    },
+    "recovery": {
+      "path": "artifacts/phase2/deploy-r17b/recovery-01/report.json",
+      "sha256": "6a1a897377e64221f83448f4c0865017f3c40df5ba9a47b3b7278c3bc8236987"
+    },
+    "setup": {
+      "path": "artifacts/phase2/deploy-r17b/setup-01/report.json",
+      "sha256": "394afafc714f6171207ec56b10a0ded38ff5e7e760a9c07b72a5481a59f048d0"
+    }
+  },
+  "status": "FAILED_REQUIRED_CASE",
+  "workspace_diagnosis": {
+    "correction_scope": "The parent changed the workload chart and Operator.helper to request OnRootMismatch. This changes mount policy, not the workspace authorization check.",
+    "direct_report_evidence": "workspace-effect expired without recording its fault marker or replacement; workspace-single-append remained accepted with no captured native result. Both cases reported NOT_AVAILABLE.",
+    "limitation": "The light test checks the actual emitted maintenance pod request only. Corrected kubelet behavior and successful workspace recovery require the fresh dev18 deployed qualification; this failed run is not reclassified.",
+    "separate_operator_observation": "The operator inspected the running pod before quiescence and observed workspace permission changes and UNAUTHORIZED. No raw worker or filesystem-mode diagnostic was retained; this observation is not derived from the recovery report.",
+    "source_explanation": "Workspace requires its root to be owned by the process and rejects group/other-writable directories (fusion/preview_workspace.py). The saved Kubernetes field description states that omitted fsGroupChangePolicy defaults to Always."
+  }
+}

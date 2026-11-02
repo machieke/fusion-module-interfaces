@@ -25,19 +25,20 @@ class ModelService:
             if not db.execute("SELECT 1 FROM sqlite_master WHERE name='model_calls'").fetchone():return []
             return [dict(r) for r in db.execute('SELECT * FROM model_calls ORDER BY rowid')]
 
-    def __init__(self, path, backend, hook=lambda _: None, *, disclosure=None):
+    def __init__(self, path, backend, hook=lambda _: None, *, disclosure=None, contracts=c):
+        self.c = contracts
         self.policy, self.backend, self.hook = Policy(path), backend, hook
         self.disclosure=disclosure
         self.cfg = self.policy.current()['model_completion']
         cfg = self.cfg
-        c.integer(cfg['max_calls'], 1, c.MAX_CALLS)
-        c.integer(cfg['expires_ms'], 1)
-        require(type(cfg['sessions']) is list and 1 <= len(cfg['sessions']) <= c.MAX_CALLS)
-        for session in cfg['sessions']: c.uid(session)
+        self.c.integer(cfg['max_calls'], 1, self.c.MAX_CALLS)
+        self.c.integer(cfg['expires_ms'], 1)
+        require(type(cfg['sessions']) is list and 1 <= len(cfg['sessions']) <= self.c.MAX_CALLS)
+        for session in cfg['sessions']: self.c.uid(session)
         require(len(set(cfg['sessions'])) == len(cfg['sessions']))
         catalogue = [descriptor_read(d) for d in cfg['catalogue']]
         require(len(catalogue) == 1 and len(catalogue[0].profiles) == 1, 'UNSUPPORTED_PROFILE')
-        self.chosen = c.select(catalogue, next(iter(catalogue[0].profiles)))
+        self.chosen = self.c.select(catalogue, next(iter(catalogue[0].profiles)))
         self.seal = canonical({k: cfg[k] for k in ('scope', 'sharing', 'sessions', 'max_calls',
                             'expires_ms', 'catalogue', 'disclosure', 'runtime_lock')}).decode()
         path = Path(cfg['database']); path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -71,7 +72,7 @@ class ModelService:
                     'catalogue','disclosure','runtime_lock')}).decode() == self.seal, 'CONFLICT')
         principal = self.policy.authenticate(credential)
         require(principal == accepted['principal'] and cfg['scope'] == accepted['scope'], 'UNAUTHORIZED')
-        require(cfg['sharing'] == c.PRIVACY and accepted['session'] in cfg['sessions'], 'UNAUTHORIZED')
+        require(cfg['sharing'] == self.c.PRIVACY and accepted['session'] in cfg['sessions'], 'UNAUTHORIZED')
         require(accepted['selection'] == selection_token(self.chosen), 'UNSUPPORTED_PROFILE')
         from .neoclaw_model_disclosure import disclose
         if self.disclosure is None:disclose(accepted['native_prompt'], cfg['disclosure'], accepted)
@@ -93,10 +94,10 @@ class ModelService:
             captured_ms=row['captured_ms'] if captured else None,
             late=captured and row['captured_ms'] > accepted['deadline_ms'],
             failure_code=row['failure_code'] if row else None)
-        return c.observation(value, accepted)
+        return self.c.observation(value, accepted)
 
     def invoke(self, credential, request):
-        c.request(request); accepted, op = request['intent'], request['operation']
+        self.c.request(request); accepted, op = request['intent'], request['operation']
         self.authorize(credential, accepted, op)
         if op == 'authorize': value = {'authorized': True}
         elif op == 'observe': value = self.observe(accepted)
@@ -104,7 +105,7 @@ class ModelService:
             row = self.row(accepted)
             if row is None:
                 require(now() < min(accepted['deadline_ms'], self.cfg['expires_ms']), 'DEADLINE_EXCEEDED')
-                require(accepted['deadline_ms'] <= now()+c.deadline_limit(accepted['profile']), 'INVALID_ARGUMENT')
+                require(accepted['deadline_ms'] <= now()+self.c.deadline_limit(accepted['profile']), 'INVALID_ARGUMENT')
                 with self.db:
                     self.db.execute('BEGIN IMMEDIATE')
                     require(self.db.execute('SELECT count(*) FROM model_calls').fetchone()[0] < self.cfg['max_calls'], 'OVERLOADED')
@@ -120,7 +121,7 @@ class ModelService:
                 self.authorize(credential, accepted, 'complete')
                 # No retry on exceptions, malformed results or process loss. The
                 # durable reservation remains spent, even if no call escaped.
-                try: response = c.completion(self.backend.complete(c.CompletionInput(**accepted)))
+                try: response = self.c.completion(self.backend.complete(self.c.CompletionInput(**accepted)))
                 except ContractError as exc:
                     code = exc.code if exc.code in ('NOT_AVAILABLE','INVALID_ARGUMENT','UNSUPPORTED_PROFILE','DEADLINE_EXCEEDED') else 'NOT_AVAILABLE'
                     with self.db:self.db.execute('UPDATE model_calls SET failure_code=? WHERE id=?', (code,accepted['id']))

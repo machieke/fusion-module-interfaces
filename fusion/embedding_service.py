@@ -20,7 +20,7 @@ class EmbeddingService:
         self.encoder, self.hook = encoder, hook
         self.chosen = c.select([descriptor_read(d) for d in self.config['catalogue']])
         self.selections={c.PROFILE:self.chosen}
-        if 'memory_helper_inputs' in self.config:
+        if 'memory_helper_inputs' in self.config or 'text_policy' in self.config:
             self.selections[c.MEMORY_PROFILE]=c.select([descriptor_read(d) for d in self.config['catalogue']],c.MEMORY_PROFILE)
         self.db = sqlite3.connect(self.config['database'], timeout=.2)
         self.db.row_factory = sqlite3.Row
@@ -46,7 +46,10 @@ class EmbeddingService:
         require(selection_token(chosen) == accepted['selection'] == selection_token(self.selections[accepted['profile']]), 'UNSUPPORTED_PROFILE')
         # Explicit separate consent for the exact post-native-transformation text.
         memory=accepted['profile']==c.MEMORY_PROFILE
-        require(accepted['text'] in cfg.get('memory_helper_inputs' if memory else 'approved_helper_inputs',[]), 'UNAUTHORIZED')
+        if 'text_policy' in cfg:
+            from .preview_text import check
+            check(cfg,accepted['text'],'remember' if memory else 'query',principal)
+        else:require(accepted['text'] in cfg.get('memory_helper_inputs' if memory else 'approved_helper_inputs',[]), 'UNAUTHORIZED')
         self.policy.check(principal, accepted['scope'], ('embedding.memory.' if memory else 'embedding.') + mode)
 
     def invoke(self, credential, request):

@@ -1,0 +1,37 @@
+{
+  "additional_live_generations": 0,
+  "post_test_change": "Only PUBLIC_FILES evidence entries changed afterward; tested source identity preserved",
+  "publication_review": "Exact original tool-returned text; contains synthetic fixture names and machine-local source paths, no credential values, key material, private journals or runtime data",
+  "recording": "Original exec tool returned text transcribed verbatim; no rerun represented as original",
+  "runs": [
+    {
+      "behavioral_failures": 0,
+      "command": "/tmp/omega-phase2-operator-dev18/bin/python -m unittest sdk.test_distribution sdk.test_preview_distribution tests.test_reference_schema.ArtifactIdentity -v",
+      "exit_code": 1,
+      "limitation": "Installed operator environment lacks jsonschema; test module import did not execute ArtifactIdentity",
+      "loader_errors": 1,
+      "log": "distribution-allowlist-operator.log",
+      "log_sha256": "4fd4e1dc2e30a79af32845c64f77d26741cc92734dc9d63626b745a69de930c3",
+      "passed_methods": 21
+    },
+    {
+      "behavioral_failures": 0,
+      "command": "artifacts/s03/venv/bin/python -m unittest tests.test_reference_schema.ArtifactIdentity -v",
+      "exit_code": 0,
+      "loader_errors": 0,
+      "log": "distribution-allowlist-schema.log",
+      "log_sha256": "919d1b30c4ec7730a0a7ad6b93be1e689dc863c1a240f6b33992fa524760b438",
+      "passed_methods": 1
+    }
+  ],
+  "schema": "preview-distribution-publication-fixture-qualification/1",
+  "scope": "Authored tiny archive fixtures and static source inputs only; no real Helm invocation, runtime, model or cluster",
+  "test_source_sha256": {
+    "integration/single_node/reference_artifacts.py": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+    "sdk/distribution.py": "e524d264ec0d80289f1cb8463d07b96d9ff7a1b65d957ae422eb23edde8849f2",
+    "sdk/test_distribution.py": "1d8ac9263248891764a065a6bef9cda9c00e2cfb1eae2380ecc6987d66359421",
+    "sdk/test_preview_distribution.py": "502b2409c2fa662f269cb0975c2f1cbbb9b05bec2007d74d0620803b5fb44ba2",
+    "tests/test_reference_schema.py": "6aa201741b72652d90d4c816e0b4c85d9806d9848680baf9257c93505f2cabf3"
+  },
+  "unique_behavioral_methods_passed": 22
+}

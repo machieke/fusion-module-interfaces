@@ -78,7 +78,7 @@ class MemoryAppend:
     def admit(self,key,intent):
         if intent['profile']==c.PROFILE:
             self.db.execute('INSERT INTO app_memory_writes(id,uuid) VALUES(?,?)',(key,str(uuid.uuid4())))
-        elif intent['profile']==v.PROFILE:
+        elif intent['profile'] in (v.PROFILE,'semantic-active-memory-view/1'):
             selected=self.db.execute('SELECT view FROM app_active_view WHERE singleton=1').fetchone()[0]
             self.db.execute('INSERT INTO app_query_views VALUES(?,?)',(key,selected))
     def view_for(self,row):
@@ -101,10 +101,11 @@ class MemoryAppend:
     def accepted(self,row):
         state=self.state(row);require(state['intent'] is not None,'NOT_AVAILABLE');return c.intent(json.loads(state['intent']))
     def intent(self,row,vector_sha256):
+        from .preview_text import helper
         state=self.state(row);cfg,_=self.settings();raw=json.loads(row['premises'])['arguments']['content']
         return c.intent(dict(profile=c.PROFILE,session=self.app.session,occurrence=row['id'],principal=cfg['principal'],
             scope=cfg['scope'],corpus=cfg['corpus'],uuid=state['uuid'],time=state['sampled_time'],content=raw,
-            helper_input=cfg['inputs'][raw],model=cfg['model'],vector_sha256=vector_sha256,deadline_ms=row['deadline'],
+            helper_input=helper(cfg,raw,'remember'),model=cfg['model'],vector_sha256=vector_sha256,deadline_ms=row['deadline'],
             selections={**self.app.binding['memory_append']['selections'],
                         'embedding':self.app.binding['memory_embedding']['selection']}))
     def preflight(self,row):
@@ -163,6 +164,10 @@ class MemoryAppend:
         through=observed['through']
         with self.db:self.db.execute('UPDATE app_memory_writes SET through_head=? WHERE id=?',(canonical(through).decode(),row['id']))
         self.app.hook('after_append_enrollment')
+        self.publish_view(row,through)
+        return state['uuid']
+    def publish_view(self,row,through):
+        cfg,_=self.settings()
         snap=self.call(row,'search','published',dict(through=through))
         if snap is None:
             snap=self.call(row,'search','build',dict(through=through),effect=True)
@@ -173,7 +178,6 @@ class MemoryAppend:
         self.app.hook('after_append_publication')
         self.read_ready(row,snap)
         self.ready_view(row,snap)
-        return state['uuid']
     def ready_view(self,row,snapshot):
         state=self.state(row);cfg,_=self.settings()
         if state['view'] is not None:
@@ -215,13 +219,15 @@ class MemoryAppend:
         row=self.current();state=self.state(row)
         require(value=='REMEMBER-SUCCESS' and state['linked']==1 and state['view'] is not None,'NOT_AVAILABLE')
         self.authorize(row);self.read_ready(row,json.loads(state['snapshot']))
+        value=self.result_value(row)
         require(row['result'] is None or row['result']==value,'CONFLICT')
         with self.db:self.db.execute('UPDATE app_occurrences SET result=?,done=1 WHERE id=?',(value,row['id']))
         self.note(row,'native-success-captured')
         self.app.hook('after_native_result_capture');return value
+    def result_value(self,row):return 'REMEMBER-SUCCESS'
     def replay(self,row=None):
         row=self.current() if row is None else row;state=self.state(row)
-        require(row['result']=='REMEMBER-SUCCESS' and state['view'] is not None and state['linked']==1,'NOT_AVAILABLE')
+        require(row['result']==self.result_value(row) and state['view'] is not None and state['linked']==1,'NOT_AVAILABLE')
         self.authorize(row);self.read_ready(row,json.loads(state['snapshot']));return row['result']
     def partial(self):
         row=self.current();state=self.state(row);receipts=json.loads(state['receipts'])

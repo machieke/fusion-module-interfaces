@@ -235,3 +235,18 @@ class GeneratedCommitments:
             db.execute("INSERT INTO m4_observations(value) VALUES(?)", (canonical(asdict(result)).decode(),))
         self.hook("after_chain_observation")
         return result
+
+    def saved_intent(self):
+        """Owner-authoritative restart observation; never signs or submits.
+
+        The deploy identity and read name are public synthetic chain data.
+        No caller opens this owner's journal to recover a lost reply.
+        """
+        self.authorize()
+        with self.db() as db:
+            row = db.execute('SELECT signed,read_name,receipt FROM m4_intent WHERE id=1').fetchone()
+        if row is None or row[0] is None:
+            return None
+        signed = json.loads(row[0])
+        return dict(deploy_id=signed['signature'], read_name=row[1],
+                    receipt=json.loads(row[2]) if row[2] else None)

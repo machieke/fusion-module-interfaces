@@ -1,0 +1,147 @@
+{
+  "classification": "BOUNDED_REPEATED_NATIVE_WORKFLOW_NOT_SLA",
+  "namespace": "omega-ref-phase2-main19",
+  "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "native_report_sha256": "0f13551eb2f6dcb3c1c2a3cc997a3eb88473840cff1216649f7f8b40c0bd9f5f",
+  "operator_inputs": 23,
+  "task_result_inputs": 4,
+  "logical_memories": 2,
+  "immutable_revisions": 3,
+  "withdrawals": 1,
+  "operator_observed_seconds": {
+    "min": 17.659,
+    "max": 33.614,
+    "mean": 25.828478260869566,
+    "median": 26.679
+  },
+  "per_input": [
+    {
+      "command": "pin",
+      "role": "omega-agent-b",
+      "seconds": 17.659
+    },
+    {
+      "command": "remember",
+      "role": "omega-agent",
+      "seconds": 19.303
+    },
+    {
+      "command": "delegate",
+      "role": "omega-agent",
+      "seconds": 20.072
+    },
+    {
+      "command": "delegate",
+      "role": "omega-agent-b",
+      "seconds": 19.988
+    },
+    {
+      "command": "episodes",
+      "role": "omega-agent",
+      "seconds": 18.19
+    },
+    {
+      "command": "link",
+      "role": "omega-agent",
+      "seconds": 19.828
+    },
+    {
+      "command": "support",
+      "role": "omega-agent",
+      "seconds": 25.192
+    },
+    {
+      "command": "support",
+      "role": "omega-agent",
+      "seconds": 28.4
+    },
+    {
+      "command": "contradict",
+      "role": "omega-agent",
+      "seconds": 30.186
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 33.614
+    },
+    {
+      "command": "promote",
+      "role": "omega-agent",
+      "seconds": 31.659
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 33.494
+    },
+    {
+      "command": "pin",
+      "role": "omega-agent",
+      "seconds": 26.679
+    },
+    {
+      "command": "inspect-atom",
+      "role": "omega-agent",
+      "seconds": 28.199
+    },
+    {
+      "command": "unlink",
+      "role": "omega-agent",
+      "seconds": 26.589
+    },
+    {
+      "command": "write-file",
+      "role": "omega-agent",
+      "seconds": 18.437
+    },
+    {
+      "command": "append-file",
+      "role": "omega-agent",
+      "seconds": 17.892
+    },
+    {
+      "command": "read-file",
+      "role": "omega-agent",
+      "seconds": 18.158
+    },
+    {
+      "command": "remember",
+      "role": "omega-agent",
+      "seconds": 31.685
+    },
+    {
+      "command": "update",
+      "role": "omega-agent",
+      "seconds": 31.867
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 33.47
+    },
+    {
+      "command": "forget",
+      "role": "omega-agent",
+      "seconds": 31.549
+    },
+    {
+      "command": "query",
+      "role": "omega-agent",
+      "seconds": 31.945
+    }
+  ],
+  "conditions": "Cached immutable images/native/model assets; fresh journals; real E5 encoding and native tools; recorded text proposals; measured round-trip input observation includes tools/capture. No SLA, throughput or precise token claim.",
+  "limits": {
+    "agents": 2,
+    "preselected_sessions_per_agent": 2,
+    "inputs_per_session": 24,
+    "pending_per_session": 4,
+    "input_timeout_ms": 120000,
+    "ordinary_tool_timeout_ms": 30000,
+    "aggregate_source_records": 512,
+    "operator_submissions_max": 32,
+    "observer_seconds_max": 1800
+  },
+  "additional_live_generations": 0
+}

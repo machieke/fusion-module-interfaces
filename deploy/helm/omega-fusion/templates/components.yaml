@@ -5,12 +5,15 @@
 {{- $workflow := $.Values.workflow.enabled }}
 {{- $reference := $.Values.reference.enabled }}
 {{- $chain := and $reference (eq $.Values.reference.profile "chain") }}
+{{- $preview := $.Values.preview.enabled }}
 {{- $plain := or (eq $name "f1r3node") $memoryAgent (and $workflow (has $name (list "fusion-channel-bridge" "irc-server" "irc-peer"))) }}
+{{- if $preview }}{{- $plain = eq $name "f1r3node" }}{{- end }}
 {{- $portName := ternary "health" "https" $plain }}
 {{- $composition := ternary "neoclaw-memory-services/1" "neoclaw-separated-services/1" $memoryRole }}
 {{- if $workflow }}{{- $composition = "neoclaw-model-channel-services/1" }}{{- end }}
 {{- if $reference }}{{- $composition = "synthetic-cognitive-services/1" }}{{- end }}
 {{- if $chain }}{{- $composition = "generated-inspect-services/1" }}{{- end }}
+{{- if $preview }}{{- $composition = "omega-single-node-developer-preview/1" }}{{- end }}
 {{- $image := default $.Values.image $component.image }}
 {{- $config := dict "role" $name "service_composition" $composition "state" "/state" "run" "/run/fusion" "secret_directory" "/secrets" "https_port" $.Values.httpsPort "capacity" $component.config.capacity "revision" $component.config.revision "native_enabled" $component.config.nativeEnabled "worker_enabled" $component.config.workerEnabled "enable_test_faults" $.Values.testFaultsEnabled "test" $component.config.test "peers" (dict "fusion-execution" (printf "fusion-execution.%s.svc.cluster.local" $.Release.Namespace) "fusion-storage" (printf "fusion-storage.%s.svc.cluster.local" $.Release.Namespace) "fusion-messaging" (printf "fusion-messaging.%s.svc.cluster.local" $.Release.Namespace) "fusion-search" (printf "fusion-search.%s.svc.cluster.local" $.Release.Namespace) "fusion-embedding" (printf "fusion-embedding.%s.svc.cluster.local" $.Release.Namespace)) }}
 {{- if not $.Values.memory.enabled }}
@@ -34,6 +37,14 @@
 {{- end }}
 {{- if $memoryRole }}
 {{- $_ := set $config "memory" (omit $.Values.memory "enabled") }}
+{{- end }}
+{{- if $preview }}
+{{- range $peer := keys $.Values.components }}
+{{- $_ := set $config.peers $peer (printf "%s.%s.svc.cluster.local" $peer $.Release.Namespace) }}
+{{- end }}
+{{- $p := deepCopy $.Values.preview }}
+{{- if ne $name "fusion-model" }}{{- $_ := unset $p "responses" }}{{- end }}
+{{- $_ := set $config "preview" $p }}
 {{- end }}
 ---
 apiVersion: v1
@@ -99,7 +110,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       terminationGracePeriodSeconds: 30
-      securityContext: {runAsNonRoot: true, runAsUser: 1000, runAsGroup: 1000, fsGroup: 1000}
+      securityContext: {runAsNonRoot: true, runAsUser: 1000, runAsGroup: 1000, fsGroup: 1000, fsGroupChangePolicy: OnRootMismatch}
       containers:
         - name: {{ $name }}
           image: "{{ $image.repository }}{{ if $image.digest }}@{{ $image.digest }}{{ else }}:{{ $image.tag }}{{ end }}"
@@ -170,7 +181,7 @@ spec:
           secret:
             secretName: {{ required "existingSecret must name a pre-created Secret" $component.existingSecret }}
             defaultMode: 0440
-            {{- if $memoryAgent }}
+            {{- if and $memoryAgent (not $preview) }}
             # The native caller has CA trust and scoped client tokens only.
             items:
               {{- range $key := list "ca.crt" "fusion-execution-token" "fusion-storage-token" "fusion-messaging-token" "fusion-search-token" "fusion-embedding-token" }}

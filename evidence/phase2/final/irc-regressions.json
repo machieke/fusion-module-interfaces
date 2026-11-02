@@ -1,0 +1,137 @@
+{
+  "schema": "phase2-final-irc-regressions/1",
+  "status": "PASS",
+  "scope": "Preserved single-agent IRC recorded composition; not the two-agent combined cognitive/chain composition",
+  "runtime_source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "qualification_source_sha256": "8139c8f84f77633ffc3c62d1b0a3bda3327c721b091b137b37b9fc22560c1fbc",
+  "qualification_source_files": 353,
+  "qualification_packet": "fde2f831621d74a5f6d40da8c615a8bc9c06787355eede8550727b408d38a5bd",
+  "qualification_report": "evidence/phase2/final/irc/qualification.json",
+  "qualification_sha256": "906be3f93c2d984f4183a3b1141a4b447e8cd0b33a0927b305b8b2832e9379d8",
+  "cases": [
+    {
+      "scenario": "recorded",
+      "report": "evidence/phase2/final/irc/recorded.json",
+      "sha256": "9f52b29fe64898aaf45418951078208bc824be810e1abe7e1d1129f7bbbdb8e2",
+      "assertions": "PASS",
+      "seconds": 121.89116215705872,
+      "workflow_pass": true,
+      "factual_correctness": true,
+      "peer_observation": true,
+      "capture_count": 2,
+      "negative_safety": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "namespace": "omega-ref-p2irc19-01-0-correct",
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "retrieval": true,
+      "next_prompt_binding": true
+    },
+    {
+      "scenario": "uncertain-send",
+      "report": "evidence/phase2/final/irc/uncertain-send.json",
+      "sha256": "e1dff22b7faa49dd5d29eb1e64763920690f5ec54548fe35b0ee06a5bb06afc4",
+      "assertions": "PASS",
+      "seconds": 95.02197623252869,
+      "workflow_pass": false,
+      "factual_correctness": true,
+      "peer_observation": false,
+      "capture_count": 2,
+      "negative_safety": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "namespace": "omega-ref-p2irc19-01-1-uncertain-send",
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "retrieval": true,
+      "next_prompt_binding": true
+    },
+    {
+      "scenario": "wrong-answer",
+      "report": "evidence/phase2/final/irc/wrong-answer.json",
+      "sha256": "a969f4d0714c7b890d8f2987423036187e1578a20cb2bcb39b44339c1a505e40",
+      "assertions": "PASS",
+      "seconds": 84.30541181564331,
+      "workflow_pass": false,
+      "factual_correctness": false,
+      "peer_observation": true,
+      "capture_count": 2,
+      "negative_safety": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "namespace": "omega-ref-p2irc19-01-2-wrong-permitted",
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "retrieval": true,
+      "next_prompt_binding": true
+    },
+    {
+      "scenario": "absent-fact",
+      "report": "evidence/phase2/final/irc/absent-fact.json",
+      "sha256": "29623e467a4068c5c4a27d834942893f7c2cc25ae8d54f33178a5857bf904994",
+      "assertions": "PASS",
+      "seconds": 76.47491550445557,
+      "workflow_pass": false,
+      "factual_correctness": false,
+      "peer_observation": true,
+      "capture_count": 2,
+      "negative_safety": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "namespace": "omega-ref-p2irc19-01-3-absent-corpus",
+      "admissions": [
+        "authorized",
+        "authorized"
+      ],
+      "retrieval": true,
+      "next_prompt_binding": true
+    },
+    {
+      "scenario": "unready-search",
+      "report": "evidence/phase2/final/irc/unready-search.json",
+      "sha256": "a991216a71c57d675d863dfe2b6c19da11fc68f07b359788efcc2e5da3f61884",
+      "assertions": "PASS",
+      "seconds": 83.83190560340881,
+      "workflow_pass": false,
+      "factual_correctness": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "peer_observation": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "capture_count": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "negative_safety": "unready-search refuses captured query completion and emits no reply",
+      "namespace": "omega-ref-p2irc19-01-4-unready-search",
+      "admissions": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "retrieval": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "next_prompt_binding": "NOT_OBSERVED_FOR_NEGATIVE_PATH"
+    },
+    {
+      "scenario": "missing-payload",
+      "report": "evidence/phase2/final/irc/missing-payload.json",
+      "sha256": "15872664a57b298217f5ccdd5882ebd59e55a11a26f7f24852ed6a13df567801",
+      "assertions": "PASS",
+      "seconds": 83.51617908477783,
+      "workflow_pass": false,
+      "factual_correctness": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "peer_observation": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "capture_count": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "negative_safety": "missing-payload refuses captured query completion and emits no reply",
+      "namespace": "omega-ref-p2irc19-01-5-missing-payload",
+      "admissions": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "retrieval": "NOT_OBSERVED_FOR_NEGATIVE_PATH",
+      "next_prompt_binding": "NOT_OBSERVED_FOR_NEGATIVE_PATH"
+    }
+  ],
+  "real": [
+    "native Omega parser/loop/remember/query/send",
+    "E5 CPU",
+    "Chroma",
+    "DeTTa",
+    "Messaging",
+    "ngIRCd/socket peer",
+    "pod-to-pod authenticated HTTPS"
+  ],
+  "fixtures": [
+    "explicit model responses",
+    "empty promoted/history context",
+    "declared metadata clocks"
+  ],
+  "additional_live_generations": 0,
+  "interpretation": "Expected-negative assertions passing do not make unsuccessful tasks successful. No automatic uncertain-send resend."
+}

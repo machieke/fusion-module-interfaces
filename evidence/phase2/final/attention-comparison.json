@@ -1,0 +1,91 @@
+{
+  "schema": "phase2-independent-attention-comparison/1",
+  "status": "PASS",
+  "source_manifest_sha256": "369daf1ab470fb8fe8265fe16a3a5765670c643e7011e3d5369636a803e7e49d",
+  "same_native_consumer_images": true,
+  "same_wall_clock_profile": true,
+  "selections": [
+    "sqlite",
+    "file-fixture"
+  ],
+  "fresh_scopes": true,
+  "state_migration": false,
+  "fixture_boundary": "Both ModelInference response providers are recorded. Independent file Attention is explicitly synthetic-attention-file-fixture; no production-certification claim.",
+  "real_boundaries": [
+    "native Omega loop/parser/tools",
+    "E5",
+    "Chroma",
+    "DeTTa",
+    "authenticated pod HTTPS",
+    "SQLite Attention owner"
+  ],
+  "reports": {
+    "attention-file": {
+      "path": "evidence/phase2/final/attention-file.json",
+      "sha256": "6f45248cacbc5dbaa86aa6dce06fa263c5c2701d70169faee7db5118faf0a8dd",
+      "operator_inputs": 6,
+      "native_tools": [
+        "remember",
+        "query",
+        "promote",
+        "query",
+        "demote",
+        "query"
+      ],
+      "truths": {
+        "before": [
+          [
+            "1.0",
+            "0.5"
+          ]
+        ],
+        "promoted": [
+          [
+            "1.0",
+            "0.5"
+          ]
+        ],
+        "demoted": [
+          [
+            "1.0",
+            "0.5"
+          ]
+        ]
+      }
+    },
+    "attention-sqlite": {
+      "path": "evidence/phase2/final/attention-sqlite.json",
+      "sha256": "1f3fb878c9a917018462b1ff318b2ababb461ae09f17d7b82c2791a137d3b698",
+      "operator_inputs": 6,
+      "native_tools": [
+        "remember",
+        "query",
+        "promote",
+        "query",
+        "demote",
+        "query"
+      ],
+      "truths": {
+        "before": [
+          [
+            "1.0",
+            "0.5"
+          ]
+        ],
+        "promoted": [
+          [
+            "1.0",
+            "0.5"
+          ]
+        ],
+        "demoted": [
+          [
+            "1.0",
+            "0.5"
+          ]
+        ]
+      }
+    }
+  },
+  "additional_live_generations": 0
+}

@@ -1,0 +1,378 @@
+[
+  {
+    "role": "omega-agent",
+    "create": {
+      "binding": {
+        "catalogue": "119397233956d06fd22434c5ba7426074c4492624a4f3a9926b3a4ce9dd4b744",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev05"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev05",
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent-b",
+    "create": {
+      "binding": {
+        "catalogue": "119397233956d06fd22434c5ba7426074c4492624a4f3a9926b3a4ce9dd4b744",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev05"
+      },
+      "complete": true,
+      "inputs": [],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "B",
+      "scope": "synthetic-phase2-dev05",
+      "session": "329aa216-6a09-4b1c-991d-51cd138ba300",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 1,
+    "accepted": {
+      "accepted": 1793633513557,
+      "assignment": "synthetic-task",
+      "deadline": 1793633543557,
+      "id": "source-dev05-1",
+      "sequence": 1,
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "119397233956d06fd22434c5ba7426074c4492624a4f3a9926b3a4ce9dd4b744",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev05"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793633513557,
+          "assignment": "synthetic-task",
+          "deadline": 1793633543557,
+          "id": "source-dev05-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic jade prism is stored in crate violet"
+          },
+          "result": {
+            "occurrences": [
+              "85e02d05-9035-54bf-b214-42becb882a59"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic jade prism is stored in crate violet) {_quote_logical_id_quote_:_quote_033c2e59-7ae4-5dbb-9933-47472e09b7d3_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:224d8721-9c50-5c6e-8dc6-17a45f10af80_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_d4e6672e58d0204f54e6157a5da4e1eb4e2f601046d489e14c3e5885eb4399bc_quote_,_quote_id_quote_:_quote_dc68bd93-7f30-54bc-96a6-c1e7eefd50b4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_a337a73b3bb43b8b6b6c02475752166d8722fcd0248e6599913af51a154b1afc_quote_,_quote_id_quote_:_quote_ea12537b-8171-514a-98d6-1400977618f0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_3f161830cf8538eaf4d8fd355ea09148edf294c6e36181108adbcb8ad0536ecd_quote_,_quote_corpus_quote_:_quote_generated-phase2-combined_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_2c53adee-d642-5726-9d2c-9340ae81dd5e_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_8b91624a-8d92-4c70-bd91-1c3dbf0f38ed_quote_},_quote_logical_quote_:_quote_ae3647db39afc0fc407c574bff85a305c3e6f13fc960b35fca0530ccd9978895_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev05",
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 2,
+    "accepted": {
+      "accepted": 1793633535788,
+      "assignment": "synthetic-task",
+      "deadline": 1793633565788,
+      "id": "source-dev05-2",
+      "sequence": 2,
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "119397233956d06fd22434c5ba7426074c4492624a4f3a9926b3a4ce9dd4b744",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev05"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793633513557,
+          "assignment": "synthetic-task",
+          "deadline": 1793633543557,
+          "id": "source-dev05-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic jade prism is stored in crate violet"
+          },
+          "result": {
+            "occurrences": [
+              "85e02d05-9035-54bf-b214-42becb882a59"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic jade prism is stored in crate violet) {_quote_logical_id_quote_:_quote_033c2e59-7ae4-5dbb-9933-47472e09b7d3_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:224d8721-9c50-5c6e-8dc6-17a45f10af80_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_d4e6672e58d0204f54e6157a5da4e1eb4e2f601046d489e14c3e5885eb4399bc_quote_,_quote_id_quote_:_quote_dc68bd93-7f30-54bc-96a6-c1e7eefd50b4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_a337a73b3bb43b8b6b6c02475752166d8722fcd0248e6599913af51a154b1afc_quote_,_quote_id_quote_:_quote_ea12537b-8171-514a-98d6-1400977618f0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_3f161830cf8538eaf4d8fd355ea09148edf294c6e36181108adbcb8ad0536ecd_quote_,_quote_corpus_quote_:_quote_generated-phase2-combined_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_2c53adee-d642-5726-9d2c-9340ae81dd5e_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_8b91624a-8d92-4c70-bd91-1c3dbf0f38ed_quote_},_quote_logical_quote_:_quote_ae3647db39afc0fc407c574bff85a305c3e6f13fc960b35fca0530ccd9978895_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793633535788,
+          "assignment": "synthetic-task",
+          "deadline": 1793633565788,
+          "id": "source-dev05-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic jade prism storage"
+          },
+          "result": {
+            "occurrences": [
+              "fc50523b-60d2-5f11-a79a-e3e03891836c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((query synthetic jade prism storage) [[[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 15:32:07_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 15:32:07_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic jade prism is stored in crate violet_apostrophe_]]_newline_PREVIEW_MEMORY_HANDLES: {_quote_3680ff02-3dcd-4dce-b9ba-ddbab886f535_quote_:{_quote_handle_quote_:_quote_oh1:memory:224d8721-9c50-5c6e-8dc6-17a45f10af80_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_d4e6672e58d0204f54e6157a5da4e1eb4e2f601046d489e14c3e5885eb4399bc_quote_,_quote_id_quote_:_quote_dc68bd93-7f30-54bc-96a6-c1e7eefd50b4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_a337a73b3bb43b8b6b6c02475752166d8722fcd0248e6599913af51a154b1afc_quote_,_quote_id_quote_:_quote_ea12537b-8171-514a-98d6-1400977618f0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_}}}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev05",
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 3,
+    "accepted": {
+      "accepted": 1793633558732,
+      "assignment": "synthetic-task",
+      "deadline": 1793633588732,
+      "id": "source-dev05-3",
+      "sequence": 3,
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "119397233956d06fd22434c5ba7426074c4492624a4f3a9926b3a4ce9dd4b744",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev05"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793633513557,
+          "assignment": "synthetic-task",
+          "deadline": 1793633543557,
+          "id": "source-dev05-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic jade prism is stored in crate violet"
+          },
+          "result": {
+            "occurrences": [
+              "85e02d05-9035-54bf-b214-42becb882a59"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic jade prism is stored in crate violet) {_quote_logical_id_quote_:_quote_033c2e59-7ae4-5dbb-9933-47472e09b7d3_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:224d8721-9c50-5c6e-8dc6-17a45f10af80_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_d4e6672e58d0204f54e6157a5da4e1eb4e2f601046d489e14c3e5885eb4399bc_quote_,_quote_id_quote_:_quote_dc68bd93-7f30-54bc-96a6-c1e7eefd50b4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_a337a73b3bb43b8b6b6c02475752166d8722fcd0248e6599913af51a154b1afc_quote_,_quote_id_quote_:_quote_ea12537b-8171-514a-98d6-1400977618f0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_3f161830cf8538eaf4d8fd355ea09148edf294c6e36181108adbcb8ad0536ecd_quote_,_quote_corpus_quote_:_quote_generated-phase2-combined_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_2c53adee-d642-5726-9d2c-9340ae81dd5e_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_8b91624a-8d92-4c70-bd91-1c3dbf0f38ed_quote_},_quote_logical_quote_:_quote_ae3647db39afc0fc407c574bff85a305c3e6f13fc960b35fca0530ccd9978895_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793633535788,
+          "assignment": "synthetic-task",
+          "deadline": 1793633565788,
+          "id": "source-dev05-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic jade prism storage"
+          },
+          "result": {
+            "occurrences": [
+              "fc50523b-60d2-5f11-a79a-e3e03891836c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((query synthetic jade prism storage) [[[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 15:32:07_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 15:32:07_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic jade prism is stored in crate violet_apostrophe_]]_newline_PREVIEW_MEMORY_HANDLES: {_quote_3680ff02-3dcd-4dce-b9ba-ddbab886f535_quote_:{_quote_handle_quote_:_quote_oh1:memory:224d8721-9c50-5c6e-8dc6-17a45f10af80_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_d4e6672e58d0204f54e6157a5da4e1eb4e2f601046d489e14c3e5885eb4399bc_quote_,_quote_id_quote_:_quote_dc68bd93-7f30-54bc-96a6-c1e7eefd50b4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_a337a73b3bb43b8b6b6c02475752166d8722fcd0248e6599913af51a154b1afc_quote_,_quote_id_quote_:_quote_ea12537b-8171-514a-98d6-1400977618f0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_}}}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793633558732,
+          "assignment": "synthetic-task",
+          "deadline": 1793633588732,
+          "id": "source-dev05-3",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "episodes current"
+          },
+          "result": {
+            "occurrences": [
+              "83fc7acd-07e2-5d49-84fb-8c5010fafaa2"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((episodes current) {_quote_complete_quote_:false,_quote_episode_quote_:_quote_oh1:episode:3bc605cf-ee05-546d-a009-cecc2c65c9d9_quote_,_quote_events_quote_:[{_quote_body_quote_:{_quote_assignment_quote_:_quote_synthetic-task_quote_,_quote_observed_ms_quote_:1793633513557,_quote_source_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639_quote_,_quote_text_quote_:_quote_remember The synthetic jade prism is stored in crate violet_quote_},_quote_body_bytes_quote_:179,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_d68912ab613d07f5d7623b57eaa4b7de718795da825e4fe22c915f93e8ec6145_quote_,_quote_event_handle_quote_:_quote_oh1:event:ed4046a2-b0bf-505c-ac52-c9afa7790291_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2f292248a5c73a2e03439b0d88af5c29db1b9576c4c7d71d6017d3eb0bb0ef41_quote_,_quote_id_quote_:_quote_c28ccb7c-6a9f-53b7-844b-aa9d268c8fa5_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639/input_quote_,_quote_sequence_quote_:1},_quote_kind_quote_:_quote_input-receipt_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_c3ccac6ce26bdcd994a9972da4344fb129c862ee87651ede0abb14aaf36e82c7_quote_,_quote_id_quote_:_quote_ed6af7d1-220d-5557-9ecc-dea272333a50_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:1},{_quote_body_quote_:{_quote_classification_quote_:_quote_authenticated-synthetic-input-not-independent-of-its-copies_quote_,_quote_observed_ms_quote_:1793633513557,_quote_source_quote_:{_quote_handle_quote_:_quote_oh1:event:e3a85c89-999f-5f1d-99f5-1b24aacd8d31_quote_,_quote_kind_quote_:_quote_event_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_492d41e98b2086229a82cae4d9a7d9cf60f78bef388ed79eac193e9d7692c473_quote_,_quote_id_quote_:_quote_9af5ee09-300c-5e74-9d19-cbf137b435c3_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_source-occurrence/9aba410cc05080c1f9ff9677649b70689435112f4091585c723520b67854c799_quote_,_quote_sequence_quote_:1}}},_quote_body_bytes_quote_:707,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_dd761e6e3d16e1e8bb33bca3c752084b0fa145b14869c5ade6beee4b467c1d95_quote_,_quote_event_handle_quote_:_quote_oh1:event:e7e3a006-5a08-5ffc-b596-c745ceb4a699_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_706bcf521d564bed60758b45f7413e2ba08545209db74a5103f4480c5924f40e_quote_,_quote_id_quote_:_quote_5b180e44-33b1-5436-8300-40d27ac25c63_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639/source_quote_,_quote_sequence_quote_:2},_quote_kind_quote_:_quote_external-observation_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_0c33bcbc2a521d3c7b823d6b52f3c36d29f631bc7282d9063b77c2d3503df257_quote_,_quote_id_quote_:_quote_a99f0202-6295-565e-801f-e6e16aef3f67_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:2},{_quote_body_quote_:{_quote_capture_quote_:{_quote_captured_ms_quote_:1793633525316,_quote_failure_code_quote_:null,_quote_id_quote_:_quote_970ab769-eaf3-5660-87c6-5494aa5d25fa_quote_,_quote_intent_sha256_quote_:_quote_a4bc4921a1f36f30ac9f888ddc1ea6b9ab77e2d3a752c4c427504c518beda9e6_quote_,_quote_late_quote_:false,_quote_principal_quote_:_quote_A_quote_,_quote_reserved_quote_:1,_quote_response_quote_:{_quote_durations_ns_quote_:{_quote_generation_quote_:null,_quote_load_quote_:null,_quote_prompt_quote_:null,_quote_total_quote_:null},_quote_finish_reason_quote_:_quote_stop_quote_,_quote_native_text_quote_:_quote_remember The synthetic jade prism is stored in crate violet_quote_,_quote_observed_model_quote_:_quote_authored-native-command-proposals_quote_,_quote_outcome_quote_:_quote_complete_quote_,_quote_provider_request_id_quote_:null,_quote_raw_text_quote_:_quote_remember The synthetic jade prism is stored in crate violet_quote_,_quote_usage_quote_:{_quote_input_tokens_quote_:null,_quote_output_tokens_quote_:null,_quote_reasoning_tokens_quote_:null}},_quote_selection_quote_:_quote_f48182343cc757f82d88d91e75d81760895d716677cacec9b9b0885c7d63ece2_quote_,_quote_state_quote_:_quote_captured_quote_},_quote_model_id_quote_:_quote_970ab769-eaf3-5660-87c6-5494aa5d25fa_quote_,_quote_observed_ms_quote_:1793633513557,_quote_source_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639_quote_},_quote_body_bytes_quote_:892,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_b9735317dbffdaee63290997cb24f427028e17acbbb969a047eeadebc6bb3683_quote_,_quote_event_handle_quote_:_quote_oh1:event:3707e9c9-f50a-5ccb-9a9b-59ea5ee5f957_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_19dd77db0047a55b764bda95bc10406421bee648514865767a33e4052fb51843_quote_,_quote_id_quote_:_quote_abf1e40d-cafa-5722-8035-c6f76890bda5_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_970ab769-eaf3-5660-87c6-5494aa5d25fa/proposal_quote_,_quote_sequence_quote_:3},_quote_kind_quote_:_quote_model-proposal_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_3dff3ded15b3b757e94e7e4f506bb414e2f6a72add95b1f08a5e9c1ec8d541c0_quote_,_quote_id_quote_:_quote_aba197b3-503a-5d57-acb0-7954158969c2_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:3},{_quote_body_quote_:{_quote_intent_quote_:{_quote_arguments_quote_:{_quote_content_quote_:_quote_The synthetic jade prism is stored in crate violet_quote_},_quote_operation_quote_:_quote_remember_quote_,_quote_profile_quote_:_quote_neoclaw-append-only-memory/1_quote_},_quote_observed_ms_quote_:1793633513557,_quote_occurrence_quote_:_quote_85e02d05-9035-54bf-b214-42becb882a59_quote_,_quote_position_quote_:0,_quote_source_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639_quote_},_quote_body_bytes_quote_:297,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_3a6cff283595aad103a0fc1710e8c586ab4bc6764bf7ad613faa042b216f52c5_quote_,_quote_event_handle_quote_:_quote_oh1:event:950eb6ff-4f30-5b89-9119-c75d5a47f746_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2444995fa4380e62633a79ec3f77182d0d3ce92353478f0cb6997d0cb56fdf64_quote_,_quote_id_quote_:_quote_ba55c465-f916-5119-95d9-a11e60d4212b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_85e02d05-9035-54bf-b214-42becb882a59/admission_quote_,_quote_sequence_quote_:4},_quote_kind_quote_:_quote_command-admitted_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_3e97f6e52fdbb19bc34f54f093ed96d5ad407a65a285c92cc9048904036e6884_quote_,_quote_id_quote_:_quote_77d10e51-f61a-5725-8335-b3411373ba61_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:4}],_quote_interpretation_quote_:_quote_administrative-history-not-empirical-evidence_quote_,_quote_next_selector_quote_:_quote_oh1:episode:3bc605cf-ee05-546d-a009-cecc2c65c9d9@14:5_quote_,_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_ref_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_snapshot_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_selection_quote_:_quote_69184fdedf12c90240862c587475a38e8cf2965dcab980dfd19fa5f3d11de98e_quote_,_quote_through_quote_:14}}))))",
+            "turn": 3
+          },
+          "sequence": 3,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev05",
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "active"
+    }
+  },
+  {
+    "role": "omega-agent",
+    "input": 4,
+    "accepted": {
+      "accepted": 1793633649099,
+      "assignment": "synthetic-task",
+      "deadline": 1793633679099,
+      "id": "source-dev05-4",
+      "sequence": 4,
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "accepted"
+    },
+    "observed": {
+      "binding": {
+        "catalogue": "119397233956d06fd22434c5ba7426074c4492624a4f3a9926b3a4ce9dd4b744",
+        "limits": {
+          "inputs": 24,
+          "pending": 4,
+          "timeout_ms": 30000
+        },
+        "model_boundary": "RECORDED_FIXTURE",
+        "policy": "preview-dev05"
+      },
+      "complete": true,
+      "inputs": [
+        {
+          "accepted": 1793633513557,
+          "assignment": "synthetic-task",
+          "deadline": 1793633543557,
+          "id": "source-dev05-1",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic jade prism is stored in crate violet"
+          },
+          "result": {
+            "occurrences": [
+              "85e02d05-9035-54bf-b214-42becb882a59"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((remember The synthetic jade prism is stored in crate violet) {_quote_logical_id_quote_:_quote_033c2e59-7ae4-5dbb-9933-47472e09b7d3_quote_,_quote_memory_quote_:{_quote_handle_quote_:_quote_oh1:memory:224d8721-9c50-5c6e-8dc6-17a45f10af80_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_d4e6672e58d0204f54e6157a5da4e1eb4e2f601046d489e14c3e5885eb4399bc_quote_,_quote_id_quote_:_quote_dc68bd93-7f30-54bc-96a6-c1e7eefd50b4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_a337a73b3bb43b8b6b6c02475752166d8722fcd0248e6599913af51a154b1afc_quote_,_quote_id_quote_:_quote_ea12537b-8171-514a-98d6-1400977618f0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_}}},_quote_metadata_quote_:_quote_ready_quote_,_quote_prior_quote_:_quote_labelled-compatibility-not-empirical_quote_,_quote_publication_quote_:_quote_observed_quote_,_quote_revision_quote_:1,_quote_snapshot_quote_:{_quote_active_digest_quote_:_quote_3f161830cf8538eaf4d8fd355ea09148edf294c6e36181108adbcb8ad0536ecd_quote_,_quote_corpus_quote_:_quote_generated-phase2-combined_quote_,_quote_embedding_quote_:_quote_neoclaw-e5-large-v2-f169b11-f32-normalized-unprefixed/1_quote_,_quote_generation_quote_:_quote_2c53adee-d642-5726-9d2c-9340ae81dd5e_quote_,_quote_head_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_index_quote_:_quote_chroma-1.5.5-hnsw-l2-default/1_quote_,_quote_lifecycle_quote_:{_quote_profile_quote_:_quote_immutable-memory-lifecycle/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:1,_quote_source_quote_:_quote_8b91624a-8d92-4c70-bd91-1c3dbf0f38ed_quote_},_quote_logical_quote_:_quote_ae3647db39afc0fc407c574bff85a305c3e6f13fc960b35fca0530ccd9978895_quote_,_quote_profile_quote_:_quote_semantic-active-memory-view/1_quote_},_quote_source_quote_:{_quote_profile_quote_:_quote_immutable-commit-feed/1_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_sequence_quote_:18,_quote_source_quote_:_quote_6da52bf3-ba47-45a5-a959-1b52c5c5a2b5_quote_},_quote_status_quote_:_quote_REMEMBER-SUCCESS_quote_}))))",
+            "turn": 1
+          },
+          "sequence": 1,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793633535788,
+          "assignment": "synthetic-task",
+          "deadline": 1793633565788,
+          "id": "source-dev05-2",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "query synthetic jade prism storage"
+          },
+          "result": {
+            "occurrences": [
+              "fc50523b-60d2-5f11-a79a-e3e03891836c"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((query synthetic jade prism storage) [[[_apostrophe_id:_apostrophe_, _apostrophe_2026-11-02 15:32:07_apostrophe_], [_apostrophe_linkedEpisodes:_apostrophe_, [_apostrophe_2026-11-02 15:32:07_apostrophe_]], [_apostrophe_stv_apostrophe_, 1.0, 0.5], _apostrophe_The synthetic jade prism is stored in crate violet_apostrophe_]]_newline_PREVIEW_MEMORY_HANDLES: {_quote_3680ff02-3dcd-4dce-b9ba-ddbab886f535_quote_:{_quote_handle_quote_:_quote_oh1:memory:224d8721-9c50-5c6e-8dc6-17a45f10af80_quote_,_quote_kind_quote_:_quote_memory_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_enrollment_quote_:{_quote_digest_quote_:_quote_d4e6672e58d0204f54e6157a5da4e1eb4e2f601046d489e14c3e5885eb4399bc_quote_,_quote_id_quote_:_quote_dc68bd93-7f30-54bc-96a6-c1e7eefd50b4_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_payload_quote_:{_quote_digest_quote_:_quote_a337a73b3bb43b8b6b6c02475752166d8722fcd0248e6599913af51a154b1afc_quote_,_quote_id_quote_:_quote_ea12537b-8171-514a-98d6-1400977618f0_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_}}}}))))",
+            "turn": 2
+          },
+          "sequence": 2,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793633558732,
+          "assignment": "synthetic-task",
+          "deadline": 1793633588732,
+          "id": "source-dev05-3",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "episodes current"
+          },
+          "result": {
+            "occurrences": [
+              "83fc7acd-07e2-5d49-84fb-8c5010fafaa2"
+            ],
+            "projection": "(RESULTS: ((COMMAND_RETURN: ((episodes current) {_quote_complete_quote_:false,_quote_episode_quote_:_quote_oh1:episode:3bc605cf-ee05-546d-a009-cecc2c65c9d9_quote_,_quote_events_quote_:[{_quote_body_quote_:{_quote_assignment_quote_:_quote_synthetic-task_quote_,_quote_observed_ms_quote_:1793633513557,_quote_source_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639_quote_,_quote_text_quote_:_quote_remember The synthetic jade prism is stored in crate violet_quote_},_quote_body_bytes_quote_:179,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_d68912ab613d07f5d7623b57eaa4b7de718795da825e4fe22c915f93e8ec6145_quote_,_quote_event_handle_quote_:_quote_oh1:event:ed4046a2-b0bf-505c-ac52-c9afa7790291_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2f292248a5c73a2e03439b0d88af5c29db1b9576c4c7d71d6017d3eb0bb0ef41_quote_,_quote_id_quote_:_quote_c28ccb7c-6a9f-53b7-844b-aa9d268c8fa5_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639/input_quote_,_quote_sequence_quote_:1},_quote_kind_quote_:_quote_input-receipt_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_c3ccac6ce26bdcd994a9972da4344fb129c862ee87651ede0abb14aaf36e82c7_quote_,_quote_id_quote_:_quote_ed6af7d1-220d-5557-9ecc-dea272333a50_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:1},{_quote_body_quote_:{_quote_classification_quote_:_quote_authenticated-synthetic-input-not-independent-of-its-copies_quote_,_quote_observed_ms_quote_:1793633513557,_quote_source_quote_:{_quote_handle_quote_:_quote_oh1:event:e3a85c89-999f-5f1d-99f5-1b24aacd8d31_quote_,_quote_kind_quote_:_quote_event_quote_,_quote_principal_quote_:_quote_A_quote_,_quote_profile_quote_:_quote_omega-preview-handles/1_quote_,_quote_scope_quote_:_quote_synthetic-phase2-dev05_quote_,_quote_target_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_492d41e98b2086229a82cae4d9a7d9cf60f78bef388ed79eac193e9d7692c473_quote_,_quote_id_quote_:_quote_9af5ee09-300c-5e74-9d19-cbf137b435c3_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_source-occurrence/9aba410cc05080c1f9ff9677649b70689435112f4091585c723520b67854c799_quote_,_quote_sequence_quote_:1}}},_quote_body_bytes_quote_:707,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_dd761e6e3d16e1e8bb33bca3c752084b0fa145b14869c5ade6beee4b467c1d95_quote_,_quote_event_handle_quote_:_quote_oh1:event:e7e3a006-5a08-5ffc-b596-c745ceb4a699_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_706bcf521d564bed60758b45f7413e2ba08545209db74a5103f4480c5924f40e_quote_,_quote_id_quote_:_quote_5b180e44-33b1-5436-8300-40d27ac25c63_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639/source_quote_,_quote_sequence_quote_:2},_quote_kind_quote_:_quote_external-observation_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_0c33bcbc2a521d3c7b823d6b52f3c36d29f631bc7282d9063b77c2d3503df257_quote_,_quote_id_quote_:_quote_a99f0202-6295-565e-801f-e6e16aef3f67_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:2},{_quote_body_quote_:{_quote_capture_quote_:{_quote_captured_ms_quote_:1793633525316,_quote_failure_code_quote_:null,_quote_id_quote_:_quote_970ab769-eaf3-5660-87c6-5494aa5d25fa_quote_,_quote_intent_sha256_quote_:_quote_a4bc4921a1f36f30ac9f888ddc1ea6b9ab77e2d3a752c4c427504c518beda9e6_quote_,_quote_late_quote_:false,_quote_principal_quote_:_quote_A_quote_,_quote_reserved_quote_:1,_quote_response_quote_:{_quote_durations_ns_quote_:{_quote_generation_quote_:null,_quote_load_quote_:null,_quote_prompt_quote_:null,_quote_total_quote_:null},_quote_finish_reason_quote_:_quote_stop_quote_,_quote_native_text_quote_:_quote_remember The synthetic jade prism is stored in crate violet_quote_,_quote_observed_model_quote_:_quote_authored-native-command-proposals_quote_,_quote_outcome_quote_:_quote_complete_quote_,_quote_provider_request_id_quote_:null,_quote_raw_text_quote_:_quote_remember The synthetic jade prism is stored in crate violet_quote_,_quote_usage_quote_:{_quote_input_tokens_quote_:null,_quote_output_tokens_quote_:null,_quote_reasoning_tokens_quote_:null}},_quote_selection_quote_:_quote_f48182343cc757f82d88d91e75d81760895d716677cacec9b9b0885c7d63ece2_quote_,_quote_state_quote_:_quote_captured_quote_},_quote_model_id_quote_:_quote_970ab769-eaf3-5660-87c6-5494aa5d25fa_quote_,_quote_observed_ms_quote_:1793633513557,_quote_source_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639_quote_},_quote_body_bytes_quote_:892,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_b9735317dbffdaee63290997cb24f427028e17acbbb969a047eeadebc6bb3683_quote_,_quote_event_handle_quote_:_quote_oh1:event:3707e9c9-f50a-5ccb-9a9b-59ea5ee5f957_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_19dd77db0047a55b764bda95bc10406421bee648514865767a33e4052fb51843_quote_,_quote_id_quote_:_quote_abf1e40d-cafa-5722-8035-c6f76890bda5_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_970ab769-eaf3-5660-87c6-5494aa5d25fa/proposal_quote_,_quote_sequence_quote_:3},_quote_kind_quote_:_quote_model-proposal_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_3dff3ded15b3b757e94e7e4f506bb414e2f6a72add95b1f08a5e9c1ec8d541c0_quote_,_quote_id_quote_:_quote_aba197b3-503a-5d57-acb0-7954158969c2_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:3},{_quote_body_quote_:{_quote_intent_quote_:{_quote_arguments_quote_:{_quote_content_quote_:_quote_The synthetic jade prism is stored in crate violet_quote_},_quote_operation_quote_:_quote_remember_quote_,_quote_profile_quote_:_quote_neoclaw-append-only-memory/1_quote_},_quote_observed_ms_quote_:1793633513557,_quote_occurrence_quote_:_quote_85e02d05-9035-54bf-b214-42becb882a59_quote_,_quote_position_quote_:0,_quote_source_id_quote_:_quote_a3516c9d-c9b9-5003-8195-de7b2361b639_quote_},_quote_body_bytes_quote_:297,_quote_body_omitted_quote_:false,_quote_body_sha256_quote_:_quote_3a6cff283595aad103a0fc1710e8c586ab4bc6764bf7ad613faa042b216f52c5_quote_,_quote_event_handle_quote_:_quote_oh1:event:950eb6ff-4f30-5b89-9119-c75d5a47f746_quote_,_quote_evidence_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_event_ref_quote_:{_quote_digest_quote_:_quote_2444995fa4380e62633a79ec3f77182d0d3ce92353478f0cb6997d0cb56fdf64_quote_,_quote_id_quote_:_quote_ba55c465-f916-5119-95d9-a11e60d4212b_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_occurrence_id_quote_:_quote_85e02d05-9035-54bf-b214-42becb882a59/admission_quote_,_quote_sequence_quote_:4},_quote_kind_quote_:_quote_command-admitted_quote_,_quote_payload_quote_:{_quote_digest_quote_:_quote_3e97f6e52fdbb19bc34f54f093ed96d5ad407a65a285c92cc9048904036e6884_quote_,_quote_id_quote_:_quote_77d10e51-f61a-5725-8335-b3411373ba61_quote_,_quote_revision_quote_:1,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_sequence_quote_:4}],_quote_interpretation_quote_:_quote_administrative-history-not-empirical-evidence_quote_,_quote_next_selector_quote_:_quote_oh1:episode:3bc605cf-ee05-546d-a009-cecc2c65c9d9@14:5_quote_,_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_ref_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_snapshot_quote_:{_quote_episode_quote_:{_quote_id_quote_:_quote_a31cfb7983c9504ac510b4e8170ec4427dfbacf79fb7f752473afb5b6482aa3c_quote_,_quote_scope_ref_quote_:_quote_synthetic-phase2-dev05_quote_},_quote_profile_quote_:_quote_native-session-history/1_quote_,_quote_selection_quote_:_quote_69184fdedf12c90240862c587475a38e8cf2965dcab980dfd19fa5f3d11de98e_quote_,_quote_through_quote_:14}}))))",
+            "turn": 3
+          },
+          "sequence": 3,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "complete"
+        },
+        {
+          "accepted": 1793633649099,
+          "assignment": "synthetic-task",
+          "deadline": 1793633679099,
+          "id": "source-dev05-4",
+          "payload": {
+            "assignment": "synthetic-task",
+            "text": "remember The synthetic jade prism is stored in crate violet"
+          },
+          "result": null,
+          "sequence": 4,
+          "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+          "state": "accepted"
+        }
+      ],
+      "live_generations": 0,
+      "next_after": null,
+      "principal": "A",
+      "scope": "synthetic-phase2-dev05",
+      "session": "7e7827cb-d757-408d-99d7-6e99443d1dd1",
+      "state": "active"
+    }
+  }
+]

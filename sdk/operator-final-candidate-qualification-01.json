@@ -1,0 +1,371 @@
+{
+  "additional_live_generations": 0,
+  "baseline_commit": "c4fb744edbddd003d09db408bed44a59d2df3823",
+  "build_manifest": {
+    "client": {
+      "file": "fusion_module_client-0.2.0-py3-none-any.whl",
+      "sha256": "b7ff0eb206dd554922b70e9e8d9087f717d851b16c7b59b5592a06906651ed50",
+      "sources": {
+        "fusion/__init__.py": {
+          "bytes": 73,
+          "sha256": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+          "source": "fusion/__init__.py"
+        },
+        "fusion/contracts.py": {
+          "bytes": 8746,
+          "sha256": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+          "source": "fusion/contracts.py"
+        },
+        "fusion/lookup_contracts.py": {
+          "bytes": 12359,
+          "sha256": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+          "source": "fusion/lookup_contracts.py"
+        },
+        "fusion/memory_contracts.py": {
+          "bytes": 14579,
+          "sha256": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+          "source": "fusion/memory_contracts.py"
+        },
+        "fusion/memory_types.py": {
+          "bytes": 2565,
+          "sha256": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+          "source": "fusion/memory_types.py"
+        },
+        "fusion/ports.py": {
+          "bytes": 11306,
+          "sha256": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+          "source": "fusion/ports.py"
+        },
+        "fusion/preview_client.py": {
+          "bytes": 9748,
+          "sha256": "230131eaf4752f22bb934ab84f4f560b427834127370ec19905838db95226ece",
+          "source": "fusion/preview_client.py"
+        },
+        "fusion/preview_handles.py": {
+          "bytes": 6209,
+          "sha256": "d180a1a62bdc842a31c92705edfec7e0e020786c1bd17eb87e9581d84490f2d0",
+          "source": "fusion/preview_handles.py"
+        },
+        "fusion/preview_tools.py": {
+          "bytes": 16147,
+          "sha256": "9ec0399916da54e130efcb1f7e8eb75b5d887af7968cd715d26d916b4b824991",
+          "source": "fusion/preview_tools.py"
+        },
+        "fusion/registry.py": {
+          "bytes": 4548,
+          "sha256": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+          "source": "fusion/registry.py"
+        },
+        "fusion/responses.py": {
+          "bytes": 9828,
+          "sha256": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+          "source": "fusion/responses.py"
+        },
+        "fusion_sdk/__init__.py": {
+          "bytes": 1482,
+          "sha256": "c268a360449c27226e815a249b71a41d3bc17f0a262c45e2bbbb3fb7d545d594",
+          "source": "sdk/exports.py"
+        },
+        "fusion_sdk/public-api.json": {
+          "bytes": 1782,
+          "sha256": "92164b7f3cd7ebeac2d2e2342c415f9c9267ad4cc92129fafff6fd4492855447",
+          "source": "sdk/public-api.json"
+        }
+      }
+    },
+    "live_generations": 0,
+    "operator": {
+      "file": "fusion_preview_operator-0.2.0-py3-none-any.whl",
+      "sha256": "96634c0eb3bfc5c3c2a3262120ad1eac9247d96e0e76b743dad9a0260147d432",
+      "sources": {
+        "fusion/preview_deployment_contracts.py": {
+          "bytes": 129,
+          "sha256": "aedb78d404b1481d4877d33a3836c3be1428c4da14d483bb22241a2c2dc96692",
+          "source": "fusion/preview_deployment_contracts.py"
+        },
+        "fusion_operator/cli.py": {
+          "bytes": 1547,
+          "sha256": "d9fb72c75df5f017a2c19c2907f4e588114f4fb0d68ae2bba8728fbe560de377",
+          "source": "sdk/operator_cli.py"
+        },
+        "fusion_operator/recipes/create_secrets.py": {
+          "bytes": 8572,
+          "sha256": "c83bc1e291676f8377e8356317accfae608fa70f30dcc3f011d529d4f0dd4b69",
+          "source": "deploy/single-node/create_secrets.py"
+        },
+        "fusion_operator/recipes/import_workflow_images.py": {
+          "bytes": 1856,
+          "sha256": "c2649a44f9391d0f95c5b7c239eb4c97cf04d9c55c90916581e02c6dbfc9bc62",
+          "source": "deploy/single-node/import_workflow_images.py"
+        },
+        "integration/single_node/__init__.py": {
+          "bytes": 76,
+          "sha256": "e781ae865021224eca8bb1e6860895c9220509ddbf11823b0da11aa19e609ba1",
+          "source": "integration/single_node/__init__.py"
+        },
+        "integration/single_node/chain_address.py": {
+          "bytes": 664,
+          "sha256": "360a20e1e998ad02c868eb40d21517773940f42804ef2d5ff78bb60763107404",
+          "source": "integration/single_node/chain_address.py"
+        },
+        "integration/single_node/preview_secrets.py": {
+          "bytes": 5664,
+          "sha256": "593de47b9e514a809a6114c336d7a7bd904c7d4834ed270163b4f0d1a64ca36b",
+          "source": "integration/single_node/preview_secrets.py"
+        },
+        "integration/single_node/preview_values.py": {
+          "bytes": 5750,
+          "sha256": "4ef868c74d8575aa295542b4b336f362b238d5b917b3108fa96ef709a21c6c4b",
+          "source": "integration/single_node/preview_values.py"
+        },
+        "integration/single_node/preview_workbench.py": {
+          "bytes": 18940,
+          "sha256": "0ba0b99f50bbc5a6b1b6d6da5388c59b9c8dc876100986d2c52d9d1ebe22d010",
+          "source": "integration/single_node/preview_workbench.py"
+        },
+        "integration/single_node/reference_artifacts.py": {
+          "bytes": 6696,
+          "sha256": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+          "source": "integration/single_node/reference_artifacts.py"
+        },
+        "integration/single_node/reference_ops.py": {
+          "bytes": 9541,
+          "sha256": "15d22fc67609f20b59a0e3bbc00fb6817d4eebfda31f4776506f81abe258388c",
+          "source": "integration/single_node/reference_ops.py"
+        }
+      }
+    },
+    "provider": {
+      "file": "fusion_file_feed_example-0.2.0-py3-none-any.whl",
+      "sha256": "92361d6be2a18868c711c34ed621df629e905d105797664cc382256b373237a8",
+      "sources": {
+        "fusion/adapters/__init__.py": {
+          "bytes": 64,
+          "sha256": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+          "source": "fusion/adapters/__init__.py"
+        },
+        "fusion/adapters/fixture_feed.py": {
+          "bytes": 5282,
+          "sha256": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+          "source": "fusion/adapters/fixture_feed.py"
+        },
+        "fusion/policy.py": {
+          "bytes": 1398,
+          "sha256": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+          "source": "fusion/policy.py"
+        },
+        "phase2_provider/__init__.py": {
+          "bytes": 78,
+          "sha256": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+          "source": "examples/phase2_provider/__init__.py"
+        },
+        "phase2_provider/caller.py": {
+          "bytes": 533,
+          "sha256": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+          "source": "examples/phase2_provider/caller.py"
+        },
+        "phase2_provider/conformance.py": {
+          "bytes": 2757,
+          "sha256": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+          "source": "examples/phase2_provider/conformance.py"
+        },
+        "phase2_provider/server.py": {
+          "bytes": 8553,
+          "sha256": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+          "source": "examples/phase2_provider/server.py"
+        }
+      }
+    },
+    "schema": "fusion-preview-sdk-build/1"
+  },
+  "changed_during_run": [],
+  "deterministic_repeat_build": true,
+  "elapsed_seconds": 29.172,
+  "environment_overrides": {
+    "FUSION_SDK_OPERATOR_WHEELHOUSE": "sdk/dist/operator-final-candidate-01"
+  },
+  "executed_command": [
+    "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/reference-distribution/operator-venv/bin/python",
+    "-m",
+    "unittest",
+    "tests.test_phase2_sdk",
+    "tests.test_phase2_sdk_contracts",
+    "tests.test_phase2_sdk_compatibility",
+    "sdk.test_operator_package",
+    "sdk.test_operator_install",
+    "-v"
+  ],
+  "gates": {
+    "actual_cluster_install": "UNRUN_BY_THIS_SUITE",
+    "chain_key_setup": "REAL_CRYPTOGRAPHIC_LIBRARIES_SYNTHETIC_KEYS_NO_CHAIN_PROCESS",
+    "client_sdk": "ISOLATED_INSTALL_AND_REAL_HTTPS_CONTRACT_FIXTURE",
+    "cluster_secret_submission": "EXPLICIT_KUBECTL_COMMAND_STUB",
+    "fresh_values": "EXACT_INSTALLED_GENERATOR_WITH_FIXTURE_IMAGE_MANIFEST",
+    "generative_runtime_contact": "NONE",
+    "hosted_ci": "NOT_OBSERVED",
+    "image_import": "EXACT_RECIPE_WITH_DOCKER_COMMAND_AND_IMAGE_BYTES_FIXTURES",
+    "installed_artifact_verifier": "EXACT_INSTALLED_CLI_WITH_AUTHORED_ARCHIVE_FIXTURES",
+    "operator_install": "FRESH_VENV_NO_REPOSITORY_IMPORTS",
+    "tls": "REAL_OPENSSL_SYNTHETIC_CERTIFICATES",
+    "vulnerability_scan": "NOT_RUN"
+  },
+  "inventory_path": "sdk/dist/operator-final-candidate-01/dependency-inventory.json",
+  "inventory_sha256": "99bfbd5dde984a8bcc5ad74b4959b37a509e0814bfd207a871f3f45d66714425",
+  "limitations": [
+    "Tests temporarily rebuild the exact captured source; deterministic repeat build proves byte identity with the candidate wheelhouse.",
+    "This candidate still requires final source/image/bundle reconciliation and actual artifact-only deployment evidence.",
+    "Optional dependencies qualify CPython3.12 Linux x86_64 only; no empty-cache or air-gap claim.",
+    "All generated synthetic credentials remained in temporary test directories and are absent from this report."
+  ],
+  "operator_core_methods": 4,
+  "operator_install_methods": 5,
+  "optional_wheel_inputs": {
+    "dependency": "Pinned preview-install / artifact-verification / chain-key-setup closure",
+    "files": [
+      {
+        "bytes": 221822,
+        "file": "cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf"
+      },
+      {
+        "bytes": 4753050,
+        "file": "cryptography-50.0.2-cp311-abi3-manylinux_2_28_x86_64.whl",
+        "sha256": "4061c0079120205fb760c58acab6443e217307dcf05e3702cf970e0689972856"
+      },
+      {
+        "bytes": 62600,
+        "file": "pycparser-3.12-py3-none-any.whl",
+        "sha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e"
+      },
+      {
+        "bytes": 2520237,
+        "file": "pycryptodome-4.0.0-cp39-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        "sha256": "73767e06cf75fb8ff86fd3cf77eba8e7614914d0c970fe1d41c216bf7b4b89c1"
+      },
+      {
+        "bytes": 807870,
+        "file": "pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "sha256": "ba1cc08a7ccde2d2ec775841541641e4548226580ab850948cbfda66a1befcdc"
+      }
+    ],
+    "limitations": [
+      "This pin qualifies this platform only; other platform wheels require their own exact artifact identities."
+    ],
+    "obtained_by": [
+      "python",
+      "-m",
+      "pip",
+      "download",
+      "--only-binary=:all:",
+      "--no-deps",
+      "PyYAML==6.0.3",
+      "cryptography==50.0.2",
+      "pycryptodome==4.0.0",
+      "cffi==2.1.1",
+      "pycparser==3.12"
+    ],
+    "origin": "Configured Python package index; original download URL was not retained",
+    "platform": "CPython 3.12 Linux x86_64 manylinux",
+    "purpose": "Fresh preview values/TLS/isolated chain key provisioning; no runtime or node startup",
+    "schema": "fusion-operator-optional-wheel-input/1"
+  },
+  "output_directory": "sdk/dist/operator-final-candidate-01",
+  "qualification": "FINAL_CANDIDATE_NOT_INTEGRATED_DISTRIBUTION_PASS",
+  "returncode": 0,
+  "schema": "fusion-phase2-operator-install-qualification/1",
+  "sdk_regression_methods": 17,
+  "sources_after": {
+    "deploy/single-node/create_secrets.py": "c83bc1e291676f8377e8356317accfae608fa70f30dcc3f011d529d4f0dd4b69",
+    "deploy/single-node/import_workflow_images.py": "c2649a44f9391d0f95c5b7c239eb4c97cf04d9c55c90916581e02c6dbfc9bc62",
+    "docs/phase2/sdk-compatibility.md": "7750021f637b5dfced7503129f6d34640ac544b486c82162f63b35a3a840b327",
+    "examples/phase2_provider/__init__.py": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+    "examples/phase2_provider/caller.py": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+    "examples/phase2_provider/conformance.py": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+    "examples/phase2_provider/server.py": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+    "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+    "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+    "fusion/adapters/fixture_feed.py": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+    "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+    "fusion/lookup_contracts.py": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+    "fusion/memory_contracts.py": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+    "fusion/memory_types.py": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+    "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+    "fusion/ports.py": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+    "fusion/preview_client.py": "230131eaf4752f22bb934ab84f4f560b427834127370ec19905838db95226ece",
+    "fusion/preview_deployment_contracts.py": "aedb78d404b1481d4877d33a3836c3be1428c4da14d483bb22241a2c2dc96692",
+    "fusion/preview_handles.py": "d180a1a62bdc842a31c92705edfec7e0e020786c1bd17eb87e9581d84490f2d0",
+    "fusion/preview_tools.py": "9ec0399916da54e130efcb1f7e8eb75b5d887af7968cd715d26d916b4b824991",
+    "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+    "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+    "integration/single_node/__init__.py": "e781ae865021224eca8bb1e6860895c9220509ddbf11823b0da11aa19e609ba1",
+    "integration/single_node/chain_address.py": "360a20e1e998ad02c868eb40d21517773940f42804ef2d5ff78bb60763107404",
+    "integration/single_node/preview_secrets.py": "593de47b9e514a809a6114c336d7a7bd904c7d4834ed270163b4f0d1a64ca36b",
+    "integration/single_node/preview_values.py": "4ef868c74d8575aa295542b4b336f362b238d5b917b3108fa96ef709a21c6c4b",
+    "integration/single_node/preview_workbench.py": "0ba0b99f50bbc5a6b1b6d6da5388c59b9c8dc876100986d2c52d9d1ebe22d010",
+    "integration/single_node/reference_artifacts.py": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+    "integration/single_node/reference_ops.py": "15d22fc67609f20b59a0e3bbc00fb6817d4eebfda31f4776506f81abe258388c",
+    "sdk/DISTRIBUTION_REVIEW.md": "98f6d8406990c6b36c795d3f1e9a9a99ec2b76095d41768e542d421609165c0c",
+    "sdk/OPERATOR.md": "fba7c13e0483d0a3bbb5643e6439cdf66d6d4991d6033c8af55f2d52f4af71f4",
+    "sdk/build.py": "9216d000a21306fd8660aebd73b407f350315ea3abc4897315666577e712739d",
+    "sdk/exports.py": "c268a360449c27226e815a249b71a41d3bc17f0a262c45e2bbbb3fb7d545d594",
+    "sdk/inventory.py": "4dcb3e781a1473882891a1c6ff8f260b017c2fc50e50b072c32acefbec540a14",
+    "sdk/operator-wheel-inputs.json": "488b15c077ec5b3d41d859116f8ae6dc4e8f16bdd00402f9db3a9568c42cda11",
+    "sdk/operator_cli.py": "d9fb72c75df5f017a2c19c2907f4e588114f4fb0d68ae2bba8728fbe560de377",
+    "sdk/public-api.json": "92164b7f3cd7ebeac2d2e2342c415f9c9267ad4cc92129fafff6fd4492855447",
+    "sdk/test_operator_install.py": "bf03dc3e3f1700fadf68c3bad074547f061ff324217be444d88a86b63aab5bc7",
+    "sdk/test_operator_package.py": "97b9bb74c23145a892bf03f03d3b7b5326bca78bc1b046a4e13062ef327f22f9",
+    "sdk/test_preview_distribution.py": "502b2409c2fa662f269cb0975c2f1cbbb9b05bec2007d74d0620803b5fb44ba2",
+    "tests/test_phase2_sdk.py": "2f286427b8304a1f360210e26647a9f8ddc5c4939cb901fbd4ec504a728ebe2e",
+    "tests/test_phase2_sdk_compatibility.py": "890c751ce89bed9d6e4e17a8d7cc9f423e60aa7f6a5f5fc2898f3a24dc6ce65d",
+    "tests/test_phase2_sdk_contracts.py": "d15fe8f9de5357d6ba23e53ab9053322e129ac68096df84709ce16fb94ae7b32"
+  },
+  "sources_before": {
+    "deploy/single-node/create_secrets.py": "c83bc1e291676f8377e8356317accfae608fa70f30dcc3f011d529d4f0dd4b69",
+    "deploy/single-node/import_workflow_images.py": "c2649a44f9391d0f95c5b7c239eb4c97cf04d9c55c90916581e02c6dbfc9bc62",
+    "docs/phase2/sdk-compatibility.md": "7750021f637b5dfced7503129f6d34640ac544b486c82162f63b35a3a840b327",
+    "examples/phase2_provider/__init__.py": "44101d2d6c9eccc3119da745c18ca42f8ab0a24480e63ad6c3c399c17bd69d7c",
+    "examples/phase2_provider/caller.py": "c9f07c5ae6e93720b387b8bd46c42111c2b9a216481c1261bdca2b9ed7d58a24",
+    "examples/phase2_provider/conformance.py": "fcfe49bafb6bf3e5bdc4f50921dad0c66a8d5a607909f6be5d5047acde470ba9",
+    "examples/phase2_provider/server.py": "a298d0dcb628fa8496574c6307e6015e7b532c79172dffc99c4840691851f3a0",
+    "fusion/__init__.py": "f2aa7ac6ea11f027248b726a36050b0e0da3590ea2411a2dde9a23db97a72467",
+    "fusion/adapters/__init__.py": "f5bd963074ac3a66da883ee77fa306ee09d617f9024ce660b4adaf006d97686c",
+    "fusion/adapters/fixture_feed.py": "3f721cd10390f3d300ed6b374ae473c63756062e92cf4b72c21b657d2a5182ba",
+    "fusion/contracts.py": "5b6bb41637757384250ed9174430083004f00378c8811e40eb0dc9d3ef0efc5b",
+    "fusion/lookup_contracts.py": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+    "fusion/memory_contracts.py": "da999fe5e88d3f11871643fd4e155141efcffeaf4556e8bce533a03cd696204d",
+    "fusion/memory_types.py": "1855ae9dbca9e1316a9295d54414d41562cfd048ea66c211336124f356282dea",
+    "fusion/policy.py": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+    "fusion/ports.py": "8bf2a90999c30bbaa34f63715e52e3248c63c85e90b4745a6b58d7fc8c096d93",
+    "fusion/preview_client.py": "230131eaf4752f22bb934ab84f4f560b427834127370ec19905838db95226ece",
+    "fusion/preview_deployment_contracts.py": "aedb78d404b1481d4877d33a3836c3be1428c4da14d483bb22241a2c2dc96692",
+    "fusion/preview_handles.py": "d180a1a62bdc842a31c92705edfec7e0e020786c1bd17eb87e9581d84490f2d0",
+    "fusion/preview_tools.py": "9ec0399916da54e130efcb1f7e8eb75b5d887af7968cd715d26d916b4b824991",
+    "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+    "fusion/responses.py": "efbdf254d333e4aaf1bbf11ac5ded5cee53b799168ffc966401230c4275383dc",
+    "integration/single_node/__init__.py": "e781ae865021224eca8bb1e6860895c9220509ddbf11823b0da11aa19e609ba1",
+    "integration/single_node/chain_address.py": "360a20e1e998ad02c868eb40d21517773940f42804ef2d5ff78bb60763107404",
+    "integration/single_node/preview_secrets.py": "593de47b9e514a809a6114c336d7a7bd904c7d4834ed270163b4f0d1a64ca36b",
+    "integration/single_node/preview_values.py": "4ef868c74d8575aa295542b4b336f362b238d5b917b3108fa96ef709a21c6c4b",
+    "integration/single_node/preview_workbench.py": "0ba0b99f50bbc5a6b1b6d6da5388c59b9c8dc876100986d2c52d9d1ebe22d010",
+    "integration/single_node/reference_artifacts.py": "fb885b1f4ff67aa467cf6584ffc4809de9fe6a98f1a8e4beed690e8eb05e6d88",
+    "integration/single_node/reference_ops.py": "15d22fc67609f20b59a0e3bbc00fb6817d4eebfda31f4776506f81abe258388c",
+    "sdk/DISTRIBUTION_REVIEW.md": "98f6d8406990c6b36c795d3f1e9a9a99ec2b76095d41768e542d421609165c0c",
+    "sdk/OPERATOR.md": "fba7c13e0483d0a3bbb5643e6439cdf66d6d4991d6033c8af55f2d52f4af71f4",
+    "sdk/build.py": "9216d000a21306fd8660aebd73b407f350315ea3abc4897315666577e712739d",
+    "sdk/exports.py": "c268a360449c27226e815a249b71a41d3bc17f0a262c45e2bbbb3fb7d545d594",
+    "sdk/inventory.py": "4dcb3e781a1473882891a1c6ff8f260b017c2fc50e50b072c32acefbec540a14",
+    "sdk/operator-wheel-inputs.json": "488b15c077ec5b3d41d859116f8ae6dc4e8f16bdd00402f9db3a9568c42cda11",
+    "sdk/operator_cli.py": "d9fb72c75df5f017a2c19c2907f4e588114f4fb0d68ae2bba8728fbe560de377",
+    "sdk/public-api.json": "92164b7f3cd7ebeac2d2e2342c415f9c9267ad4cc92129fafff6fd4492855447",
+    "sdk/test_operator_install.py": "bf03dc3e3f1700fadf68c3bad074547f061ff324217be444d88a86b63aab5bc7",
+    "sdk/test_operator_package.py": "97b9bb74c23145a892bf03f03d3b7b5326bca78bc1b046a4e13062ef327f22f9",
+    "sdk/test_preview_distribution.py": "502b2409c2fa662f269cb0975c2f1cbbb9b05bec2007d74d0620803b5fb44ba2",
+    "tests/test_phase2_sdk.py": "2f286427b8304a1f360210e26647a9f8ddc5c4939cb901fbd4ec504a728ebe2e",
+    "tests/test_phase2_sdk_compatibility.py": "890c751ce89bed9d6e4e17a8d7cc9f423e60aa7f6a5f5fc2898f3a24dc6ce65d",
+    "tests/test_phase2_sdk_contracts.py": "d15fe8f9de5357d6ba23e53ab9053322e129ac68096df84709ce16fb94ae7b32"
+  },
+  "started_utc": "2026-11-02T17:49:12.645145+00:00",
+  "stderr": "test_descriptor_profile_version_and_guarantee_refusals (tests.test_phase2_sdk.HTTPSBoundaries.test_descriptor_profile_version_and_guarantee_refusals) ... ok\ntest_identical_adapted_caller_under_local_and_https_composition (tests.test_phase2_sdk.HTTPSBoundaries.test_identical_adapted_caller_under_local_and_https_composition) ... ok\ntest_live_revocation_and_wrong_credentials (tests.test_phase2_sdk.HTTPSBoundaries.test_live_revocation_and_wrong_credentials) ... ok\ntest_lost_write_response_is_unknown_and_same_identity_replays (tests.test_phase2_sdk.HTTPSBoundaries.test_lost_write_response_is_unknown_and_same_identity_replays) ... ok\ntest_original_deadline_and_no_implicit_retry (tests.test_phase2_sdk.HTTPSBoundaries.test_original_deadline_and_no_implicit_retry) ... ok\ntest_reply_principal_request_selection_and_payload_binding (tests.test_phase2_sdk.HTTPSBoundaries.test_reply_principal_request_selection_and_payload_binding) ... ok\ntest_shared_conformance_cases (tests.test_phase2_sdk.HTTPSBoundaries.test_shared_conformance_cases) ... ok\ntest_strict_input_and_bounded_batch (tests.test_phase2_sdk.HTTPSBoundaries.test_strict_input_and_bounded_batch) ... ok\ntest_untrusted_certificate_is_refused (tests.test_phase2_sdk.HTTPSBoundaries.test_untrusted_certificate_is_refused) ... ok\ntest_extracted_https_provider_consumer_and_process_kill_recovery (tests.test_phase2_sdk.InstalledKit.test_extracted_https_provider_consumer_and_process_kill_recovery) ... ok\ntest_installed_imports_are_independent_and_sources_exact (tests.test_phase2_sdk.InstalledKit.test_installed_imports_are_independent_and_sources_exact) ... ok\ntest_wheel_build_is_reproducible_and_has_no_secret_inputs (tests.test_phase2_sdk.InstalledKit.test_wheel_build_is_reproducible_and_has_no_secret_inputs) ... ok\ntest_client_only_install_exports_exact_pure_contracts (tests.test_phase2_sdk_contracts.InstalledPureContracts.test_client_only_install_exports_exact_pure_contracts) ... ok\ntest_handle_kinds_and_typed_batch_admission_execute_when_installed (tests.test_phase2_sdk_contracts.InstalledPureContracts.test_handle_kinds_and_typed_batch_admission_execute_when_installed) ... ok\ntest_accepted_identity_and_descriptor_survive_compatible_package_restart (tests.test_phase2_sdk_compatibility.InstalledWireCompatibility.test_accepted_identity_and_descriptor_survive_compatible_package_restart) ... ok\ntest_four_actual_client_provider_package_combinations (tests.test_phase2_sdk_compatibility.InstalledWireCompatibility.test_four_actual_client_provider_package_combinations) ... ok\ntest_refusals_separate_client_preflight_from_actual_wire_binding (tests.test_phase2_sdk_compatibility.InstalledWireCompatibility.test_refusals_separate_client_preflight_from_actual_wire_binding) ... ok\ntest_installed_entrypoints_and_sources_without_checkout_or_provider (sdk.test_operator_package.OperatorPackage.test_installed_entrypoints_and_sources_without_checkout_or_provider) ... ok\ntest_inventory_uses_actual_wheels_and_retains_unknown_licenses (sdk.test_operator_package.OperatorPackage.test_inventory_uses_actual_wheels_and_retains_unknown_licenses) ... ok\ntest_missing_chain_extra_refuses_before_private_material (sdk.test_operator_package.OperatorPackage.test_missing_chain_extra_refuses_before_private_material) ... ok\ntest_operator_keeps_explicit_selection_and_remote_pod_boundary (sdk.test_operator_package.OperatorPackage.test_operator_keeps_explicit_selection_and_remote_pod_boundary) ... ok\ntest_chain_offline_key_setup_has_no_chain_adapter_or_runtime (sdk.test_operator_install.ExtractedInstallRecipes.test_chain_offline_key_setup_has_no_chain_adapter_or_runtime) ... ok\ntest_extracted_recipe_generates_real_tls_with_explicit_kubectl_stub (sdk.test_operator_install.ExtractedInstallRecipes.test_extracted_recipe_generates_real_tls_with_explicit_kubectl_stub) ... ok\ntest_extracted_verifier_accepts_explicit_preview_archive_fixtures (sdk.test_operator_install.ExtractedInstallRecipes.test_extracted_verifier_accepts_explicit_preview_archive_fixtures) ... ok\ntest_fresh_preview_values_from_declared_image_manifest (sdk.test_operator_install.ExtractedInstallRecipes.test_fresh_preview_values_from_declared_image_manifest) ... ok\ntest_image_import_uses_declared_archive_and_explicit_container_stub (sdk.test_operator_install.ExtractedInstallRecipes.test_image_import_uses_declared_archive_and_explicit_container_stub) ... ok\n\n----------------------------------------------------------------------\nRan 26 tests in 28.772s\n\nOK\n",
+  "stdout": "",
+  "test_methods": 26
+}

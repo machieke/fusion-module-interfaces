@@ -3,7 +3,7 @@
 Run in each service pod through operator RBAC. This is not a privileged module
 port, and never opens another owner's PVC. SQLite reads use read-only snapshots.
 """
-import argparse,json,os,sqlite3
+import argparse,json,os,re,sqlite3
 from pathlib import Path
 
 FILES={
@@ -25,14 +25,37 @@ FILES={
  'cognitive/cognitive-atoms.sqlite':('feed_atoms',)}
 COLUMNS=('done','acknowledged','sent','reserved','attempts','calls','builds','queries','evaluations','finished','linked','visible')
 PRESENT=('result','response','view','receipt','output','decision','signed')
+PREVIEW_FILES={
+ 'session-inbox.sqlite':('preview_sessions','preview_inputs','preview_controls'),
+ 'task-ingress.sqlite':('task_ingress','ingress_limits'),
+ 'preview-inspect.sqlite':('jobs','outbox','mutations'),
+ 'memory/lifecycle.sqlite':('lifecycle_meta','lifecycle_events','lifecycle_intents'),
+ 'preview-facets/session-history.sqlite':('episodes','events','deliveries','completions'),
+ 'preview-facets/preview-relations.sqlite':('preview_relation_intents','preview_relation_events'),
+ 'preview-facets/workspace.sqlite':('workspace_files','workspace_effects'),
+}
+SESSION_TABLES=FILES['caller.sqlite']+('app_turns','app_read_views','app_model_calls',
+ 'preview_native_inputs','preview_history_outbox','preview_memory_plans',
+ 'preview_memory_receipts','preview_task_outbox','preview_inspections',
+ 'preview_dispatch_budget','preview_context_acceptance','preview_context_captures',
+ 'preview_context_views','preview_context_receipts')
 
 def inspect(root=Path('/state')):
  out=dict(owner='UNKNOWN',tables={},status={},limits=dict(max_database_files=len(FILES),max_tables=sum(map(len,FILES.values()))),live_generation_activity='NOT_INFERRED_FROM_DIAGNOSTICS')
  seal=root/'owner-seal.json'
  if seal.is_file():
   raw=json.loads(seal.read_bytes());out['owner']=raw['role'];out['composition']=raw['composition']
- for name,names in FILES.items():
-  path=root/name
+ files=[(root/name,name,names) for name,names in FILES.items()]
+ if out.get('composition')=='omega-single-node-developer-preview/1':
+  files += [(root/name,name,names) for name,names in PREVIEW_FILES.items()]
+  sessions=sorted(p for p in (root/'sessions').glob('*') if p.is_dir() and not p.is_symlink() and re.fullmatch('[0-9a-f-]{36}',p.name))
+  require_bounded=len(sessions)<=2
+  if not require_bounded:out['session_capacity']='EXCEEDED'
+  for index,p in enumerate(sessions[:2]):
+   # Numeric labels avoid publishing session identities as metrics labels.
+   files.append((p/'caller.sqlite','session-'+str(index+1)+'/caller.sqlite',SESSION_TABLES))
+ out['limits']=dict(max_database_files=len(files),max_tables=sum(len(x[2]) for x in files))
+ for path,name,names in files:
   if not path.is_file():continue
   with sqlite3.connect(path.absolute().as_uri()+'?mode=ro',uri=True,timeout=.2) as db:
    db.execute('PRAGMA query_only=ON');db.execute('BEGIN')

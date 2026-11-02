@@ -27,6 +27,9 @@ def write(path, value):
 
 def configure(path='/config/component.json'):
     settings = json.loads(Path(path).read_text()); role = settings['role']
+    if settings.get('preview',{}).get('enabled'):
+        from .preview_configure import configure as preview
+        return preview(settings)
     if settings.get('reference',{}).get('enabled') and settings['reference']['profile']=='chain':
         from .chain_configure import configure as chain
         return chain(settings)
