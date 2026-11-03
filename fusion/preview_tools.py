@@ -172,15 +172,15 @@ def deduction_tools():
         'Pinned original NAL operation; no arbitrary MeTTa, import or other function.'),)
 
 
-def memory_tools(*,active=False):
+def memory_tools(*,active=False,feed_profile='immutable-commit-feed/1'):
     from . import append_contracts as w, embedding_contracts as e, vector_contracts as v
     from .vector_composition import descriptors as read_descriptors
     def requirement(d, maximum):
         return Requirement(d.interface, d.version, maximum, next(iter(d.profiles)), d.operations,
                            d.guarantees, privacy=d.privacy, features=d.features)
-    write = [requirement(d, '1.3.0' if d.interface == 'atom.storage' else '3.2.0') for d in w.descriptors()]
+    write = [requirement(d, '1.3.0' if d.interface == 'atom.storage' else '3.2.0') for d in w.descriptors(feed_profile)]
     write.append(requirement(e.descriptor(e.MEMORY_PROFILE), '1.1.0'))
-    read = [requirement(d, '1.2.0' if d.interface == 'atom.storage' else '3.2.0') for d in read_descriptors(v.EMBEDDING, True)]
+    read = [requirement(d, '1.2.0' if d.interface == 'atom.storage' else '3.2.0') for d in read_descriptors(v.EMBEDDING, True,feed_profile)]
     read.append(requirement(e.descriptor(), '1.1.0'))
     if active:
         from .preview_memory_services import descriptor
@@ -221,11 +221,11 @@ def history_tools():
         'New history profile; administrative event sequence, fixed snapshot and explicit pagination, no empirical weight.'),)
 
 
-def lifecycle_tools():
+def lifecycle_tools(*,feed_profile='immutable-commit-feed/1'):
     from .preview_memory_services import descriptor
     req=tuple(Requirement(d.interface,d.version,'1.1.0' if n=='memory.lifecycle' else '3.3.0',next(iter(d.profiles)),
         d.operations,d.guarantees,privacy=d.privacy,features=d.features) for n in ('memory.lifecycle','search') for d in [descriptor(n)])
-    remember=memory_tools(active=True)[0]
+    remember=memory_tools(active=True,feed_profile=feed_profile)[0]
     return (
         ToolDescriptor('native.memory.supersede','update','immutable-memory-lifecycle/1',
             (Argument('target','memory-handle'),Argument('content',max_bytes=1024)),'shared-mutation',remember.requirements+req,
@@ -252,10 +252,10 @@ def relation_tools():
     )
 
 
-def cognitive_tools():
+def cognitive_tools(*,feed_profile='immutable-commit-feed/1'):
     from . import cognitive_services as cs,nal_memory_contracts as n,promotion_contracts as p
-    requirements={d.interface:Requirement(d.interface,d.version,'1.1.0',cs.PROFILES[d.interface],d.operations,
-        d.guarantees,privacy=d.privacy,features=d.features) for d in cs.descriptors()}
+    requirements={d.interface:Requirement(d.interface,d.version,'1.1.0',feed_profile if d.interface=='atom.storage' else cs.PROFILES[d.interface],d.operations,
+        d.guarantees,privacy=d.privacy,features=d.features) for d in cs.descriptors(feed_profile=feed_profile)}
     return tuple(ToolDescriptor('native.assessment.'+op,op,n.PROFILE,
         (Argument('memory','memory-handle'),Argument('source','history-handle')),'shared-mutation',
         tuple(requirements[k] for k in ('atom.storage','episodic.memory','belief.revision')),
@@ -278,14 +278,14 @@ def task_tools():
         'Fixed-role nonrecursive retrieval; actual captured result returns through Messaging; no independent evidence weight',timeout_ms=120000),)
 
 
-def inspection_tools():
+def inspection_tools(*,feed_profile='immutable-commit-feed/1'):
     from .contracts import PROFILES
     from . import cognitive_services as cs
-    atom=cs.descriptors()[0]
+    atom=cs.descriptors(feed_profile=feed_profile)[0]
     requirements=tuple(Requirement(name,'1.0.0','1.0.1',PROFILES[name],frozenset(ops),
         frozenset({'process-restart','scoped','idempotent'})) for name,ops in
         [('execution',('submit','status','result')),('agent.messaging',('poll','ack'))])
-    requirements+=(Requirement(atom.interface,atom.version,'1.1.0',cs.PROFILES[atom.interface],frozenset({'create','get'}),atom.guarantees,privacy=atom.privacy),)
+    requirements+=(Requirement(atom.interface,atom.version,'1.1.0',feed_profile,frozenset({'create','get'}),atom.guarantees,privacy=atom.privacy),)
     return (ToolDescriptor('native.execution.inspect-artifact','inspect-atom','synthetic-agent-retrieval-artifact/1',
         (Argument('task','label'),),'shared-mutation',requirements,
         'Inspect a compact synthetic artifact from an already consumed delegated result',

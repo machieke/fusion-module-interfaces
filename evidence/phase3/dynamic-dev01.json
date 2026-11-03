@@ -1,0 +1,448 @@
+{
+  "classification": "REAL_NATIVE_DYNAMIC_SESSIONS_DEPLOYED_HTTPS_RECORDED_PROPOSALS",
+  "additional_live_generations": 0,
+  "images": {
+    "archive_bytes": 3243776512,
+    "archive_sha256": "b29833e9db1eeadc3b78e7856b0e8eb46e45587508f68b3f157ea53243280ac9",
+    "container_starts": 0,
+    "generative_runtime_availability": "NOT_CHECKED",
+    "images": [
+      {
+        "configuration_digest": "sha256:bbe680c5fd992dd6ff3a998a13a8dcb1cbd19b2e92dad646ceb306e6c102cc3c",
+        "kind": "caller",
+        "local_tag": "docker.io/library/fusion-memory-caller:reference-phase3-dev01",
+        "manifest_digest": "sha256:a42e0a650fea86e970a115b674ae247f9e04aa77e8e421fd2aef351cbd4d631f",
+        "repository": "docker.io/library/fusion-memory-caller",
+        "source_package": "image-caller/package.json"
+      },
+      {
+        "configuration_digest": "sha256:ed8f64c048c2c3ebc06bc78ae9131a2a4326f845dde4f64d760aeb3beb290d70",
+        "kind": "embedding",
+        "local_tag": "docker.io/library/fusion-memory-embedding:reference-phase3-dev01",
+        "manifest_digest": "sha256:0b0ee3cb69ab7cba053ada9bb62cfeea1d9212474f31af801a4a03ab67ea81c3",
+        "repository": "docker.io/library/fusion-memory-embedding",
+        "source_package": "image-embedding/package.json"
+      },
+      {
+        "configuration_digest": "sha256:4e8bbd8344533790898cf6a1f13c9f3fd315e2f7cbcc71219d6d375b02bed426",
+        "kind": "base",
+        "local_tag": "docker.io/library/fusion-single-node:reference-phase3-dev01",
+        "manifest_digest": "sha256:2bb2461af24a72463a2d0e7ad33d40320d090307d2ed426ef1fa72f788037721",
+        "repository": "docker.io/library/fusion-single-node",
+        "source_package": "image-base/package.json"
+      }
+    ],
+    "source_export_verification": "PASS",
+    "source_manifest_sha256": "8c19c2bf441d4ebef93f029de6f4738bd1d6aa4f4b299951255be9d6d2f54484"
+  },
+  "allocations": [
+    {
+      "role": "omega-agent",
+      "identity": "synthetic-sequential-0",
+      "value": {
+        "allocation": {
+          "allocation_id": "synthetic-sequential-0",
+          "expires_ms": 1793784921133,
+          "frozen": {
+            "binding": {
+              "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+              "limits": {
+                "inputs": 24,
+                "pending": 4,
+                "timeout_ms": 120000
+              },
+              "model_boundary": "RECORDED_FIXTURE",
+              "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+            },
+            "lifetime_ms": 86400000,
+            "principal": "A",
+            "runtime_digest": "9af82222e1374b4901ab01f4cacb61d655ec12fa10bdf0bead7d7eb9299e610a",
+            "scope": "synthetic-phase3-dynamic01"
+          },
+          "session": "96088f4f-0dca-595b-a173-f4fdf02c4da5",
+          "template": "shared"
+        },
+        "binding": {
+          "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+          "limits": {
+            "inputs": 24,
+            "pending": 4,
+            "timeout_ms": 120000
+          },
+          "model_boundary": "RECORDED_FIXTURE",
+          "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+        },
+        "capacity": {
+          "accepted": 0,
+          "completed": 0,
+          "pending": 0,
+          "remaining_inputs": 24,
+          "remaining_pending": 4,
+          "terminal": 0
+        },
+        "complete": true,
+        "inputs": [],
+        "live_generations": 0,
+        "next_after": null,
+        "observations_do_not_dispatch": true,
+        "ordering": "causal-session-fence/1",
+        "principal": "A",
+        "profile": "omega-native-sessions/3",
+        "scope": "synthetic-phase3-dynamic01",
+        "session": "96088f4f-0dca-595b-a173-f4fdf02c4da5",
+        "state": "active"
+      },
+      "replay_equal": true
+    },
+    {
+      "role": "omega-agent-b",
+      "identity": "synthetic-sequential-0",
+      "value": {
+        "allocation": {
+          "allocation_id": "synthetic-sequential-0",
+          "expires_ms": 1793784950458,
+          "frozen": {
+            "binding": {
+              "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+              "limits": {
+                "inputs": 24,
+                "pending": 4,
+                "timeout_ms": 120000
+              },
+              "model_boundary": "RECORDED_FIXTURE",
+              "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+            },
+            "lifetime_ms": 86400000,
+            "principal": "B",
+            "runtime_digest": "a71cc9bfe3030a78c219d423c1e8ec79af67d518cf75617747e635d285378ddd",
+            "scope": "synthetic-phase3-dynamic01"
+          },
+          "session": "4b562379-e888-5386-9d72-c27b4de52564",
+          "template": "shared"
+        },
+        "binding": {
+          "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+          "limits": {
+            "inputs": 24,
+            "pending": 4,
+            "timeout_ms": 120000
+          },
+          "model_boundary": "RECORDED_FIXTURE",
+          "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+        },
+        "capacity": {
+          "accepted": 0,
+          "completed": 0,
+          "pending": 0,
+          "remaining_inputs": 24,
+          "remaining_pending": 4,
+          "terminal": 0
+        },
+        "complete": true,
+        "inputs": [],
+        "live_generations": 0,
+        "next_after": null,
+        "observations_do_not_dispatch": true,
+        "ordering": "causal-session-fence/1",
+        "principal": "B",
+        "profile": "omega-native-sessions/3",
+        "scope": "synthetic-phase3-dynamic01",
+        "session": "4b562379-e888-5386-9d72-c27b4de52564",
+        "state": "active"
+      },
+      "replay_equal": true
+    },
+    {
+      "role": "omega-agent",
+      "identity": "synthetic-sequential-1",
+      "value": {
+        "allocation": {
+          "allocation_id": "synthetic-sequential-1",
+          "expires_ms": 1793784978410,
+          "frozen": {
+            "binding": {
+              "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+              "limits": {
+                "inputs": 24,
+                "pending": 4,
+                "timeout_ms": 120000
+              },
+              "model_boundary": "RECORDED_FIXTURE",
+              "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+            },
+            "lifetime_ms": 86400000,
+            "principal": "A",
+            "runtime_digest": "9af82222e1374b4901ab01f4cacb61d655ec12fa10bdf0bead7d7eb9299e610a",
+            "scope": "synthetic-phase3-dynamic01"
+          },
+          "session": "3af5305c-6ea7-56d2-8170-87ecfaa0e64b",
+          "template": "shared"
+        },
+        "binding": {
+          "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+          "limits": {
+            "inputs": 24,
+            "pending": 4,
+            "timeout_ms": 120000
+          },
+          "model_boundary": "RECORDED_FIXTURE",
+          "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+        },
+        "capacity": {
+          "accepted": 0,
+          "completed": 0,
+          "pending": 0,
+          "remaining_inputs": 24,
+          "remaining_pending": 4,
+          "terminal": 0
+        },
+        "complete": true,
+        "inputs": [],
+        "live_generations": 0,
+        "next_after": null,
+        "observations_do_not_dispatch": true,
+        "ordering": "causal-session-fence/1",
+        "principal": "A",
+        "profile": "omega-native-sessions/3",
+        "scope": "synthetic-phase3-dynamic01",
+        "session": "3af5305c-6ea7-56d2-8170-87ecfaa0e64b",
+        "state": "active"
+      },
+      "replay_equal": true
+    },
+    {
+      "role": "omega-agent-b",
+      "identity": "synthetic-sequential-1",
+      "value": {
+        "allocation": {
+          "allocation_id": "synthetic-sequential-1",
+          "expires_ms": 1793785001513,
+          "frozen": {
+            "binding": {
+              "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+              "limits": {
+                "inputs": 24,
+                "pending": 4,
+                "timeout_ms": 120000
+              },
+              "model_boundary": "RECORDED_FIXTURE",
+              "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+            },
+            "lifetime_ms": 86400000,
+            "principal": "B",
+            "runtime_digest": "a71cc9bfe3030a78c219d423c1e8ec79af67d518cf75617747e635d285378ddd",
+            "scope": "synthetic-phase3-dynamic01"
+          },
+          "session": "188af6dc-a05f-5b16-9151-aa5ee0b40e90",
+          "template": "shared"
+        },
+        "binding": {
+          "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+          "limits": {
+            "inputs": 24,
+            "pending": 4,
+            "timeout_ms": 120000
+          },
+          "model_boundary": "RECORDED_FIXTURE",
+          "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+        },
+        "capacity": {
+          "accepted": 0,
+          "completed": 0,
+          "pending": 0,
+          "remaining_inputs": 24,
+          "remaining_pending": 4,
+          "terminal": 0
+        },
+        "complete": true,
+        "inputs": [],
+        "live_generations": 0,
+        "next_after": null,
+        "observations_do_not_dispatch": true,
+        "ordering": "causal-session-fence/1",
+        "principal": "B",
+        "profile": "omega-native-sessions/3",
+        "scope": "synthetic-phase3-dynamic01",
+        "session": "188af6dc-a05f-5b16-9151-aa5ee0b40e90",
+        "state": "active"
+      },
+      "replay_equal": true
+    },
+    {
+      "role": "omega-agent",
+      "identity": "synthetic-sequential-2",
+      "value": {
+        "allocation": {
+          "allocation_id": "synthetic-sequential-2",
+          "expires_ms": 1793785023192,
+          "frozen": {
+            "binding": {
+              "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+              "limits": {
+                "inputs": 24,
+                "pending": 4,
+                "timeout_ms": 120000
+              },
+              "model_boundary": "RECORDED_FIXTURE",
+              "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+            },
+            "lifetime_ms": 86400000,
+            "principal": "A",
+            "runtime_digest": "9af82222e1374b4901ab01f4cacb61d655ec12fa10bdf0bead7d7eb9299e610a",
+            "scope": "synthetic-phase3-dynamic01"
+          },
+          "session": "58fcdf67-3df6-5b75-a078-3c99b4f0e9ce",
+          "template": "shared"
+        },
+        "binding": {
+          "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+          "limits": {
+            "inputs": 24,
+            "pending": 4,
+            "timeout_ms": 120000
+          },
+          "model_boundary": "RECORDED_FIXTURE",
+          "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+        },
+        "capacity": {
+          "accepted": 0,
+          "completed": 0,
+          "pending": 0,
+          "remaining_inputs": 24,
+          "remaining_pending": 4,
+          "terminal": 0
+        },
+        "complete": true,
+        "inputs": [],
+        "live_generations": 0,
+        "next_after": null,
+        "observations_do_not_dispatch": true,
+        "ordering": "causal-session-fence/1",
+        "principal": "A",
+        "profile": "omega-native-sessions/3",
+        "scope": "synthetic-phase3-dynamic01",
+        "session": "58fcdf67-3df6-5b75-a078-3c99b4f0e9ce",
+        "state": "active"
+      },
+      "replay_equal": true
+    },
+    {
+      "role": "omega-agent-b",
+      "identity": "synthetic-sequential-2",
+      "value": {
+        "allocation": {
+          "allocation_id": "synthetic-sequential-2",
+          "expires_ms": 1793785044688,
+          "frozen": {
+            "binding": {
+              "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+              "limits": {
+                "inputs": 24,
+                "pending": 4,
+                "timeout_ms": 120000
+              },
+              "model_boundary": "RECORDED_FIXTURE",
+              "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+            },
+            "lifetime_ms": 86400000,
+            "principal": "B",
+            "runtime_digest": "a71cc9bfe3030a78c219d423c1e8ec79af67d518cf75617747e635d285378ddd",
+            "scope": "synthetic-phase3-dynamic01"
+          },
+          "session": "c3322897-93a0-5652-8dd0-577c870f7dbc",
+          "template": "shared"
+        },
+        "binding": {
+          "catalogue": "4b4e036d0f2e962f7702c9c2113b76cceef86282bd1e2c6dbca4081481e5f39d",
+          "limits": {
+            "inputs": 24,
+            "pending": 4,
+            "timeout_ms": 120000
+          },
+          "model_boundary": "RECORDED_FIXTURE",
+          "policy": "preview-aa426b4c-4a3e-438f-9fc8-1d742791bbf2"
+        },
+        "capacity": {
+          "accepted": 0,
+          "completed": 0,
+          "pending": 0,
+          "remaining_inputs": 24,
+          "remaining_pending": 4,
+          "terminal": 0
+        },
+        "complete": true,
+        "inputs": [],
+        "live_generations": 0,
+        "next_after": null,
+        "observations_do_not_dispatch": true,
+        "ordering": "causal-session-fence/1",
+        "principal": "B",
+        "profile": "omega-native-sessions/3",
+        "scope": "synthetic-phase3-dynamic01",
+        "session": "c3322897-93a0-5652-8dd0-577c870f7dbc",
+        "state": "active"
+      },
+      "replay_equal": true
+    }
+  ],
+  "restarts": [
+    {
+      "role": "omega-agent",
+      "before": "a2ecd8d1-6bf3-4281-ada9-cc71f594c33c",
+      "after": "9c643bc1-60a1-44f1-b327-2bf2ef6c089b",
+      "captured_results_retained": true
+    },
+    {
+      "role": "omega-agent-b",
+      "before": "c79d0416-d8db-4611-b62b-e828cf148228",
+      "after": "55d9339b-7df2-4b94-8992-7cb834e651d2",
+      "captured_results_retained": true
+    }
+  ],
+  "status": "PASS",
+  "capacity": {
+    "omega-agent": {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 8
+      },
+      "logical_bytes": 6669,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 3
+    },
+    "omega-agent-b": {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 8
+      },
+      "logical_bytes": 6669,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 3
+    }
+  },
+  "native_inputs": 12,
+  "source_manifest_sha256": "8c19c2bf441d4ebef93f029de6f4738bd1d6aa4f4b299951255be9d6d2f54484",
+  "classification_note": "Preliminary development image; final integrated R12 run still pending",
+  "cleanup": {
+    "quiesced": true,
+    "pods_after": 0,
+    "pvcs_retained": true
+  },
+  "source_files": {
+    "artifacts/phase3/dynamic-deploy-01/report.json": "814b279376fed3604b5331424822c2598fdfaa45803d1a264dc1921305a25aaa",
+    "artifacts/phase3/dynamic-deploy-01/native/report.json": "029284b736fcbe02bc2f6655ac655c392ffafa59a4a4f31361389b1fcb0a8fb9",
+    "artifacts/phase3/dynamic-deploy-01/stopped.json": "247096da3fe9e889b7054a04c1df899147e6f5e93caff38318abed8ee35a833b"
+  }
+}

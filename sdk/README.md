@@ -1,5 +1,7 @@
 # Fusion contracts/client kit
 
+For the current **0.3.0 sustained kit**, use the [Phase 3 operator entry point](../docs/phase3/runbook.md) and its exact distribution manifest. The 0.2.0 examples below remain the Phase 2 compatibility baseline; do not mix their filenames or selected profiles with a 0.3.0 artifact packet.
+
 The kit packages shared types and validators without E5, Chroma, DeTTa, native
 reasoning binaries or Omega application code. It requires Python 3.12 or newer
 and the standard library. The example is a separate package; installing the kit

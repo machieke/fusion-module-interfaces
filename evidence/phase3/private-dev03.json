@@ -1,0 +1,34 @@
+{
+  "classification": "REAL_NATIVE_PRIVATE_SCOPES_RECORDED_PROPOSALS",
+  "status": "PASS",
+  "namespace": "omega-ref-phase3-combined03",
+  "source_manifest_sha256": "2ffbc1ace7337e3fdbe39ad964e8b66a057d81196eb414ff12cf388b8987d97b",
+  "native_inputs": 12,
+  "agents": 2,
+  "commands": [
+    "remember",
+    "query",
+    "episodes",
+    "support",
+    "promote",
+    "query",
+    "remember",
+    "query",
+    "episodes",
+    "support",
+    "promote",
+    "query"
+  ],
+  "owner_current_reads": [
+    "omega-agent",
+    "omega-agent-b"
+  ],
+  "scope_count": 2,
+  "cleanup": {
+    "pvcs_retained": true,
+    "quiesced": "omega-ref-phase3-combined03"
+  },
+  "raw_report_sha256": "0fdcd990a990747160298d23333c3390251644169679b00940b3400dc5ab7d89",
+  "private_canary_content_omitted": true,
+  "additional_live_generations": 0
+}

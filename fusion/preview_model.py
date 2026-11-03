@@ -3,7 +3,8 @@ import time
 from . import preview_model_contracts as c
 from .contracts import canonical, digest, require
 from .neoclaw_model import ModelAdoption
-from .preview_recorded_model import Client, configuration, disclosure
+from .preview_model_binding import Client, configuration, contracts
+from .preview_recorded_model import disclosure
 
 
 def settings(app):
@@ -11,13 +12,14 @@ def settings(app):
     require((cfg['principal'],cfg['scope'],cfg['session']) ==
             (app.binding['principal'],app.preview_config['scope'],app.config['session_id']), 'UNAUTHORIZED')
     require('model_fixture' not in app.config and 'session_config' in app.config, 'UNSUPPORTED_PROFILE')
-    require(1 <= app.config['turn_limit'] <= c.MAX_SESSION_CALLS, 'OVERLOADED')
+    require(1 <= app.config['turn_limit'] <= contracts(cfg).MAX_SESSION_CALLS, 'OVERLOADED')
     return cfg, chosen, frozen
 
 
 class PreviewModel(ModelAdoption):
     def __init__(self, app):
-        super().__init__(app, contracts=c, client=Client(app.config['model_config']))
+        client=Client(app.config['model_config'])
+        super().__init__(app, contracts=client.contracts, client=client)
 
     def current(self):
         cfg, chosen, frozen = settings(self.app)
@@ -37,8 +39,10 @@ class PreviewModel(ModelAdoption):
         return dict(user=raw.split(':-:-:-:', 1)[1].strip())
 
     def model_identity(self, cfg):
-        return dict(profile=c.PROFILE, model=c.MODEL, model_digest=c.MODEL_DIGEST,
-                    transform=c.TRANSFORM, limits=c.LIMITS)
+        selected=contracts(cfg)
+        limits=selected.LIMITS if selected is c else selected.limits(cfg['profile'])
+        return dict(profile=cfg['profile'],model=selected.MODEL,model_digest=selected.MODEL_DIGEST,
+                    transform=selected.TRANSFORM,limits=limits)
 
     def local_authority(self, accepted):
         cfg, _ = self.current()
@@ -64,3 +68,7 @@ class PreviewModel(ModelAdoption):
         value=super().complete(prompt)
         if self.app.preview.history:self.app.preview.history.model()
         return value
+
+    def invoke(self, operation, accepted):
+        if operation == 'complete': self.app.preview.input.execution_permit()
+        return super().invoke(operation, accepted)

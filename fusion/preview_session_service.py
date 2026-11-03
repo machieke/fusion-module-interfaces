@@ -12,10 +12,13 @@ from .preview_sessions import SessionStore, PROFILE
 
 
 class SessionPorts:
-    def __init__(self, path, wake=lambda session: None):
-        self.path, self.wake = Path(path), wake
+    def __init__(self, path, wake=lambda session: None, hook=lambda _: None, projections=lambda _: ()):
+        self.path, self.wake, self.hook, self.projections = Path(path), wake, hook, projections
 
     def invoke(self, credential, request):
+        if type(request) is dict and request.get('profile') == 'omega-native-sessions/3':
+            from .sustained_session_service import SustainedSessionPorts
+            return SustainedSessionPorts(self.path, self.wake, self.hook, self.projections).invoke(credential, request)
         require(type(request) is dict and set(request) == {'id', 'profile', 'operation', 'body'})
         require(request['profile'] == PROFILE, 'UNSUPPORTED_PROFILE')
         require(type(request['id']) is str and 1 <= len(request['id']) <= 128)

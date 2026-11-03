@@ -13,16 +13,17 @@ from .lookup_composition import AtomSession
 OPERATIONS={'atom.storage':('create','get','getMany','availability','head','readCommits'),'search':('query','build')}
 
 
-def descriptors(embedding,ready=False):
+def descriptors(embedding,ready=False,feed_profile=a.FEED):
+    require(feed_profile in (a.FEED,a.SUSTAINED_FEED),'UNSUPPORTED_PROFILE')
     c.model(embedding)
     return [Descriptor('s03-feed-detta' if name=='atom.storage' else 's03.2-chroma-read' if ready else 's03-chroma',name,'1.1.0' if name=='atom.storage' else '3.1.0' if ready else '3.0.0','0.1.0',
-        frozenset({a.FEED if name=='atom.storage' else c.PROFILE}),frozenset((*operations,'ready') if ready and name=='search' else operations),
+        frozenset({feed_profile if name=='atom.storage' else c.PROFILE}),frozenset((*operations,'ready') if ready and name=='search' else operations),
         frozenset({'process-restart','scoped'}),4096,privacy=c.PRIVACY,deterministic=name=='atom.storage',
         features=frozenset({c.EXTRACTION,embedding,c.INDEX}),receipt_providers=frozenset({'detta-local-rs/1'})) for name,operations in OPERATIONS.items()]
 
 
-def select(catalogue,embedding,ready=False):
-    return {d.interface:resolve(catalogue,Requirement(d.interface,d.version,'1.2.0' if d.interface=='atom.storage' else '3.2.0' if ready else '3.1.0',next(iter(d.profiles)),d.operations,d.guarantees,privacy=c.PRIVACY,features=d.features)) for d in descriptors(embedding,ready)}
+def select(catalogue,embedding,ready=False,feed_profile=a.FEED):
+    return {d.interface:resolve(catalogue,Requirement(d.interface,d.version,'1.2.0' if d.interface=='atom.storage' else '3.2.0' if ready else '3.1.0',next(iter(d.profiles)),d.operations,d.guarantees,privacy=c.PRIVACY,features=d.features)) for d in descriptors(embedding,ready,feed_profile)}
 
 
 class Access:
@@ -34,7 +35,7 @@ class Access:
         require(self.policy.authenticate(self.credential)==self.principal,'UNAUTHORIZED')
         cfg=self.policy.current()['memory_read']
         require(cfg['sharing']==c.PRIVACY and cfg['scope']==scope and self.principal in cfg['readers'],'UNAUTHORIZED')
-        selected=select([descriptor_read(x) for x in cfg['catalogue']],self.embedding,cfg.get('require_ready',False))
+        selected=select([descriptor_read(x) for x in cfg['catalogue']],self.embedding,cfg.get('require_ready',False),cfg.get('feed_profile',a.FEED))
         require(selection_token(selected[self.descriptor.interface])==selection_token(self.descriptor),'UNSUPPORTED_PROFILE')
         self.policy.check(self.principal,scope,self.descriptor.interface+'.'+operation)
         return self.principal
@@ -44,13 +45,13 @@ class ReadService:
     def __init__(self,config_path,credential,hook=lambda _:None,*,atoms=None):
         self.policy=Policy(config_path);self.config=self.policy.current()['memory_read']
         cfg=self.config;self.credential=credential
-        self.chosen=select([descriptor_read(x) for x in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False))
+        self.chosen=select([descriptor_read(x) for x in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False),cfg.get('feed_profile',a.FEED))
         self.access={n:Access(self.policy,credential,d,cfg['scope'],cfg['embedding']) for n,d in self.chosen.items()}
         if atoms is None:
             from .atom_feed import FeedAtomOwner
             from .adapters.detta_layout import storage
             root=Path(cfg['root'])
-            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook)
+            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook,capacity=cfg.get('feed_capacity'))
             atoms=AtomSession(owner,self.access['atom.storage'])
         self.atoms=atoms;self.hook=hook
     def search(self):
@@ -60,7 +61,7 @@ class ReadService:
     def invoke(self,request):
         validate_request(request,self.chosen)
         current=self.policy.current()['memory_read']
-        require(all(current.get(k)==self.config.get(k) for k in ('root','scope','embedding','corpus','catalogue','require_ready','backend_layout')), 'CONFLICT')
+        require(all(current.get(k)==self.config.get(k) for k in ('root','scope','embedding','corpus','catalogue','require_ready','backend_layout','feed_profile','feed_capacity')), 'CONFLICT')
         require(request['scope']==self.config['scope'],'UNAUTHORIZED')
         name=request['interface_ref']['id'];op=request['operation'];body=request['body']
         if op=='ready':

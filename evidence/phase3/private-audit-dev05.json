@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "probe_source_sha256": "c02efe5fb6d6db3ba3d3ed07db8794f3b625a14d563eefc26b446500dcc028d8",
+  "new_audit_window_ms": 180000,
+  "application_deadlines_unchanged": true,
+  "additional_live_generations": 0,
+  "observation": {
+    "status": "PASS",
+    "shared_scope": "synthetic-phase3-sustained05",
+    "audit_deadline_ms": 1793704513509,
+    "observed_source_records": 853,
+    "denials": [
+      {
+        "name": "atom.get",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.getMany",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.head",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.capacity",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.feed",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "memory.lifecycle.head",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "search.current",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "search.ready",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "episode.read",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "belief.read",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "relations.outgoing",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "attention.current",
+        "code": "UNAUTHORIZED"
+      }
+    ],
+    "shared_payloads_checked": 853,
+    "private_data_returned": false,
+    "additional_live_generations": 0
+  },
+  "quiesced": true,
+  "raw_report_sha256": "cccd8d21d519f3f50e48f5b19f7597bfd52ede1a851bc68cfbcfc815a368c923",
+  "classification": "REAL_DEPLOYED_HTTPS_READ_ONLY_DIAGNOSTIC; source-checked updated operator probe against retained dev05 providers"
+}

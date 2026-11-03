@@ -1,0 +1,328 @@
+{
+  "packages": {
+    "R01": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Bounded dynamic sessions",
+      "evidence": [
+        "evidence/phase3/dynamic-dev01.json",
+        "evidence/phase3/sustained-dev09.json"
+      ]
+    },
+    "R03": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Sustained capacity accounting",
+      "evidence": [
+        "evidence/phase3/deployed-baseline.json",
+        "tests/test_phase3_feed.py",
+        "evidence/phase3/capacity-dev05.json",
+        "evidence/phase3/sustained-dev09.json",
+        "evidence/phase3/quota-dev09.json"
+      ]
+    },
+    "R02": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Expiry terminalization reconciliation",
+      "evidence": [
+        "tests/test_phase3_sessions.py",
+        "artifacts/phase3/owner-regressions-06.log",
+        "evidence/phase3/control-dev09.json"
+      ]
+    },
+    "R05": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Concurrent native agents",
+      "evidence": [
+        "evidence/phase3/sustained-dev09.json",
+        "evidence/phase3/task-negative-dev10.json"
+      ]
+    },
+    "R04": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Native telemetry measured optimization",
+      "evidence": [
+        "evidence/phase3/deployed-baseline.json",
+        "evidence/phase3/native-timing-dev10.json",
+        "evidence/phase3/timing-observer-local.json"
+      ]
+    },
+    "R07": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Independent model bindings",
+      "evidence": [
+        "tests/test_phase3_model_binding.py",
+        "artifacts/phase3/native-model-bindings-02.log",
+        "artifacts/phase3/model-binding-offline-01.log"
+      ]
+    },
+    "R06": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Private synthetic history cognition",
+      "evidence": [
+        "evidence/phase3/sustained-dev09.json",
+        "evidence/phase3/observations-dev10.json"
+      ]
+    },
+    "R09": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Current-state workbench",
+      "evidence": [
+        "evidence/phase3/workbench-dev09/report.json",
+        "evidence/phase3/observations-dev10.json"
+      ]
+    },
+    "R08": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Evaluation workloads",
+      "evidence": [
+        "evidence/phase3/sustained-dev09.json",
+        "evidence/phase3/alternate-dev10.json"
+      ]
+    },
+    "R11": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Artifact distribution",
+      "evidence": [
+        "evidence/phase3/artifact-smoke-dev12.json",
+        "evidence/phase3/installed-wheel-verification.json",
+        "evidence/phase3/artifacts.json"
+      ]
+    },
+    "R10": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Recovery compatibility fenced restore",
+      "evidence": [
+        "evidence/phase3/control-restore-dev09.json",
+        "evidence/phase3/recovery-dev10.json",
+        "evidence/phase3/same-workflow-chain-dev10.json",
+        "evidence/phase3/main-restore-dev12.json",
+        "evidence/phase3/restore-readback-dev12.json"
+      ]
+    },
+    "R12": {
+      "status": "IMPLEMENTED_AND_QUALIFIED",
+      "name": "Sustained final qualification",
+      "evidence": [
+        "evidence/phase3/sustained-dev09.json",
+        "evidence/phase3/alternate-dev10.json",
+        "evidence/phase3/protected-cleanup.json",
+        "evidence/phase3/artifacts.json"
+      ]
+    }
+  },
+  "real_preview_model_execution": "NOT_RUN",
+  "baseline": "660803cb955802175765ad16391b7453926b5f47",
+  "images": {
+    "final_candidate": "dev12",
+    "manifest": "artifacts/phase3/build-dev12/images.json",
+    "source_manifest_sha256": "c5b7a67545a5c332d40fd3f0a462f08954fd5593a31ce7f7a9dde0a23ff83675",
+    "core_run": "dev09",
+    "recovery_chain": "dev10",
+    "compatible_deltas": [
+      "evidence/phase3/dev09-dev10-source-delta.json",
+      "evidence/phase3/dev10-dev11-source-delta.json",
+      "evidence/phase3/dev11-dev12-source-delta.json"
+    ]
+  },
+  "task_namespaces": [
+    "omega-ref-phase3-baseline01",
+    "omega-ref-phase3-dynamic01",
+    "omega-ref-phase3-combined02",
+    "omega-ref-phase3-combined03",
+    "omega-ref-phase3-combined04",
+    "omega-ref-phase3-sustained05",
+    "omega-ref-phase3-controls06",
+    "omega-ref-phase3-controls07",
+    "omega-ref-phase3-sustained09",
+    "omega-ref-phase3-controls09",
+    "omega-ref-phase3-controls-restore09",
+    "omega-ref-phase3-quota09",
+    "omega-ref-phase3-recovery09",
+    "omega-ref-phase3-main-restore11",
+    "omega-ref-phase3-artifact-smoke11",
+    "omega-ref-phase3-artifact-smoke12"
+  ],
+  "additional_live_generations": 0,
+  "next_action": "Review published packet; no continued execution or live activity authorized by this record",
+  "active": "Authorized programme complete; task resources stopped",
+  "protected": [
+    "omega-demo",
+    "omega-ref-live01"
+  ],
+  "checks": [
+    {
+      "result": "PASS",
+      "log": "artifacts/phase3/owner-regressions-02.log",
+      "classification": "SQLite owners and explicit recorded/configuration fixtures; includes real SIGKILL recovery",
+      "methods": 49
+    },
+    {
+      "result": "PASS",
+      "log": "artifacts/phase3/owner-regressions-06.log",
+      "classification": "owner contracts/configuration/installed SDK compatibility; includes real process kills; storage byte fixtures explicit",
+      "methods": 85
+    },
+    {
+      "result": "PASS",
+      "log": "artifacts/phase3/tasks-regressions-02.log",
+      "classification": "real owner SQLite, task transport/source fixtures; not deployed task qualification",
+      "methods": 41
+    },
+    {
+      "result": "PASS",
+      "log": "artifacts/phase3/combined-owner-regressions-07.log",
+      "classification": "contract, owner, config tests with explicit fixture boundaries; preceding projection/current-state edits",
+      "methods": 118
+    },
+    {
+      "result": "PASS",
+      "log": "artifacts/phase3/model-binding-offline-01.log",
+      "classification": "offline original native text/real adapter methods with recorded HTTP and denied launch/contact; real ModelService, zero live acceptance/reservations at denied boundary",
+      "methods": 25
+    },
+    {
+      "log": "artifacts/phase3/all-phase3-01.log",
+      "methods": 68,
+      "result": "PASS",
+      "classification": "owner contracts and explicit fixtures; includes real SIGKILL boundaries"
+    },
+    {
+      "log": "artifacts/phase3/native-model-bindings-02.log",
+      "methods": 1,
+      "result": "PASS",
+      "classification": "actual native consumer, approval denied before live provider acceptance or reservation"
+    },
+    {
+      "log": "artifacts/phase3/sdk-restore-02.log",
+      "methods": 24,
+      "result": "PASS",
+      "classification": "installed SDK matrix 0.1/0.2/0.3 with file provider fixtures and fenced SQLite checks"
+    },
+    {
+      "log": "artifacts/phase3/client-restore-03.log",
+      "methods": 8,
+      "seconds": 15.678,
+      "sha256": "beadbacd00261d7fd366f378adb264f237dc4069ef84033e744a4079fed5ac9e",
+      "result": "PASS",
+      "classification": "installed SDK HTTPS fixture endpoints and clone configuration"
+    },
+    {
+      "log": "artifacts/phase3/task-permit-regressions-01.log",
+      "methods": 42,
+      "seconds": 4.087,
+      "sha256": "4c93386ef16344ea5c75ea355e69f05b1b754ef9a2ad471bca0b584f1847da19",
+      "result": "PASS",
+      "classification": "owner task regression and advanced-turn permit binding"
+    },
+    {
+      "log": "artifacts/phase3/all-phase3-02.log",
+      "methods": 83,
+      "seconds": 61.75,
+      "sha256": "8ce9d2b29e528a2a396036936f0392d6a30a4cba25c3172c04795e6183830782",
+      "result": "PASS",
+      "classification": "contract/owner/fixture methods including real SIGKILL"
+    },
+    {
+      "log": "artifacts/phase3/artifact-final-regressions-01.log",
+      "methods": 19,
+      "seconds": 1.574,
+      "sha256": "47aa09be7a58415177d3f599a996dfe92a46936954c047c33ec28588d61fdb64",
+      "result": "PASS",
+      "classification": "offline artifact validation, task contracts, clone values"
+    },
+    {
+      "log": "artifacts/phase3/affected-regressions-03.log",
+      "methods": 29,
+      "seconds": 20.188,
+      "sha256": "2a185edfc5fb727aff238b4a7f673aba292112ac12d655bee9057e59dd46a912",
+      "result": "PASS",
+      "classification": "real local Chroma plus explicit configuration/file fixtures"
+    },
+    {
+      "log": "artifacts/phase3/ci-preview/preview-fast.log",
+      "methods": 539,
+      "seconds": 61.384,
+      "sha256": "010702b30de18277bc1ee2edf14a098650026750fbe1354661e155d3ef28389c",
+      "result": "FAILED",
+      "classification": "historical lane: two missing-Chroma environment errors and three incomplete profile fixture errors; affected recheck passed"
+    },
+    {
+      "log": "artifacts/phase3/final-bindings-01.log",
+      "methods": 45,
+      "seconds": 30.992,
+      "sha256": "6e00dc543a213106b4e2d5b5a7e05e19a727b742ef2faa286417b7484e226308",
+      "result": "PASS",
+      "classification": "inspect method boundaries; fixture and native evidence not combined"
+    },
+    {
+      "log": "artifacts/phase3/fault-binding-01.log",
+      "methods": 11,
+      "seconds": 2.837,
+      "sha256": "bffee1e5e63e4a25c5d9c620b9139fe9c2282ae92bb5cb36e5eec1f95616a037",
+      "result": "PASS",
+      "classification": "inspect method boundaries; fixture and native evidence not combined"
+    },
+    {
+      "log": "artifacts/phase3/control-chart-03.log",
+      "methods": 10,
+      "seconds": 2.0,
+      "sha256": "55280545127b59b11e58218c9cd3747ebc8def5481b6146d4062e10a87eba7a2",
+      "result": "PASS",
+      "classification": "inspect method boundaries; fixture and native evidence not combined"
+    },
+    {
+      "log": "artifacts/phase3/chain-read-profile-01.log",
+      "methods": 25,
+      "seconds": 1.43,
+      "sha256": "8de710c84c3815291824b22d6e88f78fc6e897b4fb75ab70508ba54d5276f336",
+      "result": "PASS",
+      "classification": "inspect method boundaries; fixture and native evidence not combined"
+    },
+    {
+      "log": "artifacts/phase3/ci-preview-qualified/preview-fast.log",
+      "methods": 539,
+      "seconds": 63.402,
+      "classification": "Corrected historical lane with real Chroma dependency; explicit fixture/native boundaries per method",
+      "result": "PASS",
+      "sha256": "06b51d5c2e0cfc3008cfe2b45120c1de5fcd6a09f4b33adce1240e98246a00bb"
+    },
+    {
+      "log": "artifacts/phase3/qualification-dataflow-02.log",
+      "methods": 1,
+      "seconds": 0.002,
+      "classification": "Operator API fixture; own-session cognition dataflow; no native claim",
+      "result": "PASS",
+      "sha256": "91adc540f8966d702db0a6a4f5ea8e8ff6ca234b7f742bc2e59510bf16db7f80"
+    },
+    {
+      "log": "artifacts/phase3/observer-feed2-02.log",
+      "methods": 13,
+      "seconds": 0.463,
+      "classification": "Read-only chain observer with fake node/file fixture, explicit sustained feed compatibility",
+      "result": "PASS",
+      "sha256": "16da19063a8bfe16bb8dea1fe17d27a19d2a253d5153e1848bf7dc4840f4541c"
+    },
+    {
+      "log": "artifacts/phase3/ci-sustained-final01/sustained-fast.log",
+      "methods": 97,
+      "result": "PASS",
+      "seconds": 79.66,
+      "classification": "owner/configuration/SDK fixtures and real SIGKILL tests; before private owner-barrier fix"
+    },
+    {
+      "log": "artifacts/phase3/private-barrier-compatibility-01.log",
+      "methods": 13,
+      "result": "PASS",
+      "seconds": 12.26,
+      "classification": "real configuration with fake TLS; old unarmed byte-digest compatibility plus new private barrier regression"
+    }
+  ],
+  "constraints": [
+    "single-node synthetic scopes",
+    "no generative runtime activity",
+    "no protected campaign changes",
+    "no deadline/budget reset"
+  ],
+  "schema": "omega-phase3-progress/1",
+  "status": "READY_FOR_SUSTAINED_DEVELOPER_REVIEW",
+  "artifact_record": "evidence/phase3/artifacts.json"
+}

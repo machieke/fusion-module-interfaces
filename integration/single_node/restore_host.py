@@ -34,6 +34,10 @@ def main(path):
  # A restored seal is not rewritten. Chart/config mismatches refuse startup.
  actual=json.loads((state/'owner-seal.json').read_text());require(actual==expected and actual['scope']==fence['original_scope'],'UNSUPPORTED_PROFILE')
  owner=None;cfg={};run=Path('/run/fusion');run.mkdir(exist_ok=True)
+ if preview and initial['preview']['profile']=='omega-single-node-sustained-preview/1':
+  settings,cfg,_,_=configure(path)
+  from .sustained_restore_host import ReadPorts
+  owner=ReadPorts(run,role)
  if role in ('fusion-storage','fusion-search') and not preview:
   settings,cfg,_,_=configure(path)
   from fusion.memory_services import StoragePorts,SearchPorts
@@ -51,7 +55,8 @@ def main(path):
    try:
     require(owner is not None,'UNAUTHORIZED');auth=self.headers.get_all('Authorization',[]);require(len(auth)==1 and auth[0].startswith('Bearer '),'UNAUTHORIZED')
     lengths=self.headers.get_all('Content-Length',[]);require(not self.headers.get('Transfer-Encoding') and len(lengths)==1 and lengths[0].isdigit() and 0<int(lengths[0])<=98304,'INVALID_ARGUMENT')
-    q=json_loads(self.rfile.read(int(lengths[0])));allowed(role,self.path,q)
+    q=json_loads(self.rfile.read(int(lengths[0])))
+    if not preview:allowed(role,self.path,q)
     value=owner.invoke(self.path,auth[0][7:],q)
    except ContractError as e:value=dict(error=e.wire())
    except (ValueError,KeyError,TypeError):value=dict(error=ContractError('INVALID_ARGUMENT').wire())

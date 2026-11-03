@@ -1,4 +1,5 @@
 """Application-owned bounded read capture. No jobs, outbox or mailbox for reads."""
+from fusion.native_telemetry import traced
 from dataclasses import asdict
 import json
 from pathlib import Path
@@ -23,7 +24,7 @@ def configuration(path):
     require(type(cfg['queries']) is list and (0 if 'text_policy' in cfg else 1)<=len(cfg['queries'])<=32)
     for query in cfg['queries']:c.query_text(query)
     require(type(cfg.get('require_ready',False)) is bool)
-    chosen=select([descriptor_read(d) for d in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False))
+    chosen=select([descriptor_read(d) for d in cfg['catalogue']],cfg['embedding'],cfg.get('require_ready',False),cfg.get('feed_profile',c.a.FEED))
     frozen={k:cfg[k] for k in ('principal','scope','sharing','profile','embedding','snapshot','queries','metadata_seal','native_config')}
     require(cfg['native_config']=={'recall':2,'similarity':4,'inflation':4},'UNSUPPORTED_PROFILE')
     frozen['selections']={n:selection_token(d) for n,d in chosen.items()}
@@ -88,6 +89,7 @@ class MemoryRead:
         result=self.call(row,'search','authorize-ready' if cfg.get('require_ready') else 'authorize',dict(query=intent['arguments']['query'],snapshot=cfg['snapshot']),bounded=False)
         require(result=={'authorized':True},'NOT_AVAILABLE')
 
+    @traced('memory.retrieve')
     def retrieve(self,vector,k):
         row=self.current();cfg,_=self.settings(row)
         if self.app.embedding_enabled:
@@ -141,6 +143,7 @@ class MemoryRead:
         row=self.current() if row is None else row
         require(row['result'] is not None,'NOT_AVAILABLE');self.authorize(row);return row['result']
 
+    @traced('memory.capture')
     def capture(self,value):
         row=self.current();self.authorize(row)
         require(type(value) is str and len(value.encode())<=50000,'NOT_AVAILABLE')

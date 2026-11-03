@@ -141,6 +141,17 @@ class ChainObserver(unittest.TestCase):
         self.assertNotIn('Synthetic prism in violet crate', output)
         self.assertEqual(self.trace['reg']['binding']['authority']['expires_at_ms'], 1)
 
+    def test_explicit_sustained_feed_selection_is_preserved_and_unknown_refused(self):
+        from fusion.lookup_contracts import SUSTAINED_FEED
+        self.config['atoms']['feed_profile'] = SUSTAINED_FEED
+        result = observer.observe(self.trace, self.config)
+        self.assertEqual(result['status'], 'PASS')
+        self.assertEqual(self.atom_factory.call_args.args[0]['feed_profile'], SUSTAINED_FEED)
+        self.atom_factory.reset_mock(); self.node_factory.reset_mock()
+        self.config['atoms']['feed_profile'] = 'unrecognized-feed/99'
+        self.denied(lambda: observer.observe(self.trace, self.config), 'UNSUPPORTED_PROFILE')
+        self.atom_factory.assert_not_called(); self.node_factory.assert_not_called()
+
     def test_trace_shape_private_scope_and_malformed_dtos_fail_before_ports(self):
         variants = []
         for key in ('unexpected',):

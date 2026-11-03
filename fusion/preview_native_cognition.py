@@ -4,6 +4,7 @@ Numerical owners and native functions are unchanged. Only fresh operator input
 is a source; administrative history alone never acquires empirical provenance.
 The bounded preview initially assesses memories created by the acting agent.
 """
+from fusion.native_telemetry import traced
 from datetime import datetime,timezone
 import copy,json
 from .contracts import canonical,digest,require
@@ -65,6 +66,7 @@ class PreviewEvidence(EvidenceAdoption):
         super().validate_view(checked)
         require(view['metadata_seal']==digest(canonical(view['metadata'])),'CONFLICT')
         return view
+    @traced('cognition.refresh')
     def refresh(self,records,handles):
         old=self.db.execute('SELECT value FROM app_read_views WHERE id=(SELECT view FROM app_active_view)').fetchone()
         previous=json.loads(old[0]);bindings=[];defaults={}

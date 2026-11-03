@@ -539,7 +539,10 @@
           "type": "boolean"
         },
         "profile": {
-          "const": "omega-single-node-developer-preview/1"
+          "enum": [
+            "omega-single-node-developer-preview/1",
+            "omega-single-node-sustained-preview/1"
+          ]
         },
         "scope": {
           "type": "string",
@@ -815,6 +818,143 @@
             "registration",
             "enabled"
           ]
+        },
+        "sustained": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "allocation"
+          ],
+          "properties": {
+            "allocation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "active",
+                "retained",
+                "pending",
+                "bytes",
+                "lifetime_ms"
+              ],
+              "properties": {
+                "active": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4
+                },
+                "retained": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 16
+                },
+                "pending": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 32
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 8388608
+                },
+                "lifetime_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 604800000
+                }
+              }
+            },
+            "feed_capacity": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "profile",
+                "records",
+                "bytes"
+              ],
+              "properties": {
+                "profile": {
+                  "const": "bounded-feed-capacity/1"
+                },
+                "records": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4096
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 67108864
+                }
+              }
+            },
+            "private_scopes": {
+              "type": "boolean"
+            },
+            "model_binding": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "profile",
+                    "kind"
+                  ],
+                  "properties": {
+                    "profile": {
+                      "const": "omega-preview-model-binding/1"
+                    },
+                    "kind": {
+                      "const": "recorded"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "profile",
+                    "kind",
+                    "manifest",
+                    "approval",
+                    "runtime_lock"
+                  ],
+                  "properties": {
+                    "profile": {
+                      "const": "omega-preview-model-binding/1"
+                    },
+                    "kind": {
+                      "const": "approved-pinned-ollama"
+                    },
+                    "manifest": {
+                      "const": "/config/live-plan.json"
+                    },
+                    "approval": {
+                      "const": "/approvals/approval.json"
+                    },
+                    "runtime_lock": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "path",
+                        "sha256"
+                      ],
+                      "properties": {
+                        "path": {
+                          "type": "string",
+                          "pattern": "^/opt/generative/"
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
         }
       },
       "required": [
@@ -841,6 +981,30 @@
               "assignments",
               "responses"
             ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "profile": {
+                "const": "omega-single-node-sustained-preview/1"
+              }
+            },
+            "required": [
+              "profile"
+            ]
+          },
+          "then": {
+            "required": [
+              "sustained"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "sustained"
+              ]
+            }
           }
         }
       ]
@@ -876,6 +1040,10 @@
             "size": {
               "type": "string",
               "minLength": 1
+            },
+            "existingClaim": {
+              "type": "string",
+              "pattern": "^phase3-f1r3node-[a-z0-9-]+$"
             }
           }
         },
@@ -984,7 +1152,23 @@
                     "after_session_input_capture",
                     "after_workspace_effect",
                     "after_lifecycle_commit",
-                    "after_task_payload_capture"
+                    "after_task_payload_capture",
+                    "after_session_allocation_commit",
+                    "after_input_acceptance_commit",
+                    "after_input_dispatch_commit",
+                    "after_input_terminalization_commit",
+                    "after_input_cancellation_commit",
+                    "after_session_completion_commit",
+                    "after_feed_admission_commit",
+                    "after_feed_backend_acceptance",
+                    "after_atom_feed_commit",
+                    "after_private_projection_acceptance",
+                    "after_private_projection_source_capture",
+                    "after_private_projection_publication_capture",
+                    "after_task_ingress_capture",
+                    "after_task_session_acceptance",
+                    "after_task_ingress_ack",
+                    "after_task_publication_capture"
                   ]
                 },
                 "drop_response_operation": {

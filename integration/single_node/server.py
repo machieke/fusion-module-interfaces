@@ -77,6 +77,9 @@ def main(*, config_resolver=configure, model_factory=None):
         write(state/'owner-seal.json',seal)
     settings, config, state, run = config_resolver(config_path)
     preview=settings.get('preview',{}).get('enabled',False)
+    if preview and settings['preview']['profile']=='omega-single-node-sustained-preview/1':
+        from fusion.native_telemetry import configure as telemetry
+        telemetry(dict(workdir=str(state/'diagnostics'),native_telemetry=dict(profile='bounded-native-stage-timing/1',max_bytes=4194304)))
     native_agent=settings['role'] in settings.get('preview',{}).get('agents',{}) if preview else settings['role']=='omega-agent'
     supervisor=None;facet_owner=None;active_owner=None;memory_owner=None;inspection_owner=None
     workflow=settings.get('workflow',{}).get('enabled',False)
@@ -87,6 +90,10 @@ def main(*, config_resolver=configure, model_factory=None):
     memory=settings['service_composition']=='neoclaw-memory-services/1' or ((workflow or cognitive) and role in ('omega-agent','fusion-storage','fusion-search','fusion-embedding'))
     preview_memory=preview and settings['preview'].get('memory',{}).get('enabled',False)
     if preview_memory and role in ('fusion-storage','fusion-search','fusion-embedding'):memory=True
+    scope_router=None
+    if preview and 'scope_routes' in config:
+        from .sustained_private import ScopeRouter
+        scope_router=ScopeRouter(run/'owner.json',role)
     chosen = c.selected(c.catalogue('detta')); owner = None; kernel = None
     def hook(stage):
         if config.get('test_failpoints') and config.get('pause_at')==stage:
@@ -95,6 +102,7 @@ def main(*, config_resolver=configure, model_factory=None):
             # the pod; graceful shutdown must not release it and finish work.
             write(state/'pause.json',dict(stage=stage,pid=os.getpid()))
             threading.Event().wait()
+    if scope_router is not None:scope_router.hook=hook
     def execution():
         if chain:
             from fusion.inspect_services import Ports
@@ -122,7 +130,7 @@ def main(*, config_resolver=configure, model_factory=None):
             facet_owner=Ports(run/'facet-owner.json',role,hook)
         if native_agent:
             from .preview_host import NativeSupervisor
-            supervisor=NativeSupervisor(run/'owner.json',state,run)
+            supervisor=NativeSupervisor(run/'owner.json',state,run,enabled=(settings['native_enabled'] if settings['preview']['profile']=='omega-single-node-sustained-preview/1' else True))
     if cognitive and role in ('fusion-storage','fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search'):
         from fusion.cognitive_services import Ports
         cognitive_owner=Ports(run/'cognitive-owner.json',role,hook)
@@ -139,8 +147,8 @@ def main(*, config_resolver=configure, model_factory=None):
     elif cognitive and role in ('fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search'):
         owner=cognitive_owner
     elif preview and role=='fusion-model':
-        from fusion.preview_recorded_model import RecordedProposals
-        RecordedProposals(run/'owner.json') # Configuration/source check only.
+        from fusion.preview_model_binding import inspect_configuration
+        inspect_configuration(run/'owner.json') # Configuration/source check only.
     elif workflow and role=='fusion-model':
         from .recorded_model import deny_live,RecordedBackend
         from fusion.retrieval_services import ModelPorts
@@ -215,10 +223,16 @@ def main(*, config_resolver=configure, model_factory=None):
                 raw=self.rfile.read(int(sizes[0]));require(len(raw)==int(sizes[0]));request=json_loads(raw)
                 if preview and role=='fusion-storage':
                     storage_gate.enter();storage_entered=True
-                if preview and self.path=='/preview/session':
+                if scope_router is not None and scope_router.matches(request):
+                    with encode_lock:result=scope_router.invoke(self.path,auth[0][7:],request,kernel)
+                elif preview and self.path=='/preview/projection':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .sustained_projection import invoke as project
+                    result=project(run/'owner.json',state,run,auth[0][7:],request,hook)
+                elif preview and self.path=='/preview/session':
                     require(supervisor is not None,'UNSUPPORTED_OPERATION')
                     from fusion.preview_session_service import SessionPorts
-                    result=SessionPorts(run/'owner.json',supervisor.wake).invoke(auth[0][7:],request)
+                    result=SessionPorts(run/'owner.json',supervisor.wake,hook,supervisor.projections).invoke(auth[0][7:],request)
                 elif preview and self.path=='/preview/tasks':
                     require(role=='fusion-messaging' and (run/'task-owner.json').exists(),'UNSUPPORTED_OPERATION')
                     from fusion.preview_tasks import Ports as TaskPorts
@@ -235,17 +249,26 @@ def main(*, config_resolver=configure, model_factory=None):
                     result=owner.invoke(self.path,auth[0][7:],request)
                 elif preview and self.path=='/preview/model':
                     require(role=='fusion-model','UNSUPPORTED_OPERATION')
-                    from fusion.preview_recorded_model import service as recorded_service
+                    from fusion.preview_model_binding import service as selected_model_service
                     with encode_lock:
-                        service=recorded_service(run/'owner.json',hook)
+                        service=selected_model_service(run/'owner.json',hook)
                         try:result=service.invoke(auth[0][7:],request)
                         finally:service.close();service=None
                 elif preview and self.path=='/preview/facets':
                     require(facet_owner is not None,'UNSUPPORTED_OPERATION')
                     with encode_lock:result=facet_owner.invoke(auth[0][7:],request)
+                elif preview and self.path=='/preview/owner-state':
+                    require(role=='fusion-attention' and cognitive_owner is not None,'UNSUPPORTED_OPERATION')
+                    from fusion.sustained_observation import invoke as current_state
+                    result=current_state(run/'cognitive-owner.json',auth[0][7:],request)
                 elif preview and self.path=='/reference-cognition':
                     require(cognitive_owner is not None,'UNSUPPORTED_OPERATION')
-                    result=cognitive_owner.invoke(self.path,auth[0][7:],request)
+                    # The facet and numerical ports share this one owner's
+                    # journal. Serialize them at the service boundary: an
+                    # append can hold its transaction while validating remote
+                    # immutable payloads, longer than SQLite's busy timeout.
+                    # Owner deadline/authority checks remain inside the lock.
+                    with encode_lock:result=cognitive_owner.invoke(self.path,auth[0][7:],request)
                 elif preview and self.path=='/preview/memory':
                     require(active_owner is not None,'UNSUPPORTED_OPERATION')
                     with encode_lock:result=active_owner.invoke(auth[0][7:],request)
@@ -331,7 +354,9 @@ def main(*, config_resolver=configure, model_factory=None):
                     except (OSError,http.client.HTTPException):pass
                     finally:conn.close()
                     if stop.wait(.2) or time.monotonic()>=until:raise SystemExit('DEPENDENCY_NOT_READY')
-            if memory and role=='fusion-search':owner.initialize(state)
+            if memory and role=='fusion-search':
+                owner.initialize(state)
+                if scope_router is not None:scope_router.initialize_search()
         if not preview and role=='omega-agent' and settings['native_enabled']:
             if chain:
                 pass # Native Hive startup owns its caller configuration and receipts.

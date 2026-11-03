@@ -13,8 +13,10 @@
 {{- if $workflow }}{{- $composition = "neoclaw-model-channel-services/1" }}{{- end }}
 {{- if $reference }}{{- $composition = "synthetic-cognitive-services/1" }}{{- end }}
 {{- if $chain }}{{- $composition = "generated-inspect-services/1" }}{{- end }}
-{{- if $preview }}{{- $composition = "omega-single-node-developer-preview/1" }}{{- end }}
+{{- if $preview }}{{- $composition = $.Values.preview.profile }}{{- end }}
 {{- $image := default $.Values.image $component.image }}
+{{- $existingState := default "" $component.persistence.existingClaim }}
+{{- if and $existingState (ne $name "f1r3node") }}{{ fail "existingClaim is restricted to the explicitly provisioned isolated chain node" }}{{- end }}
 {{- $config := dict "role" $name "service_composition" $composition "state" "/state" "run" "/run/fusion" "secret_directory" "/secrets" "https_port" $.Values.httpsPort "capacity" $component.config.capacity "revision" $component.config.revision "native_enabled" $component.config.nativeEnabled "worker_enabled" $component.config.workerEnabled "enable_test_faults" $.Values.testFaultsEnabled "test" $component.config.test "peers" (dict "fusion-execution" (printf "fusion-execution.%s.svc.cluster.local" $.Release.Namespace) "fusion-storage" (printf "fusion-storage.%s.svc.cluster.local" $.Release.Namespace) "fusion-messaging" (printf "fusion-messaging.%s.svc.cluster.local" $.Release.Namespace) "fusion-search" (printf "fusion-search.%s.svc.cluster.local" $.Release.Namespace) "fusion-embedding" (printf "fusion-embedding.%s.svc.cluster.local" $.Release.Namespace)) }}
 {{- if not $.Values.memory.enabled }}
 {{- $_ := unset $config.peers "fusion-search" }}
@@ -157,12 +159,16 @@ spec:
             {{- if and $.Values.futureLive.enabled (eq $name "fusion-model") }}
             - {name: generative-assets, mountPath: /opt/generative/models, subPath: models, readOnly: true}
             {{- end }}
-            - {name: state, mountPath: /state}
+            - {name: {{ ternary "selected-state" "state" (ne $existingState "") }}, mountPath: /state}
             - {name: runtime, mountPath: /run/fusion}
             - {name: tmp, mountPath: /tmp}
             - {name: config, mountPath: /config, readOnly: true}
             - {name: secrets, mountPath: /secrets, readOnly: true}
       volumes:
+        {{- if $existingState }}
+        - name: selected-state
+          persistentVolumeClaim: {claimName: {{ $existingState | quote }}}
+        {{- end }}
         {{- if and $.Values.futureLive.enabled (has $name (list "fusion-model" "omega-agent")) }}
         - name: campaign
           configMap: {name: {{ $.Values.futureLive.planConfigMap }}, optional: true}

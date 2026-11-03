@@ -3,6 +3,7 @@
 This module imports contracts only. It never instantiates a provider, retries a
 request, changes a deadline, or implies that a timeout cancelled an effect.
 """
+from fusion.native_telemetry import traced
 from dataclasses import asdict, dataclass
 import http.client
 import json
@@ -84,14 +85,16 @@ class AtomFeedClient:
     """
     def __init__(self, endpoint: Endpoint, credential: str, principal: str,
                  scope: str, descriptor: Descriptor, *, deadline_ms: int,
-                 composition: str = COMPOSITION, privacy: str = 'generated-shareable'):
+                 composition: str = COMPOSITION, privacy: str = 'generated-shareable', feed_profile: str = c.FEED):
         require(type(endpoint) is Endpoint and label(principal) and label(scope))
         require(type(credential) is str and credential.isascii() and 1 <= len(credential) <= 256 and
                 '\r' not in credential and '\n' not in credential, 'UNAUTHORIZED')
         require(type(deadline_ms) is int and deadline_ms > 0)
         require(label(composition) and label(privacy))
         require(privacy != 'private-local-only', 'UNSUPPORTED_PROFILE')
-        resolve([descriptor], Requirement('atom.storage', '1.0.0', '1.2.0', c.FEED,
+        require(feed_profile in (c.FEED,c.SUSTAINED_FEED),'UNSUPPORTED_PROFILE')
+        self.feed_profile=feed_profile
+        resolve([descriptor], Requirement('atom.storage', '1.0.0', '1.2.0', feed_profile,
                 OPERATIONS, frozenset({'process-restart', 'scoped'}),
                 privacy=privacy))
         self.endpoint, self.credential, self.principal = endpoint, credential, principal
@@ -105,8 +108,9 @@ class AtomFeedClient:
         require(remaining > 0, 'DEADLINE_EXCEEDED')
         return min(remaining, self.endpoint.timeout_seconds)
 
+    @traced('transport.atoms')
     def _invoke(self, operation, args):
-        require(operation in OPERATIONS and operation in self.descriptor.operations, 'UNSUPPORTED_OPERATION')
+        require(operation in OPERATIONS|{'capacity','observe'} and operation in self.descriptor.operations, 'UNSUPPORTED_OPERATION')
         request = dict(id=str(uuid.uuid4()), composition=self.composition,
                        scope=self.scope, interface='atom.storage',
                        selection=selection_token(self.descriptor), operation=operation, args=args)
@@ -190,13 +194,25 @@ class AtomFeedClient:
         require(scope == self.scope, 'UNAUTHORIZED')
         value = self._invoke('head', [scope])
         try:
-            return c.head(value, scope)
+            return c.source_head(value, scope,self.feed_profile)
         except (ContractError, TypeError, KeyError):
             raise ContractError('NOT_AVAILABLE') from None
 
+    def observe(self,command):
+        require(type(command) is Mutation and command.scope_ref==self.scope,'UNAUTHORIZED')
+        require('observe' in self.descriptor.operations,'UNSUPPORTED_OPERATION')
+        from .atom_observation import observation
+        return observation(self._invoke('observe',[asdict(command)]),self.scope,self.descriptor)
+
+    def capacity(self,scope):
+        require(scope==self.scope,'UNAUTHORIZED')
+        require(self.feed_profile==c.SUSTAINED_FEED,'UNSUPPORTED_PROFILE')
+        from .sustained_feed_contracts import capacity_result
+        return capacity_result(self._invoke('capacity',[scope]),scope)
+
     def readCommits(self, scope, after, through, limit):
         require(scope == self.scope, 'UNAUTHORIZED')
-        c.head(through, scope)
+        c.source_head(through, scope,self.feed_profile)
         c.integer(after, 0, through['sequence'])
         c.integer(limit, 1, c.PAGE)
         value = self._invoke('readCommits', [scope, after, through, limit])

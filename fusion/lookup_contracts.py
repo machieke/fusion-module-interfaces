@@ -8,6 +8,8 @@ import uuid
 from .contracts import ContractError, canonical, digest, label, require, validate_ref
 
 FEED = 'immutable-commit-feed/1'
+SUSTAINED_FEED = 'immutable-commit-feed/2'
+SUSTAINED_MAX_ATOMS = 4096
 RELATIONS = 'schema-ordered-relations/2'
 SEARCH = 'exact-attributes/1'
 EXTRACTION = 'knowledge-attributes/1'
@@ -55,13 +57,27 @@ def identity(value):
 def head(value, scope=None, profile=FEED):
     require(type(value) is dict and set(value) == {'source', 'scope_ref', 'sequence', 'profile'})
     identity(value['source']); require(label(value['scope_ref']))
-    integer(value['sequence'], 0, MAX_ATOMS)
+    integer(value['sequence'], 0, SUSTAINED_MAX_ATOMS if profile==SUSTAINED_FEED else MAX_ATOMS)
     require(value['profile'] == profile, 'UNSUPPORTED_PROFILE')
     if scope is not None: require(value['scope_ref'] == scope, 'UNAUTHORIZED')
     return copy(value)
 
 def make_head(source, scope, sequence, profile=FEED):
     return head(dict(source=source, scope_ref=scope, sequence=sequence, profile=profile), scope, profile)
+
+def source_head(value, scope=None, profile=None):
+    """Source profile union; a selected storage port additionally pins one member.
+
+    Historical head() remains /1 by default. Retained composite views carry the
+    actual named source profile; no sequence is reinterpreted as another source.
+    """
+    require(type(value) is dict and value.get('profile') in (FEED,SUSTAINED_FEED),'UNSUPPORTED_PROFILE')
+    return head(value,scope,value['profile'] if profile is None else profile)
+
+def feed_profile(descriptor):
+    profiles=descriptor.profiles & {FEED,SUSTAINED_FEED}
+    require(len(profiles)==1,'UNSUPPORTED_PROFILE')
+    return next(iter(profiles))
 
 def mutation(command):
     require(label(command.scope_ref) and label(command.idempotency_key))
@@ -169,12 +185,13 @@ def unseal(secret,token):
     except (ValueError,UnicodeError,TypeError):raise ContractError('INVALID_ARGUMENT') from None
 
 def commits(value,scope,after,through,limit):
+    source_head(through,scope)
     require(type(value) is dict and set(value)=={'through','after','records','next_after','complete'},'NOT_AVAILABLE')
     require(value['through']==through and type(value['after']) is int and value['after']==after,'NOT_AVAILABLE')
     entries=value['records'];require(type(entries) is list and len(entries)==min(limit,through['sequence']-after),'NOT_AVAILABLE')
     for i,e in enumerate(entries,after+1):
         require(type(e) is dict and set(e)=={'sequence','ref','content_type','size'} and e['sequence']==i,'NOT_AVAILABLE')
-        integer(e['sequence'],1,MAX_ATOMS);ref(e['ref'],scope);require(label(e['content_type']),'NOT_AVAILABLE');integer(e['size'],1,MAX_BYTES)
+        integer(e['sequence'],1,through['sequence']);ref(e['ref'],scope);require(label(e['content_type']),'NOT_AVAILABLE');integer(e['size'],1,MAX_BYTES)
     require(type(value['next_after']) is int and value['next_after']==after+len(entries) and type(value['complete']) is bool and value['complete']==(value['next_after']==through['sequence']),'NOT_AVAILABLE')
     return copy(value)
 

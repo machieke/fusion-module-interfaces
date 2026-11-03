@@ -13,28 +13,44 @@ from .contracts import canonical, digest, require, ContractError
 from .ports import AtomEnvelope
 
 class FeedAtomOwner:
-    def __init__(self,path,storage,access,hook=lambda stage:None):
+    def __init__(self,path,storage,access,hook=lambda stage:None,*,capacity=None):
         self.path,self.storage,self.access,self.hook=Path(path),storage,access,hook
+        from .sustained_feed_contracts import capacity_policy
+        self.capacity_policy=capacity_policy(capacity) if capacity is not None else None
+        self.profile=c.SUSTAINED_FEED if capacity is not None else c.FEED
         self.path.parent.mkdir(parents=True,exist_ok=True)
         if self.path.exists():
             with closing(sqlite3.connect(f'file:{self.path}?mode=ro',uri=True)) as db:
                 tables={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
-                require(not tables or tables=={'feed_meta','feed_atoms'},'UNSUPPORTED_PROFILE')
+                expected={'feed_meta','feed_atoms'}|({'feed_reservations'} if capacity is not None else set())
+                require(not tables or tables==expected,'UNSUPPORTED_PROFILE')
         with closing(self.connect()) as db,db:
+            db.execute('BEGIN IMMEDIATE')
             db.execute('CREATE TABLE IF NOT EXISTS feed_meta(value TEXT NOT NULL)')
             db.execute('CREATE TABLE IF NOT EXISTS feed_atoms(scope TEXT, sequence INTEGER, identity TEXT UNIQUE, fingerprint TEXT, value TEXT, payload TEXT, PRIMARY KEY(scope,sequence))')
             row=db.execute('SELECT value FROM feed_meta').fetchone()
             if row:
-                meta=json.loads(row[0]);require(meta['profile']==c.FEED,'UNSUPPORTED_PROFILE')
+                meta=json.loads(row[0]);require(meta['profile']==self.profile,'UNSUPPORTED_PROFILE')
+                if capacity is not None:require(meta.get('capacity')==capacity,'CONFLICT')
             else:
                 require(db.execute('SELECT count(*) FROM feed_atoms').fetchone()[0]==0,'NOT_AVAILABLE')
-                meta={'profile':c.FEED,'source':str(uuid.uuid4())};db.execute('INSERT INTO feed_meta VALUES(?)',(canonical(meta).decode(),))
+                meta={'profile':self.profile,'source':str(uuid.uuid4())}
+                if capacity is not None:meta['capacity']=capacity
+                db.execute('INSERT INTO feed_meta VALUES(?)',(canonical(meta).decode(),))
+            if capacity is not None:
+                db.execute('''CREATE TABLE IF NOT EXISTS feed_reservations(identity TEXT PRIMARY KEY,
+                    fingerprint TEXT NOT NULL,scope TEXT NOT NULL,size INTEGER NOT NULL,
+                    charged_bytes INTEGER NOT NULL,state TEXT NOT NULL)''')
+                db.execute("CREATE INDEX IF NOT EXISTS feed_reference ON feed_atoms(scope,json_extract(value,'$.write.ref.id'))")
         c.identity(meta['source']);self.source=meta['source']
 
     def connect(self):
         db=sqlite3.connect(self.path,timeout=1);db.execute('PRAGMA journal_mode=WAL');db.execute('PRAGMA synchronous=FULL');return db
 
     def create(self,command,content_type,data):
+        if self.capacity_policy is not None:
+            from .sustained_feed import create
+            return create(self,command,content_type,data)
         c.mutation(command);c.integer(len(data),1,c.MAX_BYTES)
         principal=self.access.authorize(command.scope_ref,'create')
         identity=canonical([principal,command.scope_ref,command.idempotency_key]).decode()
@@ -57,7 +73,9 @@ class FeedAtomOwner:
 
     def row(self,ref):
         with closing(self.connect()) as db:
-            rows=db.execute('SELECT value,payload FROM feed_atoms WHERE scope=?',(ref['scope_ref'],)).fetchall()
+            if self.capacity_policy is not None:
+                rows=db.execute("SELECT value,payload FROM feed_atoms WHERE scope=? AND json_extract(value,'$.write.ref.id')=?",(ref['scope_ref'],ref['id'])).fetchall()
+            else:rows=db.execute('SELECT value,payload FROM feed_atoms WHERE scope=?',(ref['scope_ref'],)).fetchall()
         for encoded,payload in rows:
             value=json.loads(encoded)
             if value['write']['ref']['id']==ref['id']:
@@ -74,7 +92,7 @@ class FeedAtomOwner:
         self.access.authorize(command.scope_ref,'observe')
         if row is None:return dict(found=False,write=None,through=None,content_type=None,size=None)
         sequence,encoded=row;value=json.loads(encoded)
-        return dict(found=True,write=value['write'],through=c.make_head(self.source,command.scope_ref,sequence),
+        return dict(found=True,write=value['write'],through=c.make_head(self.source,command.scope_ref,sequence,self.profile),
                     content_type=value['content_type'],size=value['size'])
 
     def get(self,ref):
@@ -94,10 +112,10 @@ class FeedAtomOwner:
     def head(self,scope):
         self.access.authorize(scope,'head')
         with closing(self.connect()) as db:seq=db.execute('SELECT coalesce(max(sequence),0) FROM feed_atoms WHERE scope=?',(scope,)).fetchone()[0]
-        self.access.authorize(scope,'head');return c.make_head(self.source,scope,seq)
+        self.access.authorize(scope,'head');return c.make_head(self.source,scope,seq,self.profile)
 
     def readCommits(self,scope,after,through,limit):
-        self.access.authorize(scope,'readCommits');through=c.head(through,scope)
+        self.access.authorize(scope,'readCommits');through=c.head(through,scope,self.profile)
         c.integer(after,0,through['sequence']);c.integer(limit,1,c.PAGE)
         require(through['source']==self.source,'CONFLICT')
         with closing(self.connect()) as db:
@@ -109,3 +127,7 @@ class FeedAtomOwner:
             value=json.loads(encoded);records.append({'sequence':seq,'ref':value['write']['ref'],'content_type':value['content_type'],'size':value['size']})
         self.access.authorize(scope,'readCommits')
         return c.commits(dict(through=through,after=after,records=records,next_after=after+len(records),complete=after+len(records)==through['sequence']),scope,after,through,limit)
+
+    def capacity(self,scope):
+        from .sustained_feed import capacity
+        return capacity(self,scope)

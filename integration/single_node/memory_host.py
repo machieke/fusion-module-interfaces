@@ -31,7 +31,7 @@ class SearchHost(SearchPorts):
             head=service.atoms.head(self.scope);require(head['sequence']==0,'CONFLICT')
             intent=dict(head=head,deadline_ms=time.time_ns()//1_000_000+30000);write(intent_path,intent)
         from fusion.append_composition import AppendService
-        builder=AppendService(self.path,cfg['principals']['A']['credential'],atoms=self.atoms())
+        builder=AppendService(self.path,cfg['principals'][cfg.get('memory_append',{}).get('writers',['A'])[0]]['credential'],atoms=self.atoms())
         self.initial=builder.search().build_named(self.scope,intent['head'],'initial-empty',intent['deadline_ms'])
         write(path,self.initial)
     def invoke(self,path,credential,request):
@@ -52,7 +52,7 @@ def prepare_agent(settings,state,run):
     from fusion.vector_transport import checked
     from fusion.vector_composition import select
     from fusion.registry import descriptor_read
-    read=json.loads((run/'memory-read-template.json').read_text());selected=select([descriptor_read(d) for d in read['catalogue']],v.EMBEDDING,True)
+    read=json.loads((run/'memory-read-template.json').read_text());selected=select([descriptor_read(d) for d in read['catalogue']],v.EMBEDDING,True,read.get('feed_profile',v.a.FEED))
     port=Network(read['endpoints']['search'],read['service_credentials']['search'],selected,service_dns=True)
     request=initial_request(read['scope'],selection_token(selected['search']))
     conn=http.client.HTTPSConnection(port.endpoint['host'],port.endpoint['port'],timeout=3,context=port.context)

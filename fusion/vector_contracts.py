@@ -64,7 +64,7 @@ def enrollment(value, scope, corpus, embedding):
 
 def snapshot(value, scope):
     fields(value, 'generation logical head corpus embedding index profile')
-    a.identity(value['generation']);a.head(value['head'], scope)
+    a.identity(value['generation']);a.source_head(value['head'], scope)
     require(value['profile'] == PROFILE and value['index'] == INDEX, 'UNSUPPORTED_PROFILE')
     model(value['embedding']);require(type(value['corpus']) is str and 1 <= len(value['corpus']) <= 80)
     expected=digest(canonical({k:value[k] for k in ('head','corpus','embedding','index','profile')}))

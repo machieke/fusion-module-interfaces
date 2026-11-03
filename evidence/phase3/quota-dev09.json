@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "namespace": "omega-ref-phase3-quota09",
+  "source_sha256": "c4a7005126ed83d7b488e0eb1cbd801ad704d35a59a293816ca5d454dfbb2765",
+  "previous_report_sha256": "98fd222564f07b6181302eeaa209d97531eb4ddec8346d3059b04664b80248a9",
+  "new_native_inputs": 0,
+  "original_native_input_deadlines_unchanged": true,
+  "additional_live_generations": 0,
+  "readback": {
+    "reference_digest_verified": true,
+    "authoritative_payload_readable": true,
+    "explicit_provider_refusal": "OVERLOADED",
+    "capacity_unchanged": true
+  },
+  "old_captures_identical": true,
+  "spent_native_input": {
+    "id": "sustained-dc8cc959-04ed-4a86-a818-e2086428dbf2",
+    "deadline": 1793705839098,
+    "state": "needs-reconciliation",
+    "result": null
+  },
+  "quiesced": true,
+  "raw_report_sha256": "a5abf23eb84921843ab3ea0e682cc0e470f2aa0d11d4bb4a338052305b9260d0",
+  "classification": "REAL_DEPLOYED_DETTA_CAPACITY_REFUSAL_AND_RETAINED_CAPTURE",
+  "development_assertions": [
+    "Two native remembers completed and exactly filled 32 records; first driver incorrectly expected second to fail",
+    "Continuation precondition incorrectly required head <32; failed before a new input",
+    "Third input remained incomplete; initial diagnostic expected unsanitized OVERLOADED in caller log; explicit authenticated owner probe subsequently returned OVERLOADED"
+  ]
+}

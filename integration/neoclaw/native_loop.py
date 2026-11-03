@@ -147,8 +147,11 @@ def prepare(config_file):
         manifest['overlay_hashes'].update({p.name:digest(p.read_bytes()) for p in (skills,loop,helper)})
         manifest['substitutions'].append('Preview vocabulary extends original parser command set only; durable task notes are application state, not evidence.')
         if 'session_config' in config:
-            manifest['model_boundary'] = 'RECORDED_PROPOSALS_THROUGH_MODEL_OWNER'
+            from fusion.preview_model_binding import boundary
+            selected_model=boundary(json.loads(Path(config['model_config']).read_bytes()))
+            manifest['model_boundary'] = 'RECORDED_PROPOSALS_THROUGH_MODEL_OWNER' if selected_model=='RECORDED_FIXTURE' else 'PINNED_REAL_BACKEND_APPROVAL_REQUIRED'
             manifest['substitutions'][1] = 'Recorded authored proposals through independent X01 acceptance/reservation/capture; no generative runtime'
+            if selected_model!='RECORDED_FIXTURE':manifest['substitutions'][1]='Existing pinned real X01 adapter selected; generation requires separate campaign authority, no fixture fallback'
             manifest['substitutions'][2] = 'Authenticated durable native session input API; IRC not selected for this ingress'
             manifest['fixture_hashes'].pop('lib_llm_ext.py', None)
             manifest['overlay_hashes'].update({p.name:digest(p.read_bytes()) for p in (session_channels, session_model)})
@@ -179,7 +182,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('config')
     args = parser.parse_args()
-    command, environment, directory = prepare(args.config)
+    import time
+    from fusion.native_telemetry import configure,span
+    config=json.loads(Path(args.config).read_bytes());configure(config)
+    started=time.monotonic_ns()
+    with span('native.launch_prepare'):command, environment, directory = prepare(args.config)
+    if config.get('native_telemetry'):environment['NEOCLAW_NATIVE_LAUNCH_NS']=str(started)
     os.chdir(directory)
     os.execvpe(command[0], command, environment)
 

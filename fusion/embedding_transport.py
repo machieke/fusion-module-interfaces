@@ -1,4 +1,5 @@
 """Local / certificate-verified loopback HTTPS bindings. No hidden retries or fallback."""
+from fusion.native_telemetry import traced
 import http.client
 import time
 
@@ -20,6 +21,7 @@ def checked(request, reply):
 
 
 class EmbeddingNetwork(Network):
+    @traced('transport.embedding', request=1)
     def invoke(self, request):
         c.request(request, self.chosen)
         timeout = 2. if request['operation'] != 'encode' else min(6., (request['intent']['deadline_ms']-time.time()*1000)/1000)
@@ -40,5 +42,6 @@ class EmbeddingNetwork(Network):
 
 class EmbeddingLocal:
     def __init__(self, service, credential): self.service, self.credential = service, credential
+    @traced('transport.embedding', request=1)
     def invoke(self, request):
         return checked(request, self.service.invoke(self.credential, json_loads(canonical(request))))

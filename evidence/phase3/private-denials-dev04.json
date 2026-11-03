@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "scope_probes": {
+    "status": "PASS",
+    "denials": [
+      {
+        "name": "atom.get",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.getMany",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.head",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.capacity",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "atom.feed",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "memory.lifecycle.head",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "search.current",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "search.ready",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "episode.read",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "relations.outgoing",
+        "code": "UNAUTHORIZED"
+      },
+      {
+        "name": "attention.current",
+        "code": "UNAUTHORIZED"
+      }
+    ],
+    "shared_payloads_checked": 125,
+    "private_data_returned": false,
+    "additional_live_generations": 0
+  },
+  "projection": "FAILED_UNSUPPORTED_OPERATION: SDK optional observe absent from internal dispatch allowlist; fixed for next image",
+  "raw_report_sha256": "a3b220d7bfcd1d80777c03b4a484755c76ba596a6783ee117a656a7da27bf89c",
+  "images": "artifacts/phase3/build-dev04/images.json",
+  "extra_live_generations": 0,
+  "private_content_omitted": true
+}

@@ -1,0 +1,57 @@
+{
+  "classification": "REAL_NATIVE_QUERY_CAPTURED_TASK_RELAY_FAILED",
+  "report_sha256": "0520da6f8372791f3d402a43e35cd4356995beb2e6ebbdf352ef4524e19d77c4",
+  "images": {
+    "archive_bytes": 3473646080,
+    "archive_sha256": "c75e4874d5f0e8a8c7f573ea009c5e4a77a34538c3205ab644cb383dd1730017",
+    "container_starts": 0,
+    "generative_runtime_availability": "NOT_CHECKED",
+    "images": [
+      {
+        "configuration_digest": "sha256:6e0a2c93bc6bbd4ae56d31112568b7d8746376cb656583810048803df7b0c748",
+        "kind": "base",
+        "local_tag": "docker.io/library/fusion-single-node:reference-phase3-dev04",
+        "manifest_digest": "sha256:4f4c2b3d68ad726747fe58be7fb90362ea92af13c8edf2e797c1b6937e1db5f7",
+        "repository": "docker.io/library/fusion-single-node",
+        "source_package": "image-base/package.json"
+      },
+      {
+        "configuration_digest": "sha256:f0e37b452e087e9cd528d613864d5528fed5fdda614e4b7bbe7148b3a2159418",
+        "kind": "caller",
+        "local_tag": "docker.io/library/fusion-memory-caller:reference-phase3-dev04",
+        "manifest_digest": "sha256:572c9f221cd166a9658fd9b2122928bf10f0a66f9145d3caf707a85ff95495e2",
+        "repository": "docker.io/library/fusion-memory-caller",
+        "source_package": "image-caller/package.json"
+      },
+      {
+        "configuration_digest": "sha256:82cb432eb6cb236ec66868424e1f47c9f4f8fdab81ec9ab8c2e7586f10711116",
+        "kind": "embedding",
+        "local_tag": "docker.io/library/fusion-memory-embedding:reference-phase3-dev04",
+        "manifest_digest": "sha256:c6a21fe64e8dc7368eaa7387874a506e8ed8d13dfe1766b1236926e3833da11a",
+        "repository": "docker.io/library/fusion-memory-embedding",
+        "source_package": "image-embedding/package.json"
+      },
+      {
+        "configuration_digest": "sha256:3dc5780c112461d5b3fc021da45ec925904a2e63ddc9578e6718c75fbc9fa941",
+        "kind": "chain",
+        "local_tag": "docker.io/library/fusion-reference-chain:reference-phase3-dev04",
+        "manifest_digest": "sha256:638c57f9dbe0c0906e624142ce21be6f130fd1539df629bebd60168db683156c",
+        "repository": "docker.io/library/fusion-reference-chain",
+        "source_package": "image-chain/package.json"
+      }
+    ],
+    "source_export_verification": "PASS",
+    "source_manifest_sha256": "55b4ccbacc820ca8aab9876e3a4d37c6e98d47ab56cc2e587c05c8c03c8f3685"
+  },
+  "native_delegate": "COMPLETE",
+  "recipient_query": "CAPTURED",
+  "task_relay_reservations": 0,
+  "recipient_completion": "NOT_AVAILABLE",
+  "reason": "completion relay incorrectly checked advanced processing slot instead of captured task input",
+  "original_identity_deadline_retained": true,
+  "cleanup": {
+    "namespace": "omega-ref-phase3-combined04",
+    "pvcs_retained": true
+  },
+  "additional_live_generations": 0
+}

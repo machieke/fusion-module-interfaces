@@ -4,6 +4,7 @@ The Search service receives a read-only indexer credential. Receipt observation
 is delegated for exactly the operator-bound application/session/scope, checked
 against BOTH current identities. Wire principal strings never grant authority.
 """
+from fusion.native_telemetry import traced
 import http.client
 from pathlib import Path
 import uuid
@@ -42,6 +43,7 @@ class RoutedMemory:
         freeze_placement(cfg,('atom.storage','search'))
         self.routes={name:transport(ep,cfg['service_credentials'][name],chosen,cfg['principal'],service_dns=True)
                      for name,ep in cfg['endpoints'].items()}
+    @traced('transport.memory_source', request=1)
     def invoke(self,request):
         name=request['interface_ref']['id'];require(name in self.routes,'UNSUPPORTED_OPERATION')
         return self.routes[name].invoke(request)
@@ -57,6 +59,7 @@ class SourceConnection(Network):
     def __init__(self,endpoint,credential,principal='indexer'):
         self.principal=principal
         super().__init__(endpoint,credential,None,timeout=1.,service_dns=True)
+    @traced('transport.memory_source', request=1)
     def invoke(self,request):
         require(len(canonical(request))<=MAX_BYTES)
         conn=http.client.HTTPSConnection(self.endpoint['host'],self.endpoint['port'],timeout=self.timeout,context=self.context)
@@ -90,9 +93,9 @@ class RemoteSource:
         require(type(refs) is tuple and 1<=len(refs)<=8)
         return tuple(self.get(r) for r in refs)
     def head(self,scope):
-        require(scope==self.scope,'UNAUTHORIZED');return a.head(self.call('head',{}),scope)
+        require(scope==self.scope,'UNAUTHORIZED');return a.source_head(self.call('head',{}),scope,a.feed_profile(self.read_descriptor))
     def readCommits(self,scope,after,through,limit):
-        require(scope==self.scope,'UNAUTHORIZED');a.head(through,scope);a.integer(after,0,through['sequence']);a.integer(limit,1,a.PAGE)
+        require(scope==self.scope,'UNAUTHORIZED');a.source_head(through,scope,a.feed_profile(self.read_descriptor));a.integer(after,0,through['sequence']);a.integer(limit,1,a.PAGE)
         return a.commits(self.call('readCommits',dict(after=after,through=through,limit=limit)),scope,after,through,limit)
     def observe(self,command):
         accepted=w.intent(self.accepted);require(command.scope_ref==self.scope,'UNAUTHORIZED')
@@ -178,8 +181,8 @@ class SearchPorts:
         self.path,self.hook=path,hook;cfg=Policy(path).current()
         # Separation is fail-closed even when a caller supplies a legacy config.
         require('detta_binary' not in cfg and all('detta_binary' not in cfg[k] for k in ('memory_read','memory_append')),'UNSUPPORTED_PROFILE')
-        self.source=cfg['source'];self.read=read_select([descriptor_read(x) for x in cfg['memory_read']['catalogue']],v.EMBEDDING,True)
-        self.append=w.select([descriptor_read(x) for x in cfg['memory_append']['catalogue']]);self.scope=cfg['memory_read']['scope']
+        self.source=cfg['source'];self.read=read_select([descriptor_read(x) for x in cfg['memory_read']['catalogue']],v.EMBEDDING,True,cfg['memory_read'].get('feed_profile',a.FEED))
+        self.append=w.select([descriptor_read(x) for x in cfg['memory_append']['catalogue']],cfg['memory_append'].get('feed_profile',a.FEED));self.scope=cfg['memory_read']['scope']
     def atoms(self,accepted=None):
         return RemoteSource(SourceConnection(**self.source),self.scope,self.read['atom.storage'],self.append['atom.storage'],accepted)
     def invoke(self,path,credential,request):

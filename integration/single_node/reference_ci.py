@@ -8,12 +8,13 @@ from pathlib import Path
 from fusion.contracts import require
 FAST=('tests.test_reference_boundaries','tests.test_m5_boundaries','tests.test_cognitive_services','tests.test_reference_chain_services','tests.test_reference_restore','tests.test_reference_ownership','tests.test_reference_diagnostics','tests.test_reference_live','tests.test_reference_schema','tests.test_model_channel_services')
 def main():
- p=argparse.ArgumentParser();p.add_argument('lane',choices=('fast','chart','native','cluster','chain','artifacts','preview-fast','preview-native','preview-cluster'));p.add_argument('--output',default='artifacts/reference-ci');a,remaining=p.parse_known_args();a.arguments=remaining[1:] if remaining[:1]==['--'] else remaining;out=Path(a.output);out.mkdir(parents=True,exist_ok=True)
+ p=argparse.ArgumentParser();p.add_argument('lane',choices=('fast','chart','native','cluster','chain','artifacts','preview-fast','preview-native','preview-cluster','sustained-fast'));p.add_argument('--output',default='artifacts/reference-ci');a,remaining=p.parse_known_args();a.arguments=remaining[1:] if remaining[:1]==['--'] else remaining;out=Path(a.output);out.mkdir(parents=True,exist_ok=True)
  # deny_live has no backend side effects. Its sentinel contract test is always
  # in fast. Native uses the stronger namespace/mount-denied preparation guard.
  denial=subprocess.run([sys.executable,'-c',"from integration.single_node.recorded_model import deny_live;print(deny_live('recorded'))"],capture_output=True,text=True)
  require(denial.returncode==0,'UNAUTHORIZED');(out/'denial.log').write_text(denial.stdout+denial.stderr)
- if a.lane=='preview-fast':command=[sys.executable,'-m','unittest','discover','-s','tests','-p','test_phase2_*.py','-v']
+ if a.lane=='sustained-fast':command=[sys.executable,'-m','unittest','discover','-s','tests','-p','test_phase3_*.py','-v']
+ elif a.lane=='preview-fast':command=[sys.executable,'-m','unittest','discover','-s','tests','-p','test_phase2_*.py','-v']
  elif a.lane=='preview-native':command=[sys.executable,'-m','integration.neoclaw.preparation_guard','--guard-evidence',str(out/'native-denial.json'),'--',sys.executable,'-m','unittest','-v','integration.neoclaw.test_preview_context','integration.neoclaw.test_preview_session']
  elif a.lane=='fast':command=[sys.executable,'-m','unittest','-v',*FAST]
  elif a.lane=='chart':command=[sys.executable,'-m','unittest','-v','tests.test_single_node_chart','tests.test_reference_network_policy','tests.test_reference_schema']

@@ -9,12 +9,12 @@ def sha(path):
  return h.hexdigest()
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--container',required=True);p.add_argument('--manifest',required=True);p.add_argument('--archive');p.add_argument('--register-only',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();mode=p.add_mutually_exclusive_group(required=True);mode.add_argument('--container');mode.add_argument('--k3s-binary',help='Existing local k3s executable; does not install or alter a cluster');p.add_argument('--manifest',required=True);p.add_argument('--archive');p.add_argument('--register-only',action='store_true');a=p.parse_args()
  manifest=json.loads(Path(a.manifest).read_bytes())
- base=['docker','exec',a.container,'ctr','--address','/run/k3s/containerd/containerd.sock','--namespace','k8s.io']
+ base=['docker','exec',a.container,'ctr','--address','/run/k3s/containerd/containerd.sock','--namespace','k8s.io'] if a.container else [a.k3s_binary,'ctr','--namespace','k8s.io']
  if not a.register_only:
   assert a.archive and sha(a.archive)==manifest['archive_sha256'],'ARCHIVE_HASH_MISMATCH'
-  with open(a.archive,'rb') as stream:subprocess.run(['docker','exec','-i',a.container,*base[3:],'images','import','-'],stdin=stream,check=True)
+  with open(a.archive,'rb') as stream:subprocess.run((['docker','exec','-i',a.container,*base[3:]] if a.container else base)+['images','import','-'],stdin=stream,check=True)
  for value in manifest['images']:
   listed=subprocess.check_output([*base,'images','ls'],text=True)
   tagged=[line.split() for line in listed.splitlines() if line.split() and line.split()[0]==value['local_tag']]

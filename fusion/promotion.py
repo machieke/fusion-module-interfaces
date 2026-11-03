@@ -9,6 +9,27 @@ from .contracts import canonical,digest,require,ContractError
 
 
 class PromotionOwner:
+    @staticmethod
+    def current_state(path,access,scope,context):
+        """Current committed value/time pairs; no decay evaluation or binding.
+
+        This observation is selected by the separate operational read profile.
+        Stored values are explicitly NOT scores evaluated at observation time.
+        """
+        c.identifier(context);principal=access.authorize(scope,'observe')
+        key=digest(canonical([principal,scope,context]));path=Path(path)
+        value=None
+        if path.exists():
+            with closing(sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True)) as db:
+                require(db.execute('SELECT value FROM identity').fetchall()==[(access.selection(),)],'CONFLICT')
+                row=db.execute('SELECT revision,water FROM contexts WHERE id=?',(key,)).fetchone()
+                if row:
+                    state=json.loads(db.execute('SELECT state FROM history WHERE context=? AND revision=?',(key,row[0])).fetchone()[0])
+                    require(len(state)<=c.MAX_TARGETS,'NOT_AVAILABLE')
+                    value=dict(revision=row[0],last_bound_time=row[1],stored_values=state,
+                        interpretation='committed-value-and-effect-time-not-current-decayed-score')
+        access.authorize(scope,'observe');return value
+
     def __init__(self,path,access,math,*,clock=time.time,hook=lambda _:None):
         self.path,self.access,self.math,self.clock,self.hook=str(path),access,math,clock,hook
         # Inspect existing files read-only before WAL or schema changes. Never

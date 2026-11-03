@@ -1,5 +1,7 @@
 # Offline preview packet assembly
 
+For the current **0.3.0 sustained kit**, use the [Phase 3 operator entry point](../docs/phase3/runbook.md) and its exact distribution manifest. The 0.2.0 examples below remain the Phase 2 compatibility baseline; do not mix their filenames or selected profiles with a 0.3.0 artifact packet.
+
 `sdk.distribution` assembles existing tested image exports and wheels. It does
 not build or start images, install packages, create namespaces, contact Docker,
 contact providers or publish an artifact. Its only subprocess is the existing

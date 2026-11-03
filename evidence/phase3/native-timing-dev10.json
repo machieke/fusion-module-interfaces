@@ -1,0 +1,1352 @@
+{
+  "status": "OBSERVED",
+  "core_image": "dev09",
+  "observation_image": "dev10",
+  "raw_report_sha256": "202a7ba96e3c0cb65708246693e7d1988ced031a2312d584b8133606ce929e62",
+  "nested_durations_are_not_additive": true,
+  "stages": {
+    "fusion-attention": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 372987,
+      "processes": 0,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {},
+      "status": "MISSING_OR_TRUNCATED"
+    },
+    "fusion-beliefs": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [
+        {
+          "bytes": 60457,
+          "file_ordinal": 0,
+          "spans": 225,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 331038,
+      "processes": 1,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "transport.cognition": {
+          "count": 225,
+          "max_ms": 137.595192,
+          "median_ms": 45.973689,
+          "min_ms": 11.693955,
+          "p95_ms": 81.423879,
+          "total_ms": 10846.13176
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "fusion-commitment": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 254,
+      "processes": 0,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {},
+      "status": "MISSING_OR_TRUNCATED"
+    },
+    "fusion-embedding": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 78634,
+      "processes": 0,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {},
+      "status": "MISSING_OR_TRUNCATED"
+    },
+    "fusion-episodes": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [
+        {
+          "bytes": 1854515,
+          "file_ordinal": 0,
+          "spans": 6926,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 3517739,
+      "processes": 1,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "transport.atoms": {
+          "count": 6088,
+          "max_ms": 2232.430531,
+          "median_ms": 54.155499,
+          "min_ms": 23.649709,
+          "p95_ms": 157.150719,
+          "total_ms": 391527.762807
+        },
+        "transport.cognition": {
+          "count": 838,
+          "max_ms": 213.102225,
+          "median_ms": 47.480814,
+          "min_ms": 25.604879,
+          "p95_ms": 153.595935,
+          "total_ms": 48602.647513
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "fusion-execution": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [
+        {
+          "bytes": 1061,
+          "file_ordinal": 0,
+          "spans": 4,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 75040,
+      "processes": 1,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "transport.atoms": {
+          "count": 3,
+          "max_ms": 142.589387,
+          "median_ms": 72.907858,
+          "min_ms": 40.482037,
+          "p95_ms": 142.589387,
+          "total_ms": 255.979282
+        },
+        "transport.preview": {
+          "count": 1,
+          "max_ms": 42.979706,
+          "median_ms": 42.979706,
+          "min_ms": 42.979706,
+          "p95_ms": 42.979706,
+          "total_ms": 42.979706
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "fusion-messaging": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [
+        {
+          "bytes": 11667,
+          "file_ordinal": 0,
+          "spans": 44,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 48782,
+      "processes": 1,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "transport.atoms": {
+          "count": 36,
+          "max_ms": 73.767586,
+          "median_ms": 46.0134685,
+          "min_ms": 28.048005,
+          "p95_ms": 72.433143,
+          "total_ms": 1658.911012
+        },
+        "transport.preview": {
+          "count": 8,
+          "max_ms": 13.745743,
+          "median_ms": 8.053332,
+          "min_ms": 5.744212,
+          "p95_ms": 13.745743,
+          "total_ms": 72.594609
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "fusion-model": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [
+        {
+          "bytes": 341916,
+          "file_ordinal": 0,
+          "spans": 1258,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 2631819,
+      "processes": 1,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "provider.model.acceptance": {
+          "count": 74,
+          "max_ms": 18.303629,
+          "median_ms": 7.301803,
+          "min_ms": 5.176112,
+          "p95_ms": 12.55131,
+          "total_ms": 588.484394
+        },
+        "provider.model.authorize": {
+          "count": 666,
+          "max_ms": 5.573264,
+          "median_ms": 0.970823,
+          "min_ms": 0.26656,
+          "p95_ms": 2.506098,
+          "total_ms": 772.132703
+        },
+        "provider.model.backend": {
+          "count": 74,
+          "max_ms": 0.219683,
+          "median_ms": 0.096461,
+          "min_ms": 0.074293,
+          "p95_ms": 0.198009,
+          "total_ms": 7.827542
+        },
+        "provider.model.capture": {
+          "count": 74,
+          "max_ms": 8.648809,
+          "median_ms": 2.6743115,
+          "min_ms": 1.961909,
+          "p95_ms": 4.305598,
+          "total_ms": 213.124028
+        },
+        "provider.model.invoke": {
+          "count": 296,
+          "max_ms": 42.654222,
+          "median_ms": 5.1335485,
+          "min_ms": 1.053897,
+          "p95_ms": 22.362751,
+          "total_ms": 2461.101225
+        },
+        "provider.model.reservation": {
+          "count": 74,
+          "max_ms": 8.228028,
+          "median_ms": 2.6011835,
+          "min_ms": 2.183413,
+          "p95_ms": 4.52902,
+          "total_ms": 211.614846
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "fusion-relations": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [
+        {
+          "bytes": 34474,
+          "file_ordinal": 0,
+          "spans": 130,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 120741,
+      "processes": 1,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "transport.atoms": {
+          "count": 130,
+          "max_ms": 163.335842,
+          "median_ms": 54.944301,
+          "min_ms": 26.114278,
+          "p95_ms": 72.11923,
+          "total_ms": 7102.486777
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "fusion-search": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [
+        {
+          "bytes": 275259,
+          "file_ordinal": 0,
+          "spans": 1022,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 5162760,
+      "processes": 1,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "transport.memory_source": {
+          "count": 352,
+          "max_ms": 81.754526,
+          "median_ms": 17.063098,
+          "min_ms": 6.940724,
+          "p95_ms": 46.982617,
+          "total_ms": 6664.900534
+        },
+        "transport.preview": {
+          "count": 670,
+          "max_ms": 183.40338,
+          "median_ms": 22.207574,
+          "min_ms": 6.394972,
+          "p95_ms": 59.13404,
+          "total_ms": 20018.747575
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "fusion-storage": {
+      "errors": [],
+      "errors_total": 0,
+      "files": [],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 37672666,
+      "processes": 0,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {},
+      "status": "MISSING_OR_TRUNCATED"
+    },
+    "omega-agent": {
+      "errors": [
+        {
+          "code": "NOT_AVAILABLE",
+          "name": "transport.preview"
+        },
+        {
+          "code": "NOT_AVAILABLE",
+          "name": "transport.preview"
+        }
+      ],
+      "errors_total": 2,
+      "files": [
+        {
+          "bytes": 5857,
+          "file_ordinal": 0,
+          "spans": 22,
+          "truncated": false
+        },
+        {
+          "bytes": 447926,
+          "file_ordinal": 1,
+          "spans": 1663,
+          "truncated": false
+        },
+        {
+          "bytes": 364019,
+          "file_ordinal": 2,
+          "spans": 1359,
+          "truncated": false
+        },
+        {
+          "bytes": 432537,
+          "file_ordinal": 3,
+          "spans": 1606,
+          "truncated": false
+        },
+        {
+          "bytes": 79154,
+          "file_ordinal": 4,
+          "spans": 294,
+          "truncated": false
+        },
+        {
+          "bytes": 1082507,
+          "file_ordinal": 5,
+          "spans": 4016,
+          "truncated": false
+        },
+        {
+          "bytes": 353427,
+          "file_ordinal": 6,
+          "spans": 1315,
+          "truncated": false
+        },
+        {
+          "bytes": 353357,
+          "file_ordinal": 7,
+          "spans": 1315,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 15916452,
+      "processes": 90,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "belief.validate_view": {
+          "count": 473,
+          "max_ms": 1007.162238,
+          "median_ms": 37.470974,
+          "min_ms": 14.436234,
+          "p95_ms": 536.31399,
+          "total_ms": 65218.536069
+        },
+        "cognition.refresh": {
+          "count": 48,
+          "max_ms": 831.150888,
+          "median_ms": 0.2427915,
+          "min_ms": 0.08811,
+          "p95_ms": 396.432166,
+          "total_ms": 3201.217168
+        },
+        "history.context": {
+          "count": 132,
+          "max_ms": 1294.292187,
+          "median_ms": 884.5828785,
+          "min_ms": 166.798603,
+          "p95_ms": 1157.207215,
+          "total_ms": 108980.73589
+        },
+        "history.input": {
+          "count": 44,
+          "max_ms": 1903.058042,
+          "median_ms": 941.2801855,
+          "min_ms": 658.754083,
+          "p95_ms": 1188.437564,
+          "total_ms": 42747.8312
+        },
+        "history.model": {
+          "count": 44,
+          "max_ms": 3111.683093,
+          "median_ms": 916.04869,
+          "min_ms": 717.673324,
+          "p95_ms": 1082.076885,
+          "total_ms": 42819.177457
+        },
+        "input.prepare": {
+          "count": 88,
+          "max_ms": 3362.30357,
+          "median_ms": 617.488659,
+          "min_ms": 0.106953,
+          "p95_ms": 2333.811337,
+          "total_ms": 81076.259496
+        },
+        "input.reconcile": {
+          "count": 132,
+          "max_ms": 2689.259824,
+          "median_ms": 0.06411,
+          "min_ms": 0.024068,
+          "p95_ms": 25.543247,
+          "total_ms": 3600.634015
+        },
+        "memory.append": {
+          "count": 4,
+          "max_ms": 8147.146929,
+          "median_ms": 4278.233558,
+          "min_ms": 1878.529779,
+          "p95_ms": 8147.146929,
+          "total_ms": 18582.143824
+        },
+        "memory.capture": {
+          "count": 16,
+          "max_ms": 1795.581374,
+          "median_ms": 499.285569,
+          "min_ms": 266.918345,
+          "p95_ms": 1795.581374,
+          "total_ms": 9238.467286
+        },
+        "memory.retrieve": {
+          "count": 16,
+          "max_ms": 2104.745189,
+          "median_ms": 1152.235358,
+          "min_ms": 470.906071,
+          "p95_ms": 2104.745189,
+          "total_ms": 18191.100515
+        },
+        "memory.select_view": {
+          "count": 50,
+          "max_ms": 2225.366867,
+          "median_ms": 550.6823965,
+          "min_ms": 0.242686,
+          "p95_ms": 1851.237192,
+          "total_ms": 35883.908291
+        },
+        "model.command_admission": {
+          "count": 44,
+          "max_ms": 9.15261,
+          "median_ms": 3.0038345,
+          "min_ms": 2.075503,
+          "p95_ms": 4.813751,
+          "total_ms": 146.107096
+        },
+        "model.complete": {
+          "count": 44,
+          "max_ms": 927.427433,
+          "median_ms": 130.870479,
+          "min_ms": 71.996151,
+          "p95_ms": 235.512897,
+          "total_ms": 7033.238771
+        },
+        "model.prompt_bind": {
+          "count": 44,
+          "max_ms": 2410.197783,
+          "median_ms": 1728.904423,
+          "min_ms": 405.042253,
+          "p95_ms": 2328.628613,
+          "total_ms": 73610.786888
+        },
+        "native.accept": {
+          "count": 44,
+          "max_ms": 1850.430522,
+          "median_ms": 952.534902,
+          "min_ms": 778.380786,
+          "p95_ms": 1223.804626,
+          "total_ms": 43293.326996
+        },
+        "native.append_memory": {
+          "count": 4,
+          "max_ms": 8147.361117,
+          "median_ms": 4278.468225,
+          "min_ms": 1878.74066,
+          "p95_ms": 8147.361117,
+          "total_ms": 18583.038227
+        },
+        "native.application_bootstrap": {
+          "count": 44,
+          "max_ms": 441.866774,
+          "median_ms": 221.063352,
+          "min_ms": 153.596635,
+          "p95_ms": 408.906145,
+          "total_ms": 11014.779667
+        },
+        "native.begin": {
+          "count": 44,
+          "max_ms": 554.692767,
+          "median_ms": 17.295789,
+          "min_ms": 9.183422,
+          "p95_ms": 384.003824,
+          "total_ms": 2407.727924
+        },
+        "native.capture_native": {
+          "count": 44,
+          "max_ms": 1796.229427,
+          "median_ms": 84.789208,
+          "min_ms": 0.118609,
+          "p95_ms": 692.238963,
+          "total_ms": 11580.791413
+        },
+        "native.context_capture": {
+          "count": 44,
+          "max_ms": 1870.135436,
+          "median_ms": 644.617627,
+          "min_ms": 444.552392,
+          "p95_ms": 1500.359898,
+          "total_ms": 33285.265792
+        },
+        "native.context_captured": {
+          "count": 44,
+          "max_ms": 627.39726,
+          "median_ms": 121.3468135,
+          "min_ms": 48.466196,
+          "p95_ms": 574.847529,
+          "total_ms": 8001.939713
+        },
+        "native.context_ids": {
+          "count": 44,
+          "max_ms": 3288.809897,
+          "median_ms": 1132.9951265,
+          "min_ms": 609.441712,
+          "p95_ms": 2372.711476,
+          "total_ms": 58555.215746
+        },
+        "native.context_payloads": {
+          "count": 44,
+          "max_ms": 1529.103762,
+          "median_ms": 281.6010305,
+          "min_ms": 128.524073,
+          "p95_ms": 1162.772048,
+          "total_ms": 17617.473945
+        },
+        "native.creation_link": {
+          "count": 4,
+          "max_ms": 43.814195,
+          "median_ms": 35.772085,
+          "min_ms": 26.876158,
+          "p95_ms": 43.814195,
+          "total_ms": 142.234523
+        },
+        "native.encode_query": {
+          "count": 20,
+          "max_ms": 2473.411568,
+          "median_ms": 285.897912,
+          "min_ms": 199.235884,
+          "p95_ms": 2473.411568,
+          "total_ms": 8294.217417
+        },
+        "native.end": {
+          "count": 44,
+          "max_ms": 0.494498,
+          "median_ms": 0.198649,
+          "min_ms": 0.107861,
+          "p95_ms": 0.445468,
+          "total_ms": 10.93106
+        },
+        "native.finish": {
+          "count": 44,
+          "max_ms": 4294.166105,
+          "median_ms": 1346.3666915,
+          "min_ms": 793.976358,
+          "p95_ms": 2040.580148,
+          "total_ms": 61481.69407
+        },
+        "native.first_bridge": {
+          "count": 44,
+          "max_ms": 4710.187248,
+          "median_ms": 3628.766995,
+          "min_ms": 3281.207151,
+          "p95_ms": 4402.558864,
+          "total_ms": 164164.025228
+        },
+        "native.launch_prepare": {
+          "count": 44,
+          "max_ms": 212.94072,
+          "median_ms": 158.517288,
+          "min_ms": 148.275672,
+          "p95_ms": 202.458093,
+          "total_ms": 7297.064571
+        },
+        "native.model_complete": {
+          "count": 44,
+          "max_ms": 3240.498186,
+          "median_ms": 1067.2673845,
+          "min_ms": 802.253395,
+          "p95_ms": 1634.157649,
+          "total_ms": 49871.848037
+        },
+        "native.model_parsed": {
+          "count": 44,
+          "max_ms": 9.38853,
+          "median_ms": 3.2835315,
+          "min_ms": 2.238122,
+          "p95_ms": 5.1942,
+          "total_ms": 158.050071
+        },
+        "native.model_prompt": {
+          "count": 44,
+          "max_ms": 2410.46849,
+          "median_ms": 1729.1373695,
+          "min_ms": 405.211523,
+          "p95_ms": 2328.988386,
+          "total_ms": 73623.951624
+        },
+        "native.more": {
+          "count": 88,
+          "max_ms": 3541.636433,
+          "median_ms": 720.7617425,
+          "min_ms": 0.264282,
+          "p95_ms": 2527.425971,
+          "total_ms": 92131.16458
+        },
+        "native.pending": {
+          "count": 44,
+          "max_ms": 0.305437,
+          "median_ms": 0.187983,
+          "min_ms": 0.10305,
+          "p95_ms": 0.300263,
+          "total_ms": 8.671278
+        },
+        "native.preview_execute": {
+          "count": 18,
+          "max_ms": 1832.895363,
+          "median_ms": 26.977728,
+          "min_ms": 11.139847,
+          "p95_ms": 1832.895363,
+          "total_ms": 8038.458402
+        },
+        "native.preview_history": {
+          "count": 44,
+          "max_ms": 1294.677429,
+          "median_ms": 897.7592585,
+          "min_ms": 224.140555,
+          "p95_ms": 1142.395672,
+          "total_ms": 36799.027793
+        },
+        "native.preview_input": {
+          "count": 44,
+          "max_ms": 0.578782,
+          "median_ms": 0.218781,
+          "min_ms": 0.12365,
+          "p95_ms": 0.41433,
+          "total_ms": 11.088223
+        },
+        "native.preview_render_context": {
+          "count": 44,
+          "max_ms": 766.447588,
+          "median_ms": 4.248804,
+          "min_ms": 2.452193,
+          "p95_ms": 6.816866,
+          "total_ms": 960.986633
+        },
+        "native.preview_skills": {
+          "count": 44,
+          "max_ms": 0.762179,
+          "median_ms": 0.242429,
+          "min_ms": 0.178652,
+          "p95_ms": 0.698105,
+          "total_ms": 14.195526
+        },
+        "native.priority_adjust": {
+          "count": 2,
+          "max_ms": 2473.721083,
+          "median_ms": 2159.4921925,
+          "min_ms": 1845.263302,
+          "p95_ms": 2473.721083,
+          "total_ms": 4318.984385
+        },
+        "native.priority_score": {
+          "count": 32,
+          "max_ms": 674.760179,
+          "median_ms": 159.0597585,
+          "min_ms": 112.609134,
+          "p95_ms": 250.641576,
+          "total_ms": 5555.856216
+        },
+        "native.promoted_line": {
+          "count": 8,
+          "max_ms": 0.303228,
+          "median_ms": 0.1314445,
+          "min_ms": 0.102144,
+          "p95_ms": 0.303228,
+          "total_ms": 1.270932
+        },
+        "native.read_candidates": {
+          "count": 16,
+          "max_ms": 2109.809483,
+          "median_ms": 1155.395743,
+          "min_ms": 475.727635,
+          "p95_ms": 2109.809483,
+          "total_ms": 18249.974201
+        },
+        "native.read_captured": {
+          "count": 44,
+          "max_ms": 0.58712,
+          "median_ms": 0.2417655,
+          "min_ms": 0.155322,
+          "p95_ms": 0.434529,
+          "total_ms": 12.00426
+        },
+        "native.read_clock": {
+          "count": 16,
+          "max_ms": 1027.451172,
+          "median_ms": 875.8480845,
+          "min_ms": 797.254897,
+          "p95_ms": 1027.451172,
+          "total_ms": 14223.874041
+        },
+        "native.remember_time": {
+          "count": 4,
+          "max_ms": 18.95193,
+          "median_ms": 17.0615645,
+          "min_ms": 12.320909,
+          "p95_ms": 18.95193,
+          "total_ms": 65.395968
+        },
+        "native.restore": {
+          "count": 44,
+          "max_ms": 1664.073653,
+          "median_ms": 26.303778,
+          "min_ms": 0.243222,
+          "p95_ms": 896.66301,
+          "total_ms": 11979.834239
+        },
+        "native.revise": {
+          "count": 4,
+          "max_ms": 4569.81607,
+          "median_ms": 3960.5186095,
+          "min_ms": 3180.717208,
+          "p95_ms": 4569.81607,
+          "total_ms": 15671.570497
+        },
+        "native.source": {
+          "count": 44,
+          "max_ms": 2640.39117,
+          "median_ms": 1635.6507495,
+          "min_ms": 0.134431,
+          "p95_ms": 2010.985144,
+          "total_ms": 71511.944998
+        },
+        "transport.atoms": {
+          "count": 1026,
+          "max_ms": 285.250118,
+          "median_ms": 60.981781,
+          "min_ms": 16.526482,
+          "p95_ms": 172.669028,
+          "total_ms": 79706.544532
+        },
+        "transport.cognition": {
+          "count": 5156,
+          "max_ms": 1115.517096,
+          "median_ms": 15.3017265,
+          "min_ms": 5.114241,
+          "p95_ms": 149.156476,
+          "total_ms": 206516.519693
+        },
+        "transport.embedding": {
+          "count": 179,
+          "max_ms": 2364.772572,
+          "median_ms": 10.077358,
+          "min_ms": 5.098732,
+          "p95_ms": 183.978293,
+          "total_ms": 9117.100334
+        },
+        "transport.memory_source": {
+          "count": 350,
+          "max_ms": 313.97228,
+          "median_ms": 38.7174415,
+          "min_ms": 7.238318,
+          "p95_ms": 118.827517,
+          "total_ms": 15931.689373
+        },
+        "transport.preview": {
+          "count": 2472,
+          "max_ms": 3497.046152,
+          "median_ms": 12.8366195,
+          "min_ms": 4.001896,
+          "p95_ms": 748.499374,
+          "total_ms": 314298.004161
+        }
+      },
+      "status": "OBSERVED"
+    },
+    "omega-agent-b": {
+      "errors": [
+        {
+          "code": "NOT_AVAILABLE",
+          "name": "transport.preview"
+        }
+      ],
+      "errors_total": 1,
+      "files": [
+        {
+          "bytes": 4522,
+          "file_ordinal": 0,
+          "spans": 17,
+          "truncated": false
+        },
+        {
+          "bytes": 448162,
+          "file_ordinal": 1,
+          "spans": 1663,
+          "truncated": false
+        },
+        {
+          "bytes": 353395,
+          "file_ordinal": 2,
+          "spans": 1315,
+          "truncated": false
+        },
+        {
+          "bytes": 79123,
+          "file_ordinal": 3,
+          "spans": 294,
+          "truncated": false
+        },
+        {
+          "bytes": 353496,
+          "file_ordinal": 4,
+          "spans": 1315,
+          "truncated": false
+        },
+        {
+          "bytes": 352180,
+          "file_ordinal": 5,
+          "spans": 1315,
+          "truncated": false
+        },
+        {
+          "bytes": 346170,
+          "file_ordinal": 6,
+          "spans": 1286,
+          "truncated": false
+        }
+      ],
+      "interpretation": "sampled executed methods only; no private text, prompt, credentials or authority",
+      "nested_durations_are_not_additive": true,
+      "physical_state_bytes": 11810100,
+      "processes": 62,
+      "profile": "bounded-native-stage-summary/1",
+      "stages": {
+        "belief.validate_view": {
+          "count": 307,
+          "max_ms": 599.790631,
+          "median_ms": 35.334693,
+          "min_ms": 12.493655,
+          "p95_ms": 508.883698,
+          "total_ms": 26405.397333
+        },
+        "cognition.refresh": {
+          "count": 32,
+          "max_ms": 433.73349,
+          "median_ms": 0.16277,
+          "min_ms": 0.101273,
+          "p95_ms": 337.388501,
+          "total_ms": 776.53976
+        },
+        "history.context": {
+          "count": 90,
+          "max_ms": 2083.431226,
+          "median_ms": 900.0377035,
+          "min_ms": 209.446288,
+          "p95_ms": 1186.846483,
+          "total_ms": 74733.805668
+        },
+        "history.input": {
+          "count": 30,
+          "max_ms": 1142.128904,
+          "median_ms": 956.725028,
+          "min_ms": 729.888873,
+          "p95_ms": 1141.517578,
+          "total_ms": 28261.839052
+        },
+        "history.model": {
+          "count": 30,
+          "max_ms": 1102.458111,
+          "median_ms": 943.061284,
+          "min_ms": 796.302764,
+          "p95_ms": 1060.056517,
+          "total_ms": 27822.742953
+        },
+        "input.prepare": {
+          "count": 60,
+          "max_ms": 2429.429223,
+          "median_ms": 590.7019955,
+          "min_ms": 0.142284,
+          "p95_ms": 2318.537849,
+          "total_ms": 49423.601653
+        },
+        "input.reconcile": {
+          "count": 90,
+          "max_ms": 1948.253005,
+          "median_ms": 0.0655225,
+          "min_ms": 0.033407,
+          "p95_ms": 27.147401,
+          "total_ms": 2651.621788
+        },
+        "memory.append": {
+          "count": 2,
+          "max_ms": 4322.448387,
+          "median_ms": 3291.735629,
+          "min_ms": 2261.022871,
+          "p95_ms": 4322.448387,
+          "total_ms": 6583.471258
+        },
+        "memory.capture": {
+          "count": 11,
+          "max_ms": 845.426598,
+          "median_ms": 387.557522,
+          "min_ms": 307.527884,
+          "p95_ms": 845.426598,
+          "total_ms": 5068.434789
+        },
+        "memory.retrieve": {
+          "count": 11,
+          "max_ms": 1902.483083,
+          "median_ms": 732.566851,
+          "min_ms": 435.771334,
+          "p95_ms": 1902.483083,
+          "total_ms": 9634.025238
+        },
+        "memory.select_view": {
+          "count": 33,
+          "max_ms": 1417.571901,
+          "median_ms": 501.187853,
+          "min_ms": 0.275073,
+          "p95_ms": 1416.951258,
+          "total_ms": 19335.172533
+        },
+        "model.command_admission": {
+          "count": 30,
+          "max_ms": 5.980559,
+          "median_ms": 2.967575,
+          "min_ms": 2.639881,
+          "p95_ms": 3.743175,
+          "total_ms": 91.964908
+        },
+        "model.complete": {
+          "count": 30,
+          "max_ms": 382.439023,
+          "median_ms": 143.4548765,
+          "min_ms": 73.410271,
+          "p95_ms": 225.943466,
+          "total_ms": 4468.336801
+        },
+        "model.prompt_bind": {
+          "count": 30,
+          "max_ms": 2505.423927,
+          "median_ms": 1728.9800715,
+          "min_ms": 475.204363,
+          "p95_ms": 2281.2314,
+          "total_ms": 49442.145102
+        },
+        "native.accept": {
+          "count": 30,
+          "max_ms": 1644.973287,
+          "median_ms": 966.698043,
+          "min_ms": 782.626914,
+          "p95_ms": 1105.724259,
+          "total_ms": 29144.642307
+        },
+        "native.append_memory": {
+          "count": 2,
+          "max_ms": 4322.722049,
+          "median_ms": 3291.986595,
+          "min_ms": 2261.251141,
+          "p95_ms": 4322.722049,
+          "total_ms": 6583.97319
+        },
+        "native.application_bootstrap": {
+          "count": 30,
+          "max_ms": 450.873854,
+          "median_ms": 239.0617195,
+          "min_ms": 154.008841,
+          "p95_ms": 420.23539,
+          "total_ms": 7459.319947
+        },
+        "native.begin": {
+          "count": 30,
+          "max_ms": 621.374436,
+          "median_ms": 15.875436,
+          "min_ms": 8.894389,
+          "p95_ms": 57.667317,
+          "total_ms": 1196.766127
+        },
+        "native.capture_native": {
+          "count": 30,
+          "max_ms": 1329.492826,
+          "median_ms": 29.3814295,
+          "min_ms": 0.116746,
+          "p95_ms": 846.243575,
+          "total_ms": 7132.651041
+        },
+        "native.context_capture": {
+          "count": 30,
+          "max_ms": 1791.542311,
+          "median_ms": 574.214245,
+          "min_ms": 418.441262,
+          "p95_ms": 1639.214058,
+          "total_ms": 20554.620253
+        },
+        "native.context_captured": {
+          "count": 30,
+          "max_ms": 609.014023,
+          "median_ms": 120.939359,
+          "min_ms": 53.300516,
+          "p95_ms": 535.743557,
+          "total_ms": 4710.599562
+        },
+        "native.context_ids": {
+          "count": 30,
+          "max_ms": 2660.795202,
+          "median_ms": 1139.374028,
+          "min_ms": 727.618374,
+          "p95_ms": 2427.102354,
+          "total_ms": 36138.117273
+        },
+        "native.context_payloads": {
+          "count": 30,
+          "max_ms": 1315.463652,
+          "median_ms": 228.676718,
+          "min_ms": 156.669357,
+          "p95_ms": 1167.079023,
+          "total_ms": 9603.403587
+        },
+        "native.creation_link": {
+          "count": 2,
+          "max_ms": 87.454187,
+          "median_ms": 60.9219635,
+          "min_ms": 34.38974,
+          "p95_ms": 87.454187,
+          "total_ms": 121.843927
+        },
+        "native.encode_query": {
+          "count": 13,
+          "max_ms": 467.681496,
+          "median_ms": 300.209436,
+          "min_ms": 213.037011,
+          "p95_ms": 467.681496,
+          "total_ms": 4038.225175
+        },
+        "native.end": {
+          "count": 30,
+          "max_ms": 0.426021,
+          "median_ms": 0.1920225,
+          "min_ms": 0.104858,
+          "p95_ms": 0.413132,
+          "total_ms": 6.914827
+        },
+        "native.finish": {
+          "count": 30,
+          "max_ms": 3244.002751,
+          "median_ms": 1241.099122,
+          "min_ms": 840.446979,
+          "p95_ms": 2286.944246,
+          "total_ms": 40594.562153
+        },
+        "native.first_bridge": {
+          "count": 30,
+          "max_ms": 4930.633502,
+          "median_ms": 3615.944065,
+          "min_ms": 3288.661178,
+          "p95_ms": 4511.029913,
+          "total_ms": 110758.428537
+        },
+        "native.launch_prepare": {
+          "count": 30,
+          "max_ms": 242.771099,
+          "median_ms": 156.1842545,
+          "min_ms": 147.771468,
+          "p95_ms": 221.189425,
+          "total_ms": 4943.767082
+        },
+        "native.model_complete": {
+          "count": 30,
+          "max_ms": 1325.67246,
+          "median_ms": 1082.722353,
+          "min_ms": 877.728789,
+          "p95_ms": 1256.20356,
+          "total_ms": 32304.67355
+        },
+        "native.model_parsed": {
+          "count": 30,
+          "max_ms": 6.240995,
+          "median_ms": 3.228544,
+          "min_ms": 2.790707,
+          "p95_ms": 3.987214,
+          "total_ms": 99.353094
+        },
+        "native.model_prompt": {
+          "count": 30,
+          "max_ms": 2505.753638,
+          "median_ms": 1729.32093,
+          "min_ms": 475.542567,
+          "p95_ms": 2281.635395,
+          "total_ms": 49451.404854
+        },
+        "native.more": {
+          "count": 60,
+          "max_ms": 2585.88319,
+          "median_ms": 711.6606035,
+          "min_ms": 0.325996,
+          "p95_ms": 2523.51255,
+          "total_ms": 56909.703448
+        },
+        "native.pending": {
+          "count": 30,
+          "max_ms": 0.309644,
+          "median_ms": 0.200158,
+          "min_ms": 0.114655,
+          "p95_ms": 0.294707,
+          "total_ms": 6.176502
+        },
+        "native.preview_execute": {
+          "count": 15,
+          "max_ms": 1175.41152,
+          "median_ms": 23.374979,
+          "min_ms": 13.216611,
+          "p95_ms": 1175.41152,
+          "total_ms": 4873.300159
+        },
+        "native.preview_history": {
+          "count": 30,
+          "max_ms": 2083.694154,
+          "median_ms": 926.3945625,
+          "min_ms": 222.325004,
+          "p95_ms": 1291.719183,
+          "total_ms": 26219.960687
+        },
+        "native.preview_input": {
+          "count": 30,
+          "max_ms": 0.453071,
+          "median_ms": 0.220671,
+          "min_ms": 0.120154,
+          "p95_ms": 0.433164,
+          "total_ms": 7.782929
+        },
+        "native.preview_render_context": {
+          "count": 30,
+          "max_ms": 514.035454,
+          "median_ms": 3.851041,
+          "min_ms": 3.20555,
+          "p95_ms": 5.61289,
+          "total_ms": 633.32395
+        },
+        "native.preview_skills": {
+          "count": 30,
+          "max_ms": 0.665671,
+          "median_ms": 0.2456485,
+          "min_ms": 0.186165,
+          "p95_ms": 0.65829,
+          "total_ms": 10.00742
+        },
+        "native.priority_adjust": {
+          "count": 1,
+          "max_ms": 2009.562309,
+          "median_ms": 2009.562309,
+          "min_ms": 2009.562309,
+          "p95_ms": 2009.562309,
+          "total_ms": 2009.562309
+        },
+        "native.priority_score": {
+          "count": 17,
+          "max_ms": 198.740845,
+          "median_ms": 158.962468,
+          "min_ms": 116.558504,
+          "p95_ms": 198.740845,
+          "total_ms": 2639.474609
+        },
+        "native.promoted_line": {
+          "count": 1,
+          "max_ms": 0.238821,
+          "median_ms": 0.238821,
+          "min_ms": 0.238821,
+          "p95_ms": 0.238821,
+          "total_ms": 0.238821
+        },
+        "native.read_candidates": {
+          "count": 11,
+          "max_ms": 1905.533078,
+          "median_ms": 736.096252,
+          "min_ms": 439.058841,
+          "p95_ms": 1905.533078,
+          "total_ms": 9672.432022
+        },
+        "native.read_captured": {
+          "count": 30,
+          "max_ms": 0.679458,
+          "median_ms": 0.2470705,
+          "min_ms": 0.112888,
+          "p95_ms": 0.450742,
+          "total_ms": 7.944315
+        },
+        "native.read_clock": {
+          "count": 11,
+          "max_ms": 975.692649,
+          "median_ms": 836.926148,
+          "min_ms": 746.630759,
+          "p95_ms": 975.692649,
+          "total_ms": 9214.610577
+        },
+        "native.remember_time": {
+          "count": 2,
+          "max_ms": 12.491612,
+          "median_ms": 11.762039,
+          "min_ms": 11.032466,
+          "p95_ms": 12.491612,
+          "total_ms": 23.524078
+        },
+        "native.restore": {
+          "count": 30,
+          "max_ms": 1244.647019,
+          "median_ms": 9.0808375,
+          "min_ms": 0.247361,
+          "p95_ms": 707.103388,
+          "total_ms": 5354.814403
+        },
+        "native.revise": {
+          "count": 1,
+          "max_ms": 4651.036283,
+          "median_ms": 4651.036283,
+          "min_ms": 4651.036283,
+          "p95_ms": 4651.036283,
+          "total_ms": 4651.036283
+        },
+        "native.source": {
+          "count": 30,
+          "max_ms": 1958.151269,
+          "median_ms": 1695.858758,
+          "min_ms": 0.099671,
+          "p95_ms": 1945.239934,
+          "total_ms": 47862.52575
+        },
+        "transport.atoms": {
+          "count": 648,
+          "max_ms": 262.114443,
+          "median_ms": 59.675941,
+          "min_ms": 24.944569,
+          "p95_ms": 173.84551,
+          "total_ms": 51464.551922
+        },
+        "transport.cognition": {
+          "count": 3056,
+          "max_ms": 1011.558835,
+          "median_ms": 14.610724,
+          "min_ms": 4.928409,
+          "p95_ms": 139.435073,
+          "total_ms": 115457.957678
+        },
+        "transport.embedding": {
+          "count": 114,
+          "max_ms": 280.18069,
+          "median_ms": 11.144415,
+          "min_ms": 4.524788,
+          "p95_ms": 199.286317,
+          "total_ms": 4499.102535
+        },
+        "transport.memory_source": {
+          "count": 161,
+          "max_ms": 253.308043,
+          "median_ms": 44.118503,
+          "min_ms": 6.917362,
+          "p95_ms": 133.211104,
+          "total_ms": 8133.09653
+        },
+        "transport.preview": {
+          "count": 1614,
+          "max_ms": 1514.899166,
+          "median_ms": 12.903962,
+          "min_ms": 4.034485,
+          "p95_ms": 766.440762,
+          "total_ms": 207027.981979
+        }
+      },
+      "status": "OBSERVED"
+    }
+  },
+  "lookup": {
+    "equivalent_results": true,
+    "records": 1089,
+    "samples": {
+      "index": {
+        "count": 36,
+        "median_ms": 0.016972,
+        "total_ms": 0.703822
+      },
+      "scan": {
+        "count": 36,
+        "median_ms": 2.820278,
+        "total_ms": 107.53268200000001
+      }
+    },
+    "scope": "owner-local reference metadata lookup only; no end-to-end speedup inference"
+  },
+  "process_resources": {
+    "report": "process-resources-dev10.json",
+    "role_samples": 13,
+    "rss_sum_bytes": 1430126592,
+    "interpretation": "Sequential two-second samples during alternate qualification; not simultaneous aggregate, peak or kernel working set"
+  },
+  "cpu_quota_enforcement": "NOT_ESTABLISHED",
+  "metrics_api": "UNAVAILABLE",
+  "cgroup_files": "UNAVAILABLE",
+  "additional_live_generations": 0,
+  "rejected_driver_observation": {
+    "report_sha256": "0df479f7f5fc74e35bdad829eb78c6af979d103f9f6c0d7662b5c1f161e2c47d",
+    "reason": "Empty pod selection incorrectly labelled PASS by initial sampler; excluded from evidence; guard corrected"
+  }
+}

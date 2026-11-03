@@ -306,7 +306,7 @@ class OperatorResponseTests(unittest.TestCase):
         self.root = Path(self.temp.name); self.sid = str(uuid.uuid4())
         self.owner = self.root/'owner.json'; self.component = self.root/'component.json'
         self.owner.write_bytes(canonical(dict(principals={'operator': {'credential': 'SECRET_FIXTURE_MARKER'}},
-            native_sessions=dict(principal='B', session_templates={self.sid: {}}))))
+            native_sessions=dict(profile=PROFILE,principal='B', session_templates={self.sid: {}}))))
         self.component.write_bytes(canonical(dict(role='omega-agent-b', https_port=8443,
             peers={'omega-agent-b': 'omega-agent-b.synthetic.svc.cluster.local'})))
 

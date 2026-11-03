@@ -151,7 +151,7 @@ class StorageHandlerGateTests(unittest.TestCase):
                 (run/name).write_text('{}')
             settings = dict(role='fusion-storage', state=str(state),
                 service_composition='omega-single-node-developer-preview/1', https_port=18443,
-                revision='synthetic-handler-fixture', preview=dict(enabled=True, agents={},
+                revision='synthetic-handler-fixture', preview=dict(enabled=True, profile='omega-single-node-developer-preview/1', agents={},
                     scope='synthetic-storage-handler', memory={'enabled': True}))
             config = dict(tls_certificate='/fixture/not-read.crt', tls_key='/fixture/not-read.key')
             path = root/'component.json'; path.write_bytes(canonical(settings))

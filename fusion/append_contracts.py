@@ -30,9 +30,10 @@ def timestamp(value):
     return value
 
 
-def descriptors():
+def descriptors(feed_profile=a.FEED):
+    require(feed_profile in (a.FEED,a.SUSTAINED_FEED),'UNSUPPORTED_PROFILE')
     return [Descriptor('s03.2-feed-detta' if name=='atom.storage' else 's03.2-chroma',name,version,'0.1.0',
-            frozenset({a.FEED if name=='atom.storage' else v.PROFILE}),frozenset(operations),
+            frozenset({feed_profile if name=='atom.storage' else v.PROFILE}),frozenset(operations),
             frozenset({'process-restart','scoped','idempotent'}),a.MAX_BYTES,privacy=v.PRIVACY,
             deterministic=name=='atom.storage',features=frozenset({PROFILE,v.EMBEDDING,v.EXTRACTION,v.INDEX}),
             receipt_providers=frozenset({'detta-local-rs/1'}))
@@ -41,10 +42,10 @@ def descriptors():
                 ('search','3.1.0',('build','published')))]
 
 
-def select(catalogue):
+def select(catalogue,feed_profile=a.FEED):
     return {d.interface:resolve(catalogue,Requirement(d.interface,d.version,
         '1.3.0' if d.interface=='atom.storage' else '3.2.0',next(iter(d.profiles)),d.operations,d.guarantees,
-        privacy=v.PRIVACY,features=d.features)) for d in descriptors()}
+        privacy=v.PRIVACY,features=d.features)) for d in descriptors(feed_profile)}
 
 
 def intent(value):
@@ -105,7 +106,7 @@ def request(value,chosen):
     elif operation=='observe':v.fields(body,'role');require(body['role'] in ROLES)
     elif operation=='get':v.fields(body,'ref');a.ref(body['ref'],value['scope'])
     elif operation=='authorize':v.fields(body,'mode');require(body['mode'] in ('write','disclose'))
-    else:v.fields(body,'through');a.head(body['through'],value['scope'])
+    else:v.fields(body,'through');a.source_head(body['through'],value['scope'])
     require(len(canonical(value))<=MAX_WIRE_BYTES)
     return a.copy(value)
 

@@ -10,7 +10,7 @@ def observation(value,scope,descriptor):
     if not value['found']:
         require(all(value[k] is None for k in ('write','through','content_type','size')),'NOT_AVAILABLE')
     else:
-        atom_write(value['write'],scope,descriptor);c.ref(value['write']['ref'],scope);c.head(value['through'],scope)
+        atom_write(value['write'],scope,descriptor);c.ref(value['write']['ref'],scope);c.source_head(value['through'],scope,c.feed_profile(descriptor))
         require(value['through']['sequence']>0,'NOT_AVAILABLE');c.integer(value['size'],1,c.MAX_BYTES)
         require(type(value['content_type']) is str and 1<=len(value['content_type'])<=80,'NOT_AVAILABLE')
     return c.copy(value)

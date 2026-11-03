@@ -1,0 +1,12 @@
+{
+  "status": "EXPLICIT_RUNTIME_DELTA",
+  "changes": {
+    "integration/single_node/sustained_current.py": {
+      "before": "dac6c6126e31099b465acc468e49bb1a9794b57afec287c385ae4115c6c2bf7e",
+      "after": "c317767e5a96a1cdcc18b95aed60ad8b5430ea16b514eb76b7f19d2b56dbf763"
+    }
+  },
+  "reason": "Fenced private current observations select their private template ports without executable materialization",
+  "source_manifest_sha256": "c5b7a67545a5c332d40fd3f0a462f08954fd5593a31ce7f7a9dde0a23ff83675",
+  "unrelated_native_semantics_changed": false
+}

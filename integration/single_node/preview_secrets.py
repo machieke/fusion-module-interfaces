@@ -63,6 +63,10 @@ def material(p,roles,client):
             result['fusion-messaging']['task-caller-'+who+'-token']=mailbox
             result['fusion-messaging']['task-storage-'+who+'-token']=storage
             result['fusion-storage']['task-storage-'+who+'-token']=storage
+            if p.get('profile')=='omega-single-node-sustained-preview/1':
+                binding=secrets.token_hex(32)
+                result[role]['task-binding-token']=binding
+                result['fusion-messaging']['task-binding-'+who+'-token']=binding
             for target,other in p['agents'].items():
                 if target==role:continue
                 value=secrets.token_hex(32)

@@ -10,7 +10,7 @@ class Client:
     def __init__(self, path):
         self.path = Path(path)
         cfg = json.loads(self.path.read_text())
-        require(cfg['profile'] == PROFILE and cfg['placement'] in ('local','network'), 'UNSUPPORTED_PROFILE')
+        require(cfg['profile'] in (PROFILE, 'omega-native-sessions/3') and cfg['placement'] in ('local','network'), 'UNSUPPORTED_PROFILE')
         self.binding = {k:v for k,v in cfg.items() if k != 'credential'}
         if cfg['placement'] == 'network':
             self.ca_hash = digest(Path(cfg['endpoint']['ca_file']).read_bytes())
@@ -18,8 +18,9 @@ class Client:
     def invoke(self, operation, **body):
         cfg = json.loads(self.path.read_text())
         require({k:v for k,v in cfg.items() if k != 'credential'} == self.binding, 'CONFLICT')
-        request = dict(id=str(uuid.uuid4()), profile=PROFILE, operation=operation,
-                       body=dict(session=cfg['session'], **body))
+        global_operation = cfg['profile']=='omega-native-sessions/3' and operation in ('allocate','capacity','list')
+        request = dict(id=str(uuid.uuid4()), profile=cfg['profile'], operation=operation,
+                       body=body if global_operation else dict(session=cfg['session'], **body))
         if cfg['placement'] == 'local':
             from .preview_session_service import SessionPorts
             reply = SessionPorts(cfg['provider_config']).invoke(cfg['credential'], request)
@@ -29,6 +30,6 @@ class Client:
             reply = invoke(cfg, '/preview/session', request)
         require(type(reply) is dict and set(reply) == {'id','profile','request_digest','actor','principal','value'}, 'NOT_AVAILABLE')
         require((reply['id'],reply['profile'],reply['request_digest']) ==
-                (request['id'],PROFILE,digest(canonical(request))), 'NOT_AVAILABLE')
+                (request['id'],cfg['profile'],digest(canonical(request))), 'NOT_AVAILABLE')
         require(reply['principal'] == cfg['principal'] and reply['actor'] == cfg['actor'], 'UNAUTHORIZED')
         return reply['value']

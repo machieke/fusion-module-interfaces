@@ -1,0 +1,102 @@
+{
+  "baseline": "660803cb955802175765ad16391b7453926b5f47",
+  "working_tree": "task implementation over exact baseline; final publication commit is reported by Git",
+  "image_source_map_sha256": "c5b7a67545a5c332d40fd3f0a462f08954fd5593a31ce7f7a9dde0a23ff83675",
+  "images": [
+    {
+      "configuration_digest": "sha256:bcc5e57b362130d7244add079a38a69f658525d28d056090321d2ba7ae37825c",
+      "kind": "base",
+      "local_tag": "docker.io/library/fusion-single-node:reference-phase3-dev12",
+      "manifest_digest": "sha256:a978cbcda6a1fc485e1af5f57e79d7b27807442610a1c00a5d51c4dbdb58c664",
+      "repository": "docker.io/library/fusion-single-node",
+      "source_package": "image-base/package.json"
+    },
+    {
+      "configuration_digest": "sha256:26045053e327eceb6d32cb14a5c167823edc3ced1450d1619a5396e7e0660157",
+      "kind": "caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:reference-phase3-dev12",
+      "manifest_digest": "sha256:3aa5f7b876c5c5fd919ad55c3db8b7a2b9f1a302d62000f77011fb1b51e5244d",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "source_package": "image-caller/package.json"
+    },
+    {
+      "configuration_digest": "sha256:9e106b7d97857b9d2a98a847d01d99dabfa4c72a2ec279c8c252075a27fa1e03",
+      "kind": "embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:reference-phase3-dev12",
+      "manifest_digest": "sha256:b6c2533c26d4feae48ba70a69f15b5f420814e668a6bab24350556c1e9a4d447",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "source_package": "image-embedding/package.json"
+    },
+    {
+      "configuration_digest": "sha256:13203372bf39de09ed5bda562f62a43e3c8f70a1dc3b735b223d3e4e0f87cde8",
+      "kind": "chain",
+      "local_tag": "docker.io/library/fusion-reference-chain:reference-phase3-dev12",
+      "manifest_digest": "sha256:d3f518d23acc675082851d0e56975a30a8b09f42ccc2b13d6d5844f7312c3e97",
+      "repository": "docker.io/library/fusion-reference-chain",
+      "source_package": "image-chain/package.json"
+    }
+  ],
+  "image_archive": {
+    "path": "artifacts/phase3/build-dev12/images.tar",
+    "sha256": "fb807533ef98cb32556e5f86b44d806834bc689dd658d5ec3cb771da507b50e7",
+    "bytes": 3473758720
+  },
+  "chart": {
+    "version": "0.6.3",
+    "sha256": "623f44001a140c4f42a6e26eae035bc209cca0bb898ab4ae357a54bc4a8a27d5"
+  },
+  "runtime_pins": {
+    "mettaclaw": "2af37c3fec18613de54ca42fde2382a9087d4524",
+    "PeTTa": "fea83178af3722666d2948d074591d10a3134f56",
+    "swipl": "e58621a91ab7dd530e1e8185ed518f63d851c414"
+  },
+  "embedding": {
+    "model": "intfloat/e5-large-v2",
+    "revision": "f169b11e22de13617baa190a028a32f3493550b6",
+    "files": {
+      "1_Pooling/config.json": "56c469dba9e31869bb7dfceb9b3d76ac06549d1ba869509d8eb4e8aeb31d62d1",
+      "config.json": "2394ce5c9ffac96c88496de5d7a92f5d3fec1015b9d25f9f85545f13dfd7a269",
+      "model.safetensors": "d741c1a688a6169af0ecb5a047c44645cd992c31e1bf431269f98bba9ae2911a",
+      "modules.json": "c6e29747481e8b5dd2b58401966aeac910de39092f90cda9a704b1545f902b04",
+      "sentence_bert_config.json": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529",
+      "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+      "tokenizer_config.json": "ae83fa6ca0333117ff12606020af925d648667ef70d92ff7f27d781ba0ca4544",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  },
+  "chain": {
+    "url": "git@github.com:machieke/f1r3node-rust.git",
+    "commit": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+    "baseline": "new clean baseline; historical dirty workspace is not reproduced",
+    "toolchain": "nightly-2026-02-09",
+    "cargo": [
+      "build",
+      "--offline",
+      "--locked",
+      "-j",
+      "2",
+      "-p",
+      "node",
+      "--bin",
+      "node"
+    ],
+    "environment": {
+      "CARGO_PROFILE_DEV_DEBUG": "0",
+      "CARGO_INCREMENTAL": "0",
+      "RUST_MIN_STACK": "8388608"
+    },
+    "profile": "f1r3-generated-post-state/2"
+  },
+  "pln": "Existing separate profiles preserved; no numerical implementation change",
+  "source_locks": {
+    "integration/neoclaw/sources.json": "e32951aed90742d399ee3f02a336187fd441682f6abb18e42b76d41c1c3e0fec",
+    "integration/neoclaw/memory-model.json": "d1f8f7934c664567ab6dde28aef90564ab7519d373d391f2bc6cd2e9c4dc17c0",
+    "integration/neoclaw/model-sources.json": "097bd6e839a369c8f89540b6b3d36bb74be90d69d9842997b4b1c3f36f6cf072",
+    "integration/pln/sources.json": "e0b020459cc090ab4af7973ffecbcd9e94bee04f35879344806994e1f530206d",
+    "integration/pln/deduction-sources.json": "775c8ff0f81aef1c10fb765e200da9364acd83cce45bfc1d622463ccbe9396c4",
+    "integration/chain/sources.json": "9636a60dbceafcdb377951d726633f22665c0208a59266fdc11c0403b372349a",
+    "deploy/single-node/native-asset-manifest.json": "e300394ec78ce49e21c0fe0daa2723b1f5fc68d3f95a2f2be9d6525150e38d5f"
+  },
+  "additional_live_generations": 0
+}

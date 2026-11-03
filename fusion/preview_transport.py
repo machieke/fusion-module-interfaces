@@ -1,4 +1,5 @@
 """Bounded authenticated JSON transport. No retries or discovery/failover."""
+from fusion.native_telemetry import traced
 import http.client
 from pathlib import Path
 import time
@@ -6,6 +7,7 @@ from .contracts import ContractError, canonical, require
 from .neoclaw_transport import Network, json_loads
 
 
+@traced('transport.preview', request=2)
 def invoke(cfg, path, request, deadline=None):
     network = Network(cfg['endpoint'], cfg['credential'], {}, service_dns=cfg['endpoint']['host']!='127.0.0.1')
     seconds = 5 if deadline is None else min(30, (deadline-time.time_ns()//1_000_000)/1000)

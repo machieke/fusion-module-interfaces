@@ -9,6 +9,10 @@ spec:
   policyTypes: [Ingress, Egress]
 {{- $edges := dict "omega-agent" (list "fusion-execution" "fusion-storage" "fusion-messaging" "fusion-search" "fusion-embedding" "fusion-episodes" "fusion-beliefs" "fusion-attention" "fusion-relations" "fusion-exact-search" "fusion-model" "fusion-commitment") "fusion-commitment" (list "fusion-execution" "fusion-storage") "fusion-execution" (list "fusion-storage" "fusion-messaging") "fusion-search" (list "fusion-storage") "fusion-beliefs" (list "fusion-storage" "fusion-episodes") "fusion-episodes" (list "fusion-storage") "fusion-relations" (list "fusion-storage") "fusion-exact-search" (list "fusion-storage") "fusion-channel-bridge" (list "fusion-storage" "fusion-messaging" "irc-server") "irc-peer" (list "irc-server") "fusion-messaging" (list "fusion-storage") "fusion-model" (list "fusion-storage") }}
 {{- if .Values.preview.enabled }}
+{{- if and (eq .Values.preview.profile "omega-single-node-sustained-preview/1") (get (default dict .Values.preview.tasks) "enabled") }}
+{{- /* Read the allocated sender's current binding before mailbox acceptance. */}}
+{{- $_ := set $edges "fusion-messaging" (concat (get $edges "fusion-messaging") (keys .Values.preview.agents)) }}
+{{- end }}
 {{- range $agent, $selection := .Values.preview.agents }}
 {{- $_ := set $edges $agent (concat (get $edges "omega-agent") (keys $.Values.preview.agents)) }}
 {{- end }}

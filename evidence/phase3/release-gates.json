@@ -1,0 +1,157 @@
+{
+  "profile": "phase3-sustained-release-gates/1",
+  "status": "READY_FOR_SUSTAINED_DEVELOPER_REVIEW",
+  "baseline": "660803cb955802175765ad16391b7453926b5f47",
+  "tested_source_manifest_sha256": "c5b7a67545a5c332d40fd3f0a462f08954fd5593a31ce7f7a9dde0a23ff83675",
+  "final_images": "dev12",
+  "core_images": "dev09",
+  "chart": "0.6.3",
+  "source_deltas": [
+    "dev09-dev10-source-delta.json",
+    "dev10-dev11-source-delta.json",
+    "dev11-dev12-source-delta.json"
+  ],
+  "gate_results": {
+    "SESSIONS": {
+      "status": "PASS",
+      "evidence": [
+        "sustained-dev09.json",
+        "control-dev09.json"
+      ],
+      "scope": "Three sequential native sessions per agent; 14 retained sessions after continuation; finite quotas and replay tested"
+    },
+    "TERMINALIZATION": {
+      "status": "PASS",
+      "evidence": [
+        "control-dev09.json",
+        "checks.json"
+      ],
+      "scope": "Untouched expiry progresses; started unknown remains fenced and spent; cancellation/dispatch/completion races in real owner tests"
+    },
+    "SUSTAINED_CAPACITY": {
+      "status": "PASS",
+      "evidence": [
+        "sustained-dev09.json",
+        "alternate-dev10.json",
+        "quota-dev09.json"
+      ],
+      "scope": "Same corpus continues beyond 512 through 1280; quota32 fault scope refused and retained prior payloads/accounting; no reset"
+    },
+    "TIMING": {
+      "status": "PASS",
+      "evidence": [
+        "native-timing-dev10.json",
+        "process-resources-dev10.json",
+        "timing-observer-local.json"
+      ],
+      "scope": "Actual native/client stages observed; metadata reference-index comparison measured; four provider-local trace collections absent"
+    },
+    "CONCURRENCY": {
+      "status": "PASS",
+      "evidence": [
+        "sustained-dev09.json",
+        "task-negative-dev10.json"
+      ],
+      "scope": "Overlapping remembers and cross-agent readback; two directions of native task/result consumption; stale/wrong-recipient denied"
+    },
+    "PRIVATE_COMPOSITION": {
+      "status": "PASS",
+      "evidence": [
+        "sustained-dev09.json",
+        "observations-dev10.json",
+        "restore-readback-dev12.json"
+      ],
+      "scope": "Real private history/cognition and raw denial, proper-excerpt publication; current revocation and restored private denial"
+    },
+    "MODEL_BINDING": {
+      "status": "PASS",
+      "evidence": [
+        "checks.json"
+      ],
+      "scope": "Existing real adapter exercised offline; actual native denial before acceptance/reservation/contact; no live reliability claim"
+    },
+    "EVALUATION": {
+      "status": "PASS",
+      "evidence": [
+        "sustained-dev09.json",
+        "alternate-dev10.json"
+      ],
+      "scope": "Counterfactual, absent fact, evidence independence/retained contrary assessments, withdrawal; actual native outputs independently scored"
+    },
+    "OPERATIONS": {
+      "status": "PASS",
+      "evidence": [
+        "workbench-dev09/report.json",
+        "workbench-current-dev10/report.json",
+        "observations-dev10.json"
+      ],
+      "scope": "Installed browser/CLI allocation and expiry; current source1280 vs retained18; bounded owner reads and revoked disclosure"
+    },
+    "RECOVERY_RESTORE": {
+      "status": "PASS",
+      "evidence": [
+        "recovery-dev10.json",
+        "main-restore-dev12.json",
+        "restore-readback-dev12.json",
+        "control-restore-dev09.json",
+        "same-workflow-chain-dev10.json"
+      ],
+      "scope": "Seven deployed durable-boundary fault cases; 13 restored owners,14sessions,84inputs; clone observations only and no replay"
+    },
+    "DISTRIBUTION": {
+      "status": "PASS",
+      "evidence": [
+        "artifact-smoke-dev12.json",
+        "installed-wheel-verification.json",
+        "artifacts.json"
+      ],
+      "scope": "Final image native installation through isolated installed0.3kit; exact packet integrity verified; final detached artifact record binds publication manifest"
+    },
+    "ZERO_LIVE": {
+      "status": "PASS",
+      "evidence": [
+        "checks.json",
+        "protected-cleanup.json"
+      ],
+      "scope": "No real generative startup/contact/load/reservation/call/capture; recorded captures distinct"
+    }
+  },
+  "additional_live_generations": 0,
+  "real_preview_model_execution": "NOT_RUN",
+  "model_proposals": "RECORDED_FIXTURE",
+  "hosted_ci": "NOT_OBSERVED",
+  "cpu_quota_enforcement": "NOT_ESTABLISHED",
+  "native_stage_timing": "OBSERVED",
+  "provider_internal_timing": "PARTIAL",
+  "multi_node": "NOT_RUN",
+  "production_readiness": "NOT_ESTABLISHED",
+  "same_workflow_chain": "PASS_REAL_ISOLATED",
+  "old_reference_campaign": "UNCHANGED",
+  "one_unlabelled_final_image_run_claimed": false,
+  "methods_inputs_workflows_not_additive": true,
+  "blocked_packages": [],
+  "limitations": [
+    "Finite retained sessions/record/byte/generation/work quotas; archive is not capacity reclaim",
+    "Trusted single host; no malicious-host or multi-tenant assurance",
+    "Four provider-local trace collections absent; native and transport spans retained",
+    "No real-model usefulness or generative availability observation",
+    "Standard existing-host k3s import command tested but environment not executed",
+    "No empty-cache rebuild, public registry release or vulnerability certification",
+    "Historical uncertain IRC-send semantics retained; not a new Phase3 full-channel workflow"
+  ],
+  "completed_packages": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12"
+  ],
+  "artifact_record": "evidence/phase3/artifacts.json"
+}

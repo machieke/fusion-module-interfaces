@@ -1,0 +1,172 @@
+{
+  "status": "PASS",
+  "namespace": "omega-ref-phase3-sustained09",
+  "classification": "REAL_NATIVE_DEPLOYED_OWNERS_RECORDED_MODEL_PROPOSALS",
+  "images": "artifacts/phase3/build-dev09/images.json",
+  "raw_report_sha256": "63a17b6be76779ff524b307f080c3d9c5b7bddd7c06da34d2d8bc0a3851e0cc7",
+  "operator_inputs": 70,
+  "complete_inputs": 70,
+  "allocations": 11,
+  "allocation_replays_identical": true,
+  "crossing": {
+    "at_input": 30,
+    "after_crossing_inputs": 6,
+    "source_not_reset": true
+  },
+  "source_sequences": [
+    108,
+    212,
+    316,
+    420,
+    524,
+    628,
+    1000,
+    1089
+  ],
+  "two_agent_handoffs": {
+    "two-agent-A-B": true,
+    "two-agent-B-A": true
+  },
+  "native_inspection_acknowledged": true,
+  "private_native_steps_per_agent": [
+    6,
+    6
+  ],
+  "private_denied_ports": 12,
+  "shared_payloads_checked": 982,
+  "approved_excerpt_published": true,
+  "priority_did_not_change_belief": true,
+  "premise_reassessment": {
+    "premise_changed": true,
+    "explicit_reassessment": true,
+    "task_pass": true,
+    "selection": "RECORDED_OPERATOR_PROPOSAL_NOT_AUTONOMOUS_MODEL_REASONING"
+  },
+  "factual_evaluations": [
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    },
+    {
+      "permission": "PERMITTED",
+      "factual_correctness": "CORRECT",
+      "task_pass": true
+    }
+  ],
+  "latency_seconds": {
+    "samples": 70,
+    "median": 19.927500000000002,
+    "p95": 28.691,
+    "minimum": 14.922,
+    "maximum": 32.671,
+    "classification": "operator end-to-end, not sum of nested native stages"
+  },
+  "additional_live_generations": 0,
+  "retained_first_capture_exact": true
+}

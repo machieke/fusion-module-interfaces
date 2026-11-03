@@ -13,6 +13,14 @@ from .model_transport import checked
 
 
 def disclosure(accepted, policy):
+    if type(policy) is dict and policy.get('profile') == 'synthetic-session-prompt/1':
+        require(set(policy)=={'profile','scope','principals','max_prompt_bytes','session_authority'})
+        require(policy['session_authority']=='bounded-authenticated-model-sessions/1','UNSUPPORTED_PROFILE')
+        require(type(policy['scope']) is str and policy['scope'].startswith('synthetic-'),'UNAUTHORIZED')
+        require(accepted['scope']==policy['scope'] and accepted['principal'] in policy['principals'],'UNAUTHORIZED')
+        require(type(policy['principals']) is list and 1<=len(policy['principals'])<=2)
+        require(type(policy['max_prompt_bytes']) is int and 1<=policy['max_prompt_bytes']<=c.MAX_PROMPT)
+        c.text(accepted['native_prompt'],policy['max_prompt_bytes']);return
     required={'profile','scope','principals','max_prompt_bytes'}
     require(type(policy) is dict and required<=set(policy)<=required|{'session_principals'})
     require(policy['profile'] == 'synthetic-recorded-prompt/1' and policy['scope'].startswith('synthetic-'), 'UNAUTHORIZED')
@@ -28,6 +36,13 @@ def disclosure(accepted, policy):
 class RecordedProposals:
     def __init__(self, policy):
         cfg = json.loads(Path(policy).read_text())['model_completion']
+        self.dynamic = cfg.get('session_proposals')
+        if self.dynamic is not None:
+            require(type(cfg['sessions']) is dict and cfg['sessions']['profile']=='bounded-authenticated-model-sessions/1','UNSUPPORTED_PROFILE')
+            require(self.dynamic=={p:{'proposal':'input-command'} for p in cfg['sessions']['principals']},'UNSUPPORTED_PROFILE')
+            require(cfg['runtime_lock']==dict(profile=c.PROFILE,generative_runtime='FORBIDDEN',
+                session_proposals_sha256=digest(canonical(self.dynamic))),'UNSUPPORTED_PROFILE')
+            self.proposals={};return
         self.proposals = cfg['recorded_proposals']
         require(type(self.proposals) is dict and len(self.proposals) <= c.MAX_CALLS)
         require(cfg['runtime_lock'] == {'profile': c.PROFILE, 'generative_runtime': 'FORBIDDEN',
@@ -35,8 +50,10 @@ class RecordedProposals:
 
     def complete(self, accepted):
         key = accepted.session+'/'+str(accepted.slot)
-        require(key in self.proposals, 'NOT_AVAILABLE')
-        value = self.proposals[key]
+        if self.dynamic is None:
+            require(key in self.proposals, 'NOT_AVAILABLE');value=self.proposals[key]
+        else:
+            require(accepted.principal in self.dynamic,'UNAUTHORIZED');value=self.dynamic[accepted.principal]
         if type(value) is dict:
             # An explicit authored proposal fixture, not a tool implementation.
             # It may repeat the new operator input as command text. Parsing,

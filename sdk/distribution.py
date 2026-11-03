@@ -265,13 +265,92 @@ PUBLIC_FILES = CHART_FILES + (
     'scripts/build_detta.py',
     'scripts/build_s01.py',
 )
+# Phase 3 additions are a reviewed literal publication list. Raw qualification
+# reports and private archives remain outside this distribution.
+PUBLIC_FILES += (
+    'README.md',
+    'codex_omega_phase3_sustained_service_operation.md',
+    'docs/phase3/programme-report.md',
+    'examples/sustained_chain_qualification.py',
+    'examples/sustained_alternate_evaluation.py',
+    'examples/sustained_observations.py',
+    'examples/sustained_capacity_refusal.py',
+    'examples/sustained_recovery_qualification.py',
+    'examples/sustained_restore_readback.py',
+    'examples/sustained_restore_recheck.py',
+    'examples/sustained_task_negative.py',
+    'examples/sustained_process_resources.py',
+    'examples/sustained_install_smoke.py',
+    'docs/phase3/runbook.md',
+    'docs/phase3/contracts-and-capacity.md',
+    'docs/phase3/privacy-and-models.md',
+    'evidence/phase3/release-gates.json',
+    'evidence/phase3/artifact-smoke-dev11.json',
+    'evidence/phase3/artifact-smoke-dev12.json',
+    'evidence/phase3/main-restore-dev12.json',
+    'evidence/phase3/restore-readback-dev12.json',
+    'evidence/phase3/protected-cleanup.json',
+    'evidence/phase3/changed-files.json',
+    'docs/phase3/review-checklist.md',
+    'evidence/phase3/installed-wheel-verification.json',
+    'evidence/phase3/source-images.json',
+    'evidence/phase3/checks.json',
+    'evidence/phase3/progress.json',
+    'evidence/phase3/baseline.json',
+    'evidence/phase3/sustained-dev09.json',
+    'evidence/phase3/alternate-dev10.json',
+    'evidence/phase3/quota-dev09.json',
+    'evidence/phase3/native-timing-dev10.json',
+    'evidence/phase3/process-resources-dev10.json',
+    'evidence/phase3/observations-dev10.json',
+    'evidence/phase3/control-dev09.json',
+    'evidence/phase3/control-restore-dev09.json',
+    'evidence/phase3/recovery-dev10.json',
+    'evidence/phase3/same-workflow-chain-dev10.json',
+    'evidence/phase3/chain-prerequisite-dev10.json',
+    'evidence/phase3/task-negative-dev10.json',
+    'evidence/phase3/dev09-dev10-source-delta.json',
+    'evidence/phase3/dev10-dev11-source-delta.json',
+    'evidence/phase3/dev11-dev12-source-delta.json',
+    'evidence/phase3/dev11-export-cleanup.json',
+    'evidence/phase3/deployed-baseline.json',
+    'evidence/phase3/timing-observer-local.json',
+    'evidence/phase3/workbench-dev09/report.json',
+    'evidence/phase3/workbench-dev09/phase3-browser-allocated-session.png',
+    'evidence/phase3/workbench-dev09/phase3-expiry-resolved-uncertainty-retained.png',
+    'evidence/phase3/workbench-current-dev10/report.json',
+    'evidence/phase3/workbench-current-dev10/phase3-current-owner-state.png',
+    'evidence/phase3/workbench-current-dev10/phase3-retained-native-results.png',
+    'tests/test_phase3_composition.py',
+    'tests/test_phase3_backup_capacity.py',
+    'tests/test_phase3_artifacts.py',
+    'tests/test_phase3_chain_setup.py',
+    'tests/test_model_oracle.py',
+    'tests/test_phase3_evaluation.py',
+    'tests/test_phase3_feed.py',
+    'tests/test_phase3_import.py',
+    'tests/test_phase3_model_binding.py',
+    'tests/test_phase3_network.py',
+    'tests/test_phase3_optional_observation.py',
+    'tests/test_phase3_private.py',
+    'tests/test_phase3_projection.py',
+    'tests/test_phase3_qualification_boundaries.py',
+    'tests/test_phase3_restore.py',
+    'tests/test_phase3_restore_values.py',
+    'tests/test_phase3_sdk.py',
+    'tests/test_phase3_sessions.py',
+    'tests/test_phase3_tasks.py',
+    'tests/test_phase3_telemetry.py',
+    'sdk/compatibility/0.2.0/fusion_file_feed_example-0.2.0-py3-none-any.whl',
+    'sdk/compatibility/0.2.0/fusion_module_client-0.2.0-py3-none-any.whl',
+)
 PREREQUISITES = (
     'Prebuilt installation needs the supplied images/chart/wheels plus an explicitly selected '
     'single-node k3s environment, kubectl, Helm, Docker import adapter, OpenSSL and CPython 3.12.',
     'Source-overlay rebuild requires each exact cached parent configuration in parent_images; '
     'parent images are not exported by this assembler. No empty-cache or air-gap rebuild is claimed.',
     'Recorded examples are disabled templates, not an approved campaign or reusable session '
-    'authority. Generate fresh selections with the installed fusion-preview-values command.',
+    'authority. Generate fresh selections with the installed fusion-sustained-values command for the new explicit profile.',
     'No generative image, model/projector assets, credentials, approvals, owner journals, '
     'private-state migration or live-generation authority is included.',
     'Wheel metadata is not a complete image/OS/native SBOM or vulnerability scan. '
@@ -447,6 +526,13 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT):
             values['components'][role].setdefault('config', {}).update(nativeEnabled=False, workerEnabled=False)
         profiles.append(str(write('profiles/' + mode + '.yaml', values,
                                   'recorded disabled example; generate fresh installation values').relative_to(output)))
+    from integration.single_node.sustained_values import generate as sustained_values
+    for mode in ('combined',):
+        values = sustained_values(imported, 'synthetic-sustained-distribution-'+mode, mode=mode)
+        for role in ('omega-agent', 'omega-agent-b'):
+            values['components'][role].setdefault('config', {}).update(nativeEnabled=False, workerEnabled=False)
+        profiles.append(str(write('profiles/sustained-'+mode+'.yaml', values,
+            'new explicit sustained profile; recorded and disabled; generate fresh values').relative_to(output)))
     host_tools = {}
     for tool in ('python3.12', 'helm', 'kubectl', 'openssl', 'docker'):
         found = shutil.which(tool)

@@ -4,6 +4,7 @@ The application captures provider replies and maintains presentation metadata.
 It never opens a foreign journal. Compatibility priors are explicitly labelled,
 not imported empirical evidence. Numerical query/enrichment stays native.
 """
+from fusion.native_telemetry import traced
 import json
 from pathlib import Path
 import time
@@ -114,6 +115,7 @@ class SharedMemory:
                 self.db.execute('INSERT OR IGNORE INTO preview_memory_handles VALUES(?,?)',(envelope['handle'],encoded))
         self.app.hook('after_shared_view_selection');return view
 
+    @traced('memory.select_view')
     def input(self):
         source=self.app.preview.input.source()
         return self.prepare('input-'+source['occurrence'],source['deadline'])

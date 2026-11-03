@@ -19,6 +19,9 @@ def inventory(owner='/run/fusion/owner.json',run='/run/fusion',state='/state'):
     from fusion.preview_application import configuration
     from fusion.preview_tools import SessionAuthority
     policy=Policy(owner);full=policy.current();cfg=full['native_sessions']
+    if cfg['profile']=='omega-native-sessions/3':
+        from .sustained_operator import inventory as sustained_inventory
+        return sustained_inventory(owner,run,state)
     require(cfg['profile']==PROFILE and cfg['model_boundary']=='RECORDED_FIXTURE','UNSUPPORTED_PROFILE')
     actor=policy.authenticate(full['principals']['operator']['credential'])
     require(actor=='operator','UNAUTHORIZED');policy.check(actor,cfg['scope'],'sessions.observe')
@@ -44,28 +47,61 @@ def inventory(owner='/run/fusion/owner.json',run='/run/fusion',state='/state'):
 
 def request(operation, session, body, owner='/run/fusion/owner.json', component='/config/component.json'):
     cfg=json.loads(Path(owner).read_text());settings=json.loads(Path(component).read_text())
-    selected=cfg['native_sessions'];require(session in selected['session_templates'],'UNAUTHORIZED')
-    wire=dict(id=str(uuid.uuid4()),profile=PROFILE,operation=operation,body=dict(session=session,**body))
+    selected=cfg['native_sessions'];profile=selected['profile']
+    if profile==PROFILE:require(session in selected['session_templates'],'UNAUTHORIZED')
+    else:require(profile=='omega-native-sessions/3','UNSUPPORTED_PROFILE')
+    payload=body if profile=='omega-native-sessions/3' and operation in ('allocate','capacity','list') else dict(session=session,**body)
+    wire=dict(id=str(uuid.uuid4()),profile=profile,operation=operation,body=payload)
     transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file='/secrets/ca.crt'),
                    credential=cfg['principals']['operator']['credential'])
     reply=invoke(transport,'/preview/session',wire)
-    require(type(reply) is dict and set(reply)=={'id','profile','request_digest','actor','principal','value'} and reply.get('profile')==PROFILE and reply.get('id')==wire['id'] and reply.get('request_digest')==digest(canonical(wire)),'NOT_AVAILABLE')
+    require(type(reply) is dict and set(reply)=={'id','profile','request_digest','actor','principal','value'} and reply.get('profile')==profile and reply.get('id')==wire['id'] and reply.get('request_digest')==digest(canonical(wire)),'NOT_AVAILABLE')
     require(reply.get('actor')=='operator' and reply.get('principal')==selected['principal'],'UNAUTHORIZED')
     return reply['value']
 
 
+def projection(body, owner='/run/fusion/owner.json', component='/config/component.json'):
+    """Submit the exact operator-approved projection through its owner port.
+
+    The request file is supplied by the operator inside this owner; it is not
+    generated from model arguments or a default consent flag.
+    """
+    from .sustained_projection import PROFILE as projection_profile
+    cfg=json.loads(Path(owner).read_bytes());settings=json.loads(Path(component).read_bytes())
+    require(type(body) is dict and body.get('profile')==projection_profile,'UNSUPPORTED_PROFILE')
+    transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file='/secrets/ca.crt'),
+                   credential=cfg['principals']['operator']['credential'])
+    value=invoke(transport,'/preview/projection',body)
+    require(type(value) is dict and set(value)=={'profile','shared','empirical_evidence','private_source_disclosed'}
+            and value['profile']==projection_profile and value['empirical_evidence'] is False
+            and value['private_source_disclosed'] is False,'NOT_AVAILABLE')
+    from fusion.contracts import validate_ref
+    validate_ref(value['shared'],body['recipient_scope'])
+    return value
+
+
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('operation',choices=['inventory','create','submit','observe','pause','resume','close','chain-observe'])
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('operation',choices=['inventory','create','submit','observe','pause','resume','close','chain-observe','allocate','list','capacity','cancel','reconcile','archive','current','project'])
     p.add_argument('--session');p.add_argument('--identity');p.add_argument('--text');p.add_argument('--assignment');p.add_argument('--content',action='store_true');p.add_argument('--after',type=int,default=0)
+    p.add_argument('--template');p.add_argument('--target');p.add_argument('--request-file')
     a=p.parse_args();body={}
+    if a.operation=='project':
+        require(a.request_file is not None)
+        print(json.dumps(projection(json.loads(Path(a.request_file).read_bytes()))));return
+    if a.operation=='current':
+        require(a.session is not None)
+        from .sustained_current import observe
+        print(json.dumps(observe(a.session)));return
     if a.operation=='chain-observe':
         print(json.dumps(chain_observe()));return
     if a.operation=='inventory':
         print(json.dumps(inventory()))
         return
-    require(a.session is not None)
-    if a.operation in ('submit','pause','resume','close'):
+    if a.operation not in ('allocate','list','capacity'):require(a.session is not None)
+    if a.operation in ('submit','pause','resume','close','archive','cancel','allocate'):
         require(a.identity is not None);body['identity']=a.identity
+    if a.operation=='allocate':require(a.template is not None);body['template']=a.template
+    if a.operation=='cancel':require(a.target is not None);body['target']=a.target
     if a.operation=='submit':require(a.text is not None and a.assignment is not None);body.update(text=a.text,assignment=a.assignment)
     if a.operation=='observe':body.update(content=a.content,after=a.after)
     print(json.dumps(request(a.operation,a.session,body),sort_keys=True))

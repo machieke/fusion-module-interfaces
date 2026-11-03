@@ -1,6 +1,6 @@
 {
   "schema": "fusion-sdk-public-api/1",
-  "package_version": "0.2.0",
+  "package_version": "0.3.0",
   "facade": "fusion_sdk",
   "profiles": {
     "AtomFeedClient": "immutable-commit-feed/1",
@@ -53,5 +53,14 @@
     "memory_contracts imports only stdlib and shared contracts; importing it opens no SQLite database.",
     "Transport deadlines and retry advice do not grant provider work budgets, retries or cancellation.",
     "No owner, native runtime, model, embedding, storage backend, database or fixture provider is installed by the client wheel."
-  ]
+  ],
+  "optional_profiles": {
+    "AtomFeedClient": {
+      "immutable-commit-feed/2": [
+        "capacity",
+        "observe"
+      ],
+      "selection": "explicit feed_profile; no inference or fallback"
+    }
+  }
 }

@@ -1,4 +1,5 @@
 """S04 application binding only. C1/C2 and trusted delivery remain separate owners."""
+from fusion.native_telemetry import traced
 from datetime import datetime,timezone
 import json
 from pathlib import Path
@@ -261,6 +262,7 @@ class EvidenceAdoption:
             self.db.execute('UPDATE app_active_view SET view=?',(key,));self.db.execute('UPDATE app_assessments SET view=? WHERE id=?',(canonical(key).decode(),row['id']))
         self.app.hook('after_belief_view_selection');return view
 
+    @traced('belief.validate_view')
     def validate_view(self,view):
         self.authorize();require(digest(canonical(view['metadata']))==view['metadata_seal'],'CONFLICT')
         bound={x['uuid'] for x in view.get('beliefs',[])};defaults=view.get('defaults',{})

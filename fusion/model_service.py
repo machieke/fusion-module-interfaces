@@ -1,4 +1,5 @@
 """X01 completion owner. Each acceptance, reservation and capture commits alone."""
+from .native_telemetry import traced,span
 import fcntl
 import json
 from pathlib import Path
@@ -25,17 +26,16 @@ class ModelService:
             if not db.execute("SELECT 1 FROM sqlite_master WHERE name='model_calls'").fetchone():return []
             return [dict(r) for r in db.execute('SELECT * FROM model_calls ORDER BY rowid')]
 
-    def __init__(self, path, backend, hook=lambda _: None, *, disclosure=None, contracts=c):
+    def __init__(self, path, backend, hook=lambda _: None, *, disclosure=None, contracts=c, execution_authority=None):
         self.c = contracts
         self.policy, self.backend, self.hook = Policy(path), backend, hook
         self.disclosure=disclosure
+        self.execution_authority=execution_authority
         self.cfg = self.policy.current()['model_completion']
         cfg = self.cfg
         self.c.integer(cfg['max_calls'], 1, self.c.MAX_CALLS)
         self.c.integer(cfg['expires_ms'], 1)
-        require(type(cfg['sessions']) is list and 1 <= len(cfg['sessions']) <= self.c.MAX_CALLS)
-        for session in cfg['sessions']: self.c.uid(session)
-        require(len(set(cfg['sessions'])) == len(cfg['sessions']))
+        self.validate_sessions(cfg['sessions'])
         catalogue = [descriptor_read(d) for d in cfg['catalogue']]
         require(len(catalogue) == 1 and len(catalogue[0].profiles) == 1, 'UNSUPPORTED_PROFILE')
         self.chosen = self.c.select(catalogue, next(iter(catalogue[0].profiles)))
@@ -66,13 +66,38 @@ class ModelService:
 
     def close(self): self.db.close(); self.lock.close()
 
+    def validate_sessions(self, sessions):
+        if type(sessions) is list:
+            require(1 <= len(sessions) <= self.c.MAX_CALLS)
+            for session in sessions:self.c.uid(session)
+            require(len(set(sessions)) == len(sessions))
+            return
+        require(type(sessions) is dict and set(sessions)=={'profile','principals','max_sessions'},'UNSUPPORTED_PROFILE')
+        require(sessions['profile']=='bounded-authenticated-model-sessions/1','UNSUPPORTED_PROFILE')
+        require(type(sessions['principals']) is list and 1<=len(sessions['principals'])<=2)
+        require(len(set(sessions['principals']))==len(sessions['principals']))
+        require(all(type(x) is str and 1<=len(x)<=80 for x in sessions['principals']))
+        require(type(sessions['max_sessions']) is int and 1<=sessions['max_sessions']<=16)
+
+    def session_authority(self, accepted, *, admitting=False):
+        sessions=self.cfg['sessions']
+        if type(sessions) is list:
+            require(accepted['session'] in sessions,'UNAUTHORIZED');return
+        require(accepted['principal'] in sessions['principals'],'UNAUTHORIZED')
+        rows=self.db.execute('SELECT intent FROM model_calls WHERE session=?',(accepted['session'],)).fetchall()
+        require(all(json.loads(r[0])['principal']==accepted['principal'] for r in rows),'UNAUTHORIZED')
+        if admitting and not rows:
+            require(self.db.execute('SELECT count(DISTINCT session) FROM model_calls').fetchone()[0]<sessions['max_sessions'],'OVERLOADED')
+
+    @traced('provider.model.authorize')
     def authorize(self, credential, accepted, operation):
         cfg = self.policy.current()['model_completion']
         require(canonical({k: cfg[k] for k in ('scope','sharing','sessions','max_calls','expires_ms',
                     'catalogue','disclosure','runtime_lock')}).decode() == self.seal, 'CONFLICT')
         principal = self.policy.authenticate(credential)
         require(principal == accepted['principal'] and cfg['scope'] == accepted['scope'], 'UNAUTHORIZED')
-        require(cfg['sharing'] == self.c.PRIVACY and accepted['session'] in cfg['sessions'], 'UNAUTHORIZED')
+        require(cfg['sharing'] == self.c.PRIVACY, 'UNAUTHORIZED')
+        self.session_authority(accepted)
         require(accepted['selection'] == selection_token(self.chosen), 'UNSUPPORTED_PROFILE')
         from .neoclaw_model_disclosure import disclose
         if self.disclosure is None:disclose(accepted['native_prompt'], cfg['disclosure'], accepted)
@@ -96,6 +121,7 @@ class ModelService:
             failure_code=row['failure_code'] if row else None)
         return self.c.observation(value, accepted)
 
+    @traced('provider.model.invoke',request=2)
     def invoke(self, credential, request):
         self.c.request(request); accepted, op = request['intent'], request['operation']
         self.authorize(credential, accepted, op)
@@ -103,11 +129,14 @@ class ModelService:
         elif op == 'observe': value = self.observe(accepted)
         else:
             row = self.row(accepted)
+            if self.execution_authority is not None and (row is None or not row['reserved']):
+                self.execution_authority(accepted)
             if row is None:
                 require(now() < min(accepted['deadline_ms'], self.cfg['expires_ms']), 'DEADLINE_EXCEEDED')
                 require(accepted['deadline_ms'] <= now()+self.c.deadline_limit(accepted['profile']), 'INVALID_ARGUMENT')
-                with self.db:
+                with span('provider.model.acceptance'), self.db:
                     self.db.execute('BEGIN IMMEDIATE')
+                    self.session_authority(accepted, admitting=True)
                     require(self.db.execute('SELECT count(*) FROM model_calls').fetchone()[0] < self.cfg['max_calls'], 'OVERLOADED')
                     require(self.db.execute('SELECT 1 FROM model_calls WHERE session=? AND slot=?',
                         (accepted['session'], accepted['slot'])).fetchone() is None, 'CONFLICT')
@@ -115,19 +144,22 @@ class ModelService:
                         (accepted['id'], accepted['session'], accepted['slot'], canonical(accepted).decode()))
                 self.hook('after_model_acceptance'); row = self.row(accepted)
             if not row['reserved']:
+                if self.execution_authority is not None:self.execution_authority(accepted)
                 require(now() < min(accepted['deadline_ms'], self.cfg['expires_ms']), 'DEADLINE_EXCEEDED')
-                with self.db: self.db.execute('UPDATE model_calls SET reserved=1 WHERE id=?', (accepted['id'],))
+                with span('provider.model.reservation'), self.db: self.db.execute('UPDATE model_calls SET reserved=1 WHERE id=?', (accepted['id'],))
                 self.hook('after_model_reservation')
                 self.authorize(credential, accepted, 'complete')
                 # No retry on exceptions, malformed results or process loss. The
                 # durable reservation remains spent, even if no call escaped.
-                try: response = self.c.completion(self.backend.complete(self.c.CompletionInput(**accepted)))
+                try:
+                    with span('provider.model.backend'):
+                        response = self.c.completion(self.backend.complete(self.c.CompletionInput(**accepted)))
                 except ContractError as exc:
                     code = exc.code if exc.code in ('NOT_AVAILABLE','INVALID_ARGUMENT','UNSUPPORTED_PROFILE','DEADLINE_EXCEEDED') else 'NOT_AVAILABLE'
                     with self.db:self.db.execute('UPDATE model_calls SET failure_code=? WHERE id=?', (code,accepted['id']))
                     raise
                 self.hook('after_model_backend_response')
-                with self.db: self.db.execute('UPDATE model_calls SET response=?,captured_ms=? WHERE id=?',
+                with span('provider.model.capture'), self.db: self.db.execute('UPDATE model_calls SET response=?,captured_ms=? WHERE id=?',
                     (canonical(response).decode(), now(), accepted['id']))
                 self.hook('after_model_provider_capture')
             value = self.observe(accepted)

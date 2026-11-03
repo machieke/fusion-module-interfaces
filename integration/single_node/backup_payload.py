@@ -4,6 +4,7 @@ Never used by module consumers. One helper mounts exactly one owner's PVC after
 all StatefulSets have zero pods. No Secret, policy, approval or key is archived.
 """
 import argparse,fcntl,hashlib,json,os,sqlite3,sys,tarfile,stat
+from contextlib import closing
 from pathlib import Path
 from fusion.contracts import canonical,digest,require
 from .configure import write
@@ -21,7 +22,7 @@ def safe_name(rel):
 def synthetic_seal(seal,role):
  require(type(seal) is dict and set(seal) in ({'composition','role','scope'},{'composition','role','scope','backend_layout'}) and seal['role']==role,'CONFLICT')
  require(type(seal['scope']) is str,'UNAUTHORIZED')
- preview=seal['composition']=='omega-single-node-developer-preview/1' and seal['scope'].startswith('synthetic-')
+ preview=seal['composition'] in ('omega-single-node-developer-preview/1','omega-single-node-sustained-preview/1') and seal['scope'].startswith('synthetic-')
  if 'backend_layout' in seal:
   from fusion.adapters.detta_layout import LAYOUT
   require(preview and role=='fusion-storage' and seal['backend_layout']==LAYOUT,'UNSUPPORTED_PROFILE')
@@ -45,12 +46,16 @@ def _export_locked(root,role,seal):
  # contents; any busy checkpoint is a failure, never a silent partial archive.
  for p in root.rglob('*'):
   if p.is_file() and not p.is_symlink() and p.suffix in ('.sqlite','.sqlite3','.db'):
-   with sqlite3.connect(p) as db:
+   with closing(sqlite3.connect(p)) as db:
     result=db.execute('PRAGMA wal_checkpoint(TRUNCATE)').fetchone();require(result[0]==0,'NOT_AVAILABLE')
+ # Finish and close diagnostic readers before freezing the archive file set.
+ # SQLite's transaction context manager alone does not close a connection;
+ # deferred finalization could otherwise remove a WAL after it was listed.
+ from .diagnostics import inspect
+ checkpoint=inspect(root)
  files=[p for p in sorted(root.rglob('*')) if eligible(p,root)];require(sum(p.stat().st_size for p in files)<=MAX_TOTAL,'OVERLOADED')
  manifest=dict(schema='synthetic-owner-backup/1',role=role,seal=seal,files={str(p.relative_to(root)):dict(bytes=p.stat().st_size,sha256=digest(p.read_bytes())) for p in files},excluded_authority=True)
- from .diagnostics import inspect
- manifest['owner_checkpoint']=inspect(root)
+ manifest['owner_checkpoint']=checkpoint
  manifest['retained_views']={str(p.relative_to(root)):json.loads(p.read_text()) for p in root.rglob('*.json') if p.name in ('setup-view.json','initial-view.json','published.json','chain-identity.json')}
  import io
  with tarfile.open(fileobj=sys.stdout.buffer,mode='w|gz') as archive:
@@ -64,10 +69,12 @@ def restore(root,role,namespace):
  import io
  raw=sys.stdin.buffer.read(MAX_TOTAL+1);require(len(raw)<=MAX_TOTAL,'OVERLOADED')
  with tarfile.open(fileobj=io.BytesIO(raw),mode='r:gz') as archive:
-  members=archive.getmembers();require(len(members)<=20000 and sum(x.size for x in members)<=MAX_TOTAL,'OVERLOADED')
+  members=archive.getmembers();require(len(members)<=150000 and sum(x.size for x in members)<=MAX_TOTAL,'OVERLOADED')
   require(len({x.name for x in members})==len(members) and all(x.isfile() for x in members),'INVALID_ARGUMENT')
   manifest=json.load(archive.extractfile('backup-manifest.json'));require(manifest['schema']=='synthetic-owner-backup/1' and manifest['role']==role and manifest['excluded_authority'] is True,'CONFLICT')
   synthetic_seal(manifest['seal'],role)
+  maximum_files=150000 if manifest['seal']['composition']=='omega-single-node-sustained-preview/1' else 20000
+  require(len(members)<=maximum_files,'OVERLOADED')
   require({m.name for m in members}=={'backup-manifest.json'}|{'state/'+f for f in manifest['files']},'CONFLICT')
   require('owner-seal.json' in manifest['files'],'CONFLICT')
   require(json.load(archive.extractfile('state/owner-seal.json'))==manifest['seal'],'CONFLICT')

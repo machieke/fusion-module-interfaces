@@ -93,7 +93,21 @@ class Ports:
             require(type(identity) is str and 1<=len(identity)<=128 and recipient in cfg['inboxes'],'UNAUTHORIZED')
             body=record(read_body(atoms,ref)['body'],scope)
             require(identity==body['kind']+'/'+body['id'],'CONFLICT')
-            require(body['session'] in cfg['sessions'][principal],'UNAUTHORIZED')
+            if 'session_authority' in cfg:
+                authority=cfg['session_authority']
+                require(type(authority) is dict and set(authority)=={'profile','principals'} and authority['profile']=='allocated-native-task-routing/1','UNSUPPORTED_PROFILE')
+                require(principal in authority['principals'],'UNAUTHORIZED')
+                from .preview_transport import invoke
+                query=dict(id=q['id'],profile='omega-native-sessions/3',operation='binding',body={'session':body['session']})
+                reply=invoke(authority['principals'][principal],'/preview/session',query,deadline if op=='send' else None)
+                require(type(reply) is dict and set(reply)=={'id','profile','request_digest','actor','principal','value'},'NOT_AVAILABLE')
+                require((reply['id'],reply['profile'],reply['request_digest'],reply['actor'],reply['principal'])==
+                    (query['id'],query['profile'],digest(canonical(query)),'task-router',principal),'UNAUTHORIZED')
+                bound=reply['value'];require(type(bound) is dict and set(bound)=={'session','principal','scope','state','expires_ms'},'NOT_AVAILABLE')
+                require((bound['session'],bound['principal'],bound['scope'])==(body['session'],principal,scope),'UNAUTHORIZED')
+                require(type(bound['expires_ms']) is int and bound['expires_ms']>0 and bound['state'] in ('active','paused','closed','archived'),'NOT_AVAILABLE')
+                if op=='send':require(bound['state']=='active' and time.time_ns()//1_000_000<bound['expires_ms'],'NOT_AVAILABLE')
+            else:require(body['session'] in cfg['sessions'][principal],'UNAUTHORIZED')
             require((body['sender'],body['recipient'],body['deadline'],body['id'])==(principal,recipient,deadline,correlation),'UNAUTHORIZED')
             if op=='send':require(time.time_ns()//1_000_000<deadline,'DEADLINE_EXCEEDED')
             if body['kind']=='result':

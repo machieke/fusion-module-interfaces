@@ -1,3 +1,19 @@
+# Omega module-interface reference distribution
+
+The current release candidate is **Phase 3 sustained single-node service
+operation**, ready for sustained developer review. Start with the [operator runbook](docs/phase3/runbook.md),
+[current qualification report](docs/phase3/programme-report.md) and
+[release gates](evidence/phase3/release-gates.json). R01–R12 are implemented and
+qualified within the documented finite, synthetic single-node envelope. Exact
+images, wheels, chart and source are bound in the [artifact record](evidence/phase3/artifacts.json).
+
+The completed [Phase 2 developer preview](docs/phase2/programme-report.md) remains
+the historical baseline. The material below records earlier module milestones
+and their original evidence. Model proposals in the current qualification are
+recorded fixtures; no additional live generation is authorized.
+
+---
+
 # Omega ↔ ASI module interfaces: through M5
 
 **Current workflow evidence:** the [retrieval-grounded campaign review](docs/omega-adoption/mettaclaw-neoclaw/retrieval-live-publication.md)

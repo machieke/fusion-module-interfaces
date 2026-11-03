@@ -63,7 +63,12 @@ class AtomSession:
         result=self.provider.availability(ref);availability(result);require(result['content_hash']==ref['digest'],'NOT_AVAILABLE')
         self.access.authorize(ref['scope_ref'],'availability');return c.copy(result)
     def head(self,scope):
-        self.access.authorize(scope,'head');value=c.head(self.provider.head(scope),scope);self.access.authorize(scope,'head');return value
+        self.access.authorize(scope,'head');value=c.source_head(self.provider.head(scope),scope,c.feed_profile(self.access.descriptor));self.access.authorize(scope,'head');return value
+    def capacity(self,scope):
+        self.access.authorize(scope,'capacity')
+        from .sustained_feed_contracts import capacity_result
+        value=capacity_result(self.provider.capacity(scope),scope)
+        self.access.authorize(scope,'capacity');return value
     def observe(self,command):
         # Optional descriptor capability; old sessions cannot invoke it implicitly.
         c.mutation(command);self.access.authorize(command.scope_ref,'observe')
@@ -72,7 +77,7 @@ class AtomSession:
         value=observation(value,command.scope_ref,self.access.descriptor)
         self.access.authorize(command.scope_ref,'observe');return value
     def readCommits(self,scope,after,through,limit):
-        self.access.authorize(scope,'readCommits');through=c.head(through,scope);c.integer(after,0,through['sequence']);c.integer(limit,1,c.PAGE)
+        self.access.authorize(scope,'readCommits');through=c.source_head(through,scope,c.feed_profile(self.access.descriptor));c.integer(after,0,through['sequence']);c.integer(limit,1,c.PAGE)
         value=c.commits(self.provider.readCommits(scope,after,through,limit),scope,after,through,limit)
         self.access.authorize(scope,'readCommits');return value
 

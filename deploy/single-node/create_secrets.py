@@ -19,6 +19,16 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 
 ROLES=('omega-agent','fusion-execution','fusion-storage','fusion-messaging')
 
+def bind_sustained_chain_public(values_path,public_path):
+    import yaml
+    selected=yaml.safe_load(Path(values_path).read_text());preview=selected.get('preview',{})
+    if preview.get('profile')!='omega-single-node-sustained-preview/1' or not preview.get('chain',{}).get('enabled'):return
+    public=json.loads(Path(public_path).read_text())
+    assert set(public)=={'public_key','wallet_address'}
+    assert len(public['public_key'])==130 and public['public_key'].startswith('04') and public['wallet_address']
+    preview['chain'].update(public)
+    Path(values_path).write_text(yaml.safe_dump(selected,sort_keys=False))
+
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--kubeconfig',required=True);p.add_argument('--context',default='default')
@@ -113,6 +123,10 @@ def main():
                    type='Opaque',data={k:base64.b64encode(v).decode() for k,v in data.items()})
         (root/(role+'.secret.json')).write_text(json.dumps(value))
         subprocess.run(['kubectl','--kubeconfig',a.kubeconfig,'--context',a.context,'create','-f','-'],input=json.dumps(value),text=True,check=True)
+    if a.preview_values and preview.get('profile')=='omega-single-node-sustained-preview/1' and preview.get('chain',{}).get('enabled'):
+        # Bind public identity before the first inert node seals its PVC. The
+        # private scalar remains only in the existing Secret and private setup.
+        bind_sustained_chain_public(a.preview_values,root/'chain-public.json')
     print('Created '+str(len(roles))+' existing Secret references; private material remains in '+str(root))
 
 

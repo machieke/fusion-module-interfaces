@@ -45,7 +45,7 @@ import fusion_sdk as sdk
 from fusion import preview_handles as handles,preview_tools as tools
 assert sdk.make is handles.make and sdk.envelope is handles.envelope
 assert sdk.ToolDescriptor is tools.ToolDescriptor and sdk.Catalogue is tools.Catalogue
-assert distribution('fusion-module-client').version == '0.2.0'
+assert distribution('fusion-module-client').version == '0.3.0'
 for module in ('chromadb','torch','transformers','phase2_provider','fusion.policy',
                'fusion.atom_feed','fusion.neoclaw_application','fusion.preview_ports',
                'fusion.preview_memory_services','fusion.neoclaw_contracts'):

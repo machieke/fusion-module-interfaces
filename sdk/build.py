@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CLIENT = ('fusion/__init__.py', 'fusion/contracts.py', 'fusion/memory_types.py',
           'fusion/ports.py', 'fusion/registry.py', 'fusion/lookup_contracts.py',
           'fusion/responses.py', 'fusion/preview_client.py',
+          'fusion/native_telemetry.py','fusion/sustained_feed_contracts.py','fusion/atom_observation.py',
           'fusion/memory_contracts.py', 'fusion/preview_handles.py',
           'fusion/preview_tools.py')
 PROVIDER_SHARED = ('fusion/adapters/__init__.py', 'fusion/adapters/fixture_feed.py',
@@ -26,11 +27,18 @@ OPERATOR = ('integration/single_node/__init__.py',
             'integration/single_node/reference_ops.py',
             'integration/single_node/reference_artifacts.py',
             'integration/single_node/preview_workbench.py',
+            'integration/single_node/sustained_cli.py',
+            'integration/single_node/sustained_control_qualification.py',
+            'integration/single_node/preview_recovery_qualification.py',
+            'integration/single_node/preview_qualification.py',
+            'integration/single_node/sustained_qualification.py',
+            'integration/single_node/sustained_restore_qualification.py',
+            'integration/single_node/sustained_evaluation.py',
             'integration/single_node/preview_secrets.py',
-            'integration/single_node/preview_values.py',
+            'integration/single_node/preview_values.py','integration/single_node/sustained_values.py',
             'integration/single_node/chain_address.py')
 OPERATOR_RECIPES = ('create_secrets.py', 'import_workflow_images.py')
-VERSION = '0.2.0'
+VERSION = '0.3.0'
 
 
 def sha(raw):
@@ -90,19 +98,23 @@ def build(destination):
     result = {'schema': 'fusion-preview-sdk-build/1', 'live_generations': 0,
               'client': wheel(destination, 'fusion-module-client', shared),
               'provider': wheel(destination, 'fusion-file-feed-example', provider,
-                                ('fusion-module-client>=0.1.0,<0.3.0',)),
+                                ('fusion-module-client>=0.1.0,<0.4.0',)),
               'operator': wheel(destination, 'fusion-preview-operator', operator,
-                                ('fusion-module-client==0.2.0',
+                                ('fusion-module-client==0.3.0',
                                  'PyYAML==6.0.3; extra == "artifact-verification"',
                                  'PyYAML==6.0.3; extra == "preview-install"',
                                  'cryptography==50.0.2; extra == "chain-key-setup"',
                                  'pycryptodome==4.0.0; extra == "chain-key-setup"',
                                  'cffi==2.1.1; extra == "chain-key-setup"',
                                  'pycparser==3.12; extra == "chain-key-setup"'),
-                                entries={'fusion-preview-workbench': 'integration.single_node.preview_workbench:main',
+                                entries={'fusion-sustained': 'integration.single_node.sustained_cli:main',
+                                         'fusion-sustained-controls': 'integration.single_node.sustained_control_qualification:main',
+                                         'fusion-sustained-restore': 'integration.single_node.sustained_restore_qualification:main',
+                                         'fusion-preview-workbench': 'integration.single_node.preview_workbench:main',
                                          'fusion-verify-artifacts': 'integration.single_node.reference_artifacts:main',
                                          'fusion-create-secrets': 'fusion_operator.cli:create_secrets',
                                          'fusion-preview-values': 'integration.single_node.preview_values:main',
+                                         'fusion-sustained-values': 'integration.single_node.sustained_values:main',
                                          'fusion-import-images': 'fusion_operator.recipes.import_workflow_images:main'},
                                 extras=('artifact-verification', 'preview-install', 'chain-key-setup'))}
     (destination / 'build-manifest.json').write_text(json.dumps(result, sort_keys=True, indent=2) + '\n')

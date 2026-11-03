@@ -1,0 +1,342 @@
+{
+  "status": "PASS",
+  "at": "2026-11-03T12:46:53.412739+00:00",
+  "context": "default",
+  "protected": {
+    "omega-demo": {
+      "status": "UNCHANGED",
+      "objects": 30,
+      "inventory_sha256": "7f66b730d253fa0082e62311bf2323d42c395de606e3e3416f7052f8f350580a"
+    },
+    "omega-ref-live01": {
+      "status": "UNCHANGED",
+      "objects": 63,
+      "inventory_sha256": "bfe55783bbdd80208ab45f21c41713a0a693bf8b283ba0382b442fee39bda14d"
+    }
+  },
+  "campaign_files": {
+    "evidence/reference-distribution/campaign/plan.json": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+    "evidence/reference-distribution/campaign/execution-ledger.json": "2f41702c51597688f0d72b87d0ea2df59ee39835de324b75239b9a0327f7588c",
+    "artifacts/reference-distribution/campaign/plan.json": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+    "artifacts/reference-distribution/campaign/execution-ledger.json": "2f41702c51597688f0d72b87d0ea2df59ee39835de324b75239b9a0327f7588c"
+  },
+  "task_namespaces": [
+    {
+      "namespace": "omega-ref-phase3-artifact-smoke11",
+      "pods": 0,
+      "workloads": 14,
+      "replicas": 0,
+      "retained_pvcs": 14,
+      "pvc_uids": {
+        "state-f1r3node-0": "05ae0b8a-8354-4f63-860d-952e7f672064",
+        "state-fusion-attention-0": "f1337b35-b6f7-49a1-a29a-3dab650e88fa",
+        "state-fusion-beliefs-0": "e9bca90d-21b2-47c2-81c9-43481bf944d8",
+        "state-fusion-commitment-0": "8926c7c7-3f89-49fd-be59-8df2c4ad36f2",
+        "state-fusion-embedding-0": "87dc8414-b5bd-4deb-bf75-e6e49cbd2f1f",
+        "state-fusion-episodes-0": "338aace1-b1d9-419b-ac15-aced53da61bf",
+        "state-fusion-execution-0": "48c6637b-6ae7-4d52-84a0-ebe020fcbbc4",
+        "state-fusion-messaging-0": "b9c9be6e-ebc0-4e99-9c1b-1f02a6a2e55f",
+        "state-fusion-model-0": "b27d9f27-9af3-40f4-b1e1-83a40ecdc974",
+        "state-fusion-relations-0": "4dae8178-6f5e-42b3-acdb-6d6d8d6b712c",
+        "state-fusion-search-0": "84d1cdd2-faf8-40ca-a6a5-f3c15909b612",
+        "state-fusion-storage-0": "e8f6a307-6311-4741-86df-634d5020ff44",
+        "state-omega-agent-0": "1ddf6f4e-d10d-499e-acb9-ae9a1fd9137b",
+        "state-omega-agent-b-0": "bd8f8023-492b-4517-b284-35823331bc71"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-artifact-smoke12",
+      "pods": 0,
+      "workloads": 14,
+      "replicas": 0,
+      "retained_pvcs": 14,
+      "pvc_uids": {
+        "state-f1r3node-0": "adb46ac4-7450-4ee9-84e8-14c968b78bdf",
+        "state-fusion-attention-0": "176b7aac-f1e0-40a8-8998-8931ae0bd8a2",
+        "state-fusion-beliefs-0": "da95882d-ab81-446e-990b-9c0e97bc9b91",
+        "state-fusion-commitment-0": "aaf005b5-4c5b-4763-95c4-08db745eb04d",
+        "state-fusion-embedding-0": "3d095fa8-0edd-4a8f-a90f-0be6769d82bc",
+        "state-fusion-episodes-0": "007a6a53-0b5f-4bba-81b3-53f93df7a301",
+        "state-fusion-execution-0": "d494d1f8-c955-47a4-baa8-36b132fdd547",
+        "state-fusion-messaging-0": "9bc780ae-bfdc-4d7e-a644-3608a77ec3b6",
+        "state-fusion-model-0": "1101023f-7b85-4048-8280-993f4de9d189",
+        "state-fusion-relations-0": "fba21ac7-f117-42c7-ad0e-22638af7e432",
+        "state-fusion-search-0": "5d056fe1-91ae-4e4c-9c8a-f254d695ae2d",
+        "state-fusion-storage-0": "6b512755-c220-42be-b752-06f2e524d62d",
+        "state-omega-agent-0": "9d0d691c-5f17-4179-8b3f-b7c2acec651b",
+        "state-omega-agent-b-0": "baa92d31-3d4a-46c4-b534-8c4cc8bc95db"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-baseline01",
+      "pods": 0,
+      "workloads": 12,
+      "replicas": 0,
+      "retained_pvcs": 12,
+      "pvc_uids": {
+        "state-fusion-attention-0": "d77549d8-3395-4f10-9724-934e2449f3d5",
+        "state-fusion-beliefs-0": "e797f248-9a6d-42fb-9a16-5ed5b864d6a5",
+        "state-fusion-embedding-0": "5e492fa7-8cde-4755-8f18-9df77a3c6cf2",
+        "state-fusion-episodes-0": "bb32eed2-79d1-4b10-96f8-04a5f39cb4cd",
+        "state-fusion-execution-0": "d6b618c3-79f9-4ad8-b5c1-1f31456fe36c",
+        "state-fusion-messaging-0": "82a5f62e-96a9-4aaf-9871-05ac2d8ddfab",
+        "state-fusion-model-0": "12d1a53f-7efe-49b0-8053-6081931f9133",
+        "state-fusion-relations-0": "1783e335-5d14-46db-9acf-64acf3600532",
+        "state-fusion-search-0": "5692e9e7-db9e-4ff7-b053-d2f01d382796",
+        "state-fusion-storage-0": "7be712f6-cd53-4243-a61a-8319ba3a77cd",
+        "state-omega-agent-0": "320ec78e-3cf7-41e6-8610-38bcf03dac2f",
+        "state-omega-agent-b-0": "5f26775b-2cfc-44e4-a9c9-6f1beaf76b34"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-combined02",
+      "pods": 0,
+      "workloads": 12,
+      "replicas": 0,
+      "retained_pvcs": 12,
+      "pvc_uids": {
+        "state-fusion-attention-0": "86095fd2-a3e1-48ab-b088-50b73ae090ed",
+        "state-fusion-beliefs-0": "c0504633-625e-4a33-b01a-52c58efc6b69",
+        "state-fusion-embedding-0": "6a869d23-edb2-4c59-9da6-9f3ab43d0789",
+        "state-fusion-episodes-0": "54876e6e-9a5c-496d-9fbc-2455600a404a",
+        "state-fusion-execution-0": "3cdd2d08-d325-45f4-a200-9681d89c1ec9",
+        "state-fusion-messaging-0": "0c456777-f524-41d1-aa21-50fe432430f9",
+        "state-fusion-model-0": "34281d0e-0a4d-4c30-9f13-01af69d428b6",
+        "state-fusion-relations-0": "7c78d779-4f62-4685-bd8d-e5788814b42d",
+        "state-fusion-search-0": "ae9b2ab9-441f-45e9-a881-c0f074c776d1",
+        "state-fusion-storage-0": "e34d7e3a-e493-46dc-b7e5-a23246d0174f",
+        "state-omega-agent-0": "05a70ead-3b18-48c2-b652-d3dcfa27659c",
+        "state-omega-agent-b-0": "b5e25983-7462-4308-a89c-e4dec9e8fa81"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-combined03",
+      "pods": 0,
+      "workloads": 12,
+      "replicas": 0,
+      "retained_pvcs": 12,
+      "pvc_uids": {
+        "state-fusion-attention-0": "5492981b-e4f1-48c9-8c68-4786f5523415",
+        "state-fusion-beliefs-0": "9776b501-259c-4011-93ad-449f0c98a8da",
+        "state-fusion-embedding-0": "40abaa35-1980-40b1-9ad3-e8757d05a669",
+        "state-fusion-episodes-0": "40b3a2b8-7c07-4037-a5ec-0f3fb0fd23a1",
+        "state-fusion-execution-0": "9882990e-5307-47cd-900f-8dd14d822e14",
+        "state-fusion-messaging-0": "34fe85af-84f8-40d3-99ad-1e5a23bfc3fb",
+        "state-fusion-model-0": "8bd1039d-1580-4ea2-8680-caf287386f2f",
+        "state-fusion-relations-0": "5cd8f2f2-b64d-4603-88f9-be9bf82b84d2",
+        "state-fusion-search-0": "8d0f5a67-5b8e-4f39-ab02-864758230f43",
+        "state-fusion-storage-0": "a8268ec1-b457-4ccb-ab8b-7aaf972c02d9",
+        "state-omega-agent-0": "2d7f1467-ab8e-4d58-a71d-4dfb04583008",
+        "state-omega-agent-b-0": "51709d7b-abba-458c-bb29-bb693a2e8e00"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-combined04",
+      "pods": 0,
+      "workloads": 12,
+      "replicas": 0,
+      "retained_pvcs": 12,
+      "pvc_uids": {
+        "state-fusion-attention-0": "462ea538-585a-4b13-a7aa-eb64a8ee6fa6",
+        "state-fusion-beliefs-0": "246f954d-479b-4fca-92cf-83c3e03422c5",
+        "state-fusion-embedding-0": "4bad6a1a-a645-48a1-ab45-38a5bc5435ad",
+        "state-fusion-episodes-0": "29e447bf-c19c-4959-b4c5-dd96b33415e8",
+        "state-fusion-execution-0": "78b87aef-c182-4550-bb24-23117aa49810",
+        "state-fusion-messaging-0": "632a5e7e-d120-4d7c-8e6d-171e8e2d5af2",
+        "state-fusion-model-0": "7925f612-bfbf-47e2-82c2-8242d8bea352",
+        "state-fusion-relations-0": "5e2f119e-140d-455c-8c6e-e4d6969104e3",
+        "state-fusion-search-0": "ad3ec576-f29a-4e46-9242-523c43f43675",
+        "state-fusion-storage-0": "81a36c30-c1ef-46bd-a278-11b8c1af01f4",
+        "state-omega-agent-0": "0fdaa839-ae86-4a21-8f46-99137cf19651",
+        "state-omega-agent-b-0": "e081b2e3-b234-429e-b31a-0a28ac16b19f"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-controls-restore09",
+      "pods": 0,
+      "workloads": 7,
+      "replicas": 0,
+      "retained_pvcs": 7,
+      "pvc_uids": {
+        "state-fusion-episodes-0": "257436de-f334-48f6-94cd-3192c9da1566",
+        "state-fusion-execution-0": "173142b9-0d00-4734-b179-b64d6cfea994",
+        "state-fusion-messaging-0": "16e3213d-7041-4095-a005-26b1377ba850",
+        "state-fusion-model-0": "55f5965a-6397-48b7-aaed-b2bc23765459",
+        "state-fusion-storage-0": "bbfa29d7-30f7-4fd3-a411-ad19a65d19e4",
+        "state-omega-agent-0": "141d569d-9b3f-46bc-a42e-7e04d020dcad",
+        "state-omega-agent-b-0": "cc7c97be-1223-4aae-bd64-17badc45215a"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-controls06",
+      "pods": 0,
+      "workloads": 0,
+      "replicas": 0,
+      "retained_pvcs": 0,
+      "pvc_uids": {}
+    },
+    {
+      "namespace": "omega-ref-phase3-controls07",
+      "pods": 0,
+      "workloads": 7,
+      "replicas": 0,
+      "retained_pvcs": 7,
+      "pvc_uids": {
+        "state-fusion-episodes-0": "e3d10bbb-62a1-4254-8819-fd94817c453b",
+        "state-fusion-execution-0": "11df9e50-2f43-4593-839e-54761d0e4695",
+        "state-fusion-messaging-0": "fecd00ee-f4ff-4ade-92fb-f952fc389b7d",
+        "state-fusion-model-0": "049a6653-6ecf-4a2c-b619-ed941624fd50",
+        "state-fusion-storage-0": "6fd2ee84-1f67-4428-9644-3e205b7ebda3",
+        "state-omega-agent-0": "c94df479-4315-483b-b951-b98d61ea74bf",
+        "state-omega-agent-b-0": "fdb1cf57-47f1-46b2-9ac3-bf7fd95c8847"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-controls09",
+      "pods": 0,
+      "workloads": 7,
+      "replicas": 0,
+      "retained_pvcs": 7,
+      "pvc_uids": {
+        "state-fusion-episodes-0": "d5aa1384-a2d9-4050-b888-8d9908a78596",
+        "state-fusion-execution-0": "f01f5959-c27e-485a-b2ed-6eff928bb7cf",
+        "state-fusion-messaging-0": "83191ff0-a68c-48fa-bfda-aabc67803e0f",
+        "state-fusion-model-0": "8ffd6001-b004-47e8-bf86-1bd2acf5244a",
+        "state-fusion-storage-0": "b721933a-ed40-4104-b437-0f44209b5a59",
+        "state-omega-agent-0": "74b2661f-9eae-444a-8269-aaa5ce384206",
+        "state-omega-agent-b-0": "aebba429-a679-40b6-85d6-9280d4e699f9"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-dynamic01",
+      "pods": 0,
+      "workloads": 7,
+      "replicas": 0,
+      "retained_pvcs": 7,
+      "pvc_uids": {
+        "state-fusion-episodes-0": "d31c35f0-93b2-409d-a278-849bd60bd63b",
+        "state-fusion-execution-0": "8f8a4d65-461c-4dc5-999e-3f07918cd2b8",
+        "state-fusion-messaging-0": "66af888a-2eeb-41f8-9263-6b17053d49f2",
+        "state-fusion-model-0": "aeb17e27-aa95-4f29-97ad-6e8b9cc57bd7",
+        "state-fusion-storage-0": "4ea8eb92-449a-4bf4-a7ae-12b3223cc31c",
+        "state-omega-agent-0": "efc0391b-cc7e-4b27-b090-1ee6e1e22d2d",
+        "state-omega-agent-b-0": "db85d1a8-428f-45ac-a476-5399379c55e4"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-main-restore11",
+      "pods": 0,
+      "workloads": 13,
+      "replicas": 0,
+      "retained_pvcs": 13,
+      "pvc_uids": {
+        "state-fusion-attention-0": "b1997a9f-a089-40f3-8d8c-730a9631a74b",
+        "state-fusion-beliefs-0": "3617290f-c7e8-4cbb-a737-ac231a1562f7",
+        "state-fusion-commitment-0": "1e5222a6-0b87-4966-ac17-69206ce3e13f",
+        "state-fusion-embedding-0": "9afc8c1b-b97d-4b54-b70b-05f6d0a81ad5",
+        "state-fusion-episodes-0": "53f2e51a-9678-45d2-81b9-1e64b5ee253d",
+        "state-fusion-execution-0": "18c12d47-9d8f-49f4-b887-d8362b091935",
+        "state-fusion-messaging-0": "5c2c4bc9-b20e-44d6-a400-8d057b93f033",
+        "state-fusion-model-0": "5b2a16ae-b9e1-420a-b25b-a6e2751d9289",
+        "state-fusion-relations-0": "f44469cf-358a-44f0-99e9-46c520da24ff",
+        "state-fusion-search-0": "e95f6082-99fc-4df1-a099-143e42b8812c",
+        "state-fusion-storage-0": "f502b892-e2a0-461b-8b24-8f7e0dc292fc",
+        "state-omega-agent-0": "06f42000-b564-4472-a363-614f0071bde5",
+        "state-omega-agent-b-0": "ab862d62-74db-4f39-8847-cdbd3d0ea609"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-quota09",
+      "pods": 0,
+      "workloads": 10,
+      "replicas": 0,
+      "retained_pvcs": 10,
+      "pvc_uids": {
+        "state-fusion-embedding-0": "0e818ebd-6ed6-41b9-8600-91f6c164124e",
+        "state-fusion-episodes-0": "82abdbb0-a0d7-4b32-ae59-b7b2536e78eb",
+        "state-fusion-execution-0": "0e324aae-1595-4fee-b144-3377e0bd393f",
+        "state-fusion-messaging-0": "8c3bd50d-35f4-4d57-b910-42e77536bbee",
+        "state-fusion-model-0": "897b736b-1fb9-49a1-a6c7-e271ba50a045",
+        "state-fusion-relations-0": "3710a904-06e6-476d-b856-8c4e9848347f",
+        "state-fusion-search-0": "5451a680-aeeb-4643-a471-01fadce7ffce",
+        "state-fusion-storage-0": "fab7580f-9e30-4b13-b49b-a87abf4d631c",
+        "state-omega-agent-0": "324b8846-7181-49c0-b62a-f447680e3a0a",
+        "state-omega-agent-b-0": "c0bf76b0-1f0b-4c4e-900f-d7e9162a5a43"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-recovery09",
+      "pods": 0,
+      "workloads": 12,
+      "replicas": 0,
+      "retained_pvcs": 12,
+      "pvc_uids": {
+        "state-fusion-attention-0": "42085675-854c-4cb0-9d43-d539178cd603",
+        "state-fusion-beliefs-0": "9b664df5-4823-4754-a3a8-3526a62fc604",
+        "state-fusion-embedding-0": "ae783036-cdb7-4231-b043-197e212fe6cc",
+        "state-fusion-episodes-0": "18f2807c-6e7e-4167-8fbf-cd67181eb6f8",
+        "state-fusion-execution-0": "0dd6dd60-ebec-4c2b-ba5a-21db4bd86992",
+        "state-fusion-messaging-0": "f50d4c13-730c-440a-aabc-8cc3a64c53b4",
+        "state-fusion-model-0": "ac247c19-7400-4214-a037-d89986c74f95",
+        "state-fusion-relations-0": "fa8fe1f3-5fa3-4a6d-8527-e2e0d2b77e4c",
+        "state-fusion-search-0": "972614ff-1f58-41de-976e-c0c544a4f8d8",
+        "state-fusion-storage-0": "a8caa820-1471-4586-95f8-093d0856da56",
+        "state-omega-agent-0": "65c9037d-6124-4fe9-a3ee-9d68d55ca24f",
+        "state-omega-agent-b-0": "633dbf4c-dcfe-48a2-ae2e-41181e79ab42"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-sustained05",
+      "pods": 0,
+      "workloads": 14,
+      "replicas": 0,
+      "retained_pvcs": 14,
+      "pvc_uids": {
+        "state-f1r3node-0": "cd68da29-d98d-427b-9103-a3a21a556c71",
+        "state-fusion-attention-0": "56d8233e-8d31-48ef-9cc4-cc8a302dcfc6",
+        "state-fusion-beliefs-0": "d2275b8f-3842-44ac-a85d-1051a833f40c",
+        "state-fusion-commitment-0": "ae0f6cfc-75a6-48b7-979a-82d0e71007ea",
+        "state-fusion-embedding-0": "c5eedb07-124f-4f0b-bfaf-cf8794e2639b",
+        "state-fusion-episodes-0": "66ae9447-6f4a-4258-a61f-4645a90d75f0",
+        "state-fusion-execution-0": "2b17bd05-ffa1-4f72-84dc-2a1b2cd341e1",
+        "state-fusion-messaging-0": "2dd3cd44-b89b-4d7a-8365-c95454796dd8",
+        "state-fusion-model-0": "4d682147-2a18-4421-8f34-690ab3b23b60",
+        "state-fusion-relations-0": "ff0aabab-3b3c-484c-bd22-4280f7e98040",
+        "state-fusion-search-0": "1f64ef0e-b76c-4bdc-8772-f9c7c9b0e50e",
+        "state-fusion-storage-0": "868327c4-c511-4cb7-939d-931559bcb325",
+        "state-omega-agent-0": "d066eb33-2150-412a-a6e3-536aac28dbaa",
+        "state-omega-agent-b-0": "05076015-21e4-4eaf-b962-8bf8982641fa"
+      }
+    },
+    {
+      "namespace": "omega-ref-phase3-sustained09",
+      "pods": 0,
+      "workloads": 14,
+      "replicas": 0,
+      "retained_pvcs": 15,
+      "pvc_uids": {
+        "phase3-f1r3node-qualified-10": "6d7ab566-9668-4e94-a589-e228ed5714d3",
+        "state-f1r3node-0": "5a7ff58f-51c6-4239-a89d-76ceb59c3fcf",
+        "state-fusion-attention-0": "056025bd-9b5b-4a11-8229-50b171b8cfd3",
+        "state-fusion-beliefs-0": "86cb0b92-ffef-4db9-88ed-f2ef42865aab",
+        "state-fusion-commitment-0": "d6ee34bd-bfeb-412b-9e9b-7a252bebc319",
+        "state-fusion-embedding-0": "03b9ca2e-2ba1-4806-a01c-3deb93b2fd88",
+        "state-fusion-episodes-0": "f611d278-d509-42f0-96f7-5ddb01412476",
+        "state-fusion-execution-0": "1f5bf134-2508-41f9-8d6e-878ffbf6780c",
+        "state-fusion-messaging-0": "30ccf772-4a27-4935-aa9f-a60b3cfb71bc",
+        "state-fusion-model-0": "125bb827-b0c1-442e-886c-8fb72ae6d5f3",
+        "state-fusion-relations-0": "efb4f73a-efbe-4281-b00e-03a30b5a71ba",
+        "state-fusion-search-0": "fd597e50-9d9d-4231-9449-6858503c1c38",
+        "state-fusion-storage-0": "68590563-0640-46d5-a07f-36b3b355395c",
+        "state-omega-agent-0": "733543aa-7317-48cb-9f6d-da33de5c5136",
+        "state-omega-agent-b-0": "623a28ad-af20-457f-9b5c-00436d570758"
+      }
+    }
+  ],
+  "additional_live_generations": 0,
+  "private_archives": "Retained locally outside publication",
+  "temporary_observers": "Task workbench servers stopped; residual task recorder explicitly stopped after finalized proof",
+  "host_changes": "NONE",
+  "deletion": "No namespaces, PVCs or journals deleted",
+  "original_campaign_slots": "UNRESERVED_UNCHANGED"
+}

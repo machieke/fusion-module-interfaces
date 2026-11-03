@@ -47,9 +47,8 @@ class InstalledWireCompatibility(unittest.TestCase):
         for name in ('client', 'provider'):
             row = cls.historical['wheel_build'][name]
             assert hashlib.sha256((old / row['file']).read_bytes()).hexdigest() == row['sha256']
-        new = cls.root / 'wheels'
-        subprocess.run([sys.executable, str(ROOT / 'sdk/build.py'), '--output', str(new)],
-                       check=True, capture_output=True)
+        # Preserve this historical 0.1/0.2 test identity using published wheels.
+        new = ROOT / 'sdk/compatibility/0.2.0'
         cls.pythons = {}
         for version, source in [('0.1.0', old), ('0.2.0', new)]:
             path = cls.root / ('venv-' + version)

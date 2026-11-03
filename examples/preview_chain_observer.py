@@ -4,7 +4,7 @@ Run ``python -m examples.preview_chain_observer --trace TRACE --config CONFIG``.
 TRACE is exactly {reg, saved_intent, final_observation}, exported by the
 authorized operator. CONFIG is exactly {profile, atoms, node_endpoint}; profile
 is synthetic-chain-readback/1. atoms is the existing preview AtomStorage client
-configuration, with credential replaced by credential_file OR credential_env.
+configuration (with an explicit optional feed_profile), with credential replaced by credential_file OR credential_env.
 The mounted credential must have only atom.storage.get authority. Neither an
 approval label nor this read-only example grants signing/submission authority.
 
@@ -116,7 +116,10 @@ def configuration(config, scope):
     secret = set(atoms) & {'credential_file', 'credential_env'}
     require(len(secret) == 1 and 'credential' not in atoms, 'UNAUTHORIZED')
     name = next(iter(secret))
-    fields(atoms, 'composition principal scope endpoint descriptor ' + name)
+    fields(atoms, 'composition principal scope endpoint descriptor ' + name + (' feed_profile' if 'feed_profile' in atoms else ''))
+    if 'feed_profile' in atoms:
+        from fusion import lookup_contracts as source
+        require(atoms['feed_profile'] in (source.FEED,source.SUSTAINED_FEED),'UNSUPPORTED_PROFILE')
     require(atoms['scope'] == scope and label(atoms['principal']), 'UNAUTHORIZED')
     require(type(atoms[name]) is str and atoms[name], 'UNAUTHORIZED')
     if name == 'credential_file':

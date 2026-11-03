@@ -1,0 +1,16 @@
+{
+  "status": "EXPLICIT_RUNTIME_DELTA",
+  "changes": {
+    "integration/single_node/diagnostics.py": {
+      "before": "6360f84dc6f70ff0e264864519893599222b497ba53d4dfa4b49c93680dbdeb7",
+      "after": "a4210cae546526b9b260341b76ad52fff93a42500a95a5571964f5a36c6ec393"
+    },
+    "integration/single_node/backup_payload.py": {
+      "before": "aa5c686f2c30d14fc129de86e0d723ff185640104da40362b5ccca177dd76cdd",
+      "after": "9efeae731e951e34a1ccfb72e4c71f6a1048302095a726ad68d6882932153f7a"
+    }
+  },
+  "reason": "Close checkpoint/diagnostic SQLite handles before freezing backup manifest file set",
+  "source_manifest_sha256": "298881316fe74ce8d8a5b89b9228de9466a7dbda4e6c3394769c1f1cf584d205",
+  "unrelated_native_semantics_changed": false
+}

@@ -51,7 +51,7 @@ class ChromaVector:
 
     def _head(self,scope,through):
         require(scope==self.scope,'UNAUTHORIZED')
-        through=a.head(through,scope);head=a.head(self.source.head(scope),scope)
+        through=a.source_head(through,scope);head=a.source_head(self.source.head(scope),scope)
         require(head['source']==through['source'] and head['sequence']>=through['sequence'],'CONFLICT')
         return through
 
@@ -131,7 +131,7 @@ class ChromaVector:
 
     def _named(self,scope,through,key,principal):
         from fusion.contracts import label
-        require(label(key));a.head(through,scope)
+        require(label(key));a.source_head(through,scope)
         generation=str(uuid.uuid5(uuid.UUID(through['source']),canonical([principal,scope,key]).decode()))
         expected=dict(principal=principal,scope=scope,key=key,through=through,corpus=self.corpus,
                       embedding=self.embedding,index=self.c.INDEX,profile=self.c.PROFILE)

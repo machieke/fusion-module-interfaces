@@ -22,7 +22,8 @@ MAX_PENDING = 4
 
 
 class SessionStore:
-    def __init__(self, path, authorize, clock=lambda: int(time.time()*1000)):
+    def __init__(self, path, authorize, clock=lambda: int(time.time()*1000), *, profile=PROFILE):
+        self.profile = profile
         self.authorize, self.clock = authorize, clock
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -31,7 +32,7 @@ class SessionStore:
             with closing(sqlite3.connect(self.path.resolve().as_uri()+'?mode=ro',uri=True)) as existing:
                 tables={r[0] for r in existing.execute("SELECT name FROM sqlite_master WHERE type='table'")}
                 if 'preview_session_profile' in tables:
-                    require(existing.execute('SELECT profile FROM preview_session_profile').fetchone()==(PROFILE,),'UNSUPPORTED_PROFILE')
+                    require(existing.execute('SELECT profile FROM preview_session_profile').fetchone()==(profile,),'UNSUPPORTED_PROFILE')
                 elif 'preview_sessions' in tables:
                     require(existing.execute('SELECT count(*) FROM preview_sessions').fetchone()[0]==0,'UNSUPPORTED_PROFILE')
         self.db = sqlite3.connect(path, timeout=2)
@@ -55,7 +56,7 @@ class SessionStore:
         ''')
         with self.db:
             if self.db.execute('SELECT profile FROM preview_session_profile').fetchone() is None:
-                self.db.execute('INSERT INTO preview_session_profile VALUES(?)',(PROFILE,))
+                self.db.execute('INSERT INTO preview_session_profile VALUES(?)',(profile,))
 
     def close(self): self.db.close()
 

@@ -4,6 +4,7 @@ Run in each service pod through operator RBAC. This is not a privileged module
 port, and never opens another owner's PVC. SQLite reads use read-only snapshots.
 """
 import argparse,json,os,re,sqlite3
+from contextlib import closing
 from pathlib import Path
 
 FILES={
@@ -46,18 +47,28 @@ def inspect(root=Path('/state')):
  if seal.is_file():
   raw=json.loads(seal.read_bytes());out['owner']=raw['role'];out['composition']=raw['composition']
  files=[(root/name,name,names) for name,names in FILES.items()]
- if out.get('composition')=='omega-single-node-developer-preview/1':
+ if out.get('composition') in ('omega-single-node-developer-preview/1','omega-single-node-sustained-preview/1'):
   files += [(root/name,name,names) for name,names in PREVIEW_FILES.items()]
   sessions=sorted(p for p in (root/'sessions').glob('*') if p.is_dir() and not p.is_symlink() and re.fullmatch('[0-9a-f-]{36}',p.name))
-  require_bounded=len(sessions)<=2
+  maximum=16 if out['composition']=='omega-single-node-sustained-preview/1' else 2
+  require_bounded=len(sessions)<=maximum
   if not require_bounded:out['session_capacity']='EXCEEDED'
-  for index,p in enumerate(sessions[:2]):
+  for index,p in enumerate(sessions[:maximum]):
    # Numeric labels avoid publishing session identities as metrics labels.
    files.append((p/'caller.sqlite','session-'+str(index+1)+'/caller.sqlite',SESSION_TABLES))
+ if out.get('composition')=='omega-single-node-sustained-preview/1':
+  files += [(root/'session-inbox.sqlite','allocator',('sustained_allocations','sustained_dispatch','sustained_outcomes','sustained_actions')),
+            (root/'memory/feed.sqlite','capacity',('feed_meta','feed_reservations')),
+            (root/'private-projections.sqlite','private-projections',('projections',))]
+  # Fixed per-agent partitions; numeric diagnostics never carry scope IDs,
+  # private content, index candidates or source watermarks.
+  for index,label in enumerate(('private-a','private-b')):
+   for name,names in {**FILES,**PREVIEW_FILES}.items():
+    files.append((root/'scopes'/label/name,'private-'+str(index+1)+'/'+name,names))
  out['limits']=dict(max_database_files=len(files),max_tables=sum(len(x[2]) for x in files))
  for path,name,names in files:
   if not path.is_file():continue
-  with sqlite3.connect(path.absolute().as_uri()+'?mode=ro',uri=True,timeout=.2) as db:
+  with closing(sqlite3.connect(path.absolute().as_uri()+'?mode=ro',uri=True,timeout=.2)) as db:
    db.execute('PRAGMA query_only=ON');db.execute('BEGIN')
    tables={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
    for table in names:

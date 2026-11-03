@@ -1,0 +1,10 @@
+{
+  "namespace": "omega-ref-phase3-controls06",
+  "status": "FAILED_CHART_RENDER",
+  "reason": "optional tasks.enabled dereferenced in minimal configuration; no workloads or PVCs created",
+  "chart": "artifacts/phase3/sdk-dev06/omega-fusion-0.6.0.tgz",
+  "correction": "guard optional tasks map, with actual minimal and combined Helm render checks",
+  "native_inputs": 0,
+  "generations": 0,
+  "cleanup": "No pods or PVCs; task namespace and generated Secrets retained"
+}

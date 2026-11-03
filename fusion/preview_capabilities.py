@@ -32,9 +32,9 @@ IMPLEMENTATIONS={
 }
 
 
-def registered_tools(*,active=False):
-    values=(*t.context_tools(),*t.memory_tools(active=active),*t.workspace_tools(),*t.history_tools(),
-        *t.deduction_tools(),*t.lifecycle_tools(),*t.relation_tools(),*t.cognitive_tools(),*t.task_tools(),*t.inspection_tools())
+def registered_tools(*,active=False,feed_profile='immutable-commit-feed/1'):
+    values=(*t.context_tools(),*t.memory_tools(active=active,feed_profile=feed_profile),*t.workspace_tools(),*t.history_tools(),
+        *t.deduction_tools(),*t.lifecycle_tools(feed_profile=feed_profile),*t.relation_tools(),*t.cognitive_tools(feed_profile=feed_profile),*t.task_tools(),*t.inspection_tools(feed_profile=feed_profile))
     require({x.tool_id for x in values}==set(IMPLEMENTATIONS) and len(values)==len(IMPLEMENTATIONS),'NOT_AVAILABLE')
     return values
 

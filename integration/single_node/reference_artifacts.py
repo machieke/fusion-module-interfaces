@@ -36,7 +36,7 @@ def verify(path):
  import yaml
  allowed={(r['repository'],r['manifest']) for r in manifest['images'].values()}
  if preview:
-  from fusion.preview_deployment_contracts import COMPOSITION
+  from fusion.preview_deployment_contracts import COMPOSITION,SUSTAINED_COMPOSITION
   require(manifest['model_boundary']=='RECORDED_FIXTURE' and type(manifest['live_generation_authorization']) is int and manifest['live_generation_authorization']==0,'UNAUTHORIZED')
   kinds=set(manifest['images']);require({'base','caller','embedding'}<=kinds<= {'base','caller','embedding','chain'},'UNSUPPORTED_PROFILE')
   require(kinds=={r['kind'] for r in imported['images']} and len(kinds)==len(imported['images']),'CONFLICT')
@@ -48,7 +48,11 @@ def verify(path):
   selected=[values['image']]+[v['image'] for v in values.get('components',{}).values() if 'image' in v]
   require(all((v['repository'],v['digest']) in allowed for v in selected),'CONFLICT')
   if preview:
-   p=values['preview'];require(p['profile']==COMPOSITION and p['enabled'] is True and p['model_boundary']=='RECORDED_FIXTURE','UNSUPPORTED_PROFILE')
+   p=values['preview'];require(p['profile'] in (COMPOSITION,SUSTAINED_COMPOSITION) and p['enabled'] is True and p['model_boundary']=='RECORDED_FIXTURE','UNSUPPORTED_PROFILE')
+   if p['profile']==SUSTAINED_COMPOSITION:
+    require(type(p.get('sustained')) is dict and not p['sustained'].get('model_binding'),'UNAUTHORIZED')
+    for role in ('omega-agent','omega-agent-b'):
+     component=values['components'][role];require(component['config']['nativeEnabled'] is False and component['config']['workerEnabled'] is False,'UNAUTHORIZED')
    require(values.get('futureLive') is None and values.get('liveEnabled',False) is False
        and values.get('workflow',{}).get('liveEnabled',False) is False
        and values.get('workflow',{}).get('enabled',False) is False,'UNAUTHORIZED')

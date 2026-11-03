@@ -146,6 +146,7 @@ class TaskHandoffTests(unittest.TestCase):
         app = SimpleNamespace(db=db, config={'task_config': str(self.clients['A'].path)},
             binding={'tasks': self.clients['A'].frozen}, preview_config={'scope': SCOPE}, hook=hook,
             preview=SimpleNamespace(authorize=lambda operation: require(operation == 'tasks', 'UNAUTHORIZED'),
+                input=SimpleNamespace(execution_permit=lambda:None),
                 memory=SimpleNamespace(atoms=lambda deadline=None: self.atoms)))
         return app, NativeTasks(app)
 

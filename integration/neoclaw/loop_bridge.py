@@ -30,6 +30,17 @@ def _timing(method, started, code=None):
 
 
 def call(method, *args):
+    from fusion.native_telemetry import configure,span
+    if _app is None:
+        config=json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
+        configure(config)
+        started=os.environ.get('NEOCLAW_NATIVE_LAUNCH_NS')
+        if started is not None:
+            with span('native.first_bridge',started_ns=int(started)):pass
+    with span('native.'+method):return _call(method,*args)
+
+
+def _call(method, *args):
     global _app
     started = time.monotonic()
     try:
@@ -49,7 +60,8 @@ def call(method, *args):
                 slot = config.get('pause_slot')
                 if slot is None or (_app is not None and _app.processing_slot() == slot):
                     failpoint(config, stage)
-            _app = Application(path, pause)
+            from fusion.native_telemetry import span
+            with span('native.application_bootstrap'):_app = Application(path, pause)
         result=getattr(_app, method)(*args)
         if method=='begin' and _app.append_enabled and _app.is_memory():
             from integration.neoclaw.append_bootstrap import select_view
@@ -63,7 +75,7 @@ def call(method, *args):
         # No Python exceptions/provider paths/credentials become native tool output.
         code = exc.code if isinstance(exc, ContractError) else 'NOT_AVAILABLE'
         config = json.loads(Path(os.environ['NEOCLAW_S01_APPLICATION']).read_text())
-        if config.get('preparation_diagnostics'):
+        if config.get('preparation_diagnostics') and not config.get('native_telemetry'):
             import traceback
             traceback.print_exc()
         status = dict(status='PENDING_OR_FAILED', code=code)

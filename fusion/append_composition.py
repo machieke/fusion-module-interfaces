@@ -18,7 +18,7 @@ def configuration(path):
     c.a.identity(cfg['session']);require(cfg['model']==v.EMBEDDING,'UNSUPPORTED_PROFILE')
     require(type(cfg['inputs']) is dict and (0 if 'text_policy' in cfg else 1)<=len(cfg['inputs'])<=16)
     for raw,helper in cfg['inputs'].items():c.text(raw,helper,cfg['scope'],cfg['corpus'])
-    chosen=c.select([descriptor_read(d) for d in cfg['catalogue']])
+    chosen=c.select([descriptor_read(d) for d in cfg['catalogue']],cfg.get('feed_profile',c.a.FEED))
     frozen={k:cfg[k] for k in ('profile','sharing','principal','scope','corpus','session','model','inputs','placement','metadata_root')}
     frozen['selections']={n:selection_token(d) for n,d in chosen.items()}
     from .preview_text import freeze
@@ -47,7 +47,7 @@ class Access:
             from .preview_text import policy
             require(self.principal in policy(cfg)['principals'],'UNAUTHORIZED')
         else:require(self.principal==cfg['session_principal'],'UNAUTHORIZED')
-        chosen=c.select([descriptor_read(d) for d in cfg['catalogue']])
+        chosen=c.select([descriptor_read(d) for d in cfg['catalogue']],cfg.get('feed_profile',c.a.FEED))
         require(selection_token(chosen[self.descriptor.interface])==selection_token(self.descriptor),'UNSUPPORTED_PROFILE')
         self.policy.check(self.principal,scope,'memory.append.'+('write' if operation in ('create','build') else 'disclose'))
         self.policy.check(self.principal,scope,self.descriptor.interface+'.'+operation)
@@ -57,13 +57,13 @@ class Access:
 class AppendService:
     def __init__(self,path,credential,hook=lambda _:None,*,atoms=None,policy=None):
         self.policy=policy or Policy(path);self.config=self.policy.current()['memory_append'];self.credential=credential;self.hook=hook
-        self.chosen=c.select([descriptor_read(d) for d in self.config['catalogue']])
+        self.chosen=c.select([descriptor_read(d) for d in self.config['catalogue']],self.config.get('feed_profile',c.a.FEED))
         self.access={n:Access(self.policy,credential,d) for n,d in self.chosen.items()}
         if atoms is None:
             from .atom_feed import FeedAtomOwner
             from .adapters.detta_layout import storage
             cfg=self.config;root=Path(cfg['root'])
-            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook)
+            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook,capacity=cfg.get('feed_capacity'))
             atoms=AtomSession(owner,self.access['atom.storage'])
         self.atoms=atoms
 
@@ -79,7 +79,7 @@ class AppendService:
         require(cfg['sharing']==v.PRIVACY and cfg['corpus']==accepted['corpus'] and cfg['model']==accepted['model'],'UNSUPPORTED_PROFILE')
         from .preview_text import helper
         require(helper(cfg,accepted['content'],'remember',principal)==accepted['helper_input'],'UNAUTHORIZED')
-        selected=c.select([descriptor_read(d) for d in cfg['catalogue']])
+        selected=c.select([descriptor_read(d) for d in cfg['catalogue']],cfg.get('feed_profile',c.a.FEED))
         require(all(accepted['selections'][n]==selection_token(d) for n,d in selected.items()),'UNSUPPORTED_PROFILE')
         require(accepted['selections']['embedding']==cfg['embedding_selection'],'UNSUPPORTED_PROFILE')
         self.policy.check(principal,accepted['scope'],'memory.append.'+mode)

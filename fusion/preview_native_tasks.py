@@ -18,7 +18,10 @@ class NativeTasks:
             id TEXT PRIMARY KEY,record TEXT NOT NULL,calls INTEGER NOT NULL DEFAULT 0,ref TEXT,receipt TEXT,wake TEXT);''')
     def authorize(self):
         self.app.preview.authorize('tasks');require(self.port.call('authorize')=={'authorized':True},'UNAUTHORIZED')
-    def reserve(self,key,deadline,*,observe=False):
+    def reserve(self,key,deadline,*,observe=False,input_source=None):
+        if not observe:
+            if input_source is None:self.app.preview.input.execution_permit()
+            else:self.app.preview.input.execution_permit(input_source)
         with self.db:
             self.db.execute('BEGIN IMMEDIATE')
             row=self.db.execute('SELECT * FROM preview_task_outbox WHERE id=?',(key,)).fetchone()
@@ -26,7 +29,7 @@ class NativeTasks:
             if not observe:require(time.time_ns()//1_000_000<deadline,'DEADLINE_EXCEEDED')
             self.db.execute('UPDATE preview_task_outbox SET calls=calls+1 WHERE id=?',(key,))
         self.app.hook('after_task_relay_reservation');return row
-    def publish(self,body):
+    def publish(self,body,*,input_source=None):
         self.authorize();record(body,self.app.preview_config['scope']);key=body['kind']+'/'+body['id'];wire=canonical(body).decode()
         with self.db:
             old=self.db.execute('SELECT record FROM preview_task_outbox WHERE id=?',(key,)).fetchone()
@@ -35,7 +38,7 @@ class NativeTasks:
         self.app.hook('after_task_outbox_bind')
         state=self.db.execute('SELECT * FROM preview_task_outbox WHERE id=?',(key,)).fetchone()
         if state['ref'] is None:
-            self.reserve(key,body['deadline']);stored=write_body(self.app.preview.memory.atoms(body['deadline']),body['scope'],key,canonical({'body':body}))['ref']
+            self.reserve(key,body['deadline'],input_source=input_source);stored=write_body(self.app.preview.memory.atoms(body['deadline']),body['scope'],key,canonical({'body':body}))['ref']
             with self.db:self.db.execute('UPDATE preview_task_outbox SET ref=? WHERE id=?',(canonical(stored).decode(),key))
             self.app.hook('after_task_payload_capture')
         else:stored=json.loads(state['ref'])
@@ -43,7 +46,7 @@ class NativeTasks:
             self.reserve(key,body['deadline'],observe=True)
             receipt=self.port.call('published',key,stored,body['recipient'],body['deadline'],body['id'])
             if receipt is None:
-                self.reserve(key,body['deadline'])
+                self.reserve(key,body['deadline'],input_source=input_source)
                 receipt=self.port.call('send',key,stored,body['recipient'],body['deadline'],body['id'],deadline=body['deadline'])
             with self.db:self.db.execute('UPDATE preview_task_outbox SET receipt=? WHERE id=?',(canonical(receipt).decode(),key))
             self.app.hook('after_task_publication_capture')
@@ -51,13 +54,13 @@ class NativeTasks:
         if state['wake'] is None and time.time_ns()//1_000_000>=body['deadline']:
             wake=dict(status='NOT_OBSERVED',code='DEADLINE_EXCEEDED',mailbox_acceptance_retained=True)
         elif state['wake'] is None:
-            self.reserve(key,body['deadline']);cfg,_=self.port.current();target=cfg['recipients'][body['recipient']]
+            self.reserve(key,body['deadline'],input_source=input_source);cfg,_=self.port.current();target=cfg['recipients'][body['recipient']]
             from .preview_transport import invoke
             q=dict(profile=PROFILE,id=body['id'])
             try:
                 wake=invoke(target,'/preview/task-ingress',q,body['deadline'])
                 require(type(wake) is dict and set(wake)=={'profile','id','principal','status'} and wake['profile']==PROFILE and
-                    wake['id']==body['id'] and wake['principal']==body['recipient'] and wake['status'] in ('accepted','empty','refused'),'NOT_AVAILABLE')
+                    wake['id']==body['id'] and wake['principal']==body['recipient'] and wake['status'] in ('accepted','empty','refused','observed-late-result'),'NOT_AVAILABLE')
             except ContractError as error:
                 # Publication is an observed commit; failed hint never resends.
                 wake=dict(status='NOT_AVAILABLE',code=error.code,mailbox_acceptance_retained=True)
@@ -96,7 +99,7 @@ class NativeTasks:
         result=dict(profile=PROFILE,kind='result',scope=task['scope'],id=task['id'],sender=task['recipient'],recipient=task['sender'],
             session=self.app.session,deadline=task['deadline'],parent=task['parent'],limits=task['limits'],task=origin['ref'],
             view=view['snapshot'],projection=row['result'],payloads=refs,status='captured-native-query')
-        correlated(result,task,origin['ref']);self.publish(result)
+        correlated(result,task,origin['ref']);self.publish(result,input_source=source)
     def input(self):
         source=self.app.preview.input.source();origin=source.get('task_origin')
         if origin is None:return

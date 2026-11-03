@@ -23,7 +23,7 @@ OPS={'memory.lifecycle':{'head':0,'change':3,'readEvents':3,'activeSet':1,'discl
 def lifecycle_result(value,scope):
     v.fields(value,'profile logical_id revision state operation memory predecessor at source_head projection empirical_weight_transferred priority_transferred payload_erased result')
     require(value['profile']==LIFECYCLE and value['operation'] in ('introduce','supersede','withdraw'),'NOT_AVAILABLE')
-    a.identity(value['logical_id']);a.integer(value['revision'],1,256);a.head(value['at'],scope,LIFECYCLE);a.head(value['source_head'],scope)
+    a.identity(value['logical_id']);a.integer(value['revision'],1,256);a.head(value['at'],scope,LIFECYCLE);a.source_head(value['source_head'],scope)
     require(value['projection']=='NOT_OBSERVED' and value['empirical_weight_transferred'] is False and
         value['priority_transferred'] is False and value['payload_erased'] is False,'NOT_AVAILABLE')
     require(value['state']==('withdrawn' if value['operation']=='withdraw' else 'active'),'NOT_AVAILABLE')

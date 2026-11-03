@@ -3,6 +3,7 @@
 Input capture, application projection and inbox acknowledgment are independent
 commits. Recovery acknowledges only an already committed native projection.
 """
+from fusion.native_telemetry import traced
 import json
 from .contracts import canonical, require
 from .preview_session_client import Client
@@ -12,12 +13,16 @@ class NativeInput:
     def __init__(self, app):
         self.app, self.db = app, app.db
         self.client = Client(app.config['session_config'])
+        self.turns=set()
+        self.quantum=app.config.get('native_dispatch_quantum')
+        require(self.quantum is None or (self.client.binding['profile']=='omega-native-sessions/3' and type(self.quantum) is int and self.quantum==1),'UNSUPPORTED_PROFILE')
         cfg = self.client.binding
         require(cfg['session'] == app.session and cfg['principal'] == app.binding['principal'], 'UNAUTHORIZED')
         self.db.execute('''CREATE TABLE IF NOT EXISTS preview_native_inputs(
             turn INTEGER PRIMARY KEY, identity TEXT UNIQUE NOT NULL, source TEXT NOT NULL,
             acknowledged INTEGER NOT NULL DEFAULT 0)''')
 
+    @traced('input.reconcile')
     def reconcile(self):
         rows = self.db.execute('''SELECT i.*,t.projection FROM preview_native_inputs i
             JOIN app_turns t ON t.id=i.turn WHERE i.acknowledged=0 AND t.projection IS NOT NULL ORDER BY i.turn''').fetchall()
@@ -35,31 +40,51 @@ class NativeInput:
         require(row is not None, 'NOT_AVAILABLE')
         return json.loads(row[0])
 
+    @traced('input.prepare')
     def available(self):
         self.reconcile()
+        if self.quantum is not None and len(self.turns)>=self.quantum and self.app.processing_slot() not in self.turns:return False
         old = self.db.execute('SELECT source FROM preview_native_inputs WHERE turn=?',(self.app.processing_slot(),)).fetchone()
         # Always recheck current session/worker authority, even for a bound input.
         received = self.client.invoke('next')
         if old:
             require(received is not None and canonical(received).decode() == old[0], 'CONFLICT')
+            self.turns.add(self.app.processing_slot())
             if self.app.preview.history:self.app.preview.history.input()
             if self.app.preview.memory:self.app.preview.memory.input()
             if self.app.preview.tasks:self.app.preview.tasks.input()
             return True
         if received is None: return False
-        require(received['session'] == self.app.session and received['state'] == 'accepted', 'NOT_AVAILABLE')
+        expected = 'dispatched' if self.client.binding['profile'] == 'omega-native-sessions/3' else 'accepted'
+        require(received['session'] == self.app.session and received['state'] == expected, 'NOT_AVAILABLE')
         selected=received['session_binding']
+        from .preview_model_binding import boundary
+        from pathlib import Path
+        model=json.loads(Path(self.app.config['model_config']).read_bytes())
         require(selected['catalogue']==self.app.preview.catalogue.identity and
                 selected['policy']==self.app.preview.authority().revision and
-                selected['model_boundary']=='RECORDED_FIXTURE','CONFLICT')
+                selected['model_boundary']==boundary(model),'CONFLICT')
         with self.db:
             self.db.execute('INSERT INTO preview_native_inputs(turn,identity,source) VALUES(?,?,?)',
                 (self.app.processing_slot(),received['id'],canonical(received).decode()))
         self.app.hook('after_session_input_capture')
+        self.turns.add(self.app.processing_slot())
         if self.app.preview.history:self.app.preview.history.input()
         if self.app.preview.memory:self.app.preview.memory.input()
         if self.app.preview.tasks:self.app.preview.tasks.input()
         return True
+
+    def execution_permit(self, source=None):
+        """Current /3 cancellation/deadline fence before a new effect stage.
+
+        Saved projection reconciliation uses its own observation path and never
+        calls this to reauthorize an effect. Historical /2 behavior is intact.
+        """
+        if self.client.binding['profile'] != 'omega-native-sessions/3': return
+        value = self.source() if source is None else source
+        require(value['session']==self.app.session,'UNAUTHORIZED')
+        result = self.client.invoke('permit', identity=value['id'])
+        require(result == dict(identity=value['id'], deadline=value['deadline'], authorized=True), 'CONFLICT')
 
     def model_source(self):
         value = self.source()

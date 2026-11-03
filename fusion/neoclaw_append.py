@@ -1,4 +1,5 @@
 """Application append progress and read-view selection. Owner commits stay separate."""
+from fusion.native_telemetry import traced
 import json
 from pathlib import Path
 import time
@@ -148,6 +149,7 @@ class MemoryAppend:
         with self.db:self.db.execute('UPDATE app_memory_writes SET receipts=? WHERE id=?',(canonical(receipts).decode(),row['id']))
         self.note(row,role+'-accepted')
         self.app.hook('after_append_'+role+'_receipt')
+    @traced('memory.append')
     def append(self,content,vector,timestamp):
         row=self.current();state=self.state(row);cfg,chosen=self.settings()
         raw=json.loads(row['premises'])['arguments']['content']

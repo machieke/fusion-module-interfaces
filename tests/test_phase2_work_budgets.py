@@ -37,7 +37,7 @@ class WorkBudgets(unittest.TestCase):
   def adoption(hook):
    p=PreviewAdoption.__new__(PreviewAdoption);p.db=sqlite3.connect(path);p.db.row_factory=sqlite3.Row
    p.db.execute('CREATE TABLE IF NOT EXISTS preview_dispatch_budget(occurrence TEXT PRIMARY KEY,attempts INTEGER NOT NULL)')
-   p.app=SimpleNamespace(hook=hook);p.catalogue=SimpleNamespace(tools={'pin':context_tools()[0]})
+   p.app=SimpleNamespace(hook=hook);p.catalogue=SimpleNamespace(tools={'pin':context_tools()[0]});p.input=None
    p.authorize=lambda _:SimpleNamespace(tools={'pin'})
    return p
   def crash(_):raise InterruptedError('explicit kill-after-commit fixture')
@@ -65,7 +65,7 @@ class ExactExpiryTests(unittest.TestCase):
   self.db.executescript('''CREATE TABLE preview_dispatch_budget(occurrence TEXT PRIMARY KEY,attempts INTEGER NOT NULL);
    CREATE TABLE preview_context_acceptance(occurrence TEXT PRIMARY KEY,expected_revision INTEGER NOT NULL);
    CREATE TABLE preview_file_acceptances(occurrence TEXT PRIMARY KEY,revision INTEGER NOT NULL);''')
-  self.p=PreviewAdoption.__new__(PreviewAdoption);self.p.db=self.db;self.p.app=SimpleNamespace(hook=Mock())
+  self.p=PreviewAdoption.__new__(PreviewAdoption);self.p.db=self.db;self.p.app=SimpleNamespace(hook=Mock());self.p.input=None
   tools={'pin','unpin','task-context','read-file','write-file','append-file'}
   self.authority=SimpleNamespace(tools=tools,revision='fixture-policy')
   def authorize(operation):require(self.allowed,'UNAUTHORIZED');return self.authority

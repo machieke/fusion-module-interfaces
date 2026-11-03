@@ -17,13 +17,13 @@ APPLICATION = 'omega-developer-native-session/1'
 
 def configuration(value):
     required = {'profile', 'base', 'authority_file', 'tools', 'scope'}
-    require(type(value) is dict and required <= set(value) <= required | {'providers'})
+    require(type(value) is dict and required <= set(value) <= required | {'providers','source_profile'})
     require(type(value['scope']) is str and value['scope'].startswith('synthetic-'), 'UNAUTHORIZED')
     require(value['profile'] == APPLICATION and value['base'] in ('controlled-native-loop/1', 'controlled-native-loop/5','controlled-native-loop/12'), 'UNSUPPORTED_PROFILE')
     require(type(value['tools']) is list and len(set(value['tools'])) == len(value['tools']))
     active=any('semantic-active-memory-view/1' in d.get('profiles',[]) for d in value.get('providers',[]))
     from .preview_capabilities import registered_tools,IMPLEMENTATIONS
-    tools = {t.native_name:t for t in registered_tools(active=active)}
+    tools = {t.native_name:t for t in registered_tools(active=active,feed_profile=value.get('source_profile','immutable-commit-feed/1'))}
     require(set(value['tools']) <= tools.keys(), 'UNSUPPORTED_OPERATION')
     selected = [tools[name] for name in value['tools']]
     catalogue = Catalogue(selected, IMPLEMENTATIONS, [descriptor_read(d) for d in value.get('providers', [])])
@@ -120,6 +120,7 @@ class PreviewAdoption:
         """
         authority=self.authorize('dispatch');require(name in authority.tools,'UNAUTHORIZED')
         if row['done']:return
+        if self.input is not None:self.input.execution_permit()
         require(time.time_ns()//1_000_000<row['deadline'],'DEADLINE_EXCEEDED')
         with self.db:
             self.db.execute('BEGIN IMMEDIATE')

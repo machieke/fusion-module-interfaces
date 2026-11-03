@@ -4,6 +4,7 @@ No private-local profile is relaxed. Transport is restricted to named methods;
 C2 alone holds the trusted C1 completion credential. No numerical implementation
 or general execution surface lives here.
 """
+from fusion.native_telemetry import traced
 from dataclasses import asdict,replace,is_dataclass
 import http.client,json,uuid,re
 from pathlib import Path
@@ -31,12 +32,13 @@ OPERATIONS={
 PROFILES={'atom.storage':l.FEED,'episodic.memory':n.EPISODE_PROFILE,'belief.revision':n.BELIEF_PROFILE,'attention':p.PROFILE,'relations':l.RELATIONS,'search':l.SEARCH}
 ROLES={'atom.storage':'fusion-storage','episodic.memory':'fusion-episodes','belief.revision':'fusion-beliefs','attention':'fusion-attention','relations':'fusion-relations','search':'fusion-exact-search'}
 
-def descriptors(attention='sqlite'):
+def descriptors(attention='sqlite',feed_profile=l.FEED):
+ require(feed_profile in (l.FEED,l.SUSTAINED_FEED),'UNSUPPORTED_PROFILE')
  require(attention in ('sqlite','file-fixture'),'UNSUPPORTED_PROFILE')
- return [Descriptor('synthetic-'+name+('-'+attention if name=='attention' else ''),name,'1.0.0','1.0.0',frozenset({PROFILES[name],COMPOSITION}),frozenset(ops),frozenset({'process-restart','scoped','idempotent','service-network'}),MAX_BYTES,privacy=PRIVACY,receipt_providers=frozenset({'detta-local-rs/1'}),features=frozenset({n.MODEL,n.RUNTIME}) if name=='belief.revision' else frozenset()) for name,ops in OPERATIONS.items()]
+ return [Descriptor('synthetic-'+name+('-'+attention if name=='attention' else ''),name,'1.0.0','1.0.0',frozenset({feed_profile if name=='atom.storage' else PROFILES[name],COMPOSITION}),frozenset((*ops,'capacity','observe') if name=='atom.storage' and feed_profile==l.SUSTAINED_FEED else ops),frozenset({'process-restart','scoped','idempotent','service-network'}),MAX_BYTES,privacy=PRIVACY,receipt_providers=frozenset({'detta-local-rs/1'}),features=frozenset({n.MODEL,n.RUNTIME}) if name=='belief.revision' else frozenset()) for name,ops in OPERATIONS.items()]
 
 def catalogue(cfg):
- actual=[descriptor_read(x) for x in cfg['catalogue']];expected=descriptors(cfg.get('attention_provider','sqlite'))
+ actual=[descriptor_read(x) for x in cfg['catalogue']];expected=descriptors(cfg.get('attention_provider','sqlite'),cfg.get('feed_profile',l.FEED))
  require({selection_token(x) for x in actual}=={selection_token(x) for x in expected},'UNSUPPORTED_PROFILE')
  return {x.interface:x for x in actual}
 
@@ -63,7 +65,7 @@ class Access:
   cfg=self.policy.current();require(cfg['composition']==COMPOSITION and cfg['privacy']==PRIVACY,'UNSUPPORTED_PROFILE')
   scoped_configuration(cfg,self.name,scope)
   require(self.policy.authenticate(self.credential)==self.identity and cfg['actors'][self.identity]==self.principal,'UNAUTHORIZED')
-  require(operation in OPERATIONS[self.name] or (self.name=='belief.revision' and operation=='assume'),'UNSUPPORTED_OPERATION')
+  require(operation in self.descriptor.operations or (self.name=='belief.revision' and operation=='assume'),'UNSUPPORTED_OPERATION')
   require(selection_token(catalogue(cfg)[self.name])==self.selection(),'UNSUPPORTED_PROFILE')
   self.policy.check(self.identity,scope,self.name+'.'+operation)
   self.policy.check(self.principal,scope,self.name+'.'+operation)
@@ -84,6 +86,7 @@ class Connection(Network):
   super().__init__(endpoint,credential,None,service_dns=True)
   self.principal=principal
   self.timeout=25 # S01's one-second clamp is unsuitable for bounded synchronous native revision.
+ @traced('transport.cognition', request=1)
  def call(self,request):
   require(len(canonical(request))<=MAX_BYTES,'INVALID_ARGUMENT')
   conn=http.client.HTTPSConnection(self.endpoint['host'],self.endpoint['port'],timeout=self.timeout,context=self.context)
@@ -151,7 +154,7 @@ class Remote:
  def beginRebuild(self,*args):return self.call('beginRebuild',*args)
 
 # Exact signatures; no imported function names, expressions, file paths or SQL.
-ARITY={'create':3,'get':1,'getMany':1,'availability':1,'head':1,'readCommits':4,'recordEpisode':2,'appendEvent':4,'readEpisode':3,'readEvidence':1,'pendingEvidence':2,'acknowledgeDelivery':2,'occurrenceIdentity':2,'readOccurrence':2,'registerPrior':5,'submitEvidence':1,'readBelief':3,'observeDecision':1,'drainEvidence':2,'readDecisions':1,'authorize':1,'bind':1,'observe':1,'adjust':1,'scores':1,'rank':1,'assertRelation':4,'getRelation':1,'outgoing':(2,3,4),'incoming':(2,3,4),'query':1,'catchUp':2,'beginRebuild':1}
+ARITY={'create':3,'get':1,'getMany':1,'availability':1,'head':1,'capacity':1,'readCommits':4,'recordEpisode':2,'appendEvent':4,'readEpisode':3,'readEvidence':1,'pendingEvidence':2,'acknowledgeDelivery':2,'occurrenceIdentity':2,'readOccurrence':2,'registerPrior':5,'submitEvidence':1,'readBelief':3,'observeDecision':1,'drainEvidence':2,'readDecisions':1,'authorize':1,'bind':1,'observe':1,'adjust':1,'scores':1,'rank':1,'assertRelation':4,'getRelation':1,'outgoing':(2,3,4),'incoming':(2,3,4),'query':1,'catchUp':2,'beginRebuild':1}
 MUTATION={'create','recordEpisode','appendEvent','acknowledgeDelivery','occurrenceIdentity','registerPrior','assertRelation','beginRebuild'}
 
 class Ports:
@@ -165,12 +168,12 @@ class Ports:
   if 'ports_by_principal' in cfg:
    require(access.principal in cfg['ports_by_principal'],'UNAUTHORIZED')
    cfg=dict(cfg,principal=access.principal,ports=cfg['ports_by_principal'][access.principal])
-  op=q['operation'];args=q['args'];require(op in OPERATIONS[name] or op=='authorize','UNSUPPORTED_OPERATION');arity=ARITY[op];require(type(args) is list and len(args) in (arity if isinstance(arity,tuple) else (arity,)))
+  op=q['operation'];args=q['args'];require(op in access.descriptor.operations or op=='authorize','UNSUPPORTED_OPERATION');arity=ARITY[op];require(type(args) is list and len(args) in (arity if isinstance(arity,tuple) else (arity,)))
   if op=='authorize':value=access.authorize(q['scope'],args[0])
   else:
    access.authorize(q['scope'],op)
    args=list(args)
-   if op in MUTATION:args[0]=Mutation(**args[0]);require(args[0].scope_ref==q['scope'],'UNAUTHORIZED')
+   if op in MUTATION or (name=='atom.storage' and op=='observe'):args[0]=Mutation(**args[0]);require(args[0].scope_ref==q['scope'],'UNAUTHORIZED')
    if op in ('submitEvidence','observeDecision'):args[0]=n.request(args[0])
    if name=='search' and op=='query':args[0]=l.AttributeQuery(**args[0])
    if op=='create':require(type(args[2]) is dict and set(args[2])=={'bytes'});args[2]=decode(args[2]['bytes'])
@@ -180,7 +183,7 @@ class Ports:
     if op in ('get','availability'):l.ref(args[0],q['scope'])
     if op=='getMany':
      for ref in args[0]:l.ref(ref,q['scope'])
-    if op in ('head','readCommits'):require(args[0]==q['scope'],'UNAUTHORIZED')
+    if op in ('head','readCommits','capacity'):require(args[0]==q['scope'],'UNAUTHORIZED')
    owner=self.owner(cfg,access,name)
    if op in ('drainEvidence','readDecisions'):
     from .nal_relay import NalEvidenceRelay
@@ -200,8 +203,8 @@ class Ports:
    if 'storage_layout' in cfg:
     require(cfg['storage_layout']=='preview-shared-feed/1','UNSUPPORTED_PROFILE')
     from .adapters.detta_layout import storage
-    return AtomSession(FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),access,self.hook),access)
-   return AtomSession(FeedAtomOwner(root/'cognitive-atoms.sqlite',DettaStorage(cfg['detta_binary'],str(root/'cognitive-payloads')),access,self.hook),access)
+    return AtomSession(FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),access,self.hook,capacity=cfg.get('feed_capacity')),access)
+   return AtomSession(FeedAtomOwner(root/'cognitive-atoms.sqlite',DettaStorage(cfg['detta_binary'],str(root/'cognitive-payloads')),access,self.hook,capacity=cfg.get('feed_capacity')),access)
   atoms=Remote(cfg,'atom.storage') if name!='attention' else None
   if name=='episodic.memory':
    from .nal_episodes import NalEpisodeOwner

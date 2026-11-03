@@ -1,0 +1,88 @@
+{
+  "profile": "paired-native-stage-observer/1",
+  "classification": "REAL_NATIVE_LOCAL_OWNERS_RECORDED_MODEL_PROPOSALS",
+  "baseline_legacy_diagnostics_enabled": true,
+  "sessions": [
+    {
+      "pair": 0,
+      "stage_sink": false,
+      "seconds": [
+        1.619867072,
+        1.41773445
+      ],
+      "retained_note_consumption": true,
+      "trace_bytes": 0,
+      "trace_records": 0
+    },
+    {
+      "pair": 0,
+      "stage_sink": true,
+      "seconds": [
+        1.317656112,
+        1.268764349
+      ],
+      "retained_note_consumption": true,
+      "trace_bytes": 23436,
+      "trace_records": 86
+    },
+    {
+      "pair": 1,
+      "stage_sink": true,
+      "seconds": [
+        1.369639435,
+        1.217520046
+      ],
+      "retained_note_consumption": true,
+      "trace_bytes": 23436,
+      "trace_records": 86
+    },
+    {
+      "pair": 1,
+      "stage_sink": false,
+      "seconds": [
+        1.318165464,
+        1.268864254
+      ],
+      "retained_note_consumption": true,
+      "trace_bytes": 0,
+      "trace_records": 0
+    },
+    {
+      "pair": 2,
+      "stage_sink": false,
+      "seconds": [
+        1.368594519,
+        1.217276983
+      ],
+      "retained_note_consumption": true,
+      "trace_bytes": 0,
+      "trace_records": 0
+    },
+    {
+      "pair": 2,
+      "stage_sink": true,
+      "seconds": [
+        1.318128958,
+        1.268916283
+      ],
+      "retained_note_consumption": true,
+      "trace_bytes": 23441,
+      "trace_records": 86
+    }
+  ],
+  "additional_live_generations": 0,
+  "not_a_deployed_service_latency_benchmark": true,
+  "median_seconds": {
+    "False": 1.3433799915,
+    "True": 1.2932861975
+  },
+  "status": "PASS",
+  "native_inputs": 12,
+  "source": {
+    "fusion/native_telemetry.py": "565fd81ed17731b9e0e588422acb98ffcfaa50c271380f666a899ddd1a9c37e1",
+    "integration/neoclaw/native_loop.py": "dc74afe539c62cf05e45e0474acff97bb738e0dddb5620a9c8c71fca6e54632d",
+    "integration/neoclaw/loop_bridge.py": "b4d897485c789cb95a9731f7219cb929cecaea972ae36a1905bd161376ab1981"
+  },
+  "limitations": "Three alternating pairs; local native/recorded owners with legacy diagnostics on in both arms. Background host activity and short samples prevent a speedup or deployed-overhead claim.",
+  "raw_report_sha256": "a5855bf0e0769bf63d3492ed1981201997adffda41bfa0854ff7451f062ba3e6"
+}

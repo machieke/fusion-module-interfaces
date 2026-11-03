@@ -1,4 +1,5 @@
 """Pre-command model occurrences in the existing application-owned journal."""
+from fusion.native_telemetry import traced
 from dataclasses import asdict
 import json
 import time
@@ -78,6 +79,7 @@ class ModelAdoption:
         require(parts['feedback'] == self.app.restore() and parts['memories'] == self.app.model_context_text(), 'CONFLICT')
         return cfg
 
+    @traced('model.prompt_bind', request=1)
     def prompt(self, raw):
         cfg, chosen = self.current(); row = self.row()
         if row is None:
@@ -106,6 +108,7 @@ class ModelAdoption:
         self.app.hook('after_model_rpc_reservation')
         return self.client.invoke(operation, accepted)
 
+    @traced('model.complete', request=1)
     def complete(self, prompt):
         row = self.row(); require(row is not None, 'CONFLICT')
         accepted = json.loads(row['intent']); require(prompt == accepted['native_prompt'], 'CONFLICT')
@@ -147,6 +150,7 @@ class ModelAdoption:
             raise
         with self.db: self.db.execute('UPDATE app_model_calls SET admission=? WHERE slot=?', ('authorized',row['slot']))
 
+    @traced('model.command_admission', request=1)
     def parsed(self, normalized, parsed):
         row = self.row(); require(row is not None and row['result'] is not None, 'CONFLICT')
         c.text(normalized,c.MAX_TEXT); c.text(parsed,c.MAX_TEXT)

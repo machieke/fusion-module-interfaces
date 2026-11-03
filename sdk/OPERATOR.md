@@ -1,5 +1,7 @@
 # Artifact-only operator installation
 
+For the current **0.3.0 sustained kit**, use the [Phase 3 operator entry point](../docs/phase3/runbook.md) and its exact distribution manifest. The 0.2.0 examples below remain the Phase 2 compatibility baseline; do not mix their filenames or selected profiles with a 0.3.0 artifact packet.
+
 `fusion-preview-operator` packages the existing host-side operator, workbench,
 artifact verifier, fresh-values selector, scoped Secret helper and image-import
 recipes byte for byte. All installed source identities are in the wheel's

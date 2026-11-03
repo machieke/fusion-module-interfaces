@@ -1,4 +1,5 @@
 """Native-session administrative history through C1 and AtomStorage ports."""
+from fusion.native_telemetry import traced
 from datetime import datetime, timezone
 import json
 import re
@@ -137,11 +138,13 @@ class NativeHistory:
             with self.db:self.db.execute('UPDATE preview_history_outbox SET receipt=? WHERE identity=?',
                 (canonical(receipt).decode(),row['identity']))
 
+    @traced('history.input')
     def input(self):
         value=self.app.preview.input.source()
         self.record(value['occurrence']+'/input','input-receipt',dict(observed_ms=value['accepted'],
             source_id=value['occurrence'],text=value['payload']['text'],assignment=value['assignment']),deadline=value['deadline'])
 
+    @traced('history.model')
     def model(self):
         row=self.app.model.row();value=self.app.preview.input.source()
         require(row is not None and row['result'] is not None,'NOT_AVAILABLE')
@@ -208,6 +211,7 @@ class NativeHistory:
             next_selector=self.handle()+'@'+str(snapshot['through'])+':'+str(page['next_sequence']) if page['next_sequence'] is not None else None,
             complete=page['complete'],interpretation='administrative-history-not-empirical-evidence')
 
+    @traced('history.context')
     def context(self):
         turn=self.app.processing_slot()
         old=self.db.execute('SELECT snapshot FROM preview_history_contexts WHERE turn=?',(turn,)).fetchone()

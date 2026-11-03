@@ -4,7 +4,7 @@ A hint processes at most one delivery. Startup observes once. There is no
 periodic task scheduler, deadline renewal, command execution or model here.
 Lost hints leave durable mailbox work available to explicit drain or restart.
 """
-import json,time,sqlite3
+import json,time,sqlite3,uuid
 from pathlib import Path
 from fusion.contracts import canonical,require,ContractError
 from fusion.preview_tasks import Client,PROFILE,record,correlated
@@ -36,7 +36,14 @@ class Ingress:
                 require(used<256,'OVERLOADED');db.execute('UPDATE ingress_limits SET calls=calls+1')
             self.hook('after_task_ingress_reservation')
         port=Client(p['client']);atoms=atoms_client(p['atoms'])
-        store=SessionStore(cfg['native_sessions']['database'],authorize)
+        selected_profile=cfg['native_sessions'].get('profile','omega-native-sessions/2')
+        require(selected_profile in ('omega-native-sessions/2','omega-native-sessions/3'),'UNSUPPORTED_PROFILE')
+        sustained=selected_profile=='omega-native-sessions/3'
+        if sustained:
+            from fusion.sustained_sessions import SustainedSessionStore
+            require(p.get('allocation_profile')=='allocated-native-task-routing/1','UNSUPPORTED_PROFILE')
+            store=SustainedSessionStore(cfg['native_sessions']['database'],authorize,cfg['native_sessions']['allocation'])
+        else:store=SessionStore(cfg['native_sessions']['database'],authorize)
         try:
             reserve();require(port.call('authorize')=={'authorized':True},'UNAUTHORIZED')
             pending=db.execute('SELECT delivery FROM task_ingress WHERE ack=0 ORDER BY rowid LIMIT 1').fetchone()
@@ -55,11 +62,17 @@ class Ingress:
             reserve();body=record(read_body(atoms,delivery['body']['ref'])['body'],scope)
             require(body['recipient']==principal and body['id']==delivery['body']['correlation_id'],'UNAUTHORIZED')
             require(body['sender'] in p['peers'] and delivery['body']['reply_route']=='task-'+body['sender'],'UNAUTHORIZED')
-            if body['kind']=='task':sid=p['session'];text='query '+body['query']
+            if body['kind']=='task':
+                if sustained:
+                    allocation='incoming/'+body['sender']+'/'+body['session']
+                    sid=str(uuid.uuid5(uuid.UUID(cfg['native_sessions']['allocation']['owner']),canonical([principal,allocation]).decode()))
+                else:sid=p['session']
+                text='query '+body['query']
             else:
                 reserve();task=record(read_body(atoms,body['task'])['body'],scope);correlated(body,task,body['task'])
                 sid=task['session'];text='task-context'
-                require(sid in cfg['native_sessions']['session_templates'],'UNAUTHORIZED')
+                if sustained:require(store.allocated(principal,sid)['frozen']['scope']==scope,'UNAUTHORIZED')
+                else:require(sid in cfg['native_sessions']['session_templates'],'UNAUTHORIZED')
                 for ref in body['payloads']:reserve();atoms.get(ref)
             origin=dict(profile=PROFILE,delivery=key,ref=delivery['body']['ref'],record=body)
             identity='mailbox/'+key
@@ -68,9 +81,13 @@ class Ingress:
                 # new input deadline to turn old task work into new work.
                 prior_input=store.db.execute('SELECT id FROM preview_inputs WHERE session=? AND id=?',(sid,identity)).fetchone()
                 if prior_input is None and time.time_ns()//1_000_000>=body['deadline']:
-                    with db:db.execute("UPDATE task_ingress SET origin=?,status='refused' WHERE id=?",(canonical(origin).decode(),key))
+                    status='observed-late-result' if sustained and body['kind']=='result' else 'refused'
+                    with db:db.execute("UPDATE task_ingress SET origin=?,status=? WHERE id=?",(canonical(origin).decode(),status,key))
                 else:
-                    store.create(principal,sid,scope,cfg['native_sessions']['session_templates'][sid])
+                    if sustained:
+                        if body['kind']=='task':require(store.allocate(principal,allocation,p['template'])['session']==sid,'CONFLICT')
+                        require(store.allocated(principal,sid)['frozen']['scope']==scope,'UNAUTHORIZED')
+                    else:store.create(principal,sid,scope,cfg['native_sessions']['session_templates'][sid])
                     # Origin capture precedes publish into the native inbox.
                     with store.db:
                         saved=store.db.execute('SELECT origin FROM preview_input_origins WHERE session=? AND id=?',(sid,identity)).fetchone()

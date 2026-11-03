@@ -1,0 +1,508 @@
+{
+  "status": "PASS",
+  "namespace": "omega-ref-phase3-sustained09",
+  "classification": "REAL_ISOLATED_CHAIN_FROM_RECORDED_MODEL_REAL_NATIVE_WORKFLOW",
+  "additional_live_generations": 0,
+  "native_report_sha256": "63a17b6be76779ff524b307f080c3d9c5b7bddd7c06da34d2d8bc0a3851e0cc7",
+  "isolation": {
+    "allowed": {
+      "errno": 0,
+      "seconds": 0.0002286285161972046
+    },
+    "denied": {
+      "40401": {
+        "errno": 111,
+        "seconds": 1.0010278690606356
+      },
+      "40402": {
+        "errno": 11,
+        "seconds": 1.0013379659503698
+      },
+      "40404": {
+        "errno": 11,
+        "seconds": 1.001172219403088
+      },
+      "40405": {
+        "errno": 11,
+        "seconds": 1.001151475124061
+      },
+      "agent-http": {
+        "errno": 11,
+        "seconds": 1.0014348160475492
+      },
+      "node-external": {
+        "errno": 11,
+        "seconds": 1.0011918731033802
+      }
+    },
+    "node_started": false
+  },
+  "registration": {
+    "approved": {
+      "approval_record": "phase2-generated-exact-result/preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57",
+      "commitment_digest": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+      "result_ref": {
+        "digest": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+        "id": "34f9773d-9f7b-580e-bfd1-ecd7ffd317b0",
+        "revision": 1,
+        "scope_ref": "synthetic-phase3-sustained09"
+      },
+      "scope_ref": "synthetic-phase3-sustained09"
+    },
+    "artifact": {
+      "digest": "c74fc006d87371702a1a23122efb696e977c56e76af88cb49d3da5348d871d78",
+      "id": "669a9980-591d-54c8-a17e-994f92302e11",
+      "revision": 1,
+      "scope_ref": "synthetic-phase3-sustained09"
+    },
+    "binding": {
+      "authority": {
+        "artifact_digest": "c74fc006d87371702a1a23122efb696e977c56e76af88cb49d3da5348d871d78",
+        "expires_at_ms": 1793709579920,
+        "purpose": "approved-synthetic-agent-artifact"
+      },
+      "chain": {
+        "genesis": "7617a455683bfbacfbfba220acf8db0f599116e194caab14fca4726b5057adee",
+        "network": "fusion-m4-isolated",
+        "profile": "f1r3-generated-post-state/2",
+        "shard": "fusion-m4",
+        "source": "9ec1096e10774926ea8e72f0823482f0bf9213e1"
+      },
+      "limits": {
+        "phloLimit": 10000000,
+        "phloPrice": 1,
+        "validAfterBlockNumber": 0
+      },
+      "operation": "preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57",
+      "owner_journal": "/state/commitments.sqlite",
+      "profile": "f1r3-generated-post-state/2",
+      "protobuf_sha256": "ba9b8ebd44e73cabac064ec00e4f93d9a08a8681bcb3bce3eb5dca6366ba23e6",
+      "selection": "5495388d068676936a58fed2ec52358787388fee8db9a2c9e586043fa904aa20",
+      "signer": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d"
+    },
+    "job_id": "0d518395-5766-5266-aaab-a2e074d8301b",
+    "principal": "A",
+    "profile": "synthetic-workflow-commitment/1",
+    "result": {
+      "receipt": {
+        "durability": "local-files-process-restart",
+        "evidence": {
+          "chain": null,
+          "custody_certificate": null,
+          "manifest": "67e01e9430340bafdce037f214929a143621a440958d83f31d40ac781beb4254",
+          "payload_bytes": 1292,
+          "payload_hash": "9018f17b0f30dd8233aeb9b67ddd094eda3d9552424a83f8bb5c7458cebac44b",
+          "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+          "shares": 6,
+          "storage_layout": "detta-opaque-coordinate-partitions/1",
+          "threshold": 4
+        },
+        "provider": "detta-local-rs/1"
+      },
+      "ref": {
+        "digest": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+        "id": "34f9773d-9f7b-580e-bfd1-ecd7ffd317b0",
+        "revision": 1,
+        "scope_ref": "synthetic-phase3-sustained09"
+      }
+    }
+  },
+  "saved_intent": {
+    "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+    "read_name": "7a652602cfeaf7b22d97142b98d21402ece52283045d65ecd7cd3d24244f0ca8",
+    "receipt": {
+      "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+      "effect_finality": "pending",
+      "evidence": {
+        "signing_seconds": 0.120768,
+        "submission_response": "Success!\nDeployId is: 3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+        "submission_rpc_seconds": 0.032936
+      },
+      "inclusion_block": null
+    }
+  },
+  "final_observation": {
+    "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+    "effect_finality": "finalized",
+    "evidence": {
+      "deploy_effect_finality": {
+        "latest_block_hash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+        "rejection_count": 0,
+        "state": "Finalized"
+      },
+      "effect": {
+        "block": {
+          "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+          "blockNumber": 7,
+          "blockSize": "100770",
+          "bodyExtraBytes": "",
+          "bonds": [
+            {
+              "stake": 1000,
+              "validator": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d"
+            }
+          ],
+          "deployCount": 1,
+          "extraBytes": "",
+          "faultTolerance": 1.0,
+          "headerExtraBytes": "",
+          "isFinalized": true,
+          "justifications": [
+            {
+              "latestBlockHash": "a3c7678eb295bde2ea176a01c7dad7fb22ff8be30fcc85f5f2720ea716f775c6",
+              "validator": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d"
+            }
+          ],
+          "parentsHashList": [
+            "a3c7678eb295bde2ea176a01c7dad7fb22ff8be30fcc85f5f2720ea716f775c6"
+          ],
+          "postStateHash": "187399c84672f041cabb20796a8e51484985a75375b06112e29ef8c9a2cea7bf",
+          "preStateHash": "922cad4f0cbe52e6f7e0ec2191ada28d03009b72e2a335fe74113ed18859d5cc",
+          "rejectedDeploys": [],
+          "sender": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d",
+          "seqNum": 7,
+          "shardId": "fusion-m4",
+          "sig": "30440220441965f21688e7c86e74b6cf639d4d4139e7789da497661f2a5094006f70c8900220049c8955c274d484c348b8ec876c8311a64e7b7898877d87fb445b8849645365",
+          "sigAlgorithm": "secp256k1",
+          "timestamp": 1793708408461,
+          "version": 1
+        },
+        "cost": 0,
+        "expr": [
+          {
+            "ExprTuple": {
+              "data": [
+                {
+                  "ExprString": {
+                    "data": "fusion:m4:commitment/1"
+                  }
+                },
+                {
+                  "ExprString": {
+                    "data": "preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57"
+                  }
+                },
+                {
+                  "ExprString": {
+                    "data": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effect_query": {
+        "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+        "name": {
+          "UnforgPrivate": {
+            "data": "7a652602cfeaf7b22d97142b98d21402ece52283045d65ecd7cd3d24244f0ca8"
+          }
+        },
+        "usePreStateHash": false
+      },
+      "inclusion": {
+        "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+        "blockNumber": 7,
+        "cost": 687,
+        "deployId": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+        "deployer": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d",
+        "errored": false,
+        "finalizationState": "Finalized",
+        "isFinalized": true,
+        "phloLimit": 10000000,
+        "phloPrice": 1,
+        "rejectionCount": 0,
+        "sigAlgorithm": "secp256k1",
+        "systemDeployError": "",
+        "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57\", \"38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d\")) }",
+        "timestamp": 1793708405780,
+        "validAfterBlockNumber": 0
+      },
+      "observed_at_ms": 1793708412171,
+      "profile": "f1r3-generated-post-state/2",
+      "source": "isolated-node-http",
+      "validation": "verified",
+      "value": {
+        "digest": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+        "namespace": "fusion:m4:commitment/1",
+        "operation": "preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57"
+      }
+    },
+    "inclusion_block": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc"
+  },
+  "recovered_intent": {
+    "value": {
+      "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+      "read_name": "7a652602cfeaf7b22d97142b98d21402ece52283045d65ecd7cd3d24244f0ca8",
+      "receipt": {
+        "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+        "effect_finality": "pending",
+        "evidence": {
+          "signing_seconds": 0.120768,
+          "submission_response": "Success!\nDeployId is: 3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+          "submission_rpc_seconds": 0.032936
+        },
+        "inclusion_block": null
+      }
+    }
+  },
+  "recovered_final_observation": {
+    "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+    "effect_finality": "finalized",
+    "evidence": {
+      "deploy_effect_finality": {
+        "latest_block_hash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+        "rejection_count": 0,
+        "state": "Finalized"
+      },
+      "effect": {
+        "block": {
+          "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+          "blockNumber": 7,
+          "blockSize": "100770",
+          "bodyExtraBytes": "",
+          "bonds": [
+            {
+              "stake": 1000,
+              "validator": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d"
+            }
+          ],
+          "deployCount": 1,
+          "extraBytes": "",
+          "faultTolerance": 1.0,
+          "headerExtraBytes": "",
+          "isFinalized": true,
+          "justifications": [
+            {
+              "latestBlockHash": "a3c7678eb295bde2ea176a01c7dad7fb22ff8be30fcc85f5f2720ea716f775c6",
+              "validator": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d"
+            }
+          ],
+          "parentsHashList": [
+            "a3c7678eb295bde2ea176a01c7dad7fb22ff8be30fcc85f5f2720ea716f775c6"
+          ],
+          "postStateHash": "187399c84672f041cabb20796a8e51484985a75375b06112e29ef8c9a2cea7bf",
+          "preStateHash": "922cad4f0cbe52e6f7e0ec2191ada28d03009b72e2a335fe74113ed18859d5cc",
+          "rejectedDeploys": [],
+          "sender": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d",
+          "seqNum": 7,
+          "shardId": "fusion-m4",
+          "sig": "30440220441965f21688e7c86e74b6cf639d4d4139e7789da497661f2a5094006f70c8900220049c8955c274d484c348b8ec876c8311a64e7b7898877d87fb445b8849645365",
+          "sigAlgorithm": "secp256k1",
+          "timestamp": 1793708408461,
+          "version": 1
+        },
+        "cost": 0,
+        "expr": [
+          {
+            "ExprTuple": {
+              "data": [
+                {
+                  "ExprString": {
+                    "data": "fusion:m4:commitment/1"
+                  }
+                },
+                {
+                  "ExprString": {
+                    "data": "preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57"
+                  }
+                },
+                {
+                  "ExprString": {
+                    "data": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effect_query": {
+        "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+        "name": {
+          "UnforgPrivate": {
+            "data": "7a652602cfeaf7b22d97142b98d21402ece52283045d65ecd7cd3d24244f0ca8"
+          }
+        },
+        "usePreStateHash": false
+      },
+      "inclusion": {
+        "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+        "blockNumber": 7,
+        "cost": 687,
+        "deployId": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+        "deployer": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d",
+        "errored": false,
+        "finalizationState": "Finalized",
+        "isFinalized": true,
+        "phloLimit": 10000000,
+        "phloPrice": 1,
+        "rejectionCount": 0,
+        "sigAlgorithm": "secp256k1",
+        "systemDeployError": "",
+        "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57\", \"38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d\")) }",
+        "timestamp": 1793708405780,
+        "validAfterBlockNumber": 0
+      },
+      "observed_at_ms": 1793708421589,
+      "profile": "f1r3-generated-post-state/2",
+      "source": "isolated-node-http",
+      "validation": "verified",
+      "value": {
+        "digest": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+        "namespace": "fusion:m4:commitment/1",
+        "operation": "preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57"
+      }
+    },
+    "inclusion_block": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc"
+  },
+  "node_identity_unchanged": true,
+  "automatic_resubmissions": 0,
+  "independent_readback": {
+    "additional_live_generations": 0,
+    "approval_record": "phase2-generated-exact-result/preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57",
+    "artifact_bytes": 1896,
+    "artifact_ref": {
+      "digest": "c74fc006d87371702a1a23122efb696e977c56e76af88cb49d3da5348d871d78",
+      "id": "669a9980-591d-54c8-a17e-994f92302e11",
+      "revision": 1,
+      "scope_ref": "synthetic-phase3-sustained09"
+    },
+    "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+    "independent_reads": true,
+    "inspect_result_ref": {
+      "digest": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+      "id": "34f9773d-9f7b-580e-bfd1-ecd7ffd317b0",
+      "revision": 1,
+      "scope_ref": "synthetic-phase3-sustained09"
+    },
+    "inspect_result_sha256": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+    "observation": {
+      "deploy_id": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+      "effect_finality": "finalized",
+      "evidence": {
+        "deploy_effect_finality": {
+          "latest_block_hash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+          "rejection_count": 0,
+          "state": "Finalized"
+        },
+        "effect": {
+          "block": {
+            "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+            "blockNumber": 7,
+            "blockSize": "100770",
+            "bodyExtraBytes": "",
+            "bonds": [
+              {
+                "stake": 1000,
+                "validator": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d"
+              }
+            ],
+            "deployCount": 1,
+            "extraBytes": "",
+            "faultTolerance": 1.0,
+            "headerExtraBytes": "",
+            "isFinalized": true,
+            "justifications": [
+              {
+                "latestBlockHash": "a3c7678eb295bde2ea176a01c7dad7fb22ff8be30fcc85f5f2720ea716f775c6",
+                "validator": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d"
+              }
+            ],
+            "parentsHashList": [
+              "a3c7678eb295bde2ea176a01c7dad7fb22ff8be30fcc85f5f2720ea716f775c6"
+            ],
+            "postStateHash": "187399c84672f041cabb20796a8e51484985a75375b06112e29ef8c9a2cea7bf",
+            "preStateHash": "922cad4f0cbe52e6f7e0ec2191ada28d03009b72e2a335fe74113ed18859d5cc",
+            "rejectedDeploys": [],
+            "sender": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d",
+            "seqNum": 7,
+            "shardId": "fusion-m4",
+            "sig": "30440220441965f21688e7c86e74b6cf639d4d4139e7789da497661f2a5094006f70c8900220049c8955c274d484c348b8ec876c8311a64e7b7898877d87fb445b8849645365",
+            "sigAlgorithm": "secp256k1",
+            "timestamp": 1793708408461,
+            "version": 1
+          },
+          "cost": 0,
+          "expr": [
+            {
+              "ExprTuple": {
+                "data": [
+                  {
+                    "ExprString": {
+                      "data": "fusion:m4:commitment/1"
+                    }
+                  },
+                  {
+                    "ExprString": {
+                      "data": "preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57"
+                    }
+                  },
+                  {
+                    "ExprString": {
+                      "data": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "effect_query": {
+          "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+          "name": {
+            "UnforgPrivate": {
+              "data": "7a652602cfeaf7b22d97142b98d21402ece52283045d65ecd7cd3d24244f0ca8"
+            }
+          },
+          "usePreStateHash": false
+        },
+        "inclusion": {
+          "blockHash": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc",
+          "blockNumber": 7,
+          "cost": 687,
+          "deployId": "3045022100d2f5505c34c4500a36e1db0074824cb79d1523f186dcddb457f07dac6981e5e3022024a397ce84c570d1b7e5dd90982b09771cd2a38c14967d180a3f2789ae4d16f3",
+          "deployer": "048915d1dd4727cda4a0484378c5d9458a6a57c4a82e1a47bbd6cf75e3caadda1dcff41ee91ff819c7e14187a7946a2822dc17389f73fd7016e31b31cab2f18b4d",
+          "errored": false,
+          "finalizationState": "Finalized",
+          "isFinalized": true,
+          "phloLimit": 10000000,
+          "phloPrice": 1,
+          "rejectionCount": 0,
+          "sigAlgorithm": "secp256k1",
+          "systemDeployError": "",
+          "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57\", \"38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d\")) }",
+          "timestamp": 1793708405780,
+          "validAfterBlockNumber": 0
+        },
+        "observed_at_ms": 1793708425772,
+        "profile": "f1r3-generated-post-state/2",
+        "source": "isolated-node-http",
+        "validation": "verified",
+        "value": {
+          "digest": "38b255c9cbcc736612d34394a7bbbcc7a296d4d5e9c65a18f568417cd320048d",
+          "namespace": "fusion:m4:commitment/1",
+          "operation": "preview-workflow-b3ba74eb-66d7-4212-bccb-87332d092e57"
+        }
+      },
+      "inclusion_block": "99cb3c8c5192b113676e7e418a9ac6200d89f4e6dcfbcb1cc86f50c31bfe18bc"
+    },
+    "owner_journals_accessed": false,
+    "profile": "synthetic-chain-readback/1",
+    "read_name": "7a652602cfeaf7b22d97142b98d21402ece52283045d65ecd7cd3d24244f0ca8",
+    "scope": "synthetic-phase3-sustained09",
+    "signing_performed": false,
+    "status": "PASS",
+    "submissions": 0,
+    "trace_sha256": "c04a382077e7a6b1417d1d66812cee2abca412ec7c2dc53d67151bb464de7c7c"
+  },
+  "observer_source_sha256": "56c1e909d311b117ce088b93260031868dd283f9477ed7a417c7e855d45e5490",
+  "approval_basis": "Assigned Phase 3 R12: exact generated shared artifact inspected in this native workflow; existing historical registration label is retained",
+  "raw_report_sha256": "4e2535574d62657003758456be439be88fb459bd9b5e1f8e8b4ab7d4735e1535",
+  "images": "dev10",
+  "chart": "0.6.3",
+  "node_state_claim": "phase3-f1r3node-qualified-10",
+  "failed_placeholder_state_retained": "state-f1r3node-0",
+  "first_failed_report_sha256": "362e7ea016431c7cb46fe879a7bc198184afee959221f4fa01a8d8c00d3ce44d"
+}

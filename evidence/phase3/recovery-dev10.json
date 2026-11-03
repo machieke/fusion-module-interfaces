@@ -1,0 +1,332 @@
+{
+  "status": "PASS",
+  "namespace": "omega-ref-phase3-recovery09",
+  "images": "dev10",
+  "chart": "0.6.2 then 0.6.3 for final remaining cases",
+  "fault_cases": [
+    {
+      "name": "private-source-capture",
+      "status": "PASS",
+      "owner": "omega-agent",
+      "original_deadline": 1793706441966,
+      "final_state": "complete",
+      "model_capture_and_reservation_unchanged": false,
+      "replacement": {
+        "after": {
+          "omega-agent": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "c71712be-93cd-4d1d-bb0b-e2e4a2fd066c",
+            "volumes": [
+              "state-omega-agent-0"
+            ]
+          }
+        },
+        "before": {
+          "omega-agent": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "57337d57-a2f5-4f2a-8c95-c86fdd79753a",
+            "volumes": [
+              "state-omega-agent-0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "private-assessment-owner-commit",
+      "status": "PASS",
+      "owner": "fusion-beliefs",
+      "original_deadline": 1793706503032,
+      "final_state": "complete",
+      "model_capture_and_reservation_unchanged": true,
+      "replacement": {
+        "after": {
+          "fusion-beliefs": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "183b5f89-1dc1-4ce9-bed5-e5a481189dd8",
+            "volumes": [
+              "state-fusion-beliefs-0"
+            ]
+          },
+          "omega-agent": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "6f24a756-b7d7-4d87-8249-480fb364a6a3",
+            "volumes": [
+              "state-omega-agent-0"
+            ]
+          }
+        },
+        "before": {
+          "fusion-beliefs": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "9b2f840d-8881-4d62-a2e2-337673fbd7bf",
+            "volumes": [
+              "state-fusion-beliefs-0"
+            ]
+          },
+          "omega-agent": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "c71712be-93cd-4d1d-bb0b-e2e4a2fd066c",
+            "volumes": [
+              "state-omega-agent-0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "feed-backend-before-source-publication",
+      "status": "PASS",
+      "owner": "fusion-storage",
+      "original_deadline": 1793706549274,
+      "final_state": "complete",
+      "model_capture_and_reservation_unchanged": false,
+      "replacement": {
+        "after": {
+          "fusion-storage": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "6e521186-0bb8-4e31-a825-70d1453b2c15",
+            "volumes": [
+              "state-fusion-storage-0"
+            ]
+          },
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "8b9ec6be-cdd7-4e4f-8b84-0f2867c9e5a7",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        },
+        "before": {
+          "fusion-storage": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "c15bba6f-f69c-4f6f-ab0d-755ba16a0059",
+            "volumes": [
+              "state-fusion-storage-0"
+            ]
+          },
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "b6fcff28-dd3c-4b16-9a29-4f1b1e556ad5",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "model-captured-response",
+      "status": "PASS",
+      "owner": "fusion-model",
+      "original_deadline": 1793706590340,
+      "final_state": "complete",
+      "model_capture_and_reservation_unchanged": true,
+      "replacement": {
+        "after": {
+          "fusion-model": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "2271c7f1-0af5-4eff-8844-f54483e6e989",
+            "volumes": [
+              "state-fusion-model-0"
+            ]
+          },
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "95ca8b5e-de41-4c74-8d36-0ea8fe14b9f5",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        },
+        "before": {
+          "fusion-model": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "1d8c311c-128d-4859-9bae-30da9918eb12",
+            "volumes": [
+              "state-fusion-model-0"
+            ]
+          },
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "8b9ec6be-cdd7-4e4f-8b84-0f2867c9e5a7",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "workspace-effect",
+      "status": "PASS",
+      "owner": "fusion-execution",
+      "original_deadline": 1793706940485,
+      "final_state": "complete",
+      "model_capture_and_reservation_unchanged": true,
+      "replacement": {
+        "after": {
+          "fusion-execution": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "2278f30d-ea8c-4cc6-b5e2-cbfca2ed8945",
+            "volumes": [
+              "state-fusion-execution-0"
+            ]
+          },
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "c512541f-caef-4abe-8c22-ee5bc89512f3",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        },
+        "before": {
+          "fusion-execution": {
+            "images": [
+              "docker.io/library/fusion-single-node@sha256:dd4df90f5a47eeb413ff20ecaa631c6f4aa0972cd128e382aa6d91ead2d33ab3"
+            ],
+            "uid": "b53d1237-866d-4872-83a4-d225e838c335",
+            "volumes": [
+              "state-fusion-execution-0"
+            ]
+          },
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "d22cad1a-5667-4486-aa02-c965cd8abb72",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "task-result-captured-before-sender-consumption",
+      "status": "PASS",
+      "replacement": {
+        "after": {
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "87673528-3e50-49bd-b954-ea79c53bf8da",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        },
+        "before": {
+          "omega-agent-b": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "a9f881db-3ea1-4b8b-a80c-f71a5453f709",
+            "volumes": [
+              "state-omega-agent-b-0"
+            ]
+          }
+        }
+      },
+      "original_accounting_retained": true,
+      "captured_result_reused": true
+    },
+    {
+      "name": "approved-private-projection-captured-before-reply",
+      "status": "PASS",
+      "replacement": {
+        "after": {
+          "omega-agent": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "010fb663-0478-4a06-a749-dc4bef71df08",
+            "volumes": [
+              "state-omega-agent-0"
+            ]
+          }
+        },
+        "before": {
+          "omega-agent": {
+            "images": [
+              "docker.io/library/fusion-memory-caller@sha256:0ed9cd4a353f507e56a0bad80299698466a50113459ddd1053975afe0d2d6cbc"
+            ],
+            "uid": "156f9bc8-0fc1-4430-bfbc-fca216a51181",
+            "volumes": [
+              "state-omega-agent-0"
+            ]
+          }
+        }
+      },
+      "original_accounting_retained": true,
+      "captured_result_reused": true
+    }
+  ],
+  "additional_live_generations": 0,
+  "raw_reports": {
+    "drill/report.json": "77dabc3227565da9ded0408c637b490b241aa76501881c2da98b179c8101bb81",
+    "tail/report.json": "2eca9f7ec9a90dd78c775454baade9ffb77c701c71f8f07b630d460a8c50bb36",
+    "task-tail/report.json": "46052ef46bd11b7b7a83a104808a841b9e2652788ec6519293b38189b93e470f"
+  },
+  "failed_occurrences_retained": [
+    {
+      "case": "append to absent file",
+      "effect": "NO_WORKSPACE_EFFECT_OBSERVED",
+      "application_state": "cancel-requested",
+      "dependent_state": "cancelled-before-start"
+    },
+    {
+      "case": "old source test hook paused new shared task session",
+      "effect": "SOURCE_CAPTURED_TASK_NOT_PROVEN_SUBMITTED",
+      "application_state": "cancel-requested"
+    }
+  ],
+  "workspace_readback": "PASS",
+  "feed_native_query_readback": "PASS",
+  "task_sender_consumption": "complete",
+  "private_projection_full_source_disclosed": false,
+  "archived_instrumentation_only": {
+    "authoritative_state_changed": false,
+    "marker": {
+      "pid": 145,
+      "stage": "after_source_acceptance"
+    }
+  },
+  "quiesced": true,
+  "clarification": "First four cases, workspace tail, and final task/projection tail are distinct executions on retained owners; unsuccessful earlier records are not relabelled or retimed."
+}

@@ -19,6 +19,9 @@ from fusion.preview_deployment_contracts import COMPOSITION
 
 
 def configure(settings):
+    if settings['preview'].get('profile') == 'omega-single-node-sustained-preview/1':
+        from .sustained_configure import configure as sustained
+        return sustained(settings)
     role=settings['role'];p=settings['preview'];scope=p['scope']
     require(p['profile']==COMPOSITION and p['enabled'] is True and p['model_boundary']=='RECORDED_FIXTURE','UNSUPPORTED_PROFILE')
     require(scope.startswith('synthetic-') and 1<=len(p['agents'])<=2,'UNAUTHORIZED')

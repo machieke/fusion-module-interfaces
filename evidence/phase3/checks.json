@@ -1,0 +1,119 @@
+{
+  "classification": "EXPLICIT_CHECKS_WITH_HISTORICAL_FAILURES; METHOD_COUNTS_NOT_WORKFLOW_COUNTS",
+  "checks": [
+    {
+      "path": "artifacts/phase3/owner-regressions-06.log",
+      "sha256": "45db916ee6796c4c5f4254d0ccafc6088b94fa044a21ffe62ea0328453894464",
+      "methods": 85,
+      "result": "PASS"
+    },
+    {
+      "path": "artifacts/phase3/composition-regressions-04.log",
+      "sha256": "4194af7fc4652e7061d11e292d6eca31768726e4e94d3224670eaaa2bd9f21a6",
+      "methods": 22,
+      "result": "FAILED: recursive trusted configuration transform encountered non-catalogue string and principal list; corrected in dev01"
+    },
+    {
+      "path": "artifacts/phase3/feed-regressions-01.log",
+      "sha256": "5e99b09845eb6f9a83e998d8c4b9574b1c048922b9e382ac1f613daa5881809d",
+      "methods": 82,
+      "result": "FAILED: read-client type validator edit; corrected and rerun"
+    },
+    {
+      "path": "artifacts/phase3/owner-regressions-02.log",
+      "sha256": "93bc1bcbb073c787695284db4335dce281b76e31aee786823b9c5c99b1babf0f",
+      "methods": 49,
+      "result": "PASS"
+    },
+    {
+      "path": "artifacts/phase3/ci-preview-qualified/preview-fast.log",
+      "sha256": "06b51d5c2e0cfc3008cfe2b45120c1de5fcd6a09f4b33adce1240e98246a00bb",
+      "methods": 539,
+      "result": "PASS",
+      "classification": "Historical Phase 2 methods with real Chroma dependency and explicit owner/config fixtures"
+    },
+    {
+      "path": "artifacts/phase3/ci-sustained-final02/sustained-fast.log",
+      "sha256": "950da52fa56749983bc26930a82b6f5d87c59e373bbe267a993de9ddcc9138ca",
+      "methods": 100,
+      "result": "PASS",
+      "classification": "Phase 3 contracts/configuration, fixture backends and actual SQLite SIGKILL; dev10"
+    },
+    {
+      "path": "artifacts/phase3/backup-wal-02.log",
+      "sha256": "bc39c761bf118a8613f1677072708f19cf7f4f4510b1e57db335fafab02fc81d",
+      "methods": 24,
+      "result": "PASS",
+      "classification": "Interrupted real SQLite WAL export/restore and owner diagnostics/backup regression; dev11"
+    },
+    {
+      "path": "artifacts/phase3/chain-setup-chart-01.log",
+      "sha256": "750242d26bde0dbbb1d03b5fb9e0eb61fa4e86e9d76cce1dde136225094b0dae",
+      "methods": 4,
+      "result": "PASS",
+      "classification": "Public fixture binding, actual Helm render; no node execution"
+    },
+    {
+      "path": "artifacts/phase3/final-operator-chart-checks.log",
+      "sha256": "302f58b49d4ecb0edc440e1b8a235a40485afc49e27a49e95241d603a073c153",
+      "methods": 10,
+      "result": "PASS",
+      "classification": "Final operator/chart/artifact subset; fixture OCI and real Helm"
+    },
+    {
+      "path": "artifacts/phase3/ci-sustained-final03/sustained-fast.log",
+      "sha256": "6e30ff1355a0a1fd0ca6cdbdc29646beef4ec8fd8ddd628506dcb65aeec9d3f5",
+      "methods": 103,
+      "result": "PASS",
+      "classification": "Final Phase 3 method lane; no live runtime, includes native denial, recorded adapter and process-kill cases"
+    },
+    {
+      "path": "artifacts/phase3/restored-private-ports-01.log",
+      "sha256": "3d0bab63917750b16dbfaf15f2828a64fe49ea113d6c998326d06a3b1a5fd42f",
+      "methods": 6,
+      "seconds": 0.804,
+      "result": "FAILED",
+      "classification": "FAILED test setup NameError; no runtime observation"
+    },
+    {
+      "path": "artifacts/phase3/restored-private-ports-02.log",
+      "sha256": "4f6af0c32f4fddf79c2871085f5f6852724ff37ab41f066614405d10e890713e",
+      "methods": 6,
+      "seconds": 0.875,
+      "result": "PASS",
+      "classification": "Private-template observation test with real SQLite/configuration and explicit owner-port fixtures"
+    },
+    {
+      "path": "artifacts/phase3/ci-sustained-final04/sustained-fast.log",
+      "sha256": "ec296b39d7dda4d5dd58522d8766423c067faf1f8906924a688bc2070c047630",
+      "methods": 106,
+      "seconds": 90.2,
+      "result": "PASS",
+      "classification": "Final dev12 Phase 3 method lane; recorded/configuration fixtures, generation denial and real process-kill tests"
+    }
+  ],
+  "live_generations": 0,
+  "counts_are_not_additive": true,
+  "operator_example_static_check": {
+    "result": "PASS",
+    "files": [
+      "examples/sustained_install_smoke.py",
+      "examples/sustained_restore_readback.py",
+      "examples/sustained_observations.py",
+      "examples/sustained_process_resources.py",
+      "examples/sustained_restore_recheck.py",
+      "examples/sustained_capacity_refusal.py",
+      "examples/sustained_alternate_evaluation.py",
+      "examples/sustained_chain_qualification.py",
+      "examples/sustained_recovery_qualification.py",
+      "examples/sustained_task_negative.py"
+    ],
+    "classification": "AST compilation only, no integration claim"
+  },
+  "prepublication_packet_integrity": {
+    "status": "OFFLINE_VERIFIED",
+    "manifest_sha256": "a2c9917ea8886d430a733db2243abb13d7ee7f4d19df1fb57cfb4d448b3925a9",
+    "files": 379,
+    "classification": "Actual assembled image/chart/wheel/source packet; publication labels subsequently finalized; final digest detached"
+  }
+}
