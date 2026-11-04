@@ -110,10 +110,11 @@ class Client:
             require(e.get('value')==dict(namespace=NAMESPACE,operation=operation,digest=hash_value) and
                 e['effect']['expr']==expected_expr(operation,hash_value),'NOT_AVAILABLE')
         return value
-    def call(self,operation,body):
+    def call(self,operation,body,*,deadline=None):
         current=json.loads(self.path.read_text());require(self.binding(current)==self.frozen,'CONFLICT')
         q=dict(profile=PROFILE,selection=selection_token(DESCRIPTOR),registration=digest(canonical(self.reg)),operation=operation,body=body)
-        reply=invoke(current,ROUTE,q,time.time_ns()//1_000_000+30000)
+        until=time.time_ns()//1_000_000+30000
+        reply=invoke(current,ROUTE,q,until if deadline is None else min(until,deadline))
         require(type(reply) is dict and set(reply)=={'profile','request_digest','value'} and reply['profile']==PROFILE and reply['request_digest']==digest(canonical(q)),'NOT_AVAILABLE')
         if operation!='intent':
             self.validate_observation(reply['value'])

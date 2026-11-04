@@ -60,6 +60,9 @@ def configure(settings):
         _,cfg,_,_=historical(run/'base-component.json')
     # Separate native principals also use the existing deterministic S01 ports.
     if role in ('fusion-execution','fusion-storage','fusion-messaging'):
+        if role=='fusion-execution' and p.get('inspection',{}).get('nal_envelopes'):
+            from fusion.nal_envelope import PROFILE as nal_envelope
+            cfg['portable_execution']=nal_envelope
         for principal in principals:
             if principal!='A':cfg['principals'][principal]={**copy.deepcopy(cfg['principals']['A']), 'credential':token('caller-'+principal+'-token')}
         cfg['routes'].update({'reply-'+principal:dict(scope=nal.SCOPE,owner=principal) for principal in principals})
@@ -116,6 +119,9 @@ def configure(settings):
         if principal in private:write(run/'private-atoms.json',atoms(principal,private[principal]))
         require(1<=len(agent['sessions'])<=8 and len(set(agent['sessions']))==len(agent['sessions']))
         base_app=json.loads((run/'application.json').read_text());base_caller=json.loads((run/'caller.json').read_text())
+        if p.get('inspection',{}).get('nal_envelopes'):
+            from fusion.nal_envelope import PROFILE as nal_envelope
+            base_caller['portable_execution']=nal_envelope
         authority=run/'authority.json'
         write(authority,dict(principal=principal,scope=scope,tools=agent['tools'],revision=p['policy_revision'],
             expires_ms=p['authority_expires_ms'],revoked=False))

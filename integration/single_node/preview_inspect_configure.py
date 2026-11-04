@@ -9,9 +9,14 @@ from .configure import write
 
 def client(settings,current,principal,token,ep):
     path=current/'inspection.json'
-    write(path,dict(profile=PROFILE,fallback=False,scope=settings['preview']['scope'],principal=principal,
+    value=dict(profile=PROFILE,fallback=False,scope=settings['preview']['scope'],principal=principal,
         ports={name:dict(endpoint=ep(role),credential=token('inspect-'+role+'-token'))
-            for name,role in [('execution','fusion-execution'),('agent.messaging','fusion-messaging')]}))
+            for name,role in [('execution','fusion-execution'),('agent.messaging','fusion-messaging')]})
+    envelope=settings['preview'].get('inspection',{}).get('envelopes')
+    if envelope:
+        from fusion.execution_envelope import PROFILE as envelope_profile
+        require(envelope==envelope_profile,'UNSUPPORTED_PROFILE');value['envelopes']=envelope
+    write(path,value)
     return path
 
 
@@ -25,6 +30,10 @@ def provider(settings,cfg,state,run,token,ep):
     elif role in ('fusion-execution','fusion-messaging'):
         value=dict(profile=PROFILE,scope=scope,database=str(state/'preview-inspect.sqlite'),capacity=4,
             routes={'inspect-'+a['principal']:dict(scope=scope,owner=a['principal']) for a in p['agents'].values()},principals={})
+        envelope=p.get('inspection',{}).get('envelopes')
+        if envelope:
+            from fusion.execution_envelope import PROFILE as envelope_profile
+            require(envelope==envelope_profile,'UNSUPPORTED_PROFILE');value['envelopes']=envelope
         for a in p['agents'].values():
             who=a['principal'];methods=['execution.submit','execution.status','execution.result','atom.storage.get','agent.messaging.poll'] if role=='fusion-execution' else ['agent.messaging.poll','agent.messaging.ack']
             value['principals'][who]=dict(credential=token('inspect-caller-'+who+'-token'),scopes={scope:methods})

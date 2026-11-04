@@ -5,7 +5,7 @@ from pathlib import Path
 import ssl
 import sqlite3
 
-from .contracts import ContractError, canonical, require
+from .contracts import ContractError, canonical, require,digest
 from . import neoclaw_contracts as c
 from . import neoclaw_search_contracts as s, neoclaw_operations as ops
 from .registry import selection_token
@@ -59,12 +59,21 @@ class Local:
         self.correlations = {}
 
     def invoke(self, request):
+        return self._invoke(request)
+
+    def invoke_enveloped(self,request,envelope):
+        return self._invoke(request,envelope)
+
+    def _invoke(self,request,envelope=None):
         from .neoclaw import NalService
         ops.from_chosen(self.chosen).validate(request, self.chosen)
         service = NalService(self.config)
         try:
             try:
-                reply = dict(ok=service.invoke(self.credential, json_loads(canonical(request))), provider=request['selection'])
+                reply = (service.invoke_enveloped(self.credential,json_loads(canonical(dict(request=request,envelope=envelope))))
+                    if envelope is not None else dict(ok=service.invoke(self.credential, json_loads(canonical(request))), provider=request['selection']))
+                if envelope is not None:
+                    require(reply.pop('envelope_digest',None)==digest(canonical(envelope)),'NOT_AVAILABLE')
             except ContractError as exc:
                 reply = dict(error=exc.wire())
             return checked_reply(request, json_loads(canonical(reply)), self.chosen, self.correlations)
@@ -89,11 +98,18 @@ class Network:
         self.correlations = {}
 
     def invoke(self, request):
+        return self._invoke(request)
+
+    def invoke_enveloped(self,request,envelope):
+        return self._invoke(request,envelope)
+
+    def _invoke(self,request,envelope=None):
         ops.from_chosen(self.chosen).validate(request, self.chosen)
         conn = http.client.HTTPSConnection(self.endpoint['host'], self.endpoint['port'],
                                           timeout=self.timeout, context=self.context)
         try:
-            conn.request('POST', '/s01', body=canonical(request), headers={
+            conn.request('POST', '/s01-envelope' if envelope is not None else '/s01',
+                body=canonical(dict(request=request,envelope=envelope) if envelope is not None else request), headers={
                 'Authorization': 'Bearer ' + self.credential, 'Content-Type': 'application/json'})
             response = conn.getresponse()
             require(response.status in (200, 400, 401, 403, 503), 'NOT_AVAILABLE')
@@ -101,6 +117,8 @@ class Network:
             raw = response.read(limit+1)
             require(len(raw) <= limit, 'NOT_AVAILABLE')
             reply = json_loads(raw)
+            if envelope is not None and type(reply) is dict and 'error' not in reply:
+                require(reply.pop('envelope_digest',None)==digest(canonical(envelope)),'NOT_AVAILABLE')
         except (OSError, http.client.HTTPException, ValueError, ContractError):
             raise ContractError('NOT_AVAILABLE') from None
         finally:

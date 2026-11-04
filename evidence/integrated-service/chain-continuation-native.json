@@ -1,0 +1,961 @@
+{
+  "status": "PASS_DEVELOPMENT_WORKFLOW",
+  "classification": "REAL_NATIVE_E5_CHROMA_DETTA_HTTPS_REAL_ISOLATED_CHAIN_RECORDED_MODEL_PROPOSALS",
+  "baseline": "bf8e87d7416cab6954a702d64d12cdfcf7b976d1",
+  "additional_live_generations": 0,
+  "runs": [
+    {
+      "path": "chain01",
+      "native": "PASS_4_OPERATOR_PLUS_2_INTERNAL_INPUTS",
+      "chain": "NOT_SUBMITTED",
+      "status": "FAIL_ADMISSION_MISSING_EPHEMERAL_CONFIG_AFTER_RESTART"
+    },
+    {
+      "path": "chain01-resumed",
+      "native": "RETAINED_NOT_REPEATED",
+      "chain": "FINALIZED_AFTER_CALLER_PROVIDER_NODE_REPLACEMENT",
+      "independent_readback": "FAIL_WRONG_HISTORICAL_SOURCE_PROFILE"
+    },
+    {
+      "path": "chain01-readback",
+      "native": "RETAINED_NOT_REPEATED",
+      "chain": "NO_NEW_SUBMISSION",
+      "independent_readback": "PASS_EXPLICIT_SUSTAINED_PROFILE"
+    }
+  ],
+  "reservations": {
+    "submit": 1,
+    "observations": 2,
+    "maximum_submit": 1,
+    "maximum_observations": 16,
+    "deadline_renewals": 0
+  },
+  "sources": {
+    "dev10": {
+      "archive_bytes": 15400960,
+      "archive_format": "verified-oci-layer-set/1",
+      "archive_sha256": "965d2598a641cb4c35c19e06b13ba7b034299fa30c559fa150154614ac5734cb",
+      "base_archive": {
+        "archive_bytes": 3473758720,
+        "archive_sha256": "fb807533ef98cb32556e5f86b44d806834bc689dd658d5ec3cb771da507b50e7"
+      },
+      "container_starts": 0,
+      "generative_runtime_availability": "NOT_CHECKED",
+      "images": [
+        {
+          "configuration_digest": "sha256:b52efea22806eaeed2b8d94106c38f5650ce4fde802243cd4bd9c2b68ea8c706",
+          "kind": "base",
+          "local_tag": "docker.io/library/fusion-single-node:reference-integrated-dev10",
+          "manifest_digest": "sha256:a93ec24492d261d0d2547264893794b596bb7d3a3021f06c9526e4a328fcbdd5",
+          "repository": "docker.io/library/fusion-single-node",
+          "source_package": "image-base/package.json"
+        },
+        {
+          "configuration_digest": "sha256:6c4e10a1cdf275c163fdb5f13ff7f11bfc4f62abfa3a15f60d44bf6293fd8567",
+          "kind": "caller",
+          "local_tag": "docker.io/library/fusion-memory-caller:reference-integrated-dev10",
+          "manifest_digest": "sha256:72d0786a19c64b598ef6c9e931e721434c44b4ec607f6e1c81a3516fc2cb3083",
+          "repository": "docker.io/library/fusion-memory-caller",
+          "source_package": "image-caller/package.json"
+        },
+        {
+          "configuration_digest": "sha256:cf11c91821aa516fc30ec89be02f1c429b54aabcd340384f8ae2d6d41f827b1b",
+          "kind": "embedding",
+          "local_tag": "docker.io/library/fusion-memory-embedding:reference-integrated-dev10",
+          "manifest_digest": "sha256:4f462a7d50d5a564f494d29d7f68833cc3e2a189ae4da4ff02a97671f3e56c2d",
+          "repository": "docker.io/library/fusion-memory-embedding",
+          "source_package": "image-embedding/package.json"
+        },
+        {
+          "configuration_digest": "sha256:9f2b0f9ff10e5dd9d511fcbe3762feb4a731f4072f75652421e9b08356e726d4",
+          "kind": "chain",
+          "local_tag": "docker.io/library/fusion-reference-chain:reference-integrated-dev10",
+          "manifest_digest": "sha256:36c777811f005291fa3e2098c9293fe952ebe2fab3f67950ce88ca870fa4e1dc",
+          "repository": "docker.io/library/fusion-reference-chain",
+          "source_package": "image-chain/package.json"
+        }
+      ],
+      "source_export_verification": "PASS",
+      "source_manifest_sha256": "731fb220f91ea4c375fc57a8fa54c57f46420462f7276c96ec3593ae035fee16"
+    },
+    "dev11": {
+      "archive_bytes": 15411200,
+      "archive_format": "verified-oci-layer-set/1",
+      "archive_sha256": "668692d62581cd5c70559cce75fa4a97e3c7493d4b03197fabc7b2adcc857f1e",
+      "base_archive": {
+        "archive_bytes": 3473758720,
+        "archive_sha256": "fb807533ef98cb32556e5f86b44d806834bc689dd658d5ec3cb771da507b50e7"
+      },
+      "container_starts": 0,
+      "generative_runtime_availability": "NOT_CHECKED",
+      "images": [
+        {
+          "configuration_digest": "sha256:f02256d2be4205795d5638cb9334e45e8e7a45e4ad73b61ea176dd0621de1cdc",
+          "kind": "base",
+          "local_tag": "docker.io/library/fusion-single-node:reference-integrated-dev11",
+          "manifest_digest": "sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274",
+          "repository": "docker.io/library/fusion-single-node",
+          "source_package": "image-base/package.json"
+        },
+        {
+          "configuration_digest": "sha256:2afce976edc1cf090489ecdbf32fd7e0e23aeb6cb8c03648de74a4a1b6755cb7",
+          "kind": "caller",
+          "local_tag": "docker.io/library/fusion-memory-caller:reference-integrated-dev11",
+          "manifest_digest": "sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17",
+          "repository": "docker.io/library/fusion-memory-caller",
+          "source_package": "image-caller/package.json"
+        },
+        {
+          "configuration_digest": "sha256:de0a1feb4b382025df09b4f5fe78978099c89e0ccb2239e313f97d331186b66c",
+          "kind": "embedding",
+          "local_tag": "docker.io/library/fusion-memory-embedding:reference-integrated-dev11",
+          "manifest_digest": "sha256:84061bb1373fef384229f31fa0652fb62ff537874588d4b6a2dcfeff19ccb3d7",
+          "repository": "docker.io/library/fusion-memory-embedding",
+          "source_package": "image-embedding/package.json"
+        },
+        {
+          "configuration_digest": "sha256:9ba0d98dbb84d4e63d1659228fc9e4665f11b9a1a11d924b972764d6e1ac2796",
+          "kind": "chain",
+          "local_tag": "docker.io/library/fusion-reference-chain:reference-integrated-dev11",
+          "manifest_digest": "sha256:6c092dfe138b3abead52422e52af5e1230e29db771bfcbb2ad74b58da9a83d5b",
+          "repository": "docker.io/library/fusion-reference-chain",
+          "source_package": "image-chain/package.json"
+        }
+      ],
+      "source_export_verification": "PASS",
+      "source_manifest_sha256": "ccd95c6ca1133aa19e487bd0f9f38e8044230e56992161d0db8a8da8f0f8a7f4"
+    }
+  },
+  "reports": {
+    "artifacts/integrated-service/chain01/report.json": "263e5d9a4eefb08e8ff65ddcddb7edd47f122426ab6700a5a76d1c21e968571e",
+    "artifacts/integrated-service/chain01/native-workflow/report.json": "2eef013f0dc0c12fb6d349c1548d9f81ba1b9ad9a4b3ded53694042b5806d586",
+    "artifacts/integrated-service/chain01/native-workflow/native/report.json": "4ee307018d0505b872a19515aae81df0fc06ac0f3cb4304128fb937d85f85c84",
+    "artifacts/integrated-service/chain01-resumed/report.json": "7d6804b5b396b48a4db2406394391eeed66ce20656b7b40694b5d4b03717f025",
+    "artifacts/integrated-service/chain01-readback/report.json": "a2eab2443d76f72f767de68fe188059cd1bee9025aa4a0dd521dd1458adc1333",
+    "artifacts/integrated-service/chain01-readback/independent-reader.json": "49686a52971d4ac43d5a8007fae57a6f2747e0e242297920f4ea964fd7003b3e",
+    "artifacts/integrated-service/chain01-admission-diagnostic.json": "23e54e0d1a67d7b59019c3986b7b6c5dac175325698f927681487b92d8e63c55",
+    "artifacts/integrated-service/build-dev10/images.json": "978a6be3fee9673954cc25dccc8efc2b4a9e1b2e5deb78798f876d26d116a088",
+    "artifacts/integrated-service/build-dev11/images.json": "029124358b13437aeaac9cd2e655cebdfa99a016efb7d4fa2a768a39e5f0bd7c",
+    "artifacts/integrated-service/chart-dev10/omega-fusion-0.7.0-dev.1.tgz": "edc5f4eaf43567a6be0cad3e8c837023416c7d3fe2b279fb5986cc4478ff0e34",
+    "artifacts/integrated-service/chart-dev11/omega-fusion-0.7.0-dev.1.tgz": "f69dc5b3c6fe430c3a51f6edf92fe5bd2af63f001afc473d5d098487b1f8135f"
+  },
+  "trace": {
+    "registration": {
+      "approved": {
+        "approval_record": "integrated-exact-result/integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059",
+        "commitment_digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+        "result_ref": {
+          "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+          "id": "da90678f-bb7a-577c-b651-344f8d6eb756",
+          "revision": 1,
+          "scope_ref": "synthetic-integrated-chain01"
+        },
+        "scope_ref": "synthetic-integrated-chain01"
+      },
+      "artifact": {
+        "digest": "4b0db345f070bdb9a299cab90397d7e8c4d6dc033d721afe99d0d7642d11b1f6",
+        "id": "1cf0d8ae-32ea-5d1a-82d7-ef18d06fc11b",
+        "revision": 1,
+        "scope_ref": "synthetic-integrated-chain01"
+      },
+      "binding": {
+        "authority": {
+          "artifact_digest": "4b0db345f070bdb9a299cab90397d7e8c4d6dc033d721afe99d0d7642d11b1f6",
+          "expires_at_ms": 1793810005694,
+          "purpose": "approved-synthetic-agent-artifact"
+        },
+        "chain": {
+          "genesis": "7f69acf89a6251db55d756950c0d443a2b5c7dc0871c214636ee8cf3440134c5",
+          "network": "fusion-m4-isolated",
+          "profile": "f1r3-generated-post-state/2",
+          "shard": "fusion-m4",
+          "source": "9ec1096e10774926ea8e72f0823482f0bf9213e1"
+        },
+        "limits": {
+          "phloLimit": 10000000,
+          "phloPrice": 1,
+          "validAfterBlockNumber": 0
+        },
+        "operation": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059",
+        "owner_journal": "/state/commitments.sqlite",
+        "profile": "f1r3-generated-post-state/2",
+        "protobuf_sha256": "ba9b8ebd44e73cabac064ec00e4f93d9a08a8681bcb3bce3eb5dca6366ba23e6",
+        "selection": "5495388d068676936a58fed2ec52358787388fee8db9a2c9e586043fa904aa20",
+        "signer": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4"
+      },
+      "job_id": "25068c7b-3b4a-5b7f-9d14-caa6db8a794a",
+      "principal": "A",
+      "profile": "synthetic-workflow-commitment/1",
+      "result": {
+        "receipt": {
+          "durability": "local-files-process-restart",
+          "evidence": {
+            "chain": null,
+            "custody_certificate": null,
+            "manifest": "6f7094c677b03dcd255571f055fb20d986fb05a4445d70989e1ce7b631f9aa6e",
+            "payload_bytes": 1295,
+            "payload_hash": "559895c03e15d3e4d2843d7f1e3b522bf14a21f8e3264e76d9afad98a4ee11a4",
+            "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+            "shares": 6,
+            "storage_layout": "detta-opaque-coordinate-partitions/1",
+            "threshold": 4
+          },
+          "provider": "detta-local-rs/1"
+        },
+        "ref": {
+          "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+          "id": "da90678f-bb7a-577c-b651-344f8d6eb756",
+          "revision": 1,
+          "scope_ref": "synthetic-integrated-chain01"
+        }
+      }
+    },
+    "saved_intent": {
+      "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+      "read_name": "72ab4943f8971a3a7807b6933804ffd893d086a282c2aabfa073c22e0d73327e",
+      "receipt": {
+        "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+        "effect_finality": "pending",
+        "evidence": {
+          "signing_seconds": 0.152031,
+          "submission_response": "Success!\nDeployId is: 3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+          "submission_rpc_seconds": 0.019725
+        },
+        "inclusion_block": null
+      }
+    },
+    "final_observation": {
+      "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+      "effect_finality": "finalized",
+      "evidence": {
+        "deploy_effect_finality": {
+          "latest_block_hash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+          "rejection_count": 0,
+          "state": "Finalized"
+        },
+        "effect": {
+          "block": {
+            "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+            "blockNumber": 18,
+            "blockSize": "100772",
+            "bodyExtraBytes": "",
+            "bonds": [
+              {
+                "stake": 1000,
+                "validator": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4"
+              }
+            ],
+            "deployCount": 1,
+            "extraBytes": "",
+            "faultTolerance": 1.0,
+            "headerExtraBytes": "",
+            "isFinalized": true,
+            "justifications": [
+              {
+                "latestBlockHash": "3bbbfce2c77dbbeed0cf8b6360bcbab28502147622f0605dd7d7eb2635cca408",
+                "validator": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4"
+              }
+            ],
+            "parentsHashList": [
+              "3bbbfce2c77dbbeed0cf8b6360bcbab28502147622f0605dd7d7eb2635cca408"
+            ],
+            "postStateHash": "21d1ce07922a67fd4715bb889dd9d568d7af3346bff9613978fe66762d6a4d79",
+            "preStateHash": "9e205e3076d8f0226ed125253219f41c698397f7de355dc2a943ed42ca0f7cdc",
+            "rejectedDeploys": [],
+            "sender": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4",
+            "seqNum": 18,
+            "shardId": "fusion-m4",
+            "sig": "3044022033da4e8912fd2d14b4b4236602aae21b77d3767d62278795eefad6ddc57401b5022079a4083ae7bff0f834bc61f1a751057813b3444a81d17318f959f9e90201ff92",
+            "sigAlgorithm": "secp256k1",
+            "timestamp": 1793809294478,
+            "version": 1
+          },
+          "cost": 0,
+          "expr": [
+            {
+              "ExprTuple": {
+                "data": [
+                  {
+                    "ExprString": {
+                      "data": "fusion:m4:commitment/1"
+                    }
+                  },
+                  {
+                    "ExprString": {
+                      "data": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059"
+                    }
+                  },
+                  {
+                    "ExprString": {
+                      "data": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "effect_query": {
+          "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+          "name": {
+            "UnforgPrivate": {
+              "data": "72ab4943f8971a3a7807b6933804ffd893d086a282c2aabfa073c22e0d73327e"
+            }
+          },
+          "usePreStateHash": false
+        },
+        "inclusion": {
+          "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+          "blockNumber": 18,
+          "cost": 696,
+          "deployId": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+          "deployer": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4",
+          "errored": false,
+          "finalizationState": "Finalized",
+          "isFinalized": true,
+          "phloLimit": 10000000,
+          "phloPrice": 1,
+          "rejectionCount": 0,
+          "sigAlgorithm": "secp256k1",
+          "systemDeployError": "",
+          "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059\", \"ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678\")) }",
+          "timestamp": 1793809284669,
+          "validAfterBlockNumber": 0
+        },
+        "observed_at_ms": 1793809297740,
+        "profile": "f1r3-generated-post-state/2",
+        "source": "isolated-node-http",
+        "validation": "verified",
+        "value": {
+          "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+          "namespace": "fusion:m4:commitment/1",
+          "operation": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059"
+        }
+      },
+      "inclusion_block": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7"
+    },
+    "final_continuation": {
+      "automatic_resubmissions": 0,
+      "cancel_requested": false,
+      "deadline_ms": 1793810005694,
+      "definition_sha256": "55b7ad1f909bddf16904403df7671d8c3a355198eab3a39c212f3dc055d54e33",
+      "identity": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059",
+      "limits": {
+        "continuations": 128,
+        "depth": 5,
+        "edges": 4,
+        "inflight": 1,
+        "nodes": 5,
+        "observations": 16,
+        "output_bytes": 32768,
+        "submit": 1,
+        "window_ms": 1200000
+      },
+      "observation_authorizes_effect": false,
+      "observations_spent": 2,
+      "occurrence": "17e16145-9a7a-5a31-8d4a-5cb0e323a958",
+      "origin": {
+        "artifact": {
+          "digest": "4b0db345f070bdb9a299cab90397d7e8c4d6dc033d721afe99d0d7642d11b1f6",
+          "id": "1cf0d8ae-32ea-5d1a-82d7-ef18d06fc11b",
+          "revision": 1,
+          "scope_ref": "synthetic-integrated-chain01"
+        },
+        "capture_sha256": "2e0b0863d0d5df5a7fba7b82e42462359e1d0efc5b9ce91e012d5e448b1c240a",
+        "job_id": "25068c7b-3b4a-5b7f-9d14-caa6db8a794a",
+        "occurrence": "17e16145-9a7a-5a31-8d4a-5cb0e323a958",
+        "original_deadline_ms": 1793808743276,
+        "result": {
+          "receipt": {
+            "durability": "local-files-process-restart",
+            "evidence": {
+              "chain": null,
+              "custody_certificate": null,
+              "manifest": "6f7094c677b03dcd255571f055fb20d986fb05a4445d70989e1ce7b631f9aa6e",
+              "payload_bytes": 1295,
+              "payload_hash": "559895c03e15d3e4d2843d7f1e3b522bf14a21f8e3264e76d9afad98a4ee11a4",
+              "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+              "shares": 6,
+              "storage_layout": "detta-opaque-coordinate-partitions/1",
+              "threshold": 4
+            },
+            "provider": "detta-local-rs/1"
+          },
+          "ref": {
+            "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+            "id": "da90678f-bb7a-577c-b651-344f8d6eb756",
+            "revision": 1,
+            "scope_ref": "synthetic-integrated-chain01"
+          }
+        },
+        "steps": {
+          "acceptance": "c550e5eca372ba62347e6b7151c744b63589411ce3a611524896096591fd4cd8",
+          "ack": "b261ebd246c518c49392ad69527f211e8846d36936cdcd655842eedc1cd70c35",
+          "artifact": "4b0db345f070bdb9a299cab90397d7e8c4d6dc033d721afe99d0d7642d11b1f6",
+          "artifact_ref": "3450a8b623c603f527630ac910163a90a79fd5bd1be2794555a563598dd3789d",
+          "completion": "4462f18b216de580490f5e90d45830dc16489320334a03cd0ae09b8d3303c3a1",
+          "request": "94a92465ce3646dece7a9b896c058b80b148d0d73cde769b4cb12ed54d566d96",
+          "result": "3b3daecf6abc17708c4ae9ce5245225fb5e6c60d46aaeaa39845c43c5fdbe0f9"
+        },
+        "task": "ea6c5365-f598-5a55-b77f-21d4e1226009"
+      },
+      "profile": "bounded-approved-chain-continuation/1",
+      "registration_sha256": "0ae32621e8032dd7062d006a8dc91ebaffc00a7be921a1b1e571d57de35df95e",
+      "result": {
+        "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+        "effect_finality": "finalized",
+        "evidence": {
+          "deploy_effect_finality": {
+            "latest_block_hash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+            "rejection_count": 0,
+            "state": "Finalized"
+          },
+          "effect": {
+            "block": {
+              "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+              "blockNumber": 18,
+              "blockSize": "100772",
+              "bodyExtraBytes": "",
+              "bonds": [
+                {
+                  "stake": 1000,
+                  "validator": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4"
+                }
+              ],
+              "deployCount": 1,
+              "extraBytes": "",
+              "faultTolerance": 1.0,
+              "headerExtraBytes": "",
+              "isFinalized": true,
+              "justifications": [
+                {
+                  "latestBlockHash": "3bbbfce2c77dbbeed0cf8b6360bcbab28502147622f0605dd7d7eb2635cca408",
+                  "validator": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4"
+                }
+              ],
+              "parentsHashList": [
+                "3bbbfce2c77dbbeed0cf8b6360bcbab28502147622f0605dd7d7eb2635cca408"
+              ],
+              "postStateHash": "21d1ce07922a67fd4715bb889dd9d568d7af3346bff9613978fe66762d6a4d79",
+              "preStateHash": "9e205e3076d8f0226ed125253219f41c698397f7de355dc2a943ed42ca0f7cdc",
+              "rejectedDeploys": [],
+              "sender": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4",
+              "seqNum": 18,
+              "shardId": "fusion-m4",
+              "sig": "3044022033da4e8912fd2d14b4b4236602aae21b77d3767d62278795eefad6ddc57401b5022079a4083ae7bff0f834bc61f1a751057813b3444a81d17318f959f9e90201ff92",
+              "sigAlgorithm": "secp256k1",
+              "timestamp": 1793809294478,
+              "version": 1
+            },
+            "cost": 0,
+            "expr": [
+              {
+                "ExprTuple": {
+                  "data": [
+                    {
+                      "ExprString": {
+                        "data": "fusion:m4:commitment/1"
+                      }
+                    },
+                    {
+                      "ExprString": {
+                        "data": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059"
+                      }
+                    },
+                    {
+                      "ExprString": {
+                        "data": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "effect_query": {
+            "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+            "name": {
+              "UnforgPrivate": {
+                "data": "72ab4943f8971a3a7807b6933804ffd893d086a282c2aabfa073c22e0d73327e"
+              }
+            },
+            "usePreStateHash": false
+          },
+          "inclusion": {
+            "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+            "blockNumber": 18,
+            "cost": 696,
+            "deployId": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+            "deployer": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4",
+            "errored": false,
+            "finalizationState": "Finalized",
+            "isFinalized": true,
+            "phloLimit": 10000000,
+            "phloPrice": 1,
+            "rejectionCount": 0,
+            "sigAlgorithm": "secp256k1",
+            "systemDeployError": "",
+            "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059\", \"ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678\")) }",
+            "timestamp": 1793809284669,
+            "validAfterBlockNumber": 0
+          },
+          "observed_at_ms": 1793809297740,
+          "profile": "f1r3-generated-post-state/2",
+          "source": "isolated-node-http",
+          "validation": "verified",
+          "value": {
+            "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+            "namespace": "fusion:m4:commitment/1",
+            "operation": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059"
+          }
+        },
+        "inclusion_block": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7"
+      },
+      "signed_intent": {
+        "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+        "read_name": "72ab4943f8971a3a7807b6933804ffd893d086a282c2aabfa073c22e0d73327e",
+        "receipt": {
+          "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+          "effect_finality": "pending",
+          "evidence": {
+            "signing_seconds": 0.152031,
+            "submission_response": "Success!\nDeployId is: 3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+            "submission_rpc_seconds": 0.019725
+          },
+          "inclusion_block": null
+        }
+      },
+      "status": "finalized",
+      "submission": null,
+      "submit_reservations": 1
+    },
+    "independent_readback": {
+      "additional_live_generations": 0,
+      "approval_record": "integrated-exact-result/integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059",
+      "artifact_bytes": 1396,
+      "artifact_ref": {
+        "digest": "4b0db345f070bdb9a299cab90397d7e8c4d6dc033d721afe99d0d7642d11b1f6",
+        "id": "1cf0d8ae-32ea-5d1a-82d7-ef18d06fc11b",
+        "revision": 1,
+        "scope_ref": "synthetic-integrated-chain01"
+      },
+      "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+      "independent_reads": true,
+      "inspect_result_ref": {
+        "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+        "id": "da90678f-bb7a-577c-b651-344f8d6eb756",
+        "revision": 1,
+        "scope_ref": "synthetic-integrated-chain01"
+      },
+      "inspect_result_sha256": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+      "observation": {
+        "deploy_id": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+        "effect_finality": "finalized",
+        "evidence": {
+          "deploy_effect_finality": {
+            "latest_block_hash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+            "rejection_count": 0,
+            "state": "Finalized"
+          },
+          "effect": {
+            "block": {
+              "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+              "blockNumber": 18,
+              "blockSize": "100772",
+              "bodyExtraBytes": "",
+              "bonds": [
+                {
+                  "stake": 1000,
+                  "validator": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4"
+                }
+              ],
+              "deployCount": 1,
+              "extraBytes": "",
+              "faultTolerance": 1.0,
+              "headerExtraBytes": "",
+              "isFinalized": true,
+              "justifications": [
+                {
+                  "latestBlockHash": "3bbbfce2c77dbbeed0cf8b6360bcbab28502147622f0605dd7d7eb2635cca408",
+                  "validator": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4"
+                }
+              ],
+              "parentsHashList": [
+                "3bbbfce2c77dbbeed0cf8b6360bcbab28502147622f0605dd7d7eb2635cca408"
+              ],
+              "postStateHash": "21d1ce07922a67fd4715bb889dd9d568d7af3346bff9613978fe66762d6a4d79",
+              "preStateHash": "9e205e3076d8f0226ed125253219f41c698397f7de355dc2a943ed42ca0f7cdc",
+              "rejectedDeploys": [],
+              "sender": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4",
+              "seqNum": 18,
+              "shardId": "fusion-m4",
+              "sig": "3044022033da4e8912fd2d14b4b4236602aae21b77d3767d62278795eefad6ddc57401b5022079a4083ae7bff0f834bc61f1a751057813b3444a81d17318f959f9e90201ff92",
+              "sigAlgorithm": "secp256k1",
+              "timestamp": 1793809294478,
+              "version": 1
+            },
+            "cost": 0,
+            "expr": [
+              {
+                "ExprTuple": {
+                  "data": [
+                    {
+                      "ExprString": {
+                        "data": "fusion:m4:commitment/1"
+                      }
+                    },
+                    {
+                      "ExprString": {
+                        "data": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059"
+                      }
+                    },
+                    {
+                      "ExprString": {
+                        "data": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "effect_query": {
+            "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+            "name": {
+              "UnforgPrivate": {
+                "data": "72ab4943f8971a3a7807b6933804ffd893d086a282c2aabfa073c22e0d73327e"
+              }
+            },
+            "usePreStateHash": false
+          },
+          "inclusion": {
+            "blockHash": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7",
+            "blockNumber": 18,
+            "cost": 696,
+            "deployId": "3044022037bc47f958698e4d0157c53e411de06432f455ee990302112e46fe348b70887e02203fb694a1b786275af541af52f5f7b287f223b1f2d68605059d0aaff2c450a5f3",
+            "deployer": "04876a8f8795ce11d14e2115452a3bd0366e3afa9309c01174ed80d3e52cb292a625fde2bed053a6a8d301ee7fdb24936881dc1a6a135f708075d42b272be0f1d4",
+            "errored": false,
+            "finalizationState": "Finalized",
+            "isFinalized": true,
+            "phloLimit": 10000000,
+            "phloPrice": 1,
+            "rejectionCount": 0,
+            "sigAlgorithm": "secp256k1",
+            "systemDeployError": "",
+            "term": "new commitment in { commitment!((\"fusion:m4:commitment/1\", \"integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059\", \"ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678\")) }",
+            "timestamp": 1793809284669,
+            "validAfterBlockNumber": 0
+          },
+          "observed_at_ms": 1793809434991,
+          "profile": "f1r3-generated-post-state/2",
+          "source": "isolated-node-http",
+          "validation": "verified",
+          "value": {
+            "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+            "namespace": "fusion:m4:commitment/1",
+            "operation": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059"
+          }
+        },
+        "inclusion_block": "9d9bd7750a884b90d84d6f05ad73a22881848072ad3b4bc4088b048d70840db7"
+      },
+      "owner_journals_accessed": false,
+      "profile": "synthetic-chain-readback/1",
+      "read_name": "72ab4943f8971a3a7807b6933804ffd893d086a282c2aabfa073c22e0d73327e",
+      "scope": "synthetic-integrated-chain01",
+      "signing_performed": false,
+      "status": "PASS",
+      "submissions": 0,
+      "trace_sha256": "5500d2b78d8de13d27ea801e3b40ea43388bfcdfdf567753e92aba49be32180d"
+    },
+    "original_native_captures_and_bounds_exact": true,
+    "original_deadline_ms": 1793808743276,
+    "separately_approved_chain_deadline_ms": 1793810005694,
+    "automatic_resubmissions": 0,
+    "source_lineage": "ACTUAL_NATIVE_A_TO_B_RETRIEVAL_INSPECTION_CAPTURE",
+    "node_identity_unchanged": true,
+    "acceptance_pause": {
+      "pid": 1,
+      "stage": "after_chain_continuation_acceptance"
+    },
+    "acceptance_recovery": {
+      "after": {
+        "images": [
+          "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+        ],
+        "uid": "f0b8595f-427f-4ce4-b788-9176c753e86b"
+      },
+      "before": {
+        "images": [
+          "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+        ],
+        "uid": "bc45b9d1-aec4-4161-9398-4f93bd54288a"
+      },
+      "observation": {
+        "value": {
+          "automatic_resubmissions": 0,
+          "cancel_requested": false,
+          "deadline_ms": 1793810005694,
+          "definition_sha256": "55b7ad1f909bddf16904403df7671d8c3a355198eab3a39c212f3dc055d54e33",
+          "identity": "integrated-workflow-3c9ed777-7976-4d02-a4e5-086d3d932059",
+          "limits": {
+            "continuations": 128,
+            "depth": 5,
+            "edges": 4,
+            "inflight": 1,
+            "nodes": 5,
+            "observations": 16,
+            "output_bytes": 32768,
+            "submit": 1,
+            "window_ms": 1200000
+          },
+          "observation_authorizes_effect": false,
+          "observations_spent": 0,
+          "occurrence": "17e16145-9a7a-5a31-8d4a-5cb0e323a958",
+          "origin": {
+            "artifact": {
+              "digest": "4b0db345f070bdb9a299cab90397d7e8c4d6dc033d721afe99d0d7642d11b1f6",
+              "id": "1cf0d8ae-32ea-5d1a-82d7-ef18d06fc11b",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-chain01"
+            },
+            "capture_sha256": "2e0b0863d0d5df5a7fba7b82e42462359e1d0efc5b9ce91e012d5e448b1c240a",
+            "job_id": "25068c7b-3b4a-5b7f-9d14-caa6db8a794a",
+            "occurrence": "17e16145-9a7a-5a31-8d4a-5cb0e323a958",
+            "original_deadline_ms": 1793808743276,
+            "result": {
+              "receipt": {
+                "durability": "local-files-process-restart",
+                "evidence": {
+                  "chain": null,
+                  "custody_certificate": null,
+                  "manifest": "6f7094c677b03dcd255571f055fb20d986fb05a4445d70989e1ce7b631f9aa6e",
+                  "payload_bytes": 1295,
+                  "payload_hash": "559895c03e15d3e4d2843d7f1e3b522bf14a21f8e3264e76d9afad98a4ee11a4",
+                  "profile": "2878ee4b37093e77fe755087e187caf4484cf89033a6f5a5e869a9c59b033223",
+                  "shares": 6,
+                  "storage_layout": "detta-opaque-coordinate-partitions/1",
+                  "threshold": 4
+                },
+                "provider": "detta-local-rs/1"
+              },
+              "ref": {
+                "digest": "ee028beda30cb00852ab9da45a5005bb90faa2193422441b96db745004765678",
+                "id": "da90678f-bb7a-577c-b651-344f8d6eb756",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-chain01"
+              }
+            },
+            "steps": {
+              "acceptance": "c550e5eca372ba62347e6b7151c744b63589411ce3a611524896096591fd4cd8",
+              "ack": "b261ebd246c518c49392ad69527f211e8846d36936cdcd655842eedc1cd70c35",
+              "artifact": "4b0db345f070bdb9a299cab90397d7e8c4d6dc033d721afe99d0d7642d11b1f6",
+              "artifact_ref": "3450a8b623c603f527630ac910163a90a79fd5bd1be2794555a563598dd3789d",
+              "completion": "4462f18b216de580490f5e90d45830dc16489320334a03cd0ae09b8d3303c3a1",
+              "request": "94a92465ce3646dece7a9b896c058b80b148d0d73cde769b4cb12ed54d566d96",
+              "result": "3b3daecf6abc17708c4ae9ce5245225fb5e6c60d46aaeaa39845c43c5fdbe0f9"
+            },
+            "task": "ea6c5365-f598-5a55-b77f-21d4e1226009"
+          },
+          "profile": "bounded-approved-chain-continuation/1",
+          "registration_sha256": "0ae32621e8032dd7062d006a8dc91ebaffc00a7be921a1b1e571d57de35df95e",
+          "result": null,
+          "signed_intent": null,
+          "status": "accepted",
+          "submission": null,
+          "submit_reservations": 0
+        }
+      }
+    },
+    "response_drop": {
+      "message_id": null,
+      "operation": "submit"
+    },
+    "replacement": {
+      "after": {
+        "f1r3node-0": {
+          "images": [
+            "docker.io/library/fusion-reference-chain@sha256:6c092dfe138b3abead52422e52af5e1230e29db771bfcbb2ad74b58da9a83d5b"
+          ],
+          "uid": "76600425-23d6-42da-9d45-b75ebb4103c3"
+        },
+        "fusion-attention-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "e085bc03-69dc-467b-8ec8-7c6f5f59afb5"
+        },
+        "fusion-beliefs-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "87e8767f-edd2-4dd7-8830-d01bf1c75942"
+        },
+        "fusion-commitment-0": {
+          "images": [
+            "docker.io/library/fusion-reference-chain@sha256:6c092dfe138b3abead52422e52af5e1230e29db771bfcbb2ad74b58da9a83d5b"
+          ],
+          "uid": "75564f62-73d6-40dc-9b79-ccaac7c58cdb"
+        },
+        "fusion-embedding-0": {
+          "images": [
+            "docker.io/library/fusion-memory-embedding@sha256:84061bb1373fef384229f31fa0652fb62ff537874588d4b6a2dcfeff19ccb3d7"
+          ],
+          "uid": "3cb9ec8f-816d-4413-8367-967f20d1c150"
+        },
+        "fusion-episodes-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "c3d3c0af-4e7a-41ee-bcd1-49c4eb049c9c"
+        },
+        "fusion-execution-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "22298764-042b-4702-b055-5f5fce11f86f"
+        },
+        "fusion-messaging-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "5ab617a4-27be-4c60-904a-b501783b0fda"
+        },
+        "fusion-model-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "81bb9147-a90e-4ca7-bf5f-b982d34cd449"
+        },
+        "fusion-relations-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "00013f92-5a49-42a2-9ab1-b53877e313ee"
+        },
+        "fusion-search-0": {
+          "images": [
+            "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+          ],
+          "uid": "9f5c8ed8-5b82-4a77-8d8b-765d5e2df908"
+        },
+        "fusion-storage-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "10758f37-830e-4f96-a845-da8092470cc1"
+        },
+        "omega-agent-0": {
+          "images": [
+            "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+          ],
+          "uid": "7d03e7af-b19f-470b-b53b-b892f3e51416"
+        },
+        "omega-agent-b-0": {
+          "images": [
+            "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+          ],
+          "uid": "ddb00dbd-ce24-49d0-992c-aa7b808d3e75"
+        }
+      },
+      "before": {
+        "f1r3node-0": {
+          "images": [
+            "docker.io/library/fusion-reference-chain@sha256:6c092dfe138b3abead52422e52af5e1230e29db771bfcbb2ad74b58da9a83d5b"
+          ],
+          "uid": "fb199768-2e04-4ba7-a2e5-d28e6f980848"
+        },
+        "fusion-attention-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "e085bc03-69dc-467b-8ec8-7c6f5f59afb5"
+        },
+        "fusion-beliefs-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "87e8767f-edd2-4dd7-8830-d01bf1c75942"
+        },
+        "fusion-commitment-0": {
+          "images": [
+            "docker.io/library/fusion-reference-chain@sha256:6c092dfe138b3abead52422e52af5e1230e29db771bfcbb2ad74b58da9a83d5b"
+          ],
+          "uid": "660a04fd-21d2-4a3e-9d89-615843a78db3"
+        },
+        "fusion-embedding-0": {
+          "images": [
+            "docker.io/library/fusion-memory-embedding@sha256:84061bb1373fef384229f31fa0652fb62ff537874588d4b6a2dcfeff19ccb3d7"
+          ],
+          "uid": "3cb9ec8f-816d-4413-8367-967f20d1c150"
+        },
+        "fusion-episodes-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "c3d3c0af-4e7a-41ee-bcd1-49c4eb049c9c"
+        },
+        "fusion-execution-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "22298764-042b-4702-b055-5f5fce11f86f"
+        },
+        "fusion-messaging-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "5ab617a4-27be-4c60-904a-b501783b0fda"
+        },
+        "fusion-model-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "81bb9147-a90e-4ca7-bf5f-b982d34cd449"
+        },
+        "fusion-relations-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "00013f92-5a49-42a2-9ab1-b53877e313ee"
+        },
+        "fusion-search-0": {
+          "images": [
+            "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+          ],
+          "uid": "9f5c8ed8-5b82-4a77-8d8b-765d5e2df908"
+        },
+        "fusion-storage-0": {
+          "images": [
+            "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274"
+          ],
+          "uid": "10758f37-830e-4f96-a845-da8092470cc1"
+        },
+        "omega-agent-0": {
+          "images": [
+            "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+          ],
+          "uid": "f0b8595f-427f-4ce4-b788-9176c753e86b"
+        },
+        "omega-agent-b-0": {
+          "images": [
+            "docker.io/library/fusion-memory-caller@sha256:d4ed14d1b4dd5a696ed49b8f3753da232d79a3a2e13545ae6148cb3cba1a9c17"
+          ],
+          "uid": "ddb00dbd-ce24-49d0-992c-aa7b808d3e75"
+        }
+      }
+    }
+  },
+  "observer_and_harness": {
+    "examples/integrated_chain_continuation.py": "04926ad693b8a484fcac46a3f6921a7bcb12977c990effa9b4182ddc15db2268",
+    "examples/sustained_chain_qualification.py": "a60b665d8c18da5531d2d4715f6ae5d46253a7fe93555b41ec2bb740c7ae2c19",
+    "examples/preview_chain_observer.py": "56c1e909d311b117ce088b93260031868dd283f9477ed7a417c7e855d45e5490"
+  },
+  "quiesced": true,
+  "limits": [
+    "Development source epochs explicitly distinguished; final Q30 set not selected.",
+    "Only generated explicitly shared artifact and exact inspection digest committed. No private cognition exported.",
+    "Chain integrity/finality does not attest off-chain source truth or native computation.",
+    "Current source adds an in-flight flock guard after dev11, unit-qualified but not deployed in this observation.",
+    "Recorded model proposals establish system behavior, not autonomous model competence."
+  ]
+}

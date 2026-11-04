@@ -1,0 +1,145 @@
+{
+  "status": "PASS",
+  "classification": "REAL_NATIVE_NAL_DETTA_AUTHENTICATED_POD_HTTPS_RECORDED_MODEL_PROPOSALS",
+  "original_source": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47",
+  "preflight": {
+    "additional_live_generations": 0,
+    "business_calls": 0,
+    "plan_sha256": "35edba8d50f25d80f648279ed6485c7ea810d0531b2fa21e0e74bea83ff33b5b",
+    "providers": [
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:a075e022339568b02a47d44046be9276dd177d6996fcc7702d5d60a78f0e3c19",
+        "pod_uid": "7599341f-1ea1-4e16-8504-0ec714180549",
+        "role": "fusion-attention",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:a075e022339568b02a47d44046be9276dd177d6996fcc7702d5d60a78f0e3c19",
+        "pod_uid": "2a4a68e2-30f4-48be-a910-f61ed8f2fbc4",
+        "role": "fusion-beliefs",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-memory-embedding@sha256:9fee0f05a06cb6e77dce6e00524b11c1d8f7f8e2ef6bb7947909ee025d1c5d7c",
+        "pod_uid": "730e7b78-72fd-4d83-ac4e-554febb6dfa1",
+        "role": "fusion-embedding",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:a075e022339568b02a47d44046be9276dd177d6996fcc7702d5d60a78f0e3c19",
+        "pod_uid": "5aff385f-541a-4b81-bd65-fef5bda36074",
+        "role": "fusion-episodes",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274",
+        "pod_uid": "64fd12e3-a992-46d4-aef8-533e001dbc86",
+        "role": "fusion-execution",
+        "source_manifest_sha256": "ccd95c6ca1133aa19e487bd0f9f38e8044230e56992161d0db8a8da8f0f8a7f4"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:a075e022339568b02a47d44046be9276dd177d6996fcc7702d5d60a78f0e3c19",
+        "pod_uid": "ebbbf967-d042-4c05-84e4-0419e928d7af",
+        "role": "fusion-messaging",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:a075e022339568b02a47d44046be9276dd177d6996fcc7702d5d60a78f0e3c19",
+        "pod_uid": "854cb7fc-91b7-4f63-8543-cc65cd975f20",
+        "role": "fusion-model",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:a075e022339568b02a47d44046be9276dd177d6996fcc7702d5d60a78f0e3c19",
+        "pod_uid": "f714e43a-dd78-4f62-be24-66fe5b841214",
+        "role": "fusion-relations",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-memory-caller@sha256:997dc34aafaf39fe8b7c11c4781c8f7fdb1e76a0643d72a087c67dac8f7a5072",
+        "pod_uid": "fc8e1875-1a46-424e-9085-2cc5ffe12367",
+        "role": "fusion-search",
+        "source_manifest_sha256": "5828b5568dbf14672982cc77d4904ac3e49a151aba9dab467f07e87a76f2de47"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-single-node@sha256:bde79d1e56e5c905ab0b6ae89d13fc1859abb8a96ec5a7557282fde19638a274",
+        "pod_uid": "f563a6a0-5c50-45e6-9bf7-7cc33da73b43",
+        "role": "fusion-storage",
+        "source_manifest_sha256": "ccd95c6ca1133aa19e487bd0f9f38e8044230e56992161d0db8a8da8f0f8a7f4"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-memory-caller@sha256:d5a56147c67dcd3b5b78cc063918820760204d7f7a6ef996fdd9edc3e306fcee",
+        "pod_uid": "8f65ed27-48be-4b82-9b3e-3d018594c7dc",
+        "role": "omega-agent",
+        "source_manifest_sha256": "49fac3d2a5980beb1a4bbff72da925ec014c08feeb55b48a2b05a498c84d0b1a"
+      },
+      {
+        "ca_sha256": "a1cd985031ca834897a2e1d8c74400133bd8d04bdde8a4b18c60129eaaaf7551",
+        "certificate_dns": "MATCHED",
+        "configuration": "EXACT",
+        "image_id": "docker.io/library/fusion-memory-caller@sha256:d5a56147c67dcd3b5b78cc063918820760204d7f7a6ef996fdd9edc3e306fcee",
+        "pod_uid": "a7e43f0b-3c3e-4391-bb68-4dbbc7bef143",
+        "role": "omega-agent-b",
+        "source_manifest_sha256": "49fac3d2a5980beb1a4bbff72da925ec014c08feeb55b48a2b05a498c84d0b1a"
+      }
+    ],
+    "readiness": "POD_READY_ONLY",
+    "status": "PASS"
+  },
+  "native_inputs": 2,
+  "native_result": "(RESULTS: ((COMMAND_RETURN: ((metta (Truth_Deduction (stv 0.8 0.9) (stv 0.7 0.8))) (stv 0.5599999999999999 0.4032)))))",
+  "old_results_retained": true,
+  "old_captures_and_selection_exact": true,
+  "retired_selection_refused": true,
+  "replacement_records": [
+    "compatible-v2-shared-fusion-storage",
+    "compatible-v2-shared-fusion-execution"
+  ],
+  "scope": "synthetic-integrated-registry01",
+  "source_epoch": "dev12 caller/dev11 replacement execution+storage/dev04 remaining services",
+  "same_retained_service_pvcs": true,
+  "state_migration": false,
+  "automatic_failover": false,
+  "quiesced": true,
+  "previous_failure": "dev11 caller regenerated legacy advertised capabilities; registry refused before any new native input; original failed report retained",
+  "reports": {
+    "artifacts/integrated-service/registry01-rollover12/report.json": "7b6712d831b164edbc101597639a64f02e38bc73a8aefaa4d842936e22496d37",
+    "artifacts/integrated-service/registry01-rollover12/native/report.json": "e78133d0b730892b6e6b99ce34320cc76a92e3cb5e9065485743e6ed02792952",
+    "artifacts/integrated-service/registry01-rollover/report.json": "9a4ace377604eb151c0d60f92b28b2941ade832f019f86357a24396ac3eb771e",
+    "artifacts/integrated-service/registry01-rollover-plan12.json": "35edba8d50f25d80f648279ed6485c7ea810d0531b2fa21e0e74bea83ff33b5b"
+  },
+  "additional_live_generations": 0
+}

@@ -20,12 +20,33 @@ def safe_name(rel):
  require(not any(x in name for x in ('credential','secret','token','approval')) and name not in ('authority.json','policy.json','owner.json','application.json','component.json'),'UNAUTHORIZED')
 
 def synthetic_seal(seal,role):
- require(type(seal) is dict and set(seal) in ({'composition','role','scope'},{'composition','role','scope','backend_layout'}) and seal['role']==role,'CONFLICT')
+ required={'composition','role','scope'};optional={'backend_layout','resident_worker','history_representation','storage_archive','provider_registry','execution_envelope','nal_execution_envelope','search_maintenance','chain_continuation'}
+ require(type(seal) is dict and required<=set(seal)<=required|optional and seal['role']==role,'CONFLICT')
  require(type(seal['scope']) is str,'UNAUTHORIZED')
  preview=seal['composition'] in ('omega-single-node-developer-preview/1','omega-single-node-sustained-preview/1') and seal['scope'].startswith('synthetic-')
  if 'backend_layout' in seal:
   from fusion.adapters.detta_layout import LAYOUT
   require(preview and role=='fusion-storage' and seal['backend_layout']==LAYOUT,'UNSUPPORTED_PROFILE')
+ if any(k in seal for k in ('resident_worker','history_representation','provider_registry')):
+  require(seal['composition']=='omega-single-node-sustained-preview/1' and role in ('omega-agent','omega-agent-b'),'UNSUPPORTED_PROFILE')
+ if 'resident_worker' in seal:
+  from fusion.resident_workers import selection
+  selection(seal['resident_worker'])
+ if 'history_representation' in seal:require(seal['history_representation']=='immutable-administrative-captures/1','UNSUPPORTED_PROFILE')
+ if 'provider_registry' in seal:require(seal['provider_registry']=='trusted-provider-lifecycle/1','UNSUPPORTED_PROFILE')
+ if 'chain_continuation' in seal:
+  from fusion.chain_continuation import PROFILE
+  require(preview and role in ('omega-agent','omega-agent-b') and seal['chain_continuation']==PROFILE,'UNSUPPORTED_PROFILE')
+ if 'execution_envelope' in seal:
+  require(preview and role in ('omega-agent','omega-agent-b','fusion-execution','fusion-messaging') and seal['execution_envelope']=='bounded-inspect-envelope/1','UNSUPPORTED_PROFILE')
+ if 'nal_execution_envelope' in seal:
+  require(preview and role in ('omega-agent','omega-agent-b','fusion-execution') and seal['nal_execution_envelope']=='bounded-native-nal-envelope/1','UNSUPPORTED_PROFILE')
+ if 'search_maintenance' in seal:
+  require(preview and role=='fusion-search' and seal['search_maintenance']=='bounded-derived-search-repair/1','UNSUPPORTED_PROFILE')
+ if 'storage_archive' in seal:
+  require(seal['composition']=='omega-single-node-sustained-preview/1' and role=='fusion-storage' and 'backend_layout' in seal,'UNSUPPORTED_PROFILE')
+  from fusion.archive_contracts import policy
+  policy(seal['storage_archive'])
  require(preview or seal['scope'].startswith('generated-') or seal['scope']=='shared-test','UNAUTHORIZED')
 
 def eligible(p,root):
@@ -53,9 +74,12 @@ def _export_locked(root,role,seal):
  # deferred finalization could otherwise remove a WAL after it was listed.
  from .diagnostics import inspect
  checkpoint=inspect(root)
+ from .integrated_integrity import archive_dependencies,summary
+ dependencies=archive_dependencies(root);require(dependencies['status']=='PASS','CONFLICT')
  files=[p for p in sorted(root.rglob('*')) if eligible(p,root)];require(sum(p.stat().st_size for p in files)<=MAX_TOTAL,'OVERLOADED')
  manifest=dict(schema='synthetic-owner-backup/1',role=role,seal=seal,files={str(p.relative_to(root)):dict(bytes=p.stat().st_size,sha256=digest(p.read_bytes())) for p in files},excluded_authority=True)
  manifest['owner_checkpoint']=checkpoint
+ manifest['archive_dependencies']=dependencies['dependencies'];manifest['integrity']=summary(dependencies)
  manifest['retained_views']={str(p.relative_to(root)):json.loads(p.read_text()) for p in root.rglob('*.json') if p.name in ('setup-view.json','initial-view.json','published.json','chain-identity.json')}
  import io
  with tarfile.open(fileobj=sys.stdout.buffer,mode='w|gz') as archive:
@@ -81,11 +105,20 @@ def restore(root,role,namespace):
   for name,desc in manifest['files'].items():
    p=Path(name);safe_name(p)
    content=archive.extractfile('state/'+name).read();require(len(content)==desc['bytes'] and digest(content)==desc['sha256'],'CONFLICT')
+  if 'storage_archive' in manifest['seal']:
+   require(type(manifest.get('archive_dependencies')) is dict and manifest.get('integrity',{}).get('status')=='PASS','CONFLICT')
+  for name,entry in manifest.get('archive_dependencies',{}).items():
+   require(name in manifest['files'] and entry['database'] in manifest['files'],'CONFLICT')
+   require(manifest['files'][name]=={k:entry[k] for k in ('bytes','sha256')},'CONFLICT')
   # Marker is written FIRST. A partial extraction must also stay fenced.
   write(root/'restore-fence.json',dict(mode='READ_ONLY_RECONCILIATION',role=role,namespace=namespace,backup_manifest_sha256=digest(canonical(manifest)),original_scope=manifest['seal']['scope'],external_effect_authority=False))
   for name,desc in manifest['files'].items():
    if name=='restore-fence.json':continue
    p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(archive.extractfile('state/'+name).read());p.chmod(0o600)
+  if 'archive_dependencies' in manifest:
+   from .integrated_integrity import archive_dependencies
+   checked=archive_dependencies(root)
+   require(checked['status']=='PASS' and checked['dependencies']==manifest['archive_dependencies'],'CONFLICT')
  print(json.dumps(dict(role=role,status='RESTORED_FENCED',files=len(manifest['files']),bytes=sum(x['bytes'] for x in manifest['files'].values()))))
 def main():
  p=argparse.ArgumentParser();p.add_argument('action',choices=('export','restore'));p.add_argument('--role',required=True);p.add_argument('--namespace');a=p.parse_args()

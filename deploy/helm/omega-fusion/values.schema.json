@@ -737,6 +737,9 @@
             "corpus": {
               "type": "string",
               "pattern": "^generated-[a-z0-9-]+$"
+            },
+            "maintenance_profile": {
+              "const": "bounded-derived-search-repair/1"
             }
           }
         },
@@ -777,6 +780,16 @@
           "properties": {
             "enabled": {
               "type": "boolean"
+            },
+            "envelopes": {
+              "enum": [
+                "bounded-inspect-envelope/1"
+              ]
+            },
+            "nal_envelopes": {
+              "enum": [
+                "bounded-native-nal-envelope/1"
+              ]
             }
           },
           "required": [
@@ -808,6 +821,11 @@
             },
             "enabled": {
               "type": "boolean"
+            },
+            "continuation": {
+              "enum": [
+                "bounded-approved-chain-continuation/1"
+              ]
             }
           },
           "required": [
@@ -953,6 +971,203 @@
                   }
                 }
               ]
+            },
+            "resident_worker": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "profile",
+                "inputs",
+                "idle_ms",
+                "lifetime_ms",
+                "incarnations"
+              ],
+              "properties": {
+                "profile": {
+                  "const": "session-bound-native-worker/1"
+                },
+                "inputs": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 24
+                },
+                "idle_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 60000
+                },
+                "lifetime_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1800000
+                },
+                "incarnations": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 256
+                }
+              }
+            },
+            "native_preparation": {
+              "const": "verified-native-preparation/1"
+            },
+            "transport_pool": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "profile",
+                "connections",
+                "idle_ms",
+                "lifetime_ms",
+                "requests"
+              ],
+              "properties": {
+                "profile": {
+                  "const": "bounded-authenticated-https-reuse/1"
+                },
+                "connections": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 32
+                },
+                "idle_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1000
+                },
+                "lifetime_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 60000
+                },
+                "requests": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 64
+                }
+              }
+            },
+            "history_hydration": {
+              "const": "bounded-history-hydration/1"
+            },
+            "history_representation": {
+              "const": "immutable-administrative-captures/1"
+            },
+            "storage_archive": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "profile",
+                "segments",
+                "bytes",
+                "records"
+              ],
+              "properties": {
+                "profile": {
+                  "const": "owner-sealed-payload-archive/1"
+                },
+                "segments": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 256
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 528384,
+                  "maximum": 67108864
+                },
+                "records": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 16
+                }
+              }
+            },
+            "provider_registry": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "profile",
+                "pins",
+                "readiness_ms"
+              ],
+              "properties": {
+                "profile": {
+                  "const": "trusted-provider-lifecycle/1"
+                },
+                "readiness_ms": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 300000
+                },
+                "pins": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "maxProperties": 32,
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "image",
+                      "source"
+                    ],
+                    "properties": {
+                      "image": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      },
+                      "source": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                },
+                "rollover": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "identity",
+                    "pins"
+                  ],
+                  "properties": {
+                    "identity": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]{0,31}$"
+                    },
+                    "pins": {
+                      "type": "object",
+                      "minProperties": 1,
+                      "maxProperties": 32,
+                      "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "image",
+                          "source"
+                        ],
+                        "properties": {
+                          "image": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "source": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          }
+                        }
+                      }
+                    },
+                    "retained_records": {
+                      "type": "object",
+                      "maxProperties": 32,
+                      "additionalProperties": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -1114,6 +1329,7 @@
                     "after_candidate_capture",
                     "after_payload_validation",
                     "after_index_write",
+                    "after_search_repair_reservation",
                     "before_checkpoint",
                     "after_checkpoint",
                     "after_publication",
@@ -1168,7 +1384,22 @@
                     "after_task_ingress_capture",
                     "after_task_session_acceptance",
                     "after_task_ingress_ack",
-                    "after_task_publication_capture"
+                    "after_task_publication_capture",
+                    "after_execution_envelope_bind",
+                    "after_native_execution_envelope_bind",
+                    "after_inspect_artifact_capture",
+                    "after_inspect_artifact_ref_capture",
+                    "after_inspect_request_capture",
+                    "after_inspect_acceptance_capture",
+                    "after_inspect_result_capture",
+                    "after_inspect_completion_capture",
+                    "after_inspect_ack_capture",
+                    "after_inspect_cursor_capture",
+                    "after_chain_continuation_acceptance",
+                    "after_chain_submit_reservation",
+                    "after_chain_submission_capture",
+                    "after_chain_intent_capture",
+                    "after_chain_result_capture"
                   ]
                 },
                 "drop_response_operation": {

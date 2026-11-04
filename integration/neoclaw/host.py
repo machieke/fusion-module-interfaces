@@ -36,7 +36,7 @@ def serve(config_path, port, ready):
         def do_POST(self):
             service = None
             try:
-                require(self.path in ('/s01', '/s03-read', '/s03-encode','/s03-append','/s06-mailbox','/s07-model'), 'UNSUPPORTED_OPERATION')
+                require(self.path in ('/s01','/s01-envelope', '/s03-read', '/s03-encode','/s03-append','/s06-mailbox','/s07-model'), 'UNSUPPORTED_OPERATION')
                 auth = self.headers.get_all('Authorization', [])
                 require(len(auth) == 1 and auth[0].startswith('Bearer '), 'UNAUTHORIZED')
                 require(self.headers.get('Content-Type') == 'application/json')
@@ -44,7 +44,7 @@ def serve(config_path, port, ready):
                 lengths = self.headers.get_all('Content-Length', [])
                 require(len(lengths) == 1 and lengths[0].isdigit())
                 length = int(lengths[0])
-                require(0 < length <= (98304 if self.path in ('/s03-read','/s07-model') else 65536 if self.path in ('/s03-encode','/s03-append') else 16384 if self.path=='/s06-mailbox' else 4096))
+                require(0 < length <= (98304 if self.path in ('/s03-read','/s07-model') else 65536 if self.path in ('/s03-encode','/s03-append') else 16384 if self.path in ('/s06-mailbox','/s01-envelope') else 4096))
                 raw = self.rfile.read(length)
                 require(len(raw) == length)
                 request = json_loads(raw)
@@ -71,7 +71,7 @@ def serve(config_path, port, ready):
                     reply = ReadService(config_path, auth[0][7:], lambda stage: failpoint(config, stage)).invoke(request)
                 else:
                     service = NalService(config_path, lambda stage: failpoint(config, stage))
-                    reply = dict(ok=service.invoke(auth[0][7:], request), provider=request['selection'])
+                    reply = service.invoke_enveloped(auth[0][7:],request) if self.path=='/s01-envelope' else dict(ok=service.invoke(auth[0][7:], request), provider=request['selection'])
             except ContractError as exc:
                 reply = dict(error=exc.wire())
             except (TypeError, KeyError, ValueError):

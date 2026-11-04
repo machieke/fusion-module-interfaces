@@ -13,6 +13,6 @@ def main():
    if file.is_file() and '__pycache__' not in file.parts and file.suffix in ('.py','.json','.metta'):
     rel=file.relative_to(ROOT);dest=source/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(file,dest);files[str(rel)]=sha(file)
  irc=ROOT/'artifacts/s06/ngircd/sbin/ngircd';assert irc.is_file() and sha(irc)=='b29b4c31e8f515062f2ed814b01c1774da2b6a1f3e099d6e316e8d3489ff3f74';shutil.copyfile(irc,a.destination/'ngircd');(a.destination/'ngircd').chmod(0o755)
- (a.destination/'Dockerfile').write_text(f'FROM {base}\nUSER root\nCOPY source /opt/fusion\nCOPY ngircd /opt/irc/sbin/ngircd\nUSER 1000:1000\n')
+ (a.destination/'Dockerfile').write_text(f'FROM {base}\nUSER root\nCOPY source /opt/fusion\nCOPY package.json /opt/fusion-package.json\nCOPY ngircd /opt/irc/sbin/ngircd\nUSER 1000:1000\n')
  (a.destination/'package.json').write_text(json.dumps(dict(parent=base,parent_config=pin,source=files,ngircd_sha256=sha(irc),kind=a.kind),indent=2)+'\n')
 if __name__=='__main__':main()

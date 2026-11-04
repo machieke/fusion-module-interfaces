@@ -33,6 +33,10 @@ def material(p,roles,client):
     for role in calls[principals[0]]:
         for who in principals:result[role]['caller-'+who+'-token']=calls[who][role]
     for who in principals:result['fusion-storage']['cog-caller-'+who+'-token']=atoms[who]
+    if p.get('sustained',{}).get('storage_archive'):
+        from fusion.archive_contracts import policy
+        policy(p['sustained']['storage_archive'])
+        result['fusion-storage']['archive-operator-token']=secrets.token_hex(32)
     for role in facets:
         for who in principals:result[role]['facet-caller-'+who+'-token']=facets[role][who]
     for role in delegated:
@@ -44,6 +48,10 @@ def material(p,roles,client):
         result['fusion-storage']['indexer-token']=source
         result['fusion-search']['storage-source-token']=source
         result['fusion-search']['indexer-token']=secrets.token_hex(32)
+        if p['memory'].get('maintenance_profile'):
+            from fusion.preview_deployment_contracts import SEARCH_MAINTENANCE_PROFILE as PROFILE
+            require(p['memory']['maintenance_profile']==PROFILE,'UNSUPPORTED_PROFILE')
+            result['fusion-search']['search-operator-token']=secrets.token_hex(32)
     if p.get('cognition',{}).get('enabled'):
         require({'fusion-episodes','fusion-beliefs','fusion-attention'}<=set(roles),'NOT_AVAILABLE')
         for agent,a in p['agents'].items():

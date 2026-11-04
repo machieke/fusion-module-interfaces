@@ -61,7 +61,10 @@ class AtomSession:
     def availability(self,ref):
         ref=c.ref(ref,c.scope_of(ref));self.access.authorize(ref['scope_ref'],'availability');self.access.authorize(ref['scope_ref'],'get')
         result=self.provider.availability(ref);availability(result);require(result['content_hash']==ref['digest'],'NOT_AVAILABLE')
-        self.access.authorize(ref['scope_ref'],'availability');return c.copy(result)
+        self.access.authorize(ref['scope_ref'],'availability');self.access.authorize(ref['scope_ref'],'get');return c.copy(result)
+    def planArchive(self,scope,after,through,limit):return self.provider.planArchive(scope,after,through,limit)
+    def publishArchive(self,command,after,through,limit):return self.provider.publishArchive(command,after,through,limit)
+    def observeArchive(self,command):return self.provider.observeArchive(command)
     def head(self,scope):
         self.access.authorize(scope,'head');value=c.source_head(self.provider.head(scope),scope,c.feed_profile(self.access.descriptor));self.access.authorize(scope,'head');return value
     def capacity(self,scope):

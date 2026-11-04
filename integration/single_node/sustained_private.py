@@ -28,6 +28,10 @@ def configure(settings,cfg,state,run):
         scope=spec['private_scope'];label='private-'+spec['principal'].lower()
         shadow=copy.deepcopy(settings);q=shadow['preview']
         q['sustained']['private_scopes']=False;q['scope']=scope
+        # The enclosing application registry owns both template selections.
+        # This shadow builds a private runtime recipe, not a second allocator.
+        # Retained shared records must not be rebound to its private scope.
+        q['sustained'].pop('provider_registry',None)
         q['agents']={agent:{k:v for k,v in spec.items() if k!='private_scope'}}
         q['agents'][agent]['facets']=[x for x in spec['facets'] if x!='execution.workspace']
         q['memory']['corpus']+='-'+label
@@ -122,6 +126,10 @@ class ScopeRouter:
         if path=='/preview/memory':
             from fusion.preview_memory_services import Ports
             return Ports(config,self.role,self.hook).invoke(credential,q)
+        if path=='/preview/search-maintenance':
+            require(self.role=='fusion-search','UNSUPPORTED_OPERATION')
+            from fusion.search_maintenance import Ports
+            return Ports(config,self.hook).invoke(credential,q)
         if path=='/preview/model':
             from fusion.preview_model_binding import service
             owner=service(config,self.hook)

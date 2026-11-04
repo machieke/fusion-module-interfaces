@@ -63,7 +63,7 @@ class AppendService:
             from .atom_feed import FeedAtomOwner
             from .adapters.detta_layout import storage
             cfg=self.config;root=Path(cfg['root'])
-            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook,capacity=cfg.get('feed_capacity'))
+            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook,capacity=cfg.get('feed_capacity'),archive=cfg.get('archive'))
             atoms=AtomSession(owner,self.access['atom.storage'])
         self.atoms=atoms
 

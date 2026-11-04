@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "qualifier_sha256": "74bb18dbf95b897d7465c9aecb6c68edfdca427a533f29877f1d3f646b8f697f",
+  "operator_native_inputs": 4,
+  "completed_seed_retained_from_attempt03": true,
+  "new_inputs_in_attempt04": 3,
+  "original_deadline_renewals": 0,
+  "native_enrollment_during_reserved_rebuild": true,
+  "older_repair_did_not_regress_new_publication": true,
+  "actual_new_and_old_fact_queries": "PASS",
+  "source": "Authenticated authoritative enrollment/payload ports; real DeTTa/Chroma/E5/native/HTTPS",
+  "model": "RECORDED_COMMAND_PROPOSALS",
+  "old_captured_input_exact": true,
+  "quiesced": true,
+  "additional_live_generations": 0,
+  "failures_retained": [
+    "sustained03: Search barrier blocked view selection; original uncertain input and spent repair kept",
+    "rc18-attempt01: undeclared chart barrier refused before input",
+    "rc18-attempt02: missing only active generation refused before model/operation; input remains fenced, no repair reservation made",
+    "rc18-attempt03: seed completed, then extra session allocation hit active capacity; reused exact completed seed, no replay or quota increase"
+  ]
+}

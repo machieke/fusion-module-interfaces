@@ -20,6 +20,7 @@ class SustainedSessionPorts:
         require(type(body) is dict)
         policy=Policy(self.path);actor=policy.authenticate(credential);cfg=policy.current()['native_sessions']
         require(cfg['profile']==PROFILE,'UNSUPPORTED_PROFILE'); principal=cfg['principal']
+        require(not cfg.get('resident_worker') or operation not in ('next','permit','complete'),'UNSUPPORTED_PROFILE')
         def authorize(who, scope, action):
             require(policy.authenticate(credential)==actor and who==principal,'UNAUTHORIZED')
             policy.check(actor,scope,'sessions.'+operation)
@@ -28,7 +29,14 @@ class SustainedSessionPorts:
         def fields(names):require(set(body)==set(names.split()))
         try:
             if operation=='allocate':
-                fields('identity template');value=store.allocate(principal,body['identity'],body['template'])
+                fields('identity template');admission=None
+                if 'provider_registry' in cfg:
+                    from .provider_lifecycle import Registry
+                    def authority(scope,action):
+                        require(policy.authenticate(credential)==actor,'UNAUTHORIZED');policy.check(actor,scope,action)
+                    registry=Registry(store,cfg['provider_registry'],authority,self.hook)
+                    admission=registry.admit
+                value=store.allocate(principal,body['identity'],body['template'],admission=admission)
             elif operation in ('capacity','list'):
                 fields('');value=store.capacity(principal) if operation=='capacity' else store.list_sessions(principal)
             else:
@@ -60,9 +68,14 @@ class SustainedSessionPorts:
                     proofs=self.projections(sid);require(type(proofs) in (list,tuple) and len(proofs)<=32,'OVERLOADED')
                     for proof in proofs:
                         require(type(proof) is dict and set(proof)=={'identity','result'},'CONFLICT')
-                        worker=policy.current()['principals']['worker']['credential']
-                        self.invoke(worker,dict(id='saved-native-projection',profile=PROFILE,operation='complete',
-                            body=dict(session=sid,**proof)))
+                        if cfg.get('resident_worker'):
+                            # Only this owner supplies the saved native proof.
+                            # No wire caller can complete another incarnation.
+                            store.complete(principal,sid,proof['identity'],proof['result'])
+                        else:
+                            worker=policy.current()['principals']['worker']['credential']
+                            self.invoke(worker,dict(id='saved-native-projection',profile=PROFILE,operation='complete',
+                                body=dict(session=sid,**proof)))
                     value=store.observe(principal,sid)
                 elif operation=='next':
                     fields('session');value=store.next_input(principal,sid)

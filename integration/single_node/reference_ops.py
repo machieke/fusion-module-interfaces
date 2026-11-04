@@ -58,13 +58,16 @@ class Operator:
   self.owned();name='reference-copy-'+role
   value=dict(apiVersion='v1',kind='Pod',metadata=dict(name=name,namespace=self.namespace,labels={LABEL:OWNER}),spec=dict(restartPolicy='Never',terminationGracePeriodSeconds=2,automountServiceAccountToken=False,securityContext=dict(runAsUser=1000,runAsGroup=1000,runAsNonRoot=True,fsGroup=1000,fsGroupChangePolicy='OnRootMismatch'),containers=[dict(name='copy',image=image,imagePullPolicy='Never',command=[PYTHON,'-c','import signal,sys,time;signal.signal(signal.SIGTERM,lambda *_:sys.exit(0));time.sleep(600)'],resources=dict(requests=dict(cpu='25m',memory='32Mi'),limits=dict(cpu='500m',memory='256Mi')),securityContext=dict(allowPrivilegeEscalation=False,readOnlyRootFilesystem=True,capabilities=dict(drop=['ALL'])),volumeMounts=[dict(name='state',mountPath='/state',readOnly=readonly)])],volumes=[dict(name='state',persistentVolumeClaim=dict(claimName=pvc,readOnly=readonly))]))
   self.apply(value);self.k('wait','--for=condition=Ready','pod/'+name,'--timeout=60s');return name
- def backup(self,destination):
+ def backup(self,destination,*,maintenance_image=None):
   root=Path(destination).resolve();root.mkdir(mode=0o700,parents=True,exist_ok=False);os.chmod(root,0o700)
   before=self.quiesce();started=time.time();manifest=dict(schema='synthetic-quiesced-backup/1',consistency='all selected StatefulSet pods terminated; each owner locked/checkpointed independently; not a distributed transaction',before=before,owners={},authority_excluded=True)
   # A standard-library maintenance tool is independent of the stopped owner's
   # inference dependencies. Pin it to the selected caller image, and retain the
   # original owner image separately as part of the consistency cut.
-  maintenance_image=before['workloads']['omega-agent']['image']
+  if maintenance_image is None:maintenance_image=before['workloads']['omega-agent']['image']
+  else:
+   import re
+   require(type(maintenance_image) is str and re.fullmatch(r'[a-z0-9][a-z0-9./_-]{0,200}@sha256:[0-9a-f]{64}',maintenance_image) is not None,'UNAUTHORIZED')
   manifest['maintenance_image']=maintenance_image
   manifest['excluded_owners']={}
   for role,entry in before['workloads'].items():

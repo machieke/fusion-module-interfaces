@@ -41,6 +41,9 @@ class Caller:
           id TEXT PRIMARY KEY, request TEXT NOT NULL, selections TEXT NOT NULL,
           max_calls INTEGER NOT NULL, calls INTEGER NOT NULL DEFAULT 0,
           receipt TEXT, acknowledged INTEGER NOT NULL DEFAULT 0)''')
+        self.portable=self.config.get('portable_execution') if profile==c.PROFILE else None
+        from .nal_envelope import seal
+        seal(self.db,self.config.get('portable_execution'),'caller_requests')
 
     def close(self):
         self.db.close()
@@ -82,6 +85,11 @@ class Caller:
                 self.db.execute('INSERT INTO caller_requests(id,request,selections,max_calls) VALUES(?,?,?,?)',
                                 (config['request_id'], encoded, selections, config['max_calls']))
         self.hook('after_request_persist')
+        if self.portable:
+            from .nal_envelope import build
+            from .execution_envelope import bind
+            # Independent caller-owned intent capture before any submission.
+            bind(self.db,build(request,config['principal'],self.chosen),request,self.hook)
         return request
 
     def _call(self, request):
@@ -92,6 +100,13 @@ class Caller:
             require(row['calls'] < row['max_calls'], 'NOT_AVAILABLE')
             self.db.execute('UPDATE caller_requests SET calls=calls+1 WHERE id=?', (self.config['request_id'],))
         self.hook('after_call_reservation')
+        if self.portable and request['interface_ref']['id']=='execution' and request['operation']=='submit':
+            from .nal_envelope import check
+            identity=canonical([self.config['principal'],request['scope_ref'],request['idempotency_key']]).decode()
+            old=self.db.execute('SELECT envelope FROM integrated_execution_envelopes WHERE identity=?',(identity,)).fetchone()
+            require(old is not None,'NOT_AVAILABLE')
+            value=check(json.loads(old[0]),request,self.config['principal'],self.chosen)
+            return self.transport.invoke_enveloped(request,value)
         return self.transport.invoke(request)
 
     def _retry(self, request, deadline):

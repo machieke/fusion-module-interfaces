@@ -24,6 +24,10 @@ def main():
         else: require(False, 'UNAUTHORIZED')
     from .memory_build import validate_runtime
     from .memory_embedding import load
+    from fusion.native_telemetry import configure,span
+    diagnostics=os.environ.get('FUSION_ENCODER_DIAGNOSTICS')
+    if diagnostics:
+        configure(dict(workdir=diagnostics,native_telemetry=dict(profile='bounded-native-stage-timing/1',max_bytes=4194304)))
     start = time.monotonic()
     path = Path(cfg['runtime'])
     require(digest(path.read_bytes()) == cfg['runtime_sha256'], 'UNSUPPORTED_PROFILE')
@@ -39,7 +43,9 @@ def main():
         require(len(line) <= c.MAX_WIRE_BYTES)
         value = c.intent(json.loads(line))
         require(time.time_ns()//1_000_000 <= value['deadline_ms'], 'DEADLINE_EXCEEDED')
-        result = c.encoded(value, encode(value['text']))
+        with span('provider.e5_encode',request_bytes=len(value['text'].encode())) as meter:
+            result = c.encoded(value, encode(value['text']))
+            meter['response_bytes']=len(canonical(result))
         print(canonical(result).decode(), flush=True)
 
 

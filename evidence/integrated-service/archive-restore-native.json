@@ -1,0 +1,157 @@
+{
+  "classification": "Actual deployed owner HTTPS, archived native payload, fresh fenced restore; no new native input or generation",
+  "report": {
+    "additional_live_generations": 0,
+    "additional_observation": {
+      "archive_effect_refused": true,
+      "early_archived_payload": "PASS",
+      "read": {
+        "bytes": 225,
+        "head": {
+          "profile": "immutable-commit-feed/2",
+          "scope_ref": "synthetic-integrated-archive01",
+          "sequence": 315,
+          "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080"
+        },
+        "payload_digest": "90e29352ffc042f14f601d32f9a7f3ccf179e4577affd2dd5673f1d67e64826a",
+        "ref": {
+          "digest": "90e29352ffc042f14f601d32f9a7f3ccf179e4577affd2dd5673f1d67e64826a",
+          "id": "ac7216fd-4ef0-599a-868c-33e77d46c966",
+          "revision": 1,
+          "scope_ref": "synthetic-integrated-archive01"
+        },
+        "restore_fenced": true
+      }
+    },
+    "backup_manifest_sha256": "47adefa3b479f6343fea6015720f9e5e7713d137cf3e6452fa55ef061ff7377e",
+    "clone": "omega-ref-integrated-archive-restore01",
+    "clone_quiesced": true,
+    "duplicate_effect_execution": "NO_EXECUTOR_STARTED",
+    "observations": [
+      {
+        "captured_projection_digest": "6ed625ef59aca5ed7c0b92fed9141e55ea61a27a50eb2b3c644b0ed9bff214f2",
+        "current_owner_reads": "PASS",
+        "current_source_sequence": 315,
+        "original_allocation_retained": true,
+        "original_deadlines_and_accounting_retained": true,
+        "original_session_digest": "b2dc86eede790cab295974e3c1f54856481c42f758a2b50f9f9c209dc56a88bb",
+        "retained_inputs": 16,
+        "role": "omega-agent",
+        "scope_class": "shared"
+      },
+      {
+        "captured_projection_digest": "521ae0c7610764d3195d41f47a405a208c15aa51a33c26eb0dea2935a5d61505",
+        "current_owner_reads": "PASS",
+        "current_source_sequence": 315,
+        "original_allocation_retained": true,
+        "original_deadlines_and_accounting_retained": true,
+        "original_session_digest": "2fbfadcab034e4845d90116ee69b83f0b1bc14e76d3986b5a0272a54f32e3150",
+        "retained_inputs": 1,
+        "role": "omega-agent-b",
+        "scope_class": "shared"
+      },
+      {
+        "captured_projection_digest": "4eb14fca8a21401886adf924806a18b4acf3e94585c9528a8043116ee0ac8881",
+        "current_owner_reads": "PASS",
+        "current_source_sequence": 315,
+        "original_allocation_retained": true,
+        "original_deadlines_and_accounting_retained": true,
+        "original_session_digest": "9f376a0ebe2dc7f6adf7bdd0fa97fc6aaf7fe9ffa33f14413c7c35e8c38370ac",
+        "retained_inputs": 1,
+        "role": "omega-agent-b",
+        "scope_class": "shared"
+      }
+    ],
+    "original": "omega-ref-integrated-archive01",
+    "original_quiesced": true,
+    "original_writers_quiesced": true,
+    "private_archive_publication": "FORBIDDEN",
+    "profile": "sustained-fenced-restore-qualification/1",
+    "restore": {
+      "automatic_resume": false,
+      "backup_sha256": "47adefa3b479f6343fea6015720f9e5e7713d137cf3e6452fa55ef061ff7377e",
+      "namespace": "omega-ref-integrated-archive-restore01",
+      "roles": [
+        {
+          "bytes": 65701,
+          "files": 4,
+          "role": "fusion-attention",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 73889,
+          "files": 5,
+          "role": "fusion-beliefs",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 20824,
+          "files": 5,
+          "role": "fusion-embedding",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 422051,
+          "files": 6,
+          "role": "fusion-episodes",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 98520,
+          "files": 10,
+          "role": "fusion-execution",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 37029,
+          "files": 6,
+          "role": "fusion-messaging",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 565405,
+          "files": 4,
+          "role": "fusion-model",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 28837,
+          "files": 4,
+          "role": "fusion-relations",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 1385100,
+          "files": 31,
+          "role": "fusion-search",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 9107774,
+          "files": 6001,
+          "role": "fusion-storage",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 2629012,
+          "files": 55,
+          "role": "omega-agent",
+          "status": "RESTORED_FENCED"
+        },
+        {
+          "bytes": 2401315,
+          "files": 82,
+          "role": "omega-agent-b",
+          "status": "RESTORED_FENCED"
+        }
+      ],
+      "status": "RESTORED_FENCED"
+    },
+    "restored_execution_authority": false,
+    "restored_runtime_source_manifest_sha256": "bce74be83d5e19123fcc3e5bba6153b555d6392bb201b6a73db3ad1cbbce5c83",
+    "status": "PASS"
+  },
+  "report_sha256": "25d36c0553cc13a1cab81d34fbd5ae70ed8fc896a5f1a28c6059ef7f39f9c89d",
+  "source": "restore-prequalification-source.json",
+  "tested_images": "artifacts/integrated-service/build-dev06/images.json"
+}

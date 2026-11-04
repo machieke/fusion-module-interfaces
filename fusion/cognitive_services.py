@@ -32,15 +32,27 @@ OPERATIONS={
 PROFILES={'atom.storage':l.FEED,'episodic.memory':n.EPISODE_PROFILE,'belief.revision':n.BELIEF_PROFILE,'attention':p.PROFILE,'relations':l.RELATIONS,'search':l.SEARCH}
 ROLES={'atom.storage':'fusion-storage','episodic.memory':'fusion-episodes','belief.revision':'fusion-beliefs','attention':'fusion-attention','relations':'fusion-relations','search':'fusion-exact-search'}
 
-def descriptors(attention='sqlite',feed_profile=l.FEED):
+def descriptors(attention='sqlite',feed_profile=l.FEED,*,archive=False):
  require(feed_profile in (l.FEED,l.SUSTAINED_FEED),'UNSUPPORTED_PROFILE')
  require(attention in ('sqlite','file-fixture'),'UNSUPPORTED_PROFILE')
- return [Descriptor('synthetic-'+name+('-'+attention if name=='attention' else ''),name,'1.0.0','1.0.0',frozenset({feed_profile if name=='atom.storage' else PROFILES[name],COMPOSITION}),frozenset((*ops,'capacity','observe') if name=='atom.storage' and feed_profile==l.SUSTAINED_FEED else ops),frozenset({'process-restart','scoped','idempotent','service-network'}),MAX_BYTES,privacy=PRIVACY,receipt_providers=frozenset({'detta-local-rs/1'}),features=frozenset({n.MODEL,n.RUNTIME}) if name=='belief.revision' else frozenset()) for name,ops in OPERATIONS.items()]
+ values=[Descriptor('synthetic-'+name+('-'+attention if name=='attention' else ''),name,'1.0.0','1.0.0',frozenset({feed_profile if name=='atom.storage' else PROFILES[name],COMPOSITION}),frozenset((*ops,'capacity','observe') if name=='atom.storage' and feed_profile==l.SUSTAINED_FEED else ops),frozenset({'process-restart','scoped','idempotent','service-network'}),MAX_BYTES,privacy=PRIVACY,receipt_providers=frozenset({'detta-local-rs/1'}),features=frozenset({n.MODEL,n.RUNTIME}) if name=='belief.revision' else frozenset()) for name,ops in OPERATIONS.items()]
+ require(type(archive) is bool,'UNSUPPORTED_PROFILE')
+ if archive:
+  from .sealed_archive import PROFILE
+  values.append(replace(values[0],version='1.1.0',implementation_version='1.1.0',profiles=values[0].profiles|{PROFILE},operations=values[0].operations|{'planArchive','publishArchive','observeArchive'}))
+ return values
 
-def catalogue(cfg):
- actual=[descriptor_read(x) for x in cfg['catalogue']];expected=descriptors(cfg.get('attention_provider','sqlite'),cfg.get('feed_profile',l.FEED))
+def catalogue(cfg,selection=None):
+ actual=[descriptor_read(x) for x in cfg['catalogue']];expected=descriptors(cfg.get('attention_provider','sqlite'),cfg.get('feed_profile',l.FEED),archive=cfg.get('archive') is not None)
  require({selection_token(x) for x in actual}=={selection_token(x) for x in expected},'UNSUPPORTED_PROFILE')
- return {x.interface:x for x in actual}
+ # Historical callers keep their exact 1.0 selection. The new capability is
+ # selected explicitly by its complete descriptor, not silently negotiated.
+ require(len(actual)==len(expected),'UNSUPPORTED_PROFILE')
+ result={x.interface:x for x in actual if x.version=='1.0.0'}
+ if selection is not None:
+  matches=[x for x in actual if selection_token(x)==selection];require(len(matches)==1,'UNSUPPORTED_PROFILE')
+  result[matches[0].interface]=matches[0]
+ return result
 
 def scoped_configuration(cfg,name,scope):
  """Closed storage scope selection; all other historical ports stay single-scope.
@@ -56,9 +68,9 @@ def scoped_configuration(cfg,name,scope):
  require(scope in scopes,'UNSUPPORTED_PROFILE')
 
 class Access:
- def __init__(self,path,credential,name):
+ def __init__(self,path,credential,name,selection=None):
   self.policy=Policy(path);self.credential=credential;self.name=name
-  cfg=self.policy.current();self.descriptor=catalogue(cfg)[name]
+  cfg=self.policy.current();self.descriptor=catalogue(cfg,selection)[name]
   self.identity=self.policy.authenticate(credential);self.principal=cfg['actors'][self.identity]
  def selection(self):return selection_token(self.descriptor)
  def authorize(self,scope,operation):
@@ -66,7 +78,7 @@ class Access:
   scoped_configuration(cfg,self.name,scope)
   require(self.policy.authenticate(self.credential)==self.identity and cfg['actors'][self.identity]==self.principal,'UNAUTHORIZED')
   require(operation in self.descriptor.operations or (self.name=='belief.revision' and operation=='assume'),'UNSUPPORTED_OPERATION')
-  require(selection_token(catalogue(cfg)[self.name])==self.selection(),'UNSUPPORTED_PROFILE')
+  require(selection_token(catalogue(cfg,self.selection())[self.name])==self.selection(),'UNSUPPORTED_PROFILE')
   self.policy.check(self.identity,scope,self.name+'.'+operation)
   self.policy.check(self.principal,scope,self.name+'.'+operation)
   if operation=='acknowledgeDelivery':
@@ -89,15 +101,22 @@ class Connection(Network):
  @traced('transport.cognition', request=1)
  def call(self,request):
   require(len(canonical(request))<=MAX_BYTES,'INVALID_ARGUMENT')
+  from . import https_pool
+  if https_pool.enabled():
+   status,raw=https_pool.exchange(self.endpoint,self.credential,ROUTE,canonical(request),digest(canonical([self.principal,request.get('scope'),request.get('selection'),request.get('composition')])),lambda:self.timeout,MAX_BYTES)
+   require(status==200,'NOT_AVAILABLE');value=json_loads(raw)
+  else:value=self.exchange(request)
+  if set(value)=={'error'}:error(value['error']);raise ContractError(value['error']['code'])
+  require(set(value)=={'id','request_digest','selection','principal','value'} and value['id']==request['id'] and value['request_digest']==digest(canonical(request)) and value['selection']==request['selection'] and value['principal']==self.principal,'NOT_AVAILABLE')
+  return value['value']
+ def exchange(self,request):
   conn=http.client.HTTPSConnection(self.endpoint['host'],self.endpoint['port'],timeout=self.timeout,context=self.context)
   try:
    conn.request('POST',ROUTE,canonical(request),{'Authorization':'Bearer '+self.credential,'Content-Type':'application/json'})
    response=conn.getresponse();require(response.status==200,'NOT_AVAILABLE');raw=response.read(MAX_BYTES+1);require(len(raw)<=MAX_BYTES,'NOT_AVAILABLE');value=json_loads(raw)
   except (OSError,ValueError,http.client.HTTPException):raise ContractError('NOT_AVAILABLE') from None
   finally:conn.close()
-  if set(value)=={'error'}:error(value['error']);raise ContractError(value['error']['code'])
-  require(set(value)=={'id','request_digest','selection','principal','value'} and value['id']==request['id'] and value['request_digest']==digest(canonical(request)) and value['selection']==request['selection'] and value['principal']==self.principal,'NOT_AVAILABLE')
-  return value['value']
+  return value
 
 class Remote:
  def __init__(self,cfg,name):self.cfg,self.name=cfg,name;self.descriptor=catalogue(cfg)[name];self.connection=Connection(**cfg['ports'][name],principal=cfg.get('principal','A'))
@@ -154,7 +173,7 @@ class Remote:
  def beginRebuild(self,*args):return self.call('beginRebuild',*args)
 
 # Exact signatures; no imported function names, expressions, file paths or SQL.
-ARITY={'create':3,'get':1,'getMany':1,'availability':1,'head':1,'capacity':1,'readCommits':4,'recordEpisode':2,'appendEvent':4,'readEpisode':3,'readEvidence':1,'pendingEvidence':2,'acknowledgeDelivery':2,'occurrenceIdentity':2,'readOccurrence':2,'registerPrior':5,'submitEvidence':1,'readBelief':3,'observeDecision':1,'drainEvidence':2,'readDecisions':1,'authorize':1,'bind':1,'observe':1,'adjust':1,'scores':1,'rank':1,'assertRelation':4,'getRelation':1,'outgoing':(2,3,4),'incoming':(2,3,4),'query':1,'catchUp':2,'beginRebuild':1}
+ARITY={'create':3,'get':1,'getMany':1,'availability':1,'head':1,'capacity':1,'readCommits':4,'planArchive':4,'publishArchive':4,'observeArchive':1,'recordEpisode':2,'appendEvent':4,'readEpisode':3,'readEvidence':1,'pendingEvidence':2,'acknowledgeDelivery':2,'occurrenceIdentity':2,'readOccurrence':2,'registerPrior':5,'submitEvidence':1,'readBelief':3,'observeDecision':1,'drainEvidence':2,'readDecisions':1,'authorize':1,'bind':1,'observe':1,'adjust':1,'scores':1,'rank':1,'assertRelation':4,'getRelation':1,'outgoing':(2,3,4),'incoming':(2,3,4),'query':1,'catchUp':2,'beginRebuild':1}
 MUTATION={'create','recordEpisode','appendEvent','acknowledgeDelivery','occurrenceIdentity','registerPrior','assertRelation','beginRebuild'}
 
 class Ports:
@@ -163,7 +182,7 @@ class Ports:
   require(path==ROUTE and type(q) is dict and set(q)=={'id','composition','scope','interface','selection','operation','args'},'UNSUPPORTED_OPERATION')
   l.identity(q['id']);require(q['composition']==COMPOSITION and len(canonical(q))<=MAX_BYTES,'UNSUPPORTED_PROFILE')
   name=q['interface'];require(name in ROLES and ROLES[name]==self.role,'UNSUPPORTED_OPERATION')
-  access=Access(self.path,credential,name);cfg=access.policy.current();require(q['selection']==access.selection(),'UNSUPPORTED_PROFILE')
+  access=Access(self.path,credential,name,q['selection']);cfg=access.policy.current();require(q['selection']==access.selection(),'UNSUPPORTED_PROFILE')
   scoped_configuration(cfg,name,q['scope'])
   if 'ports_by_principal' in cfg:
    require(access.principal in cfg['ports_by_principal'],'UNAUTHORIZED')
@@ -173,7 +192,7 @@ class Ports:
   else:
    access.authorize(q['scope'],op)
    args=list(args)
-   if op in MUTATION or (name=='atom.storage' and op=='observe'):args[0]=Mutation(**args[0]);require(args[0].scope_ref==q['scope'],'UNAUTHORIZED')
+   if op in MUTATION or (name=='atom.storage' and op in ('observe','publishArchive','observeArchive')):args[0]=Mutation(**args[0]);require(args[0].scope_ref==q['scope'],'UNAUTHORIZED')
    if op in ('submitEvidence','observeDecision'):args[0]=n.request(args[0])
    if name=='search' and op=='query':args[0]=l.AttributeQuery(**args[0])
    if op=='create':require(type(args[2]) is dict and set(args[2])=={'bytes'});args[2]=decode(args[2]['bytes'])
@@ -183,7 +202,7 @@ class Ports:
     if op in ('get','availability'):l.ref(args[0],q['scope'])
     if op=='getMany':
      for ref in args[0]:l.ref(ref,q['scope'])
-    if op in ('head','readCommits','capacity'):require(args[0]==q['scope'],'UNAUTHORIZED')
+    if op in ('head','readCommits','capacity','planArchive'):require(args[0]==q['scope'],'UNAUTHORIZED')
    owner=self.owner(cfg,access,name)
    if op in ('drainEvidence','readDecisions'):
     from .nal_relay import NalEvidenceRelay
@@ -203,8 +222,8 @@ class Ports:
    if 'storage_layout' in cfg:
     require(cfg['storage_layout']=='preview-shared-feed/1','UNSUPPORTED_PROFILE')
     from .adapters.detta_layout import storage
-    return AtomSession(FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),access,self.hook,capacity=cfg.get('feed_capacity')),access)
-   return AtomSession(FeedAtomOwner(root/'cognitive-atoms.sqlite',DettaStorage(cfg['detta_binary'],str(root/'cognitive-payloads')),access,self.hook,capacity=cfg.get('feed_capacity')),access)
+    return AtomSession(FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),access,self.hook,capacity=cfg.get('feed_capacity'),archive=cfg.get('archive')),access)
+   return AtomSession(FeedAtomOwner(root/'cognitive-atoms.sqlite',DettaStorage(cfg['detta_binary'],str(root/'cognitive-payloads')),access,self.hook,capacity=cfg.get('feed_capacity'),archive=cfg.get('archive')),access)
   atoms=Remote(cfg,'atom.storage') if name!='attention' else None
   if name=='episodic.memory':
    from .nal_episodes import NalEpisodeOwner

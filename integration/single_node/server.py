@@ -28,6 +28,24 @@ from fusion.neoclaw_transport import json_loads
 from .configure import configure, write
 
 
+def search_test_barrier(state,stage):
+    """Release only the declared repair test barrier, never an operation.
+
+    An operator may coordinate a native write while this derived build holds
+    its original reservation. No release renews a deadline or supplies data.
+    All other crash barriers stay blocked until process replacement.
+    """
+    require(stage=='after_search_repair_reservation','UNSUPPORTED_OPERATION')
+    release=Path(state)/'search-repair-test-release.json'
+    until=time.monotonic()+120
+    while time.monotonic()<until:
+        if release.exists():
+            require(not release.is_symlink() and release.stat().st_size<=256,'UNAUTHORIZED')
+            require(json.loads(release.read_bytes())=={'stage':stage},'CONFLICT');return
+        time.sleep(.1)
+    raise ContractError('DEADLINE_EXCEEDED')
+
+
 class StorageGate:
     """One bounded queue for all ports of the preview's single storage owner.
 
@@ -63,13 +81,8 @@ def main(*, config_resolver=configure, model_factory=None):
     settings=initial
     # This envelope selects the owner, not its current secrets/test knobs. It
     # refuses accidentally mounting a different service's or legacy journal PVC.
-    seal = dict(composition=settings['service_composition'],role=settings['role'],scope=settings.get('preview',{}).get('scope',settings.get('reference',{}).get('scope',settings.get('memory',{}).get('scope',c.SCOPE))))
-    if settings.get('preview',{}).get('enabled') and settings['role']=='fusion-storage':
-        # Physical-layout adoption is fresh-state-only. Older server images
-        # compute the historical three-field seal and refuse this PVC before
-        # configuring owners or starting workers. No journal is converted.
-        from fusion.adapters.detta_layout import LAYOUT
-        seal['backend_layout']=LAYOUT
+    from .owner_seal import selected as selected_seal
+    seal=selected_seal(settings)
     if (state/'owner-seal.json').exists():
         require(json.loads((state/'owner-seal.json').read_text())==seal,'UNSUPPORTED_PROFILE')
     else:
@@ -77,6 +90,9 @@ def main(*, config_resolver=configure, model_factory=None):
         write(state/'owner-seal.json',seal)
     settings, config, state, run = config_resolver(config_path)
     preview=settings.get('preview',{}).get('enabled',False)
+    pool_selection=settings.get('preview',{}).get('sustained',{}).get('transport_pool')
+    from fusion.https_pool import configure as configure_pool
+    configure_pool(pool_selection)
     if preview and settings['preview']['profile']=='omega-single-node-sustained-preview/1':
         from fusion.native_telemetry import configure as telemetry
         telemetry(dict(workdir=str(state/'diagnostics'),native_telemetry=dict(profile='bounded-native-stage-timing/1',max_bytes=4194304)))
@@ -101,6 +117,8 @@ def main(*, config_resolver=configure, model_factory=None):
             # keeps this exact independent commit boundary until kubelet kills
             # the pod; graceful shutdown must not release it and finish work.
             write(state/'pause.json',dict(stage=stage,pid=os.getpid()))
+            if stage=='after_search_repair_reservation':
+                search_test_barrier(state,stage);return
             threading.Event().wait()
     if scope_router is not None:scope_router.hook=hook
     def execution():
@@ -147,8 +165,8 @@ def main(*, config_resolver=configure, model_factory=None):
     elif cognitive and role in ('fusion-episodes','fusion-beliefs','fusion-attention','fusion-relations','fusion-exact-search'):
         owner=cognitive_owner
     elif preview and role=='fusion-model':
-        from fusion.preview_model_binding import inspect_configuration
-        inspect_configuration(run/'owner.json') # Configuration/source check only.
+        from fusion.preview_model_binding import inspect_partitions
+        inspect_partitions(run/'owner.json') # Read-only; no generation readiness probe.
     elif workflow and role=='fusion-model':
         from .recorded_model import deny_live,RecordedBackend
         from fusion.retrieval_services import ModelPorts
@@ -195,9 +213,15 @@ def main(*, config_resolver=configure, model_factory=None):
             write(state/'worker-status.json',dict(status='STOPPED',code=exc.code if isinstance(exc,ContractError) else 'NOT_AVAILABLE'))
             fatal.set()
     class Handler(BaseHTTPRequestHandler):
+        protocol_version='HTTP/1.1' if pool_selection else 'HTTP/1.0'
+        def setup(self):
+            super().setup();self.request_count=0
         def log_message(self,*args): pass
         def reply(self,value,status=200):
             data=canonical(value); self.send_response(status)
+            self.request_count+=1
+            if pool_selection and self.request_count>=pool_selection['requests']:self.close_connection=True
+            if self.close_connection:self.send_header('Connection','close')
             self.send_header('Content-Type','application/json'); self.send_header('Content-Length',str(len(data)))
             self.end_headers()
             try:self.wfile.write(data)
@@ -212,6 +236,10 @@ def main(*, config_resolver=configure, model_factory=None):
                 healthy=healthy and child is not None and child.poll() is None and any(line.split()[1].endswith(':1A0B') and line.split()[3]=='0A' for line in Path('/proc/net/tcp').read_text().splitlines()[1:])
             self.reply(dict(role=role,ready=healthy),200 if healthy else 503)
         def do_POST(self):
+            from fusion.native_telemetry import span
+            with span('provider.'+role) as meter:
+                return self.dispatch_POST(meter)
+        def dispatch_POST(self,meter):
             service=None;storage_entered=False
             try:
                 require(not stop.is_set(),'NOT_AVAILABLE')
@@ -221,6 +249,7 @@ def main(*, config_resolver=configure, model_factory=None):
                 sizes=self.headers.get_all('Content-Length',[])
                 require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(131072 if preview or cognitive or chain else 98304 if memory or workflow else 8192))
                 raw=self.rfile.read(int(sizes[0]));require(len(raw)==int(sizes[0]));request=json_loads(raw)
+                meter['request_bytes']=len(raw)
                 if preview and role=='fusion-storage':
                     storage_gate.enter();storage_entered=True
                 if scope_router is not None and scope_router.matches(request):
@@ -233,6 +262,30 @@ def main(*, config_resolver=configure, model_factory=None):
                     require(supervisor is not None,'UNSUPPORTED_OPERATION')
                     from fusion.preview_session_service import SessionPorts
                     result=SessionPorts(run/'owner.json',supervisor.wake,hook,supervisor.projections).invoke(auth[0][7:],request)
+                elif preview and self.path=='/preview/worker':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from fusion.resident_workers import Ports as ResidentPorts
+                    result=ResidentPorts(run/'owner.json',hook).invoke(auth[0][7:],request)
+                elif preview and self.path=='/preview/worker-control':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .integrated_worker_control import invoke as worker_control
+                    result=worker_control(run/'owner.json',auth[0][7:],request,supervisor.wake)
+                elif preview and self.path=='/preview/providers':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .integrated_registry import invoke as providers
+                    result=providers(run/'owner.json',auth[0][7:],request,hook)
+                elif preview and self.path=='/preview/continuation':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .integrated_continuation import invoke as continuation
+                    result=continuation(run/'owner.json',state,run,auth[0][7:],request)
+                elif preview and self.path=='/preview/chain-continuation':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .integrated_chain_continuation import invoke as chain_continuation
+                    result=chain_continuation(run/'owner.json',config_path,state,run,auth[0][7:],request,hook)
+                elif preview and self.path=='/preview/capabilities':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .integrated_permissions import invoke as capabilities
+                    result=capabilities(run/'owner.json',state,run,auth[0][7:],request)
                 elif preview and self.path=='/preview/tasks':
                     require(role=='fusion-messaging' and (run/'task-owner.json').exists(),'UNSUPPORTED_OPERATION')
                     from fusion.preview_tasks import Ports as TaskPorts
@@ -272,6 +325,10 @@ def main(*, config_resolver=configure, model_factory=None):
                 elif preview and self.path=='/preview/memory':
                     require(active_owner is not None,'UNSUPPORTED_OPERATION')
                     with encode_lock:result=active_owner.invoke(auth[0][7:],request)
+                elif preview and self.path=='/preview/search-maintenance':
+                    require(role=='fusion-search' and active_owner is not None,'UNSUPPORTED_OPERATION')
+                    from fusion.search_maintenance import Ports as MaintenancePorts
+                    with encode_lock:result=MaintenancePorts(run/'owner.json',hook).invoke(auth[0][7:],request)
                 elif chain:
                     require(owner is not None,'UNSUPPORTED_OPERATION');result=owner.invoke(self.path,auth[0][7:],request)
                 elif cognitive and self.path=='/reference-cognition':
@@ -290,8 +347,9 @@ def main(*, config_resolver=configure, model_factory=None):
                         require(selected is not None,'UNSUPPORTED_OPERATION')
                         result=selected.invoke(self.path,auth[0][7:],request)
                 elif role=='fusion-execution':
-                    require(self.path=='/s01','UNSUPPORTED_OPERATION')
-                    service=execution(); result=dict(ok=service.invoke(auth[0][7:],request),provider=request['selection'])
+                    require(self.path in ('/s01','/s01-envelope'),'UNSUPPORTED_OPERATION')
+                    service=execution()
+                    result=service.invoke_enveloped(auth[0][7:],request) if self.path=='/s01-envelope' else dict(ok=service.invoke(auth[0][7:],request),provider=request['selection'])
                 else:
                     require(owner is not None,'UNSUPPORTED_OPERATION')
                     result=owner.public(auth[0][7:],request) if self.path=='/s01' else owner.private(auth[0][7:],self.path,request)
@@ -305,12 +363,17 @@ def main(*, config_resolver=configure, model_factory=None):
                     except FileExistsError:pass
                     else:
                         self.connection.shutdown(socket.SHUT_RDWR);self.connection.close();return
-            except ContractError as exc:result=dict(error=exc.wire())
-            except (ValueError,KeyError,TypeError):result=dict(error=ContractError('INVALID_ARGUMENT').wire())
+            except ContractError as exc:
+                self.close_connection=True;result=dict(error=exc.wire())
+            except (ValueError,KeyError,TypeError):
+                self.close_connection=True;result=dict(error=ContractError('INVALID_ARGUMENT').wire())
             except (OSError,sqlite3.Error):result=dict(error=ContractError('NOT_AVAILABLE').wire())
             finally:
                 if service is not None:service.close()
                 if storage_entered:storage_gate.leave()
+            meter['response_bytes']=len(canonical(result))
+            if type(result) is dict and type(result.get('error')) is dict:
+                meter['code']=result['error'].get('code')
             self.reply(result)
     encode_lock=threading.Lock()
     storage_gate=StorageGate()
@@ -322,10 +385,21 @@ def main(*, config_resolver=configure, model_factory=None):
         context.load_cert_chain(config['tls_certificate'],config['tls_key'])
     class Server(ThreadingHTTPServer):
         allow_reuse_address=True
+        connection_slots=threading.BoundedSemaphore(64)
+        def process_request(self,request,address):
+            if not self.connection_slots.acquire(blocking=False):self.shutdown_request(request);return
+            try:super().process_request(request,address)
+            except BaseException:self.connection_slots.release();raise
+        def process_request_thread(self,request,address):
+            try:super().process_request_thread(request,address)
+            finally:self.connection_slots.release()
         def get_request(self):
             sock,address=super().get_request();sock.settimeout(2)
             if cognitive or chain or preview:sock.setsockopt(socket.IPPROTO_TCP,socket.TCP_NODELAY,1)
-            try:return (context.wrap_socket(sock,server_side=True) if context else sock),address
+            try:
+                from fusion.native_telemetry import span
+                with span('provider.tls_accept'):
+                    return (context.wrap_socket(sock,server_side=True) if context else sock),address
             except BaseException:sock.close();raise
     def terminate(*_):
         stop.set()
@@ -415,6 +489,8 @@ def main(*, config_resolver=configure, model_factory=None):
         log.close()
     write(state/'shutdown.json',dict(graceful=worker is None or not worker.is_alive(),role=role))
     if memory and role=='fusion-embedding':kernel.close()
+    from fusion.https_pool import close as close_pool
+    close_pool()
     lock.close()
 
 

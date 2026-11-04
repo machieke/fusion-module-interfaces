@@ -36,6 +36,10 @@ class Ports:
     def __init__(self,path,role,hook=lambda _:None):
         self.path,self.role,self.hook=Path(path),role,hook;self.policy=Policy(path)
         self.cfg=self.policy.current();require(self.cfg['profile']==PROFILE and self.cfg['scope'].startswith('synthetic-'),'UNSUPPORTED_PROFILE')
+        self.envelopes=self.cfg.get('envelopes')
+        if self.envelopes:
+            from .execution_envelope import PROFILE as envelope_profile
+            require(self.envelopes==envelope_profile,'UNSUPPORTED_PROFILE')
         require(role in ROLES.values(),'UNSUPPORTED_OPERATION');self.chosen=select(descriptors())
     def atoms(self,principal):
         require(principal in self.cfg['atom_clients'],'UNAUTHORIZED')
@@ -45,7 +49,11 @@ class Ports:
         db.execute('PRAGMA journal_mode=WAL');db.execute('PRAGMA synchronous=FULL')
         db.executescript(SCHEMA if self.role=='fusion-execution' else 'CREATE TABLE IF NOT EXISTS mutations(identity TEXT PRIMARY KEY,fingerprint TEXT NOT NULL,response TEXT NOT NULL);')
         messages=MessageOwner(self.cfg['messages_database'],self.policy,self.cfg['capacity']) if self.role=='fusion-messaging' else None
-        worker=ExecutionOwner(db,self.policy,self.atoms('worker'),Completion(self.cfg),self.cfg['capacity']) if self.role=='fusion-execution' else None
+        events=None
+        if self.envelopes and self.role=='fusion-execution':
+            from .execution_events import Events
+            events=Events(db)
+        worker=ExecutionOwner(db,self.policy,self.atoms('worker'),Completion(self.cfg),self.cfg['capacity'],events) if self.role=='fusion-execution' else None
         def mailbox(principal,mid):
             require(messages is not None,'UNSUPPORTED_OPERATION');return MessagingSession(messages,self.policy,principal,None,mid)
         def execution(principal,mid):
@@ -72,7 +80,18 @@ class Ports:
             require(self.policy.authenticate(credential)==principal,'UNAUTHORIZED')
             self.policy.check(principal,q['scope'],'agent.messaging.accept')
             return dict(id=q['id'],request_digest=digest(canonical(q)),value=value)
-        require(path==ROUTE and set(q)=={'profile','selection','request'},'UNSUPPORTED_OPERATION')
+        if path==ROUTE and set(q)=={'profile','selection','events'}:
+            require(self.envelopes and self.role=='fusion-execution','UNSUPPORTED_PROFILE')
+            require(q['selection']==selection_token(self.chosen['execution']),'UNSUPPORTED_PROFILE')
+            body=q['events'];require(type(body) is dict and set(body)=={'job_id','source','after','limit'})
+            scope=self.cfg['scope'];self.policy.check(principal,scope,'execution.status')
+            require(principal not in self.cfg.get('actors',{}),'UNAUTHORIZED')
+            service=self.service()
+            try:value=service.worker.events.read(principal,scope,body['job_id'],body['source'],body['after'],body['limit'])
+            finally:service.close()
+            require(self.policy.authenticate(credential)==principal,'UNAUTHORIZED');self.policy.check(principal,scope,'execution.status')
+            return dict(value=value,provider=q['selection'],request_digest=digest(canonical(q)))
+        require(path==ROUTE and set(q) in ({'profile','selection','request'},{'profile','selection','request','envelope'}),'UNSUPPORTED_OPERATION')
         request=q['request'];name,op=validate(request,check_deadline=False)
         require(name in ROLES and ROLES[name]==self.role and request['scope_ref']==self.cfg['scope'],'UNAUTHORIZED')
         require(q['selection']==selection_token(self.chosen[name]),'UNSUPPORTED_PROFILE')
@@ -80,8 +99,19 @@ class Ports:
         # This mailbox transports only inspect completions. Agent task payloads
         # use their existing separately typed route, never this generic send.
         require(name!='agent.messaging' or op in ('poll','ack'),'UNSUPPORTED_OPERATION')
+        envelope=None
+        if name=='execution' and op=='submit' and self.envelopes:
+            from .execution_envelope import check
+            self.policy.check(principal,request['scope_ref'],'execution.submit')
+            self.policy.route(request['scope_ref'],request['reply_route'],principal)
+            envelope=check(q.get('envelope'),request,principal,self.chosen[name])
+        else:require('envelope' not in q,'UNSUPPORTED_PROFILE')
         service=self.service()
-        try:value=service.invoke(credential,request)
+        try:
+            if envelope is not None:
+                from .execution_envelope import bind
+                bind(service.db,envelope,request,self.hook)
+            value=service.invoke(credential,request)
         finally:service.close()
         require(self.policy.authenticate(credential)==principal,'UNAUTHORIZED')
         self.policy.check(principal,request['scope_ref'],name+'.'+op)
@@ -98,11 +128,26 @@ class Client:
         frozen={k:v for k,v in cfg.items() if k!='ports'}
         frozen['ports']={k:dict(endpoint=v['endpoint'],ca_sha256=digest(Path(v['endpoint']['ca_file']).read_bytes())) for k,v in cfg['ports'].items()}
         return cfg,frozen
-    def invoke(self,request):
+    def invoke(self,request,*,envelope=None):
         cfg,frozen=self.current();require(frozen==self.frozen,'CONFLICT')
         name,op=validate(request,check_deadline=False)
         require(name in ROLES and request['scope_ref']==cfg['scope'],'UNAUTHORIZED')
         chosen=self.selected[name];q=dict(profile=PROFILE,selection=selection_token(chosen),request=request)
+        if cfg.get('envelopes') and name=='execution' and op=='submit':
+            from .execution_envelope import check
+            q['envelope']=check(envelope,request,cfg['principal'],chosen)
+        else:require(envelope is None,'UNSUPPORTED_PROFILE')
         reply=invoke(cfg['ports'][name],ROUTE,q)
         require(type(reply) is dict and reply.get('request_digest')==digest(canonical(q)),'NOT_AVAILABLE')
         return validate_reply(request,{k:v for k,v in reply.items() if k!='request_digest'},chosen,self.correlations)
+
+    def events(self,job,source=None,after=0,limit=3):
+        from .execution_envelope import PROFILE as envelope_profile
+        from .execution_events import validate as validate_events
+        cfg,frozen=self.current();require(frozen==self.frozen,'CONFLICT')
+        require(cfg.get('envelopes')==envelope_profile,'UNSUPPORTED_PROFILE')
+        q=dict(profile=PROFILE,selection=selection_token(self.selected['execution']),events=dict(job_id=job,source=source,after=after,limit=limit))
+        reply=invoke(cfg['ports']['execution'],ROUTE,q)
+        require(type(reply) is dict and set(reply)=={'value','provider','request_digest'} and
+                reply['provider']==q['selection'] and reply['request_digest']==digest(canonical(q)),'NOT_AVAILABLE')
+        return validate_events(reply['value'],cfg['scope'],job,source,after,limit)

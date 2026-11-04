@@ -23,7 +23,7 @@ def clone_values(source):
     return value
 
 
-def drill(original,clone,values,chart,directory):
+def drill(original,clone,values,chart,directory,*,maintenance_image=None,images=None,after_restore=None):
     import yaml,subprocess,sys
     root=Path(directory);root.mkdir(mode=0o700,parents=True,exist_ok=False)
     original.owned();require(clone.namespace!=original.namespace,'UNAUTHORIZED')
@@ -42,8 +42,17 @@ def drill(original,clone,values,chart,directory):
             original_rows[role][row['session']]=observed
     save();created=False
     try:
-        backup=original.backup(root/'private-backup');report['backup_manifest_sha256']=digest(canonical(backup));save()
-        selected=clone_values(yaml.safe_load(Path(values).read_text()));path=root/'clone-values.yaml';path.write_text(yaml.safe_dump(selected,sort_keys=False))
+        backup=original.backup(root/'private-backup',**({'maintenance_image':maintenance_image} if maintenance_image else {}));report['backup_manifest_sha256']=digest(canonical(backup));save()
+        selected=clone_values(yaml.safe_load(Path(values).read_text()))
+        if images is not None:
+            require(images.get('source_export_verification')=='PASS','CONFLICT')
+            pinned={x['repository']:x for x in images['images']}
+            for entry in [selected['image'],*[c['image'] for c in selected['components'].values() if 'image' in c]]:
+                require(entry['repository'] in pinned,'NOT_AVAILABLE');pin=pinned[entry['repository']]
+                require(pin['kind']!='generative','UNAUTHORIZED')
+                entry.update(digest=pin['manifest_digest'],tag=pin['local_tag'].rsplit(':',1)[1],pullPolicy='Never')
+            report['restored_runtime_source_manifest_sha256']=images['source_manifest_sha256']
+        path=root/'clone-values.yaml';path.write_text(yaml.safe_dump(selected,sort_keys=False))
         clone.create();created=True;report['restore']=clone.restore(root/'private-backup');save()
         # The installed package supplies the same audited secret recipe.
         from fusion_operator.recipes import create_secrets
@@ -72,6 +81,7 @@ def drill(original,clone,values,chart,directory):
                 try:call(clone,role,operation,None,*args)
                 except RuntimeError:pass
                 else:require(False,'CONFLICT')
+        if after_restore is not None:report['additional_observation']=after_restore(clone)
         report.update(status='PASS',original_writers_quiesced=True,restored_execution_authority=False,duplicate_effect_execution='NO_EXECUTOR_STARTED');save()
     except BaseException as error:
         report.update(status='FAILED',failure=dict(type=type(error).__name__,code=getattr(error,'code',None),detail=str(error)[-1200:]));save();raise

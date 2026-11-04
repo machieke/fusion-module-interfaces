@@ -52,7 +52,8 @@ d=distribution('fusion-preview-operator')
 manifest=json.loads(d.read_text('source-manifest.json'))
 for target,row in manifest['sources'].items():
  assert hashlib.sha256(Path(d.locate_file(target)).read_bytes()).hexdigest()==row['sha256']
-assert {e.name for e in d.entry_points}=={'fusion-preview-workbench','fusion-verify-artifacts','fusion-create-secrets','fusion-import-images','fusion-preview-values'}
+assert {e.name for e in d.entry_points}=={'fusion-preview-workbench','fusion-verify-artifacts','fusion-create-secrets','fusion-import-images','fusion-preview-values',
+ 'fusion-sustained','fusion-sustained-controls','fusion-sustained-restore','fusion-sustained-values'}
 assert 'artifact-verification' in d.metadata.get_all('Provides-Extra')
 assert 'PyYAML==6.0.3; extra == "artifact-verification"' in d.requires
 print(json.dumps(dict(operator='IMPORTED',sources='EXACT',runtime_imports='ABSENT')))

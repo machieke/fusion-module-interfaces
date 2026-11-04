@@ -45,6 +45,15 @@ class Ingress:
             store=SustainedSessionStore(cfg['native_sessions']['database'],authorize,cfg['native_sessions']['allocation'])
         else:store=SessionStore(cfg['native_sessions']['database'],authorize)
         try:
+            admission=None
+            if sustained and 'provider_registry' in cfg['native_sessions']:
+                from fusion.provider_lifecycle import Registry
+                def provider_authority(selected,operation):
+                    require(selected==scope and operation=='providers.select','UNAUTHORIZED')
+                    authorize(principal,scope,'input.accept')
+                    policy.check('worker',scope,operation)
+                registry=Registry(store,cfg['native_sessions']['provider_registry'],provider_authority,self.hook)
+                admission=registry.admit
             reserve();require(port.call('authorize')=={'authorized':True},'UNAUTHORIZED')
             pending=db.execute('SELECT delivery FROM task_ingress WHERE ack=0 ORDER BY rowid LIMIT 1').fetchone()
             if pending is not None:delivery=json.loads(pending[0])
@@ -85,7 +94,7 @@ class Ingress:
                     with db:db.execute("UPDATE task_ingress SET origin=?,status=? WHERE id=?",(canonical(origin).decode(),status,key))
                 else:
                     if sustained:
-                        if body['kind']=='task':require(store.allocate(principal,allocation,p['template'])['session']==sid,'CONFLICT')
+                        if body['kind']=='task':require(store.allocate(principal,allocation,p['template'],admission=admission)['session']==sid,'CONFLICT')
                         require(store.allocated(principal,sid)['frozen']['scope']==scope,'UNAUTHORIZED')
                     else:store.create(principal,sid,scope,cfg['native_sessions']['session_templates'][sid])
                     # Origin capture precedes publish into the native inbox.

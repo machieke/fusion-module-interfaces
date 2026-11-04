@@ -1,0 +1,460 @@
+{
+  "status": "PASS_RESUMED_MAINTENANCE",
+  "namespace": "omega-ref-integrated-archive01",
+  "source_manifest_sha256": "909e519d31a3bedd0f3ef7363b588df395fc29053a5e063354012b7274368281",
+  "images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:b2e034cc77835625625605b206f286d395b18412782a89f8477af5666213ae62",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:b4cf568ee326cafc737542b6af5bccd8cee650068b46e2f57e51614c49c94bbb",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:53e2ae166201aa541f88a63a8848a0dd3ef9d7f29fc50ce6aae6305964d47552",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:b4cf568ee326cafc737542b6af5bccd8cee650068b46e2f57e51614c49c94bbb",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:b4cf568ee326cafc737542b6af5bccd8cee650068b46e2f57e51614c49c94bbb"
+  },
+  "original_run": {
+    "status": "FAIL",
+    "raw_report_sha256": "80bb52cc4aee3ddea2be0ef81d035301a1c8b02210682a7e6cb3b791669e6ee5",
+    "native_report_sha256": "65b03f22e0d9ed96c2fb0969966d32a02b0df345e2be73135d6346cc19f57faa",
+    "operator_inputs": 14,
+    "internal_native_inputs": 2,
+    "failure": "Archive maintenance first storage head read timed out; storage self-service DNS path absent from NetworkPolicy; no archive publication had been attempted"
+  },
+  "resumed": {
+    "raw_report_sha256": "34c9a08182b8c48795184f130796f2b4845c276e7b8ea2d5cc5b8973bafc0a53",
+    "new_operator_inputs": 2,
+    "new_native_inputs": 2,
+    "original_inputs_replayed": 0,
+    "original_deadlines_renewed": false,
+    "result": {
+      "plan": {
+        "admission_reserved": false,
+        "after": 8,
+        "hot_deletion": false,
+        "maximum_charge_bytes": 528384,
+        "profile": "owner-sealed-payload-archive/1",
+        "records": [
+          {
+            "ref": {
+              "digest": "3205952a437318a2d1e5758b46e1123089a50d469ce5cbcac0629d95699e5a1e",
+              "id": "989676f9-4429-5642-bc58-a768be29df4f",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 9,
+            "size": 1052
+          },
+          {
+            "ref": {
+              "digest": "bc8aac2c31e45a6ff5f43d4f177004a4eb900e5139bbee3a8ee5dd6958c4f555",
+              "id": "fa82f087-499c-5d5b-85f8-613e66843087",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 10,
+            "size": 252
+          },
+          {
+            "ref": {
+              "digest": "11079ec84e7e1c8bd273e44ed86dea5536d45b28d6ce5787748966a59b9913ee",
+              "id": "9f5ff52d-20a0-5fa7-af3e-d57b1e1d2aaa",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 11,
+            "size": 604
+          },
+          {
+            "ref": {
+              "digest": "5a1cfe3b1ab6361121cf397b92fd2544c224199b1c4360961f60185fdba1780c",
+              "id": "bfaf8d40-79ec-52a2-ab6e-635028ab2c84",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 12,
+            "size": 455
+          },
+          {
+            "ref": {
+              "digest": "8003b05e599889ecb4d2e60521929f465bbc4113aa6f23a17368c17da6135138",
+              "id": "2a5462b0-bf8a-5b0a-9feb-ae3b0131fa4d",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 13,
+            "size": 254
+          },
+          {
+            "ref": {
+              "digest": "61de1a54374a4aea58a7118faddc745c183e3482c69d2067a40b4d33cd862279",
+              "id": "d1da6912-c359-55dc-a089-d06806546253",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 14,
+            "size": 605
+          },
+          {
+            "ref": {
+              "digest": "93e7b7ac7a039232cd03f83b12b0fb5ab0ab7e6392e65465c78de46c6ceea264",
+              "id": "7c58ac19-07a8-55f6-b375-01e88c6f173c",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 15,
+            "size": 177
+          },
+          {
+            "ref": {
+              "digest": "90e29352ffc042f14f601d32f9a7f3ccf179e4577affd2dd5673f1d67e64826a",
+              "id": "ac7216fd-4ef0-599a-868c-33e77d46c966",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 16,
+            "size": 225
+          },
+          {
+            "ref": {
+              "digest": "95ff1318c41658ea10b287cd00883e4592f506591c979abf53bc0881e0855aee",
+              "id": "ca8b96b3-d8aa-5249-bf14-b0472fbea46f",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 17,
+            "size": 4096
+          },
+          {
+            "ref": {
+              "digest": "ebbc3aafe872b3b091bcbe4fd21bb57687d1c3627bf00667547e700b48a49da8",
+              "id": "c7cd3bb3-314b-5911-a695-f69ba2072724",
+              "revision": 1,
+              "scope_ref": "synthetic-integrated-archive01"
+            },
+            "sequence": 18,
+            "size": 621
+          }
+        ],
+        "scope_ref": "synthetic-integrated-archive01",
+        "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080",
+        "source_head_unchanged": true,
+        "through": {
+          "profile": "immutable-commit-feed/2",
+          "scope_ref": "synthetic-integrated-archive01",
+          "sequence": 18,
+          "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080"
+        }
+      },
+      "sealed": {
+        "charged_bytes": 528384,
+        "effect_budget_refund": false,
+        "hot_deletion": false,
+        "id": "23bc50d6-b421-5b2b-adc9-e3722565b2a8",
+        "intent": {
+          "after": 8,
+          "limit": 16,
+          "profile": "owner-sealed-payload-archive/1",
+          "records": [
+            {
+              "ref": {
+                "digest": "3205952a437318a2d1e5758b46e1123089a50d469ce5cbcac0629d95699e5a1e",
+                "id": "989676f9-4429-5642-bc58-a768be29df4f",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 9,
+              "size": 1052
+            },
+            {
+              "ref": {
+                "digest": "bc8aac2c31e45a6ff5f43d4f177004a4eb900e5139bbee3a8ee5dd6958c4f555",
+                "id": "fa82f087-499c-5d5b-85f8-613e66843087",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 10,
+              "size": 252
+            },
+            {
+              "ref": {
+                "digest": "11079ec84e7e1c8bd273e44ed86dea5536d45b28d6ce5787748966a59b9913ee",
+                "id": "9f5ff52d-20a0-5fa7-af3e-d57b1e1d2aaa",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 11,
+              "size": 604
+            },
+            {
+              "ref": {
+                "digest": "5a1cfe3b1ab6361121cf397b92fd2544c224199b1c4360961f60185fdba1780c",
+                "id": "bfaf8d40-79ec-52a2-ab6e-635028ab2c84",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 12,
+              "size": 455
+            },
+            {
+              "ref": {
+                "digest": "8003b05e599889ecb4d2e60521929f465bbc4113aa6f23a17368c17da6135138",
+                "id": "2a5462b0-bf8a-5b0a-9feb-ae3b0131fa4d",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 13,
+              "size": 254
+            },
+            {
+              "ref": {
+                "digest": "61de1a54374a4aea58a7118faddc745c183e3482c69d2067a40b4d33cd862279",
+                "id": "d1da6912-c359-55dc-a089-d06806546253",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 14,
+              "size": 605
+            },
+            {
+              "ref": {
+                "digest": "93e7b7ac7a039232cd03f83b12b0fb5ab0ab7e6392e65465c78de46c6ceea264",
+                "id": "7c58ac19-07a8-55f6-b375-01e88c6f173c",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 15,
+              "size": 177
+            },
+            {
+              "ref": {
+                "digest": "90e29352ffc042f14f601d32f9a7f3ccf179e4577affd2dd5673f1d67e64826a",
+                "id": "ac7216fd-4ef0-599a-868c-33e77d46c966",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 16,
+              "size": 225
+            },
+            {
+              "ref": {
+                "digest": "95ff1318c41658ea10b287cd00883e4592f506591c979abf53bc0881e0855aee",
+                "id": "ca8b96b3-d8aa-5249-bf14-b0472fbea46f",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 17,
+              "size": 4096
+            },
+            {
+              "ref": {
+                "digest": "ebbc3aafe872b3b091bcbe4fd21bb57687d1c3627bf00667547e700b48a49da8",
+                "id": "c7cd3bb3-314b-5911-a695-f69ba2072724",
+                "revision": 1,
+                "scope_ref": "synthetic-integrated-archive01"
+              },
+              "sequence": 18,
+              "size": 621
+            }
+          ],
+          "scope_ref": "synthetic-integrated-archive01",
+          "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080",
+          "through": {
+            "profile": "immutable-commit-feed/2",
+            "scope_ref": "synthetic-integrated-archive01",
+            "sequence": 18,
+            "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080"
+          }
+        },
+        "intent_sha256": "1333d4bda333889ea7e74ca35d7b5e2e7be07af6a6405fefc254f388cafcf9f7",
+        "manifest_sha256": "bb516e020751c8a1f569a5a1d88ffa019ede56891b65dcd89a294c749f4a8355",
+        "profile": "owner-sealed-payload-archive/1",
+        "scope_ref": "synthetic-integrated-archive01",
+        "sealed_bytes": 19128,
+        "source_head_unchanged": true,
+        "state": "sealed"
+      },
+      "observation": {
+        "archive": {
+          "charged_bytes": 528384,
+          "effect_budget_refund": false,
+          "hot_deletion": false,
+          "id": "23bc50d6-b421-5b2b-adc9-e3722565b2a8",
+          "intent": {
+            "after": 8,
+            "limit": 16,
+            "profile": "owner-sealed-payload-archive/1",
+            "records": [
+              {
+                "ref": {
+                  "digest": "3205952a437318a2d1e5758b46e1123089a50d469ce5cbcac0629d95699e5a1e",
+                  "id": "989676f9-4429-5642-bc58-a768be29df4f",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 9,
+                "size": 1052
+              },
+              {
+                "ref": {
+                  "digest": "bc8aac2c31e45a6ff5f43d4f177004a4eb900e5139bbee3a8ee5dd6958c4f555",
+                  "id": "fa82f087-499c-5d5b-85f8-613e66843087",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 10,
+                "size": 252
+              },
+              {
+                "ref": {
+                  "digest": "11079ec84e7e1c8bd273e44ed86dea5536d45b28d6ce5787748966a59b9913ee",
+                  "id": "9f5ff52d-20a0-5fa7-af3e-d57b1e1d2aaa",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 11,
+                "size": 604
+              },
+              {
+                "ref": {
+                  "digest": "5a1cfe3b1ab6361121cf397b92fd2544c224199b1c4360961f60185fdba1780c",
+                  "id": "bfaf8d40-79ec-52a2-ab6e-635028ab2c84",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 12,
+                "size": 455
+              },
+              {
+                "ref": {
+                  "digest": "8003b05e599889ecb4d2e60521929f465bbc4113aa6f23a17368c17da6135138",
+                  "id": "2a5462b0-bf8a-5b0a-9feb-ae3b0131fa4d",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 13,
+                "size": 254
+              },
+              {
+                "ref": {
+                  "digest": "61de1a54374a4aea58a7118faddc745c183e3482c69d2067a40b4d33cd862279",
+                  "id": "d1da6912-c359-55dc-a089-d06806546253",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 14,
+                "size": 605
+              },
+              {
+                "ref": {
+                  "digest": "93e7b7ac7a039232cd03f83b12b0fb5ab0ab7e6392e65465c78de46c6ceea264",
+                  "id": "7c58ac19-07a8-55f6-b375-01e88c6f173c",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 15,
+                "size": 177
+              },
+              {
+                "ref": {
+                  "digest": "90e29352ffc042f14f601d32f9a7f3ccf179e4577affd2dd5673f1d67e64826a",
+                  "id": "ac7216fd-4ef0-599a-868c-33e77d46c966",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 16,
+                "size": 225
+              },
+              {
+                "ref": {
+                  "digest": "95ff1318c41658ea10b287cd00883e4592f506591c979abf53bc0881e0855aee",
+                  "id": "ca8b96b3-d8aa-5249-bf14-b0472fbea46f",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 17,
+                "size": 4096
+              },
+              {
+                "ref": {
+                  "digest": "ebbc3aafe872b3b091bcbe4fd21bb57687d1c3627bf00667547e700b48a49da8",
+                  "id": "c7cd3bb3-314b-5911-a695-f69ba2072724",
+                  "revision": 1,
+                  "scope_ref": "synthetic-integrated-archive01"
+                },
+                "sequence": 18,
+                "size": 621
+              }
+            ],
+            "scope_ref": "synthetic-integrated-archive01",
+            "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080",
+            "through": {
+              "profile": "immutable-commit-feed/2",
+              "scope_ref": "synthetic-integrated-archive01",
+              "sequence": 18,
+              "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080"
+            }
+          },
+          "intent_sha256": "1333d4bda333889ea7e74ca35d7b5e2e7be07af6a6405fefc254f388cafcf9f7",
+          "manifest_sha256": "bb516e020751c8a1f569a5a1d88ffa019ede56891b65dcd89a294c749f4a8355",
+          "profile": "owner-sealed-payload-archive/1",
+          "scope_ref": "synthetic-integrated-archive01",
+          "sealed_bytes": 19128,
+          "source_head_unchanged": true,
+          "state": "sealed"
+        },
+        "capacity": {
+          "charged_bytes": 528384,
+          "limits": {
+            "bytes": 16777216,
+            "profile": "owner-sealed-payload-archive/1",
+            "records": 16,
+            "segments": 64
+          },
+          "refunds": false,
+          "reserved_segments": 1,
+          "sealed_segments": 1
+        },
+        "found": true,
+        "profile": "owner-sealed-payload-archive/1",
+        "scope_ref": "synthetic-integrated-archive01"
+      },
+      "source_head_unchanged": true,
+      "source_pages": 2,
+      "hydrated_payload": {
+        "digest": "90e29352ffc042f14f601d32f9a7f3ccf179e4577affd2dd5673f1d67e64826a",
+        "id": "ac7216fd-4ef0-599a-868c-33e77d46c966",
+        "revision": 1,
+        "scope_ref": "synthetic-integrated-archive01"
+      },
+      "hydrated_bytes": 225,
+      "hot_deletion": false,
+      "native_query_after_archive": "PASS",
+      "native_history_after_archive": "PASS",
+      "retained_first_result_exact": true,
+      "extra_native_inputs": 2,
+      "config_edits": 0,
+      "query_given_answer_refs": false
+    },
+    "namespace_reset": false,
+    "configuration_change": "Opt-in same-storage authenticated HTTPS NetworkPolicy edge only",
+    "installed_manifest_sha256": "efe0e3f539c3083f210c10fb10c9ef0f42d02e1ea0a99f81bb548f722d8d33c0"
+  },
+  "comparator": {
+    "n": 14,
+    "median_seconds": 19.139499999999998,
+    "p95_seconds": 23.287,
+    "quantile": "nearest rank",
+    "model": "RECORDED_PROPOSALS",
+    "inputs_unchanged": true
+  },
+  "current_evidence_class": "DEVELOPMENT_REAL_NATIVE_DETTA_CHROMA_E5_HTTPS",
+  "sealed_copy_only": true,
+  "hot_deletion": false,
+  "archive_restore": "NOT_RUN_DEPLOYED",
+  "quiesced": true,
+  "additional_live_generations": 0
+}

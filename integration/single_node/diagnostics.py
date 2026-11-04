@@ -41,7 +41,7 @@ SESSION_TABLES=FILES['caller.sqlite']+('app_turns','app_read_views','app_model_c
  'preview_dispatch_budget','preview_context_acceptance','preview_context_captures',
  'preview_context_views','preview_context_receipts')
 
-def inspect(root=Path('/state')):
+def inspect(root=Path('/state'),run=Path('/run/fusion')):
  out=dict(owner='UNKNOWN',tables={},status={},limits=dict(max_database_files=len(FILES),max_tables=sum(map(len,FILES.values()))),live_generation_activity='NOT_INFERRED_FROM_DIAGNOSTICS')
  seal=root/'owner-seal.json'
  if seal.is_file():
@@ -93,6 +93,8 @@ def inspect(root=Path('/state')):
  final=root/'final-observation.json'
  if final.is_file():
   value=json.loads(final.read_text());value=value.get('detail',{}).get('chain',value);out['chain']={k:value[k] for k in ('submission','inclusion','execution','effect','effect_finality') if k in value and isinstance(value[k],(str,bool,int,type(None)))}
+ from .integrated_capacity import collect
+ out['headroom']=collect(root,run)
  out['restore_fenced']=(root/'restore-fence.json').is_file()
  out['process_rss_bytes']=int(Path('/proc/self/statm').read_text().split()[1])*os.sysconf('SC_PAGE_SIZE')
  return out

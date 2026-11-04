@@ -110,12 +110,30 @@ class AtomFeedClient:
 
     @traced('transport.atoms')
     def _invoke(self, operation, args):
-        require(operation in OPERATIONS|{'capacity','observe'} and operation in self.descriptor.operations, 'UNSUPPORTED_OPERATION')
+        from .archive_contracts import OPERATIONS as archive_operations
+        require(operation in OPERATIONS|{'capacity','observe'}|archive_operations and operation in self.descriptor.operations, 'UNSUPPORTED_OPERATION')
         request = dict(id=str(uuid.uuid4()), composition=self.composition,
                        scope=self.scope, interface='atom.storage',
                        selection=selection_token(self.descriptor), operation=operation, args=args)
         body = canonical(request)
         require(len(body) <= MAX_WIRE_BYTES)
+        from . import https_pool
+        if https_pool.enabled():
+            status,raw=https_pool.exchange(asdict(self.endpoint),self.credential,self.endpoint.path,body,
+                digest(canonical([self.principal,self.scope,request['selection'],self.composition])),self._remaining,MAX_WIRE_BYTES)
+            require(status in (200,400,401,403,503),'NOT_AVAILABLE')
+            value=strict_json(raw)
+        else:value=self._exchange(body)
+        if type(value) is dict and set(value) == {'error'}:
+            error(value['error'])
+            raise ContractError(value['error']['code'])
+        require(type(value) is dict and set(value) == {'id', 'request_digest', 'selection', 'principal', 'value'}, 'NOT_AVAILABLE')
+        require(value['id'] == request['id'] and value['request_digest'] == digest(body) and
+                value['selection'] == request['selection'] and value['principal'] == self.principal, 'NOT_AVAILABLE')
+        self._remaining()
+        return value['value']
+
+    def _exchange(self,body):
         conn = http.client.HTTPSConnection(self.endpoint.host, self.endpoint.port,
                     timeout=self._remaining(), context=self.context)
         try:
@@ -141,14 +159,7 @@ class AtomFeedClient:
             raise ContractError('NOT_AVAILABLE') from None
         finally:
             conn.close()
-        if type(value) is dict and set(value) == {'error'}:
-            error(value['error'])
-            raise ContractError(value['error']['code'])
-        require(type(value) is dict and set(value) == {'id', 'request_digest', 'selection', 'principal', 'value'}, 'NOT_AVAILABLE')
-        require(value['id'] == request['id'] and value['request_digest'] == digest(body) and
-                value['selection'] == request['selection'] and value['principal'] == self.principal, 'NOT_AVAILABLE')
-        self._remaining()
-        return value['value']
+        return value
 
     def create(self, command: Mutation, content_type: str, data: bytes):
         require(type(command) is Mutation)
@@ -209,6 +220,29 @@ class AtomFeedClient:
         require(self.feed_profile==c.SUSTAINED_FEED,'UNSUPPORTED_PROFILE')
         from .sustained_feed_contracts import capacity_result
         return capacity_result(self._invoke('capacity',[scope]),scope)
+
+    def _archive(self):
+        from .archive_contracts import PROFILE,OPERATIONS
+        require(PROFILE in self.descriptor.profiles and OPERATIONS<=self.descriptor.operations and self.descriptor.version=='1.1.0','UNSUPPORTED_PROFILE')
+
+    def planArchive(self,scope,after,through,limit):
+        from .archive_contracts import plan
+        self._archive();require(scope==self.scope,'UNAUTHORIZED');c.head(through,scope,self.feed_profile)
+        c.integer(after,0,through['sequence']);c.integer(limit,1,16)
+        return plan(self._invoke('planArchive',[scope,after,through,limit]),scope,after,through,limit)
+
+    def publishArchive(self,command,after,through,limit):
+        from .archive_contracts import status
+        self._archive();require(type(command) is Mutation and command.scope_ref==self.scope,'UNAUTHORIZED');c.mutation(command)
+        c.head(through,self.scope,self.feed_profile);c.integer(after,0,through['sequence']);c.integer(limit,1,16)
+        result=status(self._invoke('publishArchive',[asdict(command),after,through,limit]),command,self.principal,self.feed_profile)
+        require(result['intent']['through']==through and result['intent']['after']==after and result['intent']['limit']==limit,'NOT_AVAILABLE')
+        return result
+
+    def observeArchive(self,command):
+        from .archive_contracts import observation
+        self._archive();require(type(command) is Mutation and command.scope_ref==self.scope,'UNAUTHORIZED');c.mutation(command)
+        return observation(self._invoke('observeArchive',[asdict(command)]),command,self.principal,self.feed_profile)
 
     def readCommits(self, scope, after, through, limit):
         require(scope == self.scope, 'UNAUTHORIZED')

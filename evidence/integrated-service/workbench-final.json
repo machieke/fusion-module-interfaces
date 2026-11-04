@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "ui_sha256": "7191a81f0c7f00db06bbcb8de90c790ba0b808fa08294909816c6fe21d325070",
+  "installed_operator": "sdk-dev18 offline wheel",
+  "namespace": "omega-ref-integrated-rc18-cold01",
+  "operator_native_inputs": 3,
+  "prior_Go_captures_identical": 2,
+  "session_inputs_total": 5,
+  "inputs": [
+    {
+      "identity": "workbench18-remember",
+      "command": "remember The synthetic violet sextant is stored in chest maple",
+      "state": "complete",
+      "accepted_ms": 1793824314773,
+      "deadline_ms": 1793824434773,
+      "completed_ms": 1793824337658,
+      "occurrences": 1
+    },
+    {
+      "identity": "workbench18-query",
+      "command": "query synthetic violet sextant location",
+      "state": "complete",
+      "accepted_ms": 1793824375814,
+      "deadline_ms": 1793824495814,
+      "completed_ms": 1793824395987,
+      "occurrences": 1
+    },
+    {
+      "identity": "workbench18-episodes",
+      "command": "episodes current",
+      "state": "complete",
+      "accepted_ms": 1793824415213,
+      "deadline_ms": 1793824535213,
+      "completed_ms": 1793824434618,
+      "occurrences": 1
+    }
+  ],
+  "native_query_correctness": true,
+  "episode_navigation": "ACTUAL_NATIVE_CAPTURED_RESULT",
+  "effective_tools_displayed": 20,
+  "typed_preflight": {
+    "admissible": true,
+    "capacity": "NOT_RESERVED",
+    "remote_permission": "NOT_PROBED",
+    "target_authority": "NOT_RESOLVED"
+  },
+  "operator_config_edits_between_inputs": 0,
+  "model": "RECORDED_PROPOSALS",
+  "real": [
+    "native Omega",
+    "E5",
+    "Chroma",
+    "DeTTa",
+    "EpisodicMemory",
+    "authenticated pod HTTPS",
+    "browser UI"
+  ],
+  "no_operator_tool_results_injected": true,
+  "additional_live_generations": 0,
+  "raw_browser_recordings_and_access_material": "PRIVATE_NOT_PUBLISHED",
+  "raw_capture_report": "LOCAL_ONLY",
+  "prior_browser_attempt": {
+    "status": "FAIL_UNRESPONSIVE_DEFAULT_DAEMON",
+    "native_inputs": 0,
+    "new_isolated_browser_session": true
+  },
+  "visual_verification": {
+    "tool": "proofshot",
+    "result": "PASS",
+    "console_errors": 0,
+    "server_errors": 0,
+    "reviewed_screenshots": {
+      "workbench-query.png": "33fcb092a70193ad8086239931ae81d4d5f087e0d557d1d306e88188a845e5c8",
+      "workbench-preflight.png": "27b8fbaddf10e3638af66d7d81f7ebd984b874c096f4cf222dce3c6b0d173a8a"
+    },
+    "private_session": "workbench-proof18b/2026-11-04_20-31-09_final-installed-operator-three-real-nati",
+    "command_timeline": "NOT_CAPTURED: exec used default output; actual browser video and screenshots retained",
+    "stop_recheck": "PASS using the actual custom output directory; initial stop used default directory and found no session"
+  }
+}

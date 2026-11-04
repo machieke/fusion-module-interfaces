@@ -1,0 +1,121 @@
+{
+  "status": "PASS",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "same_host": true,
+  "original_native_oracle": "EXECUTED",
+  "historical_s03_baseline": "EXECUTED",
+  "real": [
+    "native query/parser/loop",
+    "pinned E5",
+    "Chroma",
+    "DeTTa",
+    "authenticated TLS"
+  ],
+  "fixtures": [
+    "scripted model",
+    "channel",
+    "unused history/global promoted context",
+    "enrichment clock"
+  ],
+  "paths": {
+    "local-encoder_local-retrieval": {
+      "encoder_placement": "local",
+      "retrieval_placement": "local",
+      "exact_feedback_match": true,
+      "exact_vector_match": true,
+      "max_vector_difference": 0.0,
+      "candidate_order_match": true,
+      "timing": {
+        "cold_start_to_first_context_ms": 17429.875486530364,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1793822385660.2573,
+        "total_ms": 18315.98837673664
+      },
+      "caller_dependency_checks": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "local_initializer_forbidden": true
+      }
+    },
+    "local-encoder_network-retrieval": {
+      "encoder_placement": "local",
+      "retrieval_placement": "network",
+      "exact_feedback_match": true,
+      "exact_vector_match": true,
+      "max_vector_difference": 0.0,
+      "candidate_order_match": true,
+      "timing": {
+        "cold_start_to_first_context_ms": 16215.523360297084,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1793822487946.0034,
+        "total_ms": 17187.6238072291
+      },
+      "caller_dependency_checks": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "local_initializer_forbidden": true
+      }
+    },
+    "network-encoder_local-retrieval": {
+      "encoder_placement": "network",
+      "retrieval_placement": "local",
+      "exact_feedback_match": true,
+      "exact_vector_match": true,
+      "max_vector_difference": 0.0,
+      "candidate_order_match": true,
+      "timing": {
+        "cold_start_to_first_context_ms": 4435.082183219492,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1793822467684.859,
+        "total_ms": 5283.772487193346
+      },
+      "caller_dependency_checks": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "local_initializer_forbidden": true
+      },
+      "denied_asset_probes": {
+        "count": 4,
+        "all_inaccessible": true
+      },
+      "encoder_cannot_read_caller_canary": true
+    },
+    "network-encoder_network-retrieval": {
+      "encoder_placement": "network",
+      "retrieval_placement": "network",
+      "exact_feedback_match": true,
+      "exact_vector_match": true,
+      "max_vector_difference": 0.0,
+      "candidate_order_match": true,
+      "timing": {
+        "cold_start_to_first_context_ms": 4256.78947661072,
+        "observer_resolution_ms": 20,
+        "start_unix_ms": 1793822435479.0286,
+        "total_ms": 5223.999061621726
+      },
+      "caller_dependency_checks": {
+        "absent": {
+          "sentence_transformers": true,
+          "torch": true,
+          "transformers": true
+        },
+        "local_initializer_forbidden": true
+      },
+      "denied_asset_probes": {
+        "count": 4,
+        "all_inaccessible": true
+      },
+      "encoder_cannot_read_caller_canary": true
+    }
+  },
+  "additional_live_generations": 0
+}

@@ -26,13 +26,27 @@ def verify(path):
  archive_path=member(manifest['image_archive'])
  imported=json.loads(member('images.json').read_bytes());require(imported['archive_sha256']==registered[manifest['image_archive']]['sha256'],'CONFLICT')
  kinds=set(manifest['images']);require(kinds=={r['kind'] for r in imported['images']} and len(kinds)==len(imported['images']),'CONFLICT')
- with tarfile.open(archive_path) as archive:
+ base_path=None
+ if imported.get('archive_format')=='verified-oci-layer-set/1':
+  base_path=member(manifest.get('image_base_archive'))
+  base_binding=imported['base_archive']
+  require(registered[manifest['image_base_archive']]['sha256']==base_binding['archive_sha256']
+      and base_path.stat().st_size==base_binding['archive_bytes'],'CONFLICT')
+ else:require(not manifest.get('image_base_archive') and not imported.get('base_archive'),'CONFLICT')
+ from .image_layers import Layers
+ with Layers(archive_path,base_path) as archive:
   for kind,record in manifest['images'].items():
    entry=next(x for x in imported['images'] if x['kind']==kind);require((record['manifest'],record['configuration'])==(entry['manifest_digest'],entry['configuration_digest']),'CONFLICT')
    if preview:require(record['repository']==entry['repository'],'CONFLICT')
    raw=archive.extractfile('blobs/sha256/'+record['manifest'][7:]).read();require(digest(raw)==record['manifest'][7:],'CONFLICT')
    descriptor=json.loads(raw);require(descriptor['config']['digest']==record['configuration'],'CONFLICT')
    config=archive.extractfile('blobs/sha256/'+record['configuration'][7:]).read();require(digest(config)==record['configuration'][7:],'CONFLICT')
+   # Full archives are already bound above. Check every referenced layer's
+   # presence and size too: a pinned but incomplete archive is not installable.
+   for layer in descriptor.get('layers',[]):
+    require(layer['digest'].startswith('sha256:'),'CONFLICT')
+    stream=archive.extractfile('blobs/sha256/'+layer['digest'][7:])
+    require(stream is not None and stream.seek(0,2)==layer['size'],'CONFLICT');stream.close()
  import yaml
  allowed={(r['repository'],r['manifest']) for r in manifest['images'].values()}
  if preview:
@@ -40,7 +54,7 @@ def verify(path):
   require(manifest['model_boundary']=='RECORDED_FIXTURE' and type(manifest['live_generation_authorization']) is int and manifest['live_generation_authorization']==0,'UNAUTHORIZED')
   kinds=set(manifest['images']);require({'base','caller','embedding'}<=kinds<= {'base','caller','embedding','chain'},'UNSUPPORTED_PROFILE')
   require(kinds=={r['kind'] for r in imported['images']} and len(kinds)==len(imported['images']),'CONFLICT')
-  profiles=manifest['profile_files'];require(type(profiles) is list and 1<=len(profiles)<=4 and len(set(profiles))==len(profiles),'CONFLICT')
+  profiles=manifest['profile_files'];require(type(profiles) is list and 1<=len(profiles)<=5 and len(set(profiles))==len(profiles),'CONFLICT')
   member(manifest['chart'])
  else:profiles=[manifest['profile_directory']+'/'+p+'.yaml' for p in ('deterministic','memory','workflow','cognitive','chain')]
  for profile in profiles:
@@ -72,6 +86,11 @@ def verify(path):
      if binding['source'].startswith(('fusion/','integration/')):require(manifest['tested_source'].get(binding['source'])==binding['sha256'],'CONFLICT')
  else:
   model=json.loads(member(manifest['profile_directory']+'/generative-image.json').read_text());require((model['repository'],model['digest']) in allowed,'CONFLICT')
+ if manifest.get('second_language_client'):
+  package=json.loads(member(manifest['second_language_client']).read_bytes())
+  require(package['profile']=='fusion-go-artifacts/1' and package['status']=='PASS' and package['additional_live_generations']==0,'CONFLICT')
+  require(sha(member('go/omega-client'))==package['binary_sha256'] and sha(member('go/fusion-go-client-source.tar.gz'))==package['archive_sha256'],'CONFLICT')
+  require(all(sha(member('sdk/go/'+name))==pin for name,pin in package['source'].items()),'CONFLICT')
  return dict(status='OFFLINE_VERIFIED',manifest_sha256=manifest_checksum,files=checked,images=manifest['images'],generative_runtime_availability='NOT_CHECKED',additional_live_generations=0)
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('manifest');p.add_argument('--output');a=p.parse_args();value=verify(a.manifest);raw=json.dumps(value,indent=2)+'\n'

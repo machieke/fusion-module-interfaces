@@ -13,6 +13,12 @@ class NativeInput:
     def __init__(self, app):
         self.app, self.db = app, app.db
         self.client = Client(app.config['session_config'])
+        self.resident=app.config.get('resident_worker');self.worker_ready=False
+        if self.resident is not None:
+            import os
+            from .resident_workers import Client as ResidentClient,selection
+            selection(self.resident)
+            self.client=ResidentClient(app.config['session_config'],os.environ['NEOCLAW_NATIVE_INCARNATION'])
         self.turns=set()
         self.quantum=app.config.get('native_dispatch_quantum')
         require(self.quantum is None or (self.client.binding['profile']=='omega-native-sessions/3' and type(self.quantum) is int and self.quantum==1),'UNSUPPORTED_PROFILE')
@@ -42,11 +48,19 @@ class NativeInput:
 
     @traced('input.prepare')
     def available(self):
+        if self.resident is not None and not self.worker_ready:
+            self.client.invoke('ready');self.worker_ready=True
         self.reconcile()
         if self.quantum is not None and len(self.turns)>=self.quantum and self.app.processing_slot() not in self.turns:return False
         old = self.db.execute('SELECT source FROM preview_native_inputs WHERE turn=?',(self.app.processing_slot(),)).fetchone()
         # Always recheck current session/worker authority, even for a bound input.
         received = self.client.invoke('next')
+        if self.resident is not None:
+            import time
+            until=time.monotonic()+self.resident['idle_ms']/1000
+            while received is None and not self.client.limit_reached and time.monotonic()<until:
+                time.sleep(min(.25,max(0,until-time.monotonic())))
+                received=self.client.invoke('next')
         if old:
             require(received is not None and canonical(received).decode() == old[0], 'CONFLICT')
             self.turns.add(self.app.processing_slot())

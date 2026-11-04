@@ -51,6 +51,10 @@ class RoutedNetwork:
         require(type(name) is str and name in self.routes, 'UNSUPPORTED_OPERATION')
         return self.routes[name].invoke(request)
 
+    def invoke_enveloped(self,request,envelope):
+        require(request['interface_ref']['id']=='execution' and request['operation']=='submit','UNSUPPORTED_OPERATION')
+        return self.routes['execution'].invoke_enveloped(request,envelope)
+
 
 class PortConnection:
     def __init__(self, endpoint, credential):

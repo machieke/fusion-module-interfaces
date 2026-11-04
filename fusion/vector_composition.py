@@ -51,7 +51,7 @@ class ReadService:
             from .atom_feed import FeedAtomOwner
             from .adapters.detta_layout import storage
             root=Path(cfg['root'])
-            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook,capacity=cfg.get('feed_capacity'))
+            owner=FeedAtomOwner(root/'feed.sqlite',storage(cfg['detta_binary'],root/'payloads',cfg.get('backend_layout')),self.access['atom.storage'],hook,capacity=cfg.get('feed_capacity'),archive=cfg.get('archive'))
             atoms=AtomSession(owner,self.access['atom.storage'])
         self.atoms=atoms;self.hook=hook
     def search(self):
@@ -61,7 +61,7 @@ class ReadService:
     def invoke(self,request):
         validate_request(request,self.chosen)
         current=self.policy.current()['memory_read']
-        require(all(current.get(k)==self.config.get(k) for k in ('root','scope','embedding','corpus','catalogue','require_ready','backend_layout','feed_profile','feed_capacity')), 'CONFLICT')
+        require(all(current.get(k)==self.config.get(k) for k in ('root','scope','embedding','corpus','catalogue','require_ready','backend_layout','feed_profile','feed_capacity','archive')), 'CONFLICT')
         require(request['scope']==self.config['scope'],'UNAUTHORIZED')
         name=request['interface_ref']['id'];op=request['operation'];body=request['body']
         if op=='ready':

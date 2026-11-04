@@ -56,6 +56,19 @@ class Access:
         return self.principal
 
 
+def search_owner(path,access,head,hook=lambda _:None):
+    """Same existing Search engine and authenticated sources for every facet."""
+    from .memory_services import SearchPorts
+    from .adapters.active_chroma import ActiveChroma
+    cfg=access.policy.current()['active_memory'];scope=cfg['scope'];a.head(head,scope,LIFECYCLE)
+    source=SearchPorts(path,hook).atoms()
+    lifecycle=Client(cfg['lifecycle_client'],'memory.lifecycle',inline=True)
+    class RemoteLifecycle:
+        def activeSet(self,through):return lifecycle.call('activeSet',through)
+        def disclose(self,logical_id,memory,through,historical=False):return lifecycle.call('disclose',logical_id,memory,through,historical)
+    return ActiveChroma(Path(cfg['root'])/'active-search',source,source,access,scope,cfg['corpus'],v.EMBEDDING,RemoteLifecycle(),head,hook)
+
+
 class Ports:
     def __init__(self,path,role,hook=lambda _:None):self.path,self.role,self.hook=Path(path),role,hook
     def invoke(self,credential,q):
@@ -82,19 +95,12 @@ class Ports:
             elif op=='readEvents':value=owner.readEvents(*args)
             else:value=owner.disclose(*args)
         else:
-            from .memory_services import SearchPorts
-            from .adapters.active_chroma import ActiveChroma
-            source=SearchPorts(self.path,self.hook).atoms()
             lifecycle=Client(cfg['lifecycle_client'],'memory.lifecycle',inline=True)
             if op=='current':head=args[0]
             elif op in ('build','published'):head=args[1]
             elif op in ('query','ready'):head=args[0]['snapshot']['lifecycle'] if op=='query' else args[0]['lifecycle']
             else:head=args[1]['lifecycle']
-            a.head(head,scope,LIFECYCLE)
-            class RemoteLifecycle:
-                def activeSet(self,through):return lifecycle.call('activeSet',through)
-                def disclose(self,logical_id,memory,through,historical=False):return lifecycle.call('disclose',logical_id,memory,through,historical)
-            search=ActiveChroma(Path(cfg['root'])/'active-search',source,source,access,scope,cfg['corpus'],v.EMBEDDING,RemoteLifecycle(),head,self.hook)
+            search=search_owner(self.path,access,head,self.hook)
             if op=='current':
                 from .contracts import ContractError
                 try:

@@ -13,16 +13,19 @@ from .contracts import canonical, digest, require, ContractError
 from .ports import AtomEnvelope
 
 class FeedAtomOwner:
-    def __init__(self,path,storage,access,hook=lambda stage:None,*,capacity=None):
+    def __init__(self,path,storage,access,hook=lambda stage:None,*,capacity=None,archive=None):
         self.path,self.storage,self.access,self.hook=Path(path),storage,access,hook
         from .sustained_feed_contracts import capacity_policy
         self.capacity_policy=capacity_policy(capacity) if capacity is not None else None
+        from . import sealed_archive
+        self.archive_policy=sealed_archive.policy(archive) if archive is not None else None
         self.profile=c.SUSTAINED_FEED if capacity is not None else c.FEED
         self.path.parent.mkdir(parents=True,exist_ok=True)
         if self.path.exists():
             with closing(sqlite3.connect(f'file:{self.path}?mode=ro',uri=True)) as db:
                 tables={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
                 expected={'feed_meta','feed_atoms'}|({'feed_reservations'} if capacity is not None else set())
+                if archive is not None:expected|=sealed_archive.TABLES
                 require(not tables or tables==expected,'UNSUPPORTED_PROFILE')
         with closing(self.connect()) as db,db:
             db.execute('BEGIN IMMEDIATE')
@@ -31,17 +34,20 @@ class FeedAtomOwner:
             row=db.execute('SELECT value FROM feed_meta').fetchone()
             if row:
                 meta=json.loads(row[0]);require(meta['profile']==self.profile,'UNSUPPORTED_PROFILE')
+                require(meta.get('archive')==self.archive_policy,'UNSUPPORTED_PROFILE')
                 if capacity is not None:require(meta.get('capacity')==capacity,'CONFLICT')
             else:
                 require(db.execute('SELECT count(*) FROM feed_atoms').fetchone()[0]==0,'NOT_AVAILABLE')
                 meta={'profile':self.profile,'source':str(uuid.uuid4())}
                 if capacity is not None:meta['capacity']=capacity
+                if archive is not None:meta['archive']=self.archive_policy
                 db.execute('INSERT INTO feed_meta VALUES(?)',(canonical(meta).decode(),))
             if capacity is not None:
                 db.execute('''CREATE TABLE IF NOT EXISTS feed_reservations(identity TEXT PRIMARY KEY,
                     fingerprint TEXT NOT NULL,scope TEXT NOT NULL,size INTEGER NOT NULL,
                     charged_bytes INTEGER NOT NULL,state TEXT NOT NULL)''')
                 db.execute("CREATE INDEX IF NOT EXISTS feed_reference ON feed_atoms(scope,json_extract(value,'$.write.ref.id'))")
+            if archive is not None:sealed_archive.initialize(self,archive,db)
         c.identity(meta['source']);self.source=meta['source']
 
     def connect(self):
@@ -97,6 +103,10 @@ class FeedAtomOwner:
 
     def get(self,ref):
         self.access.authorize(ref['scope_ref'],'get');value,payload=self.row(ref)
+        from .sealed_archive import read
+        retained=read(self,ref,value)
+        if retained is not None:
+            self.access.authorize(ref['scope_ref'],'get');return retained
         try:data=self.storage.get(ref['scope_ref'],payload)
         except ContractError as error:
             if error.code=='NOT_FOUND':raise ContractError('NOT_AVAILABLE') from None
@@ -106,8 +116,25 @@ class FeedAtomOwner:
 
     def getMany(self,refs):return tuple(self.get(ref) for ref in refs)
     def availability(self,ref):
-        self.access.authorize(ref['scope_ref'],'availability');_,payload=self.row(ref)
+        self.access.authorize(ref['scope_ref'],'availability');value,payload=self.row(ref)
+        from .sealed_archive import read
+        retained=read(self,ref,value)
+        if retained is not None:
+            self.access.authorize(ref['scope_ref'],'availability')
+            return dict(bytes=None,available=True,present_shares=1,threshold=1,content_hash=ref['digest'])
         result=self.storage.availability(ref['scope_ref'],payload);self.access.authorize(ref['scope_ref'],'availability');return result
+
+    def planArchive(self,scope,after,through,limit):
+        from .sealed_archive import plan
+        return plan(self,scope,after,through,limit)
+
+    def publishArchive(self,command,after,through,limit):
+        from .sealed_archive import publish
+        return publish(self,command,after,through,limit)
+
+    def observeArchive(self,command):
+        from .sealed_archive import observe
+        return observe(self,command)
 
     def head(self,scope):
         self.access.authorize(scope,'head')

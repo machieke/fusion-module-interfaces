@@ -19,7 +19,7 @@ from .controlled_run import ControlledRun
 
 
 class NativeSessions(unittest.TestCase):
-    def fresh(self, responses, *, workspace=False, history=False):
+    def fresh(self, responses, *, workspace=False, history=False, history_provider=None):
         root = None
         if os.environ.get('PHASE2_EVIDENCE'):
             root = Path(os.environ['PHASE2_EVIDENCE']).resolve()/'private-runs'/uuid.uuid4().hex
@@ -48,7 +48,7 @@ class NativeSessions(unittest.TestCase):
             run.app['preview']['providers']=[selected]
         if history:
             from .preview_history_qualification import configure
-            self.addCleanup(configure(run,scope))
+            self.addCleanup((history_provider or configure)(run,scope))
         run.app.pop('model_fixture')
         catalogue = configuration(run.app['preview'])
         policy = dict(principals={

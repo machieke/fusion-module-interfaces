@@ -5,6 +5,8 @@ from fusion.contracts import require
 
 READS={
  '/preview/session':{'observe','list','capacity'},
+ '/preview/continuation':{'observe'},
+ '/preview/chain-continuation':{'observe'},
  '/reference-cognition':{'get','getMany','availability','head','readCommits','capacity','observe',
      'readEpisode','readEvidence','pendingEvidence','readOccurrence','readBelief','observeDecision','readDecisions'},
  '/preview/facets':{'authorize','historySnapshot','readHistory','getRelation','outgoing','incoming','read','version'},
@@ -19,6 +21,11 @@ class ReadPorts:
     def __init__(self,run,role):self.run,self.role=Path(run),role
     def invoke(self,path,credential,q):
         require(type(q) is dict and path in READS and q.get('operation') in READS[path],'UNAUTHORIZED')
+        if path in ('/preview/continuation','/preview/chain-continuation'):
+            require(self.role in ('omega-agent','omega-agent-b'),'UNAUTHORIZED')
+            from .integrated_restore_observation import invoke,INSPECT,CHAIN
+            require(q.get('profile')==(INSPECT if path=='/preview/continuation' else CHAIN),'UNSUPPORTED_PROFILE')
+            return invoke(self.run/'owner.json',Path('/state'),credential,q)
         if path=='/preview/session':
             require(self.role in ('omega-agent','omega-agent-b'),'UNAUTHORIZED')
             from fusion.sustained_restore import Ports

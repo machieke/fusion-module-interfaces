@@ -189,20 +189,22 @@ class PublicRunbookInputs(unittest.TestCase):
 
     def test_shipped_fast_ci_lanes_keep_their_test_and_profile_source_inputs(self):
         tree = ast.parse((ROOT/'integration/single_node/reference_ci.py').read_text())
-        fast = next(ast.literal_eval(node.value) for node in tree.body
+        lanes = [ast.literal_eval(node.value) for node in tree.body
                     if isinstance(node, ast.Assign) and any(isinstance(target, ast.Name)
-                    and target.id == 'FAST' for target in node.targets))
+                    and target.id in ('FAST','INTEGRATED') for target in node.targets)]
         selected = {p.relative_to(ROOT).as_posix() for p in (ROOT/'tests').glob('test_phase2_*.py')}
-        selected.update(name.replace('.', '/') + '.py' for name in fast)
+        selected.update(name.replace('.', '/') + '.py' for lane in lanes for name in lane)
         pending = list(selected)
         while pending:
             name = pending.pop()
             self.assertIn(name, PUBLIC_FILES)
             for node in ast.walk(ast.parse((ROOT/name).read_text())):
-                if isinstance(node, ast.ImportFrom) and node.module and node.module.startswith('tests.'):
-                    dependency = node.module.replace('.', '/') + '.py'
-                    if (ROOT/dependency).is_file() and dependency not in selected:
-                        selected.add(dependency); pending.append(dependency)
+                if isinstance(node, ast.ImportFrom) and node.module and node.module.startswith('tests'):
+                    candidates=[node.module.replace('.', '/') + '.py']
+                    candidates += [node.module.replace('.', '/') + '/' + n.name + '.py' for n in node.names]
+                    for dependency in candidates:
+                        if (ROOT/dependency).is_file() and dependency not in selected:
+                            selected.add(dependency); pending.append(dependency)
         for stem in ('values', 'memory-values', 'workflow-values', 'cognitive-values', 'chain-values'):
             self.assertIn('deploy/single-node/' + stem + '.yaml', PUBLIC_FILES)
 

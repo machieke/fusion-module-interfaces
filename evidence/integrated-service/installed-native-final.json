@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "methods": 7,
+  "method_counting": "One final fixed packaged recipe: 7/7 unittest methods PASS in66.899seconds. Earlier overlapping rechecks are retained separately.",
+  "cases": {
+    "original_local_https_NAL": "PASS_REAL_NATIVE_DETTA",
+    "compact_history": "PASS_REAL_NATIVE_DETTA_HTTPS",
+    "five_input_one_interpreter": "PASS_REAL_NATIVE",
+    "warm_revocation": "PASS_REAL_NATIVE",
+    "committed_result_kill_recovery": "PASS_REAL_NATIVE",
+    "readonly_preparation_reuse": "PASS_REAL_NATIVE",
+    "independent_provider_native_consumer": "PASS_CONTRACT_FIXTURE_PROVIDER_REAL_NATIVE_C1_HTTPS"
+  },
+  "developer_checkout": "HIDDEN; readonly extracted artifact at pinned legacy runtime PYTHONPATH",
+  "assets": "Exact pinned native source/runtime and DeTTa executable independently readonly mounted; no provider journal mounted",
+  "fixture_boundaries": [
+    "recorded model proposals",
+    "controlled external channel/context where specified",
+    "independent atomic-file provider remains CONTRACT_FIXTURE"
+  ],
+  "failures_retained": [
+    "attempt01: missing bwrap source alias; no tests",
+    "attempt02: pinned native PYTHONPATH lacked Fusion; seven methods failed",
+    "attempt03: readonly alias lacked mount destination; no tests",
+    "attempt04: compact-history DeTTa path absent; NAL report-path collision after successful assertions",
+    "attempt05: native NAL pass; compact-history DeTTa asset absent"
+  ],
+  "invalid_child_report": "attempt02 NAL exporter emitted PASS after failing subtests; discarded, never counted. unittest exit and required placement results govern.",
+  "additional_live_generations": 0,
+  "distribution_manifest_sha256": "fcf60db1dcded7c4cd9cfbe9112c5193805a1095fe80111b553fbdcaeccc0cce",
+  "prior_passing_rechecks": "5 passed in attempt04; NAL passed in attempt05; compact-history passed in attempt06. Rechecks are not extra methods.",
+  "final_recipe": "examples/integrated_native_package.py",
+  "final_recipe_sha256": "9dffc2ea24ce3b62bf6fd82df7a0bdccfdb036c2c300d038cdf0fbc06942fb84",
+  "final_log_sha256": "eff3990bfe8ff6635fa14b8f584bfb9ffc0d2c348766bab2ca20ef42d5bb3b78"
+}

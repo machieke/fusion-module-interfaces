@@ -1,0 +1,207 @@
+{
+  "status": "PASS",
+  "additional_live_generations": 0,
+  "namespaces": [
+    {
+      "namespace": "omega-ref-integrated-baseline01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-baseline02",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-warm01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-go01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-archive01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-registry01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-archive-restore01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-continuation01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-recovery01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-chain01",
+      "status": "PASS",
+      "workloads": 14,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 14
+    },
+    {
+      "namespace": "omega-ref-integrated-search01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-sustained01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-sustained02",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-sustained03",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-cold01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [
+        "fusion-attention",
+        "fusion-beliefs",
+        "fusion-embedding",
+        "fusion-episodes",
+        "fusion-execution",
+        "fusion-messaging",
+        "fusion-model",
+        "fusion-relations",
+        "fusion-search",
+        "fusion-storage",
+        "omega-agent",
+        "omega-agent-b"
+      ],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-warm01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-cold02",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-warm02",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-chain01",
+      "status": "PASS",
+      "workloads": 14,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 14
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-recovery01",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-sustained03-fenced",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-chain01-fenced",
+      "status": "PASS",
+      "workloads": 13,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 13
+    },
+    {
+      "namespace": "omega-ref-integrated-rc18-recovery02",
+      "status": "PASS",
+      "workloads": 12,
+      "scaled_down": [],
+      "remaining_pods": 0,
+      "pvcs_retained": 12
+    }
+  ],
+  "pvc_policy": "Retained; no workload/PVC/journal deletion or reservation refund",
+  "protected": "Excluded by explicit task ledger and ownership label checks",
+  "started_ms": 1793824564896,
+  "finished_ms": 1793824609643
+}

@@ -179,11 +179,14 @@ class PreviewBackup(unittest.TestCase):
 
     def test_separate_owner_lifecycle_relations_workspace_roundtrip(self):
         fixtures = (
-            ('fusion-storage', 'memory/lifecycle.sqlite', 'lifecycle_events',
+            # These three-column transport fixtures are not owner schemas.
+            # Real schema names now invoke the bounded integrity validator;
+            # its refusal of the historical pretend relation schema is valid.
+            ('fusion-storage', 'memory/lifecycle.sqlite', 'fixture_lifecycle_events',
              [(1, 'logical-memory', 'introduced'), (2, 'logical-memory', 'withdrawn')]),
-            ('fusion-relations', 'preview-facets/preview-relations.sqlite', 'preview_relation_events',
+            ('fusion-relations', 'preview-facets/preview-relations.sqlite', 'fixture_relation_events',
              [(1, 'relation-1', 'assert'), (2, 'relation-1', 'retract')]),
-            ('fusion-execution', 'preview-facets/workspace.sqlite', 'workspace_effects',
+            ('fusion-execution', 'preview-facets/workspace.sqlite', 'fixture_workspace_effects',
              [(1, 'append-1', 'intent-and-effect-committed')]),
         )
         for role, filename, table, rows in fixtures:

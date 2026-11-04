@@ -12,8 +12,9 @@ EVIDENCE = {"backend": "sqlite", "journal_mode": "WAL", "synchronous": "FULL"}
 
 
 class ExecutionOwner:
-    def __init__(self, db, policy, atoms: AtomStorage, messages: CompletionDelivery, capacity):
+    def __init__(self, db, policy, atoms: AtomStorage, messages: CompletionDelivery, capacity, events=None):
         self.db, self.policy, self.atoms, self.messages, self.capacity = db, policy, atoms, messages, capacity
+        self.events = events
 
     def submit(self, principal, request, identity):
         scope = request["scope_ref"]
@@ -30,6 +31,7 @@ class ExecutionOwner:
         job_id = str(uuid.uuid5(uuid.NAMESPACE_URL, identity))
         self.db.execute("INSERT INTO jobs(id,scope,owner,request,state) VALUES(?,?,?,?,?)",
                         (job_id, scope, principal, canonical(request).decode(), "queued"))
+        if self.events:self.events.commit(job_id,'accepted')
         return {"job_id": job_id, "execution": "queued", "acceptance": "process-restart", "evidence": dict(EVIDENCE),
                 "scope_ref": scope, "correlation_id": request["correlation_id"], "reply_route": request["reply_route"],
                 "completion_delivery": "not-observed", "chain": None}
@@ -81,6 +83,7 @@ class ExecutionOwner:
                       "causation_id": request["message_id"], "result": result, "error": error}
         self.db.execute("INSERT INTO outbox(id,scope,route,body) VALUES(?,?,?,?)",
                         (job_id, scope, request["reply_route"], canonical(completion).decode()))
+        if self.events:self.events.commit(job_id,'result-committed')
         return {"worked": True, "job_id": job_id, "execution": "failed" if error else "succeeded"}
 
     def flush(self, hook):
@@ -96,6 +99,7 @@ class ExecutionOwner:
                     continue
                 raise
             self.db.execute("UPDATE outbox SET sent=1 WHERE id=?", (row["id"],))
+            if self.events:self.events.commit(row['id'],'completion-delivered')
             sent += 1
         return {"sent": sent, "pending": self.db.execute("SELECT count(*) FROM outbox WHERE sent=0").fetchone()[0]}
 

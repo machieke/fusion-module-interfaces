@@ -27,10 +27,8 @@ def main(path):
  require(fence['mode']=='READ_ONLY_RECONCILIATION' and fence['role']==role and fence['namespace']==os.environ['POD_NAMESPACE'],'UNAUTHORIZED')
  require(os.environ['POD_NAME']==role+'-0','UNSUPPORTED_PROFILE');lock=open(state/'owner.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  preview=initial.get('preview',{}).get('enabled',False)
- expected=dict(composition=initial['service_composition'],role=role,scope=initial.get('preview',{}).get('scope',initial.get('reference',{}).get('scope',initial.get('memory',{}).get('scope',c.SCOPE))))
- if preview and role=='fusion-storage':
-  from fusion.adapters.detta_layout import LAYOUT
-  expected['backend_layout']=LAYOUT
+ from .owner_seal import selected as selected_seal
+ expected=selected_seal(initial)
  # A restored seal is not rewritten. Chart/config mismatches refuse startup.
  actual=json.loads((state/'owner-seal.json').read_text());require(actual==expected and actual['scope']==fence['original_scope'],'UNSUPPORTED_PROFILE')
  owner=None;cfg={};run=Path('/run/fusion');run.mkdir(exist_ok=True)

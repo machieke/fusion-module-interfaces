@@ -81,12 +81,22 @@ def service(path,hook=lambda _:None):
 
 
 def inspect_configuration(path):
-    """Startup validates selection only. No real adapter construction/readiness."""
+    """Validate selection and retained seal, without backend activity."""
+    from .model_service import inspect_journal
+    inspect_journal(path)
     cfg=json.loads(Path(path).read_bytes());binding=cfg.get('model_binding')
     if binding is None or binding.get('kind')=='recorded':authored.RecordedProposals(path);return
     require(binding.get('profile')==PROFILE and binding.get('kind')=='approved-pinned-ollama','UNSUPPORTED_PROFILE')
     require(set(binding)=={'profile','kind','manifest','approval'},'UNSUPPORTED_PROFILE')
     live.select([descriptor_read(d) for d in cfg['model_completion']['catalogue']],live.CPU_PROFILE)
+
+
+def inspect_partitions(path):
+    """Check every configured owner partition before the service becomes ready."""
+    path=Path(path);cfg=json.loads(path.read_bytes())
+    inspect_configuration(path)
+    for partition in cfg.get('scope_routes',{}).get('scopes',{}).values():
+        inspect_configuration(Path(partition['directory'])/'owner.json')
 
 
 class Client:

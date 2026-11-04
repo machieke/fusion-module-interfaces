@@ -80,11 +80,38 @@ def projection(body, owner='/run/fusion/owner.json', component='/config/componen
     return value
 
 
+def chain_continuation(body,owner='/run/fusion/owner.json',component='/config/component.json'):
+    """Explicit transition/read, separate from ordinary refresh and native tools."""
+    from .integrated_chain_continuation import PROFILE,ROUTE
+    require(type(body) is dict and body.get('profile')==PROFILE,'UNSUPPORTED_PROFILE')
+    cfg=json.loads(Path(owner).read_bytes());settings=json.loads(Path(component).read_bytes())
+    transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file='/secrets/ca.crt'),
+        credential=cfg['principals']['operator']['credential'])
+    reply=invoke(transport,ROUTE,body,time.time_ns()//1000000+30000)
+    require(type(reply) is dict and set(reply)=={'profile','id','request_digest','actor','value'} and
+        reply['profile']==PROFILE and reply['id']==body['id'] and reply['request_digest']==digest(canonical(body)) and
+        reply['actor']=='operator','NOT_AVAILABLE')
+    value=reply['value'];require(type(value) is dict and value.get('profile')==PROFILE and
+        value.get('occurrence')==body['occurrence'] and value.get('automatic_resubmissions')==0,'NOT_AVAILABLE')
+    return value
+
+
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('operation',choices=['inventory','create','submit','observe','pause','resume','close','chain-observe','allocate','list','capacity','cancel','reconcile','archive','current','project'])
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('operation',choices=['inventory','create','submit','observe','pause','resume','close','chain-observe','allocate','list','capacity','cancel','reconcile','archive','current','project','providers','continuation','capabilities','worker-control'])
     p.add_argument('--session');p.add_argument('--identity');p.add_argument('--text');p.add_argument('--assignment');p.add_argument('--content',action='store_true');p.add_argument('--after',type=int,default=0)
     p.add_argument('--template');p.add_argument('--target');p.add_argument('--request-file')
+    p.add_argument('--provider');p.add_argument('--provider-action',choices=['inspect','selected','probe','add','enable','disable','drain','retire']);p.add_argument('--retained',choices=['required','explicit-unavailable'],default='required')
+    p.add_argument('--occurrence');p.add_argument('--continuation-action',choices=['observe','cancel','unsubscribe'],default='observe')
+    p.add_argument('--worker-action',choices=['observe','drain','recycle','resume'],default='observe')
     a=p.parse_args();body={}
+    if a.operation=='worker-control':
+        print(json.dumps(worker_control(a.session,a.worker_action,a.identity)));return
+    if a.operation=='capabilities':
+        print(json.dumps(capabilities(a.session,json.loads(Path(a.request_file).read_bytes()) if a.request_file else None)));return
+    if a.operation=='continuation':
+        print(json.dumps(continuation(a.session,a.occurrence,a.continuation_action,a.identity)));return
+    if a.operation=='providers':
+        print(json.dumps(providers(a.provider_action,a.provider,a.identity,a.session,a.retained)));return
     if a.operation=='project':
         require(a.request_file is not None)
         print(json.dumps(projection(json.loads(Path(a.request_file).read_bytes()))));return
@@ -123,5 +150,60 @@ def chain_observe(component='/config/component.json'):
         observed=client.call('observe',{'deploy_id':intent['deploy_id']}) if intent else None
     return dict(state=observed['effect_finality'] if observed else 'NO_SIGNED_INTENT',registration_sha256=digest(canonical(reg)),
         artifact=reg['artifact'],inspection=reg['result'],intent=intent,observation=observed,submission='NOT_REQUESTED')
+
+def providers(operation,provider=None,identity=None,session=None,retained='required',owner='/run/fusion/owner.json',component='/config/component.json'):
+    from fusion.provider_lifecycle import PROFILE as registry_profile
+    cfg=json.loads(Path(owner).read_bytes());settings=json.loads(Path(component).read_bytes())
+    require(operation in ('inspect','selected','probe','add','enable','disable','drain','retire'),'UNSUPPORTED_OPERATION')
+    body={'session':session} if operation=='selected' else {'provider':provider}
+    if operation not in ('inspect','selected'):require(identity is not None);body['identity']=identity
+    if operation=='retire':body['retained']=retained
+    q=dict(id=str(uuid.uuid4()),profile=registry_profile,operation=operation,body=body)
+    transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file=str(Path(cfg['tls_certificate']).parent/'ca.crt')),
+                   credential=cfg['principals']['operator']['credential'])
+    value=invoke(transport,'/preview/providers',q)
+    require(type(value) is dict and set(value)=={'id','profile','request_digest','actor','value'} and
+        (value['id'],value['profile'],value['request_digest'],value['actor'])==(q['id'],registry_profile,digest(canonical(q)),'operator'),'NOT_AVAILABLE')
+    return value['value']
+
+def continuation(session,occurrence,operation='observe',identity=None,owner='/run/fusion/owner.json',component='/config/component.json'):
+    from fusion.inspection_continuation import PROFILE as continuation_profile
+    cfg=json.loads(Path(owner).read_bytes());settings=json.loads(Path(component).read_bytes())
+    q=dict(profile=continuation_profile,id=str(uuid.uuid4()),operation=operation,session=session,occurrence=occurrence,identity=identity)
+    transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file=str(Path(cfg['tls_certificate']).parent/'ca.crt')),
+        credential=cfg['principals']['operator']['credential'])
+    value=invoke(transport,'/preview/continuation',q)
+    require(type(value) is dict and set(value)=={'profile','id','request_digest','actor','value'} and
+        (value['profile'],value['id'],value['request_digest'],value['actor'])==(continuation_profile,q['id'],digest(canonical(q)),'operator'),'NOT_AVAILABLE')
+    return value['value']
+
+def capabilities(session,commands=None,owner='/run/fusion/owner.json',component='/config/component.json'):
+    from .integrated_permissions import PROFILE,ROUTE
+    cfg=json.loads(Path(owner).read_bytes());settings=json.loads(Path(component).read_bytes())
+    q=dict(profile=PROFILE,id=str(uuid.uuid4()),session=session,principal=cfg['native_sessions']['principal'],commands=commands)
+    transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file=str(Path(cfg['tls_certificate']).parent/'ca.crt')),
+        credential=cfg['principals']['operator']['credential'])
+    reply=invoke(transport,ROUTE,q)
+    require(type(reply) is dict and set(reply)=={'profile','id','request_digest','actor','value'} and
+        (reply['profile'],reply['id'],reply['request_digest'],reply['actor'])==(PROFILE,q['id'],digest(canonical(q)),'operator'),'NOT_AVAILABLE')
+    value=reply['value'];require(type(value) is dict and value.get('profile')==PROFILE and value.get('principal')==q['principal'] and
+        value.get('advisory') is True and value.get('acceptance_created') is False and value.get('deadline_started') is False and
+        value.get('effect_reserved') is False and type(value.get('tools')) is list and len(value['tools'])<=32,'NOT_AVAILABLE')
+    return value
+
+def worker_control(session,operation='observe',identity=None,owner='/run/fusion/owner.json',component='/config/component.json'):
+    from fusion.resident_workers import CONTROL
+    from .integrated_worker_control import ROUTE
+    cfg=json.loads(Path(owner).read_bytes());settings=json.loads(Path(component).read_bytes())
+    q=dict(profile=CONTROL,id=str(uuid.uuid4()),session=session,operation=operation,identity=identity)
+    transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file=str(Path(cfg['tls_certificate']).parent/'ca.crt')),
+        credential=cfg['principals']['operator']['credential'])
+    reply=invoke(transport,ROUTE,q)
+    require(type(reply) is dict and set(reply)=={'profile','id','request_digest','actor','value'} and
+        (reply['profile'],reply['id'],reply['request_digest'],reply['actor'])==(CONTROL,q['id'],digest(canonical(q)),'operator'),'NOT_AVAILABLE')
+    value=reply['value'];require(type(value) is dict and value.get('profile')==CONTROL and value.get('session')==session and
+        value.get('mode') in ('enabled','draining') and value.get('deadlines_reset') is False and value.get('effect_budget_refund') is False and value.get('automatic_resubmission') is False,'NOT_AVAILABLE')
+    if operation!='observe':require(value.get('identity')==identity and value.get('operation')==operation,'NOT_AVAILABLE')
+    return value
 
 if __name__=='__main__':main()

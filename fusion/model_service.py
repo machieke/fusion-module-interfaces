@@ -15,6 +15,32 @@ from .registry import descriptor_read, selection_token
 def now(): return time.time_ns() // 1_000_000
 
 
+def configuration_seal(cfg):
+    """Historical seal bytes; configuration changes never migrate owner state."""
+    return canonical({k: cfg[k] for k in ('scope', 'sharing', 'sessions', 'max_calls',
+        'expires_ms', 'catalogue', 'disclosure', 'runtime_lock')}).decode()
+
+
+def inspect_journal(path):
+    """Startup-only compatibility check, without creating an owner or backend.
+
+    The service's exclusive owner lock surrounds startup. Read only existing
+    state; an absent journal does not reserve a call or create an empty database.
+    The normal owner checks the same seal again when it acquires its own lock.
+    """
+    cfg = json.loads(Path(path).read_bytes())['model_completion']
+    database = Path(cfg['database']).resolve()
+    if not database.exists(): return 'ABSENT'
+    expected = configuration_seal(cfg)
+    with sqlite3.connect(database.as_uri()+'?mode=ro', uri=True, timeout=.2) as db:
+        db.execute('PRAGMA query_only=ON')
+        tables = {r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+        require(tables == {'model_seal', 'model_calls'}, 'UNSUPPORTED_PROFILE')
+        rows = db.execute('SELECT value FROM model_seal LIMIT 2').fetchall()
+        require(len(rows) == 1 and rows[0][0] == expected, 'CONFLICT')
+    return 'COMPATIBLE'
+
+
 class ModelService:
     @staticmethod
     def inspect(path):
@@ -39,8 +65,7 @@ class ModelService:
         catalogue = [descriptor_read(d) for d in cfg['catalogue']]
         require(len(catalogue) == 1 and len(catalogue[0].profiles) == 1, 'UNSUPPORTED_PROFILE')
         self.chosen = self.c.select(catalogue, next(iter(catalogue[0].profiles)))
-        self.seal = canonical({k: cfg[k] for k in ('scope', 'sharing', 'sessions', 'max_calls',
-                            'expires_ms', 'catalogue', 'disclosure', 'runtime_lock')}).decode()
+        self.seal = configuration_seal(cfg)
         path = Path(cfg['database']); path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.lock = open(str(path)+'.lock', 'a')
         try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -92,8 +117,7 @@ class ModelService:
     @traced('provider.model.authorize')
     def authorize(self, credential, accepted, operation):
         cfg = self.policy.current()['model_completion']
-        require(canonical({k: cfg[k] for k in ('scope','sharing','sessions','max_calls','expires_ms',
-                    'catalogue','disclosure','runtime_lock')}).decode() == self.seal, 'CONFLICT')
+        require(configuration_seal(cfg) == self.seal, 'CONFLICT')
         principal = self.policy.authenticate(credential)
         require(principal == accepted['principal'] and cfg['scope'] == accepted['scope'], 'UNAUTHORIZED')
         require(cfg['sharing'] == self.c.PRIVACY, 'UNAUTHORIZED')

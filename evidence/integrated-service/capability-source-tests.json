@@ -1,0 +1,273 @@
+{
+  "baseline": "bf8e87d7416cab6954a702d64d12cdfcf7b976d1",
+  "initial_checkpoint": {
+    "baseline": "bf8e87d7416cab6954a702d64d12cdfcf7b976d1",
+    "checkpoint": true,
+    "tracks": [
+      {
+        "packages": "Q01-Q05",
+        "capability": "Native performance",
+        "sources": {
+          "integration/single_node/preview_host.py": "b1e337e3459fa3227e5e196fc147c7caf571316d451f6952fb504c80b681e8a6",
+          "fusion/sustained_sessions.py": "34d072369b3420749a63c6cd61485c0f00ab63e53f4add6c922c565baefc0572",
+          "integration/neoclaw/native_loop.py": "1b59b388712f8e601decc646759d6491397e36d68397ed6850876f6bc4bfc665",
+          "fusion/preview_native_history.py": "730dd85c71c60111dfb98ddc4483566c2a960bc8379ee07560aeefc9937fb0e1",
+          "fusion/native_telemetry.py": "4e339f71e1b67b1d9312e039350761f2a336ae05c0c7b991286993aa7f5160c4",
+          "fusion/resident_workers.py": "cb0c9d3bd0ddfde28572fb329486c939f5c91c982a469cc850217a263a633196",
+          "fusion/https_pool.py": "456c83f371cc7c7d4a22f566d000f96ed4b9a641150af5daba7e175429c59db1"
+        },
+        "tests": [
+          "tests/test_phase3_sessions.py",
+          "tests/test_integrated_workers.py",
+          "tests/test_integrated_pool.py",
+          "integration/neoclaw/test_integrated_worker.py"
+        ],
+        "baseline_vs_delta": "Resident worker and prepared overlays are new opt-in selections; old source-checked loop and /3 owner retained"
+      },
+      {
+        "packages": "Q06-Q10",
+        "capability": "Placement and compatibility",
+        "sources": {
+          "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+          "fusion/preview_client.py": "3b142c6cf608a9d61687f1a2bfc62d9d017e3849de0ab196e2e57aab4a0dde2c",
+          "integration/single_node/preview_values.py": "836ded66ff12d05d104cee946ee77b3da068dd25358ed1120be5ce0f7c81f320",
+          "sdk/build.py": "a7e4e41650dd2bb862d97956d0fb7e13b2588648df657fc8d1b3ea915e1c9f9f"
+        },
+        "tests": [
+          "tests/test_phase2_sdk.py",
+          "tests/test_phase2_sdk_compatibility.py"
+        ],
+        "baseline_vs_delta": "Static resolver, Python kit and file fixture are baseline; dynamic provider lifecycle and second language not yet implemented"
+      },
+      {
+        "packages": "Q11-Q15",
+        "capability": "Asynchronous bounded work",
+        "sources": {
+          "fusion/preview_tasks.py": "f563b8a52330c7a2807f13936a5a515dd3b9c6f237e4d1f5fefc75cfe1e4f31a",
+          "fusion/preview_native_tasks.py": "8d8c2ed554b0fc0aff850cc138047f9ac163c7ee334a44a5999f10412f6fc1f0",
+          "fusion/preview_native_inspect.py": "89e52625db790316ef8cca708c71c3dca3a8b274cd29e0e26fbeafd6de25013a",
+          "fusion/preview_inspect.py": "1eef523cccf8806c9057b4e823b8cbe02ee8038aa79671c70d9bfdc62d6d0c5d",
+          "fusion/neoclaw.py": "dfa2c2f4d16dc681356a3b09174859d0ecc8a4811ae1c6077b6838bb341e4b85",
+          "fusion/messaging.py": "8afdac506f05308e7a8cc61e642353c9217525d4d5e703e45c2d583a518d7406",
+          "integration/single_node/preview_task_ingress.py": "4ef42a983045f911dae54128cf36a08563074f18729d3029f477a0b2ddaba31a"
+        },
+        "tests": [
+          "tests/test_phase3_tasks.py"
+        ],
+        "baseline_vs_delta": "Existing durable native query delegation/inspection reused; portable closed envelope/continuations/notifications missing"
+      },
+      {
+        "packages": "Q16-Q20",
+        "capability": "Capacity and archival",
+        "sources": {
+          "fusion/sustained_feed.py": "3443d27b9b34cb6e9f03aa232cbdc1d27908728d66d068a6f06cf59f699f02c2",
+          "fusion/atom_feed.py": "04d36d50bdbaee9671775c4542e8710feb625a47c02820b02bedea6cbd703b88",
+          "fusion/sustained_sessions.py": "34d072369b3420749a63c6cd61485c0f00ab63e53f4add6c922c565baefc0572",
+          "fusion/sustained_restore.py": "ffbe52f06366cc887cd9c7cfc132ef72afdc2b14b2dc0c251aad7a9340c71040",
+          "integration/single_node/reference_ops.py": "039cbadf69a141a72ef028a794b3183d302df3a07714972876efe9369b362e6d"
+        },
+        "tests": [
+          "tests/test_phase3_feed.py",
+          "tests/test_phase3_restore.py"
+        ],
+        "baseline_vs_delta": "Existing finite accounting and fenced restore reused; sealed owner archive and archive-aware diagnosis not yet implemented"
+      },
+      {
+        "packages": "Q21-Q25",
+        "capability": "Operators/evaluation/provenance",
+        "sources": {
+          "integration/single_node/sustained_cli.py": "46aef2b7056ad0461a805a94d748e37622ba0b91948be9f01d6bbdf0d5a45e41",
+          "integration/single_node/preview_workbench.py": "ab0b39e7f362cb676082b2ed504407765d2c074200ecf0bcd7c2ab1667a6eb19",
+          "integration/single_node/sustained_evaluation.py": "0c39a6dc4e7be83f4de64891d30b32f6903998769cf2585be5dd5f25e44cf43b",
+          "fusion/preview_chain.py": "a0182719e5a5d997defc24f23ff48f4a63a1a6c73e93c876f5d8527dcf7dba8d"
+        },
+        "tests": [
+          "tests/test_phase3_evaluation.py",
+          "tests/test_phase3_projection.py"
+        ],
+        "baseline_vs_delta": "Current CLI/workbench/scoring/isolated chain are baseline; integrated controls and same-workflow evidence pending"
+      },
+      {
+        "packages": "Q26-Q30",
+        "capability": "Security/recovery/distribution",
+        "sources": {
+          "integration/single_node/sustained_restore_qualification.py": "d6dc377f00aaf015e0c28423f88b0a9af9035973cbe4a62e2364f8d4bdacd118",
+          "integration/single_node/reference_build.py": "3b17d82c3cb4e2901e2dff004b5e317ef9cae0768f926e98c51aacb210bb4d69",
+          "integration/single_node/image_layers.py": "d12c765ad051d155610b2e13fc8e33265e650e2d1a2116b41804cf8208217ca6",
+          "sdk/distribution.py": "3d6756f503359b05fb5b59f5c11731e424f15b9575fc4764adb1a4b25b47ceba"
+        },
+        "tests": [
+          "tests/test_integrated_layers.py",
+          "sdk/test_distribution.py"
+        ],
+        "baseline_vs_delta": "Existing recovery/distribution reused; verified OCI layer set new; final integrated stories unrun"
+      }
+    ],
+    "final_source": false
+  },
+  "current_runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "status": "QUALIFIED_WITH_EXPLICIT_LIMITS",
+  "tracks": [
+    {
+      "packages": "Q01-Q05",
+      "capability": "Native execution and measured representation",
+      "baseline_vs_delta": "Existing native loop, mathematics and history owners retained; opt-in interpreter/preparation/HTTPS reuse and compact immutable captures.",
+      "sources": {
+        "fusion/resident_workers.py": "ad880ecd5ff31c6bf6c7d300a06dd733047adae556b8218c18131c64e32c216b",
+        "integration/single_node/preview_host.py": "b1e337e3459fa3227e5e196fc147c7caf571316d451f6952fb504c80b681e8a6",
+        "integration/neoclaw/native_loop.py": "1b59b388712f8e601decc646759d6491397e36d68397ed6850876f6bc4bfc665",
+        "integration/neoclaw/prepared_startup.py": "ad79aed1510e1fe3a7cf0c946f1c034021ed576846a89545f5baaf80cb88fce7",
+        "fusion/https_pool.py": "456c83f371cc7c7d4a22f566d000f96ed4b9a641150af5daba7e175429c59db1",
+        "fusion/preview_native_history.py": "bf293e0b5ac712ac3560d073b757e29e6cbd4ef73d07a5f2fb2f6247d69d454e",
+        "fusion/native_telemetry.py": "4e339f71e1b67b1d9312e039350761f2a336ae05c0c7b991286993aa7f5160c4"
+      },
+      "tests": [
+        "tests/test_integrated_workers.py",
+        "tests/test_integrated_preparation.py",
+        "tests/test_integrated_pool.py",
+        "tests/test_integrated_history.py",
+        "tests/test_integrated_hydration.py",
+        "integration/neoclaw/test_integrated_worker.py"
+      ]
+    },
+    {
+      "packages": "Q06-Q10",
+      "capability": "Placement, provider lifecycle and interoperable clients",
+      "baseline_vs_delta": "Existing resolver/Python SDK/file provider retained; executable placement, trusted lifecycle, optional archive evolution and independent Go client added.",
+      "sources": {
+        "integration/single_node/placement.py": "e660bfd7902a79198a9a954896ca0e29205295d3ac67ace487a3a39ad486f9a0",
+        "integration/single_node/integrated_registry.py": "580f2b7cca075f44678376dd0ef576a72cedf9d3897958c56746bf9b10b26f32",
+        "fusion/provider_lifecycle.py": "a7e97d7c646ccee1d6314b10a45ab3a4f56bf8b82d0bf3b3b13b32d7dfa40f0f",
+        "fusion/registry.py": "9a7ca92175f2dfba9e2a831aa5b4680e0498631b8e819a7788a01c6dd9cd4aee",
+        "fusion/preview_client.py": "7a503a978535931f405c66f1e8d6dd64cdafd06d76a9e2bec9ee31f12bf261ab",
+        "sdk/go_package.py": "75ac8e9bee4e8ab6a04eb1fe4408758e80054204fda3c83a6e2520625601269a"
+      },
+      "tests": [
+        "tests/test_integrated_placement.py",
+        "tests/test_integrated_registry.py",
+        "tests/test_integrated_archive_wire.py",
+        "integration/neoclaw/test_integrated_nal.py",
+        "integration/neoclaw/test_integrated_provider.py",
+        "examples/integrated_go.py"
+      ]
+    },
+    {
+      "packages": "Q11-Q15",
+      "capability": "Durable bounded asynchronous work",
+      "baseline_vs_delta": "Existing task, execution, storage, messaging and application state retained; named envelopes, fixed continuations and owner commit cursors added.",
+      "sources": {
+        "fusion/execution_envelope.py": "3633b2256e114a28e074c769fee2a0e7b073f9029b01bb0b164e5aba2360650c",
+        "fusion/nal_envelope.py": "484ba2d5632dd267f765b4d0a0a5bd26f02f501eed39da0a106cb9e5728e34d8",
+        "fusion/inspection_continuation.py": "db9aa36004b6c7e1342c143a51eed3d56575993970e7b69ade4548c13b8f90ca",
+        "fusion/chain_continuation.py": "d01dd6cc670e95e0ca7a6095777b7951ddb1c1e0d341ef5bee9d622c4265d87e",
+        "fusion/execution_events.py": "b96aceb35029f418be3d83aa14de46de5b6d56f6389e86cd4ee672c49ed97935",
+        "fusion/preview_native_inspect.py": "eae4ce73ec346ead08571d8376affd84d20f5cc35f51f16861ae41cd601fd2b1",
+        "fusion/preview_tasks.py": "f563b8a52330c7a2807f13936a5a515dd3b9c6f237e4d1f5fefc75cfe1e4f31a",
+        "integration/single_node/preview_task_ingress.py": "966255c9ae9aa94ff227499a571d2e73a64c2637b0149c2e1b8fbcfac4094112"
+      },
+      "tests": [
+        "tests/test_integrated_envelope.py",
+        "tests/test_integrated_nal_envelope.py",
+        "tests/test_integrated_continuation.py",
+        "tests/test_integrated_chain_continuation.py",
+        "tests/test_integrated_task_registry.py",
+        "examples/integrated_notifications.py",
+        "examples/integrated_continuation_recovery.py"
+      ]
+    },
+    {
+      "packages": "Q16-Q20",
+      "capability": "Finite retained state and maintenance",
+      "baseline_vs_delta": "Existing owner quotas and fenced restore retained; copy-only sealed storage archive, owner-local headroom, projection repair and integrity inspection added.",
+      "sources": {
+        "fusion/archive_contracts.py": "b4f8d1f2ea9b084df85411d2e8ae709ac12da819563ed6e65761c6310744a70f",
+        "fusion/sealed_archive.py": "338bfb6f2b6d2fb7bb58bdf2b71fb8292db601d08ad6056454331b4b3d953c0f",
+        "fusion/atom_feed.py": "8bff0d8eef9f5bbf9d069bad7deb5a14c484d3d0d7d97c8a9f409f31fe6cd20f",
+        "fusion/search_repair.py": "feb7b15f293cd7027cf479a19a472cd577f346bbafba41ba4c53f8900254279b",
+        "fusion/search_maintenance.py": "55225426268439e9224e557a518f2f4dc2b91fe2beec8eb99d27e7002865392b",
+        "integration/single_node/integrated_capacity.py": "911df08220fdff04180766da5e58a6018dc6be6686b0839bd2a7ade5fb32012c",
+        "integration/single_node/integrated_integrity.py": "6403690015ca34e977bba56ca6c7916fa1e7f52b4ff46b3a18213c365dec3f32",
+        "integration/single_node/integrated_journal_integrity.py": "c24247d72caab2c49f4c83192db7f885e741222e0e38bb383c80a410af9a42c6",
+        "integration/single_node/sustained_restore_host.py": "28a7dd476b58e1bc89be1d1373000f601e313e2aac48ef6a809971ba87d27ab8"
+      },
+      "tests": [
+        "tests/test_integrated_capacity.py",
+        "tests/test_integrated_archive.py",
+        "tests/test_integrated_archive_restore.py",
+        "tests/test_integrated_journal_integrity.py",
+        "tests/test_integrated_search_repair.py",
+        "examples/integrated_retained_recovery.py",
+        "examples/integrated_integrity.py",
+        "examples/integrated_concurrent_rebuild.py"
+      ]
+    },
+    {
+      "packages": "Q21-Q25",
+      "capability": "Operator control, evaluation and provenance",
+      "baseline_vs_delta": "Existing CLI/workbench, evaluator and isolated chain adapter extended; no new command family or generative permission.",
+      "sources": {
+        "integration/single_node/preview_workbench.py": "7191a81f0c7f00db06bbcb8de90c790ba0b808fa08294909816c6fe21d325070",
+        "integration/single_node/preview_operator.py": "cda08b237a7a2250d40ffcd76ec4114654632ef4e9e7aed514ae4168038c5c28",
+        "integration/single_node/sustained_cli.py": "dd278e67544b81db220f6ae6629148ba36fb6423d6a9e87c168cc5e96c8018da",
+        "integration/single_node/integrated_permissions.py": "e041f05128fbd3aee68f57cf799302618fb652e4538524b5edf525e098aa2875",
+        "integration/single_node/integrated_worker_control.py": "e0c534df1c591614d8288ecb3a23433393382095a80d37de27afeb88ab18a04e",
+        "integration/single_node/integrated_search_operator.py": "b3306e5482bc4131ac19adcfc36078ecfbc4ece28d92b51e534632132f932966"
+      },
+      "tests": [
+        "tests/test_integrated_workbench.py",
+        "tests/test_integrated_permissions.py",
+        "tests/test_integrated_worker_controls.py",
+        "examples/integrated_baseline.py",
+        "examples/integrated_compare.py",
+        "examples/integrated_chain_continuation.py"
+      ]
+    },
+    {
+      "packages": "Q26-Q30",
+      "capability": "Cross-feature qualification and distribution",
+      "baseline_vs_delta": "Existing Helm, package recipes, zero-generation guard and CI reused; final qualified integration and bounded artifact distribution.",
+      "sources": {
+        "sdk/distribution.py": "ff0509c1232aab86008e5e31b5157779267f02b8f1b6d3b536e80a4b89bd4455",
+        "sdk/image_inventory.py": "65ef48a302632fa1ec20edc26bf944f4adba9a46dfdc9f61a0180b01a09542a8",
+        "sdk/build.py": "be3925c9dc91dddb5426f5a31d05e75422c32db42c7f2811f5c7aa98919cebbf",
+        "integration/single_node/reference_ci.py": "76be8fd426293f8965195b5eaefe30979c973c42e8dea66325c17a1fb534f8f7",
+        "integration/single_node/owner_seal.py": "ee2063858cbfc0f74ad2d27a64838681fa409a5539782cde44aac708929a3c6c",
+        "deploy/helm/omega-fusion/Chart.yaml": "a95a8de472db0b836a13651c9726b8a9b681088f52666cc9c56a32455142ac44"
+      },
+      "tests": [
+        "examples/integrated_sustained.py",
+        "examples/integrated_warm_revocation.py",
+        "examples/integrated_private_interleave.py",
+        "examples/integrated_rotation.py",
+        "examples/integrated_chain_restore.py",
+        "tests/test_integrated_distribution.py",
+        "tests/test_integrated_model_startup.py"
+      ]
+    }
+  ],
+  "historical_family_denominator": 15,
+  "new_family_count": 0,
+  "new_native_command_count": 0,
+  "current_native_boundary": {
+    "DA storage": "Existing owner-local backing retained; no new external DA-network qualification.",
+    "AtomStorage": "Real DeTTa immutable storage/feed, hydration, archive and retained readback in current80input workload.",
+    "Relations": "Existing deployed owner retained in combined history/cognition composition. Historical explicit native link/unlink qualification remains separately labelled.",
+    "Search projection": "Real Chroma through authenticated storage/feed ports; actual concurrent publication and retained hot/archive rebuild PASS, old views/captures preserved.",
+    "EpisodicMemory": "Real separately owned administrative history and retained evidence. Captures remain distinct from empirical observations.",
+    "BeliefRevision": "Actual native support/contradict, duplicate contribution and retained contrary evidence in current workload.",
+    "PLNKernel": "Existing original NAL truth kernels under distinct profiles; actual named deduction and revision. Guarded PLN profiles unchanged; no new mathematics.",
+    "Attention": "Real wall-clock promotion and owned reads in native query/context. Historical integer STI and provider-substitution evidence remain distinct.",
+    "InferenceControl": "Baseline bounded inference preserved; this programme adds application continuations, not new inference-control adoption.",
+    "Messaging": "Real durable task/result and execution-completion delivery over authenticated service ports. Earlier real IRC evidence unchanged; current core inputs are synthetic operator inputs.",
+    "DelegatedExecution": "Actual named NAL/inspection operations and durable completion. Native query delegation continues through its application owner.",
+    "Registry": "Real trusted admission/readiness/selection/control and finite retained accounting; no automatic failover.",
+    "CompatibilityResolver": "Existing resolver retained; actual old/current client and server DeTTa HTTPS matrix PASS, unsupported feature downgrade refused.",
+    "ConsensusFinality": "Current image actual native two-agent retrieval/inspection result committed to isolated F1R3node; one submit reservation, independent readback, caller/adapter/node replacement and fenced receipt restore PASS.",
+    "Authorization": "Current scoped admission, replay/disclosure, private metadata denial and credential replacement exercised."
+  },
+  "extension_boundaries": {
+    "X01 ModelInference": "Actual acceptance/reservation/capture owner with recorded proposal provider only; no live generation or availability probe.",
+    "X02 Embedding": "Real pinned E5 service and native remember/query; independent local/HTTPS encoder and retrieval four-placement matrix PASS with exact vectors/feedback and E5-free caller."
+  },
+  "counting_rule": "Family inventory, native commands, optional interface operations, application facets and workflow evidence are separate. This is not a15/15 native-adoption claim."
+}

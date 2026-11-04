@@ -15,7 +15,17 @@ COMPOSITION='omega-single-node-sustained-preview/1'
 def configure(settings):
     p=settings['preview'];require(p['profile']==COMPOSITION,'UNSUPPORTED_PROFILE')
     selected=p['sustained']
-    require(type(selected) is dict and {'allocation'}<=set(selected)<={'allocation','feed_capacity','private_scopes','model_binding'},'UNSUPPORTED_PROFILE')
+    require(type(selected) is dict and {'allocation'}<=set(selected)<={'allocation','feed_capacity','private_scopes','model_binding','resident_worker','native_preparation','transport_pool','history_hydration','history_representation','storage_archive','provider_registry'},'UNSUPPORTED_PROFILE')
+    if 'history_representation' in selected:require(selected['history_representation']=='immutable-administrative-captures/1','UNSUPPORTED_PROFILE')
+    if 'history_hydration' in selected:require(selected['history_hydration']=='bounded-history-hydration/1','UNSUPPORTED_PROFILE')
+    if 'transport_pool' in selected:
+        from fusion.https_pool import selection as transport_selection
+        transport_selection(selected['transport_pool'])
+    if 'native_preparation' in selected:require(selected['native_preparation']=='verified-native-preparation/1','UNSUPPORTED_PROFILE')
+    resident=selected.get('resident_worker')
+    if resident is not None:
+        from fusion.resident_workers import selection
+        selection(resident)
     a=selected['allocation']
     require(type(a) is dict and set(a)=={'active','retained','pending','bytes','lifetime_ms'})
     shadow=copy.deepcopy(settings);shadow['preview']['profile']='omega-single-node-developer-preview/1'
@@ -44,7 +54,13 @@ def configure(settings):
         # Operational telemetry is selected independently of fault injection.
         files['application.json']['preparation_diagnostics']=True
         files['application.json']['native_telemetry']=dict(profile='bounded-native-stage-timing/1',max_bytes=4194304)
-        files['application.json']['native_dispatch_quantum']=1
+        if resident is None:files['application.json']['native_dispatch_quantum']=1
+        else:files['application.json']['resident_worker']=resident
+        if 'native_preparation' in selected:
+            files['application.json']['native_preparation']=dict(profile=selected['native_preparation'],package_file='/opt/fusion-package.json',immutability='readonly-package')
+        if 'transport_pool' in selected:files['application.json']['transport_pool']=selected['transport_pool']
+        if 'history_hydration' in selected:files['application.json']['history_hydration']=selected['history_hydration']
+        if 'history_representation' in selected:files['application.json']['history_representation']=selected['history_representation']
         directory=run/'templates'/'shared';directory.mkdir(parents=True,exist_ok=True)
         for name,value in files.items():write(directory/name,value)
         ca_file=Path(settings.get('secret_directory','/secrets'))/'ca.crt'
@@ -60,16 +76,28 @@ def configure(settings):
         cfg['native_sessions']=dict(profile=PROFILE,principal=agent['principal'],scope=p['scope'],
             database=str(state/'session-inbox.sqlite'),assignments=p['assignments'],allocation=allocation,
             runtime_templates={'shared':dict(seed_session=seed,directory=str(directory),ca_file=str(ca_file))})
+        if resident is not None:cfg['native_sessions']['resident_worker']=resident
         ops=('allocate','capacity','list','submit','observe','disclose','pause','resume','close','archive','cancel','reconcile')
         cfg['principals']['operator']['scopes'][p['scope']]=['sessions.'+op for op in ops]
+        if p.get('chain',{}).get('continuation'):
+            from fusion.chain_continuation import PROFILE as continuation_profile
+            from fusion.execution_envelope import PROFILE as envelope_profile
+            require(p['chain']['continuation']==continuation_profile and (p['chain']['enabled'] or (state/'restore-fence.json').is_file()) and
+                p.get('inspection',{}).get('envelopes')==envelope_profile,'UNSUPPORTED_PROFILE')
+            if p['chain']['enabled']:cfg['principals']['operator']['scopes'][p['scope']].append('sessions.chain-continuation')
         worker=cfg['principals']['worker']['scopes'][p['scope']]
         worker[:]=list(dict.fromkeys(worker+['sessions.'+op for op in ('list','permit','reconcile','observe')]))
+        if resident is not None:worker.append('sessions.worker-ready')
     from .sustained_tasks import configure as task_selection
     task_selection(settings,cfg,state,run)
     if (run/'cognitive-owner.json').exists():
         from fusion.sustained_observation import PROFILE as observations
         value=json.loads((run/'cognitive-owner.json').read_bytes());value['current_observations']=observations;write(run/'cognitive-owner.json',value)
     from .sustained_private import configure as private_selection
+    from .integrated_archive_configure import configure as archive_selection
+    cfg=archive_selection(settings,cfg,state,run)
     cfg=private_selection(settings,cfg,state,run)
+    from .integrated_registry import configure as registry_selection
+    registry_selection(settings,cfg,run)
     write(run/'owner.json',cfg)
     return settings,cfg,state,run

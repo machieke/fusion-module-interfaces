@@ -24,6 +24,13 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 def prepare(config_file):
+    if json.loads(Path(config_file).read_bytes()).get('native_preparation'):
+        from .prepared_startup import prepare as prepared
+        return prepared(config_file,_prepare)
+    return _prepare(config_file)
+
+
+def _prepare(config_file,*,overlay_directory=None):
     config_file = Path(config_file).resolve()
     config = json.loads(config_file.read_text())
     from fusion.preview_application import APPLICATION as PREVIEW, configuration as preview_configuration
@@ -38,7 +45,7 @@ def prepare(config_file):
                     'src/memory.metta', 'src/skills.metta', 'src/helper.py', 'src/utils.metta', 'src/skills.pl', 'lib_nal.metta')
     for file in source_files:
         require(digest((omega/file).read_bytes()) == c.PINS['sources']['mettaclaw']['files'][file], 'UNSUPPORTED_PROFILE')
-    directory = Path(config['workdir']).resolve()
+    directory = Path(config['workdir']).resolve() if overlay_directory is None else Path(overlay_directory)
     directory.mkdir(parents=True, exist_ok=True, mode=0o700)
     (directory/'repos/mettaclaw/memory').mkdir(parents=True, exist_ok=True)
     skills, loop = directory/'skills.metta', directory/'loop.metta'
@@ -181,12 +188,20 @@ def prepare(config_file):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('config')
+    parser.add_argument('--incarnation',help='Trusted supervisor registration; resident profile only')
     args = parser.parse_args()
     import time
     from fusion.native_telemetry import configure,span
     config=json.loads(Path(args.config).read_bytes());configure(config)
     started=time.monotonic_ns()
     with span('native.launch_prepare'):command, environment, directory = prepare(args.config)
+    if config.get('resident_worker'):
+        import uuid
+        from fusion.resident_workers import selection
+        selection(config['resident_worker']);require(type(args.incarnation) is str,'UNAUTHORIZED')
+        require(str(uuid.UUID(args.incarnation))==args.incarnation,'UNAUTHORIZED')
+        environment['NEOCLAW_NATIVE_INCARNATION']=args.incarnation
+    else:require(args.incarnation is None,'UNSUPPORTED_PROFILE')
     if config.get('native_telemetry'):environment['NEOCLAW_NATIVE_LAUNCH_NS']=str(started)
     os.chdir(directory)
     os.execvpe(command[0], command, environment)

@@ -33,6 +33,7 @@ def selected_expression(command):
 def caller_binding(caller):
     value = {k: caller.config[k] for k in ('database', 'principal', 'scope', 'reply_route', 'sharing', 'max_calls', 'max_attempts')}
     value['selections'] = {k: selection_token(v) for k, v in caller.chosen.items()}
+    if caller.config.get('portable_execution'):value['portable_execution']=caller.config['portable_execution']
     return value
 
 
@@ -61,6 +62,8 @@ class Application:
 
     def __init__(self, config_file, hook=lambda _: None):
         self.config = json.loads(Path(config_file).read_text())
+        from .https_pool import configure as transport_selection
+        transport_selection(self.config.get('transport_pool'))
         self.preview_config = None
         from .preview_application import APPLICATION as PREVIEW, configuration as preview_configuration
         if self.config['composition'] == PREVIEW:
@@ -156,12 +159,19 @@ class Application:
                 if 'inspect_config' in self.config:
                     from .preview_inspect import Client as InspectionClient
                     binding['inspection']=InspectionClient(self.config['inspect_config']).frozen
+                if 'native_preparation' in self.config:binding['native_preparation']=self.config['native_preparation']
+                if 'transport_pool' in self.config:binding['transport_pool']=self.config['transport_pool']
+                if 'history_hydration' in self.config:binding['history_hydration']=self.config['history_hydration']
+                if 'history_representation' in self.config:binding['history_representation']=self.config['history_representation']
                 if 'history_atoms_config' in self.config:
                     atoms=json.loads(Path(self.config['history_atoms_config']).read_text())
                     binding['history_atoms']={k:v for k,v in atoms.items() if k!='credential'}
                 if self.preview_model_enabled:
                     from .preview_session_client import Client as SessionClient
                     binding['session_port'] = SessionClient(self.config['session_config']).binding
+                    if 'resident_worker' in self.config:
+                        from .resident_workers import selection
+                        binding['resident_worker']=selection(self.config['resident_worker'])
             self.lock = open(cfg['database'] + '.application.lock', 'a')
             try: fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:

@@ -14,6 +14,6 @@ def main():
   for file in sorted((ROOT/folder).rglob('*')):
    if file.is_file() and '__pycache__' not in file.parts and file.suffix in ('.py','.json','.metta'):
     rel=file.relative_to(ROOT);dest=source/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(file,dest);files[str(rel)]=hashlib.sha256(file.read_bytes()).hexdigest()
- (a.destination/'Dockerfile').write_text(f'FROM {base}\nUSER root\nCOPY source /opt/fusion\nUSER 1000:1000\n')
+ (a.destination/'Dockerfile').write_text(f'FROM {base}\nUSER root\nCOPY source /opt/fusion\nCOPY package.json /opt/fusion-package.json\nUSER 1000:1000\n')
  (a.destination/'package.json').write_text(json.dumps(dict(parent=base,parent_config=pin,source=files,kind=a.kind),indent=2)+'\n')
 if __name__=='__main__':main()

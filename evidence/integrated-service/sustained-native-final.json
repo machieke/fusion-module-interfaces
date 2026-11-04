@@ -1,0 +1,1183 @@
+{
+  "profile": "integrated-retained-native-summary/1",
+  "status": "PASS",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "core": {
+    "operator_inputs": 80,
+    "operator_completions": 80,
+    "span_seconds": 1357.322,
+    "completion_seconds": {
+      "median": 14.315999999999999,
+      "p95_nearest_rank": 23.474
+    },
+    "separate_from_comparator": true
+  },
+  "handoffs": [
+    {
+      "scenario": "two-agent-A-B",
+      "passed": true
+    },
+    {
+      "scenario": "two-agent-B-A",
+      "passed": true
+    }
+  ],
+  "scope": "ONE_RETAINED_SYNTHETIC_INSTALLATION",
+  "namespace_reset": false,
+  "provider_timing": {
+    "fusion-attention": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 861837,
+          "file_ordinal": 0,
+          "spans": 3149,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-attention",
+        "provider.tls_accept"
+      ],
+      "errors_total": 1
+    },
+    "fusion-beliefs": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 1185911,
+          "file_ordinal": 0,
+          "spans": 4355,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-beliefs",
+        "provider.tls_accept",
+        "transport.cognition",
+        "transport.connection_open",
+        "transport.connection_reuse"
+      ],
+      "errors_total": 1
+    },
+    "fusion-embedding": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 9406,
+          "file_ordinal": 0,
+          "spans": 35,
+          "truncated": false
+        },
+        {
+          "bytes": 397274,
+          "file_ordinal": 1,
+          "spans": 1464,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.e5_encode",
+        "provider.embedding_request",
+        "provider.fusion-embedding",
+        "provider.tls_accept"
+      ],
+      "errors_total": 0
+    },
+    "fusion-episodes": {
+      "status": "MISSING_OR_TRUNCATED",
+      "files": [
+        {
+          "bytes": 4194227,
+          "file_ordinal": 0,
+          "spans": 15391,
+          "truncated": true
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-episodes",
+        "provider.tls_accept",
+        "transport.atoms",
+        "transport.cognition",
+        "transport.connection_open",
+        "transport.connection_reuse"
+      ],
+      "errors_total": 0
+    },
+    "fusion-execution": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 245737,
+          "file_ordinal": 0,
+          "spans": 910,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-execution",
+        "provider.tls_accept",
+        "transport.atoms",
+        "transport.connection_open",
+        "transport.connection_reuse",
+        "transport.preview"
+      ],
+      "errors_total": 0
+    },
+    "fusion-messaging": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 273551,
+          "file_ordinal": 0,
+          "spans": 1013,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-messaging",
+        "provider.tls_accept",
+        "transport.atoms",
+        "transport.connection_open",
+        "transport.connection_reuse",
+        "transport.preview"
+      ],
+      "errors_total": 0
+    },
+    "fusion-model": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 757398,
+          "file_ordinal": 0,
+          "spans": 2786,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-model",
+        "provider.model.acceptance",
+        "provider.model.authorize",
+        "provider.model.backend",
+        "provider.model.capture",
+        "provider.model.invoke",
+        "provider.model.reservation",
+        "provider.tls_accept"
+      ],
+      "errors_total": 0
+    },
+    "fusion-relations": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 381190,
+          "file_ordinal": 0,
+          "spans": 1408,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-relations",
+        "provider.tls_accept",
+        "transport.atoms",
+        "transport.connection_open",
+        "transport.connection_reuse"
+      ],
+      "errors_total": 1
+    },
+    "fusion-search": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 857056,
+          "file_ordinal": 0,
+          "spans": 3157,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-search",
+        "provider.tls_accept",
+        "transport.connection_open",
+        "transport.connection_reuse",
+        "transport.memory_source",
+        "transport.preview"
+      ],
+      "errors_total": 2
+    },
+    "fusion-storage": {
+      "status": "MISSING_OR_TRUNCATED",
+      "files": [
+        {
+          "bytes": 4194067,
+          "file_ordinal": 0,
+          "spans": 15328,
+          "truncated": true
+        }
+      ],
+      "stage_names": [
+        "provider.fusion-storage",
+        "provider.tls_accept"
+      ],
+      "errors_total": 6
+    },
+    "omega-agent": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 882076,
+          "file_ordinal": 0,
+          "spans": 3257,
+          "truncated": false
+        },
+        {
+          "bytes": 649728,
+          "file_ordinal": 1,
+          "spans": 2394,
+          "truncated": false
+        },
+        {
+          "bytes": 329269,
+          "file_ordinal": 2,
+          "spans": 1211,
+          "truncated": false
+        },
+        {
+          "bytes": 850670,
+          "file_ordinal": 3,
+          "spans": 3106,
+          "truncated": false
+        },
+        {
+          "bytes": 634912,
+          "file_ordinal": 4,
+          "spans": 2331,
+          "truncated": false
+        },
+        {
+          "bytes": 758729,
+          "file_ordinal": 5,
+          "spans": 2773,
+          "truncated": false
+        },
+        {
+          "bytes": 2058014,
+          "file_ordinal": 6,
+          "spans": 7517,
+          "truncated": false
+        },
+        {
+          "bytes": 162960,
+          "file_ordinal": 7,
+          "spans": 599,
+          "truncated": false
+        },
+        {
+          "bytes": 638969,
+          "file_ordinal": 8,
+          "spans": 2337,
+          "truncated": false
+        },
+        {
+          "bytes": 822749,
+          "file_ordinal": 9,
+          "spans": 3018,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "belief.validate_view",
+        "cognition.refresh",
+        "history.context",
+        "history.input",
+        "history.materialize",
+        "history.model",
+        "input.prepare",
+        "input.reconcile",
+        "memory.append",
+        "memory.capture",
+        "memory.retrieve",
+        "memory.select_view",
+        "model.command_admission",
+        "model.complete",
+        "model.prompt_bind",
+        "native.accept",
+        "native.append_memory",
+        "native.application_bootstrap",
+        "native.begin",
+        "native.capture_native",
+        "native.context_capture",
+        "native.context_captured",
+        "native.context_ids",
+        "native.context_payloads",
+        "native.creation_link",
+        "native.encode_query",
+        "native.end",
+        "native.finish",
+        "native.first_bridge",
+        "native.invoke",
+        "native.launch_prepare",
+        "native.model_complete",
+        "native.model_parsed",
+        "native.model_prompt",
+        "native.more",
+        "native.pending",
+        "native.preparation_publish",
+        "native.preparation_reuse",
+        "native.preparation_verify",
+        "native.preview_execute",
+        "native.preview_history",
+        "native.preview_input",
+        "native.preview_render_context",
+        "native.preview_skills",
+        "native.priority_adjust",
+        "native.priority_score",
+        "native.promoted_line",
+        "native.read_candidates",
+        "native.read_captured",
+        "native.read_clock",
+        "native.remember_time",
+        "native.restore",
+        "native.revise",
+        "native.source",
+        "provider.omega-agent",
+        "provider.tls_accept",
+        "transport.atoms",
+        "transport.cognition",
+        "transport.connection_open",
+        "transport.connection_reuse",
+        "transport.embedding",
+        "transport.memory_source",
+        "transport.preview"
+      ],
+      "errors_total": 17
+    },
+    "omega-agent-b": {
+      "status": "OBSERVED",
+      "files": [
+        {
+          "bytes": 635462,
+          "file_ordinal": 0,
+          "spans": 2340,
+          "truncated": false
+        },
+        {
+          "bytes": 638956,
+          "file_ordinal": 1,
+          "spans": 2337,
+          "truncated": false
+        },
+        {
+          "bytes": 191271,
+          "file_ordinal": 2,
+          "spans": 703,
+          "truncated": false
+        },
+        {
+          "bytes": 637719,
+          "file_ordinal": 3,
+          "spans": 2341,
+          "truncated": false
+        },
+        {
+          "bytes": 802157,
+          "file_ordinal": 4,
+          "spans": 2929,
+          "truncated": false
+        },
+        {
+          "bytes": 796232,
+          "file_ordinal": 5,
+          "spans": 2923,
+          "truncated": false
+        },
+        {
+          "bytes": 640436,
+          "file_ordinal": 6,
+          "spans": 2351,
+          "truncated": false
+        }
+      ],
+      "stage_names": [
+        "belief.validate_view",
+        "cognition.refresh",
+        "history.context",
+        "history.input",
+        "history.materialize",
+        "history.model",
+        "input.prepare",
+        "input.reconcile",
+        "memory.append",
+        "memory.capture",
+        "memory.retrieve",
+        "memory.select_view",
+        "model.command_admission",
+        "model.complete",
+        "model.prompt_bind",
+        "native.accept",
+        "native.append_memory",
+        "native.application_bootstrap",
+        "native.begin",
+        "native.capture_native",
+        "native.context_capture",
+        "native.context_captured",
+        "native.context_ids",
+        "native.context_payloads",
+        "native.creation_link",
+        "native.encode_query",
+        "native.end",
+        "native.finish",
+        "native.first_bridge",
+        "native.launch_prepare",
+        "native.model_complete",
+        "native.model_parsed",
+        "native.model_prompt",
+        "native.more",
+        "native.pending",
+        "native.preparation_publish",
+        "native.preparation_reuse",
+        "native.preparation_verify",
+        "native.preview_execute",
+        "native.preview_history",
+        "native.preview_input",
+        "native.preview_render_context",
+        "native.preview_skills",
+        "native.priority_adjust",
+        "native.priority_score",
+        "native.promoted_line",
+        "native.read_candidates",
+        "native.read_captured",
+        "native.read_clock",
+        "native.remember_time",
+        "native.restore",
+        "native.revise",
+        "native.source",
+        "provider.omega-agent-b",
+        "provider.tls_accept",
+        "transport.atoms",
+        "transport.cognition",
+        "transport.connection_open",
+        "transport.connection_reuse",
+        "transport.embedding",
+        "transport.memory_source",
+        "transport.preview"
+      ],
+      "errors_total": 14
+    }
+  },
+  "headroom": {
+    "fusion-attention": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-attention",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {}
+    },
+    "fusion-beliefs": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-beliefs",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {}
+    },
+    "fusion-embedding": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "embedding_occurrences",
+          "limit": 128,
+          "remaining": 100,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 28
+        }
+      ],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-embedding",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {
+        "uncaptured_encoder_reservations": 0
+      }
+    },
+    "fusion-episodes": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-episodes",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {}
+    },
+    "fusion-execution": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "concurrent",
+          "category": "nal-pending_work",
+          "limit": 8,
+          "remaining": 8,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "nal_retained_requests",
+          "limit": 128,
+          "remaining": 127,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 1
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "concurrent",
+          "category": "inspect-pending_work",
+          "limit": 8,
+          "remaining": 8,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "inspection_notifications",
+          "limit": 384,
+          "remaining": 381,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 3
+        }
+      ],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-execution",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {
+        "inspect-undelivered_results": 0,
+        "nal-undelivered_results": 0
+      }
+    },
+    "fusion-messaging": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-messaging",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {}
+    },
+    "fusion-model": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "model_call_occurrences",
+          "limit": 128,
+          "remaining": 59,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 69
+        }
+      ],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-model",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {
+        "reserved_model_calls_without_capture": 0
+      }
+    },
+    "fusion-relations": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-relations",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {}
+    },
+    "fusion-search": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-search",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {}
+    },
+    "fusion-storage": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-1-feed_records",
+          "limit": 2048,
+          "remaining": 840,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 1208
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-1-feed_charged_bytes",
+          "limit": 33554432,
+          "remaining": 22951974,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 10602458
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-2-feed_records",
+          "limit": 2048,
+          "remaining": 2048,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-2-feed_charged_bytes",
+          "limit": 33554432,
+          "remaining": 33554432,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-3-feed_records",
+          "limit": 2048,
+          "remaining": 2048,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-3-feed_charged_bytes",
+          "limit": 33554432,
+          "remaining": 33554432,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-1-archive_segments",
+          "limit": 64,
+          "remaining": 63,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 1
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-1-archive_charged_bytes",
+          "limit": 16777216,
+          "remaining": 16248832,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 528384
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-2-archive_segments",
+          "limit": 64,
+          "remaining": 64,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-2-archive_charged_bytes",
+          "limit": 16777216,
+          "remaining": 16777216,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-3-archive_segments",
+          "limit": 64,
+          "remaining": 64,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "shared-scope-3-archive_charged_bytes",
+          "limit": 16777216,
+          "remaining": 16777216,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-1-scope-1-feed_records",
+          "limit": 2048,
+          "remaining": 1885,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 163
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-1-scope-1-feed_charged_bytes",
+          "limit": 33554432,
+          "remaining": 32123078,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 1431354
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-1-scope-1-archive_segments",
+          "limit": 64,
+          "remaining": 64,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-1-scope-1-archive_charged_bytes",
+          "limit": 16777216,
+          "remaining": 16777216,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-2-scope-1-feed_records",
+          "limit": 2048,
+          "remaining": 1936,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 112
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-2-scope-1-feed_charged_bytes",
+          "limit": 33554432,
+          "remaining": 32566997,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 987435
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-2-scope-1-archive_segments",
+          "limit": 64,
+          "remaining": 64,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "private-2-scope-1-archive_charged_bytes",
+          "limit": 16777216,
+          "remaining": 16777216,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 0
+        }
+      ],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "fusion-storage",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {
+        "private-1-scope-1-unpublished_reservations": 0,
+        "private-1-scope-1-unsealed_reservations": 0,
+        "private-2-scope-1-unpublished_reservations": 0,
+        "private-2-scope-1-unsealed_reservations": 0,
+        "shared-scope-1-unpublished_reservations": 0,
+        "shared-scope-1-unsealed_reservations": 0,
+        "shared-scope-2-unpublished_reservations": 0,
+        "shared-scope-2-unsealed_reservations": 0,
+        "shared-scope-3-unpublished_reservations": 0,
+        "shared-scope-3-unsealed_reservations": 0
+      }
+    },
+    "omega-agent": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "retained",
+          "category": "retained_sessions",
+          "limit": 16,
+          "remaining": 7,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 9
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "concurrent",
+          "category": "active_sessions",
+          "limit": 2,
+          "remaining": 0,
+          "reserved": 0,
+          "state": "FULL",
+          "unit": "records",
+          "used": 2
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "concurrent",
+          "category": "pending_inputs",
+          "limit": 8,
+          "remaining": 8,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "application_logical_bytes",
+          "limit": 8388608,
+          "remaining": 7422521,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 966087
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "application_control_actions",
+          "limit": 512,
+          "remaining": 505,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 7
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "provider_records",
+          "limit": 32,
+          "remaining": 12,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 20
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "provider_actions",
+          "limit": 256,
+          "remaining": 136,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 120
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "worker_incarnations",
+          "limit": 128,
+          "remaining": 112,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 16
+        }
+      ],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "omega-agent",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {
+        "inputs_needing_reconciliation": 0
+      }
+    },
+    "omega-agent-b": {
+      "additional_live_generations": 0,
+      "archive_reclaims_total_quota": false,
+      "authority": "CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL",
+      "bounds": [
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "retained",
+          "category": "retained_sessions",
+          "limit": 16,
+          "remaining": 10,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 6
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "concurrent",
+          "category": "active_sessions",
+          "limit": 2,
+          "remaining": 2,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "concurrent",
+          "category": "pending_inputs",
+          "limit": 8,
+          "remaining": 8,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "application_logical_bytes",
+          "limit": 8388608,
+          "remaining": 7690595,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "bytes",
+          "used": 698013
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "application_control_actions",
+          "limit": 512,
+          "remaining": 506,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 6
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "provider_records",
+          "limit": 32,
+          "remaining": 12,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 20
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "provider_actions",
+          "limit": 256,
+          "remaining": 166,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 90
+        },
+        {
+          "authority": "OWNER_ENFORCED_NOT_A_PREFLIGHT_PROMISE",
+          "basis": "lifetime",
+          "category": "worker_incarnations",
+          "limit": 128,
+          "remaining": 120,
+          "reserved": 0,
+          "state": "AVAILABLE",
+          "unit": "records",
+          "used": 8
+        }
+      ],
+      "completion_reservations": "INCLUDED_IN_APPLICATION_BYTE_HEADROOM",
+      "coverage": "SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION",
+      "cross_owner_atomic": false,
+      "high_water_policy": "90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED",
+      "other_owner_lifetime_headroom": "NOT_OBSERVED",
+      "owner": "omega-agent-b",
+      "preflight_reserves": false,
+      "profile": "bounded-owner-headroom/1",
+      "refunds": false,
+      "unavailable": [],
+      "uncertainty": {
+        "inputs_needing_reconciliation": 0
+      }
+    }
+  },
+  "substitutions": [
+    "recorded model command proposals",
+    "synthetic operator inputs"
+  ],
+  "real": [
+    "native Omega",
+    "E5",
+    "Chroma",
+    "DeTTa",
+    "separate cognitive owners",
+    "pod-to-pod authenticated HTTPS"
+  ],
+  "additional_live_generations": 0,
+  "raw_private_capture_publication": "FORBIDDEN",
+  "limitations": [
+    "Storage and episode timing reached their4MiB trace caps; later active spans unavailable, not zero.",
+    "Registry byte capacity reached during later maintenance admission; explicit refusal retained.",
+    "Latency includes operator polling/setup gaps, recorded models and maintenance; not a generative SLA."
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "images": {
+    "embedding": "sha256:2c47d80a2e349e5302e53bb322fa0fb32692eee126846f25158e2ddb31526d95",
+    "chain": "sha256:2900890ec034c2bdf31e1d28250153b70edd60f29a0e7d47c50f0fe72453d52b",
+    "base": "sha256:8cbf57164ca9b0aa4d57714ea1a43d7ebd42bc1dd6ee73d6fbc6f5019c6f8ab4",
+    "caller": "sha256:51a41c51e06da73cbb6d8851233128d599b92cb8626aeba578e6b823bb32e78d"
+  },
+  "namespace": "omega-ref-integrated-rc18-chain01",
+  "model": "RECORDED_PROPOSALS",
+  "native_operator_inputs": 4,
+  "internal_task_result_inputs": 2,
+  "real_providers": [
+    "native Omega A/B",
+    "pinned E5",
+    "Chroma",
+    "DeTTa",
+    "authenticated HTTPS",
+    "pinned isolated F1R3node"
+  ],
+  "additional_live_generations": 0,
+  "report_sha256": "2587762d978794cf2405c27afc1f64388b64ce30d9bd705f3c7148977e10f4c7",
+  "qualifier_sha256": "04926ad693b8a484fcac46a3f6921a7bcb12977c990effa9b4182ddc15db2268",
+  "observer_sha256": "56c1e909d311b117ce088b93260031868dd283f9477ed7a417c7e855d45e5490",
+  "original_native_captures_and_bounds_exact": true,
+  "node_identity_unchanged": true,
+  "reservations": {
+    "submit": 1,
+    "observations": 3,
+    "maximum_observations": 16,
+    "automatic_resubmissions": 0,
+    "deadline_renewals": 0
+  },
+  "deadlines": {
+    "original_native_ms": 1793823479336,
+    "separate_exact_result_chain_ms": 1793824737419,
+    "rule": "New explicitly approved post-capture chain action; original native deadline is retained, not renewed"
+  },
+  "trace": {
+    "approval": {
+      "approval_record": "integrated-exact-result/integrated-workflow-ec1ec55a-58e9-4733-be8e-9eab33d34954",
+      "commitment_digest": "97fdc61432e62a0241a32957054f1f648c62a515ddfb5778aa241221f6f64767",
+      "result_ref": {
+        "digest": "97fdc61432e62a0241a32957054f1f648c62a515ddfb5778aa241221f6f64767",
+        "id": "c5c3b5b9-3e52-5604-956c-d6d851c396cb",
+        "revision": 1,
+        "scope_ref": "synthetic-integrated-rc18-chain01"
+      },
+      "scope_ref": "synthetic-integrated-rc18-chain01"
+    },
+    "artifact_ref": {
+      "digest": "aaebc1f5239d374b7d69d1862bda4cde236ce144d271e00a03dd6286fdb2abcc",
+      "id": "41f0a5e2-8875-588d-99db-ed994ea06e3b",
+      "revision": 1,
+      "scope_ref": "synthetic-integrated-rc18-chain01"
+    },
+    "inspection_ref": {
+      "digest": "97fdc61432e62a0241a32957054f1f648c62a515ddfb5778aa241221f6f64767",
+      "id": "c5c3b5b9-3e52-5604-956c-d6d851c396cb",
+      "revision": 1,
+      "scope_ref": "synthetic-integrated-rc18-chain01"
+    },
+    "native_occurrence": "152a41b1-3fba-5f54-9578-fb2d9578673c",
+    "chain_identity": {
+      "genesis": "ee6f9b2b8e11b2933ab338bf0ef02872cd7d8f1a9195ed09b969f2bb21e28ec8",
+      "network": "fusion-m4-isolated",
+      "profile": "f1r3-generated-post-state/2",
+      "shard": "fusion-m4",
+      "source": "9ec1096e10774926ea8e72f0823482f0bf9213e1"
+    },
+    "deploy_id": "30450221009e372ca4540192b3e0a7749abeb078782e5704fe04be000646820484511a89840220620b2b1b34f191642a73ae1d1f7137af8fb904f0c8e7111262f49f901bbcd0aa",
+    "read_name": "f3e3dfab8789c35214b4b3ec908576a3685740cf5ee790323c78deab4b01536b",
+    "inclusion_block": "08c8130a639bccdc7391136614d66bedc83b6e2368a74b170c3a0202ee8e06bd",
+    "effect_finality": "finalized",
+    "value": {
+      "digest": "97fdc61432e62a0241a32957054f1f648c62a515ddfb5778aa241221f6f64767",
+      "namespace": "fusion:m4:commitment/1",
+      "operation": "integrated-workflow-ec1ec55a-58e9-4733-be8e-9eab33d34954"
+    },
+    "deploy_effect_finality": {
+      "latest_block_hash": "08c8130a639bccdc7391136614d66bedc83b6e2368a74b170c3a0202ee8e06bd",
+      "rejection_count": 0,
+      "state": "Finalized"
+    },
+    "effect_query": {
+      "blockHash": "08c8130a639bccdc7391136614d66bedc83b6e2368a74b170c3a0202ee8e06bd",
+      "name": {
+        "UnforgPrivate": {
+          "data": "f3e3dfab8789c35214b4b3ec908576a3685740cf5ee790323c78deab4b01536b"
+        }
+      },
+      "usePreStateHash": false
+    },
+    "validation": "verified"
+  },
+  "independent_readback": {
+    "additional_live_generations": 0,
+    "approval_record": "integrated-exact-result/integrated-workflow-ec1ec55a-58e9-4733-be8e-9eab33d34954",
+    "artifact_ref": {
+      "digest": "aaebc1f5239d374b7d69d1862bda4cde236ce144d271e00a03dd6286fdb2abcc",
+      "id": "41f0a5e2-8875-588d-99db-ed994ea06e3b",
+      "revision": 1,
+      "scope_ref": "synthetic-integrated-rc18-chain01"
+    },
+    "deploy_id": "30450221009e372ca4540192b3e0a7749abeb078782e5704fe04be000646820484511a89840220620b2b1b34f191642a73ae1d1f7137af8fb904f0c8e7111262f49f901bbcd0aa",
+    "independent_reads": true,
+    "inspect_result_ref": {
+      "digest": "97fdc61432e62a0241a32957054f1f648c62a515ddfb5778aa241221f6f64767",
+      "id": "c5c3b5b9-3e52-5604-956c-d6d851c396cb",
+      "revision": 1,
+      "scope_ref": "synthetic-integrated-rc18-chain01"
+    },
+    "inspect_result_sha256": "97fdc61432e62a0241a32957054f1f648c62a515ddfb5778aa241221f6f64767",
+    "owner_journals_accessed": false,
+    "profile": "synthetic-chain-readback/1",
+    "read_name": "f3e3dfab8789c35214b4b3ec908576a3685740cf5ee790323c78deab4b01536b",
+    "scope": "synthetic-integrated-rc18-chain01",
+    "signing_performed": false,
+    "status": "PASS",
+    "submissions": 0,
+    "trace_sha256": "89ad2299ed57fd89f5c4e6feefe36b65eac205abe1d586298baad062de418397"
+  },
+  "pod_replacements": {
+    "omega-agent-0": {
+      "before": "731560f8-0abe-4e91-9626-037ed29ded38",
+      "after": "2b3002fa-2281-405d-ad06-42def9da5c36"
+    },
+    "fusion-commitment-0": {
+      "before": "d6f257be-de1c-4cce-9128-33a6fcd0930b",
+      "after": "8deff24c-5cd1-46f8-8496-f80befbe9283"
+    },
+    "f1r3node-0": {
+      "before": "aefc32bd-29e7-4a6a-ba83-0725ac2c5c0f",
+      "after": "a94d5ac5-9104-4e7d-b5f1-d84b70e1a044"
+    }
+  },
+  "acceptance_recovery": {
+    "before": "d39a1cc3-4452-4ace-94e4-2810b37bbf12",
+    "after": "731560f8-0abe-4e91-9626-037ed29ded38",
+    "before_submit_reservations": 0
+  },
+  "quiesced": true,
+  "limitations": [
+    "Only generated explicitly shareable artifact/result identities are published",
+    "Finality does not attest off-chain source truth or correctness of computation",
+    "One isolated node; unfunded generated signer; no public network",
+    "Raw owner journals, keys, private scopes and node cryptographic state excluded"
+  ],
+  "observed_provider_intervals": {
+    "signing_seconds": 0.143622,
+    "submission_response": "Success!\nDeployId is: 30450221009e372ca4540192b3e0a7749abeb078782e5704fe04be000646820484511a89840220620b2b1b34f191642a73ae1d1f7137af8fb904f0c8e7111262f49f901bbcd0aa",
+    "submission_rpc_seconds": 0.028245
+  }
+}

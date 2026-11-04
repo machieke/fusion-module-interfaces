@@ -1,0 +1,1121 @@
+{
+  "active": "Q01-Q30 qualification complete. No active tests or native workloads. Detached artifact-final.json records final offline verification and publication review.",
+  "active_qualification": {
+    "namespace": "omega-ref-integrated-sustained03",
+    "core": "PASS80/80",
+    "warm_revocation": "PASS6/6",
+    "private_interleave": "PASS6/6",
+    "concurrent_rebuild": "PASS: actual newer ready native seed, native enrollment while old repair reserved, old/new queries exact; original failed attempts preserved.",
+    "rotation": {
+      "status": "PASS",
+      "cases": 23,
+      "additional_live_generations": 0
+    },
+    "next": null,
+    "notifications": "PASS10 cases /3committed events; no effects",
+    "lifecycle": "PASS6 total via explicit continuation: first3terminal unchanged, last3intentional new, actual B pod kill/started uncertainty and A independent progress;14original captures exact.",
+    "fenced_restore": "PASS20 sessions/actual archived payload/private readback/continuation; no execution authority",
+    "retained_repair": "PASS97inputs unchanged, original uncertain repair remains spent; one explicit new derived maintenance action",
+    "chain": "PASS4 operator +2 internal native inputs; one submit reservation, three observations, caller/adapter/node replacement and independent readback",
+    "chain_restore": "PASS2sessions6inputs; one retained spent submit, no node restore or executor"
+  },
+  "additional_live_generations": 0,
+  "baseline": "bf8e87d7416cab6954a702d64d12cdfcf7b976d1",
+  "candidate_images": "artifacts/integrated-service/build-dev18/images.json",
+  "checks": [
+    {
+      "classification": "Native telemetry and real configuration tests; provider ports are fixtures",
+      "log": "artifacts/integrated-service/telemetry-01.log",
+      "methods": 14,
+      "status": "PASS"
+    },
+    {
+      "classification": "Real SQLite and one process kill; clock/projection fixtures",
+      "log": "artifacts/integrated-service/worker-owner-01.log",
+      "methods": 7,
+      "status": "PASS"
+    },
+    {
+      "classification": "33 passed; host test fixture omitted deployed preparation context",
+      "log": "artifacts/integrated-service/worker-config-01.log",
+      "methods": 34,
+      "status": "FAIL"
+    },
+    {
+      "classification": "6 passed; test changed frozen app and attempted rematerialization",
+      "log": "artifacts/integrated-service/worker-config-02.log",
+      "methods": 7,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Real config/SQLite; fake child and OCI archive fixtures",
+      "log": "artifacts/integrated-service/worker-config-03.log",
+      "methods": 7,
+      "status": "PASS"
+    },
+    {
+      "classification": "1 new resident native test plus 4 imported historical native methods; not five new scenarios",
+      "log": "artifacts/integrated-service/native-worker01.log",
+      "methods": 5,
+      "status": "PASS"
+    },
+    {
+      "classification": "2 passed; recovery test missing operator reconcile permission",
+      "log": "artifacts/integrated-service/native-worker02.log",
+      "methods": 3,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Real native loop/workspace/model owner with recorded responses; 5-input reuse, actual process kill saved-result recovery, current revocation",
+      "log": "artifacts/integrated-service/native-worker03.log",
+      "methods": 3,
+      "status": "PASS"
+    },
+    {
+      "classification": "Worker/config/source-archive/preparation plus old Phase3 config/private regressions",
+      "log": "artifacts/integrated-service/worker-config-04.log",
+      "methods": 38,
+      "status": "PASS"
+    },
+    {
+      "classification": "Real cache filesystem; native validator/builder fixtures",
+      "log": "artifacts/integrated-service/preparation-unit01.log",
+      "methods": 4,
+      "status": "PASS"
+    },
+    {
+      "classification": "Actual Janus crash without proc/dev mounts before input dispatch",
+      "log": "artifacts/integrated-service/preparation-native01.log",
+      "methods": 1,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Preserved reproduction of original crash",
+      "log": "artifacts/integrated-service/preparation-native02.log",
+      "methods": 1,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Native first input passed; isolated read-only probe lacked proc/dev mounts",
+      "log": "artifacts/integrated-service/preparation-native03.log",
+      "methods": 1,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Actual prepared native runtime and enforced readonly mount; repeated process uses same identity",
+      "log": "artifacts/integrated-service/preparation-native04.log",
+      "methods": 1,
+      "status": "PASS"
+    },
+    {
+      "classification": "Real TLS, seven new pool cases + nine historical methods; FileFeedFixture provider",
+      "log": "artifacts/integrated-service/pool01.log",
+      "methods": 16,
+      "status": "PASS"
+    },
+    {
+      "classification": "Pool, history, original deadlines, Phase3 configuration/private regression",
+      "log": "artifacts/integrated-service/transport-regression01.log",
+      "methods": 41,
+      "status": "PASS"
+    },
+    {
+      "classification": "Batch hydration, real TLS fixture-provider, atomic cache filesystem",
+      "log": "artifacts/integrated-service/performance-unit02.log",
+      "methods": 13,
+      "status": "PASS"
+    },
+    {
+      "classification": "Installed Python kit and old/new SDK/fixture-provider compatibility; real TLS but file fixture data",
+      "log": "artifacts/integrated-service/sdk-transport01.log",
+      "methods": 15,
+      "status": "PASS"
+    },
+    {
+      "classification": "Go stdlib real TLS fixtures",
+      "log": "artifacts/integrated-service/go-unit01.log",
+      "methods": 6,
+      "status": "PASS"
+    },
+    {
+      "classification": "Go protocol recheck",
+      "log": "artifacts/integrated-service/go-unit02.log",
+      "methods": 6,
+      "status": "PASS"
+    },
+    {
+      "classification": "Go HTTP status error parsing",
+      "log": "artifacts/integrated-service/go-unit03.log",
+      "methods": 6,
+      "status": "PASS"
+    },
+    {
+      "classification": "Canonical UUID fix",
+      "log": "artifacts/integrated-service/go-unit04.log",
+      "methods": 6,
+      "status": "PASS"
+    },
+    {
+      "classification": "Normative shared canonical/descriptor golden",
+      "log": "artifacts/integrated-service/go-unit05.log",
+      "methods": 7,
+      "status": "PASS"
+    },
+    {
+      "classification": "12 explicit subcases across correlation and observation validators; count separately",
+      "log": "artifacts/integrated-service/go-unit06.log",
+      "methods": 8,
+      "status": "PASS"
+    },
+    {
+      "classification": "4 compact-history cases plus hydration/history/config regressions; file-provider/clock fixtures",
+      "log": "artifacts/integrated-service/history-unit01.log",
+      "methods": 13,
+      "status": "PASS"
+    },
+    {
+      "classification": "Three native inputs completed; read-only test observer used unsupported helper table name",
+      "log": "artifacts/integrated-service/history-native01.log",
+      "methods": 1,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Three actual native inputs; real DeTTa/HTTPS; model proposals recorded",
+      "log": "artifacts/integrated-service/history-native02.log",
+      "methods": 1,
+      "status": "PASS"
+    },
+    {
+      "classification": "Compact/history/config/private/preparation regressions; fixtures labelled",
+      "log": "artifacts/integrated-service/history-regression01.log",
+      "methods": 37,
+      "status": "PASS"
+    },
+    {
+      "classification": "Extracted independent file fixture, actual native/C1/HTTPS; next context",
+      "log": "artifacts/integrated-service/provider-native01.log",
+      "methods": 1,
+      "status": "PASS"
+    },
+    {
+      "classification": "Recheck with complete wheel/native source manifests before archive changes",
+      "log": "artifacts/integrated-service/provider-native02.log",
+      "methods": 1,
+      "status": "PASS"
+    },
+    {
+      "classification": "Owner file/SQLite/process kills; payload fixture; includes historical feed methods",
+      "log": "artifacts/integrated-service/archive-owner01.log",
+      "methods": 11,
+      "status": "PASS"
+    },
+    {
+      "classification": "Adds current-authority race and actual DeTTa archived read",
+      "log": "artifacts/integrated-service/archive-owner02.log",
+      "methods": 13,
+      "status": "PASS"
+    },
+    {
+      "classification": "New server succeeded; old source export lacked pin JSON and fixture directory collided",
+      "log": "artifacts/integrated-service/archive-wire01.log",
+      "methods": 9,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Two new methods plus seven existing cognitive port methods; pinned old/current servers and SDK; real TLS/DeTTa",
+      "log": "artifacts/integrated-service/archive-wire02.log",
+      "methods": 9,
+      "status": "PASS"
+    },
+    {
+      "classification": "Archive owner/wire/config + historical feed/private/SDK contract regressions",
+      "log": "artifacts/integrated-service/archive-regression01.log",
+      "methods": 40,
+      "status": "PASS"
+    },
+    {
+      "classification": "Wrong host Python3.8 cannot import current typed contracts; no tests executed",
+      "log": "artifacts/integrated-service/envelope-regression01.log",
+      "status": "FAIL_BEFORE_TESTS"
+    },
+    {
+      "classification": "6 new envelope methods including 4 process-kill boundaries, 31 historical inspect methods; payload and transport fixtures",
+      "log": "artifacts/integrated-service/envelope-regression02.log",
+      "methods": 37,
+      "status": "PASS"
+    },
+    {
+      "classification": "7 new fixture setups omitted explicit owner transaction; no runtime failure",
+      "log": "artifacts/integrated-service/continuation-regression01.log",
+      "methods": 53,
+      "status": "FAIL"
+    },
+    {
+      "classification": "13 envelope/continuation methods plus 40 historical inspect and archive restore methods; rechecks not additive unique test counts",
+      "log": "artifacts/integrated-service/continuation-regression02.log",
+      "methods": 53,
+      "status": "PASS"
+    },
+    {
+      "classification": "NAL envelope owner validation; explicit numerical/payload fixtures",
+      "log": "artifacts/integrated-service/nal-envelope-unit01.log",
+      "methods": 5,
+      "status": "PASS"
+    },
+    {
+      "classification": "Real native original oracle and wrapped native loop, real DeTTa; local and same-host HTTPS; 2 intentional occurrences per placement; recorded external model/channel/context",
+      "log": "artifacts/integrated-service/nal-native01.log",
+      "methods": 1,
+      "scenarios": 2,
+      "status": "PASS"
+    },
+    {
+      "classification": "53 methods passed; one loader error for nonexistent tests.test_phase3_configuration",
+      "log": "artifacts/integrated-service/envelope-composition01.log",
+      "methods": 54,
+      "status": "FAIL"
+    },
+    {
+      "classification": "89 methods passed; legacy full-file DeTTa source guard fails identically on the starting source; assertion retained",
+      "log": "artifacts/integrated-service/envelope-composition02.log",
+      "methods": 90,
+      "status": "FAIL"
+    },
+    {
+      "classification": "9 new repair methods plus 2 historical active-memory methods; real Chroma/lifecycle and one actual process kill; labelled feed/vector fixtures",
+      "log": "artifacts/integrated-service/search-repair-unit01.log",
+      "methods": 11,
+      "status": "PASS"
+    },
+    {
+      "classification": "2 new configuration methods plus historical placement/archive/restore/private checks; imported rechecks overlap prior lanes",
+      "log": "artifacts/integrated-service/search-repair-config01.log",
+      "methods": 34,
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/integrated-service/search-repair-native.json",
+      "operator_native_inputs": 7,
+      "scenario": "native-archive-derived-index-rebuild-and-portable-NAL",
+      "source_manifest_sha256": "a3020fb3d3ac7d55761889bf86f17e541c06d63700ea8b0017ab9709c826c5e4",
+      "status": "PASS"
+    },
+    {
+      "classification": "New tests requested pin/delegate absent from inherited cognitive-only fixture; fixture corrected, implementation unchanged",
+      "log": "artifacts/integrated-service/permissions-unit01.log",
+      "methods": 4,
+      "passed": 2,
+      "status": "FAIL"
+    },
+    {
+      "classification": "4 capability methods plus 2 registry regression methods, metadata only with real application SQLite; no native/provider/model calls",
+      "log": "artifacts/integrated-service/permissions-unit02.log",
+      "methods": 6,
+      "status": "PASS"
+    },
+    {
+      "classification": "22 historical browser/operator HTTP checks plus four capability tests; HTTP operator/backend fixtures",
+      "log": "artifacts/integrated-service/workbench-unit01.log",
+      "methods": 26,
+      "status": "PASS"
+    },
+    {
+      "classification": "New closed UI control routes, authentication and stdin construction; real HTTP with operator fixture",
+      "log": "artifacts/integrated-service/workbench-new01.log",
+      "methods": 4,
+      "status": "PASS"
+    },
+    {
+      "classification": "Worker, lifetime/control/session/registry regression, actual SQLite/process kills; clocks and result projections are fixtures",
+      "log": "artifacts/integrated-service/worker-controls01.log",
+      "methods": 36,
+      "status": "PASS"
+    },
+    {
+      "classification": "After fixed-size completion metadata reservation: worker/control, capability and UI control checks; overlapping rechecks",
+      "log": "artifacts/integrated-service/worker-controls02.log",
+      "methods": 19,
+      "status": "PASS"
+    },
+    {
+      "classification": "28 pass; new test referenced nonexistent fixture attribute, no implementation failure",
+      "log": "artifacts/integrated-service/chain-continuation-unit01.log",
+      "methods": 29,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Actual caller/commitment SQLite and SIGKILL; native captures, signer, transport and chain are explicit fixtures",
+      "log": "artifacts/integrated-service/chain-continuation-unit02.log",
+      "methods": 35,
+      "status": "PASS"
+    },
+    {
+      "classification": "Installed dev09 operator UI/CLI, 3 new actual native inputs on retained 7 input state, real deployed owners, recorded model proposals only",
+      "evidence": "evidence/integrated-service/workbench-native.json",
+      "status": "PASS"
+    },
+    {
+      "classification": "REAL_NATIVE_E5_CHROMA_DETTA_HTTPS_REAL_ISOLATED_CHAIN_RECORDED_MODEL_PROPOSALS",
+      "evidence": "evidence/integrated-service/chain-continuation-native.json",
+      "status": "PASS_DEVELOPMENT"
+    },
+    {
+      "classification": "Current real configuration/SQLite lifecycle; health/TLS metadata fixtures",
+      "log": "artifacts/integrated-service/registry-rollover-unit01.log",
+      "methods": 13,
+      "status": "PASS"
+    },
+    {
+      "classification": "Caller/provider SQLite, existing configuration materialization; no native or real chain",
+      "log": "artifacts/integrated-service/chain-runtime-materialization-unit01.log",
+      "methods": 15,
+      "status": "PASS"
+    },
+    {
+      "classification": "Real application gate/SIGKILL and historical independent observer contracts; signing/chain/native captures fixtures",
+      "log": "artifacts/integrated-service/chain-concurrency-unit01.log",
+      "methods": 23,
+      "status": "PASS"
+    },
+    {
+      "classification": "Owner-local SQLite capacity, configuration/registry/privacy; generated fixtures",
+      "log": "artifacts/integrated-service/capacity-rollover-unit02.log",
+      "methods": 32,
+      "status": "PASS"
+    },
+    {
+      "classification": "Real read-only SQLite and backup/restore; native/chain captures explicit fixtures; overlap with imported historical methods",
+      "log": "artifacts/integrated-service/restore-continuation-unit01.log",
+      "methods": 42,
+      "status": "PASS"
+    },
+    {
+      "evidence": "evidence/integrated-service/provider-rollover-native.json",
+      "operator_native_inputs": 2,
+      "status": "PASS"
+    },
+    {
+      "classification": "Compiled local recipe metadata fixtures",
+      "log": "artifacts/integrated-service/local-plan-unit01.log",
+      "methods": 2,
+      "status": "PASS"
+    },
+    {
+      "classification": "Two placements: real native original/local/HTTPS and DeTTa; external model/channel fixtures",
+      "log": "artifacts/integrated-service/local-plan-native01.log",
+      "methods": 1,
+      "status": "PASS"
+    },
+    {
+      "classification": "Disposable owner-local SQLite corruptions; capture fixtures",
+      "log": "artifacts/integrated-service/journal-integrity-unit03.log",
+      "methods": 3,
+      "status": "PASS"
+    },
+    {
+      "classification": "Archive/restore/capacity fixtures and SQLite; overlapping rechecks",
+      "log": "artifacts/integrated-service/journal-integrity-regression01.log",
+      "methods": 37,
+      "status": "PASS"
+    },
+    {
+      "classification": "Qualification bounds and evaluator; no deployed claims",
+      "log": "artifacts/integrated-service/sustained-runner-unit01.log",
+      "methods": 6,
+      "status": "PASS"
+    },
+    {
+      "classification": "Authored OCI/wheel fixtures and offline verifier; no container starts",
+      "log": "artifacts/integrated-service/distribution-layer-unit01.log",
+      "methods": 34,
+      "status": "PASS"
+    },
+    {
+      "classification": "Integrated safe contract lane; denial guard first, owner/SQLite/Chroma fixtures, overlapping historical methods",
+      "log": "artifacts/integrated-service/ci-fast01/integrated-fast.log",
+      "methods": 171,
+      "status": "PASS"
+    },
+    {
+      "classification": "Bounded test barrier and chart/schema; no deployed effect",
+      "log": "artifacts/integrated-service/barrier-chart-unit01.log",
+      "methods": 9,
+      "status": "PASS"
+    },
+    {
+      "classification": "23pass; historical package assertion omitted four entrypoints already in baseline",
+      "log": "artifacts/integrated-service/distribution-package-unit02.log",
+      "methods": 24,
+      "status": "FAIL"
+    },
+    {
+      "classification": "Corrected explicit installed entrypoints and checkout-free package tests",
+      "log": "artifacts/integrated-service/operator-package-unit03.log",
+      "methods": 4,
+      "status": "PASS"
+    },
+    {
+      "classification": "Offline authored assembly fixtures and integrated CI source closure",
+      "log": "artifacts/integrated-service/distribution-assembly-unit02.log",
+      "methods": 9,
+      "status": "PASS"
+    },
+    {
+      "classification": "Read-only model seal and model/package contracts; authored backend only",
+      "log": "artifacts/integrated-service/model-startup02.log",
+      "methods": 35,
+      "status": "PASS"
+    },
+    {
+      "classification": "Overlapping startup, model authority, private configuration tests",
+      "log": "artifacts/integrated-service/dev15-regression01.log",
+      "methods": 25,
+      "status": "PASS"
+    },
+    {
+      "classification": "Real retained private model seal refused before Ready, zero new inputs/backend reservations",
+      "evidence": "artifacts/integrated-service/model-startup-deployed01.json",
+      "status": "PASS"
+    },
+    {
+      "classification": "Source-checked observer config recovery, SQLite and protocol fixtures; no native execution",
+      "log": "artifacts/integrated-service/continuation-startup01.log",
+      "methods": 14,
+      "status": "PASS"
+    },
+    {
+      "classification": "Overlapping integrated fixtures/SQLite safe lane",
+      "log": "artifacts/integrated-service/ci-fast02/integrated-fast.log",
+      "methods": 181,
+      "status": "PASS"
+    },
+    {
+      "classification": "Actual journals and process death; task transport/payload fixtures",
+      "log": "artifacts/integrated-service/task-registry-regression02.log",
+      "methods": 55,
+      "status": "PASS"
+    },
+    {
+      "classification": "Current dev17 integrated safe contracts; denial guard first; overlapping rechecks",
+      "log": "artifacts/integrated-service/ci-fast03/integrated-fast.log",
+      "methods": 186,
+      "status": "PASS"
+    },
+    {
+      "classification": "real SQLite/process death; fixture transport; Helm renderer",
+      "methods": 15,
+      "name": "registry-order-chain-plan02",
+      "status": "PASS"
+    },
+    {
+      "classification": "isolated integrated contract lane; not deployed native",
+      "methods": 188,
+      "name": "ci-fast04",
+      "status": "PASS"
+    },
+    {
+      "cases": 4,
+      "classification": "disposable copies of actual earlier native quiesced exports; originals unchanged; no repair",
+      "name": "integrity-real-copies02",
+      "status": "PASS"
+    },
+    {
+      "methods": 106,
+      "name": "phase3-final18",
+      "sha256": "bd9db22858df4ec3be8ba3eeb04b79db21ba86bba5ae47949d7075a5c9003d46",
+      "status": "PASS"
+    },
+    {
+      "cause": "Legacy backup transport fixture pretended to use real Relations schema; integrity correctly refused it. Fixture now explicitly named.",
+      "errors": 1,
+      "methods": 540,
+      "name": "phase2-final18",
+      "sha256": "3834d3df88321377e906845535f184992f47d2a72e8832070f5999bec6aa3de6",
+      "status": "FAIL"
+    },
+    {
+      "methods": 26,
+      "name": "backup-fixture-recheck18",
+      "sha256": "1b8f8694bcdf27ec691773a2ff8f78d42aac74ac2106ee8c8e2a24ab7e6f2ad7",
+      "status": "PASS"
+    },
+    {
+      "methods": 540,
+      "name": "phase2-final18-recheck",
+      "prior_failure_preserved": true,
+      "sha256": "b11d75837a442d00844e3ce3fe15145ff1f72b1080357a0adbb1e037539f94ad",
+      "status": "PASS"
+    },
+    {
+      "complete": 80,
+      "model": "RECORDED_PROPOSALS",
+      "name": "sustained03",
+      "operator_inputs": 80,
+      "raw_report": "PRIVATE_ARTIFACT_NOT_PUBLISHED",
+      "real": "native Omega/E5/Chroma/DeTTa/HTTPS/cognitive owners",
+      "same_retained_installation": true,
+      "source": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+      "status": "PASS",
+      "timing_missing_or_truncated": [
+        "fusion-episodes",
+        "fusion-storage"
+      ]
+    },
+    {
+      "additional_live_generations": 0,
+      "name": "sustained03-warm-revocation",
+      "native_operator_inputs": 6,
+      "private_details": "LOCAL_ONLY",
+      "status": "PASS"
+    },
+    {
+      "additional_live_generations": 0,
+      "name": "sustained03-triple",
+      "native_operator_inputs": 6,
+      "private_details": "LOCAL_ONLY",
+      "status": "PASS"
+    },
+    {
+      "status": "PASS",
+      "methods": 2,
+      "log": "artifacts/integrated-service/archive-wire-final18.log",
+      "classification": "actual old/new servers and clients over real DeTTa/HTTPS"
+    },
+    {
+      "status": "PASS",
+      "methods": 7,
+      "log": "artifacts/integrated-service/native-package18-tests.log",
+      "classification": "one final extracted-package fixed native lane; historical failures and overlaps separate"
+    },
+    {
+      "status": "PASS",
+      "methods": 15,
+      "log": "artifacts/integrated-service/artifact-final18f.log",
+      "classification": "current distribution allowlist/installed package recheck after public recipe changes"
+    },
+    {
+      "status": "PASS",
+      "name": "final-ui",
+      "native_operator_inputs": 3,
+      "evidence": "workbench-final.json",
+      "classification": "Actual installed browser/native/E5/Chroma/DeTTa/HTTPS; recorded proposals"
+    },
+    {
+      "status": "PASS",
+      "name": "final-chain",
+      "native_operator_inputs": 4,
+      "internal_native_inputs": 2,
+      "chain_submit_reservations": 1,
+      "chain_observations": 3,
+      "evidence": "chain-final.json"
+    },
+    {
+      "status": "PASS",
+      "name": "final-chain-fenced-restore",
+      "sessions": 2,
+      "retained_inputs": 6,
+      "new_effects": 0,
+      "evidence": "chain-fenced-restore-final.json"
+    },
+    {
+      "status": "PASS",
+      "name": "final-lost-reply",
+      "operator_native_inputs": 4,
+      "evidence": "continuation-recovery-final.json",
+      "classification": "Separate new scenario; earlier expired parent attempt unchanged"
+    },
+    {
+      "status": "PASS",
+      "methods": 15,
+      "log": "artifacts/integrated-service/artifact-final18g.log",
+      "classification": "Final distribution public allowlist and operator package tests; generation denial verified; overlaps earlier15method lanes"
+    }
+  ],
+  "current_artifacts": "artifacts/integrated-service/distribution-rc18-final/distribution.json",
+  "current_images": "artifacts/integrated-service/build-dev15/images.json",
+  "development_failures": [
+    {
+      "reason": "Wire identity lacked UUID separators; no mutation/input accepted",
+      "retained": "artifacts/integrated-service/go01/report.json",
+      "run": "go01"
+    },
+    {
+      "reason": "Go toolchain dynamic loader not mounted; no provider activity",
+      "retained": "artifacts/integrated-service/go-package01/tests.log",
+      "run": "go-package01"
+    },
+    {
+      "cause": "Completed-session volatile configuration absent after restart; authoritative native captures intact, no graph acceptance or submit reservation",
+      "gate": "chain01_admission",
+      "repair": "Reuse existing source-checked materialize; dev11 resumed original approved deadline"
+    },
+    {
+      "cause": "Harness selected historical feed /1 instead of sustained /2",
+      "gate": "chain01_independent_reader",
+      "repair": "Reuse existing sustained reader; readback-only PASS, no new native input or chain submission"
+    },
+    {
+      "cause": "Initial command omitted --output; clean wheel environment then lacked declared preview-install and chain-key-setup extras",
+      "gate": "dev10_sdk_install",
+      "repair": "Installed pinned offline dependencies; fresh namespace install completed with extracted package"
+    },
+    {
+      "cause": "Standalone importer depended on uninstalled image_layers module; failed before image import",
+      "gate": "dev14_import01",
+      "repair": "Keep importer stdlib-only; exact same images reimported with original base pin"
+    },
+    {
+      "cause": "Operator launched preflight before Helm readiness; NOT_AVAILABLE and quiesced before any new input",
+      "gate": "sustained01_resumed01",
+      "repair": "Wait actual completed install and all12Ready; resume02 from original70captures"
+    },
+    {
+      "cause": "Selected development SDK directory lacked dependency wheels; source-image checks passed, assembly refused wheel closure before output",
+      "gate": "distribution_dev14_01",
+      "repair": "Use existing pinned phase3/sdk-final prerequisite wheels; no new dependency selection"
+    },
+    {
+      "cause": "Closing completed active session did not release retained session quota; retained history remains charged",
+      "gate": "sustained01_resumed02",
+      "repair": "Inspect exact owner headroom before an explicit task-owned capacity selection; do not delete/refund/reopen closed history"
+    },
+    {
+      "cause": "70 complete inputs; final private session allocation refused retained session limit8. Closing a completed session did not refund retention.",
+      "gate": "sustained01_70",
+      "repair": "No journal edits or refunds. A separately selected capacity16 rollout also exposed sealed private ModelInference incompatibility; preserve all outcomes."
+    },
+    {
+      "cause": "Shared extension pin complete, private pin dispatched but ModelInference refused changed sealed sessions.max_sessions8\u219216. Caller has one attempted model call, no captured response/admitted command.",
+      "gate": "sustained01_resumed03",
+      "repair": "Read-only startup validation for all model partitions before Ready; fresh next qualification pins capacity16 before any owner state is created. Old uncertain occurrence remains fenced.",
+      "retained": "artifacts/integrated-service/sustained01-resumed03/report.json"
+    },
+    {
+      "cause": "New optional registry records were not admitted. Pod/source/TLS preflight passed; allocation refused before any session/input.",
+      "gate": "sustained02_initial",
+      "repair": "Explicit trusted add/probe/enable in qualification before each new selection. Same namespace retained; no accepted identities replaced."
+    },
+    {
+      "cause": "Copied dependency inventory described old Fusion wheels; offline assembly refused exact inventory mismatch before output.",
+      "gate": "distribution_dev16_01",
+      "repair": "Regenerate inventory from the selected eight exact wheels; no dependency/model change."
+    },
+    {
+      "cause": "43 native inputs captured; first A-to-B handoff failed because trusted task ingress omitted Registry.admit when allocating B session. Existing input guard refused missing selection before native B dispatch.",
+      "gate": "sustained02_admitted_handoff",
+      "repair": "Atomic admitted-provider binding in task ingress; worker may select shared admitted providers, never register/probe/enable. Legacy unbound allocation is not migrated. Explicit continuation retains old failed task and deadline.",
+      "retained": "artifacts/integrated-service/sustained02-admitted/report.json"
+    },
+    {
+      "cause": "Experimental amendment changed the cognition session. Native PreviewEvidence requires its own acknowledged memory-write occurrence; the new sender lacks it. No support occurrence admitted; native worker exited2, input stayed dispatched until original observer deadline. All original captures and reservations retained; no replay.",
+      "completed_operator_inputs": 47,
+      "dispatched_uncompleted_input": 48,
+      "name": "sustained02-compatible-continuation",
+      "namespace_quiesced": true,
+      "report_sha256": "57cc58ac89ae4eeac3a1907d976723fa7d6bc66104c080c158028a356732e195",
+      "retained_original_failed_handoff": true
+    },
+    {
+      "name": "sustained03-concurrent-rebuild",
+      "status": "FAIL",
+      "source": "distribution-dev18c",
+      "detail": "Repair held Search before native memory.select_view; call timed out before model/operation admission. Preserve failed dispatched input, expired repair reservation and fault markers. Correct test ordering on separate fresh qualification; no replay/reset."
+    },
+    {
+      "name": "sustained03-lifecycle",
+      "status": "FAIL",
+      "inputs_accepted": 0,
+      "detail": "Registry1MiB finite admission budget exhausted by retained bindings and explicit probes; reads and old captures remain available. No quota raise, deletion or migration. Lifecycle test will run on separately retained comparator installation."
+    },
+    {
+      "name": "installed-native18-attempt01",
+      "cause": "bwrap source alias missing; no tests"
+    },
+    {
+      "name": "installed-native18-attempt02",
+      "cause": "7methods:8subcase failures; native pinned PYTHONPATH hidden with developer tree. Child NAL JSON PASS is invalid because unittest failed; not counted as pass."
+    },
+    {
+      "name": "installed-native18-attempt03",
+      "cause": "readonly artifact alias lacked empty native asset mount destination; no tests"
+    },
+    {
+      "name": "installed-native18-attempt04",
+      "cause": "7methods:5pass,compact-history1fail (native exit2),NAL1error from stale report output directory after assertions. Independent installed provider,5input reuse,revocation,capture recovery,readonly preparation passed. Fresh diagnostic followup pending."
+    },
+    {
+      "name": "rc18-concurrent-rebuild",
+      "cause": "Chart refused undeclared after_write_identity barrier before allocation/input. Derived index removal retained; qualifier selects existing declared after_memory_vector_capture barrier before storage enrollment; no runtime or chart changed."
+    },
+    {
+      "name": "rc18-concurrent-rebuild02",
+      "cause": "Comparator had only one generation; deletion made current view unavailable. One input fenced before model/tool admission, no repair submitted; preserved."
+    },
+    {
+      "name": "rc18-concurrent-rebuild03",
+      "cause": "Native seed completed, then extra session allocation refused active cap2 per agent owner. Reused same completed seed/session for attempt04; no replay, quota change or deadline reset."
+    },
+    {
+      "name": "installed-native18-attempt05",
+      "cause": "Native NAL passes. Compact-history fixture ignored S01_DETTA override and required exact DeTTa at extracted recipe path; no model/tool admitted."
+    },
+    {
+      "name": "installed-native18-attempt06",
+      "status": "PASS",
+      "detail": "Exact DeTTa independently readonly mounted at declared extracted path. Original source/runtime/math unchanged."
+    },
+    {
+      "name": "rc18-lifecycle",
+      "cause": "First three inputs reached exact expired-before-start/cancelled-before-start/complete states. Further B session allocation refused active cap. No uncertain input accepted; qualification resumes only remaining three intentional inputs after supported close of a completed session, retaining all previous input rows."
+    },
+    {
+      "name": "rc18-recovery01",
+      "status": "FAIL_SECOND_CASE",
+      "detail": "Accepted-caller kill PASS; lost-reply parent task expired, pending exact captures/reservations retained; fresh rc18-recovery02 separatePASS"
+    },
+    {
+      "name": "rc18-chain01-fenced",
+      "status": "FAIL_HARNESS",
+      "detail": "Source pods already stopped; no effects; source readers restarted withnodeoff and freshbackup02PASS"
+    },
+    {
+      "name": "protected-after-attempts01-02",
+      "status": "FAIL_VERIFIER",
+      "detail": "Serialization separators andUnicode escaping mismatched initialbaseline; exactalgorithm03PASS, no protected mutations"
+    },
+    {
+      "name": "workbench18-first-browser",
+      "status": "FAIL_HARNESS",
+      "detail": "Defaultdaemon unresponsive, zero native inputs; unique task browser18bPASS; stop required correctcustomoutput"
+    }
+  ],
+  "external_prerequisites": [],
+  "next_actions": [],
+  "packages": {
+    "Q01": {
+      "activity": "Final dev18 sustained80/80 and four equal14input cold/warm runs PASS;16native inputs use16 versus4interpreters; all12roles untruncated in comparison; sustained2roles truncated explicitly.",
+      "exit_evidence": [
+        "cold-baseline.json",
+        "instrumented-cold.json",
+        "sustained-native-final.json",
+        "performance-final.json"
+      ],
+      "name": "Comparable critical-path baseline",
+      "status": "PASS"
+    },
+    "Q02": {
+      "activity": "Final dev18 five native inputs in one observed interpreter/incarnation; warm selection revocation without restart PASS. First equal workload observed16native inputs in4resident versus16cold interpreters.",
+      "exit_evidence": [
+        "native-worker.json",
+        "retained-security.json",
+        "sustained-native-final.json"
+      ],
+      "name": "Session-bound reusable native workers",
+      "status": "PASS"
+    },
+    "Q03": {
+      "activity": "Readonly prepared native package final seven-method lane PASS with developer checkout hidden; exact pinned native/DeTTa assets separately mounted.",
+      "exit_evidence": [
+        "installed-native-final.json"
+      ],
+      "name": "Verified startup preparation",
+      "status": "PASS"
+    },
+    "Q04": {
+      "activity": "Final dev18 real provider TLS reuse/bulk hydration throughout80inputs; current token and same-CA leaf rotation23assertions PASS.",
+      "exit_evidence": [
+        "retained-security.json",
+        "performance-final.json"
+      ],
+      "name": "Authenticated transport and batching",
+      "status": "PASS"
+    },
+    "Q05": {
+      "activity": "Final compact captures/history/retained views qualified in80inputs and20session fenced restore; no historical occurrence deletion.",
+      "exit_evidence": [
+        "history-source.json",
+        "retained-fenced-restore.json"
+      ],
+      "name": "Incremental context and compact captures",
+      "status": "PASS"
+    },
+    "Q06": {
+      "activity": "Executed artifact pod plans plus real original/adapted local/HTTPS NAL; independent E5/retrieval four-placement matrix PASS. Unsupported placements refuse.",
+      "exit_evidence": [
+        "embedding-placement-final.json",
+        "installed-native-final.json"
+      ],
+      "name": "Executable placement plans",
+      "status": "PASS"
+    },
+    "Q07": {
+      "activity": "Trusted add/probe/enable, warm disable/refusal and explicit reenable passed. Finite1MiB admission capacity reached without resetting state; compatible old selection evidence preserved.",
+      "exit_evidence": [
+        "provider-lifecycle-native.json",
+        "provider-rollover-native.json",
+        "retained-security.json"
+      ],
+      "name": "Provider admission and retirement",
+      "status": "PASS"
+    },
+    "Q08": {
+      "activity": "Actual old/current clients and DeTTa HTTPS servers PASS two final methods, legacy archive read and downgrade refusal; profiles retained.",
+      "exit_evidence": [
+        "wire-compatibility-final.json"
+      ],
+      "name": "Wire-contract evolution",
+      "status": "PASS"
+    },
+    "Q09": {
+      "activity": "Static Go client independently built from extracted package; eight methods and deployed real DeTTa/native remember/query plus scoped HTTPS authority/reconnect checks PASS.",
+      "exit_evidence": [
+        "go-client-final.json"
+      ],
+      "name": "Cross-language client interoperability",
+      "status": "PASS"
+    },
+    "Q10": {
+      "activity": "Final independent extracted/built/installed atomic-file CONTRACT_FIXTURE consumed by real native C1 HTTPS path; provider classification remains fixture.",
+      "exit_evidence": [
+        "independent-native-provider.json",
+        "installed-native-final.json"
+      ],
+      "name": "External-style provider integration",
+      "status": "PASS"
+    },
+    "Q11": {
+      "activity": "Current actual native original/local/HTTPS named NAL plus real asynchronous handoff/inspection envelopes PASS.",
+      "exit_evidence": [
+        "continuation-native.json",
+        "sustained-native-final.json",
+        "installed-native-final.json"
+      ],
+      "name": "Portable execution envelopes",
+      "status": "PASS"
+    },
+    "Q12": {
+      "activity": "Final actual native caller/executor pod replacement and saved continuation recovery passed; separate fresh lost-reply case passed unchanged original bounds. Earlier combined-case parent deadline exhaustion remains pending/failed, not replayed.",
+      "exit_evidence": [
+        "continuation-recovery-native.json",
+        "sustained-native-final.json",
+        "continuation-recovery-final.json",
+        "chain-final.json",
+        "chain-fenced-restore-final.json"
+      ],
+      "name": "Durable asynchronous invocation",
+      "status": "PASS"
+    },
+    "Q13": {
+      "activity": "Final actual native caller/executor pod replacement and saved continuation recovery passed; separate fresh lost-reply case passed unchanged original bounds. Earlier combined-case parent deadline exhaustion remains pending/failed, not replayed.",
+      "exit_evidence": [
+        "continuation-native.json",
+        "continuation-recovery-native.json",
+        "retained-fenced-restore.json",
+        "continuation-recovery-final.json",
+        "chain-final.json",
+        "chain-fenced-restore-final.json"
+      ],
+      "name": "Saved bounded continuations",
+      "status": "PASS"
+    },
+    "Q14": {
+      "exit_evidence": [
+        "lifecycle-final.json",
+        "continuation-recovery-final.json"
+      ],
+      "name": "Task lifecycle and hierarchical bounds",
+      "status": "PASS",
+      "activity": "Actual expiry/cancellation before dispatch, started uncertainty with B pod replacement, independent A progress, original parent deadlines and spent reservations retained."
+    },
+    "Q15": {
+      "activity": "Final real commit feed3events/2pages/10assertions PASS: catch-up, duplicate, gap, authority, caller restart, execution token rotation and unsubscribe without reexecution.",
+      "exit_evidence": [
+        "continuation-native.json",
+        "continuation-recovery-native.json",
+        "retained-security.json"
+      ],
+      "name": "Commit notifications and catch-up",
+      "status": "PASS"
+    },
+    "Q16": {
+      "activity": "Final80native inputs, owner-local finite headroom and later actual Registry1MiB refusal; old observations/captures and20session97input restore preserved.",
+      "exit_evidence": [
+        "sustained-native-final.json",
+        "retained-fenced-restore.json"
+      ],
+      "name": "Unified capacity admission and headroom",
+      "status": "PASS"
+    },
+    "Q17": {
+      "activity": "Final native-created archive, new native work afterward, storage replacement and exact early payload through fenced restore PASS. Copy-only, retained charge/no erasure.",
+      "exit_evidence": [
+        "archive-source.json",
+        "archive-native.json",
+        "sustained-native-final.json",
+        "retained-fenced-restore.json"
+      ],
+      "name": "Sealed archive tier",
+      "status": "PASS"
+    },
+    "Q18": {
+      "exit_evidence": [
+        "search-repair-native.json",
+        "concurrent-rebuild-final.json",
+        "retained-repair.json"
+      ],
+      "name": "Snapshots, bookmarks and rebuild",
+      "status": "PASS",
+      "activity": "Actual final native concurrent publication and same-retained-installation hot/archive derived rebuild PASS; originals and failed reservations preserved; four disposable integrity-copy cases PASS."
+    },
+    "Q19": {
+      "activity": "Actual final native concurrent publication and same-retained-installation hot/archive derived rebuild PASS; originals and failed reservations preserved; four disposable integrity-copy cases PASS.",
+      "exit_evidence": [
+        "concurrent-rebuild-final.json",
+        "retained-repair.json"
+      ],
+      "name": "Integrity diagnosis and bounded repair",
+      "status": "PASS"
+    },
+    "Q20": {
+      "activity": "Final retained archive/private/uncertain restore20sessions97inputs plus same-workflow chain restore2sessions6inputs PASS. Exact spent effects retained; no executor or restored chain node; old approval cannot execute.",
+      "exit_evidence": [
+        "retained-fenced-restore.json",
+        "chain-fenced-restore-final.json"
+      ],
+      "name": "Archival/restore continuity",
+      "status": "PASS"
+    },
+    "Q21": {
+      "exit_evidence": [
+        "workbench-final.json"
+      ],
+      "name": "Interactive native session experience",
+      "status": "PASS",
+      "activity": "Installed workbench completed3 native inputs in the retained Go session; exact2prior captures, current capability/preflight and screenshots verified."
+    },
+    "Q22": {
+      "exit_evidence": [
+        "retained-security.json",
+        "lifecycle-final.json",
+        "workbench-final.json"
+      ],
+      "name": "Durable progress and lifecycle control",
+      "status": "PASS",
+      "activity": "Actual owner lifecycle controls and native progress, notifications and pending uncertainty retained; no synthetic completion or budget refund."
+    },
+    "Q23": {
+      "exit_evidence": [
+        "workbench-final.json"
+      ],
+      "name": "Policy/capability inspection",
+      "status": "PASS",
+      "activity": "Installed current capabilities20existing tools and typed advisory preflight displayed; no remote authority or reservation inferred."
+    },
+    "Q24": {
+      "exit_evidence": [
+        "performance-final.json",
+        "embedding-placement-final.json"
+      ],
+      "name": "Evaluation and placement laboratory",
+      "status": "PASS",
+      "activity": "Four equal14operator/16native comparisons, independent placement matrix, real retrieval and explicit wrong-answer evaluation coverage; fixture/provider classification retained."
+    },
+    "Q25": {
+      "exit_evidence": [
+        "chain-final.json"
+      ],
+      "name": "Selective workflow provenance",
+      "status": "PASS",
+      "activity": "Final dev18 same-workflow real native retrieval/inspection to exact-result approved isolated chain, one reservation, caller/adapter/node replacement and independent readback PASS."
+    },
+    "Q26": {
+      "exit_evidence": [
+        "retained-security.json",
+        "retained-fenced-restore.json"
+      ],
+      "name": "Warm-state and cross-feature security",
+      "status": "PASS",
+      "activity": "Final warm current revocation, actual private/shared interleave, credential/TLS rotation, notifications and owner-bound fenced restore PASS."
+    },
+    "Q27": {
+      "activity": "Final actual native caller/executor pod replacement and saved continuation recovery passed; separate fresh lost-reply case passed unchanged original bounds. Earlier combined-case parent deadline exhaustion remains pending/failed, not replayed.",
+      "exit_evidence": [
+        "continuation-recovery-native.json",
+        "retained-fenced-restore.json",
+        "retained-security.json",
+        "continuation-recovery-final.json",
+        "chain-final.json",
+        "chain-fenced-restore-final.json"
+      ],
+      "name": "Failure, upgrade and restore matrix",
+      "status": "PASS"
+    },
+    "Q28": {
+      "activity": "Final dev18 sustained80/80 and four equal14input cold/warm runs PASS;16native inputs use16 versus4interpreters; all12roles untruncated in comparison; sustained2roles truncated explicitly.",
+      "exit_evidence": [
+        "sustained-native-final.json",
+        "performance-final.json"
+      ],
+      "name": "Sustained measured qualification",
+      "status": "PASS"
+    },
+    "Q29": {
+      "activity": "Verified four role images/OCI delta+base, eight offline wheels, extracted Go/provider/native lanes and fresh artifact installs PASS. Detached final artifact binding records the post-evidence packet.",
+      "exit_evidence": [
+        "sources-final.json",
+        "artifact-final.json",
+        "installed-native-final.json"
+      ],
+      "name": "Developer distribution and safe CI",
+      "status": "PASS"
+    },
+    "Q30": {
+      "exit_evidence": [
+        "gates.json",
+        "artifact-final.json",
+        "protected-final.json",
+        "cleanup-final.json"
+      ],
+      "name": "Integrated acceptance and handoff",
+      "status": "PASS",
+      "activity": "Six integrated stories passed; protected3165objects/45namespaces and campaign unchanged;23tasknamespaces stopped withPVCs/uncertainty retained. Final publication uses reviewed source/evidence only."
+    }
+  },
+  "profile": "omega-integrated-programme/1",
+  "protected": "evidence/integrated-service/baseline.json",
+  "real_generative_runtime": "NOT_CONTACTED",
+  "task_namespaces": [
+    "omega-ref-integrated-baseline01",
+    "omega-ref-integrated-baseline02",
+    "omega-ref-integrated-warm01",
+    "omega-ref-integrated-go01",
+    "omega-ref-integrated-archive01",
+    "omega-ref-integrated-registry01",
+    "omega-ref-integrated-archive-restore01",
+    "omega-ref-integrated-continuation01",
+    "omega-ref-integrated-recovery01",
+    "omega-ref-integrated-chain01",
+    "omega-ref-integrated-search01",
+    "omega-ref-integrated-sustained01",
+    "omega-ref-integrated-sustained02",
+    "omega-ref-integrated-sustained03",
+    "omega-ref-integrated-rc18-cold01",
+    "omega-ref-integrated-rc18-warm01",
+    "omega-ref-integrated-rc18-cold02",
+    "omega-ref-integrated-rc18-warm02",
+    "omega-ref-integrated-rc18-chain01",
+    "omega-ref-integrated-rc18-recovery01",
+    "omega-ref-integrated-sustained03-fenced",
+    "omega-ref-integrated-rc18-chain01-fenced",
+    "omega-ref-integrated-rc18-recovery02"
+  ],
+  "vulnerability_inventory": {
+    "actual_oci_inventory": "image-inventory-dev18.json",
+    "actual_wheel_inventory": "sdk-dev18/dependency-inventory.json",
+    "generative_container_starts": 0,
+    "licensing": "NOASSERTION_WHERE_UNRESOLVED",
+    "tool_probe": "trivy, grype, syft absent from PATH",
+    "vulnerability_scan": "NOT_RUN_NO_INSTALLED_SCANNER"
+  },
+  "programme_status": "READY_WITH_EXPLICIT_LIMITS"
+}

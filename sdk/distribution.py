@@ -344,6 +344,70 @@ PUBLIC_FILES += (
     'sdk/compatibility/0.2.0/fusion_file_feed_example-0.2.0-py3-none-any.whl',
     'sdk/compatibility/0.2.0/fusion_module_client-0.2.0-py3-none-any.whl',
 )
+PUBLIC_FILES += (
+    'docs/integrated-service/runbook.md', 'docs/integrated-service/contracts.md',
+    'docs/integrated-service/programme-report.md',
+    'docs/integrated-service/qualification.md',
+    'evidence/integrated-service/gates.json',
+    'evidence/integrated-service/progress.json',
+    'evidence/integrated-service/capability-source-tests.json',
+    'evidence/integrated-service/performance-final.json',
+    'evidence/integrated-service/sustained-native-final.json',
+    'evidence/integrated-service/retained-security.json',
+    'evidence/integrated-service/retained-fenced-restore.json',
+    'evidence/integrated-service/retained-repair.json',
+    'evidence/integrated-service/installed-native-final.json',
+    'evidence/integrated-service/wire-compatibility-final.json',
+    'evidence/integrated-service/embedding-placement-final.json',
+    'evidence/integrated-service/concurrent-rebuild-final.json',
+    'evidence/integrated-service/lifecycle-final.json',
+    'evidence/integrated-service/go-client-final.json',
+    'evidence/integrated-service/continuation-recovery-final.json',
+    'evidence/integrated-service/chain-final.json',
+    'evidence/integrated-service/chain-fenced-restore-final.json',
+    'evidence/integrated-service/workbench-final.json',
+    'evidence/integrated-service/workbench-query.png',
+    'evidence/integrated-service/workbench-preflight.png',
+    'evidence/integrated-service/sources-final.json',
+    'evidence/integrated-service/protected-final.json',
+    'evidence/integrated-service/cleanup-final.json',
+    'sdk/go_package.py', 'sdk/go/README.md', 'sdk/go/go.mod',
+    'sdk/go/client.go', 'sdk/go/client_test.go', 'sdk/go/testdata/golden.json',
+    'sdk/go/cmd/omega-client/main.go',
+    'examples/integrated_baseline.py', 'examples/integrated_archive.py',
+    'examples/integrated_archive_restore.py', 'examples/integrated_chain_continuation.py',
+    'examples/integrated_continuation.py', 'examples/integrated_continuation_recovery.py',
+    'examples/integrated_go.py', 'examples/integrated_provider_rollover.py',
+    'examples/integrated_registry.py', 'examples/integrated_search_repair.py',
+    'examples/integrated_sustained.py', 'examples/integrated_retained_recovery.py',
+    'examples/integrated_concurrent_rebuild.py',
+    'examples/integrated_retained_repair.py',
+    'examples/integrated_native_package.py',
+    'examples/integrated_rotation.py', 'examples/integrated_notifications.py',
+    'examples/integrated_compare.py', 'examples/integrated_integrity.py',
+    'examples/integrated_warm_revocation.py',
+    'examples/integrated_chain_restore.py',
+    'examples/integrated_private_interleave.py',
+    'tests/test_integrated_distribution.py', 'tests/test_integrated_layers.py',
+    'tests/test_integrated_test_barrier.py',
+    'tests/test_integrated_model_startup.py',
+    'tests/test_integrated_measurements.py',
+    'tests/test_integrated_task_registry.py',
+    'tests/test_integrated_continuation_startup.py',
+    'tests/neoclaw_support.py', 'tests/test_integrated_archive.py',
+    'tests/test_integrated_archive_config.py', 'tests/test_integrated_archive_restore.py',
+    'tests/test_integrated_capacity.py', 'tests/test_integrated_chain_continuation.py',
+    'tests/test_integrated_composition.py', 'tests/test_integrated_continuation.py',
+    'tests/test_integrated_envelope.py', 'tests/test_integrated_history.py',
+    'tests/test_integrated_hydration.py', 'tests/test_integrated_journal_integrity.py',
+    'tests/test_integrated_nal_envelope.py', 'tests/test_integrated_permissions.py',
+    'tests/test_integrated_placement.py', 'tests/test_integrated_pool.py',
+    'tests/test_integrated_preparation.py', 'tests/test_integrated_registry.py',
+    'tests/test_integrated_registry_configuration.py', 'tests/test_integrated_restore_observation.py',
+    'tests/test_integrated_search_config.py', 'tests/test_integrated_search_repair.py',
+    'tests/test_integrated_workbench.py', 'tests/test_integrated_worker_controls.py',
+    'tests/test_integrated_workers.py',
+)
 PREREQUISITES = (
     'Prebuilt installation needs the supplied images/chart/wheels plus an explicitly selected '
     'single-node k3s environment, kubectl, Helm, Docker import adapter, OpenSSL and CPython 3.12.',
@@ -367,7 +431,7 @@ def contained(root, name):
     return path
 
 
-def assemble(build, wheelhouse, output, *, source_root=ROOT):
+def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, go_artifacts=None, image_inventory=None):
     """Copy only declared inputs; fail closed on source drift or extra wheels."""
     build, wheelhouse, output, source_root = map(lambda p: Path(p).resolve(),
                                                (build, wheelhouse, output, source_root))
@@ -382,6 +446,14 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT):
     image_archive = contained(build, 'images.tar')
     require(image_archive.stat().st_size == imported['archive_bytes']
             and sha(image_archive) == imported['archive_sha256'], 'CONFLICT')
+    if imported.get('archive_format') == 'verified-oci-layer-set/1':
+        require(base_archive is not None, 'NOT_AVAILABLE')
+        base_archive = Path(base_archive).resolve()
+        binding = imported['base_archive']
+        require(base_archive.is_file() and base_archive.stat().st_size == binding['archive_bytes']
+                and sha(base_archive) == binding['archive_sha256'], 'CONFLICT')
+    else:
+        require(base_archive is None and not imported.get('base_archive'), 'CONFLICT')
 
     packages, source_map, parents = {}, None, {}
     for entry in entries:
@@ -447,6 +519,26 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT):
                 require(source_map.get(binding['source']) == binding['sha256'], 'CONFLICT')
     inventory_path = contained(wheelhouse, 'dependency-inventory.json')
     require(json.loads(inventory_path.read_bytes()) == inventory(wheels.values()), 'CONFLICT')
+    go = None
+    if go_artifacts is not None:
+        go_artifacts = Path(go_artifacts).resolve()
+        go = json.loads(contained(go_artifacts, 'manifest.json').read_bytes())
+        require(go['profile'] == 'fusion-go-artifacts/1' and go['status'] == 'PASS'
+                and go['additional_live_generations'] == 0, 'CONFLICT')
+        require(sha(contained(go_artifacts, 'omega-client')) == go['binary_sha256']
+                and sha(contained(go_artifacts, 'fusion-go-client-source.tar.gz')) == go['archive_sha256'], 'CONFLICT')
+        require(all(sha(contained(source_root, 'sdk/go/' + name)) == pin
+                    for name, pin in go['source'].items()), 'CONFLICT')
+    if image_inventory is not None:
+        image_inventory = Path(image_inventory).resolve()
+        report = json.loads(image_inventory.read_bytes())
+        require(report['schema']=='fusion-oci-dependency-license-inventory/1'
+                and report['container_starts']==report['generative_starts']==report['additional_live_generations']==0,'CONFLICT')
+        require(report['archive']['sha256']==imported['archive_sha256']
+                and report['tool']['sha256']==sha(contained(source_root,'sdk/image_inventory.py')),'CONFLICT')
+        require({(r['manifest_digest'],r['configuration_digest']) for r in report['images']}==
+                {(r['manifest_digest'],r['configuration_digest']) for r in entries},'CONFLICT')
+        if base_archive:require(report['base_archive']['sha256']==imported['base_archive']['archive_sha256'],'CONFLICT')
     source_inventory = {name: dict(sha256=sha(path), bytes=path.stat().st_size,
                                   license='NOASSERTION') for name, path in sorted(sources.items())}
 
@@ -482,6 +574,15 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT):
         shutil.copyfile(image_archive, target_archive)
         archive_storage = 'copied across filesystems'
     register(target_archive, 'immutable OCI image archive')
+    if base_archive:
+        target_base = output / 'images.base.tar'
+        try:
+            os.link(base_archive, target_base)
+        except OSError as exc:
+            if exc.errno != errno.EXDEV:
+                raise
+            shutil.copyfile(base_archive, target_base)
+        register(target_base, 'immutable required OCI base archive; never inferred from node cache')
     image_map = {}
     for entry in entries:
         kind = entry['kind']
@@ -495,6 +596,12 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT):
         copy(path, 'wheelhouse/' + name, 'exact wheel with original notices')
     copy(sdk_path, 'wheelhouse/build-manifest.json', 'exact SDK build bindings')
     copy(inventory_path, 'wheelhouse/dependency-inventory.json', 'actual wheel dependency/license inventory')
+    if image_inventory:
+        copy(image_inventory, 'image-dependency-inventory.json', 'offline actual image dependency/license observations; no vulnerability assurance')
+    if go:
+        for name in ('omega-client', 'fusion-go-client-source.tar.gz', 'manifest.json'):
+            target=copy(contained(go_artifacts, name), 'go/' + name, 'extracted second-language client artifact')
+            if name == 'omega-client':target.chmod(0o755)
 
     # Loose docs/tooling are convenient for operators; the archive additionally
     # carries every exact image-declared source file, without a checkout mount.
@@ -533,6 +640,13 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT):
             values['components'][role].setdefault('config', {}).update(nativeEnabled=False, workerEnabled=False)
         profiles.append(str(write('profiles/sustained-'+mode+'.yaml', values,
             'new explicit sustained profile; recorded and disabled; generate fresh values').relative_to(output)))
+    from integration.single_node.integrated_values import generate as integrated_values
+    values = integrated_values(imported, 'synthetic-integrated-distribution', history='compact',
+        archive=True, envelopes=True, nal_envelopes=True, search_repair=True)
+    for role in ('omega-agent', 'omega-agent-b'):
+        values['components'][role].setdefault('config', {}).update(nativeEnabled=False, workerEnabled=False)
+    profiles.append(str(write('profiles/integrated-combined.yaml', values,
+        'explicit integrated profile; recorded and disabled; generate fresh values').relative_to(output)))
     host_tools = {}
     for tool in ('python3.12', 'helm', 'kubectl', 'openssl', 'docker'):
         found = shutil.which(tool)
@@ -559,6 +673,12 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT):
         distribution='local immutable artifact set; no registry publication',
         qualification='ASSEMBLY_INTEGRITY_ONLY_NOT_AN_EXECUTED_DEPLOYMENT',
         prerequisites=list(PREREQUISITES))
+    if base_archive:
+        manifest['image_base_archive'] = 'images.base.tar'
+    if go:
+        manifest['second_language_client'] = 'go/manifest.json'
+    if image_inventory:
+        manifest['image_dependency_inventory'] = 'image-dependency-inventory.json'
     manifest_path = output / 'distribution.json'
     manifest_path.write_bytes(canonical(manifest))
     manifest_path.with_suffix('.sha256').write_text(digest(manifest_path.read_bytes()) + '\n')
@@ -573,8 +693,11 @@ def main():
     parser.add_argument('--build', required=True, type=Path)
     parser.add_argument('--wheelhouse', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--base-archive', type=Path, help='Exact required base for a verified OCI layer set')
+    parser.add_argument('--go-artifacts', type=Path, help='Verified extracted Go package build')
+    parser.add_argument('--image-inventory', type=Path, help='Executed offline inventory bound to these image archives')
     args = parser.parse_args()
-    print(json.dumps(assemble(args.build, args.wheelhouse, args.output), indent=2))
+    print(json.dumps(assemble(args.build, args.wheelhouse, args.output, base_archive=args.base_archive, go_artifacts=args.go_artifacts, image_inventory=args.image_inventory), indent=2))
 
 
 if __name__ == '__main__':

@@ -13,6 +13,7 @@ import time
 from .. import embedding_contracts as c
 from ..contracts import ContractError, canonical, require
 from ..neoclaw_transport import json_loads
+from ..native_telemetry import traced, selected_directory
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -28,6 +29,8 @@ class NativeE5:
             self.lock.close(); raise ContractError('OVERLOADED') from None
         env = dict(PATH='/usr/bin:/bin', LANG='C.UTF-8', PYTHONPATH=str(ROOT), PYTHONDONTWRITEBYTECODE='1',
                    HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1', TOKENIZERS_PARALLELISM='false')
+        telemetry=selected_directory()
+        if telemetry is not None:env['FUSION_ENCODER_DIAGNOSTICS']=str(telemetry/'encoder')
         self.diagnostics = open(Path(cfg['database']).with_suffix('.diagnostics.log'), 'ab')
         os.chmod(self.diagnostics.name, 0o600)
         self.process = subprocess.Popen([runtime['python'], '-m', 'integration.neoclaw.embedding_worker',
@@ -52,6 +55,7 @@ class NativeE5:
         require(data.endswith(b'\n') and data.count(b'\n') == 1, 'NOT_AVAILABLE')
         return json_loads(data)
 
+    @traced('provider.embedding_request')
     def encode(self, request: c.EncodeInput):
         accepted = c.intent(asdict(request))
         remaining = min(5., (accepted['deadline_ms']-time.time()*1000)/1000)

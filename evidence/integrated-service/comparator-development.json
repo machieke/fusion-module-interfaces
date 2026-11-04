@@ -1,0 +1,166 @@
+{
+  "profile": "equal-native-workload-comparison/1",
+  "rows": [
+    {
+      "run": "baseline02",
+      "workload": "a52ddad11f2af2800427335bce3cf87ae2c115cf5f375336bffe94fd29ce6065",
+      "operator_inputs": 14,
+      "native_inputs": 16,
+      "median_seconds": 23.483,
+      "p95_seconds": 30.486,
+      "quantile": "nearest rank",
+      "native_processes": null,
+      "connections_open": 0,
+      "connections_reused": 0,
+      "storage_posts": 2613,
+      "source_records": 279,
+      "capacity": {
+        "limits": {
+          "bytes": 33554432,
+          "records": 2048
+        },
+        "metadata_reservation_per_record": 8192,
+        "physical_bytes": "NOT_INFERRED",
+        "profile": "bounded-feed-capacity/1",
+        "refunds": false,
+        "scope_ref": "synthetic-integrated-baseline02",
+        "source": "3b8a64f1-7ed1-418f-b888-da1a86e16d70",
+        "source_profile": "immutable-commit-feed/2",
+        "usage": {
+          "charged_bytes": 2442491,
+          "pending_records": 0,
+          "published_payload_bytes": 156923,
+          "published_records": 279,
+          "reserved_records": 279
+        }
+      },
+      "physical_bytes_by_owner": {
+        "fusion-attention": 375483,
+        "fusion-beliefs": 516783,
+        "fusion-embedding": 117617,
+        "fusion-episodes": 1631057,
+        "fusion-execution": 212286,
+        "fusion-messaging": 124496,
+        "fusion-model": 672811,
+        "fusion-relations": 114903,
+        "fusion-search": 1526133,
+        "fusion-storage": 9433251,
+        "omega-agent": 3886771,
+        "omega-agent-b": 2573994
+      },
+      "model": "RECORDED_PROPOSALS",
+      "source_report_sha256": "f256a85d3b65116b685b6dbb0964ad22c379ecfd3d1e6d912e3a2c6b6acd3776"
+    },
+    {
+      "run": "warm01",
+      "workload": "a52ddad11f2af2800427335bce3cf87ae2c115cf5f375336bffe94fd29ce6065",
+      "operator_inputs": 14,
+      "native_inputs": 16,
+      "median_seconds": 18.06,
+      "p95_seconds": 21.719,
+      "quantile": "nearest rank",
+      "native_processes": 4,
+      "connections_open": 842,
+      "connections_reused": 4570,
+      "storage_posts": 2459,
+      "source_records": 279,
+      "capacity": {
+        "limits": {
+          "bytes": 33554432,
+          "records": 2048
+        },
+        "metadata_reservation_per_record": 8192,
+        "physical_bytes": "NOT_INFERRED",
+        "profile": "bounded-feed-capacity/1",
+        "refunds": false,
+        "scope_ref": "synthetic-integrated-warm01",
+        "source": "d9c5fff7-766d-4874-a707-ff7be53ae696",
+        "source_profile": "immutable-commit-feed/2",
+        "usage": {
+          "charged_bytes": 2440971,
+          "pending_records": 0,
+          "published_payload_bytes": 155403,
+          "published_records": 279,
+          "reserved_records": 279
+        }
+      },
+      "physical_bytes_by_owner": {
+        "fusion-attention": 294673,
+        "fusion-beliefs": 399287,
+        "fusion-embedding": 119951,
+        "fusion-episodes": 1731648,
+        "fusion-execution": 180063,
+        "fusion-messaging": 127234,
+        "fusion-model": 662767,
+        "fusion-relations": 120922,
+        "fusion-search": 1541625,
+        "fusion-storage": 8787214,
+        "omega-agent": 7816988,
+        "omega-agent-b": 2961412
+      },
+      "model": "RECORDED_PROPOSALS",
+      "source_report_sha256": "1bc1067241c7a64d7c207f19cff2cd2ce9bab8ac0f7fb172971aec33de8fb80d"
+    },
+    {
+      "run": "archive01",
+      "workload": "a52ddad11f2af2800427335bce3cf87ae2c115cf5f375336bffe94fd29ce6065",
+      "operator_inputs": 14,
+      "native_inputs": 16,
+      "median_seconds": 19.139499999999998,
+      "p95_seconds": 23.287,
+      "quantile": "nearest rank",
+      "native_processes": 4,
+      "connections_open": 907,
+      "connections_reused": 4655,
+      "storage_posts": 2619,
+      "source_records": 279,
+      "capacity": {
+        "limits": {
+          "bytes": 33554432,
+          "records": 2048
+        },
+        "metadata_reservation_per_record": 8192,
+        "physical_bytes": "NOT_INFERRED",
+        "profile": "bounded-feed-capacity/1",
+        "refunds": false,
+        "scope_ref": "synthetic-integrated-archive01",
+        "source": "ac5fd589-ab51-4eec-ad4b-c7b97877b080",
+        "source_profile": "immutable-commit-feed/2",
+        "usage": {
+          "charged_bytes": 2442111,
+          "pending_records": 0,
+          "published_payload_bytes": 156543,
+          "published_records": 279,
+          "reserved_records": 279
+        }
+      },
+      "physical_bytes_by_owner": {
+        "fusion-attention": 293363,
+        "fusion-beliefs": 393426,
+        "fusion-embedding": 114366,
+        "fusion-episodes": 1728659,
+        "fusion-execution": 178448,
+        "fusion-messaging": 127248,
+        "fusion-model": 663357,
+        "fusion-relations": 116870,
+        "fusion-search": 1538010,
+        "fusion-storage": 8939037,
+        "omega-agent": 8479788,
+        "omega-agent-b": 2971144
+      },
+      "model": "RECORDED_PROPOSALS",
+      "source_report_sha256": "80bb52cc4aee3ddea2be0ef81d035301a1c8b02210682a7e6cb3b791669e6ee5"
+    }
+  ],
+  "shared_workload": true,
+  "additional_live_generations": 0,
+  "limitations": [
+    "Single execution per development selection; paired repetitions and final sustained lane pending",
+    "Owner physical bytes include derived preparation, diagnostics and actual journal/data bytes; not payload bytes alone",
+    "Sequential per-owner samples are not a global atomic storage snapshot",
+    "Stages are nested: totals or medians must not be summed into a critical path",
+    "Archive01 maintenance failed after the measured fourteen inputs; separately resumed with original captures preserved",
+    "Cold source uses per-input launch; warm01 enables preparation/residency/pool; archive01 also enables compact captures/cache. Attribution is to combinations, not isolated factor tests",
+    "No production SLA, autonomous reliability or live-generation latency claim"
+  ]
+}

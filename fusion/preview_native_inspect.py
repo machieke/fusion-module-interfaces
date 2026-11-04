@@ -18,13 +18,22 @@ class NativeInspection:
         self.db.execute('''CREATE TABLE IF NOT EXISTS preview_inspections(
             occurrence TEXT PRIMARY KEY,task TEXT NOT NULL,artifact TEXT,artifact_ref TEXT,request TEXT,
             acceptance TEXT,result TEXT,completion TEXT,ack TEXT,calls INTEGER NOT NULL DEFAULT 0);''')
+        self.continuation=None
+        if self.client.frozen.get('envelopes'):
+            from .inspection_continuation import Continuation
+            self.continuation=Continuation(app,self.client.frozen)
+            self.db.execute('CREATE TABLE IF NOT EXISTS integrated_native_envelopes(occurrence TEXT PRIMARY KEY,envelope TEXT NOT NULL)')
     def state(self,row):return self.db.execute('SELECT * FROM preview_inspections WHERE occurrence=?',(row['id'],)).fetchone()
     def admit(self,identity,task):
         self.db.execute('INSERT INTO preview_inspections(occurrence,task) VALUES(?,?)',(identity,task))
+        if self.continuation:
+            row=self.db.execute('SELECT deadline FROM app_occurrences WHERE id=?',(identity,)).fetchone()
+            require(row is not None,'CONFLICT');self.continuation.admit(identity,task,row['deadline'])
     def reserve(self,row,*,effect=False):
         if effect:require(time.time_ns()//1_000_000<row['deadline'],'DEADLINE_EXCEEDED')
         with self.db:
             self.db.execute('BEGIN IMMEDIATE');state=self.state(row);require(state['calls']<32,'OVERLOADED')
+            if self.continuation:self.continuation.permit(row)
             self.db.execute('UPDATE preview_inspections SET calls=calls+1 WHERE occurrence=?',(row['id'],))
         self.app.hook('after_inspect_relay_reservation')
     def save(self,row,column,value):
@@ -33,6 +42,7 @@ class NativeInspection:
         with self.db:
             old=self.state(row)[column];require(old is None or old==encoded,'CONFLICT')
             self.db.execute('UPDATE preview_inspections SET '+column+'=? WHERE occurrence=?',(encoded,row['id']))
+            if self.continuation:self.continuation.capture(row,column,value)
         self.app.hook('after_inspect_'+column+'_capture')
     @staticmethod
     def observation_pause(row):
@@ -69,15 +79,35 @@ class NativeInspection:
             request=peer.request('execution','submit',dict(operation='inspect_atom',ref=ref),row['id'],row['id'],deadline_ms=row['deadline'])
             self.save(row,'request',request)
         request=json.loads(self.state(row)['request'])
+        envelope=None
+        if self.continuation:
+            from .execution_envelope import build,check
+            saved=self.db.execute('SELECT envelope FROM integrated_native_envelopes WHERE occurrence=?',(row['id'],)).fetchone()
+            envelope=json.loads(saved[0]) if saved else build(request,self.app.binding['principal'],self.client.selected['execution'])
+            check(envelope,request,self.app.binding['principal'],self.client.selected['execution'])
+            if not saved:
+                with self.db:self.db.execute('INSERT INTO integrated_native_envelopes VALUES(?,?)',(row['id'],canonical(envelope).decode()))
+                self.app.hook('after_native_execution_envelope_bind')
         if self.state(row)['acceptance'] is None:
             # The exact submit request can observe a prior owner acceptance even
             # after expiry; the owner refuses a previously unaccepted effect.
-            self.reserve(row);self.save(row,'acceptance',self.client.invoke(request))
+            self.reserve(row)
+            self.save(row,'acceptance',self.client.invoke(request,**({'envelope':envelope} if envelope is not None else {})))
         acceptance=json.loads(self.state(row)['acceptance']);job=acceptance['job_id']
         if self.state(row)['result'] is None:
             for _ in range(8):
                 self.reserve(row)
-                try:status=peer.status(job)
+                try:
+                    if self.continuation:
+                        old=self.continuation.cursor(row)
+                        events=self.client.events(job,old['source'] if old else None,old['next'] if old else 0)
+                        self.continuation.observe_commits(row,events)
+                        # A committed result hint permits observation only. It
+                        # cannot substitute for typed result hydration below.
+                        if events['head']<2:
+                            self.observation_pause(row);continue
+                        self.reserve(row)
+                    status=peer.status(job)
                 except ContractError as error:
                     if error.code not in ('NOT_AVAILABLE','OVERLOADED'):raise
                     self.observation_pause(row);continue

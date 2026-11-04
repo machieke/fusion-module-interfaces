@@ -13,10 +13,14 @@ from .sustained_evaluation import freeze,score,DATASETS,stopped_premise
 
 
 class Runner(PreviewRunner):
-    def __init__(self,operator,destination):
+    def __init__(self,operator,destination,*,maximum_inputs=72,legacy_crossing_required=True):
+        require(type(maximum_inputs) is int and 1<=maximum_inputs<=96,'OVERLOADED')
+        require(type(legacy_crossing_required) is bool)
         super().__init__(operator,destination)
+        self.maximum_inputs=maximum_inputs
+        self.legacy_crossing_required=legacy_crossing_required
         self.lock=threading.RLock();self.end=time.monotonic()+3600
-        self.report.update(frozen=freeze(),maximum_operator_inputs=72,source_observations=[],evaluations=[],profile='omega-native-sessions/3')
+        self.report.update(frozen=freeze(),maximum_operator_inputs=maximum_inputs,source_observations=[],evaluations=[],profile='omega-native-sessions/3')
         self.save()
     def save(self):
         with self.lock:
@@ -31,7 +35,7 @@ class Runner(PreviewRunner):
         return len(self.ids[role])-1
     def run(self,command,role='omega-agent',session=0):
         with self.lock:
-            require(self.count<72 and time.monotonic()<self.end,'OVERLOADED');self.count+=1
+            require(self.count<getattr(self,'maximum_inputs',72) and time.monotonic()<self.end,'OVERLOADED');self.count+=1
             sid=self.ids[role][session];identity='sustained-'+str(uuid.uuid4())
             entry=dict(role=role,session=sid,identity=identity,command=command,started_ms=time.time_ns()//1000000)
             self.report['inputs'].append(entry);self.save()
@@ -80,7 +84,8 @@ class Runner(PreviewRunner):
                 if current['source_head']['sequence']>512 and crossed_at is None:crossed_at=self.count
                 self.close(role,index)
         self.report['crossing']=dict(at_input=crossed_at,after_crossing_inputs=0 if crossed_at is None else self.count-crossed_at,source_not_reset=True)
-        self.save();require(crossed_at is not None and self.count-crossed_at>=4,'NOT_AVAILABLE')
+        self.save()
+        if self.legacy_crossing_required:require(crossed_at is not None and self.count-crossed_at>=4,'NOT_AVAILABLE')
         # Read the first acknowledged result after the threshold; it keeps the
         # original view even though fresh queries selected later owner heads.
         old=self.call('omega-agent','observe',self.ids['omega-agent'][0],'--content')

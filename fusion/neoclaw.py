@@ -113,6 +113,8 @@ class NalService:
         else:
             require('neoclaw_composition' not in tables, 'UNSUPPORTED_PROFILE')
         self.db.executescript(SCHEMA + WORK_SCHEMA)
+        from .nal_envelope import seal
+        seal(self.db,self.config.get('portable_execution'),'jobs')
         self.execution = NalExecutionOwner(self.db, self.policy, self.atoms_for('worker'), self.mailbox, self.config.get('capacity', 8))
 
     def close(self):
@@ -142,10 +144,24 @@ class NalService:
         self.policy.route(scope, request['reply_route'], principal)
         if module is s: self.authorize_search(principal, scope, request)
 
-    def invoke(self, credential, request):
+    def invoke_enveloped(self,credential,wire):
+        from .nal_envelope import PROFILE,check
+        from .execution_envelope import bind
+        from .contracts import digest
+        require(type(wire) is dict and set(wire)=={'envelope','request'} and len(canonical(wire))<=16384)
+        require(self.config.get('portable_execution')==PROFILE and self.policy.current().get('portable_execution')==PROFILE,'UNSUPPORTED_PROFILE')
+        principal=self.policy.authenticate(credential);request=wire['request'];module,chosen=self.selected(request)
+        require(module is c,'UNSUPPORTED_PROFILE');value=check(wire['envelope'],request,principal,chosen)
+        self.authorize(principal,request,module);bind(self.db,value,request,self.hook)
+        result=self.invoke(credential,request,_portable=True)
+        return dict(ok=result,provider=request['selection'],envelope_digest=digest(canonical(value)))
+
+    def invoke(self, credential, request, *, _portable=False):
         principal = self.policy.authenticate(credential)
         module, chosen = self.selected(request)
         name, op = module.validate(request, chosen)
+        if module is c and name=='execution' and op=='submit':
+            require(bool(self.config.get('portable_execution'))==_portable,'UNSUPPORTED_PROFILE')
         if self.separate_owners:
             require(name == 'execution', 'UNSUPPORTED_OPERATION')
         scope, body = request['scope_ref'], request['body']

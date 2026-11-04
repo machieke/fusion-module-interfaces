@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "methods": 2,
+  "classification": "Pinned baseline server from git archive plus current real HTTPS/DeTTa; published immutable old SDK wheel and current client",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "old_server": "bf8e87d7416cab6954a702d64d12cdfcf7b976d1",
+  "old_client_wheel_sha256": "3db7d4c879634c92c0cdf5bef22fe9fab6f47c4bc0f0e8033e961be580b57938",
+  "cases": [
+    "old and new clients against actual old and new servers",
+    "old client reads current archived payload through legacy profile",
+    "new archive capability refuses old server before effect",
+    "core-only selection refuses archive operation",
+    "current revocation on retained read",
+    "unsafe old binary reopen of archived state refused"
+  ],
+  "test_log_sha256": "8da6be2c9ecdcfae7ed4b8476f017979e738e8918efe6a0dfbb183c1b0a88d69",
+  "additional_live_generations": 0
+}

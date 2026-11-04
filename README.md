@@ -1,11 +1,17 @@
 # Omega module-interface reference distribution
 
-The current release candidate is **Phase 3 sustained single-node service
-operation**, ready for sustained developer review. Start with the [operator runbook](docs/phase3/runbook.md),
-[current qualification report](docs/phase3/programme-report.md) and
-[release gates](evidence/phase3/release-gates.json). R01–R12 are implemented and
-qualified within the documented finite, synthetic single-node envelope. Exact
-images, wheels, chart and source are bound in the [artifact record](evidence/phase3/artifacts.json).
+The **Q01–Q30 integrated single-node service release** is ready for review with
+[explicit operational limits](docs/integrated-service/programme-report.md#remaining-limits).
+Start with its [operator runbook](docs/integrated-service/runbook.md),
+[qualification report](docs/integrated-service/programme-report.md) and
+[acceptance matrix](evidence/integrated-service/gates.json). Native worker reuse,
+provider placement, bounded continuations, archival and operator controls reuse
+the completed Phase 2/3 owners. Recorded model proposals remain explicit;
+additional live generations are zero.
+
+The completed [Phase 3 sustained service release](docs/phase3/programme-report.md)
+and its [artifact record](evidence/phase3/artifacts.json) remain the starting
+baseline, with their original finite single-node scope and evidence intact.
 
 The completed [Phase 2 developer preview](docs/phase2/programme-report.md) remains
 the historical baseline. The material below records earlier module milestones

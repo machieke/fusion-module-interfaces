@@ -1,0 +1,4791 @@
+{
+  "status": "PASS",
+  "classification": "INSTALLED_OPERATOR_REAL_NATIVE_SERVICES_RECORDED_MODEL",
+  "baseline": "bf8e87d7416cab6954a702d64d12cdfcf7b976d1",
+  "source_manifest_sha256": "5120f96737ccc39e74c9b6b7a18f0c0e1651ce14418fc5fe2dcb74373f7b2eed",
+  "images": [
+    {
+      "configuration_digest": "sha256:4de5d4cd1907548aaffea75e54cadddf5aa60afb8ddda2ff72b6e23c59abaa62",
+      "kind": "base",
+      "local_tag": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+      "manifest_digest": "sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+      "repository": "docker.io/library/fusion-single-node",
+      "source_package": "image-base/package.json"
+    },
+    {
+      "configuration_digest": "sha256:aa10e21e6ae7aaa92b472a7c4bed152796a6ce8917defdde5744d19110994012",
+      "kind": "caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:reference-integrated-dev09",
+      "manifest_digest": "sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "source_package": "image-caller/package.json"
+    },
+    {
+      "configuration_digest": "sha256:da9b85c505c35460fba2ba88a7601e4f3d5e6d7da485392b366ff4e8445df309",
+      "kind": "embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:reference-integrated-dev09",
+      "manifest_digest": "sha256:3885e450ce3c7af762ec5788688946e05fd35845099c1a8e59fc6aea1324fd30",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "source_package": "image-embedding/package.json"
+    },
+    {
+      "configuration_digest": "sha256:f234bff59a9c022a83f924966d1d612f146209d4bf9b3d25e7442328f4516429",
+      "kind": "chain",
+      "local_tag": "docker.io/library/fusion-reference-chain:reference-integrated-dev09",
+      "manifest_digest": "sha256:e2e05168fa306e3abcd30b19fc52f11d899e0b7792885d1bae1470c7ab357575",
+      "repository": "docker.io/library/fusion-reference-chain",
+      "source_package": "image-chain/package.json"
+    }
+  ],
+  "source_export_verification": "PASS",
+  "previous_native_inputs": 7,
+  "additional_native_inputs": 3,
+  "total_native_inputs": 10,
+  "prior_captures_exact": true,
+  "drain_preserved_queued_deadline": true,
+  "explicit_resume": true,
+  "repair": "bounded-derived-search-repair/1",
+  "query_after_repair": "COMPLETE",
+  "additional_live_generations": 0,
+  "quiesced": {
+    "namespace": "omega-ref-integrated-search01",
+    "namespace_uid": "20a02fb3-4a61-4819-8f46-fb1a66472678",
+    "workloads": {
+      "fusion-attention": {
+        "uid": "1601dadd-3442-43c0-8f5a-1a322e75f3d2",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "fusion-beliefs": {
+        "uid": "19d85ee8-26af-4c4a-a3ce-2e294f6efe7e",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "fusion-embedding": {
+        "uid": "97470049-3e99-4284-9ac7-049a2231b410",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-memory-embedding@sha256:3885e450ce3c7af762ec5788688946e05fd35845099c1a8e59fc6aea1324fd30"
+      },
+      "fusion-episodes": {
+        "uid": "68495383-4d52-47b1-af30-f53dda811a65",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "fusion-execution": {
+        "uid": "09adad8e-4ce0-470e-a786-19d14d08e53f",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "fusion-messaging": {
+        "uid": "22da3271-08b8-4382-8dea-e7a73099dc73",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "fusion-model": {
+        "uid": "8d7abc7b-85cf-42df-84f6-7e4b3aa6ead6",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "fusion-relations": {
+        "uid": "328675fd-a079-4089-bf47-7405ec1a8dc0",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "fusion-search": {
+        "uid": "d3e99919-22c6-49a0-aeee-37dabc7ad853",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532"
+      },
+      "fusion-storage": {
+        "uid": "af152aeb-d93f-4e19-8201-97bf7fc28b48",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a"
+      },
+      "omega-agent": {
+        "uid": "ebfa6098-fc77-41d9-b681-50bbacaf8fa2",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532"
+      },
+      "omega-agent-b": {
+        "uid": "240f6aaf-54cc-49fc-9eb6-94372dec0e76",
+        "replicas": 1,
+        "image": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532"
+      }
+    },
+    "pods": [
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "b99ac7ec524fbade3c2782dc8bd90b735c356880264f9932b55c749c1a406e47"
+          },
+          "creationTimestamp": "2026-11-04T15:37:51Z",
+          "generateName": "fusion-attention-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-attention",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-attention-c6565f8f4",
+            "statefulset.kubernetes.io/pod-name": "fusion-attention-0"
+          },
+          "name": "fusion-attention-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-attention",
+              "uid": "1601dadd-3442-43c0-8f5a-1a322e75f3d2"
+            }
+          ],
+          "resourceVersion": "458742",
+          "uid": "466ab15e-0086-4421-9c7f-75ec19080b47"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-attention",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-attention-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-attention-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-attention-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-attention"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-attention-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:51Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:51Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://c26806754d3d85bd2da80e291239ce44e5540e74e05af9886d2aba2c14578a44",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-attention",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:52Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.31",
+          "podIPs": [
+            {
+              "ip": "10.42.0.31"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:51Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "67969453912d7a4dc471d2a52cb6734657b25646eaec04c82215f4e29d8133a6"
+          },
+          "creationTimestamp": "2026-11-04T15:37:51Z",
+          "generateName": "fusion-beliefs-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-beliefs",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-beliefs-8b9fd4bbc",
+            "statefulset.kubernetes.io/pod-name": "fusion-beliefs-0"
+          },
+          "name": "fusion-beliefs-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-beliefs",
+              "uid": "19d85ee8-26af-4c4a-a3ce-2e294f6efe7e"
+            }
+          ],
+          "resourceVersion": "458755",
+          "uid": "1866b95c-9a0e-4e5e-ad49-e00bf4944e6b"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-beliefs",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-beliefs-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-beliefs-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-beliefs-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-beliefs"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-beliefs-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:51Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:51Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://fd654ae2c6f18cce2d9f78462aa6cdb878e95d5f68e65921d84c9eb79a600c84",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-beliefs",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:52Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.30",
+          "podIPs": [
+            {
+              "ip": "10.42.0.30"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:51Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "daf4627895130c2e3690853fff1804cacc78560e27a619139606dd76e9869b06"
+          },
+          "creationTimestamp": "2026-11-04T15:37:51Z",
+          "generateName": "fusion-embedding-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-embedding",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-embedding-85cc8d66f6",
+            "statefulset.kubernetes.io/pod-name": "fusion-embedding-0"
+          },
+          "name": "fusion-embedding-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-embedding",
+              "uid": "97470049-3e99-4284-9ac7-049a2231b410"
+            }
+          ],
+          "resourceVersion": "458823",
+          "uid": "0a1ed73b-076f-4aa7-aee6-52ca0019f733"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-memory-embedding@sha256:3885e450ce3c7af762ec5788688946e05fd35845099c1a8e59fc6aea1324fd30",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-embedding",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "3",
+                  "memory": "5Gi"
+                },
+                "requests": {
+                  "cpu": "2",
+                  "memory": "3Gi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-embedding-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-embedding-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-embedding-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-embedding"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-embedding-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:51Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:38:10Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:38:10Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:51Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "2",
+                "memory": "3Gi"
+              },
+              "containerID": "containerd://847583d112e3ba686e151cc3aef8f13a6dd0896a17462503a757fa5c528235a6",
+              "image": "docker.io/library/fusion-memory-embedding:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-memory-embedding@sha256:3885e450ce3c7af762ec5788688946e05fd35845099c1a8e59fc6aea1324fd30",
+              "lastState": {},
+              "name": "fusion-embedding",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "3",
+                  "memory": "5Gi"
+                },
+                "requests": {
+                  "cpu": "2",
+                  "memory": "3Gi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:52Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.29",
+          "podIPs": [
+            {
+              "ip": "10.42.0.29"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:51Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "0ff457e0533d1d44cf40b5b0f5ffeacd540ed96e94e6c4187b4105cb8d9e0afc"
+          },
+          "creationTimestamp": "2026-11-04T15:37:52Z",
+          "generateName": "fusion-episodes-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-episodes",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-episodes-7bcb8f7d85",
+            "statefulset.kubernetes.io/pod-name": "fusion-episodes-0"
+          },
+          "name": "fusion-episodes-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-episodes",
+              "uid": "68495383-4d52-47b1-af30-f53dda811a65"
+            }
+          ],
+          "resourceVersion": "458761",
+          "uid": "b7a7aa73-887f-4011-a574-9d499816f42f"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-episodes",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-episodes-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-episodes-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-episodes-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-episodes"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-episodes-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://24a00d456d20a7178f80ab60a5a8518cb715321b4c0acc072cbcfedf03ed650f",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-episodes",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:52Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.32",
+          "podIPs": [
+            {
+              "ip": "10.42.0.32"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:52Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "d44569190abd35a433f03f77b93cfc0a8bed698684a21cf7cc388d6a049a936c"
+          },
+          "creationTimestamp": "2026-11-04T15:37:52Z",
+          "generateName": "fusion-execution-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-execution",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-execution-5c7fdf5554",
+            "statefulset.kubernetes.io/pod-name": "fusion-execution-0"
+          },
+          "name": "fusion-execution-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-execution",
+              "uid": "09adad8e-4ce0-470e-a786-19d14d08e53f"
+            }
+          ],
+          "resourceVersion": "458736",
+          "uid": "4e5df285-a3f6-4c0a-af58-f7dcb69df4cb"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-execution",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-execution-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-execution-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-execution-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-execution"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-execution-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "containerID": "containerd://1b24dab548b14dab20f7c594731f860c082becf0696056542696680a9f17429c",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-execution",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:52Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.33",
+          "podIPs": [
+            {
+              "ip": "10.42.0.33"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:52Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "5598f8f69ee6a760ee0539deaea11639d7a067388d2ccde2f0c3a3a9b650e2e8"
+          },
+          "creationTimestamp": "2026-11-04T15:37:52Z",
+          "generateName": "fusion-messaging-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-messaging",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-messaging-bddc7b899",
+            "statefulset.kubernetes.io/pod-name": "fusion-messaging-0"
+          },
+          "name": "fusion-messaging-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-messaging",
+              "uid": "22da3271-08b8-4382-8dea-e7a73099dc73"
+            }
+          ],
+          "resourceVersion": "458749",
+          "uid": "2a584148-a9e6-4b6d-adc8-1a14e2188464"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-messaging",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-messaging-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-messaging-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-messaging-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-messaging"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-messaging-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://ee0a2f9c3f5e7ca343eb32c996cfa6384b6f219cca74f57345926941b6a43b34",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-messaging",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:52Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.34",
+          "podIPs": [
+            {
+              "ip": "10.42.0.34"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:52Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "9f93589ba4ae591962a06a6eb00ea34da440799fa234c2c09eec4b009c8bdae2"
+          },
+          "creationTimestamp": "2026-11-04T15:37:52Z",
+          "generateName": "fusion-model-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-model",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-model-86cb89596",
+            "statefulset.kubernetes.io/pod-name": "fusion-model-0"
+          },
+          "name": "fusion-model-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-model",
+              "uid": "8d7abc7b-85cf-42df-84f6-7e4b3aa6ead6"
+            }
+          ],
+          "resourceVersion": "458766",
+          "uid": "69ba9016-e902-4d01-a087-6996f33d3a17"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-model",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-model-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-model-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-model-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-model"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-model-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:54Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://02768f4bd5f5c59f6e1f263e3e4028cc6405d139328bd81f48beb10a1545e675",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-model",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "500m",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:53Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.35",
+          "podIPs": [
+            {
+              "ip": "10.42.0.35"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:52Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "241662ad4bb08673b18723a96cf4657975304aa14eb98849117f4fbc564ad9a6"
+          },
+          "creationTimestamp": "2026-11-04T15:37:52Z",
+          "generateName": "fusion-relations-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-relations",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-relations-6c9b9977c8",
+            "statefulset.kubernetes.io/pod-name": "fusion-relations-0"
+          },
+          "name": "fusion-relations-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-relations",
+              "uid": "328675fd-a079-4089-bf47-7405ec1a8dc0"
+            }
+          ],
+          "resourceVersion": "458789",
+          "uid": "f2616a06-4a58-4b8d-a3ec-789195fca3d1"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-relations",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-relations-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-relations-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-relations-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-relations"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-relations-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:54Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:56Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:56Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "50m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://fabf613cf692602c97b697d03cd2474cd82119228ba581e83005e3407bf72680",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-relations",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "50m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:53Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.36",
+          "podIPs": [
+            {
+              "ip": "10.42.0.36"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:52Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "a0bdc5491295b8f9eb81b3bdfb3279b516d6d55c00c6608edbcd8246d6677b3f"
+          },
+          "creationTimestamp": "2026-11-04T15:37:52Z",
+          "generateName": "fusion-search-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-search",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-search-7bffc79db8",
+            "statefulset.kubernetes.io/pod-name": "fusion-search-0"
+          },
+          "name": "fusion-search-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-search",
+              "uid": "d3e99919-22c6-49a0-aeee-37dabc7ad853"
+            }
+          ],
+          "resourceVersion": "458806",
+          "uid": "ec29d4b2-0ee9-44f8-ac20-f9cc8d9f2d98"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-search",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "1Gi"
+                },
+                "requests": {
+                  "cpu": "200m",
+                  "memory": "256Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-search-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-search-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-search-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-search"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-search-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:54Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:58Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:58Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "200m",
+                "memory": "256Mi"
+              },
+              "containerID": "containerd://44ba0c960f0914cd7ad97f396e0e85ea5d27eda56f16c98bd824de6e546d29d8",
+              "image": "docker.io/library/fusion-memory-caller:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532",
+              "lastState": {},
+              "name": "fusion-search",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "2",
+                  "memory": "1Gi"
+                },
+                "requests": {
+                  "cpu": "200m",
+                  "memory": "256Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:53Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.37",
+          "podIPs": [
+            {
+              "ip": "10.42.0.37"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:52Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "595b2d433e6cff8cbe9b4a6ef9eb3d3d4a0f7769a1698918d6669dba7c8e4e50"
+          },
+          "creationTimestamp": "2026-11-04T15:37:52Z",
+          "generateName": "fusion-storage-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-storage",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "fusion-storage-75fdd7f575",
+            "statefulset.kubernetes.io/pod-name": "fusion-storage-0"
+          },
+          "name": "fusion-storage-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "fusion-storage",
+              "uid": "af152aeb-d93f-4e19-8201-97bf7fc28b48"
+            }
+          ],
+          "resourceVersion": "458776",
+          "uid": "9790b66a-9b95-4b82-a927-96a299221203"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "fusion-storage",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "64Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "fusion-storage-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "fusion-storage-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-fusion-storage-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "fusion-storage"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "fusion-storage-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:54Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:56Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:56Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:52Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "100m",
+                "memory": "64Mi"
+              },
+              "containerID": "containerd://4e46184a0b1d1902b66af5fee545a9ab623e3ee72069501d886622892629afd6",
+              "image": "docker.io/library/fusion-single-node:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-single-node@sha256:64cbc091d281b4f02c41547f4c027870d122f63abec667e7acf6f3cd3d41374a",
+              "lastState": {},
+              "name": "fusion-storage",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "256Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "64Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:53Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.38",
+          "podIPs": [
+            {
+              "ip": "10.42.0.38"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:52Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "3547d51472f7b5362f5b5fd8e8da65e65df9b42d48413cd3519a4085787864f1"
+          },
+          "creationTimestamp": "2026-11-04T15:37:53Z",
+          "generateName": "omega-agent-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "omega-agent",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "omega-agent-9c689d45",
+            "statefulset.kubernetes.io/pod-name": "omega-agent-0"
+          },
+          "name": "omega-agent-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "omega-agent",
+              "uid": "ebfa6098-fc77-41d9-b681-50bbacaf8fa2"
+            }
+          ],
+          "resourceVersion": "458782",
+          "uid": "a82c5ba0-074d-439c-822e-94faf406a334"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "omega-agent",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "omega-agent-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "omega-agent-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-omega-agent-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "omega-agent"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "omega-agent-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:54Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:56Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:56Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "containerID": "containerd://2f96e045e70357533750b19d5b571d8f6d2e9f049cc9e43581555c25851d971c",
+              "image": "docker.io/library/fusion-memory-caller:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532",
+              "lastState": {},
+              "name": "omega-agent",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:54Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.39",
+          "podIPs": [
+            {
+              "ip": "10.42.0.39"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:53Z"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "metadata": {
+          "annotations": {
+            "checksum/config": "0671ae6557ac9534657ceafccddeafc22694dc4bda43d9d81aad994092c7f2d9"
+          },
+          "creationTimestamp": "2026-11-04T15:37:53Z",
+          "generateName": "omega-agent-b-",
+          "generation": 1,
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "omega-agent-b",
+            "apps.kubernetes.io/pod-index": "0",
+            "controller-revision-hash": "omega-agent-b-8f965fb76",
+            "statefulset.kubernetes.io/pod-name": "omega-agent-b-0"
+          },
+          "name": "omega-agent-b-0",
+          "namespace": "omega-ref-integrated-search01",
+          "ownerReferences": [
+            {
+              "apiVersion": "apps/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "StatefulSet",
+              "name": "omega-agent-b",
+              "uid": "240f6aaf-54cc-49fc-9eb6-94372dec0e76"
+            }
+          ],
+          "resourceVersion": "458797",
+          "uid": "d5e3c1b1-9eea-44e1-b1a8-e3fc5a1e0cfb"
+        },
+        "spec": {
+          "automountServiceAccountToken": false,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "POD_NAMESPACE",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    }
+                  }
+                },
+                {
+                  "name": "POD_NAME",
+                  "valueFrom": {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.name"
+                    }
+                  }
+                }
+              ],
+              "image": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532",
+              "imagePullPolicy": "Never",
+              "livenessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/live",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 10,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "name": "omega-agent-b",
+              "ports": [
+                {
+                  "containerPort": 8443,
+                  "name": "https",
+                  "protocol": "TCP"
+                }
+              ],
+              "readinessProbe": {
+                "failureThreshold": 3,
+                "httpGet": {
+                  "path": "/health/ready",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "securityContext": {
+                "allowPrivilegeEscalation": false,
+                "capabilities": {
+                  "drop": [
+                    "ALL"
+                  ]
+                },
+                "readOnlyRootFilesystem": true,
+                "seccompProfile": {
+                  "type": "RuntimeDefault"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 45,
+                "httpGet": {
+                  "path": "/health/startup",
+                  "port": "https",
+                  "scheme": "HTTPS"
+                },
+                "periodSeconds": 2,
+                "successThreshold": 1,
+                "timeoutSeconds": 2
+              },
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File",
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "enableServiceLinks": true,
+          "hostname": "omega-agent-b-0",
+          "nodeName": "omega-fusion-k3s",
+          "preemptionPolicy": "PreemptLowerPriority",
+          "priority": 0,
+          "restartPolicy": "Always",
+          "schedulerName": "default-scheduler",
+          "securityContext": {
+            "fsGroup": 1000,
+            "fsGroupChangePolicy": "OnRootMismatch",
+            "runAsGroup": 1000,
+            "runAsNonRoot": true,
+            "runAsUser": 1000
+          },
+          "serviceAccount": "default",
+          "serviceAccountName": "default",
+          "subdomain": "omega-agent-b-pods",
+          "terminationGracePeriodSeconds": 30,
+          "tolerations": [
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/not-ready",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            },
+            {
+              "effect": "NoExecute",
+              "key": "node.kubernetes.io/unreachable",
+              "operator": "Exists",
+              "tolerationSeconds": 300
+            }
+          ],
+          "volumes": [
+            {
+              "name": "state",
+              "persistentVolumeClaim": {
+                "claimName": "state-omega-agent-b-0"
+              }
+            },
+            {
+              "emptyDir": {
+                "medium": "Memory",
+                "sizeLimit": "16Mi"
+              },
+              "name": "runtime"
+            },
+            {
+              "emptyDir": {
+                "sizeLimit": "128Mi"
+              },
+              "name": "tmp"
+            },
+            {
+              "configMap": {
+                "defaultMode": 420,
+                "name": "omega-agent-b"
+              },
+              "name": "config"
+            },
+            {
+              "name": "secrets",
+              "secret": {
+                "defaultMode": 288,
+                "secretName": "omega-agent-b-tls-auth"
+              }
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:55Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodReadyToStartContainers"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Initialized"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:57Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:57Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "ContainersReady"
+            },
+            {
+              "lastProbeTime": null,
+              "lastTransitionTime": "2026-11-04T15:37:53Z",
+              "observedGeneration": 1,
+              "status": "True",
+              "type": "PodScheduled"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "allocatedResources": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "containerID": "containerd://2af572c80d46666291c60b596d9c69514cd996563aa2518c638cd8ff335f66f6",
+              "image": "docker.io/library/fusion-memory-caller:reference-integrated-dev09",
+              "imageID": "docker.io/library/fusion-memory-caller@sha256:a9bbfad398e2e50e574bdb9d972b8d830b6cf76559d750a80cdedba4ef577532",
+              "lastState": {},
+              "name": "omega-agent-b",
+              "ready": true,
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                },
+                "requests": {
+                  "cpu": "100m",
+                  "memory": "128Mi"
+                }
+              },
+              "restartCount": 0,
+              "started": true,
+              "state": {
+                "running": {
+                  "startedAt": "2026-11-04T15:37:54Z"
+                }
+              },
+              "user": {
+                "linux": {
+                  "gid": 1000,
+                  "supplementalGroups": [
+                    1000
+                  ],
+                  "uid": 1000
+                }
+              },
+              "volumeMounts": [
+                {
+                  "mountPath": "/state",
+                  "name": "state"
+                },
+                {
+                  "mountPath": "/run/fusion",
+                  "name": "runtime"
+                },
+                {
+                  "mountPath": "/tmp",
+                  "name": "tmp"
+                },
+                {
+                  "mountPath": "/config",
+                  "name": "config",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                },
+                {
+                  "mountPath": "/secrets",
+                  "name": "secrets",
+                  "readOnly": true,
+                  "recursiveReadOnly": "Disabled"
+                }
+              ]
+            }
+          ],
+          "hostIP": "172.17.0.3",
+          "hostIPs": [
+            {
+              "ip": "172.17.0.3"
+            }
+          ],
+          "observedGeneration": 1,
+          "phase": "Running",
+          "podIP": "10.42.0.40",
+          "podIPs": [
+            {
+              "ip": "10.42.0.40"
+            }
+          ],
+          "qosClass": "Burstable",
+          "startTime": "2026-11-04T15:37:53Z"
+        }
+      }
+    ],
+    "pvcs": [
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-attention"
+          },
+          "name": "state-fusion-attention-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457715",
+          "uid": "1a1f5e5e-7c81-47a0-9690-8e3274664505"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-1a1f5e5e-7c81-47a0-9690-8e3274664505"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-beliefs"
+          },
+          "name": "state-fusion-beliefs-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457684",
+          "uid": "c34813bf-f7e1-437e-a3ab-4bd6ffb145dd"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-c34813bf-f7e1-437e-a3ab-4bd6ffb145dd"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:15Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-embedding"
+          },
+          "name": "state-fusion-embedding-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457859",
+          "uid": "eb43aa12-450c-43e0-a3ae-48def2634c35"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-eb43aa12-450c-43e0-a3ae-48def2634c35"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-episodes"
+          },
+          "name": "state-fusion-episodes-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457763",
+          "uid": "01fe6c2e-4b90-4819-8287-44271b70050c"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-01fe6c2e-4b90-4819-8287-44271b70050c"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-execution"
+          },
+          "name": "state-fusion-execution-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457840",
+          "uid": "86609a19-6eb8-45e3-b68b-33b734310ec4"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-86609a19-6eb8-45e3-b68b-33b734310ec4"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-messaging"
+          },
+          "name": "state-fusion-messaging-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457582",
+          "uid": "56232bf1-5a85-4193-8fe5-a84b01c79f85"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-56232bf1-5a85-4193-8fe5-a84b01c79f85"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-model"
+          },
+          "name": "state-fusion-model-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457816",
+          "uid": "a2994572-1ad7-48dd-bb43-51a1c2c7bf81"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-a2994572-1ad7-48dd-bb43-51a1c2c7bf81"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-relations"
+          },
+          "name": "state-fusion-relations-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457746",
+          "uid": "6d37c9d8-e24d-47fa-8e92-4516361162fb"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-6d37c9d8-e24d-47fa-8e92-4516361162fb"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:15Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-search"
+          },
+          "name": "state-fusion-search-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457877",
+          "uid": "380f96c3-1a5d-4bac-9aba-d9f7d615cd99"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "1Gi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-380f96c3-1a5d-4bac-9aba-d9f7d615cd99"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "1Gi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "fusion-storage"
+          },
+          "name": "state-fusion-storage-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457587",
+          "uid": "bf02dad3-08c9-43ec-938a-e6ce02d2e784"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "512Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-bf02dad3-08c9-43ec-938a-e6ce02d2e784"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "512Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "omega-agent"
+          },
+          "name": "state-omega-agent-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457552",
+          "uid": "3a381964-2691-4a7f-a0c5-ca7a8f1ba5fa"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-3a381964-2691-4a7f-a0c5-ca7a8f1ba5fa"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      },
+      {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "metadata": {
+          "annotations": {
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+            "volume.kubernetes.io/selected-node": "omega-fusion-k3s",
+            "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+          },
+          "creationTimestamp": "2026-11-04T15:20:14Z",
+          "finalizers": [
+            "kubernetes.io/pvc-protection"
+          ],
+          "labels": {
+            "app.kubernetes.io/instance": "omega",
+            "app.kubernetes.io/name": "omega-agent-b"
+          },
+          "name": "state-omega-agent-b-0",
+          "namespace": "omega-ref-integrated-search01",
+          "resourceVersion": "457604",
+          "uid": "b27a59d2-b230-4d56-805c-eb5ef587471f"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "256Mi"
+            }
+          },
+          "storageClassName": "local-path",
+          "volumeMode": "Filesystem",
+          "volumeName": "pvc-b27a59d2-b230-4d56-805c-eb5ef587471f"
+        },
+        "status": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "capacity": {
+            "storage": "256Mi"
+          },
+          "phase": "Bound"
+        }
+      }
+    ]
+  },
+  "reports": {
+    "artifacts/integrated-service/dev09-ui-final.json": "98173d08ef7122fac8d59bc7a687b016a35b38f83805d8610360a38346899cd6",
+    "artifacts/integrated-service/dev09-ui-queued.json": "0f4b09deb04d93f8122e01f202160859d8c8ef1dec18b7b7e77c3d48a0a5d52a",
+    "artifacts/integrated-service/dev09-ui-drained.json": "fccf09b250c7895aea8ae56f02f62a58949baf10eace5b073704ca1044a368e3",
+    "artifacts/integrated-service/build-dev09/images.json": "897620f0e5b76aa295a09a015ac159acfd9287e5b573123d30301bb743cf7bce",
+    "artifacts/integrated-service/build-dev09/omega-fusion-0.7.0-dev.1.tgz": "84515d55237dcba21a4d7567347a5bb046bf6de3442ca4ed26e70819ced03aa7",
+    "artifacts/integrated-service/sdk-dev09/build-manifest.json": "dbde4a56de775a796ca7ffc712d6be01e644cd39e79a7ac2e6a11cb1127ceb90"
+  },
+  "limits": [
+    "Development artifact set; not final Q30 acceptance.",
+    "Raw browser commands/logs excluded: may contain ephemeral operator access token.",
+    "Initial automation wait timeout, top-level await error, and blank-input INVALID_ARGUMENT retained as failed attempts; no native acceptance.",
+    "UI maintenance used a healthy selected projection; actual deleted-index repair is separate dev08 evidence."
+  ],
+  "proofshot": {
+    "state": "BUNDLED",
+    "raw_publication": "EXCLUDED_EPHEMERAL_ACCESS_TOKEN",
+    "console_collection": "UNAVAILABLE_AGENT_BROWSER_COMMAND_TIMEOUT",
+    "screenshots": {
+      "artifacts/integrated-service/workbench-dev09-native-completion-verified.png": "0fcea2a50d4498d1fae00a300fcd53b68797100283a1d8e91e2b7204cf6083db",
+      "artifacts/integrated-service/workbench-dev09-query-result.png": "a55732c9e97ad20b47754a768247624bf43564edefac2f1966e567b564254d1c",
+      "artifacts/integrated-service/workbench-dev09-repair.png": "9f4b9a33f182d8fd099945f9f7cf6dcf68880de1e5c391c66f95475188e3c60e",
+      "artifacts/integrated-service/workbench-dev09-capabilities.png": "33b7aafda717c4533b31db834aeec2f740ddad1ede8678fc6531e8f2d608b825",
+      "artifacts/integrated-service/workbench-dev09-input.png": "78c4897a000cd371d04809ea36a95a66712d0c1ea55a4c3a846e5ab99ec4714e"
+    },
+    "stop_recovery": "output directory explicitly configured; no new service calls"
+  }
+}

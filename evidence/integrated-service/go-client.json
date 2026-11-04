@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "classification": "independent stdlib Go client; real native/DeTTa/E5/Chroma services; recorded model proposals",
+  "namespace": "omega-ref-integrated-go01",
+  "images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:8927061712268c301eceb5eeb019a3e1791616ced9b4bc0820ae5678984f513d",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:e9061124cd5faaaa6d2d53f249caeb7596135ffc54fc3473522f522817c03003",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:329fd18a96e2122c382b759aff2bf734193d9ad5f049e7dae5e86aa45bcd8f62",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:e9061124cd5faaaa6d2d53f249caeb7596135ffc54fc3473522f522817c03003",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:e9061124cd5faaaa6d2d53f249caeb7596135ffc54fc3473522f522817c03003"
+  },
+  "initial_native_inputs": 2,
+  "native_results": [
+    {
+      "command": "remember The synthetic copper lantern is stored in chest alder",
+      "identity": "go-remember",
+      "deadline": 1793797127890,
+      "state": "complete"
+    },
+    {
+      "command": "query synthetic copper lantern storage",
+      "identity": "go-query",
+      "deadline": 1793797146512,
+      "state": "complete"
+    }
+  ],
+  "native_query_correctness": true,
+  "storage": {
+    "duplicate_one_commit": true,
+    "exact_bytes": true,
+    "head": {
+      "profile": "immutable-commit-feed/2",
+      "scope_ref": "synthetic-integrated-go01",
+      "sequence": 1,
+      "source": "829d9b17-4edd-4029-b2da-2b135b9774aa"
+    },
+    "ref": {
+      "digest": "74ac35b5bcff90d8e78c48cdae2c8aec2c873ef3d0449f522fb6dcf1b21fa624",
+      "id": "edb7614c-2649-5b6b-86c0-dab6c92488a0",
+      "revision": 1,
+      "scope_ref": "synthetic-integrated-go01"
+    }
+  },
+  "wire_calls": 47,
+  "denials": [
+    {
+      "action": "capacity",
+      "deadline_ms": 1793797607127,
+      "error": "UNAUTHORIZED",
+      "kind": "wrong",
+      "returncode": 2,
+      "started_ms": 1793797040347
+    },
+    {
+      "action": "capacity",
+      "deadline_ms": 1793797607127,
+      "error": "UNSUPPORTED_PROFILE",
+      "kind": "wrong-profile",
+      "returncode": 2,
+      "started_ms": 1793797040385
+    },
+    {
+      "action": "capacity",
+      "deadline_ms": 1,
+      "error": "DEADLINE_EXCEEDED",
+      "kind": "session",
+      "returncode": 2,
+      "started_ms": 1793797040410
+    }
+  ],
+  "initial_client_sha256": "723804f73d07536d7ac233291af1845812edf67afa4fd8f5f0de6126dc47f876",
+  "extracted_artifact": {
+    "profile": "fusion-go-artifacts/1",
+    "status": "PASS",
+    "toolchain": "go version go1.18.2 linux/amd64",
+    "toolchain_binary_sha256": "3bfd62cc32708b6fee34d4dbac36a837e737f57fc154853b3ab1069a071b42e1",
+    "source": {
+      "README.md": "548c4cbeb16bf342e7f6c8cad4172c5b2f92379a9630a7a9637590f8800ed377",
+      "client.go": "763d670ca09e73d2d7a85b47d3de578ab4f914fc8e04dd32b2dcfb2c30a85dd1",
+      "client_test.go": "e6add577744ceb8d0fbfdb89b90a280336b47b3286c38571ed727e21f70e91fc",
+      "cmd/omega-client/main.go": "3d47ebf6e9b00485185314d9d3eb03cdb6b90d24b476a08e1111ffee6a4bfcc0",
+      "go.mod": "63f30fd76b2eee7500009e60a52577816b1323118e554094b46453b1112e07b9",
+      "testdata/golden.json": "6a590bac20b7c8a90d5e2b57fcb3ab781697829be8c0492bbea5c361b42d6549"
+    },
+    "source_manifest_sha256": "a664004b014179840e63141e899ffae7f7cf7405a65fe7a2eae0bfcdc0c5cbb1",
+    "binary_sha256": "9f3168e42d76fc6191fc0e8a761471e808134707395791def8a7f7c06a064339",
+    "archive_sha256": "ff0d1fa4017c69a6fd8bfa1e8b57a4bbdfc4fd0707f013b2a2efd6c4c5894de3",
+    "buildinfo": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/integrated-service/go-package02/omega-client: go1.18.2\n\tpath\tfusion.local/omega/cmd/omega-client\n\tmod\tfusion.local/omega\t(devel)\t\n\tbuild\t-compiler=gc\n\tbuild\tCGO_ENABLED=0\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n",
+    "build_isolation": "extracted source, pinned Go toolchain, build cache; no checkout/Python/provider state; network namespace isolated",
+    "build_runtime_libraries": {
+      "/lib64/ld-linux-x86-64.so.2": "cfd44e4341767033532d1483c8250d200ad4cdf535d0abc19064ae34cdc51ca0",
+      "/lib/x86_64-linux-gnu/libc.so.6": "53b909551f8e581120ddc2d24cfb5df76c52e3c2e2a5dac0d202b25638b3e902",
+      "/lib/x86_64-linux-gnu/libpthread.so.0": "af27ed906f6185e0143b9c0d0da287788efa7eb6b2639e44d48fb2939415fdc5"
+    },
+    "external_modules": [],
+    "additional_live_generations": 0
+  },
+  "extracted_retained_replay": {
+    "additional_live_generations": 0,
+    "client_sha256": "9f3168e42d76fc6191fc0e8a761471e808134707395791def8a7f7c06a064339",
+    "new_native_inputs": 0,
+    "observations": [
+      {
+        "action": "observe",
+        "exact_retained": true,
+        "kind": "session",
+        "response_sha256": "6cb0f1d0c0481e305af65e649df7e9102deed84043bd7b2c6c501a4144361cfc"
+      },
+      {
+        "action": "get",
+        "exact_retained": true,
+        "kind": "atom",
+        "response_sha256": "d58d9bf850c88316a0b3a61ec15796ae1d5e4d4648b1567d2e22797b1ade8049"
+      }
+    ],
+    "prior_report_sha256": "e8008be13917fc38c1276d61e89caccf7caa06bfb3ca43ed42fa2d67d5c7a3f7",
+    "quiesced": true,
+    "status": "PASS"
+  },
+  "limitations": [
+    "Initial native submission binary preceded stricter observation validators. Extracted final client re-read the exact retained results and storage without new inputs. Final combined-release native submission remains Q30.",
+    "Initial failed go01 source bytes were not separately archived; its binary/report digest and UUID encoding defect remain explicit.",
+    "No browser or multi-host claim."
+  ],
+  "raw_report_sha256": "e8008be13917fc38c1276d61e89caccf7caa06bfb3ca43ed42fa2d67d5c7a3f7",
+  "quiesced": true,
+  "additional_live_generations": 0
+}

@@ -54,6 +54,14 @@ def provider(settings,cfg,state,run,secret,token,endpoint):
                 'memory.lifecycle.lifecycle.read','memory.lifecycle.lifecycle.project','memory.lifecycle.lifecycle.history']
         else:
             memory['active_memory']['lifecycle_client']=client(settings,'indexer','memory.lifecycle',secret,endpoint,token('storage-source-token'))
+            selected=p['memory'].get('maintenance_profile')
+            if selected:
+                from fusion.search_repair import PROFILE
+                from fusion.search_maintenance import OPS as repair_ops
+                require(selected==PROFILE,'UNSUPPORTED_PROFILE')
+                memory['active_memory']['maintenance_profile']=selected
+                memory['principals']['search-operator']=dict(credential=token('search-operator-token'),scopes={p['scope']:[
+                    'search.ready','search.build',*['search.maintenance.'+op for op in repair_ops]]})
     else:
         for who in principals:
             memory['principals'][who]=dict(credential=token('caller-'+who+'-token'),scopes={p['scope']:[

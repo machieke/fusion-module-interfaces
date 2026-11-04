@@ -102,6 +102,17 @@ class SustainedSessionStore(SessionStore):
             'SELECT sum(length(CAST(value AS BLOB))) FROM sustained_outcomes',
             'SELECT sum(length(CAST(origin AS BLOB))) FROM preview_input_origins',
             'SELECT sum(length(CAST(intent AS BLOB))+length(CAST(result AS BLOB))) FROM sustained_actions')]
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='integrated_providers'").fetchone():
+            sizes += [self.db.execute(sql).fetchone()[0] or 0 for sql in (
+                'SELECT sum(length(CAST(record AS BLOB))+coalesce(length(CAST(readiness AS BLOB)),0)) FROM integrated_providers',
+                'SELECT sum(length(CAST(intent AS BLOB))+length(CAST(result AS BLOB))+512) FROM integrated_provider_actions',
+                'SELECT sum(length(CAST(selection AS BLOB))) FROM integrated_provider_bindings')]
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='native_worker_epochs'").fetchone():
+            sizes += [self.db.execute(sql).fetchone()[0] or 0 for sql in (
+                'SELECT sum(length(incarnation)+length(session)+length(CAST(selection AS BLOB))+48) FROM native_worker_epochs',
+                'SELECT sum(length(session)+length(input)+length(incarnation)) FROM native_worker_assignments')]
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='native_worker_controls'").fetchone():
+            sizes.append(self.db.execute('SELECT coalesce(sum(length(session)+32),0) FROM native_worker_controls').fetchone()[0])
         # Reserve the maximum completion/terminal envelope at input acceptance.
         reserved = self.db.execute("SELECT count(*) FROM preview_inputs WHERE state NOT IN ('complete','expired-before-start','cancelled-before-start','rejected')").fetchone()[0]*66560
         return dict(retained=self.db.execute('SELECT count(*) FROM preview_sessions').fetchone()[0],
@@ -109,7 +120,7 @@ class SustainedSessionStore(SessionStore):
             pending=self.db.execute("SELECT count(*) FROM preview_inputs WHERE state NOT IN ('complete','expired-before-start','cancelled-before-start','rejected')").fetchone()[0],
             logical_bytes=sum(sizes), completion_reserved_bytes=reserved)
 
-    def allocate(self, principal, request_id, template_name):
+    def allocate(self, principal, request_id, template_name, *, admission=None):
         identity(request_id); identity(template_name)
         template = self.allocation['templates'].get(template_name)
         require(template is not None and template['principal'] == principal, 'UNAUTHORIZED')
@@ -126,11 +137,13 @@ class SustainedSessionStore(SessionStore):
                 require(usage['pending'] < self.allocation['pending'], 'OVERLOADED')
                 require(usage['logical_bytes']+usage['completion_reserved_bytes']+2*len(canonical(template))+4096 <= self.allocation['bytes'], 'OVERLOADED')
                 session = str(uuid.uuid5(uuid.UUID(self.allocation['owner']), canonical([principal, request_id]).decode()))
+                if admission is not None:admission(self.db,template_name,now,session)
                 binding = template['binding']
                 self.db.execute('INSERT INTO preview_sessions VALUES(?,?,?,?,?,?)',
                     (session, principal, template['scope'], canonical(binding).decode(), 'active', now))
                 self.db.execute('INSERT INTO sustained_allocations VALUES(?,?,?,?,?,?)',
-                    (principal, request_id, template_name, canonical(template).decode(), session, now+template['lifetime_ms']))
+                                (principal, request_id, template_name, canonical(template).decode(), session, now+template['lifetime_ms']))
+                self._check_bytes()
         self.hook('after_session_allocation_commit')
         return self.observe(principal, session)
 
@@ -200,6 +213,8 @@ class SustainedSessionStore(SessionStore):
                 require(old['intent']==intent and (deadline_ms is None or old['deadline']==deadline_ms),'CONFLICT')
                 return self.receipt(old)
             row=self._session(principal,session,'input.accept'); allocated=self.allocated(principal,session)
+            from .provider_lifecycle import admit_input
+            admit_input(self.db,session)
             now=self._now(); require(row['state']=='active' and now<allocated['expires_ms'],'NOT_AVAILABLE')
             limits=json.loads(row['binding'])['limits']; usage=self._usage()
             count=self.db.execute('SELECT count(*) FROM preview_inputs WHERE session=?',(session,)).fetchone()[0]

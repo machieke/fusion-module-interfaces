@@ -32,6 +32,13 @@ def configure(run, scope):
     atom=dict(composition=cs.COMPOSITION,principal='A',scope=scope,credential=token,
         endpoint=dict(host='127.0.0.1',port=httpd.server_port,ca_file=str(root/'cert.pem'),path=cs.ROUTE),
         descriptor=descriptor_wire(cs.descriptors()[0]))
+    attach(run,scope,atom)
+    def stop():httpd.shutdown();thread.join(timeout=5);httpd.server_close()
+    return stop
+
+
+def attach(run,scope,atom):
+    """Trusted qualification composition; the native history consumer is unchanged."""
     atom_path=run.h.caller_root/'history-atoms.json';atom_path.write_bytes(canonical(atom))
     selected=descriptor_wire(descriptor('episodic.memory'))
     owner=run.h.server_root/'history-owner.json'
@@ -44,5 +51,4 @@ def configure(run, scope):
     run.app.setdefault('facet_configs',{})['episodic.memory']=str(client)
     run.app.setdefault('preview',{}).setdefault('providers',[]).append(selected)
     run.app['history_atoms_config']=str(atom_path)
-    def stop():httpd.shutdown();thread.join(timeout=5);httpd.server_close()
-    return stop
+    return lambda:None

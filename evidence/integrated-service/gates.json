@@ -1,0 +1,108 @@
+{
+  "status": "READY_WITH_EXPLICIT_LIMITS",
+  "stories": {
+    "S1": {
+      "status": "PASS",
+      "development_evidence": [
+        "native-worker.json",
+        "warm-development.json",
+        "workbench-native.json"
+      ],
+      "remaining": null,
+      "final_release_pass": true,
+      "final_evidence": [
+        "performance-final.json",
+        "installed-native-final.json",
+        "retained-security.json",
+        "workbench-final.json"
+      ]
+    },
+    "S2": {
+      "status": "PASS",
+      "development_evidence": [
+        "nal-envelope-native.json",
+        "go-client.json",
+        "independent-native-provider.json"
+      ],
+      "remaining": null,
+      "final_release_pass": true,
+      "final_evidence": [
+        "installed-native-final.json",
+        "embedding-placement-final.json",
+        "go-client-final.json",
+        "wire-compatibility-final.json",
+        "sources-final.json"
+      ]
+    },
+    "S3": {
+      "status": "PASS",
+      "development_evidence": [
+        "continuation-native.json",
+        "continuation-recovery-native.json",
+        "chain-continuation-native.json"
+      ],
+      "remaining": null,
+      "final_release_pass": true,
+      "final_evidence": [
+        "continuation-recovery-final.json",
+        "chain-final.json",
+        "chain-fenced-restore-final.json"
+      ]
+    },
+    "S4": {
+      "status": "PASS",
+      "development_evidence": [
+        "archive-native.json",
+        "archive-restore-native.json",
+        "search-repair-native.json"
+      ],
+      "remaining": null,
+      "final_release_pass": true,
+      "final_evidence": [
+        "sustained-native-final.json",
+        "retained-repair.json",
+        "retained-fenced-restore.json",
+        "concurrent-rebuild-final.json"
+      ]
+    },
+    "S5": {
+      "status": "PASS",
+      "development_evidence": [
+        "provider-lifecycle-native.json",
+        "provider-rollover-native.json"
+      ],
+      "remaining": null,
+      "final_release_pass": true,
+      "final_evidence": [
+        "retained-security.json",
+        "lifecycle-final.json",
+        "concurrent-rebuild-final.json"
+      ]
+    },
+    "S6": {
+      "status": "PASS",
+      "development_evidence": [
+        "archive-restore-native.json"
+      ],
+      "remaining": null,
+      "final_release_pass": true,
+      "final_evidence": [
+        "retained-fenced-restore.json",
+        "chain-fenced-restore-final.json",
+        "retained-security.json",
+        "protected-final.json",
+        "cleanup-final.json"
+      ]
+    }
+  },
+  "additional_live_generations": 0,
+  "final_candidate_runtime_source": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "limits": [
+    "CPU quota enforcement NOT_ESTABLISHED",
+    "Hosted CI NOT_OBSERVED",
+    "Vulnerability scan NOT_RUN: no existing scanner",
+    "Historical full-file DeTTa source guard remains FAIL",
+    "Recorded models only; no new live text generation",
+    "Finite quotas and preserved uncertain effects; no writable migration, HA or production claim"
+  ]
+}

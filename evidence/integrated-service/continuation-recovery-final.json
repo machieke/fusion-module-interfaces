@@ -1,0 +1,86 @@
+{
+  "status": "PASS_REQUIRED_RECOVERY_WITH_PRESERVED_UNSUCCESSFUL_CASE",
+  "runtime_source_manifest": "3227e2070e7c7a2f94a362a03b6ef5f80addcb80bb8e802bff1ab38388fa1d9d",
+  "model": "RECORDED_PROPOSALS",
+  "real": "Native Omega A/B, E5, Chroma, DeTTa, Messaging, Execution and authenticated HTTPS; actual caller/executor pod replacement",
+  "additional_live_generations": 0,
+  "cases": [
+    {
+      "run": "rc18-recovery01",
+      "name": "accepted-caller-kill",
+      "status": "PASS",
+      "accepted_input_deadline_ms": 1793823104235,
+      "parent_graph_deadline_ms": 1793823029685,
+      "graph_deadline_unchanged": true,
+      "captured_model_unchanged": true,
+      "caller_state": "complete",
+      "graph_state": "return-ready",
+      "relay_calls_spent_before": 5,
+      "relay_calls_spent_after": 16,
+      "previous_steps_exact": true,
+      "deadline_renewals": 0,
+      "model_regenerations": 0,
+      "duplicate_completion": "complete",
+      "pod_replacement": true,
+      "reason": null
+    },
+    {
+      "run": "rc18-recovery01",
+      "name": "lost-acceptance-reply",
+      "status": "FAIL",
+      "accepted_input_deadline_ms": 1793823152628,
+      "parent_graph_deadline_ms": 1793823076822,
+      "graph_deadline_unchanged": true,
+      "captured_model_unchanged": true,
+      "caller_state": "dispatched",
+      "graph_state": "pending",
+      "relay_calls_spent_before": 5,
+      "relay_calls_spent_after": 5,
+      "previous_steps_exact": true,
+      "deadline_renewals": 0,
+      "model_regenerations": 0,
+      "duplicate_completion": null,
+      "pod_replacement": true,
+      "reason": "Earlier parent task deadline exhausted in combined scenario; pending receipt retained, no retry/renewal/refund"
+    },
+    {
+      "run": "rc18-recovery02",
+      "name": "lost-acceptance-reply",
+      "status": "PASS",
+      "accepted_input_deadline_ms": 1793824188094,
+      "parent_graph_deadline_ms": 1793824111806,
+      "graph_deadline_unchanged": true,
+      "captured_model_unchanged": true,
+      "caller_state": "complete",
+      "graph_state": "return-ready",
+      "relay_calls_spent_before": 5,
+      "relay_calls_spent_after": 17,
+      "previous_steps_exact": true,
+      "deadline_renewals": 0,
+      "model_regenerations": 0,
+      "duplicate_completion": "complete",
+      "pod_replacement": true,
+      "reason": null
+    }
+  ],
+  "scenario_accounting": [
+    {
+      "run": "rc18-recovery01",
+      "status": "FAIL",
+      "operator_inputs": 4,
+      "task_context_input": "NOT_RUN_AFTER_FAILURE"
+    },
+    {
+      "run": "rc18-recovery02",
+      "status": "PASS",
+      "operator_inputs": 4,
+      "relationship": "Separate fresh task/session; test fault armed before parent acceptance; not a replacement occurrence"
+    }
+  ],
+  "qualifier_sha256": "42a3dea102c647ea7a377d51a9e37dea382a516483a332f3b8662414e437fcec",
+  "reports": {
+    "rc18-recovery01": "8ad004040c8418ba75a274b7d0556debafc6b340204883cd118d04bfc476fb17",
+    "rc18-recovery02": "7519ee804a031c1f244146ea849355d04bf7f3ed4ae7494581bb2f044139cc3a"
+  },
+  "quiesced": true
+}

@@ -6,6 +6,7 @@ This is a declared/installed dependency inventory, not a vulnerability assessmen
 license determination, proof of runtime availability or dependency closure.
 """
 import argparse
+from contextlib import ExitStack
 from dataclasses import dataclass
 from email.parser import BytesParser
 import hashlib
@@ -360,7 +361,7 @@ def image_report(state, descriptor, manifest, config):
         unresolved_metadata_links=[p for p in sorted(state) if capture(p) and evidence(state, p) is None])
 
 
-def inventory(archive, *, expected_images=None, limits=Limits(), progress=None):
+def inventory(archive, *, expected_images=None, base_archive=None, limits=Limits(), progress=None):
     archive = Path(archive)
     if archive.stat().st_size > limits.archive_bytes:
         raise ValueError('archive byte bound exceeded')
@@ -369,22 +370,51 @@ def inventory(archive, *, expected_images=None, limits=Limits(), progress=None):
         while block := source.read(1024 ** 2):
             h.update(block)
     archive_digest = h.hexdigest()
+    base_binding = None
+    if base_archive is not None:
+        # A second file is accepted only as an explicitly pinned prerequisite.
+        # Never infer a compatible base from cached tags or package names.
+        if expected_images is None:
+            raise ValueError('base archive requires publication binding')
+        expected = json.loads(Path(expected_images).read_bytes())
+        if expected.get('archive_format') != 'verified-oci-layer-set/1':
+            raise ValueError('layer set publication required')
+        base_archive = Path(base_archive)
+        if archive.stat().st_size + base_archive.stat().st_size > limits.archive_bytes:
+            raise ValueError('combined archive byte bound exceeded')
+        h = hashlib.sha256()
+        with base_archive.open('rb') as source:
+            while block := source.read(1024 ** 2):
+                h.update(block)
+        base_binding = dict(path=str(base_archive), bytes=base_archive.stat().st_size, sha256=h.hexdigest())
+        if (base_binding['sha256'], base_binding['bytes']) != (
+                expected['base_archive']['archive_sha256'], expected['base_archive']['archive_bytes']):
+            raise ValueError('base archive binding mismatch')
+    elif expected_images and json.loads(Path(expected_images).read_bytes()).get('base_archive'):
+        raise ValueError('required base archive missing')
     cache, reports, retained = {}, [], [0]
-    with tarfile.open(archive, mode='r:') as outer:
+    with ExitStack() as stack:
+        outer = stack.enter_context(tarfile.open(archive, mode='r:'))
         members = {}
-        for member in outer:
-            path = clean(member.name)
-            if path in members:
-                raise ValueError('duplicate outer archive member')
-            members[path] = member
-            if len(members) > limits.members:
-                raise ValueError('archive member bound exceeded')
+        archives = ([stack.enter_context(tarfile.open(base_archive, mode='r:'))] if base_archive else []) + [outer]
+        for source in archives:
+            seen = set()
+            for member in source:
+                path = clean(member.name)
+                if path in seen:
+                    raise ValueError('duplicate outer archive member')
+                seen.add(path)
+                if source is not outer and not path.startswith('blobs/sha256/'):
+                    continue
+                members[path] = (source, member)
+                if len(members) > limits.members:
+                    raise ValueError('archive member bound exceeded')
 
         def read_json(path, descriptor=None):
-            member = members[path]
+            source, member = members[path]
             if not member.isfile() or member.size > limits.metadata_file_bytes:
                 raise ValueError('invalid JSON blob')
-            raw = outer.extractfile(member).read()
+            raw = source.extractfile(member).read()
             if descriptor and (sha(raw) != descriptor['digest'].split(':')[1] or len(raw) != descriptor['size']):
                 raise ValueError('JSON blob size/digest mismatch')
             return json.loads(raw)
@@ -403,12 +433,12 @@ def inventory(archive, *, expected_images=None, limits=Limits(), progress=None):
                         'application/vnd.docker.image.rootfs.diff.tar.gzip'):
                     raise ValueError('unsupported layer media type')
                 if layer['digest'] not in cache:
-                    member = members[blob_name(layer['digest'])]
+                    source, member = members[blob_name(layer['digest'])]
                     if not member.isfile() or member.size != layer['size']:
                         raise ValueError('invalid layer blob')
                     if progress:
                         progress(layer['digest'], member.size)
-                    with outer.extractfile(member) as stream:
+                    with source.extractfile(member) as stream:
                         cache[layer['digest']] = scan_layer(stream, layer, limits, retained)
                 apply_layer(state, cache[layer['digest']])
             reports.append(image_report(state, descriptor, manifest, config))
@@ -431,6 +461,7 @@ def inventory(archive, *, expected_images=None, limits=Limits(), progress=None):
         tool=dict(path='sdk/image_inventory.py', sha256=sha(Path(__file__).read_bytes()),
                   method='Python stdlib archive inspection; no subprocess, extraction, network or package import'),
         archive=dict(path=str(archive), bytes=archive.stat().st_size, sha256=archive_digest),
+        base_archive=base_binding,
         publication_binding=binding, images=reports,
         scan=dict(unique_layers=len(cache), layer_applications=sum(len(r['layer_digests']) for r in reports),
                   retained_metadata_bytes=retained[0], limits=limits.__dict__,
@@ -449,10 +480,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--archive', required=True)
     parser.add_argument('--images', help='Existing publication images.json to bind, not trusted package input')
+    parser.add_argument('--base-archive', help='Exact pinned base for a verified OCI layer set')
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
     import sys
-    result = inventory(args.archive, expected_images=args.images,
+    result = inventory(args.archive, expected_images=args.images, base_archive=args.base_archive,
                        progress=lambda d, n: print(f'inspecting {d} {n} bytes', file=sys.stderr, flush=True))
     target = Path(args.output)
     target.parent.mkdir(parents=True, exist_ok=True)

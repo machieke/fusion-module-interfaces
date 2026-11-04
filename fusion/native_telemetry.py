@@ -52,8 +52,8 @@ def span(name, *, request_bytes=None, started_ns=None):
     finally:
         end=time.monotonic_ns();_stack.reset(token)
         row=dict(profile=PROFILE,process=_process,pid=os.getpid(),span=ordinal,parent=parent[-1] if parent else None,
-            name=name,start_ns=start,duration_ns=end-start,count=1,request_bytes=request_bytes,
-            response_bytes=meter.get('response_bytes'),code=error)
+            name=name,start_ns=start,duration_ns=end-start,count=1,request_bytes=meter.get('request_bytes',request_bytes),
+            response_bytes=meter.get('response_bytes'),code=error or meter.get('code'))
         encoded=(json.dumps(row,separators=(',',':'))+'\n').encode()
         try:
             with _lock:
@@ -75,3 +75,8 @@ def traced(name, *, request=None):
                 result=function(*args,**kwargs);meter['response_bytes']=_bytes(result);return result
         return wrapped
     return decorate
+
+
+def selected_directory():
+    """Trusted child diagnostics selection; never a wire field or authority."""
+    return None if _sink is None else _sink.parent

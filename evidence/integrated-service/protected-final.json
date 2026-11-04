@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "protected_namespaces": 45,
+  "protected_objects": 3165,
+  "changed_namespaces": [],
+  "campaign_files_unchanged": {
+    "evidence/reference-distribution/campaign/plan.json": true,
+    "evidence/reference-distribution/campaign/execution-ledger.json": true,
+    "artifacts/reference-distribution/campaign/plan.json": true,
+    "artifacts/reference-distribution/campaign/execution-ledger.json": true
+  },
+  "campaign_manifest_sha256": "669dc641863968947fdea63b504f0902a1f93425032177d42294bd2312c51f47",
+  "scope": "Kubernetes object UID/spec/data hashes and four campaign files; not a PVC byte audit",
+  "additional_live_generations": 0,
+  "verifier_rechecks": [
+    {
+      "attempt": 1,
+      "result": "FAIL_VERIFIER_SERIALIZATION_MISMATCH",
+      "change": "compact separators disagreed with original baseline JSON hashing"
+    },
+    {
+      "attempt": 2,
+      "result": "FAIL_VERIFIER_SERIALIZATION_MISMATCH",
+      "change": "ensure_ascii=False disagreed for five Unicode-bearing ConfigMaps"
+    },
+    {
+      "attempt": 3,
+      "result": "PASS",
+      "change": "original sort_keys=True/default separators/default ASCII escaping matched"
+    }
+  ]
+}
