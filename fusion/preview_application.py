@@ -54,8 +54,8 @@ class PreviewAdoption:
             from .preview_tasks import descriptor as task_descriptor
             actual.add(selection_token(task_descriptor()))
         if 'inspection' in app.binding:
-            from .registry import descriptors as inspection_descriptors
-            actual.update(selection_token(d) for d in inspection_descriptors() if d.interface in ('execution','agent.messaging'))
+            from .preview_inspect import Client as InspectionClient
+            actual.update(selection_token(d) for d in InspectionClient(app.config['inspect_config']).selected.values())
         require(all(selection_token(d) in actual for selected in self.catalogue.selections.values() for d in selected), 'UNSUPPORTED_PROFILE')
         self.context = WorkingContext(self.db, self.authorize, app.hook)
         self.memory=None

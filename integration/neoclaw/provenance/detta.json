@@ -1,0 +1,20 @@
+{
+  "profile": "reviewed-source-compatibility/1",
+  "historical": {
+    "path": "integration/neoclaw/provenance/detta-m5.py.txt",
+    "sha256": "c7f9577ce22636d6f75745007dbb095a693c49f4ea5f5e34312a4ba9711148b0",
+    "publication": "05b1c52cfa6ced6e263700753e82ad6038a3b0dd"
+  },
+  "selected": {
+    "path": "fusion/adapters/detta.py",
+    "sha256": "99c948919abfbce31450ffae52e4b0be691a711d8ca047a13876514199fa009c",
+    "introduced": "660803cb955802175765ad16391b7453926b5f47"
+  },
+  "change": "Pass owner lock file descriptors to native child; unchanged default put/get/availability and byte/persistence semantics; no numerical code change.",
+  "behavior_tests": [
+    "tests.test_m11.DettaInProcessRecovery",
+    "tests.test_m11.DettaSubprocessRecovery",
+    "tests.test_phase2_detta_layout",
+    "tests.test_pilot_provenance"
+  ]
+}

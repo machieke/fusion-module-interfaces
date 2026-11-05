@@ -113,6 +113,21 @@ class DistributionAssemblyFixtures(unittest.TestCase):
             self.assertEqual('memory' in values['preview'], mode != 'minimal')
             self.assertEqual('cognition' in values['preview'], mode == 'combined')
 
+    def test_export_source_package_paths_resolve_without_original_build(self):
+        self.run_assembly()
+        exported = json.loads((self.output / 'images.json').read_bytes())
+        manifest = json.loads((self.output / 'distribution.json').read_bytes())
+        registered = {row['path'] for row in manifest['files']}
+        for image in exported['images']:
+            name = image['source_package']
+            self.assertIn(name, registered)
+            self.assertEqual((self.output / name).read_bytes(),
+                             (self.output / manifest['images'][image['kind']]['source_package']).read_bytes())
+        # Every advertised alias is protected by the existing packet verifier.
+        (self.output / exported['images'][0]['source_package']).write_bytes(b'changed metadata')
+        with self.assertRaises(ContractError):
+            verify(self.output / 'distribution.json')
+
     def test_source_drift_refuses_before_output_or_helm(self):
         path = self.source / self.original.source_paths['operator']
         path.write_bytes(b'changed source fixture')

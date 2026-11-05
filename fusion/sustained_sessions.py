@@ -86,6 +86,13 @@ class SustainedSessionStore(SessionStore):
     def create(self, *args, **kwargs):
         require(False, 'UNSUPPORTED_OPERATION')  # /2 remains the exact-ID profile.
 
+    def _session(self, principal, session, action):
+        row=super()._session(principal,session,action)
+        from .pilot_writer_fence import historical
+        if historical(self.db,session) is not None:
+            require(action in ('session.read','session.disclose'),'UNAUTHORIZED')
+        return row
+
     def _now(self):
         now = self.clock()
         old = self.db.execute('SELECT clock FROM sustained_seal').fetchone()[0]
@@ -107,18 +114,38 @@ class SustainedSessionStore(SessionStore):
                 'SELECT sum(length(CAST(record AS BLOB))+coalesce(length(CAST(readiness AS BLOB)),0)) FROM integrated_providers',
                 'SELECT sum(length(CAST(intent AS BLOB))+length(CAST(result AS BLOB))+512) FROM integrated_provider_actions',
                 'SELECT sum(length(CAST(selection AS BLOB))) FROM integrated_provider_bindings')]
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='pilot_registry_meta'").fetchone():
+            from .provider_retention import retained_charge
+            sizes.append(retained_charge(self.db))
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='pilot_historical_sessions'").fetchone():
+            sizes.append(self.db.execute('SELECT coalesce(sum(length(session)+length(template)+length(CAST(frozen AS BLOB))+8),0) FROM pilot_historical_sessions').fetchone()[0])
         if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='native_worker_epochs'").fetchone():
             sizes += [self.db.execute(sql).fetchone()[0] or 0 for sql in (
                 'SELECT sum(length(incarnation)+length(session)+length(CAST(selection AS BLOB))+48) FROM native_worker_epochs',
                 'SELECT sum(length(session)+length(input)+length(incarnation)) FROM native_worker_assignments')]
         if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='native_worker_controls'").fetchone():
             sizes.append(self.db.execute('SELECT coalesce(sum(length(session)+32),0) FROM native_worker_controls').fetchone()[0])
+        from .pilot_subscriptions import usage as subscription_usage
+        subscriptions=subscription_usage(self.db)
+        if subscriptions:sizes.append(subscriptions['logical_bytes'])
+        workflow_reserved=0
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='pilot_workflows'").fetchone():
+            from .guarded_continuation import Workflow
+            workflows=object.__new__(Workflow);workflows.db=self.db;usage=workflows.capacity()
+            sizes.append(usage['logical_bytes']);workflow_reserved=usage['completion_reserved_bytes']
+        cleanup_reserved=0
+        if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='pilot_derived_cleanup_charges'").fetchone():
+            # Child application journals share this owner's admission ledger.
+            # Reserve before their independent acceptance; never infer physical
+            # reclamation or refund an interrupted removal's completion space.
+            sizes.append(self.db.execute('SELECT coalesce(sum(length(session)+length(identity)+length(plan_sha256)+4096+intent_bytes+result_bytes),0) FROM pilot_derived_cleanup_charges').fetchone()[0])
+            cleanup_reserved=self.db.execute("SELECT coalesce(sum(result_bound),0) FROM pilot_derived_cleanup_charges WHERE state!='complete'").fetchone()[0]
         # Reserve the maximum completion/terminal envelope at input acceptance.
         reserved = self.db.execute("SELECT count(*) FROM preview_inputs WHERE state NOT IN ('complete','expired-before-start','cancelled-before-start','rejected')").fetchone()[0]*66560
         return dict(retained=self.db.execute('SELECT count(*) FROM preview_sessions').fetchone()[0],
             active=self.db.execute("SELECT count(*) FROM preview_sessions WHERE state IN ('active','paused')").fetchone()[0],
             pending=self.db.execute("SELECT count(*) FROM preview_inputs WHERE state NOT IN ('complete','expired-before-start','cancelled-before-start','rejected')").fetchone()[0],
-            logical_bytes=sum(sizes), completion_reserved_bytes=reserved)
+            logical_bytes=sum(sizes), completion_reserved_bytes=reserved+workflow_reserved+cleanup_reserved+(subscriptions['closure_reserved_bytes'] if subscriptions else 0))
 
     def allocate(self, principal, request_id, template_name, *, admission=None):
         identity(request_id); identity(template_name)
@@ -156,7 +183,15 @@ class SustainedSessionStore(SessionStore):
         row = self.db.execute('SELECT * FROM sustained_allocations WHERE session=?', (session,)).fetchone()
         require(row is not None, 'NOT_FOUND')
         frozen = json.loads(row['frozen'])
-        require(self.allocation['templates'].get(row['template']) == frozen, 'CONFLICT')
+        from .pilot_writer_fence import historical
+        prior=historical(self.db,session)
+        if prior is not None:
+            require(prior['template']==row['template'] and prior['frozen']==row['frozen'],'CONFLICT')
+            # Current per-request scope permission was checked by _session.
+            # A retained private session need not be a NEW allocation template
+            # in the deliberately shared-only replacement generation.
+            require(frozen['principal']==principal and any(t['principal']==principal for t in self.allocation['templates'].values()),'UNAUTHORIZED')
+        else:require(self.allocation['templates'].get(row['template']) == frozen, 'CONFLICT')
         return dict(session=session, allocation_id=row['id'], template=row['template'],
                     frozen=frozen, expires_ms=row['expires'])
 

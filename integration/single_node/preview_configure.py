@@ -141,7 +141,11 @@ def configure(settings):
                 chosen.append(descriptor_wire(task_descriptor()))
             if p.get('inspection',{}).get('enabled'):
                 from fusion.registry import descriptors as inspection_descriptors
-                chosen += [descriptor_wire(d) for d in inspection_descriptors() if d.interface in ('execution','agent.messaging')]
+                inspection_values=[descriptor_wire(d) for d in inspection_descriptors() if d.interface in ('execution','agent.messaging')]
+                selected=p.get('inspection',{}).get('execution_descriptor')
+                if selected is not None:
+                    inspection_values=[d for d in inspection_values if d['interface']!='execution']+[selected]
+                chosen += inspection_values
             preview=dict(profile=APPLICATION,base='controlled-native-loop/1',authority_file=str(authority),
                 tools=agent['tools'],scope=scope,providers=chosen)
             write(current/'caller.json',{**base_caller,'principal':principal,'reply_route':'reply-'+principal,'database':str(own/'caller.sqlite')})

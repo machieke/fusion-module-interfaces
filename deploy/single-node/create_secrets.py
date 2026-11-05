@@ -58,6 +58,15 @@ def main():
     delegated={p:secrets.token_hex(32) for p in ('M','bridge')}
     client={r:secrets.token_hex(32) for r in roles[1:]}
     preview_material=material(preview,roles,client) if a.preview_values else {}
+    if a.preview_values:
+        from integration.single_node.pilot_initial_authority import initial
+        authority=initial(a.namespace,preview)
+        if authority is not None:
+            current=json.dumps(authority,sort_keys=True).encode()
+            (root/'writer-authority-state.json').write_bytes(current)
+            value=dict(apiVersion='v1',kind='Secret',metadata=dict(name='pilot-current-writer',namespace=a.namespace),
+                       type='Opaque',data={'current.json':base64.b64encode(current).decode()})
+            subprocess.run(['kubectl','--kubeconfig',a.kubeconfig,'--context',a.context,'create','-f','-'],input=json.dumps(value),text=True,check=True,capture_output=True)
     worker={r:secrets.token_hex(32) for r in roles[1:]}
     observer={r:secrets.token_hex(32) for r in ROLES[1:]}
     mailbox=secrets.token_hex(32)

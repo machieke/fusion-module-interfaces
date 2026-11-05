@@ -343,3 +343,15 @@ futureLive:
   planConfigMap: reference-live-plan
   approvalSecret: reference-live-approval
   assetClaim: reference-generative-assets
+
+# Stateless scoped gateway. Owner state remains on existing service PVCs.
+# Access only through an operator-managed loopback port-forward; no public ingress.
+pilotWorkbench:
+  enabled: false
+  configuration: {}
+  existingTrustSecret: omega-agent-tls-auth
+  existingAuthoritySecret: ''
+  credentials: {}
+  resources:
+    requests: {cpu: 25m, memory: 48Mi}
+    limits: {cpu: 250m, memory: 128Mi}

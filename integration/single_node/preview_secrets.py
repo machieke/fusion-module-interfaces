@@ -89,6 +89,11 @@ def material(p,roles,client):
         result['fusion-storage']['inspect-storage-token']=value
         value=secrets.token_hex(32);result['fusion-execution']['inspect-completion-token']=value
         result['fusion-messaging']['inspect-completion-token']=value
+        if 'fusion-inspect-go' in roles:
+            # The separately admitted implementation shares only these scoped
+            # port credentials, never a provider journal or execution allowance.
+            require(p['inspection'].get('envelopes')=='bounded-inspect-envelope/1','UNSUPPORTED_PROFILE')
+            result['fusion-inspect-go'].update({key:value for key,value in result['fusion-execution'].items() if key.startswith('inspect-')})
     if p.get('chain',{}).get('enabled'):
         require({'fusion-commitment','f1r3node'}<=set(roles) and p.get('inspection',{}).get('enabled'),'UNSUPPORTED_PROFILE')
         for who in ('A','B'):
@@ -96,4 +101,13 @@ def material(p,roles,client):
             for role in ('fusion-commitment','fusion-execution'):result[role]['commit-observer-'+who+'-token']=value
         value=secrets.token_hex(32)
         for role in ('fusion-commitment','fusion-storage'):result[role]['commit-storage-token']=value
+    browser=p.get('pilot',{}).get('browser')
+    if browser:
+        require(browser['profile']=='synthetic-browser-sessions/1','UNSUPPORTED_PROFILE')
+        for user,record in browser['users'].items():
+            for role,a in p['agents'].items():
+                if set(record['scopes']) & {p['scope'],a.get('private_scope')}:
+                    result[role][record['credential_key']]=secrets.token_hex(32)
+            if record['role']=='operator' and p['scope'] in record['scopes'] and p.get('pilot',{}).get('derived_cleanup'):
+                result['fusion-search']['browser-'+user+'-search-token']=secrets.token_hex(32)
     return {role:{key:value.encode() for key,value in values.items()} for role,values in result.items()}

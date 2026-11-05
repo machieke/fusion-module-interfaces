@@ -36,7 +36,7 @@ def render(chart,namespace,values):
 
 def graph(objects,namespace,images):
     """Check actual rendered owner mounts/services/config, not an aspirational graph."""
-    types={'ConfigMap','StatefulSet','Service','NetworkPolicy'}
+    types={'ConfigMap','StatefulSet','Deployment','Service','NetworkPolicy'}
     require(all(o['kind'] in types for o in objects),'UNSUPPORTED_PROFILE')
     by={(o['kind'],o['metadata']['name']):o for o in objects}
     require(len(by)==len(objects),'CONFLICT')
@@ -71,6 +71,33 @@ def graph(objects,namespace,images):
         nodes[name]=dict(placement='pod-https',image=c['image'],host=name+'.'+namespace+'.svc.cluster.local',port=cfg['https_port'],
             owner_pvc='state-'+name+'-0',secret_refs=sorted(secrets),scope=cfg['preview']['scope'],resources=c['resources'],
             config_sha256=digest(canonical(cfg)),readiness='NOT_OBSERVED',authority='EXISTING_CURRENT_SCOPED_POLICY')
+    for (kind,name),obj in by.items():
+        if kind!='Deployment':continue
+        # Exactly the stateless private browser gateway. It owns no journal and
+        # cannot express another PVC, privileged proxy or arbitrary workload.
+        require(name=='omega-workbench','UNSUPPORTED_PROFILE')
+        s=obj['spec'];pod=s['template']['spec'];require(s['replicas']==1 and s['strategy']=={'type':'Recreate'},'UNSUPPORTED_PROFILE')
+        require(len(pod['containers'])==1 and not pod.get('initContainers'),'UNSUPPORTED_PROFILE')
+        require(pod.get('automountServiceAccountToken') is False and not any(pod.get(k) for k in ('hostNetwork','hostPID','hostIPC')),'UNAUTHORIZED')
+        c=pod['containers'][0];require(pins.get(c['image'])=='caller','UNAUTHORIZED')
+        require(c['command']==['/opt/native/python/bin/python3.12','-m','integration.single_node.pilot_browser_cli'] and
+            c['args']==['--configuration','/config/browser.json','--port','8878','--listen','0.0.0.0'],'UNSUPPORTED_PROFILE')
+        require(c['securityContext']==dict(allowPrivilegeEscalation=False,readOnlyRootFilesystem=True,capabilities=dict(drop=['ALL'])),'UNAUTHORIZED')
+        require(set(c['resources'])=={'requests','limits'} and all(set(c['resources'][k])=={'cpu','memory'} for k in c['resources']),'INVALID_ARGUMENT')
+        require(all(set(v)<=({'name','configMap'} if 'configMap' in v else {'name','secret'}) for v in pod['volumes']),'UNAUTHORIZED')
+        require(all(m.get('readOnly') is True and not any(k in m for k in ('mountPropagation','subPath','subPathExpr')) for m in c['volumeMounts']),'UNAUTHORIZED')
+        for v in pod['volumes']:
+            if 'secret' not in v:continue
+            keys={i['key'] for i in v['secret']['items']}
+            require(keys and all(k in ('ca.crt','current.json') or k.startswith('browser-') for k in keys),'UNAUTHORIZED')
+            if 'current.json' in keys:require(v['name']=='writer-authority' and keys=={'current.json'},'UNAUTHORIZED')
+        svc=by.get(('Service',name));require(svc is not None and svc['spec'].get('type','ClusterIP')=='ClusterIP','UNAUTHORIZED')
+        cfg=json.loads(by[('ConfigMap',name)]['data']['browser.json'])
+        require(cfg['namespace']==namespace and cfg['profile']=='synthetic-browser-sessions/1','UNSUPPORTED_PROFILE')
+        nodes[name]=dict(placement='private-browser-port-forward',image=c['image'],host=name+'.'+namespace+'.svc.cluster.local',port=8878,
+            owner_pvc=None,secret_refs=sorted(v['secret']['secretName'] for v in pod['volumes'] if 'secret' in v),
+            scope='PER_USER_EXPLICIT_SYNTHETIC_SCOPES',resources=c['resources'],config_sha256=digest(canonical(cfg)),
+            readiness='NOT_OBSERVED',authority='EXISTING_CURRENT_SCOPED_POLICY',workload_kind='Deployment')
     require({'omega-agent','fusion-storage','fusion-execution','fusion-messaging','fusion-model'}<=nodes.keys(),'NOT_AVAILABLE')
     for (kind,_),o in by.items():
         if kind!='NetworkPolicy':continue
@@ -92,7 +119,8 @@ def graph(objects,namespace,images):
                         require(rule['ports']==[{'protocol':'TCP','port':nodes[target]['port']}],'UNSUPPORTED_PROFILE')
                         transport='authenticated-https'
                     edges.append(dict(caller=source,provider=target,transport=transport,owner_files=False))
-    require(len({n['owner_pvc'] for n in nodes.values()})==len(nodes),'UNAUTHORIZED')
+    owners=[n['owner_pvc'] for n in nodes.values() if n['owner_pvc'] is not None]
+    require(len(set(owners))==len(owners),'UNAUTHORIZED')
     return dict(nodes=nodes,edges=sorted(edges,key=lambda r:(r['caller'],r['provider'])),ownership_cycles=False,
                 communication_cycles='ALLOWED_CALLBACKS_NOT_OWNERSHIP',fallback=False)
 
@@ -133,12 +161,36 @@ def diagram(plan):
     lines=['flowchart LR']
     for role,node in sorted(plan['graph']['nodes'].items()):
         safe=role.replace('-','_');lines.append(f'  {safe}["{role}: HTTPS"]')
-        lines.append(f'  {safe} --> {safe}_state[("{node["owner_pvc"]}")]')
+        if node['owner_pvc'] is not None:lines.append(f'  {safe} --> {safe}_state[("{node["owner_pvc"]}")]')
     for edge in plan['graph']['edges']:lines.append('  '+edge['caller'].replace('-','_')+' --> '+edge['provider'].replace('-','_'))
     return '\n'.join(lines)+'\n'
 
 
-def verify_installed(plan,op):
+def provider_source(op,role,image,plan,reference_providers=None,pod_name=None):
+    """Two explicit attestations: packaged Python source or verified Go OCI.
+
+    The independent scratch provider intentionally has no Python/exec inspector.
+    Its separately verified immutable image archive binds the exact compiled kit
+    binary. The caller also checks the live pod's imageID against that same pin.
+    """
+    expected=image.get('source_manifest_sha256',plan['source_manifest_sha256'])
+    if image['kind']=='inspect-go':
+        from .pilot_provider_image import verify
+        selected=reference_providers or {};require(set(selected)=={'inspect-go'},'NOT_AVAILABLE')
+        checked=verify(selected['inspect-go'])
+        from fusion.registry import selection_token
+        from fusion.reference_inspect_contracts import descriptor
+        require(checked['contract']==selection_token(descriptor()),'UNSUPPORTED_PROFILE')
+        require(role=='fusion-inspect-go' and checked['repository']==image['repository'] and
+            checked['manifest']==image['manifest_digest'] and checked['source_manifest_sha256']==expected,'CONFLICT')
+        return expected,'VERIFIED_INDEPENDENT_GO_OCI_AND_POD_IMAGE_ID'
+    from .reference_ops import PYTHON
+    probe="import json;from pathlib import Path;from fusion.contracts import canonical,digest;print(digest(canonical(json.loads(Path('/opt/fusion-package.json').read_bytes())['source'])))"
+    source=op.k('exec',pod_name or role+'-0','--',PYTHON,'-c',probe,timeout=15).strip()
+    require(source==expected,'CONFLICT');return source,'PACKAGED_SOURCE_AND_POD_IMAGE_ID'
+
+
+def verify_installed(plan,op,reference_providers=None):
     """Metadata, certificate and exact-image checks; never sends business work."""
     require(op.namespace==plan['namespace'],'UNAUTHORIZED');op.owned();result=[]
     import base64
@@ -147,20 +199,27 @@ def verify_installed(plan,op):
     import datetime
     now=datetime.datetime.now(datetime.timezone.utc)
     actual={r['metadata']['name']:r for r in op.workloads()}
+    if 'omega-workbench' in plan['graph']['nodes']:
+        actual.update({r['metadata']['name']:r for r in op.stateless_workloads()})
     require(set(actual)==set(plan['graph']['nodes']),'CONFLICT')
     for role,node in plan['graph']['nodes'].items():
         sts=actual[role];c=sts['spec']['template']['spec']['containers'][0];require(c['image']==node['image'],'CONFLICT')
-        pod=json.loads(op.k('get','pod',role+'-0','-o','json'))
+        if node.get('workload_kind')=='Deployment':
+            pods=json.loads(op.k('get','pods','-l','app.kubernetes.io/name='+role,'-o','json'))['items']
+            require(len(pods)==1 and not pods[0]['metadata'].get('deletionTimestamp'),'NOT_AVAILABLE');pod=pods[0]
+        else:pod=json.loads(op.k('get','pod',role+'-0','-o','json'))
         statuses=pod['status'].get('containerStatuses',[])
         require(len(statuses)==1 and statuses[0]['ready'] and statuses[0]['imageID'].endswith(node['image'].split('@')[1]),'NOT_AVAILABLE')
         config_name=next(v['configMap']['name'] for v in sts['spec']['template']['spec']['volumes'] if 'configMap' in v)
-        cfg=json.loads(json.loads(op.k('get','configmap',config_name,'-o','json'))['data']['component.json'])
+        key='browser.json' if node.get('workload_kind')=='Deployment' else 'component.json'
+        cfg=json.loads(json.loads(op.k('get','configmap',config_name,'-o','json'))['data'][key])
         require(digest(canonical(cfg))==node['config_sha256'],'CONFLICT')
-        from .reference_ops import PYTHON
-        probe="import json;from pathlib import Path;from fusion.contracts import canonical,digest;print(digest(canonical(json.loads(Path('/opt/fusion-package.json').read_bytes())['source'])))"
-        source=op.k('exec',role+'-0','--',PYTHON,'-c',probe,timeout=15).strip()
         image=next(x for x in plan['images']['images'] if x['repository']+'@'+x['manifest_digest']==node['image'])
-        require(source==image.get('source_manifest_sha256',plan['source_manifest_sha256']),'CONFLICT')
+        source,source_verification=provider_source(op,role,image,plan,reference_providers,pod['metadata']['name'])
+        if node.get('workload_kind')=='Deployment':
+            result.append(dict(role=role,pod_uid=pod['metadata']['uid'],image_id=statuses[0]['imageID'],source_manifest_sha256=source,
+                transport='PRIVATE_LOOPBACK_PORT_FORWARD_NO_PUBLIC_INGRESS',configuration='EXACT',source_verification=source_verification))
+            continue
         ca_hashes=[]
         for secret in node['secret_refs']:
             data=json.loads(op.k('get','secret',secret,'-o','json'))['data']
@@ -170,13 +229,13 @@ def verify_installed(plan,op):
             require(cert.not_valid_before_utc<=now<cert.not_valid_after_utc and ca.not_valid_before_utc<=now<ca.not_valid_after_utc,'UNAUTHORIZED')
             cert.verify_directly_issued_by(ca);ca_hashes.append(digest(base64.b64decode(data['ca.crt'])))
         require(len(ca_hashes)==1,'NOT_AVAILABLE')
-        result.append(dict(role=role,pod_uid=pod['metadata']['uid'],image_id=statuses[0]['imageID'],source_manifest_sha256=source,ca_sha256=ca_hashes[0],certificate_dns='MATCHED',configuration='EXACT'))
+        result.append(dict(role=role,pod_uid=pod['metadata']['uid'],image_id=statuses[0]['imageID'],source_manifest_sha256=source,ca_sha256=ca_hashes[0],certificate_dns='MATCHED',configuration='EXACT',source_verification=source_verification))
     return dict(status='PASS',providers=result,plan_sha256=digest(canonical(plan)),business_calls=0,readiness='POD_READY_ONLY',additional_live_generations=0)
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=['freeze','compile','diff','verify-installed','freeze-local','compile-local'])
-    for name in ('chart','plan','values','images','namespace','output','previous','kubeconfig','context','application','provider'):p.add_argument('--'+name)
+    for name in ('chart','plan','values','images','namespace','output','previous','kubeconfig','context','application','provider','reference-provider'):p.add_argument('--'+name)
     a=p.parse_args()
     if a.action=='freeze-local':
         require(a.application is not None and a.provider is not None)
@@ -195,7 +254,8 @@ def main():
             print(''.join(difflib.unified_diff(json.dumps(previous,sort_keys=True,indent=2).splitlines(True),json.dumps(plan,sort_keys=True,indent=2).splitlines(True),fromfile=a.previous,tofile=a.plan)));return
         else:
             from .reference_ops import Operator
-            result=verify_installed(plan,Operator(a.kubeconfig,a.context,a.namespace))
+            result=verify_installed(plan,Operator(a.kubeconfig,a.context,a.namespace),
+                {'inspect-go':a.reference_provider} if a.reference_provider else None)
     if a.output:
         path=Path(a.output);require(not path.exists(),'CONFLICT');path.write_bytes(canonical(result))
         if a.action=='freeze':path.with_suffix('.mmd').write_text(diagram(result))

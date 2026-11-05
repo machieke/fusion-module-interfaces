@@ -32,6 +32,8 @@ def build(directory, helper):
 
 def validate_runtime(path):
     runtime = json.loads(Path(path).read_text())
+    from .pilot_runtime import validate
+    validate(runtime)
     require(runtime['profile'] == 'neoclaw-query-caller-no-e5/1' and runtime['lock_sha256'] == digest(LOCK.read_bytes()), 'UNSUPPORTED_PROFILE')
     require(runtime['absent'] == dict.fromkeys(ABSENT, True), 'UNSUPPORTED_PROFILE')
     for file, sha in {**runtime['files'], runtime['python']:runtime['python_sha256'], runtime['helper']:HELPER_HASH}.items():

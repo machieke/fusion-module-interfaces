@@ -92,7 +92,9 @@ class PreviewFaultChartTests(unittest.TestCase):
 
     def test_exact_deployed_recovery_hooks_render_without_broadening_unknown_operations(self):
         for stage in ('after_session_input_capture', 'after_workspace_effect',
-                      'after_lifecycle_commit', 'after_task_payload_capture'):
+                      'after_lifecycle_commit', 'after_task_payload_capture',
+                      'after_application_projection', 'after_feed_backend_acceptance',
+                      'after_model_provider_capture'):
             with self.subTest(stage=stage):
                 result = self.render({'pause_at': stage})
                 self.assertEqual(result.returncode, 0, result.stderr)

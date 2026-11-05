@@ -1,0 +1,16 @@
+import json,subprocess,base64
+from pathlib import Path
+p=Path('@@PRIVATE_ROOT@@/owner-credential-renewal');old=json.loads((p/'before-secret.json').read_bytes());q=dict(credential=base64.b64decode(old['data']['browser-shared-token']).decode(),session=json.loads((p.parent/'shared-story.json').read_bytes())['sessions']['shared']['session']);k=['@@KUBECTL@@','--kubeconfig','@@KUBECONFIG@@','--context','default','-n','@@NAMESPACE@@']
+code='''import json,sys,ssl,socket,hashlib
+from fusion.preview_transport import invoke
+from fusion.contracts import ContractError,require
+from pathlib import Path
+q=json.load(sys.stdin);ep=json.loads(Path('/config/browser.json').read_bytes())['users']['shared']['targets']['omega-agent']['endpoint']
+try:invoke(dict(endpoint=ep,credential=q['credential']),'/preview/session',dict(profile='omega-native-sessions/3',id='stale-browser-credential-observation',operation='binding',body={'session':q['session']}))
+except ContractError as e:require(e.code=='UNAUTHORIZED','CONFLICT');result=dict(stale_credential=e.code)
+else:require(False,'CONFLICT')
+ctx=ssl.create_default_context(cafile=ep['ca_file'])
+with socket.create_connection((ep['host'],ep['port']),timeout=5) as raw:
+ with ctx.wrap_socket(raw,server_hostname=ep['host']) as s:result['selected_leaf_der_sha256']=hashlib.sha256(s.getpeercert(binary_form=True)).hexdigest()
+print(json.dumps(result))'''
+r=subprocess.check_output(k+['exec','-i','deployment/omega-workbench','--','/opt/native/python/bin/python3.12','-c',code],input=json.dumps(q),text=True);result=json.loads(r);(p/'peer-observation.json').write_text(json.dumps(result,indent=2)+'\n');print('Old scoped credential refused; independently observed renewed leaf under same CA.')

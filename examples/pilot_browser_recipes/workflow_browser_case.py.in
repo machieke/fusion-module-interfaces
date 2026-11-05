@@ -1,0 +1,50 @@
+"""Installed workflow driver; browser decisions use only ordinary UI bootstrap."""
+import argparse,json,os,subprocess,time
+from pathlib import Path
+from examples.pilot_workflows import qualify
+from integration.single_node.reference_ops import Operator
+from fusion.contracts import canonical,digest,require
+p=argparse.ArgumentParser();p.add_argument('--case',choices=['approve','refuse','expired'],required=True);p.add_argument('--root',required=True);p.add_argument('--maximum-seconds',type=int,default=240);a=p.parse_args()
+root=Path(a.root);root.mkdir(parents=True,exist_ok=False);private=Path('@@PRIVATE_ROOT@@/preparation');proof='@@PROOFSHOT@@'
+userdir=private/'user-client';env=dict(HOME=str(private/'user-home'),PATH='@@NODE_BIN@@:/usr/bin:/bin',AGENT_BROWSER_SESSION='@@BROWSER_SESSION@@',AGENT_BROWSER_SOCKET_DIR='@@BROWSER_SOCKET_DIR@@',AGENT_BROWSER_EXECUTABLE_PATH='@@BROWSER_EXECUTABLE@@')
+report=dict(status='BEFORE_ACCEPTANCE',case=a.case,additional_live_generations=0,decision='ORDINARY_BROWSER_UI',model='RECORDED_FIXTURE',operator_performs='Registered workflow admission/explicit drive only; native tools execute effects',source_sha256=digest(Path(__file__).read_bytes()),maximum_seconds=a.maximum_seconds)
+def save():(root/'browser-decision.json').write_bytes(canonical(report))
+def run(*args):
+ r=subprocess.run([proof,'exec',*args],cwd=userdir,env=env,text=True,capture_output=True,timeout=25)
+ require(r.returncode==0,'NOT_AVAILABLE');return r.stdout.strip()
+def value(expression):return json.loads(json.loads(run('eval','JSON.stringify('+expression+')')))
+def callback(op,sid,wid,cp,current):
+ report.update(status='CHECKPOINT_READY',session=sid,workflow=wid,checkpoint_sha256=cp['binding_sha256'],original_deadline_ms=current['deadline_ms'],before=current);save()
+ run('reload');time.sleep(.3)
+ # Authenticated username is read from the actual cookie session. If absent,
+ # establish a fresh finite UI session using only the provisioned bootstrap.
+ if value('document.querySelector("#authState").textContent')=='Signed out':
+  run('fill','#user','operator');run('fill','#access',(userdir/'operator.bootstrap').read_text().strip());run('click','#connect');time.sleep(.3)
+ run('select','#agent','omega-agent');run('select','#session',sid);run('fill','#workflowId',wid);run('click','#workflowRead');time.sleep(.2)
+ observed=value('JSON.parse(document.querySelector("#workflowState").textContent)')
+ require(observed['workflow']==wid and observed['session']==sid and observed['deadline_ms']==current['deadline_ms'] and observed['reservations_spent']==2,'CONFLICT')
+ require(next(x for x in observed['checkpoints'] if x['identity']==cp['identity'])==cp,'CONFLICT')
+ report['browser_observed']=observed;save();run('scrollintoview','#workflowId');run('screenshot',str(root/'checkpoint-before.png'))
+ if a.case=='expired':
+  while time.time_ns()//1000000<=current['deadline_ms']:
+   remaining=(current['deadline_ms']-time.time_ns()//1000000)/1000
+   print('Waiting unchanged original workflow deadline; seconds_remaining='+str(round(max(0,remaining),1)),flush=True)
+   time.sleep(min(20,max(.05,remaining+.05)))
+ button='workflowRefuse' if a.case=='refuse' else 'workflowApprove'
+ report.update(status='DECISION_REQUESTED',decision_action='refuse' if a.case=='refuse' else 'approve');save()
+ run('eval','setTimeout(()=>document.querySelector("#'+button+'").click(),1500); "NORMAL_BUTTON_CLICK_SCHEDULED"');time.sleep(1.7);run('dialog','accept');time.sleep(.25)
+ after=value('JSON.parse(document.querySelector("#workflowState").textContent)')
+ decision=next(x for x in after['checkpoints'] if x['identity']==cp['identity'])['decision'];require(decision is not None and decision['actor']=='browser-operator','CONFLICT')
+ require(after['steps']==current['steps'] and after['reservations_spent']==2 and after['deadline_ms']==current['deadline_ms'],'CONFLICT')
+ require(decision['action']==report['decision_action'] and decision['effective']==(a.case!='expired'),'CONFLICT')
+ report.update(status='OWNER_DECISION_OBSERVED',after=after,decision_receipt=decision);save();run('screenshot',str(root/'checkpoint-after.png'))
+ run('scrollintoview','#logout');run('click','#logout');time.sleep(.2)
+ require(value('document.querySelector("#authState").textContent')=='Signed out','CONFLICT')
+op=Operator('@@KUBECONFIG@@','default','@@NAMESPACE@@')
+save()
+try:
+ result=qualify(op,root/'native','unchanged',maximum_seconds=a.maximum_seconds,case='browser-'+a.case,checkpoint_decision=callback)
+ report.update(status='PASS',native_workflow_status=result['status'],positive_task=result.get('positive_task','COMPLETE'),workflow_native_inputs=result['workflow_native_inputs'],owner_report_sha256=digest((root/'native'/'report.json').read_bytes()))
+except BaseException as error:report.update(status='FAILED_RETAINED',failure=dict(type=type(error).__name__,message=str(error)[:200]));raise
+finally:save()
+print(json.dumps(dict(case=a.case,status=report['status'],live_generations=0)))

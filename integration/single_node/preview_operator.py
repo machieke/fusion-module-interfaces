@@ -100,8 +100,8 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('operation',choices=['inventory','create','submit','observe','pause','resume','close','chain-observe','allocate','list','capacity','cancel','reconcile','archive','current','project','providers','continuation','capabilities','worker-control'])
     p.add_argument('--session');p.add_argument('--identity');p.add_argument('--text');p.add_argument('--assignment');p.add_argument('--content',action='store_true');p.add_argument('--after',type=int,default=0)
     p.add_argument('--template');p.add_argument('--target');p.add_argument('--request-file')
-    p.add_argument('--provider');p.add_argument('--provider-action',choices=['inspect','selected','probe','add','enable','disable','drain','retire']);p.add_argument('--retained',choices=['required','explicit-unavailable'],default='required')
-    p.add_argument('--occurrence');p.add_argument('--continuation-action',choices=['observe','cancel','unsubscribe'],default='observe')
+    p.add_argument('--provider');p.add_argument('--provider-action',choices=['inspect','selected','probe','add','enable','disable','drain','retire','plan','seal','headroom']);p.add_argument('--retained',choices=['required','explicit-unavailable'],default='required')
+    p.add_argument('--head');p.add_argument('--occurrence');p.add_argument('--continuation-action',choices=['observe','cancel','unsubscribe'],default='observe')
     p.add_argument('--worker-action',choices=['observe','drain','recycle','resume'],default='observe')
     a=p.parse_args();body={}
     if a.operation=='worker-control':
@@ -111,7 +111,7 @@ def main():
     if a.operation=='continuation':
         print(json.dumps(continuation(a.session,a.occurrence,a.continuation_action,a.identity)));return
     if a.operation=='providers':
-        print(json.dumps(providers(a.provider_action,a.provider,a.identity,a.session,a.retained)));return
+        print(json.dumps(providers(a.provider_action,a.provider,a.identity,a.session,a.retained,head=a.head)));return
     if a.operation=='project':
         require(a.request_file is not None)
         print(json.dumps(projection(json.loads(Path(a.request_file).read_bytes()))));return
@@ -151,13 +151,15 @@ def chain_observe(component='/config/component.json'):
     return dict(state=observed['effect_finality'] if observed else 'NO_SIGNED_INTENT',registration_sha256=digest(canonical(reg)),
         artifact=reg['artifact'],inspection=reg['result'],intent=intent,observation=observed,submission='NOT_REQUESTED')
 
-def providers(operation,provider=None,identity=None,session=None,retained='required',owner='/run/fusion/owner.json',component='/config/component.json'):
+def providers(operation,provider=None,identity=None,session=None,retained='required',owner='/run/fusion/owner.json',component='/config/component.json',head=None):
     from fusion.provider_lifecycle import PROFILE as registry_profile
     cfg=json.loads(Path(owner).read_bytes());settings=json.loads(Path(component).read_bytes())
-    require(operation in ('inspect','selected','probe','add','enable','disable','drain','retire'),'UNSUPPORTED_OPERATION')
-    body={'session':session} if operation=='selected' else {'provider':provider}
-    if operation not in ('inspect','selected'):require(identity is not None);body['identity']=identity
+    registry_profile=cfg['native_sessions']['provider_registry']['profile']
+    require(operation in ('inspect','selected','probe','add','enable','disable','drain','retire','plan','seal','headroom'),'UNSUPPORTED_OPERATION')
+    body={} if operation=='headroom' else {'session':session} if operation=='selected' else {'provider':provider}
+    if operation not in ('inspect','selected','plan','headroom'):require(identity is not None);body['identity']=identity
     if operation=='retire':body['retained']=retained
+    if operation=='seal':require(type(head) is str and len(head)==64);body['head']=head
     q=dict(id=str(uuid.uuid4()),profile=registry_profile,operation=operation,body=body)
     transport=dict(endpoint=dict(host=settings['peers'][settings['role']],port=settings['https_port'],ca_file=str(Path(cfg['tls_certificate']).parent/'ca.crt')),
                    credential=cfg['principals']['operator']['credential'])

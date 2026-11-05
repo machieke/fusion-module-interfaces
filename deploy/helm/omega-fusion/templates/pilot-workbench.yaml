@@ -1,0 +1,111 @@
+{{- $w := .Values.pilotWorkbench }}
+{{- if $w.enabled }}
+{{- if not $.Values.preview.enabled }}{{ fail "pilotWorkbench requires the existing preview owners" }}{{- end }}
+{{- if ne $w.configuration.namespace $.Release.Namespace }}{{ fail "pilotWorkbench namespace must match the release" }}{{- end }}
+{{- if and (hasKey $w.configuration "handover") (not $w.existingAuthoritySecret) }}{{ fail "handover observation requires an explicit external authority Secret" }}{{- end }}
+{{- $caller := get $.Values.components "omega-agent" }}
+{{- $image := default (default $.Values.image $caller.image) $w.image }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: omega-workbench
+data:
+  browser.json: {{ $w.configuration | toJson | quote }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: omega-workbench
+spec:
+  type: ClusterIP
+  selector: {app.kubernetes.io/instance: {{ .Release.Name | quote }}, app.kubernetes.io/name: omega-workbench}
+  ports: [{name: browser, port: 8878, targetPort: browser}]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omega-workbench
+spec:
+  replicas: 1
+  strategy: {type: Recreate}
+  selector:
+    matchLabels: {app.kubernetes.io/instance: {{ .Release.Name | quote }}, app.kubernetes.io/name: omega-workbench}
+  template:
+    metadata:
+      labels: {app.kubernetes.io/instance: {{ .Release.Name | quote }}, app.kubernetes.io/name: omega-workbench}
+      annotations:
+        checksum/browser-configuration: {{ $w.configuration | toJson | sha256sum }}
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 15
+      securityContext: {runAsNonRoot: true, runAsUser: 1000, runAsGroup: 1000, fsGroup: 1000}
+      containers:
+        - name: browser
+          image: "{{ $image.repository }}{{ if $image.digest }}@{{ $image.digest }}{{ else }}:{{ $image.tag }}{{ end }}"
+          imagePullPolicy: {{ $image.pullPolicy }}
+          command: [/opt/native/python/bin/python3.12, -m, integration.single_node.pilot_browser_cli]
+          args: [--configuration, /config/browser.json, --port, "8878", --listen, "0.0.0.0"]
+          ports: [{name: browser, containerPort: 8878}]
+          securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+          resources: {{ $w.resources | toJson }}
+          startupProbe: {tcpSocket: {port: browser}, periodSeconds: 2, timeoutSeconds: 1, failureThreshold: 30}
+          readinessProbe: {tcpSocket: {port: browser}, periodSeconds: 5, timeoutSeconds: 1, failureThreshold: 2}
+          livenessProbe: {tcpSocket: {port: browser}, periodSeconds: 10, timeoutSeconds: 1, failureThreshold: 3}
+          volumeMounts:
+            - {name: configuration, mountPath: /config, readOnly: true}
+            - {name: trust, mountPath: /tls, readOnly: true}
+            {{- if hasKey $w.configuration "handover" }}
+            - {name: writer-authority, mountPath: /writer-authority, readOnly: true}
+            {{- end }}
+            {{- range $role, $credential := $w.credentials }}
+            - {name: {{ $role }}-credentials, mountPath: {{ printf "/credentials/%s" $role | quote }}, readOnly: true}
+            {{- end }}
+      volumes:
+        {{- if hasKey $w.configuration "handover" }}
+        - name: writer-authority
+          secret:
+            secretName: {{ $w.existingAuthoritySecret | quote }}
+            defaultMode: 288
+            items: [{key: current.json, path: current.json}]
+        {{- end }}
+        - name: configuration
+          configMap: {name: omega-workbench}
+        - name: trust
+          secret:
+            secretName: {{ $w.existingTrustSecret | quote }}
+            defaultMode: 288
+            items: [{key: ca.crt, path: ca.crt}]
+        {{- range $role, $credential := $w.credentials }}
+        - name: {{ $role }}-credentials
+          secret:
+            secretName: {{ $credential.existingSecret | quote }}
+            defaultMode: 288
+            items:
+              {{- range $key := $credential.keys }}
+              - {key: {{ $key | quote }}, path: {{ $key | quote }}}
+              {{- end }}
+        {{- end }}
+{{- if $.Values.networkPolicy.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: {name: omega-workbench-ports}
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/instance: {{ .Release.Name | quote }}, app.kubernetes.io/name: omega-workbench}
+  policyTypes: [Ingress, Egress]
+  ingress: []
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: kube-system}
+      ports: [{protocol: UDP, port: 53}, {protocol: TCP, port: 53}]
+    - to:
+        {{- range $role, $_ := $w.credentials }}
+        - podSelector:
+            matchLabels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $role }}}
+        {{- end }}
+      ports: [{protocol: TCP, port: {{ $.Values.httpsPort }}}]
+{{- end }}
+{{- end }}

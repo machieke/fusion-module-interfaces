@@ -50,6 +50,10 @@ def validate_result(value,operation,args,scope):
 class Ports:
     def __init__(self,path,hook=lambda _:None):self.path,self.hook=path,hook
     def invoke(self,credential,q):
+        from .pilot_search_cleanup import PROFILE as CLEANUP
+        if type(q) is dict and q.get('profile')==CLEANUP:
+            from .pilot_search_maintenance import Ports as CleanupPorts
+            return CleanupPorts(self.path,self.hook).invoke(credential,q)
         require(type(q) is dict and set(q)=={'id','profile','scope','selection','operation','args'} and len(canonical(q))<=16384)
         a.identity(q['id']);require(q['profile']==PROFILE and q['selection']==selection_token(descriptor()),'UNSUPPORTED_PROFILE')
         op=q['operation'];require(type(op) is str and op in OPS,'UNSUPPORTED_OPERATION')

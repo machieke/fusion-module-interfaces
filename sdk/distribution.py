@@ -27,6 +27,7 @@ CHART_FILES = (
     'deploy/helm/omega-fusion/values.schema.json',
     'deploy/helm/omega-fusion/templates/components.yaml',
     'deploy/helm/omega-fusion/templates/network-policy.yaml',
+    'deploy/helm/omega-fusion/templates/pilot-workbench.yaml',
 )
 # This list is intentionally not a recursive copy of the checkout or artifacts.
 # Changes to the public packet require a reviewable change to this selection.
@@ -431,7 +432,7 @@ def contained(root, name):
     return path
 
 
-def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, go_artifacts=None, image_inventory=None):
+def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, go_artifacts=None, image_inventory=None, reference_provider=None):
     """Copy only declared inputs; fail closed on source drift or extra wheels."""
     build, wheelhouse, output, source_root = map(lambda p: Path(p).resolve(),
                                                (build, wheelhouse, output, source_root))
@@ -500,6 +501,24 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, 
     require(sdk_build['schema'] == 'fusion-preview-sdk-build/1'
             and type(sdk_build['live_generations']) is int and sdk_build['live_generations'] == 0,
             'CONFLICT')
+    pilot=sdk_build.get('operator_profile')
+    require(pilot in (None,'operator-pilot-package/1'),'UNSUPPORTED_PROFILE')
+    public_files=list(PUBLIC_FILES)
+    if pilot:
+        selection=json.loads(contained(source_root,'sdk/pilot-distribution-inputs.json').read_bytes())
+        # Publication manifests are finite positive lists, never directory walks.
+        # Keep the historical bound; /2 accommodates retained primary failures,
+        # source epochs and current qualification in one offline release packet.
+        limits={'operator-pilot-public-inputs/1':512,
+                'operator-pilot-public-inputs/2':2048}
+        require(type(selection) is dict and set(selection)=={'profile','files'} and
+            type(selection['profile']) is str and selection['profile'] in limits and
+            type(selection['files']) is list and
+            all(type(name) is str for name in selection['files']),'CONFLICT')
+        require(len(selection['files'])==len(set(selection['files']))
+                <=limits[selection['profile']],'CONFLICT')
+        public_files=sorted(set(public_files)|set(selection['files'])|{'sdk/pilot-distribution-inputs.json'})
+        for name in public_files:sources[name]=contained(source_root,name)
     pins = json.loads((source_root / 'sdk/operator-wheel-inputs.json').read_bytes())['files']
     selected_wheels = {sdk_build[role]['file'] for role in ('client', 'provider', 'operator')}
     selected_wheels.update(pin['file'] for pin in pins)
@@ -529,6 +548,14 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, 
                 and sha(contained(go_artifacts, 'fusion-go-client-source.tar.gz')) == go['archive_sha256'], 'CONFLICT')
         require(all(sha(contained(source_root, 'sdk/go/' + name)) == pin
                     for name, pin in go['source'].items()), 'CONFLICT')
+    provider=None
+    if reference_provider is not None:
+        require(pilot is not None,'UNSUPPORTED_PROFILE')
+        from integration.single_node.pilot_provider_image import verify as verify_provider
+        reference_provider=Path(reference_provider).resolve()
+        checked=verify_provider(reference_provider)
+        provider=json.loads(reference_provider.read_bytes())
+        require(checked['status']=='OFFLINE_VERIFIED','CONFLICT')
     if image_inventory is not None:
         image_inventory = Path(image_inventory).resolve()
         report = json.loads(image_inventory.read_bytes())
@@ -589,6 +616,13 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, 
         package_path, package = packages[kind]
         name = 'image-sources/' + kind + '.json'
         copy(package_path, name, 'exact role source package')
+        # Keep the original export manifest independently usable from the
+        # packet, including by source-bound maintenance tools. Its paths must
+        # not require access to the author's original build directory.
+        alias = entry['source_package']
+        if alias != name:
+            require(not (output / alias).exists(), 'CONFLICT')
+            copy(package_path, alias, 'exact source package at exported manifest path')
         image_map[kind] = dict(repository=entry['repository'], tag=entry['local_tag'].rsplit(':', 1)[1],
                               manifest=entry['manifest_digest'], configuration=entry['configuration_digest'],
                               source_package=name, source_manifest_sha256=digest(canonical(package['source'])))
@@ -602,10 +636,14 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, 
         for name in ('omega-client', 'fusion-go-client-source.tar.gz', 'manifest.json'):
             target=copy(contained(go_artifacts, name), 'go/' + name, 'extracted second-language client artifact')
             if name == 'omega-client':target.chmod(0o755)
+    if provider:
+        for name in [reference_provider.name,reference_provider.with_suffix('.sha256').name,*[item['path'] for item in provider['files']]]:
+            target=copy(contained(reference_provider.parent,name),'go-provider/'+name,'independent Go provider artifact; separate source binding')
+            if name in ('kit/omega-client','kit/omega-inspect-provider'):target.chmod(0o755)
 
     # Loose docs/tooling are convenient for operators; the archive additionally
     # carries every exact image-declared source file, without a checkout mount.
-    for name in PUBLIC_FILES:
+    for name in public_files:
         copy(sources[name], name, 'positive-list public source/documentation')
     with (output / 'source.tar.gz').open('wb') as raw:
         with gzip.GzipFile(filename='', mode='wb', fileobj=raw, mtime=0) as compressed:
@@ -647,6 +685,13 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, 
         values['components'][role].setdefault('config', {}).update(nativeEnabled=False, workerEnabled=False)
     profiles.append(str(write('profiles/integrated-combined.yaml', values,
         'explicit integrated profile; recorded and disabled; generate fresh values').relative_to(output)))
+    if pilot:
+        from integration.single_node.pilot_values import generate as pilot_values
+        values=pilot_values(imported,'synthetic-pilot-distribution','omega-ref-pilot-distribution')
+        for role in ('omega-agent','omega-agent-b'):
+            values['components'][role].setdefault('config',{}).update(nativeEnabled=False,workerEnabled=False)
+        profiles.append(str(write('profiles/operator-pilot.yaml',values,
+            'fresh opt-in pilot; recorded and disabled; provision new scoped authority before installation').relative_to(output)))
     host_tools = {}
     for tool in ('python3.12', 'helm', 'kubectl', 'openssl', 'docker'):
         found = shutil.which(tool)
@@ -677,6 +722,8 @@ def assemble(build, wheelhouse, output, *, source_root=ROOT, base_archive=None, 
         manifest['image_base_archive'] = 'images.base.tar'
     if go:
         manifest['second_language_client'] = 'go/manifest.json'
+    if pilot:manifest['operator_profile']=pilot
+    if provider:manifest['reference_providers']={'inspect-go':'go-provider/'+reference_provider.name}
     if image_inventory:
         manifest['image_dependency_inventory'] = 'image-dependency-inventory.json'
     manifest_path = output / 'distribution.json'
@@ -696,8 +743,9 @@ def main():
     parser.add_argument('--base-archive', type=Path, help='Exact required base for a verified OCI layer set')
     parser.add_argument('--go-artifacts', type=Path, help='Verified extracted Go package build')
     parser.add_argument('--image-inventory', type=Path, help='Executed offline inventory bound to these image archives')
+    parser.add_argument('--reference-provider',type=Path,help='Verified independent Go provider image and extracted starter kit')
     args = parser.parse_args()
-    print(json.dumps(assemble(args.build, args.wheelhouse, args.output, base_archive=args.base_archive, go_artifacts=args.go_artifacts, image_inventory=args.image_inventory), indent=2))
+    print(json.dumps(assemble(args.build, args.wheelhouse, args.output, base_archive=args.base_archive, go_artifacts=args.go_artifacts, image_inventory=args.image_inventory,reference_provider=args.reference_provider), indent=2))
 
 
 if __name__ == '__main__':

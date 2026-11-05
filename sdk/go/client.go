@@ -566,41 +566,51 @@ func (c *Client) Head(deadline int64) (Object, error) {
 	}
 	return o, nil
 }
-func (c *Client) Create(identity, contentType string, data []byte, deadline int64) (Ref, error) {
+
+// CreateReceipt retains the validated storage-owned durability receipt for
+// independent execution providers; Create keeps its historical return shape.
+func (c *Client) CreateReceipt(identity, contentType string, data []byte, deadline int64) (Object, error) {
 	if !label.MatchString(identity) || !label.MatchString(contentType) || len(data) < 1 || len(data) > 4096 {
-		return Ref{}, failure("INVALID_ARGUMENT")
+		return nil, failure("INVALID_ARGUMENT")
 	}
 	v, e := c.atom("create", []interface{}{Object{"scope_ref": c.cfg.Scope, "idempotency_key": identity, "intent_digest": nil}, contentType, Object{"bytes": base64.StdEncoding.EncodeToString(data)}}, deadline)
 	if e != nil {
-		return Ref{}, e
+		return nil, e
 	}
 	o, ok := v.(Object)
 	if !ok || !exact(o, "ref", "receipt") {
-		return Ref{}, failure("NOT_AVAILABLE")
+		return nil, failure("NOT_AVAILABLE")
 	}
 	r, e := ref(o["ref"], c.cfg.Scope)
 	if e != nil {
-		return r, e
+		return nil, e
 	}
 	if r.Digest != hash(data) {
-		return r, failure("NOT_AVAILABLE")
+		return nil, failure("NOT_AVAILABLE")
 	}
 	receipt, ok := o["receipt"].(Object)
 	if !ok || !exact(receipt, "provider", "durability", "evidence") {
-		return r, failure("NOT_AVAILABLE")
+		return nil, failure("NOT_AVAILABLE")
 	}
 	provider, ok := receipt["provider"].(string)
 	if !ok || !contains(c.cfg.Descriptor["receipt_providers"], provider) {
-		return r, failure("NOT_AVAILABLE")
+		return nil, failure("NOT_AVAILABLE")
 	}
 	durability, ok := receipt["durability"].(string)
 	if !ok || !contains(c.cfg.Descriptor["durabilities"], durability) {
-		return r, failure("NOT_AVAILABLE")
+		return nil, failure("NOT_AVAILABLE")
 	}
 	if _, ok := receipt["evidence"].(Object); !ok {
-		return r, failure("NOT_AVAILABLE")
+		return nil, failure("NOT_AVAILABLE")
 	}
-	return r, nil
+	return o, nil
+}
+func (c *Client) Create(identity, contentType string, data []byte, deadline int64) (Ref, error) {
+	value, e := c.CreateReceipt(identity, contentType, data, deadline)
+	if e != nil {
+		return Ref{}, e
+	}
+	return ref(value["ref"], c.cfg.Scope)
 }
 func (c *Client) Get(r Ref, deadline int64) (Envelope, error) {
 	var out Envelope

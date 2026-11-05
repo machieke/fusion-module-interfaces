@@ -32,7 +32,7 @@ if selected:
   def call(operation):
    body={'provider':key}
    if operation!='inspect':body['identity']=sys.argv[1]+'/'+key+'/'+operation
-   return invoke(path,cfg['principals']['operator']['credential'],dict(profile=PROFILE,id='sustained-admission',operation=operation,body=body))['value']
+   return invoke(path,cfg['principals']['operator']['credential'],dict(profile=selected['profile'],id='sustained-admission',operation=operation,body=body))['value']
   before=call('inspect');new=before['state']=='not-admitted'
   if new:call('add')
   else:require(before['state']=='enabled','NOT_AVAILABLE')

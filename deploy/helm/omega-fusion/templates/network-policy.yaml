@@ -9,6 +9,10 @@ spec:
   policyTypes: [Ingress, Egress]
 {{- $edges := dict "omega-agent" (list "fusion-execution" "fusion-storage" "fusion-messaging" "fusion-search" "fusion-embedding" "fusion-episodes" "fusion-beliefs" "fusion-attention" "fusion-relations" "fusion-exact-search" "fusion-model" "fusion-commitment") "fusion-commitment" (list "fusion-execution" "fusion-storage") "fusion-execution" (list "fusion-storage" "fusion-messaging") "fusion-search" (list "fusion-storage") "fusion-beliefs" (list "fusion-storage" "fusion-episodes") "fusion-episodes" (list "fusion-storage") "fusion-relations" (list "fusion-storage") "fusion-exact-search" (list "fusion-storage") "fusion-channel-bridge" (list "fusion-storage" "fusion-messaging" "irc-server") "irc-peer" (list "irc-server") "fusion-messaging" (list "fusion-storage") "fusion-model" (list "fusion-storage") }}
 {{- if .Values.preview.enabled }}
+{{- if hasKey .Values.components "fusion-inspect-go" }}
+{{- $_ := set $edges "fusion-inspect-go" (list "fusion-storage" "fusion-messaging") }}
+{{- $_ := set $edges "omega-agent" (append (get $edges "omega-agent") "fusion-inspect-go") }}
+{{- end }}
 {{- if get (default dict .Values.preview.memory) "maintenance_profile" }}
 {{- $_ := set $edges "fusion-search" (list "fusion-storage" "fusion-search") }}
 {{- end }}
@@ -23,6 +27,9 @@ spec:
 {{- range $agent, $selection := .Values.preview.agents }}
 {{- $_ := set $edges $agent (concat (get $edges "omega-agent") (keys $.Values.preview.agents | sortAlpha)) }}
 {{- end }}
+{{- end }}
+{{- if .Values.pilotWorkbench.enabled }}
+{{- $_ := set $edges "omega-workbench" (keys .Values.pilotWorkbench.credentials | sortAlpha) }}
 {{- end }}
 {{- range $name, $component := .Values.components }}
 {{- if (not (hasKey $component "enabled")) | or $component.enabled }}

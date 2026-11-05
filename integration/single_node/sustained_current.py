@@ -31,13 +31,14 @@ def observation_template(recipe):
     return selected(files['application.json'])
 
 
-def observe(session,owner='/run/fusion/owner.json',state='/state',run='/run/fusion'):
+def observe(session,owner='/run/fusion/owner.json',state='/state',run='/run/fusion',credential=None,navigation=None):
     policy=Policy(owner);cfg=policy.current();selection=cfg['native_sessions'];principal=selection['principal']
     require(selection['profile']=='omega-native-sessions/3','UNSUPPORTED_PROFILE')
-    token=cfg['principals']['operator']['credential']
+    token=credential if credential is not None else cfg['principals']['operator']['credential']
+    actor=policy.authenticate(token)
     def authorize(who,scope,op):
-        require(policy.authenticate(token)=='operator' and who==principal,'UNAUTHORIZED')
-        for verb in ('observe','disclose'):policy.check('operator',scope,'sessions.'+verb)
+        require(policy.authenticate(token)==actor and who==principal,'UNAUTHORIZED')
+        for verb in ('observe','disclose'):policy.check(actor,scope,'sessions.'+verb)
     fenced=(Path(state)/'restore-fence.json').exists()
     if fenced:
         from fusion.sustained_restore import Snapshot
@@ -89,8 +90,55 @@ def observe(session,owner='/run/fusion/owner.json',state='/state',run='/run/fusi
         require((value['profile'],value['id'],value['request_digest'],value['selection'],value['principal'])==
             (PROFILE,q['id'],digest(canonical(q)),q['selection'],principal),'NOT_AVAILABLE')
         result['attention']=value['value']
+    if navigation is not None:
+        result=explore(app,result,navigation)
     authorize(principal,scope,'observe')
     raw=json.loads(Path(app['preview']['authority_file']).read_bytes());raw['tools']=frozenset(raw['tools'])
     SessionAuthority(**raw).check(principal,time.time_ns()//1000000)
     require(len(canonical(result))<=98304,'OVERLOADED')
     return result
+
+
+def explore(app,current,request):
+    """Bounded declared-port reads of this selected session, never foreign SQL."""
+    require(type(request) is dict and set(request)=={'operation','body'},'INVALID_ARGUMENT')
+    operation,body=request['operation'],request['body'];require(type(body) is dict,'INVALID_ARGUMENT')
+    scope=current['scope'];value=None
+    if operation=='relations':
+        require(set(body)=={'logical_id','direction','cursor','snapshot'} and body['direction'] in ('outgoing','incoming'),'INVALID_ARGUMENT')
+        require(type(body['logical_id']) is str and (body['cursor'] is None or type(body['cursor']) is str and len(body['cursor'])<=4096),'INVALID_ARGUMENT')
+        selected=[x for x in current.get('lifecycle',{}).get('membership',{}).get('active',[]) if x['logical_id']==body['logical_id']]
+        require(len(selected)==1,'UNAUTHORIZED');memory=selected[0]
+        lifecycle=Memory(app['active_memory_configs']['memory.lifecycle'],'memory.lifecycle')
+        lifecycle.call('disclose',memory['logical_id'],{k:memory[k] for k in ('uuid','payload','enrollment')},current['lifecycle']['head'],False)
+        port=Facet(app['facet_configs']['relations'],'relations')
+        page=port.call(body['direction'],memory['payload'],4,body['cursor'],body['snapshot'])
+        require(type(page) is dict and type(page.get('refs')) is list and len(page['refs'])<=4,'NOT_AVAILABLE')
+        records=[port.call('getRelation',ref,body['snapshot'] is not None or body['cursor'] is not None) for ref in page['refs']]
+        value=dict(logical_id=memory['logical_id'],direction=body['direction'],page=page,records=records,
+            interpretation='structural-relations-not-empirical-evidence',active_target_checked=True)
+    elif operation=='history':
+        require(set(body)=={'snapshot','start'},'INVALID_ARGUMENT')
+        anchor=current.get('history');require(anchor is not None,'NOT_AVAILABLE')
+        snapshot=body['snapshot'] or anchor
+        require(type(snapshot) is dict and set(snapshot)==set(anchor) and snapshot['episode']==anchor['episode'] and
+            snapshot['selection']==anchor['selection'] and snapshot['profile']==anchor['profile'] and
+            type(snapshot['through']) is int and 0<=snapshot['through']<=anchor['through'],'UNAUTHORIZED')
+        require(type(body['start']) is int and 1<=body['start']<=snapshot['through']+1,'INVALID_ARGUMENT')
+        page=Facet(app['facet_configs']['episodic.memory'],'episodic.memory').call('readHistory',snapshot,body['start'],4)
+        require(page['snapshot']==snapshot and len(page['events'])<=4,'NOT_AVAILABLE')
+        from fusion.preview_native_history import read_body
+        from fusion.preview_history import PROFILE
+        port=atoms(json.loads(Path(app['history_atoms_config']).read_bytes()));entries=[]
+        for item in page['events']:
+            decoded=read_body(port,item['payload'])
+            require(decoded['profile']==PROFILE and decoded['session']==current['session'],'UNAUTHORIZED')
+            raw=canonical(decoded['body'])
+            entries.append(dict(kind=item['kind'],sequence=item['event']['evidence']['sequence'],payload=item['payload'],
+                body=decoded['body'] if len(raw)<=1536 else None,body_omitted=len(raw)>1536,body_sha256=digest(raw),body_bytes=len(raw)))
+        value=dict(snapshot=snapshot,events=entries,next_sequence=page['next_sequence'],complete=page['complete'],
+            representation='EXACT_IMMUTABLE_HISTORY',storage_path='OWNER_SELECTED_HOT_OR_SEALED_ARCHIVE',
+            archive_used='NOT_INFERRED_FROM_SUCCESS',interpretation='administrative-history-not-empirical-evidence')
+    else:require(False,'UNSUPPORTED_OPERATION')
+    return dict(profile='scoped-knowledge-explorer/1',scope=scope,session=current['session'],operation=operation,value=value,
+        atomic_cross_owner_snapshot=False,generation_execution='NOT_REQUESTED',current_authority_checked=True)

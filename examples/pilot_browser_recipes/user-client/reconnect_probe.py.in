@@ -1,0 +1,38 @@
+"""Interactive stdlib observer only; cannot submit, allocate or mutate work."""
+import argparse,hashlib,json,os,sys,time,urllib.parse
+from pathlib import Path
+from browser_client import BrowserClient,check,fingerprint
+p=argparse.ArgumentParser();p.add_argument('--bootstrap-file',required=True);p.add_argument('--user',required=True);p.add_argument('--story-report',required=True);p.add_argument('--output',required=True);a=p.parse_args()
+check('KUBECONFIG' not in os.environ and not any('/home/purplezky/work/takopi/fusion-module-interfaces' in x for x in sys.path))
+story=json.loads(Path(a.story_report).read_bytes());selected=story['sessions'][a.user];selection={k:selected[k] for k in ('role','session')};out=Path(a.output);check(not out.exists());os.umask(0o077)
+report=dict(profile='pilot-browser-current-authority-reconnect/1',user=a.user,selection=selection,events=[],submissions=0,additional_live_generations=0,source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
+clients=[]
+def save():out.write_text(json.dumps(report,sort_keys=True,indent=2)+'\n')
+def login():
+ c=BrowserClient('http://127.0.0.1:8878',a.user,Path(a.bootstrap_file).read_text().strip());c.login();return c
+for _ in range(2):clients.append(login())
+first=clients[0].observe(**selection);baseline=fingerprint(first['inputs']);report['baseline_capture_sha256']=baseline
+report['initial_current']=clients[0].request('/api/current?'+urllib.parse.urlencode(dict(selection,operation='current')))
+report['initial_worker']=clients[0].request('/api/worker-control',dict(selection,operation='observe',identity=None))
+check(fingerprint(clients[1].observe(**selection)['inputs'])==baseline)
+report['events'].append(dict(operation='warm-two-views',state='EXACT',submissions=0));save();print('WARMED_TWO_VIEWS',flush=True)
+for line in sys.stdin:
+ request=json.loads(line);check(type(request) is dict and set(request)=={'operation'});op=request['operation'];check(op in ('observe','expect-denied','login-again','current','stop'))
+ if op=='stop':break
+ event=dict(operation=op,started_ms=time.time_ns()//1000000,results=[]);report['events'].append(event);save()
+ for number,c in enumerate(clients):
+  try:
+   start=time.monotonic()
+   if op=='login-again':
+    clients[number]=login();value=clients[number].observe(**selection)
+   elif op=='current':value=c.request('/api/current?'+urllib.parse.urlencode(dict(selection,operation='current')))
+   else:value=c.observe(**selection)
+   result=dict(view=number,state='OBSERVED',read_ms=round((time.monotonic()-start)*1000,3))
+   if op!='current':result['capture_unchanged']=fingerprint(value['inputs'])==baseline;check(result['capture_unchanged'],'CAPTURE_CHANGED')
+   check(op!='expect-denied','REVOCATION_NOT_OBSERVED')
+  except RuntimeError as error:
+   result=dict(view=number,state='REFUSED',code=str(error))
+   if op=='expect-denied':check(str(error)=='UNAUTHORIZED','WRONG_REFUSAL')
+  event['results'].append(result);save()
+ print(json.dumps({'operation':op,'results':event['results']}),flush=True)
+report['ended']=True;save();print('STOPPED_OBSERVATION_ONLY',flush=True)

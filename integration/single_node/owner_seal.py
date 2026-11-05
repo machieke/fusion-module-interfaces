@@ -31,7 +31,7 @@ def selected(settings):
             require(sustained['history_representation']=='immutable-administrative-captures/1','UNSUPPORTED_PROFILE')
             value['history_representation']=sustained['history_representation']
         if sustained.get('provider_registry'):
-            require(sustained['provider_registry']['profile']=='trusted-provider-lifecycle/1','UNSUPPORTED_PROFILE')
+            require(sustained['provider_registry']['profile'] in ('trusted-provider-lifecycle/1','trusted-provider-lifecycle/2'),'UNSUPPORTED_PROFILE')
             value['provider_registry']=sustained['provider_registry']['profile']
     if preview.get('enabled') and role=='fusion-storage':
         from fusion.adapters.detta_layout import LAYOUT

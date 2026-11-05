@@ -26,6 +26,9 @@ class SustainedSessionPorts:
             policy.check(actor,scope,'sessions.'+operation)
             if action=='session.disclose':policy.check(actor,scope,'sessions.disclose')
         store=SustainedSessionStore(cfg['database'],authorize,cfg['allocation'],hook=self.hook)
+        if cfg.get('pilot_subscriptions'):
+            from .pilot_subscriptions import PROFILE as subscription_profile,install
+            require(cfg['pilot_subscriptions']==subscription_profile,'UNSUPPORTED_PROFILE');install(store)
         def fields(names):require(set(body)==set(names.split()))
         try:
             if operation=='allocate':

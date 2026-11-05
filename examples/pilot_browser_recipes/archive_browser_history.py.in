@@ -1,0 +1,16 @@
+import json,sys
+from pathlib import Path
+from fusion.contracts import canonical,require
+from integration.single_node.reference_ops import Operator,PYTHON
+from examples.integrated_archive import ARCHIVE
+sys.path.insert(0,'@@PRIVATE_ROOT@@/preparation/user-client');from ui import run,value,click,OUTPUT
+before=json.loads((OUTPUT/'browser-history-before-archive.json').read_bytes());sid=before['session'];op=Operator('@@KUBECONFIG@@','default','@@NAMESPACE@@');current=json.loads(op.k('exec','omega-agent-0','--',PYTHON,'-m','integration.single_node.preview_operator','current','--session',sid))
+payload=before['value']['events'][0]['payload'];q=dict(scope=before['scope'],payload=payload,through=current['source_head']);code=ARCHIVE.replace("'archive-native-first-memory'","'archive-@@IDENTITY@@-history-page'");result=json.loads(op.k('exec','-i','fusion-storage-0','--',PYTHON,'-c',code,data=json.dumps(q),timeout=90));(OUTPUT/'browser-history-archive-owner.json').write_bytes(canonical(result));click('#historyRead')
+# Observe completion of an explicit read, not a fixed artificial delay.
+import time
+for _ in range(20):
+ try:after=value('JSON.parse(document.querySelector("#explorerState").textContent)')
+ except Exception:time.sleep(.25);continue
+ if after==before:break
+ time.sleep(.25)
+require(after==before,'CONFLICT');(OUTPUT/'browser-history-after-archive.json').write_bytes(canonical(after));run('screenshot',str(OUTPUT/'browser-authorized-history-archive.png'));print('Exact authorized browser history page retained after sealed archive publication; no cold-path inference.')

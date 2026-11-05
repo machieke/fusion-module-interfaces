@@ -17,13 +17,18 @@ class Qualification(Existing):
         require(chain['wallet_address']==address(bytes.fromhex(public)),'CONFLICT')
         return super().run(qualification)
 
-    def independent(self,observer):
+    def independent(self,observer,*,consumer_path_health=False):
         from fusion import cognitive_services as cs, lookup_contracts as source
         from fusion.registry import descriptor_wire
         feed=source.SUSTAINED_FEED if self.values['preview']['profile']=='omega-single-node-sustained-preview/1' else source.FEED
         reg=self.report['registration'];scope=reg['approved']['scope_ref'];namespace=self.op.namespace
         trace=dict(reg=reg,saved_intent=self.report['saved_intent'],final_observation=self.report['final_observation'])
         source=Path(observer).read_text()
+        observer_seconds=60
+        if consumer_path_health:
+            from examples.pilot_chain_readiness import compose,MAX_OBSERVER_SECONDS
+            self.report['original_observer_source_sha256']=digest(source.encode())
+            source=compose(source);observer_seconds=MAX_OBSERVER_SECONDS
         config=dict(profile='synthetic-chain-readback/1',node_endpoint='http://f1r3node.'+namespace+'.svc.cluster.local:40403',
             atoms=dict(composition=cs.COMPOSITION,feed_profile=feed,principal='commit-observer',scope=scope,
                 endpoint=dict(host='fusion-storage.'+namespace+'.svc.cluster.local',port=8443,path=cs.ROUTE,ca_file='/secrets/ca.crt'),
@@ -45,7 +50,7 @@ class Qualification(Existing):
                 volumes=[dict(name='inputs',configMap=dict(name=name)),dict(name='auth',secret=dict(secretName=name))]))
         try:
             self.op.apply(pod)
-            self.wait(lambda:self.op.k('get','pod',name,'-o','jsonpath={.status.phase}') in ('Succeeded','Failed'),60)
+            self.wait(lambda:self.op.k('get','pod',name,'-o','jsonpath={.status.phase}') in ('Succeeded','Failed'),observer_seconds)
             raw=self.op.k('logs',name);(self.root/'independent-reader.json').write_text(raw)
             observed=json.loads(raw);self.report['independent_readback']=observed
             self.report['observer_source_sha256']=digest(source.encode())

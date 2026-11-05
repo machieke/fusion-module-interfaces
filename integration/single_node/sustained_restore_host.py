@@ -7,13 +7,14 @@ READS={
  '/preview/session':{'observe','list','capacity'},
  '/preview/continuation':{'observe'},
  '/preview/chain-continuation':{'observe'},
+ '/preview/workflows':{'observe','list'},
  '/reference-cognition':{'get','getMany','availability','head','readCommits','capacity','observe',
      'readEpisode','readEvidence','pendingEvidence','readOccurrence','readBelief','observeDecision','readDecisions'},
  '/preview/facets':{'authorize','historySnapshot','readHistory','getRelation','outgoing','incoming','read','version'},
  '/preview/memory':{'head','activeSet','readEvents','disclose','published','current','ready','authorize'},
  '/preview/owner-state':{None},
  '/memory-source':{'get','head','readCommits','observe'},
- '/s03-read':{'getMany','authorize'},'/s03-append':{'get','observe','published','authorize'},
+ '/s03-read':{'getMany','authorize','ready'},'/s03-append':{'get','observe','published','authorize'},
 }
 
 
@@ -21,6 +22,10 @@ class ReadPorts:
     def __init__(self,run,role):self.run,self.role=Path(run),role
     def invoke(self,path,credential,q):
         require(type(q) is dict and path in READS and q.get('operation') in READS[path],'UNAUTHORIZED')
+        if path=='/preview/workflows':
+            require(self.role in ('omega-agent','omega-agent-b'),'UNAUTHORIZED')
+            from .pilot_workflow_restore import invoke
+            return invoke(self.run/'owner.json',Path('/state'),credential,q)
         if path in ('/preview/continuation','/preview/chain-continuation'):
             require(self.role in ('omega-agent','omega-agent-b'),'UNAUTHORIZED')
             from .integrated_restore_observation import invoke,INSPECT,CHAIN

@@ -59,6 +59,8 @@ def build(directory,model_cache=None):
 
 def validate_runtime(path):
     runtime=json.loads(Path(path).read_text())
+    from .pilot_runtime import validate
+    validate(runtime)
     require(runtime['lock_sha256']==digest(LOCK.read_bytes()) and runtime['model_spec']==json.loads(MODEL.read_text()),'UNSUPPORTED_PROFILE')
     require(digest(Path(runtime['python']).read_bytes())==runtime['python_sha256'],'UNSUPPORTED_PROFILE')
     require(digest(Path(runtime['helper']).read_bytes())==runtime['helper_sha256']=='461b78f92234b58e1090e66c332d627a063e201751d8247459d82a18e7afd36d','UNSUPPORTED_PROFILE')

@@ -36,10 +36,22 @@ class Operator:
   self.owned();all_items=json.loads(self.k('get','statefulsets','-o','json'))['items']
   items=[x for x in all_items if x['metadata'].get('annotations',{}).get('meta.helm.sh/release-name')==self.release and x['metadata']['annotations'].get('meta.helm.sh/release-namespace')==self.namespace and x['spec']['template']['metadata']['labels'].get('app.kubernetes.io/instance')==self.release]
   require(items and len(items)==len(all_items),'UNAUTHORIZED');return items
+ def stateless_workloads(self):
+  """Only the optional private browser gateway, never an inferred owner."""
+  self.owned();items=json.loads(self.k('get','deployments','-o','json'))['items']
+  require(len(items)<=1,'UNAUTHORIZED')
+  for x in items:
+   require(x['metadata']['name']=='omega-workbench' and x['metadata'].get('annotations',{}).get('meta.helm.sh/release-name')==self.release and x['metadata']['annotations'].get('meta.helm.sh/release-namespace')==self.namespace and x['spec']['template']['metadata']['labels'].get('app.kubernetes.io/instance')==self.release,'UNAUTHORIZED')
+   require(x['spec']['strategy']['type']=='Recreate' and not any('persistentVolumeClaim' in v or 'hostPath' in v for v in x['spec']['template']['spec']['volumes']),'UNAUTHORIZED')
+  return items
  def quiesce(self):
   items=self.workloads();before=dict(namespace=self.namespace,namespace_uid=self.owned()['metadata']['uid'],workloads={x['metadata']['name']:dict(uid=x['metadata']['uid'],replicas=x['spec']['replicas'],image=x['spec']['template']['spec']['containers'][0]['image']) for x in items},pods=json.loads(self.k('get','pods','-l','app.kubernetes.io/instance='+self.release,'-o','json'))['items'],pvcs=json.loads(self.k('get','pvc','-l','app.kubernetes.io/instance='+self.release,'-o','json'))['items'])
   # Stop external admission/egress and the caller first. No forced timeout
   # changes or repeat submissions; unresolved states stay in owner journals.
+  stateless=self.stateless_workloads()
+  if stateless:
+   before['stateless_workloads']={x['metadata']['name']:dict(uid=x['metadata']['uid'],replicas=x['spec']['replicas']) for x in stateless}
+   self.k('scale','deployment','omega-workbench','--replicas=0')
   roles=[x['metadata']['name'] for x in items]
   for role in ('omega-agent','omega-agent-b','fusion-channel-bridge','irc-peer'):
    if role in roles:self.k('scale','statefulset',role,'--replicas=0')

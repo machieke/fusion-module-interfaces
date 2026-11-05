@@ -118,13 +118,33 @@ class Ports:
         return dict(ok=value,provider=q['selection'],request_digest=digest(canonical(q)))
 
 
+def selections(cfg):
+    """Trusted composition can replace only this existing execution port.
+
+    Historical defaults retain exact descriptor bytes. A new selection must
+    satisfy the same /2 guarantees and the actual native artifact size, and
+    explicitly support the bounded envelope. It grants no provider authority.
+    """
+    chosen=select(descriptors())
+    if 'execution_descriptor' in cfg:
+        from .registry import descriptor_read,resolve,Requirement
+        from .execution_envelope import PROFILE as ENVELOPE
+        from .preview_artifact_contracts import MAX_BYTES
+        selected=descriptor_read(cfg['execution_descriptor'])
+        require(cfg.get('envelopes')==ENVELOPE,'UNSUPPORTED_PROFILE')
+        chosen['execution']=resolve([selected],Requirement('execution','1.0.0','1.0.1','inspect-atom/2',
+            frozenset({'submit','status','result'}),frozenset({'process-restart','scoped','idempotent'}),
+            payload_bytes=MAX_BYTES,features=frozenset({ENVELOPE})))
+    return chosen
+
+
 class Client:
     def __init__(self,path):
-        self.path=Path(path);self.cfg,self.frozen=self.current();self.selected=select(descriptors());self.correlations={}
+        self.path=Path(path);self.cfg,self.frozen=self.current();self.selected=selections(self.cfg);self.correlations={}
     def current(self):
         cfg=json.loads(self.path.read_text())
         require(cfg['profile']==PROFILE and cfg['fallback'] is False and cfg['scope'].startswith('synthetic-'),'UNSUPPORTED_PROFILE')
-        require(set(cfg['ports'])==set(ROLES),'UNSUPPORTED_PROFILE')
+        require(set(cfg['ports'])==set(ROLES),'UNSUPPORTED_PROFILE');selections(cfg)
         frozen={k:v for k,v in cfg.items() if k!='ports'}
         frozen['ports']={k:dict(endpoint=v['endpoint'],ca_sha256=digest(Path(v['endpoint']['ca_file']).read_bytes())) for k,v in cfg['ports'].items()}
         return cfg,frozen

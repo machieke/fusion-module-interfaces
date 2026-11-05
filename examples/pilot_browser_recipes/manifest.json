@@ -1,0 +1,54 @@
+{
+  "classification": "STATIC_OPERATOR_QUALIFICATION_RECIPES_NO_SECRET_DATA",
+  "files": [
+    {
+      "path": "workflow_browser_case.py",
+      "template_sha256": "98ee6fcdfb67f52f87496ea7c3c6d7ec963dd69d92b5d56b37cf0372addfc3c6"
+    },
+    {
+      "path": "browser_cleanup_case.py",
+      "template_sha256": "ad1d12584e5aa253b85fb83bf380cd1f4f7a1f75491eaf58360ef2d92bf1e602"
+    },
+    {
+      "path": "rotate_owner_credentials.py",
+      "template_sha256": "e0406aa4bbace102dceb7d935bf5685f5c6465116c9fd07171a3de12ddb5ad95"
+    },
+    {
+      "path": "rotate_browser_policy.py",
+      "template_sha256": "5c77506e01e4bea98e762b2a2074101e9a36367ce199ea66d750f399a5eca681"
+    },
+    {
+      "path": "verify_owner_rotation.py",
+      "template_sha256": "29206fd75f9a1f80473647b39c0b4eb0ce90edeae973809bdebe184956e4eaa1"
+    },
+    {
+      "path": "archive_browser_history.py",
+      "template_sha256": "74407bdc589597bcda0e2eb74e75ef0493062477fe195b60f85b1211ac486c11"
+    },
+    {
+      "path": "policy_projection_barrier.py",
+      "template_sha256": "27b2e5bc66295125f0627824d070f9d84ebcde47dd79422981acad82735d51e5"
+    },
+    {
+      "path": "user-client/ui.py",
+      "template_sha256": "e2c87de09f25c273281b787261bc7436353b1874037a0103e87f04d2041c8713"
+    },
+    {
+      "path": "user-client/reconnect_probe.py",
+      "template_sha256": "88f67b05ea8c1010476625a0955e720b326b0e5ed09268672b5803bd9cd2d621"
+    }
+  ],
+  "parameters": [
+    "BROWSER_EXECUTABLE",
+    "BROWSER_SESSION",
+    "BROWSER_SOCKET_DIR",
+    "IDENTITY",
+    "KUBECONFIG",
+    "KUBECTL",
+    "NAMESPACE",
+    "NODE_BIN",
+    "PACKET",
+    "PRIVATE_ROOT",
+    "PROOFSHOT"
+  ]
+}

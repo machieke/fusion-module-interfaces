@@ -21,7 +21,11 @@ class Policy:
         raise ContractError("UNAUTHORIZED")
 
     def check(self, principal: str, scope: str, method: str):
-        methods = self.current()["principals"].get(principal, {}).get("scopes", {}).get(scope, [])
+        current = self.current()
+        if 'writer_fence' in current:
+            from .pilot_writer_fence import check
+            check(current, 'writer.request')
+        methods = current["principals"].get(principal, {}).get("scopes", {}).get(scope, [])
         require(method in methods, "UNAUTHORIZED")
 
     def route(self, scope: str, route: str, owner: str | None = None):

@@ -8,6 +8,7 @@ rewrites accepted work or authorizes a retry on another owner.
 import json,time
 from .contracts import canonical,digest,require,ContractError,label
 from .registry import descriptor_read,selection_token,resolve,Requirement
+from .provider_retention import Retention, PROFILE as COMPACT_PROFILE, limits as retention_limits, present, unpack
 
 PROFILE='trusted-provider-lifecycle/1'
 MAX_RECORDS,MAX_ACTIONS=32,256
@@ -16,8 +17,9 @@ ACTIONS=('add','enable','disable','drain','retire')
 
 
 def configuration(value):
-    require(type(value) is dict and set(value)=={'profile','records','templates','readiness_ms'},'UNSUPPORTED_PROFILE')
-    require(value['profile']==PROFILE,'UNSUPPORTED_PROFILE')
+    require(type(value) is dict and value.get('profile') in (PROFILE,COMPACT_PROFILE),'UNSUPPORTED_PROFILE')
+    require(set(value)==({'profile','records','templates','readiness_ms','limits'} if value['profile']==COMPACT_PROFILE else {'profile','records','templates','readiness_ms'}),'UNSUPPORTED_PROFILE')
+    if value['profile']==COMPACT_PROFILE:retention_limits(value['limits'])
     require(type(value['readiness_ms']) is int and 1<=value['readiness_ms']<=300000)
     records=value['records'];require(type(records) is dict and 1<=len(records)<=MAX_RECORDS)
     for key,r in records.items():
@@ -57,12 +59,20 @@ class Registry:
           CREATE TABLE IF NOT EXISTS integrated_provider_actions(id TEXT PRIMARY KEY,intent TEXT NOT NULL,result TEXT NOT NULL);
           CREATE TABLE IF NOT EXISTS integrated_provider_bindings(session TEXT PRIMARY KEY,selection TEXT NOT NULL);
         ''')
+        self.retention=Retention(self.db,self.cfg['limits']) if self.cfg['profile']==COMPACT_PROFILE else None
+        require(self.retention is not None or not present(self.db),'UNSUPPORTED_PROFILE')
+    def _decode(self,raw):return self.retention.unpack(raw) if self.retention else json.loads(raw)
+    def _encode(self,value):return self.retention.pack(value) if self.retention else canonical(value).decode()
+    def _action(self,identity):
+        return self.retention.action(identity) if self.retention else self.db.execute('SELECT * FROM integrated_provider_actions WHERE id=?',(identity,)).fetchone()
+    def _save(self,identity,intent,result):
+        self.db.execute('INSERT INTO integrated_provider_actions VALUES(?,?,?)',(identity,self._encode(json.loads(intent)),self._encode(result)))
     def _record(self,key,op):
         require(type(key) is str and key in self.cfg['records'],'UNAUTHORIZED')
         record=self.cfg['records'][key];self.authorize(record['scope'],'providers.'+op)
         old=self.db.execute('SELECT * FROM integrated_providers WHERE id=?',(key,)).fetchone()
         if old:
-            retained=json.loads(old['record'])
+            retained=self._decode(old['record'])
             # Requirements are independently resolved predicates, not a
             # preference list. Early composition iterated a frozenset of
             # profiles. Preserve the exact admitted bytes/receipts while
@@ -72,7 +82,8 @@ class Registry:
             require(canonical(ordered(retained))==canonical(ordered(record)),'CONFLICT')
             record=retained
         return record,old
-    def _charge(self,extra):
+    def _charge(self,extra,control=False):
+        if self.retention:return self.retention.charge(extra,control)
         require(self.db.execute('SELECT count(*) FROM integrated_provider_actions').fetchone()[0]<MAX_ACTIONS,'OVERLOADED')
         used=sum(self.db.execute(q).fetchone()[0] or 0 for q in (
             'SELECT sum(length(CAST(record AS BLOB))+coalesce(length(CAST(readiness AS BLOB)),0)) FROM integrated_providers',
@@ -87,24 +98,25 @@ class Registry:
         intent=canonical(dict(operation=operation,provider=key,record=record,retained=retained)).decode()
         with self.db:
             self.db.execute('BEGIN IMMEDIATE');record,row=self._record(key,operation)
-            old=self.db.execute('SELECT * FROM integrated_provider_actions WHERE id=?',(identity,)).fetchone()
+            old=self._action(identity)
             if old:
                 require(old['intent']==intent,'CONFLICT');return json.loads(old['result'])
-            self._charge(len(intent.encode())+len(canonical(record)));now=self.store._now()
+            packed=self._encode(json.loads(intent));record_packed=self._encode(record)
+            self._charge(len(packed.encode())+len(record_packed.encode()),operation in ('disable','drain','retire'));now=self.store._now()
             if operation=='add':
                 require(row is None,'CONFLICT')
                 require(self.db.execute('SELECT count(*) FROM integrated_providers').fetchone()[0]<MAX_RECORDS,'OVERLOADED')
-                state='admitted';self.db.execute('INSERT INTO integrated_providers VALUES(?,?,?,NULL,?)',(key,canonical(record).decode(),state,'required'))
+                state='admitted';self.db.execute('INSERT INTO integrated_providers VALUES(?,?,?,NULL,?)',(key,record_packed,state,'required'))
             else:
                 require(row is not None,'NOT_FOUND');state={'enable':'enabled','disable':'disabled','drain':'draining','retire':'retired'}[operation]
                 require(row['state']!='retired','NOT_AVAILABLE')
                 if operation=='enable' or (operation=='retire' and retained=='required'):self._ready(row,now)
                 if operation=='retire':require(row['state'] in ('disabled','draining'),'CONFLICT')
                 self.db.execute('UPDATE integrated_providers SET state=?,retained=? WHERE id=?',(state,retained,key))
-            result=dict(profile=PROFILE,provider=key,state=state,retained_access=retained,
+            result=dict(profile=self.cfg['profile'],provider=key,state=state,retained_access=retained,
                         new_work=state=='enabled',prior_bindings_unchanged=True,observed_ms=now)
             self.authorize(record['scope'],'providers.'+operation)
-            self.db.execute('INSERT INTO integrated_provider_actions VALUES(?,?,?)',(identity,intent,canonical(result).decode()))
+            self._save(identity,intent,result)
             self.store._check_bytes()
         self.hook('after_provider_action_commit');return result
     def _ready(self,row,now):
@@ -118,11 +130,11 @@ class Registry:
         # probe never contacts the endpoint again or renews its readiness.
         with self.db:
             self.db.execute('BEGIN IMMEDIATE');self._record(key,'probe')
-            old=self.db.execute('SELECT * FROM integrated_provider_actions WHERE id=?',(identity,)).fetchone()
+            old=self._action(identity)
             if old:require(old['intent']==intent,'CONFLICT');return json.loads(old['result'])
-            self._charge(len(intent.encode()));started=self.store._now()
-            result=dict(profile=PROFILE,provider=key,status='unknown',observed_ms=started,valid_until=started,authority=False)
-            self.db.execute('INSERT INTO integrated_provider_actions VALUES(?,?,?)',(identity,intent,canonical(result).decode()))
+            packed=self._encode(json.loads(intent));self._charge(len(packed.encode()));started=self.store._now()
+            result=dict(profile=self.cfg['profile'],provider=key,status='unknown',observed_ms=started,valid_until=started,authority=False)
+            self._save(identity,intent,result)
             self.store._check_bytes()
         self.hook('after_provider_probe_reservation')
         try:
@@ -134,7 +146,7 @@ class Registry:
             # Slow observations cannot extend their pre-reserved eligibility.
             if now>=result['valid_until']:result.update(status='expired',valid_until=started)
             self.db.execute('UPDATE integrated_providers SET readiness=? WHERE id=?',(canonical(result).decode(),key))
-            self.db.execute('UPDATE integrated_provider_actions SET result=? WHERE id=?',(canonical(result).decode(),identity))
+            self.db.execute('UPDATE integrated_provider_actions SET result=? WHERE id=?',(self._encode(result),identity))
             self.store._check_bytes()
         self.hook('after_provider_probe_capture');return result
     def admit(self,db,template,now,session):
@@ -144,21 +156,46 @@ class Registry:
         for key in keys:
             record,row=self._record(key,'select');require(row is not None and row['state']=='enabled','NOT_AVAILABLE');self._ready(row,now)
             selected[key]=dict(record=record,record_digest=digest(canonical(record)))
-        self._charge(len(canonical(selected)))
-        db.execute('INSERT INTO integrated_provider_bindings VALUES(?,?)',(session,canonical(selected).decode()))
+        packed=self._encode(selected);self._charge(len(packed.encode()))
+        db.execute('INSERT INTO integrated_provider_bindings VALUES(?,?)',(session,packed))
         self.store._check_bytes()
     def inspect(self,key):
         record,row=self._record(key,'inspect')
-        result=dict(profile=PROFILE,provider=key,advertised=record,admitted=row is not None,
+        result=dict(profile=self.cfg['profile'],provider=key,advertised=record,admitted=row is not None,
                     state=row['state'] if row else 'not-admitted',readiness=json.loads(row['readiness']) if row and row['readiness'] else None,
                     conformance='REFERENCED_NOT_INFERRED',authority='CURRENT_SEPARATE_POLICY')
         if row:result['retained_access']=row['retained']
         return result
+    def plan(self,key):
+        require(self.retention is not None,'UNSUPPORTED_PROFILE');self._record(key,'inspect')
+        preview=self.retention.preview(key)
+        return dict(profile=COMPACT_PROFILE,provider=key,head=preview['head'],actions=len(json.loads(preview['body'])),
+            bytes=len(preview['body'].encode()),effect='SEAL_AUDIT_FACTS_NOT_DELETE_OR_REFUND',authority=False)
+    def seal(self,identity,key,expected=None):
+        require(self.retention is not None,'UNSUPPORTED_PROFILE');require(label(identity))
+        self._record(key,'seal')
+        with self.db:
+            self.db.execute('BEGIN IMMEDIATE');self._record(key,'seal')
+            plan=self.retention.plan_seal(identity,key,expected);self.store._check_bytes()
+        self.hook('after_provider_epoch_plan')
+        with self.db:
+            self.db.execute('BEGIN IMMEDIATE');self._record(key,'seal')
+            plan=dict(self.db.execute('SELECT * FROM pilot_registry_epochs WHERE id=?',(identity,)).fetchone())
+            self.retention.apply_seal(plan);self.store._check_bytes()
+        self.hook('after_provider_epoch_publish')
+        return dict(profile=COMPACT_PROFILE,identity=identity,provider=key,head=plan['head'],
+            state='sealed',actions=len(json.loads(plan['body'])),audit_facts_deleted=0,allowances_refunded=0)
+    def headroom(self):
+        for key in self.cfg['records']:self._record(key,'inspect')
+        require(self.retention is not None,'UNSUPPORTED_PROFILE')
+        return dict(profile=COMPACT_PROFILE,usage=self.retention.usage(),limits=self.retention.limits,
+            baseline_equivalent=self.retention.baseline_equivalent(),
+            observation='OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION',reserved_control_bytes=self.retention.limits['control_bytes'])
     def selected(self,session):
         allocated=self.store.allocated(self.store.allocation['templates'][next(iter(self.cfg['templates']))]['principal'],session)
         self.authorize(allocated['frozen']['scope'],'providers.inspect')
         row=self.db.execute('SELECT selection FROM integrated_provider_bindings WHERE session=?',(session,)).fetchone()
-        require(row is not None,'NOT_FOUND');return json.loads(row[0])
+        require(row is not None,'NOT_FOUND');return self._decode(row[0])
 
 
 def admit_input(db,session):
@@ -171,7 +208,8 @@ def admit_input(db,session):
     if not db.execute("SELECT 1 FROM sqlite_master WHERE name='integrated_provider_bindings'").fetchone():return
     row=db.execute('SELECT selection FROM integrated_provider_bindings WHERE session=?',(session,)).fetchone()
     require(row is not None,'NOT_AVAILABLE')
-    for key,binding in json.loads(row[0]).items():
+    decode=(lambda v:unpack(db,v)) if present(db) else json.loads
+    for key,binding in decode(row[0]).items():
         provider=db.execute('SELECT state,record FROM integrated_providers WHERE id=?',(key,)).fetchone()
         require(provider is not None and provider['state']=='enabled','NOT_AVAILABLE')
-        require(provider['record']==canonical(binding['record']).decode(),'CONFLICT')
+        require(canonical(decode(provider['record']))==canonical(binding['record']),'CONFLICT')

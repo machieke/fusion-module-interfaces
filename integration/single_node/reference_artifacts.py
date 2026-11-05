@@ -48,18 +48,34 @@ def verify(path):
     stream=archive.extractfile('blobs/sha256/'+layer['digest'][7:])
     require(stream is not None and stream.seek(0,2)==layer['size'],'CONFLICT');stream.close()
  import yaml
- allowed={(r['repository'],r['manifest']) for r in manifest['images'].values()}
+ # Independently implemented reference providers carry their own complete image,
+ # binary and starter-kit source binding. Never equate these Go sources with the
+ # Python tested_source map or silently merge them into its historical archive.
+ references=manifest.get('reference_providers',{});require(type(references) is dict and set(references)<={'inspect-go'},'UNSUPPORTED_PROFILE')
+ require(not references or preview,'UNSUPPORTED_PROFILE');reference_images={}
+ for kind,relative in references.items():
+  from .pilot_provider_image import verify as verify_reference
+  def registered_reference(file):
+   require(file.resolve().is_relative_to(path.parent),'UNAUTHORIZED')
+   member(str(file.resolve().relative_to(path.parent)))
+  value=verify_reference(member(relative),registered_reference);require(value['kind']==kind,'CONFLICT')
+  reference_images[kind]=dict(value,source_package=str(Path(relative).parent/value['source_package']),reference_manifest=relative)
+ all_images={**manifest['images'],**reference_images}
+ allowed={(r['repository'],r['manifest']) for r in all_images.values()}
  if preview:
   from fusion.preview_deployment_contracts import COMPOSITION,SUSTAINED_COMPOSITION
   require(manifest['model_boundary']=='RECORDED_FIXTURE' and type(manifest['live_generation_authorization']) is int and manifest['live_generation_authorization']==0,'UNAUTHORIZED')
   kinds=set(manifest['images']);require({'base','caller','embedding'}<=kinds<= {'base','caller','embedding','chain'},'UNSUPPORTED_PROFILE')
   require(kinds=={r['kind'] for r in imported['images']} and len(kinds)==len(imported['images']),'CONFLICT')
-  profiles=manifest['profile_files'];require(type(profiles) is list and 1<=len(profiles)<=5 and len(set(profiles))==len(profiles),'CONFLICT')
+  pilot=manifest.get('operator_profile')
+  require(pilot in (None,'operator-pilot-package/1'),'UNSUPPORTED_PROFILE')
+  profiles=manifest['profile_files'];require(type(profiles) is list and 1<=len(profiles)<=(6 if pilot else 5) and len(set(profiles))==len(profiles),'CONFLICT')
   member(manifest['chart'])
  else:profiles=[manifest['profile_directory']+'/'+p+'.yaml' for p in ('deterministic','memory','workflow','cognitive','chain')]
  for profile in profiles:
   values=yaml.safe_load(member(profile).read_text())
   selected=[values['image']]+[v['image'] for v in values.get('components',{}).values() if 'image' in v]
+  if values.get('pilotWorkbench',{}).get('image'):selected.append(values['pilotWorkbench']['image'])
   require(all((v['repository'],v['digest']) in allowed for v in selected),'CONFLICT')
   if preview:
    p=values['preview'];require(p['profile'] in (COMPOSITION,SUSTAINED_COMPOSITION) and p['enabled'] is True and p['model_boundary']=='RECORDED_FIXTURE','UNSUPPORTED_PROFILE')
@@ -73,6 +89,7 @@ def verify(path):
    chain=p.get('chain',{});require(not chain or (chain.get('nodeEnabled') is False and chain.get('isolationVerified') is False and chain.get('registration') is None),'UNAUTHORIZED')
  if preview:
   build=json.loads(member(manifest['sdk_build_manifest']).read_text());require(build['schema']=='fusion-preview-sdk-build/1' and build['live_generations']==0,'CONFLICT')
+  require(build.get('operator_profile')==manifest.get('operator_profile'),'CONFLICT')
   inventory=json.loads(member(manifest['wheel_inventory']).read_text());wheelroot=Path(manifest['sdk_build_manifest']).parent
   indexed={p['artifact']:p for p in inventory['packages']};require(len(indexed)==len(inventory['packages']),'CONFLICT')
   for filename,entry in indexed.items():require(sha(member(str(wheelroot/filename)))==entry['sha256'],'CONFLICT')
@@ -91,7 +108,7 @@ def verify(path):
   require(package['profile']=='fusion-go-artifacts/1' and package['status']=='PASS' and package['additional_live_generations']==0,'CONFLICT')
   require(sha(member('go/omega-client'))==package['binary_sha256'] and sha(member('go/fusion-go-client-source.tar.gz'))==package['archive_sha256'],'CONFLICT')
   require(all(sha(member('sdk/go/'+name))==pin for name,pin in package['source'].items()),'CONFLICT')
- return dict(status='OFFLINE_VERIFIED',manifest_sha256=manifest_checksum,files=checked,images=manifest['images'],generative_runtime_availability='NOT_CHECKED',additional_live_generations=0)
+ return dict(status='OFFLINE_VERIFIED',manifest_sha256=manifest_checksum,files=checked,images=all_images,generative_runtime_availability='NOT_CHECKED',additional_live_generations=0)
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('manifest');p.add_argument('--output');a=p.parse_args();value=verify(a.manifest);raw=json.dumps(value,indent=2)+'\n'
  if a.output:Path(a.output).write_text(raw)

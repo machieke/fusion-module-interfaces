@@ -23,12 +23,63 @@ def clone_values(source):
     return value
 
 
+def readonly_pilot_values(selected,original_namespace,clone_namespace,restored,fences):
+    """Remove only execution credentials after observing an actual fenced clone.
+
+    This does not create a fence or authorize a writer transition. The caller
+    reads every imported owner's existing marker on an otherwise empty clone.
+    """
+    value=copy.deepcopy(selected);pilot=value['preview'].get('pilot',{})
+    require(original_namespace!=clone_namespace and clone_namespace.startswith('omega-ref-pilot-')
+        and 'omega-demo' not in clone_namespace,'UNAUTHORIZED')
+    require(restored.get('status')=='RESTORED_FENCED' and restored.get('namespace')==clone_namespace
+        and restored.get('automatic_resume') is False,'UNAUTHORIZED')
+    roles=restored.get('roles',[])
+    require(roles and all(x.get('status')=='RESTORED_FENCED' for x in roles)
+        and len({x['role'] for x in roles})==len(roles)
+        and set(fences)=={x['role'] for x in roles},'UNAUTHORIZED')
+    scope=value['preview']['scope']
+    require(scope.startswith('synthetic-') and value['futureLive']==dict(enabled=False,activated=False),'UNAUTHORIZED')
+    for role,fence in fences.items():
+        require(fence.get('mode')=='READ_ONLY_RECONCILIATION' and fence.get('external_effect_authority') is False
+            and fence.get('role')==role and fence.get('namespace')==clone_namespace
+            and fence.get('original_scope')==scope,'UNAUTHORIZED')
+    for component in value['components'].values():
+        config=component.get('config',{})
+        require(config.get('nativeEnabled') is False and config.get('workerEnabled') is False,'UNAUTHORIZED')
+    chain=value['preview'].get('chain',{})
+    require(not chain.get('enabled') and not chain.get('nodeEnabled') and chain.get('registration') is None,'UNAUTHORIZED')
+    if 'writer_fence' in pilot:
+        require(pilot['writer_fence'].get('deployment')==original_namespace,'UNAUTHORIZED')
+        pilot.pop('writer_fence')
+    pilot.pop('handover',None)
+    for component in value['components'].values():component.pop('writerAuthoritySecret',None)
+    return value
+
+
+def observed_restore_fences(clone,backup,restored):
+    """Read existing markers through bounded, exclusively mounted owner helpers."""
+    require(restored.get('status')=='RESTORED_FENCED' and restored.get('namespace')==clone.namespace,'UNAUTHORIZED')
+    require(not json.loads(clone.k('get','pods','-o','json'))['items'],'UNAUTHORIZED')
+    require(set(backup['owners'])=={x['role'] for x in restored['roles']},'CONFLICT')
+    fences={}
+    code="import json;from pathlib import Path;p=Path('/state/restore-fence.json');assert p.is_file() and not p.is_symlink() and p.stat().st_size<=4096;print(json.dumps(json.loads(p.read_bytes())))"
+    for role in backup['owners']:
+        name=clone.helper(role,backup['maintenance_image'],'state-'+role+'-0',readonly=True)
+        try:fences[role]=json.loads(clone.k('exec',name,'--',PYTHON,'-c',code,timeout=30))
+        finally:clone.k('delete','pod',name,'--wait=true')
+    require(not json.loads(clone.k('get','pods','-o','json'))['items'],'UNAUTHORIZED')
+    return fences
+
+
 def drill(original,clone,values,chart,directory,*,maintenance_image=None,images=None,after_restore=None):
     import yaml,subprocess,sys
     root=Path(directory);root.mkdir(mode=0o700,parents=True,exist_ok=False)
     original.owned();require(clone.namespace!=original.namespace,'UNAUTHORIZED')
     report=dict(profile='sustained-fenced-restore-qualification/1',original=original.namespace,clone=clone.namespace,
         additional_live_generations=0,status='RUNNING',observations=[],private_archive_publication='FORBIDDEN')
+    report['images']={x['metadata']['name']:x['spec']['template']['spec']['containers'][0]['image']
+        for x in original.workloads()}
     def save():(root/'report.json').write_bytes(canonical(report))
     def call(op,role,operation,sid=None,*args):
         command=[PYTHON,'-m','integration.single_node.preview_operator',operation]
@@ -54,6 +105,12 @@ def drill(original,clone,values,chart,directory,*,maintenance_image=None,images=
             report['restored_runtime_source_manifest_sha256']=images['source_manifest_sha256']
         path=root/'clone-values.yaml';path.write_text(yaml.safe_dump(selected,sort_keys=False))
         clone.create();created=True;report['restore']=clone.restore(root/'private-backup');save()
+        if selected['preview'].get('pilot',{}).get('writer_fence'):
+            fences=observed_restore_fences(clone,backup,report['restore'])
+            selected=readonly_pilot_values(selected,original.namespace,clone.namespace,report['restore'],fences)
+            path.write_text(yaml.safe_dump(selected,sort_keys=False))
+            report['pilot_clone_selection']=dict(mode='READ_ONLY_RECONCILIATION',owner_markers_observed=sorted(fences),
+                writer_authority_selected=False,external_effect_authority=False,source_values_unchanged=True);save()
         # The installed package supplies the same audited secret recipe.
         from fusion_operator.recipes import create_secrets
         old=sys.argv
@@ -62,6 +119,8 @@ def drill(original,clone,values,chart,directory,*,maintenance_image=None,images=
             create_secrets.main()
         finally:sys.argv=old
         (root/'clone-install.log').write_text(clone.command(['helm','upgrade','--install','omega',str(chart),'-f',str(path),'--namespace',clone.namespace,'--kubeconfig',clone.kubeconfig,'--kube-context',clone.context,'--wait','--timeout','300s'],timeout=320))
+        report['clone_images']={x['metadata']['name']:x['spec']['template']['spec']['containers'][0]['image']
+            for x in clone.workloads()};save()
         for role,rows in original_rows.items():
             restored=call(clone,role,'list');require({x['session'] for x in restored}==set(rows),'CONFLICT')
             for sid,before in rows.items():

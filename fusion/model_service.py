@@ -29,13 +29,16 @@ def inspect_journal(path):
     The normal owner checks the same seal again when it acquires its own lock.
     """
     cfg = json.loads(Path(path).read_bytes())['model_completion']
+    from .pilot_model_clock import expected_tables, inspect as clock_inspect
+    expected_owner_tables=expected_tables(cfg)
     database = Path(cfg['database']).resolve()
     if not database.exists(): return 'ABSENT'
     expected = configuration_seal(cfg)
     with sqlite3.connect(database.as_uri()+'?mode=ro', uri=True, timeout=.2) as db:
         db.execute('PRAGMA query_only=ON')
         tables = {r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
-        require(tables == {'model_seal', 'model_calls'}, 'UNSUPPORTED_PROFILE')
+        require(tables == expected_owner_tables, 'UNSUPPORTED_PROFILE')
+        clock_inspect(db,cfg)
         rows = db.execute('SELECT value FROM model_seal LIMIT 2').fetchall()
         require(len(rows) == 1 and rows[0][0] == expected, 'CONFLICT')
     return 'COMPATIBLE'
@@ -50,7 +53,13 @@ class ModelService:
         with sqlite3.connect(database.as_uri()+'?mode=ro',uri=True) as db:
             db.row_factory=sqlite3.Row
             if not db.execute("SELECT 1 FROM sqlite_master WHERE name='model_calls'").fetchone():return []
-            return [dict(r) for r in db.execute('SELECT * FROM model_calls ORDER BY rowid')]
+            rows=[dict(r) for r in db.execute('SELECT * FROM model_calls ORDER BY rowid')]
+            if cfg.get('owner_clock') is not None:
+                from .pilot_model_clock import inspect as clock_inspect
+                clock=clock_inspect(db,cfg)
+                captures={r['id']:dict(raw_ms=json.loads(r['raw_ms']),prior_water_ms=r['prior_water'],valid=bool(r['valid'])) for r in db.execute('SELECT * FROM pilot_model_capture_clocks')}
+                for row in rows:row['owner_clock']=dict(clock,capture=captures.get(row['id']))
+            return rows
 
     def __init__(self, path, backend, hook=lambda _: None, *, disclosure=None, contracts=c, execution_authority=None):
         self.c = contracts
@@ -59,6 +68,8 @@ class ModelService:
         self.execution_authority=execution_authority
         self.cfg = self.policy.current()['model_completion']
         cfg = self.cfg
+        from .pilot_model_clock import selection as clock_selection
+        self.owner_clock=clock_selection(cfg)
         self.c.integer(cfg['max_calls'], 1, self.c.MAX_CALLS)
         self.c.integer(cfg['expires_ms'], 1)
         self.validate_sessions(cfg['sessions'])
@@ -75,15 +86,20 @@ class ModelService:
             self.db = sqlite3.connect(path, timeout=.2)
             self.db.row_factory = sqlite3.Row
             tables = {r[0] for r in self.db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
-            require(not tables or tables == {'model_seal', 'model_calls'}, 'UNSUPPORTED_PROFILE')
-            if tables: require(self.db.execute('SELECT value FROM model_seal').fetchone()[0] == self.seal, 'CONFLICT')
+            from .pilot_model_clock import expected_tables, initialize as clock_initialize, inspect as clock_inspect
+            require(not tables or tables == expected_tables(cfg), 'UNSUPPORTED_PROFILE')
+            if tables:
+                require(self.db.execute('SELECT value FROM model_seal').fetchone()[0] == self.seal, 'CONFLICT')
+                clock_inspect(self.db,cfg)
             self.db.execute('PRAGMA journal_mode=WAL'); self.db.execute('PRAGMA synchronous=FULL')
             self.db.executescript('''CREATE TABLE IF NOT EXISTS model_seal(value TEXT NOT NULL);
               CREATE TABLE IF NOT EXISTS model_calls(id TEXT PRIMARY KEY,session TEXT NOT NULL,
                 slot INTEGER NOT NULL,intent TEXT NOT NULL,reserved INTEGER NOT NULL DEFAULT 0,
                 response TEXT,captured_ms INTEGER,failure_code TEXT,UNIQUE(session,slot));''')
             if not tables:
-                with self.db: self.db.execute('INSERT INTO model_seal VALUES(?)', (self.seal,))
+                with self.db:
+                    self.db.execute('INSERT INTO model_seal VALUES(?)', (self.seal,))
+                    clock_initialize(self.db,cfg)
             path.chmod(0o600)
         except BaseException:
             if hasattr(self, 'db'): self.db.close()
@@ -117,7 +133,7 @@ class ModelService:
     @traced('provider.model.authorize')
     def authorize(self, credential, accepted, operation):
         cfg = self.policy.current()['model_completion']
-        require(configuration_seal(cfg) == self.seal, 'CONFLICT')
+        require(configuration_seal(cfg) == self.seal and cfg.get('owner_clock') == self.owner_clock, 'CONFLICT')
         principal = self.policy.authenticate(credential)
         require(principal == accepted['principal'] and cfg['scope'] == accepted['scope'], 'UNAUTHORIZED')
         require(cfg['sharing'] == self.c.PRIVACY, 'UNAUTHORIZED')
@@ -136,6 +152,9 @@ class ModelService:
     def observe(self, accepted):
         row = self.row(accepted)
         captured = row is not None and row['response'] is not None
+        if captured and self.owner_clock:
+            from .pilot_model_clock import checked_capture
+            checked_capture(self.db,accepted['id'])
         value = dict(id=accepted['id'], intent_sha256=digest(canonical(accepted)),
             principal=accepted['principal'], selection=accepted['selection'],
             state='absent' if row is None else 'captured' if captured else 'unknown' if row['reserved'] else 'accepted',
@@ -144,6 +163,12 @@ class ModelService:
             late=captured and row['captured_ms'] > accepted['deadline_ms'],
             failure_code=row['failure_code'] if row else None)
         return self.c.observation(value, accepted)
+
+    def clock_guard(self,phase,accepted):
+        from .pilot_model_clock import guard
+        sampled=guard(self.db,now(),phase,accepted['id'])
+        require(sampled < min(accepted['deadline_ms'],self.cfg['expires_ms']),'DEADLINE_EXCEEDED')
+        return sampled
 
     @traced('provider.model.invoke',request=2)
     def invoke(self, credential, request):
@@ -156,6 +181,7 @@ class ModelService:
             if self.execution_authority is not None and (row is None or not row['reserved']):
                 self.execution_authority(accepted)
             if row is None:
+                if self.owner_clock:self.clock_guard('acceptance',accepted)
                 require(now() < min(accepted['deadline_ms'], self.cfg['expires_ms']), 'DEADLINE_EXCEEDED')
                 require(accepted['deadline_ms'] <= now()+self.c.deadline_limit(accepted['profile']), 'INVALID_ARGUMENT')
                 with span('provider.model.acceptance'), self.db:
@@ -168,6 +194,7 @@ class ModelService:
                         (accepted['id'], accepted['session'], accepted['slot'], canonical(accepted).decode()))
                 self.hook('after_model_acceptance'); row = self.row(accepted)
             if not row['reserved']:
+                if self.owner_clock:self.clock_guard('reservation',accepted)
                 if self.execution_authority is not None:self.execution_authority(accepted)
                 require(now() < min(accepted['deadline_ms'], self.cfg['expires_ms']), 'DEADLINE_EXCEEDED')
                 with span('provider.model.reservation'), self.db: self.db.execute('UPDATE model_calls SET reserved=1 WHERE id=?', (accepted['id'],))
@@ -176,6 +203,7 @@ class ModelService:
                 # No retry on exceptions, malformed results or process loss. The
                 # durable reservation remains spent, even if no call escaped.
                 try:
+                    if self.owner_clock:self.clock_guard('backend-entry',accepted)
                     with span('provider.model.backend'):
                         response = self.c.completion(self.backend.complete(self.c.CompletionInput(**accepted)))
                 except ContractError as exc:
@@ -183,8 +211,14 @@ class ModelService:
                     with self.db:self.db.execute('UPDATE model_calls SET failure_code=? WHERE id=?', (code,accepted['id']))
                     raise
                 self.hook('after_model_backend_response')
-                with span('provider.model.capture'), self.db: self.db.execute('UPDATE model_calls SET response=?,captured_ms=? WHERE id=?',
-                    (canonical(response).decode(), now(), accepted['id']))
+                raw_capture_time=now()
+                with span('provider.model.capture'), self.db:
+                    self.db.execute('BEGIN IMMEDIATE')
+                    self.db.execute('UPDATE model_calls SET response=?,captured_ms=? WHERE id=?',
+                        (canonical(response).decode(), raw_capture_time, accepted['id']))
+                    if self.owner_clock:
+                        from .pilot_model_clock import capture
+                        capture(self.db,accepted['id'],raw_capture_time)
                 self.hook('after_model_provider_capture')
             value = self.observe(accepted)
         self.authorize(credential, accepted, op)

@@ -16,6 +16,15 @@ def client(settings,current,principal,token,ep):
     if envelope:
         from fusion.execution_envelope import PROFILE as envelope_profile
         require(envelope==envelope_profile,'UNSUPPORTED_PROFILE');value['envelopes']=envelope
+    selected=settings['preview'].get('inspection',{}).get('execution_descriptor')
+    if selected is not None:
+        value['execution_descriptor']=selected
+        from fusion.preview_inspect import selections
+        selections(value)
+        # Endpoint remains operator composition; no native/model argument selects it.
+        role=settings['preview']['inspection'].get('execution_service','fusion-execution')
+        require(type(role) is str and role in settings['peers'],'UNAUTHORIZED')
+        value['ports']['execution']['endpoint']=ep(role)
     write(path,value)
     return path
 

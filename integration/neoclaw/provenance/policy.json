@@ -1,0 +1,19 @@
+{
+  "profile": "reviewed-source-compatibility/1",
+  "historical": {
+    "path": "integration/neoclaw/provenance/policy-m5.py.txt",
+    "sha256": "dcab3e306907c163caabf98bedf3be582a8b84b679e8971c4703a0cdf900b18f",
+    "publication": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+  },
+  "selected": {
+    "path": "fusion/policy.py",
+    "sha256": "c1bc225750e36b73a7f4fa4bd70859cdf14d078712a8e0bd15f9ab8c01388c91",
+    "state": "operator-pilot working tree; publication pending"
+  },
+  "change": "Optional externally current writer fence before unchanged principal/scope/method authorization. Historical profile has no fence and retains exact decisions.",
+  "behavior_tests": [
+    "tests.test_pilot_handover_upgrade",
+    "tests.test_pilot_activation",
+    "tests.test_pilot_provenance"
+  ]
+}

@@ -97,7 +97,13 @@ def configure(settings):
     from .integrated_archive_configure import configure as archive_selection
     cfg=archive_selection(settings,cfg,state,run)
     cfg=private_selection(settings,cfg,state,run)
+    from .pilot_inspection_template import configure as inspection_selection
+    cfg=inspection_selection(settings,cfg,state,run)
     from .integrated_registry import configure as registry_selection
     registry_selection(settings,cfg,run)
+    from .pilot_configure import configure as pilot_selection
+    pilot_selection(settings,cfg)
+    from .pilot_activation import configure as handover_selection
+    handover_selection(settings,cfg,state,run)
     write(run/'owner.json',cfg)
     return settings,cfg,state,run

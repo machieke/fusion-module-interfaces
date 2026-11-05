@@ -33,7 +33,7 @@ def synthetic_seal(seal,role):
   from fusion.resident_workers import selection
   selection(seal['resident_worker'])
  if 'history_representation' in seal:require(seal['history_representation']=='immutable-administrative-captures/1','UNSUPPORTED_PROFILE')
- if 'provider_registry' in seal:require(seal['provider_registry']=='trusted-provider-lifecycle/1','UNSUPPORTED_PROFILE')
+ if 'provider_registry' in seal:require(seal['provider_registry'] in ('trusted-provider-lifecycle/1','trusted-provider-lifecycle/2'),'UNSUPPORTED_PROFILE')
  if 'chain_continuation' in seal:
   from fusion.chain_continuation import PROFILE
   require(preview and role in ('omega-agent','omega-agent-b') and seal['chain_continuation']==PROFILE,'UNSUPPORTED_PROFILE')
@@ -80,6 +80,16 @@ def _export_locked(root,role,seal):
  manifest=dict(schema='synthetic-owner-backup/1',role=role,seal=seal,files={str(p.relative_to(root)):dict(bytes=p.stat().st_size,sha256=digest(p.read_bytes())) for p in files},excluded_authority=True)
  manifest['owner_checkpoint']=checkpoint
  manifest['archive_dependencies']=dependencies['dependencies'];manifest['integrity']=summary(dependencies)
+ # A bounded, private inventory of this exclusively mounted owner's files and
+ # row commitments. It does not inspect foreign databases or invent external
+ # reference closure. Existing operator RBAC and exclusive owner lock authorize
+ # this export; the inventory is never an application consumer endpoint.
+ from .pilot_dependencies import inventory
+ manifest['dependency_inventory']=inventory(root,role,manifest['files'],lambda *_:None)
+ if role=='fusion-execution':
+  from fusion.preview_workspace import root_handover_observation
+  transformed=root_handover_observation(root/'preview-facets'/'workspace',root/'preview-facets'/'workspace.sqlite')
+  if transformed is not None:manifest['workspace_root_reattestation']=transformed
  manifest['retained_views']={str(p.relative_to(root)):json.loads(p.read_text()) for p in root.rglob('*.json') if p.name in ('setup-view.json','initial-view.json','published.json','chain-identity.json')}
  import io
  with tarfile.open(fileobj=sys.stdout.buffer,mode='w|gz') as archive:

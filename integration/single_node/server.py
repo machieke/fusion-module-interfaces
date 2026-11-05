@@ -18,10 +18,11 @@ import subprocess
 import sys
 import threading
 import time
+from contextlib import nullcontext
 
 from fusion import neoclaw_contracts as c
 from fusion.adapters.neoclaw_nal import NativeTruthDeduction
-from fusion.contracts import ContractError, canonical, require
+from fusion.contracts import ContractError, canonical, require, digest
 from fusion.neoclaw import NalService
 from fusion.neoclaw_services import OwnerService, PortConnection, RemoteAtoms, RemoteCompletion
 from fusion.neoclaw_transport import json_loads
@@ -66,9 +67,17 @@ class StorageGate:
 def main(*, config_resolver=configure, model_factory=None):
     config_path = sys.argv[1] if len(sys.argv)>1 else '/config/component.json'
     initial = json.loads(Path(config_path).read_text())
-    if Path('/state/restore-fence.json').exists():
-        from .restore_host import main as restored
-        return restored(config_path)
+    from .reply_faults import ReplyFaults, selection as reply_fault_selection, before_reply, write_body
+    selected_reply_fault = reply_fault_selection(initial)
+    activation=None
+    if Path(initial.get('state','/state'),'restore-fence.json').exists():
+        if initial.get('preview',{}).get('pilot',{}).get('handover') is None:
+            from .restore_host import main as restored
+            return restored(config_path)
+        from .pilot_activation import selected as select_activation
+        activation=select_activation(initial,initial.get('state','/state'))
+    from fusion.pilot_writer_fence import startup as writer_startup
+    writer_startup(initial)
     require(os.environ.get('POD_NAME') == initial['role']+'-0', 'UNSUPPORTED_PROFILE')
     if initial['role']=='f1r3node' and (initial.get('reference',{}).get('profile')=='chain' or initial.get('preview',{}).get('chain',{}).get('enabled')):
         from .chain_node import main as node
@@ -89,6 +98,8 @@ def main(*, config_resolver=configure, model_factory=None):
         require(set(p.name for p in state.iterdir()) <= {'owner.lock','lost+found'}, 'UNSUPPORTED_PROFILE')
         write(state/'owner-seal.json',seal)
     settings, config, state, run = config_resolver(config_path)
+    require(reply_fault_selection(settings) == selected_reply_fault, 'CONFLICT')
+    reply_faults = ReplyFaults(selected_reply_fault, state)
     preview=settings.get('preview',{}).get('enabled',False)
     pool_selection=settings.get('preview',{}).get('sustained',{}).get('transport_pool')
     from fusion.https_pool import configure as configure_pool
@@ -212,19 +223,26 @@ def main(*, config_resolver=configure, model_factory=None):
         except Exception as exc:
             write(state/'worker-status.json',dict(status='STOPPED',code=exc.code if isinstance(exc,ContractError) else 'NOT_AVAILABLE'))
             fatal.set()
+    from fusion.service_lanes import Lanes,classify
+    lane_policy=settings.get('preview',{}).get('pilot',{}).get('request_lanes')
+    lanes=Lanes(lane_policy) if lane_policy else None
     class Handler(BaseHTTPRequestHandler):
         protocol_version='HTTP/1.1' if pool_selection else 'HTTP/1.0'
         def setup(self):
             super().setup();self.request_count=0
         def log_message(self,*args): pass
-        def reply(self,value,status=200):
-            data=canonical(value); self.send_response(status)
+        def reply(self,value,status=200,reply_fault=None):
+            data=canonical(value)
+            if not before_reply(reply_fault,stop):
+                self.close_connection=True;return
+            if reply_fault and reply_fault['mode']=='partial-body':self.close_connection=True
+            self.send_response(status)
             self.request_count+=1
             if pool_selection and self.request_count>=pool_selection['requests']:self.close_connection=True
             if self.close_connection:self.send_header('Connection','close')
             self.send_header('Content-Type','application/json'); self.send_header('Content-Length',str(len(data)))
             self.end_headers()
-            try:self.wfile.write(data)
+            try:write_body(reply_fault,self.connection,self.wfile,data)
             except (BrokenPipeError,ConnectionResetError):pass
         def do_GET(self):
             if self.path not in ('/health/startup','/health/ready','/health/live'):
@@ -240,9 +258,11 @@ def main(*, config_resolver=configure, model_factory=None):
             with span('provider.'+role) as meter:
                 return self.dispatch_POST(meter)
         def dispatch_POST(self,meter):
-            service=None;storage_entered=False
+            service=None;storage_entered=False;lane_key=None;reply_fault=None
             try:
                 require(not stop.is_set(),'NOT_AVAILABLE')
+                from fusion.pilot_writer_fence import check as writer_request
+                writer_request(config,'writer.request')
                 auth=self.headers.get_all('Authorization',[])
                 require(len(auth)==1 and auth[0].startswith('Bearer '),'UNAUTHORIZED')
                 require(self.headers.get('Content-Type')=='application/json' and not self.headers.get('Transfer-Encoding'))
@@ -250,10 +270,15 @@ def main(*, config_resolver=configure, model_factory=None):
                 require(len(sizes)==1 and sizes[0].isdigit() and 0<int(sizes[0])<=(131072 if preview or cognitive or chain else 98304 if memory or workflow else 8192))
                 raw=self.rfile.read(int(sizes[0]));require(len(raw)==int(sizes[0]));request=json_loads(raw)
                 meter['request_bytes']=len(raw)
+                if lanes:lane_key=lanes.enter(classify(self.path,request),digest(auth[0].encode()))
+                if activation is not None:
+                    from .pilot_activation import request_guard
+                    request_guard(initial,state,self.path,request)
                 if preview and role=='fusion-storage':
                     storage_gate.enter();storage_entered=True
                 if scope_router is not None and scope_router.matches(request):
-                    with encode_lock:result=scope_router.invoke(self.path,auth[0][7:],request,kernel)
+                    guard=nullcontext() if lanes and role=='fusion-embedding' and request.get('operation') in ('authorize-invoke','authorize-disclose') else encode_lock
+                    with guard:result=scope_router.invoke(self.path,auth[0][7:],request,kernel)
                 elif preview and self.path=='/preview/projection':
                     require(supervisor is not None,'UNSUPPORTED_OPERATION')
                     from .sustained_projection import invoke as project
@@ -282,6 +307,18 @@ def main(*, config_resolver=configure, model_factory=None):
                     require(supervisor is not None,'UNSUPPORTED_OPERATION')
                     from .integrated_chain_continuation import invoke as chain_continuation
                     result=chain_continuation(run/'owner.json',config_path,state,run,auth[0][7:],request,hook)
+                elif preview and self.path=='/preview/workflows':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .pilot_workflows import invoke as workflows
+                    result=workflows(run/'owner.json',state,run,auth[0][7:],request,supervisor.wake,hook)
+                elif preview and self.path=='/preview/subscriptions':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .pilot_subscription_ports import invoke as subscriptions
+                    result=subscriptions(run/'owner.json',auth[0][7:],request)
+                elif preview and self.path=='/preview/browser':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .pilot_browser_observation import invoke as browser_observe
+                    result=browser_observe(run/'owner.json',state,run,auth[0][7:],request)
                 elif preview and self.path=='/preview/capabilities':
                     require(supervisor is not None,'UNSUPPORTED_OPERATION')
                     from .integrated_permissions import invoke as capabilities
@@ -303,7 +340,7 @@ def main(*, config_resolver=configure, model_factory=None):
                 elif preview and self.path=='/preview/model':
                     require(role=='fusion-model','UNSUPPORTED_OPERATION')
                     from fusion.preview_model_binding import service as selected_model_service
-                    with encode_lock:
+                    with (nullcontext() if lanes and request.get('operation') in ('observe','authorize') else encode_lock):
                         service=selected_model_service(run/'owner.json',hook)
                         try:result=service.invoke(auth[0][7:],request)
                         finally:service.close();service=None
@@ -329,6 +366,10 @@ def main(*, config_resolver=configure, model_factory=None):
                     require(role=='fusion-search' and active_owner is not None,'UNSUPPORTED_OPERATION')
                     from fusion.search_maintenance import Ports as MaintenancePorts
                     with encode_lock:result=MaintenancePorts(run/'owner.json',hook).invoke(auth[0][7:],request)
+                elif preview and self.path=='/preview/derived-maintenance':
+                    require(supervisor is not None,'UNSUPPORTED_OPERATION')
+                    from .pilot_derived_maintenance import invoke as derived_maintenance
+                    result=derived_maintenance(run/'owner.json',state,run,auth[0][7:],request,supervisor,hook)
                 elif chain:
                     require(owner is not None,'UNSUPPORTED_OPERATION');result=owner.invoke(self.path,auth[0][7:],request)
                 elif cognitive and self.path=='/reference-cognition':
@@ -341,7 +382,7 @@ def main(*, config_resolver=configure, model_factory=None):
                         from fusion.embedding_service import EmbeddingService
                         require(self.path=='/s03-encode','UNSUPPORTED_OPERATION')
                         service=EmbeddingService(run/'owner.json',kernel,hook)
-                        with encode_lock:result=service.invoke(auth[0][7:],request)
+                        with (nullcontext() if lanes and request.get('operation') in ('authorize-invoke','authorize-disclose') else encode_lock):result=service.invoke(auth[0][7:],request)
                     else:
                         selected=memory_owner or owner
                         require(selected is not None,'UNSUPPORTED_OPERATION')
@@ -363,6 +404,10 @@ def main(*, config_resolver=configure, model_factory=None):
                     except FileExistsError:pass
                     else:
                         self.connection.shutdown(socket.SHUT_RDWR);self.connection.close();return
+                # Only a normally returned, authenticated owner operation can
+                # consume this separate deployment-test identity. Health and
+                # refusal paths never arm it; locks/lanes release before delay.
+                reply_fault=reply_faults.claim(self.path,request,result)
             except ContractError as exc:
                 self.close_connection=True;result=dict(error=exc.wire())
             except (ValueError,KeyError,TypeError):
@@ -371,10 +416,11 @@ def main(*, config_resolver=configure, model_factory=None):
             finally:
                 if service is not None:service.close()
                 if storage_entered:storage_gate.leave()
+                if lane_key is not None:lanes.leave(lane_key)
             meter['response_bytes']=len(canonical(result))
             if type(result) is dict and type(result.get('error')) is dict:
                 meter['code']=result['error'].get('code')
-            self.reply(result)
+            self.reply(result,reply_fault=reply_fault)
     encode_lock=threading.Lock()
     storage_gate=StorageGate()
     # The memory caller is outbound-only: it mounts no server private key.
@@ -410,7 +456,8 @@ def main(*, config_resolver=configure, model_factory=None):
     with Server(('0.0.0.0',settings['https_port']),Handler) as server:
         server.timeout=.2
         if role=='fusion-execution' and settings['worker_enabled']:
-            worker=threading.Thread(target=pump);worker.start()
+            if activation is None:
+                worker=threading.Thread(target=pump);worker.start()
         if (not preview and role=='omega-agent' and settings['native_enabled']) or (memory and role=='fusion-search'):
             # Startup dependency observation only: no invocation identity,
             # occurrence deadline, reservation or POST exists yet. After a

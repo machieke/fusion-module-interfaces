@@ -51,6 +51,10 @@ class NativeSupervisor:
             # worker observes its inbox itself; do not rewrite its config.
             if session==self.session and self.child is not None and self.child.poll() is None:return
             cfg=json.loads(self.config.read_text())['native_sessions']
+            if 'handover' in cfg:
+                from .pilot_activation import historical
+                import sqlite3
+                with sqlite3.connect(cfg['database']) as db:require(historical(db,session) is None,'UNAUTHORIZED')
             if cfg['profile']=='omega-native-sessions/3':
                 from .sustained_runtime import materialize
                 materialize(self.config,self.state,self.run,session)
@@ -129,7 +133,8 @@ class NativeSupervisor:
             # inspecting captures or starting any replacement.
             try:
                 row=owner.db.execute('SELECT e.* FROM native_worker_epochs e JOIN native_worker_current c ON e.incarnation=c.incarnation WHERE c.slot=1').fetchone()
-                if row is not None and row['state'] not in ('stopped','uncertain'):
+                from .pilot_activation import historical
+                if row is not None and row['state'] not in ('stopped','uncertain') and historical(owner.db,row['session']) is None:
                     owner.retire(policy['principal'],row['session'],row['incarnation'])
             finally:owner.close()
         if 'task_ingress' in cfg:
@@ -142,6 +147,11 @@ class NativeSupervisor:
             # behalf of a native child that has not received an input.
             rows=SessionPorts(self.config).invoke(credential,dict(id='startup-list',profile=policy['profile'],operation='list',body={}))['value']
             for row in rows:
+                if 'handover' in policy:
+                    import sqlite3
+                    from .pilot_activation import historical
+                    with sqlite3.connect(policy['database']) as db:
+                        if historical(db,row['session']) is not None:continue
                 if row['state']=='active':
                     if 'resident_worker' in policy:
                         observed=SessionPorts(self.config,projections=self.projections).invoke(credential,dict(

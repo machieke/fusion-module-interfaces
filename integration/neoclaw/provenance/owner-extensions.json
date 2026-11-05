@@ -1,0 +1,137 @@
+{
+  "profile": "reviewed-owner-source-extensions/1",
+  "files": {
+    "fusion/adapters/f1r3_m4.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/fusion--adapters--f1r3_m4.py.txt",
+        "sha256": "be34fe343be8a5b876e5fb0a7fa5668e922654701600c428b95d497e7b31f78e",
+        "revision": "55ed5402391ab6ed14f8ab20e1eea4c85d8be955"
+      },
+      "selected": {
+        "sha256": "ab85f572bc5c781bb6add2f7c432001d9d54debbdb316a6642f44be7b93a2b9b",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Adds current-authorized read-only saved_intent; no signing or submission."
+    },
+    "fusion/bindings.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/fusion--bindings.py.txt",
+        "sha256": "d2570b22b85127b88fd6ccd99da72b2757d73348b2edd0ccf42e5bd5614c05c0",
+        "revision": "ecfef54f0f0ab5b9bdce186af2e83184d10cc246"
+      },
+      "selected": {
+        "sha256": "d1c390da3273b02299c9a26916c7acde79918b6b58cd4472a052d5904adaadac",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Adds trusted configured_binding network composition; old transports unchanged."
+    },
+    "fusion/execution.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/fusion--execution.py.txt",
+        "sha256": "1eceeb2f3dc16d24f1b5a1cbb8df1f4c7e3162e867fc877b1f1d3e425dfa374f",
+        "revision": "ecfef54f0f0ab5b9bdce186af2e83184d10cc246"
+      },
+      "selected": {
+        "sha256": "59b34c0a517272ce6ad2aef2ccd7282995bf000014f95fba1fcc9f68c1aab091",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Optional owner transaction commit-event hooks at acceptance/result/delivery; default unchanged."
+    },
+    "fusion/lookup_contracts.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/fusion--lookup_contracts.py.txt",
+        "sha256": "56e8a7f6d1ce8d70524caca27ae367b84b2d1296a46415f003deb36956b39b65",
+        "revision": "0cb61d586318034b76f0bb8db853698fcb6de587"
+      },
+      "selected": {
+        "sha256": "d70b9a7d1a68832f632e2c88996fa2f428b8442803d3a5538c00bd62af9821b2",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Explicit /2 bounded source head union; /1 head default remains; no profile reinterpretation."
+    },
+    "integration/hive/commitment/program.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/integration--hive--commitment--program.py.txt",
+        "sha256": "ce6a9cbc52faf8e780bc23c29b0cce358aaaa64f5fca091676fe5b50493e584a",
+        "revision": "1219bb5e3c505490dd018baa079534eca9333b54"
+      },
+      "selected": {
+        "sha256": "f62f14bce0cba4d7ab835d3456e94d4c75b3597220134e1e9d89708003246aea",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Select existing ConsensusFinality remote port under explicit service-network placement."
+    },
+    "integration/hive/program/completed.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/integration--hive--program--completed.py.txt",
+        "sha256": "da12796f0cde4968fb5d2a76739f211b5cadc0b4e5eeca875a709037ef293a63",
+        "revision": "1219bb5e3c505490dd018baa079534eca9333b54"
+      },
+      "selected": {
+        "sha256": "fbaf5c7e57667898bbd66180381adf08a70658f5c0ffcbda7091b0e7161ec70d",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Trusted configured transport with frozen placement binding; original local transport retained."
+    },
+    "integration/hive/program/program.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/integration--hive--program--program.py.txt",
+        "sha256": "60b76d4f0015953b90776f0fb4862a2b66eb40244657245680d8a86b75a5fd08",
+        "revision": "85e62ae2c3e3c8bf9d91f6119b1545920c357398"
+      },
+      "selected": {
+        "sha256": "414f3b87221c686f3a152a538e14eff8d88dc50c7cb12469b4030bb49cc4d33f",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Trusted configured transport with frozen placement binding; original local transport retained."
+    },
+    "scripts/chain_demo.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/scripts--chain_demo.py.txt",
+        "sha256": "aa0b44591fe9681c00666a806abfc1d43ed7ef488a0e5cdeec4becc6ab38a01d",
+        "revision": "3f75db993d354d18dff2a3e36498eabe4a33afb3"
+      },
+      "selected": {
+        "sha256": "73397aa7582ccaa1f92cb8488e323b3f8e51f7e85f5320b5c142d36b3fc792e6",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Extract exact address function to packageable module; does not change address mathematics."
+    },
+    "tests/m2_support.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/tests--m2_support.py.txt",
+        "sha256": "6a61ca12b5b725ba3e7e83e3ff407a39bb3f7b8f963daac5f2740704fd3d0e38",
+        "revision": "bbad55c32ffbe7e7cf56ce29425fbc7b9f7d001f"
+      },
+      "selected": {
+        "sha256": "f14cef082c2979b8e7a86f5c6a618aa99681768847e1a07d85dd431722f19c36",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Python3.12 protocol getattr_static fixture compatibility; exposes only admitted methods."
+    },
+    "fusion/atom_feed.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/fusion--atom_feed.py.txt",
+        "sha256": "c90a0d9696d99a63f620607bd23ef39fc976da3e514a30b2362963b6c9d8bc16",
+        "revision": "0cb61d586318034b76f0bb8db853698fcb6de587"
+      },
+      "selected": {
+        "sha256": "8bff0d8eef9f5bbf9d069bad7deb5a14c484d3d0d7d97c8a9f409f31fe6cd20f",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Opt-in sustained feed reservations, accepted observation, sealed archives and indexed exact ref lookup; historical FEED default preserved."
+    },
+    "fusion/lookup_composition.py": {
+      "historical": {
+        "path": "integration/neoclaw/provenance/fusion--lookup_composition.py.txt",
+        "sha256": "0f262b5073966259cf4b6b060f66e3c4e08adda70b7c4858dd7b92089ae0796d",
+        "revision": "9b0ed3520837e06f7c07824f3e79c60e1aff24a2"
+      },
+      "selected": {
+        "sha256": "9db1d7d80ec34bdec7d12982249b598077d43f8030adebdddeba57cc269ba565",
+        "revision": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f"
+      },
+      "classification": "Optional observe/archive/capacity ports, strict selected feed profile validation and strengthened current get authorization."
+    }
+  }
+}

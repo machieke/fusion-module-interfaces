@@ -6,12 +6,13 @@ import (
 	"flag"
 	"fmt"
 	omega "fusion.local/omega"
+	"fusion.local/omega/inspectprovider"
 	"os"
 )
 
 func main() {
 	config := flag.String("config", "", "private selected client configuration")
-	action := flag.String("action", "", "head, create, get, allocate, metadata, submit, observe, capacity")
+	action := flag.String("action", "", "head, create, get, allocate, metadata, submit, observe, capacity, inspect-capacity")
 	deadline := flag.Int64("deadline-ms", 0, "fixed original absolute observation deadline; never renewed")
 	identity := flag.String("identity", "", "explicit new intention or exact replay identity")
 	session := flag.String("session", "", "accepted session UUID")
@@ -22,6 +23,16 @@ func main() {
 	reference := flag.String("ref-file", "", "previously captured immutable reference")
 	content := flag.Bool("content", false, "request current authorized content disclosure")
 	flag.Parse()
+	if *action == "inspect-capacity" {
+		value, err := inspectprovider.ObserveCapacity(*config, *deadline)
+		if err != nil {
+			stop(err)
+		}
+		if err = json.NewEncoder(os.Stdout).Encode(value); err != nil {
+			stop(err)
+		}
+		return
+	}
 	var value interface{}
 	cfg, e := omega.ReadConfig(*config)
 	if e != nil {

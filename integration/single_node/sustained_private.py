@@ -32,6 +32,7 @@ def configure(settings,cfg,state,run):
         # This shadow builds a private runtime recipe, not a second allocator.
         # Retained shared records must not be rebound to its private scope.
         q['sustained'].pop('provider_registry',None)
+        q.pop('pilot',None) # outer application owns browser/subscription/workflow selection
         q['agents']={agent:{k:v for k,v in spec.items() if k!='private_scope'}}
         q['agents'][agent]['facets']=[x for x in spec['facets'] if x!='execution.workspace']
         q['memory']['corpus']+='-'+label
@@ -43,6 +44,10 @@ def configure(settings,cfg,state,run):
         shadow.update(state=str(private_state),run=str(private_run))
         from .sustained_configure import configure as selected
         _,owned,_,_=selected(shadow)
+        if role=='fusion-model' and p.get('pilot',{}).get('owner_clock') is not None:
+            from fusion.pilot_model_clock import selection
+            owned['model_completion']['owner_clock']=copy.deepcopy(p['pilot']['owner_clock'])
+            selection(owned['model_completion']);write(private_run/'owner.json',owned)
         # The historical memory recipe starts with A. A B-only partition must
         # remove that bootstrap grant, including embedding and index metadata.
         for file in private_run.rglob('*.json'):

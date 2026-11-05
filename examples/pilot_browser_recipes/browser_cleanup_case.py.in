@@ -1,0 +1,55 @@
+"""Existing Search fault ports plus actual browser maintenance controls."""
+import json,sys,time,uuid,subprocess
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+import yaml
+from fusion.contracts import canonical,require,digest
+from integration.single_node.reference_ops import Operator,PYTHON
+from examples.pilot_maintenance_faults import settings,paused,kill,search_call,diagnostic
+from examples.pilot_handover import helm
+sys.path.insert(0,'@@PRIVATE_ROOT@@/preparation/user-client');from ui import run,value,click,modal,ROOT,OUTPUT
+root=OUTPUT/'search-cleanup';root.mkdir(exist_ok=False);op=Operator('@@KUBECONFIG@@','default','@@NAMESPACE@@');chart='@@PACKET@@/deploy/helm/omega-fusion';values=yaml.safe_load((ROOT/'gateway-values.yaml').read_bytes());report=dict(status='RUNNING',steps=[],source_sha256=digest(Path(__file__).read_bytes()),additional_live_generations=0)
+def record(name,v):report['steps'].append(dict(name=name,value=v));(root/'report.json').write_bytes(canonical(report));return v
+story=json.loads((OUTPUT/'workflow-expired'/'browser-decision.json').read_bytes());sid=story['session']
+try:
+ # Match the current explicit user policy; a resulting stateless rollout does
+ # not replace any application identity, deadline or journal.
+ values['pilotWorkbench']['configuration']=json.loads(json.loads(op.k('get','configmap','omega-workbench','-o','json'))['data']['browser.json'])
+ selected=json.loads(op.k('exec','omega-agent-0','--',PYTHON,'-m','integration.single_node.preview_operator','current','--session',sid))['retained']['view']['snapshot'];record('retained-selection',selected)
+ settings(op,chart,values,root/'search-pause.yaml','fusion-search','after_index_write',helm)
+ # The gateway has a new declared configuration checksum. Reopen only the
+ # trusted loopback forward explicitly; it is never a browser dependency.
+ pids=subprocess.check_output(['pgrep','-P',sys.argv[1]],text=True).split()
+ require(len(pids)==1,'CONFLICT');subprocess.run(['kill','-TERM',pids[0]],check=True)
+ forward=subprocess.Popen(['@@KUBECTL@@','--kubeconfig',op.kubeconfig,'--context',op.context,'-n',op.namespace,'port-forward','service/omega-workbench','--address','127.0.0.1','8878:8878'],stdout=(root/'port-forward.log').open('wb'),stderr=subprocess.STDOUT)
+ (root/'forward.pid').write_text(str(forward.pid));time.sleep(1);require(forward.poll() is None,'NOT_AVAILABLE')
+ key='browser-unpublished-'+str(uuid.uuid4());deadline=time.time_ns()//1000000+30000;record('build-intent',dict(key=key,deadline_ms=deadline,source=selected['head'],lifecycle=selected['lifecycle']))
+ with ThreadPoolExecutor(max_workers=1) as pool:
+  future=pool.submit(search_call,op,'build',selected['head'],selected['lifecycle'],key,deadline)
+  record('paused',paused(op,'fusion-search','after_index_write',deadline));record('process-kill',kill(op,'fusion-search'))
+  try:future.result(timeout=70)
+  except (RuntimeError,TimeoutError) as e:record('lost-response',dict(outcome='LOST_RESPONSE',type=type(e).__name__))
+  else:require(False,'CONFLICT')
+ settings(op,chart,values,root/'search-disarmed.yaml','fusion-search',None,helm)
+ require(search_call(op,'published',selected['head'],selected['lifecycle'],key) is None,'CONFLICT')
+ code='''import json,sys
+from pathlib import Path
+q=json.load(sys.stdin);c=json.loads(Path('/run/fusion/owner.json').read_bytes());rows=[]
+for p in (Path(c['active_memory']['root'])/'active-search').glob('*/maintenance.json'):
+ v=json.loads(p.read_bytes())
+ if v['intent']['key']==q['key']:rows.append(dict(generation=p.parent.name,receipt=v))
+print(json.dumps(rows))'''
+ receipts=json.loads(op.k('exec','-i','fusion-search-0','--',PYTHON,'-c',code,data=json.dumps(dict(key=key))));require(len(receipts)==1 and receipts[0]['receipt']['intent']['deadline_ms']==deadline and receipts[0]['receipt']['attempts']==1,'CONFLICT');record('retained-original-accounting',receipts)
+ while time.time_ns()//1000000<=deadline:time.sleep(.25)
+ run('reload');time.sleep(.3);run('fill','#user','operator');run('fill','#access',(ROOT/'user-client'/'operator.bootstrap').read_text().strip());click('#connect');run('select','#agent','omega-agent');run('select','#session',sid);click('#current');run('fill','#cleanupGenerations',receipts[0]['generation']);click('#cleanupPlan')
+ plan=value('JSON.parse(document.querySelector("#cleanupState").textContent)');record('browser-plan',plan)
+ # A different explicit, bounded generation changes the derived publication
+ # head. It does not retry the expired build or modify its reservations.
+ rebuilt=search_call(op,'build',selected['head'],selected['lifecycle'],'browser-rebuild-'+str(uuid.uuid4()),time.time_ns()//1000000+60000);record('independent-rebuild',rebuilt)
+ run('fill','#key','browser-cleanup-stale-'+key);modal('#cleanupApply');refusal=value('document.querySelector("#notice").textContent');record('stale-plan-refusal',refusal);require(refusal=='CONFLICT','CONFLICT')
+ click('#current');click('#cleanupPlan');plan2=value('JSON.parse(document.querySelector("#cleanupState").textContent)');require(plan2!=plan,'CONFLICT');record('browser-current-plan',plan2)
+ run('fill','#key','browser-cleanup-current-'+key);modal('#cleanupApply');applied=value('JSON.parse(document.querySelector("#cleanupState").textContent)');require(applied['state']=='complete' and applied['removed_logical_bytes']>0,'CONFLICT');record('browser-applied',applied);click('#cleanupObserve');require(value('JSON.parse(document.querySelector("#cleanupState").textContent)')==applied,'CONFLICT')
+ record('retained-views',dict(old=search_call(op,'ready',selected),rebuilt=search_call(op,'ready',rebuilt)));run('screenshot',str(root/'browser-cleanup.png'));report['status']='PASS'
+except BaseException as e:report.update(status='FAILED_RETAINED',failure=dict(type=type(e).__name__,message=str(e)[:200]));raise
+finally:(root/'report.json').write_bytes(canonical(report))
+print('Actual browser stale refusal and exact derived cleanup PASS')

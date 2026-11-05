@@ -1,0 +1,11 @@
+import json,sys,subprocess,hashlib,secrets,os,time
+from pathlib import Path
+root=Path('@@PRIVATE_ROOT@@/preparation');out=Path('@@PRIVATE_ROOT@@');k=['@@KUBECTL@@','--kubeconfig','@@KUBECONFIG@@','--context','default','-n','@@NAMESPACE@@'];mode=sys.argv[1];assert mode in ('revoke','rotate')
+r=json.loads(subprocess.check_output(k+['get','configmap','omega-workbench','-o','json']));c=json.loads(r['data']['browser.json']);u=c['users']['shared'];u['revision']+=1;u['enabled']=mode=='rotate'
+if mode=='rotate':
+ token=secrets.token_urlsafe(32);u['bootstrap_sha256']=hashlib.sha256(token.encode()).hexdigest();(root/'user-client'/'shared.bootstrap').write_text(token+'\n')
+patch=dict(data={'browser.json':json.dumps(c,sort_keys=True,separators=(',',':'))});path=out/('gateway-'+mode+'-patch.json');path.write_text(json.dumps(patch));os.chmod(path,0o600)
+subprocess.run(k+['patch','configmap','omega-workbench','--type','merge','--patch-file',str(path)],check=True)
+pods=json.loads(subprocess.check_output(k+['get','pods','-l','app.kubernetes.io/name=omega-workbench','-o','json']))['items'];assert len(pods)==1
+subprocess.run(k+['annotate','pod',pods[0]['metadata']['name'],'omega.pilot/config-observation='+str(time.time_ns()),'--overwrite'],check=True)
+print(mode+' existing shared browser policy; no owner work accepted')

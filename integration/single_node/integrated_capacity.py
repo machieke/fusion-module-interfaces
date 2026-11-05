@@ -110,7 +110,9 @@ def collect(root=Path('/state'),run=Path('/run/fusion')):
         for label,name in [('nal','execution.sqlite'),('inspect','preview-inspect.sqlite')]:
             if (root/name).is_file():inspect(label,name,execution)
     require(len(rows)<=128 and len(uncertainty)<=64,'OVERLOADED')
-    return dict(profile=PROFILE,owner=role,bounds=rows,uncertainty=uncertainty,unavailable=unavailable,
+    from .pilot_capacity import collect as pilot_collect
+    extended={'pilot':pilot_collect(root,run)} if cfg.get('pilot_capacity')=='pilot-owner-headroom/1' else {}
+    return dict(**extended,profile=PROFILE,owner=role,bounds=rows,uncertainty=uncertainty,unavailable=unavailable,
         coverage='SELECTED_APPLICATION_FEED_ARCHIVE_MODEL_EMBEDDING_EXECUTION',other_owner_lifetime_headroom='NOT_OBSERVED',
         authority='CURRENT_OPERATOR_POD_RBAC_OWNER_LOCAL',cross_owner_atomic=False,preflight_reserves=False,
         refunds=False,archive_reclaims_total_quota=False,high_water_policy='90_PERCENT_OBSERVATIONAL; EXACT_OWNER_ADMISSION_LIMITS_UNCHANGED',

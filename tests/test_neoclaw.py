@@ -249,7 +249,13 @@ class S01Contracts(unittest.TestCase):
         owner_extensions = {'fusion/beliefs.py': ('7f60de5b5f8baa28449159c32077a771f313f1eee102da02206c618154cf1fe8', '7ac533b523d01336a6dbcc79e7df0a308dba758d5833f31d0c9216df1295dbd1'), 'fusion/episodes.py': ('494bd83b5c25630544cf7d0d091f7652cbfa694ba30440e060bd71139b50f7e6', '4e1375ca351572ec93c53c1b1b48570c9cef9995f2abead7a8f6c8dc1b4decec'), 'fusion/evidence_relay.py': ('6f2170d73fc974b5ebb054fc2ace6f5a50cb976b86f3483b8efe40648e4a8b41', '4b35e3d32e7240dc381f9b7c45783cf0614c440b1c7fec36ca7e43e721743b3e')}
         for name, expected in manifest['source']['files'].items():
             source = (ROOT/name).read_bytes()
-            if name in additions:
+            if name == 'fusion/adapters/detta.py':
+                from integration.neoclaw.source_compatibility import detta
+                expected = detta(ROOT, expected, source)
+            else:
+                from integration.neoclaw.source_compatibility import owner_extension
+                expected = owner_extension(ROOT, name, expected, source)
+            if name in additions and name not in ('fusion/atom_feed.py','fusion/lookup_composition.py'):
                 owner, symbol, trailing_blanks = additions[name]
                 tree = ast.parse(source)
                 parent = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == owner) if owner else tree

@@ -7,7 +7,8 @@ or conformance. Tokens are not stored in these metadata records.
 import json,ssl,http.client,time
 from pathlib import Path
 from fusion.contracts import canonical,digest,require
-from fusion.provider_lifecycle import PROFILE,Registry,ACTIONS,configuration
+from fusion.provider_lifecycle import PROFILE,COMPACT_PROFILE,Registry,ACTIONS,configuration
+from fusion.provider_retention import LIMITS
 from fusion.registry import descriptor_read
 from fusion.policy import Policy
 from fusion.sustained_sessions import SustainedSessionStore
@@ -24,7 +25,8 @@ ROLES={'atom.storage':'fusion-storage','agent.messaging':'fusion-messaging',
 def configure(settings,cfg,run):
     selected=settings['preview']['sustained'].get('provider_registry')
     if selected is None or settings['role'] not in settings['preview']['agents']:return
-    require(type(selected) is dict and {'profile','pins','readiness_ms'}<=set(selected)<={'profile','pins','readiness_ms','rollover'} and selected['profile']==PROFILE,'UNSUPPORTED_PROFILE')
+    require(type(selected) is dict and {'profile','pins','readiness_ms'}<=set(selected)<={'profile','pins','readiness_ms','rollover','limits'} and selected['profile'] in (PROFILE,COMPACT_PROFILE),'UNSUPPORTED_PROFILE')
+    require(selected['profile']==COMPACT_PROFILE or 'limits' not in selected,'UNSUPPORTED_PROFILE')
     require(type(selected['pins']) is dict)
     rollover=selected.get('rollover')
     if rollover is not None:
@@ -41,6 +43,11 @@ def configure(settings,cfg,run):
         groups={}
         for raw in app['preview']['providers']:
             descriptor=descriptor_read(raw);role=ROLES.get(descriptor.interface)
+            # Additional trusted recipes keep old template bytes intact while
+            # selecting a separately admitted inspection owner for NEW sessions.
+            from .pilot_inspection_template import inspection_role
+            inspection=inspection_role(settings,recipe,app,raw)
+            if inspection is not None:role=inspection
             require(role is not None,'UNSUPPORTED_PROFILE')
             # Local application vocabulary/context is not a remotely managed
             # provider; only actual declared interface ports appear here.
@@ -83,9 +90,9 @@ def configure(settings,cfg,run):
             templates[name].append(key)
     if rollover:
         require(set(rollover.get('retained_records',{}))<=set(records),'INVALID_ARGUMENT')
-    current['provider_registry']=configuration(dict(profile=PROFILE,records=records,templates=templates,readiness_ms=selected['readiness_ms']))
+    current['provider_registry']=configuration(dict(profile=selected['profile'],records=records,templates=templates,readiness_ms=selected['readiness_ms'],**({'limits':selected.get('limits',LIMITS)} if selected['profile']==COMPACT_PROFILE else {})))
     for template in current['allocation']['templates'].values():
-        scope=template['scope'];cfg['principals']['operator']['scopes'][scope]+=['providers.'+op for op in (*ACTIONS,'probe','inspect','select')]
+        scope=template['scope'];cfg['principals']['operator']['scopes'][scope]+=['providers.'+op for op in (*ACTIONS,'probe','inspect','select',*(['seal'] if selected['profile']==COMPACT_PROFILE else []))]
     if 'task_ingress' in cfg:
         # The trusted ingress may select already admitted shared providers,
         # atomically with its new session. Registration/probing/enablement stay
@@ -108,10 +115,10 @@ def health(record,ca_file):
 
 
 def invoke(path,credential,q,hook=lambda _:None,probe=None):
-    require(type(q) is dict and set(q)=={'profile','id','operation','body'} and q['profile']==PROFILE,'UNSUPPORTED_PROFILE')
+    require(type(q) is dict and set(q)=={'profile','id','operation','body'} and q['profile'] in (PROFILE,COMPACT_PROFILE),'UNSUPPORTED_PROFILE')
     require(type(q['id']) is str and 1<=len(q['id'])<=128 and len(canonical(q))<=4096)
     policy=Policy(path);actor=policy.authenticate(credential);cfg=policy.current();selected=cfg['native_sessions']
-    require('provider_registry' in selected,'UNSUPPORTED_PROFILE')
+    require('provider_registry' in selected and q['profile']==selected['provider_registry']['profile'],'UNSUPPORTED_PROFILE')
     def auth(scope,method):
         require(policy.authenticate(credential)==actor,'UNAUTHORIZED');policy.check(actor,scope,method)
         require(policy.current()['native_sessions'].get('provider_registry')==selected['provider_registry'],'CONFLICT')
@@ -122,6 +129,9 @@ def invoke(path,credential,q,hook=lambda _:None,probe=None):
         reg=Registry(store,selected['provider_registry'],auth,hook)
         op=q['operation'];b=q['body'];require(type(b) is dict)
         if op=='inspect':require(set(b)=={'provider'});value=reg.inspect(b['provider'])
+        elif op=='headroom':require(not b);value=reg.headroom()
+        elif op=='plan':require(set(b)=={'provider'});value=reg.plan(b['provider'])
+        elif op=='seal':require(set(b)=={'identity','provider','head'});value=reg.seal(b['identity'],b['provider'],b['head'])
         elif op=='selected':require(set(b)=={'session'});value=reg.selected(b['session'])
         elif op=='probe':
             require(set(b)=={'provider','identity'})
@@ -131,5 +141,5 @@ def invoke(path,credential,q,hook=lambda _:None,probe=None):
             require(set(b)==({'provider','identity','retained'} if op=='retire' else {'provider','identity'}))
             value=reg.act(b['identity'],op,b['provider'],b.get('retained','required'))
         else:require(False,'UNSUPPORTED_OPERATION')
-        return dict(id=q['id'],profile=PROFILE,request_digest=digest(canonical(q)),actor=actor,value=value)
+        return dict(id=q['id'],profile=q['profile'],request_digest=digest(canonical(q)),actor=actor,value=value)
     finally:store.close()

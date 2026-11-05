@@ -1,0 +1,10 @@
+import hashlib,json,time,subprocess
+from pathlib import Path
+k=['@@KUBECTL@@','--kubeconfig','@@KUBECONFIG@@','--context','default','-n','@@NAMESPACE@@']
+actual=json.loads(subprocess.check_output(k+['get','configmap','omega-workbench','-o','json']))['data']['browser.json'];expected=hashlib.sha256(actual.encode()).hexdigest();end=time.monotonic()+120;reads=0
+while time.monotonic()<end:
+ r=subprocess.check_output(k+['exec','deployment/omega-workbench','--','python3','-c','import hashlib;from pathlib import Path;print(hashlib.sha256(Path("/config/browser.json").read_bytes()).hexdigest())'],text=True).strip();reads+=1
+ if r==expected:break
+ time.sleep(3)
+else:raise RuntimeError('Projected configuration not observed within bound')
+print('Current scoped policy projection observed; bounded reads='+str(reads))

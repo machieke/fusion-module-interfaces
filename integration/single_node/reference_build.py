@@ -17,7 +17,7 @@ def profiles(manifest,destination):
   (out/(profile+'.yaml')).write_text(yaml.safe_dump(value,sort_keys=False))
  (out/'deterministic.json').write_bytes(canonical(dict(tag=images['base']['tag'])))
  (out/'generative-image.json').write_bytes(canonical(images['generative']))
-def build(destination,tag,*,kinds=None,base_archive=None,base_manifest=None):
+def build(destination,tag,*,kinds=None,base_archive=None,base_manifest=None,remediation_directory=None,source_parent_manifest=None):
  require(tag.startswith('reference-') and '/' not in tag,'INVALID_ARGUMENT');root=Path(destination).resolve();root.mkdir(parents=True,exist_ok=False);packages={}
  selected=REPOS if kinds is None else {kind:REPOS[kind] for kind in kinds}
  require('base' in selected and len(selected)==len(kinds or selected),'INVALID_ARGUMENT')
@@ -27,7 +27,7 @@ def build(destination,tag,*,kinds=None,base_archive=None,base_manifest=None):
   base,blobs=base_selection(base_archive,base_manifest)
  for kind,repo in selected.items():
   context=root/('image-'+kind);script='package_workflow.py' if kind in ('base','caller','embedding') else 'package_reference.py'
-  subprocess.run([sys.executable,str(ROOT/'deploy/single-node'/script),str(context),'--kind',kind],check=True)
+  subprocess.run([sys.executable,str(ROOT/'deploy/single-node'/script),str(context),'--kind',kind]+(['--remediation-directory',str(Path(remediation_directory).resolve())] if remediation_directory else [])+(['--source-parent-manifest',str(Path(source_parent_manifest).resolve())] if source_parent_manifest else []),check=True)
   with (root/(kind+'-build.log')).open('w') as log:subprocess.run(['docker','build','--network=none','-t',repo+':'+tag,str(context)],stdout=log,stderr=subprocess.STDOUT,check=True)
   packages[kind]=json.loads((context/'package.json').read_text())
  require(all(x['source']==packages['base']['source'] for x in packages.values()),'CONFLICT')
@@ -61,4 +61,4 @@ def build(destination,tag,*,kinds=None,base_archive=None,base_manifest=None):
  if kinds is None:profiles(result,root/'profiles')
  return result
 if __name__=='__main__':
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('destination');p.add_argument('--tag',required=True);p.add_argument('--kinds',nargs='+',choices=REPOS);p.add_argument('--base-archive');p.add_argument('--base-manifest');a=p.parse_args();print(json.dumps(build(a.destination,a.tag,kinds=a.kinds,base_archive=a.base_archive,base_manifest=a.base_manifest),indent=2))
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('destination');p.add_argument('--tag',required=True);p.add_argument('--kinds',nargs='+',choices=REPOS);p.add_argument('--base-archive');p.add_argument('--base-manifest');p.add_argument('--remediation-directory');p.add_argument('--source-parent-manifest');a=p.parse_args();print(json.dumps(build(a.destination,a.tag,kinds=a.kinds,base_archive=a.base_archive,base_manifest=a.base_manifest,remediation_directory=a.remediation_directory,source_parent_manifest=a.source_parent_manifest),indent=2))

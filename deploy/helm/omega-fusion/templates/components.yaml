@@ -6,6 +6,7 @@
 {{- $reference := $.Values.reference.enabled }}
 {{- $chain := and $reference (eq $.Values.reference.profile "chain") }}
 {{- $preview := $.Values.preview.enabled }}
+{{- $writerFence := and $preview (hasKey $.Values.preview "pilot") (hasKey (default dict $.Values.preview.pilot) "writer_fence") }}
 {{- $plain := or (eq $name "f1r3node") $memoryAgent (and $workflow (has $name (list "fusion-channel-bridge" "irc-server" "irc-peer"))) }}
 {{- if $preview }}{{- $plain = eq $name "f1r3node" }}{{- end }}
 {{- $portName := ternary "health" "https" $plain }}
@@ -56,6 +57,23 @@ metadata:
   labels: {app.kubernetes.io/instance: {{ $.Release.Name | quote }}, app.kubernetes.io/name: {{ $name }}}
 data:
   component.json: {{ $config | toJson | quote }}
+  {{- if eq $name "fusion-inspect-go" }}
+  {{- $provider := dict "profile" "go-immutable-inspect-reference/1" "scope" $.Values.preview.scope "state" "/state/inspection.json" "policy" "/config/policy.json" "storage" "/config/storage.json" "completion" (dict "url" (printf "https://fusion-messaging.%s.svc.cluster.local:%v" $.Release.Namespace $.Values.httpsPort) "ca_file" "/secrets/ca.crt" "credential_file" "/secrets/inspect-completion-token") "certificate" "/secrets/tls.crt" "key" "/secrets/tls.key" "listen" (printf ":%v" $.Values.httpsPort) }}
+  provider.json: {{ $provider | toJson | quote }}
+  {{- $principals := dict "worker" (dict "credential_file" "/secrets/inspect-storage-token" "scopes" (dict $.Values.preview.scope (list "atom.storage.get" "atom.storage.create"))) }}
+  {{- $routes := dict }}
+  {{- range $agent, $selection := $.Values.preview.agents }}
+  {{- $_ := set $principals $selection.principal (dict "credential_file" (printf "/secrets/inspect-caller-%s-token" $selection.principal) "scopes" (dict $.Values.preview.scope (list "execution.submit" "execution.status" "execution.result" "atom.storage.get"))) }}
+  {{- $_ := set $routes (printf "inspect-%s" $selection.principal) (dict "scope" $.Values.preview.scope "owner" $selection.principal) }}
+  {{- end }}
+  {{- if and (hasKey $.Values.preview "pilot") $.Values.preview.pilot.capacity }}
+  {{- $_ := set $principals "capacity-operator" (dict "credential_file" "/secrets/inspect-capacity-token" "scopes" (dict $.Values.preview.scope (list "execution.capacity"))) }}
+  {{- end }}
+  policy.json: {{ dict "principals" $principals "routes" $routes | toJson | quote }}
+  {{- $storageDescriptor := required "Go provider requires exact storage descriptor" $.Values.preview.inspection.reference_storage_descriptor }}
+  {{- $storageProfile := ternary "immutable-commit-feed/2" "immutable-commit-feed/1" (has "immutable-commit-feed/2" $storageDescriptor.profiles) }}
+  storage.json: {{ dict "profile" "fusion-go-client/1" "kind" "atom" "endpoint" (printf "https://fusion-storage.%s.svc.cluster.local:%v" $.Release.Namespace $.Values.httpsPort) "server_name" (printf "fusion-storage.%s.svc.cluster.local" $.Release.Namespace) "ca_file" "/secrets/ca.crt" "credential_file" "/secrets/inspect-storage-token" "principal" "inspect-worker" "actor" "" "scope" $.Values.preview.scope "contract" $storageProfile "composition" "synthetic-cognitive-services/1" "descriptor" $storageDescriptor | toJson | quote }}
+  {{- end }}
 ---
 apiVersion: v1
 kind: Service
@@ -117,6 +135,9 @@ spec:
         - name: {{ $name }}
           image: "{{ $image.repository }}{{ if $image.digest }}@{{ $image.digest }}{{ else }}:{{ $image.tag }}{{ end }}"
           imagePullPolicy: {{ $image.pullPolicy }}
+          {{- if eq $name "fusion-inspect-go" }}
+          command: ["/omega-inspect-provider", "--config", "/config/provider.json"]
+          {{- end }}
           {{- if and $.Values.futureLive.enabled (eq $name "fusion-model") }}
           command: ["/opt/native/python/bin/python3.12", "-m", "integration.single_node.future_live", "/campaign/plan.json", "--approval", "/approval/approval.json", "--component", "/config/component.json", "--supervise"]
           {{- end }}
@@ -152,6 +173,9 @@ spec:
             timeoutSeconds: 2
             failureThreshold: 3
           volumeMounts:
+            {{- if $writerFence }}
+            - {name: writer-authority, mountPath: /writer-authority, readOnly: true}
+            {{- end }}
             {{- if and $.Values.futureLive.enabled (has $name (list "fusion-model" "omega-agent")) }}
             - {name: campaign, mountPath: /campaign, readOnly: true}
             - {name: approval, mountPath: /approval, readOnly: true}
@@ -165,6 +189,13 @@ spec:
             - {name: config, mountPath: /config, readOnly: true}
             - {name: secrets, mountPath: /secrets, readOnly: true}
       volumes:
+        {{- if $writerFence }}
+        - name: writer-authority
+          secret:
+            secretName: {{ required "writerAuthoritySecret must reference separately provisioned current authority" $component.writerAuthoritySecret }}
+            defaultMode: 0440
+            items: [{key: current.json, path: current.json}]
+        {{- end }}
         {{- if $existingState }}
         - name: selected-state
           persistentVolumeClaim: {claimName: {{ $existingState | quote }}}

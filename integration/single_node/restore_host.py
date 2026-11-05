@@ -34,6 +34,8 @@ def main(path):
  owner=None;cfg={};run=Path('/run/fusion');run.mkdir(exist_ok=True)
  if preview and initial['preview']['profile']=='omega-single-node-sustained-preview/1':
   settings,cfg,_,_=configure(path)
+  from .pilot_search_observation import prepare
+  prepare(settings,run,state)
   from .sustained_restore_host import ReadPorts
   owner=ReadPorts(run,role)
  if role in ('fusion-storage','fusion-search') and not preview:

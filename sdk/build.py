@@ -46,15 +46,15 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def wheel(destination, name, files, requires=(), *, entries=None, extras=()):
+def wheel(destination, name, files, requires=(), *, entries=None, extras=(), version=VERSION):
     dist = name.replace('-', '_')
-    info = f'{dist}-{VERSION}.dist-info'
+    info = f'{dist}-{version}.dist-info'
     sources = {target: {'source': source, 'sha256': sha(raw), 'bytes': len(raw)}
                for target, (source, raw) in sorted(files.items())}
     payloads = {target: raw for target, (_, raw) in files.items()}
     payloads[info + '/source-manifest.json'] = json.dumps(
         {'schema': 'byte-exact-source-wheel/1', 'sources': sources}, sort_keys=True, indent=2).encode() + b'\n'
-    metadata = (f'Metadata-Version: 2.1\nName: {name}\nVersion: {VERSION}\n'
+    metadata = (f'Metadata-Version: 2.1\nName: {name}\nVersion: {version}\n'
                 'Summary: Bounded Fusion preview contract/client example\n'
                 'Requires-Python: >=3.12\n' + ''.join(f'Requires-Dist: {x}\n' for x in requires)
                 + ''.join(f'Provides-Extra: {x}\n' for x in extras))
@@ -71,7 +71,7 @@ def wheel(destination, name, files, requires=(), *, entries=None, extras=()):
     stream = io.StringIO(newline='')
     csv.writer(stream).writerows(rows)
     payloads[info + '/RECORD'] = stream.getvalue().encode()
-    path = destination / f'{dist}-{VERSION}-py3-none-any.whl'
+    path = destination / f'{dist}-{version}-py3-none-any.whl'
     with zipfile.ZipFile(path, 'w', zipfile.ZIP_DEFLATED) as archive:
         for target, data in sorted(payloads.items()):
             item = zipfile.ZipInfo(target, date_time=(2026, 1, 1, 0, 0, 0))
@@ -81,7 +81,7 @@ def wheel(destination, name, files, requires=(), *, entries=None, extras=()):
     return {'file': path.name, 'sha256': sha(path.read_bytes()), 'sources': sources}
 
 
-def build(destination):
+def build(destination, *, pilot=False):
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=True)
     shared = {p: (p, (ROOT / p).read_bytes()) for p in CLIENT}
@@ -92,6 +92,14 @@ def build(destination):
         source = 'examples/phase2_provider/' + p
         provider['phase2_provider/' + p] = (source, (ROOT / source).read_bytes())
     operator = {p: (p, (ROOT / p).read_bytes()) for p in OPERATOR}
+    if pilot:
+        selection=json.loads((ROOT/'sdk/pilot-operator-inputs.json').read_bytes())
+        assert selection['profile']=='operator-pilot-package/1'
+        assert len(selection['files'])==len(set(selection['files']))<=320
+        for p in selection['files']:
+            path=ROOT/p
+            assert not Path(p).is_absolute() and '..' not in Path(p).parts and path.is_file() and not path.is_symlink()
+            if p not in shared:operator[p]=(p,path.read_bytes())
     operator['fusion_operator/cli.py'] = ('sdk/operator_cli.py', (ROOT / 'sdk/operator_cli.py').read_bytes())
     for name in OPERATOR_RECIPES:
         source = 'deploy/single-node/' + name
@@ -108,7 +116,8 @@ def build(destination):
                                  'pycryptodome==4.0.0; extra == "chain-key-setup"',
                                  'cffi==2.1.1; extra == "chain-key-setup"',
                                  'pycparser==3.12; extra == "chain-key-setup"'),
-                                entries={'fusion-sustained': 'integration.single_node.sustained_cli:main',
+                                entries={**({'fusion-pilot':'integration.single_node.pilot_cli:main'} if pilot else {}),
+                                         'fusion-sustained': 'integration.single_node.sustained_cli:main',
                                          'fusion-sustained-controls': 'integration.single_node.sustained_control_qualification:main',
                                          'fusion-sustained-restore': 'integration.single_node.sustained_restore_qualification:main',
                                          'fusion-preview-workbench': 'integration.single_node.preview_workbench:main',
@@ -117,7 +126,9 @@ def build(destination):
                                          'fusion-preview-values': 'integration.single_node.preview_values:main',
                                          'fusion-sustained-values': 'integration.single_node.sustained_values:main',
                                          'fusion-import-images': 'fusion_operator.recipes.import_workflow_images:main'},
-                                extras=('artifact-verification', 'preview-install', 'chain-key-setup'))}
+                                extras=('artifact-verification', 'preview-install', 'chain-key-setup'),
+                                version='0.4.0' if pilot else VERSION)}
+    if pilot:result['operator_profile']='operator-pilot-package/1'
     (destination / 'build-manifest.json').write_text(json.dumps(result, sort_keys=True, indent=2) + '\n')
     return result
 
@@ -125,4 +136,6 @@ def build(destination):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True)
-    print(json.dumps(build(parser.parse_args().output), sort_keys=True))
+    parser.add_argument('--pilot',action='store_true')
+    args=parser.parse_args()
+    print(json.dumps(build(args.output,pilot=args.pilot), sort_keys=True))

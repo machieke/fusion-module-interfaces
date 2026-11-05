@@ -5,6 +5,7 @@ receives credentials, kubeconfig, foreign journals or an execution shell.
 """
 import argparse,json,threading,subprocess,secrets,hmac,os
 from pathlib import Path
+from contextlib import nullcontext
 from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 from urllib.parse import urlparse,parse_qs
 from fusion.contracts import canonical,require,ContractError
@@ -133,25 +134,43 @@ class Workbench:
         return self.invoke(body['role'],args)
 
 
-def handler(workbench,port):
+def handler(workbench,port,browser_sessions=None):
+    document=PAGE
+    if browser_sessions is not None:
+        from .pilot_browser_page import page
+        document=page(PAGE)
     class Handler(BaseHTTPRequestHandler):
         def setup(self):
             super().setup();self.connection.settimeout(3)
         def log_message(self,*_):pass
         def reply(self,value,status=200,html=False):
-            raw=PAGE.encode() if html else canonical(value);self.send_response(status)
+            if status==200 and getattr(self,'recheck_browser',None):
+                try:browser_sessions.authenticate(self.recheck_browser)
+                except ContractError:value={'error':'UNAUTHORIZED'};status=400;html=False
+            raw=document.encode() if html else canonical(value);self.send_response(status)
             self.send_header('Content-Type','text/html; charset=utf-8' if html else 'application/json')
             self.send_header('Content-Length',str(len(raw)));self.send_header('Cache-Control','no-store')
             self.send_header('X-Content-Type-Options','nosniff');self.send_header('Referrer-Policy','no-referrer')
             self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'; connect-src 'self'")
+            for name,value in getattr(self,'extra_headers',[]):self.send_header(name,value)
             self.end_headers();self.wfile.write(raw)
         def process(self,post=False):
             try:
                 require(len(self.headers.get_all('Host',[]))==1 and not self.headers.get_all('Transfer-Encoding',[]),'UNAUTHORIZED')
                 require(self.headers.get('Host') in ('127.0.0.1:'+str(port),'localhost:'+str(port)),'UNAUTHORIZED')
                 require(self.client_address[0]=='127.0.0.1','UNAUTHORIZED')
-                parsed=urlparse(self.path)
-                if parsed.path.startswith('/api/'):
+                parsed=urlparse(self.path);browser_auth=None;self.recheck_browser=None
+                require(not parsed.fragment,'UNAUTHORIZED')
+                if browser_sessions is not None and parsed.path.startswith('/api/'):
+                    require(not self.headers.get_all('Authorization',[]),'UNAUTHORIZED')
+                    require(self.headers.get('Sec-Fetch-Site','same-origin') in ('same-origin','none'),'UNAUTHORIZED')
+                    if parsed.path!='/api/login':
+                        cookies=self.headers.get_all('Cookie',[]);csrf=self.headers.get_all('X-Omega-CSRF',[])
+                        require(len(cookies)==1 and (len(csrf)==1 if post else len(csrf)<=1),'UNAUTHORIZED')
+                        browser_auth=browser_sessions.authenticate(cookies[0],csrf[0] if csrf else None,post)
+                        self.recheck_browser=cookies[0]
+                    else:require(post and not parsed.query,'UNAUTHORIZED')
+                elif parsed.path.startswith('/api/'):
                     auth=self.headers.get_all('Authorization',[])
                     require(len(auth)==1 and hmac.compare_digest(auth[0],'Bearer '+workbench.token),'UNAUTHORIZED')
                 body=None
@@ -159,14 +178,42 @@ def handler(workbench,port):
                     require(len(self.headers.get_all('Origin',[]))==1 and len(self.headers.get_all('Content-Length',[]))==1 and len(self.headers.get_all('Content-Type',[]))==1)
                     require(self.headers.get('Origin') in ('http://127.0.0.1:'+str(port),'http://localhost:'+str(port)),'UNAUTHORIZED')
                     require(self.headers.get('Content-Type')=='application/json','UNSUPPORTED_OPERATION')
-                    size=int(self.headers.get('Content-Length','0'));require(0<size<=16384)
+                    size=int(self.headers.get('Content-Length','0'));maximum=65536 if browser_sessions is not None and parsed.path=='/api/search-maintenance' else 16384;require(0<size<=maximum)
                     raw=self.rfile.read(size);require(len(raw)==size)
                     body=strict_json(raw);require(type(body) is dict)
-                with workbench.lock:
+                if browser_sessions is not None and parsed.path=='/api/login':
+                    require(set(body)=={'user','credential'})
+                    token,value=browser_sessions.login(body['user'],body['credential'])
+                    self.extra_headers=[('Set-Cookie','omega_pilot='+token+'; HttpOnly; SameSite=Strict; Path=/')]
+                    self.reply(value);return
+                if browser_auth is not None and parsed.path=='/api/auth':
+                    require(not post and not parsed.query)
+                    self.reply(browser_sessions.public(browser_auth[1],browser_auth[2]));return
+                if browser_auth is not None and parsed.path=='/api/logout':
+                    require(post and body=={} and not parsed.query)
+                    browser_sessions.logout(browser_auth[0]);self.recheck_browser=None;self.extra_headers=[('Set-Cookie','omega_pilot=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0')]
+                    self.reply({'signed_out':True,'work_cancelled':False});return
+                # Browser overload is explicit; waiting must not create an
+                # unbounded request queue or extend any owner deadline.
+                acquired=workbench.lock.acquire(timeout=0 if browser_sessions is not None else -1)
+                require(acquired,'OVERLOADED')
+                try:
+                    with workbench.as_user(browser_auth[1].user) if browser_auth else nullcontext():
+                        self.dispatch(parsed,body,post)
+                finally:workbench.lock.release()
+            except (ContractError,ValueError,RuntimeError,TimeoutError,KeyError,TypeError,OSError,subprocess.SubprocessError) as error:
+                self.reply({'error':error.code if isinstance(error,ContractError) else 'NOT_AVAILABLE'},400)
+        def dispatch(self,parsed,body,post):
                     if post:
                         require(self.headers.get('Origin') in ('http://127.0.0.1:'+str(port),'http://localhost:'+str(port)),'UNAUTHORIZED')
                         actions={'/api/action':workbench.action,'/api/preflight':workbench.capabilities,'/api/worker-control':workbench.worker_control,
                             '/api/continuation':workbench.continuation,'/api/search-maintenance':workbench.maintenance}
+                        if browser_sessions is not None:
+                            actions['/api/subscriptions']=workbench.subscription
+                            actions['/api/registry-maintenance']=workbench.registry_maintenance
+                            actions['/api/explore']=workbench.explore
+                            actions['/api/handover']=workbench.handover
+                            actions['/api/workflows']=workbench.workflow
                         require(parsed.path in actions and self.headers.get('Content-Type')=='application/json','UNSUPPORTED_OPERATION')
                         self.reply(actions[parsed.path](body))
                     elif parsed.path=='/':self.reply(None,html=True)
@@ -185,8 +232,6 @@ def handler(workbench,port):
                         self.reply(workbench.observe(dict(role=args['role'][0],session=args['session'][0],after=int(args['after'][0]))))
                     elif parsed.path=='/favicon.ico':self.reply({})
                     else:self.reply({'error':'NOT_FOUND'},404)
-            except (ContractError,ValueError,RuntimeError,TimeoutError,KeyError,TypeError,OSError,subprocess.SubprocessError) as error:
-                self.reply({'error':error.code if isinstance(error,ContractError) else 'NOT_AVAILABLE'},400)
         def do_GET(self):self.process()
         def do_POST(self):self.process(True)
     return Handler
