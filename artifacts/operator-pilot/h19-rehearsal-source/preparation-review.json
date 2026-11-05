@@ -1,0 +1,89 @@
+{
+  "additional_live_generations": 0,
+  "aggregate_schema": {
+    "classification": "RECORDED_MODEL_PROPOSALS_REAL_NATIVE_TOOLS_AND_DEPLOYED_PROVIDERS",
+    "clean_install_separate": true,
+    "failed_status": "FAIL_RETAINED",
+    "native_counts": {
+      "captured_inputs": 28,
+      "direct_inputs": 22,
+      "internal_deliveries": 6
+    },
+    "original_bound_seconds": 4200,
+    "pass_status": "PASS",
+    "profile": "task-local-final-H-native-rehearsal/1",
+    "public_withheld_native_verification": "UNAVAILABLE_PRIVATE",
+    "required_cleanup_passes": 2
+  },
+  "cluster_operations": 0,
+  "deduplicated_authored_methods": 14,
+  "execution": "NOT_RUN",
+  "guard_tests": {
+    "authored_methods": 14,
+    "before_after_exact": true,
+    "classification": "PURE_SELECTION_FIXTURES",
+    "elapsed_seconds": 0.004,
+    "executed_invocations": 14,
+    "log": "guards-05.log",
+    "log_sha256": "d73708223053908d6c7e991520ef1c38914f520b8bc61853bfc5e9014b44d8a4",
+    "source_manifest_sha256": "51612c595df43198abfcfa8b1f4f8446ed99d5ef9b44b05a850ace7bb7b83303"
+  },
+  "historical_runs": [
+    {
+      "elapsed_seconds": 0.004,
+      "log_sha256": "2d79b3485dd0b7d65d8cddb6b691ecc0f169c4244366b4eb8838fece47202145",
+      "methods": 12,
+      "run": "01",
+      "source_manifest_sha256": "e86f4656ec3170b175bfb432527e4c27f15120aa0f7625bf127dd4ecdf64436c"
+    },
+    {
+      "elapsed_seconds": 0.004,
+      "log_sha256": "2d79b3485dd0b7d65d8cddb6b691ecc0f169c4244366b4eb8838fece47202145",
+      "methods": 12,
+      "run": "02",
+      "source_manifest_sha256": "7b20828ec0d2c3c836297aa918c30af972d88a31b2ac15a37a62c38e1e044f17"
+    },
+    {
+      "elapsed_seconds": 0.004,
+      "log_sha256": "d73708223053908d6c7e991520ef1c38914f520b8bc61853bfc5e9014b44d8a4",
+      "methods": 14,
+      "run": "03",
+      "source_manifest_sha256": "e04584cb7841cbd27b3614777810a2f370db6531be4df0e1a46493b8496013f6"
+    },
+    {
+      "elapsed_seconds": 0.005,
+      "log_sha256": "507a5dc11e25644b54a68662d9c1f667f29219783c815e426607a77ebb12eb8f",
+      "methods": 14,
+      "run": "04",
+      "source_manifest_sha256": "7fdb0fb7ce7b31448ee349f08d81b23f51f3b6772b4be92b882b8c158fe7cd40"
+    }
+  ],
+  "independent_go_interface_review": "PASS_STATIC_NO_NEW_RUNTIME_RESULT",
+  "native_submissions": 0,
+  "no_runtime_sdk_changes": true,
+  "old_zero_allocation_plan_preserved": true,
+  "planned_counts": {
+    "direct": 22,
+    "internal": 6
+  },
+  "private_raw_publication": {
+    "availability": "UNAVAILABLE_PRIVATE",
+    "bytes": null,
+    "path": null,
+    "sha256": null
+  },
+  "profile": "final-packet-H-rehearsal-preparation-review/1",
+  "readiness_limit": {
+    "automatic_refresh": false,
+    "b_last_before_story": true,
+    "failure_preserved": true,
+    "latency_guarantee": false,
+    "prior_B14_first_remember_to_delegate_seconds": 188.73,
+    "profile_maximum_seconds": 300
+  },
+  "reviewed_go_order": "Capacity provision before first owner startup; separate corpus; existing baseline then template replacement; exported complete direct/internal receipts; changed Pod and exact result; capacity and drain only afterward",
+  "source_map": "source-map.json",
+  "source_map_sha256": "f4bacb44a3da65c6eded770dd275dfaffde8d04561b8440e7ab2a01ae21500e5",
+  "status": "DISABLED_READY_FOR_PARENT_REVIEW",
+  "total_guard_invocations": 66
+}

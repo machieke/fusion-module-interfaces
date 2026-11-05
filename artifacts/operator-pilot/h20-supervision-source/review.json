@@ -1,0 +1,37 @@
+{
+  "additional_live_generations": 0,
+  "changes": [
+    "clean expected source SHA-256",
+    "clean source packet-relative path h20-clean-install-source/h20-offline.py"
+  ],
+  "cluster_calls": 0,
+  "full_H20_launches": 0,
+  "original_bounds_preserved": {
+    "clean_inner": 1800,
+    "clean_process_envelope": 1980,
+    "native": 4200,
+    "native_process_envelope": 4360
+  },
+  "previous_process_qualification": {
+    "authored_methods": 18,
+    "source": "../h19-supervision-source/review.json",
+    "status": "HISTORICAL_PROCESS_FIXTURES_PASS_NOT_RERUN_FOR_H20"
+  },
+  "previous_wrapper_sha256": "34400330527071f74473d90a877f2fb6c835281a6e212babb3714a6b0f165e19",
+  "private_records": {
+    "availability": "UNAVAILABLE_PRIVATE",
+    "bytes": null,
+    "path": null,
+    "sha256": null
+  },
+  "process_body": "BYTE_IDENTICAL_TO_QUALIFIED_V2",
+  "profile": "H20-clean-seam-supervision-review/1",
+  "seam_check": {
+    "method": "test_supervisor_only_clean_pin_and_path_change",
+    "source": "../h20-clean-install-source/test_source_isolation.py",
+    "status": "PASS"
+  },
+  "selected_wrapper_sha256": "c1819954bec4f1dc6c6cd7c1eca4a7a52ed93e283b785d11c8227e818b2ffdcd",
+  "status": "STATIC_CLEAN_SELECTION_SUCCESSOR_FULL_LAUNCH_NOT_RUN",
+  "unchanged_native_sha256": "30165c0fe79f7a5778ef2973d4d91cf8536ae6783f68e74191f693b62665bb28"
+}

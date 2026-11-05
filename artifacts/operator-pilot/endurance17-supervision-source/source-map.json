@@ -1,0 +1,72 @@
+{
+  "additional_live_generations": 0,
+  "files": [
+    {
+      "bytes": 15952,
+      "kind": "exact_tested_source",
+      "path": "endurance17-supervisor.py",
+      "sha256": "487923200aacc344ebd6c89628b8fa71fe744a3fe4fc7069e87738bfe719bc30"
+    },
+    {
+      "bytes": 7390,
+      "kind": "exact_tested_source",
+      "path": "test_endurance17_supervisor.py",
+      "sha256": "37eafa45a8315d59524ba4e0fc081908d571ffec73531053f4b01cf32868b788"
+    },
+    {
+      "bytes": 657,
+      "kind": "exact_tested_source",
+      "path": "run-endurance17-guards.py",
+      "sha256": "06ec0dc73194487a911709e51dba10eed460b9d1522011789b3550dd6ba4904e"
+    },
+    {
+      "bytes": 1669,
+      "kind": "primary_test_log",
+      "path": "guards03.log",
+      "sha256": "a91cd728589b84241ea93202ff4070d57a5b52763c670e6f07919a04a4750197"
+    }
+  ],
+  "private_inputs": {
+    "bytes": null,
+    "excluded": [
+      "execution/release plans",
+      "kubeconfig and TLS material",
+      "credentials",
+      "process identities",
+      "owner receipts and journals",
+      "private plan or state hashes"
+    ],
+    "sha256": null,
+    "status": "UNAVAILABLE_PRIVATE"
+  },
+  "profile": "task-local-supervision-source-review/1",
+  "qualification_execution_claim": "NONE_FROM_THESE_TESTS; A17 live qualification status is separate.",
+  "runtime_sdk_changes": false,
+  "state": "EXACT_SOURCE_AND_EXISTING_GUARD_EVIDENCE",
+  "test_run": {
+    "all_three_run_invocations": 34,
+    "authored_methods": 12,
+    "classification": "LOCAL_PROCESS_AND_GUARD_FIXTURES_NO_CLUSTER_NATIVE_OR_MODEL",
+    "distinct_methods_across_task_local_runs": 12,
+    "elapsed_seconds": 2.191,
+    "historical_runs_preserved": [
+      {
+        "elapsed_seconds": 1.589,
+        "methods_executed": 10,
+        "source_version": "EARLIER_TASK_LOCAL_DRAFT",
+        "status": "PASS"
+      },
+      {
+        "elapsed_seconds": 2.151,
+        "methods_executed": 12,
+        "source_version": "SAME_FINAL_SUPERVISOR_AND_TESTS",
+        "status": "PASS"
+      }
+    ],
+    "main_programme_count_increment": 0,
+    "method_invocations": 12,
+    "network_guard": "socket connect/name lookup denied in test parent; only exact Python fixture children permitted. Children run reviewed process fixtures, not model/native/owner tools.",
+    "source_capture": "Selected source bytes copied before final run and unchanged afterward; exact command/harness included. Private plan-bearing snapshot withheld.",
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "actual_operator_module": {
+    "retained_installed_bytes": "MATCH",
+    "source": "fusion/preview_application.py",
+    "source_manifest_bytes": 15703,
+    "source_manifest_sha256": "6a24f2a8e3295066b8c2d9079853c178f176f474e0ea116ef81636a898c54ac8"
+  },
+  "actual_original_failure": {
+    "additional_live_generations": 0,
+    "cause": "Unconditional availability denial of the exact manifest-pinned operator helper fusion.preview_application.",
+    "clean_source_sha256": "6084ee910656fdc147d6d824d7b1143b28b07b096fd529d4c6fa8d38fa49c9e5",
+    "client_and_provider_source_checks": "PASS",
+    "cluster_calls": 0,
+    "elapsed_seconds": 7.948502471670508,
+    "native_inputs": 0,
+    "packet_manifest_sha256": "73f56715771e41923783e58b9b48da7bd5b3f37d3ceef91d2f344d8f67fa2a89",
+    "raw_primary": {
+      "availability": "UNAVAILABLE_PRIVATE",
+      "bytes": null,
+      "path": null,
+      "sha256": null
+    },
+    "stage": "operator-sources",
+    "status": "FAIL_RETAINED"
+  },
+  "counts": {
+    "additional_live_generations": 0,
+    "both_run_invocations": 38,
+    "cluster_calls": 0,
+    "distinct_authored_methods": 19,
+    "full_H20_installations": 0,
+    "native_H_invocations": 0,
+    "new_native_inputs": 0
+  },
+  "decision": {
+    "client_provider": "Owner helper availability remains denied.",
+    "generated_initializer": "Package initializer comes from the pinned wheel and is checked for expected installed origin; it is not a source-manifest row and is never imported by the new checker.",
+    "inference_libraries": "torch/transformers/chromadb availability remains denied.",
+    "operator": "Allow only manifest-pinned preview_application availability at the exact installed origin, byte count and SHA-256; all fusion imports blocked and before/after sys.modules checks required.",
+    "scope": "Only CHECK_SOURCES changed; installation, verifier, runtime, SDK and native H19 code are unchanged."
+  },
+  "earlier_isolated_candidate": {
+    "cause": "An extra candidate check incorrectly required the wheel-generated fusion/__init__.py to be a source-manifest row. Both failures stopped validation; no full clean/native run occurred.",
+    "clean_source_sha256": "e48377f32879a4a5d6fcfe856ea3e592caee9dc57b1dd109af75eef0d73adc86",
+    "failures": 2,
+    "guard_source_sha256": "bbc326ef15fddfe5569211970b2db1a64a226a7e18a81cb5d89318f9b618e054",
+    "invocations": 19,
+    "raw_check_records": {
+      "availability": "UNAVAILABLE_PRIVATE",
+      "bytes": null,
+      "path": null,
+      "sha256": null
+    },
+    "status": "FAILED_RETAINED"
+  },
+  "final_isolated_checks": {
+    "actual_owner_import_attempt": "REFUSED_BEFORE_OWNER_EXECUTION",
+    "authored_methods": 19,
+    "classification": "Source validation only, not module/provider/native workflow execution.",
+    "elapsed_seconds": 1.891,
+    "environment": "DISCONNECTED_BWRAP_READ_ONLY_PACKAGE_MOUNTS",
+    "invocations": 19,
+    "original_denial_reproduced": true,
+    "real_retained_installation_snippets": 5,
+    "real_roles": {
+      "client_source_files": 18,
+      "operator_source_files": 271,
+      "provider_source_files": 7
+    },
+    "status": "PASS",
+    "synthetic_distribution_snippets": 12,
+    "validation_subprocesses": 17
+  },
+  "negative_controls": [
+    "client/provider owner leakage",
+    "operator helper absent from source manifest",
+    "modified helper bytes",
+    "same-byte helper shadowing at a different origin",
+    "helper resolving outside /work",
+    "missing helper file",
+    "preloaded owner module",
+    "each inference-library availability",
+    "attempted native-owner import"
+  ],
+  "private_evidence": {
+    "availability": "UNAVAILABLE_PRIVATE",
+    "bytes": null,
+    "path": null,
+    "sha256": null
+  },
+  "profile": "H20-clean-source-successor-review/1",
+  "remaining_gates": [
+    "Reviewed packet20/implementation and separately recorded successor binding.",
+    "Actual complete H20 clean installation and unchanged artifact verifier.",
+    "Separate native root release and original H19 native workload."
+  ],
+  "sources": {
+    "clean_sha256": "6911b2ccc03042c4d0543b25b0881d01a80cf271f5f0608219b2a79b527371e3",
+    "disabled_plan_sha256": "9dcd3e230900a14cb68ef4e52a320acf8bffc0edfdd4c8144f77526eb5ed20d8",
+    "final_guard_log_sha256": "2c59e3e056d3f2bd6db82965e444bf0d5c425bc27a9d5ba95843a3e9e3721161",
+    "guard_source_sha256": "45e858440803775e521bb5e54e473f31cdd756795ab4c95d48b2e876ac985bbd",
+    "supervisor_sha256": "c1819954bec4f1dc6c6cd7c1eca4a7a52ed93e283b785d11c8227e818b2ffdcd"
+  },
+  "status": "ISOLATED_SOURCE_CHECKS_PASS_FULL_INSTALL_NOT_RUN",
+  "unchanged": {
+    "SDK25_manifest_sha256": "f902477c74ed25c5753d5903fa3c9071c6a6820172c3cc6cc8bb8ef2fd27ee90",
+    "native_H19_source_sha256": "30165c0fe79f7a5778ef2973d4d91cf8536ae6783f68e74191f693b62665bb28",
+    "old_H19_bundles_and_packet": true,
+    "runtime14_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+    "source_delta_assertion": "AST_EQUAL_EXCEPT_CHECK_SOURCES",
+    "supervisor_delta_assertion": "ONLY_CLEAN_SHA_AND_PACKET_RELATIVE_PATH"
+  }
+}

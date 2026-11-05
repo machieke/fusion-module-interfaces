@@ -1,0 +1,92 @@
+{
+  "actual_fixture_control": "ready -> clicked",
+  "additional_live_generations": 0,
+  "adopted_children_reaped": 1,
+  "all_children_reaped": true,
+  "classification": "DISCONNECTED_REAL_TOOLS_AUTHORED_LOOPBACK_PAGE",
+  "cluster_operations": 0,
+  "console_errors": 0,
+  "elapsed_seconds": 6.0827693697065115,
+  "fixture_server_stopped": true,
+  "generative_runtime_contact": false,
+  "historical_failed_attempts": [
+    {
+      "additional_live_generations": 0,
+      "all_children_reaped": true,
+      "attempt": 1,
+      "cause": "AUTHORED_FIXTURE_PYTHON_QUOTING_BEFORE_BROWSER",
+      "cluster_operations": 0,
+      "elapsed_seconds": 30.97092228103429,
+      "native_source_sha256": "352658b175b455ec866343ee6abd7456e80c171e7af1767e1c98ab1e71bc76bf",
+      "native_submissions": 0,
+      "retained": "TASK_LOCAL_SOURCE_SNAPSHOT_AND_FULL_FAILED_REPORT",
+      "source_sha256": "0979d16370909304ecfc2d389a4940a438f2a55c563d8d35c8e747149491855a",
+      "status": "FAIL_RETAINED"
+    },
+    {
+      "additional_live_generations": 0,
+      "all_children_reaped": true,
+      "attempt": 2,
+      "cause": "PROOFSHOT_RUN_DEVSERVER_PIPES_HELD_START_CLI",
+      "cluster_operations": 0,
+      "elapsed_seconds": 41.70374144706875,
+      "native_source_sha256": "352658b175b455ec866343ee6abd7456e80c171e7af1767e1c98ab1e71bc76bf",
+      "native_submissions": 0,
+      "retained": "TASK_LOCAL_SOURCE_SNAPSHOT_AND_FULL_FAILED_REPORT",
+      "source_sha256": "85e4e091c9c7f2a2575309aa8c75cb60ede5cd218949442fdad5a409da5b5201",
+      "status": "FAIL_RETAINED"
+    }
+  ],
+  "legacy_refusal_expected": true,
+  "native_submissions": 0,
+  "network": "ISOLATED_LOOPBACK_ONLY",
+  "observations": [
+    {
+      "label": "legacy-symlink-refusal",
+      "returncode": 127
+    },
+    {
+      "label": "native-precluster-preflight",
+      "returncode": 0
+    },
+    {
+      "label": "proofshot-start",
+      "returncode": 0
+    },
+    {
+      "label": "fixture-before",
+      "returncode": 0
+    },
+    {
+      "label": "fixture-before-screenshot",
+      "returncode": 0
+    },
+    {
+      "label": "fixture-click",
+      "returncode": 0
+    },
+    {
+      "label": "fixture-result",
+      "returncode": 0
+    },
+    {
+      "label": "fixture-after-screenshot",
+      "returncode": 0
+    },
+    {
+      "label": "proofshot-stop",
+      "returncode": 0
+    }
+  ],
+  "owner_state_mounted": false,
+  "profile": "h21-disconnected-browser-tool-qualification/1",
+  "proofshot_report": "tool-proof/SUMMARY.md",
+  "screenshots_visually_reviewed": true,
+  "source_files": {
+    "h19-adopter-namespace.py": "b005d88e40fa2d7ccdf091d7e04bffbe01ece6a9861e9bdedd0ba7b0558011bf",
+    "h19-native.py": "352658b175b455ec866343ee6abd7456e80c171e7af1767e1c98ab1e71bc76bf",
+    "qualify_browser_tools.py": "0487a4e3420b6b22eccfaf13b28b634d0276196b117ee968dda1ebe3f27b01af"
+  },
+  "source_sha256": "0487a4e3420b6b22eccfaf13b28b634d0276196b117ee968dda1ebe3f27b01af",
+  "status": "PASS"
+}

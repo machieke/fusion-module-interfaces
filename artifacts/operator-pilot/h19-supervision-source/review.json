@@ -1,0 +1,169 @@
+{
+  "change": "The selected Python and libc lack public pidfd wrappers. Successor uses verified x86_64 UAPI pidfd syscalls through the pinned libc, preserving PID/start-tick checks and stable pidfd signals. No PID-only fallback.",
+  "counts": {
+    "actual_H_invocations": 0,
+    "additional_live_generations": 0,
+    "all_three_run_invocations": 53,
+    "cluster_calls": 0,
+    "new_native_inputs": 0,
+    "socket_calls": 0,
+    "unique_authored_methods": 18
+  },
+  "final_tests": {
+    "authored_methods": 18,
+    "elapsed_seconds": 11.452,
+    "executed_invocations": 18,
+    "status": "PASS"
+  },
+  "frozen_H_bundles": {
+    "changed": 0,
+    "files": 15
+  },
+  "historical_procedure": {
+    "classification": "HISTORICAL_COMPILED_ONLY_NOT_RECOMMENDED_EXECUTABLE_COMMAND",
+    "path": "h19-detached-launch-procedure.md",
+    "unchanged": true
+  },
+  "historical_runs": [
+    {
+      "cause": "Missing public pidfd wrappers caused refusal before fixture H-child launch. Two directly created short-lived fixture children ended naturally when the fixture cleanup helper also lacked that wrapper.",
+      "errors": 2,
+      "executed_invocations": 17,
+      "failures": 5,
+      "label": "01",
+      "process_records": {
+        "availability": "UNAVAILABLE_PRIVATE",
+        "bytes": null,
+        "path": null,
+        "sha256": null
+      },
+      "raw_log": {
+        "availability": "UNAVAILABLE_PRIVATE",
+        "bytes": null,
+        "path": null,
+        "sha256": null
+      },
+      "source_identity": {
+        "guard_source_sha256": "54fd5639b3e5a1ac53c700c38a424aca3adf353618f4890129f222842cffc832",
+        "launcher_sha256": "318c5060e78a55b6e6c5c8b7d07776e5b111de1c2c843cb57fbaec1939060047"
+      },
+      "status": "FAILED_RETAINED"
+    },
+    {
+      "cause": "The extracted unit-test function scope omitted utc after a successful pidfd signal; the launcher source was unchanged in final run03.",
+      "errors": 1,
+      "executed_invocations": 18,
+      "failures": 0,
+      "label": "02",
+      "process_records": {
+        "availability": "UNAVAILABLE_PRIVATE",
+        "bytes": null,
+        "path": null,
+        "sha256": null
+      },
+      "raw_log": {
+        "availability": "UNAVAILABLE_PRIVATE",
+        "bytes": null,
+        "path": null,
+        "sha256": null
+      },
+      "source_identity": {
+        "guard_source_sha256": "93f4df166b042de4764231f5c930b4354545ed2f67cecfa3a2580f4be83861b8",
+        "launcher_sha256": "34400330527071f74473d90a877f2fb6c835281a6e212babb3714a6b0f165e19"
+      },
+      "status": "FAILED_RETAINED"
+    }
+  ],
+  "kernel_prerequisite": {
+    "architecture": "x86_64",
+    "host_configuration_changes": 0,
+    "kernel": "5.4.0-216-generic",
+    "libc_sha256": "53b909551f8e581120ddc2d24cfb5df76c52e3c2e2a5dac0d202b25638b3e902",
+    "pidfd_open_syscall": 434,
+    "pidfd_send_signal_syscall": 424,
+    "self_pidfd_signal_zero": "PASS",
+    "uapi_header_sha256": "698d4666c969b0b4d0bed328b4a4f3cab765ec1a9948e0f14751f0ce56d91535"
+  },
+  "methodology": {
+    "process_harness": "The unchanged post-validation supervisor body executes with file/sleep/fork-only fixture children; guard setup is substituted explicitly and qualified separately.",
+    "scope_limit": "This is not a clean-install/native/browser/provider campaign or whole-host recovery pass.",
+    "static_guards": "The exact pre-fork guard segment executes against synthetic files/plans. No valid H child is invoked.",
+    "time_fixtures": "Timeout uses an explicit monotonic jump. TERM-to-KILL test uses accelerated fixture monotonic time. Source1800/4200-second bounds remain unchanged."
+  },
+  "observed_cleanup": {
+    "active_fixture_processes": 0,
+    "audit_signals_sent": 0,
+    "observed_fixture_zombies": 0,
+    "raw_inventory": {
+      "availability": "UNAVAILABLE_PRIVATE",
+      "bytes": null,
+      "path": null,
+      "sha256": null
+    }
+  },
+  "preserved_original_bounds": {
+    "clean_inner_seconds": 1800,
+    "clean_outer_timeout_seconds": 1830,
+    "native_cleanup_reserved_seconds": 300,
+    "native_seconds": 4200,
+    "supervised_clean_max_seconds": 1980,
+    "supervised_native_max_seconds": 4360
+  },
+  "private_primary": {
+    "availability": "UNAVAILABLE_PRIVATE",
+    "bytes": null,
+    "path": null,
+    "sha256": null
+  },
+  "profile": "sanitized-H19-supervision-source-review/1",
+  "qualifications": {
+    "SIGKILL_after_TERM_ignored": "REAL_PROCESS_FIXTURE_WITH_ACCELERATED_TEST_CLOCK_PASS",
+    "SIGTERM_barrier": "REAL_PROCESS_FIXTURE_PASS",
+    "duplicate_launch_refusal": "STATIC_GUARD_PASS",
+    "nested_setsid_subreaper": "REAL_PROCESS_FIXTURE_PASS",
+    "parent_exit_survival": "REAL_PROCESS_FIXTURE_PASS",
+    "pidfd_start_tick_refusal": "REAL_PROCESS_FIXTURE_PASS",
+    "source_and_bounds": "STATIC_GUARD_PASS",
+    "timeout_branch": "REAL_PROCESS_FIXTURE_WITH_EXPLICIT_MONOTONIC_JUMP_PASS"
+  },
+  "recommended_commands": {
+    "inner_sources": "Same final packet; frozen native11 and clean4 bundles unchanged.",
+    "path": "commands.md",
+    "sha256": "105c34c978600ca038c65126789052071c46622fb86667b247ad168fc5e5c390",
+    "status": "PREPARED_NOT_EXECUTED",
+    "wrapper_sha256": "34400330527071f74473d90a877f2fb6c835281a6e212babb3714a6b0f165e19",
+    "wrapper_source": "artifacts/operator-pilot/h19-supervision-source/h19-detached-command-v2.py from the reviewed final packet"
+  },
+  "remaining_gates": [
+    "Final packet and implementation binding remain separate prerequisites.",
+    "Clean and native H execution have not occurred.",
+    "No survival guarantee for host reboot, OOM, whole-cgroup kill or SIGKILL of supervisor.",
+    "A detached acknowledgment or process terminal report is not an owner receipt or workflow PASS."
+  ],
+  "scope": "Inspection of a task-local process launcher; no module/runtime/SDK or frozen H recipe change.",
+  "sources": {
+    "final_log": {
+      "path": "guards-03.log",
+      "sha256": "6511b9e8578a1c4cc67fd163913396febc95f8241c17e674b7a18e5e7155cf5a"
+    },
+    "fixture_child": {
+      "path": "fixture-child.py",
+      "sha256": "dbb57d0d9af22e87c7f4aa4fac9e0493be14ebe5d7ca578b40d6fcef1a284a4c"
+    },
+    "guard_source": {
+      "path": "test_h19_detached_mechanics_v3.py",
+      "sha256": "dd9458b051560004711b55f5c9adb66991ef8b31220a9e4500af669ce8276e46"
+    },
+    "original_command": {
+      "path": "h19-detached-command.py",
+      "sha256": "318c5060e78a55b6e6c5c8b7d07776e5b111de1c2c843cb57fbaec1939060047",
+      "status": "HISTORICAL_COMPILED_ONLY_THEN_PREREQUISITE_REFUSED"
+    },
+    "selected_command": {
+      "path": "h19-detached-command-v2.py",
+      "sha256": "34400330527071f74473d90a877f2fb6c835281a6e212babb3714a6b0f165e19",
+      "status": "PROCESS_FIXTURES_QUALIFIED"
+    }
+  },
+  "status": "PROCESS_FIXTURES_PASS_ACTUAL_H_NOT_RUN"
+}

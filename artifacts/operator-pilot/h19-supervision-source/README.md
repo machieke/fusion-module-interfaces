@@ -1,0 +1,11 @@
+# H supervision inspection sources
+
+The selected task-local launcher is [h19-detached-command-v2.py](h19-detached-command-v2.py). It has process-fixture qualification only; actual H remains **NOT_RUN**. It launches the separately frozen H entrypoint from the final packet and changes no accepted work limits, runtime, SDK, profile or owner state.
+
+[review.json](review.json) distinguishes the final 18-method PASS from both retained earlier failures. The three runs contain 53 invocations of 18 distinct authored methods. [guards-03.log](guards-03.log) is the exact final log. Raw process records and earlier failure logs remain private and are not represented by public identifying hashes.
+
+The original [h19-detached-command.py](h19-detached-command.py) and [compiled-only procedure](h19-detached-launch-procedure.md) are retained for inspection of the correction. They are historical; their public pidfd wrappers are unavailable in the selected Python/libc. Use the v2 source for any separately released future launch.
+
+[test_h19_detached_mechanics_v3.py](test_h19_detached_mechanics_v3.py) is the exact executed guard source. It contains the fixture-harness generator and uses [fixture-child.py](fixture-child.py)'s exact embedded bytes. The harness extracts the unchanged supervisor body while substituting static setup and, in two labeled cases, the fixture clock. Static source/deadline/release/duplicate guards are tested independently before fork. The guards use fixed task-local paths and exclusive output directories retained from that execution; this inspection copy is not a newly portable test entrypoint and must not be rerun over those directories. No source rewrite or new test run is claimed by publication.
+
+Source hashes and file sizes are in [source-map.json](source-map.json). The sibling frozen H native and clean-install bundles remain byte-exact. No enabled plan, root release, kubeconfig, credential, private journal or captured native result is included here. Future use still requires the reviewed final packet, the separate release and fresh exclusive launch records. The source-level libc/architecture checks and kernel self-pidfd probe fail closed; there is no PID-only fallback.

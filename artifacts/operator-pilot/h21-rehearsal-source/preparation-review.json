@@ -1,0 +1,113 @@
+{
+  "additional_live_generations": 0,
+  "aggregate_schema": {
+    "classification": "RECORDED_MODEL_PROPOSALS_REAL_NATIVE_TOOLS_AND_DEPLOYED_PROVIDERS",
+    "clean_install_separate": true,
+    "failed_status": "FAIL_RETAINED",
+    "mandatory_phase_count": 18,
+    "native_counts": {
+      "captured_inputs": 28,
+      "direct_inputs": 22,
+      "internal_deliveries": 6
+    },
+    "original_bound_seconds": 4200,
+    "pass_status": "PASS",
+    "profile": "task-local-final-H-native-rehearsal/1",
+    "public_withheld_native_verification": "UNAVAILABLE_PRIVATE",
+    "required_cleanup_passes": 2
+  },
+  "changes": [
+    "Fresh adopter21 browser/provider namespaces and scope/identity selections",
+    "Same pinned agent-browser ELF mounted at regular /browser-bin/agent-browser, PATH precedence; no new host-home mount",
+    "Explicit exact binary pin plus already-existing full Node/Chrome tree pins",
+    "Disconnected real version/help preflight before any cluster operation, bounded30seconds inside original4200seconds",
+    "H20 corrected clean source selection; historical native filenames/profile/output retained"
+  ],
+  "cluster_operations": 0,
+  "execution": "NOT_RUN",
+  "guard_tests": {
+    "classification": "PURE_SELECTION_FIXTURES",
+    "deduplicated_methods_this_successor": 24,
+    "latest_native_methods": 21,
+    "latest_supervisor_methods": 3,
+    "latest_total_methods": 24,
+    "runs": [
+      {
+        "log_sha256": "234a78bdd24b62ce5d94d7fdb6d0bf2cff3fe9ff65b86f8293bce12635a31a85",
+        "methods": 20,
+        "source_epoch": 1,
+        "source_manifest_sha256": "0e7a4c8fd534dc1bf1e8b7c82959d5a4f8f47d354e506621bd5c90b7ea773520",
+        "status": "PASS"
+      },
+      {
+        "log_sha256": "205f4ef07d2e27d931b87ac7eff0fe720ba6b16d4db58ca9b9e37535a2f4fc2d",
+        "methods": 21,
+        "source_epoch": 2,
+        "source_manifest_sha256": "448f6b58e9e45f921f0cee3abfd7e31e5b64f8b76672a56d4968d27dcce64c17",
+        "status": "PASS"
+      },
+      {
+        "log_sha256": "205f4ef07d2e27d931b87ac7eff0fe720ba6b16d4db58ca9b9e37535a2f4fc2d",
+        "methods": 21,
+        "source_epoch": 3,
+        "source_manifest_sha256": "e4587167a8f106caa00b6b700abf78b02e65e7bc42739cb395ab22436f120fd9",
+        "status": "PASS"
+      },
+      {
+        "log_sha256": "8d95b065c8ce0f7772d636b0f18d43b3d2f879a8817df0b713505f5d4910b0f4",
+        "methods": 3,
+        "source_epoch": "supervisor01",
+        "source_sha256": "e4ea2b53e2461e7dc7c293e4b7c0810a0afc3251702c4a6cd1c3241bd5d99f60",
+        "status": "PASS"
+      }
+    ],
+    "total_invocations_this_successor": 65
+  },
+  "historical_H20": {
+    "cleanup_pods": 0,
+    "completed_direct_inputs": 14,
+    "completed_internal_deliveries": 2,
+    "provider_phase": "NOT_RUN",
+    "raw": {
+      "availability": "UNAVAILABLE_PRIVATE",
+      "bytes": null,
+      "path": null,
+      "sha256": null
+    },
+    "retained_PVCs": 12,
+    "status": "FAIL_RETAINED",
+    "visual": "FAILED_FIRST_TOOL_START"
+  },
+  "historical_sources_preserved": true,
+  "limitations": [
+    "H21 full installation/native/browser/provider workflow NOT_RUN",
+    "Disconnected tool fixture is not a native application pass",
+    "Old H20 completed inputs are not re-used or resubmitted",
+    "Full B security campaign is not repeated by this bounded recipe"
+  ],
+  "native_sha256": "352658b175b455ec866343ee6abd7456e80c171e7af1767e1c98ab1e71bc76bf",
+  "native_submissions": 0,
+  "no_runtime_sdk_changes": true,
+  "original_native_sha256": "30165c0fe79f7a5778ef2973d4d91cf8536ae6783f68e74191f693b62665bb28",
+  "profile": "final-packet-H-rehearsal-preparation-review/1",
+  "public_plan_sha256": "b7713fdfb8d16179083adabdb42970cbf61cacce97de0d22936a374bcba12cba",
+  "readiness_limit": {
+    "automatic_refresh": false,
+    "failure_preserved": true,
+    "latency_guarantee": false,
+    "prior_B14_first_remember_to_delegate_seconds": 188.73,
+    "profile_maximum_seconds": 300
+  },
+  "required_new_phase": {
+    "name": "browser_tool_preflight",
+    "native_submissions": 0,
+    "network": "ISOLATED",
+    "output": "actual command stdout",
+    "status": "PASS"
+  },
+  "source_map": "source-map.json",
+  "source_map_sha256": "066f9b0dacf537f59d888c7dd29e40bb33af182976c11d75a33ed771fb0bcef3",
+  "status": "DISABLED_READY_FOR_PARENT_REVIEW",
+  "tool_classification": "REAL_PINNED_BROWSER_TOOLS_WITH_AUTHORED_LOOPBACK_PAGE_NO_OWNER_RUNTIME",
+  "tool_qualification": "tool-qualification.json"
+}

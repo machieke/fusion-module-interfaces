@@ -1,0 +1,13 @@
+This bundle exposes the exact task-local A17 supervisor and the already executed process/guard tests. It is an inspection packet, not an execution authorization or a self-contained deployment. The tests ran at their original frozen task paths; this copy does not grant access to those private plans.
+
+A16 remains a failed qualification. Its namespace stop began before the still-running qualifier wrote its observer failure. The initiating signal/process remains unestablished. The A17 correction changes only the qualification launcher lifecycle. Runtime14, chart16 and SDK25 are unchanged; the native endurance consumer is byte-identical to SDK24.
+
+The supervisor double-forks through `setsid`, detaches input/output from the launching tool, and records private launcher/child PID, start-tick, process-group and exit information. Each external child has its own group. Caught signals and phase timeouts terminate and reap that child before diagnostics or owner stop. A failed receipt observer or cleanup remains visible. Fresh namespace absence is checked through the pinned kubectl multicall invocation before installation. Duplicate launch directories refuse another run.
+
+The fixed outer limit is 9,000 seconds. It includes setup, the existing 7,200-second native qualifier, a 60-second process observation allowance, at most one 120-second receipt-only snapshot, up to 600 seconds of diagnostics, and bounded cleanup. The extra process allowance does not change native admission limits or accepted 120-second deadlines. Final cleanup time is reserved; no identity, deadline or reservation is renewed.
+
+The final guarded run executed 12 methods and passed in 2.191 seconds. It exercises real local process detachment, launcher-exit survival, TERM/reap ordering, finite timeout, duplicate refusal and exact source/artifact guards. Owner/native/channel/model execution is absent from these tests. Earlier 10- and 12-invocation runs remain separate history: 34 invocations across three runs, 12 distinct task-local method definitions. These do not increase the main programme method count.
+
+Detachment is process/session isolation, not a separate host or cgroup. SIGKILL, host loss and host-wide process termination remain limitations. Absence of a terminal supervisor record is not proof of successful cleanup. A17's actual native qualification outcome must be reported separately; this bundle does not claim it passed.
+
+No tests were rerun for publication. No credentials, release/execution plans, private process identities, owner receipts or journals are included. Additional live generations: zero.
