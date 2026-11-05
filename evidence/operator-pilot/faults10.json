@@ -1,0 +1,54 @@
+{
+  "profile": "operator-pilot-failure-observation/1",
+  "classification": "REAL_NATIVE_REAL_POD_HTTPS_RECORDED_MODEL",
+  "status": "FAIL",
+  "namespace": "omega-ref-pilot-faults10",
+  "source_manifest_sha256": "9f5c31cbedadece8c17715ddfb7e20e2e53f6087b1a92dd0ec2dd83bc2bb7123",
+  "operator_wheel_sha256": "710bba26523a5bc023763f8bcad6a9e41a1ca006007e5dcc2a6a7e0333424509",
+  "qualification_source_sha256": "3f48e5836d18bd2c0051278730a21f9d171d7bb886490a9c91a3d92259076ce8",
+  "packet_sha256": "a3ef5e1f1d923637460b950b4b60b3b17002c065a2909db74f5dfbef3b7de36d",
+  "operator_inputs": 3,
+  "captured_inputs": 2,
+  "failed_cases": 1,
+  "code": "NOT_AVAILABLE",
+  "diagnosis": {
+    "cause": "Pre-resident recovery helper incorrectly expected unfinished dispatched input to restart automatically",
+    "selected_policy": "session-bound-native-worker/1",
+    "original_deadline_preserved": true,
+    "model_captures_before": 2,
+    "model_captures_after": 2,
+    "new_command_occurrences_before": 0,
+    "new_command_occurrences_after": 0,
+    "task_owned_quiesced_readonly_copy": {
+      "worker_epoch": "uncertain",
+      "assigned_input_count": 1,
+      "input_state": "dispatched",
+      "native_source_bound": true,
+      "final_projection_present": false,
+      "source_file_writes": 0
+    },
+    "corrected_qualification": "Require uncertain fence separately from committed final-projection reconciliation; runtime unchanged by this diagnosis"
+  },
+  "original_failure_unchanged": true,
+  "private_raw_artifacts": {
+    "availability": "WITHHELD",
+    "sha256": null,
+    "bytes": null
+  },
+  "cleanup": {
+    "pods": 0,
+    "pvcs_retained": 12
+  },
+  "deadline_renewals": 0,
+  "reservation_refunds": 0,
+  "replacement_occurrences": 0,
+  "additional_live_generations": 0,
+  "diagnostic_failures": [
+    {
+      "operation": "read-only PV location discovery",
+      "error": "KeyError hostPath",
+      "reason": "local-volume field used by this cluster; corrected before reading files",
+      "source_writes": 0
+    }
+  ]
+}

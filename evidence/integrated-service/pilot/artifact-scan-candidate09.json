@@ -1,0 +1,102 @@
+{
+  "profile": "operator-pilot-artifact-analysis/1",
+  "source_manifest_sha256": "b725ff3f9cf893f5e3ecd2069bf7521bcfac5d4ce81c781a71a000b414a005e8",
+  "observed_utc": "2026-11-05T01:24:36.244283+00:00",
+  "images": [
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev09",
+      "kind": "base",
+      "artifact": "docker.io/library/fusion-single-node:reference-pilot-dev09",
+      "image_configuration": "sha256:e654d7963cddd405d81d0f49bbb6df40021b2a16cd965d5e2f75faac8ee141d3",
+      "manifest_digest": "sha256:94e2db2f3ef9029573f078213c4b3bf477af048e57e21694272e6ce17ed5e203",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "51633b319a2512ea684dc44260efb4f31f2555e5de320962683b6262ed17491c",
+      "packages_detected": 107,
+      "severity": {
+        "LOW": 83,
+        "HIGH": 37,
+        "MEDIUM": 101,
+        "CRITICAL": 2
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    },
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev09",
+      "kind": "caller",
+      "artifact": "docker.io/library/fusion-memory-caller:reference-pilot-dev09",
+      "image_configuration": "sha256:d1d5609d114df2fc907e2a33048f33727e7db8e3629b1c5a05d5da542a704ed3",
+      "manifest_digest": "sha256:e56e95b01e820f3d53f461515afce3998309d9d89c0651e5d38f3e8f4d1c005e",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "ce2b0eae9662abedbd167e6e36fba870d5a906fd8735cc918bfa59ccd36fa4df",
+      "packages_detected": 190,
+      "severity": {
+        "LOW": 83,
+        "HIGH": 39,
+        "MEDIUM": 101,
+        "CRITICAL": 4
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    },
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev09",
+      "kind": "embedding",
+      "artifact": "docker.io/library/fusion-memory-embedding:reference-pilot-dev09",
+      "image_configuration": "sha256:fa35438293498aeabd9a28878335ca55489fbf20b568601e6c82b8ca8a8f975c",
+      "manifest_digest": "sha256:63077a6e66b82e9ce17c22aecb6e416e2be0400df7c2186fe130e4459dcb8b3f",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "8d0fdb61aceabe18b79f681ae1c2a593536e490938080b4af84519c70f1fdf07",
+      "packages_detected": 225,
+      "severity": {
+        "LOW": 85,
+        "HIGH": 42,
+        "MEDIUM": 102,
+        "CRITICAL": 5
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    },
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev09",
+      "kind": "chain",
+      "artifact": "docker.io/library/fusion-reference-chain:reference-pilot-dev09",
+      "image_configuration": "sha256:89b33b153acd39b199f828f6b078677b4bc0a13ae09f47c860f9796048070efe",
+      "manifest_digest": "sha256:32789f5a898d984174736958daf1015886297eb130bd167d617d53c0bbc551a5",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "a6efb4ea3b7c27832d9f9e69af04ea12fe4b245561c0b8d28a54a55336c90b16",
+      "packages_detected": 128,
+      "severity": {
+        "LOW": 84,
+        "HIGH": 37,
+        "MEDIUM": 101,
+        "CRITICAL": 2
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    }
+  ],
+  "scanner_source": "scanner-source.json",
+  "database": "scanner-database.json",
+  "status": "SCANS_EXECUTED_WITH_UNRESOLVED_FINDINGS",
+  "scan_process_returncodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "additional_live_generations": 0,
+  "failed_observations": [
+    {
+      "kind": "embedding",
+      "result": "FAIL",
+      "cause": "Trivy Docker export exhausted root /tmp capacity; no findings claimed from incomplete report",
+      "primary": "artifacts/operator-pilot/scan-dev09-embedding.log",
+      "followup": "Same exact immutable image rescanned read-only with task-owned /data TMPDIR; no implementation substitution"
+    }
+  ]
+}

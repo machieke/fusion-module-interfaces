@@ -1,0 +1,19 @@
+test_pilot_go_capacity_chart (unittest.loader._FailedTest.test_pilot_go_capacity_chart) ... ERROR
+
+======================================================================
+ERROR: test_pilot_go_capacity_chart (unittest.loader._FailedTest.test_pilot_go_capacity_chart)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_pilot_go_capacity_chart
+Traceback (most recent call last):
+  File "/home/purplezky/.local/share/uv/python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/unittest/loader.py", line 162, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 5, in <module>
+    import yaml
+ModuleNotFoundError: No module named 'yaml'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

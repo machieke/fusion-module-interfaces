@@ -1,0 +1,23 @@
+{
+  "profile": "operator-pilot-publication-checks/1",
+  "status": "NO_MATCHES_IN_CHECKED_SCOPE",
+  "examined_candidate_files": 844,
+  "known_material_source_files_examined": 2824,
+  "distinct_known_secret_values_checked": 5788,
+  "findings": [],
+  "scope": "Changed, staged and untracked nonignored task candidates plus every explicitly selected publication file, including ignored artifacts; exact task-root Secret/token/key values and high-confidence patterns. No private journals read. Not a proof of absence of every secret or private identifying hash.",
+  "git_diff_check": {
+    "full_staged_result": "WHITESPACE_OBSERVATIONS_RETAINED",
+    "edited_content_result": "PASS",
+    "preserved_paths": [
+      "codex_omega_operator_pilot_delivery_programme.md",
+      "evidence/operator-pilot/go13-primary/go-final-drain02.log",
+      "evidence/operator-pilot/go13-primary/go-replacement-execution.log",
+      "evidence/operator-pilot/recipe17-primary/execution.log",
+      "evidence/operator-pilot/recipes13-primary/workflow-unauthorized.log"
+    ],
+    "reason": "Original user brief has Markdown hard line breaks; four exact primary logs have blank final lines. Preserve source/evidence bytes rather than rewrite history for whitespace."
+  },
+  "note": "Final staged bytes receive a separate exact-index check before commit; private detailed comparison is retained locally. This summary contains no secret values.",
+  "additional_live_generations": 0
+}

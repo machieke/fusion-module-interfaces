@@ -1,0 +1,33 @@
+{
+  "profile": "operator-pilot-candidate-checks/1",
+  "source_manifest_sha256": "9f5c31cbedadece8c17715ddfb7e20e2e53f6087b1a92dd0ec2dd83bc2bb7123",
+  "before_index_sha256": "99b74bdbd29a112e85e23f41a12de279c224d5f533bc6ba4a1dd1030d56c997a",
+  "indexed_files": 763,
+  "runtime_and_test_source_unchanged": true,
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "run": "10",
+      "status": "FAIL",
+      "invocations": 290,
+      "primary": "artifacts/operator-pilot/final-checks10/pilot-fast.log",
+      "sha256": "926061c4b67310e9beb4031f094325f2ea100a695139b8e77bfdb4b197ae5342",
+      "generation_denial": "artifacts/operator-pilot/final-checks10-denial.json",
+      "generation_denial_sha256": "dd2eaf3135652b2f712c1b3efd51454c36e0b2a841cf927971644f55f26f1722"
+    },
+    {
+      "lane": "pilot-fast",
+      "run": "10b",
+      "status": "PASS",
+      "invocations": 290,
+      "primary": "artifacts/operator-pilot/final-checks10b/pilot-fast.log",
+      "sha256": "21fe499ebbbbf238c8283d3f76fac04996a02462e8a41e71b4367eea2c73592a",
+      "generation_denial": "artifacts/operator-pilot/final-checks10b-denial.json",
+      "generation_denial_sha256": "dd2eaf3135652b2f712c1b3efd51454c36e0b2a841cf927971644f55f26f1722"
+    }
+  ],
+  "failed_run_explanation": "10 used Snap launcher inside unprivileged bwrap:4 failures and3 errors in Helm-dependent checks.10b uses the existing actual Helm executable and exact tool PATH, no code change.",
+  "helm_binary_sha256": "b66cb19f2b31f9d427632ea6c4b4a1ff89b74ecaeaee323cd166da41a7af53bd",
+  "reused_prior_lanes": "09 integrated-fast188 and sustained-fast106 source/version evidence retained; not relabelled as new10 runs",
+  "additional_live_generations": 0
+}

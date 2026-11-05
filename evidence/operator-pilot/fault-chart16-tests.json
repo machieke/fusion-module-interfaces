@@ -1,0 +1,16 @@
+{
+  "profile": "operator-pilot-fault-chart-qualification/1",
+  "status": "PASS",
+  "invocations": 10,
+  "seconds": 2.497,
+  "log": "artifacts/operator-pilot/fault-chart16.log",
+  "log_sha256": "9ea2fd475b81bec3ec20575302a0ff121a5cf4e7b91d06ceb9e8989115ecf20f",
+  "sources": "artifacts/operator-pilot/fault-chart16-source/manifest.json",
+  "sources_sha256": "a3535ccefb03a08c6938a71a2dc147b92f4702e79bbee193e4e418194913e379",
+  "source_snapshot_timing": "Copied after run; files unchanged during and after execution",
+  "source_change": "Existing chart test now checks all four actual pilot interruption hooks; source-qualified method identities unchanged",
+  "boundaries": "Actual Helm/schema/configure functions with synthetic fixture values; no cluster/provider/generative calls",
+  "denial": "artifacts/operator-pilot/fault-chart16-denial.json",
+  "retained_failed_qualification": "evidence/operator-pilot/development/faults15.json",
+  "additional_live_generations": 0
+}

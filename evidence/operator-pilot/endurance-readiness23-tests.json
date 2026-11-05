@@ -1,0 +1,14 @@
+{
+  "profile": "operator-pilot-endurance-readiness-repair/1",
+  "status": "PASS",
+  "methods_invoked": 24,
+  "elapsed_seconds": 6.501,
+  "primary": "artifacts/operator-pilot/endurance-readiness23.log",
+  "source_manifest": "artifacts/operator-pilot/endurance-readiness23-source/manifest.json",
+  "source_manifest_sha256": "771d6fd22f2258c0d7dd01f5eb3b43695062fede4853a6e5eefad6f97133f6cd",
+  "snapshot_timing": "Copied after completed run; no selected source edits during or after run before capture.",
+  "classification": "Real Registry/session SQLite and actual Helm rendering; deterministic health/clock/native-command boundary fixtures. No deployed/native integration claim.",
+  "change": "Observe B provider readiness immediately before its new task selection, using existing operator actions. Old receipts/bindings/deadlines/budgets remain unchanged. No retry of failed A14 task.",
+  "new_definition": "QualifierObservers.test_new_peer_selection_after_long_window_preserves_old_readiness_and_binding",
+  "additional_live_generations": 0
+}

@@ -1,0 +1,21 @@
+{
+  "profile": "operator-consumer-readiness-test-source/1",
+  "sources": {
+    "examples/pilot_chain_readiness.py": "4a4ad404601ede5c8696490de3a17fbbd6d2451adfd5e0fe326002199a63ffd8",
+    "examples/pilot_recipe_chain.py": "22a067336ec9e0a39ffa754b1f57cc71b37dec0a28f350de70fdedc079d00621",
+    "examples/sustained_chain_qualification.py": "f541a4d4a049a0e143f68bd5f988a5c120441ccaa9295cb8b7636eafacd72060",
+    "tests/test_pilot_chain_readiness.py": "8f93f3837426d3b0605e82b139cd05fc5823e4da59e898e8ca5720b7f9314460",
+    "tests/test_pilot_recipe_chain.py": "6fe5d9194602260e89cc3f7f0d292fdd708c48667e0b63d3fbea895d831d493d"
+  },
+  "command": "TMPDIR=/data/fusion-operator-pilot-release/tmp /data/fusion-operator-pilot-release/operator24/bin/python -m unittest tests.test_pilot_chain_readiness tests.test_pilot_recipe_chain",
+  "methods": 15,
+  "new_helper_methods": 12,
+  "existing_recipe_lineage_methods": 3,
+  "status": "PASS",
+  "seconds": 0.009,
+  "log": "/data/fusion-operator-pilot-release/evidence-assembly/chain-readiness-tests01.log",
+  "log_sha256": "2fdf7a432a53fceb691486981be60fcb65192fbaa6b7627e6b3fe3a0c95917bf",
+  "classification": "RECORDED_TRANSPORT_AND_OWNER_FIXTURES_NO_PROVIDER_NATIVE_OR_CHAIN_EXECUTION",
+  "health_function_ast_equal_to_actual_successful_task_local_observer": true,
+  "additional_live_generations": 0
+}

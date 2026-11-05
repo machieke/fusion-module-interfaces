@@ -1,0 +1,104 @@
+{
+  "profile": "operator-pilot-installed-chain-readback-summary/1",
+  "status": "PASS",
+  "classification": "REAL_INSTALLED_OPERATOR_CURRENT_AUTHORIZED_READ_ONLY_WITH_RESTRICTED_PRIMARY",
+  "namespace": "omega-ref-pilot-recipe18",
+  "historical_primary": {
+    "path": "evidence/operator-pilot/recipe18.json",
+    "sha256": "e94d4fcb4819494fc38f257032dc7903ac40d161cb75bc7beb805e26d49f5011",
+    "status": "FAIL",
+    "unchanged": true
+  },
+  "prior_task_local_supplement": {
+    "path": "evidence/operator-pilot/recipe18-readback.json",
+    "sha256": "9cf3fdc06a108d70adec4926f81d4eb52176f51b6f8ff7fdad4ff4d358cd2c60",
+    "unchanged": true
+  },
+  "artifacts": {
+    "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+    "operator_build_manifest_sha256": "f902477c74ed25c5753d5903fa3c9071c6a6820172c3cc6cc8bb8ef2fd27ee90",
+    "operator_wheel_sha256": "93350732cbc3294f16e2f8c9d787836dd4503c1ddad5a4cb0448493cde6fc4e9",
+    "installed_entrypoint": "examples.sustained_chain_qualification.Qualification.independent(consumer_path_health=True)",
+    "installed_source_entries_checked": 296,
+    "installed_source_sha256": {
+      "examples.pilot_chain_readiness": "4a4ad404601ede5c8696490de3a17fbbd6d2451adfd5e0fe326002199a63ffd8",
+      "examples.pilot_recipe_chain": "22a067336ec9e0a39ffa754b1f57cc71b37dec0a28f350de70fdedc079d00621",
+      "examples.preview_chain_observer": "56c1e909d311b117ce088b93260031868dd283f9477ed7a417c7e855d45e5490",
+      "examples.sustained_chain_qualification": "f541a4d4a049a0e143f68bd5f988a5c120441ccaa9295cb8b7636eafacd72060"
+    },
+    "chart_manifest_sha256": "363f593a177fbe47192c8e48db786049c2fa90c5cf671017819e0cd8cefd6a59"
+  },
+  "time": {
+    "start_utc": "2026-11-05T12:48:19.859000+00:00",
+    "finished_utc": "2026-11-05T12:48:37.782000+00:00",
+    "elapsed_seconds": 17.923,
+    "maximum_seconds": 600,
+    "observer_maximum_seconds": 180,
+    "historical_chain_deadline_utc": "2026-11-05T10:24:38.129000+00:00",
+    "historical_deadline_expired_before_this_read": true,
+    "deadline_renewals": 0
+  },
+  "counts": {
+    "installed_observer_invocations": 1,
+    "health_attempts": 2,
+    "maximum_health_attempts": 8,
+    "maximum_health_seconds": 30,
+    "logical_atom_reads": 2,
+    "logical_node_effect_observations": 1,
+    "artifact_retries": 0,
+    "physical_http_attempts": null,
+    "original_failed_readers": 3,
+    "prior_diagnostic_observers": 5,
+    "prior_diagnostic_failures": 4,
+    "prior_diagnostic_passes": 1,
+    "additional_native_inputs": 0,
+    "new_signing": 0,
+    "new_submissions": 0,
+    "new_generation_reservations": 0,
+    "additional_live_generations": 0
+  },
+  "health": [
+    {
+      "attempt": 1,
+      "status": "TRANSPORT_FAILED",
+      "error_class": "ConnectionRefusedError",
+      "errno": 111
+    },
+    {
+      "attempt": 2,
+      "status": "READY",
+      "http_status": 200,
+      "shape_valid": true,
+      "ready": true
+    }
+  ],
+  "validation": {
+    "same_existing_trace_artifact_result_and_signed_intent": true,
+    "artifact_bytes": 1367,
+    "matching_inclusion_and_post_state": true,
+    "effect_finality": "finalized",
+    "validation": "verified",
+    "deploy_effect_finality": "Finalized",
+    "rejection_count": 0,
+    "original_reader_source_sha256": "56c1e909d311b117ce088b93260031868dd283f9477ed7a417c7e855d45e5490",
+    "composed_observer_source_sha256": "cf174dd1933fcd2c6e21859fac6f7bec258517ccfabb5cd4e6cfbca2a9ddb3a1"
+  },
+  "cleanup": {
+    "pods": 0,
+    "pvcs_retained": 14,
+    "observed_utc": "2026-11-05T12:48:37.782000+00:00"
+  },
+  "private_evidence": {
+    "availability": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null,
+    "handles_and_identifying_hashes_withheld": true
+  },
+  "limits": [
+    "This is a separate current-authorized read of the retained G18 artifact; it does not overwrite the failed original workflow qualification.",
+    "Raw trace, receipt and owner observations are restricted, so this sanitized report does not grant public independent verification of their identities.",
+    "No work deadline, reservation, signed intent or original result was renewed or replaced.",
+    "Health observations do not establish the exact CNI versus service-proxy convergence mechanism."
+  ],
+  "additional_live_generations": 0
+}

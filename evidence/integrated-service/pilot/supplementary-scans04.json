@@ -1,0 +1,537 @@
+{
+  "profile": "operator-pilot-extra-artifact-analysis/1",
+  "results": [
+    {
+      "name": "scan-chart04",
+      "kind": "HELM_TEMPLATE_WITH_EMBEDDED_TRIVY_CHECKS",
+      "raw_sha256": "c35d7e67de9ed7e4cb166ef419dd7c360d366386c9cccb8cda72da7e2b1cc8be",
+      "tool": "0.76.1",
+      "results": [
+        {
+          "target": "templates/components.yaml",
+          "type": "helm",
+          "packages": 0,
+          "vulnerability_count": 0,
+          "misconfiguration_summary": {
+            "Successes": 97,
+            "Failures": 52
+          },
+          "misconfigurations": [
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0020",
+              "Severity": "LOW",
+              "Title": "Runs with UID <= 10000",
+              "Description": "Force the container to run with user ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0020",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0021",
+              "Severity": "LOW",
+              "Title": "Runs with GID <= 10000",
+              "Description": "Force the container to run with group ID > 10000 to avoid conflicts with the host\u2019s user table.",
+              "Resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0021",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0110",
+              "Severity": "LOW",
+              "Title": "Workloads in the default namespace",
+              "Description": "Checks whether a workload is running in the default namespace.",
+              "Resolution": "Set 'metadata.namespace' to a non-default namespace.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0110",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            },
+            {
+              "ID": "KSV-0125",
+              "Severity": "MEDIUM",
+              "Title": "Restrict container images to trusted registries",
+              "Description": "Ensure that all containers use images only from trusted registry domains.",
+              "Resolution": "Use images from trusted registries.",
+              "PrimaryURL": "https://avd.aquasec.com/misconfig/ksv-0125",
+              "Status": "FAIL"
+            }
+          ]
+        },
+        {
+          "target": "templates/network-policy.yaml",
+          "type": "helm",
+          "packages": 0,
+          "vulnerability_count": 0,
+          "misconfiguration_summary": {
+            "Successes": 61,
+            "Failures": 0
+          },
+          "misconfigurations": []
+        }
+      ],
+      "limitations": [
+        "Helm scan uses embedded checks bound to scanner binary; no downloaded policy bundle. Template namespace heuristic is not deployed namespace observation."
+      ]
+    },
+    {
+      "name": "scan-wheels04",
+      "kind": "FILESYSTEM_MODE_NO_PYTHON_PACKAGES_DETECTED",
+      "raw_sha256": "a27af9353cf84c22e25bbbe950c155b43471f2241f642a5ec768cec5a29da815",
+      "tool": "0.76.1",
+      "results": [],
+      "limitations": [
+        "Only detected package metadata is covered; zero matches is not proof of no vulnerabilities."
+      ]
+    },
+    {
+      "name": "scan-wheels04-rootfs",
+      "kind": "EXTRACTED_EXACT_WHEELS_ROOTFS_METADATA",
+      "raw_sha256": "56025ec73d1055ce0bc3bf2911a5d4aa8bf25e066b90896e694977c51fdadb9e",
+      "tool": "0.76.1",
+      "results": [
+        {
+          "target": "Python",
+          "type": "python-pkg",
+          "packages": 8,
+          "vulnerability_count": 0,
+          "misconfiguration_summary": null,
+          "misconfigurations": []
+        }
+      ],
+      "limitations": [
+        "Only detected package metadata is covered; zero matches is not proof of no vulnerabilities."
+      ]
+    }
+  ],
+  "additional_live_generations": 0
+}

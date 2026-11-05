@@ -1,0 +1,71 @@
+{
+  "additional_live_generations": 0,
+  "authored_methods": 11,
+  "base_commit": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "checks": [
+    {
+      "detail": "Three archive seed cases used nonexistent capacity.segments; test corrected to reserved_segments without owner changes",
+      "methods": 11,
+      "seconds": 3.994,
+      "status": "FAIL_TEST_HARNESS"
+    },
+    {
+      "methods": 11,
+      "seconds": 5.391,
+      "status": "PASS"
+    },
+    {
+      "detail": "combined affected regression batch; includes the same11, not89 additional V30 methods",
+      "methods": 89,
+      "seconds": 17.901,
+      "status": "PASS"
+    }
+  ],
+  "detected_faulty_variants": [
+    "removed-current-authority",
+    "cached-stale-writer-incarnation",
+    "premature-workflow-checkpoint-progression",
+    "regenerated-idempotency-identity"
+  ],
+  "domains": [
+    "Registry action/sealing and unchanged historical provider selection",
+    "capacity admission and retained allocation identity",
+    "session cancel/dispatch/expiry",
+    "workspace append independent commits and replay",
+    "exact prerequisite active membership with unrelated source changes",
+    "archive reserve/publish/activate with retained source head",
+    "writer fencing and current credential epochs"
+  ],
+  "fixtures": [
+    "deterministic clocks and readiness",
+    "AtomStorage file backend, not DeTTa",
+    "cluster fencing observations",
+    "completed native projections; no native tools executed"
+  ],
+  "independent_models": [
+    "dataclass state/set/list projections; no owner calls from oracle methods",
+    "literal source-membership state separate from owner response",
+    "fixed archive transition expectations based on interrupted boundary",
+    "current writer tuple and credential sequence outside Policy"
+  ],
+  "max_schedule_steps_per_seed_domain": 48,
+  "observed_at": "2026-11-04T22:54:04.478486+00:00",
+  "real": [
+    "owner SQLite transactions and receipts",
+    "workspace atomic files and sealed archive manifests",
+    "live policy file rotation and writer fence checks"
+  ],
+  "run_bound_seconds": 60,
+  "schema": "operator-pilot-finite-state-machine-evidence/1",
+  "seeds": [
+    17,
+    43,
+    91
+  ],
+  "source_sha256": "b577ed9009a063962032b2f03f9d8d2676d01f6a991e1546c71cf2fddd83709e",
+  "test_source": "tests/test_pilot_state_machine.py",
+  "unrun": [
+    "real native/pod counterpart scenarios; parent integrated qualification evidence is separate",
+    "unbounded interleaving or formal proof"
+  ]
+}

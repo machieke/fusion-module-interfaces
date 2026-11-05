@@ -1,0 +1,269 @@
+{
+  "additional_live_generations": 0,
+  "backup": {
+    "authority_excluded": true,
+    "base_and_two_deltas": [
+      {
+        "authority_excluded": true,
+        "depth": 1,
+        "effects_executed": 0,
+        "manifest_bytes": 1443806,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1024040,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1024040,
+        "seconds": 0.47033122181892395,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      },
+      {
+        "authority_excluded": true,
+        "depth": 2,
+        "effects_executed": 0,
+        "manifest_bytes": 2017332,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1433655,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1433655,
+        "seconds": 0.8548239963129163,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      },
+      {
+        "authority_excluded": true,
+        "depth": 3,
+        "effects_executed": 0,
+        "manifest_bytes": 2808242,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1958466,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1958466,
+        "seconds": 1.2830417566001415,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      }
+    ],
+    "deduplication_savings": "NOT_CLAIMED",
+    "independent_final_comparison": "EXACT_OWNER_CHECKPOINT",
+    "original_full_comparisons": [
+      "BYTE_EXACT",
+      "BYTE_EXACT",
+      "BYTE_EXACT"
+    ],
+    "private_hashes_and_handles": "WITHHELD"
+  },
+  "classification": "EXECUTED_HANDOVER_PARTIAL_NOT_FINAL_RELEASE_PASS",
+  "cleanup": {
+    "application": {
+      "apply_calls": 1,
+      "capacity_refund": false,
+      "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+      "source_rehydration": "EXACT",
+      "state": "complete",
+      "unlinked_allocated_bytes": 16384
+    },
+    "search": {
+      "authoritative_rebuild": "PASS",
+      "capacity_refund": false,
+      "native_query_after_rebuild": "PASS",
+      "original_attempts_retained": true,
+      "physical_freed_bytes": "NOT_ESTABLISHED_WHILE_EXTERNAL_HANDLES_MAY_EXIST",
+      "state": "complete",
+      "unlinked_allocated_bytes": 626688
+    }
+  },
+  "closure": {
+    "owner_ports": "ACTUAL_AUTHENTICATED_SHARED_AND_PRIVATE",
+    "owners": 12,
+    "private_other_principal_denial": "PASS",
+    "read_observations": [
+      {
+        "attempt": 1,
+        "finished_ms": 1793857342897,
+        "mutations": 0,
+        "started_ms": 1793857323009,
+        "status": "CAPTURED"
+      },
+      {
+        "attempt": 1,
+        "finished_ms": 1793857351416,
+        "mutations": 0,
+        "started_ms": 1793857342925,
+        "status": "CAPTURED"
+      },
+      {
+        "attempt": 1,
+        "finished_ms": 1793857352234,
+        "mutations": 0,
+        "started_ms": 1793857351446,
+        "status": "CAPTURED"
+      }
+    ]
+  },
+  "failures_preserved": [
+    {
+      "cause": "Embedded operator Python indentation; same-state source continuation repaired without repeating native inputs.",
+      "stage": "private-cross-owner-probe"
+    },
+    {
+      "cause": "Cold Search disposable query copy exceeded historical one-second client read timeout; explicit bounded same-view observations preserved.",
+      "stage": "restored-closure-observation"
+    },
+    {
+      "cause": "Empty historical Registry table absence incorrectly rejected; runtime12 exact one-file repair, no old effect replay.",
+      "stage": "activated-unused-caller-startup"
+    },
+    {
+      "cause": "Operator probe originated from provider lacking self-egress; moved to declared caller network origin.",
+      "stage": "historical-HTTPS-probe"
+    },
+    {
+      "cause": "Installed kubectl did not support JSONPath wait; bounded UID-bound phase observer repaired.",
+      "stage": "retired-packet-probe"
+    },
+    {
+      "cause": "Retained Attention target misclassified as old effect; original input expired and was not resubmitted.",
+      "stage": "first-new-native-input"
+    }
+  ],
+  "format_upgrade": {
+    "active_handover_profile": "trusted-provider-lifecycle/1",
+    "input_profile": "trusted-provider-lifecycle/1",
+    "output_profile": "trusted-provider-lifecycle/2",
+    "result": "VERIFIED_FENCED_DISPOSABLE_COPY",
+    "source_unchanged": true,
+    "writable_activation": false
+  },
+  "handover": {
+    "activated_caller_restart": "UNRUN",
+    "activation": "COMMITTED_GENERATION_2",
+    "attention_suspension": "UNRUN",
+    "historical_https": {
+      "historical_completion": "UNAUTHORIZED",
+      "old_observation": "unknown",
+      "spent_reservations": 1,
+      "stale_credential": "UNAUTHORIZED"
+    },
+    "historical_session_write": "REFUSED_UNAUTHORIZED",
+    "new_native_positive_work": "FAILED_UNAUTHORIZED",
+    "old_payloads": "POST_ACTIVATION_AUTHENTICATED_READBACK_PASS",
+    "old_shared_and_private_captures": "BYTE_EXACT",
+    "post_cutover_browser": "UNRUN",
+    "retired_packet_refusal": {
+      "interpretation": "current retirement boundary; no attribution to a single network rule",
+      "phase_observations": [
+        "Pending",
+        "Pending",
+        "Running",
+        "Running",
+        "Running",
+        "Running",
+        "Running",
+        "Succeeded"
+      ],
+      "policy": "EXACT_DENY_ALL",
+      "positive_current_namespace": "REACHABLE",
+      "retired_namespace": {
+        "blocked": true,
+        "errno": 111,
+        "error_type": "ConnectionRefusedError"
+      },
+      "target_service": "fusion-model"
+    },
+    "retirement": "COMMITTED",
+    "source_remains_retired": true
+  },
+  "limits": [
+    "Recorded model proposals; native tools, real E5/Chroma/DeTTa and authenticated service network were real.",
+    "Same-host task-owned synthetic scopes only; private test payloads/identifying hashes remain unpublished.",
+    "This evidence does not close required positive native handover or final integrated Story E.",
+    "Fresh repaired qualification must use a separately frozen plan; no old input, deadline, spent reservation or retired source is renewed."
+  ],
+  "native_counts": {
+    "original_completed": 7,
+    "original_unknown": 1,
+    "remaining_planned_replacement_inputs": "UNRUN",
+    "replacement_accepted": 1,
+    "replacement_completed": 0,
+    "replacement_dispatched_uncaptured": 1,
+    "total_accepted_operator_inputs": 9
+  },
+  "original_unknown": {
+    "backend_entered": false,
+    "captures": 0,
+    "post_activation_accounting": "EXACT_UNCHANGED",
+    "replayed": false,
+    "reservations_spent": 1
+  },
+  "replacement_failure": {
+    "accepted_ms": 1793859177759,
+    "automatic_retry": false,
+    "cause": "Historical-effect scanner mistook retained target UUID in request.args[0].targets for executable occurrence identity.",
+    "code": "UNAUTHORIZED",
+    "deadline_ms": 1793859297759,
+    "deadline_renewed": false,
+    "last_observed_ms": 1793859307390,
+    "last_observed_state": "dispatched",
+    "model_captures": 0,
+    "model_reservations": 0,
+    "operation": "bind",
+    "provider": "Attention",
+    "provider_calls_reconstructed": false,
+    "stage": "native.context_ids"
+  },
+  "source_epochs": {
+    "final_executed_helpers": {
+      "examples/pilot_handover.py": "a27b6dca7e27f82198c50d0cf7797fcde9055d7ff0a095e7eb7d1b953f269545",
+      "examples/pilot_handover_activated_resume.py": "1104f1a6921efde6770c8b4e3d53e31ac1c70e89b0bb7c9a59a6740addf07521",
+      "examples/pilot_maintenance_faults.py": "168cd31806c813bab48ff03ac54e83e7c0309305d01136eac01008ce1574597e"
+    },
+    "final_executed_operator_wheel_sha256": "2c9077f7d01dbae015cfd417aed915aea17fc1d7a92fc69682f1849b85705d66",
+    "image_only_repair": {
+      "changed_source": {
+        "integration/single_node/pilot_activation.py": {
+          "after": "9a273391a5066649c887fc97786bad1e4f5dbce7b521b4dc8f6929ab98cf35a4",
+          "before": "dc2d2722d3247dc0152dd6c3ceb0a2474560a9e1a9aba5f15f3922499cb984f4"
+        }
+      },
+      "configuration_changes": "IMAGE_AND_REGISTRY_IMPLEMENTATION_PINS_ONLY",
+      "new_source": "b79b68a65d674a415a9c310dd89b1d3b1841233237a2fa9ff351396be951b963",
+      "old_source": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+      "source_paths": 438
+    },
+    "initial_packet": "distribution14",
+    "initial_packet_sha256": "de39c9f69d8024a8fb793279165236953e2bc81254a79efae391fb468af0954d",
+    "initial_runtime_source": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+    "replacement_runtime_source": "b79b68a65d674a415a9c310dd89b1d3b1841233237a2fa9ff351396be951b963",
+    "trace": "Original frozen source and every failed helper/runtime epoch retained; repaired target is not relabelled as original artifact."
+  },
+  "source_images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:1cb2f63829b2bd29b39647a9c0ae9fb5aaf7952cf360a1bf5a9e59b4382bf79f",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:828c795883c9e2cd798ee123fe8e0316533560da5a9080af9ff11fd711485d0a",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:828c795883c9e2cd798ee123fe8e0316533560da5a9080af9ff11fd711485d0a",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:828c795883c9e2cd798ee123fe8e0316533560da5a9080af9ff11fd711485d0a"
+  },
+  "stopped": {
+    "authority_retained": true,
+    "bound_interpretation": "Earlier independently recorded conservative stop, not reconstructed exact initial monotonic end.",
+    "conservative_programme_stop_ms": 1793859852181,
+    "observed_ms": 1793859629292,
+    "replacement_pods": 0,
+    "retained_replacement_pvcs": 12,
+    "retained_source_pvcs": 12,
+    "source_pods": 0
+  }
+}

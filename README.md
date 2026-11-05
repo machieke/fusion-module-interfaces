@@ -1,5 +1,17 @@
 # Omega module-interface reference distribution
 
+The **V01–V40 operator pilot** is ready with explicit limits.
+Its [operator runbook](docs/operator-pilot/runbook.md),
+[programme report](docs/operator-pilot/programme-report.md) and
+[acceptance ledger](evidence/integrated-service/pilot/acceptance.json) distinguish
+executed native/provider evidence, recorded proposals, historical failures and
+remaining assurance limits. The [release record](evidence/operator-pilot/release-summary.json)
+binds the tested packet and its separate `VERIFIED_PARTIAL` public evidence.
+All eight operational acceptance stories passed; private primary proof remains
+withheld. Maintenance and handover use fresh synthetic state only;
+additional live generations remain zero. Earlier releases below retain their
+original evidence and scope.
+
 The **Q01–Q30 integrated single-node service release** is ready for review with
 [explicit operational limits](docs/integrated-service/programme-report.md#remaining-limits).
 Start with its [operator runbook](docs/integrated-service/runbook.md),

@@ -1,0 +1,37 @@
+{
+  "actual_approved_historical_sources_checked": 33,
+  "additional_live_generations": 0,
+  "assembler_invocations": 0,
+  "candidate_fallback_refused": true,
+  "classification": "STATIC_AND_FIXTURE_GUARDS_NO_ASSEMBLY",
+  "cluster_calls": 0,
+  "counts_and_existing_verifiers_unchanged": true,
+  "failed_output11_unchanged": true,
+  "failed_v06_assembly_retained": true,
+  "inputs_and_source_unchanged_before_after": true,
+  "methods": 16,
+  "network_process_audit_denied_before_import": true,
+  "other_eight_audits_missing_sources": 0,
+  "primary": {
+    "path": "/data/fusion-operator-pilot-release/evidence-assembly/final21-v07-tests02.log",
+    "sha256": "c86a3de6f417ccdaad6ecae0bbcdb107d87bfa09f12f0ec5a902e89c33862783"
+  },
+  "private_mismatch_escape_symlink_nonregular_refused": true,
+  "profile": "task-local-historical-source-publication-qualification/1",
+  "retained_first_attempt": {
+    "log": "/data/fusion-operator-pilot-release/evidence-assembly/final21-v07-tests01.log",
+    "reason": "Test fixture selected already-accounted historical audits instead of only the nine new audit bindings; production helper unchanged.",
+    "sha256": "f82c78fbdf4f20f89e227f314959e1e39cbaa2595cb2a99a7f240aaccc2f9893",
+    "status": "IMPORT_FAILED_BEFORE_METHODS"
+  },
+  "runtime_calls": 0,
+  "source": {
+    "path": "/data/fusion-operator-pilot-release/evidence-assembly/assemble-final21.guarded25-v07.py",
+    "sha256": "44ca8a48447e3a1f77b95d9971778d31805ac99786b2178c376256535e689d70"
+  },
+  "source_snapshot": {
+    "path": "/data/fusion-operator-pilot-release/evidence-assembly/final21-v07-source02/sources-before-test.json",
+    "sha256": "b1cbbe4b166d250126e7f5ab7a59557d701950d2064e75459075964cfc53a90b"
+  },
+  "status": "PASS"
+}

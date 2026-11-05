@@ -1,0 +1,24 @@
+{
+  "profile": "operator-pilot-candidate-checks/1",
+  "source_manifest_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+  "source_index_timing": "Captured during run; checked unchanged after completion, prior frozen runtime source checked before run",
+  "source_index_sha256": "61d8d3caed3693d5c1dbf8e4ddb0e0ce22d80049a6364636ab392cf30310d187",
+  "indexed_files": 769,
+  "runtime_and_test_source_unchanged": true,
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "run": "11",
+      "status": "PASS",
+      "invocations": 292,
+      "seconds": 59.196,
+      "primary": "artifacts/operator-pilot/final-checks11/pilot-fast.log",
+      "sha256": "57b53351cd686c70019524d2bfadb1d9ebda3e44a79eda4c18f94b46e8e612e2",
+      "generation_denial": "artifacts/operator-pilot/final-checks11-denial.json",
+      "generation_denial_sha256": "dd2eaf3135652b2f712c1b3efd51454c36e0b2a841cf927971644f55f26f1722"
+    }
+  ],
+  "additional_qualifier_tests": "../../operator-pilot/qualifier12-tests.json",
+  "additional_live_generations": 0,
+  "reused_prior_lanes": "09 integrated-fast188/sustained-fast106 and10/10b pilot histories remain source-bound; not relabelled11"
+}

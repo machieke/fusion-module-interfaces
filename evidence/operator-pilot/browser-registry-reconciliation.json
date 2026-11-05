@@ -1,0 +1,66 @@
+{
+  "additional_live_generations": 0,
+  "base_commit": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "change": "Grant providers.inspect to each browser role in its existing selected scope; providers.select to developer/operator only; providers.seal stays operator-only.",
+  "checks": [
+    {
+      "command": "artifacts/s03/venv/bin/python -m unittest tests.test_pilot_browser_registry -q",
+      "epoch": "BEFORE_FIX",
+      "errors": 2,
+      "output_sha256": "0fe0f2f7ffd65c009b945a312c06ef407bfe79aa752d459a5e80bf4436181583",
+      "seconds": 0.706,
+      "status": "FAILED",
+      "test_executions": 2
+    },
+    {
+      "command": "artifacts/s03/venv/bin/python -m unittest tests.test_pilot_browser_registry -q",
+      "epoch": "AFTER_FIX",
+      "output_sha256": "4ac652cbfe27bd4d4045760e0e2a214627a214e0a936dadffc053dc2b9dfd01e",
+      "seconds": 0.736,
+      "status": "PASS",
+      "test_executions": 2
+    },
+    {
+      "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_browser_registry tests.test_pilot_browser tests.test_pilot_browser_qualification tests.test_pilot_configuration tests.test_pilot_workbench_chart tests.test_integrated_registry tests.test_pilot_registry -q",
+      "epoch": "AFTER_FIX_AFFECTED_REGRESSIONS",
+      "output_sha256": "0e25a9a64f7c32a399603f1b5ada4556c4ad41e905178dcdf5da7bd1186819fe",
+      "seconds": 14.747,
+      "status": "PASS",
+      "test_executions": 58
+    }
+  ],
+  "counting": "Executions are not additive unique authored method counts; reused inherited Registry tests run in both legacy and compact profiles.",
+  "finding": "Registry-enabled browser allocation required providers.select and capability inspection required providers.inspect; initial scoped provisioning omitted these grants for developer/viewer roles.",
+  "fixtures": [
+    "native application catalogue/configuration",
+    "TLS material and direct test transport in the new two methods",
+    "provider readiness probe"
+  ],
+  "frozen_prior_snapshot": "/dev/shm/omega-pilot-dev04-source",
+  "guarantees": [
+    "developer cannot seal or disable providers",
+    "viewer cannot select providers",
+    "all roles remain confined to their configured application scopes",
+    "new allocation refuses revoked selection authority",
+    "existing allocation replay retains its original identity",
+    "selected provider metadata refuses revoked read authority"
+  ],
+  "new_authored_test_methods": 2,
+  "observed_at": "2026-11-04T23:52:30.145740+00:00",
+  "prior_helper_sha256": "ba663f5a1d9ca8797a4519f1408fa7fb57c4d764d3e6510448a4caaf3549cf79",
+  "profile": "pilot-browser-registry-composition-reconciliation/1",
+  "real": [
+    "SessionPorts and SustainedSessionStore allocation transactions",
+    "Registry /2 owner and current Policy checks",
+    "retained binding replay and exact-head seal",
+    "scoped revocation and foreign-scope refusal"
+  ],
+  "source_sha256": {
+    "integration/single_node/pilot_browser_configure.py": "51551fa917bbf54d91b12eb81e7551bac952e08520d98ea9a07068bb6984bde9",
+    "tests/test_pilot_browser_registry.py": "79e988ef9a50fae971fd57bfa178a1b49f8695b71db76c4c184b91010be52cae"
+  },
+  "unrun": [
+    "deployed browser on replacement dev05 image",
+    "actual native browser workflow"
+  ]
+}

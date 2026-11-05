@@ -1,0 +1,27 @@
+{
+  "profile": "operator-pilot-candidate-checks/1",
+  "source_manifest_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "source_index_timing": "Captured before run; all764 exact bytes checked immediately after completion",
+  "source_index_sha256": "de27f88d74139a190d06fafd20405d5b30a6b5b86abb5d9bef0542a75c7f1803",
+  "indexed_files": 764,
+  "runtime_and_test_source_unchanged": true,
+  "source_copies": "/data/fusion-operator-pilot-release/evidence-assembly/final14b-test-sources",
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "run": "14b",
+      "status": "PASS",
+      "invocations": 318,
+      "seconds": 63.59,
+      "primary": "artifacts/operator-pilot/final-checks14b/pilot-fast.log",
+      "sha256": "f5051cdeb85f1e1df189f0ef0586356a73cd0447be8c6dc6e2ac36ba2c8a9f4b",
+      "generation_denial": "artifacts/operator-pilot/final-checks14b-denial.json",
+      "generation_denial_sha256": "2a115c284b47011cec818ca6832f1bccd266813c3f4a0c63091aae9b259dc0d6"
+    }
+  ],
+  "additional_live_generations": 0,
+  "source_limit": "Fixed-input14b recheck after14 packaging allowlist drift; runtime14 and allindexed test/helper/input files unchanged during run. No native integration claim.",
+  "reused_prior_lanes": "Prior11/09/10 lanes retain their exact original identities; no relabeling",
+  "all_indexed_inputs_unchanged": true,
+  "changed_inputs": []
+}

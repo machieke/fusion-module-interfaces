@@ -1,0 +1,25 @@
+{
+  "profile": "operator-pilot-candidate-checks/1",
+  "source_manifest_sha256": "b79b68a65d674a415a9c310dd89b1d3b1841233237a2fa9ff351396be951b963",
+  "source_index_timing": "Captured before run; exact bytes checked immediately after completion before subsequent operator-helper repairs",
+  "source_index_sha256": "3a4fdf608e58290f3df9c6290286f9299046db2c69d2cf178c6a294ba6fe9da7",
+  "indexed_files": 763,
+  "runtime_and_test_source_unchanged": true,
+  "source_copies": "/data/fusion-operator-pilot-release/evidence-assembly/final12-test-sources",
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "run": "12",
+      "status": "PASS",
+      "invocations": 301,
+      "seconds": 57.651,
+      "primary": "artifacts/operator-pilot/final-checks12/pilot-fast.log",
+      "sha256": "54211776aa9cfc611a430e830e2fdb1114356be73e6ff7c1788b25ea63548347",
+      "generation_denial": "artifacts/operator-pilot/final-checks12-denial.json",
+      "generation_denial_sha256": "2113a7319e3cf270652aa71961dfaac12a1c39bb188b244f23cd301ffe574778"
+    }
+  ],
+  "additional_live_generations": 0,
+  "source_limit": "Later packet-observer operator helper repair has its own source/tests; this run retains the earlier exact helper bodies. Runtime12 unchanged.",
+  "reused_prior_lanes": "Prior11/09/10 lanes retain their exact original identities; no relabeling"
+}

@@ -1,0 +1,73 @@
+{
+  "additional_live_generations": 0,
+  "affected": {
+    "raw_sha256": "30936953781b1172115eca653d822589ce42d55421bd44beb2e459cdccd174bd",
+    "seconds": 17.125,
+    "status": "PASS",
+    "tests_executed": 77,
+    "unique_methods": "NOT_ADDITIVE_WITH_REUSED_TESTS"
+  },
+  "classification": "REAL_HTTP_POLICY_SQLITE_WITH_AUTHORED_NATIVE_CAPTURE_AND_CLOCK_FIXTURES",
+  "deployed": "NOT_RUN",
+  "focused": {
+    "methods": 4,
+    "raw_sha256": "b466e68f70b32f370aab5576475846825f1c33336094eeb1f120c0e72b2c6ca9",
+    "seconds": 2.272,
+    "status": "PASS",
+    "tests_executed": 4
+  },
+  "initial_test_failure": {
+    "errors": 3,
+    "reason": "Test transport changed patcher.side_effect instead of returned mock; browser HTTP workflow fixture dispatch was absent. Production route not implicated.",
+    "seconds": 2.077,
+    "test_source_sha256": "06dcfc19039563dd6e5bfac31267ccf9b3bc7affdcd54b68a709d073de648497",
+    "tests_executed": 4
+  },
+  "profile": "pilot-browser-workflow-development-evidence/1",
+  "reload_correction": {
+    "actual_page_reload": true,
+    "additional_native_inputs": 0,
+    "affected_seconds": 12.019,
+    "affected_tests_executed": 51,
+    "console_errors": 0,
+    "editable_login_field_does_not_replace_authenticated_identity": true,
+    "exact_decision_replay": true,
+    "logout_cleared": true,
+    "original_deadline_retained": true,
+    "prior_automation_timeout": "Immediate scheduled click opened confirm before proofshot post-command capture; tool timed out; independent dialog acceptance committed one decision; continuation used same owner/checkpoint and same decision identity. No native input or fixture reset.",
+    "raw_test_sha256": "429d6c3ee89018036531967ef43f0612aaf59a279914681f133114658afd1e8d",
+    "raw_visual_report_sha256": "671135888ef233d66ad74341c68f410be356fbf6786939799159534a7345db34",
+    "reservations_spent": 2,
+    "server_errors": 0,
+    "source_file": "integration/single_node/pilot_browser_page.py",
+    "source_sha256": "ccbdfef379bd20793c7acd9d240ba46ef8955150844c449136d195f690897042",
+    "status": "PASS",
+    "visual_session": "2026-11-05_00-20-30_corrected-authenticated-identity-exact-r"
+  },
+  "source_parent": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "sources": {
+    "integration/single_node/pilot_browser_client.py": "4b5c11e3553a158a29e7add774faf62188939ed877e72208990d2debc4a02f90",
+    "integration/single_node/pilot_browser_configure.py": "443b7513c4b66469134715134a37d12030674641ae1bb62946b5717d7bfe82d3",
+    "integration/single_node/pilot_browser_page.py": "98967221951104dc1fc77b84d494024afcfa7f9c0b20d794a12c0ffe321ad0cf",
+    "integration/single_node/pilot_workbench.py": "2b77deb1e33b36f834f75e306bcc16064c6450f9f904124e29aad5d585de7003",
+    "integration/single_node/preview_workbench.py": "1b45bdaec5435e3b21160935a773f0d3820f462a001d5e943b2ccb98173ad221",
+    "tests/test_pilot_browser_workflows.py": "e8d5d006f276529dd6c58651cbdc89ffd1df3b56fc1f143d65a5019e12741333"
+  },
+  "visual": {
+    "approval": "OWNER_COMMIT_OBSERVED",
+    "clock": "FIXTURE",
+    "console_errors": 0,
+    "followup": "Cookie-reload username/decision-local-key issue found statically before deployment; awaiting candidate correction.",
+    "native": "AUTHORED_CAPTURE_FIXTURE",
+    "reservations_spent": 2,
+    "server_errors": 0,
+    "session": "2026-11-05_00-14-33_v33-isolated-fixture-browser-actual-scop",
+    "tool": "ProofShot",
+    "tooling_observations": [
+      "Initial non-isolated browser daemon navigation stalled; task processes stopped; retried under distinct browser session without owner input.",
+      "Confirmation click reported CDP timeout while modal open; independent dialog acceptance succeeded and actual owner decision observed.",
+      "Screenshot CLI files landed outside bundle because custom output directory was not selected for initial exec calls.",
+      "Logout click did not visibly activate while offscreen; not counted as logout pass."
+    ]
+  }
+}

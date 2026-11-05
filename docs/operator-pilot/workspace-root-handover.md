@@ -1,0 +1,13 @@
+# Synthetic Workspace root re-attestation
+
+`synthetic-workspace-root-reattestation/1` is an explicit physical-root maintenance profile for a fresh synthetic handover copy. It is not a new module family or a reinterpretation of `synthetic-workspace-files/1`.
+
+The ordinary Workspace constructor still rejects a moved directory: its journal pins the root device and inode. The activation helper may re-attest exactly `fusion-execution`'s shared `preview-facets/workspace.sqlite` after verifying the synthetic owner seal, observation-only restore fence, original scope and checkpoint. Private-partition or otherwise misplaced workspace journals are refused before the activation intent is written. Existing deployments and the retired source are not modified.
+
+The owner locks its journal, checks bounded files, ownership, modes, symlinks and hardlinks, and verifies current file bytes against committed state or an unresolved effect's exact previous/desired bytes. A rollback to an older completed version is refused. One SQLite transaction changes only the root device/inode metadata and inserts the named maintenance receipt. All file contents, file revisions, effect intents, receipts and unresolved accounting remain unchanged. The same checkpoint/generation replay validates the saved receipt; a different generation, checkpoint or moved root refuses. Transaction interruption rolls back; interruption after commit observes the same receipt.
+
+The quiesced owner export reports that receipt after a WAL checkpoint. Activation compares the exact original and replacement file bytes and every historical table, admitting only the verified physical-root metadata change and its new receipt table. The external writer epoch still controls startup and every mutating request. Re-attestation never activates a writer, completes a pending effect, renews a deadline or refunds a reservation.
+
+Qualification uses actual local Workspace owners, copies and SQLite transactions. It covers default-startup refusal, successful attestation and new work, historical rollback/tamper refusal, pending effects, malformed/linked state, interrupted transactions, replay and exact activation comparison. The affected existing Workspace suite includes real process-kill recovery. These are local tests, not a replacement for a fresh deployed handover result.
+
+The accompanying append-guard repair binds both the catalogue and its selection to the same explicitly admitted `immutable-commit-feed/1` or `/2` profile. Tests construct requests with the production `MemoryAppend.call` method, preserve old executable-identity refusal, and reject mixed or unknown profiles. The failed E13 occurrence remains expired and is never replayed.

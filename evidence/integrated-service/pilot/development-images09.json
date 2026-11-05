@@ -1,0 +1,41 @@
+{
+  "profile": "operator-pilot-development-images/1",
+  "epoch": "dev09",
+  "baseline": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "source_manifest_sha256": "b725ff3f9cf893f5e3ecd2069bf7521bcfac5d4ce81c781a71a000b414a005e8",
+  "runtime_delta_from08": [
+    "integration/single_node/pilot_activation.py"
+  ],
+  "images": [
+    {
+      "kind": "base",
+      "local_tag": "docker.io/library/fusion-single-node:reference-pilot-dev09",
+      "manifest_digest": "sha256:94e2db2f3ef9029573f078213c4b3bf477af048e57e21694272e6ce17ed5e203",
+      "configuration_digest": "sha256:e654d7963cddd405d81d0f49bbb6df40021b2a16cd965d5e2f75faac8ee141d3"
+    },
+    {
+      "kind": "caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:reference-pilot-dev09",
+      "manifest_digest": "sha256:e56e95b01e820f3d53f461515afce3998309d9d89c0651e5d38f3e8f4d1c005e",
+      "configuration_digest": "sha256:d1d5609d114df2fc907e2a33048f33727e7db8e3629b1c5a05d5da542a704ed3"
+    },
+    {
+      "kind": "embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:reference-pilot-dev09",
+      "manifest_digest": "sha256:63077a6e66b82e9ce17c22aecb6e416e2be0400df7c2186fe130e4459dcb8b3f",
+      "configuration_digest": "sha256:fa35438293498aeabd9a28878335ca55489fbf20b568601e6c82b8ca8a8f975c"
+    },
+    {
+      "kind": "chain",
+      "local_tag": "docker.io/library/fusion-reference-chain:reference-pilot-dev09",
+      "manifest_digest": "sha256:32789f5a898d984174736958daf1015886297eb130bd167d617d53c0bbc551a5",
+      "configuration_digest": "sha256:89b33b153acd39b199f828f6b078677b4bc0a13ae09f47c860f9796048070efe"
+    }
+  ],
+  "archive_sha256": "7a1a8949e0c8d3cb0a0d18f93572d777b6d37f93bc13ec5a08d3c6125710c169",
+  "source_export_verification": "PASS",
+  "container_starts_during_build": 0,
+  "additional_live_generations": 0,
+  "final_acceptance": "NOT_RUN",
+  "previous_epochs": "Historical development evidence retained; exact current-generation Registry restart repair required new09 candidate."
+}

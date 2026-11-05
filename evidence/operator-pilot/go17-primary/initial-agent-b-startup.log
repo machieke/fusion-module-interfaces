@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/fusion/integration/single_node/server.py", line 544, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/opt/fusion/integration/single_node/server.py", line 100, in main
+    settings, config, state, run = config_resolver(config_path)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/integration/single_node/configure.py", line 32, in configure
+    return preview(settings)
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/integration/single_node/preview_configure.py", line 24, in configure
+    return sustained(settings)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/integration/single_node/sustained_configure.py", line 103, in configure
+    registry_selection(settings,cfg,run)
+  File "/opt/fusion/integration/single_node/integrated_registry.py", line 61, in configure
+    require(role in selected['pins'] and role in settings['peers'],'NOT_AVAILABLE')
+  File "/opt/fusion/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

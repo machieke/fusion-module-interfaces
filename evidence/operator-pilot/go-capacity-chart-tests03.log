@@ -1,0 +1,39 @@
+test_go_disabled_or_absent_manifest_bytes_unchanged (tests.test_pilot_go_capacity_chart.CapacityComposition.test_go_disabled_or_absent_manifest_bytes_unchanged) ... ok
+test_opt_in_capacity_is_exact_scope_separate_principal (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_in_capacity_is_exact_scope_separate_principal) ... ERROR
+test_opt_out_go_manifest_bytes_unchanged (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_out_go_manifest_bytes_unchanged) ... ERROR
+
+======================================================================
+ERROR: test_opt_in_capacity_is_exact_scope_separate_principal (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_in_capacity_is_exact_scope_separate_principal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 38, in test_opt_in_capacity_is_exact_scope_separate_principal
+    original=self.policy(disabled);without=copy.deepcopy(enabled);without['principals'].pop('capacity-operator')
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 31, in policy
+    objs=list(yaml.safe_load_all(self.render(CHART,values)))
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 28, in render
+    result=subprocess.run([self.helm,'template','omega',str(chart),'--namespace','omega-ref-pilot-capacity-chart','-f',str(path)],capture_output=True,check=True,timeout=20)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/snap/helm/current/helm', 'template', 'omega', '/home/purplezky/work/takopi/fusion-module-interfaces/deploy/helm/omega-fusion', '--namespace', 'omega-ref-pilot-capacity-chart', '-f', '/tmp/tmpfi5ukhqz/values.json']' returned non-zero exit status 1.
+
+======================================================================
+ERROR: test_opt_out_go_manifest_bytes_unchanged (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_out_go_manifest_bytes_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 54, in test_opt_out_go_manifest_bytes_unchanged
+    self.assertEqual(self.render(old,values),self.render(CHART,values))
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 28, in render
+    result=subprocess.run([self.helm,'template','omega',str(chart),'--namespace','omega-ref-pilot-capacity-chart','-f',str(path)],capture_output=True,check=True,timeout=20)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/snap/helm/current/helm', 'template', 'omega', '/tmp/tmpis8h82pl/historical-chart', '--namespace', 'omega-ref-pilot-capacity-chart', '-f', '/tmp/tmpis8h82pl/values.json']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.010s
+
+FAILED (errors=2)

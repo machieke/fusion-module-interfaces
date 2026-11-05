@@ -1,0 +1,784 @@
+{
+  "additional_live_generations": 0,
+  "audited_at": "2026-11-04T23:02:40.975076+00:00",
+  "audited_source_sha256": {
+    "fusion/adapters/chroma_vector.py": "aa24418e215eab3c96c20b73f98cdde07d09f6bfe5e58acac7cc924fb84f4fef",
+    "fusion/adapters/detta.py": "99c948919abfbce31450ffae52e4b0be691a711d8ca047a13876514199fa009c",
+    "fusion/adapters/irc_socket.py": "0fe331d32ac2050b9e3a9fba42ad4e26d739c76d8ccdeaaff5c40be3ec890dac",
+    "fusion/adapters/native_e5.py": "4e77dfd098e71f2ec3688a91fda49bb6a9690e70e98dde80900501e4a500b617",
+    "fusion/adapters/native_promotion.py": "a835dab3978d942f906814bfc9dc7ddcf7d7f15821e8feb327b1ad98acce506b",
+    "fusion/adapters/neoclaw_nal.py": "1a8e8dbcdd8b6ab702eeffe17d0d6ff738b502c5f4f397c4c3e0596726258e88",
+    "fusion/adapters/ollama_completion.py": "ec93a67ddbaa4d249f45673a8c1559f734a3a26ee4c0a2452bb79473e30ca66b",
+    "fusion/append_transport.py": "86260025add261e537601794deff81827bb449cbaccb42d740cc3b12e11c4fa4",
+    "fusion/channel_transport.py": "c76e0513b22535ace7b404aaf6992e095fd8a4741365bdd896f1104e143ca33c",
+    "fusion/embedding_service.py": "1aee273d97eb54fe5d4057c145ecf7373bb118f82d960ea5ab0bd0bbced9a7b9",
+    "fusion/embedding_transport.py": "dab7512cbe050fdfe6dc7a460b6e7d2b49f40985498df288e843cd58905b639b",
+    "fusion/guarded_continuation.py": "eb15f91d62bd9992930aa6c040614c6d0c6570fda973fbc67ee87bf1371a46b2",
+    "fusion/https_pool.py": "456c83f371cc7c7d4a22f566d000f96ed4b9a641150af5daba7e175429c59db1",
+    "fusion/irc_bridge.py": "9d0c3ea95f3afe8e8c04be67cec00a5551a945ce7e43d6772ee1a30df2108978",
+    "fusion/model_service.py": "6029393abd16e85c9b5f9fa6a1fc80809abdb345f93a6aa50a5fc2c37759b497",
+    "fusion/model_transport.py": "75c23e3775c64417d6dc7eae77f07dc75ca974c430a507fe9cc21c5e040c47f3",
+    "fusion/neoclaw_channel.py": "1fbedb6647b5364fcb1c4558d6f6c10896fad8d796db928f0b5705551ccc6f83",
+    "fusion/neoclaw_client.py": "441b68fcbaa24251f7bfc688dd7f024111eb639a9a7fdfa783f43c6cc0b8b3d4",
+    "fusion/neoclaw_embedding.py": "a837502905c34eaf15e5297c07c58e3fd5d95aab7fa3bdc3d451029e61413af1",
+    "fusion/neoclaw_model.py": "154ab7ab5f1fe3e78b5ca668e2dcfda15a13c375aa0ed24934283a5f82f2005f",
+    "fusion/neoclaw_services.py": "65e7c135f471abf5b8c97d2fe95f54455a85cba25a550ab3421217591035660a",
+    "fusion/neoclaw_transport.py": "f497e84568897d47c07a1c845bfee93f0acd7ff5581cba0d5c6714b2ae543cb6",
+    "fusion/pilot_model_clock.py": "ff6be828595bfaff3dd26ce21c11332089af99774baf8e28c0d03bbfaf96246e",
+    "fusion/pilot_subscriptions.py": "1d55574da9f49d63c02def7fc5b0a145b407d1fcefe3562ffd84909fc9b782b4",
+    "fusion/preview_client.py": "7a503a978535931f405c66f1e8d6dd64cdafd06d76a9e2bec9ee31f12bf261ab",
+    "fusion/preview_model_binding.py": "030a17cc7f58079df4be5acb345dfc94dc0e21647b7f565a20589cc6144b42fd",
+    "fusion/preview_recorded_model.py": "62922eaa09009548d36200b5c6a263d5e3f359bd94ad8e9fa128a15b4c1b80a2",
+    "fusion/preview_session_client.py": "0499cd3d0d568d8090c66c2ecd20eac60df91153e7a09bd3999fae213e190de6",
+    "fusion/preview_transport.py": "7e8a7ef1d52c02457e610455aff5c97598c63f11c0c70b9df94fa8a4f1184936",
+    "fusion/promotion.py": "a1fbcb5fabf4a98db0c07b4a02ffdbad27d9d8a63fb8c20daa72e63121816f3f",
+    "fusion/provider_lifecycle.py": "4b9e2c8100b5591bec4318869baf9bfb34c8ffe3167f832d04255c4e05114eb6",
+    "fusion/service_lanes.py": "da9c92464272970de98032e04f1c41109c4b3042da3ab2040e08ef5169728a44",
+    "fusion/sustained_sessions.py": "bff6b5dbf4f43766de9d01f2f29387097b17b604e6a53d80265a4366e1186d30",
+    "fusion/vector_transport.py": "4023637cad395bffd00d5804c347198c09932b2a9648402e7c3007127138e4f4",
+    "integration/single_node/pilot_browser_page.py": "344ba2b8e0d60be964da9212b0fc27a4a1ea394049e02dc36ba7021fcf4aaed0",
+    "integration/single_node/pilot_browser_sessions.py": "6de1369a2e57c0067aaa4224fb54e6fbe897d329d2623b716c6a89d25d6c7cd0",
+    "integration/single_node/pilot_configure.py": "81be5f0c3fdfd906d90400f8764023a299031965821979918ce9ea95795e3c40",
+    "integration/single_node/pilot_workbench.py": "eb20826828428cba7e776becc59e15adde1e59e4a7395cf9730f5dfc11cb3497",
+    "integration/single_node/sustained_private.py": "930f057f6fbeebd5e4d0b92516dc5488692a84206563aee063ad5767e839fd50",
+    "sdk/go/client.go": "9a948a3cd01ac077bd9bd0969f5dbc837b97510f7b02e79a6984700353ca385e",
+    "sdk/go/go.mod": "63f30fd76b2eee7500009e60a52577816b1323118e554094b46453b1112e07b9"
+  },
+  "backend_qualifications": {
+    "chroma": "SOURCE_INSPECTION_ONLY_LOCAL_PERSISTENTCLIENT",
+    "detta": "SOURCE_INSPECTION_ONLY",
+    "e5": "SOURCE_INSPECTION_ONLY",
+    "irc": "SOURCE_INSPECTION_ONLY_NO_SOCKET_PEER_IN_THIS_AUDIT",
+    "nal": "SOURCE_INSPECTION_ONLY",
+    "ollama": "SOURCE_INSPECTION_ONLY_NEVER_INSTANTIATED"
+  },
+  "base_commit": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "checks": [
+    {
+      "command": "timeout60s unittest tests.test_pilot_model_clock tests.test_phase2_model tests.test_model tests.test_integrated_model_startup tests.test_integrated_pool tests.test_pilot_lanes",
+      "methods": 57,
+      "seconds": 2.782,
+      "status": "PASS"
+    },
+    {
+      "authored_methods": 8,
+      "command": "GOTMPDIR=/dev/shm/omega-pilot-go-audit go test -count=1 .",
+      "cwd": "sdk/go",
+      "seconds": 0.121,
+      "status": "PASS"
+    }
+  ],
+  "followup": {
+    "additional_live_generations": 0,
+    "checks": [
+      {
+        "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_model_clock tests.test_phase2_model tests.test_model tests.test_integrated_model_startup tests.test_integrated_pool tests.test_pilot_lanes tests.test_pilot_browser -q",
+        "methods": 74,
+        "seconds": 9.082,
+        "status": "PASS"
+      }
+    ],
+    "observed_at": "2026-11-04T23:15:33.727914+00:00",
+    "source_sha256": {
+      "fusion/model_service.py": "6029393abd16e85c9b5f9fa6a1fc80809abdb345f93a6aa50a5fc2c37759b497",
+      "fusion/pilot_model_clock.py": "ff6be828595bfaff3dd26ce21c11332089af99774baf8e28c0d03bbfaf96246e",
+      "integration/single_node/sustained_private.py": "930f057f6fbeebd5e4d0b92516dc5488692a84206563aee063ad5767e839fd50",
+      "tests/test_pilot_model_clock.py": "3ab18fe36a9c601b1f93d2ca96e09dad47356a1fc1aa49e63f5a83d1d8ba84a7"
+    }
+  },
+  "limits": [
+    "No distributed clock guarantee",
+    "Historical unselected ModelInference journal lacks new high-water semantics",
+    "Older socket inactivity timeouts are not durable deadline cancellation",
+    "TCP/socket-write outcome does not prove external recipient delivery"
+  ],
+  "new_clock_profile": {
+    "fresh_only": true,
+    "historical_tables_unchanged": true,
+    "live_generation": false,
+    "profile": "recorded-model-owner-time/1",
+    "raw_anomalous_response_retained_before_refusal": true,
+    "recorded_only": true,
+    "selection": "preview.pilot.owner_clock"
+  },
+  "operation_classifications": [
+    {
+      "conditions": "Keep exact Mutation, content bytes, selection and original deadline; failed response leaves acceptance unknown.",
+      "evidence": "REAL_TLS_FILE_PAYLOAD_FIXTURE_TEST",
+      "family": "AtomStorage",
+      "operation": "create",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Keep exact immutable refs or source head/cursor; current scope/disclosure must still permit.",
+      "evidence": "REAL_TLS_FILE_PAYLOAD_FIXTURE_TEST",
+      "family": "AtomStorage",
+      "operation": "get",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "SAFE_READ_FIXED_VIEW",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Keep exact immutable refs or source head/cursor; current scope/disclosure must still permit.",
+      "evidence": "REAL_TLS_FILE_PAYLOAD_FIXTURE_TEST",
+      "family": "AtomStorage",
+      "operation": "getMany",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "SAFE_READ_FIXED_VIEW",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Keep exact immutable refs or source head/cursor; current scope/disclosure must still permit.",
+      "evidence": "REAL_TLS_FILE_PAYLOAD_FIXTURE_TEST",
+      "family": "AtomStorage",
+      "operation": "availability",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "SAFE_READ_FIXED_VIEW",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Keep exact immutable refs or source head/cursor; current scope/disclosure must still permit.",
+      "evidence": "REAL_TLS_FILE_PAYLOAD_FIXTURE_TEST",
+      "family": "AtomStorage",
+      "operation": "readCommits",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "SAFE_READ_FIXED_VIEW",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Current observation may differ; it is not a result or admission reservation.",
+      "evidence": "STATIC_REVIEW",
+      "family": "AtomStorage",
+      "operation": "head",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Current observation may differ; it is not a result or admission reservation.",
+      "evidence": "STATIC_REVIEW",
+      "family": "AtomStorage",
+      "operation": "capacity",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Current observation may differ; it is not a result or admission reservation.",
+      "evidence": "STATIC_REVIEW",
+      "family": "AtomStorage",
+      "operation": "observe",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Current observation may differ; it is not a result or admission reservation.",
+      "evidence": "STATIC_REVIEW",
+      "family": "AtomStorage",
+      "operation": "observeArchive",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Current observation may differ; it is not a result or admission reservation.",
+      "evidence": "STATIC_REVIEW",
+      "family": "AtomStorage",
+      "operation": "planArchive",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Same original bounded plan/mutation, no source rewrite/refund; partial publication recovered by owner.",
+      "evidence": "REAL_SQLITE_FILE_ARCHIVE_FIXTURE_PAYLOAD",
+      "family": "AtomStorage",
+      "operation": "publishArchive",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "allocate",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "submit",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "pause",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "resume",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "close",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "archive",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "cancel",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Current actor/scope; keep original logical identity/input/deadline; complete requires actual dispatched source result.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NativeSession",
+      "operation": "complete",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Reconcile saved owner state only; no effect launch or budget refill.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "NativeSession",
+      "operation": "observe",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Reconcile saved owner state only; no effect launch or budget refill.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "NativeSession",
+      "operation": "disclose",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Reconcile saved owner state only; no effect launch or budget refill.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "NativeSession",
+      "operation": "binding",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Reconcile saved owner state only; no effect launch or budget refill.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "NativeSession",
+      "operation": "list",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Reconcile saved owner state only; no effect launch or budget refill.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "NativeSession",
+      "operation": "capacity",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Reconcile saved owner state only; no effect launch or budget refill.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "NativeSession",
+      "operation": "reconcile",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/preview_session_client.py"
+    },
+    {
+      "conditions": "Explicit _retry loop spends durable call before each RPC; read/poll/ack also spend calls; deadline and provider attempts unchanged.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NALCaller",
+      "operation": "submit",
+      "physical_send_bound": "At most configured max_calls<=64 reserved RPCs per occurrence; each invokes transport once.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/neoclaw_client.py"
+    },
+    {
+      "conditions": "Explicit _retry loop spends durable call before each RPC; read/poll/ack also spend calls; deadline and provider attempts unchanged.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NALCaller",
+      "operation": "status",
+      "physical_send_bound": "At most configured max_calls<=64 reserved RPCs per occurrence; each invokes transport once.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/neoclaw_client.py"
+    },
+    {
+      "conditions": "Explicit _retry loop spends durable call before each RPC; read/poll/ack also spend calls; deadline and provider attempts unchanged.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NALCaller",
+      "operation": "result",
+      "physical_send_bound": "At most configured max_calls<=64 reserved RPCs per occurrence; each invokes transport once.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/neoclaw_client.py"
+    },
+    {
+      "conditions": "Explicit _retry loop spends durable call before each RPC; read/poll/ack also spend calls; deadline and provider attempts unchanged.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NALCaller",
+      "operation": "get",
+      "physical_send_bound": "At most configured max_calls<=64 reserved RPCs per occurrence; each invokes transport once.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/neoclaw_client.py"
+    },
+    {
+      "conditions": "Explicit _retry loop spends durable call before each RPC; read/poll/ack also spend calls; deadline and provider attempts unchanged.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NALCaller",
+      "operation": "poll",
+      "physical_send_bound": "At most configured max_calls<=64 reserved RPCs per occurrence; each invokes transport once.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/neoclaw_client.py"
+    },
+    {
+      "conditions": "Explicit _retry loop spends durable call before each RPC; read/poll/ack also spend calls; deadline and provider attempts unchanged.",
+      "evidence": "STATIC_REVIEW",
+      "family": "NALCaller",
+      "operation": "ack",
+      "physical_send_bound": "At most configured max_calls<=64 reserved RPCs per occurrence; each invokes transport once.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/neoclaw_client.py"
+    },
+    {
+      "conditions": "Same action identity/exact intent; current authority rechecked; seal retains historical selection and action facts.",
+      "evidence": "FINITE_REAL_SQLITE_MODEL_TEST",
+      "family": "Registry",
+      "operation": "add",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Same action identity/exact intent; current authority rechecked; seal retains historical selection and action facts.",
+      "evidence": "FINITE_REAL_SQLITE_MODEL_TEST",
+      "family": "Registry",
+      "operation": "enable",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Same action identity/exact intent; current authority rechecked; seal retains historical selection and action facts.",
+      "evidence": "FINITE_REAL_SQLITE_MODEL_TEST",
+      "family": "Registry",
+      "operation": "disable",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Same action identity/exact intent; current authority rechecked; seal retains historical selection and action facts.",
+      "evidence": "FINITE_REAL_SQLITE_MODEL_TEST",
+      "family": "Registry",
+      "operation": "drain",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Same action identity/exact intent; current authority rechecked; seal retains historical selection and action facts.",
+      "evidence": "FINITE_REAL_SQLITE_MODEL_TEST",
+      "family": "Registry",
+      "operation": "retire",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Same action identity/exact intent; current authority rechecked; seal retains historical selection and action facts.",
+      "evidence": "FINITE_REAL_SQLITE_MODEL_TEST",
+      "family": "Registry",
+      "operation": "seal",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "One pre-reserved health observation per probe ID; unknown replay never reprobes.",
+      "evidence": "REAL_SQLITE_READINESS_FIXTURE_TEST",
+      "family": "Registry",
+      "operation": "probe",
+      "physical_send_bound": "At most1 health observer call per original probe identity.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Current scope; no readiness renewal or implicit admission.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Registry",
+      "operation": "inspect",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Current scope; no readiness renewal or implicit admission.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Registry",
+      "operation": "selected",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Current scope; no readiness renewal or implicit admission.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Registry",
+      "operation": "headroom",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Current scope; no readiness renewal or implicit admission.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Registry",
+      "operation": "plan",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/provider_lifecycle.py"
+    },
+    {
+      "conditions": "Observation lane only for named authorization operations; current authority, no encode.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Embedding",
+      "operation": "authorize-invoke",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/embedding_transport.py"
+    },
+    {
+      "conditions": "Observation lane only for named authorization operations; current authority, no encode.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Embedding",
+      "operation": "authorize-disclose",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/embedding_transport.py"
+    },
+    {
+      "conditions": "Caller binds exact input/model/view before evaluation, captures vector before Search; after capture recover without encoding.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Embedding",
+      "operation": "encode",
+      "physical_send_bound": "1 HTTP exchange/encode invocation; explicit caller bounds32 RPCs and3 encode attempts; each worker exchange once.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/embedding_transport.py"
+    },
+    {
+      "conditions": "Use exact retained generation/source head and validated vector; unavailable is never empty results.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Search",
+      "operation": "query",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "SAFE_READ_FIXED_VIEW",
+      "source": "fusion/vector_transport.py"
+    },
+    {
+      "conditions": "Use exact retained generation/source head and validated vector; unavailable is never empty results.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Search",
+      "operation": "ready",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "SAFE_READ_FIXED_VIEW",
+      "source": "fusion/vector_transport.py"
+    },
+    {
+      "conditions": "Exact occurrence/enrollment/vector; publication and metadata/native readiness remain separate.",
+      "evidence": "STATIC_REVIEW",
+      "family": "MemoryAppend",
+      "operation": "create",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/append_transport.py"
+    },
+    {
+      "conditions": "Exact occurrence/enrollment/vector; publication and metadata/native readiness remain separate.",
+      "evidence": "STATIC_REVIEW",
+      "family": "MemoryAppend",
+      "operation": "build",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/append_transport.py"
+    },
+    {
+      "conditions": "No provider selection changes or captured-view rebinding.",
+      "evidence": "STATIC_REVIEW",
+      "family": "MemoryAppend",
+      "operation": "observe",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/append_transport.py"
+    },
+    {
+      "conditions": "No provider selection changes or captured-view rebinding.",
+      "evidence": "STATIC_REVIEW",
+      "family": "MemoryAppend",
+      "operation": "published",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/append_transport.py"
+    },
+    {
+      "conditions": "Current disclosure/execution grants; observe never generates, capture never reconstructed.",
+      "evidence": "REAL_SQLITE_AUTHORED_MODEL_TEST",
+      "family": "ModelInference",
+      "operation": "observe",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/model_service.py"
+    },
+    {
+      "conditions": "Current disclosure/execution grants; observe never generates, capture never reconstructed.",
+      "evidence": "REAL_SQLITE_AUTHORED_MODEL_TEST",
+      "family": "ModelInference",
+      "operation": "authorize",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/model_service.py"
+    },
+    {
+      "conditions": "Same exact accepted intent; original raw response/time; no new backend call.",
+      "evidence": "REAL_SQLITE_AUTHORED_MODEL_TEST",
+      "family": "ModelInference",
+      "operation": "complete-captured",
+      "physical_send_bound": "0 backend generations; one transport RPC if network placement.",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/model_service.py"
+    },
+    {
+      "conditions": "One durable reservation remains spent; replay only reports unknown, never regeneration.",
+      "evidence": "REAL_SQLITE_SIGSTOP_AUTHORED_MODEL_TEST",
+      "family": "ModelInference",
+      "operation": "complete-reserved-unknown",
+      "physical_send_bound": "0 further backend calls for the accepted occurrence.",
+      "retry_class": "PROHIBITED_AUTOMATIC_REPLAY",
+      "source": "fusion/model_service.py"
+    },
+    {
+      "conditions": "New backend entry only under exact intent/current approval/original deadline and remaining reservation.",
+      "evidence": "REAL_SQLITE_AUTHORED_MODEL_ONLY",
+      "family": "ModelInference",
+      "operation": "complete-unreserved",
+      "physical_send_bound": "At most1 reserved backend call; historical Ollama adapter has2 non-generative readiness GETs then0..1 chat POST; NOT_EXECUTED.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/model_service.py"
+    },
+    {
+      "conditions": "Exact delivery/ref/route; receipt acceptance is not socket-write success or recipient observation.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Messaging",
+      "operation": "send",
+      "physical_send_bound": "1 HTTP exchange per invocation; bridge column budget<=32 reservations with explicit relay delay.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/channel_transport.py"
+    },
+    {
+      "conditions": "Exact delivery/ref/route; receipt acceptance is not socket-write success or recipient observation.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Messaging",
+      "operation": "ack",
+      "physical_send_bound": "1 HTTP exchange per invocation; bridge column budget<=32 reservations with explicit relay delay.",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/channel_transport.py"
+    },
+    {
+      "conditions": "Receiving string/delivery is not application acceptance or mailbox acknowledgment.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Messaging",
+      "operation": "poll",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/channel_transport.py"
+    },
+    {
+      "conditions": "Reserve before sendall; on ambiguous outcome retain unknown; no automatic resend.",
+      "evidence": "STATIC_REVIEW",
+      "family": "IRC",
+      "operation": "external-write",
+      "physical_send_bound": "At most1 sendall invocation per egress occurrence; packet count/recipient delivery unknown.",
+      "retry_class": "PROHIBITED_AUTOMATIC_REPLAY",
+      "source": "fusion/irc_bridge.py"
+    },
+    {
+      "conditions": "Current scoped hints/snapshot; gap requires exact full snapshot/rebase; no input submission.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Subscription",
+      "operation": "read",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Current scoped hints/snapshot; gap requires exact full snapshot/rebase; no input submission.",
+      "evidence": "STATIC_REVIEW",
+      "family": "Subscription",
+      "operation": "snapshot",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Finite owner action receipts; renewal only affects observation; expired receipt cannot resurrect lease.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "Subscription",
+      "operation": "create",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Finite owner action receipts; renewal only affects observation; expired receipt cannot resurrect lease.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "Subscription",
+      "operation": "pause",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Finite owner action receipts; renewal only affects observation; expired receipt cannot resurrect lease.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "Subscription",
+      "operation": "resume",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Finite owner action receipts; renewal only affects observation; expired receipt cannot resurrect lease.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "Subscription",
+      "operation": "renew",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Finite owner action receipts; renewal only affects observation; expired receipt cannot resurrect lease.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "Subscription",
+      "operation": "ack",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Finite owner action receipts; renewal only affects observation; expired receipt cannot resurrect lease.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "Subscription",
+      "operation": "close",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "Finite owner action receipts; renewal only affects observation; expired receipt cannot resurrect lease.",
+      "evidence": "REAL_SQLITE_ISOLATED_TEST",
+      "family": "Subscription",
+      "operation": "rebase",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "fusion/pilot_subscriptions.py"
+    },
+    {
+      "conditions": "At most150 read cycles and300000ms monotonic admission window; pending read may finish; no automatic task resubmit.",
+      "evidence": "PROOFSHOT_UI_FIXTURE",
+      "family": "Browser",
+      "operation": "observe-loop",
+      "physical_send_bound": "One fetch per called gateway route; gateway may perform multiple explicit owner reads; browser-internal network retransmission not packet-audited.",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "integration/single_node/pilot_browser_page.py"
+    },
+    {
+      "conditions": "Original mutation identity; current credential file each exchange; no redirect/keepalive/HTTP2/automatic POST loop.",
+      "evidence": "REAL_TLS_RESPONSE_FIXTURE_TEST",
+      "family": "GoClient",
+      "operation": "CreateReceipt",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "IDEMPOTENT_REPLAY_ORIGINAL_IDENTITY",
+      "source": "sdk/go/client.go"
+    },
+    {
+      "conditions": "Exact immutable ref and absolute deadline.",
+      "evidence": "REAL_TLS_RESPONSE_FIXTURE_TEST",
+      "family": "GoClient",
+      "operation": "Get",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "SAFE_READ_FIXED_VIEW",
+      "source": "sdk/go/client.go"
+    },
+    {
+      "conditions": "Current observations; no hidden native work.",
+      "evidence": "REAL_TLS_RESPONSE_FIXTURE_TEST",
+      "family": "GoClient",
+      "operation": "Head",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "sdk/go/client.go"
+    },
+    {
+      "conditions": "Current observations; no hidden native work.",
+      "evidence": "REAL_TLS_RESPONSE_FIXTURE_TEST",
+      "family": "GoClient",
+      "operation": "Session-observe",
+      "physical_send_bound": "0..1 HTTP request per explicit invocation; no transport retransmit",
+      "retry_class": "OBSERVATION_ONLY",
+      "source": "sdk/go/client.go"
+    }
+  ],
+  "real_generative_runtime_contacts": 0,
+  "schema": "operator-pilot-retry-audit/1",
+  "scope": "STATIC_SOURCE_AND_EXPLICIT_ISOLATED_TESTS",
+  "source_epoch": "WORKING_TREE_SOURCE_REVIEW; final tested image bindings are separate programme evidence",
+  "unrun": [
+    "k3s asymmetric network-policy faults",
+    "provider-storage available but Messaging unavailable in deployed combined workflow",
+    "delayed response from replaced pod",
+    "deployed native promotion suspension",
+    "deployed subscriptions across Registry rollover/archive/provider restart",
+    "browser engine packet-level retransmission audit"
+  ]
+}

@@ -1,0 +1,47 @@
+.FFFF..........
+======================================================================
+FAIL: test_closed_current_template_is_read_without_session_resurrection_or_database_write (tests.test_pilot_attention_suspension.ClosedTemplateSelection.test_closed_current_template_is_read_without_session_resurrection_or_database_write)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_attention_suspension.py", line 36, in test_closed_current_template_is_read_without_session_resurrection_or_database_write
+    self.assertEqual(self.snapshot(),before);self.assertFalse((self.root/'run'/'sessions').exists())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'ca.[879 chars]qlite-shm': b'\x18\xe2-\x00\x00\x00\x00\x00\x0[463976 chars]c"}'} != {'ca.[879 chars]qlite': b'SQLite format 3\x00\x10\x00\x02\x02\[332876 chars]c"}'}
+Diff is 697989 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_historical_executable_session_is_refused_without_mutation (tests.test_pilot_attention_suspension.ClosedTemplateSelection.test_historical_executable_session_is_refused_without_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_attention_suspension.py", line 53, in test_historical_executable_session_is_refused_without_mutation
+    self.assertEqual(self.snapshot(),before)
+AssertionError: {'ca.[1241 chars]00\x05\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff[536740 chars]c"}'} != {'ca.[1241 chars]00\x03\x00\x00\x00\xff\xff\xff\xff\xff\xff\xff[536740 chars]c"}'}
+Diff is 812215 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_wrong_generation_or_unknown_session_is_refused (tests.test_pilot_attention_suspension.ClosedTemplateSelection.test_wrong_generation_or_unknown_session_is_refused)
+----------------------------------------------------------------------
+fusion.contracts.ContractError: INVALID_ARGUMENT
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_attention_suspension.py", line 58, in test_wrong_generation_or_unknown_session_is_refused
+    with self.assertRaisesRegex(ContractError,'UNAUTHORIZED'):self.select(self.owner,'unknown-session')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "UNAUTHORIZED" does not match "INVALID_ARGUMENT"
+
+======================================================================
+FAIL: test_wrong_principal_scope_or_private_selection_is_refused (tests.test_pilot_attention_suspension.ClosedTemplateSelection.test_wrong_principal_scope_or_private_selection_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_attention_suspension.py", line 63, in test_wrong_principal_scope_or_private_selection_is_refused
+    self.assertEqual(self.snapshot(),before);self.cfg['native_sessions'][key]=old;self.save()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'ca.[883 chars]qlite-shm': b'\x18\xe2-\x00\x00\x00\x00\x00\x0[463976 chars]c"}'} != {'ca.[883 chars]qlite': b'SQLite format 3\x00\x10\x00\x02\x02\[332876 chars]c"}'}
+Diff is 697993 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.443s
+
+FAILED (failures=4)

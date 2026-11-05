@@ -1,0 +1,48 @@
+{
+  "profile": "operator-pilot-candidate-checks/1",
+  "source_manifest_sha256": "b725ff3f9cf893f5e3ecd2069bf7521bcfac5d4ce81c781a71a000b414a005e8",
+  "before_index_sha256": "5c9c40f54576336e10875679b4f2d4ddfd43822a017394361c098fdcbd39f81a",
+  "indexed_files": 761,
+  "runtime_and_test_source_unchanged": true,
+  "metadata_changes": [
+    {
+      "path": "sdk/pilot-distribution-inputs.json",
+      "before": "960afc80c9a04401fbe70837fcb170afc1ea3aa155389bc54de47252b424b7ea",
+      "after": "164c0d9c94686b8880fd526af062ca511d2d738bc124678328a8217d61c4d7eb"
+    }
+  ],
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "status": "PASS",
+      "invocations": 279,
+      "seconds": 54.991,
+      "primary": "artifacts/operator-pilot/final-checks09/pilot-fast.log",
+      "sha256": "75cc5a8b78e64b29a2840552ea809687a430fbf678c7c84fca87d984a5954ede",
+      "generation_denial": "artifacts/operator-pilot/final-checks09-denial.json",
+      "generation_denial_sha256": "dd2eaf3135652b2f712c1b3efd51454c36e0b2a841cf927971644f55f26f1722"
+    },
+    {
+      "lane": "integrated-fast",
+      "status": "PASS",
+      "invocations": 188,
+      "seconds": 52.669,
+      "primary": "artifacts/operator-pilot/final-checks09-integrated-fast/integrated-fast.log",
+      "sha256": "de744221b6831ad9a70efcbd9238a7281495ff256942a200d141a538b751ffe4",
+      "generation_denial": "artifacts/operator-pilot/final-checks09-integrated-fast-denial.json",
+      "generation_denial_sha256": "dd2eaf3135652b2f712c1b3efd51454c36e0b2a841cf927971644f55f26f1722"
+    },
+    {
+      "lane": "sustained-fast",
+      "status": "PASS",
+      "invocations": 106,
+      "seconds": 83.389,
+      "primary": "artifacts/operator-pilot/final-checks09-sustained-fast/sustained-fast.log",
+      "sha256": "97b5f497693142d1d186e6ca31377e205c754f80a69663362772777452457705",
+      "generation_denial": "artifacts/operator-pilot/final-checks09-sustained-fast-denial.json",
+      "generation_denial_sha256": "17ad6ab0b0cc0fe5942e316b2097e4b3db4a507c0f6a9d36719ad6535d383867"
+    }
+  ],
+  "additional_live_generations": 0,
+  "counts": "Invocations per lane, not authored-definition union; separate source-resolved union audit pending"
+}

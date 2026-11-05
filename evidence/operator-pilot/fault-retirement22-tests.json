@@ -1,0 +1,20 @@
+{
+  "profile": "operator-pilot-fault-retirement-repair/1",
+  "status": "PASS",
+  "change": "Retire a selected test hook with the required explicit empty test object; all other component config, marker/journal state and runtime profiles remain unchanged.",
+  "old_helper_sha256": "314a120b3bf741c2f3a7e67ead0c8bbb416d0508a6f1bea931efe86d056e6000",
+  "new_helper_sha256": "9dd3df4ecdae7466659578cddc229e5bee39f44947c2a03b4be6b7d9fec5f1c7",
+  "test_log": "artifacts/operator-pilot/fault-retirement22.log",
+  "test_log_sha256": "2aa89b0f0e9a06f18de79d2d092f715a5ba2ec99793ecb6f370a33fe49c78115",
+  "invocations": 19,
+  "seconds": 3.004,
+  "source_snapshot": "artifacts/operator-pilot/fault-retirement22-source/manifest.json",
+  "source_snapshot_sha256": "d787f6be734a429f17db5bc9379f5fcd33de598c5b2cc7134b2db40382e67bc8",
+  "snapshot_timing": "after run; no source edit during or after run",
+  "new_authored_methods": 1,
+  "boundaries": "Real Helm validation/render and operator helper; fixture pod identity, TLS/configuration and owner-state files. No cluster/provider/generative calls.",
+  "denial": "artifacts/operator-pilot/fault-retirement22-denial.json",
+  "runtime_images_changed": false,
+  "chart_changed": false,
+  "additional_live_generations": 0
+}

@@ -1,0 +1,20 @@
+{
+  "profile": "activation-only-static-impact-observation/1",
+  "status": "STATIC_PATH_EQUIVALENCE",
+  "old_module_sha256": "9a273391a5066649c887fc97786bad1e4f5dbce7b521b4dc8f6929ab98cf35a4",
+  "new_module_sha256": "57642f9f471111078deb47ed4cb5fd0089035fa57259776e93c5779cf62e3ddd",
+  "changed_top_level_definitions": [
+    "request_guard"
+  ],
+  "selected_function_ast_unchanged": true,
+  "request_guard_early_return_ast_unchanged": true,
+  "unselected_handover_branch": "UNCHANGED_EARLY_RETURN",
+  "source_manifest_sha256": "aa9a8ebaeb2f59cd8893cd50755d5f91314590841cf0e09fda79b6d3556d0784",
+  "limits": [
+    "Static source comparison only; no runtime13 native pass inferred.",
+    "Historical runtime11/12 evidence retains original identities.",
+    "Fresh current-image representative qualifications remain required."
+  ],
+  "additional_native_inputs": 0,
+  "additional_live_generations": 0
+}

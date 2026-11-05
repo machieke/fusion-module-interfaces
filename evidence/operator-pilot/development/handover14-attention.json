@@ -1,0 +1,154 @@
+{
+  "actual_suspension": {
+    "after_wait_ms": 1793867811411,
+    "cleanup_original_state": "PAUSED",
+    "original_resumed": true,
+    "paused_ms": 1793867791182,
+    "replacement_targeted": false,
+    "selected_deadline_ms": 1793867800965,
+    "state_after_pause": "PAUSED",
+    "state_before_resume": "PAUSED",
+    "suspended_seconds": 20.00028990395367
+  },
+  "additional_live_generations": 0,
+  "artifact_binding": {
+    "alignment": "Runtime images unchanged. Operator21 differs only in closed-session template selection. Chart15 adds only the existing after_priority_reservation test-hook enum; unarmed actual rendered workload bytes equal packet18.",
+    "base_packet": "distribution18",
+    "chart_files_sha256": "89b4dd7d46156afa944166bedccfe531ebf7aaab14ccbabfd7a774f16280ca76",
+    "chart_schema_sha256": "0aff1a59af329af853a44f1cce80d63ab3648853dca1b1f5d44d20c7b29bf667",
+    "first_attempt_helper_sha256": "abdb9ef5c4559bbab7ad8a99a0c1a385922227c0f0ce403270bc49906f35d1f2",
+    "operator_helper_sha256": "98cd384309c69cc708a41eb1440198cc53d65146949c9fb4a9fb31af808b02ba",
+    "operator_wheel_sha256": "930cddd33a66907d5c4baeaea28ebf10fb07dcffe1804a8e92c66b7070245f14",
+    "packet_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+    "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc"
+  },
+  "attempt_semantics": "Each control attempt has a separately frozen fresh context and identity. Earlier attempts and the second baseline remain retained; no failed attempt timer, accepted deadline or reservation is reset.",
+  "attempts": [
+    {
+      "additional_live_generations": 0,
+      "attempt": 1,
+      "baseline_captures": 0,
+      "cause": "Closed session transient application configuration was absent after restart; no provider bind was submitted.",
+      "configuration_restored": true,
+      "container_pauses": 0,
+      "elapsed_seconds": 20.346,
+      "finished_ms": 1793866600969,
+      "maximum_seconds": 300,
+      "model_calls": 0,
+      "new_omega_inputs": 0,
+      "started_ms": 1793866580623,
+      "status": "FAIL",
+      "suspension_bindings": 0
+    },
+    {
+      "additional_live_generations": 0,
+      "attempt": 2,
+      "baseline_captures": 1,
+      "cause": "Existing runtime reservation barrier was absent from Helm test-hook enum; baseline captured, suspension binding never submitted.",
+      "configuration_restored": true,
+      "container_pauses": 0,
+      "elapsed_seconds": 26.424,
+      "finished_ms": 1793867307274,
+      "maximum_seconds": 300,
+      "model_calls": 0,
+      "new_omega_inputs": 0,
+      "started_ms": 1793867280850,
+      "status": "FAIL",
+      "suspension_bindings": 0
+    },
+    {
+      "additional_live_generations": 0,
+      "attempt": 3,
+      "baseline_captures": 1,
+      "cause": "Corrected operator template selection and chart enum; actual pause/resume and spent-budget deadline checks passed.",
+      "configuration_restored": true,
+      "container_pauses": 1,
+      "elapsed_seconds": 68.651,
+      "finished_ms": 1793867824512,
+      "maximum_seconds": 300,
+      "model_calls": 0,
+      "new_omega_inputs": 0,
+      "started_ms": 1793867755861,
+      "status": "PASS",
+      "suspension_bindings": 1
+    }
+  ],
+  "checks": {
+    "fixture_boundaries": "TLS/configuration and Kubernetes/containerd targeting fixtures in unit checks; actual deployed pause evidence is separate.",
+    "focused_elapsed_seconds": 0.374,
+    "focused_fixture_methods": 15,
+    "initial_fixture_run": "Four failed assertions retained; exact failed test-source snapshot unavailable, excluded from source-qualified union.",
+    "read_only_SQLite": "No SQL mutation; main database/nonempty WAL/config bytes retained. SQLite SHM read locks or empty WAL files may change.",
+    "test_source_sha256": "78bb0aafd7f5867421850e7abe79d2cab8fbc8e48acbd03c85d244e48daa834e"
+  },
+  "classification": "REAL_SINGLE_CONTAINER_SUSPENSION_WITH_PRESERVED_UNSUCCESSFUL_CONTROL_ATTEMPTS",
+  "counts": {
+    "actual_container_pauses": 1,
+    "completed_native_policy_baselines_across_attempts": 2,
+    "control_attempts": 3,
+    "live_generations": 0,
+    "model_calls": 0,
+    "new_omega_inputs": 0,
+    "suspended_uncompleted_reservations": 1
+  },
+  "final_state": {
+    "additional_live_generations": 0,
+    "authority_retained": true,
+    "finished_ms": 1793867954790,
+    "old_unknown_not_replayed": true,
+    "original_configuration_restored": true,
+    "post_supplement_placement": "PASS",
+    "primary_evidence_unchanged": true,
+    "resources": [
+      {
+        "namespace": "omega-ref-pilot-handover14-next",
+        "pods": 0,
+        "pvcs": 12
+      },
+      {
+        "namespace": "omega-ref-pilot-handover14",
+        "pods": 0,
+        "pvcs": 12
+      }
+    ],
+    "status": "QUIESCED",
+    "writer_generation": 2
+  },
+  "limits": [
+    "Single task-owned container on one intact host; no node suspension, HA or multi-node claim.",
+    "Direct bounded Attention owner control using a completed native memory payload; no new native Omega command or model generation.",
+    "The suspended adjustment was reserved before native evaluation, then retired with absent result; it was not completed or refunded.",
+    "Historical E11/E13 failures, primary E14 success and browser observer failures remain separate evidence."
+  ],
+  "owner_guarantees": {
+    "additional_evaluations_after_expiry": 0,
+    "baseline_capture_retained": true,
+    "baseline_native_policy_result": 1,
+    "closed_session_rematerialized": false,
+    "current_provider_authorization": "UNCHANGED_PER_REQUEST",
+    "current_template_and_CA_bound_to_accepted_allocation": true,
+    "deadline_renewals": 0,
+    "expired_same_binding_adjust": "DEADLINE_EXCEEDED",
+    "interrupted_adjust_reply": {
+      "status": "TRANSPORT_UNAVAILABLE",
+      "type": "TimeoutExpired"
+    },
+    "native_session_reopened": false,
+    "original_adjustment_budget_ms": 15000,
+    "owner_state_after_restart": "EXACT",
+    "reservation_refunds": 0,
+    "same_binding_observe": "NO_RESULT",
+    "suspended_reservations_spent": 1,
+    "suspended_result": null
+  },
+  "privacy": "Private session/context/operation/container identifiers, credentials, checkpoint/journal/capture hashes and raw owner state withheld.",
+  "profile": "operator-single-container-suspension/1",
+  "status": "PASS_WITH_TWO_RETAINED_CONTROL_FAILURES",
+  "targeting": {
+    "namespace_pod_controller_container_image_bindings_verified": true,
+    "node_or_control_plane_paused": false,
+    "replacement_container_targeted": false,
+    "selected_role": "fusion-attention",
+    "single_container_pod": true
+  }
+}

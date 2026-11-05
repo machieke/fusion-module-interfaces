@@ -1,0 +1,21 @@
+GENERATION_DENIAL {"mode": "recorded", "real_runtime_startups": 0, "real_backend_calls": 0, "live_reservations": 0, "live_captures": 0}
+test_bad_health_shape_refuses_immediately (tests.test_pilot_chain_readiness.BoundedHealth.test_bad_health_shape_refuses_immediately) ... ok
+test_eight_health_attempts_exhaust_without_reader (tests.test_pilot_chain_readiness.BoundedHealth.test_eight_health_attempts_exhaust_without_reader) ... ok
+test_provider_not_ready_is_finite (tests.test_pilot_chain_readiness.BoundedHealth.test_provider_not_ready_is_finite) ... ok
+test_transient_health_refusal_then_ready_does_not_read_artifact (tests.test_pilot_chain_readiness.BoundedHealth.test_transient_health_refusal_then_ready_does_not_read_artifact) ... ok
+test_explicit_selection_uses_composed_source_and_bounded_observer (tests.test_pilot_chain_readiness.OptInComposition.test_explicit_selection_uses_composed_source_and_bounded_observer) ... ok
+test_historical_default_source_and_bound_preserved (tests.test_pilot_chain_readiness.OptInComposition.test_historical_default_source_and_bound_preserved) ... ok
+test_composed_source_embeds_unchanged_reader_and_calls_it_once (tests.test_pilot_chain_readiness.ReaderAdmission.test_composed_source_embeds_unchanged_reader_and_calls_it_once) ... ok
+test_failed_health_never_invokes_reader (tests.test_pilot_chain_readiness.ReaderAdmission.test_failed_health_never_invokes_reader) ... ok
+test_invalid_original_source_refused (tests.test_pilot_chain_readiness.ReaderAdmission.test_invalid_original_source_refused) ... ok
+test_one_original_reader_after_readiness (tests.test_pilot_chain_readiness.ReaderAdmission.test_one_original_reader_after_readiness) ... ok
+test_original_read_failure_not_retried_or_repaired (tests.test_pilot_chain_readiness.ReaderAdmission.test_original_read_failure_not_retried_or_repaired) ... ok
+test_original_validation_precedes_health (tests.test_pilot_chain_readiness.ReaderAdmission.test_original_validation_precedes_health) ... ok
+test_exact_actual_projection_and_workspace_receipt (tests.test_pilot_recipe_chain.RecipeChainEvidence.test_exact_actual_projection_and_workspace_receipt) ... ok
+test_mismatched_owner_revision_or_byte_receipt_rejected (tests.test_pilot_recipe_chain.RecipeChainEvidence.test_mismatched_owner_revision_or_byte_receipt_rejected) ... ok
+test_plausible_wrong_workspace_text_is_not_source_lineage (tests.test_pilot_recipe_chain.RecipeChainEvidence.test_plausible_wrong_workspace_text_is_not_source_lineage) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.008s
+
+OK

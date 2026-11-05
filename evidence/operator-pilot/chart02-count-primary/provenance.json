@@ -1,0 +1,72 @@
+{
+  "additional_live_generations": 0,
+  "classification": "STATIC_NO_EXECUTION",
+  "cluster_actions": 0,
+  "count_harness": {
+    "corrected": {
+      "bytes": 6053,
+      "path": "/data/fusion-operator-pilot-release/evidence-assembly/union-chart02.py",
+      "sha256": "5978dad2e7f321adc47deb6f91d49bad8b7452152cda59f99946c5da32380573"
+    },
+    "initial": {
+      "bytes": 6209,
+      "path": "/data/fusion-operator-pilot-release/evidence-assembly/audit-chart02-initial.py",
+      "sha256": "6237c09654c0e89fc7d755631c2e754cbc428e93557a57562239a51172471af3"
+    },
+    "reason": "Initial expected count omitted six newly selected baseline definitions; exact source union corrected. This was not a test execution.",
+    "status": "STATIC_EXPECTED_COUNT_ASSERTION_FAILED_BEFORE_EXPORT"
+  },
+  "created_utc": "2026-11-05T08:48:53.752309+00:00",
+  "outcomes": {
+    "chart01": {
+      "errors": 1,
+      "invocations": 4,
+      "status": "FAIL"
+    },
+    "chart02": {
+      "invocations": 10,
+      "status": "PASS"
+    }
+  },
+  "primary_logs": [
+    {
+      "bytes": 1545,
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/operator-pilot/attention-chart-01.log",
+      "sha256": "8f071b981fcd905e5b1745f06191aabffcdd54fdae27e1783ad9f7f1b0a5e6ab"
+    },
+    {
+      "bytes": 2081,
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/operator-pilot/attention-chart-02.log",
+      "sha256": "a34a80f3808ae786f57c2afba0376f3a99d01682f09506d7fb6d82776d0e1d84"
+    }
+  ],
+  "prior_unknown_source_failure": "Attention helper03 is separate:15invocations4failures, sourceUNKNOWN, excluded.",
+  "profile": "source-qualified-chart-run-audit-provenance/1",
+  "reports": {
+    "chart01": {
+      "bytes": 5628,
+      "path": "/data/fusion-operator-pilot-release/evidence-assembly/authored-chart01/report.json",
+      "sha256": "196536023ba3945f31e2eb7cf715085230238292f3a66bc5f903b89978df46a6"
+    },
+    "chart02": {
+      "bytes": 13131,
+      "path": "/data/fusion-operator-pilot-release/evidence-assembly/authored-chart02/report.json",
+      "sha256": "603ec3006891272f95965ee605348cc8225656b488d9fc198929cbe8e3a3f43b"
+    }
+  },
+  "selection_expansion": "Six existing Phase2 fault configuration definitions newly enter this selected report union; not new implementation. Two distinct new names are the failed retired chart test and its corrected test.",
+  "snapshot_timing": "Each source snapshot was copied after that run; parent reports selected files unchanged during and after. Exact failed01 and corrected02 sources are separately retained. Derived indexes are not pre-run indexes.",
+  "source_snapshots": [
+    {
+      "bytes": 227,
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/operator-pilot/attention-chart-01-source/manifest.json",
+      "sha256": "4c298d26faae973bd58a3d6da753270276836b9765106a516da7398a0a0ba9cd"
+    },
+    {
+      "bytes": 341,
+      "path": "/home/purplezky/work/takopi/fusion-module-interfaces/artifacts/operator-pilot/attention-chart-02-source/manifest.json",
+      "sha256": "934725ac4975c27ab2f5611cd847ac75b82dcf85db8acc20a564367406c9f499"
+    }
+  ],
+  "test_reruns": 0
+}

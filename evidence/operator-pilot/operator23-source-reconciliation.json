@@ -1,0 +1,29 @@
+{
+  "added_since_sdk22": [],
+  "additional_live_generations": 0,
+  "build_manifest_sha256": "be5d993e6051a317bc892168ca969923ee6374a3aa8bbe84a101b3ca45f1b9ae",
+  "changed_since_sdk22": {
+    "examples/pilot_endurance.py": {
+      "after": "7bb45510a6b464b6ec1ef1a90d18e6e5f9c1446d47d2e3d5c527e67b27624e04",
+      "before": "40b00fd1f2a10392f2175a2c2b751b2011d28677543e4bdaa2cb1bd082b68707"
+    }
+  },
+  "classification": "OFFLINE_EXTRACTION_AND_EXACT_INSTALLED_SOURCE_CHECK",
+  "e5_libraries": false,
+  "operator_wheel_sha256": "0a179225069072f336afe2f8d6a9c7bc2cf050971b8abe7890410a5bc3334aa8",
+  "real_provider_calls": 0,
+  "source_unchanged_during_build": true,
+  "sources": {
+    "client": 18,
+    "operator": 270,
+    "provider": 7
+  },
+  "status": "PASS",
+  "wheels": 8,
+  "profile": "operator-pilot-sdk-source-reconciliation/1",
+  "previous_sdk_manifest_sha256": "636546e82026764efa7ed56c8c847ba27ea0861c467120e4b6fe162e7b61ec87",
+  "source_change_reason": "Existing bounded readiness observation immediately before NEW peer selection in endurance helper; old bindings/receipts/deadlines unchanged.",
+  "native_runtime_unchanged": true,
+  "chart16_unchanged": true,
+  "previous_executions_remain_historical": true
+}

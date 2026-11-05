@@ -1,0 +1,29 @@
+{
+  "profile": "operator-pilot-candidate-checks/1",
+  "source_manifest_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "source_index_timing": "Captured before run;764 files checked after; one public distribution allowlist changed, runtime and test source exact",
+  "source_index_sha256": "1003ab583480f396ed87b09922db52b2a6bf73b6c0a30a3480e58eb7977e983e",
+  "indexed_files": 764,
+  "runtime_and_test_source_unchanged": true,
+  "source_copies": "/data/fusion-operator-pilot-release/evidence-assembly/final14-test-sources",
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "run": "14",
+      "status": "PASS",
+      "invocations": 318,
+      "seconds": 61.045,
+      "primary": "artifacts/operator-pilot/final-checks14/pilot-fast.log",
+      "sha256": "cb76403bbbe29a8df9346b00d4668fe37767fd6432972cda1c6e602eb1945258",
+      "generation_denial": "artifacts/operator-pilot/final-checks14-denial.json",
+      "generation_denial_sha256": "2bc075a2a85ec3db09a27f36c446f1f58d788d9ce09d948e2db1a5960a5faad4"
+    }
+  ],
+  "additional_live_generations": 0,
+  "source_limit": "318 invocations passed on unchanged runtime/tests; public packaging allowlist drift requires separate14b fixed-input recheck.",
+  "reused_prior_lanes": "Prior11/09/10 lanes retain their exact original identities; no relabeling",
+  "all_indexed_inputs_unchanged": false,
+  "changed_inputs": [
+    "sdk/pilot-distribution-inputs.json"
+  ]
+}

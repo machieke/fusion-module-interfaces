@@ -1,0 +1,47 @@
+{
+  "profile": "operator-pilot-source-impact/1",
+  "classification": "STATIC_SOURCE_COMPARISON_NOT_NATIVE_PASS",
+  "previous_source_manifest_sha256": "aa9a8ebaeb2f59cd8893cd50755d5f91314590841cf0e09fda79b6d3556d0784",
+  "current_source_manifest_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "indexed_runtime_inputs": 490,
+  "changed": {
+    "fusion/preview_workspace.py": {
+      "before": "9efe7366f271fcc03594ec076c15350145c689d2e260fb504314e11c4deee61b",
+      "after": "3acaa634eeb37e750e802915a966da495f65ad35c0b3fc742bdcb888b22c5f33"
+    },
+    "integration/single_node/backup_payload.py": {
+      "before": "d870896e8bff4ad3497ee6d9008cb02b8cc091a83cb3646f34acd08a9fd24964",
+      "after": "e4d5d0d6eceeffe9886d1125d6222a93600bd9a4606bc17fd3a9a64e5b4f4063"
+    },
+    "integration/single_node/pilot_activation.py": {
+      "before": "57642f9f471111078deb47ed4cb5fd0089035fa57259776e93c5779cf62e3ddd",
+      "after": "23390b36784c25a351bb148a9cb6c999e5cad442b8cb09309f8dd51996434e70"
+    },
+    "integration/single_node/pilot_handover_operator.py": {
+      "before": "0ecb643a0b6d0854fce4edd85f830720e201d6fa7a3b5645a45ada23fc1eca8a",
+      "after": "5bfb66f80b8968475b58aa8a936524b6fd952128526eb4f0fcb1eb47656d7879"
+    },
+    "integration/single_node/reference_ci.py": {
+      "before": "57f191347799773314816a22159d709ea8b0ac6b970513e43c093530003c62c3",
+      "after": "61df36d737ea4f971d3b54a257784569f3953519fd904490b302e12a75c2aca8"
+    }
+  },
+  "unchanged_workspace_methods": [
+    "close",
+    "_read",
+    "read",
+    "version",
+    "mutate"
+  ],
+  "ordinary_workspace_success_initialization_ast": "EXACT_AFTER_UNWRAPPING_NEW_FAILURE_CLEANUP_AND_NORMALIZING_ONLY_DDL_INDENTATION",
+  "ordinary_workspace_failure_change": "Close resources before rethrow; strict original root mismatch still refuses",
+  "activation_unselected_return_ast": "EXACT",
+  "activation_selected_configuration_ast": "EXACT",
+  "new_effects": "Explicit synthetic-copy Workspace root metadata re-attestation plus immutable maintenance receipt; explicit append feed selection",
+  "backup_change": "Quiesced owner exports named root receipt only when present; historical tables/files validated separately",
+  "operator_change": "Named exact root metadata/table transform only; no general restore exemption",
+  "ci_change": "Add new maintenance regression module",
+  "base_archive_unchanged": true,
+  "ordinary_chain_and_go_paths": "No handover activation/reattestation requested; numerical/native/provider sources unchanged. Their exact13 runs remain13, not relabelled14.",
+  "additional_live_generations": 0
+}

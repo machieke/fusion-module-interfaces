@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/drain_go.py", line 9, in <module>
+    planpath=Path(a.plan);raw=planpath.read_bytes();require(digest(raw)=='ecf5510429bdba734bb174d5665353e0959904b8064176e68fd282fda14b346a','CONFLICT');plan=json.loads(raw)
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: CONFLICT

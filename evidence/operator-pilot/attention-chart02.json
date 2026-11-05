@@ -1,0 +1,26 @@
+{
+  "profile": "operator-pilot-chart-test-repair/1",
+  "status": "PASS_WITH_RETAINED_TEST_AUTHORING_FAILURE",
+  "runtime_change": false,
+  "chart_delta": "One pre-existing Attention reservation test-hook enum; opt-in enforcement remains in actual runtime configure. No template/profile/default changes.",
+  "successful_run": {
+    "path": "artifacts/operator-pilot/attention-chart-02.log",
+    "sha256": "a34a80f3808ae786f57c2afba0376f3a99d01682f09506d7fb6d82776d0e1d84",
+    "invocations": 10,
+    "seconds": 2.212,
+    "status": "PASS",
+    "source_snapshot": "artifacts/operator-pilot/attention-chart-02-source/manifest.json",
+    "snapshot_timing": "Copied after run; selected files unchanged during and after run.",
+    "boundaries": "Actual Helm render/schema and configure functions, synthetic values/credentials and isolated temporary directories; no cluster activity."
+  },
+  "failed_run": {
+    "path": "artifacts/operator-pilot/attention-chart-01.log",
+    "sha256": "8f071b981fcd905e5b1745f06191aabffcdd54fdae27e1783ad9f7f1b0a5e6ab",
+    "invocations": 4,
+    "errors": 1,
+    "source_snapshot": "artifacts/operator-pilot/attention-chart-01-source/manifest.json",
+    "cause": "New test assumed the wrong generated configuration path. Failure and exact pre-repair source retained."
+  },
+  "denial": "artifacts/operator-pilot/attention-chart-02-denial.json",
+  "additional_live_generations": 0
+}

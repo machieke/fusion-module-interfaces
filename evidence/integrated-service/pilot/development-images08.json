@@ -1,0 +1,50 @@
+{
+  "archive_bytes": 215674880,
+  "archive_format": "verified-oci-layer-set/1",
+  "archive_sha256": "12a732263c55ba417644822afcca310aea998e094c0b699d7082fbeb23477748",
+  "base_archive": {
+    "archive_bytes": 3473758720,
+    "archive_sha256": "fb807533ef98cb32556e5f86b44d806834bc689dd658d5ec3cb771da507b50e7"
+  },
+  "container_starts": 0,
+  "generative_runtime_availability": "NOT_CHECKED",
+  "images": [
+    {
+      "configuration_digest": "sha256:bd67c389e9d223133816dc0330799c9ed59ffacb8296bddc44eb12b6b9bbd0e1",
+      "kind": "base",
+      "local_tag": "docker.io/library/fusion-single-node:reference-pilot-dev08",
+      "manifest_digest": "sha256:dff560032e5c752bb5000e84424fb7a7348257c2028a1c3dcd814adebcd004d2",
+      "repository": "docker.io/library/fusion-single-node",
+      "source_package": "image-base/package.json"
+    },
+    {
+      "configuration_digest": "sha256:18d9d6b9de48fd19dba1cd0a84fad2c06006becaad43336a2b914789948ede47",
+      "kind": "caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:reference-pilot-dev08",
+      "manifest_digest": "sha256:209b34d57352d8534fd7e999c83536f36c1e73a254d0487adc28cc967f8c5f65",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "source_package": "image-caller/package.json"
+    },
+    {
+      "configuration_digest": "sha256:f58a5d4f839032ec11e026ab69602c6af2ce99e8d49338443ff30143bde864ab",
+      "kind": "embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:reference-pilot-dev08",
+      "manifest_digest": "sha256:162f7236707c057e564e8de0b96465f2482dea4d0218e126c6454561de0c48f4",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "source_package": "image-embedding/package.json"
+    },
+    {
+      "configuration_digest": "sha256:22d93c578f492423524c26efbfcd1951bb98c034ea6d81145c7181c0d5cf7c5a",
+      "kind": "chain",
+      "local_tag": "docker.io/library/fusion-reference-chain:reference-pilot-dev08",
+      "manifest_digest": "sha256:b0962ce8b7c6a0059b660f29bb92bc410a2732892121f1205eed11c3b969249e",
+      "repository": "docker.io/library/fusion-reference-chain",
+      "source_package": "image-chain/package.json"
+    }
+  ],
+  "source_export_verification": "PASS",
+  "source_manifest_sha256": "227d36d1c2727ed42f76676761b721d4f22a5c25c64aa15e39b5b37607f9fdfd",
+  "phase": "CANDIDATE_NATIVE_ACCEPTANCE_PENDING",
+  "baseline_commit": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "additional_live_generations": 0
+}

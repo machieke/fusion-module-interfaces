@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/go_retained_control.py", line 37, in <module>
+    value=module.observe(op,root/'go-replacement/plan.json',packet/'go-provider/provider-image.json',packet/'deploy/helm/omega-fusion',root/'go-capacity-authority',out/'capacity',deadline);expected=json.loads((root/'go-capacity-final02.json').read_bytes())['observations']['completed']['value'];require(value['capacity']==expected,'CONFLICT')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/distribution14/examples/pilot_go_capacity.py", line 63, in observe
+    require(type(deadline_ms) is int and 0<deadline_ms-int(time.time()*1000)<=120000,'INVALID_ARGUMENT')
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: INVALID_ARGUMENT

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/go-reference17/run-capacity-import.py", line 39, in <module>
+    with (root/'install.log').open('xb') as log:subprocess.run([str(operator/'bin/python'),'-I',str(root/'install.py')],stdout=log,stderr=subprocess.STDOUT,check=True,timeout=420)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/data/fusion-operator-pilot-release/operator19/bin/python', '-I', '/data/fusion-operator-pilot-release/qualification-private/go-reference17/install.py']' returned non-zero exit status 1.

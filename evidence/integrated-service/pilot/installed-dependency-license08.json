@@ -1,0 +1,1785 @@
+{
+  "schema": "fusion-oci-dependency-license-inventory/1",
+  "scope": "Final effective dpkg status, Python dist-info metadata, selected native binaries/assets and packaged pin declarations; offline byte inspection only.",
+  "tool": {
+    "method": "Python stdlib archive inspection; no subprocess, extraction, network or package import",
+    "path": "sdk/image_inventory.py",
+    "sha256": "65ef48a302632fa1ec20edc26bf944f4adba9a46dfdc9f61a0180b01a09542a8"
+  },
+  "licensing": "NOASSERTION_WHERE_UNRESOLVED",
+  "limitations": [
+    "Not an SPDX/CycloneDX certification or license determination.",
+    "Declared dependencies are not resolved imports; native transitive static libraries are not exhaustively identified.",
+    "Copied native system libraries may differ from dpkg ownership; hashes do not establish their licenses.",
+    "Missing license evidence remains NOASSERTION; metadata license text is a publisher declaration.",
+    "Historical source/build manifests inside images are evidence of declarations, not new build execution."
+  ],
+  "scan": {
+    "layer_applications": 120,
+    "layers": [
+      {
+        "bytes": 3561984,
+        "digest": "sha256:02403d9cf86dd9866f9f81d3fa4eabd8909877fe9a0fc078a31f9b51a34368dd",
+        "expanded_file_bytes": 3211942,
+        "members": 453
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:03263a87b5104da84300320cf53ca4abc21a48e3a41d7c1b661f91c1b8be21e9",
+        "expanded_file_bytes": 48906,
+        "members": 2
+      },
+      {
+        "bytes": 969216,
+        "digest": "sha256:04a71554c1341a3dde695ae389bc78f219a17c94f8ef59ff5b26d437c146b989",
+        "expanded_file_bytes": 965592,
+        "members": 5
+      },
+      {
+        "bytes": 8552960,
+        "digest": "sha256:0ea3f368c81614e1d00dc393a7c098319f13caae93c301e6c5f05f5f7704ca0e",
+        "expanded_file_bytes": 7549892,
+        "members": 1425
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:11feb4200aeb9ef3a978284f5f0dde9e3e97d2af5f30a5d1e15a4d90cc2b982f",
+        "expanded_file_bytes": 48912,
+        "members": 2
+      },
+      {
+        "bytes": 50688,
+        "digest": "sha256:14172bf4dead036824bca5fe687eec227171e36eabb16e74d8ce7d4ae8f9cc09",
+        "expanded_file_bytes": 48167,
+        "members": 2
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:1676515540d4856a3821ad20245c22fc356c382f81f95c3cf1b8ca6e438767fd",
+        "expanded_file_bytes": 3223279,
+        "members": 453
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:17af5cdf06f9e84fcbffff2b1a1903237d5057f88cac9b9325e00cb037aaef2a",
+        "expanded_file_bytes": 3223348,
+        "members": 453
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:17f8745fb30161eba66e85bffa4b82a7435d284527e06d990f297c6273e328f4",
+        "expanded_file_bytes": 48902,
+        "members": 2
+      },
+      {
+        "bytes": 1887232,
+        "digest": "sha256:184b2345d8e1cb041630b97b350dd0565f89cf663b0e65ea7bd466e4c6028b7d",
+        "expanded_file_bytes": 1689989,
+        "members": 261
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:189378195133892713bae0ba6bb02220f326a7d048f6205970ed97a12323566d",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 3561984,
+        "digest": "sha256:1d58519e51a2d55c4f2f3258969dac5ed3f6c4b418b2e074a7b6df2abae7ea65",
+        "expanded_file_bytes": 3211942,
+        "members": 453
+      },
+      {
+        "bytes": 334151680,
+        "digest": "sha256:22c3ae0287903a3e057ee2d7502b0002c1979803dec847a5c3a0a23d1e23e3c5",
+        "expanded_file_bytes": 328739750,
+        "members": 7232
+      },
+      {
+        "bytes": 50688,
+        "digest": "sha256:24e5b9658dc9419d8165810dad83384d253435367e374d405df8b70f66612e0f",
+        "expanded_file_bytes": 48171,
+        "members": 2
+      },
+      {
+        "bytes": 3481600,
+        "digest": "sha256:25a071bd3735814c8da7ac2d590517319b3a2ddf76396ad0eb43b008706ab7cb",
+        "expanded_file_bytes": 3136985,
+        "members": 447
+      },
+      {
+        "bytes": 49664,
+        "digest": "sha256:28da61f54d39c717120fc8300b24bdc7d51e433f9b92d80cdc292c5551a3a64f",
+        "expanded_file_bytes": 47594,
+        "members": 2
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:2944836061756794453281bc66d2882d2dbfd99c15c6cc043708b966d06bef24",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:2dbdb8836c435bd8c8ff2a7c3269e5dc84c8a6515cec5f76629a06b02a6668ea",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:2e4acd196c7c72ef37f6a9976e013ecb9d9b978124237f58632eab2c7d4bdfa8",
+        "expanded_file_bytes": 48902,
+        "members": 2
+      },
+      {
+        "bytes": 3424256,
+        "digest": "sha256:2f42748ccccf9ecc2326048c961f89a22fbad125e1a0bb5eac54e188110d963a",
+        "expanded_file_bytes": 3082034,
+        "members": 444
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:30a2dfc484c7e55fc309e2f92446d8a58f39884e76a4f416642f79f4daae44d9",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:32959d34c19a267f9dc42b4613826678e0281919132c41387fe34690888ad97d",
+        "expanded_file_bytes": 3223279,
+        "members": 453
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:38ad7c7b02139d742027d75e26bcbce1d7f29384ef98e20cacd89a23dda1c95c",
+        "expanded_file_bytes": 48902,
+        "members": 2
+      },
+      {
+        "bytes": 3577856,
+        "digest": "sha256:38c9756c71633718c4d2f468dfc2a9b87ce9098ba5553beb81b28977d5f07a53",
+        "expanded_file_bytes": 3228538,
+        "members": 453
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:3eac5dca8df0b7af3faa6189d2e89c6f55f850bbcaa99afb172946e117ee46e3",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:4053c9ccc7a7f0ed235ea5a88a2209daea651902a4772e66472eea1e9d2dc019",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:433954666b73f8d2f6cea8ba22cef7a9be2d25d264882b9a29e6cc14552a88a3",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 50176,
+        "digest": "sha256:4bb45916047764688cf9adc373a0872228a14efbcdeb7609dae91d3973c89d7c",
+        "expanded_file_bytes": 47680,
+        "members": 2
+      },
+      {
+        "bytes": 3561984,
+        "digest": "sha256:4d33e4aa84b7b13a5b732f3ea8eb11e5b6ad0fca6ad467067f09848d0cb1cd22",
+        "expanded_file_bytes": 3211942,
+        "members": 453
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:4e02d49eeb46c8dd7000d348665a2fdb9cd7100c1cdd2bb729d68c296acc160d",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:4edcd1057a21425c1e42c978b0084f2e99654c04e504ab6e02e60ef791218842",
+        "expanded_file_bytes": 48820,
+        "members": 2
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:57f2a76faed176aa926c91877003ed0727b538d511ecfcd5abe9fe1ed8f19f72",
+        "expanded_file_bytes": 48660,
+        "members": 2
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:583d893fec34ef76c797fa1cf9f4c9b80e9b461457ecb3e646176d5f89bf99b7",
+        "expanded_file_bytes": 3223348,
+        "members": 453
+      },
+      {
+        "bytes": 969216,
+        "digest": "sha256:5845d972a79e83d761cc03d1a1f190bbc098abacf72fa5e9bfd282c942c4ce03",
+        "expanded_file_bytes": 965592,
+        "members": 5
+      },
+      {
+        "bytes": 10698752,
+        "digest": "sha256:58e87de4b7e9fde947de1c40ffec308807af0f0cb343ddf616e366aa54cc18d0",
+        "expanded_file_bytes": 10089915,
+        "members": 843
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:59b326e88a20d22fedc51fdea1f5d598834b8c7d3422547cd757d7a4e0c92532",
+        "expanded_file_bytes": 48650,
+        "members": 2
+      },
+      {
+        "bytes": 1024,
+        "digest": "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "expanded_file_bytes": 0,
+        "members": 0
+      },
+      {
+        "bytes": 1291102208,
+        "digest": "sha256:61d8c48aa0de530a8bc2d5d66083ca541f3a131cfe994b2b21730efe1ecd5c14",
+        "expanded_file_bytes": 1269099750,
+        "members": 29507
+      },
+      {
+        "bytes": 3577856,
+        "digest": "sha256:6577dbca51781e996e6f798a0296800ae25cb3ac583433a4166d5be271e937ea",
+        "expanded_file_bytes": 3228538,
+        "members": 453
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:65b0e3d7610e5bda4b6d5dac16ecdcfdb12206542004ee50ef76716b9e40dea6",
+        "expanded_file_bytes": 48654,
+        "members": 2
+      },
+      {
+        "bytes": 5165568,
+        "digest": "sha256:678fe8693902390b0d002cb8a7b5c57427ee73d5476611228847681dc5d1869f",
+        "expanded_file_bytes": 5153232,
+        "members": 16
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:6965daae41b8d2ca94c2a0d6d332923850ab43b295dc2108f92dcbdf7e274305",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:6c4ac2aa4848aa1afd91bb7d97ca879787661cb3be8daa5c4ab9e2220b43bc8b",
+        "expanded_file_bytes": 48906,
+        "members": 2
+      },
+      {
+        "bytes": 5165568,
+        "digest": "sha256:738e1db041f75992f19e8edae50361c018054e7c990f66524d4efc18e3e02239",
+        "expanded_file_bytes": 5153232,
+        "members": 16
+      },
+      {
+        "bytes": 3424256,
+        "digest": "sha256:73e6386f8b377a06c9b3b51bf879cf6eb0803a80ba2af8b2130f679100ea741d",
+        "expanded_file_bytes": 3082034,
+        "members": 444
+      },
+      {
+        "bytes": 14336,
+        "digest": "sha256:76739dcc79070c17198537c3cb32840116aeaa3052dd308e1d76d964e46e7788",
+        "expanded_file_bytes": 4359,
+        "members": 14
+      },
+      {
+        "bytes": 3481600,
+        "digest": "sha256:768492042f7b5ea612076666e78e9727d7d0146af0c4b3e351f0350ed34060f4",
+        "expanded_file_bytes": 3136985,
+        "members": 447
+      },
+      {
+        "bytes": 3577856,
+        "digest": "sha256:7bc6aaa14b2762b9ca961614d1b5084d8c746919972771fdfffd053fa08fef0f",
+        "expanded_file_bytes": 3228538,
+        "members": 453
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:7ff2fc06aa0bb250bfe9f09dd281620c02aa814fe1d7a7a75ab6bf07ae4d4af3",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 4103680,
+        "digest": "sha256:8206cb7e50942b70ad3f71e8045a11fdbf5bb9cde0effcd478c242009597d1ab",
+        "expanded_file_bytes": 4101288,
+        "members": 2
+      },
+      {
+        "bytes": 180593152,
+        "digest": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+        "expanded_file_bytes": 175839873,
+        "members": 6613
+      },
+      {
+        "bytes": 3536384,
+        "digest": "sha256:8a955f4e63ad939bc05428d6734581a289ff0529acf69b5ff9a0ae79a11adaaa",
+        "expanded_file_bytes": 3188353,
+        "members": 451
+      },
+      {
+        "bytes": 969216,
+        "digest": "sha256:8bcae3607f999c7f56decfb3b5cfc165cbc1cf8776e959b6d7e57a0a8664b42a",
+        "expanded_file_bytes": 965592,
+        "members": 5
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:91362fd49a2b743e29aaaea7ed4c2413df9e53d17de9ebdfbf6b2daeadafa559",
+        "expanded_file_bytes": 3223279,
+        "members": 453
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:93e60f5404c84a40b3bf7a6409a8170e59b691dab764b8d5670957ac03a6f675",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 10752,
+        "digest": "sha256:94627775f99a777b4dbd89c987c9b06031b58e05a79071d729d0ba28c04600df",
+        "expanded_file_bytes": 7250,
+        "members": 4
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:97baf38e6d9fb40fc04d6276cac4971d247baaa8e917c9a8f3c939287c4726b5",
+        "expanded_file_bytes": 48906,
+        "members": 2
+      },
+      {
+        "bytes": 8552960,
+        "digest": "sha256:98f062b32d073b19956acff8f2592bc1d50d5786394b000dede7055ab1023be5",
+        "expanded_file_bytes": 7549892,
+        "members": 1425
+      },
+      {
+        "bytes": 77946880,
+        "digest": "sha256:9b35de7893378218e365c34c2c735fb0032a859112fb7345ca8ea73f9aa1db70",
+        "expanded_file_bytes": 74867857,
+        "members": 4226
+      },
+      {
+        "bytes": 50688,
+        "digest": "sha256:9befd939b7010d2006f0df7c5685c2059fedca552ef39458a4cefd35a4cc6c95",
+        "expanded_file_bytes": 48177,
+        "members": 2
+      },
+      {
+        "bytes": 3536384,
+        "digest": "sha256:9d693535942613f02538071a5620f3884020eaa0e6f4df226e2cbd3fee72f1b9",
+        "expanded_file_bytes": 3188353,
+        "members": 451
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:9e3f309956ad36a743187309ab79d698580938681d13196e5a4003b6dfe0e55c",
+        "expanded_file_bytes": 48820,
+        "members": 2
+      },
+      {
+        "bytes": 3481600,
+        "digest": "sha256:9e5e93bfad54eeb7528df5de219f9723a6080ff1b66cfefab5f380dc5831f26c",
+        "expanded_file_bytes": 3136985,
+        "members": 447
+      },
+      {
+        "bytes": 161792,
+        "digest": "sha256:a2687cee54d3e51cc6b7890afee8a24e8665e0d7fc1ec3aa935f34d27a7da101",
+        "expanded_file_bytes": 159129,
+        "members": 3
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:a43668ab09767fca22c10ea54c4e10e11255d2afa24a8242fff58b097b0aa2b2",
+        "expanded_file_bytes": 3223279,
+        "members": 453
+      },
+      {
+        "bytes": 3536384,
+        "digest": "sha256:a4c399829c9bdc9308ea03455b7cda92b7a80736479d7b4e7d9d8ccef5cbece6",
+        "expanded_file_bytes": 3188353,
+        "members": 451
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:a4f5c4e73b5d2724b53936a6afa7d70b94a1beb38db54558924cd406eeed9673",
+        "expanded_file_bytes": 48820,
+        "members": 2
+      },
+      {
+        "bytes": 5165568,
+        "digest": "sha256:a508da0b73fe2ff23c1a528860c26427153f646cf2079a5d4740985597b9045c",
+        "expanded_file_bytes": 5153232,
+        "members": 16
+      },
+      {
+        "bytes": 5165568,
+        "digest": "sha256:a5e526cd879f89248941a9da76eb92a81b9c0a4611f40c1311eb6a1086b873c7",
+        "expanded_file_bytes": 5153232,
+        "members": 16
+      },
+      {
+        "bytes": 6081536,
+        "digest": "sha256:a62ae9d5a2cffdac6bca87e9004ea2dee99b21ec9ce9b2925f8e7de2e4500cd2",
+        "expanded_file_bytes": 5666762,
+        "members": 570
+      },
+      {
+        "bytes": 3424256,
+        "digest": "sha256:a6a10de2325d5ea10157afaa4b73c9ad7e2ccbc5c22f568f395b56578459d768",
+        "expanded_file_bytes": 3082034,
+        "members": 444
+      },
+      {
+        "bytes": 6081536,
+        "digest": "sha256:a84d7537c13dccde0dad656a72acac151e8627609820124158bb03e9bdd41bad",
+        "expanded_file_bytes": 5666762,
+        "members": 570
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:a855095dc242d8cd34e0d73a9614db22d3a7c4e74d93025db0d2092dee27f22e",
+        "expanded_file_bytes": 48902,
+        "members": 2
+      },
+      {
+        "bytes": 3481600,
+        "digest": "sha256:ad022824a6eea4adb9eabf6b7dc987dfa3271f234fbc03236e6573f646a210cf",
+        "expanded_file_bytes": 3136985,
+        "members": 447
+      },
+      {
+        "bytes": 17005568,
+        "digest": "sha256:b21a91f0c55f53466da76249d6518e40c17a7e5d6411d5d76fd8e0d7be484595",
+        "expanded_file_bytes": 16396089,
+        "members": 843
+      },
+      {
+        "bytes": 3424256,
+        "digest": "sha256:b21aef45f5f19d013ba55f8efd96a129b4a6dc3079aba2e2afa0bb80c35ed443",
+        "expanded_file_bytes": 3082034,
+        "members": 444
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:b2610252ac8781f9f422ea5f5cb9313ab8101f378975c91144a5447bb1af81ea",
+        "expanded_file_bytes": 48906,
+        "members": 2
+      },
+      {
+        "bytes": 223796736,
+        "digest": "sha256:b2f1c174656641fb733c166adbc174fd72d8f4306be3dc290b4cf8c014514952",
+        "expanded_file_bytes": 222977080,
+        "members": 1108
+      },
+      {
+        "bytes": 8552960,
+        "digest": "sha256:b3d4d3af0887e5b0d5bb8cd4d6137d654ad94970ab6bef40e8481924955efc71",
+        "expanded_file_bytes": 7549892,
+        "members": 1425
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:b4ab222ff939f8ed0b490a52523b5a3c6cba5fcf1a1e717f2d7f420297631e6a",
+        "expanded_file_bytes": 48912,
+        "members": 2
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:b64ba8d7bc3b23dad468263f5502dcba88bd7e1791a0b88a9e9103ed7061ff62",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:bcb4bb6007f5cfa56f082427d762e5fcfa5073a5081a8cb47afe5565bb0dc373",
+        "expanded_file_bytes": 48912,
+        "members": 2
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:bd70238cfa29b086d201cd2fdfbfe64d431522e5f727d3b0ea1603de08125fd8",
+        "expanded_file_bytes": 3223348,
+        "members": 453
+      },
+      {
+        "bytes": 3536384,
+        "digest": "sha256:c07901392ff4dab30e86b95d9774f68e21f65e7109d5ebe0db2783993261c34e",
+        "expanded_file_bytes": 3188353,
+        "members": 451
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:c521291e3bcf52af0b730adfa659887f5970d3189efd1db04f3673ba627d68c2",
+        "expanded_file_bytes": 48820,
+        "members": 2
+      },
+      {
+        "bytes": 50688,
+        "digest": "sha256:c64865056cc765cd69998b445e137a47134cbd6df57282d0baf483d44a65772e",
+        "expanded_file_bytes": 48568,
+        "members": 2
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:c6d64109c4cb43b6710215b538555415486b67cf5d9528ff8eabc5142521ea74",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 3577856,
+        "digest": "sha256:ca3628c8399859b0c097cc9185acde335e7da244438055dec3c04fd349b6daec",
+        "expanded_file_bytes": 3228538,
+        "members": 453
+      },
+      {
+        "bytes": 3572736,
+        "digest": "sha256:cce3171fc96222af1b1526826d703a9cce65d567260046d3ed61b4bd26a0c808",
+        "expanded_file_bytes": 3223348,
+        "members": 453
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:cdf785691144565e9c4723f189a538f467abf29042e7003230e56f0c42406c66",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:d18b1184066b000bbde9ba3926fd47b51ebb60fbda0f2f378d9c4fa87796aefd",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 3561984,
+        "digest": "sha256:d1b6e4eff9a382d200c07a9c79f26b855a9db4eadbaeb5287e18c1fa6d478966",
+        "expanded_file_bytes": 3211942,
+        "members": 453
+      },
+      {
+        "bytes": 8552960,
+        "digest": "sha256:d56899ac61de1b947ec3916fd42b15ad8a1d3cdbd15523ece61fa7b4e2044c5b",
+        "expanded_file_bytes": 7549892,
+        "members": 1425
+      },
+      {
+        "bytes": 950272,
+        "digest": "sha256:d606102902656738f70d865942a293a3ae56f66508f783d47b4f8cb271f89b62",
+        "expanded_file_bytes": 948201,
+        "members": 2
+      },
+      {
+        "bytes": 2328064,
+        "digest": "sha256:d7d9e95de62907066f5653e1e1839da1d1e66f640714ed8cc0ea31a16c89d6d2",
+        "expanded_file_bytes": 2132143,
+        "members": 258
+      },
+      {
+        "bytes": 50176,
+        "digest": "sha256:dae4357872f5a27c1f37d0e2711678607e8f13b2308267bd9b97f9102ab86ef9",
+        "expanded_file_bytes": 47686,
+        "members": 2
+      },
+      {
+        "bytes": 969216,
+        "digest": "sha256:dc7bf90a32d15b7d3f8846b17f6245f8193fb4344a1f1b0a69600e81f5e85121",
+        "expanded_file_bytes": 965592,
+        "members": 5
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:de38de0bb5fc7c3fb5364eea4a32f6f6d8c0d96bb61061367862779d8b4da13f",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 50176,
+        "digest": "sha256:deebce99a7380d2f83a7d17cb91baca9676a458eda586350722a868975807de3",
+        "expanded_file_bytes": 48085,
+        "members": 2
+      },
+      {
+        "bytes": 50176,
+        "digest": "sha256:df4d653e704fa8807a63617dcda724711e3413260251f1752cf7e8eb4a989749",
+        "expanded_file_bytes": 47681,
+        "members": 2
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:e0ac21a342417ed07d3b001ac7736be3930a3fa2372b1c076c916589bba0a516",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 1341571584,
+        "digest": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+        "expanded_file_bytes": 1341561220,
+        "members": 13
+      },
+      {
+        "bytes": 968704,
+        "digest": "sha256:f29d48d66ad394c5313ab4c908eed28b4a5febf339d3bfd1b460a66ee1d4d051",
+        "expanded_file_bytes": 965592,
+        "members": 4
+      },
+      {
+        "bytes": 51200,
+        "digest": "sha256:f34d6ebd4feba4379bde36ee3d1cb2308fd5f787ce4dedc51d064eaa55f09b7f",
+        "expanded_file_bytes": 48912,
+        "members": 2
+      },
+      {
+        "bytes": 10752,
+        "digest": "sha256:f946bcb0d4120b766758acd0d4188db74e59565a1d5f84eb438fb3926d9ae2b7",
+        "expanded_file_bytes": 7250,
+        "members": 4
+      }
+    ],
+    "limits": {
+      "archive_bytes": 34359738368,
+      "expanded_layer_bytes": 17179869184,
+      "layer_bytes": 8589934592,
+      "members": 200000,
+      "metadata_file_bytes": 8388608,
+      "retained_metadata_bytes": 268435456
+    },
+    "retained_metadata_bytes": 21124716,
+    "unique_layers": 105
+  },
+  "container_starts": 0,
+  "generative_starts": 0,
+  "additional_live_generations": 0,
+  "raw_inventory_sha256": "f8075f40c34ec24ef3ae5a6de5ac9f50b881161aeb0c25dc698bbb244d812051",
+  "artifact": "distribution image-dependency-inventory.json",
+  "vulnerability_scan": "artifact-scan-candidate08.json",
+  "images": [
+    {
+      "name": "docker.io/library/fusion-single-node:reference-pilot-dev08",
+      "architecture": "amd64",
+      "os": "linux",
+      "manifest_digest": "sha256:dff560032e5c752bb5000e84424fb7a7348257c2028a1c3dcd814adebcd004d2",
+      "configuration_digest": "sha256:bd67c389e9d223133816dc0330799c9ed59ffacb8296bddc44eb12b6b9bbd0e1",
+      "native_components": [
+        {
+          "file_verification": {
+            "expected": 19,
+            "matched": 19,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/mettaclaw/LICENSE",
+            "sha256": "10c448e805927ecb41ed847154db2fd154506cf54f62802b1434cbef9efde463"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "mettaclaw",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/patham9/mettaclaw.git"
+        },
+        {
+          "file_verification": {
+            "expected": 624,
+            "matched": 624,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/PeTTa/LICENSE",
+            "sha256": "451e08f082f06f100facd2ef99f3c661155a7a433af091889d4c04e264838ce5"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "PeTTa",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "fea83178af3722666d2948d074591d10a3134f56",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/trueagi-io/PeTTa.git"
+        },
+        {
+          "file_verification": null,
+          "license_evidence": null,
+          "license_expression": "NOASSERTION",
+          "name": "swipl",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+          "source_presence": "SOURCE_NOT_PACKAGED",
+          "url": "https://github.com/SWI-Prolog/swipl-devel.git"
+        },
+        {
+          "binary": {
+            "bytes": 27817640,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/bin/python3.12",
+            "sha256": "3008abbb48c1e2b0fa3072ae72334b9b352e1346ea3a20d34126a455f0c7bc66"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 13936,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/lib/python3.12/LICENSE.txt",
+            "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "CPython",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "3.12.12"
+        },
+        {
+          "binary": {
+            "bytes": 16848,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "links": [
+              {
+                "kind": "symlink",
+                "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+                "path": "opt/native/swipl/bin/swipl",
+                "target": "../lib/swipl/bin/x86_64-linux/swipl"
+              }
+            ],
+            "path": "opt/native/swipl/lib/swipl/bin/x86_64-linux/swipl",
+            "requested_path": "opt/native/swipl/bin/swipl",
+            "sha256": "59f5ded02b1b378b41154778cff72b9a921d131ffb27f1036181a4f7f2429541"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1823,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/swipl/lib/swipl/LICENSE",
+            "sha256": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "SWI-Prolog",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "10.0.1"
+        },
+        {
+          "binary": {
+            "bytes": 57815888,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/fusion-detta-adapter",
+            "sha256": "cb7ed1a27e10e2869ca7357c6c249861623b9849c49fcbf7ef300aa19831f756"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "DeTTa fusion adapter",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        },
+        {
+          "binary": {
+            "bytes": 965592,
+            "kind": "file",
+            "layer": "sha256:93e60f5404c84a40b3bf7a6409a8170e59b691dab764b8d5670957ac03a6f675",
+            "path": "opt/irc/sbin/ngircd",
+            "sha256": "b29b4c31e8f515062f2ed814b01c1774da2b6a1f3e099d6e316e8d3489ff3f74"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "ngIRCd",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        }
+      ],
+      "unresolved_metadata_links": [],
+      "os_packages": 88,
+      "python_packages": 1,
+      "metadata_license_files": 169,
+      "copied_shared_library_count": 53
+    },
+    {
+      "name": "docker.io/library/fusion-memory-caller:reference-pilot-dev08",
+      "architecture": "amd64",
+      "os": "linux",
+      "manifest_digest": "sha256:209b34d57352d8534fd7e999c83536f36c1e73a254d0487adc28cc967f8c5f65",
+      "configuration_digest": "sha256:18d9d6b9de48fd19dba1cd0a84fad2c06006becaad43336a2b914789948ede47",
+      "native_components": [
+        {
+          "file_verification": {
+            "expected": 19,
+            "matched": 19,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/mettaclaw/LICENSE",
+            "sha256": "10c448e805927ecb41ed847154db2fd154506cf54f62802b1434cbef9efde463"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "mettaclaw",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/patham9/mettaclaw.git"
+        },
+        {
+          "file_verification": {
+            "expected": 624,
+            "matched": 624,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/PeTTa/LICENSE",
+            "sha256": "451e08f082f06f100facd2ef99f3c661155a7a433af091889d4c04e264838ce5"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "PeTTa",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "fea83178af3722666d2948d074591d10a3134f56",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/trueagi-io/PeTTa.git"
+        },
+        {
+          "file_verification": null,
+          "license_evidence": null,
+          "license_expression": "NOASSERTION",
+          "name": "swipl",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+          "source_presence": "SOURCE_NOT_PACKAGED",
+          "url": "https://github.com/SWI-Prolog/swipl-devel.git"
+        },
+        {
+          "binary": {
+            "bytes": 27817640,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/bin/python3.12",
+            "sha256": "3008abbb48c1e2b0fa3072ae72334b9b352e1346ea3a20d34126a455f0c7bc66"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 13936,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/lib/python3.12/LICENSE.txt",
+            "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "CPython",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "3.12.12"
+        },
+        {
+          "binary": {
+            "bytes": 16848,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "links": [
+              {
+                "kind": "symlink",
+                "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+                "path": "opt/native/swipl/bin/swipl",
+                "target": "../lib/swipl/bin/x86_64-linux/swipl"
+              }
+            ],
+            "path": "opt/native/swipl/lib/swipl/bin/x86_64-linux/swipl",
+            "requested_path": "opt/native/swipl/bin/swipl",
+            "sha256": "59f5ded02b1b378b41154778cff72b9a921d131ffb27f1036181a4f7f2429541"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1823,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/swipl/lib/swipl/LICENSE",
+            "sha256": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "SWI-Prolog",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "10.0.1"
+        },
+        {
+          "binary": {
+            "bytes": 57815888,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/fusion-detta-adapter",
+            "sha256": "cb7ed1a27e10e2869ca7357c6c249861623b9849c49fcbf7ef300aa19831f756"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "DeTTa fusion adapter",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        },
+        {
+          "binary": {
+            "bytes": 965592,
+            "kind": "file",
+            "layer": "sha256:433954666b73f8d2f6cea8ba22cef7a9be2d25d264882b9a29e6cc14552a88a3",
+            "path": "opt/irc/sbin/ngircd",
+            "sha256": "b29b4c31e8f515062f2ed814b01c1774da2b6a1f3e099d6e316e8d3489ff3f74"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "ngIRCd",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        },
+        {
+          "declared_packages": {
+            "PyPika": "0.51.1",
+            "PyYAML": "6.0.3",
+            "Pygments": "2.21.0",
+            "aiohappyeyeballs": "2.7.1",
+            "aiohttp": "3.14.5",
+            "aiosignal": "1.4.0",
+            "annotated-doc": "0.0.5",
+            "annotated-types": "0.8.0",
+            "anyio": "4.15.1",
+            "attrs": "26.1.0",
+            "bcrypt": "5.0.0",
+            "build": "1.6.1",
+            "certifi": "2026.10.18",
+            "charset-normalizer": "2.1.1",
+            "chromadb": "1.5.5",
+            "click": "8.5.0",
+            "durationpy": "0.11",
+            "filelock": "4.2.1",
+            "flatbuffers": "25.12.19",
+            "frozenlist": "1.8.0",
+            "fsspec": "2026.7.0",
+            "googleapis-common-protos": "1.75.5",
+            "grpcio": "1.84.0",
+            "h11": "0.16.0",
+            "hf-xet": "1.7.0",
+            "httpcore": "1.0.9",
+            "httpcore2": "2.10.0",
+            "httptools": "0.9.0",
+            "httpx": "0.28.1",
+            "httpx2": "2.12.0",
+            "huggingface_hub": "2.2.0",
+            "idna": "3.15",
+            "importlib_resources": "7.1.0",
+            "jsonschema": "4.26.0",
+            "jsonschema-specifications": "2025.9.1",
+            "kubernetes": "36.0.3",
+            "markdown-it-py": "4.2.0",
+            "mdurl": "0.1.2",
+            "mmh3": "5.3.1",
+            "multidict": "7.1.0",
+            "numpy": "2.5.2",
+            "oauthlib": "4.0.0",
+            "onnxruntime": "1.31.0",
+            "opentelemetry-api": "1.45.1",
+            "opentelemetry-exporter-otlp-common": "0.66b1",
+            "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+            "opentelemetry-exporter-otlp-proto-grpc": "1.45.1",
+            "opentelemetry-proto": "1.45.1",
+            "opentelemetry-sdk": "1.45.1",
+            "opentelemetry-semantic-conventions": "0.66b1",
+            "orjson": "3.13.0",
+            "overrides": "7.7.0",
+            "packaging": "24.1",
+            "propcache": "0.5.4",
+            "protobuf": "7.36.2",
+            "pybase64": "1.5.1",
+            "pydantic": "2.14.1",
+            "pydantic-settings": "2.16.0",
+            "pydantic_core": "2.50.1",
+            "pyproject_hooks": "1.3.3",
+            "python-dateutil": "2.9.0.post0",
+            "python-dotenv": "1.2.4",
+            "referencing": "0.37.0",
+            "requests": "2.33.0",
+            "requests-oauthlib": "2.0.0",
+            "rich": "15.0.0",
+            "rpds-py": "2026.9.1",
+            "shellingham": "1.5.4",
+            "six": "1.17.0",
+            "tenacity": "9.2.1",
+            "tokenizers": "0.23.3",
+            "tqdm": "4.66.5",
+            "truststore": "0.10.5",
+            "typer": "0.27.3",
+            "typing-inspection": "0.4.4",
+            "typing_extensions": "4.16.0",
+            "urllib3": "2.8.0",
+            "uvicorn": "0.54.0",
+            "uvloop": "0.23.0",
+            "watchfiles": "1.3.0",
+            "websocket-client": "1.9.2",
+            "websockets": "17.2",
+            "yarl": "1.25.1"
+          },
+          "file_verification": {
+            "expected": 6432,
+            "matched": 6432,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "helper_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "memory SDK",
+          "pin_evidence": {
+            "bytes": 951219,
+            "kind": "file",
+            "layer": "sha256:58e87de4b7e9fde947de1c40ffec308807af0f0cb343ddf616e366aa54cc18d0",
+            "path": "opt/memory-runtime.json",
+            "sha256": "1776b07ceb66e09e53a4cd9fe7ec524d96b408ae73370040266e1bed438f19fc"
+          },
+          "python_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          }
+        }
+      ],
+      "unresolved_metadata_links": [],
+      "os_packages": 88,
+      "python_packages": 84,
+      "metadata_license_files": 367,
+      "copied_shared_library_count": 104
+    },
+    {
+      "name": "docker.io/library/fusion-memory-embedding:reference-pilot-dev08",
+      "architecture": "amd64",
+      "os": "linux",
+      "manifest_digest": "sha256:162f7236707c057e564e8de0b96465f2482dea4d0218e126c6454561de0c48f4",
+      "configuration_digest": "sha256:f58a5d4f839032ec11e026ab69602c6af2ce99e8d49338443ff30143bde864ab",
+      "native_components": [
+        {
+          "file_verification": {
+            "expected": 19,
+            "matched": 19,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/mettaclaw/LICENSE",
+            "sha256": "10c448e805927ecb41ed847154db2fd154506cf54f62802b1434cbef9efde463"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "mettaclaw",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/patham9/mettaclaw.git"
+        },
+        {
+          "file_verification": {
+            "expected": 624,
+            "matched": 624,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/PeTTa/LICENSE",
+            "sha256": "451e08f082f06f100facd2ef99f3c661155a7a433af091889d4c04e264838ce5"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "PeTTa",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "fea83178af3722666d2948d074591d10a3134f56",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/trueagi-io/PeTTa.git"
+        },
+        {
+          "file_verification": null,
+          "license_evidence": null,
+          "license_expression": "NOASSERTION",
+          "name": "swipl",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+          "source_presence": "SOURCE_NOT_PACKAGED",
+          "url": "https://github.com/SWI-Prolog/swipl-devel.git"
+        },
+        {
+          "binary": {
+            "bytes": 27817640,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/bin/python3.12",
+            "sha256": "3008abbb48c1e2b0fa3072ae72334b9b352e1346ea3a20d34126a455f0c7bc66"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 13936,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/lib/python3.12/LICENSE.txt",
+            "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "CPython",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "3.12.12"
+        },
+        {
+          "binary": {
+            "bytes": 16848,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "links": [
+              {
+                "kind": "symlink",
+                "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+                "path": "opt/native/swipl/bin/swipl",
+                "target": "../lib/swipl/bin/x86_64-linux/swipl"
+              }
+            ],
+            "path": "opt/native/swipl/lib/swipl/bin/x86_64-linux/swipl",
+            "requested_path": "opt/native/swipl/bin/swipl",
+            "sha256": "59f5ded02b1b378b41154778cff72b9a921d131ffb27f1036181a4f7f2429541"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1823,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/swipl/lib/swipl/LICENSE",
+            "sha256": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "SWI-Prolog",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "10.0.1"
+        },
+        {
+          "binary": {
+            "bytes": 57815888,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/fusion-detta-adapter",
+            "sha256": "cb7ed1a27e10e2869ca7357c6c249861623b9849c49fcbf7ef300aa19831f756"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "DeTTa fusion adapter",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        },
+        {
+          "binary": {
+            "bytes": 965592,
+            "kind": "file",
+            "layer": "sha256:d18b1184066b000bbde9ba3926fd47b51ebb60fbda0f2f378d9c4fa87796aefd",
+            "path": "opt/irc/sbin/ngircd",
+            "sha256": "b29b4c31e8f515062f2ed814b01c1774da2b6a1f3e099d6e316e8d3489ff3f74"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "ngIRCd",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        },
+        {
+          "declared_packages": {
+            "Jinja2": "3.1.6",
+            "MarkupSafe": "3.0.3",
+            "PyPika": "0.51.1",
+            "PyYAML": "6.0.3",
+            "Pygments": "2.21.0",
+            "aiohappyeyeballs": "2.7.1",
+            "aiohttp": "3.14.5",
+            "aiosignal": "1.4.0",
+            "annotated-doc": "0.0.5",
+            "annotated-types": "0.8.0",
+            "anyio": "4.15.1",
+            "attrs": "26.1.0",
+            "bcrypt": "5.0.0",
+            "build": "1.6.1",
+            "certifi": "2026.10.18",
+            "charset-normalizer": "2.1.1",
+            "chromadb": "1.5.5",
+            "click": "8.5.0",
+            "cloudpickle": "3.1.2",
+            "durationpy": "0.11",
+            "filelock": "4.2.1",
+            "flatbuffers": "25.12.19",
+            "frozenlist": "1.8.0",
+            "fsspec": "2026.7.0",
+            "googleapis-common-protos": "1.75.5",
+            "grpcio": "1.84.0",
+            "h11": "0.16.0",
+            "hf-xet": "1.7.0",
+            "httpcore": "1.0.9",
+            "httpcore2": "2.10.0",
+            "httptools": "0.9.0",
+            "httpx": "0.28.1",
+            "httpx2": "2.12.0",
+            "huggingface_hub": "2.2.0",
+            "idna": "3.15",
+            "importlib_resources": "7.1.0",
+            "joblib": "1.6.0",
+            "jsonschema": "4.26.0",
+            "jsonschema-specifications": "2025.9.1",
+            "kubernetes": "36.0.3",
+            "markdown-it-py": "4.2.0",
+            "mdurl": "0.1.2",
+            "mmh3": "5.3.1",
+            "mpmath": "1.3.0",
+            "multidict": "7.1.0",
+            "narwhals": "2.27.1",
+            "networkx": "3.6.1",
+            "numpy": "2.5.2",
+            "oauthlib": "4.0.0",
+            "onnxruntime": "1.31.0",
+            "opentelemetry-api": "1.45.1",
+            "opentelemetry-exporter-otlp-common": "0.66b1",
+            "opentelemetry-exporter-otlp-proto-common": "1.45.1",
+            "opentelemetry-exporter-otlp-proto-grpc": "1.45.1",
+            "opentelemetry-proto": "1.45.1",
+            "opentelemetry-sdk": "1.45.1",
+            "opentelemetry-semantic-conventions": "0.66b1",
+            "orjson": "3.13.0",
+            "overrides": "7.7.0",
+            "packaging": "24.1",
+            "propcache": "0.5.4",
+            "protobuf": "7.36.2",
+            "pybase64": "1.5.1",
+            "pydantic": "2.14.1",
+            "pydantic-settings": "2.16.0",
+            "pydantic_core": "2.50.1",
+            "pyproject_hooks": "1.3.3",
+            "python-dateutil": "2.9.0.post0",
+            "python-dotenv": "1.2.4",
+            "referencing": "0.37.0",
+            "regex": "2026.9.29",
+            "requests": "2.33.0",
+            "requests-oauthlib": "2.0.0",
+            "rich": "15.0.0",
+            "rpds-py": "2026.9.1",
+            "safetensors": "0.8.0",
+            "scikit-learn": "1.9.1",
+            "scipy": "1.18.1",
+            "sentence-transformers": "5.2.3",
+            "setuptools": "78.1.0",
+            "shellingham": "1.5.4",
+            "six": "1.17.0",
+            "sympy": "1.14.0",
+            "tenacity": "9.2.1",
+            "threadpoolctl": "3.7.0",
+            "tokenizers": "0.23.3",
+            "torch": "2.10.0+cpu",
+            "tqdm": "4.66.5",
+            "transformers": "5.20.1",
+            "truststore": "0.10.5",
+            "typer": "0.27.3",
+            "typing-inspection": "0.4.4",
+            "typing_extensions": "4.16.0",
+            "urllib3": "2.8.0",
+            "uvicorn": "0.54.0",
+            "uvloop": "0.23.0",
+            "watchfiles": "1.3.0",
+            "websocket-client": "1.9.2",
+            "websockets": "17.2",
+            "yarl": "1.25.1"
+          },
+          "file_verification": {
+            "expected": 26889,
+            "matched": 26889,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "helper_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "memory SDK",
+          "pin_evidence": {
+            "bytes": 4104306,
+            "kind": "file",
+            "layer": "sha256:b21a91f0c55f53466da76249d6518e40c17a7e5d6411d5d76fd8e0d7be484595",
+            "path": "opt/memory-runtime.json",
+            "sha256": "81a06df6e14f937b04ef0d00d594fd5ed70f729a9d1d096137640ae192ddae26"
+          },
+          "python_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          }
+        },
+        {
+          "file_verification": {
+            "expected": 9,
+            "matched": 9,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Embedding assets inspected as bytes; model was not loaded or run.",
+          "model_files": [
+            {
+              "bytes": 201,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/1_Pooling/config.json",
+              "sha256": "56c469dba9e31869bb7dfceb9b3d76ac06549d1ba869509d8eb4e8aeb31d62d1"
+            },
+            {
+              "bytes": 616,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/config.json",
+              "sha256": "2394ce5c9ffac96c88496de5d7a92f5d3fec1015b9d25f9f85545f13dfd7a269"
+            },
+            {
+              "bytes": 1340616616,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/model.safetensors",
+              "sha256": "d741c1a688a6169af0ecb5a047c44645cd992c31e1bf431269f98bba9ae2911a"
+            },
+            {
+              "bytes": 387,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/modules.json",
+              "sha256": "c6e29747481e8b5dd2b58401966aeac910de39092f90cda9a704b1545f902b04"
+            },
+            {
+              "bytes": 57,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/sentence_bert_config.json",
+              "sha256": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529"
+            },
+            {
+              "bytes": 125,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/special_tokens_map.json",
+              "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+            },
+            {
+              "bytes": 711396,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/tokenizer.json",
+              "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+            },
+            {
+              "bytes": 314,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/tokenizer_config.json",
+              "sha256": "ae83fa6ca0333117ff12606020af925d648667ef70d92ff7f27d781ba0ca4544"
+            },
+            {
+              "bytes": 231508,
+              "kind": "file",
+              "layer": "sha256:e7b92e758d887e2f1698d308acbe945d4cc05854c6e401fbfbe82a741718334a",
+              "path": "opt/model/vocab.txt",
+              "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+            }
+          ],
+          "name": "intfloat/e5-large-v2",
+          "pin_evidence": {
+            "bytes": 4104306,
+            "kind": "file",
+            "layer": "sha256:b21a91f0c55f53466da76249d6518e40c17a7e5d6411d5d76fd8e0d7be484595",
+            "path": "opt/memory-runtime.json",
+            "sha256": "81a06df6e14f937b04ef0d00d594fd5ed70f729a9d1d096137640ae192ddae26"
+          },
+          "revision": "f169b11e22de13617baa190a028a32f3493550b6"
+        }
+      ],
+      "unresolved_metadata_links": [],
+      "os_packages": 88,
+      "python_packages": 117,
+      "metadata_license_files": 453,
+      "copied_shared_library_count": 300
+    },
+    {
+      "name": "docker.io/library/fusion-reference-chain:reference-pilot-dev08",
+      "architecture": "amd64",
+      "os": "linux",
+      "manifest_digest": "sha256:b0962ce8b7c6a0059b660f29bb92bc410a2732892121f1205eed11c3b969249e",
+      "configuration_digest": "sha256:22d93c578f492423524c26efbfcd1951bb98c034ea6d81145c7181c0d5cf7c5a",
+      "native_components": [
+        {
+          "file_verification": {
+            "expected": 19,
+            "matched": 19,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/mettaclaw/LICENSE",
+            "sha256": "10c448e805927ecb41ed847154db2fd154506cf54f62802b1434cbef9efde463"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "mettaclaw",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "2af37c3fec18613de54ca42fde2382a9087d4524",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/patham9/mettaclaw.git"
+        },
+        {
+          "file_verification": {
+            "expected": 624,
+            "matched": 624,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1071,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/sources/PeTTa/LICENSE",
+            "sha256": "451e08f082f06f100facd2ef99f3c661155a7a433af091889d4c04e264838ce5"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "PeTTa",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "fea83178af3722666d2948d074591d10a3134f56",
+          "source_presence": "PACKAGED_SELECTED_FILES",
+          "url": "https://github.com/trueagi-io/PeTTa.git"
+        },
+        {
+          "file_verification": null,
+          "license_evidence": null,
+          "license_expression": "NOASSERTION",
+          "name": "swipl",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "revision": "e58621a91ab7dd530e1e8185ed518f63d851c414",
+          "source_presence": "SOURCE_NOT_PACKAGED",
+          "url": "https://github.com/SWI-Prolog/swipl-devel.git"
+        },
+        {
+          "binary": {
+            "bytes": 27817640,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/bin/python3.12",
+            "sha256": "3008abbb48c1e2b0fa3072ae72334b9b352e1346ea3a20d34126a455f0c7bc66"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 13936,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/python/lib/python3.12/LICENSE.txt",
+            "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "CPython",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "3.12.12"
+        },
+        {
+          "binary": {
+            "bytes": 16848,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "links": [
+              {
+                "kind": "symlink",
+                "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+                "path": "opt/native/swipl/bin/swipl",
+                "target": "../lib/swipl/bin/x86_64-linux/swipl"
+              }
+            ],
+            "path": "opt/native/swipl/lib/swipl/bin/x86_64-linux/swipl",
+            "requested_path": "opt/native/swipl/bin/swipl",
+            "sha256": "59f5ded02b1b378b41154778cff72b9a921d131ffb27f1036181a4f7f2429541"
+          },
+          "file_verification": {
+            "expected": 1,
+            "matched": 1,
+            "mismatched": [],
+            "missing": [],
+            "status": "MATCH"
+          },
+          "license_evidence": {
+            "bytes": 1823,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/swipl/lib/swipl/LICENSE",
+            "sha256": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a"
+          },
+          "license_expression": "NOASSERTION",
+          "name": "SWI-Prolog",
+          "pin_evidence": {
+            "bytes": 85504,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/build.json",
+            "sha256": "466b0ed60e7b41fcc04673925a46512ec9a3852da2783970f517665b62c21497"
+          },
+          "version": "10.0.1"
+        },
+        {
+          "binary": {
+            "bytes": 57815888,
+            "kind": "file",
+            "layer": "sha256:8a2ddd8c681146731c42e638c611513269a9fa2d7c2593351c42cf6893b2c755",
+            "path": "opt/native/fusion-detta-adapter",
+            "sha256": "cb7ed1a27e10e2869ca7357c6c249861623b9849c49fcbf7ef300aa19831f756"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "DeTTa fusion adapter",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        },
+        {
+          "binary": {
+            "bytes": 965592,
+            "kind": "file",
+            "layer": "sha256:dc7bf90a32d15b7d3f8846b17f6245f8193fb4344a1f1b0a69600e81f5e85121",
+            "path": "opt/irc/sbin/ngircd",
+            "sha256": "b29b4c31e8f515062f2ed814b01c1774da2b6a1f3e099d6e316e8d3489ff3f74"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Binary measured directly; external parent build/source evidence is separate.",
+          "name": "ngIRCd",
+          "revision": "NOT_ASSERTED_BY_PACKAGED_BINARY"
+        },
+        {
+          "binary": {
+            "bytes": 163668976,
+            "kind": "file",
+            "layer": "sha256:b2f1c174656641fb733c166adbc174fd72d8f4306be3dc290b4cf8c014514952",
+            "path": "opt/chain/bin/node",
+            "sha256": "2021389d8e1a1db0470d55ba6744124e33f2bc44f5155e6cfa662798b4ffd085"
+          },
+          "license_evidence": {
+            "bytes": 6859,
+            "kind": "file",
+            "layer": "sha256:b2f1c174656641fb733c166adbc174fd72d8f4306be3dc290b4cf8c014514952",
+            "path": "opt/chain/source/LICENSE",
+            "sha256": "ca14e97389e876c536d8057124a83a31bc9786f4291c8dbac8acacada9b503bc"
+          },
+          "license_expression": "NOASSERTION",
+          "limitation": "Packaged declaration and binary hash; no new source-to-binary rebuild assertion.",
+          "name": "F1R3node",
+          "pin_evidence": {
+            "bytes": 471,
+            "kind": "file",
+            "layer": "sha256:b2f1c174656641fb733c166adbc174fd72d8f4306be3dc290b4cf8c014514952",
+            "path": "opt/chain/source/sources.json",
+            "sha256": "9636a60dbceafcdb377951d726633f22665c0208a59266fdc11c0403b372349a"
+          },
+          "profile": "f1r3-generated-post-state/2",
+          "revision": "9ec1096e10774926ea8e72f0823482f0bf9213e1",
+          "toolchain": "nightly-2026-02-09",
+          "url": "git@github.com:machieke/f1r3node-rust.git"
+        }
+      ],
+      "unresolved_metadata_links": [],
+      "os_packages": 88,
+      "python_packages": 22,
+      "metadata_license_files": 220,
+      "copied_shared_library_count": 105
+    }
+  ],
+  "development_summary_correction": "Earlier development summaries reported the four os_dependencies object fields as package count. This summary counts the actual packages array. Original raw inventories and historical summaries remain unchanged."
+}

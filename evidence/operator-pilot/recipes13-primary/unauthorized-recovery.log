@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/recover_unauthorized.py", line 11, in <module>
+    op=Operator(root/'kubeconfig','default','omega-ref-pilot-recipe13');r=IntegratedRunner(op,out/'native',maximum_inputs=0);sid=old['session'];wid=old['workflow'];q=Recovery.__new__(Recovery);q.op=op;prior=None;changed=False
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/sustained_qualification.py", line 17, in __init__
+    require(type(maximum_inputs) is int and 1<=maximum_inputs<=96,'OVERLOADED')
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: OVERLOADED

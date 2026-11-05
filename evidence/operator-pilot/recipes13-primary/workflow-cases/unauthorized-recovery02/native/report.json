@@ -1,0 +1,68 @@
+{
+  "classification": "RECORDED_MODEL_REAL_NATIVE_TOOLS",
+  "additional_live_generations": 0,
+  "namespace": "omega-ref-pilot-recipe13",
+  "inputs": [],
+  "scenarios": [],
+  "maximum_operator_inputs": 1,
+  "maximum_observer_overrun_seconds": 8,
+  "frozen": {
+    "plan": {
+      "profile": "sustained-native-evaluation/1",
+      "datasets": {
+        "new": {
+          "fact": "The synthetic silver prism is stored in crate orchid",
+          "query": "synthetic silver prism storage",
+          "required": [
+            "crate orchid"
+          ],
+          "forbidden": [
+            "crate saffron"
+          ]
+        },
+        "changed": {
+          "fact": "The synthetic silver prism is stored in crate saffron",
+          "query": "synthetic silver prism storage",
+          "required": [
+            "crate saffron"
+          ],
+          "forbidden": [
+            "crate orchid"
+          ]
+        },
+        "absent": {
+          "query": "synthetic missing topaz key",
+          "required": [],
+          "forbidden": [
+            "topaz key is stored"
+          ]
+        }
+      },
+      "agents": 2,
+      "sequential_shared_sessions_per_agent": 3,
+      "maximum_operator_inputs": 72,
+      "maximum_wall_seconds": 3600,
+      "source_records_limit": 2048,
+      "source_bytes_limit": 33554432,
+      "old_record_threshold": 512,
+      "required_operations_after_crossing": 4,
+      "maximum_active_user_memories": 8,
+      "original_input_timeout_ms": 120000,
+      "observer_overrun_seconds": 8,
+      "current_fact_scoring": "exact required and forbidden substrings in actual native projection; no response repair",
+      "absent_scoring": "no invented exact absent fact; nearest neighbours may legitimately appear",
+      "held_out_live": {
+        "enabled": false,
+        "allowance": 0,
+        "selection": "operator-supplied new synthetic variant withheld from model setup",
+        "runtime": "DO_NOT_CONTACT"
+      },
+      "proposals": "recorded input-command only; no tool results or evaluator answers supplied",
+      "live_generations": 0
+    },
+    "sha256": "aa1314efda6b18cb5de956403612034f14f63c302aa2a6b1e559257040ab91b2"
+  },
+  "source_observations": [],
+  "evaluations": [],
+  "profile": "omega-native-sessions/3"
+}

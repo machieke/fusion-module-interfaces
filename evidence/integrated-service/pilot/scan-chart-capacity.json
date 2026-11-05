@@ -1,0 +1,124 @@
+{
+  "profile": "operator-pilot-chart-analysis/1",
+  "status": "EXECUTED_FINDINGS",
+  "coverage": "ACTUAL_CHART_DEFAULT_VALUES; separate deployed controls and explicit active-values scan are different observations",
+  "chart_files": {
+    "deploy/helm/omega-fusion/Chart.yaml": "a95a8de472db0b836a13651c9726b8a9b681088f52666cc9c56a32455142ac44",
+    "deploy/helm/omega-fusion/templates/components.yaml": "be8a1dc07e8f57b4be6074fb8fe1f9fcac5e405f3c41729718e4c159e8352287",
+    "deploy/helm/omega-fusion/templates/network-policy.yaml": "433f3ed2a5c5152879019230314e8a8104da211756dcf63eab65236d00666f8b",
+    "deploy/helm/omega-fusion/templates/pilot-workbench.yaml": "dc6ec9e6df6118b1687b4e5aec6526ab2dae67e16278cc4323f7efb2ecdcd50f",
+    "deploy/helm/omega-fusion/values.schema.json": "db4aa50bbb2337ac1f412d5b4ab7d3edeb469f42cfa3c0d49e21eb604978023f",
+    "deploy/helm/omega-fusion/values.yaml": "ef037df0b5150a1500ea3b6a531e3110f109c74efb4bd45fcfd0b7e69d3a310c"
+  },
+  "scanner": "0.76.1",
+  "scanner_binary_sha256": "d1dfca6ae10a1ad4540bb94e64f0510077c47008920a9b554986b39dca573d83",
+  "checks": "Embedded in pinned binary; remote check update disabled; absent cached policy explicitly reported by scanner",
+  "raw_report_sha256": "e28b581433d28306f4bef0dd07f14f3b32876079ec98fb5e70ba526ded0c3c76",
+  "severity": {
+    "LOW": 12
+  },
+  "findings": [
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0020",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with UID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0020",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with UID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0020",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with UID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0020",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with UID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsUser' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0021",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with GID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0021",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with GID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0021",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with GID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0021",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Runs with GID <= 10000",
+      "resolution": "Set 'containers[].securityContext.runAsGroup' to an integer > 10000."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0110",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Workloads in the default namespace",
+      "resolution": "Set 'metadata.namespace' to a non-default namespace."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0110",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Workloads in the default namespace",
+      "resolution": "Set 'metadata.namespace' to a non-default namespace."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0110",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Workloads in the default namespace",
+      "resolution": "Set 'metadata.namespace' to a non-default namespace."
+    },
+    {
+      "target": "templates/components.yaml",
+      "id": "KSV-0110",
+      "severity": "LOW",
+      "status": "FAIL",
+      "title": "Workloads in the default namespace",
+      "resolution": "Set 'metadata.namespace' to a non-default namespace."
+    }
+  ],
+  "initial_invocation": {
+    "status": "FAIL",
+    "reason": "config command rejects --offline-scan before scanning",
+    "log_sha256": "1a7c21467ab66cda14e22e266a913ea5b1b9562caf43a5ceaa6490954652eb65"
+  },
+  "additional_live_generations": 0
+}

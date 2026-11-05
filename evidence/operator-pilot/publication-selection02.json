@@ -1,0 +1,32 @@
+{
+  "profile": "operator-pilot-offline-publication-selection/1",
+  "classification": "AUTHORED_ASSEMBLY_FIXTURES_REAL_FILES_NO_IMAGES_EXECUTED",
+  "status": "PASS",
+  "source_snapshot_timing": "After test completion; selected source files not edited during run",
+  "sources": [
+    {
+      "path": "sdk/distribution.py",
+      "sha256": "08f17cb12b86fcbb3bc4bc1f9195bf095de48ff11a87ce7343e99bdc96b218c5",
+      "bytes": 43950
+    },
+    {
+      "path": "tests/test_pilot_distribution_assembly.py",
+      "sha256": "15d167b8e9dca22a63b83f8435485dcc635eedbd1348a86d4eff5a89cac2a6b8",
+      "bytes": 5417
+    },
+    {
+      "path": "sdk/test_distribution.py",
+      "sha256": "e7c174af0053d7669a98a3dc07a9a0799bc6627ddc7a4fee27f29fd1e9cb309a",
+      "bytes": 13239
+    }
+  ],
+  "test": {
+    "method_invocations": 14,
+    "seconds": 2.508,
+    "log": "artifacts/operator-pilot/publication-selection02.log",
+    "sha256": "76d4895ff124d4cd1d914e21fa5e8f368fb96832c62fbd504adf3c4ed910c62c",
+    "guard": "artifacts/operator-pilot/publication-selection02-denial.json"
+  },
+  "change": "Explicit /2 positive-list maximum2048; /1 remains512; neither directory walks nor runtime/owner capacity changes",
+  "additional_live_generations": 0
+}

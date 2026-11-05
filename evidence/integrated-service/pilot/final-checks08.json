@@ -1,0 +1,37 @@
+{
+  "profile": "operator-pilot-source-bound-checks/1",
+  "observed_utc": "2026-11-05T01:01:34.509943+00:00",
+  "source_manifest_sha256": "227d36d1c2727ed42f76676761b721d4f22a5c25c64aa15e39b5b37607f9fdfd",
+  "test_input_snapshot_sha256": "1669a4ddd69be21114c7b901474c5152fa13f8bcf91a4eef6de24ea7f442b14b",
+  "files_checked": 758,
+  "source_before_after_exact": true,
+  "changes": [],
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "primary": "artifacts/operator-pilot/final-checks08/pilot-fast.log",
+      "sha256": "3470887e2becdd0a19546a195f94db0c26278e5f72d291409051168bd3d1d9aa",
+      "invocations": 266,
+      "seconds": 63.382,
+      "status": "PASS"
+    },
+    {
+      "lane": "integrated-fast",
+      "primary": "artifacts/operator-pilot/final-checks08-integrated-fast/integrated-fast.log",
+      "sha256": "344f8aa62ddb4406232dcb604432200f7454dacd08c33eec0c0c5d108806114e",
+      "invocations": 188,
+      "seconds": 67.708,
+      "status": "PASS"
+    },
+    {
+      "lane": "sustained-fast",
+      "primary": "artifacts/operator-pilot/final-checks08-sustained-fast/sustained-fast.log",
+      "sha256": "07a6b9f02ac1363554fd08bfb25b24c34d7f81f0624eb96efc12fa547f309515",
+      "invocations": 106,
+      "seconds": 107.78,
+      "status": "PASS"
+    }
+  ],
+  "unique_authored_method_union": "COMPUTE_WITH_FINAL_EVIDENCE_VERIFIER",
+  "additional_live_generations": 0
+}

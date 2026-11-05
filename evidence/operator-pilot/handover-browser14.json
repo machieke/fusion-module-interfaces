@@ -1,0 +1,109 @@
+{
+  "artifact_bindings": {
+    "frozen_observation_plan_sha256": "18311701202c2619495b64cd11197f8583a1e28974ea8be72d9e75ae2f243b4f",
+    "image_configuration_digests": {
+      "base": "sha256:3befefaebb3dcc69cfc0ee1abaa5b8d526da42dc1f00b0737cdf74c9c7f4d84a",
+      "caller": "sha256:52b93d100a42930c8dedd41b137a9db058986c38616f47012c98f34eec1703b9",
+      "chain": "sha256:65b8aebc247703474e48d6688c6752fec643ff20884be9f5f852f2a5db606b72",
+      "embedding": "sha256:ac42fe2a186ff4c83b8c0e9b679b1247f61af90824a839812367fd5189003e81"
+    },
+    "manifest_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+    "operator": "operator20",
+    "operator_wheel_sha256": "5a3b956a67fabd392ae300dd112b7cc6c53ea933de402c84be06a3a96cd3cd11",
+    "packet": "distribution18",
+    "runtime_source_manifest_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+    "shipped_provisioning_recipe_sha256": "aa09ddaaa2f1a213b380ba4c0ed330b79c7ce051e9292ecff2fae717b81c6d2a"
+  },
+  "cleanup": {
+    "no_deadline_or_budget_change": true,
+    "original_E_report_unchanged": true,
+    "original_source_remains_stopped": true,
+    "verified_replacement_left_running_for_separately_frozen_Attention_supplement": true
+  },
+  "executed": {
+    "actual_UI_physical_HTTP_send_count": "NOT_INSTRUMENTED",
+    "actual_active_generation2_external_authority_read_and_exact_recheck": true,
+    "actual_native_history_and_current_owner_browser_reads": true,
+    "all_owner_seals_exact": true,
+    "all_selected_owner_observations_exact": true,
+    "before_after_and_post_UI_selected_sessions": 4,
+    "browser_client_login_logout_calls": 2,
+    "configuration_restart_owner_workloads": 12,
+    "explicit_logged_browser_client_API_calls": 8,
+    "external_authority_UI_is_fencing_proof": false,
+    "mutating_authority_body_refusal": "UNSUPPORTED_OPERATION",
+    "new_live_generations": 0,
+    "new_native_inputs": 0,
+    "old_secret_values_and_TLS_material_preserved": true,
+    "post_restart_ready_workloads": 13,
+    "private_session_refusal": "UNAUTHORIZED",
+    "retained_completed_captures": 11,
+    "retained_unknown_inputs": 1,
+    "separately_scoped_browser_credentials_added": true,
+    "unknown_spent_reservation_and_zero_capture_unchanged": true,
+    "wrong_authority_digest_refusal": "CONFLICT"
+  },
+  "limitations": [
+    "This browser observation does not plan, fence or activate any writer.",
+    "Private partition workspace handover remains unsupported; this run adds no private workspace claim.",
+    "Primary observer failure is retained rather than relabelled PASS.",
+    "Historical full browser11 and pool/subscription11 remain exact earlier runtime11 evidence.",
+    "No new module, command, live generation, multi-host or production-readiness claim."
+  ],
+  "private_evidence": [
+    {
+      "bytes": null,
+      "classification": "WITHHELD_PRIVATE_OWNER_CAPTURES_ACCOUNTING_AUTHORITY_SEALS_CONFIGURATION_AND_VIDEO",
+      "independent_public_inspection": "NOT_POSSIBLE_FROM_SANITIZED_EXPORT",
+      "path": null,
+      "sha256": null
+    }
+  ],
+  "proof": {
+    "OS_or_mount_namespace_isolation": "NOT_ESTABLISHED",
+    "actual_browser": "Chromium through ProofShot",
+    "console_errors": 0,
+    "only_bootstrap_credential_received_by_browser": true,
+    "private_screenshots_video_and_raw_observations": "WITHHELD",
+    "provider_or_Kubernetes_credentials_required_by_browser": false,
+    "residual_owned_recorder_explicitly_stopped": 1,
+    "same_host_only": true,
+    "server_errors": 0,
+    "temporary_browser_forward_and_recorders_stopped": true
+  },
+  "retained_failures": [
+    {
+      "cause": "Observer expected events text Signed out.; frozen page intentionally clears events and puts sign-out status in separate fields.",
+      "classification": "PRIVATE_UI_OBSERVER_ASSERTION",
+      "code": "LOGOUT_STATE_NOT_CLEARED",
+      "repeated_login_or_logout": false,
+      "runtime_change": false,
+      "separate_read_only_continuation": "PASS: authority/events/current/explorer empty, no session choices, work control disabled, Signed out auth state.",
+      "source_sha256": "22215a052e6e80643edca9007e7b2acfa89930b5596a218aec70d0d773f23aba",
+      "status": "FAIL_RETAINED"
+    },
+    {
+      "cause": "Assumed page source was a loose file in packet; subsequent source binding used actual installed SDK module.",
+      "classification": "OFFLINE_EVIDENCE_WRITER",
+      "code": "FileNotFoundError",
+      "provider_or_UI_calls": 0,
+      "status": "FAIL_RETAINED"
+    }
+  ],
+  "schema": "operator-pilot-post-handover-browser-evidence/1",
+  "scope": "Actual existing synthetic handover replacement; scoped browser observation and configuration restart only",
+  "source_trace": {
+    "cleanup-processes.py": "c00ef8836e3118f999bf56343480490eca366f4be448a49f1d885d74e32cf617",
+    "final-readback.py": "89cfdf67c6a5a9841fe5b83738badcc51d3110c917c4290cb3167297f1f373b1",
+    "observe-ui.py": "22215a052e6e80643edca9007e7b2acfa89930b5596a218aec70d0d773f23aba",
+    "rollout.py": "db5eb0660e499f552b13bb741b7c798c04a5717315f0e9c2b8cd6d8f93f9ff3f",
+    "validate-logout-continuation.py": "75088faba5c4c86da47435649479f86cb9e5c73a0d1d08f1e736710899066934"
+  },
+  "status": "PASS_WITH_RETAINED_PRIMARY_OBSERVER_FAILURE",
+  "window": {
+    "elapsed_seconds": 528.8835613317788,
+    "ended_utc": "2026-11-05T08:14:51.243815+00:00",
+    "original_bound_seconds": 900,
+    "started_utc": "2026-11-05T08:06:02.360313+00:00"
+  }
+}

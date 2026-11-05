@@ -1,0 +1,54 @@
+{
+  "epoch": "dev06",
+  "status": "BUILT_SOURCE_EXPORT_VERIFIED_NOT_YET_DEPLOYED",
+  "baseline": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "manifest": {
+    "archive_bytes": 180807680,
+    "archive_format": "verified-oci-layer-set/1",
+    "archive_sha256": "58795764c2acec580f01cd878788baf329a9b4cf316bf26b0e5e5ab9178c4cb3",
+    "base_archive": {
+      "archive_bytes": 3473758720,
+      "archive_sha256": "fb807533ef98cb32556e5f86b44d806834bc689dd658d5ec3cb771da507b50e7"
+    },
+    "container_starts": 0,
+    "generative_runtime_availability": "NOT_CHECKED",
+    "images": [
+      {
+        "configuration_digest": "sha256:c7dbcf295eeb61f8f6071e23634e35e7dfb4fa019b0c8c35c5f6d296785a6e8c",
+        "kind": "embedding",
+        "local_tag": "docker.io/library/fusion-memory-embedding:reference-pilot-dev06",
+        "manifest_digest": "sha256:3a1821d11d3a1345901adfe15636b1b017b0fa9c053440451b0c619ce1789406",
+        "repository": "docker.io/library/fusion-memory-embedding",
+        "source_package": "image-embedding/package.json"
+      },
+      {
+        "configuration_digest": "sha256:0927300d42812b21a680a6fe432a189ec68ffd7adda201e165fee39b951d35cf",
+        "kind": "chain",
+        "local_tag": "docker.io/library/fusion-reference-chain:reference-pilot-dev06",
+        "manifest_digest": "sha256:44ff32983f5dcaad404b7613dc934df511e898d67da777ab082e486d11901af3",
+        "repository": "docker.io/library/fusion-reference-chain",
+        "source_package": "image-chain/package.json"
+      },
+      {
+        "configuration_digest": "sha256:81dcbdea18b1c861ff4aeaf88c88b814ef3f22a2f9bdf4ed016879df07969b9c",
+        "kind": "base",
+        "local_tag": "docker.io/library/fusion-single-node:reference-pilot-dev06",
+        "manifest_digest": "sha256:2c235fcf2858923644d954677fbbff7d429441041ede12ee033d09a37c5ce040",
+        "repository": "docker.io/library/fusion-single-node",
+        "source_package": "image-base/package.json"
+      },
+      {
+        "configuration_digest": "sha256:1f5dd0df967163d89143b60a5c60d0f70217d92a3e6f42e8aed62a5797400f41",
+        "kind": "caller",
+        "local_tag": "docker.io/library/fusion-memory-caller:reference-pilot-dev06",
+        "manifest_digest": "sha256:f5237253d25b5f5f3007db36e8941b36386c79b968b55da4f85780c9c5bf2377",
+        "repository": "docker.io/library/fusion-memory-caller",
+        "source_package": "image-caller/package.json"
+      }
+    ],
+    "source_export_verification": "PASS",
+    "source_manifest_sha256": "199bc57541dc64647656ca3418fb1030387ac8aa65d46f8e318f55f2521abb68"
+  },
+  "snapshot_files": 488,
+  "additional_live_generations": 0
+}

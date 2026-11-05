@@ -1,0 +1,56 @@
+test_go_disabled_or_absent_manifest_bytes_unchanged (tests.test_pilot_go_capacity_chart.CapacityComposition.test_go_disabled_or_absent_manifest_bytes_unchanged) ... ERROR
+test_opt_in_capacity_is_exact_scope_separate_principal (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_in_capacity_is_exact_scope_separate_principal) ... ERROR
+test_opt_out_go_manifest_bytes_unchanged (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_out_go_manifest_bytes_unchanged) ... ERROR
+
+======================================================================
+ERROR: test_go_disabled_or_absent_manifest_bytes_unchanged (tests.test_pilot_go_capacity_chart.CapacityComposition.test_go_disabled_or_absent_manifest_bytes_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 24, in setUp
+    self.values,_=initial(images,'fixture-only','synthetic-capacity-chart','omega-ref-capacity-chart')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/pilot_go_values.py", line 18, in initial
+    checked=verify(artifact);require(checked['contract']==selection_token(descriptor()),'UNSUPPORTED_PROFILE');value=pilot(images,scope,namespace)
+                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/pilot_values.py", line 11, in generate
+    require(namespace.startswith('omega-ref-pilot-') and len(namespace)<=63,'UNAUTHORIZED')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: UNAUTHORIZED
+
+======================================================================
+ERROR: test_opt_in_capacity_is_exact_scope_separate_principal (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_in_capacity_is_exact_scope_separate_principal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 24, in setUp
+    self.values,_=initial(images,'fixture-only','synthetic-capacity-chart','omega-ref-capacity-chart')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/pilot_go_values.py", line 18, in initial
+    checked=verify(artifact);require(checked['contract']==selection_token(descriptor()),'UNSUPPORTED_PROFILE');value=pilot(images,scope,namespace)
+                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/pilot_values.py", line 11, in generate
+    require(namespace.startswith('omega-ref-pilot-') and len(namespace)<=63,'UNAUTHORIZED')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: UNAUTHORIZED
+
+======================================================================
+ERROR: test_opt_out_go_manifest_bytes_unchanged (tests.test_pilot_go_capacity_chart.CapacityComposition.test_opt_out_go_manifest_bytes_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_go_capacity_chart.py", line 24, in setUp
+    self.values,_=initial(images,'fixture-only','synthetic-capacity-chart','omega-ref-capacity-chart')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/pilot_go_values.py", line 18, in initial
+    checked=verify(artifact);require(checked['contract']==selection_token(descriptor()),'UNSUPPORTED_PROFILE');value=pilot(images,scope,namespace)
+                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/integration/single_node/pilot_values.py", line 11, in generate
+    require(namespace.startswith('omega-ref-pilot-') and len(namespace)<=63,'UNAUTHORIZED')
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: UNAUTHORIZED
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+FAILED (errors=3)

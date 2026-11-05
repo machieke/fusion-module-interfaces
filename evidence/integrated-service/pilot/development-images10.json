@@ -1,0 +1,55 @@
+{
+  "profile": "operator-pilot-development-images/1",
+  "epoch": "dev10",
+  "baseline": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "source_manifest_sha256": "9f5c31cbedadece8c17715ddfb7e20e2e53f6087b1a92dd0ec2dd83bc2bb7123",
+  "runtime_package_delta_from09": [
+    "integration/neoclaw/pilot-leaf-remediation.json",
+    "integration/neoclaw/provenance/pilot-leaf-remediation09.json",
+    "integration/single_node/pilot_remediation.py",
+    "integration/single_node/reference_ci.py"
+  ],
+  "images": [
+    {
+      "configuration_digest": "sha256:8ec311312479aa71205a7f44383d83ed2c9e1bab3bc0fbc8f269aa4c8d671cac",
+      "kind": "chain",
+      "local_tag": "docker.io/library/fusion-reference-chain:reference-pilot-dev10",
+      "manifest_digest": "sha256:dfdd40ca7210e36aff767ba2d6b8c648edc6889becb2b70049b37fca82f099d6",
+      "repository": "docker.io/library/fusion-reference-chain",
+      "source_package": "image-chain/package.json"
+    },
+    {
+      "configuration_digest": "sha256:f1621b97cbe926b3e34ad8a0f7280482bd1415f173747ab0a70a57e1b09fc824",
+      "kind": "base",
+      "local_tag": "docker.io/library/fusion-single-node:reference-pilot-dev10",
+      "manifest_digest": "sha256:4a564f29c0c3b05e5da706dafffdfdf668e72b7e711d4fa5f7bb076f0bb7e23a",
+      "repository": "docker.io/library/fusion-single-node",
+      "source_package": "image-base/package.json"
+    },
+    {
+      "configuration_digest": "sha256:146862b29111b148c9b19c2e9d8c7eae0767bc098b02eced555f2e9b92b7f562",
+      "kind": "caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:reference-pilot-dev10",
+      "manifest_digest": "sha256:867fe4f8701d284589c325a367fa6b083088922579b89ec53f827da4e93a277c",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "source_package": "image-caller/package.json"
+    },
+    {
+      "configuration_digest": "sha256:d3a8a20608d7292d141cb305dfbe09e657398b57a7abc16856fdb644dd03e77b",
+      "kind": "embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:reference-pilot-dev10",
+      "manifest_digest": "sha256:fb698899106743ffed843467fff8c5ece1a5ca093ae1c783e0a18b112af6fbb7",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "source_package": "image-embedding/package.json"
+    }
+  ],
+  "archive_sha256": "c77d77db320dec81961bf42e58aa8169acfb13f50f972d1cb1539597f453b5f5",
+  "source_export_verification": "PASS",
+  "service_entrypoint_starts_during_build": 0,
+  "build_execution": "Offline Docker RUN executes package installation and six pip dependency checks; no service/model entrypoint",
+  "additional_live_generations": 0,
+  "final_acceptance": "NOT_RUN",
+  "reason": "Repair newly introduced declared HTTPX2 dependency incompatibility; old09 outcomes and failure report retained.",
+  "numerical_packages_and_model_assets": "UNCHANGED_EXACT_FILE_MAP",
+  "dependency_closure": "../../operator-pilot/development/dependency-closure10.json"
+}

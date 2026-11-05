@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/finish_go.py", line 15, in <module>
+    first=observe('completed',root/'go-capacity-authority');require(first['closure']['captured']==first['closure']['delivered']==1 and first['pending']['used']==0,'NOT_AVAILABLE')
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

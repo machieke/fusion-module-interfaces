@@ -1,0 +1,175 @@
+{
+  "additional_live_generations": 0,
+  "focused_tests": {
+    "artifact_reference_methods": 11,
+    "classification": "FIXTURE_PORTS_REAL_APPLICATION_OWNER_SQLITE",
+    "invocations": 28,
+    "other_existing_methods": 17,
+    "primary": "artifacts/operator-pilot/artifact-reference-repair-tests04.log",
+    "sha256": "9ba7da49d8c0e85145fe7a98af87604170b5eb0bd08bbfcefd80ad2933dda52c",
+    "source_snapshot": "artifacts/operator-pilot/artifact-reference-repair-source04",
+    "sources": {
+      "examples/pilot_artifact_reference.py": {
+        "bytes": 8388,
+        "sha256": "0d5af55feb98df9f02d3c8a56f6c34f25721fa38f42102cce57fd1c52ce45ec3"
+      },
+      "examples/pilot_network_edges.py": {
+        "bytes": 11392,
+        "sha256": "9687c5833ce3d276f458d8ee784eb11d0b1e291bd04ff4a5d28e528d75c8b91b"
+      },
+      "examples/pilot_recipe_chain.py": {
+        "bytes": 7526,
+        "sha256": "1716c594417300852e26a65c2e46e6c7fbf010a00bc182086b3a928508a7ab0b"
+      },
+      "examples/pilot_recipe_qualification.py": {
+        "bytes": 12700,
+        "sha256": "8236c7f140ab1a9f6cf75ad5ebaf03f5a38d468df0e5d8e615797149dcd65b1e"
+      },
+      "examples/pilot_workflow_faults.py": {
+        "bytes": 3142,
+        "sha256": "1e4d312f9be033c2bf9b990ebb3bbfb3b63701f1e41e4f6577e76b444ba7c437"
+      },
+      "tests/test_pilot_artifact_reference.py": {
+        "bytes": 8271,
+        "sha256": "d42d7d28b32324317819b0c21669de9dad4ae09f4752c68d04528ba6401a4073"
+      },
+      "tests/test_pilot_network_edges.py": {
+        "bytes": 3476,
+        "sha256": "14d15787b804358e9163411e5112ccf8fbcc5f13bc1b01e2d5052ede0bf001b9"
+      },
+      "tests/test_pilot_recipe_chain.py": {
+        "bytes": 1767,
+        "sha256": "6fe5d9194602260e89cc3f7f0d292fdd708c48667e0b63d3fbea895d831d493d"
+      },
+      "tests/test_pilot_workflow_qualification.py": {
+        "bytes": 10496,
+        "sha256": "c39b631ff89b7f9304db53eb8b981deaa698794be6f56e397eed702fd15d3cbe"
+      }
+    },
+    "status": "PASS"
+  },
+  "historical_runs_preserved": [
+    "artifact-reference-repair-tests01.log FAIL14 fixture assertion",
+    "artifact-reference-repair-tests02.log PASS25",
+    "artifact-reference-repair-tests03.log PASS27",
+    "recipe13-artifact-failure.json NOT_COMPLETED",
+    "sdk-recipe14 and original plan UNADMITTED_SUPERSEDED"
+  ],
+  "installed_verification": {
+    "added_sources": [
+      "examples/pilot_artifact_reference.py",
+      "examples/pilot_attention_suspension.py",
+      "examples/pilot_live_pool_subscription.py"
+    ],
+    "additional_live_generations": 0,
+    "build_manifest_sha256": "df34595efe84bb4524ce85a7e22d85046ae04889d1e555a012c2bfa33d0a0276",
+    "changed_sources": {
+      "examples/pilot_handover.py": {
+        "after": "a27b6dca7e27f82198c50d0cf7797fcde9055d7ff0a095e7eb7d1b953f269545",
+        "before": "61b0aee8e1c7e15f5dc3910b49cc440697a1bc4dcef4b36930f0730adc704460"
+      },
+      "examples/pilot_network_edges.py": {
+        "after": "9687c5833ce3d276f458d8ee784eb11d0b1e291bd04ff4a5d28e528d75c8b91b",
+        "before": "0d55d4b8758ea946e6311db89190fc16fcd8d5289307432262f2d93419447f07"
+      },
+      "examples/pilot_recipe_chain.py": {
+        "after": "1716c594417300852e26a65c2e46e6c7fbf010a00bc182086b3a928508a7ab0b",
+        "before": "4eb6763df4a8877a6884b0de341671fc94cbc7196496ac789d7d5f1f303c183b"
+      },
+      "examples/pilot_recipe_qualification.py": {
+        "after": "8236c7f140ab1a9f6cf75ad5ebaf03f5a38d468df0e5d8e615797149dcd65b1e",
+        "before": "4835483e6d1a45d1ebf1b27d19b251c53dd18f258ecf81fc8ab34fc0acc19099"
+      },
+      "examples/pilot_workflow_faults.py": {
+        "after": "1e4d312f9be033c2bf9b990ebb3bbfb3b63701f1e41e4f6577e76b444ba7c437",
+        "before": "b724aba981772cae1b1d23455c6095d50c6b4911a93973b0f70c9235c314c69e"
+      }
+    },
+    "checks": [
+      "all installed source bytes exact",
+      "heavy caller dependencies absent",
+      "historical default unchanged",
+      "exact retained native receipt excludes argument JSON",
+      "eight-ref existing source refuses before port call",
+      "actual remembered payload checked after existing capture"
+    ],
+    "classification": "INSTALLED_STATIC_AND_RETAINED_CAPTURE_READ_ONLY_CHECKS",
+    "core_fusion_integration_unchanged": true,
+    "operator_wheel_sha256": "55b76aea8d77c964a9bf550289ea3fea8edaaf6516c4fb30f7e46e870ad177c3",
+    "prior_operator_sha256": "d1c14665be474657f50bf0da10720d21db46e4a7701e288a266c726efc9fbbe7",
+    "real_provider_calls": 0,
+    "source_import_origin": "/data/fusion-operator-pilot-release/operator-recipe15/lib/python3.12/site-packages/examples/pilot_artifact_reference.py",
+    "sources": {
+      "client": 18,
+      "operator": 269,
+      "provider": 7
+    },
+    "status": "PASS",
+    "test_methods": 0
+  },
+  "namespace": "omega-ref-pilot-recipe15",
+  "new_evaluator": "Only after capture, compare actual remember payload with actual B retrieval refs; empty artifact profile remains valid but empty/wrong retrieval fails this positive scenario",
+  "operator_build_manifest_sha256": "df34595efe84bb4524ce85a7e22d85046ae04889d1e555a012c2bfa33d0a0276",
+  "profile": "operator-reference-recipe-preparation/1",
+  "qualification_plan": {
+    "additional_live_generations": 0,
+    "artifact_baseline_sha256": "de39c9f69d8024a8fb793279165236953e2bc81254a79efae391fb468af0954d",
+    "chain_window_seconds": 1200,
+    "cluster_writes": 0,
+    "deadlines_started": false,
+    "effects": "Native tools and original owners only",
+    "faults_and_readback": [
+      "caller interruption after durable chain acceptance before reservation",
+      "lost submit response after exactly one reservation",
+      "caller adapter and isolated node replacement retaining signed intent and chain identity",
+      "actual commitment-to-node network outage with original reservation/deadline and exact restoration",
+      "independent same-artifact readback using scoped read-only storage/node access"
+    ],
+    "initial_corpus": "Fresh empty composition; one native remember only",
+    "inspection_boundary": "Existing synthetic-agent-retrieval-artifact/1 envelope references full result and contains every actual bounded payload; whole task projection is not the inspected or committed bytes",
+    "inspection_domain": "Existing complete <=3-observation <=4096-byte synthetic retrieval artifact; no truncation or altered profile",
+    "local_inputs": {
+      "/data/fusion-operator-pilot-release/distribution14/distribution.json": "de39c9f69d8024a8fb793279165236953e2bc81254a79efae391fb468af0954d",
+      "/data/fusion-operator-pilot-release/qualification-private/recipe-reference15/install.py": "ee83c4e769f5eeaef540934c90bfe2a107e37a32a4ab8cb8d753b599379db3f7",
+      "/data/fusion-operator-pilot-release/qualification-private/recipe-reference15/observe_process.py": "649bb2141dc660e277eea643e6d2685998069d389802a559beb5bb6b69341728",
+      "/data/fusion-operator-pilot-release/qualification-private/recipe-reference15/prospective/images.json": "6910b55bc7af3632bcc56ef0608d159de5745c817f185754bc1a664ab4764660",
+      "/data/fusion-operator-pilot-release/qualification-private/recipe-reference15/prospective/plan.json": "5ce0149f7f0a6c13a5159e1d351692b46571a513fd6d611b1594a7b2e7dc0afc",
+      "/data/fusion-operator-pilot-release/qualification-private/recipe-reference15/prospective/values.yaml": "b646ba6465fd1c4f8768f9ed6ecf032cd87c42fbf5380dd8d897ea33bf09ec1a",
+      "/data/fusion-operator-pilot-release/qualification-private/recipe-reference15/run.py": "ef528edb2dcf11adf9e79e2dc2dc58525d9c80a18e9a9f01e3029f6233582008",
+      "/data/fusion-operator-pilot-release/qualification-private/recipe-reference15/verify_installed.py": "cd0d9d8dc9507b2126c24aaf289ca0300d1018df18d66b1c1b5c6d9aaf010a0e",
+      "/data/fusion-operator-pilot-release/sdk-recipe15/build-manifest.json": "df34595efe84bb4524ce85a7e22d85046ae04889d1e555a012c2bfa33d0a0276"
+    },
+    "maximum_chain_submit_reservations": 1,
+    "maximum_internal_native_inputs": 2,
+    "maximum_programme_seconds": 2700,
+    "maximum_selected_native_inputs": 5,
+    "maximum_sessions": 2,
+    "maximum_workflows": 1,
+    "namespace": "omega-ref-pilot-recipe15",
+    "native_window_seconds": 900,
+    "network_fault": "One bounded commitment-to-isolated-node outage with exact restoration, no new submission",
+    "operator_build_manifest_sha256": "df34595efe84bb4524ce85a7e22d85046ae04889d1e555a012c2bfa33d0a0276",
+    "operator_wheel_sha256": "55b76aea8d77c964a9bf550289ea3fea8edaaf6516c4fb30f7e46e870ad177c3",
+    "positive_evaluator": "After actual capture, require native remember payload reference in actual delegated retrieval; never pass expected reference to consumer",
+    "prior_failed_namespace": "omega-ref-pilot-recipe13",
+    "prior_failure_report_sha256": "9b606b635b1423dfddbea463028e30979d0ca81edcc2edcaa7dbb091e11ed6d9",
+    "profile": "explicit-artifact-reference-repair-plan/1",
+    "prospective_plan_sha256": "5ce0149f7f0a6c13a5159e1d351692b46571a513fd6d611b1594a7b2e7dc0afc",
+    "recipe": "approved-artifact-delivery/1",
+    "representation": "reference-document",
+    "retry": "No replacement session, reservation refund, deadline renewal, capture regeneration or hidden retry",
+    "runtime_source_manifest_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+    "scope": "synthetic-pilot-recipe15",
+    "source_tools": "Exact separately installed sdk-recipe15/operator-recipe15; runtime11 unchanged",
+    "status": "FROZEN_UNADMITTED",
+    "supersedes_unadmitted_plan_sha256": "45fbb71fbe262e9b4b42082919c4b177ca82a559fca278dc1b5aaf225bba040a",
+    "workspace_boundary": "Exact native reference document bytes independently recomputed from actual hydrated task/result, then native read-file capture"
+  },
+  "qualification_plan_sha256": "dd66fec820d98a6ef37e594f69daf780237d75cb30026da2230bdd9003c482db",
+  "real_chain": "NOT_RUN",
+  "real_native_repair_workflow": "NOT_RUN",
+  "runtime_source_manifest_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+  "start_record_exists": false,
+  "status": "READY_UNADMITTED",
+  "tested_operator_wheel_sha256": "55b76aea8d77c964a9bf550289ea3fea8edaaf6516c4fb30f7e46e870ad177c3"
+}

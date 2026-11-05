@@ -1,0 +1,25 @@
+{
+  "profile": "operator-pilot-artifact-path-check/1",
+  "status": "PASS",
+  "classification": "AUTHORED_ASSEMBLY_FIXTURES_REAL_OFFLINE_VERIFIER",
+  "method_invocations": 10,
+  "new_authored_definitions": 1,
+  "seconds": 1.226,
+  "primary": "artifacts/operator-pilot/distribution-export-paths12.log",
+  "primary_sha256": "f0b71165eb4f1d26543b5358c1fdaf81826b99ce541bcf2104e2449c15654f7e",
+  "sources": {
+    "sdk/distribution.py": {
+      "sha256": "d81a42a42a2401c373ae7d3ac453d69c0aa4d778f77678b3daa8a0ef07e04297",
+      "bytes": 43331
+    },
+    "sdk/test_distribution.py": {
+      "sha256": "e7c174af0053d7669a98a3dc07a9a0799bc6627ddc7a4fee27f29fd1e9cb309a",
+      "bytes": 13239
+    }
+  },
+  "source_copies": "artifacts/operator-pilot/distribution-export-paths12-sources",
+  "change": "Preserve registered exact source package copies at original images.json relative paths; no author build directory required. Tampering with advertised copy refuses.",
+  "runtime_changed": false,
+  "actual_packet_gate": "DISTRIBUTION15_PENDING",
+  "additional_live_generations": 0
+}

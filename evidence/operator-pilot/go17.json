@@ -1,0 +1,296 @@
+{
+  "additional_live_generations": 0,
+  "capacity": {
+    "closure": {
+      "captured": 1,
+      "delivered": 1,
+      "exhausted_pending": 0,
+      "terminal_errors": 0
+    },
+    "input_limit_bytes": 4096,
+    "jobs": {
+      "headroom": 127,
+      "limit": 128,
+      "unit": "jobs",
+      "used": 1
+    },
+    "journal": {
+      "admission_headroom": 127017,
+      "completion_covered": true,
+      "completion_projection": 4055,
+      "completion_reserved": 24,
+      "control_policy": "read-observations-write-no-journal",
+      "control_reserved": 0,
+      "headroom": 127041,
+      "limit": 131072,
+      "reservation_kind": "admission-enforced-logical-worst-case",
+      "unit": "bytes",
+      "used": 4031
+    },
+    "last_commit_ms": 1793863966697,
+    "observation": "read-only-owner-snapshot",
+    "pending": {
+      "headroom": 4,
+      "limit": 4,
+      "unit": "jobs",
+      "used": 0
+    },
+    "profile": "go-inspect-capacity/1",
+    "provider": "41e88ad1ba0135f71666f8516629470a962a8444153111b1165fafe9be0625ed",
+    "retained_result_limit_bytes": 4096,
+    "revision": 6,
+    "scope": "synthetic-pilot-go17",
+    "unknown": {
+      "cpu_time_ns": null,
+      "filesystem_free_bytes": null,
+      "next_request_bytes": null,
+      "observation_time_ms": null,
+      "pvc_capacity_bytes": null,
+      "reclaimable_bytes": null,
+      "rss_bytes": null
+    },
+    "work_executed": false,
+    "worker_phases": {
+      "per_job_limit": 32,
+      "remaining_for_pending": 0,
+      "reset": false,
+      "spent": 2,
+      "unit": "worker-phases"
+    }
+  },
+  "classification": "RECORDED_MODEL_REAL_NATIVE_TOOLS_REAL_GO_PROVIDER",
+  "cleanup": {
+    "observed_ms": 1793864004314,
+    "observed_pods": 0,
+    "retained_pvcs": 13
+  },
+  "counts": {
+    "capacity_client_invocations": 1,
+    "capacity_validated_observations": 1,
+    "closed_sessions": 2,
+    "delegated_result_consumptions": 1,
+    "delegated_tasks": 1,
+    "go_captures": 1,
+    "go_deliveries": 1,
+    "go_jobs": 1,
+    "go_worker_phases_spent": 2,
+    "observed_registry_admission_receipts": [
+      {
+        "records": 10,
+        "role": "omega-agent-b",
+        "template": "shared"
+      },
+      {
+        "records": 11,
+        "role": "omega-agent",
+        "template": "go-shared"
+      }
+    ],
+    "selected_captures": 4,
+    "selected_native_inputs": 4,
+    "total_actual_captures": 6
+  },
+  "distribution_sha256": "d83745bc3cc7ec08501002d751f7c7d910c0a20607e015cd964922c946ce3557",
+  "failures_retained": [
+    {
+      "cluster_calls": 0,
+      "correction": "load exact independently distributed packet capacity helper",
+      "programme_window_started": false,
+      "result": "ModuleNotFoundError",
+      "stage": "pre-start import"
+    },
+    {
+      "accepted_sessions": 0,
+      "cause": "independent Go Registry source/image pin omitted from private qualification composition",
+      "correction": "only add exact Go04 trusted source/image pin; original programme window retained",
+      "result": "NOT_AVAILABLE",
+      "stage": "fresh caller startup",
+      "zero_admission_observation": "both caller session databases absent through bounded read-only owner-PVC observation"
+    }
+  ],
+  "go_image": "sha256:e2f7505e2ae6d6e3038f5049cfd2a181e3add14db98b388dd05ba8b7ded859cc",
+  "independent_go_source_manifest_sha256": "738bdb6ad57aa939545400f3074283f68a9b5343d1d6665a3a5313fd4a44e53a",
+  "limitations": [
+    "Runtime13 representative; historical runtime11 full substitution and fault evidence remain distinct.",
+    "Configured template-record totals are not counted as actual admissions; only returned admission receipts are counted.",
+    "Owner capacity leaves CPU/RSS/PVC/free/reclaimable bytes and current observation time explicitly unknown.",
+    "Go04 does not advertise the separate writer-handover profile, numerical NAL execution or archival migration.",
+    "Pre-admission private-driver import/configuration failures remain separate from the successful native run."
+  ],
+  "namespace": "omega-ref-pilot-go17",
+  "operator": "operator19",
+  "operator_wheel_sha256": "efbe1dd2479509cca54b17853093c752895525fe8c52cbb8a505e9e29045b1a4",
+  "original_bounds": {
+    "deadlines_renewed": 0,
+    "end_ms": 1793865052353,
+    "finished_ms": 1793863997523,
+    "native_end_ms": 1793864787069,
+    "reservations_refunded": 0,
+    "start_ms": 1793863552353
+  },
+  "outcomes": {
+    "closed_capture_exact": "PASS",
+    "completion_consumed": "PASS",
+    "duplicate_completion_original_receipt": "PASS",
+    "native_delegation_query": "PASS",
+    "native_go_inspection": "PASS",
+    "native_remember": "PASS",
+    "new_selection_refused": "NOT_AVAILABLE",
+    "next_native_context": "PASS",
+    "owner_capacity": "PASS",
+    "registry_drain": "PASS",
+    "retained_result_and_event_readback": "PASS"
+  },
+  "placement": {
+    "atom_storage": "real authenticated HTTPS DeTTa-backed owner",
+    "embedding": "real E5",
+    "execution": "independent Go04 service and PVC",
+    "messaging": "real authenticated HTTPS separately owned mailbox",
+    "model": "recorded proposals",
+    "native_consumer": "unchanged examples.pilot_go_provider.consume",
+    "same_host_single_node": true,
+    "search": "real Chroma",
+    "selection": "trusted go-shared template"
+  },
+  "profile": "operator-pilot-independent-go-representative/1",
+  "provider": "Go04 static scratch provider; no Python owner transitions",
+  "publication": {
+    "approved_shared_synthetic_records_only": true,
+    "exact_known_credential_scan": "PASS",
+    "private_keys_credentials_journals_and_kubeconfig": "EXCLUDED"
+  },
+  "runtime_source_manifest_sha256": "aa9a8ebaeb2f59cd8893cd50755d5f91314590841cf0e09fda79b6d3556d0784",
+  "sources": {
+    "capacity/client.stderr": {
+      "bytes": 0,
+      "path": "evidence/operator-pilot/go17-primary/capacity/client.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "capacity/client.stdout": {
+      "bytes": 1115,
+      "path": "evidence/operator-pilot/go17-primary/capacity/client.stdout",
+      "sha256": "519b4a4725674aa54d67f47bb8c95bc5e3a9bf68683c4b25970bf161e2631290"
+    },
+    "capacity/report.json": {
+      "bytes": 2263,
+      "path": "evidence/operator-pilot/go17-primary/capacity/report.json",
+      "sha256": "2a97d9004eed28fdab65a4337ae2f519d0d8b47661531561f7edff10bf8a5dea"
+    },
+    "execution-capacity-import.log": {
+      "bytes": 931,
+      "path": "evidence/operator-pilot/go17-primary/execution-capacity-import.log",
+      "sha256": "83fca98bd5fa22fe1d8c402bab8cf12f17da2210fb0d9490036b6bb60ea8237e"
+    },
+    "execution-selection-repair.log": {
+      "bytes": 128,
+      "path": "evidence/operator-pilot/go17-primary/execution-selection-repair.log",
+      "sha256": "a6b128fcb5d192eaca915165fe7a9ed567e71509ccdbcfc1e3cc2e1dfe1295f0"
+    },
+    "execution.log": {
+      "bytes": 283,
+      "path": "evidence/operator-pilot/go17-primary/execution.log",
+      "sha256": "3c5ded705e92d7460566a44168a4941a31ef9840cb97b66ecadf40d37200b62e"
+    },
+    "go-capacity-authority/receipt.json": {
+      "bytes": 517,
+      "path": "evidence/operator-pilot/go17-primary/go-capacity-authority/receipt.json",
+      "sha256": "37e9d1eb7d513d8e8bf1c2fe007d9c2c3aca7b418d55651a6972c7b24aeac258"
+    },
+    "go-install-report.json": {
+      "bytes": 1503,
+      "path": "evidence/operator-pilot/go17-primary/go-install-report.json",
+      "sha256": "1984ca097708a4ca89f26912f8314bbb0ffd792be8c73e84ebf9402d8118d746"
+    },
+    "go-selection-repair-install-report.json": {
+      "bytes": 533,
+      "path": "evidence/operator-pilot/go17-primary/go-selection-repair-install-report.json",
+      "sha256": "e1dc05c50437d490df03c8d05a7414e8d7fe728b4ab81045062d3f624cbabbd8"
+    },
+    "initial-agent-b-startup.log": {
+      "bytes": 1226,
+      "path": "evidence/operator-pilot/go17-primary/initial-agent-b-startup.log",
+      "sha256": "1e6d908de6fbeb31bf2a960f70fd13e217d655982253c02a67c333b226229137"
+    },
+    "initial-agent-startup.log": {
+      "bytes": 1226,
+      "path": "evidence/operator-pilot/go17-primary/initial-agent-startup.log",
+      "sha256": "1e6d908de6fbeb31bf2a960f70fd13e217d655982253c02a67c333b226229137"
+    },
+    "native/report.json": {
+      "bytes": 315888,
+      "path": "evidence/operator-pilot/go17-primary/native/report.json",
+      "sha256": "8608b30581c7f49f46afef344b6d0b018b94ecacab005ef10c95bd8791b2cd20"
+    },
+    "observe-zero.py": {
+      "bytes": 2527,
+      "path": "evidence/operator-pilot/go17-primary/observe-zero.py",
+      "sha256": "2d33881b1ae66957b49f12819ba98eb3cd8abeef258b63e43006238324c6536c"
+    },
+    "qualification-plan-capacity-import.json": {
+      "bytes": 3388,
+      "path": "evidence/operator-pilot/go17-primary/qualification-plan-capacity-import.json",
+      "sha256": "36e9287a7176c256917308620993135c7116e69eeac75595277d6cbe074a8ed6"
+    },
+    "qualification-plan-selection-repair.json": {
+      "bytes": 4771,
+      "path": "evidence/operator-pilot/go17-primary/qualification-plan-selection-repair.json",
+      "sha256": "5a92f9ed4411ede0b5a86751b803e8e1117a9424ea6a35b91e7804e3f14680b4"
+    },
+    "qualification-plan.json": {
+      "bytes": 2748,
+      "path": "evidence/operator-pilot/go17-primary/qualification-plan.json",
+      "sha256": "920c09da975d86be18111191a78d4ce5f740fbffbb8fb149407340342ba8cf51"
+    },
+    "repair-install.py": {
+      "bytes": 2304,
+      "path": "evidence/operator-pilot/go17-primary/repair-install.py",
+      "sha256": "46c4c138766f112fa4c87df866dbc4a7a96870244e9f3eb79daf93e6f12920fc"
+    },
+    "report-selection-repair.json": {
+      "bytes": 86957,
+      "path": "evidence/operator-pilot/go17-primary/report-selection-repair.json",
+      "sha256": "ffda106cc30124e913035978b12fee3e25455f147c5d4c00370fdd1d5e14ff52"
+    },
+    "report.json": {
+      "bytes": 13414,
+      "path": "evidence/operator-pilot/go17-primary/report.json",
+      "sha256": "b13a37fb3d23ae7d9b04688808631ea45594c93598cd6daee3b1fd8540b47443"
+    },
+    "run-capacity-import.py": {
+      "bytes": 7102,
+      "path": "evidence/operator-pilot/go17-primary/run-capacity-import.py",
+      "sha256": "45abbe3dfb3377256e7e7b4934eeba1866d7434add72a4e0a9ceb2d2a52ba1c0"
+    },
+    "run-selection-repair.py": {
+      "bytes": 7049,
+      "path": "evidence/operator-pilot/go17-primary/run-selection-repair.py",
+      "sha256": "9c309bf62ecc0b250eda9612e9aacbdb61ed64433edf98c6ec384f957491f148"
+    },
+    "run.py": {
+      "bytes": 6729,
+      "path": "evidence/operator-pilot/go17-primary/run.py",
+      "sha256": "ac68a81a3e62be12829ecf10152d1eb42978305a8c987eaab5dedb711f355da4"
+    },
+    "start.json": {
+      "bytes": 162,
+      "path": "evidence/operator-pilot/go17-primary/start.json",
+      "sha256": "35589bf07beafad0b81b287fe9308584d6f50805a57050a0eac7e516af1e110e"
+    },
+    "zero-observation-start.json": {
+      "bytes": 232,
+      "path": "evidence/operator-pilot/go17-primary/zero-observation-start.json",
+      "sha256": "35a15a76b6a97a58b7dd10351cd9e6c7578baffc96ff2c44a46924aa3857f2dd"
+    },
+    "zero-observation.json": {
+      "bytes": 447,
+      "path": "evidence/operator-pilot/go17-primary/zero-observation.json",
+      "sha256": "3202a44567bb50417ca003a731a2576757f915a9d6b5c17f28daf9f17976a4d7"
+    },
+    "zero-observation.log": {
+      "bytes": 0,
+      "path": "evidence/operator-pilot/go17-primary/zero-observation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "status": "PASS_WITH_RETAINED_PRE_ADMISSION_FAILURES"
+}

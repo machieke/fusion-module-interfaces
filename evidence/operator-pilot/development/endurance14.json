@@ -1,0 +1,75 @@
+{
+  "profile": "operator-pilot-endurance-development-summary/1",
+  "status": "FAIL",
+  "classification": "REAL_NATIVE_REAL_POD_HTTPS_RECORDED_MODEL",
+  "namespace": "omega-ref-pilot-endurance14",
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "operator_wheel_sha256": "a1d10a1d509002a92569790efa1b77ac2c7946d35c1a0c205771fa427467d2de",
+  "qualifier_source_sha256": "40b00fd1f2a10392f2175a2c2b751b2011d28677543e4bdaa2cb1bd082b68707",
+  "chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "counts": {
+    "planned_four_window_direct_inputs": 160,
+    "direct_inputs": 18,
+    "completed_direct_captures": 18,
+    "completed_windows": 0,
+    "internal_inputs": null,
+    "internal_completed_returns_observed": 0,
+    "internal_count_status": "NOT_EXPORTED_AS_A_COMPLETE_SESSION_OBSERVATION"
+  },
+  "failure": {
+    "code": "NOT_AVAILABLE",
+    "type": "ContractError"
+  },
+  "failure_stage": "First delegated return absent by the original task deadline after18completed directinputs. Remaining142selectedinputs and allwindowmaintenance/boundaryrecipes unrun.",
+  "readiness_observation": {
+    "peer_providers": 10,
+    "all_expired_before_new_delegation": true,
+    "milliseconds_expired_before_delegate_min": 147478,
+    "milliseconds_expired_before_delegate_max": 149428,
+    "B_observed_errors": [
+      {
+        "name": "transport.connection_open",
+        "code": "FAILED"
+      },
+      {
+        "name": "transport.preview",
+        "code": "NOT_AVAILABLE"
+      },
+      {
+        "name": "provider.omega-agent-b",
+        "code": "NOT_AVAILABLE"
+      }
+    ],
+    "B_native_stages_observed": false,
+    "interpretation": "Existing Registry refuses selection with expired readiness. Exact receipts prove staleness before delegation and B reported NOT_AVAILABLE; no complete B session observation was exported, so no inferred acceptance or model count."
+  },
+  "diagnostics": {
+    "status": "OBSERVED",
+    "roles": 12,
+    "pod_commands": 14,
+    "new_native_inputs": 0,
+    "observer_bound_seconds": 600
+  },
+  "original_limits": {
+    "programme_seconds": 7200,
+    "per_input_seconds": 120,
+    "deadline_renewals": 0,
+    "reservation_refunds": 0,
+    "task_reissues": 0
+  },
+  "cleanup": {
+    "pods": 0,
+    "pvcs_retained": 12,
+    "observed_utc": "2026-11-05T10:06:16.582353+00:00",
+    "basis": "Separate post-stop kubectl observation; stop log had a pre-quiescence snapshot and is not treated as zero-pod evidence.",
+    "old_effects_and_state_retained": true
+  },
+  "repair": "Only endurance operator helper moves the existing new-peer readiness observation immediately before its NEW task. No runtime/profile change or replay of this failed task. Fresh qualification is separate.",
+  "private_evidence": {
+    "status": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null,
+    "raw_reports_unchanged": true
+  },
+  "additional_live_generations": 0
+}

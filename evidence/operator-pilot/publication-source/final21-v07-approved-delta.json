@@ -1,0 +1,32 @@
+{
+  "additional_live_generations": 0,
+  "all_other_bytes_equal": true,
+  "assembler_invocations": 0,
+  "failed_artifacts_unchanged": true,
+  "failed_assembly_log": "final21-assembly11.log",
+  "failed_output": "final21-detached11",
+  "new": {
+    "path": "/data/fusion-operator-pilot-release/evidence-assembly/assemble-final21.guarded25-v07.py",
+    "sha256": "44ca8a48447e3a1f77b95d9971778d31805ac99786b2178c376256535e689d70"
+  },
+  "old": {
+    "path": "/data/fusion-operator-pilot-release/evidence-assembly/assemble-final21.guarded25-v06.py",
+    "sha256": "1536011ff8f3ce670b17543d7a37893102bce15790e14b52ba10316f6be52574"
+  },
+  "profile": "task-local-historical-source-publication-fix/1",
+  "replacements": [
+    [
+      "def assemble(path):\n",
+      "def historical_audit_source(base,value,phase):\n # Only already approved historical source bytes may come from the frozen base.\n # Candidate audits and ordinary digest lookups remain final-packet-only.\n require(phase=='historical','NOT_AVAILABLE');ev.pin(value);base=Path(base)\n require(base.is_file() and not base.is_symlink() and sha(base)==BASE_EVIDENCE,'CONFLICT')\n root=base.parent.resolve()\n rows=sorted((x for x in load(base)['artifacts'] if x['visibility']=='approved-public' and x['sha256']==value),key=lambda x:x['path'])\n require(rows,'NOT_AVAILABLE');row=rows[0];parts=relative(row['path']);source=root/parts\n require(type(row['bytes']) is int and row['bytes']>=0,'INVALID_ARGUMENT')\n current=root\n for part in parts.parts:\n  current=current/part;require(not current.is_symlink(),'UNAUTHORIZED')\n require(source.resolve().is_relative_to(root),'UNAUTHORIZED')\n require(source.is_file(),'NOT_AVAILABLE')\n require(source.stat().st_size==row['bytes'] and sha(source)==value,'CONFLICT')\n return source\n\ndef assemble(path):\n"
+    ],
+    [
+      " def by_digest(value):\n  ev.pin(value);require(value in digest_index,'NOT_AVAILABLE');return final_source(sorted(digest_index[value])[0])\n",
+      " def by_digest(value,phase=None):\n  ev.pin(value)\n  if value in digest_index:return final_source(sorted(digest_index[value])[0])\n  return historical_audit_source(base,value,phase)\n"
+    ],
+    [
+      "source=by_digest(pin));m['historical']",
+      "source=by_digest(pin,phase=phase));m['historical']"
+    ]
+  ],
+  "scope": "Only historical audit source entries absent from final packet may resolve exact already-approved frozen-base bytes; candidate and non-source lookups remain final-packet-only."
+}

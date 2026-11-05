@@ -1,0 +1,30 @@
+{
+  "profile": "operator-pilot-reference-provider-scan/1",
+  "status": "EXECUTED",
+  "classification": "OFFLINE_ACTUAL_GO_IMAGE_NO_CONTAINER_START",
+  "observed_utc": "2026-11-05T02:58:42.268288+00:00",
+  "artifact_manifest_sha256": "4d08cc94758d475e621e8471ed4dd8150240e9a3c297a93642710e20c9ccb853",
+  "image_configuration": "sha256:de6bbcdf7595bacac0771acd4884d0ec9d587d82ef5db9a2718c5acc51573717",
+  "manifest_digest": "sha256:e2f7505e2ae6d6e3038f5049cfd2a181e3add14db98b388dd05ba8b7ded859cc",
+  "source_manifest_sha256": "738bdb6ad57aa939545400f3074283f68a9b5343d1d6665a3a5313fd4a44e53a",
+  "scanner": "0.76.1",
+  "scanner_binary_sha256": "d1dfca6ae10a1ad4540bb94e64f0510077c47008920a9b554986b39dca573d83",
+  "database": {
+    "Version": 2,
+    "NextUpdate": "2026-11-05T19:02:00.490076829Z",
+    "UpdatedAt": "2026-11-04T19:02:00.490077333Z",
+    "DownloadedAt": "2026-11-04T22:22:30.658513774Z",
+    "database_sha256": "4c0450f3668e84216edda03ad6f667d047b753c11f16749cbc4e7817a09bd8a7",
+    "database_bytes": 1692762112
+  },
+  "raw_report_sha256": "ba7fd8355c5588b9bbd6dcd6f8f1ec868f776fdd1d89f789cf70cbccfc23c9ee",
+  "packages_detected": 2,
+  "findings": [],
+  "severity": {},
+  "limits": [
+    "No OS packages in scratch image; Go binary metadata matched against recorded database",
+    "Zero database matches does not establish absence of vulnerabilities",
+    "No runtime, semantic or dependency-authority claim from scanner"
+  ],
+  "additional_live_generations": 0
+}

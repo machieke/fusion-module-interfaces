@@ -1,0 +1,18 @@
+test_attention_reservation_fault_requires_explicit_test_gate (tests.test_pilot_configuration.Configuration.test_attention_reservation_fault_requires_explicit_test_gate) ... ERROR
+test_fresh_registry_seal_and_external_authority_keep_exact_profiles (tests.test_pilot_configuration.Configuration.test_fresh_registry_seal_and_external_authority_keep_exact_profiles) ... ok
+test_private_browser_tokens_are_only_in_the_selected_owner (tests.test_pilot_configuration.Configuration.test_private_browser_tokens_are_only_in_the_selected_owner) ... ok
+test_rendered_chart_mounts_only_external_authority_and_owned_state (tests.test_pilot_configuration.Configuration.test_rendered_chart_mounts_only_external_authority_and_owned_state) ... ok
+
+======================================================================
+ERROR: test_attention_reservation_fault_requires_explicit_test_gate (tests.test_pilot_configuration.Configuration.test_attention_reservation_fault_requires_explicit_test_gate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/purplezky/work/takopi/fusion-module-interfaces/tests/test_pilot_configuration.py", line 49, in test_attention_reservation_fault_requires_explicit_test_gate
+    values['components']['fusion-attention']['config']['test']={'pause_at':'after_priority_reservation'}
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'config'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.361s
+
+FAILED (errors=1)

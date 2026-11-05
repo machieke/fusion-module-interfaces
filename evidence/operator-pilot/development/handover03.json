@@ -1,0 +1,175 @@
+{
+  "additional_live_generations": 0,
+  "application_cleanup": {
+    "state": "complete",
+    "unlinked_allocated_bytes": 16384
+  },
+  "backup": {
+    "base_and_deltas": [
+      {
+        "authority_excluded": true,
+        "depth": 1,
+        "effects_executed": 0,
+        "manifest_bytes": 1443807,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1025166,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1025166,
+        "seconds": 0.36444087233394384,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      },
+      {
+        "authority_excluded": true,
+        "depth": 2,
+        "effects_executed": 0,
+        "manifest_bytes": 2017328,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1433598,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1433598,
+        "seconds": 0.7582795554772019,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      },
+      {
+        "authority_excluded": true,
+        "depth": 3,
+        "effects_executed": 0,
+        "manifest_bytes": 2808263,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1956113,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1956113,
+        "seconds": 1.179447254166007,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      }
+    ],
+    "deduplication_space_saving": "NOT_OBSERVED_FOR_COMPRESSED_EXPORT_CHUNKS",
+    "independent_final_cut": "EXACT_OWNER_CHECKPOINT",
+    "original_full_byte_comparisons": [
+      "BYTE_EXACT",
+      "BYTE_EXACT",
+      "BYTE_EXACT"
+    ],
+    "storage_fault_domain": "SAME_HOST"
+  },
+  "captured_unknown_responses": 0,
+  "classification": "DEVELOPMENT_PARTIAL_NOT_FINAL_RELEASE_PASS",
+  "closure": {
+    "owners": 12,
+    "private_other_principal_denial": "PASS",
+    "scope_readback": "ACTUAL_SHARED_AND_PRIVATE_AUTHENTICATED_PORTS"
+  },
+  "failures": [
+    {
+      "reason": "In-namespace SIGKILL ineffective for namespace PID1",
+      "stage": "fault-injection"
+    },
+    {
+      "reason": "Current Search read blocked behind intentionally paused lock",
+      "stage": "explicit-continuation"
+    },
+    {
+      "reason": "Operator scope guard expected namespace-only owner label on pod",
+      "stage": "explicit-continuation"
+    },
+    {
+      "reason": "Exact byte guard refused Chroma read-side derived mutations",
+      "stage": "activation"
+    }
+  ],
+  "handover": {
+    "activation": "REFUSED_CONFLICT",
+    "drain": "PASS",
+    "new_native_work": "NOT_RUN",
+    "reason": "Pinned Chroma read initialization changed imported derived index bytes and acquire_write rows",
+    "retirement": "COMMITTED",
+    "source_and_replacement_replicas": 0,
+    "source_state": "retired",
+    "stale_normal_startup": "REFUSED_UNAUTHORIZED",
+    "writer_generation": 1
+  },
+  "historical_effect_replay": 0,
+  "images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:56fb6fb2aff2823fce2d657cb5cc6fe25b05d2f0e8570139c668a51ff99880e1",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:188a06129c2508775b17bcc1c33258943e5a6eb928ad5c17696fc6d2c99a7289",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:abf8e17612aecf439451b75511f73349b770ec6ac92a512f659a210064c28beb",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:188a06129c2508775b17bcc1c33258943e5a6eb928ad5c17696fc6d2c99a7289",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:188a06129c2508775b17bcc1c33258943e5a6eb928ad5c17696fc6d2c99a7289"
+  },
+  "limitations": [
+    "development image only",
+    "trusted intact same host",
+    "no HA or node-loss claim",
+    "no physical-space recovery claim",
+    "final candidate requires fresh bounded qualification"
+  ],
+  "native": {
+    "completed_inputs": 7,
+    "embedding": "REAL_E5",
+    "model_proposals": "RECORDED_FIXTURE",
+    "new_replacement_inputs": 0,
+    "payloads": "REAL_DETTA",
+    "search": "REAL_CHROMA",
+    "separately_accepted_uncaptured_input": 1
+  },
+  "original_run_end_ms": 1793838771860,
+  "original_run_end_utc": "2026-11-05T00:32:51.860000+00:00",
+  "process_kills": {
+    "search-process-kill": {
+      "after_restarts": 1,
+      "before_restarts": 0,
+      "exit_code": 137,
+      "mechanism": "verified-task-owned-containerd-SIGKILL"
+    },
+    "unknown-process-kill": {
+      "after_restarts": 1,
+      "before_restarts": 0,
+      "exit_code": 137,
+      "mechanism": "verified-task-owned-containerd-SIGKILL"
+    }
+  },
+  "publication": "Sanitized counts, status, source and image identities only; private backup/journal/capture/closure digests and handles withheld. Raw private evidence unchanged.",
+  "raw_evidence": "Private retained task artifacts; not published",
+  "run_continuation": "STOPPED; no renewal or conversion to final-candidate run",
+  "schema": "operator-pilot-maintenance-development-evidence/1",
+  "search_cleanup": {
+    "capacity_refund": false,
+    "physical_freed_bytes": "NOT_ESTABLISHED_WHILE_EXTERNAL_HANDLES_MAY_EXIST",
+    "removed_logical_bytes": 616612,
+    "uncertain_unlink_bytes": 0,
+    "unlinked_allocated_bytes": 626688
+  },
+  "source_manifest_sha256": "1a132ed9e65130fb27c339c64c98dd2f9e193eb891718a3f3b2dff5ddef0bf0e",
+  "spent_unknown_model_reservations": 1,
+  "unrun": [
+    "replacement activation",
+    "new generation native work",
+    "retired namespace actual packet probe",
+    "historical HTTPS completion refusal",
+    "post-mutation rollback refusal"
+  ],
+  "upgrade": {
+    "copy_activation": "NOT_RUN",
+    "disposable_copy": "PASS",
+    "dry_run": "PASS",
+    "source_profile": "trusted-provider-lifecycle/1",
+    "source_unchanged": true,
+    "target_profile": "trusted-provider-lifecycle/2"
+  }
+}

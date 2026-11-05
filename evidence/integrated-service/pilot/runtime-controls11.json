@@ -1,0 +1,582 @@
+{
+  "profile": "operator-pilot-sanitized-runtime-controls/1",
+  "status": "PASS",
+  "phase": "CANDIDATE11",
+  "source_manifest_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+  "observer_source_sha256": "3fd880d8ce35be5a0c8985de8f60f68162604b0d401adbce9005699d77a73e42",
+  "cpu_quota_enforcement": "NOT_ESTABLISHED",
+  "limits": [
+    "Configured resource requests/limits are not proof of host enforcement",
+    "Process RSS may count shared pages more than once; observer process included",
+    "Cgroup counters are observations, not a quota stress test",
+    "No malicious-host or production multitenancy claim"
+  ],
+  "raw_evidence": {
+    "visibility": "unavailable-private",
+    "sha256": null,
+    "bytes": null
+  },
+  "additional_live_generations": 0,
+  "host_modified": false,
+  "journal_contents_collected": false,
+  "roles": {
+    "fusion-attention": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1086651356",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "48197632",
+        "v1.memory.usage_in_bytes": "33050624"
+      },
+      "state_bytes": 8267,
+      "state_files": 4
+    },
+    "fusion-beliefs": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1164024940",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "48758784",
+        "v1.memory.usage_in_bytes": "33185792"
+      },
+      "state_bytes": 9339,
+      "state_files": 4
+    },
+    "fusion-embedding": {
+      "image": "docker.io/library/fusion-memory-embedding@sha256:1cb2f63829b2bd29b39647a9c0ae9fb5aaf7952cf360a1bf5a9e59b4382bf79f",
+      "configured_resources": {
+        "limits": {
+          "cpu": "3",
+          "memory": "5Gi"
+        },
+        "requests": {
+          "cpu": "2",
+          "memory": "3Gi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "19016310448",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "5368709120",
+        "v1.memory.max_usage_in_bytes": "1485783040",
+        "v1.memory.usage_in_bytes": "418451456"
+      },
+      "state_bytes": 8056,
+      "state_files": 7
+    },
+    "fusion-episodes": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1122848730",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "49152000",
+        "v1.memory.usage_in_bytes": "34729984"
+      },
+      "state_bytes": 9072,
+      "state_files": 4
+    },
+    "fusion-execution": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "7795724704",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "48656384",
+        "v1.memory.usage_in_bytes": "34758656"
+      },
+      "state_bytes": 109099,
+      "state_files": 7
+    },
+    "fusion-messaging": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "500m",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1059471274",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "268435456",
+        "v1.memory.max_usage_in_bytes": "33300480",
+        "v1.memory.usage_in_bytes": "30339072"
+      },
+      "state_bytes": 33969,
+      "state_files": 5
+    },
+    "fusion-model": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "500m",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": {
+        "caller_sessions_absent": true,
+        "storage_feed_absent": true,
+        "vector_index_absent": true
+      },
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1054291069",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "268435456",
+        "v1.memory.max_usage_in_bytes": "34959360",
+        "v1.memory.usage_in_bytes": "32063488"
+      },
+      "state_bytes": 11756,
+      "state_files": 4
+    },
+    "fusion-relations": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "50m",
+          "memory": "64Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1149195105",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "54874112",
+        "v1.memory.usage_in_bytes": "43069440"
+      },
+      "state_bytes": 11226,
+      "state_files": 4
+    },
+    "fusion-search": {
+      "image": "docker.io/library/fusion-memory-caller@sha256:828c795883c9e2cd798ee123fe8e0316533560da5a9080af9ff11fd711485d0a",
+      "configured_resources": {
+        "limits": {
+          "cpu": "2",
+          "memory": "1Gi"
+        },
+        "requests": {
+          "cpu": "200m",
+          "memory": "256Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "3098506230",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "1073741824",
+        "v1.memory.max_usage_in_bytes": "97472512",
+        "v1.memory.usage_in_bytes": "94306304"
+      },
+      "state_bytes": 584311,
+      "state_files": 25
+    },
+    "fusion-storage": {
+      "image": "docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "256Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "64Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {},
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1187203734",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "268435456",
+        "v1.memory.max_usage_in_bytes": "34914304",
+        "v1.memory.usage_in_bytes": "31916032"
+      },
+      "state_bytes": 202775,
+      "state_files": 14
+    },
+    "omega-agent": {
+      "image": "docker.io/library/fusion-memory-caller@sha256:828c795883c9e2cd798ee123fe8e0316533560da5a9080af9ff11fd711485d0a",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {
+        "model_weights": true,
+        "provider_feed": true,
+        "provider_index": true,
+        "sentence_transformers": true,
+        "torch": true,
+        "transformers": true
+      },
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1328943823",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "51191808",
+        "v1.memory.usage_in_bytes": "37269504"
+      },
+      "state_bytes": 247859,
+      "state_files": 7
+    },
+    "omega-agent-b": {
+      "image": "docker.io/library/fusion-memory-caller@sha256:828c795883c9e2cd798ee123fe8e0316533560da5a9080af9ff11fd711485d0a",
+      "configured_resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "requests": {
+          "cpu": "100m",
+          "memory": "128Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 1,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {
+        "model_weights": true,
+        "provider_feed": true,
+        "provider_index": true,
+        "sentence_transformers": true,
+        "torch": true,
+        "transformers": true
+      },
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1325761687",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "52060160",
+        "v1.memory.usage_in_bytes": "37249024"
+      },
+      "state_bytes": 250284,
+      "state_files": 7
+    },
+    "omega-workbench": {
+      "image": "docker.io/library/fusion-memory-caller@sha256:828c795883c9e2cd798ee123fe8e0316533560da5a9080af9ff11fd711485d0a",
+      "configured_resources": {
+        "limits": {
+          "cpu": "250m",
+          "memory": "128Mi"
+        },
+        "requests": {
+          "cpu": "25m",
+          "memory": "48Mi"
+        }
+      },
+      "uid": 1000,
+      "gid": 1000,
+      "capabilities_effective": "0000000000000000",
+      "no_new_privileges": "1",
+      "readonly_root_denied": true,
+      "service_account_token_absent": true,
+      "owner_pvc_count": 0,
+      "foreign_pvc_mounts": false,
+      "caller_absence": {
+        "model_weights": true,
+        "provider_feed": true,
+        "provider_index": true,
+        "sentence_transformers": true,
+        "torch": true,
+        "transformers": true
+      },
+      "model_filesystem_isolation": null,
+      "observed_cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "712856134",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "134217728",
+        "v1.memory.max_usage_in_bytes": "33886208",
+        "v1.memory.usage_in_bytes": "31031296"
+      },
+      "state_bytes": 0,
+      "state_files": 0
+    }
+  }
+}

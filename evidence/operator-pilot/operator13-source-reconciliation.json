@@ -1,0 +1,17 @@
+{
+  "profile": "operator-pilot-package-source-reconciliation/1",
+  "status": "PASS",
+  "prior_build_manifest_sha256": "d94f30388e56c416d3ba91f61f54a3f93fc34f12cc0293e541c648c15b3a0dbc",
+  "current_build_manifest_sha256": "fedf5c80569e150ba9ca927e2b89f238812c0693d5b3926aa45b1e5a63b7fb7b",
+  "changed_sources": {
+    "client": [],
+    "provider": [],
+    "operator": [
+      "examples/pilot_incidents.py"
+    ]
+  },
+  "runtime_images": "EXACT_UNCHANGED_RUNTIME11",
+  "browser_native_go_handover_consumers": "EXACT_UNCHANGED_SOURCES",
+  "affected_gate": "Unadmitted root fault qualifier; fresh qualification required",
+  "additional_live_generations": 0
+}

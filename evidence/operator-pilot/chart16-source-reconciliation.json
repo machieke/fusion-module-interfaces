@@ -1,0 +1,45 @@
+{
+  "profile": "operator-pilot-chart-reconciliation/1",
+  "status": "PASS",
+  "old_packet_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+  "old_chart_sha256": "89b4dd7d46156afa944166bedccfe531ebf7aaab14ccbabfd7a774f16280ca76",
+  "new_chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "source_files": {
+    "Chart.yaml": "a95a8de472db0b836a13651c9726b8a9b681088f52666cc9c56a32455142ac44",
+    "templates/components.yaml": "be8a1dc07e8f57b4be6074fb8fe1f9fcac5e405f3c41729718e4c159e8352287",
+    "templates/network-policy.yaml": "433f3ed2a5c5152879019230314e8a8104da211756dcf63eab65236d00666f8b",
+    "templates/pilot-workbench.yaml": "dc6ec9e6df6118b1687b4e5aec6526ab2dae67e16278cc4323f7efb2ecdcd50f",
+    "values.schema.json": "8e4aa96a3068cfc36070f9c6c8c39f740074492feef2d356438bc59e3b99ae7c",
+    "values.yaml": "ef037df0b5150a1500ea3b6a531e3110f109c74efb4bd45fcfd0b7e69d3a310c"
+  },
+  "changed_files": [
+    "values.schema.json"
+  ],
+  "semantic_delta": "Exactly one additional existing runtime hook, after_application_projection, added to chart15 enum; no template/runtime/profile/default changes. Chart15 already admitted the existing Attention reservation hook.",
+  "renders": [
+    {
+      "case": "faults15",
+      "rendered_bytes": 172241,
+      "rendered_equal": true,
+      "private_render_hash": "WITHHELD",
+      "cluster_calls": 0
+    },
+    {
+      "case": "endurance14",
+      "rendered_bytes": 173225,
+      "rendered_equal": true,
+      "private_render_hash": "WITHHELD",
+      "cluster_calls": 0
+    },
+    {
+      "case": "browser14",
+      "rendered_bytes": 181564,
+      "rendered_equal": true,
+      "private_render_hash": "WITHHELD",
+      "cluster_calls": 0
+    }
+  ],
+  "runtime_hook": "fusion/neoclaw_application.py:521",
+  "runtime_change": false,
+  "additional_live_generations": 0
+}

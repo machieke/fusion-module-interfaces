@@ -1,0 +1,242 @@
+{
+  "additional_live_generations": 0,
+  "backup": {
+    "authority_excluded": true,
+    "base_and_two_deltas": [
+      {
+        "authority_excluded": true,
+        "depth": 1,
+        "effects_executed": 0,
+        "manifest_bytes": 1443835,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1025001,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1025001,
+        "seconds": 0.44149486906826496,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      },
+      {
+        "authority_excluded": true,
+        "depth": 2,
+        "effects_executed": 0,
+        "manifest_bytes": 2017351,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1434119,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1434119,
+        "seconds": 0.8503105267882347,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      },
+      {
+        "authority_excluded": true,
+        "depth": 3,
+        "effects_executed": 0,
+        "manifest_bytes": 2808268,
+        "manifest_sha256": null,
+        "new_chunk_bytes": 1958355,
+        "owner_count": 12,
+        "private_checkpoint_digest": "WITHHELD_FROM_PUBLICATION",
+        "profile": "synthetic-incremental-owner-backup/1",
+        "reconstructed_bytes": 1958355,
+        "seconds": 1.2718791738152504,
+        "status": "VERIFIED",
+        "storage_fault_domain": "SAME_HOST"
+      }
+    ],
+    "deduplication_savings": "NOT_CLAIMED",
+    "independent_final_comparison": "EXACT_OWNER_CHECKPOINT",
+    "original_full_comparisons": [
+      "BYTE_EXACT",
+      "BYTE_EXACT",
+      "BYTE_EXACT"
+    ],
+    "private_hashes_and_handles": "WITHHELD"
+  },
+  "classification": "ACTUAL_STORY_E_PRIMARY_PASS_SUPPLEMENTS_SEPARATE",
+  "cleanup": {
+    "application": {
+      "apply_calls": 1,
+      "capacity_refund": false,
+      "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+      "source_rehydration": "EXACT",
+      "state": "complete",
+      "unlinked_allocated_bytes": 16384
+    },
+    "search": {
+      "authoritative_rebuild": "PASS",
+      "capacity_refund": false,
+      "native_query_after_rebuild": "PASS",
+      "original_attempts_retained": 1,
+      "physical_freed_bytes": "NOT_ESTABLISHED_WHILE_EXTERNAL_HANDLES_MAY_EXIST",
+      "state": "complete",
+      "unlinked_allocated_bytes": 626688
+    }
+  },
+  "closure": {
+    "owner_ports": "ACTUAL_AUTHENTICATED_SHARED_AND_PRIVATE",
+    "owners": 12,
+    "private_other_principal_denial": "PASS",
+    "read_observations": [
+      {
+        "attempt": 1,
+        "finished_ms": 1793865249233,
+        "mutations": 0,
+        "started_ms": 1793865227762,
+        "status": "CAPTURED"
+      },
+      {
+        "attempt": 1,
+        "finished_ms": 1793865257234,
+        "mutations": 0,
+        "started_ms": 1793865249265,
+        "status": "CAPTURED"
+      },
+      {
+        "attempt": 1,
+        "finished_ms": 1793865258074,
+        "mutations": 0,
+        "started_ms": 1793865257266,
+        "status": "CAPTURED"
+      }
+    ]
+  },
+  "format_upgrade": {
+    "active_handover_profile": "trusted-provider-lifecycle/1",
+    "input_profile": "trusted-provider-lifecycle/1",
+    "output_profile": "trusted-provider-lifecycle/2",
+    "result": "VERIFIED_FENCED_COPY",
+    "source_unchanged": true,
+    "writable_activation": false
+  },
+  "handover": {
+    "activated_caller_restart": {
+      "captures_exact": true,
+      "inputs": 12,
+      "new_native_inputs": 0,
+      "sessions": 4,
+      "status": "PASS",
+      "unknown_accounting_exact": true
+    },
+    "activation": "COMMITTED_GENERATION_2",
+    "attention_suspension": "SEPARATE_REPORT_PENDING",
+    "historical_https": {
+      "historical_completion": "UNAUTHORIZED",
+      "old_observation": "unknown",
+      "spent_reservations": 1,
+      "stale_credential": "UNAUTHORIZED"
+    },
+    "historical_session_write": "REFUSED",
+    "new_native_positive_work": "FOUR_COMPLETE",
+    "old_payloads": "POST_ACTIVATION_AUTHENTICATED_READBACK_PASS",
+    "old_shared_and_private_captures": "BYTE_EXACT",
+    "post_cutover_browser": "SEPARATE_REPORT_PENDING",
+    "retired_packet_refusal": {
+      "interpretation": "current retirement boundary; no attribution to a single network rule",
+      "phase_observations": [
+        "Pending",
+        "Pending",
+        "Running",
+        "Running",
+        "Running",
+        "Running",
+        "Running",
+        "Succeeded"
+      ],
+      "policy": "EXACT_DENY_ALL",
+      "positive_current_namespace": "REACHABLE",
+      "retired_namespace": {
+        "blocked": true,
+        "errno": 111,
+        "error_type": "ConnectionRefusedError"
+      },
+      "target_service": "fusion-model"
+    },
+    "retirement": "COMMITTED",
+    "source_remains_retired": true,
+    "workspace_copy": {
+      "new_native_workspace_write": "PASS",
+      "old_files_and_effects": "RETAINED",
+      "ordinary_moved_root_startup": "STILL_REFUSED",
+      "private_partition_workspace": "UNSUPPORTED_REFUSED",
+      "profile": "synthetic-workspace-root-reattestation/1",
+      "shared_workspace_only": true
+    }
+  },
+  "historical_failures": "E11 and E13 remain published separately; no relabelling as passes.",
+  "limits": [
+    "Recorded model proposals only; native tools, real E5/Chroma/DeTTa and authenticated service network were real.",
+    "Single-node task-owned synthetic shared/private scopes; private payloads and identifying hashes/handles withheld.",
+    "Planned quiescence and trusted intact host; no HA, node-loss or cross-host backup guarantee.",
+    "Disposable Registry format upgrade and original-profile writable activation are separate executed gates.",
+    "No migration of protected/user state. Synthetic workspace root re-attestation supports the explicit shared workspace layout only.",
+    "Browser observation and long-container-suspension results are separate from this primary acceptance."
+  ],
+  "native_counts": {
+    "replacement_completed": 4,
+    "replacement_operations": [
+      "remember",
+      "query",
+      "write-file",
+      "episodes"
+    ],
+    "source_completed": 7,
+    "source_unknown": 1,
+    "supplement_native_inputs": 0,
+    "total_accepted_operator_inputs": 12,
+    "total_completed_inputs": 11
+  },
+  "original_unknown": {
+    "backend_entered": false,
+    "captures": 0,
+    "post_kill_and_activation_accounting": "EXACT_UNCHANGED",
+    "post_new_work_accounting": "EXACT_UNCHANGED",
+    "replayed": false,
+    "reservations_spent": 1
+  },
+  "primary_end_resources": {
+    "observation": "Verified after driver exit, before separately bounded browser/suspension observations.",
+    "replacement_ready_pods": 12,
+    "retained_replacement_pvcs": 12,
+    "retained_source_pvcs": 12,
+    "source_pods": 0
+  },
+  "primary_failures": [],
+  "programme": {
+    "bound": "One 3600-second UTC and monotonic window recorded before driver spawn; no renewal.",
+    "driver_finished_ms": 1793865810406,
+    "driver_returncode": 0,
+    "elapsed_seconds": 1218.162420613,
+    "exact_start_ms": 1793864592244,
+    "exact_stop_ms": 1793868192244
+  },
+  "source_epochs": {
+    "continuations": 0,
+    "operator_wheel_sha256": "5a3b956a67fabd392ae300dd112b7cc6c53ea933de402c84be06a3a96cd3cd11",
+    "packet": "distribution18",
+    "packet_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+    "runtime_source": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+    "runtime_source_changes_during_execution": 0,
+    "trace": "Fresh full qualification. Earlier E11/E13 failures and expired inputs remain immutable and were not resumed."
+  },
+  "source_images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:77e6501a2bd3810e49408df9e9e4c44ff1470779a8d9b79c0c9a11d37fd80f7b",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d"
+  },
+  "status": "PASS"
+}

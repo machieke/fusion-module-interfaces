@@ -1,0 +1,36 @@
+{
+  "profile": "sanitized-adopter-supervision/1",
+  "status": "PASS",
+  "implementation_commit": "8018522eec28c1c044e6b9c2c9ce24199b9d5cdb",
+  "qualification_source_commit": "a6fe678227766dc54ff335ba1b16c2f38fec74d9",
+  "distribution_manifest_sha256": "5907fe306495bd404db90a8743c644fcfac6698cb4de08270c4ca43c0f3f8f60",
+  "stages": [
+    {
+      "stage": "clean",
+      "status": "CHILD_TERMINAL",
+      "entry_exit_code": 0,
+      "elapsed_seconds": 17.645037844777107,
+      "children": 2,
+      "all_children_reaped": true,
+      "terminal_barrier": "PASS",
+      "source_sha256": "6911b2ccc03042c4d0543b25b0881d01a80cf271f5f0608219b2a79b527371e3"
+    },
+    {
+      "stage": "native",
+      "status": "CHILD_TERMINAL",
+      "entry_exit_code": 0,
+      "elapsed_seconds": 819.9535932149738,
+      "children": 2,
+      "all_children_reaped": true,
+      "terminal_barrier": "PASS",
+      "source_sha256": "352658b175b455ec866343ee6abd7456e80c171e7af1767e1c98ab1e71bc76bf"
+    }
+  ],
+  "raw_evidence": {
+    "availability": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null,
+    "path": null
+  },
+  "additional_live_generations": 0
+}

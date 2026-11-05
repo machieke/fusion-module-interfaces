@@ -1,0 +1,479 @@
+{
+  "profile": "operator-pilot-fault-qualification-summary/1",
+  "status": "PASS",
+  "classification": "REAL_NATIVE_REAL_POD_HTTPS_RECORDED_MODEL",
+  "namespace": "omega-ref-pilot-faults17",
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:77e6501a2bd3810e49408df9e9e4c44ff1470779a8d9b79c0c9a11d37fd80f7b",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d"
+  },
+  "packet_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+  "operator_wheel_sha256": "a1d10a1d509002a92569790efa1b77ac2c7946d35c1a0c205771fa427467d2de",
+  "qualifier_source_sha256": "9dd3df4ecdae7466659578cddc229e5bee39f44947c2a03b4be6b7d9fec5f1c7",
+  "executed_operator_sources": {
+    "examples/pilot_faults.py": "9dd3df4ecdae7466659578cddc229e5bee39f44947c2a03b4be6b7d9fec5f1c7",
+    "examples/pilot_incidents.py": "4b1ed39af7b8accb3e5cbcb8381f072001449beb3479c9225b7ffae339061e7e",
+    "examples/pilot_observations.py": "3fd880d8ce35be5a0c8985de8f60f68162604b0d401adbce9005699d77a73e42",
+    "examples/integrated_sustained.py": "4e481ec8219b6073ec4ed9466a644aedcbff1ff4f609c378c1b88ea5a6520aba"
+  },
+  "chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "artifact_composition": "Runtime14 images from packet18, separately frozen chart16 and SDK22; packet18 itself is unchanged.",
+  "launch": {
+    "started_utc": "2026-11-05T09:29:59.826935+00:00",
+    "qualification_limit_seconds": 1800,
+    "qualification_timer_starts": "Inside qualifier after installation before admission",
+    "maximum_direct_inputs": 12
+  },
+  "installation": {
+    "status": "PASS",
+    "providers_verified": 12,
+    "readiness": "POD_READY_ONLY",
+    "business_calls": 0
+  },
+  "counts": {
+    "direct_inputs": 11,
+    "native_runner_direct_inputs": 5,
+    "recovery_case_direct_inputs": 4,
+    "terminal_before_start_direct_inputs": 2,
+    "direct_completed_captured_inputs": 6,
+    "direct_uncertain_inputs": 3,
+    "direct_expired_before_start": 1,
+    "direct_cancelled_before_start": 1,
+    "internal_delegated_inputs": 1,
+    "internal_delegated_completed_captures": 0,
+    "internal_delegated_uncertain_inputs": 1,
+    "total_direct_and_internal_inputs_observed": 12,
+    "total_completed_application_captures": 6,
+    "total_uncertain_inputs": 4,
+    "total_terminal_before_start": 2,
+    "task_payload_capture_observed": 1,
+    "recorded_model_total_reservations": null,
+    "recorded_model_total_captures": null,
+    "model_aggregate_note": "No complete deduplicated model-owner campaign total is exported by these reports. Per-case selected-session snapshots are reported separately, not summed.",
+    "physical_http_attempts": null,
+    "physical_http_attempts_status": "NOT_OBSERVED",
+    "live_generations": 0
+  },
+  "cases": [
+    {
+      "name": "native-committed-projection",
+      "status": "PASS",
+      "caller": "omega-agent",
+      "owner": "omega-agent",
+      "native_completion": "COMPLETE",
+      "safety": null,
+      "disposition": null,
+      "dispatch_accounting_exact": true,
+      "model_accounting_exact": true,
+      "observed_native_dispatch_attempts": 1,
+      "model_reservations_observed_for_selected_session": 4,
+      "recorded_model_captures_observed_for_selected_session": 4,
+      "duplicate_identity_acceptance_deadline_sequence_exact": true,
+      "test_configuration_retired_markers_retained": true,
+      "count_warning": "Selected-session model snapshots overlap across cases and are not additive. Empty selected accounting does not prove no other owner effects."
+    },
+    {
+      "name": "relation-lost-reply",
+      "status": "PASS",
+      "caller": "omega-agent",
+      "owner": "fusion-relations",
+      "native_completion": "NOT_COMPLETED",
+      "safety": "PASS",
+      "disposition": "UNCERTAIN_FENCED_NO_REISSUE",
+      "dispatch_accounting_exact": true,
+      "model_accounting_exact": true,
+      "observed_native_dispatch_attempts": 1,
+      "model_reservations_observed_for_selected_session": 5,
+      "recorded_model_captures_observed_for_selected_session": 5,
+      "duplicate_identity_acceptance_deadline_sequence_exact": true,
+      "test_configuration_retired_markers_retained": true,
+      "count_warning": "Selected-session model snapshots overlap across cases and are not additive. Empty selected accounting does not prove no other owner effects."
+    },
+    {
+      "name": "storage-accepted-before-feed",
+      "status": "PASS",
+      "caller": "omega-agent",
+      "owner": "fusion-storage",
+      "native_completion": "NOT_COMPLETED",
+      "safety": "PASS",
+      "disposition": "UNCERTAIN_FENCED_NO_REISSUE",
+      "dispatch_accounting_exact": true,
+      "model_accounting_exact": true,
+      "observed_native_dispatch_attempts": 0,
+      "model_reservations_observed_for_selected_session": 0,
+      "recorded_model_captures_observed_for_selected_session": 0,
+      "duplicate_identity_acceptance_deadline_sequence_exact": true,
+      "test_configuration_retired_markers_retained": true,
+      "count_warning": "Selected-session model snapshots overlap across cases and are not additive. Empty selected accounting does not prove no other owner effects."
+    },
+    {
+      "name": "model-captured-response",
+      "status": "PASS",
+      "caller": "omega-agent-b",
+      "owner": "fusion-model",
+      "native_completion": "NOT_COMPLETED",
+      "safety": "PASS",
+      "disposition": "UNCERTAIN_FENCED_NO_REISSUE",
+      "dispatch_accounting_exact": true,
+      "model_accounting_exact": true,
+      "observed_native_dispatch_attempts": 0,
+      "model_reservations_observed_for_selected_session": 1,
+      "recorded_model_captures_observed_for_selected_session": 1,
+      "duplicate_identity_acceptance_deadline_sequence_exact": true,
+      "test_configuration_retired_markers_retained": true,
+      "count_warning": "Selected-session model snapshots overlap across cases and are not additive. Empty selected accounting does not prove no other owner effects."
+    }
+  ],
+  "task_return": {
+    "outcome": {
+      "completion_manufactured": false,
+      "deadline_renewals": 0,
+      "disposition": "UNCERTAIN_FENCED_NO_REISSUE",
+      "native_completion": "NOT_COMPLETED",
+      "reservation_refunds": 0,
+      "safety": "PASS"
+    },
+    "sender_return": "NOT_OBSERVED",
+    "original_dispatch_exact": true,
+    "captured_model_exact": true,
+    "payload_capture_fault_stage": "after_task_payload_capture",
+    "payload_capture_is_not_application_completion": true,
+    "test_configuration_retired_markers_retained": true
+  },
+  "dependency_outages": [
+    {
+      "owner": "fusion-embedding",
+      "status": "PASS",
+      "client_invocations": 3,
+      "unavailable_not_empty": true,
+      "fallback": false,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "observation_only": true,
+      "operation": "authorize-disclose",
+      "before": "PASS",
+      "during": "NOT_AVAILABLE",
+      "after": "PASS",
+      "physical_http_sends": "NOT_OBSERVED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      }
+    },
+    {
+      "owner": "fusion-search",
+      "status": "PASS",
+      "client_invocations": 3,
+      "unavailable_not_empty": true,
+      "fallback": false,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "observation_only": true,
+      "operation": "ready-exact-retained-view",
+      "before": "PASS",
+      "during": "NOT_AVAILABLE",
+      "after": "PASS",
+      "physical_http_sends": "NOT_OBSERVED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      }
+    },
+    {
+      "owner": "fusion-storage",
+      "status": "PASS",
+      "client_invocations": 3,
+      "unavailable_not_empty": true,
+      "fallback": false,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "observation_only": true,
+      "operation": "head",
+      "before": "PASS",
+      "during": "NOT_AVAILABLE",
+      "after": "PASS",
+      "physical_http_sends": "NOT_OBSERVED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      }
+    },
+    {
+      "owner": "fusion-messaging",
+      "status": "PASS",
+      "client_invocations": 3,
+      "unavailable_not_empty": true,
+      "fallback": false,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "observation_only": true,
+      "operation": "authorize",
+      "before": "PASS",
+      "during": "NOT_AVAILABLE",
+      "after": "PASS",
+      "physical_http_sends": "NOT_OBSERVED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      }
+    }
+  ],
+  "reply_read_faults": [
+    {
+      "mode": "partial-body",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED",
+      "native_inputs": 0,
+      "effect_reservations": 0,
+      "retries_automatic": 0,
+      "deadline_renewals": 0,
+      "fault_reply": {
+        "code": "NOT_AVAILABLE",
+        "status": "REFUSED"
+      },
+      "one_shot_claim_retained": true,
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      }
+    },
+    {
+      "mode": "delay",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED",
+      "native_inputs": 0,
+      "effect_reservations": 0,
+      "retries_automatic": 0,
+      "deadline_renewals": 0,
+      "fault_reply": {
+        "code": "NOT_AVAILABLE",
+        "status": "REFUSED"
+      },
+      "one_shot_claim_retained": true,
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      }
+    }
+  ],
+  "dns_outage": {
+    "status": "PASS",
+    "during": {
+      "bounded_seconds": 8,
+      "status": "UNAVAILABLE"
+    },
+    "after": {
+      "status": "RESOLVED"
+    },
+    "effect_reservations": 0,
+    "native_inputs": 0,
+    "other_allow_rules_unchanged": true,
+    "policy_restored": true,
+    "retained_application_result": {
+      "accepted_identity_exact": true,
+      "captured_result_exact": true,
+      "deadline_exact": true
+    }
+  },
+  "storage_outage": {
+    "provider_observation": "unavailable",
+    "retained_application_capture_available": true,
+    "new_explicit_recovery_probe": "ready",
+    "old_receipt_renewed": false
+  },
+  "active_session_capacity_refusal": {
+    "code": "OVERLOADED",
+    "new_session_accepted": false,
+    "saved_result_observable": true
+  },
+  "terminalization": {
+    "expired_before_start": 1,
+    "cancelled_before_start": 1,
+    "effects": "NO_DISPATCH",
+    "execution_authorized": false,
+    "accepted_identity_and_original_deadline_preserved": true,
+    "transmitted_effects_retracted": false,
+    "independent_later_pin_completed": true
+  },
+  "registry_pressure": {
+    "status": "PASS",
+    "profile": "trusted-provider-lifecycle/2",
+    "maximum_new_probes": 256,
+    "accepted_new_probe_actions": 94,
+    "next_probe_refused": "OVERLOADED",
+    "refused_probe_zero_based_index": 94,
+    "epochs_sealed": 1,
+    "actions_sealed": 29,
+    "seal_plan_bytes": 15167,
+    "effect": "SEAL_AUDIT_FACTS_NOT_DELETE_OR_REFUND",
+    "headroom": {
+      "before": {
+        "baseline_equivalent": {
+          "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+          "bytes": 514817,
+          "former_limit_bytes": 1048576
+        },
+        "limits": {
+          "actions": 4096,
+          "active_actions": 256,
+          "active_bytes": 196608,
+          "control_bytes": 32768,
+          "epoch_actions": 64,
+          "epochs": 64,
+          "object_bytes": 1048576,
+          "objects": 4096,
+          "retained_bytes": 4194304
+        },
+        "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+        "profile": "trusted-provider-lifecycle/2",
+        "reserved_control_bytes": 32768,
+        "usage": {
+          "actions": 90,
+          "active_actions": 90,
+          "active_bytes": 74298,
+          "epochs": 0,
+          "object_bytes": 89401,
+          "objects": 205,
+          "retained_bytes": 166497
+        }
+      },
+      "at_refusal": {
+        "baseline_equivalent": {
+          "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+          "bytes": 1085867,
+          "former_limit_bytes": 1048576
+        },
+        "limits": {
+          "actions": 4096,
+          "active_actions": 256,
+          "active_bytes": 196608,
+          "control_bytes": 32768,
+          "epoch_actions": 64,
+          "epochs": 64,
+          "object_bytes": 1048576,
+          "objects": 4096,
+          "retained_bytes": 4194304
+        },
+        "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+        "profile": "trusted-provider-lifecycle/2",
+        "reserved_control_bytes": 32768,
+        "usage": {
+          "actions": 184,
+          "active_actions": 184,
+          "active_bytes": 163034,
+          "epochs": 0,
+          "object_bytes": 113559,
+          "objects": 299,
+          "retained_bytes": 279391
+        }
+      },
+      "after_seal": {
+        "baseline_equivalent": {
+          "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+          "bytes": 1085867,
+          "former_limit_bytes": 1048576
+        },
+        "limits": {
+          "actions": 4096,
+          "active_actions": 256,
+          "active_bytes": 196608,
+          "control_bytes": 32768,
+          "epoch_actions": 64,
+          "epochs": 64,
+          "object_bytes": 1048576,
+          "objects": 4096,
+          "retained_bytes": 4194304
+        },
+        "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+        "profile": "trusted-provider-lifecycle/2",
+        "reserved_control_bytes": 32768,
+        "usage": {
+          "actions": 184,
+          "active_actions": 155,
+          "active_bytes": 136313,
+          "epochs": 1,
+          "object_bytes": 113559,
+          "objects": 299,
+          "retained_bytes": 269945
+        }
+      }
+    },
+    "sealed_receipt_replay_exact": true,
+    "new_post_seal_probe_status": "ready",
+    "retained_application_result": {
+      "accepted_identity_exact": true,
+      "captured_result_exact": true,
+      "deadline_exact": true
+    },
+    "renewed_old_readiness": 0,
+    "reservation_refunds": 0,
+    "deleted_authoritative_facts": 0,
+    "physical_http_attempts": null,
+    "measurement_note": "baseline_equivalent bytes reconstruct the former record charge; they are not filesystem bytes. Sealing retains audit facts and does not refund allowances."
+  },
+  "runtime_observations": {
+    "status": "PASS",
+    "roles_observed": 12,
+    "one_owned_pvc_each": true,
+    "foreign_pvc_mounts": false,
+    "cpu_quota_enforcement": "NOT_ESTABLISHED",
+    "service_exposure": "CLUSTER_IP_ONLY",
+    "host_modified": false,
+    "journal_contents_collected": false,
+    "limits": [
+      "Configured resource requests/limits are not proof of host enforcement",
+      "Process RSS may count shared pages more than once; observer process included",
+      "Cgroup counters are observations, not a quota stress test",
+      "No malicious-host or production multitenancy claim"
+    ]
+  },
+  "guarantees": {
+    "deadline_renewals": 0,
+    "reservation_refunds": 0,
+    "replacement_occurrences": 0,
+    "uncertain_dispatch_policy": "session-bound-native-worker/1: saved final projection only",
+    "unknowns_not_completed_or_reissued": true,
+    "retained_original_application_capture_exact": true
+  },
+  "final_state": {
+    "pods": 0,
+    "pvcs": 12,
+    "owner_workloads_at_zero_replicas": 12,
+    "unknowns_and_journals_retained": true
+  },
+  "limitations": [
+    "Safety PASS for uncertainty is not native completion. Three direct inputs and one internal delegated input remain unresolved.",
+    "Model proposals use recorded responses; model lifecycle owners, native tools, DeTTa, E5, Chroma and pod HTTPS are real where exercised. No real generative-runtime activity.",
+    "Dependency and HTTP reply controls are bounded observation-only operations, not new native work admission tests.",
+    "Client invocation counts do not establish the number of physical HTTP sends.",
+    "Registry headroom is owner-local; it is not multi-owner atomic admission or a physical disk usage measurement.",
+    "This fresh qualification does not retry or change historical F15/F16 accepted work or retained failures."
+  ],
+  "historical_failures_preserved": [
+    "evidence/operator-pilot/development/faults15.json",
+    "evidence/operator-pilot/development/faults16.json"
+  ],
+  "private_evidence": {
+    "status": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null,
+    "identifying_hashes_and_handles_withheld": true,
+    "raw_reports_unchanged": true
+  },
+  "additional_live_generations": 0
+}

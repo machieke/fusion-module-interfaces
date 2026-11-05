@@ -1,0 +1,419 @@
+{
+  "profile": "operator-pilot-current-workflow-chain-summary/1",
+  "status": "FAIL",
+  "classification": "REAL_NATIVE_WORKFLOW_REAL_ISOLATED_CHAIN_FINALITY_ORIGINAL_READ_FAILED_SEPARATE_READ_PASS",
+  "namespace": "omega-ref-pilot-recipe18",
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "packet_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+  "chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "operator_wheel_sha256": "a1d10a1d509002a92569790efa1b77ac2c7946d35c1a0c205771fa427467d2de",
+  "runner_sha256": "95b62b607476544e74b923e5d50ef297be21c1cc61a42402b0bfe92be8b8526b",
+  "plan_sha256": "c330822aa3cb301f605edfc56f40b639ef3eaa23cc7ca624ab60238f1d5ee646",
+  "artifact_composition": "Runtime14 images from packet18, separately frozen chart16 and SDK22. Original G18 remains failed; separate diagnostic observations do not overwrite it.",
+  "time": {
+    "start_utc": "2026-11-05T10:00:57.770000+00:00",
+    "programme_end_utc": "2026-11-05T10:45:57.770000+00:00",
+    "original_chain_deadline_utc": "2026-11-05T10:24:38.129000+00:00",
+    "programme_limit_seconds": 2700,
+    "native_limit_seconds": 900,
+    "chain_limit_seconds": 1200,
+    "primary_cleanup_utc": "2026-11-05T10:06:44.176000+00:00"
+  },
+  "counts": {
+    "direct_operator_native_inputs": 2,
+    "registered_workflow_native_inputs": 3,
+    "total_operator_selected_native_inputs": 5,
+    "internal_native_inputs": 2,
+    "total_native_inputs": 7,
+    "completed_native_captures": 7,
+    "registered_workflows": 1,
+    "workflow_reservations_spent": 3,
+    "chain_submit_reservations": 1,
+    "chain_continuation_observations_spent": 3,
+    "original_independent_read_invocations": 3,
+    "additional_stage_diagnostic_invocations": 2,
+    "physical_http_attempts": null,
+    "live_generations": 0,
+    "additional_metadata_diagnostic_invocations": 2,
+    "additional_health_gated_read_invocations": 1,
+    "total_additional_diagnostic_invocations": 5,
+    "total_original_and_additional_reader_invocations": 8,
+    "health_get_attempts": 3
+  },
+  "native_workflow": {
+    "status": "PASS",
+    "workflow_state": "complete",
+    "representation": "reference-document",
+    "retrieval_evaluation": {
+      "captured_payload_count": 1,
+      "remembered_payload_retrieved": true,
+      "evaluation_after_capture": true,
+      "expected_reference_supplied_to_consumer": false
+    },
+    "source_lineage": "ACTUAL_NATIVE_A_TO_B_RETRIEVAL_INSPECTION_CAPTURE",
+    "exact_checkpoint_selection": true,
+    "original_results_unchanged": true,
+    "original_native_captures_and_bounds_exact": true,
+    "reference_document_limits": {
+      "maximum_references": 3,
+      "maximum_artifact_bytes": 4096
+    },
+    "model": "RECORDED_COMMAND_PROPOSALS_REAL_NATIVE_TOOLS",
+    "model_competence": "NOT_EVALUATED"
+  },
+  "chain": {
+    "current_effect_finality": "finalized",
+    "deploy_effect_finality": "Finalized",
+    "rejection_count": 0,
+    "continuation_state": "finalized",
+    "same_artifact_exact_result_approval_and_signed_intent_bound": true,
+    "node_identity_unchanged": true,
+    "acceptance_recovery_observed": true,
+    "lost_submit_response_preserved": true,
+    "caller_adapter_node_replacement_observed": true,
+    "dependency_outage": "OBSERVED_AND_RESTORED",
+    "additional_submissions_during_outage": 0,
+    "automatic_resubmissions": 0,
+    "observation_authorizes_effect": false,
+    "independent_readback": "FAILED_NOT_AVAILABLE",
+    "independent_node_readback": "NOT_REACHED_BY_STAGE_DIAGNOSTIC",
+    "node_effect_finality_is_not_independent_readback": true,
+    "current_independent_readback": "SEPARATE_CURRENT_AUTHORIZED_READ_PASS",
+    "original_independent_readback_failure_retained": true
+  },
+  "independent_read_attempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "error": "NOT_AVAILABLE",
+      "duration_ms": 6453,
+      "additional_native_inputs": 0,
+      "additional_submit_reservations": 0,
+      "original_deadline_unchanged": true
+    },
+    {
+      "attempt": 2,
+      "status": "FAIL",
+      "error": "NOT_AVAILABLE",
+      "duration_ms": 7747,
+      "additional_native_inputs": 0,
+      "additional_submit_reservations": 0,
+      "original_deadline_unchanged": true
+    },
+    {
+      "attempt": 3,
+      "status": "FAIL",
+      "error": "NOT_AVAILABLE",
+      "duration_ms": 6476,
+      "additional_native_inputs": 0,
+      "additional_submit_reservations": 0,
+      "original_deadline_unchanged": true
+    }
+  ],
+  "separate_stage_diagnostics": {
+    "maximum_window_seconds": 600,
+    "unchanged_window_end_utc": "2026-11-05T10:21:34.034000+00:00",
+    "original_primary_and_three_failed_reads_preserved": true,
+    "preflight_failure": {
+      "error": "KeyError image",
+      "reason": "Task-local wrapper initially omitted inherited top-level Storage image selection. Already-absent pod cleanup also refused. Both wrapper errors retained; no owner restart or GET before failure.",
+      "observer_invocations": 0
+    },
+    "invocations": [
+      {
+        "number": 1,
+        "result": "IMPORT_FAILURE",
+        "error": "ModuleNotFoundError examples",
+        "artifact_get_started": false,
+        "result_get_started": false,
+        "node_get_started": false,
+        "reason": "Runtime images do not package examples. Original qualification mounts the unchanged observer source; the task-local wrapper initially attempted package import."
+      },
+      {
+        "number": 2,
+        "result": "FAIL",
+        "error": "NOT_AVAILABLE",
+        "last_stage": "artifact-get-started",
+        "artifact_get_started": true,
+        "artifact_get_completed": false,
+        "result_get_started": false,
+        "node_get_started": false,
+        "pinned_original_observer_source_mounted_read_only": true
+      }
+    ],
+    "native_inputs": 0,
+    "signing": false,
+    "submissions": 0,
+    "cleanup": {
+      "pods": 0,
+      "pvcs_retained": 14,
+      "observed_utc": "2026-11-05T10:16:12.028000+00:00"
+    },
+    "cause": "First artifact GET localized; transport versus owner-error versus response-validation cause remains unresolved. No timeout or authorization cause is inferred."
+  },
+  "supplementary_observations": {
+    "primary_status": "PASS",
+    "completed_before_primary_cleanup": true,
+    "commitment": {
+      "signed_intent_rows": 1,
+      "observation_rows": 2,
+      "process_rss_bytes": 27533312,
+      "dimensions": [
+        {
+          "basis": "retained",
+          "bound_status": "OWNER_ENFORCED",
+          "category": "chain_signed_intents",
+          "control_reserve": 0,
+          "limit": 1,
+          "reclaimable_derived_bytes": null,
+          "remaining": 0,
+          "reserved": 0,
+          "unit": "records",
+          "used": 1
+        },
+        {
+          "basis": "retained",
+          "bound_status": "OWNER_ENFORCED",
+          "category": "chain_owner_observations",
+          "control_reserve": 0,
+          "limit": 256,
+          "reclaimable_derived_bytes": null,
+          "remaining": 254,
+          "reserved": 0,
+          "unit": "records",
+          "used": 2
+        },
+        {
+          "basis": "retained",
+          "bound_status": "OWNER_ENFORCED",
+          "category": "chain_signed_uncaptured_receipts",
+          "control_reserve": 0,
+          "limit": 1,
+          "reclaimable_derived_bytes": null,
+          "remaining": 1,
+          "reserved": 0,
+          "unit": "records",
+          "used": 0
+        },
+        {
+          "basis": "physical-observation",
+          "bound_status": "UNKNOWN",
+          "category": "journal_allocated_bytes",
+          "control_reserve": 0,
+          "limit": null,
+          "reclaimable_derived_bytes": null,
+          "remaining": null,
+          "reserved": 0,
+          "unit": "bytes",
+          "used": 16384
+        },
+        {
+          "basis": "physical-observation",
+          "bound_status": "UNKNOWN",
+          "category": "wal_allocated_bytes",
+          "control_reserve": 0,
+          "limit": null,
+          "reclaimable_derived_bytes": null,
+          "remaining": null,
+          "reserved": 0,
+          "unit": "bytes",
+          "used": 0
+        },
+        {
+          "basis": "physical-observation",
+          "bound_status": "UNKNOWN",
+          "category": "shared_memory_allocated_bytes",
+          "control_reserve": 0,
+          "limit": null,
+          "reclaimable_derived_bytes": null,
+          "remaining": null,
+          "reserved": 0,
+          "unit": "bytes",
+          "used": 32768
+        }
+      ],
+      "cross_owner_atomic": false
+    },
+    "f1r3node": {
+      "status": "PASS",
+      "exact_task_pod_container_image_binding_verified": true,
+      "processes_observed": 2,
+      "process_rss_kib": [
+        28928,
+        121484
+      ],
+      "effective_uid": [
+        1000,
+        1000
+      ],
+      "effective_capabilities_zero": true,
+      "no_new_privileges": true,
+      "configured_resources": {
+        "limits": {
+          "cpu": "3",
+          "memory": "4Gi"
+        },
+        "requests": {
+          "cpu": "1",
+          "memory": "1Gi"
+        }
+      },
+      "cpu_quota_enforcement": "NOT_ESTABLISHED",
+      "memory_enforcement": "NOT_ESTABLISHED; RSS and cgroup membership only",
+      "journal_access": false,
+      "host_modified": false,
+      "limits": [
+        "Task-bound read-only Linux process observation; no hostile-host guarantee",
+        "Configured resource limits do not establish enforcement",
+        "No foreign owner journal, credential or payload access",
+        "Root filesystem behavior remains configured-only for scratch/chain image in this observer"
+      ]
+    }
+  },
+  "guarantees": {
+    "deadline_renewals": 0,
+    "reservation_refunds": 0,
+    "native_capture_regeneration": 0,
+    "automatic_resubmissions": 0,
+    "no_original_failed_input_replaced": true
+  },
+  "final_state": {
+    "pods": 0,
+    "pvcs_retained": 14,
+    "signed_intent_and_observations_retained": true
+  },
+  "limitations": [
+    "Original G18 remains FAIL with three exhausted failed independent-read attempts. The separately approved current-authorized read now proves same-artifact independent readback and matching node effect; it does not overwrite that primary.",
+    "Five separately authorized diagnostic invocations retain four failures and one pass; preflight harness failures before an observer remain separate.",
+    "Task-local successful readiness composition is qualified here; reusable installed helper qualification is a separate gate.",
+    "One recorded-response proposal backend; model competence and live generation are not evaluated.",
+    "Consumer-path readiness lag was observed; exact CNI versus service-proxy implementation cause is not established.",
+    "Process RSS and cgroup membership are observations, not resource-enforcement stress proof.",
+    "Historical recipe17 outcomes and failed readers remain unchanged."
+  ],
+  "private_evidence": {
+    "status": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null,
+    "raw_reports_unchanged": true,
+    "identifying_hashes_handles_and_signed_trace_withheld": true
+  },
+  "additional_live_generations": 0,
+  "separate_metadata_diagnostics": [
+    {
+      "number": 3,
+      "observer_status": "FAIL",
+      "error": "TypeError",
+      "http_request_started": false,
+      "cause": "Task-local subclass replacement changed the Python3.12 stdlib HTTPSConnection constructor super target before HTTP request; fixture-only constructor coverage missed it.",
+      "cleanup": {
+        "pods": 0,
+        "pvcs_retained": 14
+      }
+    },
+    {
+      "number": 4,
+      "observer_status": "FAIL",
+      "error": "ConnectionRefusedError",
+      "errno": 111,
+      "http_requests_started": 1,
+      "tls_completed": false,
+      "owner_response_received": false,
+      "cause": "First artifact GET transport refused before TLS; provider authorization and payload validation were not reached.",
+      "cleanup": {
+        "pods": 0,
+        "pvcs_retained": 14
+      }
+    }
+  ],
+  "separate_health_gated_read": {
+    "status": "PASS",
+    "scope": "Same existing artifact/result/signed intent; current authorized read after historical signing deadline expired, not renewed.",
+    "start_utc": "2026-11-05T11:21:41.316000+00:00",
+    "finished_utc": "2026-11-05T11:22:00.130000+00:00",
+    "elapsed_seconds": 18.814,
+    "maximum_seconds": 600,
+    "observer_invocations": 1,
+    "logical_atom_gets": 2,
+    "logical_node_observe_effect_calls": 1,
+    "physical_node_http_count": null,
+    "artifact_get_retries": 0,
+    "service_endpoint_binding": {
+      "container_port": 8443,
+      "observations": 1,
+      "selected_ready_endpoint_count": 1,
+      "service_port": 8443,
+      "status": "PASS",
+      "target_port_name": "https"
+    },
+    "health_gate": {
+      "maximum_attempts": 8,
+      "maximum_seconds": 30,
+      "attempt_socket_timeout_seconds": 2,
+      "path": "/health/ready",
+      "work_or_budget_consumed": false,
+      "actual_attempts": [
+        {
+          "attempt": 1,
+          "status": "TRANSPORT_FAILED",
+          "error_class": "ConnectionRefusedError",
+          "errno": 111
+        },
+        {
+          "attempt": 2,
+          "status": "TRANSPORT_FAILED",
+          "error_class": "ConnectionRefusedError",
+          "errno": 111
+        },
+        {
+          "attempt": 3,
+          "status": "READY",
+          "http_status": 200,
+          "shape_valid": true,
+          "ready": true
+        }
+      ]
+    },
+    "source": {
+      "original_reader_sha256": "56c1e909d311b117ce088b93260031868dd283f9477ed7a417c7e855d45e5490",
+      "task_local_wrapper_sha256": "9c557c0f9492e978869459e035ea3f9890abeb49d91fa1c01ba9c66c0b357024",
+      "operator_runner_sha256": "ac75305e2fbb377ec98e63a0d648c39b208dedae2b6238ae5efd4479e2f47890",
+      "fixture_test_sha256": "b3a441cb62afc04330756b5aca9475e17444d099fc09c05e828f9c4c94ec0a4f",
+      "fixture_test_methods": 9,
+      "runtime_and_installed_sdk_changed": false
+    },
+    "validation": {
+      "artifact_bytes": 1367,
+      "result_bytes": 145,
+      "both_http_status": 200,
+      "both_response_identity_principal_selection_and_envelope_verified": true,
+      "node_effect_finality": "finalized",
+      "node_validation": "verified",
+      "deploy_effect_finality": "Finalized",
+      "rejection_count": 0,
+      "same_inclusion_block_and_post_state_hash_verified": true
+    },
+    "conclusion": "Consumer-path readiness lag observed despite correct ready Pod/Service/EndpointSlice; health checks refused twice then succeeded before the single original reader. Exact CNI versus service-proxy convergence mechanism not proven.",
+    "native_inputs": 0,
+    "signing": false,
+    "submissions": 0,
+    "additional_live_generations": 0,
+    "cleanup": {
+      "pods": 0,
+      "pvcs_retained": 14
+    },
+    "private_reports": {
+      "availability": "UNAVAILABLE_PRIVATE",
+      "sha256": null,
+      "bytes": null,
+      "handles_and_identifying_hashes_withheld": true
+    }
+  },
+  "historical_primary": {
+    "path": "evidence/operator-pilot/recipe18.json",
+    "sha256": "e94d4fcb4819494fc38f257032dc7903ac40d161cb75bc7beb805e26d49f5011",
+    "status": "FAIL",
+    "bytes_preserved": true
+  },
+  "supplement_status": "SEPARATE_READ_PASS_ORIGINAL_QUALIFICATION_FAIL"
+}

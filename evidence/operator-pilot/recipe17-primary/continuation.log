@@ -1,0 +1,13 @@
+omega-agent read-file complete
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/recipe-reference17/continue-checkpoint.py", line 52, in <module>
+    value=chain_qualify(op,ROOT/'recipe-installed/plan.json',ROOT/'recipe-installed/values.yaml',PACKET/'deploy/helm/omega-fusion',OUT/'chain',PACKET/'examples/preview_chain_observer.py',representation='reference-document')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/examples/pilot_network_edges.py", line 147, in chain_qualify
+    try:q.run_graph();q.independent(observer)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/examples/sustained_chain_qualification.py", line 53, in independent
+    require(observed.get('status')=='PASS','NOT_AVAILABLE')
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

@@ -1,0 +1,149 @@
+{
+  "profile": "operator-pilot-fault-qualification-summary/1",
+  "status": "FAIL",
+  "classification": "REAL_OWNER_RECOVERY_CHECKS_PASSED_OPERATOR_RETIREMENT_FAILED",
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:77e6501a2bd3810e49408df9e9e4c44ff1470779a8d9b79c0c9a11d37fd80f7b",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d"
+  },
+  "namespace": "omega-ref-pilot-faults16",
+  "packet_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+  "operator_wheel_sha256": "930cddd33a66907d5c4baeaea28ebf10fb07dcffe1804a8e92c66b7070245f14",
+  "qualifier_source_sha256": "314a120b3bf741c2f3a7e67ead0c8bbb416d0508a6f1bea931efe86d056e6000",
+  "chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "counts": {
+    "direct_inputs": 7,
+    "direct_completed_captured_inputs": 5,
+    "direct_uncertain_inputs": 2,
+    "internal_delegated_input": 1,
+    "internal_delegated_completion": "NOT_COMPLETED",
+    "operator_failure": 1,
+    "live_generations": 0
+  },
+  "cases": [
+    {
+      "name": "native-committed-projection",
+      "status": "PASS",
+      "native_completion": "COMPLETE",
+      "safety": null,
+      "disposition": null,
+      "deadline_renewals": 0,
+      "dispatch_accounting_exact": true,
+      "model_accounting_exact": true,
+      "observed_native_dispatch_attempts": 1,
+      "model_reservations_observed_for_selected_session": 4,
+      "count_warning": "Session model snapshots overlap between cases; not additive. Empty selected accounting does not prove absence of other owner effects."
+    },
+    {
+      "name": "relation-lost-reply",
+      "status": "PASS",
+      "native_completion": "NOT_COMPLETED",
+      "safety": "PASS",
+      "disposition": "UNCERTAIN_FENCED_NO_REISSUE",
+      "deadline_renewals": 0,
+      "dispatch_accounting_exact": true,
+      "model_accounting_exact": true,
+      "observed_native_dispatch_attempts": 1,
+      "model_reservations_observed_for_selected_session": 5,
+      "count_warning": "Session model snapshots overlap between cases; not additive. Empty selected accounting does not prove absence of other owner effects."
+    },
+    {
+      "name": "storage-accepted-before-feed",
+      "status": "PASS",
+      "native_completion": "NOT_COMPLETED",
+      "safety": "PASS",
+      "disposition": "UNCERTAIN_FENCED_NO_REISSUE",
+      "deadline_renewals": 0,
+      "dispatch_accounting_exact": true,
+      "model_accounting_exact": true,
+      "observed_native_dispatch_attempts": 0,
+      "model_reservations_observed_for_selected_session": 0,
+      "count_warning": "Session model snapshots overlap between cases; not additive. Empty selected accounting does not prove absence of other owner effects."
+    }
+  ],
+  "task_return": {
+    "outcome": {
+      "completion_manufactured": false,
+      "deadline_renewals": 0,
+      "disposition": "UNCERTAIN_FENCED_NO_REISSUE",
+      "native_completion": "NOT_COMPLETED",
+      "reservation_refunds": 0,
+      "safety": "PASS"
+    },
+    "sender_return": "NOT_OBSERVED",
+    "original_dispatch_exact": true,
+    "captured_model_exact": true
+  },
+  "dependency_outages": [
+    {
+      "owner": "fusion-embedding",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED"
+    },
+    {
+      "owner": "fusion-search",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED"
+    },
+    {
+      "owner": "fusion-storage",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED"
+    },
+    {
+      "owner": "fusion-messaging",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED"
+    }
+  ],
+  "reply_read_faults": [
+    {
+      "mode": "partial-body",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED"
+    },
+    {
+      "mode": "delay",
+      "status": "PASS",
+      "client_invocations": 3,
+      "physical_http_sends": "NOT_OBSERVED"
+    }
+  ],
+  "dns_outage": "PASS",
+  "failure": "After captured-task/uncertainty checks, operator disarm removed required config.test from explicit agent-B configuration. Helm refused retirement; no model-capture scenario or later terminal/capacity tests ran.",
+  "unrun": [
+    "recorded-model-capture interruption",
+    "active-capacity refusal",
+    "undispatched expiry/cancellation",
+    "Registry pressure/seal control access",
+    "complete runtime observations"
+  ],
+  "final_state": {
+    "pods": 0,
+    "pvcs": 12,
+    "unknowns_and_journals_retained": true
+  },
+  "followup": "SDK22 fixes only operator disarm to retain empty test object. Fresh F17 has its own bounded scope; no F16 uncertain identity is retried or completed.",
+  "private_evidence": {
+    "status": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null
+  },
+  "additional_live_generations": 0
+}

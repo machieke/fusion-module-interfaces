@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/drain_go02.py", line 23, in <module>
+    events=action('events-before',lambda:port_observation(op,sid,job))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/drain_go02.py", line 19, in action
+    value=fn();report['steps'].append(dict(action=name,value=value));save();return value
+          ^^^^
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/drain_go02.py", line 23, in <lambda>
+    events=action('events-before',lambda:port_observation(op,sid,job))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/examples/pilot_go_provider.py", line 45, in port_observation
+    return json.loads(op.k('exec','omega-agent-0','--',PYTHON,'-c',script,sid,job,'yes' if advertise else 'no',timeout=35))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 25, in k
+    def k(self,*args,**kw):return self.command(['kubectl','--kubeconfig',self.kubeconfig,'--context',self.context,'-n',self.namespace,*args],**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 23, in command
+    raise RuntimeError(str(args[:3])+' '+diagnostic)
+RuntimeError: ['kubectl', '--kubeconfig', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/kubeconfig'] Traceback (most recent call last):
+  File "<string>", line 6, in <module>
+  File "/opt/fusion/fusion/preview_inspect.py", line 143, in __init__
+    self.path=Path(path);self.cfg,self.frozen=self.current();self.selected=selections(self.cfg);self.correlations={}
+                                              ^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/preview_inspect.py", line 145, in current
+    cfg=json.loads(self.path.read_text())
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/native/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/native/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/run/fusion/sessions/776203df-508f-5591-b043-5210f839e6b8/inspection.json'
+command terminated with exit code 1
+

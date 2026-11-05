@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/continue-reference.py", line 18, in <module>
+    require(time.time()*1000<end,'NOT_AVAILABLE');cur=call(op,sid,wid,'advance',dict(version=cur['version']));report['observations'].append(cur);save()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

@@ -1,0 +1,373 @@
+{
+  "chart_checks": {
+    "B14": "Existing direct rendered-byte equality for chart14\u219215 and chart15\u219216.",
+    "E14_V20": "Existing handover14-browser rendered-byte equality covers chart14\u219215. Chart16 has no separately recorded E14/V20 render. Static transitive equivalence follows from identical templates/defaults/Chart.yaml and the single additive validation enum value, with no selected hook in retained configurations.",
+    "E14_V20_direct_chart16_render": "NOT_RUN_IN_EXISTING_EVIDENCE",
+    "existing_render_evidence": [
+      {
+        "bytes": 1771,
+        "path": "evidence/operator-pilot/chart15-source-reconciliation.json",
+        "sha256": "0fcc84526185c6d354fa48d8e485ffac9e3126611c96babe25a5e820d88daae0"
+      },
+      {
+        "bytes": 460,
+        "path": "evidence/operator-pilot/chart15-browser14-equivalence.json",
+        "sha256": "61bfc3fedc4537025e9424304875b20af0ccc5f41a39a402cf8cf8a324879786"
+      },
+      {
+        "bytes": 1877,
+        "path": "evidence/operator-pilot/chart16-source-reconciliation.json",
+        "sha256": "363f593a177fbe47192c8e48db786049c2fa90c5cf671017819e0cd8cefd6a59"
+      }
+    ],
+    "not_a_deployed_upgrade_test": true,
+    "renders_executed_by_this_reconciliation": 0,
+    "source_deltas": [
+      {
+        "changed_files": [
+          "values.schema.json"
+        ],
+        "from_chart": 14,
+        "schema_delta": [
+          {
+            "added_enum_values": [
+              "after_priority_reservation"
+            ],
+            "old_relative_order_preserved": true,
+            "path": "/definitions/component/properties/config/properties/test/properties/pause_at/enum",
+            "removed_enum_values": []
+          }
+        ],
+        "templates_defaults_chart_metadata_identical": true,
+        "to_chart": 15
+      },
+      {
+        "changed_files": [
+          "values.schema.json"
+        ],
+        "from_chart": 15,
+        "schema_delta": [
+          {
+            "added_enum_values": [
+              "after_application_projection"
+            ],
+            "old_relative_order_preserved": true,
+            "path": "/definitions/component/properties/config/properties/test/properties/pause_at/enum",
+            "removed_enum_values": []
+          }
+        ],
+        "templates_defaults_chart_metadata_identical": true,
+        "to_chart": 16
+      }
+    ],
+    "unarmed_retained_configurations": [
+      {
+        "armed_component_test_selections": 0,
+        "case": "B14",
+        "component_count": 12,
+        "observed_configuration_only": true,
+        "private_values": {
+          "bytes": null,
+          "classification": "WITHHELD_PRIVATE_CONFIGURATION",
+          "path": null,
+          "sha256": null
+        }
+      },
+      {
+        "armed_component_test_selections": 0,
+        "case": "E14_source",
+        "component_count": 12,
+        "observed_configuration_only": true,
+        "private_values": {
+          "bytes": null,
+          "classification": "WITHHELD_PRIVATE_CONFIGURATION",
+          "path": null,
+          "sha256": null
+        }
+      },
+      {
+        "armed_component_test_selections": 0,
+        "case": "E14_target",
+        "component_count": 12,
+        "observed_configuration_only": true,
+        "private_values": {
+          "bytes": null,
+          "classification": "WITHHELD_PRIVATE_CONFIGURATION",
+          "path": null,
+          "sha256": null
+        }
+      },
+      {
+        "armed_component_test_selections": 0,
+        "case": "V20_target",
+        "component_count": 12,
+        "observed_configuration_only": true,
+        "private_values": {
+          "bytes": null,
+          "classification": "WITHHELD_PRIVATE_CONFIGURATION",
+          "path": null,
+          "sha256": null
+        }
+      }
+    ]
+  },
+  "checks_executed": {
+    "additional_live_generations": 0,
+    "browser_sessions": 0,
+    "chart_schema_structural_diff": true,
+    "cluster_calls": 0,
+    "frozen_runtime_source_hash_comparison": true,
+    "installed_source_and_wheel_hash_comparison": true,
+    "native_workflows": 0,
+    "new_test_methods": 0,
+    "private_configuration_test_selection_check": true,
+    "published_source_image_binding_comparison": true,
+    "runtime_contacts": 0,
+    "sdk_source_inventory_diff": true
+  },
+  "classification": "OFFLINE_MANIFEST_AND_ACTUAL_INSTALLED_SOURCE_COMPARISON",
+  "current_candidate": {
+    "chart": "chart16",
+    "chart_source_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+    "operator": "operator22",
+    "operator_wheel_sha256": "a1d10a1d509002a92569790efa1b77ac2c7946d35c1a0c205771fa427467d2de",
+    "runtime": "runtime14",
+    "runtime_source_manifest_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc"
+  },
+  "exact_source_deltas": [
+    {
+      "added_sources": [],
+      "changed_sources": {
+        "examples/pilot_attention_suspension.py": {
+          "after": "98cd384309c69cc708a41eb1440198cc53d65146949c9fb4a9fb31af808b02ba",
+          "before": "abdb9ef5c4559bbab7ad8a99a0c1a385922227c0f0ce403270bc49906f35d1f2"
+        }
+      },
+      "changed_wheels": [
+        "fusion_preview_operator-0.4.0-py3-none-any.whl"
+      ],
+      "from_sdk": 20,
+      "meaning": "Attention supplemental observer now resolves the exact closed generation2 allocation/template rather than a removed session directory; this helper is not used by B14/E14/V20.",
+      "removed_sources": [],
+      "to_sdk": 21,
+      "unchanged_other_wheels": 7
+    },
+    {
+      "added_sources": [],
+      "changed_sources": {
+        "examples/pilot_faults.py": {
+          "after": "9dd3df4ecdae7466659578cddc229e5bee39f44947c2a03b4be6b7d9fec5f1c7",
+          "before": "314a120b3bf741c2f3a7e67ead0c8bbb416d0508a6f1bea931efe86d056e6000"
+        }
+      },
+      "changed_wheels": [
+        "fusion_preview_operator-0.4.0-py3-none-any.whl"
+      ],
+      "from_sdk": 21,
+      "meaning": "Fault qualification disarm preserves the mandatory test field as an empty object instead of removing it; this helper is not used by B14/E14/V20.",
+      "removed_sources": [],
+      "to_sdk": 22,
+      "unchanged_other_wheels": 7
+    }
+  ],
+  "historical_attention_note": "The third Attention suspension observation remains operator21/chart15/runtime14 evidence; earlier failed helper/source epochs remain separate. Its SDK21 helper is byte-identical in SDK22. B14/E14/V20 never use the changed Attention or fault qualification helpers.",
+  "historical_execution_records": [
+    {
+      "actual_operator": "operator20",
+      "actual_packet": "distribution18",
+      "actual_runtime": "runtime14",
+      "case": "B14",
+      "evidence": {
+        "bytes": 7103,
+        "path": "evidence/operator-pilot/browser14-representative.json",
+        "sha256": "3bf6147660c0be5ee97863b6c368358b939f898d14c2c10b3c8bb0c0cda1e1c4"
+      },
+      "labels_unchanged": true
+    },
+    {
+      "actual_operator": "operator20",
+      "actual_packet": "distribution18",
+      "actual_runtime": "runtime14",
+      "case": "E14",
+      "evidence": {
+        "bytes": 9530,
+        "path": "evidence/operator-pilot/development/handover14.json",
+        "sha256": "7712d142d35eb5d4788093ccd31c9c2944d16d58b11fbbfb43eda85c241b8177"
+      },
+      "labels_unchanged": true
+    },
+    {
+      "actual_operator": "operator20",
+      "actual_packet": "distribution18",
+      "actual_runtime": "runtime14",
+      "case": "V20",
+      "evidence": {
+        "bytes": 5467,
+        "path": "evidence/operator-pilot/handover-browser14.json",
+        "sha256": "dff38bbb02aeb3f61da8bac94412afbc173eb0efa192e1c08aaf137ae534786a"
+      },
+      "labels_unchanged": true
+    }
+  ],
+  "limits": [
+    "Static component equivalence is not a new native, browser, handover or deployment pass.",
+    "No Helm rerender, cluster inspection, workload resubmission, process restart or model contact was performed.",
+    "E14/V20 chart16 equivalence is structural/transitive, not a separately executed rendered-byte comparison.",
+    "Existing browser OS/mount isolation and private evidence visibility limitations remain unchanged."
+  ],
+  "preserved_failures": "All primary browser/forward/logout/process-observer failures remain in the linked historical reports. Static equality neither erases them nor converts them to passing invocations.",
+  "privacy": {
+    "private_identifiers_or_identifying_hashes_published": false,
+    "private_owner_reports_or_configuration_published": false,
+    "private_raw_journals_independently_audited_by_this_report": false,
+    "public_source_image_and_tool_hashes_only": true,
+    "withheld_raw_evidence": {
+      "bytes": null,
+      "path": null,
+      "sha256": null
+    }
+  },
+  "recipe_source_checks": [
+    {
+      "bytes": 16699,
+      "current_source_equal": true,
+      "original_packet": "distribution18",
+      "packaging": "DISTRIBUTION_ONLY_RECIPE_NOT_AN_OPERATOR_WHEEL_MODULE",
+      "path": "examples/pilot_browser_story.py",
+      "sha256": "51214c44e8a2b5be1e1538bc3b32c0b777d86edfe8cdb072db8db732fe4e44d2"
+    },
+    {
+      "bytes": 4933,
+      "current_source_equal": true,
+      "original_packet": "distribution18",
+      "packaging": "DISTRIBUTION_ONLY_RECIPE_NOT_AN_OPERATOR_WHEEL_MODULE",
+      "path": "examples/pilot_handover_browser.py",
+      "sha256": "aa09ddaaa2f1a213b380ba4c0ed330b79c7ce051e9292ecff2fae717b81c6d2a"
+    }
+  ],
+  "reconciliation_source": {
+    "sha256": "59369ed7aa00cfba386cd82cfc0845fa08581bc88917b7f793ff698187a28b21"
+  },
+  "runtime_binding": {
+    "B14_E14_V20_published_image_bindings_match": true,
+    "frozen_source_files_rechecked": 490,
+    "image_configuration_digests": {
+      "base": "sha256:3befefaebb3dcc69cfc0ee1abaa5b8d526da42dc1f00b0737cdf74c9c7f4d84a",
+      "caller": "sha256:52b93d100a42930c8dedd41b137a9db058986c38616f47012c98f34eec1703b9",
+      "chain": "sha256:65b8aebc247703474e48d6688c6752fec643ff20884be9f5f852f2a5db606b72",
+      "embedding": "sha256:ac42fe2a186ff4c83b8c0e9b679b1247f61af90824a839812367fd5189003e81"
+    },
+    "image_manifest": {
+      "bytes": 2021,
+      "path": "distribution18/images.json",
+      "sha256": "3451ddfb93bcf318204f4da0fe4cd80ae7a932ad5245bf6ee8ebeb7ed2abb13b"
+    },
+    "image_manifest_digests": {
+      "base": "sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+      "caller": "sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+      "chain": "sha256:4762a1b69bb57e5e0b47ceb54813f217f1a1dbc6b7d4ae6566925d71c9281fc7",
+      "embedding": "sha256:77e6501a2bd3810e49408df9e9e4c44ff1470779a8d9b79c0c9a11d37fd80f7b"
+    },
+    "new_runtime_execution": false,
+    "operator_owner_source_files_matching_frozen_runtime14": 239,
+    "source_manifest": {
+      "bytes": 54192,
+      "path": "artifacts/operator-pilot/development-source-14.json",
+      "sha256": "b168ebad363363cbd44d7c1a88a9ff2e8f74c3fc7ed4a98dcf587a674f3843c4"
+    }
+  },
+  "schema": "operator-pilot-final-browser-handover-component-reconciliation/1",
+  "sdk_checks": {
+    "20": {
+      "build_manifest": {
+        "bytes": 65249,
+        "path": "sdk20/build-manifest.json",
+        "sha256": "19209ee37f7c75540ee29e9777f2da91d2a7ce12d3d15c2028008f12c9dbd4dd"
+      },
+      "independently_rechecked_installed_sources": {
+        "client": 18,
+        "operator": 270,
+        "provider": 7
+      },
+      "installed_verification": {
+        "bytes": 32856,
+        "path": "sdk20/installed-verification.json",
+        "sha256": "363c06392e31c3da0f1e25a9d5591468bcbf0d659149668a99202bf10920ccaa"
+      },
+      "operator_wheel_sha256": "5a3b956a67fabd392ae300dd112b7cc6c53ea933de402c84be06a3a96cd3cd11",
+      "status": "EXACT"
+    },
+    "21": {
+      "build_manifest": {
+        "bytes": 65249,
+        "path": "sdk21/build-manifest.json",
+        "sha256": "a5b5c39e3eb4c4f269be11606daa1a11dcf1ab8e45917fac58dc226b05ee4278"
+      },
+      "independently_rechecked_installed_sources": {
+        "client": 18,
+        "operator": 270,
+        "provider": 7
+      },
+      "installed_verification": {
+        "bytes": 31963,
+        "path": "sdk21/installed-verification.json",
+        "sha256": "4368135cb8b8e27628621f7fe38865bdfd6d1585daff8c23b062a3763967f48d"
+      },
+      "operator_wheel_sha256": "930cddd33a66907d5c4baeaea28ebf10fb07dcffe1804a8e92c66b7070245f14",
+      "status": "EXACT"
+    },
+    "22": {
+      "build_manifest": {
+        "bytes": 65249,
+        "path": "sdk22/build-manifest.json",
+        "sha256": "636546e82026764efa7ed56c8c847ba27ea0861c467120e4b6fe162e7b61ec87"
+      },
+      "independently_rechecked_installed_sources": {
+        "client": 18,
+        "operator": 270,
+        "provider": 7
+      },
+      "installed_verification": {
+        "bytes": 31949,
+        "path": "sdk22/installed-verification.json",
+        "sha256": "ffc3211449d2fd3ffcb0151e1bb278b7b43bd1db92c28b79a46325898abecafd"
+      },
+      "operator_wheel_sha256": "a1d10a1d509002a92569790efa1b77ac2c7946d35c1a0c205771fa427467d2de",
+      "status": "EXACT"
+    }
+  },
+  "selected_unchanged_exercised_paths": {
+    "examples/integrated_sustained.py": "4e481ec8219b6073ec4ed9466a644aedcbff1ff4f609c378c1b88ea5a6520aba",
+    "examples/pilot_browser_qualification.py": "2cc05e152a906f9267a61c54ab5557e5bd77bfa81730cc6e7dadc66ab6994109",
+    "examples/pilot_handover.py": "a27b6dca7e27f82198c50d0cf7797fcde9055d7ff0a095e7eb7d1b953f269545",
+    "examples/pilot_maintenance_faults.py": "168cd31806c813bab48ff03ac54e83e7c0309305d01136eac01008ce1574597e",
+    "fusion/preview_workspace.py": "3acaa634eeb37e750e802915a966da495f65ad35c0b3fc742bdcb888b22c5f33",
+    "integration/single_node/pilot_activation.py": "23390b36784c25a351bb148a9cb6c999e5cad442b8cb09309f8dd51996434e70",
+    "integration/single_node/pilot_backup.py": "00fc6b1d098330f3ccfeea86a5d06e0cf07af3d1efa249f9002a64b379a08d05",
+    "integration/single_node/pilot_browser_configure.py": "443b7513c4b66469134715134a37d12030674641ae1bb62946b5717d7bfe82d3",
+    "integration/single_node/pilot_browser_provision.py": "f52e7978cdd520794d8cf49b6b8163ed1d520208aa1a99c2e4606831740164a4",
+    "integration/single_node/pilot_dependency_operator.py": "9c18c8d380c40aedce4f341ec462f33eda22066d8819b79cb3cbb4265c02dd17",
+    "integration/single_node/pilot_handover_operator.py": "5bfb66f80b8968475b58aa8a936524b6fd952128526eb4f0fcb1eb47656d7879",
+    "integration/single_node/pilot_values.py": "0df4e8273b68b26d8a31b89d47b898a0dbc0214de411bc337a6f15943843524c",
+    "integration/single_node/pilot_workbench.py": "2b77deb1e33b36f834f75e306bcc16064c6450f9f904124e29aad5d585de7003",
+    "integration/single_node/placement.py": "f7698cb89c5ab2e89b96d34ba373f3720538af14b99387547976a184203ad778",
+    "integration/single_node/preview_recovery_qualification.py": "73b7a26fd8f2f464b1d366038715434cc35ea62b34ce6bf9729db477aff31e4d",
+    "integration/single_node/preview_workbench.py": "1b45bdaec5435e3b21160935a773f0d3820f462a001d5e943b2ccb98173ad221",
+    "integration/single_node/reference_ops.py": "19c67ae13ac2d19b4fcc695ccb389b64a7a1c7870e5993f824e96a8bad71edfc",
+    "integration/single_node/sustained_qualification.py": "5fdb695cb754fde835cdc86a034921d3a299ab53fec66052aad8d682f7d9ecd5"
+  },
+  "static_audit_attempts": [
+    {
+      "attempt": 1,
+      "reason": "Checker initially assumed added enum members were appended; actual existing members retain their relative order with one inserted member. Corrected to structural additive-set and order validation. No output report or runtime effects preceded correction.",
+      "source_sha256": "474f506c8f66259ecd3e9e7d63225395f0470a74510237c06bc343653e2470d0",
+      "status": "FAILED_CHECKER_ASSUMPTION"
+    },
+    {
+      "attempt": 2,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS_STATIC_COMPONENT_RECONCILIATION",
+  "unchanged_operator_sources_sdk20_to22": 268
+}

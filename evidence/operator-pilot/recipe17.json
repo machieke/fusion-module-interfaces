@@ -1,0 +1,303 @@
+{
+  "additional_live_generations": 0,
+  "classification": "RECORDED_MODEL_REAL_NATIVE_TOOLS_REAL_ISOLATED_CHAIN",
+  "cleanup": {
+    "observed_ms": 1793863262239,
+    "observed_pods": 0,
+    "quiesced": true,
+    "retained_pvcs": 14
+  },
+  "counts": {
+    "chain_owner_observations_spent": 3,
+    "chain_submit_reservations": 1,
+    "continuation_control_observations": 19,
+    "delegated_result_consumptions": 1,
+    "delegated_tasks": 1,
+    "initial_control_observations": 22,
+    "readback_failures": 2,
+    "readback_passes": 3,
+    "readback_passes_succeeded": 1,
+    "selected_captures": 5,
+    "selected_native_inputs": 5,
+    "sessions": 2,
+    "total_actual_captures": 7,
+    "workflow_reservations": 3,
+    "workflows": 1
+  },
+  "distribution_sha256": "d83745bc3cc7ec08501002d751f7c7d910c0a20607e015cd964922c946ce3557",
+  "failures_retained": [
+    {
+      "reason": "operator selected checkpoints[-1] without promised owner enumeration order; owner correctly refused conflicting decision",
+      "source": "original_recipe_driver"
+    },
+    {
+      "failing_stage": "UNKNOWN_NOT_OBSERVED",
+      "reason": "NOT_AVAILABLE",
+      "source": "independent_reader_initial"
+    },
+    {
+      "failing_stage": "UNKNOWN_NOT_OBSERVED",
+      "reason": "NOT_AVAILABLE",
+      "source": "independent_reader_followup_1"
+    },
+    {
+      "owner_capacity_observed": false,
+      "reason": "pod NotFound after quiescence",
+      "source": "supplementary_capacity"
+    }
+  ],
+  "helper_fix": {
+    "executed_test_methods": 13,
+    "new_authored_methods": 2,
+    "scope": "operator checkpoint identity selection only; runtime and profiles unchanged",
+    "source_sha256": "9e42eb052f581a538e323864e73f615dd3b2c89e3d7a624790837d31382fac20",
+    "tests_status": "PASS"
+  },
+  "images": {
+    "f1r3node": "docker.io/library/fusion-reference-chain@sha256:62e44b0115ef4a0061ff21fcdf157b885ec32e8008cca4ebdff30ed9bc3e78ab",
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "fusion-commitment": "docker.io/library/fusion-reference-chain@sha256:62e44b0115ef4a0061ff21fcdf157b885ec32e8008cca4ebdff30ed9bc3e78ab",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:5d9d1841ed1de66fad638c6ed0a0b2bc490ed10d26ae4ff2dae532f0296691b0",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:28a5fed2025029a959becb45520d0c29faf332d5ae2191586efff3a3dd693535",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:adb411d0f7e027860f2d5e4efd29a0217cf43b1be9a51a72784d796e97ea0c54",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:28a5fed2025029a959becb45520d0c29faf332d5ae2191586efff3a3dd693535",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:28a5fed2025029a959becb45520d0c29faf332d5ae2191586efff3a3dd693535"
+  },
+  "limitations": [
+    "Original driver and continuation primary remain FAIL; successful same-workflow recovery and independent follow-up do not overwrite them.",
+    "Two reader NOT_AVAILABLE failures lack stage detail; no cold-start cause is asserted.",
+    "This is runtime13 without activated handover; later runtime14 activation repairs are a distinct source epoch.",
+    "Recorded model proposals select native commands; no live text generation occurred.",
+    "The workspace stores an explicit reference document; inspection covers its actual bounded artifact envelope, not the full native task projection."
+  ],
+  "namespace": "omega-ref-pilot-recipe17",
+  "operator": "operator19",
+  "operator_wheel_sha256": "efbe1dd2479509cca54b17853093c752895525fe8c52cbb8a505e9e29045b1a4",
+  "original_bounds": {
+    "chain_deadline_ms": 1793864173795,
+    "programme_end_ms": 1793864962023,
+    "qualification_end_ms": 1793863204174,
+    "workflow_deadline_ms": 1793863230399
+  },
+  "outcomes": {
+    "continuation_primary": "FAIL_INDEPENDENT_READBACK",
+    "native_workspace_readback": "PASS",
+    "original_recipe_driver": "FAIL_CHECKPOINT_IDENTITY_SELECTION",
+    "readback_followup": "PASS_SECOND_BOUNDED_READ",
+    "same_workflow_chain_graph": "FINALIZED",
+    "same_workflow_native_completion": "PASS",
+    "supplementary_commitment_capacity": "UNAVAILABLE_POD_ALREADY_STOPPED"
+  },
+  "preservation": {
+    "automatic_resubmissions": 0,
+    "deadlines_renewed": 0,
+    "original_selected_inputs_not_repeated": true,
+    "prior_two_captures_byte_exact": true,
+    "reservations_refunded": 0
+  },
+  "profile": "operator-pilot-artifact-recipe-execution/1",
+  "publication": {
+    "approved_synthetic_scope_only": true,
+    "exact_known_credential_scan": "PASS",
+    "private_keys_credentials_journals_and_kubeconfig": "EXCLUDED"
+  },
+  "recovery": {
+    "additional_chain_submissions": 0,
+    "additional_native_inputs": 0,
+    "additional_signatures": 0,
+    "caller_adapter_node_replaced": true,
+    "caller_replaced_after_acceptance": true,
+    "chain_dependency_outage": "OBSERVED_AND_RESTORED",
+    "readback_followup_resumed_only": [
+      "fusion-storage",
+      "f1r3node"
+    ],
+    "same_node_identity": true,
+    "submit_response_lost": true
+  },
+  "runtime_source_manifest_sha256": "aa9a8ebaeb2f59cd8893cd50755d5f91314590841cf0e09fda79b6d3556d0784",
+  "same_artifact": {
+    "artifact_bytes": 1367,
+    "chain_commits_inspection_result_digest": true,
+    "independent_readback_finality": "finalized",
+    "independent_readback_inclusion_matches": true,
+    "inspection_is_complete_bounded_retrieval_envelope": true,
+    "retrieved_payloads": 1,
+    "trace_sha256": "2434db373240e8255ae4c392fd679742214e9084e33e38cce502098927b7d773",
+    "workspace_is_full_task_projection": false,
+    "workspace_representation": "captured-task-result-reference-document/1"
+  },
+  "sources": {
+    "chain/registered-recipe/native/report.json": {
+      "bytes": 306324,
+      "path": "evidence/operator-pilot/recipe17-primary/chain/registered-recipe/native/report.json",
+      "sha256": "7cefb783c376f6aad802406965a697093ed905bda44a2ac00ab5ea7b3167b6dc"
+    },
+    "chain/registered-recipe/report.json": {
+      "bytes": 93698,
+      "path": "evidence/operator-pilot/recipe17-primary/chain/registered-recipe/report.json",
+      "sha256": "c7d7e26c3be90ea40fb451baf339ab9ba22d9ff6b965270fbd97a0ae8a3e3ce3"
+    },
+    "chain/report.json": {
+      "bytes": 1038,
+      "path": "evidence/operator-pilot/recipe17-primary/chain/report.json",
+      "sha256": "3fdc154bdbd176963351b902136cb634152bb55f7f2618aaf909e71d63eeaa8e"
+    },
+    "checkpoint-fix/manifest.json": {
+      "bytes": 428,
+      "path": "evidence/operator-pilot/recipe17-primary/checkpoint-fix/manifest.json",
+      "sha256": "c19f9dd2cdcaaad39cc9fdc14cb31e31fafb27932ff16b433d9b1ad89adc5ac8"
+    },
+    "checkpoint-fix/pilot_recipe_qualification.py": {
+      "bytes": 13053,
+      "path": "evidence/operator-pilot/recipe17-primary/checkpoint-fix/pilot_recipe_qualification.py",
+      "sha256": "9e42eb052f581a538e323864e73f615dd3b2c89e3d7a624790837d31382fac20"
+    },
+    "checkpoint-fix/test_pilot_artifact_reference.py": {
+      "bytes": 10105,
+      "path": "evidence/operator-pilot/recipe17-primary/checkpoint-fix/test_pilot_artifact_reference.py",
+      "sha256": "e352e358ae86a7a9cce0fd703d7e6415f7717733c9b6c5829fa940dfd02efd00"
+    },
+    "checkpoint-fix/tests.log": {
+      "bytes": 2414,
+      "path": "evidence/operator-pilot/recipe17-primary/checkpoint-fix/tests.log",
+      "sha256": "17326fe930d317087dabc5f7b8a0f7c74f9ec9be20a904aaeef501e59fe3738d"
+    },
+    "continuation-plan.json": {
+      "bytes": 1697,
+      "path": "evidence/operator-pilot/recipe17-primary/continuation-plan.json",
+      "sha256": "75482d6e9980f3485fc4d40a7356effda7218190647b98504d018f6442074222"
+    },
+    "continuation.log": {
+      "bytes": 1296,
+      "path": "evidence/operator-pilot/recipe17-primary/continuation.log",
+      "sha256": "85bd670fc822e9703b27758e3f8b03f03ca281177d0cc085c81dc7ac5c738200"
+    },
+    "continue-checkpoint.py": {
+      "bytes": 6222,
+      "path": "evidence/operator-pilot/recipe17-primary/continue-checkpoint.py",
+      "sha256": "d35e56cff87084848fb757bd3183e517703201082d44aad3a10bac92b1d6a8c5"
+    },
+    "execution.log": {
+      "bytes": 3534,
+      "path": "evidence/operator-pilot/recipe17-primary/execution.log",
+      "sha256": "e3616375cb8d98c6812f1d3618d351cda3c31c707015c0d9b86374e257e4b754"
+    },
+    "programme-report.json": {
+      "bytes": 14950,
+      "path": "evidence/operator-pilot/recipe17-primary/programme-report.json",
+      "sha256": "b32f5df34951cba617b68c685ae39114a13da7cfffe8b86151e3211543d34a97"
+    },
+    "qualification-plan.json": {
+      "bytes": 4372,
+      "path": "evidence/operator-pilot/recipe17-primary/qualification-plan.json",
+      "sha256": "bd112f026fa14236c4c6cb5622e446b1c55a4c7229e7dad5c538374e0933b502"
+    },
+    "readback-followup-plan.json": {
+      "bytes": 963,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup-plan.json",
+      "sha256": "7e47e6a1a723f9de8d06a21e969d128e062e382bcba8b6737f80902ab33303ba"
+    },
+    "readback-followup.log": {
+      "bytes": 0,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "readback-followup.py": {
+      "bytes": 3912,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup.py",
+      "sha256": "3b995aa12a9d7787b4a75d8d001a61b259a53ddfd67e597f276d4c48eda00414"
+    },
+    "readback-followup/attempt-1/independent-reader.json": {
+      "bytes": 168,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup/attempt-1/independent-reader.json",
+      "sha256": "e4ec971b142ee6d786f68519a2b8d31f084f156a676e2b79df162b485e041f9e"
+    },
+    "readback-followup/attempt-1/report.json": {
+      "bytes": 321576,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup/attempt-1/report.json",
+      "sha256": "2db67a9218f9cf592ef653927c4e895e1676d9ac3c187a814be5542e873140fb"
+    },
+    "readback-followup/attempt-2/independent-reader.json": {
+      "bytes": 4770,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup/attempt-2/independent-reader.json",
+      "sha256": "1dffc8a0c01ad9901d4192c73d1a7b2114f28e582d61b5456644cd93f4f26628"
+    },
+    "readback-followup/attempt-2/report.json": {
+      "bytes": 325960,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup/attempt-2/report.json",
+      "sha256": "19a3dbf6aada4497fdc6c10137352ec518f44f08247cd33f9a764b7e5e477240"
+    },
+    "readback-followup/report.json": {
+      "bytes": 25906,
+      "path": "evidence/operator-pilot/recipe17-primary/readback-followup/report.json",
+      "sha256": "45a2cecf714c56fe6fffafa73a4c5b4c9f40bc72283f02b8c4a07db54063c53c"
+    },
+    "recipe-install-report.json": {
+      "bytes": 805,
+      "path": "evidence/operator-pilot/recipe17-primary/recipe-install-report.json",
+      "sha256": "b171bbed7bdc659dadf0719c13ff0473d21acb30bacdcef099164d579f8be88b"
+    },
+    "run.py": {
+      "bytes": 3900,
+      "path": "evidence/operator-pilot/recipe17-primary/run.py",
+      "sha256": "7c773a0d67532f5c58babd2f13d305cea5920cddd2fc0f20eca813d7a8996287"
+    },
+    "same-artifact-trace.json": {
+      "bytes": 6538,
+      "path": "evidence/operator-pilot/recipe17-primary/same-artifact-trace.json",
+      "sha256": "2434db373240e8255ae4c392fd679742214e9084e33e38cce502098927b7d773"
+    },
+    "same-workflow-recovery/chain/chain-edge/report.json": {
+      "bytes": 541,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/chain/chain-edge/report.json",
+      "sha256": "c4281e3099e6b25d33edca81e14d4474ffbf3291ad76f91eeb64d60ea5c89d7c"
+    },
+    "same-workflow-recovery/chain/independent-reader.json": {
+      "bytes": 168,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/chain/independent-reader.json",
+      "sha256": "e4ec971b142ee6d786f68519a2b8d31f084f156a676e2b79df162b485e041f9e"
+    },
+    "same-workflow-recovery/chain/registered-recipe/report.json": {
+      "bytes": 247883,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/chain/registered-recipe/report.json",
+      "sha256": "9790b42baa6a049146787952fcd08ce8f717b2a2fe8dcf1883fa5fee1b2d6afb"
+    },
+    "same-workflow-recovery/chain/registered-recipe/workflow-native.json": {
+      "bytes": 25761,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/chain/registered-recipe/workflow-native.json",
+      "sha256": "58c33ce10e122b7c1f14ea45fea7a74770870353883347e74a673d99f09d36fd"
+    },
+    "same-workflow-recovery/chain/report.json": {
+      "bytes": 321457,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/chain/report.json",
+      "sha256": "3058a71f612a413729b580833648a3410f9dd2d5aa7c2ab51bc1c4ba02571c54"
+    },
+    "same-workflow-recovery/chain/workspace-readback/report.json": {
+      "bytes": 5141,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/chain/workspace-readback/report.json",
+      "sha256": "71f46bf237e475f289159b18f352d9ddb8a6655ad79147f6a4979c1258dcfd20"
+    },
+    "same-workflow-recovery/commitment-capacity.log": {
+      "bytes": 67,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/commitment-capacity.log",
+      "sha256": "04809ef52bec51cdd6523397d0ea10cf7acdb23b22e698bca761e2824aae33ec"
+    },
+    "same-workflow-recovery/programme-report.json": {
+      "bytes": 14123,
+      "path": "evidence/operator-pilot/recipe17-primary/same-workflow-recovery/programme-report.json",
+      "sha256": "dfa609a98aa8e58294ba7264bc7f429b995b0711bbe5a2befe92d9930cd04e86"
+    },
+    "start.json": {
+      "bytes": 162,
+      "path": "evidence/operator-pilot/recipe17-primary/start.json",
+      "sha256": "59e40568002f47f44552470c56f0b29a16050860e834606a9e96dd9480af65d5"
+    }
+  }
+}

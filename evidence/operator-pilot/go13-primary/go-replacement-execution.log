@@ -1,0 +1,41 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/run_go_replacement.py", line 19, in <module>
+    result=go_qualify(op,root/'go-replacement/plan.json',packet/'go-provider/provider-image.json',packet/'deploy/helm/omega-fusion',root/'go-replacement-evidence',root/'go-baseline',root/'go-capacity-authority',packet/'examples/pilot_go_capacity.py')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/examples/pilot_network_edges.py", line 113, in go_qualify
+    result=driver.qualify(op,plan,artifact,root/'native-onboarding',original=original)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/examples/pilot_go_provider.py", line 113, in qualify
+    report['retired_original']=provider(r,'retire','shared-fusion-execution','go-onboarding-retire-original')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/examples/pilot_go_provider.py", line 22, in provider
+    return r.call('omega-agent','providers',session,*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/preview_qualification.py", line 24, in call
+    return json.loads(self.op.k('exec',role+'-0','--',*command,*args,timeout=35))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 25, in k
+    def k(self,*args,**kw):return self.command(['kubectl','--kubeconfig',self.kubeconfig,'--context',self.context,'-n',self.namespace,*args],**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 23, in command
+    raise RuntimeError(str(args[:3])+' '+diagnostic)
+RuntimeError: ['kubectl', '--kubeconfig', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/kubeconfig'] Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/fusion/integration/single_node/preview_operator.py", line 211, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/opt/fusion/integration/single_node/preview_operator.py", line 114, in main
+    print(json.dumps(providers(a.provider_action,a.provider,a.identity,a.session,a.retained,head=a.head)));return
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/integration/single_node/preview_operator.py", line 166, in providers
+    value=invoke(transport,'/preview/providers',q)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/native_telemetry.py", line 72, in wrapped
+    if _sink is None:return function(*args,**kwargs)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/preview_transport.py", line 50, in invoke
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE
+command terminated with exit code 1
+

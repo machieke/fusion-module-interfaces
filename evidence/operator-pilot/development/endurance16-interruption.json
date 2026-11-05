@@ -1,0 +1,87 @@
+{
+  "accounting": {
+    "aggregate_events_not_merged_with_receipt_counts": true,
+    "aggregate_native_capture_stage_events": 173,
+    "all_identity_bound_complete_captures": 175,
+    "internal_complete_receipts": 10,
+    "ordinary_complete": 155,
+    "ordinary_final_state_unobserved": 1,
+    "ordinary_selected": 156,
+    "ordinary_unselected": 4,
+    "recipe_direct_complete": 9,
+    "separate_withdrawal_direct_complete": 1
+  },
+  "additional_live_generations": 0,
+  "classification": "READ_ONLY_EXISTING_REPORT_AND_FROZEN_SOURCE_REVIEW",
+  "cleanup": {
+    "observed_utc": "2026-11-05T12:45:49.856383+00:00",
+    "pods": 0,
+    "preliminary_observer_failure_retained": true,
+    "pvcs_retained": 12
+  },
+  "failure_observation": {
+    "code": null,
+    "initiating_signal_or_sender": "UNESTABLISHED",
+    "native_operation_failure": "UNOBSERVED",
+    "observed_message": "container not found (omega-agent-b)",
+    "operation": "normal receipt observe through kubectl exec",
+    "out_of_memory_event": "NOT_OBSERVED_IN_RETAINED_EVENT_LIST",
+    "type": "RuntimeError"
+  },
+  "frozen_execution_script_sha256": "14814bb28a218daae3c7ec53ff169a87ad20af0a7e5dc42c26dfaca9d57b981a",
+  "last_selected_occurrence": {
+    "accepted_utc": "2026-11-05T12:40:42.229000+00:00",
+    "bytes": null,
+    "capture": "UNOBSERVED",
+    "final_owner_state": "UNOBSERVED",
+    "identity": "WITHHELD_PRIVATE",
+    "input_was_not_reissued": true,
+    "original_deadline_not_renewed": true,
+    "original_deadline_utc": "2026-11-05T12:42:42.229000+00:00",
+    "sha256": null,
+    "state_at_acceptance": "accepted"
+  },
+  "operator_wheel_sha256": "cd31dbdde1430807cf6730b1245b85679e8f53e15764ceed17812751a02aa2b3",
+  "primary_status": "FAIL",
+  "private_evidence": {
+    "bytes": null,
+    "raw_reports_unchanged": true,
+    "sha256": null,
+    "status": "UNAVAILABLE_PRIVATE"
+  },
+  "profile": "operator-pilot-endurance-interruption-finding/1",
+  "qualification": "A16",
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "sanitized_primary": {
+    "path": "evidence/operator-pilot/development/endurance16.json",
+    "sha256": "6bd83c30c0657d95402871548b1d059bcc3e8a74b90ea07071d49cde842f4710"
+  },
+  "source_finding": {
+    "child_terminal_barrier": false,
+    "cleanup_order": [
+      "bounded diagnostics",
+      "normal task-owned service stop"
+    ],
+    "cleanup_trigger": "Bash EXIT trap",
+    "explicit_signal_provenance_record": false,
+    "inference": "The retained evidence shows namespace stop began before the still-running qualifier wrote its failure. The unconditional EXIT trap has no explicit child-terminal barrier; external shell termination can initiate cleanup without a normal successful qualifier return. The initiating process or signal is not established by these files.",
+    "not_established": [
+      "native task-context defect",
+      "owner capacity exhaustion",
+      "OOM",
+      "specific signal sender",
+      "tool runtime timeout cause"
+    ]
+  },
+  "status": "OBSERVED_INTERRUPTION_CAUSE_UNESTABLISHED",
+  "timeline": {
+    "application_killing_utc": "2026-11-05T12:40:48Z",
+    "child_failure_log_mtime_utc": "2026-11-05T12:40:49.541585+00:00",
+    "child_failure_report_mtime_utc": "2026-11-05T12:40:49.541585+00:00",
+    "diagnostic_file_mtime_utc": "2026-11-05T12:40:46.725621+00:00",
+    "last_owner_killing_utc": "2026-11-05T12:40:51Z",
+    "mtime_limit": "Filesystem modification times are separate observations, not embedded journal commit timestamps.",
+    "owner_killing_events": 12,
+    "stop_output_mtime_utc": "2026-11-05T12:40:53.237538+00:00"
+  }
+}

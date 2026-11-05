@@ -1,0 +1,38 @@
+import copy,hashlib,importlib.util,json
+from pathlib import Path
+B=Path('/data/fusion-operator-pilot-release/evidence-assembly');R=Path('/home/purplezky/work/takopi/fusion-module-interfaces')
+def raw(p):return Path(p).read_bytes()
+def sha(p):return hashlib.sha256(raw(p)).hexdigest()
+def canonical(v):return json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+spec=importlib.util.spec_from_file_location('authored_audit',B/'audit_authored_methods.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+new=[]
+for sequence in ('01','02'):
+ snap=R/('artifacts/operator-pilot/attention-chart-'+sequence+'-source');manifest=json.loads(raw(snap/'manifest.json'))
+ for name,pin in manifest.items():assert sha(snap/name)==pin
+ d=B/('chart'+sequence+'-index');d.mkdir(exist_ok=False)
+ index={'files':{n:p for n,p in manifest.items() if n.startswith('tests/')},'additional_live_generations':0}
+ (d/'index.json').write_bytes(canonical(index));(d/'provenance.json').write_bytes(canonical({'profile':'static-source-selection-index/1','source_manifest_sha256':sha(snap/'manifest.json'),'timing':'Copied after this run; parent reports selected sources unchanged during and after run. This derived index is not a before-test snapshot.','source_failure_version':'Exact failed01 source preserved independently from corrected02.'}))
+ out=B/('authored-chart'+sequence)
+ m.audit(d/'index.json',snap,[('attention-chart'+sequence,R/('artifacts/operator-pilot/attention-chart-'+sequence+'.log'))],out)
+ new.append(out/'report.json')
+prior=B/'authored-runtime14-sdk21-attention04-counts.json';old=json.loads(raw(prior));rows=copy.deepcopy(old['primary_audits'])
+for p in new:
+ v=json.loads(raw(p));rows.append({'path':str(p.relative_to(B)),'sha256':sha(p),'counts':v['counts']})
+cases={};definitions=set();before=set();passing_cases=set();passing_definitions=set();inv=skips=runs=passing_inv=passing_runs=0;run_outcomes={'PASS':0,'FAIL':0}
+for number,row in enumerate(rows):
+ p=B/row['path'];assert sha(p)==row['sha256'];v=json.loads(raw(p));assert v['status']=='COMPLETE'
+ inv+=v['counts']['method_invocations'];skips+=v['counts']['skipped_invocations'];runs+=v['counts']['test_runs']
+ all_pass=all(x['status']=='PASS' for x in v['runs'])
+ for run in v['runs']:
+  run_outcomes[run['status']]+=1
+  if run['status']=='PASS':passing_inv+=run['invocations'];passing_runs+=1
+ for key,x in v['cases'].items():
+  definitions.add(x['definition']);cases.setdefault(key,[]).append({'audit':row['path'],'source_sha256':x['source_sha256'],'definition_ast_sha256':x['definition_ast_sha256']})
+  if all_pass:passing_cases.add(key);passing_definitions.add(x['definition'])
+  if number<len(rows)-2:before.add(key)
+go=old['independent_go04'];out=copy.deepcopy(old)
+out.update(prior_count_audit={'path':prior.name,'sha256':sha(prior)},primary_audits=rows,python_counts={'authored_definitions':len(definitions),'case_identities':len(cases),'method_invocations':inv,'skipped_invocations':skips,'test_runs':runs},combined_counts={'authored_definitions':len(definitions)+go['authored_definitions'],'case_identities':len(cases)+go['case_identities'],'method_invocations':inv+go['method_invocations'],'skipped_invocations':skips+go['skipped_invocations'],'test_runs':runs+go['test_runs'],'go_subscenarios':go['subscenarios']},new_case_identities=sorted(set(cases)-before),repeated_case_source_versions=[{'case':k,'versions':v} for k,v in sorted(cases.items()) if len({(x['source_sha256'],x['definition_ast_sha256']) for x in v})>1],increment_explanation='Append exact-source chart01 failed4-method and chart02 successful10-method runs:14 invocations,2 runs,2 distinct source function names. One retired test name failed before its intended assertion; the corrected differently named test passed. Do not count these as two new passing capabilities.',selected_run_outcomes={**run_outcomes,'PASS':run_outcomes['PASS']+go['test_runs']},passing_run_subset={'authored_definitions':len(passing_definitions)+go['authored_definitions'],'case_identities':len(passing_cases)+go['case_identities'],'method_invocations':passing_inv+go['method_invocations'],'test_runs':passing_runs+go['test_runs'],'meaning':'Only methods selected by all-PASS audit groups plus independentGo04. Failed01 remains in the complete executed source-known union above; this subset never replaces that history.'},cases_never_observed_in_a_passing_selected_run=sorted(set(cases)-passing_cases),chart02={'public_report_sha256':sha(R/'evidence/operator-pilot/attention-chart02.json'),'successful_run':{'primary_sha256':sha(R/'artifacts/operator-pilot/attention-chart-02.log'),'source_manifest_sha256':sha(R/'artifacts/operator-pilot/attention-chart-02-source/manifest.json'),'audit_sha256':sha(new[1]),'method_invocations':10,'seconds':2.212,'status':'PASS'},'failed_run':{'primary_sha256':sha(R/'artifacts/operator-pilot/attention-chart-01.log'),'source_manifest_sha256':sha(R/'artifacts/operator-pilot/attention-chart-01-source/manifest.json'),'audit_sha256':sha(new[0]),'method_invocations':4,'errors':1,'seconds':.361,'status':'FAIL','source_version':'EXACT_SNAPSHOT','included_in_source_qualified_union':True},'snapshot_timing':'Copied after each run; parent reports exact selected sources unchanged during/after. No pre-run-snapshot claim.','distinction':'Attention helper03 is a different earlier15-method failure with sourceUNKNOWN; still excluded.','classification':'Actual offlineHelm/configure, fixture values/TLS/credentials/tempfiles; no native/cluster execution inferred.','runtime_code_changed':False,'additional_live_generations':0},status='COMPLETE')
+assert out['combined_counts']=={'authored_definitions':421,'case_identities':427,'method_invocations':1886,'skipped_invocations':1,'test_runs':25,'go_subscenarios':31}
+assert out['selected_run_outcomes']=={'PASS':24,'FAIL':1}
+p=B/'authored-runtime14-sdk21-chart02-counts.json';p.write_bytes(canonical(out))
+print(json.dumps({'path':str(p),'sha256':sha(p),'counts':out['combined_counts'],'outcomes':out['selected_run_outcomes'],'passing_subset':out['passing_run_subset'],'new':out['new_case_identities'],'never_passing':out['cases_never_observed_in_a_passing_selected_run']},indent=2))

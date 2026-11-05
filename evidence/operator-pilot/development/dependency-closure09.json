@@ -1,0 +1,232 @@
+{
+  "additional_live_generations": 0,
+  "audit_attempts": [
+    {
+      "reason": "incremental image archive alone omitted inherited metadata layer",
+      "result": "INCOMPLETE_INPUT_SET"
+    },
+    {
+      "inputs": "declared incremental plus base OCI archives; seven layers hash-verified",
+      "result": "COMPLETE_INPUT_SET"
+    }
+  ],
+  "checker_sha256": "02230c45a867b48cfc90619059df99d9edcacce1c4c77d90994ef074101c90a4",
+  "classification": "DEVELOPMENT_RUNTIME09_OFFLINE_METADATA_AUDIT",
+  "cluster_actions": 0,
+  "elapsed_seconds": 5.363140939734876,
+  "environment": {
+    "extra": "",
+    "implementation_name": "cpython",
+    "implementation_version": "3.12.12",
+    "os_name": "posix",
+    "platform_machine": "x86_64",
+    "platform_python_implementation": "CPython",
+    "platform_release": "",
+    "platform_system": "Linux",
+    "platform_version": "",
+    "python_full_version": "3.12.12",
+    "python_version": "3.12",
+    "sys_platform": "linux"
+  },
+  "extras": "NONE",
+  "historical_lock_hashes": {
+    "integration/neoclaw/embedding-caller-requirements.lock": "3d39868b05206645810961155cb4cf311a7a2eefbace12d88762b17a292eff9a",
+    "integration/neoclaw/memory-requirements.lock": "e72c3a46bf120c54f289c8277224661bbb64b142020c9053d2d83283ef4e96d6"
+  },
+  "image_inventory_sha256": "e80a325097b2f0fd6d7dea459e246b43430a231bbb3eaf75ea71ce1cd1638a73",
+  "images": [
+    {
+      "environments": [
+        {
+          "active_requirements": 0,
+          "inactive_requirements": 0,
+          "missing_or_mismatched": [],
+          "packages": 1,
+          "root": "opt/native/python/lib/python3.12/site-packages"
+        }
+      ],
+      "image": "docker.io/library/fusion-single-node:reference-pilot-dev09",
+      "manifest": "sha256:94e2db2f3ef9029573f078213c4b3bf477af048e57e21694272e6ce17ed5e203"
+    },
+    {
+      "environments": [
+        {
+          "active_requirements": 0,
+          "inactive_requirements": 0,
+          "missing_or_mismatched": [],
+          "packages": 1,
+          "root": "opt/native/python/lib/python3.12/site-packages"
+        },
+        {
+          "active_requirements": 139,
+          "inactive_requirements": 421,
+          "missing_or_mismatched": [
+            {
+              "installed": "2.10.0",
+              "package": "httpx2",
+              "requirement": "httpcore2==2.12.0; sys_platform != 'emscripten'",
+              "version": "2.12.0"
+            },
+            {
+              "installed": "3.15",
+              "package": "httpx2",
+              "requirement": "idna>=3.18",
+              "version": "2.12.0"
+            }
+          ],
+          "packages": 83,
+          "root": "opt/sdk/lib/python3.12/site-packages"
+        }
+      ],
+      "image": "docker.io/library/fusion-memory-caller:reference-pilot-dev09",
+      "manifest": "sha256:e56e95b01e820f3d53f461515afce3998309d9d89c0651e5d38f3e8f4d1c005e"
+    },
+    {
+      "environments": [
+        {
+          "active_requirements": 0,
+          "inactive_requirements": 0,
+          "missing_or_mismatched": [],
+          "packages": 1,
+          "root": "opt/native/python/lib/python3.12/site-packages"
+        },
+        {
+          "active_requirements": 172,
+          "inactive_requirements": 885,
+          "missing_or_mismatched": [
+            {
+              "installed": "2.10.0",
+              "package": "httpx2",
+              "requirement": "httpcore2==2.12.0; sys_platform != 'emscripten'",
+              "version": "2.12.0"
+            },
+            {
+              "installed": "3.15",
+              "package": "httpx2",
+              "requirement": "idna>=3.18",
+              "version": "2.12.0"
+            }
+          ],
+          "packages": 100,
+          "root": "opt/sdk/lib/python3.12/site-packages"
+        },
+        {
+          "active_requirements": 11,
+          "inactive_requirements": 138,
+          "missing_or_mismatched": [],
+          "packages": 16,
+          "root": "opt/sdk/lib/python3.12/site-packages/setuptools/_vendor"
+        }
+      ],
+      "image": "docker.io/library/fusion-memory-embedding:reference-pilot-dev09",
+      "manifest": "sha256:63077a6e66b82e9ce17c22aecb6e416e2be0400df7c2186fe130e4459dcb8b3f"
+    },
+    {
+      "environments": [
+        {
+          "active_requirements": 6,
+          "inactive_requirements": 55,
+          "missing_or_mismatched": [],
+          "packages": 9,
+          "root": "opt/chain/python"
+        },
+        {
+          "active_requirements": 7,
+          "inactive_requirements": 105,
+          "missing_or_mismatched": [],
+          "packages": 12,
+          "root": "opt/chain/python/setuptools/_vendor"
+        },
+        {
+          "active_requirements": 0,
+          "inactive_requirements": 0,
+          "missing_or_mismatched": [],
+          "packages": 1,
+          "root": "opt/native/python/lib/python3.12/site-packages"
+        }
+      ],
+      "image": "docker.io/library/fusion-reference-chain:reference-pilot-dev09",
+      "manifest": "sha256:32789f5a898d984174736958daf1015886297eb130bd167d617d53c0bbc551a5"
+    }
+  ],
+  "inspected_package_imports": 0,
+  "introduction": {
+    "classification": "NEW_REMEDIATION_LAYER_MISMATCH",
+    "historical_httpx2_requirements": [
+      "httpcore2==2.3.0",
+      "idna"
+    ],
+    "historical_versions": {
+      "httpcore2": "2.3.0",
+      "httpx2": "2.3.0",
+      "idna": "3.4"
+    },
+    "install_mechanism": "reviewed finite wheels installed with --no-deps; no dependency resolver check in runtime09 build",
+    "selected_httpx2_requirements": [
+      "httpcore2==2.12.0; sys_platform != \"emscripten\"",
+      "idna>=3.18"
+    ],
+    "selected_versions": {
+      "httpcore2": "2.10.0",
+      "httpx2": "2.12.0",
+      "idna": "3.15"
+    }
+  },
+  "layers": [
+    {
+      "bytes_verified": 334151680,
+      "layer": "sha256:22c3ae0287903a3e057ee2d7502b0002c1979803dec847a5c3a0a23d1e23e3c5",
+      "metadata_records": 76
+    },
+    {
+      "bytes_verified": 10698752,
+      "layer": "sha256:58e87de4b7e9fde947de1c40ffec308807af0f0cb343ddf616e366aa54cc18d0",
+      "metadata_records": 8
+    },
+    {
+      "bytes_verified": 1291102208,
+      "layer": "sha256:61d8c48aa0de530a8bc2d5d66083ca541f3a131cfe994b2b21730efe1ecd5c14",
+      "metadata_records": 109
+    },
+    {
+      "bytes_verified": 6081536,
+      "layer": "sha256:a62ae9d5a2cffdac6bca87e9004ea2dee99b21ec9ce9b2925f8e7de2e4500cd2",
+      "metadata_records": 1
+    },
+    {
+      "bytes_verified": 6081536,
+      "layer": "sha256:a84d7537c13dccde0dad656a72acac151e8627609820124158bb03e9bdd41bad",
+      "metadata_records": 1
+    },
+    {
+      "bytes_verified": 17005568,
+      "layer": "sha256:b21a91f0c55f53466da76249d6518e40c17a7e5d6411d5d76fd8e0d7be484595",
+      "metadata_records": 8
+    },
+    {
+      "bytes_verified": 223796736,
+      "layer": "sha256:b2f1c174656641fb733c166adbc174fd72d8f4306be3dc290b4cf8c014514952",
+      "metadata_records": 21
+    }
+  ],
+  "limits": [
+    "No extra feature groups selected",
+    "No inspected package import or runtime execution",
+    "No claim that currently observed workflow success resolves incompatible declared dependencies",
+    "Historical and runtime09 evidence remains preserved; repair and new qualification are separate"
+  ],
+  "metadata_records": 224,
+  "method": "all final effective METADATA re-read from exact OCI layers; layer and per-file SHA-256 verified; no imports of inspected packages",
+  "network_contacts": 0,
+  "remediation_lock_sha256": "f2c3890db9130b12a683ba574456c9cf801fad385dacddd9da6d094b72bd06e6",
+  "runtime_starts": 0,
+  "source_manifest_sha256": "b725ff3f9cf893f5e3ecd2069bf7521bcfac5d4ce81c781a71a000b414a005e8",
+  "status": "FAIL_DECLARED_DEPENDENCY_CLOSURE",
+  "workflow_attribution": {
+    "caller": "same incompatible packages are installed in caller SDK; this audit does not establish a particular executed caller HTTPX2 operation",
+    "embedding": "native Local initLocalEmbedding loads SentenceTransformer; its pinned dependency chain includes huggingface_hub2.2.0 and httpx2; E5 assets are local, but metadata compatibility remains unsatisfied",
+    "kind": "STATIC_SOURCE_AND_PACKAGE_GRAPH_NOT_NEW_RUNTIME_EXECUTION",
+    "module_https": "Fusion bounded transport imports standard-library http.client; no claim that this dependency mismatch caused a module HTTPS failure",
+    "numerical": "No other default active dependency violations, including numerical-package requirements, in inspected metadata; no numerical execution or correctness inference from this audit"
+  }
+}

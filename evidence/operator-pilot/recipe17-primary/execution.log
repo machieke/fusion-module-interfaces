@@ -1,0 +1,38 @@
+omega-agent remember complete
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/recipe-reference17/run.py", line 32, in <module>
+    result=chain_qualify(op,root/'recipe-installed/plan.json',root/'recipe-installed/values.yaml',packet/'deploy/helm/omega-fusion',root/'chain',packet/'examples/preview_chain_observer.py',representation='reference-document')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/examples/pilot_network_edges.py", line 147, in chain_qualify
+    try:q.run_graph();q.independent(observer)
+        ^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/examples/integrated_chain_continuation.py", line 51, in run_graph
+    self.op.owned();self.native();self.isolation()
+                    ^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/examples/pilot_recipe_chain.py", line 38, in native
+    result=qualify(self.op,self.root/'registered-recipe','approved-artifact-delivery/1',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/examples/pilot_recipe_qualification.py", line 123, in qualify
+    current=call(op,sid,wid,'decide',dict(checkpoint=checkpoint['identity'],identity='approve-bounded-suffix',
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/examples/pilot_workflows.py", line 21, in call
+    return json.loads(op.k('exec','-i','omega-agent-0','--',PYTHON,'-c',script,data=json.dumps(q),timeout=40))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 25, in k
+    def k(self,*args,**kw):return self.command(['kubectl','--kubeconfig',self.kubeconfig,'--context',self.context,'-n',self.namespace,*args],**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator19/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 23, in command
+    raise RuntimeError(str(args[:3])+' '+diagnostic)
+RuntimeError: ['kubectl', '--kubeconfig', '/data/fusion-operator-pilot-release/qualification-private/recipe-reference17/kubeconfig'] Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/fusion/integration/single_node/pilot_workflows.py", line 101, in request
+    result=invoke(transport,ROUTE,body,time.time_ns()//1000000+30000)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/native_telemetry.py", line 72, in wrapped
+    if _sink is None:return function(*args,**kwargs)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/fusion/fusion/preview_transport.py", line 50, in invoke
+    raise ContractError(code)
+fusion.contracts.ContractError: CONFLICT
+command terminated with exit code 1
+

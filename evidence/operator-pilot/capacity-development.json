@@ -1,0 +1,44 @@
+{
+  "additional_live_generations": 0,
+  "base_commit": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "checks": [
+    {
+      "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_capacity tests.test_integrated_capacity tests.test_pilot_browser tests.test_pilot_workbench_chart -q",
+      "methods": 35,
+      "seconds": 6.985,
+      "status": "PASS",
+      "unique_pilot_capacity_methods": 11
+    }
+  ],
+  "fixtures": [
+    "recorded model proposals",
+    "encoder vector",
+    "payload backend",
+    "Search metadata fixture without Chroma access",
+    "clock and allocation inputs",
+    "image metadata"
+  ],
+  "guarantees": [
+    "unknown finite bounds stay null",
+    "private scope/session names and bodies not emitted",
+    "current pending and retained state separated",
+    "closure/completion reservations retained",
+    "no constructed provider/backend",
+    "no foreign journal or symlink follows"
+  ],
+  "observed_at": "2026-11-04T23:15:33.727914+00:00",
+  "real": [
+    "SQLite model, embedding, workflow, subscription, Registry and feed/archive owner state",
+    "read-only fixed-path observations",
+    "Helm chart renderer"
+  ],
+  "schema": "pilot-owner-capacity-development/1",
+  "source_sha256": {
+    "integration/single_node/pilot_capacity.py": "802fb5485e9c9bea43dc3031f3188cedbbbd04981976f8d715dd9939b3233ccb",
+    "tests/test_pilot_capacity.py": "b03f359f99d953cc15e422e625577012aa6dd15de945dcc5c1a9ce99bf2dd290"
+  },
+  "unrun": [
+    "deployed all-owner report comparison against final tested image",
+    "physical reclaim / disk-pressure recovery"
+  ]
+}

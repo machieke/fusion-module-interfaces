@@ -1,0 +1,131 @@
+{
+  "profile": "operator-pilot-fault-qualification-summary/1",
+  "status": "FAIL",
+  "classification": "REAL_NATIVE_SETUP_AND_OBSERVATIONS_CHART_REJECTED_FAULT_BEFORE_ADMISSION",
+  "namespace": "omega-ref-pilot-faults15",
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "images": {
+    "fusion-attention": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-beliefs": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-embedding": "docker.io/library/fusion-memory-embedding@sha256:77e6501a2bd3810e49408df9e9e4c44ff1470779a8d9b79c0c9a11d37fd80f7b",
+    "fusion-episodes": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-execution": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-messaging": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-model": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-relations": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "fusion-search": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "fusion-storage": "docker.io/library/fusion-single-node@sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+    "omega-agent": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+    "omega-agent-b": "docker.io/library/fusion-memory-caller@sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d"
+  },
+  "packet_manifest_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+  "operator_wheel_sha256": "5a3b956a67fabd392ae300dd112b7cc6c53ea933de402c84be06a3a96cd3cd11",
+  "chart_sha256": "2af3cc75730f201c876ab17f245c454c0048e7681659115253ecccf36b3519b3",
+  "direct_inputs": 3,
+  "native_completions": 3,
+  "fault_commands_admitted": 0,
+  "failure": "Helm rejected existing after_application_projection runtime hook before first interrupted command submission. Later fault/terminalization/capacity gates were not run.",
+  "dependency_outages": [
+    {
+      "owner": "fusion-embedding",
+      "status": "PASS",
+      "client_invocations": 3,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      },
+      "physical_http_sends": "NOT_OBSERVED"
+    },
+    {
+      "owner": "fusion-search",
+      "status": "PASS",
+      "client_invocations": 3,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      },
+      "physical_http_sends": "NOT_OBSERVED"
+    },
+    {
+      "owner": "fusion-storage",
+      "status": "PASS",
+      "client_invocations": 3,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      },
+      "physical_http_sends": "NOT_OBSERVED"
+    },
+    {
+      "owner": "fusion-messaging",
+      "status": "PASS",
+      "client_invocations": 3,
+      "new_work_admission": "NOT_ATTEMPTED",
+      "retained_application_result": {
+        "accepted_identity_exact": true,
+        "captured_result_exact": true,
+        "deadline_exact": true
+      },
+      "physical_http_sends": "NOT_OBSERVED"
+    }
+  ],
+  "reply_read_faults": [
+    {
+      "mode": "partial-body",
+      "status": "PASS",
+      "client_invocations": 3,
+      "effect_reservations": 0,
+      "physical_http_sends": "NOT_OBSERVED",
+      "automatic_retries": 0,
+      "one_shot_claim_retained": true
+    },
+    {
+      "mode": "delay",
+      "status": "PASS",
+      "client_invocations": 3,
+      "effect_reservations": 0,
+      "physical_http_sends": "NOT_OBSERVED",
+      "automatic_retries": 0,
+      "one_shot_claim_retained": true
+    }
+  ],
+  "dns_outage": {
+    "after": {
+      "status": "RESOLVED"
+    },
+    "during": {
+      "bounded_seconds": 8,
+      "status": "UNAVAILABLE"
+    },
+    "during_operator_dns_read": "UNAVAILABLE_UNTIL_DNS_RESTORED",
+    "effect_reservations": 0,
+    "native_inputs": 0,
+    "other_allow_rules_unchanged": true,
+    "policy_restored": true,
+    "removed_dns_rules": 1,
+    "retained_application_result": {
+      "accepted_identity_exact": true,
+      "captured_result_exact": true,
+      "deadline_exact": true
+    },
+    "status": "PASS"
+  },
+  "final_state": {
+    "pods": 0,
+    "pvcs": 12,
+    "journals_retained": true
+  },
+  "followup": "Fresh separately frozen F16 after chart-only correction; no accepted failed command or original setup identity replayed. F15 remains failed.",
+  "private_evidence": {
+    "status": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null
+  },
+  "additional_live_generations": 0
+}

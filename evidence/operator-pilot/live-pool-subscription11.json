@@ -1,0 +1,141 @@
+{
+  "additional_live_generations": 0,
+  "authority_and_cleanup": {
+    "ConfigMap_contents_exact": true,
+    "automatic_Secret_policy_reload_claimed": false,
+    "complete_original_Secret_material_restored": true,
+    "credential_change": "MANUAL_TRUSTED_OWNER_LOCAL_POLICY_APPLICATION",
+    "exactly_one_selected_principal_credential_changed": true,
+    "original_policy_bytes_restored": true,
+    "other_policy_values_preserved": true,
+    "owner_and_gateway_original_Secret_projection_observed": true,
+    "protected_resources_modified": false,
+    "remaining_pods": 0,
+    "retained_owner_PVCs": 12
+  },
+  "classification": "SEPARATE_RETAINED_RUNTIME11_MAINTENANCE_SUPPLEMENT",
+  "date_utc": "2026-11-05",
+  "evidence_boundaries": {
+    "fixtures": [
+      "Ten helper tests use temporary policy files and explicit in-process protocol fixtures; separate from this deployed run"
+    ],
+    "historical_reports": "B11 and E11 reports, failures and limits remain unchanged. This supplement fills two previously separate observations using the retained B11 state.",
+    "not_claimed": [
+      "New native workflow",
+      "Browser GUI interaction in this supplement",
+      "Archive cold-path selection or hot removal",
+      "Automatic Secret-to-owner-policy reload",
+      "Additional live model generation",
+      "Any success for E11 handover, its unrun V20, or its unrun suspension supplement",
+      "Retesting runtime12 or runtime13",
+      "Server request acceptance inferred from client request counts"
+    ],
+    "real": [
+      "Existing deployed application owner and its authenticated HTTPS ports",
+      "Production https_pool and actual socket",
+      "Registry/2 authoritative seal",
+      "Application-owner subscription, actual gap and rebase",
+      "Existing sealed archive receipt and DeTTa payload hydration",
+      "Storage pod replacement with unchanged image and PVC selection"
+    ]
+  },
+  "execution": {
+    "actual_module_control_invocations": 4,
+    "actual_module_read_invocations": 22,
+    "actual_total_module_invocations": 26,
+    "additional_live_generations": 0,
+    "all_retained_native_sessions_closed": 10,
+    "archive_read_invocations": 4,
+    "browser_driver_HTTPSConnection_request_calls": {
+      "control": 4,
+      "read": 16
+    },
+    "browser_driver_control_invocations": 4,
+    "browser_driver_read_invocations": 16,
+    "closed_session_list_read_invocations": 2,
+    "deadline_renewals": 0,
+    "elapsed_including_quiescence_seconds": 158.97554833255708,
+    "existing_selected_complete_captures_compared": 15,
+    "failed_qualifier_invocations": 0,
+    "maintenance_window_seconds": 600,
+    "maximum_module_invocations": 40,
+    "new_captures": 0,
+    "new_native_submissions": 0,
+    "original_B11_window_extended": false,
+    "other_read_physical_HTTP_sends": "NOT_INSTRUMENTED",
+    "owner_pod_replacements": 1,
+    "pool_phase_read_counter_including_restored_read": 9,
+    "reservation_refunds": 0,
+    "server_receipt_count": "NOT_INFERRED_FROM_CLIENT_REQUEST_CALLS",
+    "socket_phase_bound_ms": 15000,
+    "subscription_lifetime_ms": 300000,
+    "subscription_renewals": 0
+  },
+  "observed_gates": {
+    "actual_subscription_gap": true,
+    "authoritative_snapshot_and_explicit_rebase": "PASS",
+    "current_authorization_denial_on_retained_socket": "UNAUTHORIZED",
+    "denied_pool_entry_closed_and_evicted": true,
+    "existing_archive_receipt_and_authoritative_payload_before_after_restart": "PASS",
+    "former_token_subscription_read": "UNAUTHORIZED",
+    "old_token_socket_authorized_before_policy_change": "PASS",
+    "original_subscription_expiry_retained": true,
+    "registry_actions_sealed": 6,
+    "registry_profile": "trusted-provider-lifecycle/2",
+    "replacement_image_and_volume_selection": "EXACT",
+    "replacement_pod_uid_changed": true,
+    "same_principal_new_token_retained_capture_readback": "EXACT",
+    "same_production_pool_entry_and_socket_retained_across_policy_change": "PASS",
+    "same_subscription_across_registry_seal_archive_read_and_storage_restart": "PASS",
+    "selected_complete_captures_after_original_credential_restoration": "EXACT",
+    "subscription_closed": true,
+    "subscription_cursor_caught_up": true
+  },
+  "profile": "operator-pilot-sanitized-live-pool-subscription-evidence/1",
+  "publication_limits": "Private session, input, archive and subscription identifiers, socket addresses, and identifying hashes are withheld. Public verification does not independently inspect withheld records.",
+  "sources": {
+    "operator13_wheel_sha256": "d1c14665be474657f50bf0da10720d21db46e4a7701e288a266c726efc9fbbe7",
+    "primary_test_log": {
+      "path": "artifacts/operator-pilot/pool-supplement-checks04.log",
+      "sha256": "1f7db0d6646dcc76956917d2e9946ffd370757f3bf67cd9b5bc270a795bb2971"
+    },
+    "retained_deployment_packet13_sha256": "1c4e21a93b9d4c06edfb0cef8601a7e5827af4e9ed0ee2ec94805edf8f8411fa",
+    "runtime_source_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+    "source_selection": "Frozen helper copy executed with installed operator13 Python -I. Retained image11 deployments and original image pins checked before startup. No author checkout imports in the deployed observer.",
+    "standalone_helper": {
+      "path": "examples/pilot_live_pool_subscription.py",
+      "sha256": "f7f59b4ffd496e35075f155af4ec0a636dddadb790ca8e4ab54bef8824707b7b"
+    },
+    "test_source": {
+      "path": "tests/test_pilot_live_pool_subscription.py",
+      "sha256": "d5983e8924fe35692e7896ada9626e3854bb8f95a2320fc10de27df891355248"
+    }
+  },
+  "status": "PASS",
+  "test_results": {
+    "authored_methods": 10,
+    "historical_runs": "Earlier 8/8/9-method logs retained privately without separate source snapshots; not counted as additional methods or bound to final source.",
+    "seconds": 0.382,
+    "status": "PASS"
+  },
+  "withheld_private_artifacts": [
+    {
+      "availability": "WITHHELD_PRIVATE",
+      "bytes": null,
+      "name": "prospective-plan-with-separate-digest",
+      "sha256": null
+    },
+    {
+      "availability": "WITHHELD_PRIVATE",
+      "bytes": null,
+      "name": "raw-deployed-report",
+      "sha256": null
+    },
+    {
+      "availability": "WITHHELD_PRIVATE",
+      "bytes": null,
+      "name": "client-stderr",
+      "sha256": null
+    }
+  ]
+}

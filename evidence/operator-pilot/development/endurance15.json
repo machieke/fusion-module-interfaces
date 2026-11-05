@@ -1,0 +1,100 @@
+{
+  "additional_live_generations": 0,
+  "boundary_workflows": [
+    {
+      "boundary": 0,
+      "internal_identity_observations": 2,
+      "recipe_direct": 3,
+      "separate_direct": 0,
+      "status": "PASS",
+      "variant": "unchanged"
+    },
+    {
+      "boundary": 1,
+      "internal_identity_observations": 2,
+      "positive_completion": "NOT_COMPLETED",
+      "recipe_direct": 3,
+      "safety": "PASS",
+      "separate_direct": 1,
+      "variant": "withdrawn"
+    }
+  ],
+  "chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "classification": "REAL_NATIVE_REAL_POD_HTTPS_RECORDED_MODEL",
+  "cleanup": {
+    "basis": "Parent separately observed zero Pods after stop. Exact timestamp unavailable in this export; stop log includes pre-quiescence snapshot and is not treated as zero-Pod evidence.",
+    "observed_utc": null,
+    "old_effects_and_state_retained": true,
+    "pods": 0,
+    "pvcs_retained": 12
+  },
+  "counts": {
+    "additional_internal_B_capture_events_without_exported_identity_rows": 2,
+    "aggregate_model_command_admission_stage_events": 114,
+    "aggregate_native_capture_stage_events": 113,
+    "all_completed_direct_captures": 105,
+    "all_selected_direct_inputs": 106,
+    "all_uncertain_direct_inputs": 1,
+    "completed_windows": 2,
+    "fourth_window": "NOT_STARTED",
+    "identity_bound_complete_capture_observations": 111,
+    "independently_exported_internal_identity_observations": 6,
+    "internal_count_limit": "The six exported internal rows are four boundary recipe task/return rows plus two ordinary A task-result rows. Two further B captures have aggregate/dataflow support but no independently exported identity rows; they are not invented as public receipt records.",
+    "main_report_field_explanation": "Historical field advances only after complete windows; unchanged. Window primaries establish98ordinary completed direct captures.",
+    "main_report_native_inputs_field": 80,
+    "ordinary_completed_direct_captures": 98,
+    "ordinary_selected_direct_inputs": 99,
+    "ordinary_uncertain_direct_inputs": 1,
+    "planned_four_window_direct_inputs": 160,
+    "separate_recipe_direct_inputs": 6,
+    "separate_withdrawal_direct_inputs": 1,
+    "third_window_complete": 18,
+    "third_window_selected": 19
+  },
+  "diagnostics": {
+    "new_native_inputs": 0,
+    "observer_errors": 0,
+    "pod_commands": 14,
+    "roles": 12,
+    "status": "OBSERVED"
+  },
+  "failure": {
+    "code": "NOT_AVAILABLE",
+    "source": "Operator wait after original accepted input deadline; exact native failure code UNOBSERVED.",
+    "type": "ContractError"
+  },
+  "failure_stage": "Third window inspection remains dispatched with no captured result after actual delegated-result consumption. Original120s input deadline elapsed; observer returned after130.103s.",
+  "namespace": "omega-ref-pilot-endurance15",
+  "operator_wheel_sha256": "0a179225069072f336afe2f8d6a9c7bc2cf050971b8abe7890410a5bc3334aa8",
+  "original_limits": {
+    "deadline_renewals": 0,
+    "old_input_reissues": 0,
+    "per_input_seconds": 120,
+    "programme_seconds": 7200,
+    "reservation_refunds": 0
+  },
+  "private_evidence": {
+    "bytes": null,
+    "raw_reports_unchanged": true,
+    "sha256": null,
+    "status": "UNAVAILABLE_PRIVATE"
+  },
+  "profile": "operator-pilot-endurance-development-summary/1",
+  "profile_domain_analysis": {
+    "host_capacity_cause": "NOT_ESTABLISHED",
+    "inspection_max_artifact_bytes": 4096,
+    "inspection_max_observations": 3,
+    "observed_latest_shared_query_unique_memory_handles": 4,
+    "other_transport_failure_excluded": false,
+    "source_supported_inference": "Native task completion exports every captured candidate hit; inspection rejects more than3payload refs before hydration/submission. Later retained-corpus query showed4unique refs. Exact B payload list and native exception were not exported, so actual OVERLOADED is not claimed observed.",
+    "status": "SOURCE_DOMAIN_DEFECT_IDENTIFIED_EXACT_NATIVE_EXIT_UNOBSERVED"
+  },
+  "qualifier_source_sha256": "7bb45510a6b464b6ec1ef1a90d18e6e5f9c1446d47d2e3d5c527e67b27624e04",
+  "repair": {
+    "native_requalification": "NOT_RUN_IN_THIS_REPORT",
+    "scope": "Operator workload only, SDK24. Existing inspect remains in shared window0; shared window2 explicitly selects existing named deterministic NAL after actual delegation, before a fresh qualification begins. No runtime/profile/domain widening, truncation, local fallback or old-occurrence retry.",
+    "test_report": "evidence/operator-pilot/endurance-profile24-tests.json"
+  },
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "status": "FAIL"
+}

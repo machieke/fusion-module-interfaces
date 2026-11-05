@@ -1,0 +1,346 @@
+{
+  "profile": "operator-pilot-acceptance/1",
+  "stories": {
+    "A": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/development/endurance14.json",
+        "evidence/operator-pilot/development/endurance15.json",
+        "evidence/operator-pilot/endurance-profile24-tests.json",
+        "evidence/operator-pilot/development/endurance16.json",
+        "evidence/operator-pilot/development/endurance16-interruption.json",
+        "evidence/operator-pilot/endurance17.json"
+      ],
+      "reason": "A17 completed160ordinary inputs across4retained windows,9recipe inputs+1withdrawal and10internal deliveries,180distinct complete capture identities. Same installation,4exact earliest-capture comparisons,Registry rollover beyond reconstructed historical metadata ceiling,eligible maintenance. Supervisor4731.364s; all children reaped before diagnostics/cleanup;0Pods12PVC. A14/A15/A16 failures remain unchanged.",
+      "historical_A14": {
+        "status": "FAIL",
+        "evidence": [
+          "evidence/operator-pilot/development/endurance14.json"
+        ],
+        "reason": "A14 stopped after18complete directinputs when the first delegated return was not observed by its original deadline. All B provider readiness receipts had expired before the new selection. Old work retained; operator-only timing repair tested, fresh four-window qualification pending."
+      },
+      "current_attempt": {
+        "name": "A17",
+        "status": "PASS",
+        "source": "runtime14/SDK25/chart16",
+        "base_window_direct_selected": 160,
+        "base_window_direct_captures": 160,
+        "base_window_direct_uncertain": 0,
+        "base_window_direct_unselected": 0,
+        "passed_windows": 4,
+        "inputs_in_passed_windows": 160,
+        "extra_recipe_direct": 9,
+        "extra_withdrawal_direct": 1,
+        "internal_inputs": 10,
+        "internal_captures": 10,
+        "all_direct_selected": 170,
+        "all_direct_captures": 170,
+        "unique_complete_captures": 180,
+        "aggregate_capture_telemetry_events": 180,
+        "pods": 0,
+        "retained_pvcs": 12
+      },
+      "historical_A15": {
+        "name": "A15",
+        "status": "FAIL",
+        "source": "runtime14/SDK23/chart16",
+        "base_window_direct_selected": 99,
+        "base_window_direct_captures": 98,
+        "base_window_direct_uncertain": 1,
+        "passed_windows": 2,
+        "inputs_in_passed_windows": 80,
+        "internal_inputs": "Six exported complete identity rows; two additional B capture events lack exported identities. Aggregate114 model-admission/113native-capture spans counted separately.",
+        "pods": 0,
+        "retained_pvcs": 12,
+        "all_direct_selected": 106,
+        "all_direct_captures": 105,
+        "extra_recipe_direct": 6,
+        "extra_withdrawal_direct": 1
+      },
+      "historical_outcome_before_A17": {
+        "status": "FAIL",
+        "reason": "A16 completed155 of156 selected ordinary inputs, with4 unselected. Launcher parent exited143; diagnostic/stop began before child qualifier failed container-not-found. Signal initiator remains unestablished and native error unobserved. Three complete windows120; all3 inter-window workflow cases passed. Fresh detached full qualification is being prepared; no old occurrence retried."
+      },
+      "limitations": [
+        "Restricted receipt identities and journals withheld; public summaries do not independently verify those private facts.",
+        "Old-format equivalent bytes are reconstructed metadata, not physical disk usage; cleanup does not refund capacity.",
+        "Original 7200s qualifier bound and120s input deadlines preserved; no state reset or uncertain-effect replay."
+      ],
+      "historical_A16_attempt": {
+        "name": "A16",
+        "status": "FAIL",
+        "source": "runtime14/SDK24/chart16",
+        "base_window_direct_selected": 156,
+        "base_window_direct_captures": 155,
+        "base_window_direct_uncertain": 1,
+        "base_window_direct_unselected": 4,
+        "passed_windows": 3,
+        "inputs_in_passed_windows": 120,
+        "extra_recipe_direct": 9,
+        "extra_withdrawal_direct": 1,
+        "internal_inputs": 10,
+        "internal_captures": 10,
+        "all_direct_selected": 166,
+        "all_direct_captures": 165,
+        "unique_complete_captures": 175,
+        "aggregate_capture_telemetry_events": 173,
+        "pods": 0,
+        "retained_pvcs": 12
+      }
+    },
+    "B": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/browser11.json",
+        "evidence/integrated-service/pilot/runtime-controls11.json",
+        "evidence/operator-pilot/live-pool-subscription11.json",
+        "evidence/operator-pilot/browser14-representative.json"
+      ],
+      "reason": "Actual runtime11 requirements observed through the scoped browser; retained primary observer failures and the same-checkpoint refusal recovery are separate.31direct+8internal39completecaptures,10closed sessions;0pods12PVCretained.",
+      "limitations": [
+        "Restricted private primary reports remain unavailable to the public offline verifier.",
+        "No OS mount sandbox, independent human or continuously running worker claim.",
+        "Separate post-handover authority display belongs to E/V20.",
+        "Original B11 socket audit did not establish the socket before rotation; separate runtime11 retained supplement fills that observation without rewriting the historical report."
+      ],
+      "historical_outcome": "runtime10 development PASS retained; runtime11 failed observer invocations remain unchanged",
+      "current_image_representative": {
+        "source": "runtime14/SDK20/packet18",
+        "direct_inputs": 14,
+        "internal_inputs": 2,
+        "captures": 16,
+        "sessions_closed": 2,
+        "native_failures": 0,
+        "observer_failures": 3,
+        "namespace_pods": 0,
+        "namespace_pvcs": 12,
+        "duration_seconds": 1093.027,
+        "original_limit_seconds": 1200,
+        "scope": "Shared representative; historical private/full browser11 and warm-pool11 remain exact distinct runs",
+        "primary_status": "PASS_WITH_RETAINED_OPERATOR_OBSERVER_FAILURES",
+        "private_primary": "UNAVAILABLE_PRIVATE"
+      }
+    },
+    "C": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/go13.json",
+        "evidence/operator-pilot/go04.json",
+        "evidence/operator-pilot/go17.json",
+        "evidence/operator-pilot/go18.json"
+      ],
+      "reason": "Independent Go04 provider used by unchanged native consume function on runtime11:8direct+4internal=12captures. Actual storage-allowed/Messaging-denied capture, completion, pod replacement, duplicate/current-authority and next-context gates passed.",
+      "limitations": [
+        "Five failed top-level observers/control invocations remain failures.",
+        "Original900s native window completed selected native work but did not complete final drain.",
+        "Drain/current-authorized retained readback completed in a separate frozen180s control window with zero additional native inputs.",
+        "Finite128jobs,128KiB journal,4096-byte input/result limits; no Go writer-handover or HA profile."
+      ],
+      "cleanup": {
+        "pods": 0,
+        "quiesced": true,
+        "retained_pvcs": 13,
+        "stopped_ms": 1793853282343
+      },
+      "historical_runtime13_representative": "Runtime13 Go17:4selected+2internal6captures,2closed,actual native inspect and completion; duplicate acceptance/deadline, current authority, Registry drain/retained read and capacity observed. Pre-start helper-import and startup trusted-pin failures retained; zero admission proved before repair. Runtime14 five-input delta reviewed separately; no Go17 labels changed.",
+      "current_representative": "Runtime14/SDK22/chart16/Go04 C18PASS172.897s.4direct+2internal6captures2closed; actual inspect and nextcontext/acknowledgment, duplicate/deadline, drain/retainedselection and savedread/capacity passed;0pods13PVC."
+    },
+    "D": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/recipes13.json",
+        "evidence/operator-pilot/recipes13-readonly-clone.json",
+        "evidence/operator-pilot/endurance17.json"
+      ],
+      "reason": "Seven original registered prerequisite cases completed:29selected+12internal=41nativecaptures,13sessions; explicit stopped/amended/current-authority and retained checkpoint behavior observed. Observation-only clone preserves13sessions and13owner fences without execution.",
+      "limitations": [
+        "Original unauthorized fault driver and local recovery harness failures retained separately.",
+        "Same accepted unauthorized workflow recovered before original deadline; no replacement occurrence or deadline renewal.",
+        "Source restarted unchanged only for separately counted final artifact/chain recipe; clone remains stopped."
+      ],
+      "current_representative": "A17 current runtime14/SDK25 three inter-window prerequisite cases PASS,9direct+6internal captures; historical seven-case/clone scope retains its own identity."
+    },
+    "E": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/development/handover14.json",
+        "evidence/operator-pilot/development/handover11.json",
+        "evidence/operator-pilot/development/handover13.json",
+        "evidence/operator-pilot/handover-browser14.json",
+        "evidence/operator-pilot/development/handover14-attention.json"
+      ],
+      "reason": "Fresh exact runtime14/SDK20/packet18 full handover completed within original3600s window: base+two deltas/full-cut checks, derived rebuild/cleanup, retired source, generation2 activation, four new native operations, caller restart and exact old private/shared captures and spent unknown. Eleven complete, one unknown; no replay/refund.",
+      "historical_outcome": {
+        "status": "PARTIAL",
+        "evidence": [
+          "evidence/operator-pilot/development/handover11.json"
+        ],
+        "reason": "E11 and E13 each reached backup/cleanup/current-cut restore/original retirement/generation2 activation/stale-effect refusal, but failed first new native remember. E11 misclassified retained Attention data; E13 selected legacy feed during sustained append validation. E13 had one recorded model reservation/capture and no storage acceptance/native completion. Both expired identities and original failures retained; fresh repaired E14 subsequently passed; no old occurrence was retried."
+      },
+      "limitations": [
+        "Private checkpoint/journal/capture/authority and identifying hashes withheld; public summary is not independent access to private primaries.",
+        "Registry /1\u2192/2 disposable format copy is distinct from writable activation of original /1 checkpoint.",
+        "Synthetic Workspace re-attestation supports shared layout only; private-partition Workspace refused.",
+        "V20 and Attention controls are separately completed. Both namespaces ended0Pods/12PVC each; all unknowns and failed controls remain retained."
+      ],
+      "post_handover_browser": "Separate900s window completed528.884s,0newnative. Exact4owner observations/12seals/11captures/1unknown before/after12owner restarts. ActualUI currentauthority/readback/refusals pass. OriginalprivateobserverFAIL retained, separate source-consistent readonly DOMcheckPASS. Private primary metadata withheld. Attention result is separately recorded.",
+      "attention_suspension": "Third fresh bounded controlPASS68.651s,20.0003s actualpause beyondoriginal15sdeadline;1spent0result,expiredsamebindingrefused. First2controlsFAILretained,0newOmega/modelinputs."
+    },
+    "F": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/faults10.json",
+        "evidence/operator-pilot/development/faults15.json",
+        "evidence/operator-pilot/development/faults16.json",
+        "evidence/operator-pilot/development/faults17.json"
+      ],
+      "reason": "F17 on runtime14/SDK22/chart16 passed real native projection recovery, owner/network interruptions, capacity readback, terminalization and Registry pressure/rollover. Eleven direct inputs: six captures, three uncertain, two terminal before start; one internal delegated input remains uncertain. Safety PASS does not mean completion of unknown effects.",
+      "current_qualification": "F17 exit0; 0pods/12PVC retained. Current exact identities, deadlines and spent accounting retained; zero reissue, refund or replacement occurrence. Historical F10/F15/F16 failures remain unchanged.",
+      "limitations": [
+        "Physical HTTP attempts not observed; selected-session model snapshots are not additive and total recorded-model counts remain unknown.",
+        "Four observed inputs remain uncertain and fenced.",
+        "Private primary reports and identifying hashes withheld."
+      ]
+    },
+    "G": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/recipe17.json",
+        "evidence/operator-pilot/recipe18.json",
+        "evidence/operator-pilot/recipe18-readback.json",
+        "evidence/operator-pilot/recipe18-readback-installed25.json"
+      ],
+      "reason": "Original G18 native/chain qualification remains FAIL. A separately bounded current-authorized read of the same artifact/result/signed intent passed after two refused health connections then verified readiness; exact two AtomStorage reads and matching finalized deploy effect observed. No signature, submit, native input or model call repeated.",
+      "limitations": [
+        "Original G18 primary and three reader failures remain immutable.",
+        "Separate metadata-only diagnostics preserve their own preflight/import/read failures; no signing, submission or native operation is repeated.",
+        "Independent read passed after the original signing deadline under separate current read authority; this does not renew signing authority or erase original reader failures.",
+        "Raw private source/receipt identifiers and hashes remain withheld."
+      ],
+      "cleanup": {
+        "pods": 0,
+        "retained_pvcs": 14,
+        "quiesced": true
+      },
+      "current_representative": {
+        "status": "FAIL",
+        "source": "runtime14/SDK22/chart16",
+        "reason": "Current G18 original primary FAIL: five selected plus two internal captures, matching deploy effect finalized with one submit and three observations, but all three independent readers failed. Two separate diagnostic invocations retained: import failure before GET, then first artifact GET failure. No node read reached. No effect repeated.",
+        "private_primary": "UNAVAILABLE_PRIVATE",
+        "original_failure_retained": true,
+        "cleanup": {
+          "pods": 0,
+          "retained_pvcs": 14
+        },
+        "evidence": "evidence/operator-pilot/recipe18.json"
+      },
+      "historical_runtime13": {
+        "status": "PASS",
+        "reason": "Runtime13/packet17 registered native recipe completed after exact checkpoint-identity recovery within its original bound; actual same-artifact chain effect/finality observed and independently read back within original chain deadline.5selected+2internal=7captures,oneworkflow,3spent workflow effects,one chain submit reservation.",
+        "limitations": [
+          "Original driver checkpoint-selection failure remains FAIL; accepted workflow recovered without replacing its two completed effects.",
+          "Original and first follow-up independent readers failed NOT_AVAILABLE at an unknown precise stage; third explicit bounded read passed.",
+          "Independent read follow-up resumed only storage/node; zero native inputs, signatures or submit reservations.",
+          "The 1367-byte retrieval artifact contains a bounded reference document and one payload reference; complete task projection remains authoritatively retained."
+        ],
+        "cleanup": {
+          "pods": 0,
+          "retained_pvcs": 14,
+          "quiesced": true
+        }
+      },
+      "readback_followup": {
+        "status": "PASS",
+        "elapsed_seconds": 18.814,
+        "maximum_seconds": 600,
+        "health_attempts": 3,
+        "logical_atom_gets": 2,
+        "logical_node_observations": 1,
+        "artifact_get_retries": 0,
+        "new_signatures": 0,
+        "new_submissions": 0,
+        "native_inputs": 0,
+        "source": "runtime14/SDK22 plus pinned task-local metadata/health wrapper",
+        "reusable_operator_gate": "QUALIFIED_SEPARATELY_BY_INSTALLED25_READBACK",
+        "private_primary": "UNAVAILABLE_PRIVATE"
+      },
+      "installed25_readback": {
+        "status": "PASS",
+        "seconds": 17.923,
+        "reader_invocations": 1,
+        "new_native_inputs": 0,
+        "new_signing_or_submissions": 0,
+        "additional_live_generations": 0,
+        "pods": 0,
+        "retained_pvcs": 14,
+        "separate_original_workflow_result": "FAIL_RETAINED"
+      }
+    },
+    "H": {
+      "status": "PASS",
+      "evidence": [
+        "evidence/operator-pilot/development/adopter19-clean.json",
+        "evidence/operator-pilot/adopter20-clean.json",
+        "evidence/operator-pilot/development/adopter20.json",
+        "evidence/operator-pilot/adopter21.json",
+        "evidence/operator-pilot/adopter21-supervision.json",
+        "evidence/operator-pilot/protected-final.json",
+        "evidence/operator-pilot/retained-namespaces-final.json"
+      ],
+      "reason": "Actual packet21 fresh disconnected artifact installation OFFLINE_VERIFIED; native/browser/provider rehearsal PASS22direct+6internal28captures with exact source binding, provider replacement/replay and both cleanups0Pods12/13PVC. Source bundles a6fe678 separate from runtime implementation8018522e; recorded model only. Public native primary verification remains UNAVAILABLE_PRIVATE.",
+      "historical": [
+        {
+          "name": "H20",
+          "status": "FAIL",
+          "evidence": "evidence/operator-pilot/development/adopter20.json",
+          "reason": "Artifact installPASS;14direct+2internal native browser captures completed; visual tool launch failed at dangling absolute agent-browser symlink inside client mount.0Pods12PVC,allchildrenreaped; provider phase NOT_RUN."
+        }
+      ],
+      "current_attempt": {
+        "name": "H21",
+        "status": "PASS",
+        "native_direct_inputs": 22,
+        "internal_deliveries": 6,
+        "completed_captures": 28,
+        "elapsed_seconds": 808.9417402679101,
+        "supervisor_elapsed_seconds": 819.9535932149738,
+        "counts_are_observed_summaries_not_public_identity_proof": true,
+        "public_native_verifier": "UNAVAILABLE_PRIVATE"
+      }
+    }
+  },
+  "additional_live_generations": 0,
+  "model_proposals": "RECORDED_FIXTURE",
+  "baseline_not_relabelled": true,
+  "final_source_manifest_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "final_artifact_packet_sha256": "5907fe306495bd404db90a8743c644fcfac6698cb4de08270c4ca43c0f3f8f60",
+  "component_source_reconciliation": "evidence/operator-pilot/runtime13-14-source-reconciliation.json",
+  "historical_aggregate_bindings": [
+    {
+      "final_source_manifest_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+      "final_artifact_packet_sha256": "de39c9f69d8024a8fb793279165236953e2bc81254a79efae391fb468af0954d",
+      "component_source_reconciliation": "evidence/operator-pilot/operator13-source-reconciliation.json"
+    }
+  ],
+  "final_publication_state": "VERIFIED_PARTIAL",
+  "additional_component_reconciliations": [
+    "evidence/operator-pilot/operator21-source-reconciliation.json",
+    "evidence/operator-pilot/chart15-source-reconciliation.json",
+    "evidence/operator-pilot/chart16-source-reconciliation.json",
+    "evidence/operator-pilot/operator22-source-reconciliation.json",
+    "evidence/operator-pilot/fault-retirement22-review.json",
+    "evidence/operator-pilot/operator23-source-reconciliation.json",
+    "evidence/operator-pilot/final-browser-handover-component-reconciliation.json",
+    "evidence/operator-pilot/final-components-sdk23-addendum.json",
+    "evidence/operator-pilot/operator24-source-reconciliation.json",
+    "evidence/operator-pilot/operator25-source-reconciliation.json",
+    "evidence/operator-pilot/final-components-sdk24-addendum.json",
+    "evidence/operator-pilot/final-components-sdk25-addendum.json"
+  ],
+  "protected_resource_comparison": "evidence/operator-pilot/protected-final.json",
+  "retained_resources": "evidence/operator-pilot/retained-namespaces-final.json",
+  "programme_status": "READY_WITH_EXPLICIT_LIMITS",
+  "final_evidence_manifest_sha256": "3ed52933e22ef0b2f536e38257167ea9ebe67354ea1bdbaa2b14e6a55f8d52ff",
+  "final_evidence_verifier": "evidence/operator-pilot/release/verification.json",
+  "public_verification_scope": "Sanitized public proof and artifact/source consistency; raw native identities unavailable. Operational A\u2013H results are separately observed and are not overwritten by this publication limit."
+}

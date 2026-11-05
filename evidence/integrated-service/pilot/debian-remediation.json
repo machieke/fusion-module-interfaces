@@ -1,0 +1,24 @@
+{
+  "profile": "verified-offline-debian-leaf-updates/1",
+  "distribution": "debian-bookworm",
+  "acquired": "2026-11-04",
+  "verification": "APT repository InRelease and package hashes during download-only upgrade",
+  "files": [
+    {
+      "file": "apt_2.6.2_amd64.deb",
+      "sha256": "796fc7fe18866f5b1fb27a115d7339e549d71b7ddbc15b8d6fc4226c243e96d1",
+      "bytes": 1373116
+    },
+    {
+      "file": "libapt-pkg6.0_2.6.2_amd64.deb",
+      "sha256": "023a7017b75295fc7037c7a4352847f9516a36a82cc5e1650d6832d238860913",
+      "bytes": 906972
+    },
+    {
+      "file": "tzdata_2026f-0+deb12u1_all.deb",
+      "sha256": "3254eb870c8a949518214805aee5e4276af7699988ea8b9a3a583cd0f1eab31c",
+      "bytes": 307832
+    }
+  ],
+  "scope": "apt libapt-pkg6.0 tzdata; no host package changes"
+}

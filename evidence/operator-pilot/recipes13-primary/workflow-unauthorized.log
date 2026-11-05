@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/run_recipe_case.py", line 13, in <module>
+    result=guarded(op,directory,row['variant'],maximum_seconds=row['maximum_seconds'],case=row['case'],checkpoint_restart=row.get('checkpoint_restart',False),archive_prerequisite=row.get('archive_prerequisite',False))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/examples/pilot_workflows.py", line 121, in qualify
+    with storage_guard_fault(op,variant,report['provider_fault']):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/examples/pilot_workflow_faults.py", line 33, in storage_guard_fault
+    report['replacement']=q.replace([role]);report['fault']='REAL_PROVIDER_REJECTS_UNROTATED_CALLER_CREDENTIAL'
+                          ^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/preview_recovery_qualification.py", line 93, in replace
+    self.op.k('wait','--for=condition=Ready','pod/'+role+'-0','--timeout=90s',timeout=100)
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 25, in k
+    def k(self,*args,**kw):return self.command(['kubectl','--kubeconfig',self.kubeconfig,'--context',self.context,'-n',self.namespace,*args],**kw)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/integration/single_node/reference_ops.py", line 23, in command
+    raise RuntimeError(str(args[:3])+' '+diagnostic)
+RuntimeError: ['kubectl', '--kubeconfig', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/kubeconfig'] error: timed out waiting for the condition on pods/fusion-storage-0
+

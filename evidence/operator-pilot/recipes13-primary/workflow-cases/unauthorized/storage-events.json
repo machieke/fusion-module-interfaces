@@ -1,0 +1,815 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-11-05T04:35:38.013683Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "541943",
+                "uid": "0930d2c6-be1d-47bb-8be0-feeb34547ef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned omega-ref-pilot-recipe13/fusion-storage-0 to omega-fusion-k3s",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:35:38Z",
+                "name": "fusion-storage-0.18e50c1b4f746bfb",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542336",
+                "uid": "76cd9204-8d66-429d-a5fe-64add89f1473"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-omega-fusion-k3s",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:35:38Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542335",
+                "uid": "0930d2c6-be1d-47bb-8be0-feeb34547ef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:35:38Z",
+            "message": "Container image \"docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:35:38Z",
+                "name": "fusion-storage-0.18e50c1b7039945f",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542342",
+                "uid": "26e88fa1-dab6-40c8-b11f-d894fabd1c6e"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:35:38Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542335",
+                "uid": "0930d2c6-be1d-47bb-8be0-feeb34547ef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:35:38Z",
+            "message": "Created container: fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:35:38Z",
+                "name": "fusion-storage-0.18e50c1b718118d6",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542343",
+                "uid": "0eb3060b-8786-4036-9a76-54f8ef2a5e3b"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:35:38Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542335",
+                "uid": "0930d2c6-be1d-47bb-8be0-feeb34547ef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:35:38Z",
+            "message": "Started container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:35:38Z",
+                "name": "fusion-storage-0.18e50c1b76e58e98",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542345",
+                "uid": "73b35e97-39ae-4ee9-8292-74348e7a5061"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:44:06Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542335",
+                "uid": "0930d2c6-be1d-47bb-8be0-feeb34547ef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:44:06Z",
+            "message": "Stopping container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:44:06Z",
+                "name": "fusion-storage-0.18e50c91bd79ef8f",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542871",
+                "uid": "ef6a6287-5c05-487b-b136-5441a1539c6a"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-11-05T04:44:09.768971Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542884",
+                "uid": "b5fe7e9e-899d-4a2b-864c-2cc78cd438f0"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned omega-ref-pilot-recipe13/fusion-storage-0 to omega-fusion-k3s",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:44:09Z",
+                "name": "fusion-storage-0.18e50c9276725c3f",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542888",
+                "uid": "f9a8c243-af33-4f2e-a720-b40ff61cccc6"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-omega-fusion-k3s",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:44:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542885",
+                "uid": "b5fe7e9e-899d-4a2b-864c-2cc78cd438f0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:44:10Z",
+            "message": "Container image \"docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:44:10Z",
+                "name": "fusion-storage-0.18e50c92965ebba0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542891",
+                "uid": "b75d9ce1-d25e-4b99-b72d-2d2e40e16f75"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:44:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542885",
+                "uid": "b5fe7e9e-899d-4a2b-864c-2cc78cd438f0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:44:10Z",
+            "message": "Created container: fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:44:10Z",
+                "name": "fusion-storage-0.18e50c92979a548e",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542892",
+                "uid": "9051ee32-54b5-41a9-b59e-ce17162d1511"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:44:10Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542885",
+                "uid": "b5fe7e9e-899d-4a2b-864c-2cc78cd438f0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:44:10Z",
+            "message": "Started container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:44:10Z",
+                "name": "fusion-storage-0.18e50c929efdadaa",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542893",
+                "uid": "6227128a-f5c1-4c88-94b9-9c5d66cbbced"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:46:40Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542885",
+                "uid": "b5fe7e9e-899d-4a2b-864c-2cc78cd438f0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:46:40Z",
+            "message": "Stopping container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:46:40Z",
+                "name": "fusion-storage-0.18e50cb5960b2498",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542957",
+                "uid": "8352d3b8-d1eb-491d-9cbf-495977b08110"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-11-05T04:46:41.767291Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542968",
+                "uid": "0ce77a25-466d-41b4-8926-05befd101291"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned omega-ref-pilot-recipe13/fusion-storage-0 to omega-fusion-k3s",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:46:41Z",
+                "name": "fusion-storage-0.18e50cb5da40aa0a",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542972",
+                "uid": "7625062e-9071-449a-b97e-30798cc9c4d5"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-omega-fusion-k3s",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 4,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:46:42Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542970",
+                "uid": "0ce77a25-466d-41b4-8926-05befd101291"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:47:38Z",
+            "message": "Container image \"docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:46:42Z",
+                "name": "fusion-storage-0.18e50cb609d3e80a",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543019",
+                "uid": "bdc2f34b-5937-438a-a418-0d094386c9c4"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 4,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:46:42Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542970",
+                "uid": "0ce77a25-466d-41b4-8926-05befd101291"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:47:38Z",
+            "message": "Created container: fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:46:42Z",
+                "name": "fusion-storage-0.18e50cb60b36af1e",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543020",
+                "uid": "79b2ac45-c2ec-44eb-8d06-39ee1a64b763"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 4,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:46:42Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542970",
+                "uid": "0ce77a25-466d-41b4-8926-05befd101291"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:47:39Z",
+            "message": "Started container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:46:42Z",
+                "name": "fusion-storage-0.18e50cb61157aa66",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543021",
+                "uid": "58fe0709-d026-413a-82f6-9386cb867f3b"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 13,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:46:44Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "542970",
+                "uid": "0ce77a25-466d-41b4-8926-05befd101291"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:48:10Z",
+            "message": "Back-off restarting failed container fusion-storage in pod fusion-storage-0_omega-ref-pilot-recipe13(0ce77a25-466d-41b4-8926-05befd101291)",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:46:44Z",
+                "name": "fusion-storage-0.18e50cb68acfe565",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543038",
+                "uid": "f894fc75-2289-4569-9fd0-419aea105456"
+            },
+            "reason": "BackOff",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Warning"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-11-05T04:48:14.187476Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543052",
+                "uid": "3b729112-f59c-472f-9c5e-b833287e1cea"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned omega-ref-pilot-recipe13/fusion-storage-0 to omega-fusion-k3s",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:48:14Z",
+                "name": "fusion-storage-0.18e50ccb5eecce1b",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543056",
+                "uid": "2872741c-b559-40ea-a8db-ec4a4f024b2e"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-omega-fusion-k3s",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:48:14Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543053",
+                "uid": "3b729112-f59c-472f-9c5e-b833287e1cea"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:48:14Z",
+            "message": "Container image \"docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:48:14Z",
+                "name": "fusion-storage-0.18e50ccb7e70bdd5",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543059",
+                "uid": "9e60a704-3fc8-43e5-8035-f2a8973aa24e"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:48:14Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543053",
+                "uid": "3b729112-f59c-472f-9c5e-b833287e1cea"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:48:14Z",
+            "message": "Created container: fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:48:14Z",
+                "name": "fusion-storage-0.18e50ccb7fc8cc64",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543060",
+                "uid": "0658e993-95a6-4b3f-b88b-1052a9d755e7"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:48:14Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543053",
+                "uid": "3b729112-f59c-472f-9c5e-b833287e1cea"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:48:14Z",
+            "message": "Started container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:48:14Z",
+                "name": "fusion-storage-0.18e50ccb856b79bd",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543061",
+                "uid": "b0a42530-3f76-4d17-ae4a-ad01ccf3e09f"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:52:42Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543053",
+                "uid": "3b729112-f59c-472f-9c5e-b833287e1cea"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:52:42Z",
+            "message": "Stopping container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:52:42Z",
+                "name": "fusion-storage-0.18e50d09d83348fe",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543167",
+                "uid": "1590ea4a-3f6e-409c-82c4-d08d2bc48d7c"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "action": "Binding",
+            "apiVersion": "v1",
+            "eventTime": "2026-11-05T04:52:43.295147Z",
+            "firstTimestamp": null,
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543176",
+                "uid": "bc77a013-21eb-4754-9e6a-288c4ba0342d"
+            },
+            "kind": "Event",
+            "lastTimestamp": null,
+            "message": "Successfully assigned omega-ref-pilot-recipe13/fusion-storage-0 to omega-fusion-k3s",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:52:43Z",
+                "name": "fusion-storage-0.18e50d0a06fdf6b5",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543180",
+                "uid": "d838c0b5-1548-41f0-b5a5-935c0fce689a"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "default-scheduler-omega-fusion-k3s",
+            "source": {},
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:52:43Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543178",
+                "uid": "bc77a013-21eb-4754-9e6a-288c4ba0342d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:52:43Z",
+            "message": "Container image \"docker.io/library/fusion-single-node@sha256:ad83dc51811d4c39150c6251e947ed2f0a5c0dc523ee2842953b58cfd32c04e8\" already present on machine",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:52:43Z",
+                "name": "fusion-storage-0.18e50d0a25a018f3",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543183",
+                "uid": "21b27044-2c3d-4db0-8303-4b02aa0d5bde"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:52:43Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543178",
+                "uid": "bc77a013-21eb-4754-9e6a-288c4ba0342d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:52:43Z",
+            "message": "Created container: fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:52:43Z",
+                "name": "fusion-storage-0.18e50d0a26f51933",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543184",
+                "uid": "76bbac69-522b-4344-83c5-a64a0fad9870"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:52:43Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543178",
+                "uid": "bc77a013-21eb-4754-9e6a-288c4ba0342d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:52:43Z",
+            "message": "Started container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:52:43Z",
+                "name": "fusion-storage-0.18e50d0a2dbbe54d",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543185",
+                "uid": "1ef654a7-000b-4ab5-958f-7972999eabfc"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-11-05T04:52:48Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{fusion-storage}",
+                "kind": "Pod",
+                "name": "fusion-storage-0",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543178",
+                "uid": "bc77a013-21eb-4754-9e6a-288c4ba0342d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-11-05T04:52:48Z",
+            "message": "Stopping container fusion-storage",
+            "metadata": {
+                "creationTimestamp": "2026-11-05T04:52:48Z",
+                "name": "fusion-storage-0.18e50d0b3c886518",
+                "namespace": "omega-ref-pilot-recipe13",
+                "resourceVersion": "543203",
+                "uid": "99f8f4d7-899f-490a-a578-5e5e4c1b2a6d"
+            },
+            "reason": "Killing",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "omega-fusion-k3s",
+            "source": {
+                "component": "kubelet",
+                "host": "omega-fusion-k3s"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

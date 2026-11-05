@@ -1,0 +1,101 @@
+{
+  "profile": "operator-pilot-timing-observation/1",
+  "status": "PASS",
+  "classification": "REAL_NATIVE_RECORDED_MODEL_END_TO_END_NOT_KERNEL_BENCHMARK",
+  "runtime_source": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "story": "evidence/operator-pilot/development/handover14.json",
+  "story_sha256": "7712d142d35eb5d4788093ccd31c9c2944d16d58b11fbbfb43eda85c241b8177",
+  "measurement": {
+    "classification": "OBSERVED_END_TO_END_NOT_KERNEL_BENCHMARK",
+    "inputs": [
+      {
+        "stage": "source-native",
+        "operation": "remember",
+        "observed_elapsed_ms": 19144,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "source-native",
+        "operation": "remember",
+        "observed_elapsed_ms": 18597,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "source-native",
+        "operation": "query",
+        "observed_elapsed_ms": 14915,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "source-native",
+        "operation": "query",
+        "observed_elapsed_ms": 21309,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "source-native",
+        "operation": "query",
+        "observed_elapsed_ms": 20307,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "source-native",
+        "operation": "write-file",
+        "observed_elapsed_ms": 19558,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "source-native",
+        "operation": "episodes",
+        "observed_elapsed_ms": 13564,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "replacement-native",
+        "operation": "remember",
+        "observed_elapsed_ms": 21373,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "replacement-native",
+        "operation": "query",
+        "observed_elapsed_ms": 17095,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "replacement-native",
+        "operation": "write-file",
+        "observed_elapsed_ms": 13482,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      },
+      {
+        "stage": "replacement-native",
+        "operation": "episodes",
+        "observed_elapsed_ms": 14987,
+        "accepted_deadline_budget_ms": 120000,
+        "observed_before_deadline": true
+      }
+    ],
+    "minimum_ms": 13482,
+    "median_ms": 18597,
+    "maximum_ms": 21373,
+    "all_observed_before_deadline": true
+  },
+  "limitations": [
+    "Includes dispatch, provider and observation costs.",
+    "No paired baseline, cold/warm comparison or speedup claim.",
+    "Private occurrence identifiers and primary records withheld.",
+    "Read-only extraction of existing completed observations; no new inputs or provider calls."
+  ],
+  "additional_live_generations": 0
+}

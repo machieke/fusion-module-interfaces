@@ -1,0 +1,1758 @@
+{
+  "additional_live_generations": 0,
+  "application_capacity": [
+    {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 217546,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 1,
+      "role": "omega-agent",
+      "window": 0
+    },
+    {
+      "active": 1,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 231059,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 2,
+      "role": "omega-agent-b",
+      "window": 0
+    },
+    {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 436357,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 3,
+      "role": "omega-agent",
+      "window": 1
+    },
+    {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 422420,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 4,
+      "role": "omega-agent-b",
+      "window": 1
+    },
+    {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 636716,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 5,
+      "role": "omega-agent",
+      "window": 2
+    },
+    {
+      "active": 1,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 613344,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 7,
+      "role": "omega-agent-b",
+      "window": 2
+    },
+    {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 838606,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 7,
+      "role": "omega-agent",
+      "window": 3
+    },
+    {
+      "active": 0,
+      "completion_reserved_bytes": 0,
+      "limits": {
+        "active": 2,
+        "bytes": 8388608,
+        "pending": 8,
+        "retained": 16
+      },
+      "logical_bytes": 784825,
+      "no_effect_budget_refunds": true,
+      "pending": 0,
+      "physical_bytes": "NOT_INFERRED_FROM_LOGICAL_ACCOUNTING",
+      "retained": 9,
+      "role": "omega-agent-b",
+      "window": 3
+    }
+  ],
+  "baseline_ceiling_crossed": true,
+  "boundary_workflows": [
+    {
+      "boundary": 0,
+      "captures_intact": true,
+      "checkpoint_receipt_exact": null,
+      "checkpoint_restart_observed": false,
+      "deadline_renewals": 0,
+      "observed_internal_native_inputs": 2,
+      "positive_task": "PASS",
+      "recipe_complete": 3,
+      "recipe_selected": 3,
+      "recipe_uncertain": 0,
+      "reservation_refunds": 0,
+      "reservations_spent": 3,
+      "safety_objective": "PASS",
+      "separate_direct_complete": 0,
+      "separate_direct_selected": 0,
+      "separate_direct_uncertain": 0,
+      "status": "PASS",
+      "variant": "unchanged"
+    },
+    {
+      "boundary": 1,
+      "captures_intact": true,
+      "checkpoint_receipt_exact": true,
+      "checkpoint_restart_observed": true,
+      "deadline_renewals": 0,
+      "observed_internal_native_inputs": 2,
+      "positive_task": "NOT_COMPLETED",
+      "recipe_complete": 3,
+      "recipe_selected": 3,
+      "recipe_uncertain": 0,
+      "reservation_refunds": 0,
+      "reservations_spent": 3,
+      "safety_objective": "PASS",
+      "separate_direct_complete": 1,
+      "separate_direct_selected": 1,
+      "separate_direct_uncertain": 0,
+      "status": "PASS",
+      "variant": "withdrawn"
+    },
+    {
+      "boundary": 2,
+      "captures_intact": true,
+      "checkpoint_receipt_exact": null,
+      "checkpoint_restart_observed": false,
+      "deadline_renewals": 0,
+      "observed_internal_native_inputs": 2,
+      "positive_task": "PASS",
+      "recipe_complete": 3,
+      "recipe_selected": 3,
+      "recipe_uncertain": 0,
+      "reservation_refunds": 0,
+      "reservations_spent": 3,
+      "safety_objective": "PASS",
+      "separate_direct_complete": 0,
+      "separate_direct_selected": 0,
+      "separate_direct_uncertain": 0,
+      "status": "PASS",
+      "variant": "unchanged"
+    }
+  ],
+  "chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "classification": "REAL_NATIVE_REAL_POD_HTTPS_RECORDED_MODEL",
+  "cleanup": {
+    "basis": "Separate actual Kubernetes Pod/PVC list observation; private identifiers omitted.",
+    "observed_utc": "2026-11-05T14:24:41Z",
+    "pods": 0,
+    "pvcs_retained": 12,
+    "status": "OBSERVED"
+  },
+  "counts": {
+    "aggregate_model_command_admission_stage_events": 180,
+    "aggregate_model_completion_stage_events": 180,
+    "aggregate_native_capture_stage_events": 180,
+    "all_completed_direct_captures": 170,
+    "all_selected_direct_inputs": 170,
+    "boundary_separate_direct_inputs": 1,
+    "completed_internal_capture_observations": 10,
+    "identity_bound_complete_capture_observations": 180,
+    "independently_exported_internal_identity_observations": 10,
+    "internal_by_assignment": {
+      "delegated-result": 5,
+      "delegated-task": 5
+    },
+    "main_report_field_explanation": "Historical field advances only after completed windows; unchanged. Individual terminal driver reports establish selections/completions independently.",
+    "main_report_native_inputs_field": 160,
+    "ordinary_complete": 160,
+    "ordinary_selected_direct_inputs": 160,
+    "ordinary_uncertain": 0,
+    "ordinary_unselected_inputs": 0,
+    "planned_four_window_direct_inputs": 160,
+    "recipe_selected_direct_inputs": 9,
+    "selected_without_observed_acceptance": 0,
+    "telemetry_is_not_receipt_identity": true
+  },
+  "derived_maintenance": [
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2706,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 36864,
+        "unlinked_bytes": 34363
+      },
+      "role": "omega-agent",
+      "status": "complete",
+      "window": 0
+    },
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2702,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 36864,
+        "unlinked_bytes": 34363
+      },
+      "role": "omega-agent-b",
+      "status": "complete",
+      "window": 0
+    },
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2740,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 28672,
+        "unlinked_bytes": 25703
+      },
+      "role": "omega-agent",
+      "status": "complete",
+      "window": 1
+    },
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2736,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 28672,
+        "unlinked_bytes": 25703
+      },
+      "role": "omega-agent-b",
+      "status": "complete",
+      "window": 1
+    },
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2714,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 36864,
+        "unlinked_bytes": 34363
+      },
+      "role": "omega-agent",
+      "status": "complete",
+      "window": 2
+    },
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2710,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 36864,
+        "unlinked_bytes": 34363
+      },
+      "role": "omega-agent-b",
+      "status": "complete",
+      "window": 2
+    },
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2740,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 28672,
+        "unlinked_bytes": 25703
+      },
+      "role": "omega-agent",
+      "status": "complete",
+      "window": 3
+    },
+    {
+      "apply_calls": 1,
+      "inventory_observations": 1,
+      "reconstructible_candidates": {
+        "materializations": 4,
+        "overlays": 0
+      },
+      "replay_exact": true,
+      "result_observations": {
+        "cache_body_bytes_removed": 2736,
+        "capacity_refund": false,
+        "physical_freed_bytes": "NOT_ESTABLISHED_SQLITE_FREELIST_AND_OPEN_HANDLES_MAY_RETAIN_BLOCKS",
+        "unlinked_allocated_bytes": 28672,
+        "unlinked_bytes": 25703
+      },
+      "role": "omega-agent-b",
+      "status": "complete",
+      "window": 3
+    }
+  ],
+  "diagnostics": {
+    "new_native_inputs": 0,
+    "observer_errors": 0,
+    "pod_commands": 14,
+    "roles": 12,
+    "same_pod_incarnations": true,
+    "sampling": "Sequential owner observations, not one atomic cut.",
+    "status": "OBSERVED"
+  },
+  "earliest_capture_continuity": {
+    "basis": "Existing qualifier compares actual retained owner observations to earlier captured receipts; public private receipts remain withheld.",
+    "completed_windows_with_exact_readback": 4,
+    "no_state_reset": true,
+    "reported_all_old_captures_exact": true
+  },
+  "failure": null,
+  "frozen_execution_script_sha256": "487923200aacc344ebd6c89628b8fa71fe744a3fe4fc7069e87738bfe719bc30",
+  "historical_failures_preserved": [
+    "A14",
+    "A15",
+    "A16"
+  ],
+  "namespace": "omega-ref-pilot-endurance17",
+  "native_stage_measurements": {
+    "omega-agent": {
+      "cross_process_critical_path": "NOT_INFERRED_FROM_LOCAL_CLOCKS_OR_SUMMED_MEDIANS",
+      "error_observations": [
+        {
+          "code": "NOT_AVAILABLE",
+          "count": 7,
+          "stage": "input.prepare"
+        },
+        {
+          "code": "NOT_AVAILABLE",
+          "count": 7,
+          "stage": "provider.omega-agent"
+        },
+        {
+          "code": "FAILED",
+          "count": 1,
+          "stage": "transport.connection_open"
+        },
+        {
+          "code": "NOT_AVAILABLE",
+          "count": 8,
+          "stage": "transport.preview"
+        }
+      ],
+      "nested_durations_are_not_additive": true,
+      "stages": {
+        "input.prepare": {
+          "count": 110,
+          "max_ms": 22143.661036,
+          "median_ms": 4066.541261,
+          "min_ms": 5.664047,
+          "p95_ms": 7812.971134,
+          "total_ms": 496780.13602
+        },
+        "memory.append": {
+          "count": 7,
+          "max_ms": 6606.774231,
+          "median_ms": 5270.645445,
+          "min_ms": 2304.736593,
+          "p95_ms": 6606.774231,
+          "total_ms": 31033.09255
+        },
+        "memory.retrieve": {
+          "count": 16,
+          "max_ms": 2309.547368,
+          "median_ms": 1887.7464105,
+          "min_ms": 664.21926,
+          "p95_ms": 2309.547368,
+          "total_ms": 26865.80328
+        },
+        "model.command_admission": {
+          "count": 95,
+          "max_ms": 5.114191,
+          "median_ms": 2.782818,
+          "min_ms": 0.881592,
+          "p95_ms": 3.238505,
+          "total_ms": 262.518203
+        },
+        "model.complete": {
+          "count": 95,
+          "max_ms": 339.57107,
+          "median_ms": 147.682736,
+          "min_ms": 85.653131,
+          "p95_ms": 239.742803,
+          "total_ms": 14494.517706
+        },
+        "model.prompt_bind": {
+          "count": 95,
+          "max_ms": 2249.265894,
+          "median_ms": 1681.782842,
+          "min_ms": 389.761605,
+          "p95_ms": 2016.193378,
+          "total_ms": 151488.218354
+        },
+        "native.application_bootstrap": {
+          "count": 16,
+          "max_ms": 495.124429,
+          "median_ms": 300.4493065,
+          "min_ms": 183.651161,
+          "p95_ms": 495.124429,
+          "total_ms": 5104.793718
+        },
+        "native.capture_native": {
+          "count": 95,
+          "max_ms": 1240.198754,
+          "median_ms": 0.381265,
+          "min_ms": 0.120339,
+          "p95_ms": 996.096099,
+          "total_ms": 20181.095778
+        },
+        "native.context_captured": {
+          "count": 95,
+          "max_ms": 1062.150088,
+          "median_ms": 645.606326,
+          "min_ms": 70.294062,
+          "p95_ms": 861.966762,
+          "total_ms": 50884.071846
+        },
+        "native.first_bridge": {
+          "count": 16,
+          "max_ms": 4339.89791,
+          "median_ms": 3624.466323,
+          "min_ms": 3334.112025,
+          "p95_ms": 4339.89791,
+          "total_ms": 58988.814504
+        },
+        "native.launch_prepare": {
+          "count": 16,
+          "max_ms": 344.052949,
+          "median_ms": 188.4459145,
+          "min_ms": 134.488951,
+          "p95_ms": 344.052949,
+          "total_ms": 3573.080908
+        },
+        "native.preparation_publish": {
+          "count": 7,
+          "max_ms": 174.664611,
+          "median_ms": 171.411018,
+          "min_ms": 161.834685,
+          "p95_ms": 174.664611,
+          "total_ms": 1182.515863
+        },
+        "native.preparation_reuse": {
+          "count": 9,
+          "max_ms": 2.000183,
+          "median_ms": 1.116213,
+          "min_ms": 1.08414,
+          "p95_ms": 2.000183,
+          "total_ms": 11.068898
+        },
+        "native.preparation_verify": {
+          "count": 16,
+          "max_ms": 196.831483,
+          "median_ms": 130.5219555,
+          "min_ms": 123.802308,
+          "p95_ms": 196.831483,
+          "total_ms": 2221.859334
+        },
+        "native.preview_execute": {
+          "count": 51,
+          "max_ms": 3438.471985,
+          "median_ms": 102.660434,
+          "min_ms": 10.855054,
+          "p95_ms": 1066.634163,
+          "total_ms": 22326.874012
+        },
+        "native.preview_render_context": {
+          "count": 95,
+          "max_ms": 783.190627,
+          "median_ms": 3.922668,
+          "min_ms": 2.695104,
+          "p95_ms": 305.303397,
+          "total_ms": 3247.371989
+        },
+        "transport.atoms": {
+          "count": 2376,
+          "max_ms": 259.293292,
+          "median_ms": 58.7536915,
+          "min_ms": 15.667356,
+          "p95_ms": 175.065214,
+          "total_ms": 191737.937706
+        },
+        "transport.cognition": {
+          "count": 14797,
+          "max_ms": 1112.888544,
+          "median_ms": 27.854545,
+          "min_ms": 3.258878,
+          "p95_ms": 169.182422,
+          "total_ms": 740722.717329
+        },
+        "transport.connection_open": {
+          "count": 3918,
+          "max_ms": 2031.681159,
+          "median_ms": 5.3636185,
+          "min_ms": 2.338171,
+          "p95_ms": 52.002404,
+          "total_ms": 50382.118911
+        },
+        "transport.connection_reuse": {
+          "count": 19676,
+          "max_ms": 0.081039,
+          "median_ms": 0.001372,
+          "min_ms": 0.000536,
+          "p95_ms": 0.002897,
+          "total_ms": 31.969507
+        },
+        "transport.embedding": {
+          "count": 196,
+          "max_ms": 444.592071,
+          "median_ms": 10.664909,
+          "min_ms": 5.140382,
+          "p95_ms": 255.010268,
+          "total_ms": 8793.923559
+        },
+        "transport.memory_source": {
+          "count": 851,
+          "max_ms": 294.611953,
+          "median_ms": 37.829903,
+          "min_ms": 7.515195,
+          "p95_ms": 72.829649,
+          "total_ms": 36843.191215
+        },
+        "transport.preview": {
+          "count": 6421,
+          "max_ms": 4151.038543,
+          "median_ms": 18.052256,
+          "min_ms": 0.963091,
+          "p95_ms": 682.537717,
+          "total_ms": 647153.498545
+        }
+      },
+      "status": "OBSERVED",
+      "total_error_observations": 23,
+      "truncated_files": 0
+    },
+    "omega-agent-b": {
+      "cross_process_critical_path": "NOT_INFERRED_FROM_LOCAL_CLOCKS_OR_SUMMED_MEDIANS",
+      "error_observations": [
+        {
+          "code": "NOT_AVAILABLE",
+          "count": 4,
+          "stage": "input.prepare"
+        },
+        {
+          "code": "NOT_AVAILABLE",
+          "count": 4,
+          "stage": "provider.omega-agent-b"
+        },
+        {
+          "code": "FAILED",
+          "count": 1,
+          "stage": "transport.connection_open"
+        },
+        {
+          "code": "NOT_AVAILABLE",
+          "count": 5,
+          "stage": "transport.preview"
+        }
+      ],
+      "nested_durations_are_not_additive": true,
+      "stages": {
+        "input.prepare": {
+          "count": 102,
+          "max_ms": 30064.112837,
+          "median_ms": 4261.9458105,
+          "min_ms": 6.363485,
+          "p95_ms": 7014.977528,
+          "total_ms": 517882.451244
+        },
+        "memory.append": {
+          "count": 4,
+          "max_ms": 6990.511902,
+          "median_ms": 3338.34186,
+          "min_ms": 2286.036917,
+          "p95_ms": 6990.511902,
+          "total_ms": 15953.232539
+        },
+        "memory.retrieve": {
+          "count": 21,
+          "max_ms": 3066.112849,
+          "median_ms": 2067.726998,
+          "min_ms": 614.621579,
+          "p95_ms": 2574.893421,
+          "total_ms": 37993.135847
+        },
+        "model.command_admission": {
+          "count": 85,
+          "max_ms": 6.050867,
+          "median_ms": 2.817087,
+          "min_ms": 2.117114,
+          "p95_ms": 3.201381,
+          "total_ms": 248.605912
+        },
+        "model.complete": {
+          "count": 85,
+          "max_ms": 266.330841,
+          "median_ms": 149.323908,
+          "min_ms": 78.462387,
+          "p95_ms": 220.453864,
+          "total_ms": 13107.658484
+        },
+        "model.prompt_bind": {
+          "count": 85,
+          "max_ms": 4064.664379,
+          "median_ms": 1840.227556,
+          "min_ms": 376.304983,
+          "p95_ms": 2110.882736,
+          "total_ms": 147698.945343
+        },
+        "native.application_bootstrap": {
+          "count": 17,
+          "max_ms": 461.0356,
+          "median_ms": 332.93309,
+          "min_ms": 211.760898,
+          "p95_ms": 461.0356,
+          "total_ms": 5632.917392
+        },
+        "native.capture_native": {
+          "count": 85,
+          "max_ms": 1429.773913,
+          "median_ms": 36.533906,
+          "min_ms": 0.122754,
+          "p95_ms": 1174.16103,
+          "total_ms": 25837.945671
+        },
+        "native.context_captured": {
+          "count": 85,
+          "max_ms": 1004.957791,
+          "median_ms": 746.392876,
+          "min_ms": 65.978236,
+          "p95_ms": 911.495599,
+          "total_ms": 52006.081279
+        },
+        "native.first_bridge": {
+          "count": 17,
+          "max_ms": 4379.096825,
+          "median_ms": 3563.441275,
+          "min_ms": 3337.813933,
+          "p95_ms": 4379.096825,
+          "total_ms": 61687.750379
+        },
+        "native.launch_prepare": {
+          "count": 17,
+          "max_ms": 403.725608,
+          "median_ms": 299.50594,
+          "min_ms": 135.360063,
+          "p95_ms": 403.725608,
+          "total_ms": 4042.722813
+        },
+        "native.preparation_publish": {
+          "count": 9,
+          "max_ms": 234.280183,
+          "median_ms": 172.708384,
+          "min_ms": 161.084202,
+          "p95_ms": 234.280183,
+          "total_ms": 1652.277726
+        },
+        "native.preparation_reuse": {
+          "count": 8,
+          "max_ms": 1.123046,
+          "median_ms": 1.0963115,
+          "min_ms": 1.06938,
+          "p95_ms": 1.123046,
+          "total_ms": 8.752505
+        },
+        "native.preparation_verify": {
+          "count": 17,
+          "max_ms": 156.49749,
+          "median_ms": 128.41601,
+          "min_ms": 124.352502,
+          "p95_ms": 156.49749,
+          "total_ms": 2215.715553
+        },
+        "native.preview_execute": {
+          "count": 38,
+          "max_ms": 958.498404,
+          "median_ms": 94.964554,
+          "min_ms": 8.458589,
+          "p95_ms": 955.957132,
+          "total_ms": 11997.829937
+        },
+        "native.preview_render_context": {
+          "count": 85,
+          "max_ms": 7.751611,
+          "median_ms": 4.120794,
+          "min_ms": 2.884811,
+          "p95_ms": 5.413943,
+          "total_ms": 358.09598
+        },
+        "transport.atoms": {
+          "count": 2171,
+          "max_ms": 2148.199508,
+          "median_ms": 64.649387,
+          "min_ms": 23.83527,
+          "p95_ms": 185.555448,
+          "total_ms": 188667.304495
+        },
+        "transport.cognition": {
+          "count": 14251,
+          "max_ms": 1114.067175,
+          "median_ms": 36.166438,
+          "min_ms": 3.13718,
+          "p95_ms": 172.970009,
+          "total_ms": 776673.700859
+        },
+        "transport.connection_open": {
+          "count": 3898,
+          "max_ms": 2066.292969,
+          "median_ms": 5.998967,
+          "min_ms": 2.43373,
+          "p95_ms": 54.708195,
+          "total_ms": 52352.514356
+        },
+        "transport.connection_reuse": {
+          "count": 18465,
+          "max_ms": 0.07049,
+          "median_ms": 0.001695,
+          "min_ms": 0.000541,
+          "p95_ms": 0.003069,
+          "total_ms": 33.735486
+        },
+        "transport.embedding": {
+          "count": 217,
+          "max_ms": 316.081346,
+          "median_ms": 12.787979,
+          "min_ms": 5.256638,
+          "p95_ms": 208.938558,
+          "total_ms": 9624.93017
+        },
+        "transport.memory_source": {
+          "count": 816,
+          "max_ms": 277.650523,
+          "median_ms": 43.925969,
+          "min_ms": 7.518892,
+          "p95_ms": 67.591314,
+          "total_ms": 37359.189684
+        },
+        "transport.preview": {
+          "count": 5941,
+          "max_ms": 4345.547408,
+          "median_ms": 21.766289,
+          "min_ms": 1.075198,
+          "p95_ms": 723.719284,
+          "total_ms": 614380.174308
+        }
+      },
+      "status": "OBSERVED",
+      "total_error_observations": 14,
+      "truncated_files": 0
+    }
+  },
+  "observed_input_interval": {
+    "basis": "Selected input observer span only; excludes preparation, control-only intervals and final diagnostics. Not the programme duration.",
+    "first_started_ms": 1793884101451,
+    "last_finished_ms": 1793888616539,
+    "span_ms": 4515088
+  },
+  "operator_wheel_sha256": "93350732cbc3294f16e2f8c9d787836dd4503c1ddad5a4cb0448493cde6fc4e9",
+  "ordinary_and_boundary_observer_duration": {
+    "max_ms": 34673,
+    "median_ms": 20624,
+    "min_ms": 12085,
+    "p95_ms": 29313,
+    "quantile": "nearest-rank p95; operator observation elapsed, not isolated native execution",
+    "samples": 161,
+    "total_ms": 3442506
+  },
+  "original_limits": {
+    "deadline_renewals": 0,
+    "observed_input_deadline_deltas_ms": [
+      119975,
+      119978,
+      119981,
+      119982,
+      119983,
+      119984,
+      119985,
+      120000
+    ],
+    "per_input_seconds": 120,
+    "programme_end_utc": null,
+    "programme_seconds": 7200,
+    "programme_start_utc": null,
+    "programme_timing_basis": "Qualifier uses a monotonic 7200-second window. It does not export its absolute start/end; receipt and operator intervals are measured separately.",
+    "reservation_refunds": 0
+  },
+  "private_evidence": {
+    "bytes": null,
+    "raw_reports_unchanged": true,
+    "sha256": null,
+    "status": "UNAVAILABLE_PRIVATE"
+  },
+  "profile": "operator-pilot-endurance-development-summary/1",
+  "qualifier_primary_status": "PASS",
+  "qualifier_source_sha256": "247a7e0945bc6e71c6821a7a7834d5f47e0ad3f1c956a6f2b22a203df5ed5331",
+  "receipt_snapshot": {
+    "bytes": null,
+    "counts": {
+      "assignments": {
+        "delegated-result": 5,
+        "delegated-task": 5,
+        "synthetic-task": 151
+      },
+      "completed_internal_receipts": 10,
+      "completed_receipts": 160,
+      "internal_receipt_identities": 10,
+      "observed_receipt_identities": 161
+    },
+    "elapsed_seconds": 2.4232439985498786,
+    "module_reads": 20,
+    "pod_execs": 2,
+    "scope": "Receipt-only private snapshot during final private window. No later allocations planned; direct input completion is counted from terminal driver reports.",
+    "sha256": null,
+    "status": "OBSERVED"
+  },
+  "registry_headroom": [
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 439705,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent",
+      "usage": {
+        "actions": 110,
+        "active_actions": 0,
+        "active_bytes": 0,
+        "epochs": 10,
+        "object_bytes": 96655,
+        "objects": 233,
+        "retained_bytes": 158302
+      },
+      "window": 0
+    },
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 506308,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent-b",
+      "usage": {
+        "actions": 120,
+        "active_actions": 0,
+        "active_bytes": 0,
+        "epochs": 10,
+        "object_bytes": 100519,
+        "objects": 248,
+        "retained_bytes": 167855
+      },
+      "window": 0
+    },
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 898608,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent",
+      "usage": {
+        "actions": 230,
+        "active_actions": 10,
+        "active_bytes": 8359,
+        "epochs": 20,
+        "object_bytes": 158915,
+        "objects": 441,
+        "retained_bytes": 287368
+      },
+      "window": 1
+    },
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 965211,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent-b",
+      "usage": {
+        "actions": 240,
+        "active_actions": 10,
+        "active_bytes": 8359,
+        "epochs": 20,
+        "object_bytes": 162779,
+        "objects": 456,
+        "retained_bytes": 296921
+      },
+      "window": 1
+    },
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 1302854,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent",
+      "usage": {
+        "actions": 330,
+        "active_actions": 0,
+        "active_bytes": 0,
+        "epochs": 30,
+        "object_bytes": 197555,
+        "objects": 591,
+        "retained_bytes": 379018
+      },
+      "window": 2
+    },
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 1436060,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent-b",
+      "usage": {
+        "actions": 350,
+        "active_actions": 0,
+        "active_bytes": 0,
+        "epochs": 30,
+        "object_bytes": 205283,
+        "objects": 621,
+        "retained_bytes": 398004
+      },
+      "window": 2
+    },
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 1670640,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent",
+      "usage": {
+        "actions": 430,
+        "active_actions": 10,
+        "active_bytes": 8359,
+        "epochs": 40,
+        "object_bytes": 243242,
+        "objects": 768,
+        "retained_bytes": 479239
+      },
+      "window": 3
+    },
+    {
+      "baseline_equivalent": {
+        "basis": "RECONSTRUCTED_RECORDS_READINESS_ACTIONS_SELECTIONS_NOT_PHYSICAL_BYTES",
+        "bytes": 1803846,
+        "former_limit_bytes": 1048576
+      },
+      "epochs_sealed": 10,
+      "limits": {
+        "actions": 4096,
+        "active_actions": 256,
+        "active_bytes": 196608,
+        "control_bytes": 32768,
+        "epoch_actions": 64,
+        "epochs": 64,
+        "object_bytes": 1048576,
+        "objects": 4096,
+        "retained_bytes": 4194304
+      },
+      "observation": "OWNER_LOCAL_NOT_MULTI_OWNER_ADMISSION",
+      "profile": "trusted-provider-lifecycle/2",
+      "reserved_control_bytes": 32768,
+      "role": "omega-agent-b",
+      "usage": {
+        "actions": 450,
+        "active_actions": 10,
+        "active_bytes": 8359,
+        "epochs": 40,
+        "object_bytes": 250970,
+        "objects": 798,
+        "retained_bytes": 498225
+      },
+      "window": 3
+    }
+  ],
+  "resource_observations": {
+    "fusion-attention": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "230251439836",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "76705792",
+        "v1.memory.usage_in_bytes": "72462336"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 16943,
+      "observed_process_rss_bytes": 82460672,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 2830812,
+      "state_files": 7
+    },
+    "fusion-beliefs": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "271702055489",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "104857600",
+        "v1.memory.usage_in_bytes": "104333312"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 26840,
+      "observed_process_rss_bytes": 114872320,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 4915362,
+      "state_files": 16
+    },
+    "fusion-embedding": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "51682671375",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "5368709120",
+        "v1.memory.max_usage_in_bytes": "1464139776",
+        "v1.memory.usage_in_bytes": "398569472"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 5131,
+      "observed_process_rss_bytes": 1721278464,
+      "processes": 3,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 1127897,
+      "state_files": 11
+    },
+    "fusion-episodes": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "245063094963",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "48832512",
+        "v1.memory.usage_in_bytes": "48304128"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 24469,
+      "observed_process_rss_bytes": 57704448,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 7921728,
+      "state_files": 11
+    },
+    "fusion-execution": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "444942758159",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "48357376",
+        "v1.memory.usage_in_bytes": "38977536"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 44357,
+      "observed_process_rss_bytes": 53886976,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 969326,
+      "state_files": 10
+    },
+    "fusion-messaging": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "14755546916",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "268435456",
+        "v1.memory.max_usage_in_bytes": "34304000",
+        "v1.memory.usage_in_bytes": "33644544"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 1440,
+      "observed_process_rss_bytes": 50622464,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 946646,
+      "state_files": 6
+    },
+    "fusion-model": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "24145498362",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "268435456",
+        "v1.memory.max_usage_in_bytes": "39694336",
+        "v1.memory.usage_in_bytes": "39038976"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 2374,
+      "observed_process_rss_bytes": 49684480,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 7378946,
+      "state_files": 10
+    },
+    "fusion-relations": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "19911867182",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "48730112",
+        "v1.memory.usage_in_bytes": "36192256"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 1955,
+      "observed_process_rss_bytes": 52334592,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 1416601,
+      "state_files": 7
+    },
+    "fusion-search": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "37699394535",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "1073741824",
+        "v1.memory.max_usage_in_bytes": "155406336",
+        "v1.memory.usage_in_bytes": "155033600"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 3727,
+      "observed_process_rss_bytes": 178958336,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 10690274,
+      "state_files": 124
+    },
+    "fusion-storage": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "1995557202755",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "268435456",
+        "v1.memory.max_usage_in_bytes": "267452416",
+        "v1.memory.usage_in_bytes": "267104256"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 105156,
+      "observed_process_rss_bytes": 64208896,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 96122894,
+      "state_files": 64316
+    },
+    "omega-agent": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "474118810128",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "277233664",
+        "v1.memory.usage_in_bytes": "165539840"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 4618,
+      "observed_process_rss_bytes": 154099712,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 43188367,
+      "state_files": 396
+    },
+    "omega-agent-b": {
+      "cgroup": {
+        "cpu.max": "UNAVAILABLE",
+        "cpu.stat": "UNAVAILABLE",
+        "memory.current": "UNAVAILABLE",
+        "memory.events": "UNAVAILABLE",
+        "memory.max": "UNAVAILABLE",
+        "memory.peak": "UNAVAILABLE",
+        "v1.cpu.cfs_period_us": "100000",
+        "v1.cpu.cfs_quota_us": "-1",
+        "v1.cpu.stat": "nr_periods 0\nnr_throttled 0\nthrottled_time 0",
+        "v1.cpuacct.usage": "887318721470",
+        "v1.memory.failcnt": "0",
+        "v1.memory.limit_in_bytes": "536870912",
+        "v1.memory.max_usage_in_bytes": "328323072",
+        "v1.memory.usage_in_bytes": "214523904"
+      },
+      "cpu_enforcement": "NOT_ESTABLISHED",
+      "cpu_ticks_per_second": 100,
+      "live_model_throughput": "NOT_RUN",
+      "observed_process_cpu_ticks": 9200,
+      "observed_process_rss_bytes": 199368704,
+      "processes": 2,
+      "sampling": "observer process included explicitly; pid1 is role host; cgroup includes all native children",
+      "state_bytes": 35935075,
+      "state_files": 450
+    }
+  },
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "sdk25_manifest_sha256": "f902477c74ed25c5753d5903fa3c9071c6a6820172c3cc6cc8bb8ef2fd27ee90",
+  "status": "PASS",
+  "supervisor_observation": {
+    "child_terminal_barrier": {
+      "observed_unix_ms": 1793888642158,
+      "passed": true
+    },
+    "children": [
+      {
+        "exit_code": 0,
+        "finished_unix_ms": 1793883950632,
+        "name": "namespace-absence",
+        "reaped": true,
+        "started_unix_ms": 1793883950231
+      },
+      {
+        "exit_code": 0,
+        "finished_unix_ms": 1793883996664,
+        "name": "install",
+        "reaped": true,
+        "started_unix_ms": 1793883950635
+      },
+      {
+        "exit_code": 0,
+        "finished_unix_ms": 1793884015685,
+        "name": "placement",
+        "reaped": true,
+        "started_unix_ms": 1793883996673
+      },
+      {
+        "exit_code": 0,
+        "finished_unix_ms": 1793888642151,
+        "name": "qualifier",
+        "reaped": true,
+        "started_unix_ms": 1793884015693
+      },
+      {
+        "exit_code": 0,
+        "finished_unix_ms": 1793888181859,
+        "name": "receipt-snapshot",
+        "reaped": true,
+        "started_unix_ms": 1793888179250
+      },
+      {
+        "exit_code": 0,
+        "finished_unix_ms": 1793888672572,
+        "name": "diagnostics",
+        "reaped": true,
+        "started_unix_ms": 1793888642159
+      },
+      {
+        "exit_code": 0,
+        "finished_unix_ms": 1793888681588,
+        "name": "cleanup",
+        "reaped": true,
+        "started_unix_ms": 1793888672574
+      }
+    ],
+    "cleanup": {
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    "diagnostic_exit_code": 0,
+    "elapsed_seconds": 4731.364375479519,
+    "finished_unix_ms": 1793888681591,
+    "interruption": null,
+    "limits": {
+      "cleanup_seconds": 300,
+      "diagnostic_seconds": 600,
+      "outer_seconds": 9000,
+      "qualifier_native_seconds": 7200,
+      "qualifier_process_seconds": 7260,
+      "receipt_seconds": 120,
+      "setup_seconds": 600,
+      "termination_seconds": 30
+    },
+    "no_detached_resume_or_relaunch": true,
+    "process_identity_basis": "Private supervisor records retain PID/start-tick/session bindings; not exported here.",
+    "qualifier_exit_code": 0,
+    "receipt_observation": {
+      "exit_code": 0,
+      "status": "OBSERVED"
+    },
+    "signals": [],
+    "started_unix_ms": 1793883950228,
+    "status": "PASS"
+  },
+  "windows": [
+    {
+      "acceptance_unobserved": 0,
+      "accepted": 40,
+      "command_counts": {
+        "append-file": 2,
+        "contradict": 2,
+        "delegate": 1,
+        "demote": 2,
+        "episodes": 4,
+        "inspect-atom": 1,
+        "link": 2,
+        "metta": 1,
+        "pin": 2,
+        "promote": 2,
+        "query": 7,
+        "read-file": 2,
+        "remember": 2,
+        "support": 4,
+        "task-context": 2,
+        "unlink": 2,
+        "write-file": 2
+      },
+      "complete": 40,
+      "driver_completed_window_count": 40,
+      "earliest_captures_exact": true,
+      "observation_duration": {
+        "max_ms": 34673,
+        "median_ms": 22108.0,
+        "min_ms": 13355,
+        "p95_ms": 29372,
+        "quantile": "nearest-rank p95; operator observation elapsed, not isolated native execution",
+        "samples": 40,
+        "total_ms": 887366
+      },
+      "scope_class": "shared",
+      "selected": 40,
+      "states": {
+        "complete": 40
+      },
+      "status": "PASS",
+      "terminal_before_start": 0,
+      "uncertain": 0,
+      "window": 0
+    },
+    {
+      "acceptance_unobserved": 0,
+      "accepted": 40,
+      "command_counts": {
+        "contradict": 2,
+        "demote": 2,
+        "episodes": 4,
+        "link": 2,
+        "pin": 4,
+        "promote": 2,
+        "query": 8,
+        "remember": 2,
+        "support": 4,
+        "task-context": 6,
+        "unlink": 2,
+        "unpin": 2
+      },
+      "complete": 40,
+      "driver_completed_window_count": 40,
+      "earliest_captures_exact": true,
+      "observation_duration": {
+        "max_ms": 34349,
+        "median_ms": 20590.0,
+        "min_ms": 15042,
+        "p95_ms": 27674,
+        "quantile": "nearest-rank p95; operator observation elapsed, not isolated native execution",
+        "samples": 40,
+        "total_ms": 858925
+      },
+      "scope_class": "private",
+      "selected": 40,
+      "states": {
+        "complete": 40
+      },
+      "status": "PASS",
+      "terminal_before_start": 0,
+      "uncertain": 0,
+      "window": 1
+    },
+    {
+      "acceptance_unobserved": 0,
+      "accepted": 40,
+      "command_counts": {
+        "append-file": 2,
+        "contradict": 2,
+        "delegate": 1,
+        "demote": 2,
+        "episodes": 4,
+        "link": 2,
+        "metta": 2,
+        "pin": 2,
+        "promote": 2,
+        "query": 7,
+        "read-file": 2,
+        "remember": 2,
+        "support": 4,
+        "task-context": 2,
+        "unlink": 2,
+        "write-file": 2
+      },
+      "complete": 40,
+      "driver_completed_window_count": 40,
+      "earliest_captures_exact": true,
+      "observation_duration": {
+        "max_ms": 33118,
+        "median_ms": 20925.5,
+        "min_ms": 13466,
+        "p95_ms": 29313,
+        "quantile": "nearest-rank p95; operator observation elapsed, not isolated native execution",
+        "samples": 40,
+        "total_ms": 870869
+      },
+      "scope_class": "shared",
+      "selected": 40,
+      "states": {
+        "complete": 40
+      },
+      "status": "PASS",
+      "terminal_before_start": 0,
+      "uncertain": 0,
+      "window": 2
+    },
+    {
+      "acceptance_unobserved": 0,
+      "accepted": 40,
+      "command_counts": {
+        "contradict": 2,
+        "demote": 2,
+        "episodes": 4,
+        "link": 2,
+        "pin": 4,
+        "promote": 2,
+        "query": 8,
+        "remember": 2,
+        "support": 4,
+        "task-context": 6,
+        "unlink": 2,
+        "unpin": 2
+      },
+      "complete": 40,
+      "driver_completed_window_count": 40,
+      "earliest_captures_exact": true,
+      "observation_duration": {
+        "max_ms": 34617,
+        "median_ms": 20129.0,
+        "min_ms": 12085,
+        "p95_ms": 27559,
+        "quantile": "nearest-rank p95; operator observation elapsed, not isolated native execution",
+        "samples": 40,
+        "total_ms": 808216
+      },
+      "scope_class": "private",
+      "selected": 40,
+      "states": {
+        "complete": 40
+      },
+      "status": "PASS",
+      "terminal_before_start": 0,
+      "uncertain": 0,
+      "window": 3
+    }
+  ]
+}

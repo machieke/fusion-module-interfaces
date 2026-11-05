@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/resume-reference.py", line 9, in <module>
+    m.resume(op,root/'reference-workflow-recovery',root/'recipe-chain-evidence')
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/pilot_artifact_reference.py", line 94, in resume
+    require(time.time()*1000+120000<end,'NOT_AVAILABLE')
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

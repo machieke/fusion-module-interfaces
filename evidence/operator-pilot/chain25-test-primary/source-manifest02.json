@@ -1,0 +1,32 @@
+{
+  "profile": "operator-consumer-readiness-test-source/1",
+  "before": {
+    "examples/pilot_chain_readiness.py": "4a4ad404601ede5c8696490de3a17fbbd6d2451adfd5e0fe326002199a63ffd8",
+    "examples/pilot_recipe_chain.py": "22a067336ec9e0a39ffa754b1f57cc71b37dec0a28f350de70fdedc079d00621",
+    "examples/sustained_chain_qualification.py": "f541a4d4a049a0e143f68bd5f988a5c120441ccaa9295cb8b7636eafacd72060",
+    "tests/test_pilot_chain_readiness.py": "8f93f3837426d3b0605e82b139cd05fc5823e4da59e898e8ca5720b7f9314460",
+    "tests/test_pilot_recipe_chain.py": "6fe5d9194602260e89cc3f7f0d292fdd708c48667e0b63d3fbea895d831d493d"
+  },
+  "after": {
+    "examples/pilot_chain_readiness.py": "4a4ad404601ede5c8696490de3a17fbbd6d2451adfd5e0fe326002199a63ffd8",
+    "examples/pilot_recipe_chain.py": "22a067336ec9e0a39ffa754b1f57cc71b37dec0a28f350de70fdedc079d00621",
+    "examples/sustained_chain_qualification.py": "f541a4d4a049a0e143f68bd5f988a5c120441ccaa9295cb8b7636eafacd72060",
+    "tests/test_pilot_chain_readiness.py": "8f93f3837426d3b0605e82b139cd05fc5823e4da59e898e8ca5720b7f9314460",
+    "tests/test_pilot_recipe_chain.py": "6fe5d9194602260e89cc3f7f0d292fdd708c48667e0b63d3fbea895d831d493d"
+  },
+  "source_copies_captured_before_execution": true,
+  "status": "PASS",
+  "tests_run": 15,
+  "failures": 0,
+  "errors": 0,
+  "denial": {
+    "mode": "recorded",
+    "real_runtime_startups": 0,
+    "real_backend_calls": 0,
+    "live_reservations": 0,
+    "live_captures": 0
+  },
+  "classification": "RECORDED_TRANSPORT_AND_OWNER_FIXTURES_NO_PROVIDER_NATIVE_OR_CHAIN_EXECUTION",
+  "source_unchanged": true,
+  "additional_live_generations": 0
+}

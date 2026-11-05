@@ -1,0 +1,459 @@
+{
+  "base_commit": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "checks": [
+    {
+      "command": "artifacts/s03/venv/bin/python -m unittest tests.test_pilot_browser_qualification tests.test_pilot_browser tests.test_pilot_subscriptions tests.test_phase2_workbench tests.test_integrated_workbench tests.test_integrated_permissions tests.test_phase3_sessions -q",
+      "methods": 78,
+      "seconds": 14.537,
+      "status": "PASS",
+      "unique_count_across_other_runs": "NOT_ADDITIVE"
+    },
+    {
+      "command": "node --check generated pilot browser inline script",
+      "status": "PASS"
+    },
+    {
+      "command": "ProofShot scoped fixture browser",
+      "console_errors": 0,
+      "final_screenshots": 3,
+      "server_errors": 0,
+      "sessions": 4,
+      "status": "PASS_FOR_RECORDED_BOUNDARIES"
+    }
+  ],
+  "cleanup": {
+    "cluster_writes": 0,
+    "protected_resources_modified": false,
+    "task_browser_sessions_closed": true,
+    "task_fixture_servers_stopped": true
+  },
+  "deployed_dev07_audit": {
+    "actual_browser": {
+      "archive_cold_path": "NOT_INFERRED_FROM_SUCCESS",
+      "capture_consumption": "PASS",
+      "current_cleanup_plan_receipt": "PASS",
+      "current_revocation_two_warmed_views": "PASS_AFTER_CONFIGMAP_PROJECTION_BARRIER",
+      "expired_subscription": "REFUSED_WITHOUT_RESURRECTION",
+      "former_owner_credential": "UNAUTHORIZED",
+      "gap_full_snapshot_explicit_rebase": "PASS",
+      "gateway_replacement_exact_capture": "PASS",
+      "history_after_sealed_archive_publication": "EXACT",
+      "original_Search_attempts": 1,
+      "retained_and_rebuilt_views": "READY",
+      "same_CA_leaf_and_scoped_owner_credential_rotation": "PASS",
+      "search_process_kill": "VERIFIED_CONTAINERD_SIGKILL_EXIT_137",
+      "stale_cleanup_plan": "CONFLICT",
+      "typed_native_remember": "PASS"
+    },
+    "additional_live_generations": 0,
+    "browser_isolation": "CLEAN_ENV_AND_INSTALLED_STDLIB_CLIENT; NO_REQUIRED_OR_RECEIVED_KUBECONFIG_OR_PROVIDER_CREDENTIALS; SAME_HOST_AUTOMATION; OS_MOUNT_SANDBOX_NOT_ESTABLISHED",
+    "classification": "REAL_DEPLOYED_DEVELOPMENT_EPOCH_SUPERSEDED_FOR_FINAL_UI_FIX",
+    "cleanup": "TASK_NAMESPACE_QUIESCED_OWNER_PVCS_RETAINED_TRUSTED_FORWARD_STOPPED",
+    "failures_retained": [
+      {
+        "description": "Denied logout left prior rendered state visible; backend read/export refused.",
+        "kind": "UI_DEFECT"
+      },
+      {
+        "description": "Logout erased pending decision metadata; later same-checkpoint approval had a new identity and owner refused CONFLICT, without another step.",
+        "kind": "UI_DEFECT"
+      },
+      {
+        "description": "Probe expected revocation before projected ConfigMap update. Later mounted-policy barrier established current refusal on both views.",
+        "kind": "OBSERVER_TIMING"
+      },
+      {
+        "description": "Second new probe login refused OVERLOADED at four browser sessions per user; explicit gateway replacement cleared ephemeral auth only.",
+        "kind": "FINITE_CAPACITY"
+      },
+      {
+        "description": "Independent stale-token verifier initially used guessed port and unsupported operation; NOT_AVAILABLE/UNSUPPORTED_OPERATION retained. Corrected verifier read declared endpoint and used existing binding observation.",
+        "kind": "QUALIFIER_CONFIGURATION"
+      },
+      {
+        "description": "Explicit UI read completed after fixed automation delay; later bounded observation recorded owner result. A temporary operator forward ended with its parent; reopening it did not resubmit native work.",
+        "kind": "QUALIFIER_OBSERVATION"
+      }
+    ],
+    "image_source_sha256": "298c03134a4f0bdf1e48a013a2304f0b71cd20fe40ca6a733428f75b7a9064df",
+    "images_manifest_sha256": "b90055f96aac0e14ae67533249f847977a841e57f6d692bed36a328513c35661",
+    "namespace": "omega-ref-pilot-browser04",
+    "native": {
+      "cross_user_refusals": 6,
+      "model": "RECORDED_COMMAND_PROPOSALS",
+      "private_complete": 10,
+      "private_direct_inputs": 10,
+      "private_sessions": 2,
+      "returned_native_handles": true,
+      "shared_complete": 14,
+      "shared_delegated_results_consumed": 1,
+      "shared_direct_inputs": 14,
+      "tools_owners": [
+        "E5",
+        "Chroma",
+        "DeTTa",
+        "EpisodicMemory",
+        "BeliefRevision",
+        "Attention",
+        "Relations",
+        "workspace",
+        "Messaging",
+        "native-agent-loops"
+      ],
+      "transport": "POD_TO_POD_AUTHENTICATED_HTTPS"
+    },
+    "private_raw_directory": "qualification-private/browser07",
+    "proofshot": {
+      "console_errors": 0,
+      "external_server_log": "MANAGED_PORT_FORWARD_SEPARATE",
+      "screenshots": "EXPLICIT_PRIVATE_PATHS_OUTSIDE_AUTOMATIC_BUNDLE",
+      "server_errors": 0
+    },
+    "public_evidence": "AGGREGATES_AND_PUBLIC_SOURCE_IMAGE_IDENTITIES_ONLY; PRIVATE_SESSION_INPUT_MEMORY_BACKUP_CAPTURE_IDS_AND_HASHES_WITHHELD",
+    "workflows": [
+      {
+        "case": "approve",
+        "native_workflow_steps": 3,
+        "positive_task": "COMPLETE",
+        "safety": "PASS"
+      },
+      {
+        "case": "refuse",
+        "native_workflow_steps": 2,
+        "positive_task": "NOT_COMPLETED",
+        "safety": "PASS"
+      },
+      {
+        "case": "expired",
+        "deadline": "ACTUAL_ORIGINAL_240_SECONDS",
+        "native_workflow_steps": 2,
+        "positive_task": "NOT_COMPLETED",
+        "safety": "PASS"
+      }
+    ]
+  },
+  "deployed_dev08_audit": {
+    "additional_live_generations": 0,
+    "classification": "DEVELOPMENT_EPOCH_RETAINED_NOT_FINAL09",
+    "cleanup": {
+      "forward": "STOPPED",
+      "pods": 0,
+      "proof": "STOPPED",
+      "pvcs": "RETAINED"
+    },
+    "other_final_browser_gates": "NOT_RUN_ON08; HISTORICAL07_RESULTS_UNCHANGED",
+    "packet_sha256": "7ee74155e85130e5c69846339e8d6a718dad35170a94b5da80a6a194d25fbfbc",
+    "private_identifiers_and_hashes": "WITHHELD",
+    "private_native_commands": {
+      "count": 10,
+      "cross_scope_denials": 6,
+      "result": "PASS"
+    },
+    "raw_evidence": "PRIVATE_WITHHELD",
+    "readiness_refusal": "EXPIRED_PREREQUISITE_REFUSED_ALLOCATION_BEFORE_ACCEPTANCE; EXPLICIT_TRUSTED_PROBE_REUSED_SAME_ALLOCATION_IDENTITY",
+    "shared_native_commands": {
+      "accepted": 3,
+      "captured": 3,
+      "failure": "OVERLOADED_ON_READ_ONLY_CAPTURE_OBSERVATION",
+      "pending": 0,
+      "resubmitted": 0,
+      "runner_result": "FAILED_RETAINED"
+    },
+    "source_sha256": "227d36d1c2727ed42f76676761b721d4f22a5c25c64aa15e39b5b37607f9fdfd",
+    "typed_browser_remember": "REAL_NATIVE_CAPTURE_OBSERVED",
+    "workflow": {
+      "case": "approve",
+      "decision": "ACTUAL_BROWSER_SCOPED_EXACT_CHECKPOINT",
+      "native_inputs": 3,
+      "result": "PASS"
+    }
+  },
+  "executed": {
+    "additional_live_generations": 0,
+    "fixtures": [
+      "native execution and model/channel results in these unit/visual tests",
+      "HTTPS test listener wraps actual owner ports; not deployed k3s service",
+      "Search maintenance client in browser broker unit test"
+    ],
+    "native_tools_executed": 0,
+    "real": [
+      "browser HTTP and cookies/CSRF",
+      "application SQLite acceptance/receipt replay",
+      "same-host authenticated HTTPS test listener and SessionPorts",
+      "SIGKILL after actual acceptance commit",
+      "bounded subscription hints/gaps/rebase",
+      "native catalogue metadata and typed preflight"
+    ]
+  },
+  "explorer_handover_followup": {
+    "additional_live_generations": 0,
+    "checks": [
+      {
+        "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_browser_explorer tests.test_pilot_browser tests.test_pilot_workbench_chart tests.test_phase2_workbench tests.test_integrated_workbench tests.test_pilot_capacity -q",
+        "methods": 62,
+        "seconds": 12.328,
+        "status": "PASS"
+      }
+    ],
+    "deployed_native_explorer": "NOT_YET_RUN",
+    "failed_checks": [
+      {
+        "causes": [
+          "Payload fixture receipt lacked existing C1 contract durability/evidence fields; fixture corrected, owner unchanged",
+          "Incorrect historical test module name; corrected test command"
+        ],
+        "errors": 2,
+        "identities": [
+          "tests.test_pilot_browser_explorer.Explorer.test_real_archived_history_hydration_pagination_and_wrong_session_refusal",
+          "unittest.loader._FailedTest.test_phase3_workbench"
+        ],
+        "methods": 24,
+        "source_manifest": "NOT_CAPTURED_AT_FAILED_RUN"
+      },
+      {
+        "cause": "History function name shadowed browser history; renamed readHistoryPage",
+        "console_errors": 2,
+        "proof": "2026-11-04_23-22-31_bounded-owner-explorer-and-observation-o",
+        "server_errors": 0
+      }
+    ],
+    "fixtures": [
+      "File payload backend",
+      "port transport in explorer unit tests",
+      "native/model execution in UI fixture"
+    ],
+    "observed_at": "2026-11-04T23:26:35.512047+00:00",
+    "proof": {
+      "bootstrap_cleared": true,
+      "console_errors": 0,
+      "developer_handover_refused": true,
+      "logout_cleared_explorer_and_authority": true,
+      "screenshots": 1,
+      "server_errors": 0,
+      "session": "2026-11-04_23-23-46_corrected-explorer-browser-navigation-cu"
+    },
+    "real": [
+      "C1 and Relations SQLite owners",
+      "sealed archive publication and readback without hot backend fallback",
+      "browser HTTP/session and owner role checks"
+    ],
+    "source_sha256": {
+      "integration/single_node/pilot_browser_handover.py": "02f7da4ca08a2414321f8b6a7d47c38b47db8755b87af312b34b56b39b86c8e3",
+      "integration/single_node/pilot_browser_observation.py": "2e1988bf33ddbe1667655b8c050f65c97b04c287b1b2a62d819149ddbae7315e",
+      "integration/single_node/pilot_browser_page.py": "f99a33fdc2a45a4de819104f564e7cbbc715af40b09d9c9188f6d0fa9b182c15",
+      "integration/single_node/pilot_workbench.py": "9ed2b4b8547257b75c7161ed00bf2c9f3389113a98151c9a4e4bae71c2ee2e59",
+      "integration/single_node/preview_workbench.py": "25e4c324c83d7d9df091cf5e9942338cd8b24e826a47d94d50a8e3c2913526a3",
+      "integration/single_node/sustained_current.py": "6e40d845137f7646e4da02686680a26214db9a30bfc33f50ae1505ff17e05563",
+      "tests/test_pilot_browser_explorer.py": "089f7b4fd881012022b550769839e255ce87b9781bfc5be51343bafdfbcfc556",
+      "tests/test_pilot_workbench_chart.py": "bf33e9e0d00b1aba3ebbd20854edb22a03bcafd29fdfb18fd2eb15b5be256ed8"
+    }
+  },
+  "followup": {
+    "checks": {
+      "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_state_machine tests.test_pilot_browser_qualification tests.test_pilot_browser tests.test_pilot_subscriptions tests.test_phase2_workbench tests.test_integrated_workbench tests.test_integrated_permissions tests.test_phase3_sessions -q",
+      "methods": 89,
+      "seconds": 17.901,
+      "status": "PASS"
+    },
+    "driver_failure": "First visual eval used nonexistent token element; corrected to existing access element. No application error.",
+    "label_fix": "Choose a session on authenticated user change",
+    "observed_at": "2026-11-04T22:54:04.478000+00:00",
+    "proofshot": {
+      "console_errors": 0,
+      "fixture": true,
+      "screenshots": 1,
+      "server_errors": 0,
+      "session": 5
+    },
+    "source_sha256": "170e30e19899ac97051d52744c2d86c674ac88167a8c463a9dd569b983a9da77"
+  },
+  "gateway_and_capacity_followup": {
+    "additional_live_generations": 0,
+    "checks": [
+      {
+        "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_workbench_chart tests.test_pilot_configuration tests.test_single_node_chart -q",
+        "methods": 11,
+        "seconds": 3.037,
+        "status": "PASS"
+      },
+      {
+        "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_capacity tests.test_integrated_capacity tests.test_pilot_browser tests.test_pilot_workbench_chart -q",
+        "methods": 35,
+        "seconds": 6.985,
+        "status": "PASS"
+      }
+    ],
+    "deployed_gateway": "NOT_YET_RUN",
+    "fixtures": "Helm image metadata and numerical/native providers in isolated tests",
+    "observed_at": "2026-11-04T23:15:33.727914+00:00",
+    "source_sha256": {
+      "deploy/helm/omega-fusion/templates/pilot-workbench.yaml": "4a3d82b3b2725f2539b82af4c43a9c69669b02604391a27cb4112e26041c05ac",
+      "integration/single_node/pilot_browser_cli.py": "e8aee1134822ba6d42868b87a60fde6d9c73a122e0c2d67d0925f909f6d41b8a",
+      "integration/single_node/pilot_browser_provision.py": "f52e7978cdd520794d8cf49b6b8163ed1d520208aa1a99c2e4606831740164a4",
+      "tests/test_pilot_workbench_chart.py": "96247287d54b98311a7fc3acaaa23b1c899641f4285de80ab2a76993b581cb6e"
+    }
+  },
+  "gateway_default_image_followup": {
+    "cause": "Integrated placement validation found optional gateway inherited base image instead of caller image. Fixed default to the selected omega-agent caller image; explicit override retained.",
+    "checks": {
+      "command": "timeout 60s artifacts/s03/venv/bin/python -m unittest tests.test_pilot_workbench_chart tests.test_single_node_chart -q",
+      "methods": 9,
+      "status": "PASS"
+    },
+    "source_sha256": {
+      "deploy/helm/omega-fusion/templates/pilot-workbench.yaml": "dc6ec9e6df6118b1687b4e5aec6526ab2dae67e16278cc4323f7efb2ecdcd50f",
+      "tests/test_pilot_workbench_chart.py": "04dc070df7f02e5ab7ab3b6fd295bd9a1f3cd36ebb1ab99f8d4abf2d346ffa94"
+    }
+  },
+  "logout_correction": {
+    "additional_live_generations": 0,
+    "affected": "PASS",
+    "affected_invocations": 38,
+    "affected_seconds": 12.483,
+    "focused_js_fixture": "3_PASS_0.429_SECONDS",
+    "new_authored_methods": 3,
+    "observed_guarantees": [
+      "Denied or unavailable logout clears rendered private/auth/input state and disables controls",
+      "Late HTTP or interrupted login cannot repopulate signed-out state",
+      "User-bound pending action/decision/subscription metadata survives logout; no input or response bodies or credentials stored",
+      "Exact approval after reauthentication reuses prior owner decision; no automatic execution or deadline extension"
+    ],
+    "proofshot_console_errors": 0,
+    "proofshot_server_errors": 0,
+    "runtime_files": [
+      "integration/single_node/pilot_browser_page.py"
+    ],
+    "sources": {
+      "integration/single_node/pilot_browser_page.py": "a87ad9deaa4740fd49ee6beaeca26ea9eaf2313840de2a5b2022e2d85259332d",
+      "tests/test_pilot_browser.py": "01bee1e79a11f7cd794500d8f504046e34d6fb4abeaf9dcb67151af8fa80a4d9"
+    },
+    "tests_file": "tests/test_pilot_browser.py",
+    "visual": "ACTUAL_CHROMIUM_HTTP_SQLITE_PASS_NATIVE_AND_TIME_FIXTURES"
+  },
+  "monotonic_observer_followup": {
+    "console_errors": 0,
+    "inflight_read_may_finish": true,
+    "limits": {
+      "cycles": 150,
+      "window_ms": 300000
+    },
+    "new_admissions": 0,
+    "observed_at": "2026-11-04T23:15:33.727914+00:00",
+    "proof_session": "2026-11-04_22-59-26_monotonic-browser-observation-window-clo",
+    "reads_after_expired_window": 0,
+    "screenshot": "evidence/operator-pilot/expired-observer-no-resubmission.png",
+    "server_errors": 0,
+    "simulated_elapsed_window": true,
+    "source_sha256": {
+      "integration/single_node/pilot_browser_page.py": "344ba2b8e0d60be964da9212b0fc27a4a1ea394049e02dc36ba7021fcf4aaed0"
+    }
+  },
+  "observations": [
+    "separate browser bootstraps and per-user provider credentials; owner scope policy rechecked",
+    "foreign/private session and aggregate counts withheld",
+    "provider credential rotation keeps browser session while old provider token refuses",
+    "browser bootstrap/policy revision change invalidates existing cookies",
+    "duplicate acceptance retains identity and deadline after lost reply",
+    "cursor acknowledgment occurs only after authorized owner read",
+    "32 retained hints per session; explicit missing interval then full snapshot plus exact rebase",
+    "64 subscriptions and512 control receipts, closure slot and4096bytes reserved per open subscription",
+    "new subscription profile refuses populated unselected input history",
+    "closed/expired subscriptions and action receipts retained; no budget refund",
+    "second browser user sees zero unauthorized sessions and no stale first-user payload",
+    "stored markup remained inert; no image node created",
+    "Search cleanup requires separate selected credential/profile; old repair and ambient search-operator authority unavailable"
+  ],
+  "observed_at": "2026-11-04T22:47:46.794358+00:00",
+  "own_source_sha256_after_checks": {
+    "examples/pilot_browser_fixture.py": "966e7a965aa05d94c8f3c6090ff0dc10df4a7bafcb1f1e0bd13459e63956da3c",
+    "examples/pilot_browser_qualification.py": "2cc05e152a906f9267a61c54ab5557e5bd77bfa81730cc6e7dadc66ab6994109",
+    "fusion/pilot_subscriptions.py": "1d55574da9f49d63c02def7fc5b0a145b407d1fcefe3562ffd84909fc9b782b4",
+    "integration/single_node/pilot_browser_cli.py": "7a7c1f686da04f6f5d4f2c2a63e4957b63aee1e60b20b3764ac7251ceeb88d5e",
+    "integration/single_node/pilot_browser_client.py": "2981674e79f934636be4776513f305acd39eb426a38b4cbb8229cb99eac8763e",
+    "integration/single_node/pilot_browser_configure.py": "ba663f5a1d9ca8797a4519f1408fa7fb57c4d764d3e6510448a4caaf3549cf79",
+    "integration/single_node/pilot_browser_observation.py": "09ce94a7882d935a72056ac6663a5bd1b580ad01c373798708946fb200587c6c",
+    "integration/single_node/pilot_browser_page.py": "39d7b9e99b8d61ad117ff6bce6827fab62f88540220008edf0084e4b0d8e8b9c",
+    "integration/single_node/pilot_browser_provision.py": "fe469a6e6a2554166cd0fe03bc0ae2a153626bf56b911458d9e89c355e90ccaa",
+    "integration/single_node/pilot_browser_sessions.py": "6de1369a2e57c0067aaa4224fb54e6fbe897d329d2623b716c6a89d25d6c7cd0",
+    "integration/single_node/pilot_subscription_ports.py": "360c87bccba4322ae42151864c53f9c410a18c1582b84d20cef20f062ce9e473",
+    "integration/single_node/pilot_workbench.py": "eb20826828428cba7e776becc59e15adde1e59e4a7395cf9730f5dfc11cb3497",
+    "integration/single_node/preview_workbench.py": "917eb1fc9f42c6691146e3d1dd2d0a946caafce8f5396553efca2439d09f3e1c",
+    "tests/test_pilot_browser.py": "b881712d84116087285ccaaa894a4c8bb006274690ab589d4993e438c5596a99",
+    "tests/test_pilot_browser_qualification.py": "554da006ea15294a18530f8c850e1272a6e82323434c969740e2985855ccbbef",
+    "tests/test_pilot_subscriptions.py": "510285dc184140a9d3ca62ebde046d2f8f218be80db56449b8c9eaa44d6fb9cf"
+  },
+  "public_screenshots": {
+    "authenticated-no-selection-label.png": "ce208f0b0a11b5202b71755a8da60c80704cfdbd75872d3cceceb3b2ed50377f",
+    "final-durable-cursor.png": "03d48cacfdec92a704ee29a323871a56be353535f9112bb834bed35f96217efd",
+    "final-other-user-isolation.png": "430ac7354c3fcbf725f98b869e6feec9d41b9995939181521cd579a63eb2850d"
+  },
+  "public_story_helper": {
+    "classification": "TOOLS_ONLY_PACKET_SCRIPT_NOT_RUNTIME_IMAGE_DELTA",
+    "entrypoint": "operator09/bin/python -I /packet/examples/pilot_browser_story.py",
+    "final_deployed_qualification": "NOT_YET_RUN",
+    "guards": {
+      "authored_methods_added": 4,
+      "executed_methods": 8,
+      "existing_module_total_methods": 8,
+      "native": "AUTHORED_TRANSPORT_FIXTURES",
+      "real_generation": 0,
+      "result": "PASS",
+      "seconds": 0.07
+    },
+    "installed_interpreter_help": "PASS_NO_AUTHOR_CHECKOUT_IMPORT",
+    "public_source_expected_values": "NONE; EXPECTED_VALUE_READ_ONLY_BY_EVALUATOR_AND_VALIDATOR",
+    "raw_inputs": "PRIVATE_PLAN_AND_PRIVATE_REPORT_ONLY",
+    "source_sha256": "b6841968e6985074d68a5d07c862cc095c2799a1e1e44d405d4c49eb9f04c0e7"
+  },
+  "raw_proof_directory": "artifacts/operator-pilot/browser-proof",
+  "registry_composition_followup": {
+    "additional_live_generations": 0,
+    "deployed_gate": "NOT_RUN",
+    "evidence": "evidence/operator-pilot/browser-registry-reconciliation.json",
+    "historical_fields": "Earlier source hashes, visual labels, failures and unrun fields describe their recorded epochs; follow-ups do not rewrite those test identities.",
+    "runtime_source": "integration/single_node/pilot_browser_configure.py",
+    "runtime_source_sha256": "51551fa917bbf54d91b12eb81e7551bac952e08520d98ea9a07068bb6984bde9",
+    "source_epoch": "DEV05_REQUIRED_FOR_DEPLOYED_BROWSER"
+  },
+  "schema": "operator-pilot-browser-development-evidence/1",
+  "source_epoch": "WORKING_TREE_DEVELOPMENT; final integrated image/source binding belongs to programme release evidence",
+  "story_observer_recovery": {
+    "additional_live_generations": 0,
+    "authored_methods_added": 5,
+    "classification": "TOOLS_ONLY_NO_RUNTIME_OR_PROFILE_DELTA",
+    "current_revocation": "REFUSED_NO_RETRY",
+    "deadline_change": "REFUSED",
+    "executed_module_methods": 13,
+    "failed_attempts": [
+      "SYSTEM_PYTHON38_IMPORT_INCOMPATIBLE",
+      "ROOT_FILESYSTEM_ENOSPC_TEMPORARY_DIRECTORY"
+    ],
+    "previous_report": "EXACT_RAW_DIGEST_AND_HISTORY_PRESERVED",
+    "providers": "AUTHORED_TRANSPORT_FIXTURES_ONLY",
+    "read_only_retries": [
+      "OVERLOADED",
+      "NOT_AVAILABLE"
+    ],
+    "result": "PASS",
+    "runtime_mutations": 0,
+    "seconds": 0.106,
+    "source_sha256": "ee2eebd4d26aada82312ef0e13f8663790843c57cacabb9f6e3a5425d0b33598",
+    "successful_environment": "PYTHON312_EXPLICIT_TASK_DATA_TMPDIR",
+    "tests_sha256": "7fcc560dc732320d7016730f89775ea6f8137d9886f0f038f61876523563cbff",
+    "unknown_submission": "REFUSED_NO_REISSUE"
+  },
+  "unrun": [
+    "deployed native browser memory/history/attention/workspace/delegation effects",
+    "actual native archive/private canary browser navigation",
+    "deployed pod or gateway replacement and rotation using qualification helper",
+    "actual browser Search cleanup apply/stale-plan and handover observations",
+    "subscription slow-consumer integration across Registry rollover/archive/provider restart"
+  ],
+  "visual_limitations": [
+    "automated same-host browser, not an independent human",
+    "no kubeconfig/provider credential passed to browser; browser filesystem isolation not separately established here",
+    "final fixture session native command authority expired before typed preflight; UNAUTHORIZED retained. Input accepted at application boundary but native execution disabled, so no command effect is claimed",
+    "earlier visual session3 observed admissible typed preflight before authority expiry",
+    "minor label: unselected session status can retain Signed out after another user signs in; authState shows actual new user"
+  ]
+}

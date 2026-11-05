@@ -1,0 +1,88 @@
+{
+  "additional_live_generations": 0,
+  "classification": "FIXTURE_PORTS_REAL_APPLICATION_OWNER_SQLITE",
+  "guarantees": [
+    "Actual task/result correlation and exact reference document; no truncation",
+    "Complete existing inspection-envelope domain before effects",
+    "Current operator selection is explicit; default full projection retained",
+    "Exact command echo separated from actual JSON receipt",
+    "Real owner suffix amendment retains accepted capture, deadline and spend; checkpoint and expiry enforced"
+  ],
+  "historical_runs": [
+    {
+      "invocations": 3,
+      "log": "artifacts/operator-pilot/artifact-reference-tests.log",
+      "status": "PASS",
+      "whole_module_test_time_source": "NOT_SAVED; pure initial definitions retained, not relabelled with later helper source"
+    },
+    {
+      "failure": "Fixture assertion expected workflow deadline9000 as input deadline; actual accepted per-input limit clamps to1100",
+      "invocations": 14,
+      "log": "artifacts/operator-pilot/artifact-reference-repair-tests01.log",
+      "snapshot": "artifacts/operator-pilot/artifact-reference-repair-source01",
+      "status": "FAIL"
+    },
+    {
+      "invocations": 25,
+      "log": "artifacts/operator-pilot/artifact-reference-repair-tests02.log",
+      "snapshot": "artifacts/operator-pilot/artifact-reference-repair-source02",
+      "snapshot_provenance": "Reconstructed from exact source01 with the one recorded fixture assertion correction; before later actual-return observer addition",
+      "status": "PASS"
+    }
+  ],
+  "limitations": [
+    "Native/HTTPS/E5/Chroma/DeTTa/chain not exercised by these tests",
+    "Historical original oversized recipe remains failed and final inspection uncertain"
+  ],
+  "profile": "operator-helper-repair-test-evidence/1",
+  "run": {
+    "invocations": 27,
+    "new_artifact_reference_methods": 10,
+    "other_existing_method_invocations": 17,
+    "path": "artifacts/operator-pilot/artifact-reference-repair-tests03.log",
+    "sha256": "972b1b549a28f616fe0a250eedbffd5a280d5e0d3fd02e10a74aeb58cd5ac826",
+    "status": "PASS"
+  },
+  "runtime_changed": false,
+  "runtime_source_manifest_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+  "source_snapshot": "artifacts/operator-pilot/artifact-reference-repair-source03",
+  "sources": {
+    "examples/pilot_artifact_reference.py": {
+      "bytes": 7751,
+      "sha256": "9b623c1c3c199af823f73d68567f5cde7c4c264d8833e1b91e5025242cebf3ff"
+    },
+    "examples/pilot_network_edges.py": {
+      "bytes": 11392,
+      "sha256": "9687c5833ce3d276f458d8ee784eb11d0b1e291bd04ff4a5d28e528d75c8b91b"
+    },
+    "examples/pilot_recipe_chain.py": {
+      "bytes": 7526,
+      "sha256": "1716c594417300852e26a65c2e46e6c7fbf010a00bc182086b3a928508a7ab0b"
+    },
+    "examples/pilot_recipe_qualification.py": {
+      "bytes": 12594,
+      "sha256": "b3781741ea87fcf5792cde07cb7c8871b974b0e2f9703dfbf2dfc64871bcc388"
+    },
+    "examples/pilot_workflow_faults.py": {
+      "bytes": 3142,
+      "sha256": "1e4d312f9be033c2bf9b990ebb3bbfb3b63701f1e41e4f6577e76b444ba7c437"
+    },
+    "tests/test_pilot_artifact_reference.py": {
+      "bytes": 7477,
+      "sha256": "699bbf86d4a0d92c46872fcc33644671c61659bb3794fabf2311dc203d590564"
+    },
+    "tests/test_pilot_network_edges.py": {
+      "bytes": 3476,
+      "sha256": "14d15787b804358e9163411e5112ccf8fbcc5f13bc1b01e2d5052ede0bf001b9"
+    },
+    "tests/test_pilot_recipe_chain.py": {
+      "bytes": 1767,
+      "sha256": "6fe5d9194602260e89cc3f7f0d292fdd708c48667e0b63d3fbea895d831d493d"
+    },
+    "tests/test_pilot_workflow_qualification.py": {
+      "bytes": 10496,
+      "sha256": "c39b631ff89b7f9304db53eb8b981deaa698794be6f56e397eed702fd15d3cbe"
+    }
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,17 @@
+{
+  "profile": "operator-pilot-fixture-test-run/1",
+  "status": "PASS",
+  "classification": "OPERATOR_CLOCK_AND_TRANSPORT_FIXTURES",
+  "methods": 13,
+  "invocations": 13,
+  "seconds": 0.023,
+  "sources": {
+    "examples/pilot_incidents.py": "4b1ed39af7b8accb3e5cbcb8381f072001449beb3479c9225b7ffae339061e7e",
+    "tests/test_pilot_incidents.py": "b1348b5ae552f20955c6b0e0cffc1b78bf3ca349770e083d88b4393a77464e61",
+    "tests/test_pilot_operator_package.py": "814edc410f7c50d70eb61f4914ee7c292d2a900fcad7c76a5d199d31b701c16b"
+  },
+  "log_sha256": "048bab41fa87e504d56ad7bb564e7deb805be51a6a185a13035eecd30ab64011",
+  "source_delta": "Only operator qualifier deadline clamp, expired-marker initialization and two negative tests; no deployed runtime or native consumer change",
+  "deployed_native_providers": "NOT_EXERCISED_BY_THIS_RUN",
+  "additional_live_generations": 0
+}

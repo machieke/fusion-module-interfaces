@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/finish_go02.py", line 28, in <module>
+    require(r.returncode==0,'NOT_AVAILABLE');report['drain_report_sha256']=digest((root/'go-final-drain/report.json').read_bytes());save()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/fusion-operator-pilot-release/operator13/lib/python3.12/site-packages/fusion/contracts.py", line 32, in require
+    raise ContractError(code)
+fusion.contracts.ContractError: NOT_AVAILABLE

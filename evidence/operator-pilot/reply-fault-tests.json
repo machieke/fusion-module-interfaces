@@ -1,0 +1,42 @@
+{
+  "profile": "pilot-reply-fault-qualification/1",
+  "checkout": "e68635af2611263cb7e5f88ebc5bfce9de43bc1f",
+  "baseline_runtime_source": "9f5c31cbedadece8c17715ddfb7e20e2e53f6087b1a92dd0ec2dd83bc2bb7123",
+  "scope": "Test-only reply fault selection; default behavior unchanged; no owner contract/profile mutation",
+  "sources": {
+    "integration/single_node/server.py": "816c3f34a432805b20f1526398632e098a5ec7cbba5f9f0d121de0de88d1431d",
+    "integration/single_node/reply_faults.py": "0e25b0c5e7852e26fe8ffebc03ec80b84eb1986f11d25943dafe29af2d807935",
+    "deploy/helm/omega-fusion/values.schema.json": "35092b0b6bd4d151fb9e8a70ea2d45ce1cd8258cd9be461aef459af46bbaa549",
+    "tests/test_pilot_reply_faults.py": "4e0c0826b4c9a4a50968bcb7b80086cde74c27d8596cb6408cfed3ee196be7b0",
+    "tests/test_phase2_fault_configuration.py": "dca88bf307ea6441ea081634ce965f134d0d62397af995c237b52ac29843b8ef",
+    "tests/test_integrated_pool.py": "ec517fa3385ed6260088e8b2273244feff041a76c99f857f3c9218dc393deb68"
+  },
+  "command": "TMPDIR=/dev/shm operator11/bin/python -m unittest tests.test_pilot_reply_faults tests.test_phase2_fault_configuration tests.test_integrated_pool -v",
+  "result": "PASS",
+  "executed_test_invocations": 27,
+  "new_authored_methods": 14,
+  "existing_authored_methods": 13,
+  "elapsed_seconds": 4.082,
+  "log_sha256": "cf1fa26bbe6f149e503b15a846ec3a2c12d0d5a24fcca0885f0651318eb2b507",
+  "real": [
+    "authenticated local TLS sockets",
+    "production HTTPS client/pool",
+    "actual SIGKILL subprocess",
+    "durable filesystem claim/fsync",
+    "offline Helm validation"
+  ],
+  "fixtures": [
+    "FileFeedFixture owner for local TLS effect/readback",
+    "generated TLS credentials",
+    "mock wall-clock/monotonic samples; no host clock changes"
+  ],
+  "deployed_gate": "UNRUN",
+  "native_Detta_gate": "UNRUN",
+  "ADDITIONAL_LIVE_GENERATIONS": 0,
+  "limitations": [
+    "One-shot marker proves consumption of a test identity, not successful or partial recipient observation.",
+    "Request handler uses the actual owner result; the fault seam does not implement work or retry.",
+    "The SIGKILL test kills the claimed test process; pod replacement is separately qualified by the deployment story.",
+    "Historical first and second test logs remain retained; they passed but contain expected intentional-disconnect TLS diagnostics."
+  ]
+}

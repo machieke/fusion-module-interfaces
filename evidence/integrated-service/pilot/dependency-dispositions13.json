@@ -1,0 +1,4683 @@
+{
+  "profile": "operator-pilot-dependency-dispositions/1",
+  "candidate": "dev13",
+  "observed_utc": "2026-11-05T06:32:13.671335+00:00",
+  "status": "UNRESOLVED_FINDINGS_EXPLICIT",
+  "source_manifest_sha256": "aa9a8ebaeb2f59cd8893cd50755d5f91314590841cf0e09fda79b6d3556d0784",
+  "selected_leaf_changes": "integration/neoclaw/pilot-leaf-remediation.json",
+  "selected_os_changes": "debian-remediation.json",
+  "findings": [
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2011-3374",
+      "package": "apt",
+      "installed": "2.6.2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2011-3374",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "TEMP-0841856-B18BAF",
+      "package": "bash",
+      "installed": "5.2.15-2+b13",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://security-tracker.debian.org/tracker/TEMP-0841856-B18BAF",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "bsdutils",
+      "installed": "1:2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2016-2781",
+      "package": "coreutils",
+      "installed": "9.1-1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2016-2781",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2017-18018",
+      "package": "coreutils",
+      "installed": "9.1-1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2017-18018",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-5278",
+      "package": "coreutils",
+      "installed": "9.1-1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-5278",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-56391",
+      "package": "coreutils",
+      "installed": "9.1-1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56391",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-56392",
+      "package": "coreutils",
+      "installed": "9.1-1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-56392",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-102473",
+      "package": "dash",
+      "installed": "0.5.12-2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-102473",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-102474",
+      "package": "dash",
+      "installed": "0.5.12-2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-102474",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53910",
+      "package": "diffutils",
+      "installed": "1:3.8-4",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53910",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-102010",
+      "package": "gcc-12-base",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-102010",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-114690",
+      "package": "gcc-12-base",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-114690",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-114691",
+      "package": "gcc-12-base",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-114691",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-115455",
+      "package": "gcc-12-base",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-115455",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-95619",
+      "package": "gcc-12-base",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-95619",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-27943",
+      "package": "gcc-12-base",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-27943",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-30258",
+      "package": "gpgv",
+      "installed": "2.2.40-1.1+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-30258",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-68972",
+      "package": "gpgv",
+      "installed": "2.2.40-1.1+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-68972",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-3219",
+      "package": "gpgv",
+      "installed": "2.2.40-1.1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-3219",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-105712",
+      "package": "gpgv",
+      "installed": "2.2.40-1.1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-105712",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-57062",
+      "package": "gpgv",
+      "installed": "2.2.40-1.1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-57062",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-41992",
+      "package": "gzip",
+      "installed": "1.12-1",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-41992",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-41991",
+      "package": "gzip",
+      "installed": "1.12-1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-41991",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-54369",
+      "package": "libacl1",
+      "installed": "2.3.1-3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-54369",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-54370",
+      "package": "libacl1",
+      "installed": "2.3.1-3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-54370",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2011-3374",
+      "package": "libapt-pkg6.0",
+      "installed": "2.6.2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2011-3374",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-54371",
+      "package": "libattr1",
+      "installed": "1:2.5.1-4",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-54371",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "libblkid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-42250",
+      "package": "libbz2-1.0",
+      "installed": "1.0.8-5+b1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-42250",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-18374",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-18374",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-19499",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-19499",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-19542",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-19542",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-5435",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-5435",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-5450",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-5450",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-5928",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-5928",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-6238",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-6238",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-6368",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-6368",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-6791",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-6791",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-77117",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-77117",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-80489",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-80489",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-84243",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-84243",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-8674",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-8674",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-86805",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-86805",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-89092",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-89092",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-95818",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-95818",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2010-4756",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2010-4756",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2018-20796",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2018-20796",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010022",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010022",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010023",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010023",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010024",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010024",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010025",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010025",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-9192",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-9192",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-97399",
+      "package": "libc-bin",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-97399",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-18374",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-18374",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-19499",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-19499",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-19542",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-19542",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-5435",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-5435",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-5450",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-5450",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-5928",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-5928",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-6238",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-6238",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-6368",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-6368",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-6791",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-6791",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-77117",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-77117",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-80489",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-80489",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-84243",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-84243",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-8674",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-8674",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-86805",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-86805",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-89092",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-89092",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-95818",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-95818",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2010-4756",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2010-4756",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2018-20796",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2018-20796",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010022",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010022",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010023",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010023",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010024",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010024",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-1010025",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-1010025",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2019-9192",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2019-9192",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-97399",
+      "package": "libc6",
+      "installed": "2.36-9+deb12u14",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-97399",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-102010",
+      "package": "libgcc-s1",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-102010",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-114690",
+      "package": "libgcc-s1",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-114690",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-114691",
+      "package": "libgcc-s1",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-114691",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-115455",
+      "package": "libgcc-s1",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-115455",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-95619",
+      "package": "libgcc-s1",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-95619",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-27943",
+      "package": "libgcc-s1",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-27943",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2018-6829",
+      "package": "libgcrypt20",
+      "installed": "1.10.1-3+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2018-6829",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2024-2236",
+      "package": "libgcrypt20",
+      "installed": "1.10.1-3+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2024-2236",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2011-3389",
+      "package": "libgnutls30",
+      "installed": "3.7.9-2+deb12u7",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2011-3389",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-67693",
+      "package": "libgnutls30",
+      "installed": "3.7.9-2+deb12u7",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-67693",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-88647",
+      "package": "libgnutls30",
+      "installed": "3.7.9-2+deb12u7",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-88647",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-88648",
+      "package": "libgnutls30",
+      "installed": "3.7.9-2+deb12u7",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-88648",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-95184",
+      "package": "libgnutls30",
+      "installed": "3.7.9-2+deb12u7",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-95184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-95210",
+      "package": "libgnutls30",
+      "installed": "3.7.9-2+deb12u7",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-95210",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "libmount1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13757",
+      "package": "libp11-kit0",
+      "installed": "0.24.1-2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13757",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-18938",
+      "package": "libp11-kit0",
+      "installed": "0.24.1-2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-18938",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2024-10041",
+      "package": "libpam-modules",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2024-10041",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-54411",
+      "package": "libpam-modules",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-54411",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2024-10041",
+      "package": "libpam-modules-bin",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2024-10041",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-54411",
+      "package": "libpam-modules-bin",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-54411",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2024-10041",
+      "package": "libpam-runtime",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2024-10041",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-54411",
+      "package": "libpam-runtime",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-54411",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2024-10041",
+      "package": "libpam0g",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2024-10041",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-54411",
+      "package": "libpam0g",
+      "installed": "1.5.2-6+deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-54411",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "libsmartcols1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-102010",
+      "package": "libstdc++6",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-102010",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-114690",
+      "package": "libstdc++6",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-114690",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-114691",
+      "package": "libstdc++6",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-114691",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-115455",
+      "package": "libstdc++6",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-115455",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-95619",
+      "package": "libstdc++6",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-95619",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-27943",
+      "package": "libstdc++6",
+      "installed": "12.2.0-14+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-27943",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-16742",
+      "package": "libsystemd0",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-16742",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-15059",
+      "package": "libsystemd0",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-15059",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2013-4392",
+      "package": "libsystemd0",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2013-4392",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-31437",
+      "package": "libsystemd0",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-31437",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-31438",
+      "package": "libsystemd0",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-31438",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-31439",
+      "package": "libsystemd0",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-31439",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-40228",
+      "package": "libsystemd0",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-40228",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-13151",
+      "package": "libtasn1-6",
+      "installed": "4.19.0-2+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-13151",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-69720",
+      "package": "libtinfo6",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-50495",
+      "package": "libtinfo6",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-50495",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-6141",
+      "package": "libtinfo6",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-6141",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-16742",
+      "package": "libudev1",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-16742",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-15059",
+      "package": "libudev1",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-15059",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2013-4392",
+      "package": "libudev1",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2013-4392",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-31437",
+      "package": "libudev1",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-31437",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-31438",
+      "package": "libudev1",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-31438",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-31439",
+      "package": "libudev1",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-31439",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-40228",
+      "package": "libudev1",
+      "installed": "252.39-1~deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-40228",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "libuuid1",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2007-5686",
+      "package": "login",
+      "installed": "1:4.13+dfsg1-1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2007-5686",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2024-56433",
+      "package": "login",
+      "installed": "1:4.13+dfsg1-1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2024-56433",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "TEMP-0628843-DBAD28",
+      "package": "login",
+      "installed": "1:4.13+dfsg1-1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://security-tracker.debian.org/tracker/TEMP-0628843-DBAD28",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "mount",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-69720",
+      "package": "ncurses-base",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-50495",
+      "package": "ncurses-base",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-50495",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-6141",
+      "package": "ncurses-base",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-6141",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-69720",
+      "package": "ncurses-bin",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-69720",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-50495",
+      "package": "ncurses-bin",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-50495",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-6141",
+      "package": "ncurses-bin",
+      "installed": "6.4-4",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-6141",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2007-5686",
+      "package": "passwd",
+      "installed": "1:4.13+dfsg1-1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2007-5686",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2024-56433",
+      "package": "passwd",
+      "installed": "1:4.13+dfsg1-1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2024-56433",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "TEMP-0628843-DBAD28",
+      "package": "passwd",
+      "installed": "1:4.13+dfsg1-1+deb12u2",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://security-tracker.debian.org/tracker/TEMP-0628843-DBAD28",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-9538",
+      "package": "perl-base",
+      "installed": "5.36.0-7+deb12u4",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-9538",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-15534",
+      "package": "perl-base",
+      "installed": "5.36.0-7+deb12u4",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-15534",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-82560",
+      "package": "perl-base",
+      "installed": "5.36.0-7+deb12u4",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-82560",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2011-4116",
+      "package": "perl-base",
+      "installed": "5.36.0-7+deb12u4",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2011-4116",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-31486",
+      "package": "perl-base",
+      "installed": "5.36.0-7+deb12u4",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-31486",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "TEMP-0517018-A83CE6",
+      "package": "sysvinit-utils",
+      "installed": "3.06-4",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://security-tracker.debian.org/tracker/TEMP-0517018-A83CE6",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-18477",
+      "package": "tar",
+      "installed": "1.34+dfsg-1.2+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-18477",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-18508",
+      "package": "tar",
+      "installed": "1.34+dfsg-1.2+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "fix_deferred",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-18508",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-5704",
+      "package": "tar",
+      "installed": "1.34+dfsg-1.2+deb12u1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-5704",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2005-2541",
+      "package": "tar",
+      "installed": "1.34+dfsg-1.2+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2005-2541",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "TEMP-0290435-0B57B5",
+      "package": "tar",
+      "installed": "1.34+dfsg-1.2+deb12u1",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://security-tracker.debian.org/tracker/TEMP-0290435-0B57B5",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "util-linux",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53613",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-53615",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-53615",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-78410",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-78410",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-13595",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-13595",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27456",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27456",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-3184",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-3184",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2022-0563",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2022-0563",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2025-14104",
+      "package": "util-linux-extra",
+      "installed": "2.38.1-5+deb12u3",
+      "fixed": null,
+      "severity": "LOW",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-14104",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2023-45853",
+      "package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "fixed": null,
+      "severity": "CRITICAL",
+      "status": "will_not_fix",
+      "source": "https://avd.aquasec.com/nvd/cve-2023-45853",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-27171",
+      "package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-27171",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "docker.io/library/fusion-single-node:reference-pilot-dev13 (debian 12.15)",
+      "type": "debian",
+      "id": "CVE-2026-85091",
+      "package": "zlib1g",
+      "installed": "1:1.2.13.dfsg-1",
+      "fixed": null,
+      "severity": "MEDIUM",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-85091",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "NO_FIXED_VERSION_IN_SELECTED_DATABASE",
+      "reason": "Finding remains unresolved on the selected package/distribution. Scanner absence of a fixed version is not a safety claim."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "GHSA-6q48-6c7w-9gw2",
+      "package": "certifi",
+      "installed": "2026.6.17",
+      "fixed": "2026.10.18",
+      "severity": "CRITICAL",
+      "status": "fixed",
+      "source": "https://github.com/advisories/GHSA-6q48-6c7w-9gw2",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-114613",
+      "package": "msgpack",
+      "installed": "1.1.2",
+      "fixed": "1.2.3",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-114613",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "GHSA-6v7p-g79w-8964",
+      "package": "msgpack",
+      "installed": "1.1.2",
+      "fixed": "1.2.1",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://github.com/advisories/GHSA-6v7p-g79w-8964",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2025-47273",
+      "package": "setuptools",
+      "installed": "70.3.0",
+      "fixed": "78.1.1",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-47273",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-59890",
+      "package": "setuptools",
+      "installed": "70.3.0",
+      "fixed": "83.0.0",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-59890",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "GHSA-xmj3-9gf7-h52w",
+      "package": "setuptools",
+      "installed": "70.3.0",
+      "fixed": "84.1.0",
+      "severity": "LOW",
+      "status": "fixed",
+      "source": "https://github.com/advisories/GHSA-xmj3-9gf7-h52w",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-97687",
+      "package": "urllib3",
+      "installed": "2.7.0",
+      "fixed": "2.8.0",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-97687",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-97689",
+      "package": "urllib3",
+      "installed": "2.7.0",
+      "fixed": "2.8.0",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-97689",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-97688",
+      "package": "urllib3",
+      "installed": "2.7.0",
+      "fixed": "2.8.0",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-97688",
+      "package_path": null,
+      "roles": [
+        "base",
+        "caller",
+        "embedding",
+        "chain"
+      ],
+      "disposition": "RETAINED_VENDOR_COPY",
+      "reason": "Scanner SBOM result retained. Actual pip/_vendor/vendor.txt confirms this separate installed vendored version; top-level dependency remediation does not replace pip vendor code."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-45829",
+      "package": "chromadb",
+      "installed": "1.5.5",
+      "fixed": null,
+      "severity": "CRITICAL",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-45829",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/chromadb-1.5.5.dist-info/METADATA",
+      "roles": [
+        "caller",
+        "embedding"
+      ],
+      "disposition": "PINNED_NATIVE_PROFILE_EXCEPTION",
+      "reason": "Existing numerical/embedding/vector implementation pin retained. No compatible same-profile upgrade has been qualified. Fixed local asset hashes and bounded service ports reduce allowed inputs but do not establish non-exploitability."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-45833",
+      "package": "chromadb",
+      "installed": "1.5.5",
+      "fixed": null,
+      "severity": "CRITICAL",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-45833",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/chromadb-1.5.5.dist-info/METADATA",
+      "roles": [
+        "caller",
+        "embedding"
+      ],
+      "disposition": "PINNED_NATIVE_PROFILE_EXCEPTION",
+      "reason": "Existing numerical/embedding/vector implementation pin retained. No compatible same-profile upgrade has been qualified. Fixed local asset hashes and bounded service ports reduce allowed inputs but do not establish non-exploitability."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-45830",
+      "package": "chromadb",
+      "installed": "1.5.5",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-45830",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/chromadb-1.5.5.dist-info/METADATA",
+      "roles": [
+        "caller",
+        "embedding"
+      ],
+      "disposition": "PINNED_NATIVE_PROFILE_EXCEPTION",
+      "reason": "Existing numerical/embedding/vector implementation pin retained. No compatible same-profile upgrade has been qualified. Fixed local asset hashes and bounded service ports reduce allowed inputs but do not establish non-exploitability."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-45831",
+      "package": "chromadb",
+      "installed": "1.5.5",
+      "fixed": null,
+      "severity": "HIGH",
+      "status": "affected",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-45831",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/chromadb-1.5.5.dist-info/METADATA",
+      "roles": [
+        "caller",
+        "embedding"
+      ],
+      "disposition": "PINNED_NATIVE_PROFILE_EXCEPTION",
+      "reason": "Existing numerical/embedding/vector implementation pin retained. No compatible same-profile upgrade has been qualified. Fixed local asset hashes and bounded service ports reduce allowed inputs but do not establish non-exploitability."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-23949",
+      "package": "jaraco.context",
+      "installed": "5.3.0",
+      "fixed": "6.1.0",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-23949",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/setuptools/_vendor/jaraco.context-5.3.0.dist-info/METADATA",
+      "roles": [
+        "embedding"
+      ],
+      "disposition": "UNRESOLVED_COMPATIBILITY_REVIEW",
+      "reason": "The exact installed artifact remains reported. A broader dependency change is not treated as compatible without qualification."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-68770",
+      "package": "sentence-transformers",
+      "installed": "5.2.3",
+      "fixed": "5.6.0",
+      "severity": "CRITICAL",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-68770",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/sentence_transformers-5.2.3.dist-info/METADATA",
+      "roles": [
+        "embedding"
+      ],
+      "disposition": "PINNED_NATIVE_PROFILE_EXCEPTION",
+      "reason": "Existing numerical/embedding/vector implementation pin retained. No compatible same-profile upgrade has been qualified. Fixed local asset hashes and bounded service ports reduce allowed inputs but do not establish non-exploitability."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2025-47273",
+      "package": "setuptools",
+      "installed": "78.1.0",
+      "fixed": "78.1.1",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-47273",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/setuptools-78.1.0.dist-info/METADATA",
+      "roles": [
+        "embedding"
+      ],
+      "disposition": "UNRESOLVED_COMPATIBILITY_REVIEW",
+      "reason": "The exact installed artifact remains reported. A broader dependency change is not treated as compatible without qualification."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-59890",
+      "package": "setuptools",
+      "installed": "78.1.0",
+      "fixed": "83.0.0",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-59890",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/setuptools-78.1.0.dist-info/METADATA",
+      "roles": [
+        "embedding"
+      ],
+      "disposition": "UNRESOLVED_COMPATIBILITY_REVIEW",
+      "reason": "The exact installed artifact remains reported. A broader dependency change is not treated as compatible without qualification."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "GHSA-xmj3-9gf7-h52w",
+      "package": "setuptools",
+      "installed": "78.1.0",
+      "fixed": "84.1.0",
+      "severity": "LOW",
+      "status": "fixed",
+      "source": "https://github.com/advisories/GHSA-xmj3-9gf7-h52w",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/setuptools-78.1.0.dist-info/METADATA",
+      "roles": [
+        "embedding"
+      ],
+      "disposition": "UNRESOLVED_COMPATIBILITY_REVIEW",
+      "reason": "The exact installed artifact remains reported. A broader dependency change is not treated as compatible without qualification."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2025-3000",
+      "package": "torch",
+      "installed": "2.10.0+cpu",
+      "fixed": "2.13.0",
+      "severity": "LOW",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2025-3000",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/torch-2.10.0+cpu.dist-info/METADATA",
+      "roles": [
+        "embedding"
+      ],
+      "disposition": "PINNED_NATIVE_PROFILE_EXCEPTION",
+      "reason": "Existing numerical/embedding/vector implementation pin retained. No compatible same-profile upgrade has been qualified. Fixed local asset hashes and bounded service ports reduce allowed inputs but do not establish non-exploitability."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-24049",
+      "package": "wheel",
+      "installed": "0.45.1",
+      "fixed": "0.46.2",
+      "severity": "HIGH",
+      "status": "fixed",
+      "source": "https://avd.aquasec.com/nvd/cve-2026-24049",
+      "package_path": "opt/sdk/lib/python3.12/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA",
+      "roles": [
+        "embedding"
+      ],
+      "disposition": "UNRESOLVED_COMPATIBILITY_REVIEW",
+      "reason": "The exact installed artifact remains reported. A broader dependency change is not treated as compatible without qualification."
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "GHSA-xmj3-9gf7-h52w",
+      "package": "setuptools",
+      "installed": "84.0.0",
+      "fixed": "84.1.0",
+      "severity": "LOW",
+      "status": "fixed",
+      "source": "https://github.com/advisories/GHSA-xmj3-9gf7-h52w",
+      "package_path": "opt/chain/python/setuptools-84.0.0.dist-info/METADATA",
+      "roles": [
+        "chain"
+      ],
+      "disposition": "UNRESOLVED_COMPATIBILITY_REVIEW",
+      "reason": "The exact installed artifact remains reported. A broader dependency change is not treated as compatible without qualification."
+    }
+  ],
+  "prior_investigation": "dependency-dispositions04.json",
+  "comparison": "All235 current package/version/path/fixed-version finding keys match the previously investigated dev07/dev04 set; actual13 images scanned independently. No suppression or safety claim.",
+  "licensing": "NOASSERTION_WHERE_UNRESOLVED",
+  "additional_live_generations": 0
+}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/evidence-assembly/test_final21_guards_v07.py", line 13, in <module>
+    AUDITS={Path(x['path']).parent.name:m.load(PACKET/INDEX[x['sha256']]) for x in SELECTED['primary_audits']}
+                                                      ~~~~~^^^^^^^^^^^^^
+KeyError: '84250aff5114097e5d02be678a25e4870ca2e17f9e8e0b53e01f2ed15ae8de56'

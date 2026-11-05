@@ -1,0 +1,114 @@
+{
+  "classification": "RECORDED_MODEL_REAL_NATIVE_TOOLS",
+  "additional_live_generations": 0,
+  "namespace": "omega-ref-pilot-recipe17",
+  "inputs": [
+    {
+      "role": "omega-agent",
+      "session": "d91740bf-f0bd-55de-becd-aaa419139987",
+      "identity": "sustained-a3739ec3-1fe2-420d-8d49-ccd142786d45",
+      "command": "read-file review.txt",
+      "started_ms": 1793862921028,
+      "accepted": {
+        "accepted": 1793862921722,
+        "assignment": "synthetic-task",
+        "deadline": 1793863041722,
+        "id": "sustained-a3739ec3-1fe2-420d-8d49-ccd142786d45",
+        "sequence": 6,
+        "session": "d91740bf-f0bd-55de-becd-aaa419139987",
+        "state": "accepted"
+      },
+      "observed": {
+        "accepted": 1793862921722,
+        "assignment": "synthetic-task",
+        "deadline": 1793863041722,
+        "id": "sustained-a3739ec3-1fe2-420d-8d49-ccd142786d45",
+        "outcome": {
+          "effects": "NATIVE_PROJECTION_COMMITTED",
+          "execution_authorized": false,
+          "observed_ms": 1793862933522,
+          "ordering": "causal-session-fence/1",
+          "original_accounting_retained": true,
+          "state": "complete"
+        },
+        "payload": {
+          "assignment": "synthetic-task",
+          "text": "read-file review.txt"
+        },
+        "result": {
+          "occurrences": [
+            "7bf99257-95a2-588e-abf1-03b312502857"
+          ],
+          "projection": "(RESULTS: ((COMMAND_RETURN: ((read-file review.txt) {_quote_digest_quote_:_quote_0ec216bc9f326134704abff8da0a1880e05eae73adb39b8ac0f422438b753eb9_quote_,_quote_path_quote_:_quote_review.txt_quote_,_quote_profile_quote_:_quote_synthetic-workspace-files/1_quote_,_quote_revision_quote_:1,_quote_text_quote_:_quote_{\\_quote_interpretation\\_quote_:\\_quote_reference-to-full-captured-result-not-answer-or-independent-observation\\_quote_,\\_quote_profile\\_quote_:\\_quote_captured-task-result-reference-document/1\\_quote_,\\_quote_projection_bytes\\_quote_:762,\\_quote_projection_sha256\\_quote_:\\_quote_15451b3c6960ae2a2eb445769cde138617511bd6c30864b449c840f16dbed201\\_quote_,\\_quote_result_ref\\_quote_:{\\_quote_digest\\_quote_:\\_quote_288915d42377e0593f6ef80b4f9b5bd395eec68a40a0991abcd26233a7074a5e\\_quote_,\\_quote_id\\_quote_:\\_quote_77391db8-bd04-5c74-8eb2-6b1be6420d00\\_quote_,\\_quote_revision\\_quote_:1,\\_quote_scope_ref\\_quote_:\\_quote_synthetic-pilot-recipe17\\_quote_},\\_quote_task\\_quote_:\\_quote_2265f639-6ef4-5f7d-9f4c-b31844a97618\\_quote_,\\_quote_task_ref\\_quote_:{\\_quote_digest\\_quote_:\\_quote_29c85e495485b3598297e1948d24c42719fc692de958e0de5b67e3846f492b75\\_quote_,\\_quote_id\\_quote_:\\_quote_805d4f0c-1c81-533b-9a28-75b3da57b7c6\\_quote_,\\_quote_revision\\_quote_:1,\\_quote_scope_ref\\_quote_:\\_quote_synthetic-pilot-recipe17\\_quote_}}_quote_}))))",
+          "turn": 6
+        },
+        "sequence": 6,
+        "session": "d91740bf-f0bd-55de-becd-aaa419139987",
+        "state": "complete"
+      },
+      "finished_ms": 1793862934469
+    }
+  ],
+  "scenarios": [],
+  "maximum_operator_inputs": 1,
+  "maximum_observer_overrun_seconds": 8,
+  "frozen": {
+    "plan": {
+      "profile": "sustained-native-evaluation/1",
+      "datasets": {
+        "new": {
+          "fact": "The synthetic silver prism is stored in crate orchid",
+          "query": "synthetic silver prism storage",
+          "required": [
+            "crate orchid"
+          ],
+          "forbidden": [
+            "crate saffron"
+          ]
+        },
+        "changed": {
+          "fact": "The synthetic silver prism is stored in crate saffron",
+          "query": "synthetic silver prism storage",
+          "required": [
+            "crate saffron"
+          ],
+          "forbidden": [
+            "crate orchid"
+          ]
+        },
+        "absent": {
+          "query": "synthetic missing topaz key",
+          "required": [],
+          "forbidden": [
+            "topaz key is stored"
+          ]
+        }
+      },
+      "agents": 2,
+      "sequential_shared_sessions_per_agent": 3,
+      "maximum_operator_inputs": 72,
+      "maximum_wall_seconds": 3600,
+      "source_records_limit": 2048,
+      "source_bytes_limit": 33554432,
+      "old_record_threshold": 512,
+      "required_operations_after_crossing": 4,
+      "maximum_active_user_memories": 8,
+      "original_input_timeout_ms": 120000,
+      "observer_overrun_seconds": 8,
+      "current_fact_scoring": "exact required and forbidden substrings in actual native projection; no response repair",
+      "absent_scoring": "no invented exact absent fact; nearest neighbours may legitimately appear",
+      "held_out_live": {
+        "enabled": false,
+        "allowance": 0,
+        "selection": "operator-supplied new synthetic variant withheld from model setup",
+        "runtime": "DO_NOT_CONTACT"
+      },
+      "proposals": "recorded input-command only; no tool results or evaluator answers supplied",
+      "live_generations": 0
+    },
+    "sha256": "aa1314efda6b18cb5de956403612034f14f63c302aa2a6b1e559257040ab91b2"
+  },
+  "source_observations": [],
+  "evaluations": [],
+  "profile": "omega-native-sessions/3"
+}

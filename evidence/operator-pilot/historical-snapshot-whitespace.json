@@ -1,0 +1,9 @@
+{
+  "profile": "operator-pilot-staged-whitespace-audit/1",
+  "status": "EXACT_HISTORICAL_SNAPSHOT_FINDING",
+  "exit_code": 2,
+  "output": "integration/neoclaw/provenance/integration--hive--program--completed.py.txt:65: new blank line at EOF.\n",
+  "historical_snapshot_sha256": "da12796f0cde4968fb5d2a76739f211b5cadc0b4e5eeca875a709037ef293a63",
+  "disposition": "Retain exact source snapshot and expected hash; no runtime source whitespace finding. Historical bytes are not edited to silence this check.",
+  "additional_live_generations": 0
+}

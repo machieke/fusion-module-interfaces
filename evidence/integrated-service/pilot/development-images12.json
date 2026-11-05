@@ -1,0 +1,59 @@
+{
+  "archive_bytes": 147292160,
+  "archive_format": "verified-oci-layer-set/1",
+  "archive_sha256": "670b8d78c76637e9a86726e1a95e4b22efa3178dae9748a87365c1b82716306d",
+  "base_archive": {
+    "archive_bytes": 3473758720,
+    "archive_sha256": "fb807533ef98cb32556e5f86b44d806834bc689dd658d5ec3cb771da507b50e7"
+  },
+  "container_starts": 0,
+  "generative_runtime_availability": "NOT_CHECKED",
+  "images": [
+    {
+      "configuration_digest": "sha256:5380b60f53f8644bc07e29485315cb3b3f02e3344e99c7a9a4208d41f2fd37c4",
+      "kind": "caller",
+      "local_tag": "docker.io/library/fusion-memory-caller:reference-pilot-dev12",
+      "manifest_digest": "sha256:2add377e566fbc74d34ff1a43d814a0ca1be2505c26c820664258be314e9f170",
+      "repository": "docker.io/library/fusion-memory-caller",
+      "source_package": "image-caller/package.json"
+    },
+    {
+      "configuration_digest": "sha256:61dcfaf61bbc908b4f0f3c36e19880b167f9767a0b571211d1b4aa671d04cfbd",
+      "kind": "embedding",
+      "local_tag": "docker.io/library/fusion-memory-embedding:reference-pilot-dev12",
+      "manifest_digest": "sha256:c992a9b66e5dcc2cba9a35b3e181a5c6f2869b37df18bb078351d45c2c5854c4",
+      "repository": "docker.io/library/fusion-memory-embedding",
+      "source_package": "image-embedding/package.json"
+    },
+    {
+      "configuration_digest": "sha256:05116094406a3d2b6844ddf0f1a2521ea02162045371e1665e018a0866d5e26a",
+      "kind": "chain",
+      "local_tag": "docker.io/library/fusion-reference-chain:reference-pilot-dev12",
+      "manifest_digest": "sha256:e23a492a49e0058caa2585aca5f0dabf93a6ded90350ee0b6b906289a4214f3f",
+      "repository": "docker.io/library/fusion-reference-chain",
+      "source_package": "image-chain/package.json"
+    },
+    {
+      "configuration_digest": "sha256:7a2144b41f4d175488ad3fb3f0fd55a61eaee01adf6b3f4afc19661df37b1053",
+      "kind": "base",
+      "local_tag": "docker.io/library/fusion-single-node:reference-pilot-dev12",
+      "manifest_digest": "sha256:018fd2451ccbb2e4e043a0b6bf2c322e39603244b7006037a20f3c6b5860460f",
+      "repository": "docker.io/library/fusion-single-node",
+      "source_package": "image-base/package.json"
+    }
+  ],
+  "source_export_verification": "PASS",
+  "source_manifest_sha256": "b79b68a65d674a415a9c310dd89b1d3b1841233237a2fa9ff351396be951b963",
+  "profile": "operator-pilot-runtime-build/1",
+  "epoch": "dev12",
+  "source_delta": {
+    "integration/single_node/pilot_activation.py": {
+      "before": "dc2d2722d3247dc0152dd6c3ceb0a2474560a9e1a9aba5f15f3922499cb984f4",
+      "after": "9a273391a5066649c887fc97786bad1e4f5dbce7b521b4dc8f6929ab98cf35a4"
+    }
+  },
+  "source_input_index": "artifacts/operator-pilot/development-source-12.json",
+  "source_input_index_sha256": "d7a33f2a2dadd05625d08bbfc2d39814d294095af57e660465698419615722f2",
+  "classification": "EXPORTED_AND_IMPORTED_NO_GENERATIVE_RUNTIME_STARTED",
+  "additional_live_generations": 0
+}

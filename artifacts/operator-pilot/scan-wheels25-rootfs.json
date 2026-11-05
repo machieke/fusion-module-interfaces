@@ -1,0 +1,114 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a1ab7b-ed79-71e3-96c2-bce70cc7bc1e",
+  "CreatedAt": "2026-11-05T11:33:08.089125266Z",
+  "ArtifactName": "/data/fusion-operator-pilot-release/sdk25-scan-root",
+  "ArtifactType": "filesystem",
+  "Results": [
+    {
+      "Target": "Python",
+      "Class": "lang-pkgs",
+      "Type": "python-pkg",
+      "Packages": [
+        {
+          "Name": "PyYAML",
+          "Identifier": {
+            "PURL": "pkg:pypi/pyyaml@6.0.3",
+            "UID": "5ec8ab3f821387eb"
+          },
+          "Version": "6.0.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "FilePath": "pyyaml-6.0.3.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "cffi",
+          "Identifier": {
+            "PURL": "pkg:pypi/cffi@2.1.1",
+            "UID": "edc65ceac2744d83"
+          },
+          "Version": "2.1.1",
+          "Licenses": [
+            "MIT-0"
+          ],
+          "FilePath": "cffi-2.1.1.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "cryptography",
+          "Identifier": {
+            "PURL": "pkg:pypi/cryptography@50.0.2",
+            "UID": "5c8581b1469c264d"
+          },
+          "Version": "50.0.2",
+          "Licenses": [
+            "Apache-2.0 OR BSD-3-Clause"
+          ],
+          "FilePath": "cryptography-50.0.2.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "fusion-file-feed-example",
+          "Identifier": {
+            "PURL": "pkg:pypi/fusion-file-feed-example@0.3.0",
+            "UID": "5f967a349981b351"
+          },
+          "Version": "0.3.0",
+          "FilePath": "fusion_file_feed_example-0.3.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "fusion-module-client",
+          "Identifier": {
+            "PURL": "pkg:pypi/fusion-module-client@0.3.0",
+            "UID": "babc2bc052265827"
+          },
+          "Version": "0.3.0",
+          "FilePath": "fusion_module_client-0.3.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "fusion-preview-operator",
+          "Identifier": {
+            "PURL": "pkg:pypi/fusion-preview-operator@0.4.0",
+            "UID": "bc4292ae5a0141ae"
+          },
+          "Version": "0.4.0",
+          "FilePath": "fusion_preview_operator-0.4.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pycparser",
+          "Identifier": {
+            "PURL": "pkg:pypi/pycparser@3.12",
+            "UID": "3e2799be909ec0d6"
+          },
+          "Version": "3.12",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "FilePath": "pycparser-3.12.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        },
+        {
+          "Name": "pycryptodome",
+          "Identifier": {
+            "PURL": "pkg:pypi/pycryptodome@4.0.0",
+            "UID": "ca53cac3e5610309"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "BSD-2-Clause AND Unlicense"
+          ],
+          "FilePath": "pycryptodome-4.0.0.dist-info/METADATA",
+          "AnalyzedBy": "python-pkg"
+        }
+      ]
+    }
+  ]
+}

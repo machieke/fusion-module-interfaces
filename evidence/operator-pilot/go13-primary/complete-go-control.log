@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/data/fusion-operator-pilot-release/qualification-private/workflows-14/complete_go_control.py", line 12, in <module>
+    with (root/'go-final-drain02.log').open('wb') as log:subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,timeout=max(1,(deadline-time.time()*1000)/1000),check=True)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/purplezky/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/data/fusion-operator-pilot-release/operator13/bin/python', '-I', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/drain_go02.py', '--kubeconfig', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/kubeconfig', '--plan', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/go-final-drain-plan.json', '--replacement', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/go-replacement-recovery/native-onboarding', '--output', '/data/fusion-operator-pilot-release/qualification-private/workflows-14/go-final-drain02']' returned non-zero exit status 1.

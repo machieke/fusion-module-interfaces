@@ -1,0 +1,25 @@
+{
+  "profile": "operator-pilot-candidate-checks/1",
+  "source_manifest_sha256": "aa9a8ebaeb2f59cd8893cd50755d5f91314590841cf0e09fda79b6d3556d0784",
+  "source_index_timing": "Captured before run; all763 exact bytes checked immediately after completion",
+  "source_index_sha256": "83d1758b25bb4b7cfe5f50ec5bfcd7c3628a294596a46ca88c2e80d9f40ccee3",
+  "indexed_files": 763,
+  "runtime_and_test_source_unchanged": true,
+  "source_copies": "/data/fusion-operator-pilot-release/evidence-assembly/final13-test-sources",
+  "runs": [
+    {
+      "lane": "pilot-fast",
+      "run": "13",
+      "status": "PASS",
+      "invocations": 307,
+      "seconds": 60.904,
+      "primary": "artifacts/operator-pilot/final-checks13/pilot-fast.log",
+      "sha256": "86c1863f9595b29479e367d09de58b1a173b700d80cbb2aa16afd36408bcfc45",
+      "generation_denial": "artifacts/operator-pilot/final-checks13-denial.json",
+      "generation_denial_sha256": "2a115c284b47011cec818ca6832f1bccd266813c3f4a0c63091aae9b259dc0d6"
+    }
+  ],
+  "additional_live_generations": 0,
+  "source_limit": "Exact runtime13 typed activation fence, current operator helpers and indexed tests; no native integration claim from this test lane.",
+  "reused_prior_lanes": "Prior11/09/10 lanes retain their exact original identities; no relabeling"
+}

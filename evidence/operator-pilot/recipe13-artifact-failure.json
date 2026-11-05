@@ -1,0 +1,148 @@
+{
+  "additional_live_generations": 0,
+  "amendment": {
+    "explicit_reference_write_captured": true,
+    "inspection_state": "DISPATCHED_WITHOUT_CAPTURE",
+    "original_deadline_preserved": true,
+    "readback": "NOT_ADMITTED",
+    "runtime_failure_code": "UNKNOWN_NOT_OBSERVED",
+    "source_contract_domain": "INADMISSIBLE_EIGHT_OBSERVATIONS",
+    "spent_workflow_reservations": 3,
+    "version": 2
+  },
+  "chain": {
+    "finality": "NOT_RUN",
+    "node_activated": false,
+    "submit_reservations": 0
+  },
+  "classification": "RECORDED_MODEL_REAL_NATIVE_TOOLS",
+  "cleanup": {
+    "observed_ms": 1793856088779,
+    "observed_pods": 0,
+    "quiesced": true,
+    "retained_pvcs": 14
+  },
+  "counts": {
+    "control_attempts_not_native_inputs": true,
+    "delegated_result_consumptions": 1,
+    "delegated_tasks": 1,
+    "selected_captures": 3,
+    "selected_native_inputs": 4,
+    "sessions": 2,
+    "total_actual_captures": 5,
+    "workflows": 1
+  },
+  "distribution_sha256": "de39c9f69d8024a8fb793279165236953e2bc81254a79efae391fb468af0954d",
+  "failures_retained": [
+    "initial full-projection driver interrupted after bounded repeated refusals",
+    "same-workflow reference helper conservative preflight refusal after amendment",
+    "same-workflow continuation reached original deadline with inspection uncaptured"
+  ],
+  "initial_operator": "operator13",
+  "namespace": "omega-ref-pilot-recipe13",
+  "original": {
+    "full_projection_control_failures": 81,
+    "inspection_domain_maximum_payloads": 3,
+    "native_b_capture_projection_bytes": 9259,
+    "projection_bytes": 5698,
+    "projection_representation": "actual task-result body",
+    "retrieved_payload_count": 8,
+    "status": "FAIL",
+    "workflow_deadline_ms": 1793856058952
+  },
+  "profile": "operator-pilot-artifact-recipe-execution/1",
+  "runtime_source_manifest_sha256": "3ee4c1af77ffc75f1b9e48790d3c8494e9a72ad668b85417779896b8bc46cbc2",
+  "sources": {
+    "chain-receipt-observer-plan.json": {
+      "bytes": 479,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/chain-receipt-observer-plan.json",
+      "sha256": "9bd3047d76239a7f41b88cb8f5bf6a45c6143e46a1260a93334507a192186952"
+    },
+    "chain-task-receipts.json": {
+      "bytes": 49646,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/chain-task-receipts.json",
+      "sha256": "3dfacc8b3d1d98c64af35c9871e06262822a70951e4dd3fadb0418e4800f097c"
+    },
+    "continue-reference.py": {
+      "bytes": 2574,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/continue-reference.py",
+      "sha256": "2f43c9e72be57c8055511cba4714b1cef27ebd82d032c00243885bc1dae88c19"
+    },
+    "observe-reference-final.py": {
+      "bytes": 1265,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/observe-reference-final.py",
+      "sha256": "ae5bdd4b56577ba45b341b6d93b79d9e6332842ee5b3f36cdcc63e9277f1fd5f"
+    },
+    "observe_chain_sessions.py": {
+      "bytes": 2558,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/observe_chain_sessions.py",
+      "sha256": "05bfc20b935e3d472388808e23079cf518886c7a074d45f26a07cc213cd50bda"
+    },
+    "pilot_artifact_reference.py": {
+      "bytes": 9193,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/pilot_artifact_reference.py",
+      "sha256": "1c2da7c29d5fc5086892e4a34edaaa7bf074a860c1dd0afd59f43b127fb5ea86"
+    },
+    "recipe-chain-evidence/registered-recipe/native/report.json": {
+      "bytes": 312543,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/recipe-chain-evidence/registered-recipe/native/report.json",
+      "sha256": "eca6945ee9cc7901ce47238fef236ac63cfff847dee018099ed3e2a9a90205f7"
+    },
+    "recipe-chain-evidence/registered-recipe/report.json": {
+      "bytes": 207854,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/recipe-chain-evidence/registered-recipe/report.json",
+      "sha256": "d15692c6fd96ed00322b9b5ff39d42c6305a81cb5ac9d8b1b8ff75c8ba8068d5"
+    },
+    "recipe-chain-evidence/report.json": {
+      "bytes": 253,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/recipe-chain-evidence/report.json",
+      "sha256": "a5dbeef882979bf2f22e3af4d08d5a21dcab5a6452ee81ee579f0b1409704069"
+    },
+    "recipe-chain-observer-stop.json": {
+      "bytes": 247,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/recipe-chain-observer-stop.json",
+      "sha256": "4a56c6885408361d648c6369e0b86f516f880344d9a03c6b782c179338d9a772"
+    },
+    "reference-continuation.log": {
+      "bytes": 563,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/reference-continuation.log",
+      "sha256": "a6d7d9643c00876e9aa38005f69ff1e84623b759ecd3bb046bf581b144c14288"
+    },
+    "reference-final-observation.log": {
+      "bytes": 0,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/reference-final-observation.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reference-final-observation/report.json": {
+      "bytes": 30926,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/reference-final-observation/report.json",
+      "sha256": "fb90b84b0fd364dc1b6ea28283d63a1fb6fbafcbd883e92a669570cd0d23cf94"
+    },
+    "reference-recovery.log": {
+      "bytes": 624,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/reference-recovery.log",
+      "sha256": "47fc8ca966b3efd197b67e378e0410f115cac92bd5efcbc032e3b3510baa62d7"
+    },
+    "reference-source-pin.json": {
+      "bytes": 170,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/reference-source-pin.json",
+      "sha256": "50c88761da5dbc2a78bfb2d70ccfbce6521d479b5ed3af9ff7bda241744b391d"
+    },
+    "reference-workflow-continuation/report.json": {
+      "bytes": 389878,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/reference-workflow-continuation/report.json",
+      "sha256": "b917a6d23291402152fe67cb807a6c82e37c0fbddea999e10d396db464aa5635"
+    },
+    "reference-workflow-recovery/report.json": {
+      "bytes": 28572,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/reference-workflow-recovery/report.json",
+      "sha256": "b7bcef8b282c068651b2774973d297691f5f9163a2ed90a08663ca09c15034a6"
+    },
+    "resume-reference.py": {
+      "bytes": 734,
+      "path": "evidence/operator-pilot/recipe13-artifact-primary/resume-reference.py",
+      "sha256": "7c700d958c4bd65e004bff41b957b4fa67db699ba2dae2fcae52849331286f69"
+    }
+  },
+  "status": "NOT_COMPLETED"
+}

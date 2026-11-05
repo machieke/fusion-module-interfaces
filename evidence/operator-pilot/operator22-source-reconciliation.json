@@ -1,0 +1,29 @@
+{
+  "added_since_sdk21": [],
+  "additional_live_generations": 0,
+  "build_manifest_sha256": "636546e82026764efa7ed56c8c847ba27ea0861c467120e4b6fe162e7b61ec87",
+  "changed_since_sdk21": {
+    "examples/pilot_faults.py": {
+      "after": "9dd3df4ecdae7466659578cddc229e5bee39f44947c2a03b4be6b7d9fec5f1c7",
+      "before": "314a120b3bf741c2f3a7e67ead0c8bbb416d0508a6f1bea931efe86d056e6000"
+    }
+  },
+  "classification": "OFFLINE_EXTRACTION_AND_EXACT_INSTALLED_SOURCE_CHECK",
+  "e5_libraries": false,
+  "operator_wheel_sha256": "a1d10a1d509002a92569790efa1b77ac2c7946d35c1a0c205771fa427467d2de",
+  "real_provider_calls": 0,
+  "source_unchanged_during_build": true,
+  "sources": {
+    "client": 18,
+    "operator": 270,
+    "provider": 7
+  },
+  "status": "PASS",
+  "wheels": 8,
+  "profile": "operator-pilot-sdk-source-reconciliation/1",
+  "previous_sdk_manifest_sha256": "a5b5c39e3eb4c4f269be11606daa1a11dcf1ab8e45917fac58dc226b05ee4278",
+  "source_change_reason": "Retire a selected test hook with the required explicit empty test object; all other component config, marker/journal state and runtime profiles remain unchanged.",
+  "native_runtime_unchanged": true,
+  "chart16_unchanged": true,
+  "previous_executions_remain_historical": true
+}

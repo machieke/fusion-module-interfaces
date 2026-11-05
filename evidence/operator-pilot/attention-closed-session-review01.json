@@ -1,0 +1,69 @@
+{
+  "additional_live_generations": 0,
+  "created_utc": "2026-11-05T08:26:35.619050+00:00",
+  "executed_test_primary": {
+    "bytes": 114,
+    "path": "artifacts/operator-pilot/attention-suspension-helper-04.log",
+    "sha256": "808fb787e425e61a929fbfa70ebf1a9c8f96f5d526c398d722c7068d48c76dda"
+  },
+  "findings": [
+    {
+      "result": "Reads only the selected caller own database from trusted owner configuration using SQLite mode=ro/query_only SELECT. No foreign owner journal, store constructor, schema init, allocation or materialization.",
+      "topic": "ownership"
+    },
+    {
+      "result": "Requires a closed current generation2 g2-shared allocation with equal caller principal/scope and no historical-session marker. This selects provenance/configuration for a fresh operator-authorized Attention context; it does not reopen or resume the closed native session.",
+      "topic": "closed-session meaning"
+    },
+    {
+      "result": "Canonical accepted frozen template equals current trusted template; template_files and runtime_digest bind all template JSON and CA bytes while permitting declared current credential rotation. Frozen helper, values, images, handover and chart hashes are checked before qualification work. Existing operation/deadline/counter limits remain unchanged.",
+      "topic": "selection and source binding"
+    },
+    {
+      "result": "Payload hydration uses existing authenticated AtomStorage client; Attention bind/adjust/observe use existing authenticated Remote and current provider policy. Local owner row does not replace downstream authorization. New tests use fixture authorization and TLS bytes; no new live revocation test is claimed.",
+      "topic": "current authority"
+    },
+    {
+      "result": "Real SustainedSessionStore allocation/control and SQLite reads exercise success, changed template/CA, historical marker, wrong generation/unknown session, principal/scope/private selection refusal. Existing target/cleanup/clock safety fixtures retained.",
+      "topic": "tests"
+    },
+    {
+      "result": "mode=ro can create/update SHM read locks or an empty WAL. Final assertions compare authoritative DB/nonempty WAL/config bytes and exclude only SHM/empty-WAL lock/cache. Do not claim full physical file identity. Initial failed assertions and invalid-UUID negative fixture remain visible.",
+      "topic": "SQLite physical effects"
+    },
+    {
+      "result": "Only helper selection changed. Existing runtime/owner/profiles/math and existing pause/reservation/deadline workflow remain unchanged. New separate300s control plan must be frozen before execution; old failed pre-bind attempt remains immutable and does not authorize any reservation reuse.",
+      "topic": "scope limits"
+    }
+  ],
+  "preserved_failed_test_primary": {
+    "bytes": 3796,
+    "path": "artifacts/operator-pilot/attention-suspension-helper-03.log",
+    "sha256": "f82122860cea458a239065f123e6d197e786a0f4e92d73298f56944fd17c0286"
+  },
+  "profile": "operator-helper-independent-review/1",
+  "reported_test_result": {
+    "log_format": "aggregate unittest; no verbose method IDs in primary",
+    "methods": 15,
+    "new_authored_selection_methods": 5,
+    "seconds": 0.374,
+    "status": "PASS"
+  },
+  "reviewer_cluster_calls": 0,
+  "reviewer_test_reruns": 0,
+  "runtime_changes": 0,
+  "scope": "Static independent review of final closed-session Attention supplement helper and source-bound existing test results; no tests rerun, cluster calls or provider/model execution by reviewer.",
+  "sources": [
+    {
+      "bytes": 17859,
+      "path": "examples/pilot_attention_suspension.py",
+      "sha256": "98cd384309c69cc708a41eb1440198cc53d65146949c9fb4a9fb31af808b02ba"
+    },
+    {
+      "bytes": 13754,
+      "path": "tests/test_pilot_attention_suspension.py",
+      "sha256": "78bb0aafd7f5867421850e7abe79d2cab8fbc8e48acbd03c85d244e48daa834e"
+    }
+  ],
+  "status": "NO_BLOCKING_FINDING"
+}

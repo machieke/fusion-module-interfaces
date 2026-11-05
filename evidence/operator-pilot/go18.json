@@ -1,0 +1,158 @@
+{
+  "profile": "operator-pilot-current-go-provider-summary/1",
+  "status": "PASS",
+  "classification": "REAL_NATIVE_REAL_POD_HTTPS_INDEPENDENT_GO_RECORDED_MODEL",
+  "namespace": "omega-ref-pilot-go18",
+  "runtime_source_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "packet_sha256": "cdbbf8c0653fba98f80127f0c8826f6e0e331cfa001de15b7a2bce04c07948b0",
+  "chart_sha256": "a6d4715b4aee610394dbfde805fc22076ce37d79f41cb1097599353b2d9c7df5",
+  "operator_wheel_sha256": "a1d10a1d509002a92569790efa1b77ac2c7946d35c1a0c205771fa427467d2de",
+  "runner_sha256": "7c8d9735d9eef63cf08ae502cc3797cb32d21142f0086633c8346c0468e5cb77",
+  "plan_sha256": "e1a91c389e17ea816171b20e1400fd73cd778a5f11196916a6022514de9e196b",
+  "independent_go_source_sha256": "738bdb6ad57aa939545400f3074283f68a9b5343d1d6665a3a5313fd4a44e53a",
+  "independent_go_image": "sha256:e2f7505e2ae6d6e3038f5049cfd2a181e3add14db98b388dd05ba8b7ded859cc",
+  "artifact_composition": "Runtime14 and Go04 from packet18, separately frozen chart16 and SDK22. SDK22 affects only the unexercised fault helper relative to SDK21.",
+  "time": {
+    "started_utc": "2026-11-05T09:57:22.424000+00:00",
+    "finished_utc": "2026-11-05T10:00:15.321000+00:00",
+    "duration_seconds": 172.897,
+    "programme_limit_seconds": 1500,
+    "native_limit_seconds": 900,
+    "original_deadline_renewals": 0
+  },
+  "counts": {
+    "direct_native_inputs": 4,
+    "internal_native_inputs": 2,
+    "total_native_inputs": 6,
+    "completed_captured_inputs": 6,
+    "sessions_closed": 2,
+    "go_jobs": 1,
+    "go_results_captured": 1,
+    "go_completions_delivered": 1,
+    "duplicate_submission_probe": 1,
+    "new_selection_refusal_after_drain": 1,
+    "physical_http_attempts": null,
+    "additional_live_generations": 0
+  },
+  "operations": [
+    "remember",
+    "delegate",
+    "inspect-atom",
+    "task-context"
+  ],
+  "provider_selection_admissions": [
+    {
+      "template": "shared",
+      "providers": 10
+    },
+    {
+      "template": "go-shared",
+      "providers": 11
+    }
+  ],
+  "gates": {
+    "installed_binding_verification": "PASS",
+    "actual_native_inspection": "INSPECTED_ARTIFACT",
+    "caller_acknowledgment": true,
+    "saved_continuation": "return-ready",
+    "native_consumption_captured": true,
+    "actual_next_prompt_contains_inspection_artifact": true,
+    "actual_next_prompt_contains_inspection_job": true,
+    "next_prompt_not_injected": true,
+    "duplicate_acceptance_and_deadline_exact": true,
+    "retained_go_result_events_status_exact_after_drain": true,
+    "retained_closed_application_capture_exact_after_drain": true,
+    "selected_provider_binding_exact_after_drain": true,
+    "new_selection_refused": "NOT_AVAILABLE",
+    "original_receipts_retained": true,
+    "new_effects_after_drain": 0,
+    "reservations_refunded": 0
+  },
+  "drain": {
+    "profile": "trusted-provider-lifecycle/2",
+    "state": "draining",
+    "new_work": false,
+    "prior_bindings_unchanged": true,
+    "retained_access": "required"
+  },
+  "capacity": {
+    "status": "PASS",
+    "profile": "go-inspect-capacity/1",
+    "client_invocations": 1,
+    "maximum_http_calls": 1,
+    "execution_calls": 0,
+    "validated_owner_observations": 1,
+    "client_isolation": "static verified kit client; private hosts view; no caller/owner files",
+    "jobs": {
+      "headroom": 127,
+      "limit": 128,
+      "unit": "jobs",
+      "used": 1
+    },
+    "pending": {
+      "headroom": 4,
+      "limit": 4,
+      "unit": "jobs",
+      "used": 0
+    },
+    "journal": {
+      "admission_headroom": 127017,
+      "completion_covered": true,
+      "completion_projection": 4055,
+      "completion_reserved": 24,
+      "control_policy": "read-observations-write-no-journal",
+      "control_reserved": 0,
+      "headroom": 127041,
+      "limit": 131072,
+      "reservation_kind": "admission-enforced-logical-worst-case",
+      "unit": "bytes",
+      "used": 4031
+    },
+    "worker_phases": {
+      "per_job_limit": 32,
+      "remaining_for_pending": 0,
+      "reset": false,
+      "spent": 2,
+      "unit": "worker-phases"
+    },
+    "closure": {
+      "captured": 1,
+      "delivered": 1,
+      "exhausted_pending": 0,
+      "terminal_errors": 0
+    },
+    "unknown": {
+      "cpu_time_ns": null,
+      "filesystem_free_bytes": null,
+      "next_request_bytes": null,
+      "observation_time_ms": null,
+      "pvc_capacity_bytes": null,
+      "reclaimable_bytes": null,
+      "rss_bytes": null
+    },
+    "input_limit_bytes": 4096,
+    "retained_result_limit_bytes": 4096,
+    "work_executed_by_observation": false,
+    "port_forward_stopped": true
+  },
+  "cleanup": {
+    "pods": 0,
+    "pvcs_retained": 13,
+    "observed_utc": "2026-11-05T10:00:22.577000+00:00"
+  },
+  "limitations": [
+    "Recorded model responses select commands; actual native consumers, tools, storage, retrieval, messaging and independent Go provider perform the work. No real text generation.",
+    "The C18 evaluator validates actual result, artifact, continuation and next-context binding. It does not separately execute G18's exact remembered-reference membership assertion.",
+    "Provider capacity reports logical owner admission accounting, not measured physical disk/RSS/CPU totals; unknown fields remain null.",
+    "This is a fresh runtime14 representative. Historical Go17 startup/import/trusted-pin failures and runtime13 identities remain unchanged.",
+    "One-node deployment only; no production high-availability or multi-host claim."
+  ],
+  "private_evidence": {
+    "status": "UNAVAILABLE_PRIVATE",
+    "sha256": null,
+    "bytes": null,
+    "raw_reports_unchanged": true,
+    "identifying_hashes_and_handles_withheld": true
+  },
+  "additional_live_generations": 0
+}

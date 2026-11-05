@@ -1,0 +1,93 @@
+{
+  "profile": "operator-pilot-artifact-analysis/1",
+  "source_manifest_sha256": "437927520d53825dc9c642df6cc074d6ccccb3ccaec4bd937402e319baacd6fc",
+  "observed_utc": "2026-11-05T07:24:38.614548+00:00",
+  "images": [
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev14",
+      "kind": "base",
+      "artifact": "docker.io/library/fusion-single-node:reference-pilot-dev14",
+      "image_configuration": "sha256:3befefaebb3dcc69cfc0ee1abaa5b8d526da42dc1f00b0737cdf74c9c7f4d84a",
+      "manifest_digest": "sha256:5ec0bdabf61b8542b2fe285c534d8824f52146c9674d99830bac6e622738cb09",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "8818410b4374a9527222db660c45134c61f2e45b292d20743ecf7679a4296e10",
+      "packages_detected": 107,
+      "severity": {
+        "LOW": 83,
+        "HIGH": 37,
+        "MEDIUM": 101,
+        "CRITICAL": 2
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    },
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev14",
+      "kind": "caller",
+      "artifact": "docker.io/library/fusion-memory-caller:reference-pilot-dev14",
+      "image_configuration": "sha256:52b93d100a42930c8dedd41b137a9db058986c38616f47012c98f34eec1703b9",
+      "manifest_digest": "sha256:3fd959af4dc1b5b4b941d979863355a5e9bebe9df85ddc6147f449fea040860d",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "16b11c98d38bd1dcb7fb524cddc8644e8c1ee38b86d06378d4a4b3da52edec7c",
+      "packages_detected": 190,
+      "severity": {
+        "LOW": 83,
+        "HIGH": 39,
+        "MEDIUM": 101,
+        "CRITICAL": 4
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    },
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev14",
+      "kind": "embedding",
+      "artifact": "docker.io/library/fusion-memory-embedding:reference-pilot-dev14",
+      "image_configuration": "sha256:ac42fe2a186ff4c83b8c0e9b679b1247f61af90824a839812367fd5189003e81",
+      "manifest_digest": "sha256:77e6501a2bd3810e49408df9e9e4c44ff1470779a8d9b79c0c9a11d37fd80f7b",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "c40c30e3243906ee13f960a5290ab01ca52a669de590b826e4a2c356d4ccefe1",
+      "packages_detected": 225,
+      "severity": {
+        "LOW": 85,
+        "HIGH": 42,
+        "MEDIUM": 102,
+        "CRITICAL": 5
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    },
+    {
+      "status": "EXECUTED_FINDINGS",
+      "epoch": "dev14",
+      "kind": "chain",
+      "artifact": "docker.io/library/fusion-reference-chain:reference-pilot-dev14",
+      "image_configuration": "sha256:65b8aebc247703474e48d6688c6752fec643ff20884be9f5f852f2a5db606b72",
+      "manifest_digest": "sha256:4762a1b69bb57e5e0b47ceb54813f217f1a1dbc6b7d4ae6566925d71c9281fc7",
+      "scanner": "0.76.1",
+      "raw_report_sha256": "58df7791a4fb291baa0b7c8111b1e2bad038a25349836040b34b2500d52e087d",
+      "packages_detected": 128,
+      "severity": {
+        "LOW": 84,
+        "HIGH": 37,
+        "MEDIUM": 101,
+        "CRITICAL": 2
+      },
+      "classification": "OFFLINE_ACTUAL_IMAGE_NO_CONTAINER_START",
+      "additional_live_generations": 0
+    }
+  ],
+  "scanner_source": "scanner-source.json",
+  "database": "scanner-database.json",
+  "status": "SCANS_EXECUTED_WITH_UNRESOLVED_FINDINGS",
+  "scan_process_returncodes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "additional_live_generations": 0
+}
